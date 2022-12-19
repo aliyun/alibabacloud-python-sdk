@@ -40,10 +40,28 @@ class AddInstallCodeRequest(TeaModel):
         os: str = None,
         vendor_name: str = None,
     ):
+        # The validity period of the installation command. The value is a 13-digit timestamp.
+        # 
+        # >  The installation command is valid only within the validity period. An expired installation command cannot be used to install the Security Center agent.
         self.expired_date = expired_date
+        # The ID of the asset group to which the you want to add the asset.
+        # 
+        # >  You can call the [DescribeAllGroups](~~describeallgroups~~) operation to query the IDs of asset groups.
         self.group_id = group_id
+        # Specifies whether to create an image. Default value: **false**. Valid values:
+        # 
+        # *   **false**: does not create an image.
+        # *   **true**: creates an image.
         self.only_image = only_image
+        # The operating system of the instance. Default value: **linux**. Valid values:
+        # 
+        # *   **linux**\
+        # *   **windows**\
+        # *   **windows-2003**\
         self.os = os
+        # The name of the service provider for the asset. Default value: **ALIYUN**.
+        # 
+        # >  You can call the [DescribeVendorList](~~DescribeVendorList~~) operation to query the names of service providers.
         self.vendor_name = vendor_name
 
     def validate(self):
@@ -87,6 +105,7 @@ class AddInstallCodeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -158,6 +177,9 @@ class AddVpcHoneyPotRequest(TeaModel):
         self,
         vpc_id: str = None,
     ):
+        # The ID of the virtual private cloud (VPC) in which you want to create a honeypot.
+        # 
+        # >  You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain the VPC ID. The VPC ID is the value of the InstanceId parameter.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -185,6 +207,7 @@ class AddVpcHoneyPotResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -262,12 +285,40 @@ class BindAuthToMachineRequest(TeaModel):
         logical_exp: str = None,
         un_bind: List[str] = None,
     ):
+        # The edition of Security Center. Valid values:
+        # 
+        # *   **6**: Anti-virus edition
+        # *   **5**: Advanced edition
+        # *   **3**: Enterprise edition
+        # *   **7**: Ultimate edition
+        # *   **10**: Value-added Plan edition
         self.auth_version = auth_version
+        # Specifies whether to automatically bind servers to Security Center. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.auto_bind = auto_bind
+        # The UUIDs of the servers that you want to bind to Security Center.
+        # 
+        # >  You must specify at least one of the **Bind** and **UnBind** parameters.
         self.bind = bind
+        # Specifies whether to bind all servers to Security Center. Default value: **false**. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.bind_all = bind_all
+        # The search conditions that are used to filter servers. The value of this parameter is in the JSON format and is case-sensitive.
+        # 
+        # >  A search condition can be an instance ID, instance name, virtual private cloud (VPC) ID, region, or public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
+        # The logical relationship among multiple search conditions. Valid values:
+        # 
+        # *   **OR**: Search conditions are evaluated by using a logical **OR**.
+        # *   **AND**: Search conditions are evaluated by using a logical **AND**.
         self.logical_exp = logical_exp
+        # The UUIDs of the servers that you want to unbind from Security Center.
+        # 
+        # >  You must specify at least one of the **Bind** and **UnBind** parameters.
         self.un_bind = un_bind
 
     def validate(self):
@@ -324,11 +375,22 @@ class BindAuthToMachineResponseBody(TeaModel):
         result_code: int = None,
         un_bind_count: int = None,
     ):
+        # The number of bound servers.
         self.bind_count = bind_count
+        # The shortage in the quota for cores of servers that can be protected.
         self.insufficient_core_count = insufficient_core_count
+        # The shortage in the quota for servers that can be protected.
         self.insufficient_ecs_count = insufficient_ecs_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The status code that indicates the result. Valid values:
+        # 
+        # *   **0**: The servers are bound to or unbound from Security Center.
+        # *   **1**: The values that you specified for the parameters are invalid.
+        # *   **2**: The quota for servers that can be protected is insufficient.
+        # *   **3**: The quota for cores of servers that can be protected is insufficient.
         self.result_code = result_code
+        # The number of unbound servers.
         self.un_bind_count = un_bind_count
 
     def validate(self):
@@ -421,7 +483,13 @@ class CheckQuaraFileIdRequest(TeaModel):
         quara_file_ids: List[str] = None,
         uuid: str = None,
     ):
+        # The IDs of quarantined files that you want to check.
+        # 
+        # >  You can call the [DescribeSuspEventQuaraFiles](~~DescribeSuspEventQuaraFiles~~) operation to query the IDs of quarantined files.
         self.quara_file_ids = quara_file_ids
+        # The UUID of the server on which you want to check quarantined files.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -454,7 +522,12 @@ class CheckQuaraFileIdResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the ID of the quarantined file is valid. Valid values:
+        # 
+        # *   **true**: The ID of the quarantined file is valid.
+        # *   **false**: The ID of the quarantined file is invalid.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -531,7 +604,13 @@ class CheckSecurityEventIdRequest(TeaModel):
         security_event_ids: List[str] = None,
         uuid: str = None,
     ):
+        # The IDs of alert events. You can specify up to 100 IDs. If you do not specify this parameter, the value of the response parameter **Data** is **false**. The value false indicates that no alert events are generated on the server.
+        # 
+        # >  You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the IDs of alert events.
         self.security_event_ids = security_event_ids
+        # The UUID of the server.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -564,7 +643,12 @@ class CheckSecurityEventIdResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert events are generated on the server. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -640,6 +724,10 @@ class CheckUserHasEcsRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -671,10 +759,21 @@ class CheckUserHasEcsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request is successful. Other status codes indicate that the request fails. You can identify the cause of the failure based on the status code.
         self.code = code
+        # Indicates whether ECS instances exist. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.data = data
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The status of the request. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -769,13 +868,44 @@ class CreateAntiBruteForceRuleRequest(TeaModel):
         span: int = None,
         uuid_list: List[str] = None,
     ):
+        # Specifies whether to set the defense rule as the default rule. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  If no defense rule is created for a server, the default rule is applied to the server.
         self.default_rule = default_rule
+        # The maximum number of failed logon attempts from an account. Valid values: 2, 3, 4, 5, 10, 50, 80, and 100.
         self.fail_count = fail_count
+        # The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
+        # 
+        # *   **5**: 5 minutes
+        # *   **15**: 15 minutes
+        # *   **30**: 30 minutes
+        # *   **60**: 1 hour
+        # *   **120**: 2 hours
+        # *   **360**: 6 hours
+        # *   **720**: 12 hours
+        # *   **1440**: 24 hours
+        # *   **10080**: 7 days
+        # *   **52560000**: permanent
         self.forbidden_time = forbidden_time
+        # The name of the defense rule.
         self.name = name
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
+        # 
+        # *   **1**\
+        # *   **2**\
+        # *   **5**\
+        # *   **10**\
+        # *   **15**\
+        # 
+        # >  To configure a defense rule, you must specify the Span, FailCount, and ForbiddenTime parameters. If the number of failed logon attempts from an account within the minutes specified by Span exceeds the value specified by FailCount, the account cannot be used for logons within the minutes specified by ForbiddenTime.
         self.span = span
+        # The UUIDs of the servers to which you want to apply the defense rule.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -831,6 +961,7 @@ class CreateAntiBruteForceRuleResponseBodyCreateAntiBruteForceRule(TeaModel):
         self,
         rule_id: int = None,
     ):
+        # The ID of the defense rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -859,7 +990,9 @@ class CreateAntiBruteForceRuleResponseBody(TeaModel):
         create_anti_brute_force_rule: CreateAntiBruteForceRuleResponseBodyCreateAntiBruteForceRule = None,
         request_id: str = None,
     ):
+        # The information about the defense rule.
         self.create_anti_brute_force_rule = create_anti_brute_force_rule
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -941,10 +1074,44 @@ class CreateBackupPolicyRequest(TeaModel):
         policy_version: str = None,
         uuid_list: List[str] = None,
     ):
+        # The name of the anti-ransomware policy.
         self.name = name
+        # *   **IsDefault**: the type of the anti-ransomware policy. Valid values:
+        # 
+        #     *   **1**: recommended policy
+        #     *   **0**: custom policy
+        # 
+        # *   **Include**: the format of the files that you want to protect. If you want to protect the files in all formats, set this field to \[].
+        # 
+        # *   **Source**: the directory that you want to protect. If you want to protect all directories, set this field to \[].
+        # 
+        # *   **ExcludeSystemPath**: specifies whether to exclude a specific directory from the anti-ransomware policy. If you want to exclude a directory, set this field to **true**. If you do not want to exclude a directory, leave this field empty.
+        # 
+        # *   **Exclude**: the directory that you want to exclude from the anti-ransomware policy. If you do not want to exclude a directory, set this field to \[].
+        # 
+        # *   **Schedule**: the start time and interval of a data backup task. We recommend that you specify a start time that begins during off-peak hours but does not start on the hour. Examples:
+        # 
+        #     *   If you set this field to I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+        #     *   If you set this field to I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+        # 
+        # *   **Retention**: the period during which backup data is retained. Unit: days. If you set this field to 7, backup data is retained for a week. If you set this field to 365, backup data is retained for a year. If you set this field to -1, backup data is permanently retained.
+        # 
+        # *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If you set this field to 0:24:30720, the maximum bandwidth for a data backup task is 30 MB/s from 00:00 to 24:00.
+        # 
+        # *   **UseVss**: specifies whether to enable the VSS feature. The feature is available only for Windows servers. Valid values:
+        # 
+        #     *   **true**: yes
+        #     *   **false**: no
+        # 
+        # >  The VSS feature is available only if you create the anti-ransomware policy for Windows servers. After you enable the feature, the number of backup failures due to running processes is significantly reduced. We recommend that you enable the VSS feature. After you enable the feature, the data of disks that are in the exFAT and FAT32 formats cannot be backed up.
         self.policy = policy
+        # The region ID of the server that is not deployed on Alibaba Cloud.
+        # 
+        # >  We recommend that you specify the ID of the supported region that is the nearest to the location of the server. You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the supported regions of the anti-ransomware feature.
         self.policy_region_id = policy_region_id
+        # The version of the anti-ransomware policy. Set the value to **2.0.0**.
         self.policy_version = policy_version
+        # The UUIDs of the servers that you want to protect.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -992,10 +1159,44 @@ class CreateBackupPolicyShrinkRequest(TeaModel):
         policy_version: str = None,
         uuid_list: List[str] = None,
     ):
+        # The name of the anti-ransomware policy.
         self.name = name
+        # *   **IsDefault**: the type of the anti-ransomware policy. Valid values:
+        # 
+        #     *   **1**: recommended policy
+        #     *   **0**: custom policy
+        # 
+        # *   **Include**: the format of the files that you want to protect. If you want to protect the files in all formats, set this field to \[].
+        # 
+        # *   **Source**: the directory that you want to protect. If you want to protect all directories, set this field to \[].
+        # 
+        # *   **ExcludeSystemPath**: specifies whether to exclude a specific directory from the anti-ransomware policy. If you want to exclude a directory, set this field to **true**. If you do not want to exclude a directory, leave this field empty.
+        # 
+        # *   **Exclude**: the directory that you want to exclude from the anti-ransomware policy. If you do not want to exclude a directory, set this field to \[].
+        # 
+        # *   **Schedule**: the start time and interval of a data backup task. We recommend that you specify a start time that begins during off-peak hours but does not start on the hour. Examples:
+        # 
+        #     *   If you set this field to I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+        #     *   If you set this field to I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+        # 
+        # *   **Retention**: the period during which backup data is retained. Unit: days. If you set this field to 7, backup data is retained for a week. If you set this field to 365, backup data is retained for a year. If you set this field to -1, backup data is permanently retained.
+        # 
+        # *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If you set this field to 0:24:30720, the maximum bandwidth for a data backup task is 30 MB/s from 00:00 to 24:00.
+        # 
+        # *   **UseVss**: specifies whether to enable the VSS feature. The feature is available only for Windows servers. Valid values:
+        # 
+        #     *   **true**: yes
+        #     *   **false**: no
+        # 
+        # >  The VSS feature is available only if you create the anti-ransomware policy for Windows servers. After you enable the feature, the number of backup failures due to running processes is significantly reduced. We recommend that you enable the VSS feature. After you enable the feature, the data of disks that are in the exFAT and FAT32 formats cannot be backed up.
         self.policy_shrink = policy_shrink
+        # The region ID of the server that is not deployed on Alibaba Cloud.
+        # 
+        # >  We recommend that you specify the ID of the supported region that is the nearest to the location of the server. You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the supported regions of the anti-ransomware feature.
         self.policy_region_id = policy_region_id
+        # The version of the anti-ransomware policy. Set the value to **2.0.0**.
         self.policy_version = policy_version
+        # The UUIDs of the servers that you want to protect.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -1040,7 +1241,14 @@ class CreateBackupPolicyResponseBodyBackupPolicy(TeaModel):
         id: str = None,
         status: str = None,
     ):
+        # The ID of the anti-ransomware policy.
         self.id = id
+        # The status of the anti-ransomware policy. Valid values:
+        # 
+        # *   **enabled**\
+        # *   **disabled**\
+        # 
+        # >  After you create an anti-ransomware policy, the policy is enabled by default.
         self.status = status
 
     def validate(self):
@@ -1073,7 +1281,9 @@ class CreateBackupPolicyResponseBody(TeaModel):
         backup_policy: CreateBackupPolicyResponseBodyBackupPolicy = None,
         request_id: str = None,
     ):
+        # The information about the anti-ransomware policy.
         self.backup_policy = backup_policy
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1154,9 +1364,20 @@ class CreateFileDetectRequest(TeaModel):
         source_ip: str = None,
         type: int = None,
     ):
+        # The identifier of the file. Only MD5 hash values are supported.
         self.hash_key = hash_key
+        # The key of the file that is stored in the Object Storage Service (OSS) bucket. You can call the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation to query the keys of files.
         self.oss_key = oss_key
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the file. Valid values:
+        # 
+        # *   **0**: unknown files
+        # *   **1**: binary files
+        # *   **2**: webshell files
+        # *   **4**: script files
+        # 
+        # >  If you do not know the type of the file, set this parameter to 0.
         self.type = type
 
     def validate(self):
@@ -1197,7 +1418,9 @@ class CreateFileDetectResponseBody(TeaModel):
         hash_key: str = None,
         request_id: str = None,
     ):
+        # The identifier of the file.
         self.hash_key = hash_key
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1274,7 +1497,9 @@ class CreateFileDetectUploadUrlRequestHashKeyContextList(TeaModel):
         file_size: int = None,
         hash_key: str = None,
     ):
+        # The size of the file. Unit: bytes.
         self.file_size = file_size
+        # The hash value of the file.
         self.hash_key = hash_key
 
     def validate(self):
@@ -1308,8 +1533,22 @@ class CreateFileDetectUploadUrlRequest(TeaModel):
         hash_key_list: List[str] = None,
         type: int = None,
     ):
+        # The hash values of files.
+        # 
+        # >  You must specify at least one of the **HashKeyList** and **HashKeyContextList** parameters.
         self.hash_key_context_list = hash_key_context_list
+        # The identifier of the file. Only MD5 hash values are supported.
+        # 
+        # >  You must specify at least one of the **HashKeyList** and **HashKeyContextList** parameters.
         self.hash_key_list = hash_key_list
+        # The type of the file. Valid values:
+        # 
+        # *   **0**: unknown files
+        # *   **1**: binary files
+        # *   **2**: webshell files
+        # *   **4**: script files
+        # 
+        # >  If you do not know the type of the file, set this parameter to **0**.
         self.type = type
 
     def validate(self):
@@ -1356,9 +1595,13 @@ class CreateFileDetectUploadUrlResponseBodyUploadUrlListContext(TeaModel):
         policy: str = None,
         signature: str = None,
     ):
+        # The AccessKey ID that is used to access the OSS bucket.
         self.access_id = access_id
+        # The key of the file that is used after the file is uploaded to the OSS bucket.
         self.oss_key = oss_key
+        # The policy that poses limits on file upload. For example, the policy limits the size of the file.
         self.policy = policy
+        # The signature that is used to upload the file.
         self.signature = signature
 
     def validate(self):
@@ -1405,13 +1648,24 @@ class CreateFileDetectUploadUrlResponseBodyUploadUrlList(TeaModel):
         message: str = None,
         public_url: str = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The signature information.
         self.context = context
+        # The timestamp when the values of the parameters expire. Unit: milliseconds.
         self.expire = expire
+        # Indicates whether the file exists in the cloud. Valid values:
+        # 
+        # *   **true**: The file exists in the cloud. You do not need to upload the file.
+        # *   **false**: The file does not exist in the cloud. You must upload the file.
         self.file_exist = file_exist
+        # The identifier of the file.
         self.hash_key = hash_key
+        # The internal endpoint of the URL to which the file is uploaded.
         self.internal_url = internal_url
+        # The error message returned.
         self.message = message
+        # The public endpoint of the URL to which the file is uploaded.
         self.public_url = public_url
 
     def validate(self):
@@ -1470,7 +1724,9 @@ class CreateFileDetectUploadUrlResponseBody(TeaModel):
         request_id: str = None,
         upload_url_list: List[CreateFileDetectUploadUrlResponseBodyUploadUrlList] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array consisting of the parameters that are required to upload a file.
         self.upload_url_list = upload_url_list
 
     def validate(self):
@@ -1558,10 +1814,41 @@ class CreateHoneypotRequest(TeaModel):
         meta: str = None,
         node_id: str = None,
     ):
+        # The ID of the image that is used for the honeypot.
+        # 
+        # >  You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to obtain the IDs of images from the **HoneypotImageId** response parameter.
         self.honeypot_image_id = honeypot_image_id
+        # The name of the image that is used for the honeypot.
+        # 
+        # >  You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to obtain the names of images from the **HoneypotImageName** response parameter.
         self.honeypot_image_name = honeypot_image_name
+        # The custom name of the honeypot.
         self.honeypot_name = honeypot_name
+        # The custom configuration of the honeypot in the JSON format. The value contains the following fields:
+        # 
+        # *   **trojan_git**: Git-specific Defense. Valid values:
+        # 
+        #     *   **zip**: Git Source Code Package
+        #     *   **web**: Git Directory Leak
+        #     *   **close**: Disabled
+        # 
+        # *   **trojan\_git_addr**: Git Trojan Address.
+        # 
+        # *   **trojan_git.zip**: Git Trojan.
+        # 
+        # *   **burp**: Burp-specific Defense. Valid values:
+        # 
+        #     *   **open**: Enabled
+        #     *   **close**: Disabled
+        # 
+        # *   **portrait_option**: Source Tracing Configuration. Valid values:
+        # 
+        #     *   **false**: Disable
+        #     *   **true**: Enable
         self.meta = meta
+        # The ID of the management node to which you want to deploy the honeypot.
+        # 
+        # >  You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain the IDs of management nodes.
         self.node_id = node_id
 
     def validate(self):
@@ -1612,13 +1899,21 @@ class CreateHoneypotResponseBodyData(TeaModel):
         preset_id: str = None,
         state: List[str] = None,
     ):
+        # The name of the management node to which the honeypot is deployed.
         self.control_node_name = control_node_name
+        # The ID of the honeypot.
         self.honeypot_id = honeypot_id
+        # The display name of the image that is used for the honeypot.
         self.honeypot_image_display_name = honeypot_image_display_name
+        # The name of the image that is used for the honeypot.
         self.honeypot_image_name = honeypot_image_name
+        # The custom name of the honeypot.
         self.honeypot_name = honeypot_name
+        # The ID of the management node.
         self.node_id = node_id
+        # The ID of the custom configuration for the honeypot.
         self.preset_id = preset_id
+        # The status of the honeypot.
         self.state = state
 
     def validate(self):
@@ -1679,11 +1974,20 @@ class CreateHoneypotResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was is successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The information about the honeypot.
         self.data = data
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -1780,9 +2084,16 @@ class CreateHoneypotNodeRequest(TeaModel):
         node_name: str = None,
         security_group_probe_ip_list: List[str] = None,
     ):
+        # Specifies whether to allow the honeypots to access the Internet. Valid values:
+        # 
+        # *   **true**: allows the honeypots to access the Internet.
+        # *   **false**: does not allow the honeypots to access the Internet.
         self.allow_honeypot_access_internet = allow_honeypot_access_internet
+        # The number of probes that you want to allocate for the management node.
         self.available_probe_num = available_probe_num
+        # The name of the management node.
         self.node_name = node_name
+        # The CIDR blocks that are allowed to access the management node.
         self.security_group_probe_ip_list = security_group_probe_ip_list
 
     def validate(self):
@@ -1854,11 +2165,19 @@ class CreateHoneypotNodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
         self.honeypot_node = honeypot_node
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -1947,6 +2266,181 @@ class CreateHoneypotNodeResponse(TeaModel):
         return self
 
 
+class CreateHoneypotPresetRequest(TeaModel):
+    def __init__(
+        self,
+        honeypot_image_name: str = None,
+        meta: str = None,
+        node_id: str = None,
+        preset_name: str = None,
+    ):
+        self.honeypot_image_name = honeypot_image_name
+        self.meta = meta
+        self.node_id = node_id
+        self.preset_name = preset_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_image_name is not None:
+            result['HoneypotImageName'] = self.honeypot_image_name
+        if self.meta is not None:
+            result['Meta'] = self.meta
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.preset_name is not None:
+            result['PresetName'] = self.preset_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotImageName') is not None:
+            self.honeypot_image_name = m.get('HoneypotImageName')
+        if m.get('Meta') is not None:
+            self.meta = m.get('Meta')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PresetName') is not None:
+            self.preset_name = m.get('PresetName')
+        return self
+
+
+class CreateHoneypotPresetResponseBodyHoneypotPreset(TeaModel):
+    def __init__(
+        self,
+        honeypot_preset_id: str = None,
+    ):
+        self.honeypot_preset_id = honeypot_preset_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_preset_id is not None:
+            result['HoneypotPresetId'] = self.honeypot_preset_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotPresetId') is not None:
+            self.honeypot_preset_id = m.get('HoneypotPresetId')
+        return self
+
+
+class CreateHoneypotPresetResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        honeypot_preset: CreateHoneypotPresetResponseBodyHoneypotPreset = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.honeypot_preset = honeypot_preset
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.honeypot_preset:
+            self.honeypot_preset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.honeypot_preset is not None:
+            result['HoneypotPreset'] = self.honeypot_preset.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HoneypotPreset') is not None:
+            temp_model = CreateHoneypotPresetResponseBodyHoneypotPreset()
+            self.honeypot_preset = temp_model.from_map(m['HoneypotPreset'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateHoneypotPresetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHoneypotPresetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHoneypotPresetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateHoneypotProbeRequestHoneypotBindListBindPortList(TeaModel):
     def __init__(
         self,
@@ -1956,10 +2450,23 @@ class CreateHoneypotProbeRequestHoneypotBindListBindPortList(TeaModel):
         start_port: int = None,
         target_port: int = None,
     ):
+        # Specifies whether to bind a port. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.bind_port = bind_port
+        # The end of the port range.
         self.end_port = end_port
+        # Specifies whether the port is fixed. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.fixed = fixed
+        # The start of the port range.
         self.start_port = start_port
+        # The destination port.
+        # 
+        # >  If **HoneypotId** is specified, this parameter is required.
         self.target_port = target_port
 
     def validate(self):
@@ -2004,7 +2511,11 @@ class CreateHoneypotProbeRequestHoneypotBindList(TeaModel):
         bind_port_list: List[CreateHoneypotProbeRequestHoneypotBindListBindPortList] = None,
         honeypot_id: str = None,
     ):
+        # The listener ports.
         self.bind_port_list = bind_port_list
+        # The ID of the honeypot.
+        # 
+        # >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
         self.honeypot_id = honeypot_id
 
     def validate(self):
@@ -2054,16 +2565,42 @@ class CreateHoneypotProbeRequest(TeaModel):
         uuid: str = None,
         vpc_id: str = None,
     ):
+        # Specifies whether to enable Address Resolution Protocol (ARP) spoofing. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.arp = arp
+        # The ID of the business group.
         self.business_group_id = business_group_id
+        # The ID of the management node.
+        # 
+        # >  You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to query the IDs of management nodes.
         self.control_node_id = control_node_id
+        # The name of the probe.
         self.display_name = display_name
+        # The honeypot configurations.
         self.honeypot_bind_list = honeypot_bind_list
+        # Specifies whether to enable ping scan. Valid values:
+        # 
+        # *   **false**: yes
+        # *   **false**: no
         self.ping = ping
+        # The type of the probe. Valid values:
+        # 
+        # *   **host_probe**: host probe
+        # *   **vpc_black_hole_probe**: virtual private cloud (VPC) probe
         self.probe_type = probe_type
+        # The version of the probe.
         self.probe_version = probe_version
+        # The IP address of the proxy.
         self.proxy_ip = proxy_ip
+        # The UUID of the instance.
+        # 
+        # >  If **ProbeType** is set to **host_probe**, this parameter is required.
         self.uuid = uuid
+        # The ID of the VPC.
+        # 
+        # >  If **ProbeType** is set to **vpc_black_hole_probe**, this parameter is required. You can call the DescribeVpcHoneyPotList operation to query the IDs of VPCs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2171,11 +2708,19 @@ class CreateHoneypotProbeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
         self.honeypot_probe = honeypot_probe
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -2271,8 +2816,17 @@ class CreateOrUpdateAssetGroupRequest(TeaModel):
         group_name: str = None,
         uuids: str = None,
     ):
+        # The ID of the server group for which you want to add to or remove servers.
+        # 
+        # >  To modify the mapping between an asset and an asset group, you must provide the ID of the asset group. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) to query the IDs of asset groups. If you do not configure this parameter when you call this operation, an asset group is created.
         self.group_id = group_id
+        # The name of the server group that you want to create or the server group for which you want to add or remove a server.
+        # 
+        # >  To modify the mapping between a server and a server group, you must provide the name of the server group. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the names of server groups. If you do not configure GroupID when you call this operation, a server group is created. In this case, you must configure GroupName.
         self.group_name = group_name
+        # The UUID of the server in the server group that you want to create or the server group for which you want to add or remove servers. Separate multiple UUIDs with commas (,).
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuids = uuids
 
     def validate(self):
@@ -2309,7 +2863,9 @@ class CreateOrUpdateAssetGroupResponseBody(TeaModel):
         group_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the server group.
         self.group_id = group_id
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2385,6 +2941,10 @@ class CreateServiceLinkedRoleRequest(TeaModel):
         self,
         service_linked_role: str = None,
     ):
+        # The service-linked role. Default value: **AliyunServiceRoleForSas**. Valid values:
+        # 
+        # *   **AliyunServiceRoleForSas**: the service-linked role of Security Center. Security Center assumes this role to access the resources of other cloud services within your account.
+        # *   **AliyunServiceRoleForSasCspm**: the service-linked role of Security Center-CSPM. Security Center-CSPM assumes this role to access the resources of other cloud services within your account.
         self.service_linked_role = service_linked_role
 
     def validate(self):
@@ -2412,6 +2972,7 @@ class CreateServiceLinkedRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2487,8 +3048,15 @@ class CreateSimilarSecurityEventsQueryTaskRequest(TeaModel):
         source_ip: str = None,
     ):
         self.resource_owner_id = resource_owner_id
+        # The ID of the alert event.
+        # 
+        # >  You must specify at least one of the SecurityEventId and SimilarEventScenarioCode parameters.
         self.security_event_id = security_event_id
+        # The codes of alert events that are triggered by the same rule or of the same alert type.
+        # 
+        # >  You must specify at least one of the SecurityEventId and SimilarEventScenarioCode parameters.
         self.similar_event_scenario_code = similar_event_scenario_code
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -2529,7 +3097,17 @@ class CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEvent
         status: str = None,
         task_id: int = None,
     ):
+        # The status of the task. Valid values:
+        # 
+        # *   **New**: The task is created.
+        # *   **RetrievingData**: Data is being retrieved.
+        # *   **DataRetrieved**: Data is retrieved.
+        # *   **Processing**: The task is running.
+        # *   **Success**: The task is successful.
+        # *   **Failed**: The task failed.
+        # *   **PartialFailed**: The task partially failed.
         self.status = status
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -2562,7 +3140,9 @@ class CreateSimilarSecurityEventsQueryTaskResponseBody(TeaModel):
         create_similar_security_events_query_task_response: CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEventsQueryTaskResponse = None,
         request_id: str = None,
     ):
+        # The information about the task that queries alert events of the same alert type.
         self.create_similar_security_events_query_task_response = create_similar_security_events_query_task_response
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2641,7 +3221,9 @@ class CreateSuspEventNoteRequest(TeaModel):
         event_id: int = None,
         note: str = None,
     ):
+        # The ID of the alert event to which you want to add remarks. You can call the [DescribeSuspEvents](~~251497~~) operation to query the IDs of alert events.
         self.event_id = event_id
+        # The remarks that you want to add.
         self.note = note
 
     def validate(self):
@@ -2677,10 +3259,18 @@ class CreateSuspEventNoteResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether exceptions are handled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -2769,7 +3359,9 @@ class CreateVulAutoRepairConfigRequestVulAutoRepairConfigList(TeaModel):
         alias_name: str = None,
         name: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The name of the vulnerability.
         self.name = name
 
     def validate(self):
@@ -2803,8 +3395,13 @@ class CreateVulAutoRepairConfigRequest(TeaModel):
         type: str = None,
         vul_auto_repair_config_list: List[CreateVulAutoRepairConfigRequestVulAutoRepairConfigList] = None,
     ):
+        # The reason why the vulnerability can be automatically fixed.
         self.reason = reason
+        # The type of the vulnerability. Valid values: 
+        # - **cve**: Linux software vulnerability. 
+        # - **sys**: Windows system vulnerability.
         self.type = type
+        # The vulnerabilities that can be automatically fixed.
         self.vul_auto_repair_config_list = vul_auto_repair_config_list
 
     def validate(self):
@@ -2852,10 +3449,18 @@ class CreateVulAutoRepairConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was is successful. Other status codes indicate that the request fails. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -2943,6 +3548,7 @@ class DeleteAntiBruteForceRuleRequest(TeaModel):
         self,
         ids: List[int] = None,
     ):
+        # An array that consists of the IDs of the defense rules against brute-force attacks to delete.
         self.ids = ids
 
     def validate(self):
@@ -2970,6 +3576,7 @@ class DeleteAntiBruteForceRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3042,7 +3649,12 @@ class DeleteBackupPolicyRequest(TeaModel):
         id: int = None,
         policy_version: str = None,
     ):
+        # The ID of the anti-ransomware policy that you want to delete.
         self.id = id
+        # The version of the anti-ransomware policy that you want to delete. You can call the [DescribeBackupPolicies](~~322795~~) operation to query the versions of anti-ransomware policies. Valid values:
+        # 
+        # *   **1.0.0**\
+        # *   **2.0.0**\
         self.policy_version = policy_version
 
     def validate(self):
@@ -3074,6 +3686,7 @@ class DeleteBackupPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3148,9 +3761,23 @@ class DeleteBackupPolicyMachineRequest(TeaModel):
         uuid: str = None,
         uuid_list: List[str] = None,
     ):
+        # The ID of the anti-ransomware policy.
+        # >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the **Id** of anti-ransomware policies.
         self.policy_id = policy_id
+        # The version of the anti-ransomware policy. Valid values:
+        # 
+        # *   **1.0.0**\
+        # *   **2.0.0**\
+        # 
+        # >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies.
         self.policy_version = policy_version
+        # The UUID of the server to which the anti-ransomware policy is applied.
+        # 
+        # >  You must specify at least one of the `UuidList` and `Uuid` parameters.
         self.uuid = uuid
+        # The UUIDs of the servers to which the anti-ransomware policy is applied.
+        # 
+        # >  You must specify at least one of the `UuidList` and `Uuid` parameters.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -3190,6 +3817,7 @@ class DeleteBackupPolicyMachineResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3262,7 +3890,11 @@ class DeleteGroupRequest(TeaModel):
         group_id: int = None,
         source_ip: str = None,
     ):
+        # The ID of the server group that you want to delete.
+        # 
+        # >  To delete a server group, you must provide the ID of the server group. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the ID.
         self.group_id = group_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -3294,6 +3926,7 @@ class DeleteGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3360,6 +3993,494 @@ class DeleteGroupResponse(TeaModel):
         return self
 
 
+class DeleteHoneypotRequest(TeaModel):
+    def __init__(
+        self,
+        honeypot_id: str = None,
+    ):
+        self.honeypot_id = honeypot_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_id is not None:
+            result['HoneypotId'] = self.honeypot_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotId') is not None:
+            self.honeypot_id = m.get('HoneypotId')
+        return self
+
+
+class DeleteHoneypotResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHoneypotResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHoneypotResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHoneypotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHoneypotNodeRequest(TeaModel):
+    def __init__(
+        self,
+        node_id: str = None,
+    ):
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class DeleteHoneypotNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHoneypotNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHoneypotNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHoneypotNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHoneypotPresetRequest(TeaModel):
+    def __init__(
+        self,
+        honeypot_preset_id: str = None,
+    ):
+        self.honeypot_preset_id = honeypot_preset_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_preset_id is not None:
+            result['HoneypotPresetId'] = self.honeypot_preset_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotPresetId') is not None:
+            self.honeypot_preset_id = m.get('HoneypotPresetId')
+        return self
+
+
+class DeleteHoneypotPresetResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHoneypotPresetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHoneypotPresetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHoneypotPresetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHoneypotProbeRequest(TeaModel):
+    def __init__(
+        self,
+        probe_id: str = None,
+    ):
+        self.probe_id = probe_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.probe_id is not None:
+            result['ProbeId'] = self.probe_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProbeId') is not None:
+            self.probe_id = m.get('ProbeId')
+        return self
+
+
+class DeleteHoneypotProbeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteHoneypotProbeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHoneypotProbeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHoneypotProbeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteLoginBaseConfigRequest(TeaModel):
     def __init__(
         self,
@@ -3367,8 +4488,34 @@ class DeleteLoginBaseConfigRequest(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The configuration item that you want to delete. The items vary based on the type of logon configurations. Valid values:
+        # 
+        # *   **login\_common_ip**: approved logon IP addresses
+        # 
+        # Example: {"ip":"10.23.23.23"}.
+        # 
+        # *   **login\_common_time**: approved logon time ranges
+        # 
+        # Example: {"startTime":"06:00:00","endTime":"16:00:00"}.
+        # 
+        # *   **login\_common_account**: approved logon accounts
+        # 
+        # Example: {"account":"test_account\_001"}.
+        # 
+        # *   **login\_common_location**: approved logon locations
+        # 
+        # Example: {"location":"Shanghai"}.
         self.config = config
+        # The UUID of the server whose logon configurations you want to delete.
+        # 
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.target = target
+        # The type of logon configurations to delete. Valid values:
+        # 
+        # *   **login\_common_ip**: approved logon IP addresses
+        # *   **login\_common_time**: approved logon time ranges
+        # *   **login\_common_account**: approved logon accounts
+        # *   **login\_common_location**: approved logon locations
         self.type = type
 
     def validate(self):
@@ -3404,6 +4551,7 @@ class DeleteLoginBaseConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3477,8 +4625,14 @@ class DeleteStrategyRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The ID of the baseline check policy that you want to delete.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -3514,6 +4668,7 @@ class DeleteStrategyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3586,7 +4741,11 @@ class DeleteTagWithUuidRequest(TeaModel):
         tag_name: str = None,
         uuid_list: str = None,
     ):
+        # The name of the tag.
         self.tag_name = tag_name
+        # The list of server UUIDs.
+        # 
+        # >  If the UuidList parameter is configured, Security Center removes the tag only from the servers whose UUIDs are specified by UuidList. If the UuidList parameter is not configured, Security Center removes the tag from all servers.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -3618,6 +4777,7 @@ class DeleteTagWithUuidResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3689,6 +4849,9 @@ class DeleteVpcHoneyPotRequest(TeaModel):
         self,
         vpc_id: str = None,
     ):
+        # The ID of the virtual private cloud (VPC) on which the honeypot is deployed.
+        # 
+        # >  You can call the [DescribeVpcHoneyPotList](~~DescribeVpcHoneyPotList~~) operation to query the IDs of VPCs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3716,6 +4879,7 @@ class DeleteVpcHoneyPotResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3788,7 +4952,23 @@ class DeleteVulWhitelistRequest(TeaModel):
         id: str = None,
         whitelist: str = None,
     ):
+        # The ID of the whitelist.
+        # 
+        # >  To delete a vulnerability whitelist, you must provide the ID of the whitelist. You can call the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation to query the IDs of whitelists.
         self.id = id
+        # The information about the whitelist. The value is a JSON string that contains the following fields:
+        # 
+        # *   **Name**: the name of the vulnerability.
+        # 
+        # *   **Type**: the type of the vulnerability. Valid values:
+        # 
+        #     *   **cve**: Linux software vulnerability
+        #     *   **sys**: Windows system vulnerability
+        #     *   **cms**: Web-CMS vulnerability
+        #     *   **app**: application vulnerability
+        #     *   **emg**: urgent vulnerability
+        # 
+        # *   **AliasName**: the alias of the vulnerability.
         self.whitelist = whitelist
 
     def validate(self):
@@ -3820,6 +5000,7 @@ class DeleteVulWhitelistResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3891,6 +5072,7 @@ class DescribeAccessKeyLeakDetailRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the AccessKey pair leak.
         self.id = id
 
     def validate(self):
@@ -3937,25 +5119,61 @@ class DescribeAccessKeyLeakDetailResponseBody(TeaModel):
         type: str = None,
         whitelist_status: str = None,
     ):
+        # The ID of the AccessKey pair that is leaked.
         self.accesskey_id = accesskey_id
+        # The platform to which the asset belongs. The value is fixed as **Cloud platform**.
         self.asset = asset
+        # The code snippet that is leaked.
         self.code = code
+        # The time when the AccessKey pair leak was handled.
         self.deal_time = deal_time
+        # The solution to the AccessKey pair leak. Valid values:
+        # 
+        # *   **manual**: manually deleted
+        # *   **disable**: manually disabled
+        # *   **add-whitelist**: added to the whitelist
+        # *   **pending**: unhandled
         self.deal_type = deal_type
+        # The name of the GitHub file.
         self.github_file_name = github_file_name
+        # The type of the GitHub file. Valid values:
+        # 
+        # *   Python
+        # *   XML
+        # *   GO
+        # *   Javascript
+        # *   INI
+        # *   JSON
+        # *   C++\
         self.github_file_type = github_file_type
+        # The time when the GitHub file was updated.
         self.github_file_update_time = github_file_update_time
+        # The URL of the GitHub file.
         self.github_file_url = github_file_url
+        # The name of the GitHub repository.
         self.github_repo_name = github_repo_name
+        # The URL of the GitHub repository.
         self.github_repo_url = github_repo_url
+        # The username of the GitHub user.
         self.github_user = github_user
+        # The URL of the profile picture for the GitHub user.
         self.github_user_pic_url = github_user_pic_url
+        # The first time when the AccessKey pair leak was detected.
         self.gmt_create = gmt_create
+        # The last time when the AccessKey pair leak was detected.
         self.gmt_modified = gmt_modified
+        # The remarks of the AccessKey pair leak.
         self.remark = remark
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The platform on which the AccessKey pair leak is detected.
         self.source = source
+        # The type of the leak. The value is fixed as **AccessKey**.
         self.type = type
+        # Indicates whether the AccessKey pair leak is added to the whitelist. Valid values:
+        # 
+        # *   **no**: The AccessKey pair leak is not added to the whitelist.
+        # *   **yes**: The AccessKey pair leak is added to the whitelist.
         self.whitelist_status = whitelist_status
 
     def validate(self):
@@ -4107,10 +5325,21 @@ class DescribeAccesskeyLeakListRequest(TeaModel):
         start_ts: int = None,
         status: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of entries to return on each page.\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # > : We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The AccessKey ID that you want to query. Only exact match is supported.
         self.query = query
+        # The beginning of the time range to query. You can query all AccessKey pair leaks that are detected later than this time point. The value of this parameter is a UNIX timestamp. Unit: milliseconds.
         self.start_ts = start_ts
+        # Specifies whether an AccessKey pair leak is handled. Valid values:
+        # 
+        # *   **pending**: unhandled
+        # *   **dealed**: handled
         self.status = status
 
     def validate(self):
@@ -4164,16 +5393,38 @@ class DescribeAccesskeyLeakListResponseBodyAccessKeyLeakList(TeaModel):
         url: str = None,
         user_type: str = None,
     ):
+        # The ID of the AccessKey pair that is leaked.
         self.accesskey_id = accesskey_id
+        # The name of the Alibaba Cloud account that is affected.
         self.ali_user_name = ali_user_name
+        # The platform to which the asset belongs. The value is fixed as **Cloud platform**.
         self.asset = asset
+        # The time when the AccessKey pair leak is handled.
         self.deal_time = deal_time
+        # The method to handle the AccessKey pair leak. Valid values:
+        # 
+        # *   **pending**: The AccessKey pair leak is unhandled.
+        # *   **manual**: The AccessKey pair leak is manually handled.
+        # *   **disable**: The AccessKey pair leak is disabled.
+        # *   **add-whitelist**: The AccessKey pair leak is added to the whitelist.
         self.deal_type = deal_type
+        # The time when the AccessKey pair leak is first detected. The value of this parameter is a UNIX timestamp. Unit: milliseconds.
         self.gmt_modified = gmt_modified
+        # The primary key ID of the database.
         self.id = id
+        # Indicates whether the AccessKey pair leak is handled. Valid values:
+        # 
+        # *   **pending**: unhandled
+        # *   **dealed**: handled
         self.status = status
+        # The type of the leak. The value is fixed as **AccessKey**.
         self.type = type
+        # The URL of the platform on which the AccessKey pair leak is detected.
         self.url = url
+        # The type of the account to which the leaked AccessKey pair belongs. Valid values:
+        # 
+        # *   **master**: Alibaba Cloud account
+        # *   **ram**: RAM user
         self.user_type = user_type
 
     def validate(self):
@@ -4247,12 +5498,19 @@ class DescribeAccesskeyLeakListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the details about AccessKey pair leaks.
         self.access_key_leak_list = access_key_leak_list
+        # The number of AccessKey pair leaks that are unhandled.
         self.ak_leak_count = ak_leak_count
+        # The page number of the returned page.
         self.current_page = current_page
+        # This parameter is deprecated.
         self.gmt_last = gmt_last
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of AccessKey pair leaks.
         self.total_count = total_count
 
     def validate(self):
@@ -4375,25 +5633,74 @@ class DescribeAffectedMaliciousFileImagesRequest(TeaModel):
         repo_region_id: str = None,
         scan_range: List[str] = None,
     ):
+        # The ID of the container cluster.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The ID of the container.
         self.container_id = container_id
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # The name of the container image.
         self.image = image
+        # The image digest.
         self.image_digest = image_digest
+        # The image layer.
         self.image_layer = image_layer
+        # The tag that is added to the image.
         self.image_tag = image_tag
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The severity of the malicious image sample. Separate multiple severities with commas (,). Valid values: serious suspicious remind
         self.levels = levels
+        # The MD5 hash value of the malicious image sample.
+        # 
+        # >  You can call the [DescribeGroupedMaliciousFiles](~~DescribeGroupedMaliciousFiles~~) operation to query the MD5 hash values of malicious image samples.
         self.malicious_md_5 = malicious_md_5
+        # The namespace.
         self.namespace = namespace
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The pod.
         self.pod = pod
+        # The ID of the image repository.
+        # 
+        # >  You can call the [ListRepository](~~ListRepository~~) operation to query the IDs of image repositories from the value of the **RepoId** response parameter.
         self.repo_id = repo_id
+        # The ID of the container image.
+        # 
+        # >  You can call the [ListRepository](~~ListRepository~~) operation to query the IDs of container images from the value of the **InstanceId** response parameter.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
+        # 
+        # >  Fuzzy match is supported.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
+        # 
+        # >  Fuzzy match is supported.
         self.repo_namespace = repo_namespace
+        # The region ID of the image repository. Valid values:
+        # 
+        # *   **cn-beijing**: China (Beijing)
+        # *   **cn-zhangjiakou**: China (Zhangjiakou)
+        # *   **cn-hangzhou**: China (Hangzhou)
+        # *   **cn-shanghai**: China (Shanghai)
+        # *   **cn-shenzhen**: China (Shenzhen)
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore
+        # *   **ap-southeast-5**: Indonesia (Jakarta)
+        # *   **us-east-1**: US (Virginia)
+        # *   **us-west-1**: US (Silicon Valley)
+        # *   **eu-central-1**: Germany (Frankfurt)
+        # *   **eu-west-1**: UK (London)
+        # *   **ap-south-1**: India (Mumbai)
         self.repo_region_id = repo_region_id
+        # The types of the assets that you want to scan.
         self.scan_range = scan_range
 
     def validate(self):
@@ -4526,31 +5833,63 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
         target_type: str = None,
         uuid: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The ID of the container.
         self.container_id = container_id
+        # The image digest.
         self.digest = digest
+        # The URL to download the malicious image sample.
         self.download_url = download_url
+        # The path to the image file.
         self.file_path = file_path
+        # The timestamp of the first scan.
         self.first_scan_timestamp = first_scan_timestamp
+        # The text that is highlighted.
         self.high_light = high_light
+        # The name of the image.
         self.image = image
+        # The UUID of the image.
         self.image_uuid = image_uuid
         self.instance_name = instance_name
         self.internet_ip = internet_ip
         self.intranet_ip = intranet_ip
+        # The timestamp of the last scan.
         self.latest_scan_timestamp = latest_scan_timestamp
+        # The timestamp of the last verification.
         self.latest_verify_timestamp = latest_verify_timestamp
+        # The image layer.
         self.layer = layer
+        # The severity of the malicious image sample. Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.level = level
+        # The MD5 hash value of the malicious image sample.
         self.malicious_md_5 = malicious_md_5
+        # The namespace to which the image repository belongs.
         self.namespace = namespace
+        # The pod.
         self.pod = pod
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The ID of the container image.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The region ID of the image repository.
         self.repo_region_id = repo_region_id
+        # The handling status of the malicious image sample. Valid values:
+        # 
+        # *   **0**: unhandled
+        # *   **1**: handled
+        # *   **2**: verifying
+        # *   **3**: added to the whitelist
         self.status = status
+        # The tag that is added to the image.
         self.tag = tag
         self.target_id = target_id
         self.target_name = target_name
@@ -4701,9 +6040,13 @@ class DescribeAffectedMaliciousFileImagesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of images that have malicious image samples returned on the current page.
         self.count = count
+        # The page number of the returned page. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of images that have malicious image samples.
         self.total_count = total_count
 
     def validate(self):
@@ -4745,8 +6088,11 @@ class DescribeAffectedMaliciousFileImagesResponseBody(TeaModel):
         page_info: DescribeAffectedMaliciousFileImagesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array consisting of the images that have malicious image samples.
         self.affected_malicious_file_images_response = affected_malicious_file_images_response
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4840,9 +6186,18 @@ class DescribeAlarmEventDetailRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The unique ID of the alert event.
+        # 
+        # >  To query the details of an alert event, you must specify the unique ID of the alert event. You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the unique IDs of alert events.
         self.alarm_unique_info = alarm_unique_info
+        # The ID of the request source. Set the value to **sas**.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -4884,8 +6239,14 @@ class DescribeAlarmEventDetailResponseBodyDataCauseDetailsValue(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The name of the field that displays tracing information.
         self.name = name
+        # The type of the field that displays tracing information. Valid values:
+        # 
+        # *   **text**\
+        # *   **html**\
         self.type = type
+        # The value of the field that displays tracing information.
         self.value = value
 
     def validate(self):
@@ -4922,7 +6283,9 @@ class DescribeAlarmEventDetailResponseBodyDataCauseDetails(TeaModel):
         key: str = None,
         value: List[DescribeAlarmEventDetailResponseBodyDataCauseDetailsValue] = None,
     ):
+        # The key that is used to trace the alert event.
         self.key = key
+        # An array consisting of the value that is used to trace the alert event.
         self.value = value
 
     def validate(self):
@@ -4988,32 +6351,95 @@ class DescribeAlarmEventDetailResponseBodyData(TeaModel):
         type: str = None,
         uuid: str = None,
     ):
+        # The name of the alert event.
         self.alarm_event_alias_name = alarm_event_alias_name
+        # The description of the alert event.
         self.alarm_event_desc = alarm_event_desc
+        # The unique ID of the alert event.
+        # 
+        # >  To query the details about an alert event, you must specify the unique ID of the alert event. You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the unique IDs of alert events.
         self.alarm_unique_info = alarm_unique_info
+        # The name of the container application.
         self.app_name = app_name
+        # Indicates whether the online handling of the alert event is supported. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_be_deal_on_line = can_be_deal_on_line
+        # Indicates whether you can cancel marking the alert event as a false positive. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_cancel_fault = can_cancel_fault
+        # An array consisting of the cause of the alert event, which can be used to trace the alert event.
         self.cause_details = cause_details
+        # Indicates whether the Safeguard Mode For Major Activities mode is enabled.
         self.contain_hw_mode = contain_hw_mode
+        # The ID of the container application.
         self.container_id = container_id
+        # The ID of the image to which the container belongs.
         self.container_image_id = container_image_id
+        # The name of the image to which the container belongs.
         self.container_image_name = container_image_name
+        # The data source of the alert event.
         self.data_source = data_source
+        # The timestamp when the alert event ends. Unit: milliseconds.
         self.end_time = end_time
+        # The name of the instance.
         self.instance_name = instance_name
+        # The public IP address of the associated instance.
         self.internet_ip = internet_ip
+        # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
+        # The ID of the Kubernetes cluster.
         self.k_8s_cluster_id = k_8s_cluster_id
+        # The name of the Kubernetes cluster.
         self.k_8s_cluster_name = k_8s_cluster_name
+        # The namespace of the Kubernetes cluster.
         self.k_8s_namespace = k_8s_namespace
+        # The ID of the Kubernetes cluster node.
         self.k_8s_node_id = k_8s_node_id
+        # The name of the Kubernetes cluster node.
         self.k_8s_node_name = k_8s_node_name
+        # The name of the Kubernetes pod.
         self.k_8s_pod_name = k_8s_pod_name
+        # The severity of the alert event. Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.level = level
+        # The solution to the alert event.
         self.solution = solution
+        # The timestamp when the alert event starts. Unit: milliseconds.
         self.start_time = start_time
+        # The alert type of the alert event. Valid values:
+        # 
+        # *   Suspicious process
+        # *   Webshell
+        # *   Unusual logon
+        # *   Exception
+        # *   Sensitive file tampering
+        # *   Malicious process (cloud threat detection)
+        # *   Suspicious network connection
+        # *   Other
+        # *   Abnormal account
+        # *   Application intrusion event
+        # *   Cloud threat detection
+        # *   Precise defense
+        # *   Application whitelist
+        # *   Persistent webshell
+        # *   Web application threat detection
+        # *   Malicious script
+        # *   Threat intelligence
+        # *   Malicious network activity
+        # *   Cluster exception
+        # *   Webshell (on-premises threat detection)
+        # *   Vulnerability exploitation
+        # *   Malicious process (on-premises threat detection)
+        # *   Trusted exception
         self.type = type
+        # The instance UUID of the asset.
         self.uuid = uuid
 
     def validate(self):
@@ -5154,7 +6580,9 @@ class DescribeAlarmEventDetailResponseBody(TeaModel):
         data: DescribeAlarmEventDetailResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details about the alert event.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -5253,27 +6681,73 @@ class DescribeAlarmEventListRequest(TeaModel):
         unique_info: str = None,
         uuids: str = None,
     ):
+        # The name of the alert event.
+        # 
+        # >  You can call the [DescribeNsasSuspEventType](~~DescribeNsasSuspEventType~~) operation to query the names of alert events.
         self.alarm_event_name = alarm_event_name
+        # The type of the alert event.
+        # 
+        # >  You can call the [DescribeNsasSuspEventType](~~DescribeNsasSuspEventType~~) operation to query the types of alert events.
         self.alarm_event_type = alarm_event_type
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether the alert event is handled. Valid values:
+        # 
+        # *   **N**: unhandled
+        # *   **Y**: handled
         self.dealed = dealed
+        # The ID of the request source. Set the value to **sas**, which indicates that the request is sent from Security Center.
         self.from_ = from_
+        # The ID of the asset group to which the affected asset belongs.
         self.group_id = group_id
+        # The ID of the alert event.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The severity of the alert event. Separate multiple severities with commas (,). Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.levels = levels
+        # An array that consists of the handling result codes of alert events.
         self.operate_error_code_list = operate_error_code_list
+        # The time when the handling operation ends.
         self.operate_time_end = operate_time_end
+        # The time when the handing operation starts.
         self.operate_time_start = operate_time_start
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The name of the alert or the information about the asset.
         self.remark = remark
+        # The custom sorting field. Default value: **operateTime**. Valid values:
+        # 
+        # *   **lastTime**: the latest occurrence time
+        # *   **operateTime**: the handling time
+        # 
+        # >  This parameter takes effect if you set the **Dealed** parameter to Y.
         self.sort_column = sort_column
+        # The custom sorting order. Default value: **desc**. Valid values:
+        # 
+        # *   **asc**: the ascending order
+        # *   **desc**: the descending order
+        # 
+        # >  This parameter takes effect if you set the **Dealed** parameter to Y.
         self.sort_type = sort_type
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The tactic ID of ATT\&CK.
         self.tactic_id = tactic_id
+        # The end time when the alert event was last detected.
         self.time_end = time_end
+        # The start time when the alert event was last detected.
         self.time_start = time_start
+        # The ID of the alert event.
         self.unique_info = unique_info
+        # The UUIDs of the assets. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -5388,9 +6862,13 @@ class DescribeAlarmEventListResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned per page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5431,7 +6909,9 @@ class DescribeAlarmEventListResponseBodySuspEventsTacticItems(TeaModel):
         tactic_display_name: str = None,
         tactic_id: str = None,
     ):
+        # The tactic name of ATT\&CK.
         self.tactic_display_name = tactic_display_name
+        # The tactic ID of ATT\&CK.
         self.tactic_id = tactic_id
 
     def validate(self):
@@ -5489,32 +6969,79 @@ class DescribeAlarmEventListResponseBodySuspEvents(TeaModel):
         tactic_items: List[DescribeAlarmEventListResponseBodySuspEventsTacticItems] = None,
         uuid: str = None,
     ):
+        # The name of the alert event.
         self.alarm_event_name = alarm_event_name
+        # The original parent name of the alert event.
         self.alarm_event_name_original = alarm_event_name_original
+        # The type of the alert event.
         self.alarm_event_type = alarm_event_type
+        # The ID of the alert event.
         self.alarm_unique_info = alarm_unique_info
+        # Indicates whether the online processing of the alert event is supported, such as quarantining the source file of the malicious process, adding the alert event to the whitelist, and ignoring the alert event. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_be_deal_on_line = can_be_deal_on_line
+        # Indicates whether you can cancel marking the alert event as a false positive. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_cancel_fault = can_cancel_fault
+        # The data source of the alert event.
         self.data_source = data_source
+        # Indicates whether the alert event is handled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.dealed = dealed
+        # The description of the alert event.
         self.description = description
+        # The timestamp when the alert event was last detected. Unit: milliseconds.
         self.end_time = end_time
+        # The timestamp when the alert event was last modified. Unit: milliseconds.
         self.gmt_modified = gmt_modified
+        # Indicates whether the alert event has tracing information. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.has_trace_info = has_trace_info
+        # The ID of the affected asset.
         self.instance_id = instance_id
+        # The name of the affected asset.
         self.instance_name = instance_name
+        # The public IP address of the affected asset.
         self.internet_ip = internet_ip
+        # The private IP address of the affected asset.
         self.intranet_ip = intranet_ip
+        # The risk level of the alert event. Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.level = level
+        # The handling result code of the alert event.
         self.operate_error_code = operate_error_code
+        # The timestamp when the alert event was handled. Unit: milliseconds.
         self.operate_time = operate_time
+        # The edition of Security Center in which the alert event can be detected. Valid values:
+        # 
+        # *   **0**: Basic edition
+        # *   **1**: Advanced edition
+        # *   **2**: Enterprise edition
         self.sale_version = sale_version
+        # The IDs of the associated exceptions.
         self.security_event_ids = security_event_ids
+        # The solution to the alert event.
         self.solution = solution
+        # The stage at which the attack or intrusion is detected.
         self.stages = stages
+        # The timestamp when the alert event starts. Unit: milliseconds.
         self.start_time = start_time
+        # The number of associated exceptions.
         self.suspicious_event_count = suspicious_event_count
+        # An array that consists of the stage information about ATT\&CK.
         self.tactic_items = tactic_items
+        # The ID of the associated instance.
         self.uuid = uuid
 
     def validate(self):
@@ -5656,8 +7183,11 @@ class DescribeAlarmEventListResponseBody(TeaModel):
         request_id: str = None,
         susp_events: List[DescribeAlarmEventListResponseBodySuspEvents] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the alert events.
         self.susp_events = susp_events
 
     def validate(self):
@@ -5752,10 +7282,22 @@ class DescribeAlarmEventStackInfoRequest(TeaModel):
         unique_info: str = None,
         uuid: str = None,
     ):
+        # The name of the event.
+        # 
+        # >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the names of events.
         self.event_name = event_name
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the alert event.
         self.unique_info = unique_info
+        # The UUID of the server to query.
+        # 
+        # >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -5800,7 +7342,9 @@ class DescribeAlarmEventStackInfoResponseBody(TeaModel):
         request_id: str = None,
         stack_info: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The stack information of the alert details.
         self.stack_info = stack_info
 
     def validate(self):
@@ -5882,12 +7426,22 @@ class DescribeAllEntityResponseBodyEntityList(TeaModel):
         os: str = None,
         uuid: str = None,
     ):
+        # The ID of the asset group.
         self.group_id = group_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The IP address of the server.
         self.ip = ip
+        # The operating system of the server. Valid values:
+        # 
+        # *   **linux**\
+        # *   **windows**\
         self.os = os
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -5940,7 +7494,9 @@ class DescribeAllEntityResponseBody(TeaModel):
         entity_list: List[DescribeAllEntityResponseBodyEntityList] = None,
         request_id: str = None,
     ):
+        # An array that consists of servers.
         self.entity_list = entity_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -6024,6 +7580,10 @@ class DescribeAllGroupsRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the request and the response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -6053,8 +7613,14 @@ class DescribeAllGroupsResponseBodyGroups(TeaModel):
         group_id: int = None,
         group_name: str = None,
     ):
+        # The type of the server group. Valid values:
+        # 
+        # *   **0**: the default group
+        # *   **1**: other groups
         self.group_flag = group_flag
+        # The ID of the server group.
         self.group_id = group_id
+        # The name of the server group.
         self.group_name = group_name
 
     def validate(self):
@@ -6092,8 +7658,11 @@ class DescribeAllGroupsResponseBody(TeaModel):
         groups: List[DescribeAllGroupsResponseBodyGroups] = None,
         request_id: str = None,
     ):
+        # The total number of server groups.
         self.count = count
+        # An array that consists of the information about server groups.
         self.groups = groups
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6176,13 +7745,302 @@ class DescribeAllGroupsResponse(TeaModel):
         return self
 
 
+class DescribeAllImageBaselineRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+    ):
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameListBaselineItemList(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        class_key: str = None,
+        item_key: str = None,
+        name_key: str = None,
+    ):
+        self.alias = alias
+        self.class_key = class_key
+        self.item_key = item_key
+        self.name_key = name_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.class_key is not None:
+            result['ClassKey'] = self.class_key
+        if self.item_key is not None:
+            result['ItemKey'] = self.item_key
+        if self.name_key is not None:
+            result['NameKey'] = self.name_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('ClassKey') is not None:
+            self.class_key = m.get('ClassKey')
+        if m.get('ItemKey') is not None:
+            self.item_key = m.get('ItemKey')
+        if m.get('NameKey') is not None:
+            self.name_key = m.get('NameKey')
+        return self
+
+
+class DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        baseline_item_list: List[DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameListBaselineItemList] = None,
+        class_key: str = None,
+        name_key: str = None,
+    ):
+        self.alias = alias
+        self.baseline_item_list = baseline_item_list
+        self.class_key = class_key
+        self.name_key = name_key
+
+    def validate(self):
+        if self.baseline_item_list:
+            for k in self.baseline_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        result['BaselineItemList'] = []
+        if self.baseline_item_list is not None:
+            for k in self.baseline_item_list:
+                result['BaselineItemList'].append(k.to_map() if k else None)
+        if self.class_key is not None:
+            result['ClassKey'] = self.class_key
+        if self.name_key is not None:
+            result['NameKey'] = self.name_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        self.baseline_item_list = []
+        if m.get('BaselineItemList') is not None:
+            for k in m.get('BaselineItemList'):
+                temp_model = DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameListBaselineItemList()
+                self.baseline_item_list.append(temp_model.from_map(k))
+        if m.get('ClassKey') is not None:
+            self.class_key = m.get('ClassKey')
+        if m.get('NameKey') is not None:
+            self.name_key = m.get('NameKey')
+        return self
+
+
+class DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        baseline_name_list: List[DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList] = None,
+        class_key: str = None,
+    ):
+        self.alias = alias
+        self.baseline_name_list = baseline_name_list
+        self.class_key = class_key
+
+    def validate(self):
+        if self.baseline_name_list:
+            for k in self.baseline_name_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        result['BaselineNameList'] = []
+        if self.baseline_name_list is not None:
+            for k in self.baseline_name_list:
+                result['BaselineNameList'].append(k.to_map() if k else None)
+        if self.class_key is not None:
+            result['ClassKey'] = self.class_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        self.baseline_name_list = []
+        if m.get('BaselineNameList') is not None:
+            for k in m.get('BaselineNameList'):
+                temp_model = DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList()
+                self.baseline_name_list.append(temp_model.from_map(k))
+        if m.get('ClassKey') is not None:
+            self.class_key = m.get('ClassKey')
+        return self
+
+
+class DescribeAllImageBaselineResponseBodyImageBaselines(TeaModel):
+    def __init__(
+        self,
+        baseline_class_list: List[DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList] = None,
+    ):
+        self.baseline_class_list = baseline_class_list
+
+    def validate(self):
+        if self.baseline_class_list:
+            for k in self.baseline_class_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaselineClassList'] = []
+        if self.baseline_class_list is not None:
+            for k in self.baseline_class_list:
+                result['BaselineClassList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.baseline_class_list = []
+        if m.get('BaselineClassList') is not None:
+            for k in m.get('BaselineClassList'):
+                temp_model = DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList()
+                self.baseline_class_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAllImageBaselineResponseBody(TeaModel):
+    def __init__(
+        self,
+        image_baselines: DescribeAllImageBaselineResponseBodyImageBaselines = None,
+        request_id: str = None,
+    ):
+        self.image_baselines = image_baselines
+        self.request_id = request_id
+
+    def validate(self):
+        if self.image_baselines:
+            self.image_baselines.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_baselines is not None:
+            result['ImageBaselines'] = self.image_baselines.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageBaselines') is not None:
+            temp_model = DescribeAllImageBaselineResponseBodyImageBaselines()
+            self.image_baselines = temp_model.from_map(m['ImageBaselines'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAllImageBaselineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAllImageBaselineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAllImageBaselineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAntiBruteForceRulesRequest(TeaModel):
     def __init__(
         self,
+        id: int = None,
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        self.id = id
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -6194,6 +8052,8 @@ class DescribeAntiBruteForceRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.source_ip is not None:
@@ -6202,6 +8062,8 @@ class DescribeAntiBruteForceRulesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SourceIp') is not None:
@@ -6217,9 +8079,13 @@ class DescribeAntiBruteForceRulesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6267,14 +8133,28 @@ class DescribeAntiBruteForceRulesResponseBodyRules(TeaModel):
         span: int = None,
         uuid_list: List[str] = None,
     ):
+        # Indicates whether the defense rule is the default rule. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  The default rule takes effect on all servers that are not protected by defense rules against brute-force attacks.
         self.default_rule = default_rule
+        # This parameter is deprecated.
         self.enable_smart_rule = enable_smart_rule
+        # The threshold of logon failures that you specify.
         self.fail_count = fail_count
+        # The period of time during which logons from an account are not allowed. Unit: minutes.
         self.forbidden_time = forbidden_time
+        # The ID of the defense rule.
         self.id = id
+        # The number of servers to which the defense rule is applied.
         self.machine_count = machine_count
+        # The name of the defense rule.
         self.name = name
+        # The period of time during which logon failures from an account are measured. Unit: minutes. If **Span** is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
         self.span = span
+        # An array consisting of the UUIDs of servers to which the defense rule is applied.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -6336,8 +8216,11 @@ class DescribeAntiBruteForceRulesResponseBody(TeaModel):
         request_id: str = None,
         rules: List[DescribeAntiBruteForceRulesResponseBodyRules] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the defense rules returned.
         self.rules = rules
 
     def validate(self):
@@ -6430,8 +8313,16 @@ class DescribeAssetDetailByUuidRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the server to query.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -6499,38 +8390,97 @@ class DescribeAssetDetailByUuidResponseBodyAssetDetail(TeaModel):
         uuid: str = None,
         vpc_instance_id: str = None,
     ):
+        # The type of the asset. Valid values:
+        # 
+        # *   **0**: ECS instance
+        # *   **1**: Server Load Balancer (SLB) instance
+        # *   **2**: NAT gateway
+        # *   **3**: ApsaraDB RDS database
+        # *   **4**: ApsaraDB for MongoDB database
+        # *   **5**: ApsaraDB for Redis database
+        # *   **6**: image
+        # *   **7**: container
         self.asset_type = asset_type
+        # The timestamp when Security Center is authorized to protect the asset. Unit: milliseconds.
         self.auth_modify_time = auth_modify_time
+        # The edition of Security Center that is authorized to protect the asset. Valid values:
+        # 
+        # *   **1**: Basic edition (Unauthorized)
+        # *   **6**: Anti-virus edition
+        # *   **5**: Advanced edition
+        # *   **3**: Enterprise edition
+        # *   **7**: Ultimate edition
+        # *   **10**: Value-added Plan edition
         self.auth_version = auth_version
+        # Indicates whether Security Center is authorized to protect the asset. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.bind = bind
+        # The status of the Security Center agent. Valid values:
+        # 
+        # *   **pause**: The Security Center agent suspends protection for your server.
+        # *   **online**: The Security Center agent is protecting your server.
+        # *   **offline**: The Security Center agent does not protect your server.
         self.client_status = client_status
+        # The version of the Security Center agent.
         self.client_version = client_version
+        # The number of CPU cores.
         self.cpu = cpu
+        # The details of the CPU.
         self.cpu_info = cpu_info
+        # The timestamp when Security Center records the details of the server. Unit: milliseconds.
         self.create_time = create_time
+        # An array that consists of the information about the disk.
         self.disk_info_list = disk_info_list
+        # Indicates whether the asset is provided by Alibaba Cloud. Valid values:
+        # 
+        # *   **0**: yes
+        # *   **1**: no
         self.flag = flag
+        # The group to which the server belongs. By default, the servers that are not grouped belong to the **Default** group.
         self.group_trace = group_trace
+        # The name of the host.
         self.host_name = host_name
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The IP address that is assigned to the Elastic Compute Service (ECS) instance.
         self.ip = ip
+        # The IP addresses of the server.
         self.ip_list = ip_list
+        # The kernel version of the operating system.
         self.kernel = kernel
+        # The media access control (MAC) addresses of the server.
         self.mac_list = mac_list
+        # The memory size of the server. Unit: GB.
         self.mem = mem
+        # The memory size of the server. Unit: MB.
         self.memory = memory
+        # The operating system type of the server.
         self.os = os
+        # The operating system version of the server.
         self.os_detail = os_detail
+        # The name of the operating system.
         self.os_name = os_name
+        # The region in which the server resides.
         self.region = region
+        # The ID of the region in which the asset resides.
         self.region_id = region_id
+        # The name of the region in which the server resides.
         self.region_name = region_name
+        # The operating system information about the server.
         self.sys_info = sys_info
+        # The tag that is added to the server.
         self.tag = tag
+        # The UUID of the server.
         self.uuid = uuid
+        # The ID of the virtual private cloud (VPC) in which the server resides.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -6687,7 +8637,9 @@ class DescribeAssetDetailByUuidResponseBody(TeaModel):
         asset_detail: DescribeAssetDetailByUuidResponseBodyAssetDetail = None,
         request_id: str = None,
     ):
+        # The details of the server.
         self.asset_detail = asset_detail
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -6766,7 +8718,12 @@ class DescribeAssetDetailByUuidsRequest(TeaModel):
         lang: str = None,
         uuids: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The UUIDs of the ECS instances. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -6812,20 +8769,50 @@ class DescribeAssetDetailByUuidsResponseBodyAssetList(TeaModel):
         uuid: str = None,
         vpc_instance_id: str = None,
     ):
+        # The type of the asset.
+        # 
+        # The value is fixed as **0**, which indicates ECS instances.
         self.asset_type = asset_type
+        # The status of the Security Center agent. Valid values:
+        # 
+        # *   **online**\
+        # *   **offline**\
         self.client_status = client_status
+        # The type of the asset by source. Valid values:
+        # 
+        # *   **0**: The asset is provided by Alibaba Cloud.
+        # *   **1**: The asset is not provided by Alibaba Cloud.
+        # *   **2**: The asset resides in a data center.
+        # *   **3**, **4**, **5**, and **7**: other cloud asset.
+        # *   **8**: light-weight assets.
         self.flag = flag
+        # The ID of the ECS instance.
         self.instance_id = instance_id
+        # The name of the ECS instance.
         self.instance_name = instance_name
+        # The public IP address of the ECS instance.
         self.internet_ip = internet_ip
+        # The private IP address of the ECS instance.
         self.intranet_ip = intranet_ip
+        # The IP address of the ECS instance.
+        # 
+        # >  If the ECS instance has a public IP address, the value of this parameter is the public IP address of the ECS instance. If the ECS instance does not have a public IP address, the value of this parameter is the private IP address of the ECS instance.
         self.ip = ip
+        # The operating system of the ECS instance.
         self.os = os
+        # The name of the operating system run by the ECS instance.
         self.os_name = os_name
+        # The region in which the ECS instance resides.
         self.region = region
+        # The region in which the ECS instance resides.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
+        # The name of the region in which the ECS instance resides.
         self.region_name = region_name
+        # The UUID of the ECS instance.
         self.uuid = uuid
+        # The ID of the virtual private cloud (VPC).
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -6910,7 +8897,9 @@ class DescribeAssetDetailByUuidsResponseBody(TeaModel):
         asset_list: List[DescribeAssetDetailByUuidsResponseBodyAssetList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the details of the ECS instances.
         self.asset_list = asset_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -6996,8 +8985,11 @@ class DescribeAssetSummaryResponseBodyAssetsSummary(TeaModel):
         total_core_all_region: int = None,
         total_core_num: int = None,
     ):
+        # The total number of protected assets in all regions.
         self.total_asset_all_region = total_asset_all_region
+        # The total number of cores of protected assets in all regions.
         self.total_core_all_region = total_core_all_region
+        # The total number of cores of protected assets in the current region.
         self.total_core_num = total_core_num
 
     def validate(self):
@@ -7034,7 +9026,9 @@ class DescribeAssetSummaryResponseBody(TeaModel):
         assets_summary: DescribeAssetSummaryResponseBodyAssetsSummary = None,
         request_id: str = None,
     ):
+        # The statistical information about the assets.
         self.assets_summary = assets_summary
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7119,13 +9113,88 @@ class DescribeAttackAnalysisDataRequest(TeaModel):
         start_time: int = None,
         type: str = None,
     ):
+        # Specifies whether to encode the value of the **client_url** field in the query results by using the Base64 algorithm. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.base_64 = base_64
+        # The number of the page to return. Pages start from page **1**.
+        # 
+        # >  If the Type parameter is set to **DETAILS**, you must specify the CurrentPage parameter.
         self.current_page = current_page
+        # The condition that is used to filter attack events.
+        # 
+        # >  The following list describes the valid values of crack_type:
+        # 
+        # *   3: brute-force attack on MySQL
+        # 
+        # *   4: FTP brute-force attack
+        # 
+        # *   5: SSH brute-force attack
+        # 
+        # *   6: RDP brute-force attack
+        # 
+        # *   9: brute-force attack on Microsoft SQL Server
+        # 
+        # *   101: intercepted attack on Java Struts 2
+        # 
+        # *   102: intercepted attack on Redis
+        # 
+        # *   103: communication with AntSword Webshell
+        # 
+        # *   104: communication with China Chopper Webshell
+        # 
+        # *   133: communication with XISE Webshell
+        # 
+        # *   sqli: SQL injection
+        # 
+        # *   codei: code execution
+        # 
+        # *   xss: cross-site scripting (XSS)
+        # 
+        # *   lfi: local file inclusion
+        # 
+        # *   rfi: remote file inclusion
+        # 
+        # *   webshell: trojan script
+        # 
+        # *   upload: vulnerability upload
+        # 
+        # *   path: directory traversal
+        # 
+        # *   bypass: unauthorized access
+        # 
+        # *   csrf: cross-site request forgery (CSRF)
+        # 
+        # *   crlf: carriage return line feed (CRLF)
+        # 
+        # *   other: others
         self.data = data
+        # The timestamp when the attack stops. Unit: seconds.
         self.end_time = end_time
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page.
+        # 
+        # >  If the Type parameter is set to **DETAILS**, you must specify the PageSize parameter.
         self.page_size = page_size
+        # The timestamp at which the attack starts. By default, the statistics of the previous seven days are queried. Unit: seconds.
+        # 
+        # >  The start time that you specify must be within the previous 40 days.
         self.start_time = start_time
+        # The details of attack analysis. Valid values:
+        # 
+        # *   **TOTAL**: number of attacks
+        # *   **TREND**: attack trend
+        # *   **PIE_CHART**: distribution of attacks by type
+        # *   **SOURCE_TOP**: top 5 attack sources
+        # *   **CLIENT_TOP**: top 5 attacked assets
+        # *   **DETAILS**: attack details
+        # 
+        # >  If the Type parameter is set to **DETAILS**, you must specify the CurrentPage and PageSize parameters.
         self.type = type
 
     def validate(self):
@@ -7185,10 +9254,101 @@ class DescribeAttackAnalysisDataResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The attack events. The value contains the following fields:
+        # 
+        # *   **client_url**: the URL of the attack request.
+        # 
+        # *   **internetIp**: the IP address of the asset.
+        # 
+        # *   **instanceName**: the name of the asset.
+        # 
+        # *   **table_src**: the source of data.
+        # 
+        # *   **uuid**: the UUID of the asset.
+        # 
+        # *   **crack_method**: the method of the attack request.
+        # 
+        # *   **crack_hour**: the attack time.
+        # 
+        # *   **crack_src_ip**: the IP address from which the attack is launched.
+        # 
+        # *   **instanceId**: the ID of the asset.
+        # 
+        # *   **dst_port**: the attacked port.
+        # 
+        # *   **client_ip**: the attacked IP address.
+        # 
+        # *   **location**: the region from which the attack is launched.
+        # 
+        # *   **aliuid**: the ID of the Alibaba Cloud account.
+        # 
+        # *   **crack_cnt**: the number of times that the attack is launched.
+        # 
+        # *   **crack_type**: the type of the attack. Valid values:
+        # 
+        #     *   **113**: improper authorization
+        #     *   **112**: redirection attack
+        #     *   **upload**: vulnerability upload
+        #     *   **other**: others
+        #     *   **webshell**: trojan script
+        #     *   **201**: suspicious connection
+        #     *   **9**: brute-force attack on Microsoft SQL Server
+        #     *   **5**: SSH brute-force attack
+        #     *   **6**: RDP brute-force attack
+        #     *   **lfi**: local file inclusion
+        #     *   **7**: code execution
+        #     *   **sqli**: SQL injection
+        #     *   **209**: web attack
+        #     *   **31**: buffer overflow
+        #     *   **3**: brute-force attack on MySQL
+        #     *   **30**: clickjacking
+        #     *   **4**: FTP brute-force attack
+        #     *   **bypass**: unauthorized access
+        #     *   **33**: format string
+        #     *   **deeplearning**: others
+        #     *   **32**: integer overflow
+        #     *   **203**: brute-force attack
+        #     *   **34**: race condition
+        #     *   **rfi**: remote file inclusion
+        #     *   **0**: SQL injection
+        #     *   **212**: mining behavior
+        #     *   **213**: reverse shell
+        #     *   **211**: worm
+        #     *   **61**: session timeout
+        #     *   **20**: directory traversal
+        #     *   **xss**: XSS
+        #     *   **22**: unauthorized access
+        #     *   **21**: scan attack
+        #     *   **24**: file modification
+        #     *   **26**: file deletion
+        #     *   **25**: file reading
+        #     *   **28**: CRLF injection
+        #     *   **27**: logic error
+        #     *   **29**: template injection
+        #     *   **csrf**: CSRF
+        #     *   **path**: directory traversal
+        #     *   **crlf**: CRLF
+        #     *   **102**: CSRF
+        #     *   **103**: server-side request forgery (SSRF)
+        #     *   **101**: XSS
+        #     *   **11**: file inclusion
+        #     *   **10**: file upload
+        #     *   **12**: vulnerability upload
+        #     *   **15**: unauthorized access
+        #     *   **14**: information leakage
+        #     *   **17**: XML entity injection
+        #     *   **16**: insecure configuration
+        #     *   **19**: Lightweight Directory Access Protocol (LDAP) injection
+        #     *   **18**: XPath injection
+        #     *   **codei**: code execution
         self.data = data
+        # The page number of the returned page.
         self.page = page
+        # The number of entries returned per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of attack events returned.
         self.total = total
 
     def validate(self):
@@ -7277,7 +9437,9 @@ class DescribeAutoDelConfigResponseBody(TeaModel):
         days: int = None,
         request_id: str = None,
     ):
+        # The number of days during which a detected vulnerability is retained before the vulnerability is automatically deleted.
         self.days = days
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7353,6 +9515,8 @@ class DescribeBackupClientsRequest(TeaModel):
         self,
         support_region_id: str = None,
     ):
+        # The region in which the anti-ransomware feature is supported.
+        # > You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions in which the anti-ransomware feature is supported.
         self.support_region_id = support_region_id
 
     def validate(self):
@@ -7384,10 +9548,24 @@ class DescribeBackupClientsResponseBodyClients(TeaModel):
         instance_id: str = None,
         uuid: str = None,
     ):
+        # The ID of the anti-ransomware agent.
         self.client_id = client_id
+        # The status of the anti-ransomware agent.
+        # 
+        # Valid values:
+        # 
+        # *   **INSTALLING**: The agent is being installed.
+        # *   **ONLINE**: The agent is online.
+        # *   **UNINSTALLING**: The agent is being uninstalled.
+        # *   **NOT_INSTALLED**: The agent is not installed.
+        # *   **ACTIVATED**: The agent is enabled.
+        # *   **CLIENT\_CONNECTION_ERROR**: A connection error occurs on the agent.
         self.client_status = client_status
+        # The version of the anti-ransomware agent.
         self.client_version = client_version
+        # The ID of the ECS instance on which the anti-ransomware agent is installed.
         self.instance_id = instance_id
+        # The UUID of the Elastic Compute Service (ECS) instance on which the anti-ransomware agent is installed.
         self.uuid = uuid
 
     def validate(self):
@@ -7432,7 +9610,9 @@ class DescribeBackupClientsResponseBody(TeaModel):
         clients: List[DescribeBackupClientsResponseBodyClients] = None,
         request_id: str = None,
     ):
+        # An array that consists of the information about the anti-ransomware agent.
         self.clients = clients
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7520,10 +9700,15 @@ class DescribeBackupFilesRequest(TeaModel):
         snapshot_hash: str = None,
         uuid: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The path to the backup file.
         self.path = path
+        # The hash value of the backup file.
         self.snapshot_hash = snapshot_hash
+        # The UUID of the server to which an anti-ransomware policy is applied.
         self.uuid = uuid
 
     def validate(self):
@@ -7570,9 +9755,16 @@ class DescribeBackupFilesResponseBodyBackupFiles(TeaModel):
         subtree: str = None,
         type: str = None,
     ):
+        # The name of the anti-ransomware policy.
         self.name = name
+        # The size of the backup file. Unit: bytes.
         self.size = size
+        # The path to the subdirectory of the backup file.
         self.subtree = subtree
+        # The type of the protected file. Valid values:
+        # 
+        # *   **file**: files
+        # *   **dir**: folders
         self.type = type
 
     def validate(self):
@@ -7615,9 +9807,13 @@ class DescribeBackupFilesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of backup files returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of backup files returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7659,8 +9855,11 @@ class DescribeBackupFilesResponseBody(TeaModel):
         page_info: DescribeBackupFilesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the backup files returned.
         self.backup_files = backup_files
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7755,10 +9954,19 @@ class DescribeBackupPoliciesRequest(TeaModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The number of the page to return. Default value: 1.
         self.current_page = current_page
+        # The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
         self.machine_remark = machine_remark
+        # The name of the anti-ransomware policy that you want to query.
         self.name = name
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # The status of the anti-ransomware policy. Valid values:
+        # 
+        # *   **enabled**: The anti-ransomware policy is manually enabled.
+        # *   **disabled**: The anti-ransomware policy is manually disabled. After an anti-ransomware policy is disabled, the data backup task that is running based on the policy stops.
+        # *   **closed**: The anti-ransomware policy automatically stops because the anti-ransomware capacity is insufficient.
         self.status = status
 
     def validate(self):
@@ -7805,9 +10013,13 @@ class DescribeBackupPoliciesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: 10.
         self.page_size = page_size
+        # The total number of anti-ransomware policies returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7863,22 +10075,87 @@ class DescribeBackupPoliciesResponseBodyPolicies(TeaModel):
         upgrade_status: str = None,
         uuid_list: List[str] = None,
     ):
+        # The number of the servers on which the anti-ransomware agent is in an abnormal state.
         self.client_error_count = client_error_count
+        # The UUIDs of the servers on which the anti-ransomware agent is in an **abnormal** state.
         self.client_error_uuid_list = client_error_uuid_list
+        # The status of the anti-ransomware agent. Valid values:
+        # 
+        # *   **running**: normal
+        # *   **exception**: abnormal
         self.client_status = client_status
+        # The number of the servers on which the anti-ransomware agent is in a normal state.
         self.health_client_count = health_client_count
+        # The UUIDs of the servers on which the anti-ransomware agent is in a **normal** state.
         self.health_client_uuid_list = health_client_uuid_list
+        # The ID of the anti-ransomware policy.
         self.id = id
+        # The name of the anti-ransomware policy.
         self.name = name
+        # The configurations of the anti-ransomware policy. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **IsDefault**: the type of the anti-ransomware policy. Valid values:
+        # 
+        #     *   **1**: recommended policy
+        #     *   **0**: custom policy
+        # 
+        # *   **Include**: the format of the files that are protected. If the value of this field is \[], all formats of files are protected.
+        # 
+        # *   **Source**: the directory that is protected. If the value of this field is \[], all directories are protected.
+        # 
+        # *   **ExcludeSystemPath**: indicates whether a specified directory is excluded from the anti-ransomware policy. If the value of this field is **true**, the directory is excluded. If this field is left empty, no directories are excluded.
+        # 
+        # *   **Exclude**: the directory that is excluded from the anti-ransomware policy. If no directory is specified, the value of this field is \[].
+        # 
+        # *   **Schedule**: the start time and interval of a data backup task. A start time that begins during off-peak hours but does not start on the hour is recommended. Examples:
+        # 
+        #     *   If the value of this field is I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+        #     *   If the value of this field is I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+        # 
+        # *   **Retention**: the period during which backup data is retained. Unit: days. If the value of this field is 7, backup data is retained for a week. If the value of this field is 365, backup data is retained for a year. If the value of this field is -1, backup data is permanently retained.
+        # 
+        # *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If the value of this field is 0:24:30720, the maximum bandwidth for a data backup task is 30 MB/s from 00:00 to 24:00.
+        # 
+        # *   **UseVss**: indicates whether the VSS feature is enabled. The feature is available only for Windows servers. Valid values:
+        # 
+        #     *   **true**: yes
+        #     *   **false**: no
+        # 
+        # >  The VSS feature is available only if you create the anti-ransomware policy for Windows servers. After you enable the feature, the number of backup failures due to running processes is significantly reduced. We recommend that you enable the VSS feature. After you enable the feature, the data of disks that are in the exFAT and FAT32 formats cannot be backed up.
         self.policy = policy
+        # The ID of the region that you specified for data backup when you installed the anti-ransomware agent for the server not deployed on Alibaba Cloud.
         self.policy_region_id = policy_region_id
+        # The version of the anti-ransomware policy. Valid values:
+        # 
+        # *   1.0.0
+        # *   2.0.0
         self.policy_version = policy_version
+        # The UUIDs that are returned based on the value of the MachineRemark request parameter.
         self.remarked_uuid_list = remarked_uuid_list
+        # The type of the server. Valid values:
+        # 
+        # *   **OUT_CLOUD**: server not deployed on Alibaba Cloud
+        # *   **ALIYUN**: Elastic Compute Service (ECS) instance
+        # *   **TRIPARTITE**: simple application server
         self.server_type = server_type
+        # The number of servers on which data backup is exceptional.
         self.service_error_count = service_error_count
+        # The UUIDs of the servers on which data backup is exceptional.
         self.service_error_uuid_list = service_error_uuid_list
+        # The status of the anti-ransomware policy. Valid values:
+        # 
+        # *   **enabled**: The anti-ransomware policy is manually enabled.
+        # *   **disabled**: The anti-ransomware policy is manually disabled. After an anti-ransomware policy is disabled, the data backup task that is running based on the policy stops.
+        # *   **closed**: The anti-ransomware policy automatically stops because the anti-ransomware capacity is insufficient.
         self.status = status
+        # The upgrade status of the anti-ransomware policy. Valid values:
+        # 
+        # *   **NotUpgraded**\
+        # *   **Upgrading**\
+        # *   **UpgradeFailed**\
+        # *   **UpgradeSuccess**\
         self.upgrade_status = upgrade_status
+        # The UUIDs of the servers to which the anti-ransomware policy is applied.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -7972,8 +10249,11 @@ class DescribeBackupPoliciesResponseBody(TeaModel):
         policies: List[DescribeBackupPoliciesResponseBodyPolicies] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # An array that consists of the anti-ransomware policies returned.
         self.policies = policies
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -8064,6 +10344,9 @@ class DescribeBackupPolicyRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the anti-ransomware policy.
+        # 
+        # >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
         self.id = id
 
     def validate(self):
@@ -8098,13 +10381,58 @@ class DescribeBackupPolicyResponseBodyBackupPolicyDetail(TeaModel):
         status: str = None,
         uuid_list: List[str] = None,
     ):
+        # The status of the anti-ransomware agent. Valid values:
+        # 
+        # *   **running**: normal
+        # *   **exception**: abnormal
         self.client_status = client_status
+        # The ID of the anti-ransomware policy.
         self.id = id
+        # The name of the anti-ransomware policy.
         self.name = name
+        # *   **IsDefault**: the type of the anti-ransomware policy. Valid values:
+        # 
+        #     *   **1**: recommended policy
+        #     *   **0**: custom policy
+        # 
+        # *   **Include**: the format of the files that you want to protect. If you want to protect the files in all formats, set this field to \[].
+        # 
+        # *   **Source**: the directory that you want to protect. If you want to protect all directories, set this field to \[].
+        # 
+        # *   **ExcludeSystemPath**: specifies whether to exclude a specific directory from the anti-ransomware policy. If you want to exclude a directory, set this field to **true**. If you do not want to exclude a directory, leave this field empty.
+        # 
+        # *   **Exclude**: the directory that you want to exclude from the anti-ransomware policy. If you do not want to exclude a directory, set this field to \[].
+        # 
+        # *   **Schedule**: the start time and interval of a data backup task. We recommend that you specify a start time that begins during off-peak hours but does not start on the hour. Examples:
+        # 
+        #     *   If you set this field to I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+        #     *   If you set this field to I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+        # 
+        # *   **Retention**: the period during which backup data is retained. Unit: days. If you set this field to 7, backup data is retained for a week. If you set this field to 365, backup data is retained for a year. If you set this field to -1, backup data is permanently retained.
+        # 
+        # *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If you set this field to 0:24:30720, the maximum bandwidth for a data backup task is 30 MB/s from 00:00 to 24:00.
+        # 
+        # *   **UseVss**: specifies whether to enable the VSS feature. The feature is available only for Windows servers. Valid values:
+        # 
+        #     *   **true**: yes
+        #     *   **false**: no
+        # 
+        # >  The VSS feature is available only if you create the anti-ransomware policy for Windows servers. After you enable the feature, the number of backup failures due to running processes is significantly reduced. We recommend that you enable the VSS feature. After you enable the feature, the data of disks that are in the exFAT and FAT32 formats cannot be backed up.
         self.policy = policy
+        # The version of the anti-ransomware policy.
+        # 
+        # *   **1.0.0**\
+        # *   **2.0.0**\
         self.policy_version = policy_version
+        # The ID of the region in which backup data is stored.
         self.region_id = region_id
+        # The status of the anti-ransomware policy. Valid values:
+        # 
+        # *   **enabled**: The anti-ransomware policy is manually enabled.
+        # *   **disabled**: The anti-ransomware policy is manually disabled. After an anti-ransomware policy is disabled, the data backup task that is running based on the policy stops.
+        # *   **closed**: The anti-ransomware policy automatically stops because the anti-ransomware capacity is insufficient.
         self.status = status
+        # An array consisting of the UUIDs of the servers to which the anti-ransomware policy is applied.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -8161,7 +10489,9 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         backup_policy_detail: DescribeBackupPolicyResponseBodyBackupPolicyDetail = None,
         request_id: str = None,
     ):
+        # The details of the anti-ransomware policy.
         self.backup_policy_detail = backup_policy_detail
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -8240,7 +10570,9 @@ class DescribeBackupRestoreCountResponseBodyBackupRestoreCount(TeaModel):
         recovering: int = None,
         total: int = None,
     ):
+        # The number of the restoration tasks that are in the **being restored** state.
         self.recovering = recovering
+        # The total number of the restoration tasks that you create.
         self.total = total
 
     def validate(self):
@@ -8273,7 +10605,9 @@ class DescribeBackupRestoreCountResponseBody(TeaModel):
         backup_restore_count: DescribeBackupRestoreCountResponseBodyBackupRestoreCount = None,
         request_id: str = None,
     ):
+        # The statistics of restoration tasks.
         self.backup_restore_count = backup_restore_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -8353,6 +10687,7 @@ class DescribeBruteForceSummaryRequest(TeaModel):
         source_ip: str = None,
     ):
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -8385,7 +10720,9 @@ class DescribeBruteForceSummaryResponseBodyBruteForceSummary(TeaModel):
         all_strategy_count: int = None,
         effective_count: int = None,
     ):
+        # The total number of IP address blocking policies.
         self.all_strategy_count = all_strategy_count
+        # The number of enabled IP address blocking policies.
         self.effective_count = effective_count
 
     def validate(self):
@@ -8418,7 +10755,9 @@ class DescribeBruteForceSummaryResponseBody(TeaModel):
         brute_force_summary: DescribeBruteForceSummaryResponseBodyBruteForceSummary = None,
         request_id: str = None,
     ):
+        # The statistics of IP address blocking policies.
         self.brute_force_summary = brute_force_summary
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -8496,6 +10835,7 @@ class DescribeCheckEcsWarningsRequest(TeaModel):
         self,
         source_ip: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -8526,9 +10866,23 @@ class DescribeCheckEcsWarningsResponseBody(TeaModel):
         sas_version: str = None,
         weak_password_count: str = None,
     ):
+        # Indicates whether you use the free trial of Security Center. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.can_try = can_try
+        # The ID of the request.
         self.request_id = request_id
+        # The edition of Security Center that you use. Valid values:
+        # 
+        # *   **1**: Basic edition
+        # *   **2** or **3**: Enterprise edition
+        # *   **5**: Advanced edition
+        # *   **6**: Anti-virus edition
+        # 
+        # >  Both the value 2 and the value 3 indicate the Enterprise edition.
         self.sas_version = sas_version
+        # The number of weak passwords that can cause high risks to your assets.
         self.weak_password_count = weak_password_count
 
     def validate(self):
@@ -8614,8 +10968,16 @@ class DescribeCheckWarningDetailRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The ID of the alert that is triggered by the check item.
+        # 
+        # >  To query the details about a specified check item, you must provide the ID of the alert that is triggered by the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to query the IDs of alerts.
         self.check_warning_id = check_warning_id
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -8658,13 +11020,25 @@ class DescribeCheckWarningDetailResponseBody(TeaModel):
         request_id: str = None,
         type: str = None,
     ):
+        # The suggestion for the management of the risk item.
         self.advice = advice
+        # The ID of the check item.
         self.check_id = check_id
+        # The additional information about the risk item.
         self.description = description
+        # The name of the check item.
         self.item = item
+        # The risk level of the check item. Valid values:
+        # 
+        # *   **high**: The item is a high-risk item and is highlighted in red.
+        # *   **medium**: The item is a medium-risk item and is highlighted in orange.
+        # *   **low**: The item is a low-risk item and is highlighted in gray.
         self.level = level
+        # The prompt for the risk item.
         self.prompt = prompt
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The type of the check item. Valid values:
         self.type = type
 
     def validate(self):
@@ -8777,19 +11151,58 @@ class DescribeCheckWarningSummaryRequest(TeaModel):
         type_name: str = None,
         uuids: str = None,
     ):
+        # The ID of the container cluster.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
         self.cluster_id = cluster_id
+        # The name of the container field. Valid values:
+        # 
+        # *   **clusterId**: the ID of the cluster
+        # *   **image**: the name of the image
+        # *   **imageId**: the ID of the image
+        # *   **namespace**: the namespace
         self.container_field_name = container_field_name
+        # The value of the container field.
         self.container_field_value = container_field_value
+        # The number of the page to return.
         self.current_page = current_page
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The name of the risk item.
         self.risk_name = risk_name
+        # The status of the baseline check. Valid values:
+        # 
+        # *   **1**: failed
+        # *   **3**: passed
         self.risk_status = risk_status
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The status of the check item. Valid values:
+        # 
+        # *   **1**: failed
+        # *   **2**: verifying
+        # *   **3**: passed
+        # *   **5**: expired
+        # *   **6**: ignored
         self.status = status
+        # The ID of the baseline check policy.
         self.strategy_id = strategy_id
+        # The type of the query condition. Valid values:
+        # 
+        # *   **uuid**: the ID of an asset
         self.target_type = target_type
+        # The level-1 type of check items.
+        # 
+        # >  You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to query the level-1 types of check items.
         self.type_name = type_name
+        # The UUID of the asset.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of assets.
         self.uuids = uuids
 
     def validate(self):
@@ -8881,18 +11294,41 @@ class DescribeCheckWarningSummaryResponseBodyWarningSummarys(TeaModel):
         type_alias: str = None,
         warning_machine_count: int = None,
     ):
+        # The number of check items.
         self.check_count = check_count
+        # Indicates whether the risk item can be exploited. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.check_exploit = check_exploit
+        # Indicates whether the risk item is a database risk item. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.database_risk = database_risk
+        # The number of high-risk items.
         self.high_warning_count = high_warning_count
+        # The time when the last baseline check was performed.
         self.last_found_time = last_found_time
+        # The risk level of the risk item. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.level = level
+        # The number of low-risk items.
         self.low_warning_count = low_warning_count
+        # The number of medium-risk items.
         self.medium_warning_count = medium_warning_count
+        # The ID of the risk item.
         self.risk_id = risk_id
+        # The name of the risk item.
         self.risk_name = risk_name
+        # The level-2 type of the risk item.
         self.sub_type_alias = sub_type_alias
+        # The level-1 type of the check item. Examples: database, system, weak password, and middleware.
         self.type_alias = type_alias
+        # The number of assets on which risk items are detected.
         self.warning_machine_count = warning_machine_count
 
     def validate(self):
@@ -8973,11 +11409,17 @@ class DescribeCheckWarningSummaryResponseBody(TeaModel):
         total_count: int = None,
         warning_summarys: List[DescribeCheckWarningSummaryResponseBodyWarningSummarys] = None,
     ):
+        # The number of check items returned on the current page.
         self.count = count
+        # The page number of the current page.
         self.current_page = current_page
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of check items.
         self.total_count = total_count
+        # The statistics of check items.
         self.warning_summarys = warning_summarys
 
     def validate(self):
@@ -9085,14 +11527,45 @@ class DescribeCheckWarningsRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The ID of the check item.
         self.check_id = check_id
+        # The type of the check item. Valid values:
+        # 
+        # *   **hc.check.type.identity_auth**: identity authentication
+        # *   **hc.check.type.access_control**: access control
+        # *   **hc.check.type.network_service**: network and service
+        # *   **hc.check.type.service_conf**: service configuration
+        # *   **hc.check.type.file_rights**: file permission
+        # *   **hc.check.type.security_audit**: security audit
+        # *   **hc.check.type.attack_defense**: intrusion prevention
+        # *   **hc.check.type.others**: others
         self.check_type = check_type
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the risk item.
+        # 
+        # >  To query specified risk items and the check items of a specified server, you must provide the IDs of the risk items. You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to query the IDs of risk items.
         self.risk_id = risk_id
+        # The status of the check item. Valid values:
+        # 
+        # *   **1**: failed
+        # *   **2**: verifying
+        # *   **3**: passed
+        # *   **5**: expired
+        # *   **6**: ignored
         self.risk_status = risk_status
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the server on which the baseline check is performed.
+        # 
+        # >  To query specified risk items and the check items of a specified server, you must provide the ID of the server on which the baseline check is performed. You can call the [DescribeWarningMachines](~~DescribeWarningMachines~~) operation to query the IDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -9160,14 +11633,36 @@ class DescribeCheckWarningsResponseBodyCheckWarnings(TeaModel):
         type: str = None,
         uuid: str = None,
     ):
+        # The ID of the check item.
         self.check_id = check_id
+        # The ID of the alert that is triggered by the check item.
         self.check_warning_id = check_warning_id
+        # The fixing status of the check item. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.fix_status = fix_status
+        # The name of the check item.
         self.item = item
+        # The risk level of the risk item. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.level = level
+        # The remarks.
         self.reason = reason
+        # The status of the check item. Valid values:
+        # 
+        # *   **1**: failed
+        # *   **2**: verifying
+        # *   **3**: passed
+        # *   **5**: expired
+        # *   **6**: ignored
         self.status = status
+        # The type of the check item.
         self.type = type
+        # The UUID of the server on which the baseline check is performed.
         self.uuid = uuid
 
     def validate(self):
@@ -9232,11 +11727,17 @@ class DescribeCheckWarningsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the check items.
         self.check_warnings = check_warnings
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9331,6 +11832,157 @@ class DescribeCheckWarningsResponse(TeaModel):
         return self
 
 
+class DescribeClientConfSetupRequest(TeaModel):
+    def __init__(
+        self,
+        strategy_tag: str = None,
+        strategy_tag_value: str = None,
+    ):
+        self.strategy_tag = strategy_tag
+        self.strategy_tag_value = strategy_tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.strategy_tag is not None:
+            result['StrategyTag'] = self.strategy_tag
+        if self.strategy_tag_value is not None:
+            result['StrategyTagValue'] = self.strategy_tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StrategyTag') is not None:
+            self.strategy_tag = m.get('StrategyTag')
+        if m.get('StrategyTagValue') is not None:
+            self.strategy_tag_value = m.get('StrategyTagValue')
+        return self
+
+
+class DescribeClientConfSetupResponseBodyClientConf(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        strategy_tag: str = None,
+        strategy_tag_value: str = None,
+    ):
+        self.config = config
+        self.strategy_tag = strategy_tag
+        self.strategy_tag_value = strategy_tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.strategy_tag is not None:
+            result['StrategyTag'] = self.strategy_tag
+        if self.strategy_tag_value is not None:
+            result['StrategyTagValue'] = self.strategy_tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('StrategyTag') is not None:
+            self.strategy_tag = m.get('StrategyTag')
+        if m.get('StrategyTagValue') is not None:
+            self.strategy_tag_value = m.get('StrategyTagValue')
+        return self
+
+
+class DescribeClientConfSetupResponseBody(TeaModel):
+    def __init__(
+        self,
+        client_conf: DescribeClientConfSetupResponseBodyClientConf = None,
+        request_id: str = None,
+    ):
+        self.client_conf = client_conf
+        self.request_id = request_id
+
+    def validate(self):
+        if self.client_conf:
+            self.client_conf.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_conf is not None:
+            result['ClientConf'] = self.client_conf.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientConf') is not None:
+            temp_model = DescribeClientConfSetupResponseBodyClientConf()
+            self.client_conf = temp_model.from_map(m['ClientConf'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeClientConfSetupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeClientConfSetupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeClientConfSetupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCloudCenterInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -9344,14 +11996,41 @@ class DescribeCloudCenterInstancesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The search conditions that are used to filter assets. The value of this parameter is in the JSON format and is case-sensitive.
+        # 
+        # >  A search condition can be an instance ID, instance name, VPC ID, region, or public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The importance of the asset. Valid values:
+        # 
+        # *   **2**: an important asset
+        # *   **1**: a common asset
+        # *   **0**: a test asset
         self.importance = importance
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The logical relationship among multiple search conditions. Valid values:
+        # 
+        # *   **OR**: The search conditions are evaluated by using a logical **OR**.
+        # *   **AND**: The search conditions are evaluated by using a logical **AND**.
         self.logical_exp = logical_exp
+        # The type of the assets that you want to query. Valid values:
+        # 
+        # *   **ecs**: servers
+        # *   **cloud_product**: Alibaba Cloud services
         self.machine_types = machine_types
+        # Specifies whether to internationalize the name of the default group. Default value: **false** . Valid values:
+        # 
+        # *   **true**: The system returns the Chinese name of the default group for the GroupTrace response parameter.************\
+        # *   **false**: The system returns default for the GroupTrace response parameter.
         self.no_group_trace = no_group_trace
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the region in which the asset resides.
         self.region_id = region_id
 
     def validate(self):
@@ -9457,52 +12136,211 @@ class DescribeCloudCenterInstancesResponseBodyInstances(TeaModel):
         vul_count: int = None,
         vul_status: str = None,
     ):
+        # Indicates whether alerts are generated on the asset. Valid values:
+        # 
+        # *   **YES**\
+        # *   **NO**\
         self.alarm_status = alarm_status
+        # The type of the asset. Valid values:
+        # 
+        # *   **0**: an ECS instance
+        # *   **1**: a Server Load Balancer (SLB) instance
+        # *   **2**: a NAT gateway
+        # *   **3**: an ApsaraDB RDS instance
+        # *   **4**: an ApsaraDB for MongoDB instance
+        # *   **5**: an ApsaraDB for Redis instance
+        # *   **6**: a container image
+        # *   **7**: a container
         self.asset_type = asset_type
+        # The timestamp when Security Center is authorized to scan the asset.
         self.auth_modify_time = auth_modify_time
+        # The edition of Security Center that is authorized to protect the asset. Valid values:
+        # 
+        # *   **1**: Basic edition
+        # *   **6**: Anti-virus edition
+        # *   **5**: Advanced edition
+        # *   **3**: Enterprise edition
+        # *   **7**: Ultimate edition
         self.auth_version = auth_version
+        # The name of the Security Center edition that is authorized to scan the asset. Valid values:
+        # 
+        # *   Basic edition
+        # *   Anti-virus edition
+        # *   Advanced edition
+        # *   Enterprise edition
+        # *   Ultimate edition
+        # *   Value-added Plan edition
         self.auth_version_name = auth_version_name
+        # Indicates whether Security Center is authorized to scan the asset. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.bind = bind
+        # The status of the Security Center agent installed on the asset. Valid values:
+        # 
+        # *   **online**: The Security Center agent is **enabled**.
+        # *   **offline**: The Security Center agent is **disabled**.
+        # *   **pause**: The Security Center agent is **suspended**.
         self.client_status = client_status
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The number of the CPU cores used by the asset.
         self.cores = cores
+        # The CPU information about the asset.
         self.cpu_info = cpu_info
+        # The timestamp when the cluster was created. Unit: milliseconds.
         self.created_time = created_time
+        # Indicates whether the asset is exposed. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.exposed_status = exposed_status
+        # Indicates whether the asset is an Alibaba Cloud asset. Valid values:
+        # 
+        # *   **0**: yes
+        # *   **1**: no
         self.flag = flag
+        # The ID of the asset group to which the asset belongs.
         self.group_id = group_id
+        # The name of the group to which the asset belongs.
         self.group_trace = group_trace
+        # Indicates whether baseline risks are detected on the asset. Valid values:
+        # 
+        # *   **YES**\
+        # *   **NO**\
         self.hc_status = hc_status
+        # The number of baseline risks that are detected on the asset.
         self.health_check_count = health_check_count
+        # The importance of the asset. Valid values:
+        # 
+        # *   **2**: an important asset
+        # *   **1**: a common asset
+        # *   **0**: a test asset
         self.importance = importance
+        # The ID of the asset.
         self.instance_id = instance_id
+        # The name of the asset.
         self.instance_name = instance_name
+        # The public IP address of the asset.
         self.internet_ip = internet_ip
+        # The private IP address of the asset.
         self.intranet_ip = intranet_ip
+        # The public IP address of the asset.
         self.ip = ip
+        # The IP addresses of the system.
         self.ip_list_string = ip_list_string
+        # The version of the kernel.
         self.kernel = kernel
+        # The timestamp when the Security Center agent was last online. Unit: milliseconds.
         self.last_login_timestamp = last_login_timestamp
+        # The MAC address of the system.
         self.mac_list_string = mac_list_string
+        # The size of the memory. Unit: MB.
         self.mem = mem
+        # The operating system of the asset.
         self.os = os
+        # The kernel version of the asset.
         self.os_name = os_name
+        # The number of pods.
         self.pod_count = pod_count
+        # The region ID of the asset.
         self.region = region
+        # The ID of the region in which the asset resides.
         self.region_id = region_id
+        # The name of the region in which the asset resides.
         self.region_name = region_name
+        # The total number of baseline risks that are detected on the asset. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **account**: the number of accounts that are used to log on from unapproved logon locations and whose passwords are cracked
+        # *   **appNum**: the number of scanners
+        # *   **asapVulCount**: the total number of high-risk vulnerabilities
+        # *   **baselineHigh**: the number of high-risk baseline risks
+        # *   **baselineLow**: the number of low-risk baseline risks
+        # *   **baselineMedium**: the number of medium-risk baseline risks
+        # *   **baselineNum**: the total number of baseline risks
+        # *   **cmsNum**: the number of Web-CMS vulnerabilities
+        # *   **containerAsap**: the number of high-risk vulnerabilities that are detected on containers
+        # *   **containerLater**: the number of medium-risk vulnerabilities that are detected on containers
+        # *   **containerNntf**: the number of low-risk vulnerabilities that are detected on containers
+        # *   **containerRemind**: the number of alerts whose Emergency level is Reminder on containers
+        # *   **containerSerious**: the number of alerts whose Emergency level is Urgent on containers
+        # *   **containerSuspicious**: the number of alerts whose Emergency level is Suspicious on containers
+        # *   **cveNum**: the number of Linux software vulnerabilities
+        # *   **emgNum**: the number of urgent vulnerabilities
+        # *   **health**: the number of baseline alerts that are unhandled
+        # *   **imageBaselineHigh**: the number of high-risk baseline risks that are detected on images
+        # *   **imageBaselineLow**: the number of low-risk baseline risks that are detected on images
+        # *   **imageBaselineMedium**: the number of medium-risk baseline risks that are detected on images
+        # *   **imageBaselineNum**: the total number of baseline risks that are detected on images
+        # *   **imageMaliciousFileRemind**: the number of malicious files that are detected on images and have the Emergency level of Reminder
+        # *   **imageMaliciousFileSerious**: the number of malicious files that are detected on images and have the Emergency level of Urgent
+        # *   **imageMaliciousFileSuspicious**: the number of malicious files that are detected on images and have the Emergency level of Suspicious
+        # *   **imageVulAsap**: the number of high-risk vulnerabilities that are detected on images
+        # *   **imageVulLater**: the number of medium-risk vulnerabilities that are detected on an image
+        # *   **imageVulNntf**: the number of low-risk vulnerabilities that are detected on an image
+        # *   **laterVulCount**: the number of medium-risk vulnerabilities
+        # *   **newSuspicious**: the number of alerts
+        # *   **nntfVulCount**: the number of low-risk vulnerabilities.
+        # *   **remindNum**: the number of alerts whose Emergency level is Reminder
+        # *   **scaNum**: the number of vulnerabilities that are detected based on software component analysis
+        # *   **seriousNum**: the number of alerts whose Emergency level is Urgent
+        # *   **suspNum**: the number of alerts whose Emergency level is Suspicious
+        # *   **suspicious**: the total number of alerts
+        # *   **sysNum**: the number of Windows system vulnerabilities
+        # *   **trojan**: the number of trojans
+        # *   **uuid**: the UUIDs of assets
+        # *   **vul**: the number of vulnerabilities
+        # *   **weakPWNum**: the number of weak passwords
         self.risk_count = risk_count
+        # Indicates whether risks are detected on the asset. Valid values:
+        # 
+        # *   **YES**\
+        # *   **NO**\
         self.risk_status = risk_status
+        # The number of alerts that are generated on the asset.
         self.safe_event_count = safe_event_count
+        # The status of the asset. Valid values:
+        # 
+        # *   **Running**: running
+        # *   **notRunning**: stopped
         self.status = status
+        # The name of the asset tag.
         self.tag = tag
+        # The ID of the asset tag.
         self.tag_id = tag_id
+        # The UUID of the asset.
         self.uuid = uuid
+        # The type of the asset by source. Valid values:
+        # 
+        # *   **0**: an asset provided by Alibaba Cloud.
+        # *   **1**: a third-party cloud server
+        # *   **2**: a server in a data center
+        # *   **3**, **4**, **5**, and **7**: other cloud asset
+        # *   **8**: a lightweight asset
         self.vendor = vendor
+        # The name of the service provider (SP) for the asset.
+        # 
+        # Valid values:
+        # 
+        # *   **ALIYUN**: Alibaba Cloud
+        # *   **OUT**: a third-party service provider
+        # *   **IDC**: a data center
+        # *   **TENCENT**: Tencent Cloud
+        # *   **HUAWEICLOUD**: Huawei Cloud
+        # *   **Microsoft**: Microsoft
+        # *   **AWS**: Amazon Web Services (AWS)
+        # *   **TRIPARTITE**: a lightweight server
         self.vendor_name = vendor_name
+        # The ID of the VPC to which the asset belongs.
         self.vpc_instance_id = vpc_instance_id
+        # The number of vulnerabilities that are detected on the asset.
         self.vul_count = vul_count
+        # Indicates whether vulnerabilities are detected on the asset. Valid values:
+        # 
+        # *   **YES**\
+        # *   **NO**\
         self.vul_status = vul_status
 
     def validate(self):
@@ -9717,9 +12555,13 @@ class DescribeCloudCenterInstancesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9762,9 +12604,16 @@ class DescribeCloudCenterInstancesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # An array that consists of the details about the assets.
         self.instances = instances
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -9861,8 +12710,17 @@ class DescribeCloudProductFieldStatisticsResponseBodyGroupedFields(TeaModel):
         instance_count: int = None,
         risk_instance_count: int = None,
     ):
+        # The statistics of the numbers of assets of different types. **MachineType** indicates the type of the assets. **Count** indicates the number of assets that belong to the type.
+        # Valid values of **MachineType**:
+        # 
+        # *   **1**: a Server Load Balancer (SLB) instance
+        # *   **2**: a Network Address Translation (NAT) gateway
+        # *   **3**: an ApsaraDB RDS instance
+        # *   **4**: an ApsaraDB for MongoDB instance
         self.category_count = category_count
+        # The total number of cloud services that are protected by Security Center.
         self.instance_count = instance_count
+        # The number of cloud services that are at risk.
         self.risk_instance_count = risk_instance_count
 
     def validate(self):
@@ -9899,7 +12757,9 @@ class DescribeCloudProductFieldStatisticsResponseBody(TeaModel):
         grouped_fields: DescribeCloudProductFieldStatisticsResponseBodyGroupedFields = None,
         request_id: str = None,
     ):
+        # The statistics of cloud services.
         self.grouped_fields = grouped_fields
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -9978,7 +12838,80 @@ class DescribeCommonOverallConfigRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the feature. Valid values:
+        # 
+        # *   **kdump_switch**: Active defense experience optimization
+        # *   **threat_detect**: Dynamic adaptive threat detection capability
+        # *   **suspicious_aggregation**: Alert Association
+        # *   **alidetect**: File Test
+        # *   **USER-ENABLE-SWITCH-TYPE\_3277**: Suspicious process startup
+        # *   **USER-ENABLE-SWITCH-TYPE\_5507**: malicious drivers
+        # *   **USER-ENABLE-SWITCH-TYPE\_38857**: Entrance service execution high-risk operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_50858**: Web service performs high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_50859**: Entrance service execution suspicious operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_50861**: Information detection
+        # *   **USER-ENABLE-SWITCH-TYPE\_50862**: Cloud Assistant Advanced Protection
+        # *   **USER-ENABLE-SWITCH-TYPE\_50867**: Create malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_50868**: Create suspicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_50869**: Unauthorized execution of high-risk orders
+        # *   **USER-ENABLE-SWITCH-TYPE\_50870**: Rebound Shell
+        # *   **USER-ENABLE-SWITCH-TYPE\_50873**: WebShell execute command
+        # *   **USER-ENABLE-SWITCH-TYPE\_50876**: Against security software
+        # *   **USER-ENABLE-SWITCH-TYPE\_50877**: Malicious soft communication
+        # *   **USER-ENABLE-SWITCH-TYPE\_50884**: Suspicious worm script behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_50885**: malicious script behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_50983**: obfuscated command
+        # *   **USER-ENABLE-SWITCH-TYPE\_51200**: Command line download and run malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_51201**: ransomware
+        # *   **USER-ENABLE-SWITCH-TYPE\_51202**: Suspected Extortion
+        # *   **USER-ENABLE-SWITCH-TYPE\_53168**: process debugging
+        # *   **USER-ENABLE-SWITCH-TYPE\_53272**: Exploiting Kernel Vulnerabilities to Elevate Privileges
+        # *   **USER-ENABLE-SWITCH-TYPE\_54034**: Intranet scan
+        # *   **USER-ENABLE-SWITCH-TYPE\_54265**: Hijacking the PAM Module
+        # *   **USER-ENABLE-SWITCH-TYPE\_54395**: Unauthorized reading and writing of sensitive files
+        # *   **USER-ENABLE-SWITCH-TYPE\_54699**: Hijack dynamic link library
+        # *   **USER-ENABLE-SWITCH-TYPE\_54953**: Hashdump Attack
+        # *   **USER-ENABLE-SWITCH-TYPE\_57897**: suspected privilege escalation
+        # *   **USER-ENABLE-SWITCH-TYPE\_62981**: Bypassing security monitoring
+        # *   **USER-ENABLE-SWITCH-TYPE\_64025**: Ingress service execute command \[enhanced mode]
+        # *   **USER-ENABLE-SWITCH-TYPE\_39659**: Sensitive Registry Key Protection
+        # *   **USER-ENABLE-SWITCH-TYPE\_51225**: Powershell executes high-risk commands
+        # *   **USER-ENABLE-SWITCH-TYPE\_51226**: Powershell execute suspicious command
+        # *   **USER-ENABLE-SWITCH-TYPE\_51228**: High-risk lateral penetration tools
+        # *   **USER-ENABLE-SWITCH-TYPE\_51229**: Browser service execution a high-risk operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_51230**: Entrance service execution suspicious operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_51232**: System processes execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51233**: Java service execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51234**: Office components execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51235**: Web service performs high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51236**: Rebound shells
+        # *   **USER-ENABLE-SWITCH-TYPE\_52815**: Load high-risk drivers
+        # *   **USER-ENABLE-SWITCH-TYPE\_52816**: high-risk account manipulation behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_52818**: Information detection
+        # *   **USER-ENABLE-SWITCH-TYPE\_52820**: Create malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_52821**: Suspicious process startup
+        # *   **USER-ENABLE-SWITCH-TYPE\_52823**: Running high-risk ARK tools
+        # *   **USER-ENABLE-SWITCH-TYPE\_52825**: Unauthorized execution of high-risk orders
+        # *   **USER-ENABLE-SWITCH-TYPE\_52826**: Entrance service execution high-risk operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_52827**: Ransomware
+        # *   **USER-ENABLE-SWITCH-TYPE\_52828**: Suspected Extortion
+        # *   **USER-ENABLE-SWITCH-TYPE\_52829**: delete system backup behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_54168**: LSA security permission service protection
+        # *   **USER-ENABLE-SWITCH-TYPE\_54365**: Create service autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54366**: Create high-risk autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54367**: Create scheduled task autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54368**: Create registry autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54369**: Create WMI autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54373**: Against security software
+        # *   **USER-ENABLE-SWITCH-TYPE\_54374**: Intrusion trace cleanup
+        # *   **USER-ENABLE-SWITCH-TYPE\_54384**: Hashdump Attack
+        # *   **USER-ENABLE-SWITCH-TYPE\_55251**: Database services execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_57242**: Malicious command execution
+        # *   **USER-ENABLE-SWITCH-TYPE\_57340**: Command line download and run malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_62357**: Cloud Assistant service information detection
+        # *   **USER-ENABLE-SWITCH-TYPE\_63725**: Ingress service implants suspicious script/binary file
         self.type = type
 
     def validate(self):
@@ -10011,7 +12944,83 @@ class DescribeCommonOverallConfigResponseBodyOverallConfig(TeaModel):
         config: str = None,
         type: str = None,
     ):
+        # The status of the feature. Valid values:
+        # 
+        # *   **on**: enabled
+        # *   **off**: disabled
         self.config = config
+        # The type of the feature. Valid values:
+        # 
+        # *   **kdump_switch**: Active defense experience optimization
+        # *   **threat_detect**: Dynamic adaptive threat detection capability
+        # *   **suspicious_aggregation**: Alert Association
+        # *   **alidetect**: File Test
+        # *   **USER-ENABLE-SWITCH-TYPE\_3277**: Suspicious process startup
+        # *   **USER-ENABLE-SWITCH-TYPE\_5507**: malicious drivers
+        # *   **USER-ENABLE-SWITCH-TYPE\_38857**: Entrance service execution high-risk operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_50858**: Web service performs high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_50859**: Entrance service execution suspicious operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_50861**: Information detection
+        # *   **USER-ENABLE-SWITCH-TYPE\_50862**: Cloud Assistant Advanced Protection
+        # *   **USER-ENABLE-SWITCH-TYPE\_50867**: Create malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_50868**: Create suspicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_50869**: Unauthorized execution of high-risk orders
+        # *   **USER-ENABLE-SWITCH-TYPE\_50870**: Rebound Shell
+        # *   **USER-ENABLE-SWITCH-TYPE\_50873**: WebShell execute command
+        # *   **USER-ENABLE-SWITCH-TYPE\_50876**: Against security software
+        # *   **USER-ENABLE-SWITCH-TYPE\_50877**: Malicious soft communication
+        # *   **USER-ENABLE-SWITCH-TYPE\_50884**: Suspicious worm script behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_50885**: malicious script behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_50983**: obfuscated command
+        # *   **USER-ENABLE-SWITCH-TYPE\_51200**: Command line download and run malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_51201**: ransomware
+        # *   **USER-ENABLE-SWITCH-TYPE\_51202**: Suspected Extortion
+        # *   **USER-ENABLE-SWITCH-TYPE\_53168**: process debugging
+        # *   **USER-ENABLE-SWITCH-TYPE\_53272**: Exploiting Kernel Vulnerabilities to Elevate Privileges
+        # *   **USER-ENABLE-SWITCH-TYPE\_54034**: Intranet scan
+        # *   **USER-ENABLE-SWITCH-TYPE\_54265**: Hijacking the PAM Module
+        # *   **USER-ENABLE-SWITCH-TYPE\_54395**: Unauthorized reading and writing of sensitive files
+        # *   **USER-ENABLE-SWITCH-TYPE\_54699**: Hijack dynamic link library
+        # *   **USER-ENABLE-SWITCH-TYPE\_54953**: Hashdump Attack
+        # *   **USER-ENABLE-SWITCH-TYPE\_57897**: suspected privilege escalation
+        # *   **USER-ENABLE-SWITCH-TYPE\_62981**: Bypassing security monitoring
+        # *   **USER-ENABLE-SWITCH-TYPE\_64025**: Ingress service execute command \[enhanced mode]
+        # *   **USER-ENABLE-SWITCH-TYPE\_39659**: Sensitive Registry Key Protection
+        # *   **USER-ENABLE-SWITCH-TYPE\_51225**: Powershell executes high-risk commands
+        # *   **USER-ENABLE-SWITCH-TYPE\_51226**: Powershell execute suspicious command
+        # *   **USER-ENABLE-SWITCH-TYPE\_51228**: High-risk lateral penetration tools
+        # *   **USER-ENABLE-SWITCH-TYPE\_51229**: Browser service execution a high-risk operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_51230**: Entrance service execution suspicious operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_51232**: System processes execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51233**: Java service execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51234**: Office components execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51235**: Web service performs high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_51236**: Rebound shells
+        # *   **USER-ENABLE-SWITCH-TYPE\_52815**: Load high-risk drivers
+        # *   **USER-ENABLE-SWITCH-TYPE\_52816**: high-risk account manipulation behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_52818**: Information detection
+        # *   **USER-ENABLE-SWITCH-TYPE\_52820**: Create malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_52821**: Suspicious process startup
+        # *   **USER-ENABLE-SWITCH-TYPE\_52823**: Running high-risk ARK tools
+        # *   **USER-ENABLE-SWITCH-TYPE\_52825**: Unauthorized execution of high-risk orders
+        # *   **USER-ENABLE-SWITCH-TYPE\_52826**: Entrance service execution high-risk operation
+        # *   **USER-ENABLE-SWITCH-TYPE\_52827**: Ransomware
+        # *   **USER-ENABLE-SWITCH-TYPE\_52828**: Suspected Extortion
+        # *   **USER-ENABLE-SWITCH-TYPE\_52829**: delete system backup behavior
+        # *   **USER-ENABLE-SWITCH-TYPE\_54168**: LSA security permission service protection
+        # *   **USER-ENABLE-SWITCH-TYPE\_54365**: Create service autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54366**: Create high-risk autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54367**: Create scheduled task autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54368**: Create registry autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54369**: Create WMI autorun item
+        # *   **USER-ENABLE-SWITCH-TYPE\_54373**: Against security software
+        # *   **USER-ENABLE-SWITCH-TYPE\_54374**: Intrusion trace cleanup
+        # *   **USER-ENABLE-SWITCH-TYPE\_54384**: Hashdump Attack
+        # *   **USER-ENABLE-SWITCH-TYPE\_55251**: Database services execution high-risk operations
+        # *   **USER-ENABLE-SWITCH-TYPE\_57242**: Malicious command execution
+        # *   **USER-ENABLE-SWITCH-TYPE\_57340**: Command line download and run malicious files
+        # *   **USER-ENABLE-SWITCH-TYPE\_62357**: Cloud Assistant service information detection
+        # *   **USER-ENABLE-SWITCH-TYPE\_63725**: Ingress service implants suspicious script/binary file
         self.type = type
 
     def validate(self):
@@ -10044,7 +13053,9 @@ class DescribeCommonOverallConfigResponseBody(TeaModel):
         overall_config: DescribeCommonOverallConfigResponseBodyOverallConfig = None,
         request_id: str = None,
     ):
+        # The information about the feature.
         self.overall_config = overall_config
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -10123,7 +13134,14 @@ class DescribeCommonTargetResultListRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the configuration item. Valid values:
+        # 
+        # *   **webshell_timescan**: webshell detection and removal
+        # *   **aliscriptengine**: in-depth detection engine
+        # *   **alidetect**: installation scope of local file detection
+        # *   **alidetect-scan-enable**: detection scope of local file detection
         self.type = type
 
     def validate(self):
@@ -10160,11 +13178,30 @@ class DescribeCommonTargetResultListResponseBodyTargetConfig(TeaModel):
         total_count: str = None,
         type: str = None,
     ):
+        # The identifier that indicates whether the configuration item is applied to the server. Valid values:
+        # 
+        # *   **add**: applied
+        # *   **del**: not applied
         self.flag = flag
+        # The default identifier.
         self.target_default = target_default
+        # An array that consists of the IDs of the server groups or the UUIDs of the servers.
+        # 
+        # >  If **uuid** is returned for the **TargetType** parameter, **UUIDs** of the servers are returned. If **groupId** is returned for the **TargetType** parameter, IDs of the server groups are returned.
         self.target_list = target_list
+        # The type of the server to which the configuration item is applied. Valid values:
+        # 
+        # *   **uuid**: a server
+        # *   **groupId**: a server group
         self.target_type = target_type
+        # The total number of entries returned.
         self.total_count = total_count
+        # The type of the configuration item. Valid values:
+        # 
+        # *   **webshell_timescan**: webshell detection and removal
+        # *   **aliscriptengine**: in-depth detection engine
+        # *   **alidetect**: installation scope of local file detection
+        # *   **alidetect-scan-enable**: detection scope of local file detection
         self.type = type
 
     def validate(self):
@@ -10213,7 +13250,9 @@ class DescribeCommonTargetResultListResponseBody(TeaModel):
         request_id: str = None,
         target_config: DescribeCommonTargetResultListResponseBodyTargetConfig = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The information about the configuration item.
         self.target_config = target_config
 
     def validate(self):
@@ -10291,6 +13330,10 @@ class DescribeConcernNecessityRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -10319,7 +13362,13 @@ class DescribeConcernNecessityResponseBody(TeaModel):
         concern_necessity: List[str] = None,
         request_id: str = None,
     ):
+        # The priorities to fix the vulnerabilities. Valid values:
+        # 
+        # *   asap: high
+        # *   later: medium
+        # *   nntf: low
         self.concern_necessity = concern_necessity
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -10395,6 +13444,9 @@ class DescribeContainerStatisticsRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The ID of the container cluster.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -10427,11 +13479,17 @@ class DescribeContainerStatisticsResponseBodyData(TeaModel):
         total_node: int = None,
         has_risk_node: int = None,
     ):
+        # The number of alerts whose risk level is **Reminder**.
         self.remind_alarm_count = remind_alarm_count
+        # The number of alerts whose risk level is **Urgent**.
         self.serious_alarm_count = serious_alarm_count
+        # The number of alerts whose risk level is **Suspicious**.
         self.suspicious_alarm_count = suspicious_alarm_count
+        # The total number of alerts that are generated in the current container cluster.
         self.total_alarm_count = total_alarm_count
+        # The total number of nodes in the current container cluster.
         self.total_node = total_node
+        # The number of nodes on which alerts are generated in the current container cluster.
         self.has_risk_node = has_risk_node
 
     def validate(self):
@@ -10480,7 +13538,9 @@ class DescribeContainerStatisticsResponseBody(TeaModel):
         data: DescribeContainerStatisticsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The alert statistics of container assets.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -10560,8 +13620,16 @@ class DescribeCriteriaRequest(TeaModel):
         support_auto_tag: bool = None,
         value: str = None,
     ):
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: Elastic Compute Service (ECS) instance
         self.machine_types = machine_types
+        # Specifies whether the keyword that you specify for fuzzy search can be automatically matched. default **false**, Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.support_auto_tag = support_auto_tag
+        # The keyword that you specify for fuzzy search when you query the asset.
         self.value = value
 
     def validate(self):
@@ -10600,9 +13668,19 @@ class DescribeCriteriaResponseBodyCriteriaList(TeaModel):
         type: str = None,
         values: str = None,
     ):
+        # The structured attribute values of the assets that match the keyword. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **vendor**: providers
+        # *   **regionIds**: IDs of supported regions
         self.multi_values = multi_values
+        # The name of the filter condition.
         self.name = name
+        # The type of the filter condition. Valid values:
+        # 
+        # *   **input**: The filter condition needs to be specified.
+        # *   **select**: The filter condition is an option that can be selected from the drop-down list.
         self.type = type
+        # The attribute values of the assets that match the keyword.
         self.values = values
 
     def validate(self):
@@ -10643,7 +13721,9 @@ class DescribeCriteriaResponseBody(TeaModel):
         criteria_list: List[DescribeCriteriaResponseBodyCriteriaList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the filter conditions.
         self.criteria_list = criteria_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -10729,8 +13809,11 @@ class DescribeDingTalkRequest(TeaModel):
         page_size: int = None,
         rule_action_name: str = None,
     ):
+        # The number of the page to return.Default value: 1.
         self.current_page = current_page
+        # The number of entries to return on each page.Default value: 20.
         self.page_size = page_size
+        # The name of the notification.
         self.rule_action_name = rule_action_name
 
     def validate(self):
@@ -10776,16 +13859,33 @@ class DescribeDingTalkResponseBodyActionList(TeaModel):
         status: int = None,
         url: str = None,
     ):
+        # The name of the notification.
         self.action_name = action_name
+        # The UID of the user.
         self.ali_uid = ali_uid
+        # The list of notification settings.
         self.config_list = config_list
+        # The language of the content within notifications. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.ding_talk_lang = ding_talk_lang
+        # The creation time. unit:millisecond.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The group IDs.
         self.group_id_list = group_id_list
+        # The ID of the notification.
         self.id = id
+        # The interval at which the notifications are sent.unit:minute.
         self.interval_time = interval_time
+        # The status of the notification. Valid values:
+        # 
+        # *   **0**: disabled
+        # *   **1**: enabled
         self.status = status
+        # The parameters of the notification.
         self.url = url
 
     def validate(self):
@@ -10855,8 +13955,11 @@ class DescribeDingTalkResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of messages.
         self.total_count = total_count
 
     def validate(self):
@@ -10894,8 +13997,11 @@ class DescribeDingTalkResponseBody(TeaModel):
         page_info: DescribeDingTalkResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of details of notifications.
         self.action_list = action_list
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10986,6 +14092,7 @@ class DescribeDomainCountRequest(TeaModel):
         self,
         source_ip: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -11016,9 +14123,13 @@ class DescribeDomainCountResponseBody(TeaModel):
         sub_domains_count: int = None,
         total_domains_count: int = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The number of root domains.
         self.root_domains_count = root_domains_count
+        # The number of subdomains.
         self.sub_domains_count = sub_domains_count
+        # The total number of entries returned.
         self.total_domains_count = total_domains_count
 
     def validate(self):
@@ -11103,7 +14214,11 @@ class DescribeDomainDetailRequest(TeaModel):
         domain_name: str = None,
         source_ip: str = None,
     ):
+        # The domain name or the name of website that you want to query.
+        # 
+        # >  Fuzzy match is not supported. You must enter a complete domain name or a website.
         self.domain_name = domain_name
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -11140,11 +14255,23 @@ class DescribeDomainDetailResponseBodyDomainDetailItems(TeaModel):
         intranet_ip: str = None,
         uuid: str = None,
     ):
+        # The type of the domain asset. Valid values:
+        # 
+        # *   **0**: an Elastic Compute Service (ECS) instance
+        # *   **1**: a Server Load Balancer (SLB) instance
+        # *   **2**: a Network Address Translation (NAT) gateway
+        # *   **3**: an ApsaraDB RDS instance
+        # *   **4**: an ApsaraDB for MongoDB instance
         self.asset_type = asset_type
+        # The instance ID of the asset.
         self.instance_id = instance_id
+        # The name of the asset.
         self.instance_name = instance_name
+        # The public IP address of the asset.
         self.internet_ip = internet_ip
+        # The private IP address of the asset.
         self.intranet_ip = intranet_ip
+        # The instance UUID of the domain asset.
         self.uuid = uuid
 
     def validate(self):
@@ -11197,11 +14324,17 @@ class DescribeDomainDetailResponseBody(TeaModel):
         root_domain: str = None,
         vul_count: int = None,
     ):
+        # The total number of alerts in your website assets.
         self.alarm_count = alarm_count
+        # The domain name.
         self.domain = domain
+        # An array that consists of the details about the domain asset.
         self.domain_detail_items = domain_detail_items
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The name of the root domain that corresponds to the domain.
         self.root_domain = root_domain
+        # The total number of vulnerabilities in your website assets.
         self.vul_count = vul_count
 
     def validate(self):
@@ -11305,10 +14438,18 @@ class DescribeDomainListRequest(TeaModel):
         page_size: int = None,
         source_ip: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The type of the domain name that you want to query. Valid values:
+        # 
+        # *   **root**: root domain name
+        # *   **sub**: subdomain name
         self.domain_type = domain_type
+        # The keyword that is used to query domain names. Fuzzy match is supported.
         self.fuzzy_domain = fuzzy_domain
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -11353,7 +14494,9 @@ class DescribeDomainListResponseBodyDomainListResponseList(TeaModel):
         domain: str = None,
         ip_list: str = None,
     ):
+        # The name of the domain or website.
         self.domain = domain
+        # The IP addresses of the domain name.
         self.ip_list = ip_list
 
     def validate(self):
@@ -11388,9 +14531,13 @@ class DescribeDomainListResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11432,8 +14579,11 @@ class DescribeDomainListResponseBody(TeaModel):
         page_info: DescribeDomainListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the information about domain names.
         self.domain_list_response_list = domain_list_response_list
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -11530,12 +14680,33 @@ class DescribeEmgVulItemRequest(TeaModel):
         scan_type: str = None,
         vul_name: str = None,
     ):
+        # The check method. Valid values:
+        # 
+        # *   **0**: proof of concept (POC) verification
+        # *   **1**: version comparison
         self.check_type = check_type
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # Specifies whether the vulnerability poses risks.\
+        # If you do not specify this parameter, all vulnerabilities are queried regardless of whether the vulnerabilities pose risks. Valid values:
+        # 
+        # *   **y**: yes
+        # *   **n**: no
         self.risk_status = risk_status
+        # The method that is used to detect the vulnerability.\
+        # If you do not specify this parameter, all vulnerabilities are queried regardless of which method is used. Valid values:
+        # 
+        # *   **python**: The Version method is used. Security Center checks the software versions of your server to check whether disclosed vulnerabilities exist on your server.
+        # *   **scan**: The Network Scan method is used. Security Center analyzes the access traffic to your server over the Internet to check whether vulnerabilities exist on your server.
         self.scan_type = scan_type
+        # The name of the urgent vulnerability.
         self.vul_name = vul_name
 
     def validate(self):
@@ -11595,14 +14766,32 @@ class DescribeEmgVulItemResponseBodyGroupedVulItems(TeaModel):
         status: int = None,
         type: str = None,
     ):
+        # The name of the urgent vulnerability.
         self.alias_name = alias_name
+        # The check method.
         self.check_type = check_type
+        # The timestamp when the urgent vulnerability was last detected. Unit: milliseconds.
         self.gmt_last_check = gmt_last_check
+        # The timestamp when the vulnerability was disclosed. Unit: milliseconds.
         self.gmt_publish = gmt_publish
+        # The name of the detection rule.
         self.name = name
+        # The number of unhandled urgent vulnerabilities.
         self.pending_count = pending_count
+        # The progress of the urgent vulnerability detection task. Valid values: 0 to 100.
+        # 
+        # >  This parameter is returned only when an urgent vulnerability is being detected.
         self.progress = progress
+        # The detection status of the urgent vulnerability. Valid values:
+        # 
+        # *   **10**: The urgent vulnerability is not detected.
+        # *   **20**: The urgent vulnerability is being detected.
+        # *   **30**: The urgent vulnerability detection is complete.
         self.status = status
+        # The method that is used to detect the urgent vulnerability. Valid values:
+        # 
+        # *   **python**: The Version method is used. Security Center checks the software versions of your server to check whether disclosed vulnerabilities exist on your server.
+        # *   **scan**: The Network Scan method is used. Security Center analyzes the access traffic to your server over the Internet to check whether vulnerabilities exist on your server.
         self.type = type
 
     def validate(self):
@@ -11666,10 +14855,15 @@ class DescribeEmgVulItemResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # An array that consists of the urgent vulnerabilities returned.
         self.grouped_vul_items = grouped_vul_items
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of the urgent vulnerabilities returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11765,6 +14959,7 @@ class DescribeExportInfoRequest(TeaModel):
         self,
         export_id: int = None,
     ):
+        # The ID of the export task.
         self.export_id = export_id
 
     def validate(self):
@@ -11800,14 +14995,31 @@ class DescribeExportInfoResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of exported entries.
         self.current_count = current_count
+        # The status of the export task.
+        # 
+        # Valid values:
+        # 
+        # *   **init**: The task is being initialized.
+        # *   **exporting**: The task is in progress.
+        # *   **success**: The task is complete.
         self.export_status = export_status
+        # The name of the exported Excel file.
         self.file_name = file_name
+        # The ID of the export task.
         self.id = id
+        # The URL at which you can download the exported Excel file.
         self.link = link
+        # The message that shows the task result.
+        # 
+        # The value is fixed as success, which indicates that the export task is complete.
         self.message = message
+        # The progress percentage of the export task.
         self.progress = progress
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries in the exported Excel file.
         self.total_count = total_count
 
     def validate(self):
@@ -11911,6 +15123,7 @@ class DescribeExposedInstanceCriteriaRequest(TeaModel):
         self,
         value: str = None,
     ):
+        # The value of the search condition. Fuzzy match is supported.
         self.value = value
 
     def validate(self):
@@ -11940,8 +15153,16 @@ class DescribeExposedInstanceCriteriaResponseBodyCriteriaList(TeaModel):
         type: str = None,
         values: str = None,
     ):
+        # The name of the search condition.
         self.name = name
+        # The type of the search condition. Valid values:
+        # 
+        # *   **input**: You must configure the search condition.
+        # *   **select**: You must select a search condition from the **Values** list.
         self.type = type
+        # The value of the search condition. This parameter is returned only when the value of the **Type** parameter is **select**.
+        # 
+        # >  If the value of the **Type** parameter is **input**, this parameter is empty.
         self.values = values
 
     def validate(self):
@@ -11978,7 +15199,9 @@ class DescribeExposedInstanceCriteriaResponseBody(TeaModel):
         criteria_list: List[DescribeExposedInstanceCriteriaResponseBodyCriteriaList] = None,
         request_id: str = None,
     ):
+        # The search conditions that are used to search for exposed assets.
         self.criteria_list = criteria_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -12062,6 +15285,9 @@ class DescribeExposedInstanceDetailRequest(TeaModel):
         self,
         uuid: str = None,
     ):
+        # The UUID of the server that is exposed on the Internet.
+        # 
+        # >  You can call the [DescribeExposedInstanceList](~~DescribeExposedInstanceList~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -12093,10 +15319,28 @@ class DescribeExposedInstanceDetailResponseBodyExposedChainsAllVulList(TeaModel)
         type: str = None,
         uuid: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The name of the vulnerability.
         self.name = name
+        # The priority to fix the vulnerability. Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
+        # 
+        # >  We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
         self.necessity = necessity
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerabilities
+        # *   **sys**: Windows system vulnerabilities
+        # *   **cms**: Web-CMS vulnerabilities
+        # *   **app**: application vulnerabilities
+        # *   **emg**: urgent vulnerabilities
+        # *   **sca**: middleware vulnerabilities
         self.type = type
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -12144,10 +15388,28 @@ class DescribeExposedInstanceDetailResponseBodyExposedChainsRealVulList(TeaModel
         type: str = None,
         uuid: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The name of the vulnerability.
         self.name = name
+        # The priority to fix the vulnerability. Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
+        # 
+        # >  We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
         self.necessity = necessity
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerabilities
+        # *   **sys**: Windows system vulnerabilities
+        # *   **cms**: Web-CMS vulnerabilities
+        # *   **app**: application vulnerabilities
+        # *   **emg**: urgent vulnerabilities
+        # *   **sca**: middleware vulnerabilities
         self.type = type
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -12204,19 +15466,45 @@ class DescribeExposedInstanceDetailResponseBodyExposedChains(TeaModel):
         region_id: str = None,
         uuid: str = None,
     ):
+        # The information about all vulnerabilities on the server.
         self.all_vul_list = all_vul_list
+        # The server component that is exposed on the Internet.
         self.exposure_component = exposure_component
+        # The public IP address.
         self.exposure_ip = exposure_ip
+        # The port that is exposed on the Internet.
         self.exposure_port = exposure_port
+        # The resource from which the server is exposed. Valid values:
+        # 
+        # *   **INTERNET_IP**: the public IP address of an Elastic Compute Service (ECS) instance
+        # *   **SLB**: the public IP address of a Server Load Balancer (SLB) instance
+        # *   **EIP**: an elastic IP address (EIP)
+        # *   **DNAT**: the NAT gateway that connects to the Internet by using the DNAT feature
         self.exposure_type = exposure_type
+        # The ID of the instance to which the resource belongs. The valid values of this parameter vary based on the value of the ExposureType parameter.
+        # 
+        # *   If the value of the ExposureType parameter is **INTERNET_IP**, the value of this parameter is an empty string.
+        # *   If the value of the ExposureType parameter is **SLB**, the value of this parameter is the ID of the Internet-facing SLB instance.
+        # *   If the value of the ExposureType parameter is **EIP**, the value of this parameter is the ID of the EIP.
+        # *   If the value of the ExposureType parameter is **DNAT**, the value of this parameter is the ID of the NAT gateway.
         self.exposure_type_id = exposure_type_id
+        # The server group to which the server belongs.
         self.group_no = group_no
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The information about the vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.real_vul_list = real_vul_list
+        # The region in which the server resides.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -12314,7 +15602,9 @@ class DescribeExposedInstanceDetailResponseBody(TeaModel):
         exposed_chains: List[DescribeExposedInstanceDetailResponseBodyExposedChains] = None,
         request_id: str = None,
     ):
+        # The exposure details about the server.
         self.exposed_chains = exposed_chains
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -12407,15 +15697,41 @@ class DescribeExposedInstanceListRequest(TeaModel):
         page_size: int = None,
         vul_status: bool = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The server component that is exposed on the Internet.
         self.exposure_component = exposure_component
+        # The public IP address of the server.
         self.exposure_ip = exposure_ip
+        # The port that is exposed on the Internet.
         self.exposure_port = exposure_port
+        # The ID of the server group.
+        # 
+        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
         self.group_id = group_id
+        # The health status of the Elastic Compute Service (ECS) instance in the scaling group. ECS instances that are not in the Running state are considered unhealthy. Valid values:
+        # 
+        # *   Healthy
+        # *   Unhealthy
+        # 
+        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases the automatically created instances among the unhealthy instances.
+        # 
+        # Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of the instance lifecycle. If the lifecycle of the ECS instances is not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release them. If the lifecycle of the ECS instances is managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases them.
+        # 
+        # >  Make sure that you have sufficient balance within your account. If you have overdue payments in your account, pay-as-you-go and preemptible instances are stopped or released. For information about how the status of ECS instances changes when you have overdue payments in your account, see [Overdue payments](~~170589~~).
         self.health_status = health_status
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # Specifies whether the server has vulnerabilities. Valid values:
+        # 
+        # *   **true**: The server has vulnerabilities.
+        # *   **false**: The server does not have vulnerabilities.
         self.vul_status = vul_status
 
     def validate(self):
@@ -12496,23 +15812,53 @@ class DescribeExposedInstanceListResponseBodyExposedInstances(TeaModel):
         total_vul_count: int = None,
         uuid: str = None,
     ):
+        # The number of high-severity vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.asap_vul_count = asap_vul_count
+        # The total number of servers that are exposed on the Internet.
         self.exploit_health_count = exploit_health_count
+        # The server component that is exposed on the Internet.
         self.exposure_component = exposure_component
+        # The public IP address that is exposed on the Internet.
         self.exposure_ip = exposure_ip
+        # The port that is exposed on the Internet.
         self.exposure_port = exposure_port
+        # The resource from which the asset is exposed. Valid values:
+        # 
+        # *   **INTERNET_IP**: the public IP address of an ECS instance
+        # *   **SLB**: the public IP address of a Server Load Balancer (SLB) instance
+        # *   **EIP**: an elastic IP address (EIP)
+        # *   **DNAT**: the NAT gateway that connects to the Internet by using the DNAT feature
         self.exposure_type = exposure_type
+        # The ID of the instance to which the resource belongs. The valid values of this parameter vary based on the ExposureType parameter.
+        # 
+        # *   If the value of the ExposureType parameter is **INTERNET_IP**, this parameter is empty.
+        # *   If the value of the ExposureType parameter is **SLB**, the value of this parameter is the ID of the SLB instance.
+        # *   If the value of the ExposureType parameter is **EIP**, the value of this parameter is the ID of the EIP.
+        # *   If the value of the ExposureType parameter is **DNAT**, the value of this parameter is the ID of the NAT gateway.
         self.exposure_type_id = exposure_type_id
+        # The ID of the server group.
         self.group_id = group_id
+        # The name of the server group.
         self.group_name = group_name
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The number of medium-severity vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.later_vul_count = later_vul_count
+        # The number of low-severity vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.nntf_vul_count = nntf_vul_count
+        # The ID of the region where the server resides.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
+        # The total number of vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.total_vul_count = total_vul_count
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -12611,9 +15957,13 @@ class DescribeExposedInstanceListResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries about the servers that are exposed on the Internet.
         self.total_count = total_count
 
     def validate(self):
@@ -12655,8 +16005,11 @@ class DescribeExposedInstanceListResponseBody(TeaModel):
         page_info: DescribeExposedInstanceListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the details about the exposed asset.
         self.exposed_instances = exposed_instances
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -12756,15 +16109,25 @@ class DescribeExposedStatisticsResponseBody(TeaModel):
         gateway_asset_count: int = None,
         request_id: str = None,
     ):
+        # The total number of high-risk vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.exposed_asap_vul_count = exposed_asap_vul_count
+        # The total number of system components that are exposed on the Internet. The components include OpenSSL and OpenSSH.
         self.exposed_component_count = exposed_component_count
+        # The total number of servers that are exposed on the Internet.
         self.exposed_instance_count = exposed_instance_count
+        # The total number of IP addresses that are exposed on the Internet.
         self.exposed_ip_count = exposed_ip_count
+        # The total number of medium-risk vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.exposed_later_vul_count = exposed_later_vul_count
+        # The total number of low-risk vulnerabilities that are exposed on the Internet and can be exploited by attackers.
         self.exposed_nntf_vul_count = exposed_nntf_vul_count
+        # The total number of ports that are exposed on the Internet.
         self.exposed_port_count = exposed_port_count
+        # The total number of system keys that are detected on your servers and are exposed on the Internet.
         self.exposed_week_password_machine_count = exposed_week_password_machine_count
+        # The total number of gateway assets that are exposed on the Internet. The gateway assets include NAT gateways and Server Load Balancer (SLB) instances.
         self.gateway_asset_count = gateway_asset_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -12876,10 +16239,25 @@ class DescribeExposedStatisticsDetailRequest(TeaModel):
         statistics_type_gateway_type: str = None,
         statistics_type_instance_value: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The type of the exposed asset. Valid values:
+        # 
+        # *   **exposureType**: gateway assets
+        # *   **exposurePort**: ports
+        # *   **exposureComponent**: system components
+        # *   **exposureIp**: IP addresses
         self.statistics_type = statistics_type
+        # The type of the gateway asset. This parameter is required when the **StatisticsType** parameter is set to **exposureType**. Valid values:
+        # 
+        # *   **SLB**: the public IP address of a Server Load Balancer (SLB) instance
+        # *   **DNAT**: the NAT gateway that connects to the Internet by using the DNAT feature
         self.statistics_type_gateway_type = statistics_type_gateway_type
+        # The ID of the gateway asset. This parameter is required when the **StatisticsType** parameter is set to **exposureType**.
         self.statistics_type_instance_value = statistics_type_instance_value
 
     def validate(self):
@@ -12926,9 +16304,13 @@ class DescribeExposedStatisticsDetailResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12975,13 +16357,31 @@ class DescribeExposedStatisticsDetailResponseBodyStatisticsDetails(TeaModel):
         exposure_type_instance_name: str = None,
         region_id: str = None,
     ):
+        # The total number of system vulnerabilities that are detected on your server and are exposed on the Internet.
         self.exposed_count = exposed_count
+        # The system component that is exposed on the Internet.
         self.exposure_component = exposure_component
+        # The public IP address that is exposed on the Internet.
         self.exposure_ip = exposure_ip
+        # The port that is exposed on the Internet.
         self.exposure_port = exposure_port
+        # The resource from which the asset is exposed. Valid values:
+        # 
+        # *   **INTERNET_IP**: the IP address of the Elastic Compute Service (ECS) instance
+        # *   **SLB**: the public IP address of the SLB instance
+        # *   **EIP**: the elastic IP address (EIP)
+        # *   **DNAT**: the NAT gateway that connects to the Internet by using the DNAT feature
         self.exposure_type = exposure_type
+        # The ID of the instance to which the resource belongs. The valid values of this parameter vary based on the value of the ExposureType parameter.
+        # 
+        # *   If the value of the **ExposureType** parameter is **INTERNET_IP**, the value of this parameter is an empty string.
+        # *   If the value of the **ExposureType** parameter is **SLB**, the value of this parameter is the ID of the Internet-facing SLB instance.
+        # *   If the value of the **ExposureType** parameter is **EIP**, the value of this parameter is the ID of the EIP.
+        # *   If the value of the **ExposureType** parameter is **DNAT**, the value of this parameter is the ID of the NAT gateway.
         self.exposure_type_id = exposure_type_id
+        # The name of the gateway asset that is exposed on the Internet.
         self.exposure_type_instance_name = exposure_type_instance_name
+        # The region ID of the asset.
         self.region_id = region_id
 
     def validate(self):
@@ -13039,8 +16439,11 @@ class DescribeExposedStatisticsDetailResponseBody(TeaModel):
         request_id: str = None,
         statistics_details: List[DescribeExposedStatisticsDetailResponseBodyStatisticsDetails] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array consisting of the gateway assets, ports, system components, or public IP addresses that are exposed on the Internet and are returned.
         self.statistics_details = statistics_details
 
     def validate(self):
@@ -13132,7 +16535,12 @@ class DescribeFieldStatisticsRequest(TeaModel):
         machine_types: str = None,
         region_id: str = None,
     ):
+        # The type of the asset to query. If no asset types are specified, all types of assets are returned. Valid values:
+        # 
+        # *   **ecs**: server
+        # *   **cloud_product**: Alibaba Cloud service
         self.machine_types = machine_types
+        # The ID of the region in which the asset resides.
         self.region_id = region_id
 
     def validate(self):
@@ -13173,6 +16581,7 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
         instance_count: int = None,
         instance_sync_task_count: int = None,
         new_instance_count: int = None,
+        no_risk_instance_count: int = None,
         not_running_status_count: int = None,
         offline_instance_count: int = None,
         out_machine_instance_count: int = None,
@@ -13181,29 +16590,55 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
         risk_instance_count: int = None,
         tencent_instance_count: int = None,
         test_asset_count: int = None,
+        un_know_status_instance_count: int = None,
         unprotected_instance_count: int = None,
         vpc_count: int = None,
     ):
+        # The number of assets that are deployed on Alibaba Cloud.
         self.ali_yun_instance_count = ali_yun_instance_count
+        # The number of servers.
         self.aws_instance_count = aws_instance_count
+        # The number of exposed servers.
         self.exposed_instance_count = exposed_instance_count
+        # The number of assets whose importance is common.
         self.general_asset_count = general_asset_count
+        # The number of server groups.
         self.group_count = group_count
+        # The number of instances that are provisioned by third-party providers.
         self.huawei_instance_count = huawei_instance_count
+        # The number of assets that can be protected by Security Center.
         self.idc_instance_count = idc_instance_count
+        # The number of assets whose importance is important.
         self.important_asset_count = important_asset_count
+        # The total number of assets of the specified type. If no asset types are specified, this parameter indicates the total number of all servers and Alibaba Cloud services within your account.
         self.instance_count = instance_count
+        # The total number of tasks for the specified type of assets. If no asset types are specified, this parameter indicates the total number of all servers and Alibaba Cloud services within your account.
         self.instance_sync_task_count = instance_sync_task_count
+        # The number of newly added servers.
         self.new_instance_count = new_instance_count
+        # The number of assets that do not pose risks.
+        self.no_risk_instance_count = no_risk_instance_count
+        # The number of servers that are shut down.
         self.not_running_status_count = not_running_status_count
+        # The number of servers whose Security Center agent status is Offline.
         self.offline_instance_count = offline_instance_count
+        # The number of servers outside the cloud.
         self.out_machine_instance_count = out_machine_instance_count
+        # The number of servers for which the Security Center agent suspends protection.
         self.pause_instance_count = pause_instance_count
+        # The number of regions to which the servers belong.
         self.region_count = region_count
+        # The number of assets that are at risk.
         self.risk_instance_count = risk_instance_count
+        # The total number of cloud services that are protected by Security Center.
         self.tencent_instance_count = tencent_instance_count
+        # The number of assets whose importance is test.
         self.test_asset_count = test_asset_count
+        # The number of assets whose statuses are unknown.
+        self.un_know_status_instance_count = un_know_status_instance_count
+        # The number of unprotected assets.
         self.unprotected_instance_count = unprotected_instance_count
+        # The number of virtual private clouds (VPCs).
         self.vpc_count = vpc_count
 
     def validate(self):
@@ -13237,6 +16672,8 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
             result['InstanceSyncTaskCount'] = self.instance_sync_task_count
         if self.new_instance_count is not None:
             result['NewInstanceCount'] = self.new_instance_count
+        if self.no_risk_instance_count is not None:
+            result['NoRiskInstanceCount'] = self.no_risk_instance_count
         if self.not_running_status_count is not None:
             result['NotRunningStatusCount'] = self.not_running_status_count
         if self.offline_instance_count is not None:
@@ -13253,6 +16690,8 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
             result['TencentInstanceCount'] = self.tencent_instance_count
         if self.test_asset_count is not None:
             result['TestAssetCount'] = self.test_asset_count
+        if self.un_know_status_instance_count is not None:
+            result['UnKnowStatusInstanceCount'] = self.un_know_status_instance_count
         if self.unprotected_instance_count is not None:
             result['UnprotectedInstanceCount'] = self.unprotected_instance_count
         if self.vpc_count is not None:
@@ -13283,6 +16722,8 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
             self.instance_sync_task_count = m.get('InstanceSyncTaskCount')
         if m.get('NewInstanceCount') is not None:
             self.new_instance_count = m.get('NewInstanceCount')
+        if m.get('NoRiskInstanceCount') is not None:
+            self.no_risk_instance_count = m.get('NoRiskInstanceCount')
         if m.get('NotRunningStatusCount') is not None:
             self.not_running_status_count = m.get('NotRunningStatusCount')
         if m.get('OfflineInstanceCount') is not None:
@@ -13299,6 +16740,8 @@ class DescribeFieldStatisticsResponseBodyGroupedFields(TeaModel):
             self.tencent_instance_count = m.get('TencentInstanceCount')
         if m.get('TestAssetCount') is not None:
             self.test_asset_count = m.get('TestAssetCount')
+        if m.get('UnKnowStatusInstanceCount') is not None:
+            self.un_know_status_instance_count = m.get('UnKnowStatusInstanceCount')
         if m.get('UnprotectedInstanceCount') is not None:
             self.unprotected_instance_count = m.get('UnprotectedInstanceCount')
         if m.get('VpcCount') is not None:
@@ -13312,7 +16755,9 @@ class DescribeFieldStatisticsResponseBody(TeaModel):
         grouped_fields: DescribeFieldStatisticsResponseBodyGroupedFields = None,
         request_id: str = None,
     ):
+        # The information about servers that are returned.
         self.grouped_fields = grouped_fields
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -13393,9 +16838,20 @@ class DescribeFrontVulPatchListRequest(TeaModel):
         operate_type: str = None,
         type: str = None,
     ):
+        # The information about the Windows system vulnerability. The value is a JSON string that contains the following fields:
+        # 
+        # *   **name**: the name of the vulnerability.
+        # *   **uuid**: the UUID of the server on which the vulnerability is detected.
+        # *   **tag**: the tag that is added to the vulnerability. Set this field to **system**, which indicates Windows system vulnerabilities.
         self.info = info
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The operation that you want to perform on the vulnerability. Set the value to **vul_fix**, which indicates vulnerability fixing.
         self.operate_type = operate_type
+        # The type of the vulnerability. Set the value to **sys**, which indicates Windows system vulnerabilities.
         self.type = type
 
     def validate(self):
@@ -13436,7 +16892,9 @@ class DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList(TeaModel):
         alias_name: str = None,
         name: str = None,
     ):
+        # The name of the Windows system vulnerability.
         self.alias_name = alias_name
+        # The version number of the pre-patch that is required to fix the Windows system vulnerability.
         self.name = name
 
     def validate(self):
@@ -13469,7 +16927,9 @@ class DescribeFrontVulPatchListResponseBodyFrontPatchList(TeaModel):
         patch_list: List[DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList] = None,
         uuid: str = None,
     ):
+        # An array consisting of the pre-patches that are required to fix the specified Windows system vulnerability on the server.
         self.patch_list = patch_list
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -13510,7 +16970,9 @@ class DescribeFrontVulPatchListResponseBody(TeaModel):
         front_patch_list: List[DescribeFrontVulPatchListResponseBodyFrontPatchList] = None,
         request_id: str = None,
     ):
+        # An array consisting of the information about the pre-patches that are required to fix the specified Windows system vulnerability.
         self.front_patch_list = front_patch_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -13599,11 +17061,36 @@ class DescribeGroupedContainerInstancesRequest(TeaModel):
         logical_exp: str = None,
         page_size: int = None,
     ):
+        # The search conditions for assets. Specify the value in the JSON format. Separate multiple search conditions with commas (,). Example: `[{"name":"riskStatus","value":"YES"},{"name":"riskLevel","value":"2"}]`.
+        # 
+        # >  Supported search conditions include the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The keyword that you want to use to query containers. You must specify this parameter based on the value of the GroupField parameter.
+        # 
+        # *   If the **GroupField** parameter is set to **pod**, set this parameter to the name of the pod that you want to query.
+        # *   If the **GroupField** parameter is set to **appName**, set this parameter to the name of the application that you want to query.
+        # *   If the **GroupField** parameter is set to **namespace**, set this parameter to the namespace that you want to query.
+        # *   If the **GroupField** parameter is set to **clusterId**, set this parameter to the ID of the cluster that you want to query.
+        # 
+        # >  Fuzzy match is supported.
         self.field_value = field_value
+        # The group type that you want to use to query containers. Valid values:
+        # 
+        # *   **pod**\
+        # *   **appName**\
+        # *   **namespace**\
+        # *   **clusterId**\
         self.group_field = group_field
+        # The logical relationship that you want to use to evaluate multiple search conditions. Valid values:
+        # 
+        # *   **OR**: Search conditions are evaluated by using a logical **OR**.
+        # *   **AND**: Search conditions are evaluated by using a logical **AND**.
         self.logical_exp = logical_exp
+        # The number of entries to return on each page. Default value: **20**.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
 
     def validate(self):
@@ -13675,30 +17162,72 @@ class DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList(
         risk_status: str = None,
         vul_count: int = None,
     ):
+        # The number of alerts that are generated on the current pod, application, namespace, or cluster.
         self.alarm_count = alarm_count
+        # The name of the application.
         self.app_name = app_name
+        # The ID of cluster.
         self.cluster_id = cluster_id
+        # The name of the instance.
         self.cluster_name = cluster_name
+        # The type of the cluster. Valid values:
+        # 
+        # *   **Kubernetes**: dedicated Kubernetes cluster
+        # *   **ManagedKubernetes**: standard managed cluster (edge cluster)
+        # *   **Ask**: standard serverless cluster
         self.cluster_type = cluster_type
+        # The timestamp when the cluster was created. Unit: milliseconds.
         self.create_time = create_time
+        # The status of the cluster. Valid values:
+        # 
+        # *   **running**: The cluster is running.
+        # *   **stopped**: The cluster is stopped.
+        # *   **deleted**: The cluster is deleted.
+        # *   **delete_failed**: The cluster fails to be deleted.
+        # *   **failed**: The cluster fails to be created.
         self.custer_state = custer_state
+        # The number of baseline risks that are detected on the current pod, application, namespace, or cluster.
         self.hc_count = hc_count
+        # The IP address of the host in the container cluster.
         self.host_ip = host_ip
+        # The image of the container.
         self.image = image
+        # The digest value of the image.
         self.image_digest = image_digest
+        # The name of the image repository.
         self.image_repo_name = image_repo_name
+        # The namespace to which the image repository belongs.
         self.image_repo_namespace = image_repo_namespace
+        # The tag that is added to the image repository.
         self.image_repo_tag = image_repo_tag
+        # The UUID of the image.
         self.image_uuid = image_uuid
+        # The number of queried pods, applications, clusters, or namespaces.
         self.instance_count = instance_count
+        # The ID of the server.
         self.instance_id = instance_id
+        # The namespace of the cluster.
         self.namespace = namespace
+        # The name of the pod.
         self.pod = pod
+        # The IP address of the pod.
         self.pod_ip = pod_ip
+        # The ID of the region in which the server resides.
         self.region_id = region_id
+        # The number of at-risk instances.
         self.risk_instance_count = risk_instance_count
+        # The risk level. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # Indicates whether risks were detected. Valid values:
+        # 
+        # *   **NO**: No risks were detected.
+        # *   **YES**: Risks were detected.
         self.risk_status = risk_status
+        # The number of vulnerabilities that are detected on the current pod, application, namespace, or cluster.
         self.vul_count = vul_count
 
     def validate(self):
@@ -13825,9 +17354,13 @@ class DescribeGroupedContainerInstancesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of container assets returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of container assets returned.
         self.total_count = total_count
 
     def validate(self):
@@ -13869,8 +17402,11 @@ class DescribeGroupedContainerInstancesResponseBody(TeaModel):
         page_info: DescribeGroupedContainerInstancesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the container assets returned.
         self.grouped_container_instance_list = grouped_container_instance_list
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -13966,14 +17502,40 @@ class DescribeGroupedInstancesRequest(TeaModel):
         machine_types: str = None,
         no_page: bool = None,
         page_size: int = None,
+        vendor: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The name of the group to which the assets belong. Fuzzy search is supported.
         self.field_value = field_value
+        # The filter condition that you want to use to query the assets. Valid values:
+        # 
+        # *   **groupId**: the group to which the assets belong
+        # *   **regionId**: the region in which the assets reside
+        # *   **vpcInstanceId**: the virtual private cloud (VPC) in which the assets reside
         self.group_field = group_field
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The type of the assets that you want to query. Set the value to **ecs**, which indicates Elastic Compute Service (ECS) instances.
         self.machine_types = machine_types
+        # Specifies whether to enable paged query. Default value: **true**. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.no_page = no_page
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The source of the server. Valid values:
+        # 
+        # *   **0**: an asset provided by Alibaba Cloud.
+        # *   **1**: a third-party cloud server
+        # *   **2**: a server in a data center
+        # *   **3**, **4**, **5**, and **7**: other cloud asset
+        # *   **8**: a lightweight asset
+        self.vendor = vendor
 
     def validate(self):
         pass
@@ -13998,6 +17560,8 @@ class DescribeGroupedInstancesRequest(TeaModel):
             result['NoPage'] = self.no_page
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
         return result
 
     def from_map(self, m: dict = None):
@@ -14016,6 +17580,8 @@ class DescribeGroupedInstancesRequest(TeaModel):
             self.no_page = m.get('NoPage')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
         return self
 
 
@@ -14029,11 +17595,22 @@ class DescribeGroupedInstancesResponseBodyInstances(TeaModel):
         risk_instance_count: str = None,
         un_protected_instance_count: str = None,
     ):
+        # The number of assets on which high-risk vulnerabilities are detected.
         self.asap_vul_instance_count = asap_vul_instance_count
+        # The name of the server group.
         self.field_alias_name = field_alias_name
+        # The type of the server group. Valid values:
+        # 
+        # *   **0**: the default group
+        # *   **1**: other group
         self.group_flag = group_flag
+        # The total number of assets that belong to the specified type.
+        # 
+        # >  If the **MachineTypes** request parameter is not specified, the value of the InstanceCount parameter is the total number of your assets.
         self.instance_count = instance_count
+        # The number of assets that are at risk.
         self.risk_instance_count = risk_instance_count
+        # The number of assets that are not protected by Security Center.
         self.un_protected_instance_count = un_protected_instance_count
 
     def validate(self):
@@ -14084,9 +17661,13 @@ class DescribeGroupedInstancesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14128,8 +17709,11 @@ class DescribeGroupedInstancesResponseBody(TeaModel):
         page_info: DescribeGroupedInstancesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the information about the assets.
         self.instances = instances
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -14235,21 +17819,67 @@ class DescribeGroupedMaliciousFilesRequest(TeaModel):
         repo_region_id: str = None,
         scan_range: List[str] = None,
     ):
+        # The cluster ID of the container on which the malicious image sample is detected.
         self.cluster_id = cluster_id
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # The name of the malicious image sample that you want to query.
+        # 
+        # >  Fuzzy match is supported.
         self.fuzzy_malicious_name = fuzzy_malicious_name
+        # The image digest.
         self.image_digest = image_digest
+        # The image layer.
         self.image_layer = image_layer
+        # The image tag.
         self.image_tag = image_tag
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The severity of the malicious image sample that you want to query. You can enter multiple severities. Separate the severities with commas (,). Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.levels = levels
         self.malicious_md_5 = malicious_md_5
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the image repository.
+        # 
+        # >  You can call the [ListRepository](~~145293~~) operation to query the IDs of image repositories from the value of the **RepoId** response parameter.
         self.repo_id = repo_id
+        # The ID of the container image.
+        # 
+        # >  You can call the [ListRepository](~~145293~~) operation to query the IDs of container images from the value of the **InstanceId** response parameter.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
+        # 
+        # >  Fuzzy match is supported.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
+        # 
+        # >  Fuzzy match is supported.
         self.repo_namespace = repo_namespace
+        # The region ID of the image repository. Valid values:
+        # 
+        # *   **cn-beijing**: China (Beijing)
+        # *   **cn-zhangjiakou**: China (Zhangjiakou)
+        # *   **cn-hangzhou**: China (Hangzhou)
+        # *   **cn-shanghai**: China (Shanghai)
+        # *   **cn-shenzhen**: China (Shenzhen)
+        # *   **cn-hongkong**: China (Hong Kong)
+        # *   **ap-southeast-1**: Singapore
+        # *   **ap-southeast-5**: Indonesia (Jakarta)
+        # *   **us-east-1**: US (Virginia)
+        # *   **us-west-1**: US (Silicon Valley)
+        # *   **eu-central-1**: Germany (Frankfurt)
+        # *   **eu-west-1**: UK (London)
+        # *   **ap-south-1**: India (Mumbai)
         self.repo_region_id = repo_region_id
+        # The types of the assets that you want to scan.
         self.scan_range = scan_range
 
     def validate(self):
@@ -14343,12 +17973,28 @@ class DescribeGroupedMaliciousFilesResponseBodyGroupedMaliciousFileResponse(TeaM
         malicious_name: str = None,
         status: int = None,
     ):
+        # The timestamp when the first scan was performed. Unit: milliseconds.
         self.first_scan_timestamp = first_scan_timestamp
+        # The number of affected images.
         self.image_count = image_count
+        # The timestamp when the last scan was performed. Unit: milliseconds.
         self.latest_scan_timestamp = latest_scan_timestamp
+        # The severity of the malicious image sample. Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.level = level
+        # The MD5 hash value of the malicious image sample.
         self.malicious_md_5 = malicious_md_5
+        # The name of the malicious image sample.
         self.malicious_name = malicious_name
+        # The handling status of the malicious image sample. Valid values:
+        # 
+        # *   **0**: unhandled
+        # *   **1**: handled
+        # *   **2**: verifying
+        # *   **3**: added to the whitelist
         self.status = status
 
     def validate(self):
@@ -14403,9 +18049,13 @@ class DescribeGroupedMaliciousFilesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14447,8 +18097,11 @@ class DescribeGroupedMaliciousFilesResponseBody(TeaModel):
         page_info: DescribeGroupedMaliciousFilesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the malicious image samples.
         self.grouped_malicious_file_response = grouped_malicious_file_response
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -14539,6 +18192,10 @@ class DescribeGroupedTagsRequest(TeaModel):
         self,
         machine_types: str = None,
     ):
+        # The type of the asset to query. If you do not specify this parameter, the tags of all asset types are queried. Valid values:
+        # 
+        # *   **ecs**: server
+        # *   **cloud_product**: Alibaba Cloud service
         self.machine_types = machine_types
 
     def validate(self):
@@ -14568,8 +18225,11 @@ class DescribeGroupedTagsResponseBodyGroupedFileds(TeaModel):
         name: str = None,
         tag_id: int = None,
     ):
+        # The number of assets to which the tag is added.
         self.count = count
+        # The name of the tag.
         self.name = name
+        # The ID of the tag.
         self.tag_id = tag_id
 
     def validate(self):
@@ -14609,10 +18269,18 @@ class DescribeGroupedTagsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # This parameter is deprecated.
         self.count = count
+        # An array that consists of the statistics of the asset tags.
         self.grouped_fileds = grouped_fileds
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -14718,16 +18386,52 @@ class DescribeGroupedVulRequest(TeaModel):
         type: str = None,
         uuids: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The type of the vulnerability.
+        # 
+        # >  This parameter is valid only for application vulnerabilities and vulnerabilities that are detected based on software component analysis.
         self.attach_types = attach_types
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether the vulnerability is handled. Valid values:
+        # 
+        # **y**: yes **n**: no
         self.dealed = dealed
+        # The ID of the asset group.
         self.group_id = group_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The priority to fix the vulnerability. Separate multiple priorities with commas (,). Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
         self.necessity = necessity
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # The tag that is used to filter vulnerabilities. Valid values:
+        # 
+        # *   Restart required
+        # *   Remote exploitation
+        # *   Exploit exists
+        # *   Exploitable
+        # *   Privilege escalation
+        # *   Code execution
         self.search_tags = search_tags
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **sca**: vulnerability that is detected based on software component analysis
         self.type = type
+        # The UUIDs of the servers. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -14804,15 +18508,39 @@ class DescribeGroupedVulResponseBodyGroupedVulItems(TeaModel):
         total_fix_count: int = None,
         type: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The number of vulnerabilities that have the **high** priority.
         self.asap_count = asap_count
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
         self.gmt_last = gmt_last
+        # The number of handled vulnerabilities.
         self.handled_count = handled_count
+        # The number of vulnerabilities that have the **medium** priority.
         self.later_count = later_count
+        # The name of the vulnerability.
         self.name = name
+        # The number of vulnerabilities that have the **low** priority.
         self.nntf_count = nntf_count
+        # The tag that is added to the vulnerability. Valid values:
+        # 
+        # *   Restart required
+        # *   Remote exploitation
+        # *   Exploit exists
+        # *   Exploitable
+        # *   Privilege escalation
+        # *   Code execution
         self.tags = tags
+        # The total number of fixed vulnerabilities.
         self.total_fix_count = total_fix_count
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **sca**: vulnerability that is detected based on software component analysis
         self.type = type
 
     def validate(self):
@@ -14880,10 +18608,15 @@ class DescribeGroupedVulResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the vulnerabilities.
         self.grouped_vul_items = grouped_vul_items
+        # The number of entries returned per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -14981,8 +18714,11 @@ class DescribeHoneyPotAuthResponseBody(TeaModel):
         honey_pot_count: int = None,
         request_id: str = None,
     ):
+        # The total quota.
         self.honey_pot_auth_count = honey_pot_auth_count
+        # The quota that is consumed.
         self.honey_pot_count = honey_pot_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -15064,8 +18800,14 @@ class DescribeHoneyPotSuspStatisticsRequest(TeaModel):
         statistics_days: int = None,
         statistics_key_type: str = None,
     ):
+        # The source of the request. Set the value to **honeypot**.
         self.from_ = from_
+        # The time range of the data to query. Unit: days.
         self.statistics_days = statistics_days
+        # The type of the asset to query. Valid values:
+        # 
+        # *   **vpcInstanceId**: VPC
+        # *   **uuid**: server
         self.statistics_key_type = statistics_key_type
 
     def validate(self):
@@ -15106,11 +18848,28 @@ class DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse(T
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The total number of alerts that are generated for the asset.
         self.count = count
+        # The ID of the server.
+        # 
+        # >  This parameter is returned only if **StatisticsKeyType** is set to **uuid**.
         self.instance_id = instance_id
+        # The name of the server.
+        # 
+        # >  This parameter is returned only if **StatisticsKeyType** is set to **uuid**.
         self.instance_name = instance_name
+        # The type of the asset. Valid values:
+        # 
+        # *   **vpcInstanceId**: VPC
+        # *   **uuid**: server
         self.type = type
+        # The ID of the VPC.
+        # 
+        # >  This parameter is returned only if **StatisticsKeyType** is set to **vpcInstanceId**.
         self.vpc_id = vpc_id
+        # The name of the VPC.
+        # 
+        # >  This parameter is returned only if **StatisticsKeyType** is set to **vpcInstanceId**.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -15159,7 +18918,9 @@ class DescribeHoneyPotSuspStatisticsResponseBody(TeaModel):
         request_id: str = None,
         susp_honey_pot_statistics_response: List[DescribeHoneyPotSuspStatisticsResponseBodySuspHoneyPotStatisticsResponse] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array consisting of the top 5 VPCs or assets for which alerts are most frequently generated.
         self.susp_honey_pot_statistics_response = susp_honey_pot_statistics_response
 
     def validate(self):
@@ -15238,6 +18999,301 @@ class DescribeHoneyPotSuspStatisticsResponse(TeaModel):
         return self
 
 
+class DescribeImageBaselineCheckResultRequest(TeaModel):
+    def __init__(
+        self,
+        criteria: str = None,
+        criteria_type: str = None,
+        current_page: int = None,
+        image_uuid: str = None,
+        lang: str = None,
+        page_size: int = None,
+        risk_level: str = None,
+        scan_range: List[str] = None,
+    ):
+        self.criteria = criteria
+        self.criteria_type = criteria_type
+        self.current_page = current_page
+        self.image_uuid = image_uuid
+        self.lang = lang
+        self.page_size = page_size
+        self.risk_level = risk_level
+        self.scan_range = scan_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.criteria is not None:
+            result['Criteria'] = self.criteria
+        if self.criteria_type is not None:
+            result['CriteriaType'] = self.criteria_type
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.image_uuid is not None:
+            result['ImageUuid'] = self.image_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.scan_range is not None:
+            result['ScanRange'] = self.scan_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Criteria') is not None:
+            self.criteria = m.get('Criteria')
+        if m.get('CriteriaType') is not None:
+            self.criteria_type = m.get('CriteriaType')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('ImageUuid') is not None:
+            self.image_uuid = m.get('ImageUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('ScanRange') is not None:
+            self.scan_range = m.get('ScanRange')
+        return self
+
+
+class DescribeImageBaselineCheckResultResponseBodyBaselineResult(TeaModel):
+    def __init__(
+        self,
+        baseline_class_alias: str = None,
+        baseline_item_count: int = None,
+        baseline_name_alias: str = None,
+        baseline_name_key: str = None,
+        baseline_name_level: str = None,
+        first_scan_time: int = None,
+        high_risk_item_count: int = None,
+        last_scan_time: int = None,
+        low_risk_item_count: int = None,
+        middle_risk_item_count: int = None,
+        status: int = None,
+    ):
+        self.baseline_class_alias = baseline_class_alias
+        self.baseline_item_count = baseline_item_count
+        self.baseline_name_alias = baseline_name_alias
+        self.baseline_name_key = baseline_name_key
+        self.baseline_name_level = baseline_name_level
+        self.first_scan_time = first_scan_time
+        self.high_risk_item_count = high_risk_item_count
+        self.last_scan_time = last_scan_time
+        self.low_risk_item_count = low_risk_item_count
+        self.middle_risk_item_count = middle_risk_item_count
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_class_alias is not None:
+            result['BaselineClassAlias'] = self.baseline_class_alias
+        if self.baseline_item_count is not None:
+            result['BaselineItemCount'] = self.baseline_item_count
+        if self.baseline_name_alias is not None:
+            result['BaselineNameAlias'] = self.baseline_name_alias
+        if self.baseline_name_key is not None:
+            result['BaselineNameKey'] = self.baseline_name_key
+        if self.baseline_name_level is not None:
+            result['BaselineNameLevel'] = self.baseline_name_level
+        if self.first_scan_time is not None:
+            result['FirstScanTime'] = self.first_scan_time
+        if self.high_risk_item_count is not None:
+            result['HighRiskItemCount'] = self.high_risk_item_count
+        if self.last_scan_time is not None:
+            result['LastScanTime'] = self.last_scan_time
+        if self.low_risk_item_count is not None:
+            result['LowRiskItemCount'] = self.low_risk_item_count
+        if self.middle_risk_item_count is not None:
+            result['MiddleRiskItemCount'] = self.middle_risk_item_count
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineClassAlias') is not None:
+            self.baseline_class_alias = m.get('BaselineClassAlias')
+        if m.get('BaselineItemCount') is not None:
+            self.baseline_item_count = m.get('BaselineItemCount')
+        if m.get('BaselineNameAlias') is not None:
+            self.baseline_name_alias = m.get('BaselineNameAlias')
+        if m.get('BaselineNameKey') is not None:
+            self.baseline_name_key = m.get('BaselineNameKey')
+        if m.get('BaselineNameLevel') is not None:
+            self.baseline_name_level = m.get('BaselineNameLevel')
+        if m.get('FirstScanTime') is not None:
+            self.first_scan_time = m.get('FirstScanTime')
+        if m.get('HighRiskItemCount') is not None:
+            self.high_risk_item_count = m.get('HighRiskItemCount')
+        if m.get('LastScanTime') is not None:
+            self.last_scan_time = m.get('LastScanTime')
+        if m.get('LowRiskItemCount') is not None:
+            self.low_risk_item_count = m.get('LowRiskItemCount')
+        if m.get('MiddleRiskItemCount') is not None:
+            self.middle_risk_item_count = m.get('MiddleRiskItemCount')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeImageBaselineCheckResultResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.count = count
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeImageBaselineCheckResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        baseline_result: List[DescribeImageBaselineCheckResultResponseBodyBaselineResult] = None,
+        page_info: DescribeImageBaselineCheckResultResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.baseline_result = baseline_result
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.baseline_result:
+            for k in self.baseline_result:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaselineResult'] = []
+        if self.baseline_result is not None:
+            for k in self.baseline_result:
+                result['BaselineResult'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.baseline_result = []
+        if m.get('BaselineResult') is not None:
+            for k in m.get('BaselineResult'):
+                temp_model = DescribeImageBaselineCheckResultResponseBodyBaselineResult()
+                self.baseline_result.append(temp_model.from_map(k))
+        if m.get('PageInfo') is not None:
+            temp_model = DescribeImageBaselineCheckResultResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeImageBaselineCheckResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeImageBaselineCheckResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeImageBaselineCheckResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeImageBaselineCheckSummaryRequest(TeaModel):
     def __init__(
         self,
@@ -15250,13 +19306,33 @@ class DescribeImageBaselineCheckSummaryRequest(TeaModel):
         risk_level: str = None,
         scan_range: List[str] = None,
     ):
+        # The ID of the container cluster.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
         self.cluster_id = cluster_id
+        # The search condition for the image baseline.
         self.criteria = criteria
+        # The type of the search condition. Valid values:
+        # 
+        # *   **BaselineNameAlias**: baseline name
+        # *   **BaselineClassAlias**: baseline category
         self.criteria_type = criteria_type
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The severity of the image baseline that you want to query. Separate multiple severities with commas (,). Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # The types of the assets that you want to scan.
         self.scan_range = scan_range
 
     def validate(self):
@@ -15322,16 +19398,36 @@ class DescribeImageBaselineCheckSummaryResponseBodyBaselineResultSummary(TeaMode
         middle_risk_image: int = None,
         status: int = None,
     ):
+        # The category of the baseline.
         self.baseline_class_alias = baseline_class_alias
+        # The keyword of the baseline category.
         self.baseline_class_key = baseline_class_key
+        # The name of the baseline.
         self.baseline_name_alias = baseline_name_alias
+        # The keyword of the baseline name.
         self.baseline_name_key = baseline_name_key
+        # The severity of the image baseline. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.baseline_name_level = baseline_name_level
+        # The timestamp when the first scan was performed. Unit: milliseconds.
         self.first_scan_time = first_scan_time
+        # The number of images on which **high** baseline risks are detected.
         self.high_risk_image = high_risk_image
+        # The timestamp when the last scan was performed. Unit: milliseconds.
         self.last_scan_time = last_scan_time
+        # The number of images on which **low** baseline risks are detected.
         self.low_risk_image = low_risk_image
+        # The number of images on which **medium** baseline risks are detected.
         self.middle_risk_image = middle_risk_image
+        # The status of the baseline risks. Valid values:
+        # 
+        # *   **0**: unfixed
+        # *   **1**: fixed
+        # *   **2**: pending verification
+        # *   **3**: fixing failed
         self.status = status
 
     def validate(self):
@@ -15402,9 +19498,13 @@ class DescribeImageBaselineCheckSummaryResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -15446,8 +19546,11 @@ class DescribeImageBaselineCheckSummaryResponseBody(TeaModel):
         page_info: DescribeImageBaselineCheckSummaryResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the check results of image baselines.
         self.baseline_result_summary = baseline_result_summary
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -15533,6 +19636,698 @@ class DescribeImageBaselineCheckSummaryResponse(TeaModel):
         return self
 
 
+class DescribeImageBaselineDetailRequest(TeaModel):
+    def __init__(
+        self,
+        baseline_item_key: str = None,
+        image_uuid: str = None,
+        lang: str = None,
+    ):
+        self.baseline_item_key = baseline_item_key
+        self.image_uuid = image_uuid
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_item_key is not None:
+            result['BaselineItemKey'] = self.baseline_item_key
+        if self.image_uuid is not None:
+            result['ImageUuid'] = self.image_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineItemKey') is not None:
+            self.baseline_item_key = m.get('BaselineItemKey')
+        if m.get('ImageUuid') is not None:
+            self.image_uuid = m.get('ImageUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeImageBaselineDetailResponseBodyBaselineDetail(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        baseline_class_alias: str = None,
+        baseline_item_alias: str = None,
+        baseline_item_key: str = None,
+        baseline_name_alias: str = None,
+        description: str = None,
+        level: str = None,
+        prompt: str = None,
+        result_id: str = None,
+    ):
+        self.advice = advice
+        self.baseline_class_alias = baseline_class_alias
+        self.baseline_item_alias = baseline_item_alias
+        self.baseline_item_key = baseline_item_key
+        self.baseline_name_alias = baseline_name_alias
+        self.description = description
+        self.level = level
+        self.prompt = prompt
+        self.result_id = result_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.baseline_class_alias is not None:
+            result['BaselineClassAlias'] = self.baseline_class_alias
+        if self.baseline_item_alias is not None:
+            result['BaselineItemAlias'] = self.baseline_item_alias
+        if self.baseline_item_key is not None:
+            result['BaselineItemKey'] = self.baseline_item_key
+        if self.baseline_name_alias is not None:
+            result['BaselineNameAlias'] = self.baseline_name_alias
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('BaselineClassAlias') is not None:
+            self.baseline_class_alias = m.get('BaselineClassAlias')
+        if m.get('BaselineItemAlias') is not None:
+            self.baseline_item_alias = m.get('BaselineItemAlias')
+        if m.get('BaselineItemKey') is not None:
+            self.baseline_item_key = m.get('BaselineItemKey')
+        if m.get('BaselineNameAlias') is not None:
+            self.baseline_name_alias = m.get('BaselineNameAlias')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        return self
+
+
+class DescribeImageBaselineDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        baseline_detail: DescribeImageBaselineDetailResponseBodyBaselineDetail = None,
+        request_id: str = None,
+    ):
+        self.baseline_detail = baseline_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.baseline_detail:
+            self.baseline_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_detail is not None:
+            result['BaselineDetail'] = self.baseline_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineDetail') is not None:
+            temp_model = DescribeImageBaselineDetailResponseBodyBaselineDetail()
+            self.baseline_detail = temp_model.from_map(m['BaselineDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeImageBaselineDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeImageBaselineDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeImageBaselineDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeImageBaselineItemListRequest(TeaModel):
+    def __init__(
+        self,
+        baseline_class_key: str = None,
+        baseline_name_key: str = None,
+        current_page: int = None,
+        image_uuid: str = None,
+        lang: str = None,
+        page_size: int = None,
+        scan_range: List[str] = None,
+        status: str = None,
+        uuids: List[str] = None,
+    ):
+        self.baseline_class_key = baseline_class_key
+        self.baseline_name_key = baseline_name_key
+        self.current_page = current_page
+        self.image_uuid = image_uuid
+        self.lang = lang
+        self.page_size = page_size
+        self.scan_range = scan_range
+        self.status = status
+        self.uuids = uuids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_class_key is not None:
+            result['BaselineClassKey'] = self.baseline_class_key
+        if self.baseline_name_key is not None:
+            result['BaselineNameKey'] = self.baseline_name_key
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.image_uuid is not None:
+            result['ImageUuid'] = self.image_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scan_range is not None:
+            result['ScanRange'] = self.scan_range
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uuids is not None:
+            result['Uuids'] = self.uuids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineClassKey') is not None:
+            self.baseline_class_key = m.get('BaselineClassKey')
+        if m.get('BaselineNameKey') is not None:
+            self.baseline_name_key = m.get('BaselineNameKey')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('ImageUuid') is not None:
+            self.image_uuid = m.get('ImageUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ScanRange') is not None:
+            self.scan_range = m.get('ScanRange')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uuids') is not None:
+            self.uuids = m.get('Uuids')
+        return self
+
+
+class DescribeImageBaselineItemListResponseBodyBaselineItemInfos(TeaModel):
+    def __init__(
+        self,
+        baseline_class_alias: str = None,
+        baseline_class_key: str = None,
+        baseline_item_alias: str = None,
+        baseline_item_key: str = None,
+        baseline_name_alias: str = None,
+        baseline_name_key: str = None,
+        status: int = None,
+        white_list: int = None,
+    ):
+        self.baseline_class_alias = baseline_class_alias
+        self.baseline_class_key = baseline_class_key
+        self.baseline_item_alias = baseline_item_alias
+        self.baseline_item_key = baseline_item_key
+        self.baseline_name_alias = baseline_name_alias
+        self.baseline_name_key = baseline_name_key
+        self.status = status
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_class_alias is not None:
+            result['BaselineClassAlias'] = self.baseline_class_alias
+        if self.baseline_class_key is not None:
+            result['BaselineClassKey'] = self.baseline_class_key
+        if self.baseline_item_alias is not None:
+            result['BaselineItemAlias'] = self.baseline_item_alias
+        if self.baseline_item_key is not None:
+            result['BaselineItemKey'] = self.baseline_item_key
+        if self.baseline_name_alias is not None:
+            result['BaselineNameAlias'] = self.baseline_name_alias
+        if self.baseline_name_key is not None:
+            result['BaselineNameKey'] = self.baseline_name_key
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.white_list is not None:
+            result['WhiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineClassAlias') is not None:
+            self.baseline_class_alias = m.get('BaselineClassAlias')
+        if m.get('BaselineClassKey') is not None:
+            self.baseline_class_key = m.get('BaselineClassKey')
+        if m.get('BaselineItemAlias') is not None:
+            self.baseline_item_alias = m.get('BaselineItemAlias')
+        if m.get('BaselineItemKey') is not None:
+            self.baseline_item_key = m.get('BaselineItemKey')
+        if m.get('BaselineNameAlias') is not None:
+            self.baseline_name_alias = m.get('BaselineNameAlias')
+        if m.get('BaselineNameKey') is not None:
+            self.baseline_name_key = m.get('BaselineNameKey')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WhiteList') is not None:
+            self.white_list = m.get('WhiteList')
+        return self
+
+
+class DescribeImageBaselineItemListResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.count = count
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeImageBaselineItemListResponseBody(TeaModel):
+    def __init__(
+        self,
+        baseline_item_infos: List[DescribeImageBaselineItemListResponseBodyBaselineItemInfos] = None,
+        page_info: DescribeImageBaselineItemListResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.baseline_item_infos = baseline_item_infos
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.baseline_item_infos:
+            for k in self.baseline_item_infos:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaselineItemInfos'] = []
+        if self.baseline_item_infos is not None:
+            for k in self.baseline_item_infos:
+                result['BaselineItemInfos'].append(k.to_map() if k else None)
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.baseline_item_infos = []
+        if m.get('BaselineItemInfos') is not None:
+            for k in m.get('BaselineItemInfos'):
+                temp_model = DescribeImageBaselineItemListResponseBodyBaselineItemInfos()
+                self.baseline_item_infos.append(temp_model.from_map(k))
+        if m.get('PageInfo') is not None:
+            temp_model = DescribeImageBaselineItemListResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeImageBaselineItemListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeImageBaselineItemListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeImageBaselineItemListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeImageBaselineStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        strategy_id: int = None,
+    ):
+        self.lang = lang
+        self.strategy_id = strategy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.strategy_id is not None:
+            result['StrategyId'] = self.strategy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('StrategyId') is not None:
+            self.strategy_id = m.get('StrategyId')
+        return self
+
+
+class DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList(TeaModel):
+    def __init__(
+        self,
+        class_key: str = None,
+        item_key: str = None,
+        name_key: str = None,
+    ):
+        self.class_key = class_key
+        self.item_key = item_key
+        self.name_key = name_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_key is not None:
+            result['ClassKey'] = self.class_key
+        if self.item_key is not None:
+            result['ItemKey'] = self.item_key
+        if self.name_key is not None:
+            result['NameKey'] = self.name_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassKey') is not None:
+            self.class_key = m.get('ClassKey')
+        if m.get('ItemKey') is not None:
+            self.item_key = m.get('ItemKey')
+        if m.get('NameKey') is not None:
+            self.name_key = m.get('NameKey')
+        return self
+
+
+class DescribeImageBaselineStrategyResponseBodyStrategy(TeaModel):
+    def __init__(
+        self,
+        baseline_item_list: List[DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList] = None,
+        selected_item_count: int = None,
+        strategy_id: int = None,
+        strategy_name: str = None,
+        total_item_count: int = None,
+        type: str = None,
+    ):
+        self.baseline_item_list = baseline_item_list
+        self.selected_item_count = selected_item_count
+        self.strategy_id = strategy_id
+        self.strategy_name = strategy_name
+        self.total_item_count = total_item_count
+        self.type = type
+
+    def validate(self):
+        if self.baseline_item_list:
+            for k in self.baseline_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaselineItemList'] = []
+        if self.baseline_item_list is not None:
+            for k in self.baseline_item_list:
+                result['BaselineItemList'].append(k.to_map() if k else None)
+        if self.selected_item_count is not None:
+            result['SelectedItemCount'] = self.selected_item_count
+        if self.strategy_id is not None:
+            result['StrategyId'] = self.strategy_id
+        if self.strategy_name is not None:
+            result['StrategyName'] = self.strategy_name
+        if self.total_item_count is not None:
+            result['TotalItemCount'] = self.total_item_count
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.baseline_item_list = []
+        if m.get('BaselineItemList') is not None:
+            for k in m.get('BaselineItemList'):
+                temp_model = DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList()
+                self.baseline_item_list.append(temp_model.from_map(k))
+        if m.get('SelectedItemCount') is not None:
+            self.selected_item_count = m.get('SelectedItemCount')
+        if m.get('StrategyId') is not None:
+            self.strategy_id = m.get('StrategyId')
+        if m.get('StrategyName') is not None:
+            self.strategy_name = m.get('StrategyName')
+        if m.get('TotalItemCount') is not None:
+            self.total_item_count = m.get('TotalItemCount')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeImageBaselineStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        strategy: DescribeImageBaselineStrategyResponseBodyStrategy = None,
+    ):
+        self.request_id = request_id
+        self.strategy = strategy
+
+    def validate(self):
+        if self.strategy:
+            self.strategy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Strategy') is not None:
+            temp_model = DescribeImageBaselineStrategyResponseBodyStrategy()
+            self.strategy = temp_model.from_map(m['Strategy'])
+        return self
+
+
+class DescribeImageBaselineStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeImageBaselineStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeImageBaselineStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeImageFixTaskRequest(TeaModel):
     def __init__(
         self,
@@ -15542,10 +20337,19 @@ class DescribeImageFixTaskRequest(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The timestamp when the task ends. Unit: milliseconds.
         self.end_time = end_time
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The timestamp when the task starts. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the task. Valid values:
+        # 
+        # *   **1**: The task is running.
+        # *   **2**: The task is successful.
+        # *   **3**: The task failed.
         self.status = status
 
     def validate(self):
@@ -15600,17 +20404,33 @@ class DescribeImageFixTaskResponseBodyBuildTasks(TeaModel):
         status: int = None,
         task_type: str = None,
     ):
+        # The ID of the task.
         self.build_task_id = build_task_id
+        # The timestamp when the task starts. Unit: milliseconds.
         self.finish_time = finish_time
+        # The timestamp when the task ends. Unit: milliseconds.
         self.fix_time = fix_time
+        # The version of the image after image risks are fixed.
         self.new_tag = new_tag
+        # The UUID of the image after image risks are fixed.
         self.new_uuid = new_uuid
+        # The version of the image.
         self.old_tag = old_tag
+        # The UUID of the image.
         self.old_uuid = old_uuid
+        # The region of the image.
         self.region_id = region_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace of the image.
         self.repo_namespace = repo_namespace
+        # The status of the task. Valid values:
+        # 
+        # *   **1**: The task is running.
+        # *   **2**: The task is successful.
+        # *   **3**: The task failed.
         self.status = status
+        # The type of the task. The value is fixed as IMAGE_REPAIR, which indicates a task that fixes image risks.
         self.task_type = task_type
 
     def validate(self):
@@ -15685,9 +20505,13 @@ class DescribeImageFixTaskResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of tasks returned on the current page.
         self.count = count
+        # The page number of the returned page. Default value: **1**.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of tasks returned.
         self.total_count = total_count
 
     def validate(self):
@@ -15729,8 +20553,11 @@ class DescribeImageFixTaskResponseBody(TeaModel):
         page_info: DescribeImageFixTaskResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the tasks returned.
         self.build_tasks = build_tasks
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -15842,27 +20669,64 @@ class DescribeImageGroupedVulListRequest(TeaModel):
         type: str = None,
         uuids: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The ID of the container cluster.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
         self.cluster_id = cluster_id
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
         self.cve_id = cve_id
+        # The ID of the asset group.
         self.group_id = group_id
+        # The SHA-256 value of the image digest.
         self.image_digest = image_digest
+        # The layer of the image.
         self.image_layer = image_layer
+        # The tag that is added to the image.
         self.image_tag = image_tag
+        # Specifies whether to query the vulnerabilities in the latest images. If you do not specify this parameter, the vulnerabilities in all images are queried. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_latest = is_latest
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the vulnerability.
         self.name = name
+        # The priority to fix the vulnerability. Valid values:
+        # 
+        # *   **asap**: high. You must fix the vulnerability at the earliest opportunity.
+        # *   **later**: medium. You can fix the vulnerability based on your business requirements.
+        # *   **nntf**: low. You can ignore the vulnerability.
         self.necessity = necessity
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the patch that is used to fix the vulnerability.
         self.patch_id = patch_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The instance ID of the image repository.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
+        # The region ID of the image repository.
         self.repo_region_id = repo_region_id
+        # The types of the assets that you want to scan.
         self.scan_range = scan_range
+        # The type of the vulnerability that you want to query. Valid values:
+        # 
+        # *   **cve**: image system vulnerability
+        # *   **sca**: image application vulnerability
         self.type = type
+        # The UUIDs of the assets. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -15983,15 +20847,40 @@ class DescribeImageGroupedVulListResponseBodyGroupedVulItems(TeaModel):
         tags: str = None,
         type: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The number of vulnerabilities that have the high priority.
         self.asap_count = asap_count
+        # The timestamp when the first scan was performed. Unit: milliseconds.
         self.gmt_last = gmt_last
+        # The timestamp when the last scan was performed. Unit: milliseconds.
         self.last_scan_time = last_scan_time
+        # The number of vulnerabilities that have the medium priority.
         self.later_count = later_count
+        # The name of the vulnerability.
         self.name = name
+        # The number of vulnerabilities that have the low priority.
         self.nntf_count = nntf_count
+        # The status of the vulnerability. Valid values:
+        # 
+        # *   **0**: unhandled
+        # *   **1**: handled
+        # *   **2**: verifying
+        # *   **3**: added to the whitelist
         self.status = status
+        # The tag that is added to the vulnerability. Valid values:
+        # 
+        # *   Restart required
+        # *   Remote exploitation
+        # *   Exploit exists
+        # *   Exploitable
+        # *   Privilege escalation
+        # *   Code execution
         self.tags = tags
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: image system vulnerability
+        # *   **sca**: image application vulnerability
         self.type = type
 
     def validate(self):
@@ -16059,10 +20948,15 @@ class DescribeImageGroupedVulListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the image vulnerabilities.
         self.grouped_vul_items = grouped_vul_items
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of image system vulnerabilities.
         self.total_count = total_count
 
     def validate(self):
@@ -16167,15 +21061,153 @@ class DescribeImageListBySensitiveFileRequest(TeaModel):
         scan_range: List[str] = None,
         sensitive_file_key: str = None,
     ):
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.current_page = current_page
+        # The image digest.
+        # > Fuzzy match is supported.
         self.image_digest = image_digest
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # The ID of the container image.
+        # 
+        # > You can call the [ListRepository](~~ListRepository~~) operation to query the IDs of container images from the value of the InstanceId response parameter.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
+        # 
+        # > Fuzzy match is supported.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
+        # > Fuzzy match is supported.
         self.repo_namespace = repo_namespace
+        # The risk level of the file. Separate multiple levels with commas (,). Valid values:
+        # 
+        # - **high**\
+        # - **medium**\
+        # - **low**\
         self.risk_level = risk_level
+        # An array consisting of the types of the assets that you want to scan. Valid values:
+        # - **image**\
+        # - **container**\
         self.scan_range = scan_range
+        # The alert type of the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: NPM Token
+        # *   **ftp_cfg**: FTP Config
+        # *   **google\_oauth_key**: Google OAuth Key
+        # *   **planetscale_passwd**: Planetscale password
+        # *   **github\_ssh_key**: Github SSH Key
+        # *   **msbuild\_publish_profile**: MSBuild publish profile
+        # *   **fastly\_cdn_token**: Fastly CDN Token
+        # *   **ssh\_private_key**: SSH Private Key
+        # *   **aws_cli**: AWS CLI Credentials
+        # *   **cpanel\_proftpd**: cPanel ProFTPd Credential
+        # *   **postgresql_passwd**: PostgreSQl Passwd
+        # *   **discord\_client_cred**: Discord Client Credential
+        # *   **rails_database**: Rails Database Config
+        # *   **aws\_access_key**: AWS Access Key
+        # *   **esmtp_cfg**: ESMTP Config
+        # *   **docker\_registry_cfg**: Docker Registry Config
+        # *   **pem**: PEM
+        # *   **common_cred**: Common Credential
+        # *   **sftp_cfg**: SFTP Config
+        # *   **grafana_token**: Grafana Token
+        # *   **slack_token**: Slack Token
+        # *   **ec\_private_key**: EC Private Key
+        # *   **pypi_token**: PyPI Token
+        # *   **finicity_token**: Finicity Token
+        # *   **k8s\_client_key**: Kubernetes Client Key
+        # *   **git_cfg**: Git Config
+        # *   **django_key**: Django Key
+        # *   **jenkins_ssh**: Jenkins SSH Config
+        # *   **openssh\_private_key**: OPENSSH Private Key
+        # *   **square_oauth**: Square OAuth Token
+        # *   **typeform_token**: Typeform Token
+        # *   **common\_database_cfg**: Common Database Config
+        # *   **wordpress\_database_cfg**: Wordpress Database Config
+        # *   **googlecloud\_api_key**: Google Cloud API Key
+        # *   **vscode_sftp**: VSCode SFTP Config
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: Planetscale Token
+        # *   **contentful\_preview_token**: Contentful Preview Token
+        # *   **php\_database_cfg**: PHP Database Config
+        # *   **atom\_remote_sync**: Atom Remote Sync Config
+        # *   **aws\_session_token**: AWS Session Token
+        # *   **atom\_sftp_cfg**: Atom SFTP Config
+        # *   **asana\_client\_private_key**: Asana Client Private Key
+        # *   **tencentcloud_ak**: Tencent Cloud SecretId
+        # *   **rsa\_private_key**: RSA Private Key
+        # *   **github\_personal_token**: Github Personal Token
+        # *   **pgp**: PGP
+        # *   **stripe_skpk**: Stripe Secret Key
+        # *   **square_token**: Square Token
+        # *   **rails_carrierwave**: Rails Carrierwave Credential
+        # *   **dbeaver\_database_cfg**: DBeaver Database Config
+        # *   **robomongo_cred**: Robomongo Credential
+        # *   **github\_oauth_token**: Github OAuth Token
+        # *   **pulumi_token**: Pulumi Token
+        # *   **ventrilo_voip**: Ventrilo VoIP Server Config
+        # *   **macos_keychain**: macOS Keychain
+        # *   **amazon\_mws_token**: Amazon MWS Token
+        # *   **dynatrace_token**: Dynatrace Token
+        # *   **java_keystore**: Java Keystore
+        # *   **microsoft_sdf**: Microsoft SDF
+        # *   **kubernetes\_dashboard_cred**: Kubernetes Dashboard User Credential
+        # *   **atlassian_token**: Atlassian Token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun Webhook Signing Key
+        # *   **mailchimp\_api_key**: Mailchimp API Key
+        # *   **netrc_cfg**: .netrc config
+        # *   **openvpn_cfg**: OpenVPN Config
+        # *   **github\_refresh_token**: Github Refresh Token
+        # *   **salesforce**: Salesforce Credential
+        # *   **sendinblue**: Sendinblue Token
+        # *   **pkcs\_private_key**: PKCS Private Key
+        # *   **rubyonrails_passwd**: Ruby on Rails Passwd
+        # *   **filezilla_ftp**: FileZilla FTP Config
+        # *   **databricks_token**: Databricks Token
+        # *   **gitLab\_personal_token**: GitLab Personal Token
+        # *   **rails\_master_key**: Rails Master Key
+        # *   **sqlite**: SQLite3/SQLite Database
+        # *   **firefox_logins**: Firefox Login Config
+        # *   **mailgun\_private_token**: Mailgun Private Token
+        # *   **joomla_cfg**: Joomla Config
+        # *   **hashicorp\_terraform_token**: Hashicorp Terraform Token
+        # *   **jetbrains_ides**: Jetbrains IDEs Config
+        # *   **heroku\_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird Token
+        # *   **github\_app_token**: Github App Token
+        # *   **hashicorp\_vault_token**: Hashicorp Vault Token
+        # *   **pgp\_private_key**: PGP Private Key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: Huaei Cloud Access Key
+        # *   **aws_s3cmd**: AWS S3cmd Config
+        # *   **php_config**: php Config
+        # *   **common\_private_key**: Common Private Key Type
+        # *   **microsoft_mdf**: Microsoft MDF
+        # *   **mediawiki_cfg**: MediaWiki Config
+        # *   **jenkins_cred**: Jenkins Credential
+        # *   **rubygems_cred**: Rubygems Credential
+        # *   **clojars_token**: Clojars Token
+        # *   **phoenix\_web_passwd**: Phoenix Web Credential
+        # *   **puttygen\_private_key**: PuTTYgen Private Key
+        # *   **google\_oauth_token**: Google Oauth Token
+        # *   **rubyonrails_cfg**: Ruby On Rails Database Config
+        # *   **lob\_api_key**: Lob API Key
+        # *   **pkcs_cred**: PKCS#12
+        # *   **otr\_private_key**: OTR Private Key
+        # *   **contentful\_delivery_token**: Contentful Delivery Token
+        # *   **digital\_ocean_tugboat**: Digital Ocean Tugboat Config
+        # *   **dsa\_private_key**: DSA Private Key
+        # *   **rails\_app_token**: Rails App Token
+        # *   **git_cred**: Git User Credential
+        # *   **newrelic\_api_key**: New Relic User API Key
+        # *   **github_hub**: Github Token
+        # *   **rubygem**: Rubygem Token
         self.sensitive_file_key = sensitive_file_key
 
     def validate(self):
@@ -16248,15 +21280,153 @@ class DescribeImageListBySensitiveFileShrinkRequest(TeaModel):
         scan_range_shrink: str = None,
         sensitive_file_key: str = None,
     ):
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.current_page = current_page
+        # The image digest.
+        # > Fuzzy match is supported.
         self.image_digest = image_digest
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # The ID of the container image.
+        # 
+        # > You can call the [ListRepository](~~ListRepository~~) operation to query the IDs of container images from the value of the InstanceId response parameter.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
+        # 
+        # > Fuzzy match is supported.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
+        # > Fuzzy match is supported.
         self.repo_namespace = repo_namespace
+        # The risk level of the file. Separate multiple levels with commas (,). Valid values:
+        # 
+        # - **high**\
+        # - **medium**\
+        # - **low**\
         self.risk_level = risk_level
+        # An array consisting of the types of the assets that you want to scan. Valid values:
+        # - **image**\
+        # - **container**\
         self.scan_range_shrink = scan_range_shrink
+        # The alert type of the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: NPM Token
+        # *   **ftp_cfg**: FTP Config
+        # *   **google\_oauth_key**: Google OAuth Key
+        # *   **planetscale_passwd**: Planetscale password
+        # *   **github\_ssh_key**: Github SSH Key
+        # *   **msbuild\_publish_profile**: MSBuild publish profile
+        # *   **fastly\_cdn_token**: Fastly CDN Token
+        # *   **ssh\_private_key**: SSH Private Key
+        # *   **aws_cli**: AWS CLI Credentials
+        # *   **cpanel\_proftpd**: cPanel ProFTPd Credential
+        # *   **postgresql_passwd**: PostgreSQl Passwd
+        # *   **discord\_client_cred**: Discord Client Credential
+        # *   **rails_database**: Rails Database Config
+        # *   **aws\_access_key**: AWS Access Key
+        # *   **esmtp_cfg**: ESMTP Config
+        # *   **docker\_registry_cfg**: Docker Registry Config
+        # *   **pem**: PEM
+        # *   **common_cred**: Common Credential
+        # *   **sftp_cfg**: SFTP Config
+        # *   **grafana_token**: Grafana Token
+        # *   **slack_token**: Slack Token
+        # *   **ec\_private_key**: EC Private Key
+        # *   **pypi_token**: PyPI Token
+        # *   **finicity_token**: Finicity Token
+        # *   **k8s\_client_key**: Kubernetes Client Key
+        # *   **git_cfg**: Git Config
+        # *   **django_key**: Django Key
+        # *   **jenkins_ssh**: Jenkins SSH Config
+        # *   **openssh\_private_key**: OPENSSH Private Key
+        # *   **square_oauth**: Square OAuth Token
+        # *   **typeform_token**: Typeform Token
+        # *   **common\_database_cfg**: Common Database Config
+        # *   **wordpress\_database_cfg**: Wordpress Database Config
+        # *   **googlecloud\_api_key**: Google Cloud API Key
+        # *   **vscode_sftp**: VSCode SFTP Config
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: Planetscale Token
+        # *   **contentful\_preview_token**: Contentful Preview Token
+        # *   **php\_database_cfg**: PHP Database Config
+        # *   **atom\_remote_sync**: Atom Remote Sync Config
+        # *   **aws\_session_token**: AWS Session Token
+        # *   **atom\_sftp_cfg**: Atom SFTP Config
+        # *   **asana\_client\_private_key**: Asana Client Private Key
+        # *   **tencentcloud_ak**: Tencent Cloud SecretId
+        # *   **rsa\_private_key**: RSA Private Key
+        # *   **github\_personal_token**: Github Personal Token
+        # *   **pgp**: PGP
+        # *   **stripe_skpk**: Stripe Secret Key
+        # *   **square_token**: Square Token
+        # *   **rails_carrierwave**: Rails Carrierwave Credential
+        # *   **dbeaver\_database_cfg**: DBeaver Database Config
+        # *   **robomongo_cred**: Robomongo Credential
+        # *   **github\_oauth_token**: Github OAuth Token
+        # *   **pulumi_token**: Pulumi Token
+        # *   **ventrilo_voip**: Ventrilo VoIP Server Config
+        # *   **macos_keychain**: macOS Keychain
+        # *   **amazon\_mws_token**: Amazon MWS Token
+        # *   **dynatrace_token**: Dynatrace Token
+        # *   **java_keystore**: Java Keystore
+        # *   **microsoft_sdf**: Microsoft SDF
+        # *   **kubernetes\_dashboard_cred**: Kubernetes Dashboard User Credential
+        # *   **atlassian_token**: Atlassian Token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun Webhook Signing Key
+        # *   **mailchimp\_api_key**: Mailchimp API Key
+        # *   **netrc_cfg**: .netrc config
+        # *   **openvpn_cfg**: OpenVPN Config
+        # *   **github\_refresh_token**: Github Refresh Token
+        # *   **salesforce**: Salesforce Credential
+        # *   **sendinblue**: Sendinblue Token
+        # *   **pkcs\_private_key**: PKCS Private Key
+        # *   **rubyonrails_passwd**: Ruby on Rails Passwd
+        # *   **filezilla_ftp**: FileZilla FTP Config
+        # *   **databricks_token**: Databricks Token
+        # *   **gitLab\_personal_token**: GitLab Personal Token
+        # *   **rails\_master_key**: Rails Master Key
+        # *   **sqlite**: SQLite3/SQLite Database
+        # *   **firefox_logins**: Firefox Login Config
+        # *   **mailgun\_private_token**: Mailgun Private Token
+        # *   **joomla_cfg**: Joomla Config
+        # *   **hashicorp\_terraform_token**: Hashicorp Terraform Token
+        # *   **jetbrains_ides**: Jetbrains IDEs Config
+        # *   **heroku\_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird Token
+        # *   **github\_app_token**: Github App Token
+        # *   **hashicorp\_vault_token**: Hashicorp Vault Token
+        # *   **pgp\_private_key**: PGP Private Key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: Huaei Cloud Access Key
+        # *   **aws_s3cmd**: AWS S3cmd Config
+        # *   **php_config**: php Config
+        # *   **common\_private_key**: Common Private Key Type
+        # *   **microsoft_mdf**: Microsoft MDF
+        # *   **mediawiki_cfg**: MediaWiki Config
+        # *   **jenkins_cred**: Jenkins Credential
+        # *   **rubygems_cred**: Rubygems Credential
+        # *   **clojars_token**: Clojars Token
+        # *   **phoenix\_web_passwd**: Phoenix Web Credential
+        # *   **puttygen\_private_key**: PuTTYgen Private Key
+        # *   **google\_oauth_token**: Google Oauth Token
+        # *   **rubyonrails_cfg**: Ruby On Rails Database Config
+        # *   **lob\_api_key**: Lob API Key
+        # *   **pkcs_cred**: PKCS#12
+        # *   **otr\_private_key**: OTR Private Key
+        # *   **contentful\_delivery_token**: Contentful Delivery Token
+        # *   **digital\_ocean_tugboat**: Digital Ocean Tugboat Config
+        # *   **dsa\_private_key**: DSA Private Key
+        # *   **rails\_app_token**: Rails App Token
+        # *   **git_cred**: Git User Credential
+        # *   **newrelic\_api_key**: New Relic User API Key
+        # *   **github_hub**: Github Token
+        # *   **rubygem**: Rubygem Token
         self.sensitive_file_key = sensitive_file_key
 
     def validate(self):
@@ -16329,15 +21499,28 @@ class DescribeImageListBySensitiveFileResponseBodyImageInfos(TeaModel):
         tag: str = None,
         uuid: str = None,
     ):
+        # The image digest.
         self.digest = digest
+        # The UNIX timestamp of when the first scan was performed. Unit: milliseconds.
         self.first_scan_time = first_scan_time
+        # The ID of the image instance.
         self.instance_id = instance_id
+        # The UNIX timestamp of when the last scan was performed. Unit: milliseconds.
         self.last_scan_time = last_scan_time
+        # The region ID of the image instance.
         self.region_id = region_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
+        # The risk level. Valid values:
+        # - **high**\
+        # - **medium**\
+        # - **low**\
         self.risk_level = risk_level
+        # The tag that is added to the image.
         self.tag = tag
+        # The UUID of the image.
         self.uuid = uuid
 
     def validate(self):
@@ -16405,10 +21588,15 @@ class DescribeImageListBySensitiveFileResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The key of the last data entry.
         self.last_row_key = last_row_key
+        # The number of entries returned per page. Default value: 20.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16458,12 +21646,21 @@ class DescribeImageListBySensitiveFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # An array that consists of the information about the images.
         self.image_infos = image_infos
+        # The error message returned.
         self.message = message
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -16586,22 +21783,47 @@ class DescribeImageListWithBaselineNameRequest(TeaModel):
         repo_namespace: str = None,
         scan_range: List[str] = None,
     ):
+        # The name of the image baseline.
         self.baseline_name_key = baseline_name_key
+        # The ID of the container cluster.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The ID of the container.
         self.container_id = container_id
+        # The search condition for the image baseline.
         self.criteria = criteria
+        # The type of the search condition. Valid values:
+        # 
+        # *   **BaselineNameAlias**: baseline name
+        # *   **BaselineClassAlias**: baseline category
         self.criteria_type = criteria_type
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The name of the image to which the container belongs.
         self.image = image
+        # The SHA-256 value of the image digest.
         self.image_digest = image_digest
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The namespace.
         self.namespace = namespace
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The pod.
         self.pod = pod
+        # The instance ID of the image repository.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
+        # The types of the assets that you want to scan.
         self.scan_range = scan_range
 
     def validate(self):
@@ -16724,37 +21946,65 @@ class DescribeImageListWithBaselineNameResponseBodyImageInfos(TeaModel):
         total_item_count: int = None,
         uuid: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The ID of the container.
         self.container_id = container_id
+        # The SHA-256 value of the image digest.
         self.digest = digest
+        # The number of images on which **high** baseline risks are detected.
         self.high_risk_image = high_risk_image
+        # The name of the image.
         self.image = image
+        # The timestamp when the image was created. Unit: milliseconds.
         self.image_create = image_create
+        # The ID of the image.
         self.image_id = image_id
+        # The size of the image.
         self.image_size = image_size
+        # The timestamp when the image was updated. Unit: milliseconds.
         self.image_update = image_update
+        # The ID of the image instance.
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.internet_ip = internet_ip
         self.intranet_ip = intranet_ip
         self.last_scan_time = last_scan_time
+        # The number of images on which **low** baseline risks are detected.
         self.low_risk_image = low_risk_image
+        # The number of images on which **medium** baseline risks are detected.
         self.middle_risk_image = middle_risk_image
+        # The namespace.
         self.namespace = namespace
+        # The number of images that do not have baseline risks.
         self.no_risk_image = no_risk_image
+        # The pod.
         self.pod = pod
+        # The region ID of the image instance.
         self.region_id = region_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
+        # The type of the image repository.
         self.repo_type = repo_type
+        # Indicates whether the image is at risk. Valid values:
+        # 
+        # *   **YES**\
+        # *   **NO**\
         self.risk_status = risk_status
+        # The version of the image.
         self.tag = tag
         self.target_id = target_id
         self.target_name = target_name
         self.target_type = target_type
+        # The total number of risk items that are detected on the image by using the baseline.
         self.total_item_count = total_item_count
+        # The UUID of the image.
         self.uuid = uuid
 
     def validate(self):
@@ -16909,9 +22159,13 @@ class DescribeImageListWithBaselineNameResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of the images returned on the current page.
         self.count = count
+        # The page number of the returned page. Default value: **1**.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of images on which baseline risks are detected.
         self.total_count = total_count
 
     def validate(self):
@@ -16953,8 +22207,11 @@ class DescribeImageListWithBaselineNameResponseBody(TeaModel):
         page_info: DescribeImageListWithBaselineNameResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the images returned.
         self.image_infos = image_infos
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -17047,8 +22304,11 @@ class DescribeImageScanAuthCountResponseBodyImageScan(TeaModel):
         instance_id: str = None,
         scan_count: int = None,
     ):
+        # The quota for container image scan.
         self.image_scan_capacity = image_scan_capacity
+        # The instance ID of Security Center.
         self.instance_id = instance_id
+        # The consumed quota for container image scan.
         self.scan_count = scan_count
 
     def validate(self):
@@ -17085,7 +22345,9 @@ class DescribeImageScanAuthCountResponseBody(TeaModel):
         image_scan: DescribeImageScanAuthCountResponseBodyImageScan = None,
         request_id: str = None,
     ):
+        # The details about the quota for container image scan.
         self.image_scan = image_scan
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -17168,11 +22430,136 @@ class DescribeImageSensitiveFileByKeyRequest(TeaModel):
         scan_range: List[str] = None,
         sensitive_file_key: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The UUID of the image.
         self.image_uuid = image_uuid
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The type of the asset that you want to scan. Valid values:
+        # 
+        # *   **image**\
+        # *   **container**\
         self.scan_range = scan_range
+        # The alert type of the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: NPM Token
+        # *   **ftp_cfg**: FTP Config
+        # *   **google\_oauth_key**: Google OAuth Key
+        # *   **planetscale_passwd**: Planetscale password
+        # *   **github\_ssh_key**: Github SSH Key
+        # *   **msbuild\_publish_profile**: MSBuild publish profile
+        # *   **fastly\_cdn_token**: Fastly CDN Token
+        # *   **ssh\_private_key**: SSH Private Key
+        # *   **aws_cli**: AWS CLI Credentials
+        # *   **cpanel\_proftpd**: cPanel ProFTPd Credential
+        # *   **postgresql_passwd**: PostgreSQl Passwd
+        # *   **discord\_client_cred**: Discord Client Credential
+        # *   **rails_database**: Rails Database Config
+        # *   **aws\_access_key**: AWS Access Key
+        # *   **esmtp_cfg**: ESMTP Config
+        # *   **docker\_registry_cfg**: Docker Registry Config
+        # *   **pem**: PEM
+        # *   **common_cred**: Common Credential
+        # *   **sftp_cfg**: SFTP Config
+        # *   **grafana_token**: Grafana Token
+        # *   **slack_token**: Slack Token
+        # *   **ec\_private_key**: EC Private Key
+        # *   **pypi_token**: PyPI Token
+        # *   **finicity_token**: Finicity Token
+        # *   **k8s\_client_key**: Kubernetes Client Key
+        # *   **git_cfg**: Git Config
+        # *   **django_key**: Django Key
+        # *   **jenkins_ssh**: Jenkins SSH Config
+        # *   **openssh\_private_key**: OPENSSH Private Key
+        # *   **square_oauth**: Square OAuth Token
+        # *   **typeform_token**: Typeform Token
+        # *   **common\_database_cfg**: Common Database Config
+        # *   **wordpress\_database_cfg**: Wordpress Database Config
+        # *   **googlecloud\_api_key**: Google Cloud API Key
+        # *   **vscode_sftp**: VSCode SFTP Config
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: Planetscale Token
+        # *   **contentful\_preview_token**: Contentful Preview Token
+        # *   **php\_database_cfg**: PHP Database Config
+        # *   **atom\_remote_sync**: Atom Remote Sync Config
+        # *   **aws\_session_token**: AWS Session Token
+        # *   **atom\_sftp_cfg**: Atom SFTP Config
+        # *   **asana\_client\_private_key**: Asana Client Private Key
+        # *   **tencentcloud_ak**: Tencent Cloud SecretId
+        # *   **rsa\_private_key**: RSA Private Key
+        # *   **github\_personal_token**: Github Personal Token
+        # *   **pgp**: PGP
+        # *   **stripe_skpk**: Stripe Secret Key
+        # *   **square_token**: Square Token
+        # *   **rails_carrierwave**: Rails Carrierwave Credential
+        # *   **dbeaver\_database_cfg**: DBeaver Database Config
+        # *   **robomongo_cred**: Robomongo Credential
+        # *   **github\_oauth_token**: Github OAuth Token
+        # *   **pulumi_token**: Pulumi Token
+        # *   **ventrilo_voip**: Ventrilo VoIP Server Config
+        # *   **macos_keychain**: macOS Keychain
+        # *   **amazon\_mws_token**: Amazon MWS Token
+        # *   **dynatrace_token**: Dynatrace Token
+        # *   **java_keystore**: Java Keystore
+        # *   **microsoft_sdf**: Microsoft SDF
+        # *   **kubernetes\_dashboard_cred**: Kubernetes Dashboard User Credential
+        # *   **atlassian_token**: Atlassian Token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun Webhook Signing Key
+        # *   **mailchimp\_api_key**: Mailchimp API Key
+        # *   **netrc_cfg**: .netrc config
+        # *   **openvpn_cfg**: OpenVPN Config
+        # *   **github\_refresh_token**: Github Refresh Token
+        # *   **salesforce**: Salesforce Credential
+        # *   **sendinblue**: Sendinblue Token
+        # *   **pkcs\_private_key**: PKCS Private Key
+        # *   **rubyonrails_passwd**: Ruby on Rails Passwd
+        # *   **filezilla_ftp**: FileZilla FTP Config
+        # *   **databricks_token**: Databricks Token
+        # *   **gitLab\_personal_token**: GitLab Personal Token
+        # *   **rails\_master_key**: Rails Master Key
+        # *   **sqlite**: SQLite3/SQLite Database
+        # *   **firefox_logins**: Firefox Login Config
+        # *   **mailgun\_private_token**: Mailgun Private Token
+        # *   **joomla_cfg**: Joomla Config
+        # *   **hashicorp\_terraform_token**: Hashicorp Terraform Token
+        # *   **jetbrains_ides**: Jetbrains IDEs Config
+        # *   **heroku\_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird Token
+        # *   **github\_app_token**: Github App Token
+        # *   **hashicorp\_vault_token**: Hashicorp Vault Token
+        # *   **pgp\_private_key**: PGP Private Key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: Huaei Cloud Access Key
+        # *   **aws_s3cmd**: AWS S3cmd Config
+        # *   **php_config**: php Config
+        # *   **common\_private_key**: Common Private Key Type
+        # *   **microsoft_mdf**: Microsoft MDF
+        # *   **mediawiki_cfg**: MediaWiki Config
+        # *   **jenkins_cred**: Jenkins Credential
+        # *   **rubygems_cred**: Rubygems Credential
+        # *   **clojars_token**: Clojars Token
+        # *   **phoenix\_web_passwd**: Phoenix Web Credential
+        # *   **puttygen\_private_key**: PuTTYgen Private Key
+        # *   **google\_oauth_token**: Google Oauth Token
+        # *   **rubyonrails_cfg**: Ruby On Rails Database Config
+        # *   **lob\_api_key**: Lob API Key
+        # *   **pkcs_cred**: PKCS#12
+        # *   **otr\_private_key**: OTR Private Key
+        # *   **contentful\_delivery_token**: Contentful Delivery Token
+        # *   **digital\_ocean_tugboat**: Digital Ocean Tugboat Config
+        # *   **dsa\_private_key**: DSA Private Key
+        # *   **rails\_app_token**: Rails App Token
+        # *   **git_cred**: Git User Credential
+        # *   **newrelic\_api_key**: New Relic User API Key
+        # *   **github_hub**: Github Token
+        # *   **rubygem**: Rubygem Token
         self.sensitive_file_key = sensitive_file_key
 
     def validate(self):
@@ -17225,11 +22612,136 @@ class DescribeImageSensitiveFileByKeyShrinkRequest(TeaModel):
         scan_range_shrink: str = None,
         sensitive_file_key: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The UUID of the image.
         self.image_uuid = image_uuid
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The type of the asset that you want to scan. Valid values:
+        # 
+        # *   **image**\
+        # *   **container**\
         self.scan_range_shrink = scan_range_shrink
+        # The alert type of the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: NPM Token
+        # *   **ftp_cfg**: FTP Config
+        # *   **google\_oauth_key**: Google OAuth Key
+        # *   **planetscale_passwd**: Planetscale password
+        # *   **github\_ssh_key**: Github SSH Key
+        # *   **msbuild\_publish_profile**: MSBuild publish profile
+        # *   **fastly\_cdn_token**: Fastly CDN Token
+        # *   **ssh\_private_key**: SSH Private Key
+        # *   **aws_cli**: AWS CLI Credentials
+        # *   **cpanel\_proftpd**: cPanel ProFTPd Credential
+        # *   **postgresql_passwd**: PostgreSQl Passwd
+        # *   **discord\_client_cred**: Discord Client Credential
+        # *   **rails_database**: Rails Database Config
+        # *   **aws\_access_key**: AWS Access Key
+        # *   **esmtp_cfg**: ESMTP Config
+        # *   **docker\_registry_cfg**: Docker Registry Config
+        # *   **pem**: PEM
+        # *   **common_cred**: Common Credential
+        # *   **sftp_cfg**: SFTP Config
+        # *   **grafana_token**: Grafana Token
+        # *   **slack_token**: Slack Token
+        # *   **ec\_private_key**: EC Private Key
+        # *   **pypi_token**: PyPI Token
+        # *   **finicity_token**: Finicity Token
+        # *   **k8s\_client_key**: Kubernetes Client Key
+        # *   **git_cfg**: Git Config
+        # *   **django_key**: Django Key
+        # *   **jenkins_ssh**: Jenkins SSH Config
+        # *   **openssh\_private_key**: OPENSSH Private Key
+        # *   **square_oauth**: Square OAuth Token
+        # *   **typeform_token**: Typeform Token
+        # *   **common\_database_cfg**: Common Database Config
+        # *   **wordpress\_database_cfg**: Wordpress Database Config
+        # *   **googlecloud\_api_key**: Google Cloud API Key
+        # *   **vscode_sftp**: VSCode SFTP Config
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: Planetscale Token
+        # *   **contentful\_preview_token**: Contentful Preview Token
+        # *   **php\_database_cfg**: PHP Database Config
+        # *   **atom\_remote_sync**: Atom Remote Sync Config
+        # *   **aws\_session_token**: AWS Session Token
+        # *   **atom\_sftp_cfg**: Atom SFTP Config
+        # *   **asana\_client\_private_key**: Asana Client Private Key
+        # *   **tencentcloud_ak**: Tencent Cloud SecretId
+        # *   **rsa\_private_key**: RSA Private Key
+        # *   **github\_personal_token**: Github Personal Token
+        # *   **pgp**: PGP
+        # *   **stripe_skpk**: Stripe Secret Key
+        # *   **square_token**: Square Token
+        # *   **rails_carrierwave**: Rails Carrierwave Credential
+        # *   **dbeaver\_database_cfg**: DBeaver Database Config
+        # *   **robomongo_cred**: Robomongo Credential
+        # *   **github\_oauth_token**: Github OAuth Token
+        # *   **pulumi_token**: Pulumi Token
+        # *   **ventrilo_voip**: Ventrilo VoIP Server Config
+        # *   **macos_keychain**: macOS Keychain
+        # *   **amazon\_mws_token**: Amazon MWS Token
+        # *   **dynatrace_token**: Dynatrace Token
+        # *   **java_keystore**: Java Keystore
+        # *   **microsoft_sdf**: Microsoft SDF
+        # *   **kubernetes\_dashboard_cred**: Kubernetes Dashboard User Credential
+        # *   **atlassian_token**: Atlassian Token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun Webhook Signing Key
+        # *   **mailchimp\_api_key**: Mailchimp API Key
+        # *   **netrc_cfg**: .netrc config
+        # *   **openvpn_cfg**: OpenVPN Config
+        # *   **github\_refresh_token**: Github Refresh Token
+        # *   **salesforce**: Salesforce Credential
+        # *   **sendinblue**: Sendinblue Token
+        # *   **pkcs\_private_key**: PKCS Private Key
+        # *   **rubyonrails_passwd**: Ruby on Rails Passwd
+        # *   **filezilla_ftp**: FileZilla FTP Config
+        # *   **databricks_token**: Databricks Token
+        # *   **gitLab\_personal_token**: GitLab Personal Token
+        # *   **rails\_master_key**: Rails Master Key
+        # *   **sqlite**: SQLite3/SQLite Database
+        # *   **firefox_logins**: Firefox Login Config
+        # *   **mailgun\_private_token**: Mailgun Private Token
+        # *   **joomla_cfg**: Joomla Config
+        # *   **hashicorp\_terraform_token**: Hashicorp Terraform Token
+        # *   **jetbrains_ides**: Jetbrains IDEs Config
+        # *   **heroku\_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird Token
+        # *   **github\_app_token**: Github App Token
+        # *   **hashicorp\_vault_token**: Hashicorp Vault Token
+        # *   **pgp\_private_key**: PGP Private Key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: Huaei Cloud Access Key
+        # *   **aws_s3cmd**: AWS S3cmd Config
+        # *   **php_config**: php Config
+        # *   **common\_private_key**: Common Private Key Type
+        # *   **microsoft_mdf**: Microsoft MDF
+        # *   **mediawiki_cfg**: MediaWiki Config
+        # *   **jenkins_cred**: Jenkins Credential
+        # *   **rubygems_cred**: Rubygems Credential
+        # *   **clojars_token**: Clojars Token
+        # *   **phoenix\_web_passwd**: Phoenix Web Credential
+        # *   **puttygen\_private_key**: PuTTYgen Private Key
+        # *   **google\_oauth_token**: Google Oauth Token
+        # *   **rubyonrails_cfg**: Ruby On Rails Database Config
+        # *   **lob\_api_key**: Lob API Key
+        # *   **pkcs_cred**: PKCS#12
+        # *   **otr\_private_key**: OTR Private Key
+        # *   **contentful\_delivery_token**: Contentful Delivery Token
+        # *   **digital\_ocean_tugboat**: Digital Ocean Tugboat Config
+        # *   **dsa\_private_key**: DSA Private Key
+        # *   **rails\_app_token**: Rails App Token
+        # *   **git_cred**: Git User Credential
+        # *   **newrelic\_api_key**: New Relic User API Key
+        # *   **github_hub**: Github Token
+        # *   **rubygem**: Rubygem Token
         self.sensitive_file_key = sensitive_file_key
 
     def validate(self):
@@ -17281,10 +22793,15 @@ class DescribeImageSensitiveFileByKeyResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The key of the last data entry.
         self.last_row_key = last_row_key
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -17336,14 +22853,140 @@ class DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList(TeaModel):
         sensitive_file_key: str = None,
         sensitive_file_name: str = None,
     ):
+        # The suggestion.
         self.advice = advice
+        # The file path.
         self.file_path = file_path
+        # The timestamp when the first scan was performed. Unit: milliseconds.
         self.first_scan_time = first_scan_time
+        # The timestamp when the last scan was performed. Unit: milliseconds.
         self.last_scan_time = last_scan_time
+        # The digest of the image layer.
         self.layer_digest = layer_digest
+        # The sensitive content.
         self.promt = promt
+        # The risk level of the sensitive file. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # The alert type of the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: NPM Token
+        # *   **ftp_cfg**: FTP Config
+        # *   **google\_oauth_key**: Google OAuth Key
+        # *   **planetscale_passwd**: Planetscale password
+        # *   **github\_ssh_key**: Github SSH Key
+        # *   **msbuild\_publish_profile**: MSBuild publish profile
+        # *   **fastly\_cdn_token**: Fastly CDN Token
+        # *   **ssh\_private_key**: SSH Private Key
+        # *   **aws_cli**: AWS CLI Credentials
+        # *   **cpanel\_proftpd**: cPanel ProFTPd Credential
+        # *   **postgresql_passwd**: PostgreSQl Passwd
+        # *   **discord\_client_cred**: Discord Client Credential
+        # *   **rails_database**: Rails Database Config
+        # *   **aws\_access_key**: AWS Access Key
+        # *   **esmtp_cfg**: ESMTP Config
+        # *   **docker\_registry_cfg**: Docker Registry Config
+        # *   **pem**: PEM
+        # *   **common_cred**: Common Credential
+        # *   **sftp_cfg**: SFTP Config
+        # *   **grafana_token**: Grafana Token
+        # *   **slack_token**: Slack Token
+        # *   **ec\_private_key**: EC Private Key
+        # *   **pypi_token**: PyPI Token
+        # *   **finicity_token**: Finicity Token
+        # *   **k8s\_client_key**: Kubernetes Client Key
+        # *   **git_cfg**: Git Config
+        # *   **django_key**: Django Key
+        # *   **jenkins_ssh**: Jenkins SSH Config
+        # *   **openssh\_private_key**: OPENSSH Private Key
+        # *   **square_oauth**: Square OAuth Token
+        # *   **typeform_token**: Typeform Token
+        # *   **common\_database_cfg**: Common Database Config
+        # *   **wordpress\_database_cfg**: Wordpress Database Config
+        # *   **googlecloud\_api_key**: Google Cloud API Key
+        # *   **vscode_sftp**: VSCode SFTP Config
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: Planetscale Token
+        # *   **contentful\_preview_token**: Contentful Preview Token
+        # *   **php\_database_cfg**: PHP Database Config
+        # *   **atom\_remote_sync**: Atom Remote Sync Config
+        # *   **aws\_session_token**: AWS Session Token
+        # *   **atom\_sftp_cfg**: Atom SFTP Config
+        # *   **asana\_client\_private_key**: Asana Client Private Key
+        # *   **tencentcloud_ak**: Tencent Cloud SecretId
+        # *   **rsa\_private_key**: RSA Private Key
+        # *   **github\_personal_token**: Github Personal Token
+        # *   **pgp**: PGP
+        # *   **stripe_skpk**: Stripe Secret Key
+        # *   **square_token**: Square Token
+        # *   **rails_carrierwave**: Rails Carrierwave Credential
+        # *   **dbeaver\_database_cfg**: DBeaver Database Config
+        # *   **robomongo_cred**: Robomongo Credential
+        # *   **github\_oauth_token**: Github OAuth Token
+        # *   **pulumi_token**: Pulumi Token
+        # *   **ventrilo_voip**: Ventrilo VoIP Server Config
+        # *   **macos_keychain**: macOS Keychain
+        # *   **amazon\_mws_token**: Amazon MWS Token
+        # *   **dynatrace_token**: Dynatrace Token
+        # *   **java_keystore**: Java Keystore
+        # *   **microsoft_sdf**: Microsoft SDF
+        # *   **kubernetes\_dashboard_cred**: Kubernetes Dashboard User Credential
+        # *   **atlassian_token**: Atlassian Token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun Webhook Signing Key
+        # *   **mailchimp\_api_key**: Mailchimp API Key
+        # *   **netrc_cfg**: .netrc config
+        # *   **openvpn_cfg**: OpenVPN Config
+        # *   **github\_refresh_token**: Github Refresh Token
+        # *   **salesforce**: Salesforce Credential
+        # *   **sendinblue**: Sendinblue Token
+        # *   **pkcs\_private_key**: PKCS Private Key
+        # *   **rubyonrails_passwd**: Ruby on Rails Passwd
+        # *   **filezilla_ftp**: FileZilla FTP Config
+        # *   **databricks_token**: Databricks Token
+        # *   **gitLab\_personal_token**: GitLab Personal Token
+        # *   **rails\_master_key**: Rails Master Key
+        # *   **sqlite**: SQLite3/SQLite Database
+        # *   **firefox_logins**: Firefox Login Config
+        # *   **mailgun\_private_token**: Mailgun Private Token
+        # *   **joomla_cfg**: Joomla Config
+        # *   **hashicorp\_terraform_token**: Hashicorp Terraform Token
+        # *   **jetbrains_ides**: Jetbrains IDEs Config
+        # *   **heroku\_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird Token
+        # *   **github\_app_token**: Github App Token
+        # *   **hashicorp\_vault_token**: Hashicorp Vault Token
+        # *   **pgp\_private_key**: PGP Private Key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: Huaei Cloud Access Key
+        # *   **aws_s3cmd**: AWS S3cmd Config
+        # *   **php_config**: php Config
+        # *   **common\_private_key**: Common Private Key Type
+        # *   **microsoft_mdf**: Microsoft MDF
+        # *   **mediawiki_cfg**: MediaWiki Config
+        # *   **jenkins_cred**: Jenkins Credential
+        # *   **rubygems_cred**: Rubygems Credential
+        # *   **clojars_token**: Clojars Token
+        # *   **phoenix\_web_passwd**: Phoenix Web Credential
+        # *   **puttygen\_private_key**: PuTTYgen Private Key
+        # *   **google\_oauth_token**: Google Oauth Token
+        # *   **rubyonrails_cfg**: Ruby On Rails Database Config
+        # *   **lob\_api_key**: Lob API Key
+        # *   **pkcs_cred**: PKCS#12
+        # *   **otr\_private_key**: OTR Private Key
+        # *   **contentful\_delivery_token**: Contentful Delivery Token
+        # *   **digital\_ocean_tugboat**: Digital Ocean Tugboat Config
+        # *   **dsa\_private_key**: DSA Private Key
+        # *   **rails\_app_token**: Rails App Token
+        # *   **git_cred**: Git User Credential
+        # *   **newrelic\_api_key**: New Relic User API Key
+        # *   **github_hub**: Github Token
+        # *   **rubygem**: Rubygem Token
         self.sensitive_file_key = sensitive_file_key
+        # The alert type name of the sensitive file.
         self.sensitive_file_name = sensitive_file_name
 
     def validate(self):
@@ -17409,12 +23052,22 @@ class DescribeImageSensitiveFileByKeyResponseBody(TeaModel):
         sensitive_file_list: List[DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList] = None,
         success: bool = None,
     ):
+        # The status code returned. If the 200 status code is returned, the request was successful.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the sensitive files.
         self.sensitive_file_list = sensitive_file_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -17528,13 +23181,150 @@ class DescribeImageSensitiveFileListRequest(TeaModel):
         risk_level: str = None,
         scan_range: List[str] = None,
     ):
+        # The value of the sensitive file type.
         self.criteria = criteria
+        # The query type of sensitive files. Valid values:
+        # 
+        # *   **SensitiveFileKey**: the alert type for sensitive files. Valid values:
+        # 
+        #     *   **npm_token**: npm access token
+        #     *   **ftp_cfg**: FTP configuration
+        #     *   **google\_oauth_key**: Google OAuth key
+        #     *   **planetscale_passwd**: PlanetScale password
+        #     *   **github\_ssh_key**: GitHub SSH key
+        #     *   **msbuild\_publish_profile**: MSBuild publish profile
+        #     *   **fastly\_cdn_token**: Fastly CDN token
+        #     *   **ssh\_private_key**: SSH private key
+        #     *   **aws_cli**: AWS CLI credential
+        #     *   **cpanel_proftpd**: cPanel ProFTPD credential
+        #     *   **postgresql_passwd**: PostgreSQL password file
+        #     *   **discord\_client_cred**: Discord client credential
+        #     *   **rails_database**: Rails database configuration
+        #     *   **aws\_access_key**: AWS access key
+        #     *   **esmtp_cfg** :configuration of Extended Simple Mail Transfer Protocol (ESMTP)
+        #     *   **docker\_registry_cfg**: configuration of a Docker image repository
+        #     *   **pem**: Privacy-Enhanced Mail (PEM)
+        #     *   **common_cred**: common credential
+        #     *   **sftp_cfg**: SFTP connection configuration
+        #     *   **grafana_token**: Grafana token
+        #     *   **slack_token**: Slack token
+        #     *   **ec\_private_key**: EC private key
+        #     *   **pypi_token**: upload token for the Python Package Index (PyPI)
+        #     *   **finicity_token**: Finicity token
+        #     *   **k8s\_client_key**: Kubernetes private key
+        #     *   **git_cfg**: Git configuration
+        #     *   **django_key**: Django key
+        #     *   **jenkins_ssh**: Jenkins SSH configuration file
+        #     *   **openssh\_private_key**: OpenSSL private key
+        #     *   **square_oauth**: OAuth credential for Square
+        #     *   **typeform_token**: Typeform token
+        #     *   **common\_database_cfg**: general database connection configuration
+        #     *   **wordpress\_database_cfg**: WordPress database configuration
+        #     *   **googlecloud\_api_key**: API key for Google Cloud
+        #     *   **vscode_sftp**: VSCode SFTP configuration
+        #     *   **apache_htpasswd**: Apache htpasswd
+        #     *   **planetscale_token**: PlanetScale token
+        #     *   **contentful\_preview_token**: preview token for Contentful
+        #     *   **php\_database_cfg**: database password for a PHP application
+        #     *   **atom\_remote_sync**: Atom remote synchronization configuration
+        #     *   **aws\_session_token**: AWS session token
+        #     *   **atom\_sftp_cfg**: Atom SFTP configuration
+        #     *   **tencentcloud_ak**: Asana client key
+        #     *   **tencentcloud_ak**: secret ID of a third-party cloud
+        #     *   **rsa\_private_key**: RSA private key
+        #     *   **github\_personal_token**: personal access token for GitHub
+        #     *   **pgp**: Pretty Good Privacy (PGP) encrypted file
+        #     *   **stripe_skpk**: Stripe secret key
+        #     *   **square_token**: Square access token
+        #     *   **rails_carrierwave**: file upload credential for Rails Carrierwave
+        #     *   **dbeaver\_database_cfg**: DBeaver database configuration
+        #     *   **robomongo_cred**: credential for RoboMongo
+        #     *   **github\_oauth_token**: OAuth access token for GitHub
+        #     *   **pulumi_token**: Pulumi token
+        #     *   **ventrilo_voip**: configuration of a Ventrilo VoIP server
+        #     *   **macos_keychain**: macOS keychain
+        #     *   **amazon\_mws_token**: Amazon MWS token
+        #     *   **dynatrace_token**: Dynatrace token
+        #     *   **java_keystore**: Java KeyStore (JKS)
+        #     *   **microsoft_sdf**: Microsoft SQL Server Compact Edition (CE) database
+        #     *   **kubernetes\_dashboard_cred**: user credential for Kubernetes Dashboard
+        #     *   **atlassian_token**: Atlassian token
+        #     *   **rdp**: remote desktop protocol (RDP)
+        #     *   **mailgun_key**: Mailgun webhook signing key
+        #     *   **mailchimp\_api_key**: API key for Mailchimp
+        #     *   **netrc_cfg**: .netrc configuration file
+        #     *   **openvpn_cfg**: OpenVPN configuration
+        #     *   **github\_refresh_token**: GitHub refresh token
+        #     *   **salesforce**: Salesforce credential
+        #     *   **salesforce**: Sendinblue credential
+        #     *   **pkcs\_private_key**: PKCS#12 key
+        #     *   **rubyonrails_passwd**: Ruby on Rails password file
+        #     *   **filezilla_ftp**: FileZilla FTP configuration
+        #     *   **databricks_token**: Databricks token
+        #     *   **gitLab\_personal_toke**: personal access token for GitLab
+        #     *   **rails\_master_key**: Rails master key
+        #     *   **sqlite**: SQLite3 or SQLite database
+        #     *   **firefox_logins**: Firefox logon configuration
+        #     *   **mailgun\_private_token**: Mailgun private token
+        #     *   **joomla_cfg**: Joomla configuration
+        #     *   **hashicorp\_terraform_token**: HashiCorp Terraform token
+        #     *   **jetbrains_ides**: JetBrains IDEs configuration
+        #     *   **heroku\_api_key**: Heroku API key
+        #     *   **messagebird_token**: MessageBird token
+        #     *   **messagebird_token**: MessageBird token
+        #     *   **hashicorp\_vault_token**: HashiCorp Vault token
+        #     *   **pgp\_private_key**: PGP private key
+        #     *   **sshpasswd**: SSH password
+        #     *   **huaweicloud_ak**: secret access key of a third-party cloud
+        #     *   **aws_s3cmd**: AWS S3cmd configuration
+        #     *   **php_config**: PHP configuration
+        #     *   **common\_private_key**: private key of a common type
+        #     *   **microsoft_mdf**: Microsoft SQL Server database
+        #     *   **mediawiki_cfg**: MediaWiki configuration
+        #     *   **jenkins_cred**: Jenkins credential
+        #     *   **rubygems_cred**: RubyGems credential
+        #     *   **clojars_token**: Clojars token
+        #     *   **phoenix\_web_passwd**: Phoenix web credential
+        #     *   **puttygen\_private_key**: PuTTYgen private key
+        #     *   **google\_oauth_token**: Google OAuth access token
+        #     *   **rubyonrails_cfg**: Ruby On Rails database configuration
+        #     *   **lob\_api_key**: Lob API key
+        #     *   **pkcs_cred**: PKCS#12 certificate
+        #     *   **otr\_private_key**: Off-the-Record Messaging (OTR) private key
+        #     *   **contentful\_delivery_token**: delivery token for Contentful
+        #     *   **digital\_ocean_tugboat**: DigitalOcean Tugboat configuration
+        #     *   **dsa\_private_key**: Digital Signature Algorithm (DSA) private key
+        #     *   **rails\_app_token**: Rails app token
+        #     *   **git_cred**: Git user credential
+        #     *   **newrelic\_api_key**: User API key for New Relic
+        #     *   **github_hub**: hub configuration for storing GitHub tokens
+        #     *   **rubygem**: RubyGem token
+        # 
+        # *   **SensitiveFileName**: the name of the alert type for sensitive files.
         self.criteria_type = criteria_type
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # The UUID of the image.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the UUIDs of images from the value of the **ImageUuid** response parameter.
         self.image_uuid = image_uuid
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # The risk level. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # An array that consists of the types of the assets that you want to scan. Valid values:
+        # 
+        # *   **image**\
+        # *   **container**\
         self.scan_range = scan_range
 
     def validate(self):
@@ -17597,13 +23387,150 @@ class DescribeImageSensitiveFileListShrinkRequest(TeaModel):
         risk_level: str = None,
         scan_range_shrink: str = None,
     ):
+        # The value of the sensitive file type.
         self.criteria = criteria
+        # The query type of sensitive files. Valid values:
+        # 
+        # *   **SensitiveFileKey**: the alert type for sensitive files. Valid values:
+        # 
+        #     *   **npm_token**: npm access token
+        #     *   **ftp_cfg**: FTP configuration
+        #     *   **google\_oauth_key**: Google OAuth key
+        #     *   **planetscale_passwd**: PlanetScale password
+        #     *   **github\_ssh_key**: GitHub SSH key
+        #     *   **msbuild\_publish_profile**: MSBuild publish profile
+        #     *   **fastly\_cdn_token**: Fastly CDN token
+        #     *   **ssh\_private_key**: SSH private key
+        #     *   **aws_cli**: AWS CLI credential
+        #     *   **cpanel_proftpd**: cPanel ProFTPD credential
+        #     *   **postgresql_passwd**: PostgreSQL password file
+        #     *   **discord\_client_cred**: Discord client credential
+        #     *   **rails_database**: Rails database configuration
+        #     *   **aws\_access_key**: AWS access key
+        #     *   **esmtp_cfg** :configuration of Extended Simple Mail Transfer Protocol (ESMTP)
+        #     *   **docker\_registry_cfg**: configuration of a Docker image repository
+        #     *   **pem**: Privacy-Enhanced Mail (PEM)
+        #     *   **common_cred**: common credential
+        #     *   **sftp_cfg**: SFTP connection configuration
+        #     *   **grafana_token**: Grafana token
+        #     *   **slack_token**: Slack token
+        #     *   **ec\_private_key**: EC private key
+        #     *   **pypi_token**: upload token for the Python Package Index (PyPI)
+        #     *   **finicity_token**: Finicity token
+        #     *   **k8s\_client_key**: Kubernetes private key
+        #     *   **git_cfg**: Git configuration
+        #     *   **django_key**: Django key
+        #     *   **jenkins_ssh**: Jenkins SSH configuration file
+        #     *   **openssh\_private_key**: OpenSSL private key
+        #     *   **square_oauth**: OAuth credential for Square
+        #     *   **typeform_token**: Typeform token
+        #     *   **common\_database_cfg**: general database connection configuration
+        #     *   **wordpress\_database_cfg**: WordPress database configuration
+        #     *   **googlecloud\_api_key**: API key for Google Cloud
+        #     *   **vscode_sftp**: VSCode SFTP configuration
+        #     *   **apache_htpasswd**: Apache htpasswd
+        #     *   **planetscale_token**: PlanetScale token
+        #     *   **contentful\_preview_token**: preview token for Contentful
+        #     *   **php\_database_cfg**: database password for a PHP application
+        #     *   **atom\_remote_sync**: Atom remote synchronization configuration
+        #     *   **aws\_session_token**: AWS session token
+        #     *   **atom\_sftp_cfg**: Atom SFTP configuration
+        #     *   **tencentcloud_ak**: Asana client key
+        #     *   **tencentcloud_ak**: secret ID of a third-party cloud
+        #     *   **rsa\_private_key**: RSA private key
+        #     *   **github\_personal_token**: personal access token for GitHub
+        #     *   **pgp**: Pretty Good Privacy (PGP) encrypted file
+        #     *   **stripe_skpk**: Stripe secret key
+        #     *   **square_token**: Square access token
+        #     *   **rails_carrierwave**: file upload credential for Rails Carrierwave
+        #     *   **dbeaver\_database_cfg**: DBeaver database configuration
+        #     *   **robomongo_cred**: credential for RoboMongo
+        #     *   **github\_oauth_token**: OAuth access token for GitHub
+        #     *   **pulumi_token**: Pulumi token
+        #     *   **ventrilo_voip**: configuration of a Ventrilo VoIP server
+        #     *   **macos_keychain**: macOS keychain
+        #     *   **amazon\_mws_token**: Amazon MWS token
+        #     *   **dynatrace_token**: Dynatrace token
+        #     *   **java_keystore**: Java KeyStore (JKS)
+        #     *   **microsoft_sdf**: Microsoft SQL Server Compact Edition (CE) database
+        #     *   **kubernetes\_dashboard_cred**: user credential for Kubernetes Dashboard
+        #     *   **atlassian_token**: Atlassian token
+        #     *   **rdp**: remote desktop protocol (RDP)
+        #     *   **mailgun_key**: Mailgun webhook signing key
+        #     *   **mailchimp\_api_key**: API key for Mailchimp
+        #     *   **netrc_cfg**: .netrc configuration file
+        #     *   **openvpn_cfg**: OpenVPN configuration
+        #     *   **github\_refresh_token**: GitHub refresh token
+        #     *   **salesforce**: Salesforce credential
+        #     *   **salesforce**: Sendinblue credential
+        #     *   **pkcs\_private_key**: PKCS#12 key
+        #     *   **rubyonrails_passwd**: Ruby on Rails password file
+        #     *   **filezilla_ftp**: FileZilla FTP configuration
+        #     *   **databricks_token**: Databricks token
+        #     *   **gitLab\_personal_toke**: personal access token for GitLab
+        #     *   **rails\_master_key**: Rails master key
+        #     *   **sqlite**: SQLite3 or SQLite database
+        #     *   **firefox_logins**: Firefox logon configuration
+        #     *   **mailgun\_private_token**: Mailgun private token
+        #     *   **joomla_cfg**: Joomla configuration
+        #     *   **hashicorp\_terraform_token**: HashiCorp Terraform token
+        #     *   **jetbrains_ides**: JetBrains IDEs configuration
+        #     *   **heroku\_api_key**: Heroku API key
+        #     *   **messagebird_token**: MessageBird token
+        #     *   **messagebird_token**: MessageBird token
+        #     *   **hashicorp\_vault_token**: HashiCorp Vault token
+        #     *   **pgp\_private_key**: PGP private key
+        #     *   **sshpasswd**: SSH password
+        #     *   **huaweicloud_ak**: secret access key of a third-party cloud
+        #     *   **aws_s3cmd**: AWS S3cmd configuration
+        #     *   **php_config**: PHP configuration
+        #     *   **common\_private_key**: private key of a common type
+        #     *   **microsoft_mdf**: Microsoft SQL Server database
+        #     *   **mediawiki_cfg**: MediaWiki configuration
+        #     *   **jenkins_cred**: Jenkins credential
+        #     *   **rubygems_cred**: RubyGems credential
+        #     *   **clojars_token**: Clojars token
+        #     *   **phoenix\_web_passwd**: Phoenix web credential
+        #     *   **puttygen\_private_key**: PuTTYgen private key
+        #     *   **google\_oauth_token**: Google OAuth access token
+        #     *   **rubyonrails_cfg**: Ruby On Rails database configuration
+        #     *   **lob\_api_key**: Lob API key
+        #     *   **pkcs_cred**: PKCS#12 certificate
+        #     *   **otr\_private_key**: Off-the-Record Messaging (OTR) private key
+        #     *   **contentful\_delivery_token**: delivery token for Contentful
+        #     *   **digital\_ocean_tugboat**: DigitalOcean Tugboat configuration
+        #     *   **dsa\_private_key**: Digital Signature Algorithm (DSA) private key
+        #     *   **rails\_app_token**: Rails app token
+        #     *   **git_cred**: Git user credential
+        #     *   **newrelic\_api_key**: User API key for New Relic
+        #     *   **github_hub**: hub configuration for storing GitHub tokens
+        #     *   **rubygem**: RubyGem token
+        # 
+        # *   **SensitiveFileName**: the name of the alert type for sensitive files.
         self.criteria_type = criteria_type
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
+        # The UUID of the image.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the UUIDs of images from the value of the **ImageUuid** response parameter.
         self.image_uuid = image_uuid
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # The risk level. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # An array that consists of the types of the assets that you want to scan. Valid values:
+        # 
+        # *   **image**\
+        # *   **container**\
         self.scan_range_shrink = scan_range_shrink
 
     def validate(self):
@@ -17663,10 +23590,15 @@ class DescribeImageSensitiveFileListResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The key of the last data entry.
         self.last_row_key = last_row_key
+        # The number of entries returned per page. Default value: 20.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -17715,11 +23647,134 @@ class DescribeImageSensitiveFileListResponseBodySensitiveFileList(TeaModel):
         sensitive_file_key: str = None,
         sensitive_file_name: str = None,
     ):
+        # The number of scans that are performed on the sensitive file.
         self.count = count
+        # The timestamp when the first scan was performed. Unit: milliseconds.
         self.first_scan_time = first_scan_time
+        # The timestamp when the last scan was performed. Unit: milliseconds.
         self.last_scan_time = last_scan_time
+        # The risk level. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # The alert type for the sensitive file. Valid values:
+        # 
+        # *   **npm_token**: npm access token
+        # *   **ftp_cfg**: FTP configuration
+        # *   **google\_oauth_key**: Google OAuth key
+        # *   **planetscale_passwd**: PlanetScale password
+        # *   **github\_ssh_key**: GitHub SSH key
+        # *   **msbuild\_publish_profile**: MSBuild publish profile
+        # *   **fastly\_cdn_token**: Fastly CDN token
+        # *   **ssh\_private_key**: SSH private key
+        # *   **aws_cli**: AWS CLI credential
+        # *   **cpanel_proftpd**: cPanel ProFTPD credential
+        # *   **postgresql_passwd**: PostgreSQL password file
+        # *   **discord\_client_cred**: Discord client credential
+        # *   **rails_database**: Rails database configuration
+        # *   **aws\_access_key**: AWS access key
+        # *   **esmtp_cfg** :configuration of ESMTP
+        # *   **docker\_registry_cfg**: configuration of a Docker image repository
+        # *   **pem**: PEM
+        # *   **common_cred**: common credential
+        # *   **sftp_cfg**: SFTP connection configuration
+        # *   **grafana_token**: Grafana token
+        # *   **slack_token**: Slack token
+        # *   **ec\_private_key**: EC private key
+        # *   **pypi_token**: upload token for the PyPI
+        # *   **finicity_token**: Finicity token
+        # *   **k8s\_client_key**: Kubernetes private key
+        # *   **git_cfg**: Git configuration
+        # *   **django_key**: Django key
+        # *   **jenkins_ssh**: Jenkins SSH configuration file
+        # *   **openssh\_private_key**: OpenSSL private key
+        # *   **square_oauth**: OAuth credential for Square
+        # *   **typeform_token**: Typeform token
+        # *   **common\_database_cfg**: general database connection configuration
+        # *   **wordpress\_database_cfg**: WordPress database configuration
+        # *   **googlecloud\_api_key**: API key for Google Cloud
+        # *   **vscode_sftp**: VSCode SFTP configuration
+        # *   **apache_htpasswd**: Apache htpasswd
+        # *   **planetscale_token**: PlanetScale token
+        # *   **contentful\_preview_token**: preview token for Contentful
+        # *   **php\_database_cfg**: database password for a PHP application
+        # *   **atom\_remote_sync**: Atom remote synchronization configuration
+        # *   **aws\_session_token**: AWS session token
+        # *   **atom\_sftp_cfg**: Atom SFTP configuration
+        # *   **tencentcloud_ak**: Asana client key
+        # *   **tencentcloud_ak**: secret ID of a third-party cloud
+        # *   **rsa\_private_key**: RSA private key
+        # *   **github\_personal_token**: personal access token for GitHub
+        # *   **pgp**: PGP encrypted file
+        # *   **stripe_skpk**: Stripe secret key
+        # *   **square_token**: Square access token
+        # *   **rails_carrierwave**: file upload credential for Rails Carrierwave
+        # *   **dbeaver\_database_cfg**: DBeaver database configuration
+        # *   **robomongo_cred**: credential for RoboMongo
+        # *   **github\_oauth_token**: OAuth access token for GitHub
+        # *   **pulumi_token**: Pulumi token
+        # *   **ventrilo_voip**: configuration of a Ventrilo VoIP server
+        # *   **macos_keychain**: macOS keychain
+        # *   **amazon\_mws_token**: Amazon MWS token
+        # *   **dynatrace_token**: Dynatrace token
+        # *   **java_keystore**: JKS
+        # *   **microsoft_sdf**: Microsoft SQL Server CE database
+        # *   **kubernetes\_dashboard_cred**: user credential for Kubernetes Dashboard
+        # *   **atlassian_token**: Atlassian token
+        # *   **rdp**: RDP
+        # *   **mailgun_key**: Mailgun webhook signing key
+        # *   **mailchimp\_api_key**: API key for Mailchimp
+        # *   **netrc_cfg**: .netrc configuration file
+        # *   **openvpn_cfg**: OpenVPN configuration
+        # *   **github\_refresh_token**: GitHub refresh token
+        # *   **salesforce**: Salesforce credential
+        # *   **salesforce**: Sendinblue credential
+        # *   **pkcs\_private_key**: PKCS#12 key
+        # *   **rubyonrails_passwd**: Ruby on Rails password file
+        # *   **filezilla_ftp**: FileZilla FTP configuration
+        # *   **databricks_token**: Databricks token
+        # *   **gitLab\_personal_toke**: personal access token for GitLab
+        # *   **rails\_master_key**: Rails master key
+        # *   **sqlite**: SQLite3 or SQLite database
+        # *   **firefox_logins**: Firefox logon configuration
+        # *   **mailgun\_private_token**: Mailgun private token
+        # *   **joomla_cfg**: Joomla configuration
+        # *   **hashicorp\_terraform_token**: HashiCorp Terraform token
+        # *   **jetbrains_ides**: JetBrains IDEs configuration
+        # *   **heroku\_api_key**: Heroku API key
+        # *   **messagebird_token**: MessageBird token
+        # *   **messagebird_token**: MessageBird token
+        # *   **hashicorp\_vault_token**: HashiCorp Vault token
+        # *   **pgp\_private_key**: PGP private key
+        # *   **sshpasswd**: SSH password
+        # *   **huaweicloud_ak**: secret access key of a third-party cloud
+        # *   **aws_s3cmd**: AWS S3cmd configuration
+        # *   **php_config**: PHP configuration
+        # *   **common\_private_key**: private key of a common type
+        # *   **microsoft_mdf**: Microsoft SQL Server database
+        # *   **mediawiki_cfg**: MediaWiki configuration
+        # *   **jenkins_cred**: Jenkins credential
+        # *   **rubygems_cred**: RubyGems credential
+        # *   **clojars_token**: Clojars token
+        # *   **phoenix\_web_passwd**: Phoenix web credential
+        # *   **puttygen\_private_key**: PuTTYgen private key
+        # *   **google\_oauth_token**: Google OAuth access token
+        # *   **rubyonrails_cfg**: Ruby On Rails database configuration
+        # *   **lob\_api_key**: Lob API key
+        # *   **pkcs_cred**: PKCS#12 certificate
+        # *   **otr\_private_key**: OTR private key
+        # *   **contentful\_delivery_token**: delivery token for Contentful
+        # *   **digital\_ocean_tugboat**: DigitalOcean Tugboat configuration
+        # *   **dsa\_private_key**: Digital DSA private key
+        # *   **rails\_app_token**: Rails app token
+        # *   **git_cred**: Git user credential
+        # *   **newrelic\_api_key**: User API key for New Relic
+        # *   **github_hub**: hub configuration for storing GitHub tokens
+        # *   **rubygem**: RubyGem token
         self.sensitive_file_key = sensitive_file_key
+        # The name of the alert type for the sensitive file.
         self.sensitive_file_name = sensitive_file_name
 
     def validate(self):
@@ -17773,12 +23828,22 @@ class DescribeImageSensitiveFileListResponseBody(TeaModel):
         sensitive_file_list: List[DescribeImageSensitiveFileListResponseBodySensitiveFileList] = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the information about the sensitive files.
         self.sensitive_file_list = sensitive_file_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -17887,8 +23952,11 @@ class DescribeImageStatisticsResponseBody(TeaModel):
         request_id: str = None,
         risk_instance_count: int = None,
     ):
+        # The number of container images in your assets. Only Container Registry Enterprise Edition instances are counted.
         self.instance_count = instance_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The number of container images that have security risks. Only Container Registry Enterprise Edition instances are counted.
         self.risk_instance_count = risk_instance_count
 
     def validate(self):
@@ -17993,31 +24061,71 @@ class DescribeImageVulListRequest(TeaModel):
         type: str = None,
         uuids: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The ID of the cluster to which the container belongs.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The ID of the container.
         self.container_id = container_id
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether the vulnerability is handled. Valid values:
+        # 
+        # *   **y**: yes
+        # *   **n**: no
         self.dealed = dealed
+        # The digest of the image.
         self.digest = digest
+        # The name of the image.
         self.image = image
+        # The instance ID of the asset.
         self.instance_id = instance_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the vulnerability.
         self.name = name
+        # The namespace.
         self.namespace = namespace
+        # The priority to fix the vulnerability. Valid values:
+        # 
+        # *   **asap**: high. You must fix the vulnerability at the earliest opportunity.
+        # *   **later**: medium. You can fix the vulnerability based on your business requirements.
+        # *   **nntf**: low. You can ignore the vulnerability.
         self.necessity = necessity
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The pod.
         self.pod = pod
+        # The region ID of the instance.
         self.region_id = region_id
+        # The ID of the image repository.
         self.repo_id = repo_id
+        # The instance ID of the image repository.
         self.repo_instance_id = repo_instance_id
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
+        # The region ID of the image repository.
         self.repo_region_id = repo_region_id
+        # The types of the assets that you want to scan.
         self.scan_range = scan_range
+        # The status of the vulnerability. Valid values:
+        # 
+        # *   **1**: unfixed
+        # *   **4**: being fixed
+        # *   **7**: fixed
         self.status_list = status_list
+        # The tag that is added to the image.
         self.tag = tag
+        # The type of the vulnerability. Set the value to **CVE**, which indicates image vulnerabilities.
         self.type = type
+        # The UUIDs of the assets. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -18152,13 +24260,21 @@ class DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList(T
         update_cmd: str = None,
         version: str = None,
     ):
+        # The complete version number of the package.
         self.full_version = full_version
+        # The SHA-256 value of the digest of the image layer.
         self.layer = layer
+        # The reason why the vulnerability is detected.
         self.match_detail = match_detail
+        # The details of the rules that are used to detect the vulnerability.
         self.match_list = match_list
+        # The name of the software package.
         self.name = name
+        # The path of the software that has the vulnerability.
         self.path = path
+        # The command that is used to fix the vulnerability.
         self.update_cmd = update_cmd
+        # The version number of the package.
         self.version = version
 
     def validate(self):
@@ -18216,8 +24332,11 @@ class DescribeImageVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
         os_release: str = None,
         rpm_entity_list: List[DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList] = None,
     ):
+        # The name of the operating system.
         self.os = os
+        # The version of the operating system in the image.
         self.os_release = os_release
+        # The details of the packages of the software that has the vulnerability.
         self.rpm_entity_list = rpm_entity_list
 
     def validate(self):
@@ -18293,38 +24412,76 @@ class DescribeImageVulListResponseBodyVulRecords(TeaModel):
         type: str = None,
         uuid: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # Indicates whether the vulnerability can be fixed in the Security Center console. Valid values:
+        # 
+        # *   **yes**: yes
+        # *   **no**: no
         self.can_fix = can_fix
+        # Indicates whether the package of the software that has the vulnerability can be upgraded by using Security Center. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_update = can_update
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The ID of the container.
         self.container_id = container_id
+        # The extended information about the vulnerability.
         self.extend_content_json = extend_content_json
+        # The timestamp when the first scan was performed. Unit: milliseconds.
         self.first_ts = first_ts
+        # The name of the image.
         self.image = image
+        # The digest of the image.
         self.image_digest = image_digest
         self.instance_name = instance_name
         self.internet_ip = internet_ip
         self.intranet_ip = intranet_ip
+        # The timestamp when the last scan was performed. Unit: milliseconds.
         self.last_ts = last_ts
+        # The image layers.
         self.layers = layers
         self.malicious_source = malicious_source
+        # The timestamp when the information about the vulnerability was updated. Unit: milliseconds.
         self.modify_ts = modify_ts
+        # The name of the vulnerability.
         self.name = name
+        # The namespace.
         self.namespace = namespace
+        # The priority to fix the vulnerability. Valid values:
+        # 
+        # *   **asap**: high. You must fix the vulnerability at the earliest opportunity.
+        # *   **later**: medium. You can fix the vulnerability based on your business requirements.
+        # *   **nntf**: low. You can ignore the vulnerability.
         self.necessity = necessity
+        # The pod.
         self.pod = pod
+        # The ID of the vulnerability.
         self.primary_id = primary_id
+        # The Common Vulnerabilities and Exposures (CVE) ID of the associated vulnerability.
         self.related = related
+        # The name of the image repository.
         self.repo_name = repo_name
+        # The namespace to which the image repository belongs.
         self.repo_namespace = repo_namespace
         self.scan_time = scan_time
+        # The status of the vulnerability. Valid values:
+        # 
+        # *   **1**: unfixed
+        # *   **7**: fixed
         self.status = status
+        # The tag that is added to the vulnerability.
         self.tag = tag
         self.target_id = target_id
         self.target_name = target_name
         self.target_type = target_type
+        # The type of the vulnerability. The value is fixed as CVE, which indicates image vulnerabilities.
         self.type = type
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -18486,10 +24643,15 @@ class DescribeImageVulListResponseBody(TeaModel):
         total_count: int = None,
         vul_records: List[DescribeImageVulListResponseBodyVulRecords] = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # An array that consists of the vulnerabilities.
         self.vul_records = vul_records
 
     def validate(self):
@@ -18587,8 +24749,16 @@ class DescribeInstallCaptchaRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The validity period of the installation verification code. If this parameter is not specified, the validity period is 1 hour.
+        # 
+        # >  The installation verification code is valid only within the validity period. An expired installation verification code cannot be used to install the agent.
         self.deadline = deadline
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -18626,8 +24796,13 @@ class DescribeInstallCaptchaResponseBody(TeaModel):
         deadline: str = None,
         request_id: str = None,
     ):
+        # The installation verification code for you to manually install the Security Center agent.
         self.captcha_code = captcha_code
+        # The validity period of the installation verification code.
+        # 
+        # >  The installation verification code is valid only within the validity period. An expired installation verification code cannot be used to install the agent.
         self.deadline = deadline
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18713,12 +24888,24 @@ class DescribeInstallCodesResponseBodyInstallCodes(TeaModel):
         os: str = None,
         vendor_name: str = None,
     ):
+        # The installation verification code for you to manually install the Security Center agent.
         self.captcha_code = captcha_code
+        # The timestamp when the installation command expires. Unit: milliseconds.
         self.expired_date = expired_date
+        # The ID of the server group to which the server belongs.
         self.group_id = group_id
+        # The name of the server group to which the server belongs.
         self.group_name = group_name
+        # Indicates whether an image is used to install the Security Center agent. Valid values:
+        # 
+        # *   **true**: An image is used to install the Security Center agent.
+        # *   **false**: An image is not used to install the Security Center agent.
         self.only_image = only_image
+        # The operating system of the server. Valid values:
+        # *   **linux**: Linux.
+        # *   **windows**: Windows.
         self.os = os
+        # The name of the server provider.
         self.vendor_name = vendor_name
 
     def validate(self):
@@ -18771,7 +24958,9 @@ class DescribeInstallCodesResponseBody(TeaModel):
         install_codes: List[DescribeInstallCodesResponseBodyInstallCodes] = None,
         request_id: str = None,
     ):
+        # An array that consists of the information about the installation command.
         self.install_codes = install_codes
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -18859,10 +25048,16 @@ class DescribeInstanceAntiBruteForceRulesRequest(TeaModel):
         source_ip: str = None,
         uuid_list: List[str] = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of entries to return on each page. Default value: **10000**.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # An array that consists of the UUIDs of the servers.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -18909,9 +25104,13 @@ class DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of servers to which the defense rule is applied on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of servers to which the defense rule is applied.
         self.total_count = total_count
 
     def validate(self):
@@ -18953,8 +25152,11 @@ class DescribeInstanceAntiBruteForceRulesResponseBodyRules(TeaModel):
         name: str = None,
         uuid: str = None,
     ):
+        # The ID of the defense rule.
         self.id = id
+        # The name of the defense rule.
         self.name = name
+        # The UUID of the server to which the defense rule is applied.
         self.uuid = uuid
 
     def validate(self):
@@ -18992,8 +25194,11 @@ class DescribeInstanceAntiBruteForceRulesResponseBody(TeaModel):
         request_id: str = None,
         rules: List[DescribeInstanceAntiBruteForceRulesResponseBodyRules] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array consisting of the servers to which the defense rule is applied.
         self.rules = rules
 
     def validate(self):
@@ -19084,6 +25289,7 @@ class DescribeInstanceRebootStatusRequest(TeaModel):
         self,
         uuids: str = None,
     ):
+        # The UUIDs of the servers that you restart. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -19114,9 +25320,21 @@ class DescribeInstanceRebootStatusResponseBodyRebootStatuses(TeaModel):
         reboot_status: int = None,
         uuid: str = None,
     ):
+        # The error code that is returned when the server failed to be restarted. Valid values:
+        # 
+        # *   **10001**: The restart command failed to be sent.
+        # *   **10002**: The restart operation failed.
+        # *   **10003**: A timeout error occurs.
         self.code = code
+        # The message that is returned when the server failed to be restarted.
         self.msg = msg
+        # The status of the server. Valid values:
+        # 
+        # *   **0**: The server is being restarted.
+        # *   **1**: The server is restarted.
+        # *   **2**: The server failed to be restarted.
         self.reboot_status = reboot_status
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -19158,8 +25376,11 @@ class DescribeInstanceRebootStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the status information about the servers that you restart.
         self.reboot_statuses = reboot_statuses
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19250,9 +25471,17 @@ class DescribeInstanceStatisticsRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The source of the request. Set the value to **sas**, which indicates that the request is sent from Security Center.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUIDs of the assets to query. Separate multiple UUIDs with commas (,).
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of assets.
         self.uuid = uuid
 
     def validate(self):
@@ -19309,23 +25538,41 @@ class DescribeInstanceStatisticsResponseBodyData(TeaModel):
         vul: int = None,
         weak_pwnum: int = None,
     ):
+        # The number of unusual logons to the asset.
         self.account = account
+        # The number of alerts generated by the agentless detection feature.
         self.agentless_all = agentless_all
+        # The number of baseline risks detected by the agentless detection feature.
         self.agentless_baseline = agentless_baseline
+        # The number of malicious samples detected by the agentless detection feature.
         self.agentless_malicious = agentless_malicious
+        # The number of system vulnerabilities detected by the agentless detection feature.
         self.agentless_vul_cve = agentless_vul_cve
+        # The number of application vulnerabilities detected by the agentless detection feature.
         self.agentless_vul_sca = agentless_vul_sca
+        # The number of application vulnerabilities detected on the asset.
         self.app_num = app_num
+        # The number of Web-CMS vulnerabilities detected on the asset.
         self.cms_num = cms_num
+        # The number of common vulnerabilities detected on the asset.
         self.cve_num = cve_num
+        # The number of urgent vulnerabilities detected on the asset.
         self.emg_num = emg_num
+        # The number of baseline risks detected on the asset.
         self.health = health
+        # The number of middleware vulnerabilities detected on the asset.
         self.sca_num = sca_num
+        # The number of alerts generated on the asset.
         self.suspicious = suspicious
+        # The number of Windows system vulnerabilities detected on the asset.
         self.sys_num = sys_num
+        # The number of trojans detected on the asset.
         self.trojan = trojan
+        # The UUID of the asset.
         self.uuid = uuid
+        # The total number of vulnerabilities detected on the asset.
         self.vul = vul
+        # The number of weak passwords.
         self.weak_pwnum = weak_pwnum
 
     def validate(self):
@@ -19422,7 +25669,9 @@ class DescribeInstanceStatisticsResponseBody(TeaModel):
         data: List[DescribeInstanceStatisticsResponseBodyData] = None,
         request_id: str = None,
     ):
+        # An array that consists of the risk information about assets.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -19508,8 +25757,19 @@ class DescribeLogMetaRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The ID of the request source. Default value: **aegis**. Valid values:
+        # 
+        # *   **aegis**: Server Guard
+        # *   **sas**: Security Center
+        # 
+        # >  If you use Server Guard, set the value to **aegis**. If you use Security Center, set the value to **sas**.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -19555,16 +25815,36 @@ class DescribeLogMetaResponseBodyLogMetaList(TeaModel):
         user_project: str = None,
         user_region: str = None,
     ):
+        # The category of logs. Valid values:
+        # 
+        # *   **host**: host logs
+        # *   **network**: network logs
+        # *   **security**: security logs
         self.category = category
+        # The time period after which logs in hot storage are moved to cold storage. Unit: days.
+        # 
+        # >  If the value is **-1**, logs that are stored in hot storage are not moved to cold storage.
         self.hot_ttl = hot_ttl
+        # The name of the log type.
         self.log_desc = log_desc
+        # The name of the dedicated Logstore in which logs are stored.
         self.log_store = log_store
+        # The name of the project.
         self.project = project
+        # The status of the log analysis feature. Valid values:
+        # 
+        # *   **disabled**\
+        # *   **enabled**\
         self.status = status
+        # The topic of logs that are delivered.
         self.topic = topic
+        # The number of days during which logs can be retained.
         self.ttl = ttl
+        # The name of the dedicated Logstore in which user logs are stored.
         self.user_log_store = user_log_store
+        # The name of the dedicated project in which logs are stored.
         self.user_project = user_project
+        # The ID of the region.
         self.user_region = user_region
 
     def validate(self):
@@ -19634,8 +25914,11 @@ class DescribeLogMetaResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the configurations of the log analysis feature.
         self.log_meta_list = log_meta_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19726,9 +26009,28 @@ class DescribeLoginBaseConfigsRequest(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of entries to return on each page. Default value: **5**.
         self.page_size = page_size
+        # The server to which the configuration is applied. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **Target**: the UUID or group ID of the server to add or delete.
+        # 
+        # >  If targetType is set to uuid, the value of Target is the UUID of the server. If targetType is set to groupId, the value of Target is the group ID of the server. If targetType is set to global, the value of Target is a hyphen (-).
+        # 
+        # *   **targetType**: the type of the server to which the configuration is applied. Valid values:
+        # 
+        #     *   **uuid**: a server
+        #     *   **groupId**: a server group
+        #     *   **global**: all servers
         self.target = target
+        # The logon type of the configuration to query. Valid values:
+        # 
+        # *   **login\_common_location**: common logon location
+        # *   **login\_common_ip**: common logon IP address
+        # *   **login\_common_time**: common logon time range
+        # *   **login\_common_account**: common logon account
         self.type = type
 
     def validate(self):
@@ -19769,7 +26071,13 @@ class DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList(TeaModel):
         target: str = None,
         target_type: str = None,
     ):
+        # The UUID or group ID of the server.
         self.target = target
+        # The type of the server to which the configuration is applied. Valid values:
+        # 
+        # *   **uuid**: a server
+        # *   **groupId**: a server group
+        # *   **global**: all servers
         self.target_type = target_type
 
     def validate(self):
@@ -19808,13 +26116,21 @@ class DescribeLoginBaseConfigsResponseBodyBaseConfigs(TeaModel):
         total_count: int = None,
         uuid_count: int = None,
     ):
+        # The common logon account.
         self.account = account
+        # The end time of the common logon time range.
         self.end_time = end_time
+        # The common logon IP address.
         self.ip = ip
+        # The common logon location.
         self.location = location
+        # The start time of the common logon time range.
         self.start_time = start_time
+        # The details of the servers to which the configuration is applied.
         self.target_list = target_list
+        # The total number of servers.
         self.total_count = total_count
+        # The number of servers to which the configuration is applied.
         self.uuid_count = uuid_count
 
     def validate(self):
@@ -19882,10 +26198,15 @@ class DescribeLoginBaseConfigsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the information about the configurations.
         self.base_configs = base_configs
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -19982,7 +26303,12 @@ class DescribeLogstoreStorageRequest(TeaModel):
         from_: str = None,
         lang: str = None,
     ):
+        # The ID of the request source. Set the value to **sas**.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -20019,11 +26345,19 @@ class DescribeLogstoreStorageResponseBody(TeaModel):
         used: int = None,
         user_project: str = None,
     ):
+        # The name of the dedicated Logstore that is used to store full logs of Security Center. The value is fixed as **sas-log**.
         self.logstore = logstore
+        # The purchased log storage capacity, in GB.
         self.preserve = preserve
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The number of days during which logs can be retained. The value is fixed as **180**, which indicates that logs can be retained for 180 days.
+        # 
+        # >  You are not allowed to change the value of this parameter.
         self.ttl = ttl
+        # The used log storage capacity, in GB.
         self.used = used
+        # The name of the dedicated Project that is used to store full logs of Security Center.
         self.user_project = user_project
 
     def validate(self):
@@ -20120,11 +26454,17 @@ class DescribeModuleConfigResponseBodyModuleConfigListItems(TeaModel):
         region: str = None,
         uuid: str = None,
     ):
+        # The ID of the server group to which the server belongs.
         self.group_id = group_id
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The IP address of the server.
         self.ip = ip
+        # The region in which the server resides.
         self.region = region
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -20174,8 +26514,11 @@ class DescribeModuleConfigResponseBodyModuleConfigList(TeaModel):
         items: List[DescribeModuleConfigResponseBodyModuleConfigListItems] = None,
         module_name: str = None,
     ):
+        # The name of the configuration.
         self.config_name = config_name
+        # The configuration items.
         self.items = items
+        # The name of the module.
         self.module_name = module_name
 
     def validate(self):
@@ -20223,10 +26566,18 @@ class DescribeModuleConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The number of configurations for the module.
         self.count = count
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # An array that consists of the configurations.
         self.module_config_list = module_config_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -20322,6 +26673,7 @@ class DescribeNoticeConfigRequest(TeaModel):
         self,
         source_ip: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -20353,10 +26705,56 @@ class DescribeNoticeConfigResponseBodyNoticeConfigList(TeaModel):
         route: int = None,
         time_limit: int = None,
     ):
+        # The ID of the user.
         self.ali_uid = ali_uid
+        # The number of the page to return.
         self.current_page = current_page
+        # The identifier of the notification item. Valid values:
+        # 
+        # *   **yundun\_security_Weekreport**: notification for unhandled vulnerabilities.
+        # *   **yundun\_sas\_antiransomware_task**: notification for results of restoration tasks.
+        # *   **sas_healthcheck**: notification for baseline checks.
+        # *   **sas_suspicious**: notification for alerts generated by Security Center.
+        # *   **yundun\_aegis\_AV_true**: notification for precision defense.
+        # *   **yundun\_sas\_ak_leakage**: notification for AccessKey pair leaks.
+        # *   **yundun\_sas\_config_alert**: notification for configuration assessment.
+        # *   **yundun\_sas\_vul_Emergency**: notification for urgent vulnerabilities.
+        # *   **yundun\_webguard_event**: notification for web tamper proofing.
+        # *   **yundun\_sas\_cloud\_native_firewall**: notification for alerts generated by the container firewall feature.
+        # *   **yundun\_sas\_cloud\_native\_firewall_Defense**: notification for proactive defense implemented by the container firewall feature.
+        # *   **yundun\_IP_Blocking**: notification for blocked brute-force attacks initiated from malicious IP addresses.
+        # *   **yundun\_sas\_anti\_virus_config**: notification for virus scan.
+        # *   **yundun\_sas_log**: notification for excess logs.
+        # *   **yundun\_honeypot_alarm**: notification for alerts generated by the honeypot feature.
+        # *   **aliyun\_rasp_alarm**: notification for alerts generated by the application security feature.
+        # *   **virusScheduleTask**: notification for completion of scheduled virus scans.
+        # *   **yundun\_anti_Virus**: notification that no security checks are performed.
+        # *   **sas_vulnerability**: notification for vulnerabilities.
+        # *   **weeklyreport**: notification for weekly reports.
+        # *   **agent**: notification that the Security Center agent is offline.
+        # *   **bruteforcesuccess**: notification for protection against brute-force attacks.
+        # *   **webshell**: notification for webshells.
+        # *   **suspicious**: notification for alerts generated by Server Guard.
+        # *   **patch**: deprecated.
+        # *   **remotelogin**: notification for remote logons.
+        # *   **health**: notification for security checks.
+        # *   **yundun\_sas\_cloudsiem_log**: notification of insufficient threat analysis log capacity.
+        # >  If the value is **yundun\_security_Weekreport**, weekly reports are sent to notify you of unhandled vulnerabilities.
         self.project = project
+        # The notification method. Valid values:
+        # 
+        # *   **1**: text message
+        # *   **2**: email
+        # *   **4**: internal message
+        # *   **3**: text message and email
+        # *   **5**: text message and internal message
+        # *   **6**: email and internal message
+        # *   **7**: text message, email, and internal message
         self.route = route
+        # The time period during which Security Center sends notifications. Valid values:
+        # 
+        # *   **0**: any time
+        # *   **1**: 08:00 to 22:00
         self.time_limit = time_limit
 
     def validate(self):
@@ -20401,7 +26799,9 @@ class DescribeNoticeConfigResponseBody(TeaModel):
         notice_config_list: List[DescribeNoticeConfigResponseBodyNoticeConfigList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the notification settings.
         self.notice_config_list = notice_config_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -20492,13 +26892,28 @@ class DescribeNsasSuspEventTypeRequest(TeaModel):
         source_ip: str = None,
         uuids: str = None,
     ):
+        # The name of the container field. Valid values:
+        # 
+        # *   **clusterId**: the ID of the cluster
         self.container_field_name = container_field_name
+        # The value of the container field.
         self.container_field_value = container_field_value
+        # The ID of the request source. Set the value to **sas**, which indicates that the request is sent from Security Center.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the alert type.
         self.name = name
+        # The name of the server.
         self.remark = remark
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUIDs of servers. Separate multiple UUIDs with commas (,).
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~141932~~) operation to query the UUIDs of servers.
         self.uuids = uuids
 
     def validate(self):
@@ -20556,8 +26971,11 @@ class DescribeNsasSuspEventTypeResponseBodyEventTypes(TeaModel):
         susp_event_count: int = None,
         type: str = None,
     ):
+        # The name of the alert type.
         self.name = name
+        # The number of assets for which an alert of the type is generated.
         self.susp_event_count = susp_event_count
+        # The alert type.
         self.type = type
 
     def validate(self):
@@ -20594,7 +27012,9 @@ class DescribeNsasSuspEventTypeResponseBody(TeaModel):
         event_types: List[DescribeNsasSuspEventTypeResponseBodyEventTypes] = None,
         request_id: str = None,
     ):
+        # An array that consists of the information about the alert type.
         self.event_types = event_types
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -20685,13 +27105,33 @@ class DescribeOfflineMachinesRequest(TeaModel):
         source_ip: str = None,
         vendor: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The operating system of the server.
+        # 
+        # >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name** parameter in the response is **osType**, the value of the **Values** parameter indicates an operating system.
         self.os = os
+        # The number of entries to return on each page. Default value: **5**.
         self.page_size = page_size
+        # The region in which the server resides.
+        # 
+        # >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name** parameter in the response is **regionId**, the value of the **Values** parameter indicates a region ID.
         self.region_id_str = region_id_str
+        # The region in which the server resides.
+        # 
+        # >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name** parameter in the response is **regionId**, the value of the **Values** parameter indicates a region ID.
         self.region_no = region_no
+        # The information about the server that you want to query. The value can be the name or the public IP address of the server.
         self.remark = remark
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The source of the server. Valid values:
+        # 
+        # *   **0**: an asset provided by Alibaba Cloud.
+        # *   **1**: a third-party cloud server
+        # *   **2**: a server in a data center
+        # *   **3**, **4**, **5**, and **7**: other cloud asset
+        # *   **8**: a lightweight asset
         self.vendor = vendor
 
     def validate(self):
@@ -20756,15 +27196,46 @@ class DescribeOfflineMachinesResponseBodyMachineList(TeaModel):
         vendor: int = None,
         vendor_name: str = None,
     ):
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The region in which the server resides.
         self.machine_region = machine_region
+        # The operating system of the server. Valid values:
+        # 
+        # *   **linux**\
+        # *   **windows**\
+        # *   **windows-2003**\
         self.os = os
+        # The ID of the region in which the server resides.
         self.region_id = region_id
+        # The UUID of the server.
         self.uuid = uuid
+        # The source of the server. Valid values:
+        # 
+        # *   **0**: an asset provided by Alibaba Cloud.
+        # *   **1**: a third-party cloud server
+        # *   **2**: a server in a data center
+        # *   **3**, **4**, **5**, and **7**: other cloud asset
+        # *   **8**: a lightweight asset
         self.vendor = vendor
+        # The name of the service provider (SP) for the server.
+        # 
+        # Valid values:
+        # 
+        # *   **ALIYUN**: Alibaba Cloud
+        # *   **OUT**: a third-party service provider
+        # *   **IDC**: a data center
+        # *   **TENCENT**: Tencent Cloud
+        # *   **HUAWEICLOUD**: Huawei Cloud
+        # *   **Microsoft**: Microsoft
+        # *   **AWS**: Amazon Web Services (AWS)
+        # *   **TRIPARTITE**: a lightweight server
         self.vendor_name = vendor_name
 
     def validate(self):
@@ -20832,10 +27303,15 @@ class DescribeOfflineMachinesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the information about servers.
         self.machine_list = machine_list
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -20934,13 +27410,29 @@ class DescribeOnceTaskRequest(TeaModel):
         page_size: int = None,
         root_task_id: str = None,
         start_time_query: int = None,
+        task_id: str = None,
         task_type: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The timestamp when the root task ends. Unit: milliseconds.
         self.end_time_query = end_time_query
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the root task.
+        # 
+        # >  You must specify at least one of the **TaskType** and **RootTaskId** parameters.
         self.root_task_id = root_task_id
+        # The timestamp when the root task starts. Unit: milliseconds.
         self.start_time_query = start_time_query
+        self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # *   **CLIENT\_PROBLEM_CHECK**: a task of the Security Center agent
+        # *   **CLIENT\_DEV_OPS**: an O&M task of Cloud Assistant
+        # *   **ASSET\_SECURITY_CHECK**: a task of asset information collection
+        # 
+        # >  You must specify at least one of the **TaskType** and **RootTaskId** parameters.
         self.task_type = task_type
 
     def validate(self):
@@ -20962,6 +27454,8 @@ class DescribeOnceTaskRequest(TeaModel):
             result['RootTaskId'] = self.root_task_id
         if self.start_time_query is not None:
             result['StartTimeQuery'] = self.start_time_query
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         return result
@@ -20978,6 +27472,8 @@ class DescribeOnceTaskRequest(TeaModel):
             self.root_task_id = m.get('RootTaskId')
         if m.get('StartTimeQuery') is not None:
             self.start_time_query = m.get('StartTimeQuery')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         return self
@@ -20991,9 +27487,13 @@ class DescribeOnceTaskResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21032,7 +27532,10 @@ class DescribeOnceTaskResponseBodyTaskManageResponseList(TeaModel):
     def __init__(
         self,
         detail_data: str = None,
+        fail_count: int = None,
         progress: str = None,
+        result_info: str = None,
+        success_count: int = None,
         task_end_time: int = None,
         task_id: str = None,
         task_name: str = None,
@@ -21041,14 +27544,55 @@ class DescribeOnceTaskResponseBodyTaskManageResponseList(TeaModel):
         task_status_text: str = None,
         task_type: str = None,
     ):
+        # The execution details of the task. The value of this parameter is in the JSON format.
+        # 
+        # *   **causeCode**: the returned code for the cause
+        # *   **causeMsg**: the returned information for the cause
+        # *   **resCode**: the returned code of troubleshooting
+        # *   **resMsg**: the returned information about troubleshooting
+        # *   **problemType**: the type of the issue
+        # *   **dispatchType**: the task delivery method
+        # *   **uuid**: the UUID of the server
+        # *   **instanceId**: the instance ID of the server
+        # *   **internetIp**: the public IP address of the server
+        # *   **intranetIp**: the private IP address of the server
+        # *   **instanceName**: the instance name of the server
+        # *   **url**: the download link of the troubleshooting log
         self.detail_data = detail_data
+        self.fail_count = fail_count
+        # The progress of the task. Unit: %.
         self.progress = progress
+        self.result_info = result_info
+        self.success_count = success_count
+        # The timestamp when the task ends. Unit: milliseconds.
         self.task_end_time = task_end_time
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
+        # The timestamp when the task starts. Unit: milliseconds.
         self.task_start_time = task_start_time
+        # The status of the task. Valid values:
+        # 
+        # *   **1**: started
+        # *   **2**: complete
+        # *   **3**: failed
+        # *   **4**: timed out
         self.task_status = task_status
+        # The text description of the status for the task. Valid values:
+        # 
+        # *   **INIT**: The task is to be started.
+        # *   **START**: The task is started.
+        # *   **DISPATCH**: The self-check command is issued.
+        # *   **SUCCESS**: The self-check is complete.
+        # *   **FAIL**: The task fails.
+        # *   **TIMEOUT**: The task times out.
         self.task_status_text = task_status_text
+        # The type of the task. Valid values:
+        # 
+        # *   **CLIENT\_PROBLEM_CHECK**: a task of the Security Center agent
+        # *   **CLIENT\_DEV_OPS**: an O&M task of Cloud Assistant
+        # *   **ASSET\_SECURITY_CHECK**: a task of asset information collection
         self.task_type = task_type
 
     def validate(self):
@@ -21062,8 +27606,14 @@ class DescribeOnceTaskResponseBodyTaskManageResponseList(TeaModel):
         result = dict()
         if self.detail_data is not None:
             result['DetailData'] = self.detail_data
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
         if self.progress is not None:
             result['Progress'] = self.progress
+        if self.result_info is not None:
+            result['ResultInfo'] = self.result_info
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
         if self.task_end_time is not None:
             result['TaskEndTime'] = self.task_end_time
         if self.task_id is not None:
@@ -21084,8 +27634,14 @@ class DescribeOnceTaskResponseBodyTaskManageResponseList(TeaModel):
         m = m or dict()
         if m.get('DetailData') is not None:
             self.detail_data = m.get('DetailData')
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
+        if m.get('ResultInfo') is not None:
+            self.result_info = m.get('ResultInfo')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
         if m.get('TaskEndTime') is not None:
             self.task_end_time = m.get('TaskEndTime')
         if m.get('TaskId') is not None:
@@ -21110,8 +27666,11 @@ class DescribeOnceTaskResponseBody(TeaModel):
         request_id: str = None,
         task_manage_response_list: List[DescribeOnceTaskResponseBodyTaskManageResponseList] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the tasks.
         self.task_manage_response_list = task_manage_response_list
 
     def validate(self):
@@ -21203,7 +27762,21 @@ class DescribePropertyCountRequest(TeaModel):
         type: str = None,
         uuid_list: str = None,
     ):
+        # The type of the asset fingerprints. Separate multiple types with commas (,). Valid values:
+        # 
+        # *   **port**: port
+        # *   **process**: process
+        # *   **software**: software
+        # *   **user**: account
+        # *   **cron**: scheduled task
+        # *   **sca**: middleware
+        # *   **web**: website
+        # *   **database**: database
+        # *   **lkm**: kernel module
+        # *   **autorun**: startup item
+        # *   **web_server**: web service
         self.type = type
+        # The UUIDs of the assets. Separate multiple UUIDs with commas (,).
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -21246,17 +27819,29 @@ class DescribePropertyCountResponseBody(TeaModel):
         web: int = None,
         webserver: int = None,
     ):
+        # The number of startup items.
         self.autorun = autorun
+        # The number of scheduled tasks.
         self.cron = cron
+        # The number of databases.
         self.database = database
+        # The number of kernel modules.
         self.lkm = lkm
+        # The number of ports.
         self.port = port
+        # The number of processes.
         self.process = process
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The number of middleware assets.
         self.sca = sca
+        # The number of software assets.
         self.software = software
+        # The number of accounts.
         self.user = user
+        # The number of websites.
         self.web = web
+        # The number of web services.
         self.webserver = webserver
 
     def validate(self):
@@ -21378,12 +27963,19 @@ class DescribePropertyCronDetailRequest(TeaModel):
         user: str = None,
         uuid: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether fuzzy search by path to the scheduled task is supported. If you want to use fuzzy search, set the parameter to **1**. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
         self.extend = extend
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The name or IP address of the server.
         self.remark = remark
+        # The path to the scheduled task.
         self.source = source
+        # The username of the account that runs the scheduled task.
         self.user = user
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -21438,9 +28030,13 @@ class DescribePropertyCronDetailResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21491,17 +28087,29 @@ class DescribePropertyCronDetailResponseBodyPropertys(TeaModel):
         user: str = None,
         uuid: str = None,
     ):
+        # The command that is used to run the scheduled task.
         self.cmd = cmd
+        # The timestamp of the last fingerprint collection. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The IP addresses of the server.
         self.ip = ip
+        # The MD5 hash value of the path to the scheduled task.
         self.md_5 = md_5
+        # The interval at which the scheduled task is performed.
         self.period = period
+        # The path to the scheduled task.
         self.source = source
+        # The username of the account that runs the scheduled task.
         self.user = user
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -21575,8 +28183,11 @@ class DescribePropertyCronDetailResponseBody(TeaModel):
         propertys: List[DescribePropertyCronDetailResponseBodyPropertys] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The details of the scheduled tasks.
         self.propertys = propertys
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -21674,13 +28285,21 @@ class DescribePropertyPortDetailRequest(TeaModel):
         remark: str = None,
         uuid: str = None,
     ):
+        # The IP address that is bound to the listening port.
         self.bind_ip = bind_ip
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether fuzzy search by port number is supported. If you want to use fuzzy search, set the parameter to **1**. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
         self.extend = extend
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The listening port of the server.
         self.port = port
+        # The name of the server process.
         self.proc_name = proc_name
+        # The name or IP address of the server.
         self.remark = remark
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -21739,9 +28358,13 @@ class DescribePropertyPortDetailResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21792,17 +28415,29 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
         proto: str = None,
         uuid: str = None,
     ):
+        # The IP address that is bound to the listening port.
         self.bind_ip = bind_ip
+        # The timestamp of the last fingerprint collection. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The IP address of the network interface controller (NIC) that is bound to the listening port.
         self.ip = ip
+        # The ID of the server process that listens on the port.
         self.pid = pid
+        # The listening port.
         self.port = port
+        # The name of the server process.
         self.proc_name = proc_name
+        # The network protocol that is used by the listening port.
         self.proto = proto
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -21876,8 +28511,11 @@ class DescribePropertyPortDetailResponseBody(TeaModel):
         propertys: List[DescribePropertyPortDetailResponseBodyPropertys] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # An array that consists of the fingerprints of the ports.
         self.propertys = propertys
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -21971,9 +28609,13 @@ class DescribePropertyPortItemRequest(TeaModel):
         page_size: int = None,
         port: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # Specifies whether to forcefully refresh the data that you want to query.
         self.force_flush = force_flush
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -22016,9 +28658,13 @@ class DescribePropertyPortItemResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -22060,8 +28706,11 @@ class DescribePropertyPortItemResponseBodyPropertyItems(TeaModel):
         port: str = None,
         proto: str = None,
     ):
+        # The number of servers that use the port.
         self.count = count
+        # The number of the listening port.
         self.port = port
+        # The network protocol of the port.
         self.proto = proto
 
     def validate(self):
@@ -22099,8 +28748,11 @@ class DescribePropertyPortItemResponseBody(TeaModel):
         property_items: List[DescribePropertyPortItemResponseBodyPropertyItems] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # An array that consists of the ports returned.
         self.property_items = property_items
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22200,15 +28852,25 @@ class DescribePropertyProcDetailRequest(TeaModel):
         user: str = None,
         uuid: str = None,
     ):
+        # The startup parameter of the process.
         self.cmdline = cmdline
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether fuzzy search by process name is supported. If you want to use fuzzy search, set the parameter to 1. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
         self.extend = extend
+        # The name of the process.
         self.name = name
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The timestamp when the process ends. Unit: milliseconds.
         self.proc_time_end = proc_time_end
+        # The timestamp when the process starts. Unit: milliseconds.
         self.proc_time_start = proc_time_start
+        # The name or IP address of the server.
         self.remark = remark
+        # The user who runs the process.
         self.user = user
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -22275,9 +28937,13 @@ class DescribePropertyProcDetailResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -22334,23 +29000,44 @@ class DescribePropertyProcDetailResponseBodyPropertys(TeaModel):
         user: str = None,
         uuid: str = None,
     ):
+        # The startup parameter of the process.
         self.cmdline = cmdline
+        # The timestamp of last data collection. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The permission that is required to run the process.
         self.euid_name = euid_name
+        # The ID of the server that is associated with the process.
         self.instance_id = instance_id
+        # The name of the server that is associated with the process.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # Indicates whether the process is a package installation process. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.is_package = is_package
+        # The MD5 hash value of the process file.
         self.md_5 = md_5
+        # The name of the process.
         self.name = name
+        # The path of the process.
         self.path = path
+        # The ID of the process.
         self.pid = pid
+        # The name of the parent process to which the process belongs.
         self.pname = pname
+        # The time when the process starts.
         self.start_time = start_time
+        # The timestamp when the process starts. Unit: milliseconds.
         self.start_time_dt = start_time_dt
+        # The status of the process.
         self.state = state
+        # The user who runs the process.
         self.user = user
+        # The UUID of the server that is associated with the process.
         self.uuid = uuid
 
     def validate(self):
@@ -22448,8 +29135,11 @@ class DescribePropertyProcDetailResponseBody(TeaModel):
         propertys: List[DescribePropertyProcDetailResponseBodyPropertys] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # An array that consists of the fingerprints of the processes.
         self.propertys = propertys
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -22543,9 +29233,13 @@ class DescribePropertyProcItemRequest(TeaModel):
         name: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # Specifies whether to forcefully refresh the data that you want to query.
         self.force_flush = force_flush
+        # The name of the process.
         self.name = name
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -22588,9 +29282,13 @@ class DescribePropertyProcItemResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -22631,7 +29329,9 @@ class DescribePropertyProcItemResponseBodyPropertyItems(TeaModel):
         count: int = None,
         name: str = None,
     ):
+        # The number of servers on which the process runs.
         self.count = count
+        # The name of the process.
         self.name = name
 
     def validate(self):
@@ -22665,8 +29365,11 @@ class DescribePropertyProcItemResponseBody(TeaModel):
         property_items: List[DescribePropertyProcItemResponseBodyPropertyItems] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # An array that consists of the processes returned.
         self.property_items = property_items
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22776,25 +29479,99 @@ class DescribePropertyScaDetailRequest(TeaModel):
         user: str = None,
         uuid: str = None,
     ):
+        # The type of the asset fingerprint that you want to query. Default value: **sca**. Valid values:
+        # 
+        # *   **sca**: middleware
+        # *   **sca_database**: database
+        # *   **sca_web**: web service
+        # 
+        # >  If you do not specify this parameter, the default value **sca** is used, which indicates that middleware fingerprints are queried.
         self.biz = biz
+        # The type of the middleware, database, or web service that you want to query. Valid values:
+        # 
+        # *   **system_service**: system service
+        # *   **software_library**: software library
+        # *   **docker_component**: container component
+        # *   **database**: database
+        # *   **web_container**: web container
+        # *   **jar**: JAR package
+        # *   **web_framework**: web framework
         self.biz_type = biz_type
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the middleware, database, or web service.
+        # 
+        # >  This parameter is deprecated. You can ignore it.
         self.name = name
+        # The number of entries to return on each page. Default value: **10**.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The PID.
         self.pid = pid
+        # The port that the process monitors.
         self.port = port
+        # The timestamp when the process ends. Unit: milliseconds.
         self.process_started_end = process_started_end
+        # The timestamp when the process starts. Unit: milliseconds.
         self.process_started_start = process_started_start
+        # The search condition, such as a server name or a server IP address.
+        # 
+        # >  Fuzzy match is supported.
         self.remark = remark
+        # The name of the asset fingerprint that you want to query.
         self.sca_name = sca_name
+        # The name of the process.
         self.sca_name_pattern = sca_name_pattern
+        # The version of the middleware, database, or web service.
         self.sca_version = sca_version
+        # The search keyword. You must specify this parameter based on the value of the **SearchItem** parameter.
+        # 
+        # *   If the **SearchItem** parameter is set to **name**, you must enter the name of an asset fingerprint.
+        # 
+        # *   If the **SearchItem** parameter is set to **type**, you must enter the type of an asset fingerprint. Valid values:
+        # 
+        #     *   **system_service**: system service
+        #     *   **software_library**: software library
+        #     *   **docker_component**: container component
+        #     *   **database**: database
+        #     *   **web_container**: web container
+        #     *   **jar**: JAR package
+        #     *   **web_framework**: web framework
+        # 
+        # >  You must specify both the **SearchItem** and **SearchInfo** parameters before you can query the asset fingerprints based on the specified name or type.
         self.search_info = search_info
+        # The keyword of the subquery. You must specify this parameter based on the value of the **SearchItemSub** parameter.
+        # 
+        # *   If the **SearchItemSub** parameter is set to **port**, you must enter a port number.
+        # *   If the **SearchItemSub** parameter is set to **pid**, you must enter a process ID (PID).
+        # *   If the **SearchItemSub** parameter is set to **version**, you must enter the version of a database, middleware, or web service.
+        # *   If the **SearchItemSub** parameter is set to **user**, you must enter a username.
+        # 
+        # >  The subquery is used to search for data of a specified database, middleware, or web service.
         self.search_info_sub = search_info_sub
+        # The type of the search condition. Valid values:
+        # 
+        # *   **name**: the name of a database, middleware, or web service
+        # *   **type**: the type of a database, middleware, or web service
+        # 
+        # >  You must specify both the **SearchItem** and **SearchInfo** parameters before you can query the asset fingerprints based on the specified name or type.
         self.search_item = search_item
+        # The type of the subquery. Valid values:
+        # 
+        # *   **port**\
+        # *   **pid**\
+        # *   **version**\
+        # *   **user**\
         self.search_item_sub = search_item_sub
+        # The user who runs the process.
         self.user = user
+        # The UUID of the server on which the middleware, database, or web service is run.
         self.uuid = uuid
 
     def validate(self):
@@ -22901,9 +29678,13 @@ class DescribePropertyScaDetailResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -22970,33 +29751,85 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
         version: str = None,
         web_path: str = None,
     ):
+        # The type of the middleware, database, or web service. Valid values:
+        # 
+        # *   **system_service**: system service
+        # *   **software_library**: software library
+        # *   **docker_component**: container component
+        # *   **database**: database
+        # *   **web_container**: web container
+        # *   **jar**: JAR package
+        # *   **web_framework**: web framework
         self.biz_type = biz_type
+        # The display name of the type of the middleware, database, or web service . Valid values:
+        # 
+        # *   System service
+        # *   Software library
+        # *   Container component
+        # *   Database
+        # *   Web container
+        # *   JAR package
+        # *   Web framework
         self.biz_type_dispaly = biz_type_dispaly
+        # The command line of the process.
         self.cmdline = cmdline
+        # The path to the configuration file.
         self.config_path = config_path
+        # The name of the container.
         self.container_name = container_name
+        # The latest collection timestamp, which indicates the last timestamp when Security Center collected the information about the middleware, database, or web service. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The name of the image.
         self.image_name = image_name
+        # The ID of the server on which the middleware, database, or web service is run.
         self.instance_id = instance_id
+        # The name of the server on which the middleware, database, or web service is run.
         self.instance_name = instance_name
+        # The public IP address of the server on which the middleware, database, or web service is run.
         self.internet_ip = internet_ip
+        # The private IP address of the server on which the middleware, database, or web service is run.
         self.intranet_ip = intranet_ip
+        # The public IP address of the server on which the middleware, database, or web service is run.
         self.ip = ip
+        # The IP address that the process monitors.
         self.listen_ip = listen_ip
+        # The protocol of the traffic on which the process listens. Valid values:
+        # 
+        # *   **UDP**\
+        # *   **TCP**\
         self.listen_protocol = listen_protocol
+        # The listening status of the process. Valid values:
+        # 
+        # *   **NONE**: not listening
+        # *   **LISTEN**: listening
         self.listen_status = listen_status
+        # The name of the middleware, database, or web service.
         self.name = name
+        # The path of the middleware, database, or web service.
         self.path = path
+        # The PID.
         self.pid = pid
+        # The port of the middleware, database, or web service.
         self.port = port
+        # The ID of the parent process.
         self.ppid = ppid
+        # The timestamp when the process starts. Unit: milliseconds.
         self.process_started = process_started
+        # The name of the user who runs the process.
         self.process_user = process_user
+        # The version verification information about the middleware, database, or web service.
         self.proof = proof
+        # The version of the runtime environment.
+        # 
+        # >  The value of this parameter can be the Java Development Kit (JDK) version of the runtime environment for a Java process.
         self.runtime_env_version = runtime_env_version
+        # The type of the middleware, database, or web service.
         self.type = type
+        # The UUID of the server on which the middleware, database, or web service is run.
         self.uuid = uuid
+        # The version of the middleware, database, or web service.
         self.version = version
+        # The web directory.
         self.web_path = web_path
 
     def validate(self):
@@ -23134,8 +29967,11 @@ class DescribePropertyScaDetailResponseBody(TeaModel):
         propertys: List[DescribePropertyScaDetailResponseBodyPropertys] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The details about the asset fingerprints returned.
         self.propertys = propertys
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -23226,6 +30062,17 @@ class DescribePropertyScheduleConfigRequest(TeaModel):
         self,
         type: str = None,
     ):
+        # The type of the asset fingerprints to query. Valid values:
+        # 
+        # *   **scheduler_port_period**: listening port
+        # *   **scheduler_process_period**: running process
+        # *   **scheduler_account_period**: account
+        # *   **scheduler_software_period**: software
+        # *   **scheduler_cron_period**: scheduled task
+        # *   **scheduler_sca_period**: middleware
+        # *   **scheduler_autorun_period**: startup item
+        # *   **scheduler_lkm_period**: kernel module
+        # *   **scheduler_sca_proxy_period**: website
         self.type = type
 
     def validate(self):
@@ -23254,7 +30101,11 @@ class DescribePropertyScheduleConfigResponseBody(TeaModel):
         config: str = None,
         request_id: str = None,
     ):
+        # The configuration time. Unit: hours.
+        # 
+        # >  The value **0** indicates that asset fingerprint collection is disabled for this type of asset.
         self.config = config
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -23339,15 +30190,25 @@ class DescribePropertySoftwareDetailRequest(TeaModel):
         software_version: str = None,
         uuid: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether fuzzy search by software name is supported. If you want to use fuzzy search, set the parameter to 1. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
         self.extend = extend
+        # The timestamp at which the software update ends. Unit: milliseconds.
         self.install_time_end = install_time_end
+        # The timestamp at which the software update starts. Unit: milliseconds.
         self.install_time_start = install_time_start
+        # The name of the software.
         self.name = name
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The installation path of the software.
         self.path = path
+        # The name or IP address of the server.
         self.remark = remark
+        # The version of the software.
         self.software_version = software_version
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -23414,9 +30275,13 @@ class DescribePropertySoftwareDetailResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -23467,17 +30332,29 @@ class DescribePropertySoftwareDetailResponseBodyPropertys(TeaModel):
         uuid: str = None,
         version: str = None,
     ):
+        # The timestamp at which the last asset fingerprint collection is performed. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The time at which the software is installed.
         self.install_time = install_time
+        # The timestamp at which the software is installed. Unit: milliseconds.
         self.install_time_dt = install_time_dt
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The IP addresses of the server.
         self.ip = ip
+        # The name of the software.
         self.name = name
+        # The installation path of the software.
         self.path = path
+        # The UUID of the server.
         self.uuid = uuid
+        # The version of the software.
         self.version = version
 
     def validate(self):
@@ -23551,8 +30428,11 @@ class DescribePropertySoftwareDetailResponseBody(TeaModel):
         propertys: List[DescribePropertySoftwareDetailResponseBodyPropertys] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The details of the software asset.
         self.propertys = propertys
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -23646,9 +30526,13 @@ class DescribePropertySoftwareItemRequest(TeaModel):
         name: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # Specifies whether to forcefully refresh the data that you want to query.
         self.force_flush = force_flush
+        # The name of the software that you want to query.
         self.name = name
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -23691,9 +30575,13 @@ class DescribePropertySoftwareItemResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -23734,7 +30622,9 @@ class DescribePropertySoftwareItemResponseBodyPropertyItems(TeaModel):
         count: int = None,
         name: str = None,
     ):
+        # The number of servers on which the software is installed.
         self.count = count
+        # The name of the software.
         self.name = name
 
     def validate(self):
@@ -23768,8 +30658,11 @@ class DescribePropertySoftwareItemResponseBody(TeaModel):
         property_items: List[DescribePropertySoftwareItemResponseBodyPropertyItems] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # An array that consists of the software assets returned.
         self.property_items = property_items
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23860,6 +30753,12 @@ class DescribePropertyUsageNewestRequest(TeaModel):
         self,
         type: str = None,
     ):
+        # The type of the accounts.
+        # 
+        # Valid values:
+        # 
+        # *   user
+        # *   system
         self.type = type
 
     def validate(self):
@@ -23888,7 +30787,9 @@ class DescribePropertyUsageNewestResponseBodyNewestStatisticItems(TeaModel):
         create: int = None,
         name: str = None,
     ):
+        # The time when the account was created.
         self.create = create
+        # The username of the account.
         self.name = name
 
     def validate(self):
@@ -23923,9 +30824,13 @@ class DescribePropertyUsageNewestResponseBody(TeaModel):
         request_id: str = None,
         type: str = None,
     ):
+        # The number of accounts.
         self.item_count = item_count
+        # An array that consists of the accounts.
         self.newest_statistic_items = newest_statistic_items
+        # The ID of the request.
         self.request_id = request_id
+        # The type of the accounts that are created on the server. The value is fixed as user, which indicates user accounts.
         self.type = type
 
     def validate(self):
@@ -24025,14 +30930,26 @@ class DescribePropertyUserDetailRequest(TeaModel):
         user: str = None,
         uuid: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether the fuzzy search by account name is supported. If you want to use fuzzy search, set the parameter to **1**. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
         self.extend = extend
+        # Specifies whether the account has root permissions. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_root = is_root
+        # The timestamp of the last logoff from the account. Unit: milliseconds.
         self.last_login_time_end = last_login_time_end
+        # The timestamp of the last logon to the account. Unit: milliseconds.
         self.last_login_time_start = last_login_time_start
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The name or IP address of the server.
         self.remark = remark
+        # The name of the account to which the server belongs.
         self.user = user
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -24095,9 +31012,13 @@ class DescribePropertyUserDetailResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -24158,27 +31079,67 @@ class DescribePropertyUserDetailResponseBodyPropertys(TeaModel):
         user: str = None,
         uuid: str = None,
     ):
+        # The date on which the account expires.
         self.accounts_expiration_date = accounts_expiration_date
+        # The timestamp at which the last asset fingerprint collection is performed. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The details of the user groups to which the account belongs.
         self.group_names = group_names
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The IP addresses of the server.
         self.ip = ip
+        # Indicates whether the account is an interactive logon account. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_could_login = is_could_login
+        # Indicates whether the password expires. Valid values:
+        # 
+        # *   **0**: yes
+        # *   **1**: no
         self.is_passwd_expired = is_passwd_expired
+        # Indicates whether the password is locked. Valid values:
+        # 
+        # *   **0**: yes
+        # *   **1**: no
         self.is_passwd_locked = is_passwd_locked
+        # Indicates whether the account has root permissions. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_root = is_root
+        # Indicates whether the account is a sudo account. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_sudoer = is_sudoer
+        # Indicates whether the account expires. Valid values:
+        # 
+        # *   **0**: yes
+        # *   **1**: no
         self.is_user_expired = is_user_expired
+        # The source IP address of the last logon to the account.
         self.last_login_ip = last_login_ip
+        # The last logon time of the account.
         self.last_login_time = last_login_time
+        # The timestamp of the last logon to the account. Unit: milliseconds.
         self.last_login_time_dt = last_login_time_dt
+        # The timestamp of the last logon to the account. Unit: milliseconds.
         self.last_login_timestamp = last_login_timestamp
+        # The date on which the password of the account expires.
         self.password_expiration_date = password_expiration_date
+        # This parameter is deprecated. You can ignore it.
         self.status = status
+        # The name of the account.
         self.user = user
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -24292,8 +31253,11 @@ class DescribePropertyUserDetailResponseBody(TeaModel):
         propertys: List[DescribePropertyUserDetailResponseBodyPropertys] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The details of asset fingerprints for the account.
         self.propertys = propertys
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -24387,9 +31351,16 @@ class DescribePropertyUserItemRequest(TeaModel):
         page_size: int = None,
         user: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # Specifies whether to forcefully refresh the data that you want to query. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.force_flush = force_flush
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The information about the account.
         self.user = user
 
     def validate(self):
@@ -24432,9 +31403,13 @@ class DescribePropertyUserItemResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -24475,7 +31450,9 @@ class DescribePropertyUserItemResponseBodyPropertyItems(TeaModel):
         count: int = None,
         user: str = None,
     ):
+        # The number of servers that belong to the account.
         self.count = count
+        # The name of the account.
         self.user = user
 
     def validate(self):
@@ -24509,8 +31486,11 @@ class DescribePropertyUserItemResponseBody(TeaModel):
         property_items: List[DescribePropertyUserItemResponseBodyPropertyItems] = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # An array that consists of the account information returned.
         self.property_items = property_items
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24604,9 +31584,24 @@ class DescribeRestoreJobsRequest(TeaModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The unique identifier of the server on which the restoration task is run. For example, you can use the IP address or the name of the server.
         self.machine_remark = machine_remark
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The status of the restoration task. Valid values:
+        # 
+        # *   **RUNNING**: The task is running.
+        # *   **COMPLETE**: The task is complete.
+        # *   **FAILED**: The task fails.
+        # *   **CANCELING**: The task is being canceled.
+        # *   **CANCELED**: The task is canceled.
+        # *   **PARTIAL_COMPLETE**: The task is partially successful.
+        # *   **CREATED**: The task is created but is not run.
+        # *   **EXPIRED**: The task is not updated.
+        # *   **QUEUED**: The task is waiting to be run.
+        # *   **CLIENT_DELETED**: The task fails because the anti-ransomware agent is uninstalled.
         self.status = status
 
     def validate(self):
@@ -24649,9 +31644,13 @@ class DescribeRestoreJobsResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of restoration tasks returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The total number of restoration tasks returned.
         self.total_count = total_count
 
     def validate(self):
@@ -24730,45 +31729,99 @@ class DescribeRestoreJobsResponseBodyRestoreJobs(TeaModel):
         uuid: str = None,
         vault_id: str = None,
     ):
+        # The size of backup data. Unit: bytes.
         self.actual_bytes = actual_bytes
+        # The total size of data that is restored. Unit: bytes.
         self.bytes_done = bytes_done
+        # The total size of data that you want to restore. Unit: bytes.
         self.bytes_total = bytes_total
+        # The ID of the anti-ransomware agent that is used to restore data.
         self.client_id = client_id
+        # The timestamp when the restoration task is complete. Unit: milliseconds.
         self.complete_time = complete_time
+        # The timestamp when the restoration task is created. Unit: milliseconds.
         self.created_time = created_time
+        # The duration of the restoration task. Unit: seconds.
         self.duration = duration
+        # The number of the restoration tasks on which errors occur.
         self.error_count = error_count
+        # The name of the CSV file. The CSV file contains the files that fail to be restored.
         self.error_file = error_file
+        # The URL to download the CSV file. The CSV file contains the files that fail to be restored.
         self.error_file_url = error_file_url
+        # The error code that is returned for the restoration task.
         self.error_type = error_type
+        # The timestamp when the in-progress restoration task is expected to be complete. Unit: seconds.
         self.eta = eta
+        # The directory excluded from the anti-ransomware policy. The value is the directory that you specify to skip protection when you create the anti-ransomware policy.
         self.excludes = excludes
+        # The return value of the restoration task.
         self.exit_code = exit_code
+        # The time when the restoration task is created.
         self.gmt_create = gmt_create
+        # The time when the restoration task is updated.
         self.gmt_modified = gmt_modified
+        # The included directory based on which the files to restore are located. The value is the directory that you specify for protection when you create the anti-ransomware policy
         self.includes = includes
+        # The ID of the server whose data you want to restore.
         self.instance_id = instance_id
+        # The name of the server whose data you want to restore.
         self.instance_name = instance_name
+        # The public IP address of the server whose data you want to restore.
         self.internet_ip = internet_ip
+        # The internal IP address of the server whose data you want to restore.
         self.intranet_ip = intranet_ip
+        # The number of files that are backed up.
         self.items_done = items_done
+        # The total number of files that you want to restore.
         self.items_total = items_total
+        # The error message returned.
         self.message = message
+        # The progress of the restoration task in percentage.
         self.percentage = percentage
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The ID of the restoration task.
         self.restore_id = restore_id
+        # The name of the restoration task.
         self.restore_name = restore_name
+        # The type of the file that is restored. Valid values:
+        # 
+        # *   **ECS_FILE**: files on Elastic Compute Service (ECS) instances
+        # *   **FILE**: files on servers in data centers
         self.restore_type = restore_type
+        # The hash value of the snapshot that stores backup data when the data is backed up.
         self.snapshot_hash = snapshot_hash
+        # The hash value ID of the snapshot that stores backup data when the data is backed up.
         self.snapshot_id = snapshot_id
+        # The version of the backup data.
         self.snapshot_version = snapshot_version
+        # The path to the source file that you want to restore.
         self.source = source
+        # The ID of the anti-ransomware agent that is used to back up data.
         self.source_client_id = source_client_id
+        # The speed of data restoration. Unit: byte/s.
         self.speed = speed
+        # The status of the restoration task. Valid values:
+        # 
+        # *   **RUNNING**: The task is running.
+        # *   **COMPLETE**: The task is complete.
+        # *   **FAILED**: The task fails.
+        # *   **CANCELING**: The task is being canceled.
+        # *   **CANCELED**: The task is canceled.
+        # *   **PARTIAL_COMPLETE**: The task is partially successful.
+        # *   **CREATED**: The task is created but is not run.
+        # *   **EXPIRED**: The task is not updated.
+        # *   **QUEUED**: The task is waiting to be run.
+        # *   **CLIENT_DELETED**: The task fails because the anti-ransomware agent is uninstalled.
         self.status = status
+        # The folder to which the backup data is restored. After you create the restoration task, the backup data is restored to the specified folder.
         self.target = target
+        # The timestamp when the restoration task was last updated. Unit: milliseconds.
         self.updated_time = updated_time
+        # The UUID of the server whose data you want to restore.
         self.uuid = uuid
+        # The ID of the backup vault in which the backup data is stored.
         self.vault_id = vault_id
 
     def validate(self):
@@ -24954,8 +32007,11 @@ class DescribeRestoreJobsResponseBody(TeaModel):
         request_id: str = None,
         restore_jobs: List[DescribeRestoreJobsResponseBodyRestoreJobs] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the restoration tasks.
         self.restore_jobs = restore_jobs
 
     def validate(self):
@@ -25051,11 +32107,23 @@ class DescribeRiskCheckItemResultRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The ID of the check item.
+        # 
+        # >  For more information about the IDs and details of the check items that can be used in configuration assessment, see [DescribeRiskCheckResult](~~DescribeRiskCheckResult~~).
         self.item_id = item_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -25108,11 +32176,17 @@ class DescribeRiskCheckItemResultResponseBodyPageContentResource(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The data of the affected assets on each page in a dynamic table.
         self.content_resource = content_resource
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The total number of pages returned.
         self.page_count = page_count
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -25161,7 +32235,9 @@ class DescribeRiskCheckItemResultResponseBody(TeaModel):
         page_content_resource: DescribeRiskCheckItemResultResponseBodyPageContentResource = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_content_resource = page_content_resource
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25250,17 +32326,53 @@ class DescribeRiskCheckResultRequest(TeaModel):
         source_ip: str = None,
         status: str = None,
     ):
+        # The type of the cloud service whose configuration assessment result you want to query. For more information about the description of the cloud service specified by this parameter, see the check item table in the "Response parameters" section of this topic.
         self.asset_type = asset_type
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The type of the check item that you want to query. Valid values:
+        # 
+        # *   **1**: identity authentication and permissions
+        # *   **2**: network access control
+        # *   **3**: log audit
+        # *   **4**: data security
+        # *   **5**: monitoring and alerting
+        # *   **6**: basic security protection
+        # 
+        # >  If you do not specify this parameter, all types of check items are queried by default.
         self.group_id = group_id
         self.item_ids = item_ids
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the check item. For more information about the description of the check item name, see the check item table in the "Response parameters" section of this topic.
         self.name = name
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # Specifies whether the check item is supported by the cloud service. Valid values:
+        # 
+        # *   **enabled**: The check item is supported by the cloud service.
+        # *   **disabled**: The check item is not supported by the cloud service.
         self.query_flag = query_flag
         self.resource_owner_id = resource_owner_id
+        # The risk level of the check item that you want to query. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The status of the check result. Valid values:
+        # 
+        # *   **pass**\
+        # *   **failed**\
+        # *   **running**\
+        # *   **waiting**\
+        # *   **ignored**\
+        # *   **falsePositive**\
         self.status = status
 
     def validate(self):
@@ -25333,7 +32445,14 @@ class DescribeRiskCheckResultResponseBodyListRiskItemResources(TeaModel):
         content_resource: Dict[str, Any] = None,
         resource_name: str = None,
     ):
+        # The details about the check result.
         self.content_resource = content_resource
+        # The title in the details. Valid values:
+        # 
+        # *   **bestPractice**: description
+        # *   **influence**: risk
+        # *   **suggestion**: solution
+        # *   **helpResource**: reference
         self.resource_name = resource_name
 
     def validate(self):
@@ -25378,19 +32497,57 @@ class DescribeRiskCheckResultResponseBodyList(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # The number of affected assets.
         self.affected_count = affected_count
+        # The timestamp when the last check was performed. Unit: milliseconds.
         self.check_time = check_time
+        # The ID of the check item. For more information about the description of the check item ID, see the check item table in the "Response parameters" section of this topic.
         self.item_id = item_id
+        # The time when the next check will be performed.
         self.remaining_time = remaining_time
+        # Indicates whether the risks that are detected for the check item can be fixed. Valid values:
+        # 
+        # *   **enabled**: yes
+        # *   **disabled**: no
         self.repair_status = repair_status
+        # The type of the affected assets.
         self.risk_assert_type = risk_assert_type
+        # An array that consists of the details about the check item.
         self.risk_item_resources = risk_item_resources
+        # The risk level of the check item. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_level = risk_level
+        # The sequence number of the check result. The check items are sorted based on the sequence number.
         self.sort = sort
+        # Indicates whether the check item is supported by the cloud service. Valid values:
+        # 
+        # *   **enabled**: The check item is supported by the cloud service.
+        # *   **disable**: The check item is not supported by the cloud service.
         self.start_status = start_status
+        # The status of the check result. Valid values:
+        # 
+        # *   **pass**\
+        # *   **failed**\
+        # *   **running**\
+        # *   **waiting**\
+        # *   **ignored**\
+        # *   **falsePositive**\
         self.status = status
+        # The ID of the check task.
         self.task_id = task_id
+        # The name of the check item.
         self.title = title
+        # The type of the check item. Valid values:
+        # 
+        # *   Identity authentication and permissions
+        # *   Network access control
+        # *   Log audit
+        # *   Data security
+        # *   Monitoring and alerting
+        # *   Basic security protection
         self.type = type
 
     def validate(self):
@@ -25484,12 +32641,19 @@ class DescribeRiskCheckResultResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of the check items.
         self.list = list
+        # The total number of pages returned.
         self.page_count = page_count
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -25596,9 +32760,15 @@ class DescribeRiskCheckSummaryRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the Alibaba Cloud account that is added as a member by using the multi-account control feature.
         self.resource_directory_account_id = resource_directory_account_id
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -25639,7 +32809,12 @@ class DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroupsCountByStatus(Te
         count: int = None,
         status: str = None,
     ):
+        # The number of detected risk items.
         self.count = count
+        # The status of the check item after the check is finished. Valid values:
+        # 
+        # *   **pass**: The check item passes the check, which indicates that the check item is normal.
+        # *   **failed**: The check item fails the check, which indicates that risks are detected for the check item.
         self.status = status
 
     def validate(self):
@@ -25676,11 +32851,22 @@ class DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryGroups(TeaModel):
         status: str = None,
         title: str = None,
     ):
+        # An array that consists of the statistics about check results.
         self.count_by_status = count_by_status
+        # The ID of the check item type.
         self.id = id
+        # The remaining time before the check is complete.
         self.remaining_time = remaining_time
+        # The sequence number of the check item type in the **All Types** drop-down list in the Security Center console.
         self.sort = sort
+        # The status of the check. Valid values:
+        # 
+        # *   **finish**: The check is finished.
+        # *   **running**: The check is in process.
+        # *   **waiting**: The check is pending.
+        # *   **notStart**: The check is not started.
         self.status = status
+        # The type of the check item.
         self.title = title
 
     def validate(self):
@@ -25737,7 +32923,13 @@ class DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount(TeaMode
         count: int = None,
         key: str = None,
     ):
+        # The number of check items at the specified risk level.
         self.count = count
+        # The risk level of the check items. Valid values of risk levels:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.key = key
 
     def validate(self):
@@ -25778,15 +32970,25 @@ class DescribeRiskCheckSummaryResponseBodyRiskCheckSummary(TeaModel):
         risk_level_count: List[DescribeRiskCheckSummaryResponseBodyRiskCheckSummaryRiskLevelCount] = None,
         risk_rate: float = None,
     ):
+        # The number of affected assets.
         self.affected_asset_count = affected_asset_count
+        # The number of the check items that fail the check.
         self.disabled_risk_count = disabled_risk_count
+        # The number of the check items that pass the check.
         self.enabled_risk_count = enabled_risk_count
+        # An array that consists of the statistics about each type of check items.
         self.groups = groups
+        # The number of check items.
         self.item_count = item_count
+        # The number of risk items detected in the last check.
         self.previous_count = previous_count
+        # The timestamp of the last check. Unit: milliseconds.
         self.previous_time = previous_time
+        # The number of detected risk items.
         self.risk_count = risk_count
+        # An array that consists of the number of check items at each risk level.
         self.risk_level_count = risk_level_count
+        # The proportion of risk items to all check items.
         self.risk_rate = risk_rate
 
     def validate(self):
@@ -25868,7 +33070,9 @@ class DescribeRiskCheckSummaryResponseBody(TeaModel):
         request_id: str = None,
         risk_check_summary: DescribeRiskCheckSummaryResponseBodyRiskCheckSummary = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The summary information about the check results of cloud service configurations.
         self.risk_check_summary = risk_check_summary
 
     def validate(self):
@@ -25948,8 +33152,12 @@ class DescribeRiskItemTypeRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Chinese and English are supported.
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -25986,7 +33194,9 @@ class DescribeRiskItemTypeResponseBodyList(TeaModel):
         id: int = None,
         title: str = None,
     ):
+        # The ID of the check item.
         self.id = id
+        # The name of the check item type. Example: Identity authentication and permissions.
         self.title = title
 
     def validate(self):
@@ -26019,7 +33229,9 @@ class DescribeRiskItemTypeResponseBody(TeaModel):
         list: List[DescribeRiskItemTypeResponseBodyList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the types of check items.
         self.list = list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -26108,11 +33320,21 @@ class DescribeRiskListCheckResultRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.current_page = current_page
+        # The instance ID of the cloud service. Separate multiple IDs with commas (,).
+        # 
+        # >  If you do not specify this parameter, an empty list is returned.
         self.instance_ids = instance_ids
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -26161,7 +33383,9 @@ class DescribeRiskListCheckResultResponseBodyList(TeaModel):
         instance_id: str = None,
         risk_count: int = None,
     ):
+        # The instance ID of the cloud service.
         self.instance_id = instance_id
+        # The total number of risk items detected in the current cloud service.
         self.risk_count = risk_count
 
     def validate(self):
@@ -26194,7 +33418,9 @@ class DescribeRiskListCheckResultResponseBody(TeaModel):
         list: List[DescribeRiskListCheckResultResponseBodyList] = None,
         request_id: str = None,
     ):
+        # The number of risk items for each cloud service.
         self.list = list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -26279,7 +33505,12 @@ class DescribeRiskTypeRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -26317,12 +33548,22 @@ class DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList(Te
         param_name: str = None,
         param_type: int = None,
     ):
+        # If the value of paramType is 1, this parameter is empty. If the value of paramType is 2, this parameter provides the options that can be selected for paramType.
         self.enum_value = enum_value
+        # The maximum value of the parameter.
         self.max_value = max_value
+        # The minimum value of the parameter.
         self.min_value = min_value
+        # The default value of the parameter.
         self.param_default_value = param_default_value
+        # The description of the parameter.
         self.param_desc = param_desc
+        # The name of the parameter.
         self.param_name = param_name
+        # The configuration type of the parameter. Valid values:
+        # 
+        # *   **1**: input
+        # *   **2**: selection
         self.param_type = param_type
 
     def validate(self):
@@ -26377,9 +33618,16 @@ class DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules(TeaModel):
         rule_desc: str = None,
         rule_id: str = None,
     ):
+        # Indicates whether the baseline can be edited. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.optional = optional
+        # An array that consists of the parameters in the rule for the baseline.
         self.param_list = param_list
+        # The description of the rule for the baseline.
         self.rule_desc = rule_desc
+        # The ID of the rule for the baseline.
         self.rule_id = rule_id
 
     def validate(self):
@@ -26430,9 +33678,13 @@ class DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails(TeaModel):
         check_item: str = None,
         rules: List[DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules] = None,
     ):
+        # The description of the baseline.
         self.check_desc = check_desc
+        # The ID of the baseline.
         self.check_id = check_id
+        # The baseline.
         self.check_item = check_item
+        # An array that consists of the rule details about the baseline.
         self.rules = rules
 
     def validate(self):
@@ -26482,8 +33734,11 @@ class DescribeRiskTypeResponseBodyRiskTypesSubTypes(TeaModel):
         check_details: List[DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails] = None,
         type_name: str = None,
     ):
+        # The alias of the baseline subtype.
         self.alias = alias
+        # An array that consists of the check details about the baseline subtype.
         self.check_details = check_details
+        # The name of the baseline subtype.
         self.type_name = type_name
 
     def validate(self):
@@ -26529,8 +33784,11 @@ class DescribeRiskTypeResponseBodyRiskTypes(TeaModel):
         sub_types: List[DescribeRiskTypeResponseBodyRiskTypesSubTypes] = None,
         type_name: str = None,
     ):
+        # The alias of the baseline type.
         self.alias = alias
+        # An array that consists of the information about baseline subtypes.
         self.sub_types = sub_types
+        # The name of the baseline type.
         self.type_name = type_name
 
     def validate(self):
@@ -26575,7 +33833,9 @@ class DescribeRiskTypeResponseBody(TeaModel):
         request_id: str = None,
         risk_types: List[DescribeRiskTypeResponseBodyRiskTypes] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the information about baseline types.
         self.risk_types = risk_types
 
     def validate(self):
@@ -26659,6 +33919,9 @@ class DescribeScanTaskProgressRequest(TeaModel):
         self,
         task_id: int = None,
     ):
+        # The ID of the virus scan task.
+        # 
+        # >  You can call the [StartVirusScanTask](~~StartVirusScanTask~~) operation to query the IDs of virus scan tasks.
         self.task_id = task_id
 
     def validate(self):
@@ -26688,8 +33951,28 @@ class DescribeScanTaskProgressResponseBody(TeaModel):
         scan_task_progress: str = None,
         target_info: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The progress of the virus scan task. Valid values:
+        # 
+        # *   **init**: The task is being initialized.
+        # *   **Processing**: The task is running.
+        # *   **Success**: The task is complete.
+        # *   **Failed**: The task fails.
         self.scan_task_progress = scan_task_progress
+        # The information about the asset on which the virus scan task runs. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        # *   **type**: the type of the asset on which the virus scan task runs. Valid values:
+        # 
+        #     *   **groupId**: server group.
+        #     *   **uuid**: server.
+        # 
+        # *   **name**: the name of the server group or server.
+        # 
+        # *   **target**: the asset on which the virus scan task runs. The value of this field varies based on the value of the type field.
+        # 
+        #     *   If the value of **type** is **groupId**, the value of this field is the ID of the server group.
+        #     *   If the value of **type** is **uuid**, the value of this field is the UUID of the server.
         self.target_info = target_info
 
     def validate(self):
@@ -26771,8 +34054,17 @@ class DescribeSearchConditionRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The language of the content within the request and the response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: Elastic Compute Service (ECS) instance
+        # *   **cloud_product**: cloud service except ECS
         self.type = type
 
     def validate(self):
@@ -26811,9 +34103,34 @@ class DescribeSearchConditionResponseBodyConditionList(TeaModel):
         name: str = None,
         name_key: str = None,
     ):
+        # The type of the filter condition. Valid values:
+        # 
+        # *   **system**: default filter condition
+        # *   **user**: custom filter condition
         self.condition_type = condition_type
+        # The filter condition. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **filterParams**: the parameters of the filter condition. The value of this field is in the JSON format and contains the following fields:
+        # 
+        #     *   **labelKey**: the key for rendering.
+        # 
+        #     *   **label**: the display name.
+        # 
+        #     *   **value**: the value of the filter condition. The value of this field is in the JSON format and contains the following fields:
+        # 
+        #         *   **name**: the name of the filter item.
+        #         *   **value**: the value of the filter item.
+        # 
+        # *   **LogicalExp**: the logical relationship among the filter conditions. Valid values:
+        # 
+        #     *   **AND**: The filter conditions are evaluated by using a logical **AND**.
+        #     *   **OR**: The filter conditions are evaluated by using a logical **OR**.
+        # 
+        # >  If the value of **ConditionType** is **system**, **labelKey** is returned. The labelKey field is used only for internationalization rendering.
         self.filter_conditions = filter_conditions
+        # The name of the filter condition.
         self.name = name
+        # The key of the filter condition name.
         self.name_key = name_key
 
     def validate(self):
@@ -26854,7 +34171,9 @@ class DescribeSearchConditionResponseBody(TeaModel):
         condition_list: List[DescribeSearchConditionResponseBodyConditionList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the filter conditions.
         self.condition_list = condition_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -26939,7 +34258,12 @@ class DescribeSecureSuggestionRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -26973,8 +34297,11 @@ class DescribeSecureSuggestionResponseBodySuggestionsDetail(TeaModel):
         sub_type: str = None,
         title: str = None,
     ):
+        # The description of the suggestion.
         self.description = description
+        # The subtype of the unhandled security risk.
         self.sub_type = sub_type
+        # The name of the unhandled risk.
         self.title = title
 
     def validate(self):
@@ -27012,8 +34339,19 @@ class DescribeSecureSuggestionResponseBodySuggestions(TeaModel):
         points: int = None,
         suggest_type: str = None,
     ):
+        # An array that consists of the details about the suggestion.
         self.detail = detail
+        # The penalty point of an item.
         self.points = points
+        # The type of the unhandled security risk. Valid values:
+        # 
+        # *   **SS_REINFORCE**: missing configuration of key features, such as the antivirus feature
+        # *   **SS_ALARM**: unhandled alerts
+        # *   **SS_VUL**: unfixed vulnerabilities
+        # *   **SS_HC**: baseline risks
+        # *   **SS_AK**: AccessKey pair leaks
+        # *   **SS_CLOUD_HC**: configuration risks of cloud services
+        # *   **OTHER**: others
         self.suggest_type = suggest_type
 
     def validate(self):
@@ -27059,8 +34397,11 @@ class DescribeSecureSuggestionResponseBody(TeaModel):
         suggestions: List[DescribeSecureSuggestionResponseBodySuggestions] = None,
         total_count: int = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the unhandled security risks.
         self.suggestions = suggestions
+        # The total number of unhandled security risks.
         self.total_count = total_count
 
     def validate(self):
@@ -27150,8 +34491,13 @@ class DescribeSecurityCheckScheduleConfigRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -27189,8 +34535,29 @@ class DescribeSecurityCheckScheduleConfigResponseBodyRiskCheckJobConfig(TeaModel
         end_time: int = None,
         start_time: int = None,
     ):
+        # The day of the week when the check tasks are performed. Multiple days can be specified. Multiple days are separated by commas (,).
+        # 
+        # *   **1**: Monday
+        # *   **2**: Tuesday
+        # *   **3**: Wednesday
+        # *   **4**: Thursday
+        # *   **5**: Friday
+        # *   **6**: Saturday
+        # *   **7**: Sunday
         self.days_of_week = days_of_week
+        # The time range during which check tasks end. Valid values:
+        # 
+        # *   **6**: 00:00 to 06:00
+        # *   **12**: 06:00 to 12:00
+        # *   **18**: 12:00 to 18:00
+        # *   **24**: 18:00 to 24:00
         self.end_time = end_time
+        # The time range during which check tasks start. Valid values:
+        # 
+        # *   **0**: 00:00 to 06:00
+        # *   **6**: 06:00 to 12:00
+        # *   **12**: 12:00 to 18:00
+        # *   **18**: 18:00 to 24:00
         self.start_time = start_time
 
     def validate(self):
@@ -27227,7 +34594,9 @@ class DescribeSecurityCheckScheduleConfigResponseBody(TeaModel):
         request_id: str = None,
         risk_check_job_config: DescribeSecurityCheckScheduleConfigResponseBodyRiskCheckJobConfig = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The configurations of custom check tasks.
         self.risk_check_job_config = risk_check_job_config
 
     def validate(self):
@@ -27309,8 +34678,15 @@ class DescribeSecurityEventOperationStatusRequest(TeaModel):
         task_id: int = None,
     ):
         self.resource_owner_id = resource_owner_id
+        # The IDs of the alert events.
+        # 
+        # >  You must specify at least one of the TaskId and SecurityEventIds parameters.
         self.security_event_ids = security_event_ids
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the task that handles the alert events.
+        # 
+        # >  You must specify at least one of the TaskId and SecurityEventIds parameters.
         self.task_id = task_id
 
     def validate(self):
@@ -27352,8 +34728,15 @@ class DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStat
         security_event_id: str = None,
         status: str = None,
     ):
+        # The code that indicates the handling result of the alert event.
         self.error_code = error_code
+        # The ID of the alert event.
         self.security_event_id = security_event_id
+        # The handling status of the alert event. Valid values:
+        # 
+        # *   **Processing**: The alert event is being handled.
+        # *   **Success**: The alert event is handled.
+        # *   **Failed**: The alert event failed to be handled.
         self.status = status
 
     def validate(self):
@@ -27390,7 +34773,14 @@ class DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStat
         security_event_operation_statuses: List[DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponseSecurityEventOperationStatuses] = None,
         task_status: str = None,
     ):
+        # An array consisting of the status of the alert events handled by the task.
         self.security_event_operation_statuses = security_event_operation_statuses
+        # The status of the task that handles the alert events. Valid values:
+        # 
+        # *   **Processing**: The task is running.
+        # *   **Success**: The task is successful.
+        # *   **Failure**: The task failed.
+        # *   **Pending**: The task is pending.
         self.task_status = task_status
 
     def validate(self):
@@ -27431,7 +34821,9 @@ class DescribeSecurityEventOperationStatusResponseBody(TeaModel):
         request_id: str = None,
         security_event_operation_status_response: DescribeSecurityEventOperationStatusResponseBodySecurityEventOperationStatusResponse = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The information about the task that handles the alert events.
         self.security_event_operation_status_response = security_event_operation_status_response
 
     def validate(self):
@@ -27512,9 +34904,15 @@ class DescribeSecurityEventOperationsRequest(TeaModel):
         security_event_id: int = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The ID of the alert event that you want to handle.
         self.security_event_id = security_event_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -27559,11 +34957,23 @@ class DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse
         supported_mis_type: List[str] = None,
         uuid: str = None,
     ):
+        # The alias of the field that is used in the whitelist rule.
         self.filed_alias_name = filed_alias_name
+        # The field that is used in the whitelist rule.
         self.filed_name = filed_name
+        # The operation that is used in the whitelist rule. Valid values:
+        # 
+        # *   **contains**: contains
+        # *   **notContains**: does not contain
+        # *   **regex**: regular expression
+        # *   **strEqual**: equals
+        # *   **strNotEqual**: does not equal
         self.mark_mis_type = mark_mis_type
+        # The value of the field that is used in the whitelist rule.
         self.mark_mis_value = mark_mis_value
+        # An array consisting of the operations that are supported by the method to add the alert event to the whitelist.
         self.supported_mis_type = supported_mis_type
+        # The UUID of the server on which the alert event is detected.
         self.uuid = uuid
 
     def validate(self):
@@ -27614,9 +35024,13 @@ class DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse
         mark_mis_value: str = None,
         supported_mis_type: List[str] = None,
     ):
+        # The alias of the field that can be used in the whitelist rule.
         self.filed_alias_name = filed_alias_name
+        # The field that can be used in the whitelist rule.
         self.filed_name = filed_name
+        # The value of the field that can be used in the whitelist rule.
         self.mark_mis_value = mark_mis_value
+        # An array consisting of the operations that are supported by the method to add the alert event to the whitelist.
         self.supported_mis_type = supported_mis_type
 
     def validate(self):
@@ -27660,10 +35074,31 @@ class DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse
         operation_params: str = None,
         user_can_operate: bool = None,
     ):
+        # An array consisting of the configuration information that is used when the value of the OperationCode parameter is **advance\_mark\_mis_info**.
         self.mark_field = mark_field
+        # An array consisting of the configuration items that can be used when the value of the OperationCode parameter is advance_mark_mis_info.
         self.mark_fields_source = mark_fields_source
+        # The operation that you can perform to handle the alert. Valid values:
+        # 
+        # *   **block_ip**: blocks the source IP address.
+        # *   **advance\_mark\_mis_info**: adds the alert to the whitelist.
+        # *   **ignore**: ignores the alert.
+        # *   **manual_handled**: marks the alert as manually handled.
+        # *   **kill_process**: terminates the malicious process.
+        # *   **cleanup**: performs in-depth virus detection and removal.
+        # *   **kill\_and_quara**: terminates the malicious process and quarantines the source file.
+        # *   **disable\_malicious_defense**: stops the container on which the alerting files or processes exist.
+        # *   **client\_problem_check**: performs troubleshooting.
+        # *   **quara**: quarantines the source file of the malicious process.
         self.operation_code = operation_code
+        # The configuration of the operation that you can perform to handle the alert event.
+        # 
+        # >  If the value of the OperationCode parameter is `kill_and_quara` or `block_ip`, the OperationParams parameter is required. If the value of the OperationCode parameter is a different value, the OperationParams parameter can be left empty.
         self.operation_params = operation_params
+        # Indicates whether you can handle the alert event in the current edition of Security Center. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.user_can_operate = user_can_operate
 
     def validate(self):
@@ -27725,7 +35160,9 @@ class DescribeSecurityEventOperationsResponseBody(TeaModel):
         request_id: str = None,
         security_event_operations_response: List[DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponse] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array consisting of the operations that you can perform to handle the alert event.
         self.security_event_operations_response = security_event_operations_response
 
     def validate(self):
@@ -27811,8 +35248,14 @@ class DescribeSecurityStatInfoRequest(TeaModel):
         resource_directory_account_id: str = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the account that is added to the resource directory as a member for multi-account control. You can use this parameter to query the security status of the account.
         self.resource_directory_account_id = resource_directory_account_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -27850,8 +35293,11 @@ class DescribeSecurityStatInfoResponseBodyAttackEvent(TeaModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
+        # The points in time when the number of attacks is collected in the trend chart.
         self.date_array = date_array
+        # The total number of attacks on the current day.
         self.total_count = total_count
+        # The numbers of attacks at all points in time.
         self.value_array = value_array
 
     def validate(self):
@@ -27897,16 +35343,27 @@ class DescribeSecurityStatInfoResponseBodyHealthCheck(TeaModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
+        # The points in time when data of baseline risk items is collected in the trend chart.
         self.date_array = date_array
+        # The number of baseline risk items that have the high-risk level on the current day.
         self.high_count = high_count
+        # The numbers of baseline risk items that have the high-risk level at all points in time.
         self.high_list = high_list
+        # The risk levels of baseline risk items.
         self.levels_on = levels_on
+        # The number of baseline risk items that have the low-risk level on the current day.
         self.low_count = low_count
+        # The numbers of baseline risk items that have the low-risk level at all points in time.
         self.low_list = low_list
+        # The number of baseline risk items that have the medium-risk level on the current day.
         self.medium_count = medium_count
+        # The numbers of baseline risk items that have the medium-risk level at all points in time.
         self.medium_list = medium_list
+        # The time periods during which data of baseline risk items is collected.
         self.time_array = time_array
+        # The total number of baseline risk items on the current day.
         self.total_count = total_count
+        # The total number of baseline risk items at all points in time.
         self.value_array = value_array
 
     def validate(self):
@@ -27984,16 +35441,27 @@ class DescribeSecurityStatInfoResponseBodySecurityEvent(TeaModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
+        # The points in time when data of unhandled alerts is collected in the trend chart.
         self.date_array = date_array
+        # The risk levels of unhandled alerts.
         self.levels_on = levels_on
+        # The number of **remind** alerts on the current day.
         self.remind_count = remind_count
+        # The numbers of remind alerts at all points in time.
         self.remind_list = remind_list
+        # The number of **serious** alerts on the current day.
         self.serious_count = serious_count
+        # The numbers of serious alerts at all points in time.
         self.serious_list = serious_list
+        # The number of **suspicious** alerts on the current day.
         self.suspicious_count = suspicious_count
+        # The numbers of suspicious alerts at all points in time.
         self.suspicious_list = suspicious_list
+        # The time periods during which data of the same alert is collected.
         self.time_array = time_array
+        # The total number of unhandled alerts on the current day.
         self.total_count = total_count
+        # The numbers of unhandled alerts at all points in time.
         self.value_array = value_array
 
     def validate(self):
@@ -28071,16 +35539,27 @@ class DescribeSecurityStatInfoResponseBodyVulnerability(TeaModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
+        # The number of **high-risk** unfixed vulnerabilities on the current day.
         self.asap_count = asap_count
+        # The numbers of high-risk unfixed vulnerabilities at all points in time.
         self.asap_list = asap_list
+        # The points in time when data of unfixed vulnerabilities is collected in the trend chart.
         self.date_array = date_array
+        # The number of **medium-risk** unfixed vulnerabilities on the current day.
         self.later_count = later_count
+        # The numbers of medium-risk unfixed vulnerabilities at all points in time.
         self.later_list = later_list
+        # The risk levels of unfixed vulnerabilities.
         self.levels_on = levels_on
+        # The number of **low-risk** unfixed vulnerabilities on the current day.
         self.nntf_count = nntf_count
+        # The numbers of low-risk unfixed vulnerabilities at all points in time.
         self.nntf_list = nntf_list
+        # The time periods during which data of unfixed vulnerabilities is collected.
         self.time_array = time_array
+        # The total number of unfixed vulnerabilities on the current day.
         self.total_count = total_count
+        # The numbers of unfixed vulnerabilities at all points in time.
         self.value_array = value_array
 
     def validate(self):
@@ -28153,11 +35632,20 @@ class DescribeSecurityStatInfoResponseBody(TeaModel):
         success: bool = None,
         vulnerability: DescribeSecurityStatInfoResponseBodyVulnerability = None,
     ):
+        # The detailed statistics of attacks.
         self.attack_event = attack_event
+        # The detailed statistics of baseline risk items.
         self.health_check = health_check
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The detailed statistics of unhandled alerts.
         self.security_event = security_event
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The detailed statistics of unfixed vulnerabilities.
         self.vulnerability = vulnerability
 
     def validate(self):
@@ -28260,6 +35748,10 @@ class DescribeServiceLinkedRoleStatusRequest(TeaModel):
         self,
         service_linked_role: str = None,
     ):
+        # The service-linked role. Default value: **AliyunServiceRoleForSas**. Valid values:
+        # 
+        # *   **AliyunServiceRoleForSas**: the service-linked role of Security Center. Security Center assumes this role to access the resources of other cloud services within your account.
+        # *   **AliyunServiceRoleForSasCspm**: the service-linked role of Security Center-CSPM. Security Center-CSPM assumes this role to access the resources of other cloud services within your account.
         self.service_linked_role = service_linked_role
 
     def validate(self):
@@ -28287,6 +35779,10 @@ class DescribeServiceLinkedRoleStatusResponseBodyRoleStatus(TeaModel):
         self,
         status: bool = None,
     ):
+        # Indicates whether the service-linked role is created. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.status = status
 
     def validate(self):
@@ -28315,7 +35811,9 @@ class DescribeServiceLinkedRoleStatusResponseBody(TeaModel):
         request_id: str = None,
         role_status: DescribeServiceLinkedRoleStatusResponseBodyRoleStatus = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The status information about the service-linked role.
         self.role_status = role_status
 
     def validate(self):
@@ -28396,7 +35894,9 @@ class DescribeSimilarEventScenariosRequest(TeaModel):
         source_ip: str = None,
     ):
         self.resource_owner_id = resource_owner_id
+        # The ID of the alert to query.
         self.security_event_id = security_event_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -28432,6 +35932,11 @@ class DescribeSimilarEventScenariosResponseBodyScenarios(TeaModel):
         self,
         code: str = None,
     ):
+        # The code of the scenario. Valid values: Valid values:
+        # - **default**: the same alert type
+        # - **same_file_content**: the same file content rule
+        # - **same_ip**: the same IP address rule
+        # - **same_url**: the same URL rule
         self.code = code
 
     def validate(self):
@@ -28460,7 +35965,9 @@ class DescribeSimilarEventScenariosResponseBody(TeaModel):
         request_id: str = None,
         scenarios: List[DescribeSimilarEventScenariosResponseBodyScenarios] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The scenarios in which you can handle the alerts triggered by the same rule or rules of the same type.
         self.scenarios = scenarios
 
     def validate(self):
@@ -28549,11 +36056,19 @@ class DescribeSimilarSecurityEventsRequest(TeaModel):
         source_ip: str = None,
         task_id: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the task. You can call the [CreateSimilarSecurityEventsQueryTask](~~CreateSimilarSecurityEventsQueryTask~~) operation to query the IDs of tasks.
         self.task_id = task_id
 
     def validate(self):
@@ -28604,9 +36119,13 @@ class DescribeSimilarSecurityEventsResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -28651,11 +36170,43 @@ class DescribeSimilarSecurityEventsResponseBodySecurityEventsResponse(TeaModel):
         security_event_id: int = None,
         uuid: str = None,
     ):
+        # The name of the alert event.
         self.event_name = event_name
+        # The alert type of the alert event. Valid values:
+        # 
+        # *   Suspicious process
+        # *   Webshell
+        # *   Unusual logon
+        # *   Exception
+        # *   Sensitive file tampering
+        # *   Malicious process (cloud threat detection)
+        # *   Suspicious network connection
+        # *   Other
+        # *   Abnormal account
+        # *   Application intrusion event
+        # *   Cloud threat detection
+        # *   Precise defense
+        # *   Application whitelist
+        # *   Persistent webshell
+        # *   Web application threat detection
+        # *   Malicious script
+        # *   Threat intelligence
+        # *   Malicious network activity
+        # *   Cluster exception
+        # *   Webshell (on-premises threat detection)
+        # *   Vulnerability exploitation
+        # *   Malicious process (on-premises threat detection)
+        # *   Trusted exception
+        # 
+        # For more information about alert types, see [Alerts](~~191144~~).
         self.event_type = event_type
+        # The timestamp when the alert event was last detected. Unit: milliseconds.
         self.last_time = last_time
+        # The timestamp when the alert event was first detected. Unit: milliseconds.
         self.occurrence_time = occurrence_time
+        # The ID of the alert event.
         self.security_event_id = security_event_id
+        # The UUID of the server that is affected by the alert event.
         self.uuid = uuid
 
     def validate(self):
@@ -28705,8 +36256,11 @@ class DescribeSimilarSecurityEventsResponseBody(TeaModel):
         request_id: str = None,
         security_events_response: List[DescribeSimilarSecurityEventsResponseBodySecurityEventsResponse] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array consisting of the alert events that are triggered by the same rule or of the same alert type.
         self.security_events_response = security_events_response
 
     def validate(self):
@@ -28800,9 +36354,19 @@ class DescribeStrategyRequest(TeaModel):
         source_ip: str = None,
         strategy_ids: str = None,
     ):
+        # The type of the baseline check policy that you want to query. Valid values:
+        # 
+        # *   **common**: standard baseline check policy
+        # *   **custom**: custom baseline check policy
         self.custom_type = custom_type
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the baseline check policy that you want to query. Separate multiple IDs with commas (,).
         self.strategy_ids = strategy_ids
 
     def validate(self):
@@ -28844,8 +36408,17 @@ class DescribeStrategyResponseBodyStrategiesConfigTargets(TeaModel):
         target: str = None,
         target_type: str = None,
     ):
+        # Indicates whether the baseline check policy is applied to the asset group. Valid values:
+        # 
+        # *   **add**: yes
+        # *   **del**: no
         self.flag = flag
+        # The asset group ID or UUID of the asset to which the baseline check policy is applied.
         self.target = target
+        # The condition by which the baseline check policy is applied to the asset. Valid values:
+        # 
+        # *   **groupId**: the ID of the asset group
+        # *   **uuid**: the UUID of the asset
         self.target_type = target_type
 
     def validate(self):
@@ -28894,19 +36467,52 @@ class DescribeStrategyResponseBodyStrategies(TeaModel):
         start_time: str = None,
         type: int = None,
     ):
+        # An array consisting of the assets to which the baseline check policy is applied.
         self.config_targets = config_targets
+        # The type of the baseline check policy. Valid values:
+        # 
+        # *   **common**: standard baseline check policy
+        # *   **custom**: custom baseline check policy
         self.custom_type = custom_type
+        # The cycle of the baseline check. Valid values:
+        # 
+        # *   **1**: every 2 days
+        # *   **3**: every 4 days
+        # *   **7**: every 8 days
+        # *   30: every 31 days
         self.cycle_days = cycle_days
+        # The time when the baseline check starts. Valid values:
+        # 
+        # *   **0**: The baseline check starts within the time range from 00:00 to 06:00.
+        # *   **6**: The baseline check starts within the time range from 06:00 to 12:00.
+        # *   **12**: The baseline check starts within the time range from 12:00 to 18:00.
+        # *   **18**: The baseline check starts within the time range from 18:00 to 24:00.
         self.cycle_start_time = cycle_start_time
+        # The number of the assets to which the baseline check policy is applied.
         self.ecs_count = ecs_count
+        # The time when the baseline check based on the baseline check policy ends.
         self.end_time = end_time
+        # The status of the baseline check policy. Valid values:
+        # 
+        # *   **1**: disabled
+        # *   **2**: enabled
         self.exec_status = exec_status
+        # The ID of the baseline check policy.
         self.id = id
+        # The name of the baseline check policy.
         self.name = name
+        # The proportion of risk items to all baseline check items in the baseline check result.
         self.pass_rate = pass_rate
+        # The number of the assets on which the baseline check is complete.
         self.process_rate = process_rate
+        # The number of baseline check items in the baseline check policy.
         self.risk_count = risk_count
+        # The time when the baseline check based on the baseline check policy starts.
         self.start_time = start_time
+        # The source of the baseline check policy. Valid values:
+        # 
+        # *   **1**: built-in policy, which indicates that the baseline check policy is provided and performed by Security Center by default.
+        # *   **2**: user-defined policy, which can be a standard or custom baseline check policy.
         self.type = type
 
     def validate(self):
@@ -28995,7 +36601,9 @@ class DescribeStrategyResponseBody(TeaModel):
         request_id: str = None,
         strategies: List[DescribeStrategyResponseBodyStrategies] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the baseline check policies.
         self.strategies = strategies
 
     def validate(self):
@@ -29081,8 +36689,14 @@ class DescribeStrategyDetailRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The ID of the baseline check policy.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -29125,13 +36739,24 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         param_type: int = None,
         value: str = None,
     ):
+        # If the value of paramType is 2, this parameter provides the options that can be selected for the rule parameter.
         self.enum_value = enum_value
+        # The maximum value of the rule parameter.
         self.max_value = max_value
+        # The minimum value of the rule parameter.
         self.min_value = min_value
+        # The default value of the rule parameter.
         self.param_default_value = param_default_value
+        # The description of the rule parameter.
         self.param_desc = param_desc
+        # The name of the rule parameter.
         self.param_name = param_name
+        # The type of the rule parameter. Valid values:
+        # 
+        # *   **1**: input
+        # *   **2**: selection
         self.param_type = param_type
+        # The specified value of the rule parameter.
         self.value = value
 
     def validate(self):
@@ -29191,10 +36816,18 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         rule_desc: str = None,
         rule_id: str = None,
     ):
+        # The default value of the rule.
         self.default_value = default_value
+        # Indicates whether the rule is included in the policy. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.optional = optional
+        # An array that consists of the rule parameters.
         self.param_list = param_list
+        # The description of the rule.
         self.rule_desc = rule_desc
+        # The ID of the rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -29249,9 +36882,13 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         check_item: str = None,
         rules: List[DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules] = None,
     ):
+        # The description of the check item.
         self.check_desc = check_desc
+        # The ID of the check item.
         self.check_id = check_id
+        # The check item.
         self.check_item = check_item
+        # An array that consists of the details of rules.
         self.rules = rules
 
     def validate(self):
@@ -29302,9 +36939,16 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         on: bool = None,
         type_name: str = None,
     ):
+        # The alias of the sub-check item.
         self.alias = alias
+        # An array that consists of the details of custom check items.
         self.check_details = check_details
+        # Indicates whether the sub-risk item is selected. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.on = on
+        # The type of the sub-check item.
         self.type_name = type_name
 
     def validate(self):
@@ -29355,9 +36999,16 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         sub_types: List[DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes] = None,
         type_name: str = None,
     ):
+        # The alias of the check item.
         self.alias = alias
+        # Indicates whether the risk item is selected. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.on = on
+        # An array that consists of sub-risk items.
         self.sub_types = sub_types
+        # The check item.
         self.type_name = type_name
 
     def validate(self):
@@ -29414,15 +37065,39 @@ class DescribeStrategyDetailResponseBodyStrategy(TeaModel):
         target_type: str = None,
         type: int = None,
     ):
+        # The type of the baseline check policy. Valid values:
+        # 
+        # *   **common**: standard baseline check policy
+        # *   **custom**: custom baseline check policy
         self.custom_type = custom_type
+        # The check interval of the policy.
         self.cycle_days = cycle_days
+        # The time period during which the check starts. Valid values:
+        # 
+        # *   **0**: 00:00 to 06:00
+        # *   **6**: 06:00 to 12:00
+        # *   **12**: 12:00 to 18:00
+        # *   **18**: 18:00 to 24:00
         self.cycle_start_time = cycle_start_time
+        # The time when the baseline check based on the baseline check policy ends.
         self.end_time = end_time
+        # The ID of the baseline check policy.
         self.id = id
+        # The name of the baseline check policy.
         self.name = name
+        # An array that consists of the whitelist of risk items.
         self.risk_type_white_list_query_result_list = risk_type_white_list_query_result_list
+        # The time when the baseline check based on the baseline check policy starts.
         self.start_time = start_time
+        # The condition by which the baseline check policy is applied to the asset. Valid values:
+        # 
+        # *   **groupId**: the ID of the asset group
+        # *   **uuid**: the UUID of the asset
         self.target_type = target_type
+        # The type of the baseline check policy. Valid values:
+        # 
+        # *   **1**: standard baseline check policy
+        # *   **2**: custom baseline check policy
         self.type = type
 
     def validate(self):
@@ -29495,7 +37170,9 @@ class DescribeStrategyDetailResponseBody(TeaModel):
         request_id: str = None,
         strategy: DescribeStrategyDetailResponseBodyStrategy = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The information about the baseline check policy.
         self.strategy = strategy
 
     def validate(self):
@@ -29576,9 +37253,13 @@ class DescribeStrategyExecDetailRequest(TeaModel):
         source_ip: str = None,
         strategy_id: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the baseline check policy.
         self.strategy_id = strategy_id
 
     def validate(self):
@@ -29622,10 +37303,15 @@ class DescribeStrategyExecDetailResponseBodyFailedEcsList(TeaModel):
         intranet_ip: str = None,
         reason: str = None,
     ):
+        # The IP address of the server on which the baseline check was performed.
         self.ip = ip
+        # The name of the instance.
         self.instance_name = instance_name
+        # The public IP address.
         self.internet_ip = internet_ip
+        # The private IP address.
         self.intranet_ip = intranet_ip
+        # The failure cause for the check item.
         self.reason = reason
 
     def validate(self):
@@ -29677,14 +37363,26 @@ class DescribeStrategyExecDetailResponseBody(TeaModel):
         start_time: str = None,
         success_count: int = None,
     ):
+        # The time when the baseline check ends.
         self.end_time = end_time
+        # The number of check items that failed to pass the baseline check. This type of check item is considered risk items.
         self.fail_count = fail_count
+        # An array consisting of the servers on which risk items were detected.
         self.failed_ecs_list = failed_ecs_list
+        # The number of tasks that are **running** based on the baseline check policy.
         self.in_process_count = in_process_count
+        # The execution progress of the baseline check policy.
         self.percent = percent
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The type of the baseline check. Valid values:
+        # 
+        # *   **Schedule**: automatic check that periodically runs
+        # *   **Manual**: intermediate check that is manually performed
         self.source = source
+        # The time when the baseline check starts.
         self.start_time = start_time
+        # The number of check items that **passed** the baseline check.
         self.success_count = success_count
 
     def validate(self):
@@ -29798,8 +37496,11 @@ class DescribeStrategyTargetRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The ID of the baseline check policy.
         self.config = config
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the policy. Set the value to hc_strategy, which indicates baseline check policies.
         self.type = type
 
     def validate(self):
@@ -29838,9 +37539,19 @@ class DescribeStrategyTargetResponseBodyStrategyTargets(TeaModel):
         target: str = None,
         target_type: str = None,
     ):
+        # The number of the assets that belong to the asset group.
         self.bind_uuid_count = bind_uuid_count
+        # Indicates whether the baseline check policy is applied to the asset group. Valid values:
+        # 
+        # *   **add**: yes
+        # *   **del**: no
         self.flag = flag
+        # The ID of the asset group to which the assets belong or the UUID of the asset.
         self.target = target
+        # The method that is used to add the assets to the baseline check policy. Valid values:
+        # 
+        # *   **groupId**: the ID of the asset group
+        # *   **uuid**: the UUID of the asset
         self.target_type = target_type
 
     def validate(self):
@@ -29881,7 +37592,9 @@ class DescribeStrategyTargetResponseBody(TeaModel):
         request_id: str = None,
         strategy_targets: List[DescribeStrategyTargetResponseBodyStrategyTargets] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array consisting of the assets to which the baseline check policy is applied.
         self.strategy_targets = strategy_targets
 
     def validate(self):
@@ -29966,7 +37679,12 @@ class DescribeSummaryInfoRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -30002,10 +37720,23 @@ class DescribeSummaryInfoResponseBody(TeaModel):
         security_score: int = None,
         success: bool = None,
     ):
+        # The number of unprotected assets.
         self.aegis_client_offline_count = aegis_client_offline_count
+        # The number of protected assets.
         self.aegis_client_online_count = aegis_client_online_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The security score of the assets. Valid values:
+        # 
+        # *   95 to 100: The assets are secure.
+        # *   85 to 94: The assets are exposed to a few security risks. We recommend that you reinforce your security system in a timely manner.
+        # *   70 to 84: The assets are exposed to multiple security risks. We recommend that you reinforce your security system in a timely manner.
+        # *   69 or lower: The current security system is unable to protect the assets against intrusions. We recommend that you reinforce your security system at the earliest opportunity.
         self.security_score = security_score
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -30094,7 +37825,9 @@ class DescribeSupportRegionResponseBody(TeaModel):
         request_id: str = None,
         support_region: List[str] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The regions in which the anti-ransomware feature is supported.
         self.support_region = support_region
 
     def validate(self):
@@ -30173,9 +37906,16 @@ class DescribeSuspEventDetailRequest(TeaModel):
         source_ip: str = None,
         suspicious_event_id: int = None,
     ):
+        # The data source of the exception. Set the value to sas.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the exception.
         self.suspicious_event_id = suspicious_event_id
 
     def validate(self):
@@ -30217,8 +37957,16 @@ class DescribeSuspEventDetailResponseBodyDetails(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The display name of the alert event.
         self.name_display = name_display
+        # The format in which the details about the exception are displayed.
+        # 
+        # Valid values:
+        # 
+        # *   **text**\
+        # *   **html**\
         self.type = type
+        # The attribute information about the exception. For example, if the exception is associated with an alert that is triggered by an unusual logon, the information can include the time when the logon is initiated and the location from which the logon is initiated. If the exception is associated with an alert that is triggered by a webshell file, the information can include the path of the trojan file and the type of the trojan.
         self.value = value
 
     def validate(self):
@@ -30271,23 +38019,60 @@ class DescribeSuspEventDetailResponseBody(TeaModel):
         sale_version: str = None,
         uuid: str = None,
     ):
+        # Indicates whether the online processing of exceptions is supported, such as blocking an exception, adding an exception to the whitelist, and ignoring an exception. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_be_deal_on_line = can_be_deal_on_line
+        # The data source of the exception.
         self.data_source = data_source
+        # The details about the exception.
         self.details = details
+        # The description of the exception.
         self.event_desc = event_desc
+        # The name of the exception.
         self.event_name = event_name
+        # The status of the exception. Valid values:
+        # 
+        # *   **1**: pending handling
+        # *   **2**: ignored
+        # *   **4**: confirmed
+        # *   **8**: marked as a false positive
+        # *   **16**: handling
+        # *   **32**: handled
+        # *   **64**: expired
         self.event_status = event_status
+        # The type of the exception.
         self.event_type_desc = event_type_desc
+        # The ID of the exception.
         self.id = id
+        # The name of the server on which the exception was detected.
         self.instance_name = instance_name
+        # The public IP address of the server on which the exception was detected.
         self.internet_ip = internet_ip
+        # The private IP address of the server on which the exception was detected.
         self.intranet_ip = intranet_ip
+        # The time when the exception was last detected.
         self.last_time = last_time
+        # The severity of the exception. Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.level = level
+        # The code that indicates the handling result of the exception.
         self.operate_error_code = operate_error_code
+        # The message that indicates the handling result of the exception.
         self.operate_msg = operate_msg
+        # The ID of the request.
         self.request_id = request_id
+        # The edition of Security Center in which the exception can be detected. Valid values:
+        # 
+        # *   **0**: Basic edition
+        # *   **1**: Advanced edition
+        # *   **2**: Enterprise edition
         self.sale_version = sale_version
+        # The UUID of the server on which the exception was detected.
         self.uuid = uuid
 
     def validate(self):
@@ -30442,13 +38227,28 @@ class DescribeSuspEventQuaraFilesRequest(TeaModel):
         source_ip: str = None,
         status: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The ID of the request source. Set the value to **sas**.
         self.from_ = from_
+        # The ID of the asset group.
         self.group_id = group_id
+        # The ID of the server group to which the server belongs. The quarantined file is located on the server.
         self.grouping_id = grouping_id
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The unique ID of the quarantined file.
         self.quara_tag = quara_tag
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The status of the quarantined file that you want to query. Valid values:
+        # 
+        # *   **quaraFailed**: The file fails to be quarantined.
+        # *   **quaraDone**: The file is quarantined.
+        # *   **quaraing**: The file is being quarantined.
+        # *   **rollbackFailed**: The system fails to cancel quarantining the file.
+        # *   **rollbackDone**: The system cancelled quarantining the file.
+        # *   **rollbacking**: The system is cancelling quarantining the file.
         self.status = status
 
     def validate(self):
@@ -30517,19 +38317,40 @@ class DescribeSuspEventQuaraFilesResponseBodyQuaraFiles(TeaModel):
         tag: str = None,
         uuid: str = None,
     ):
+        # The name of the event.
         self.event_name = event_name
+        # The type of the event.
         self.event_type = event_type
+        # The ID of the quarantined file.
         self.id = id
+        # The instance ID of the asset.
         self.instance_id = instance_id
+        # The name of the server on which the quarantined file is located.
         self.instance_name = instance_name
+        # The public IP address of the server on which the quarantined file is located.
         self.internet_ip = internet_ip
+        # The public IP address of the server on which the quarantined file is located.
         self.ip = ip
+        # The download link of the quarantined file.
         self.link = link
+        # The MD5 hash value of the quarantined file.
         self.md_5 = md_5
+        # The time when the quarantined file was last modified.
         self.modify_time = modify_time
+        # The path to the quarantined file on the server.
         self.path = path
+        # The status of the quarantined file. Valid values:
+        # 
+        # *   **quaraFailed**: The file fails to be quarantined.
+        # *   **quaraDone**: The file is quarantined.
+        # *   **quaraing**: The file is being quarantined.
+        # *   **rollbackFailed**: The system fails to cancel quarantining the file.
+        # *   **rollbackDone**: The system cancelled quarantining the file.
+        # *   **rollbacking**: The system is cancelling quarantining the file.
         self.status = status
+        # The unique ID of the event.
         self.tag = tag
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -30614,11 +38435,17 @@ class DescribeSuspEventQuaraFilesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # An array that consists of the quarantined files.
         self.quara_files = quara_files
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -30748,36 +38575,144 @@ class DescribeSuspEventsRequest(TeaModel):
         unique_info: str = None,
         uuids: str = None,
     ):
+        # The ID of the alert event.
+        # 
+        # >  To query the details about the exceptions of an alert event, you must specify the ID of the alert event. You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the IDs of alert events.
         self.alarm_unique_info = alarm_unique_info
+        # The types of assets.
         self.assets_type_list = assets_type_list
+        # The ID of the cluster of whose alert events you want to query.
         self.cluster_id = cluster_id
+        # The key of the condition that is used to query alert events on containers. Valid values:
+        # 
+        # *   **instanceId**: the ID of the asset
+        # *   **appName**: the name of the application
+        # *   **clusterId**: the ID of the cluster
+        # *   **regionId**: the ID of the region
+        # *   **nodeName**: the name of the node
+        # *   **namespace**: the namespace
+        # *   **clusterName**: the name of the cluster
+        # *   **image**: the name of the image
+        # *   **imageRepoName**: the name of the image repository
+        # *   **imageRepoNamespace**: the namespace to which the image repository belongs
+        # *   **imageRepoTag**: the tag that is added to the image
+        # *   **imageDigest**: the digest of the image
         self.container_field_name = container_field_name
+        # The value of the condition that is used to query alert events on containers.
         self.container_field_value = container_field_value
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether the alert event is handled. Valid values:
+        # 
+        # *   **N**: unhandled
+        # *   **Y**: handled
         self.dealed = dealed
+        # The subtype of the alert event. Separate multiple subtypes with commas (,).
         self.event_names = event_names
+        # The data source of the alert event. Set the value to sas.
         self.from_ = from_
+        # The ID of the asset group to which the affected asset belongs.
         self.group_id = group_id
+        # The ID of the alert event.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The severity of the alert event. Separate multiple severities with commas (,). Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.levels = levels
+        # The name of the asset that is affected by the alert event.
         self.name = name
+        # An array that consists of the handling result codes of alert events.
         self.operate_error_code_list = operate_error_code_list
+        # The timestamp when the handling operation ends.
         self.operate_time_end = operate_time_end
+        # The timestamp when the handling operation starts.
         self.operate_time_start = operate_time_start
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The alert type of the alert event. Valid values:
+        # 
+        # *   **Suspicious process**\
+        # *   **Webshell**\
+        # *   **Unusual logon**\
+        # *   **Exception**\
+        # *   **Sensitive file tampering**\
+        # *   **Malicious process (cloud threat detection)**\
+        # *   **Suspicious network connection**\
+        # *   **Suspicious account**\
+        # *   **Application intrusion event**\
+        # *   **Cloud threat detection**\
+        # *   **Precise defense**\
+        # *   **Application whitelist**\
+        # *   **Persistent webshell**\
+        # *   **Web application threat detection**\
+        # *   **Malicious script**\
+        # *   **Threat intelligence**\
+        # *   **Malicious network activity**\
+        # *   **Cluster exception**\
+        # *   **Webshell (on-premises threat detection)**\
+        # *   **Vulnerability exploitation**\
+        # *   **Malicious process (on-premises threat detection)**\
+        # *   **Trusted exception**\
+        # *   **Operations to manage other resources**\
         self.parent_event_types = parent_event_types
+        # The name of the alert or the information about the asset.
+        # 
+        # >  Fuzzy search is supported. The asset information includes the name, public IP address, and private IP address of an asset.
         self.remark = remark
+        # The custom sorting field. Default value: **operateTime**. Valid values:
+        # 
+        # *   **lastTime**: the latest occurrence time.
+        # *   **operateTime**: the handling time.
+        # 
+        # >  This parameter takes effect if you set the **Dealed** parameter to Y.
         self.sort_column = sort_column
+        # The custom sorting order. Default value: **desc**. Valid values:
+        # 
+        # *   **asc**: the ascending order
+        # *   **desc**: the descending order
+        # 
+        # >  This parameter takes effect if you set the **Dealed** parameter to Y.
         self.sort_type = sort_type
+        # The source of the alert.
         self.source = source
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The status of the alert event. Valid values:
+        # 
+        # *   **0**: all
+        # *   **1**: pending handling
+        # *   **2**: ignored
+        # *   **4**: confirmed
+        # *   **8**: marked as a false positive
+        # *   **16**: being handled
+        # *   **32**: handled
+        # *   **64**: expired
+        # *   **128**: deleted
+        # *   **512**: being automatically blocked
+        # *   **513**: automatically blocked
         self.status = status
+        # The tactic ID of ATT\&CK.
         self.tactic_id = tactic_id
+        # The item that is used to search for the container. Valid values:
+        # 
+        # *   **containerId**: the ID of the container
+        # *   **uuid**: the UUID of the server
+        # *   **imageUuid**: the UUID of the image
         self.target_type = target_type
+        # The end time when the alert event was last detected.
         self.time_end = time_end
+        # The start time when the alert event was last detected.
         self.time_start = time_start
+        # The unique key of the alert.
         self.unique_info = unique_info
+        # The UUID of the server on which the alert is detected. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -30928,9 +38863,13 @@ class DescribeSuspEventsResponseBodySuspEventsDetails(TeaModel):
         value: str = None,
         value_display: str = None,
     ):
+        # The display name of the alert event.
         self.name_display = name_display
+        # The type of the alert event.
         self.type = type
+        # The path of the alert event.
         self.value = value
+        # The display path of the alert event.
         self.value_display = value_display
 
     def validate(self):
@@ -30972,8 +38911,11 @@ class DescribeSuspEventsResponseBodySuspEventsEventNotes(TeaModel):
         note_id: int = None,
         note_time: str = None,
     ):
+        # The remarks.
         self.note = note
+        # The ID of the event record.
         self.note_id = note_id
+        # The time when the event record was created.
         self.note_time = note_time
 
     def validate(self):
@@ -31010,7 +38952,9 @@ class DescribeSuspEventsResponseBodySuspEventsTacticItems(TeaModel):
         tactic_display_name: str = None,
         tactic_id: str = None,
     ):
+        # The tactic name of ATT\&CK.
         self.tactic_display_name = tactic_display_name
+        # The stage information about ATT\&CK.
         self.tactic_id = tactic_id
 
     def validate(self):
@@ -31092,56 +39036,137 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         uuid: str = None,
         cluster_id: str = None,
     ):
+        # Indicates whether the alert was analyzed offline.
         self.advanced = advanced
+        # The name of the alert event.
         self.alarm_event_name = alarm_event_name
+        # The description of the alert event to which the alert event is associated.
         self.alarm_event_name_display = alarm_event_name_display
+        # The type of the alert event.
         self.alarm_event_type = alarm_event_type
+        # The type of the alert event.
         self.alarm_event_type_display = alarm_event_type_display
+        # The ID of the alert event.
         self.alarm_unique_info = alarm_unique_info
+        # The name of the application to which the alert event belongs.
         self.app_name = app_name
+        # Indicates whether the exception is automatically blocked.
         self.auto_breaking = auto_breaking
+        # Indicates whether the online handling of the alert event is supported, such as quarantining the source file of the malicious process. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.can_be_deal_on_line = can_be_deal_on_line
+        # Indicates whether you can cancel marking the alert event as a false positive.
         self.can_cancel_fault = can_cancel_fault
+        # Indicates whether the Safeguard Mode For Major Activities mode is enabled for the server. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.contain_hw_mode = contain_hw_mode
+        # The ID of the container.
         self.container_id = container_id
+        # The ID of the image to which the container belongs.
         self.container_image_id = container_image_id
+        # The name of the container image.
         self.container_image_name = container_image_name
+        # The source of data. This parameter can be ignored.
         self.data_source = data_source
+        # The impact of the alert event.
         self.desc = desc
+        # The details of the alert event.
         self.details = details
+        # Indicates whether the exception can be detected by cloud sandbox. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.display_sandbox_result = display_sandbox_result
+        # An array that consists of the remarks on the exception.
         self.event_notes = event_notes
+        # The status of the alert event. Valid values:
+        # 
+        # *   **1**: pending handling
+        # *   **2**: ignored
+        # *   **4**: confirmed
+        # *   **8**: marked as a false positive
+        # *   **16**: being handled
+        # *   **32**: handled
+        # *   **64**: expired
         self.event_status = event_status
+        # The name of the alert event.
         self.event_sub_type = event_sub_type
+        # Indicates whether the alert event has trace information. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.has_trace_info = has_trace_info
+        # The ID of the alert event.
         self.id = id
+        # The ID of the affected asset.
         self.instance_id = instance_id
+        # The name of the associated instance.
         self.instance_name = instance_name
+        # The public IP address of the associated instance.
         self.internet_ip = internet_ip
+        # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
+        # The ID of the Kubernetes cluster.
         self.k_8s_cluster_id = k_8s_cluster_id
+        # The name of the Kubernetes cluster.
         self.k_8s_cluster_name = k_8s_cluster_name
+        # The namespace of the Kubernetes cluster.
         self.k_8s_namespace = k_8s_namespace
+        # The ID of the Kubernetes cluster node.
         self.k_8s_node_id = k_8s_node_id
+        # The name of the Kubernetes cluster node.
         self.k_8s_node_name = k_8s_node_name
+        # The name of the Kubernetes pod.
         self.k_8s_pod_name = k_8s_pod_name
+        # The time when the alert event was last generated.
         self.last_time = last_time
+        # The timestamp when the exception was last detected. Unit: milliseconds.
         self.last_time_stamp = last_time_stamp
+        # The severity of the alert event. Valid values:
+        # 
+        # *   **serious**\
+        # *   **suspicious**\
+        # *   **remind**\
         self.level = level
+        # The status of the malicious behavior defense rule. Valid values:
+        # 
+        # *   **open**: enabled
+        # *   **close**: disabled
         self.malicious_rule_status = malicious_rule_status
+        # The advanced whitelist rule.
         self.mark_mis_rules = mark_mis_rules
+        # The complete name of the alert event.
         self.name = name
+        # The time when the alert event was first detected.
         self.occurrence_time = occurrence_time
+        # The timestamp when the exception was first detected. Unit: milliseconds.
         self.occurrence_time_stamp = occurrence_time_stamp
+        # The handling result code of the alert event.
         self.operate_error_code = operate_error_code
+        # The description of the handing result of the alert event.
         self.operate_msg = operate_msg
+        # The handling timestamp of the alert event. Unit: milliseconds.
         self.operate_time = operate_time
+        # The edition of Security Center in which the exception can be detected. Valid values:
+        # 
+        # *   **0**: Basic edition
+        # *   **1**: Enterprise edition
         self.sale_version = sale_version
+        # The IDs of the associated alert events.
         self.security_event_ids = security_event_ids
+        # The stage at which the attack is detected.
         self.stages = stages
+        # The display name of the attack stage.
         self.tactic_items = tactic_items
+        # The unique key of the alert.
         self.unique_info = unique_info
+        # The ID of the associated instance.
         self.uuid = uuid
+        # The ID of the cluster.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -31400,11 +39425,17 @@ class DescribeSuspEventsResponseBody(TeaModel):
         susp_events: List[DescribeSuspEventsResponseBodySuspEvents] = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the information about the alert event.
         self.susp_events = susp_events
+        # The total number of alert events.
         self.total_count = total_count
 
     def validate(self):
@@ -31505,7 +39536,16 @@ class DescribeSuspiciousOverallConfigRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the feature. Valid values:
+        # 
+        # *   **auto_breaking**: Anti-Virus
+        # *   **ransomware_breaking**: Anti-ransomware (Bait Capture)
+        # *   **webshell\_cloud_breaking**: Webshell Protection
+        # *   **alinet**: Behavior prevention
+        # *   **k8s\_log_analysis**: K8s Threat Detection
+        # *   **alisecguard**: Defense mode for Client Protection
         self.type = type
 
     def validate(self):
@@ -31538,7 +39578,19 @@ class DescribeSuspiciousOverallConfigResponseBodyOverallConfig(TeaModel):
         config: str = None,
         type: str = None,
     ):
+        # The status of the feature. Valid values:
+        # 
+        # *   **off**: disabled
+        # *   **on**: enabled
         self.config = config
+        # The type of the feature. Valid values:
+        # 
+        # *   **auto_breaking**: Anti-Virus
+        # *   **ransomware_breaking**: Anti-ransomware (Bait Capture)
+        # *   **webshell\_cloud_breaking**: Webshell Protection
+        # *   **alinet**: Behavior prevention
+        # *   **k8s\_log_analysis**: K8s Threat Detection
+        # *   **alisecguard**: Defense mode for Client Protection
         self.type = type
 
     def validate(self):
@@ -31571,7 +39623,9 @@ class DescribeSuspiciousOverallConfigResponseBody(TeaModel):
         overall_config: DescribeSuspiciousOverallConfigResponseBodyOverallConfig = None,
         request_id: str = None,
     ):
+        # The configuration.
         self.overall_config = overall_config
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -31649,6 +39703,13 @@ class DescribeSuspiciousUUIDConfigRequest(TeaModel):
         self,
         type: str = None,
     ):
+        # The type of proactive defense. Valid values:
+        # 
+        # *   **auto_breaking**: virus defense
+        # *   **ransomware_breaking**: ransomware capture
+        # *   **webshell\_cloud_breaking**: webshell defense
+        # *   **alinet**: malicious behavior defense
+        # *   **alisecguard**: client protection
         self.type = type
 
     def validate(self):
@@ -31678,8 +39739,11 @@ class DescribeSuspiciousUUIDConfigResponseBody(TeaModel):
         request_id: str = None,
         uuidlist: List[str] = None,
     ):
+        # The total number of servers on which proactive defense of the specified type takes effect.
         self.count = count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The UUIDs of servers on which proactive defense of the specified type takes effect.
         self.uuidlist = uuidlist
 
     def validate(self):
@@ -31761,8 +39825,11 @@ class DescribeUserBackupMachinesResponseBodyMachines(TeaModel):
         policy_name: str = None,
         uuid: str = None,
     ):
+        # The ID of the anti-ransomware policy that is applied to the server.
         self.id = id
+        # The name of the anti-ransomware policy that is applied to the server.
         self.policy_name = policy_name
+        # The UUID of the server to which the anti-ransomware policy is applied.
         self.uuid = uuid
 
     def validate(self):
@@ -31799,7 +39866,9 @@ class DescribeUserBackupMachinesResponseBody(TeaModel):
         machines: List[DescribeUserBackupMachinesResponseBodyMachines] = None,
         request_id: str = None,
     ):
+        # An array consisting of the servers to which the anti-ransomware policy is applied.
         self.machines = machines
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -31885,8 +39954,14 @@ class DescribeUserBaselineAuthorizationRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the asset owner.
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -31922,6 +39997,10 @@ class DescribeUserBaselineAuthorizationResponseBodyUserBaselineAuthorization(Tea
         self,
         status: int = None,
     ):
+        # Indicates whether Security Center is authorized to run configuration checks on cloud services.
+        # 
+        # *   **0**: no. Security Center is not authorized to run configuration checks on cloud services.
+        # *   **1**: yes. Security Center is authorized to run configuration checks on cloud services.
         self.status = status
 
     def validate(self):
@@ -31950,7 +40029,9 @@ class DescribeUserBaselineAuthorizationResponseBody(TeaModel):
         request_id: str = None,
         user_baseline_authorization: DescribeUserBaselineAuthorizationResponseBodyUserBaselineAuthorization = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about whether Security Center is authorized to run configuration checks on cloud services.
         self.user_baseline_authorization = user_baseline_authorization
 
     def validate(self):
@@ -32030,8 +40111,13 @@ class DescribeUserLayoutAuthorizationRequest(TeaModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # The ID of the asset owner.
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -32068,7 +40154,11 @@ class DescribeUserLayoutAuthorizationResponseBody(TeaModel):
         authorized: bool = None,
         request_id: str = None,
     ):
+        # The result of the query. Valid values:
+        # - **true**: The brute-force attacks protection feature has been authorized.
+        # - **false**: The brute-force attacks protection feature is not authorized.
         self.authorized = authorized
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -32158,20 +40248,64 @@ class DescribeUuidsByVulNamesRequest(TeaModel):
         vpc_instance_ids: str = None,
         vul_names: List[str] = None,
     ):
+        # Specifies whether the vulnerability is handled. Valid values:
+        # 
+        # **y**: yes. **n**: no.
         self.dealed = dealed
+        # The name of the search field that is used to query containers.
         self.field_name = field_name
+        # The value of the search field that is used to query containers.
         self.field_value = field_value
+        # The ID of the asset group.
         self.group_id = group_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The severity of the vulnerability. Separate multiple severities with commas (,). Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.level = level
+        # The priority based on which the vulnerability is fixed. Separate multiple priorities with commas (,). Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
         self.necessity = necessity
+        # The remarks for the asset affected by the vulnerability. The value can be the private IP address, public IP address, or name of the asset. Fuzzy match is supported.
         self.remark = remark
+        # The tags that are used to search for the vulnerability.
         self.search_tags = search_tags
+        # The status of the vulnerability. Separate multiple states with commas (,). Valid values:
+        # 
+        # *   **1**: unfixed
+        # *   **4**: being fixed
+        # *   **7**: fixed
         self.status_list = status_list
+        # The tag that is added to the vulnerability.
         self.tag = tag
+        # The type of the query condition. Valid values:
+        # 
+        # *   **containerId**: the ID of the container
+        # *   **uuid**: the ID of the asset
         self.target_type = target_type
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerabilities
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerabilities
+        # *   **sca**: vulnerabilities that are detected based on software component analysis
         self.type = type
+        # The ID of the virtual private cloud (VPC) in which the vulnerability is detected. Separate multiple IDs with commas (,).
         self.vpc_instance_ids = vpc_instance_ids
+        # An array that consists of the names of vulnerabilities.
+        # 
+        # >  You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to obtain the names of vulnerabilities.
         self.vul_names = vul_names
 
     def validate(self):
@@ -32260,11 +40394,17 @@ class DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics(TeaModel):
         region_id: str = None,
         uuid: str = None,
     ):
+        # The ID of the server.
         self.machine_instance_id = machine_instance_id
+        # The IP address of the server.
         self.machine_ip = machine_ip
+        # The name of the server.
         self.machine_name = machine_name
+        # The name of the operating system that the server runs.
         self.os = os
+        # The ID of the region in which the server resides.
         self.region_id = region_id
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -32313,7 +40453,9 @@ class DescribeUuidsByVulNamesResponseBody(TeaModel):
         machine_info_statistics: List[DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics] = None,
         request_id: str = None,
     ):
+        # An array that consists of the statistics about the assets.
         self.machine_info_statistics = machine_info_statistics
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -32398,7 +40540,9 @@ class DescribeVendorListResponseBody(TeaModel):
         request_id: str = None,
         vendor_name_list: List[str] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the service providers.
         self.vendor_name_list = vendor_name_list
 
     def validate(self):
@@ -32475,7 +40619,11 @@ class DescribeVersionConfigRequest(TeaModel):
         resource_directory_account_id: str = None,
         source_ip: str = None,
     ):
+        # The ID of the Alibaba Cloud account that uses Security Center.
+        # 
+        # >  You can call the [GetUser](~~28681~~) operation to query the IDs of Alibaba Cloud accounts.
         self.resource_directory_account_id = resource_directory_account_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -32532,31 +40680,107 @@ class DescribeVersionConfigResponseBody(TeaModel):
         web_lock: int = None,
         web_lock_auth_count: int = None,
     ):
+        # Indicates whether the pay-as-you-go billing method is supported.
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.allow_partial_buy = allow_partial_buy
+        # Indicates whether the application whitelist feature is enabled. Valid values:
+        # 
+        # *   **0**: no
+        # *   **2**: yes
         self.app_white_list = app_white_list
+        # The quota for the application whitelist feature.
+        # 
+        # >  The quantity of servers that are allowed by the quota is deducted by one each time you apply an application whitelist to a server. After you enable the application whitelist feature, the quota is 20 by default.
         self.app_white_list_auth_count = app_white_list_auth_count
+        # The quota for servers that can be protected.
         self.asset_level = asset_level
+        # The most advanced edition that is used. Valid values:
+        # 
+        # *   **1**: Basic edition
+        # *   **3**: Enterprise edition
+        # *   **5**: Advanced edition
+        # *   **6**: Anti-virus edition
+        # *   **7**: Ultimate edition
+        # *   **10**: Value-added Plan edition
+        # 
+        # >  If you purchase the Multi-version edition of Security Center, the value indicates the most advanced edition that is used in the Multi-version edition. If you do not purchase the Multi-version edition of Security Center, the value indicates the edition of Security Center.
         self.highest_version = highest_version
+        # The number of honeypots.
         self.honeypot_capacity = honeypot_capacity
+        # The quota for the container image scan feature.
         self.image_scan_capacity = image_scan_capacity
+        # The ID of purchased Security Center.
         self.instance_id = instance_id
+        # Indicates whether Security Center runs the latest version of the Ultimate edition.
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.is_new_container_version = is_new_container_version
+        # Indicates whether the number of existing servers exceeds the purchased quota. Valid values:
+        # 
+        # *   **false**: no
+        # *   **true**: yes
         self.is_over_balance = is_over_balance
+        # Indicates whether Security Center runs the free trial edition. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_trial_version = is_trial_version
+        # The timestamp when the last trial ends. Unit: milliseconds.
         self.last_trail_end_time = last_trail_end_time
+        # The total quota in the Multi-version edition of purchased Security Center.
         self.mvauth_count = mvauth_count
+        # The total remaining quota in the Multi-version edition of purchased Security Center.
         self.mvunused_auth_count = mvunused_auth_count
+        # The timestamp when Security Center is purchased. Unit: milliseconds.
         self.open_time = open_time
+        # The timestamp when Security Center is released. Unit: milliseconds. The value of this parameter is seven days after Security Center expires.
+        # 
+        # >  If you do not renew the subscription within seven days after the expiration date, the Value-added Plan, Basic Anti-Virus, Advanced, or Enterprise edition is downgraded to the Basic edition. In this case, you can no longer view the configurations of Security Center or historical statistics such as DDoS alerts. You must purchase another subscription of the Basic Anti-Virus, Advanced, or Enterprise edition to continue using relevant features. For more information, see [Purchase Security Center](~~42308~~).
         self.release_time = release_time
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether log analysis is purchased. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.sas_log = sas_log
+        # Indicates whether the security screen feature is purchased. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.sas_screen = sas_screen
+        # The log storage capacity that you purchase. Unit: GB. Valid values: 0 to 200000.
         self.sls_capacity = sls_capacity
+        # The purchased log storage capacity for threat analysis. Unit: GB.
         self.threat_analysis_capacity = threat_analysis_capacity
+        # Indicates whether the custom alert feature is enabled. Valid values:
+        # 
+        # *   **0**: no
+        # *   **2**: yes
         self.user_defined_alarms = user_defined_alarms
+        # The edition of purchased Security Center. Valid values:
+        # 
+        # *   **1**: Basic edition
+        # *   **3**: Enterprise edition
+        # *   **5**: Advanced edition
+        # *   **6**: Anti-virus edition
+        # *   **7**: Ultimate edition
+        # *   **8**: Multi-version edition
+        # *   **10**: Value-added Plan edition
         self.version = version
+        # The quota for the cores of servers that can be protected.
         self.vm_cores = vm_cores
+        # Indicates whether the web tamper proofing feature is enabled. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.web_lock = web_lock
+        # The quota for the web tamper proofing feature. The quantity of servers that are allowed by the quota is deducted by one each time a server is protected by the web tamper proofing feature. Valid values: 0 to N.
+        # 
+        # >  N indicates the number of servers that you own.
         self.web_lock_auth_count = web_lock_auth_count
 
     def validate(self):
@@ -32730,8 +40954,16 @@ class DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList(TeaModel):
         type: str = None,
         values: str = None,
     ):
+        # The name of the search condition.
         self.name = name
+        # The type of the search condition. Valid values:
+        # 
+        # *   **input**: You must manually enter the search condition.
+        # *   **select**: You must select a search condition from the **Values** drop-down list.
         self.type = type
+        # The values of the search condition. This parameter is returned only if the value of **Type** is **select**.
+        # 
+        # >  If the value of **Type** is **input**, the value of this parameter is an empty string.
         self.values = values
 
     def validate(self):
@@ -32768,7 +41000,9 @@ class DescribeVpcHoneyPotCriteriaResponseBody(TeaModel):
         criteria_list: List[DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList] = None,
         request_id: str = None,
     ):
+        # An array consisting of the search conditions that can be used to query honeypots.
         self.criteria_list = criteria_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -32857,11 +41091,28 @@ class DescribeVpcHoneyPotListRequest(TeaModel):
         vpc_name: str = None,
         vpc_region_id: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # Specifies whether the cloud honeypot feature is enabled for the VPC. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.honey_pot_existence = honey_pot_existence
+        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
+        # The ID of the VPC on which the honeypot is deployed.
+        # 
+        # >  You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the IDs of VPCs.
         self.vpc_id = vpc_id
+        # The name of the VPC.
+        # 
+        # >  You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the names of VPCs.
         self.vpc_name = vpc_name
+        # The region ID of the VPC.
+        # 
+        # >  You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the region IDs of VPCs.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):
@@ -32912,9 +41163,13 @@ class DescribeVpcHoneyPotListResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -32956,8 +41211,11 @@ class DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList(TeaMo
         vpc_switch_name: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch.
         self.vpc_switch_id = vpc_switch_id
+        # The name of the vSwitch.
         self.vpc_switch_name = vpc_switch_name
+        # The zone ID of the vSwitch.
         self.zone_id = zone_id
 
     def validate(self):
@@ -33004,17 +41262,49 @@ class DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList(TeaModel):
         vpc_status: str = None,
         vpc_switch_id_list: List[DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList] = None,
     ):
+        # The CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # The time when the VPC was created. Unit: milliseconds.
         self.create_time = create_time
+        # The status of the server on which the honeypot is deployed. Valid values:
+        # 
+        # *   **Pending**: The server is being created.
+        # *   **Running**: The server is running.
+        # *   **Starting**: The server is being started.
+        # *   **Stopping**: The server is being stopped.
+        # *   **Stopped**: The server is stopped.
         self.honey_pot_ecs_instance_status = honey_pot_ecs_instance_status
+        # The ID of the elastic network interface (ENI) used by the honeypot in the VPC.
         self.honey_pot_eni_instance_id = honey_pot_eni_instance_id
+        # Indicates whether the cloud honeypot feature is enabled for the VPC. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.honey_pot_existence = honey_pot_existence
+        # The status of the honeypot. Valid values:
+        # 
+        # *   **pending**: The honeypot is being created.
+        # *   **deleting**: The honeypot is being deleted.
+        # *   **off**: The honeypot is disabled.
+        # *   **suspending**: The honeypot is suspended.
+        # *   **on**: The honeypot is enabled.
         self.honey_pot_instance_status = honey_pot_instance_status
+        # The ID of the vSwitch to which the ENI used by the honeypot is connected.
         self.honey_pot_vpc_switch_id = honey_pot_vpc_switch_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
+        # The region ID of the VPC.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.vpc_region_id = vpc_region_id
+        # The status of the VPC. Valid values:
+        # 
+        # *   **Available**: The VPC is normal and available.
+        # *   **Pending**: The VPC is being configured.
         self.vpc_status = vpc_status
+        # An array that consists of the vSwitches in the VPC.
         self.vpc_switch_id_list = vpc_switch_id_list
 
     def validate(self):
@@ -33096,8 +41386,11 @@ class DescribeVpcHoneyPotListResponseBody(TeaModel):
         request_id: str = None,
         vpc_honey_pot_dtolist: List[DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request.
         self.request_id = request_id
+        # An array that consists of the honeypots.
         self.vpc_honey_pot_dtolist = vpc_honey_pot_dtolist
 
     def validate(self):
@@ -33192,10 +41485,15 @@ class DescribeVpcListResponseBodyVpcList(TeaModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The number of ECS instances.
         self.ecs_count = ecs_count
+        # The information about the VPC.
         self.instance_desc = instance_desc
+        # The ID of the ECS instance.
         self.instance_id = instance_id
+        # The name of the VPC.
         self.instance_name = instance_name
+        # The region in which the ECS instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -33241,8 +41539,11 @@ class DescribeVpcListResponseBody(TeaModel):
         request_id: str = None,
         vpc_list: List[DescribeVpcListResponseBodyVpcList] = None,
     ):
+        # The total number of entries returned.
         self.count = count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of VPCs.
         self.vpc_list = vpc_list
 
     def validate(self):
@@ -33331,7 +41632,18 @@ class DescribeVulConfigRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of configuration. By default, all types of configurations are queried. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability that is detected by using web scanner
+        # *   **emg**: urgent vulnerability
+        # *   **scanMode**: displays easily exploitable vulnerability
+        # *   **imageVulClean**: vulnerability retention duration
+        # *   **yum**: preferentially uses YUM or APT sources of Alibaba Cloud to fix vulnerabilities
         self.type = type
 
     def validate(self):
@@ -33365,8 +41677,41 @@ class DescribeVulConfigResponseBodyTargetConfigs(TeaModel):
         over_all_config: str = None,
         type: str = None,
     ):
+        # The configuartion of vulnerability scan.
+        # 
+        # > 
+        # 
+        # Valid values of this parameter if **cve**, **sys**, **cms**, **app**, **emg**, or **yum** is returned for the Type parameter:
+        # 
+        # *   **on**: enabled
+        # *   **off**: disabled
+        # 
+        # > 
+        # 
+        # Valid values of this parameter if **scanMode** is returned for the Type parameter:
+        # 
+        # *   **real**: displays easily exploitable vulnerability
+        # *   **all**: displays all vulnerabilities
+        # 
+        # > 
+        # 
+        # If **imageVulClean** is returned for the Type parameter, the value of this parameter indicates the vulnerability retention duration.
         self.config = config
+        # The status of vulnerability management. Valid values:
+        # 
+        # *   **off**: disabled
+        # *   **on**: enabled
         self.over_all_config = over_all_config
+        # The type of configuration. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability that is detected by using web scanner
+        # *   **emg**: urgent vulnerability
+        # *   **scanMode**: displays easily exploitable vulnerability
+        # *   **imageVulClean**: vulnerability retention duration
+        # *   **yum**: preferentially uses YUM or APT sources of Alibaba Cloud to fix vulnerabilities
         self.type = type
 
     def validate(self):
@@ -33404,8 +41749,11 @@ class DescribeVulConfigResponseBody(TeaModel):
         target_configs: List[DescribeVulConfigResponseBodyTargetConfigs] = None,
         total_count: int = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the configurations of vulnerability management.
         self.target_configs = target_configs
+        # The total number of configurations.
         self.total_count = total_count
 
     def validate(self):
@@ -33496,9 +41844,23 @@ class DescribeVulDetailsRequest(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name in the **vulnerability introduction**.
         self.alias_name = alias_name
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the vulnerability.
         self.name = name
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **sca**: vulnerability that is detected based on software component analysis
         self.type = type
 
     def validate(self):
@@ -33540,8 +41902,11 @@ class DescribeVulDetailsResponseBodyCvesClassifys(TeaModel):
         demo_video_url: str = None,
         description: str = None,
     ):
+        # The type of the vulnerability.
         self.classify = classify
+        # The URL of the demo video for the vulnerability.
         self.demo_video_url = demo_video_url
+        # The description of the vulnerability type.
         self.description = description
 
     def validate(self):
@@ -33600,29 +41965,57 @@ class DescribeVulDetailsResponseBodyCves(TeaModel):
         vendor: str = None,
         vul_level: str = None,
     ):
+        # The type of the vulnerability.
         self.classify = classify
+        # An array that consists of vulnerability types.
         self.classifys = classifys
+        # The China National Vulnerability Database (CNVD) ID.
         self.cnvd_id = cnvd_id
+        # The difficulty level of exploiting the vulnerability. Valid values:
+        # 
+        # *   **LOW**\
+        # *   **MEDIUM**\
+        # *   **HIGH**\
         self.complexity = complexity
+        # The CVE content.
         self.content = content
+        # The Common Vulnerabilities and Exposures (CVE) ID.
         self.cve_id = cve_id
+        # The Common Vulnerability Scoring System (CVSS) score of the vulnerability in the Alibaba Cloud vulnerability library.
         self.cvss_score = cvss_score
+        # The vector that is used to calculate the CVSS score.
         self.cvss_vector = cvss_vector
         self.instance_name = instance_name
         self.internet_ip = internet_ip
         self.intranet_ip = intranet_ip
+        # The POC content.
         self.poc = poc
+        # The timestamp when the proof of concept (POC) was created. Unit: milliseconds.
         self.poc_create_time = poc_create_time
+        # The timestamp when the POC was disclosed. Unit: milliseconds.
         self.poc_disclosure_time = poc_disclosure_time
+        # The service that is affected by the vulnerability.
         self.product = product
+        # The reference of the vulnerability in the Alibaba Cloud vulnerability library. The value is a URL.
         self.reference = reference
+        # The disclosure time that is displayed for the vulnerability in the Alibaba Cloud vulnerability library. The value is a UNIX timestamp. Unit: milliseconds.
         self.release_time = release_time
+        # The fixing suggestions of the vulnerability.
         self.solution = solution
+        # The introduction to the vulnerability.
         self.summary = summary
         self.target_id = target_id
         self.target_name = target_name
+        # The title of the vulnerability announcement.
         self.title = title
+        # The vendor that disclosed the vulnerability.
         self.vendor = vendor
+        # The severity of the vulnerability. Valid values:
+        # 
+        # *   **serious**\
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.vul_level = vul_level
 
     def validate(self):
@@ -33751,7 +42144,9 @@ class DescribeVulDetailsResponseBody(TeaModel):
         cves: List[DescribeVulDetailsResponseBodyCves] = None,
         request_id: str = None,
     ):
+        # An array that consists of the details about the vulnerability.
         self.cves = cves
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -33835,6 +42230,7 @@ class DescribeVulExportInfoRequest(TeaModel):
         self,
         export_id: int = None,
     ):
+        # The ID of the vulnerability export task.
         self.export_id = export_id
 
     def validate(self):
@@ -33870,14 +42266,27 @@ class DescribeVulExportInfoResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of exported entries.
         self.current_count = current_count
+        # The status of the export task. Valid values:
+        # 
+        # - **init**: The task is being initialized.
+        # - **exporting**: The task is in progress.
+        # - **success**: The task is complete.
         self.export_status = export_status
+        # The name of the exported Excel file.
         self.file_name = file_name
+        # The ID of the vulnerability export task.
         self.id = id
+        # The URL at which you can download the exported Excel file.
         self.link = link
+        # The message that shows the task result. The value is fixed as **success*, which indicates that the export task is completed.
         self.message = message
+        # The progress percentage of the asset export task.
         self.progress = progress
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries in the Excel file.
         self.total_count = total_count
 
     def validate(self):
@@ -33985,10 +42394,21 @@ class DescribeVulFixStatisticsResponseBodyFixStat(TeaModel):
         need_fix_num: int = None,
         type: str = None,
     ):
+        # The number of vulnerabilities that are fixed on the current day.
         self.fixed_today_num = fixed_today_num
+        # The total number of fixed vulnerabilities.
         self.fixed_total_num = fixed_total_num
+        # The number of vulnerabilities that are being fixed.
         self.fixing_num = fixing_num
+        # The number of unfixed vulnerabilities.
         self.need_fix_num = need_fix_num
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerability
         self.type = type
 
     def validate(self):
@@ -34035,9 +42455,13 @@ class DescribeVulFixStatisticsResponseBodyFixTotal(TeaModel):
         fixing_num: int = None,
         need_fix_num: int = None,
     ):
+        # The number of vulnerabilities that are fixed on the current day.
         self.fixed_today_num = fixed_today_num
+        # The total number of fixed vulnerabilities.
         self.fixed_total_num = fixed_total_num
+        # The number of vulnerabilities that are being fixed.
         self.fixing_num = fixing_num
+        # The number of unfixed vulnerabilities.
         self.need_fix_num = need_fix_num
 
     def validate(self):
@@ -34079,8 +42503,11 @@ class DescribeVulFixStatisticsResponseBody(TeaModel):
         fix_total: DescribeVulFixStatisticsResponseBodyFixTotal = None,
         request_id: str = None,
     ):
+        # An array that consists of the statistics of vulnerability fixes by vulnerability type.
         self.fix_stat = fix_stat
+        # The total statistics of vulnerability fixes.
         self.fix_total = fix_total
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -34183,18 +42610,52 @@ class DescribeVulListRequest(TeaModel):
         uuids: str = None,
         vpc_instance_ids: str = None,
     ):
+        # The name of the vulnerability.
         self.alias_name = alias_name
+        # The additional type of the vulnerability. You can specify this parameter when you query application vulnerabilities. Set the value to **sca**. If you set **Type** to **app**, you must specify this parameter.
+        # 
+        # >  If you set this parameter to **sca**, application vulnerabilities and the vulnerabilities that are detected based on software component analysis are queried. If you do not specify this parameter, only application vulnerabilities are queried.
         self.attach_types = attach_types
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether the vulnerability is fixed. Valid values:
+        # 
+        # *   **y**: yes
+        # *   **n**: no
         self.dealed = dealed
+        # The ID of the asset group.
+        # 
+        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
         self.group_id = group_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The alias of the vulnerability.
         self.name = name
+        # The priority to fix the vulnerability. Separate multiple priorities with commas (,). Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
         self.necessity = necessity
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The remarks for the asset affected by the vulnerability. The value can be the private IP address, public IP address, or name of the asset.
         self.remark = remark
+        # The type of the vulnerabilities. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability that is detected by using web scanner
+        # *   **emg**: urgent vulnerability
+        # *   **sca**: application vulnerability that is detected by using software component analysis
         self.type = type
+        # The UUIDs of the servers on which you want to query the vulnerabilities. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
+        # The IDs of the virtual private clouds (VPCs) in which the vulnerability is detected. Separate multiple IDs with commas (,).
         self.vpc_instance_ids = vpc_instance_ids
 
     def validate(self):
@@ -34276,12 +42737,36 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity(TeaModel):
         time_factor: str = None,
         total_score: str = None,
     ):
+        # The asset importance score. Valid values:
+        # 
+        # *   **2**: an important asset
+        # *   **1**: a common asset
+        # *   **0**: a test asset
         self.assets_factor = assets_factor
+        # The Common Vulnerability Scoring System (CVSS) score.
         self.cvss_factor = cvss_factor
+        # The environment score.
         self.enviroment_factor = enviroment_factor
+        # Indicates whether the score of urgency to fix a vulnerability is calculated. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_calc = is_calc
+        # The status of the score of urgency to fix a vulnerability. Valid values:
+        # 
+        # *   **none**: No score is generated.
+        # *   **pending**: The score is pending calculation.
+        # *   **normal**: The calculation is normal.
         self.status = status
+        # The time score.
         self.time_factor = time_factor
+        # The score of urgency to fix a vulnerability.
+        # 
+        # The following list describes scores and related fixing suggestions:
+        # 
+        # *   If the score is from **13.5 to 15**, the vulnerability is a high-risk vulnerability. You must fix the vulnerability at the earliest opportunity.
+        # *   If the score is **greater than or equal to 7 but less than 13.5**, the vulnerability is a medium-risk vulnerability. You can fix the vulnerability at your convenience.
+        # *   If the score is **less than 7**, the vulnerability is a low-risk vulnerability. You can ignore the vulnerability.
         self.total_score = total_score
 
     def validate(self):
@@ -34342,15 +42827,25 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList(TeaMod
         update_cmd: str = None,
         version: str = None,
     ):
+        # The name of the container.
         self.container_name = container_name
+        # The complete version number.
         self.full_version = full_version
+        # The name of the image.
         self.image_name = image_name
+        # The reason why the vulnerability is detected.
         self.match_detail = match_detail
+        # The rule that is used to detect the vulnerability.
         self.match_list = match_list
+        # The name of the RPM package.
         self.name = name
+        # The path of the software that has the vulnerability.
         self.path = path
+        # The process ID.
         self.pid = pid
+        # The command that is used to fix the vulnerability.
         self.update_cmd = update_cmd
+        # The package version number of the software that has the vulnerability.
         self.version = version
 
     def validate(self):
@@ -34426,18 +42921,45 @@ class DescribeVulListResponseBodyVulRecordsExtendContentJson(TeaModel):
         tag: str = None,
         cve_list: List[str] = None,
     ):
+        # The package path of the software that has the vulnerability.
         self.absolute_path = absolute_path
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The description of the vulnerability.
         self.description = description
+        # The public IP address of the asset that is associated with the vulnerability.
         self.ip = ip
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
         self.last_ts = last_ts
+        # Indicates whether the vulnerability needs to be fixed.
         self.necessity = necessity
+        # The name of the operating system for your asset.
         self.os = os
+        # The release of the operating system.
         self.os_release = os_release
+        # The ID of the vulnerability.
         self.primary_id = primary_id
+        # An array that consists of the information about RPM Package Manager (RPM) packages.
         self.rpm_entity_list = rpm_entity_list
+        # The status of the vulnerability. Valid values:
+        # 
+        # *   **1**: unfixed
+        # *   **2**: fix failed
+        # *   3: rollback failed
+        # *   **4**: being fixed
+        # *   **5**: being rolled back
+        # *   **6**: being verified
+        # *   **7**: fixed
+        # *   **8**: fixed and to be restarted
+        # *   **9**: rolled back
+        # *   **10**: ignored
+        # *   **11**: rolled back and to be restarted
+        # *   **12**: not found
+        # *   **20**: expired
         self.status = status
+        # The tag that is added to the vulnerability.
         self.tag = tag
+        # The CVE list.
         self.cve_list = cve_list
 
     def validate(self):
@@ -34550,32 +43072,98 @@ class DescribeVulListResponseBodyVulRecords(TeaModel):
         type: str = None,
         uuid: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The edition of Security Center that is authorized to scan the asset. Valid values:
+        # 
+        # *   **1**: Basic edition
+        # *   **6**: Anti-virus edition
+        # *   **5**: Advanced edition
+        # *   **3**: Enterprise edition
+        # *   **7**: Ultimate edition
+        # *   **10**: Value-added Plan edition
         self.auth_version = auth_version
+        # Indicates whether Security Center is authorized to scan the asset. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.bind = bind
+        # The extended information about the vulnerability.
         self.extend_content_json = extend_content_json
+        # The timestamp when the vulnerability was first detected. Unit: milliseconds.
         self.first_ts = first_ts
+        # The ID of the asset group.
         self.group_id = group_id
+        # The instance ID of the asset.
         self.instance_id = instance_id
+        # The name of the asset.
         self.instance_name = instance_name
+        # The public IP address of the asset.
         self.internet_ip = internet_ip
+        # The private IP address of the asset.
         self.intranet_ip = intranet_ip
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
         self.last_ts = last_ts
+        # The timestamp when the vulnerability status was modified. Unit: milliseconds.
         self.modify_ts = modify_ts
+        # The name of the vulnerability.
         self.name = name
+        # The priority to fix the vulnerability. Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
+        # 
+        # >  We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
         self.necessity = necessity
+        # Indicates whether the Security Center agent on the asset is online. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.online = online
+        # The name of the operating system for your asset.
         self.os_name = os_name
+        # The name of the operating system for your asset.
         self.os_version = os_version
+        # The ID of the vulnerability.
         self.primary_id = primary_id
+        # The region ID of the instance.
         self.region_id = region_id
+        # The Common Vulnerabilities and Exposures (CVE) IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
         self.related = related
+        # The timestamp when the vulnerability was fixed. Unit: milliseconds.
         self.repair_ts = repair_ts
+        # The code that indicates the vulnerability fixing result.
         self.result_code = result_code
+        # The message that indicates the vulnerability fixing result.
         self.result_message = result_message
+        # The status of the vulnerability. Valid values:
+        # 
+        # *   **1**: unfixed
+        # *   **2**: fix failed
+        # *   **3**: rollback failed
+        # *   **4**: being fixed
+        # *   **5**: being rolled back
+        # *   **6**: being verified
+        # *   **7**: fixed
+        # *   **8**: fixed and to be restarted
+        # *   **9**: rolled back
+        # *   **10**: ignored
+        # *   **11**: rolled back and to be restarted
+        # *   **12**: not found
+        # *   **20**: expired
         self.status = status
+        # The tag that is added to the vulnerability.
         self.tag = tag
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **app**: application vulnerability
         self.type = type
+        # The instance UUID of the asset.
         self.uuid = uuid
 
     def validate(self):
@@ -34713,10 +43301,15 @@ class DescribeVulListResponseBody(TeaModel):
         total_count: int = None,
         vul_records: List[DescribeVulListResponseBodyVulRecords] = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of vulnerabilities returned.
         self.total_count = total_count
+        # An array that consists of the vulnerabilities.
         self.vul_records = vul_records
 
     def validate(self):
@@ -34813,7 +43406,9 @@ class DescribeVulWhitelistRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.current_page = current_page
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -34851,11 +43446,28 @@ class DescribeVulWhitelistResponseBodyVulWhitelists(TeaModel):
         type: str = None,
         whitelist: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The ID of the rule.
         self.id = id
+        # The name of the vulnerability.
         self.name = name
+        # The reason why the vulnerability is added to the whitelist.
         self.reason = reason
+        # The application scope of the rule. The value is a JSON string that contains the following fields:
+        # 
+        # *   **type**: the type of the asset to which the rule is applied. Valid values:
+        # 
+        #        -  **Uuid**: server
+        #        -  **GroupId**: server group
+        # 
+        # *   **groupIds**: the IDs of server groups.
+        # 
+        # *   **uuids**: the UUIDs of servers.
+        # 
+        # >  If this field is empty, the rule is applied to all assets.
         self.target_info = target_info
+        # The type of the vulnerability.
         self.type = type
         self.whitelist = whitelist
 
@@ -34914,10 +43526,15 @@ class DescribeVulWhitelistResponseBody(TeaModel):
         vul_whitelists: List[DescribeVulWhitelistResponseBodyVulWhitelists] = None,
     ):
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # An array that consists of the whitelist of vulnerabilities.
         self.vul_whitelists = vul_whitelists
 
     def validate(self):
@@ -35017,6 +43634,9 @@ class DescribeWarningExportInfoRequest(TeaModel):
         self,
         export_id: int = None,
     ):
+        # The ID of the export task.
+        # 
+        # >  You can can call the [ExportWarning](~~ExportWarning~~) operation to query the IDs of export tasks.
         self.export_id = export_id
 
     def validate(self):
@@ -35052,14 +43672,29 @@ class DescribeWarningExportInfoResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of baseline entries that are exported.
         self.current_count = current_count
+        # The status of the export task.
+        # 
+        # Valid values:
+        # 
+        # *   **init**: The task is being initialized.
+        # *   **exporting**: The task is in progress.
+        # *   **success**: The task is successful.
         self.export_status = export_status
+        # The name of the exported Excel file.
         self.file_name = file_name
+        # The ID of the export task for the baseline check result.
         self.id = id
+        # The URL at which you can download the exported Excel file.
         self.link = link
+        # The message that shows the export task result. The value is fixed as **successful**, which indicates that the export task is successful.
         self.message = message
+        # The progress percentage of the export task.
         self.progress = progress
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of baseline entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -35175,18 +43810,52 @@ class DescribeWarningMachinesRequest(TeaModel):
         target_type: str = None,
         uuids: str = None,
     ):
+        # The ID of the container cluster.
+        # 
+        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
         self.cluster_id = cluster_id
+        # The name of the field that is used to search for the container. Valid values:
+        # 
+        # *   **CONTAINER_ID**: the ID of the container
+        # *   **IMAGE**: the name of the image
+        # *   **NAMESPACE**: the namespace
+        # *   **NODE_NAME**: the name of the node
+        # *   **POD_IP**: the IP address of the pod
+        # *   **HOST_IP**: the IP address of the host
+        # *   **INSTANCE_ID**: the ID of the instance
         self.container_field_name = container_field_name
+        # The value of the field that is used to search for the container.
         self.container_field_value = container_field_value
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether risks were detected. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.have_risk = have_risk
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the server on which the baseline check is performed.
         self.machine_name = machine_name
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the risk item.
+        # 
+        # >  You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to query the IDs of risk items.
         self.risk_id = risk_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the baseline check policy.
         self.strategy_id = strategy_id
+        # The type of the query condition. Valid values:
+        # 
+        # *   **containerId**: the ID of the container
+        # *   **uuid**: the UUID of the asset
         self.target_type = target_type
+        # The UUID of the server on which the baseline check is performed. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -35275,19 +43944,49 @@ class DescribeWarningMachinesResponseBodyWarningMachines(TeaModel):
         status: int = None,
         uuid: str = None,
     ):
+        # The edition of Security Center that is authorized to protect the asset. Valid values:
+        # 
+        # *   **1**: Basic edition
+        # *   **6**: Anti-virus edition
+        # *   **5**: Advanced edition
+        # *   **3**: Enterprise edition
+        # *   **7**: Ultimate edition
+        # *   **10**: Value-added Plan edition
         self.auth_version = auth_version
+        # Indicates whether Security Center is authorized to protect the asset. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.bind = bind
+        # The number of **high-risk** items on the server.
         self.high_warning_count = high_warning_count
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The number of **low-risk** items on the server.
         self.low_warning_count = low_warning_count
+        # The number of **medium-risk** items on the server.
         self.medium_warning_count = medium_warning_count
+        # The number of the check items that passed the baseline check on the server.
         self.pass_count = pass_count
+        # Indicates whether a port on the server is accessible over the Internet. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.port_open = port_open
+        # The ID of the region in which the server is deployed.
         self.region_id = region_id
+        # The verification status of the risk item after the risk item is fixed. Valid values:
+        # 
+        # *   **1**: complete
+        # *   **2**: verifying
         self.status = status
+        # The UUID of the server on which the baseline check is performed.
         self.uuid = uuid
 
     def validate(self):
@@ -35372,11 +44071,17 @@ class DescribeWarningMachinesResponseBody(TeaModel):
         total_count: int = None,
         warning_machines: List[DescribeWarningMachinesResponseBodyWarningMachines] = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # An array that consists of the servers.
         self.warning_machines = warning_machines
 
     def validate(self):
@@ -35481,11 +44186,23 @@ class DescribeWebLockBindListRequest(TeaModel):
         source_ip: str = None,
         status: str = None,
     ):
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.current_page = current_page
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
+        # The string that allows you to search for servers in fuzzy match mode. You can enter a server name or IP address.
         self.remark = remark
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The protection status of the server that you want to query. Valid values:
+        # 
+        # *   **on**: protected
+        # *   **off**: unprotected
         self.status = status
 
     def validate(self):
@@ -35545,18 +44262,46 @@ class DescribeWebLockBindListResponseBodyBindList(TeaModel):
         status: str = None,
         uuid: str = None,
     ):
+        # The number of alerts.
         self.audit_count = audit_count
+        # The number of blocked tampering events.
         self.block_count = block_count
+        # The number of protected directories.
         self.dir_count = dir_count
+        # The name of the server.
         self.instance_name = instance_name
+        # The public IP address of the server.
         self.internet_ip = internet_ip
+        # The private IP address of the server.
         self.intranet_ip = intranet_ip
+        # The operating system that the server runs.
         self.os = os
+        # The starting progress percentage of web tamper proofing. Valid values: 0 to 100.
         self.percent = percent
+        # The error code for web tamper proofing. Valid values:
+        # 
+        # *   **2001**: The Security Center agent is offline.
+        # *   **9999**: The connection timed out.
         self.service_code = service_code
+        # The error message for web tamper proofing. Valid values:
+        # 
+        # *   **client offline**: The Security Center agent is offline.
+        # *   **timeout**: The connection timed out.
         self.service_detail = service_detail
+        # The status of web tamper proofing on the server. Valid values:
+        # 
+        # *   **stop**: Web tamper proofing is disabled.
+        # *   **initializing**: Web tamper proofing is being enabled.
+        # *   **exception**: Web tamper proofing is not running as expected.
+        # *   **running**: Web tamper proofing is running.
+        # *   **closing**: Web tamper proofing is being disabled.
         self.service_status = service_status
+        # The protection status of the server. Valid values:
+        # 
+        # *   **on**: protected
+        # *   **off**: unprotected
         self.status = status
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -35636,10 +44381,15 @@ class DescribeWebLockBindListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about the servers that have web tamper proofing enabled.
         self.bind_list = bind_list
+        # The page number of the returned page. Pages start from page 1. Default value: 1.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: 20.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of servers that have web tamper proofing enabled.
         self.total_count = total_count
 
     def validate(self):
@@ -35737,8 +44487,14 @@ class DescribeWebLockConfigListRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the server for which you want to query the configurations.
         self.uuid = uuid
 
     def validate(self):
@@ -35784,16 +44540,43 @@ class DescribeWebLockConfigListResponseBodyConfigList(TeaModel):
         mode: str = None,
         uuid: str = None,
     ):
+        # The prevention mode. Valid values:
+        # 
+        # *   **block**: Interception Mode
+        # *   **audit**: Alert Mode
         self.defence_mode = defence_mode
+        # The directory that has web tamper proofing enabled.
         self.dir = dir
+        # The directory that has web tamper proofing disabled.
+        # 
+        # >  If the value of **Mode** is **blacklist**, this parameter is returned.
         self.exclusive_dir = exclusive_dir
+        # The file that has web tamper proofing disabled.
+        # 
+        # >  If the value of **Mode** is **blacklist**, this parameter is returned.
         self.exclusive_file = exclusive_file
+        # The type of the file that has web tamper proofing disabled.
+        # 
+        # >  If the value of **Mode** is **blacklist**, this parameter is returned.
         self.exclusive_file_type = exclusive_file_type
+        # The ID of the directory that has web tamper proofing enabled.
         self.id = id
+        # The file that has web tamper proofing enabled.
+        # 
+        # >  If the value of **Mode** is **whitelist**, this parameter is returned.
         self.inclusive_file = inclusive_file
+        # The type of the file that has web tamper proofing enabled.
+        # 
+        # >  If the value of **Mode** is **whitelist**, this parameter is returned.
         self.inclusive_file_type = inclusive_file_type
+        # The local path to the backup files of the protected directory.
         self.local_backup_dir = local_backup_dir
+        # The protection mode of web tamper proofing. Valid values:
+        # 
+        # *   **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
+        # *   **blacklist**: In this mode, web tamper proofing is enabled for the unspecified sub-directories, file types, and files in the protected directories.
         self.mode = mode
+        # The UUID of the server that has web tamper proofing enabled.
         self.uuid = uuid
 
     def validate(self):
@@ -35863,8 +44646,11 @@ class DescribeWebLockConfigListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # An array that consists of the configurations of web tamper proofing.
         self.config_list = config_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of directories that have web tamper proofing enabled on the specified server.
         self.total_count = total_count
 
     def validate(self):
@@ -35958,12 +44744,24 @@ class DescribeWebLockFileEventsRequest(TeaModel):
         ts_begin: int = None,
         ts_end: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # Specifies whether the event on web tamper proofing is handled. Valid values:
+        # 
+        # *   **n**: no
+        # *   **y**: yes
         self.dealed = dealed
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The name of the process.
         self.process_name = process_name
+        # The name of the asset.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the names of assets.
         self.remark = remark
+        # The beginning of the time range to query. The value is a UNIX timestamp.
         self.ts_begin = ts_begin
+        # The end of the time range to query. The value is a UNIX timestamp.
         self.ts_end = ts_end
 
     def validate(self):
@@ -36031,22 +44829,64 @@ class DescribeWebLockFileEventsResponseBodyList(TeaModel):
         status: str = None,
         uuid: str = None,
     ):
+        # The number of attempts.
         self.count = count
+        # The timestamp at which the event on web tamper proofing was first detected.
         self.ds = ds
+        # The name of the event on web tamper proofing.
         self.event_name = event_name
+        # The status of the event on web tamper proofing. Valid values:
+        # 
+        # *   **1**: unhandled
+        # *   **2**: ignored
+        # *   **4**: deprecated
+        # *   **8**: marked as false positive
+        # *   **10**: added to the whitelist
+        # *   **16**: being handled
+        # *   **32**: defended
+        # *   **64**: invalid
+        # *   **128**: deleted
+        # *   **512**: automatically handled
         self.event_status = event_status
+        # The prevention mode. Valid values:
+        # 
+        # *   **audit**: Interception Mode
+        # *   **web_lock**: Alert Mode
         self.event_type = event_type
+        # The timestamp at which the event on web tamper proofing was last detected.
         self.gmt_event = gmt_event
+        # The ID of the event on web tamper proofing.
         self.id = id
+        # The name of the asset.
         self.instance_name = instance_name
+        # The public IP address of the affected asset.
         self.internet_ip = internet_ip
+        # The private IP address of the asset.
         self.intranet_ip = intranet_ip
+        # The IP address of the asset.
         self.ip = ip
+        # The severity of the event on web tamper proofing. Valid values: **medium**.
         self.level = level
+        # The file path.
         self.path = path
+        # The name of the process.
         self.process_name = process_name
+        # The path of the process.
         self.process_path = process_path
+        # The status of the event on web tamper proofing. Valid values:
+        # 
+        # *   **1**: unhandled
+        # *   **2**: ignored
+        # *   **4**: deprecated
+        # *   **8**: marked as false positive
+        # *   **10**: added to the whitelist
+        # *   **16**: being handled
+        # *   **32**: defended
+        # *   **64**: invalid
+        # *   **128**: deleted
+        # *   **512**: automatically handled
         self.status = status
+        # The UUID of the asset.
         self.uuid = uuid
 
     def validate(self):
@@ -36142,10 +44982,15 @@ class DescribeWebLockFileEventsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # An array that consists of events on web tamper proofing returned.
         self.list = list
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of events on web tamper proofing returned.
         self.total_count = total_count
 
     def validate(self):
@@ -36243,8 +45088,35 @@ class ExportRecordRequest(TeaModel):
         lang: str = None,
         params: str = None,
     ):
+        # The type of the check result list to export. Valid values:
+        # 
+        # *   **assetInstance**: the list of servers displayed on the Host page
+        # *   **user**: the list of fingerprints for accounts
+        # *   **port**: the list of fingerprints for ports
+        # *   **process**: the list of fingerprints for processes
+        # *   **sca**: the list of fingerprints for middleware assets
+        # *   **database**: the list of fingerprints for databases
+        # *   **web**: the list of fingerprints for web services
+        # *   **software**: the list of fingerprints for software assets
+        # *   **cron**: the list of fingerprints for scheduled tasks
+        # *   **autorun**: the list of fingerprints for startup items
+        # *   **lkm**: the list of fingerprints for kernel modules
+        # *   **webserver**: the list of fingerprints for websites
+        # *   **imageVulExport**: the list of image system vulnerabilities
+        # *   **imageBaseLineExport**: the list of baseline check results for images
+        # *   **imageAffectedMaliciousExport**: the list of check results for malicious image samples
+        # *   **baseline**: the list of check results for configuration assessment
+        # *   **attack**: the list of alerts for attack analysis
+        # *   **accessKey**: the list of alerts that are generated for AccessKey pair leaks
         self.export_type = export_type
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The conditions that are used to filter check results.
+        # 
+        # >  This operation is a common export operation for multiple features of Security Center. The available configuration fields of this parameter vary based on the features. We recommend that you do not specify this parameter when you call the operation. You can export an information list without specifying this parameter, and then filter data in the exported Excel file.
         self.params = params
 
     def validate(self):
@@ -36282,8 +45154,11 @@ class ExportRecordResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The name of the exported file.
         self.file_name = file_name
+        # The ID of the exported file.
         self.id = id
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -36372,15 +45247,54 @@ class ExportVulRequest(TeaModel):
         uuids: str = None,
         vpc_instance_ids: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The additional type of the vulnerabilities. You can specify this parameter when you query application vulnerabilities. If you set Type to app, you must specify this parameter. If you set Type to a different value, this parameter is invalid. Set the value to **sca**.
+        # 
+        # >  If this parameter is set to **sca**, application vulnerabilities and the vulnerabilities that are detected based on software component analysis are queried. If you do not specify this parameter, only application vulnerabilities are queried.
         self.attach_types = attach_types
+        # Specifies whether the vulnerabilities are fixed. Valid values:
+        # 
+        # *   **y**: yes
+        # *   **n**: no
         self.dealed = dealed
+        # The server group ID of the server on which the vulnerabilities are detected.
+        # 
+        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
         self.group_id = group_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
         self.lang = lang
+        # The priority to fix the vulnerabilities. Separate multiple priorities with commas (,). Valid values:
+        # 
+        # *   **asap**: high
+        # *   **later**: medium
+        # *   **nntf**: low
         self.necessity = necessity
+        # The tag that is used to search for the vulnerabilities. Valid values:
+        # 
+        # *   Restart required
+        # *   Remote exploitation
+        # *   Exploit exists
+        # *   Exploitable
+        # *   Privilege escalation
+        # *   Code execution
         self.search_tags = search_tags
+        # The type of the vulnerabilities that you want to export. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **app**: application vulnerability
+        # *   **emg**: urgent vulnerability
         self.type = type
+        # The UUID of the server on which the vulnerabilities are detected. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
+        # The ID of the virtual private cloud (VPC) in which the vulnerabilities are detected. Separate multiple IDs with commas (,).
+        # 
+        # >  You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the IDs of VPCs.
         self.vpc_instance_ids = vpc_instance_ids
 
     def validate(self):
@@ -36446,8 +45360,11 @@ class ExportVulResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The name of the exported file.
         self.file_name = file_name
+        # The ID of the exported file.
         self.id = id
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -36541,20 +45458,60 @@ class ExportWarningRequest(TeaModel):
         type_names: str = None,
         uuids: str = None,
     ):
+        # Specifies whether the baseline risks are handled. Valid values:
+        # 
+        # *   **Y**: yes
+        # *   **N**: no
         self.dealed = dealed
+        # The type of the export task. Set the value to **hc_check_warning**, which indicates tasks to export baseline check results.
         self.export_type = export_type
+        # The export method of the results for the weak password baseline check. Valid values:
+        # 
+        # *   **0**: exports the check results after it is masked.
+        # *   **1**: exports the check results in plaintext.
         self.is_cleartext_pwd = is_cleartext_pwd
+        # Specifies whether the baseline check results are aggregated and exported. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.is_summary_export = is_summary_export
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the risk item in the baseline check results. Separate multiple IDs with commas (,).
         self.risk_ids = risk_ids
+        # The severity of the baseline check item. Separate multiple severities with commas (,). Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.risk_levels = risk_levels
+        # The name of the baseline.
         self.risk_name = risk_name
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The status of the check item in the baseline check results. Separate multiple statuses with commas (,). Valid values:
+        # 
+        # *   **3**: passed
+        # *   **1**: failed
         self.status_list = status_list
+        # The ID of the baseline check policy.
         self.strategy_id = strategy_id
+        # The subtypes of the baselines based on which baseline checks are performed. Separate multiple subtypes with commas (,).
+        # 
+        # >  You must set the value of this parameter to the value of the **TypeName** parameter that is contained in the **SubTypes** parameter. You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to obtain the value of the TypeName parameter.
         self.sub_type_names = sub_type_names
+        # The type of the baseline based on which baseline checks are performed.
+        # 
+        # >  You must set the value of this parameter to the value of the **TypeName** parameter that is returned by calling the [DescribeRiskType](~~DescribeRiskType~~) operation. If both the **TypeName** and **TypeNames** parameters are specified, only the **TypeName** parameter takes effect.
         self.type_name = type_name
+        # The types of the baselines based on which baseline checks are performed. Separate multiple types with commas (,).
+        # 
+        # >  You must set the value of this parameter to the value of the **TypeName** parameter that is returned by calling the [DescribeRiskType](~~DescribeRiskType~~) operation. If both the **TypeName** and **TypeNames** parameters are specified, only the **TypeName** parameter takes effect.
         self.type_names = type_names
+        # The UUID of the server whose baseline check results you want to export. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -36640,8 +45597,11 @@ class ExportWarningResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The name of the file that contains exported baseline check results.
         self.file_name = file_name
+        # The ID of the task to export baseline check results.
         self.id = id
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -36725,10 +45685,30 @@ class FixCheckWarningsRequest(TeaModel):
         source_ip: str = None,
         uuids: str = None,
     ):
+        # The parameters for the baseline risk item that you want to fix.
+        # 
+        # *   **checkId**: the ID of the check item that corresponds to the baseline risk item.
+        # 
+        # *   **rules**: an array that consists of the rules applied to fixes.
+        # 
+        #     *   **value**: specifies whether a fix method is selected. Valid values: **0** and **1**. The value 0 indicates that no fix method is selected and the value 1 indicates that a fix method is selected.
+        #     *   **ruleId**: the ID of the fix method.
+        #     *   **paramList**: an array that consists of the details about the fix method.\
+        #         • **paramName**: the name of the fix method.\
+        #         • **value**: the value of the fix method.
         self.check_params = check_params
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the baseline risk item.
+        # 
+        # >  To query specified baseline risk items and the check items of a specified server, you must provide the IDs of the baseline risk items. You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to query the IDs.
         self.risk_id = risk_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the asset for which you want to fix the baseline risk item. You can call the [DescribeWarningMachines](~~DescribeWarningMachines~~) operation to query the UUIDs of assets.
         self.uuids = uuids
 
     def validate(self):
@@ -36773,7 +45753,9 @@ class FixCheckWarningsResponseBody(TeaModel):
         batch_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the baseline risk item that has been fixed by using the Batch Repair feature.
         self.batch_id = batch_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -36853,10 +45835,18 @@ class GetBackupStorageCountResponseBodyBackupStorageCount(TeaModel):
         uni_usage_storage_byte: int = None,
         usage_storage_byte: int = None,
     ):
+        # The anti-ransomware capacity that you purchased. Unit: bytes.
         self.buy_storage_byte = buy_storage_byte
+        # The storage capacity that is occupied by the backup data of your servers. Unit: bytes.
         self.ecs_usage_storage_byte = ecs_usage_storage_byte
+        # Indicates whether the anti-ransomware capacity that is used exceeds the anti-ransomware capacity that you purchased. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.overflow = overflow
+        # The storage capacity that is occupied by the backup data of your databases. Unit: bytes.
         self.uni_usage_storage_byte = uni_usage_storage_byte
+        # The total anti-ransomware capacity that is used. Unit: bytes.
         self.usage_storage_byte = usage_storage_byte
 
     def validate(self):
@@ -36901,7 +45891,9 @@ class GetBackupStorageCountResponseBody(TeaModel):
         backup_storage_count: GetBackupStorageCountResponseBodyBackupStorageCount = None,
         request_id: str = None,
     ):
+        # The details about the anti-ransomware capacity.
         self.backup_storage_count = backup_storage_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -36980,7 +45972,12 @@ class GetCheckDetailRequest(TeaModel):
         check_id: int = None,
         lang: str = None,
     ):
+        # The ID of the check item.
         self.check_id = check_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -37014,8 +46011,14 @@ class GetCheckDetailResponseBodyAssistInfo(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The link to the help information about the risk item when the Type parameter is set to link.
         self.link = link
+        # The type of the help information about the risk item. Valid values:
+        # 
+        # *   **text**\
+        # *   **link**\
         self.type = type
+        # The content in the help information about the risk item when the Type parameter is set to text.
         self.value = value
 
     def validate(self):
@@ -37053,8 +46056,11 @@ class GetCheckDetailResponseBodyDescription(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The link to the description of the check item.
         self.link = link
+        # The type of the description of the check item. The value is fixed as text.
         self.type = type
+        # The content in the description of the check item.
         self.value = value
 
     def validate(self):
@@ -37092,8 +46098,14 @@ class GetCheckDetailResponseBodySolution(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The link to the solution to handle the risk item when the Type parameter is set to link.
         self.link = link
+        # The type of the solution to handle to the risk item. Valid values:
+        # 
+        # *   **text**\
+        # *   **link**\
         self.type = type
+        # The content of the solution to handle the risk item when the Type parameter is set to text.
         self.value = value
 
     def validate(self):
@@ -37132,9 +46144,13 @@ class GetCheckDetailResponseBody(TeaModel):
         request_id: str = None,
         solution: GetCheckDetailResponseBodySolution = None,
     ):
+        # The help information about the check item.
         self.assist_info = assist_info
+        # The description of the check item.
         self.description = description
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The solution to handle the risk item.
         self.solution = solution
 
     def validate(self):
@@ -37228,8 +46244,18 @@ class GetFileDetectResultRequest(TeaModel):
         source_ip: str = None,
         type: int = None,
     ):
+        # An array that consists of the identifiers of files. Only MD5 hash values are supported.
         self.hash_key_list = hash_key_list
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the file. Valid values:
+        # 
+        # *   **0**: unknown file
+        # *   **1**: binary file
+        # *   **2**: webshell file
+        # *   **4**: script file
+        # 
+        # >  If you do not know the type of the file, set this parameter to 0.
         self.type = type
 
     def validate(self):
@@ -37271,12 +46297,48 @@ class GetFileDetectResultResponseBodyResultList(TeaModel):
         score: int = None,
         virus_type: str = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The extended information about the file detection result.
         self.ext = ext
+        # The identifier of the file. Only MD5 hash values are supported.
         self.hash_key = hash_key
+        # The error message returned.
         self.message = message
+        # The file detection result. Valid values:
+        # 
+        # *   **0**: normal file.
+        # *   **1**: suspicious file.
+        # *   **3**: The detection is in progress.
         self.result = result
+        # The score of file detection result.
+        # 
+        # >  A higher score indicates a more suspicious file.
         self.score = score
+        # The type of virus. Valid values:
+        # 
+        # *   **Trojan**: self-mutating trojan
+        # *   **WebShell**: webshell
+        # *   **Backdoor**: backdoor program
+        # *   **RansomWare**: ransomware
+        # *   **Scanner**: scanner
+        # *   **Stealer**: tool that is used to steal information
+        # *   **Malbaseware**: tainted basic software
+        # *   **Hacktool**: attacker tool
+        # *   **Engtest**: engine test program
+        # *   **Downloader**: trojan downloader
+        # *   **Virus**: infectious virus
+        # *   **Miner**: mining program
+        # *   **Worm**: worm
+        # *   **DDoS**: DDoS trojan
+        # *   **Malware**: malicious program
+        # *   **Backdoor**: reverse shell
+        # *   **RiskWare**: software that has risks
+        # *   **Proxytool**: proxy
+        # *   **Suspicious**: suspicious program
+        # *   **MalScript**: malicious script
+        # *   **Rootkit**: rootkit
+        # *   **Exploit**: exploit
         self.virus_type = virus_type
 
     def validate(self):
@@ -37329,7 +46391,9 @@ class GetFileDetectResultResponseBody(TeaModel):
         request_id: str = None,
         result_list: List[GetFileDetectResultResponseBodyResultList] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of file detection results.
         self.result_list = result_list
 
     def validate(self):
@@ -37408,13 +46472,1025 @@ class GetFileDetectResultResponse(TeaModel):
         return self
 
 
+class GetHoneypotNodeRequest(TeaModel):
+    def __init__(
+        self,
+        node_id: str = None,
+    ):
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class GetHoneypotNodeResponseBodyHoneypotNode(TeaModel):
+    def __init__(
+        self,
+        allow_honeypot_access_internet: bool = None,
+        create_time: str = None,
+        ecs_instance_id: str = None,
+        honeypot_total_count: int = None,
+        honeypot_used_count: int = None,
+        node_id: str = None,
+        node_ip: str = None,
+        node_name: str = None,
+        probe_total_count: int = None,
+        probe_used_count: int = None,
+        security_group_probe_ip_list: List[str] = None,
+        total_status: int = None,
+        upgrade_available: bool = None,
+    ):
+        self.allow_honeypot_access_internet = allow_honeypot_access_internet
+        self.create_time = create_time
+        self.ecs_instance_id = ecs_instance_id
+        self.honeypot_total_count = honeypot_total_count
+        self.honeypot_used_count = honeypot_used_count
+        self.node_id = node_id
+        self.node_ip = node_ip
+        self.node_name = node_name
+        self.probe_total_count = probe_total_count
+        self.probe_used_count = probe_used_count
+        self.security_group_probe_ip_list = security_group_probe_ip_list
+        self.total_status = total_status
+        self.upgrade_available = upgrade_available
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_honeypot_access_internet is not None:
+            result['AllowHoneypotAccessInternet'] = self.allow_honeypot_access_internet
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.honeypot_total_count is not None:
+            result['HoneypotTotalCount'] = self.honeypot_total_count
+        if self.honeypot_used_count is not None:
+            result['HoneypotUsedCount'] = self.honeypot_used_count
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_ip is not None:
+            result['NodeIp'] = self.node_ip
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.probe_total_count is not None:
+            result['ProbeTotalCount'] = self.probe_total_count
+        if self.probe_used_count is not None:
+            result['ProbeUsedCount'] = self.probe_used_count
+        if self.security_group_probe_ip_list is not None:
+            result['SecurityGroupProbeIpList'] = self.security_group_probe_ip_list
+        if self.total_status is not None:
+            result['TotalStatus'] = self.total_status
+        if self.upgrade_available is not None:
+            result['UpgradeAvailable'] = self.upgrade_available
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowHoneypotAccessInternet') is not None:
+            self.allow_honeypot_access_internet = m.get('AllowHoneypotAccessInternet')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('HoneypotTotalCount') is not None:
+            self.honeypot_total_count = m.get('HoneypotTotalCount')
+        if m.get('HoneypotUsedCount') is not None:
+            self.honeypot_used_count = m.get('HoneypotUsedCount')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeIp') is not None:
+            self.node_ip = m.get('NodeIp')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('ProbeTotalCount') is not None:
+            self.probe_total_count = m.get('ProbeTotalCount')
+        if m.get('ProbeUsedCount') is not None:
+            self.probe_used_count = m.get('ProbeUsedCount')
+        if m.get('SecurityGroupProbeIpList') is not None:
+            self.security_group_probe_ip_list = m.get('SecurityGroupProbeIpList')
+        if m.get('TotalStatus') is not None:
+            self.total_status = m.get('TotalStatus')
+        if m.get('UpgradeAvailable') is not None:
+            self.upgrade_available = m.get('UpgradeAvailable')
+        return self
+
+
+class GetHoneypotNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        honeypot_node: GetHoneypotNodeResponseBodyHoneypotNode = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.honeypot_node = honeypot_node
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.honeypot_node:
+            self.honeypot_node.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.honeypot_node is not None:
+            result['HoneypotNode'] = self.honeypot_node.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HoneypotNode') is not None:
+            temp_model = GetHoneypotNodeResponseBodyHoneypotNode()
+            self.honeypot_node = temp_model.from_map(m['HoneypotNode'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetHoneypotNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHoneypotNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHoneypotNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetHoneypotPresetRequest(TeaModel):
+    def __init__(
+        self,
+        honeypot_preset_id: str = None,
+        lang: str = None,
+    ):
+        self.honeypot_preset_id = honeypot_preset_id
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_preset_id is not None:
+            result['HoneypotPresetId'] = self.honeypot_preset_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotPresetId') is not None:
+            self.honeypot_preset_id = m.get('HoneypotPresetId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class GetHoneypotPresetResponseBodyDataFileInfoList(TeaModel):
+    def __init__(
+        self,
+        file_id: str = None,
+        file_name: str = None,
+        oss_url: str = None,
+    ):
+        self.file_id = file_id
+        self.file_name = file_name
+        self.oss_url = oss_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.oss_url is not None:
+            result['OssUrl'] = self.oss_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('OssUrl') is not None:
+            self.oss_url = m.get('OssUrl')
+        return self
+
+
+class GetHoneypotPresetResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        control_node_name: str = None,
+        file_info_list: List[GetHoneypotPresetResponseBodyDataFileInfoList] = None,
+        honeypot_image_display_name: str = None,
+        honeypot_image_name: str = None,
+        honeypot_preset_id: str = None,
+        meta: str = None,
+        node_id: str = None,
+        preset_name: str = None,
+        preset_type: str = None,
+    ):
+        self.control_node_name = control_node_name
+        self.file_info_list = file_info_list
+        self.honeypot_image_display_name = honeypot_image_display_name
+        self.honeypot_image_name = honeypot_image_name
+        self.honeypot_preset_id = honeypot_preset_id
+        self.meta = meta
+        self.node_id = node_id
+        self.preset_name = preset_name
+        self.preset_type = preset_type
+
+    def validate(self):
+        if self.file_info_list:
+            for k in self.file_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.control_node_name is not None:
+            result['ControlNodeName'] = self.control_node_name
+        result['FileInfoList'] = []
+        if self.file_info_list is not None:
+            for k in self.file_info_list:
+                result['FileInfoList'].append(k.to_map() if k else None)
+        if self.honeypot_image_display_name is not None:
+            result['HoneypotImageDisplayName'] = self.honeypot_image_display_name
+        if self.honeypot_image_name is not None:
+            result['HoneypotImageName'] = self.honeypot_image_name
+        if self.honeypot_preset_id is not None:
+            result['HoneypotPresetId'] = self.honeypot_preset_id
+        if self.meta is not None:
+            result['Meta'] = self.meta
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.preset_name is not None:
+            result['PresetName'] = self.preset_name
+        if self.preset_type is not None:
+            result['PresetType'] = self.preset_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ControlNodeName') is not None:
+            self.control_node_name = m.get('ControlNodeName')
+        self.file_info_list = []
+        if m.get('FileInfoList') is not None:
+            for k in m.get('FileInfoList'):
+                temp_model = GetHoneypotPresetResponseBodyDataFileInfoList()
+                self.file_info_list.append(temp_model.from_map(k))
+        if m.get('HoneypotImageDisplayName') is not None:
+            self.honeypot_image_display_name = m.get('HoneypotImageDisplayName')
+        if m.get('HoneypotImageName') is not None:
+            self.honeypot_image_name = m.get('HoneypotImageName')
+        if m.get('HoneypotPresetId') is not None:
+            self.honeypot_preset_id = m.get('HoneypotPresetId')
+        if m.get('Meta') is not None:
+            self.meta = m.get('Meta')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PresetName') is not None:
+            self.preset_name = m.get('PresetName')
+        if m.get('PresetType') is not None:
+            self.preset_type = m.get('PresetType')
+        return self
+
+
+class GetHoneypotPresetResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetHoneypotPresetResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetHoneypotPresetResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetHoneypotPresetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHoneypotPresetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHoneypotPresetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetHoneypotProbeRequest(TeaModel):
+    def __init__(
+        self,
+        probe_id: str = None,
+    ):
+        self.probe_id = probe_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.probe_id is not None:
+            result['ProbeId'] = self.probe_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProbeId') is not None:
+            self.probe_id = m.get('ProbeId')
+        return self
+
+
+class GetHoneypotProbeResponseBodyDataControlNode(TeaModel):
+    def __init__(
+        self,
+        ecs_instance_id: str = None,
+        node_id: str = None,
+        node_name: str = None,
+    ):
+        self.ecs_instance_id = ecs_instance_id
+        self.node_id = node_id
+        self.node_name = node_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        return self
+
+
+class GetHoneypotProbeResponseBodyDataHoneyPotProbeScanPort(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        ports: str = None,
+        probe_id: str = None,
+        service_ip_list: List[str] = None,
+        status: int = None,
+    ):
+        self.id = id
+        self.ports = ports
+        self.probe_id = probe_id
+        self.service_ip_list = service_ip_list
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ports is not None:
+            result['Ports'] = self.ports
+        if self.probe_id is not None:
+            result['ProbeId'] = self.probe_id
+        if self.service_ip_list is not None:
+            result['ServiceIpList'] = self.service_ip_list
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Ports') is not None:
+            self.ports = m.get('Ports')
+        if m.get('ProbeId') is not None:
+            self.probe_id = m.get('ProbeId')
+        if m.get('ServiceIpList') is not None:
+            self.service_ip_list = m.get('ServiceIpList')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetHoneypotProbeResponseBodyDataHoneypotProbeBindListBindPortList(TeaModel):
+    def __init__(
+        self,
+        bind_port: bool = None,
+        end_port: int = None,
+        err: str = None,
+        fixed: bool = None,
+        id: int = None,
+        msg: str = None,
+        proto: str = None,
+        start_port: int = None,
+        status: int = None,
+        target_port: int = None,
+    ):
+        self.bind_port = bind_port
+        self.end_port = end_port
+        self.err = err
+        self.fixed = fixed
+        self.id = id
+        self.msg = msg
+        self.proto = proto
+        self.start_port = start_port
+        self.status = status
+        self.target_port = target_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_port is not None:
+            result['BindPort'] = self.bind_port
+        if self.end_port is not None:
+            result['EndPort'] = self.end_port
+        if self.err is not None:
+            result['Err'] = self.err
+        if self.fixed is not None:
+            result['Fixed'] = self.fixed
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.proto is not None:
+            result['Proto'] = self.proto
+        if self.start_port is not None:
+            result['StartPort'] = self.start_port
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindPort') is not None:
+            self.bind_port = m.get('BindPort')
+        if m.get('EndPort') is not None:
+            self.end_port = m.get('EndPort')
+        if m.get('Err') is not None:
+            self.err = m.get('Err')
+        if m.get('Fixed') is not None:
+            self.fixed = m.get('Fixed')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Proto') is not None:
+            self.proto = m.get('Proto')
+        if m.get('StartPort') is not None:
+            self.start_port = m.get('StartPort')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        return self
+
+
+class GetHoneypotProbeResponseBodyDataHoneypotProbeBindList(TeaModel):
+    def __init__(
+        self,
+        bind_id: str = None,
+        bind_port_list: List[GetHoneypotProbeResponseBodyDataHoneypotProbeBindListBindPortList] = None,
+        honeypot_id: str = None,
+        service_ip_list: List[str] = None,
+        status: int = None,
+    ):
+        self.bind_id = bind_id
+        self.bind_port_list = bind_port_list
+        self.honeypot_id = honeypot_id
+        self.service_ip_list = service_ip_list
+        self.status = status
+
+    def validate(self):
+        if self.bind_port_list:
+            for k in self.bind_port_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_id is not None:
+            result['BindId'] = self.bind_id
+        result['BindPortList'] = []
+        if self.bind_port_list is not None:
+            for k in self.bind_port_list:
+                result['BindPortList'].append(k.to_map() if k else None)
+        if self.honeypot_id is not None:
+            result['HoneypotId'] = self.honeypot_id
+        if self.service_ip_list is not None:
+            result['ServiceIpList'] = self.service_ip_list
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindId') is not None:
+            self.bind_id = m.get('BindId')
+        self.bind_port_list = []
+        if m.get('BindPortList') is not None:
+            for k in m.get('BindPortList'):
+                temp_model = GetHoneypotProbeResponseBodyDataHoneypotProbeBindListBindPortList()
+                self.bind_port_list.append(temp_model.from_map(k))
+        if m.get('HoneypotId') is not None:
+            self.honeypot_id = m.get('HoneypotId')
+        if m.get('ServiceIpList') is not None:
+            self.service_ip_list = m.get('ServiceIpList')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetHoneypotProbeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        arp: bool = None,
+        can_listen_ip_list: List[str] = None,
+        cidr_list: List[str] = None,
+        control_node: GetHoneypotProbeResponseBodyDataControlNode = None,
+        cpu_load: float = None,
+        deploy_time: int = None,
+        display_name: str = None,
+        honey_pot_probe_scan_port: GetHoneypotProbeResponseBodyDataHoneyPotProbeScanPort = None,
+        honeypot_probe_bind_list: List[GetHoneypotProbeResponseBodyDataHoneypotProbeBindList] = None,
+        host_ip: str = None,
+        listen_ip_list: List[str] = None,
+        memory_load: float = None,
+        os_type: str = None,
+        ping: bool = None,
+        probe_id: str = None,
+        probe_type: str = None,
+        probe_version: str = None,
+        proxy_ip: str = None,
+        status: int = None,
+        uuid: str = None,
+        vpc_id: str = None,
+    ):
+        self.arp = arp
+        self.can_listen_ip_list = can_listen_ip_list
+        self.cidr_list = cidr_list
+        self.control_node = control_node
+        self.cpu_load = cpu_load
+        self.deploy_time = deploy_time
+        self.display_name = display_name
+        self.honey_pot_probe_scan_port = honey_pot_probe_scan_port
+        self.honeypot_probe_bind_list = honeypot_probe_bind_list
+        self.host_ip = host_ip
+        self.listen_ip_list = listen_ip_list
+        self.memory_load = memory_load
+        self.os_type = os_type
+        self.ping = ping
+        self.probe_id = probe_id
+        self.probe_type = probe_type
+        self.probe_version = probe_version
+        self.proxy_ip = proxy_ip
+        self.status = status
+        self.uuid = uuid
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.control_node:
+            self.control_node.validate()
+        if self.honey_pot_probe_scan_port:
+            self.honey_pot_probe_scan_port.validate()
+        if self.honeypot_probe_bind_list:
+            for k in self.honeypot_probe_bind_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arp is not None:
+            result['Arp'] = self.arp
+        if self.can_listen_ip_list is not None:
+            result['CanListenIpList'] = self.can_listen_ip_list
+        if self.cidr_list is not None:
+            result['CidrList'] = self.cidr_list
+        if self.control_node is not None:
+            result['ControlNode'] = self.control_node.to_map()
+        if self.cpu_load is not None:
+            result['CpuLoad'] = self.cpu_load
+        if self.deploy_time is not None:
+            result['DeployTime'] = self.deploy_time
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.honey_pot_probe_scan_port is not None:
+            result['HoneyPotProbeScanPort'] = self.honey_pot_probe_scan_port.to_map()
+        result['HoneypotProbeBindList'] = []
+        if self.honeypot_probe_bind_list is not None:
+            for k in self.honeypot_probe_bind_list:
+                result['HoneypotProbeBindList'].append(k.to_map() if k else None)
+        if self.host_ip is not None:
+            result['HostIp'] = self.host_ip
+        if self.listen_ip_list is not None:
+            result['ListenIpList'] = self.listen_ip_list
+        if self.memory_load is not None:
+            result['MemoryLoad'] = self.memory_load
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.ping is not None:
+            result['Ping'] = self.ping
+        if self.probe_id is not None:
+            result['ProbeId'] = self.probe_id
+        if self.probe_type is not None:
+            result['ProbeType'] = self.probe_type
+        if self.probe_version is not None:
+            result['ProbeVersion'] = self.probe_version
+        if self.proxy_ip is not None:
+            result['ProxyIp'] = self.proxy_ip
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arp') is not None:
+            self.arp = m.get('Arp')
+        if m.get('CanListenIpList') is not None:
+            self.can_listen_ip_list = m.get('CanListenIpList')
+        if m.get('CidrList') is not None:
+            self.cidr_list = m.get('CidrList')
+        if m.get('ControlNode') is not None:
+            temp_model = GetHoneypotProbeResponseBodyDataControlNode()
+            self.control_node = temp_model.from_map(m['ControlNode'])
+        if m.get('CpuLoad') is not None:
+            self.cpu_load = m.get('CpuLoad')
+        if m.get('DeployTime') is not None:
+            self.deploy_time = m.get('DeployTime')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('HoneyPotProbeScanPort') is not None:
+            temp_model = GetHoneypotProbeResponseBodyDataHoneyPotProbeScanPort()
+            self.honey_pot_probe_scan_port = temp_model.from_map(m['HoneyPotProbeScanPort'])
+        self.honeypot_probe_bind_list = []
+        if m.get('HoneypotProbeBindList') is not None:
+            for k in m.get('HoneypotProbeBindList'):
+                temp_model = GetHoneypotProbeResponseBodyDataHoneypotProbeBindList()
+                self.honeypot_probe_bind_list.append(temp_model.from_map(k))
+        if m.get('HostIp') is not None:
+            self.host_ip = m.get('HostIp')
+        if m.get('ListenIpList') is not None:
+            self.listen_ip_list = m.get('ListenIpList')
+        if m.get('MemoryLoad') is not None:
+            self.memory_load = m.get('MemoryLoad')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('Ping') is not None:
+            self.ping = m.get('Ping')
+        if m.get('ProbeId') is not None:
+            self.probe_id = m.get('ProbeId')
+        if m.get('ProbeType') is not None:
+            self.probe_type = m.get('ProbeType')
+        if m.get('ProbeVersion') is not None:
+            self.probe_version = m.get('ProbeVersion')
+        if m.get('ProxyIp') is not None:
+            self.proxy_ip = m.get('ProxyIp')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetHoneypotProbeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetHoneypotProbeResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetHoneypotProbeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetHoneypotProbeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHoneypotProbeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHoneypotProbeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSuspiciousStatisticsRequest(TeaModel):
     def __init__(
         self,
         group_id_list: str = None,
         source_ip: str = None,
     ):
+        # The ID of the asset group. Separate multiple IDs with commas (,).
+        # 
+        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
         self.group_id_list = group_id_list
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -37450,10 +47526,15 @@ class GetSuspiciousStatisticsResponseBody(TeaModel):
         suspicious_count: int = None,
         total_count: int = None,
     ):
+        # The number of alerts whose Emergency level is Reminder.
         self.remind_count = remind_count
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The number of alerts whose Emergency level is Urgent.
         self.serious_count = serious_count
+        # The number of alerts whose Emergency level is Suspicious.
         self.suspicious_count = suspicious_count
+        # The total number of alerts.
         self.total_count = total_count
 
     def validate(self):
@@ -37543,8 +47624,18 @@ class GetVulStatisticsRequest(TeaModel):
         source_ip: str = None,
         type_list: str = None,
     ):
+        # The ID of the asset group. Separate multiple IDs with commas (,). 
+        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups
         self.group_id_list = group_id_list
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the vulnerability whose statistics you want to query. Separate multiple vulnerability types with commas (,). Valid values:
+        # - **cve**:Linux software vulnerabilities
+        # - **sys**:Windows system vulnerabilities
+        # - **cms**: Web-CMS vulnerabilities
+        # - **emg**: urgent vulnerabilities
+        # - **app**: application vulnerabilities
+        # - **sca**: vulnerabilities that are detected based on software component analysis
         self.type_list = type_list
 
     def validate(self):
@@ -37583,9 +47674,13 @@ class GetVulStatisticsResponseBody(TeaModel):
         vul_later_sum: int = None,
         vul_nntf_sum: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of vulnerabilities that have the high priority.
         self.vul_asap_sum = vul_asap_sum
+        # The number of vulnerabilities that have the medium priority.
         self.vul_later_sum = vul_later_sum
+        # The number of vulnerabilities that have the low priority.
         self.vul_nntf_sum = vul_nntf_sum
 
     def validate(self):
@@ -37669,6 +47764,7 @@ class GetVulWhitelistRequest(TeaModel):
         self,
         vul_whitelist_id: int = None,
     ):
+        # The ID of the whitelist.
         self.vul_whitelist_id = vul_whitelist_id
 
     def validate(self):
@@ -37702,12 +47798,42 @@ class GetVulWhitelistResponseBodyVulWhitelist(TeaModel):
         type: str = None,
         whitelist: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The ID of the whitelist.
         self.id = id
+        # The name of the vulnerability.
         self.name = name
+        # The reason why the vulnerability is added to the whitelist.
         self.reason = reason
+        # The application scope of the rule. The value is a JSON string that contains the following fields:
+        # 
+        # *   **type**: the type of the assets to which the rule is applied. Valid values:
+        # 
+        #     *   **Uuid**: server
+        #     *   **GroupId**: server group
+        # 
+        # *   **groupIds**: the IDs of server groups.
+        # 
+        # *   **uuids**: the UUIDs of servers.
+        # 
+        # >  If this parameter is empty, the rule is applied to all assets.
         self.target = target
+        # The type of the vulnerability.
         self.type = type
+        # The information about the vulnerability that is added to the whitelist. The value is a JSON string that contains the following fields:
+        # 
+        # *   **Name**: the name of the vulnerability.
+        # 
+        # *   **Type**: the type of the vulnerability. Valid values:
+        # 
+        #     *   **cve**: Linux software vulnerability
+        #     *   **sys**: Windows system vulnerability
+        #     *   **cms**: Web-CMS vulnerability
+        #     *   **app**: application vulnerability
+        #     *   **emg**: urgent vulnerability
+        # 
+        # *   **AliasName**: the alias of the vulnerability.
         self.whitelist = whitelist
 
     def validate(self):
@@ -37760,7 +47886,9 @@ class GetVulWhitelistResponseBody(TeaModel):
         request_id: str = None,
         vul_whitelist: GetVulWhitelistResponseBodyVulWhitelist = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The information about the whitelist.
         self.vul_whitelist = vul_whitelist
 
     def validate(self):
@@ -37843,11 +47971,52 @@ class HandleSecurityEventsRequest(TeaModel):
         security_event_ids: List[str] = None,
         source_ip: str = None,
     ):
+        # Specifies whether to add multiple alert events to the whitelist at a time. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.mark_batch = mark_batch
+        # The whitelist rule. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **field**: The field based on which alert events are added to the whitelist.
+        # 
+        # *   **operate**: The method that is used to added alert events to the whitelist. Valid values:
+        # 
+        #     *   **notContains**: does not contain
+        #     *   **contains**: contains
+        #     *   **regex**: matches by regular expression
+        #     *   **strEqual**: equals
+        #     *   **strNotEqual**: does not equal
+        # 
+        # *   **fieldValue**: The value of the field based on which alert events are added to the whitelist.
+        # 
+        # *   **uuid**: The application scope of the whitelist rule. Valid values:
+        # 
+        #     *   **part**: the current asset
+        #     *   **ALL**: all assets
+        # 
+        # >  You can call the [DescribeSecurityEventOperations](~~DescribeSecurityEventOperations~~) operation to obtain the fields that you can specify for **field**.
         self.mark_miss_param = mark_miss_param
+        # The operation that you want to perform to handle the alert events. Valid values:
+        # 
+        # *   **block_ip**: blocks the source IP address.
+        # *   **advance\_mark\_mis_info**: adds the alert events to the whitelist.
+        # *   **ignore**: ignores the alert events.
+        # *   **manual_handled**: marks the alert events as manually handled.
+        # *   **kill_process**: terminates the malicious process.
+        # *   **cleanup**: performs in-depth virus detection and removal.
+        # *   **kill\_and_quara**: kills the malicious processes and quarantines the source file.
+        # *   **disable\_malicious_defense**: stops the container on which the alerting files or processes exist.
+        # *   **client\_problem_check**: performs troubleshooting.
+        # *   **quara**: quarantines the source file of the malicious process.
         self.operation_code = operation_code
+        # The configuration of the operation that you want to perform to handle the alert events.
+        # 
+        # >  If you set OperationCode to `kill_and_quara` or `block_ip`, you must specify OperationParams. If you set OperationCode to other values, you can leave OperationParams empty.
         self.operation_params = operation_params
+        # The IDs of the alert events.
         self.security_event_ids = security_event_ids
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -37895,6 +48064,7 @@ class HandleSecurityEventsResponseBodyHandleSecurityEventsResponse(TeaModel):
         self,
         task_id: int = None,
     ):
+        # The ID of the task to handle the alert events.
         self.task_id = task_id
 
     def validate(self):
@@ -37923,7 +48093,9 @@ class HandleSecurityEventsResponseBody(TeaModel):
         handle_security_events_response: HandleSecurityEventsResponseBodyHandleSecurityEventsResponse = None,
         request_id: str = None,
     ):
+        # The handling result of the alert events.
         self.handle_security_events_response = handle_security_events_response
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -38006,11 +48178,26 @@ class HandleSimilarSecurityEventsRequest(TeaModel):
         source_ip: str = None,
         task_id: int = None,
     ):
+        # The rule condition based on which the alerts are added to the whitelist. For example, if you want to add a file that contains the string a to the whitelist based on the MD5 hash value, set this parameter to {"field":"md5","operate":"contains","fieldValue":"aa"}.
         self.mark_miss_param = mark_miss_param
+        # The operation that is performed to handle alerts of the same type at a time. Valid values: 
+        # - **deal**: quarantines the source file of the malicious process.
+        # - **killand_quara**: kills the malicious processes and quarantines the source file.
+        # - **kill_virus**: deletes the source file of the malicious process.
+        # - **block_ip**: blocks the source IP address.
+        # - **ignore**: ignores the alerts.
+        # - **advance\_mark\_mis_info**: marks the alerts as false positives by adding the alerts to the whitelist.
+        # - **rm\_mark\_mis\_info**: cancels false positives by removing the alerts from the whitelist.
+        # - **offline_handled**: marks the alerts as handled.
         self.operation_code = operation_code
+        # The configuration for a sub-operation to handle alerts. 
+        # 
+        # > If you set OperationCode to kill_and_quara or block_ip, you must specify OperationParams. If you set OperationCode to other values, you can leave OperationParams empty.
         self.operation_params = operation_params
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the task that handles multiple alerts of the same type at a time.
         self.task_id = task_id
 
     def validate(self):
@@ -38058,6 +48245,7 @@ class HandleSimilarSecurityEventsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -38134,11 +48322,26 @@ class IgnoreHcCheckWarningsRequest(TeaModel):
         source_ip: str = None,
         type: int = None,
     ):
+        # The ID of the check item.
+        # 
+        # >  You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to query the IDs of check items.
         self.check_ids = check_ids
+        # The ID of the alert that is triggered by the check item. Separate multiple IDs with commas (,).
+        # 
+        # >  You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to query the IDs of alerts that are triggered by check items.
         self.check_warning_ids = check_warning_ids
+        # The reason for the current operation.
         self.reason = reason
+        # The ID of the risk item that you want to ignore or cancel ignoring.
+        # 
+        # >  You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to query the IDs of risk items.
         self.risk_id = risk_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the operation that you want to perform. Valid values:
+        # 
+        # *   **1**: ignores a risk item
+        # *   **2**: cancels ignoring a risk item
         self.type = type
 
     def validate(self):
@@ -38186,6 +48389,7 @@ class IgnoreHcCheckWarningsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -38259,8 +48463,18 @@ class InstallBackupClientRequest(TeaModel):
         uuid: str = None,
         uuid_list: List[str] = None,
     ):
+        # The version of the anti-ransomware policy. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies. Valid values:
+        # 
+        # *   **1.0.0**\
+        # *   **2.0.0**\
         self.policy_version = policy_version
+        # The UUID of the server on which you want to install the anti-ransomware agent.
+        # 
+        # >  You must specify at least one of the UuidList and Uuid parameters.
         self.uuid = uuid
+        # The UUIDs of servers on which you want to install the anti-ransomware agent.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -38296,6 +48510,7 @@ class InstallBackupClientResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -38371,10 +48586,19 @@ class InstallCloudMonitorRequest(TeaModel):
         instance_id_list: List[str] = None,
         uuid_list: List[str] = None,
     ):
+        # The AccessKey ID that is required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](~~114948~~) operation to query the AccessKey ID.
+        # 
+        # >  This parameter is required only when you install the CloudMonitor agent on servers that are not deployed on Alibaba Cloud.
         self.agent_access_key = agent_access_key
+        # The AccessKey secret that is required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](~~114948~~) operation to query the AccessKey secret.
+        # 
+        # >  This parameter is required only when you install the CloudMonitor agent on servers that are not deployed on Alibaba Cloud.
         self.agent_secret_key = agent_secret_key
+        # The version of the CloudMonitor agent that you want to install on the servers. For more information about the latest version of the CloudMonitor agent, see [Overview](~~183431~~).
         self.argus_version = argus_version
+        # The IDs of the servers on which you want to install the CloudMonitor agent. Separate multiple IDs with commas (,).
         self.instance_id_list = instance_id_list
+        # The UUIDs of the servers on which you want to install the CloudMonitor agent. Separate multiple UUIDs with commas (,).
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -38422,10 +48646,18 @@ class InstallCloudMonitorResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -38513,6 +48745,7 @@ class ListAvailableHoneypotRequest(TeaModel):
         self,
         node_id: str = None,
     ):
+        # The ID of the management node to which the honeypot is deployed.
         self.node_id = node_id
 
     def validate(self):
@@ -38548,14 +48781,30 @@ class ListAvailableHoneypotResponseBodyData(TeaModel):
         service_port: str = None,
         template: str = None,
     ):
+        # The display name of the image that is used for the honeypot.
         self.honeypot_image_display_name = honeypot_image_display_name
+        # The ID of the image that is used for the honeypot.
         self.honeypot_image_id = honeypot_image_id
+        # The name of the image that is used for the honeypot.
         self.honeypot_image_name = honeypot_image_name
+        # The type of the image that is used for the honeypot.
         self.honeypot_image_type = honeypot_image_type
+        # The version of the image that is used for the honeypot.
         self.honeypot_image_version = honeypot_image_version
+        # The port that is supported by the honeypot. The value is in the JSON format. The value contains the following fields:
+        # 
+        # *   **log_type**: the log type
+        # *   **proto**: the supported protocol
+        # *   **description**: the description
+        # *   **ports**: the supported ports
+        # *   **port_str**: the supported port number of the string type
+        # *   **type**: the type
         self.multiports = multiports
+        # The protocol that is supported by the honeypot.
         self.proto = proto
+        # The service port of the honeypot.
         self.service_port = service_port
+        # The configuration template of the honeypot.
         self.template = template
 
     def validate(self):
@@ -38621,12 +48870,22 @@ class ListAvailableHoneypotResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The number of images that are used for the honeypot.
         self.count = count
+        # An array consisting of the information about the images that are used for the honeypot.
         self.data = data
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -38739,15 +48998,28 @@ class ListCheckInstanceResultRequest(TeaModel):
         sort_types: List[str] = None,
         statuses: List[str] = None,
     ):
+        # The ID of the check item.
         self.check_id = check_id
+        # The number of the page to return.
         self.current_page = current_page
+        # The instance ID of the check item.
         self.instance_id_key = instance_id_key
+        # The instance IDs of cloud services.
         self.instance_ids = instance_ids
+        # The instance name of the check item.
         self.instance_name_key = instance_name_key
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The region ID of the instance.
         self.region_id_key = region_id_key
+        # The type of the condition based on which the check items are sorted. Set the value to **STATUS**.
         self.sort_types = sort_types
+        # The statuses of check items.
         self.statuses = statuses
 
     def validate(self):
@@ -38815,10 +49087,21 @@ class ListCheckInstanceResultResponseBodyBasicData(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The ID of the check result for the instance.
         self.id = id
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The region ID of the instance.
         self.region_id = region_id
+        # The statuses of check items. Multiple statuses are separated by commas (,). Valid values:
+        # 
+        # *   **PASS**\
+        # *   **NOT_PASS**\
+        # *   **CHECKING**\
+        # *   **NOT_CHECK**\
+        # *   **WHITELIST**\
         self.status = status
 
     def validate(self):
@@ -38864,8 +49147,14 @@ class ListCheckInstanceResultResponseBodyColumnsGrids(TeaModel):
         show_name: str = None,
         type: str = None,
     ):
+        # The search condition.
         self.key = key
+        # The display name of the search condition.
         self.show_name = show_name
+        # The format of the check results for the instances. Valid values:
+        # 
+        # *   **text**\
+        # *   **link**\
         self.type = type
 
     def validate(self):
@@ -38906,11 +49195,23 @@ class ListCheckInstanceResultResponseBodyColumns(TeaModel):
         show_name: str = None,
         type: str = None,
     ):
+        # The metadata information about the details of the instances.
         self.grids = grids
+        # The search condition.
         self.key = key
+        # Indicates whether the search condition is used. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.search = search
+        # The value of the search condition.
         self.search_key = search_key
+        # The display name of the search condition.
         self.show_name = show_name
+        # The format of the check results for the instances. Valid values:
+        # 
+        # *   **text**\
+        # *   **link**\
         self.type = type
 
     def validate(self):
@@ -38969,9 +49270,13 @@ class ListCheckInstanceResultResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -39015,10 +49320,15 @@ class ListCheckInstanceResultResponseBody(TeaModel):
         page_info: ListCheckInstanceResultResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the basic information about the instances.
         self.basic_data = basic_data
+        # The extended information about the instances.
         self.checks = checks
+        # The metadata information about the search conditions that can be used to filter instances.
         self.columns = columns
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -39137,17 +49447,70 @@ class ListCheckResultRequest(TeaModel):
         statuses: List[str] = None,
         vendors: List[str] = None,
     ):
+        # The key that you want to use to search for check items in fuzzy match mode.
         self.check_key = check_key
+        # The number of the page to return.
         self.current_page = current_page
+        # The instance IDs of the cloud services that you want to query. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The asset types of cloud services. Valid values:
+        # 
+        # *   **ECS**: Elastic Compute Service (ECS)
+        # *   **SLB**: Server Load Balancer (SLB)
+        # *   **RDS**: ApsaraDB RDS
+        # *   **MONGODB**: ApsaraDB for MongoDB (MongoDB)
+        # *   **KVSTORE**: ApsaraDB for Redis (Redis)
+        # *   **ACR**: Container Registry
+        # *   **CSK**: Container Service for Kubernetes (ACK)
+        # *   **VPC**: Virtual Private Cloud (VPC)
+        # *   **ACTIONTRAIL**: ActionTrail
+        # *   **CDN**: Alibaba Cloud CDN (CDN)
+        # *   **CAS**: Certificate Management Service (formerly SSL Certificates Service)
+        # *   **RDC**: Apsara Devops
+        # *   **RAM**: Resource Access Management (RAM)
+        # *   **DDOS**: Anti-DDoS
+        # *   **WAF**: Web Application Firewall (WAF)
+        # *   **OSS**: Object Storage Service (OSS)
+        # *   **POLARDB**: PolarDB
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
+        # *   **MSE**: Microservices Engine (MSE)
+        # *   **NAS**: Apsara File Storage NAS (NAS)
+        # *   **SDDP**: Sensitive Data Discovery and Protection (SDDP)
+        # *   **EIP**: Elastic IP Address (EIP)
         self.instance_types = instance_types
+        # The language of the content within the request and the response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The IDs of requirement items.
         self.requirement_ids = requirement_ids
+        # The severities of check items. Separate multiple severities with commas (,). Valid values:
+        # 
+        # *   **HIGH**\
+        # *   **MEDIUM**\
+        # *   **LOW**\
         self.risk_levels = risk_levels
+        # The types of the conditions based on which check items are sorted. Valid values:
+        # 
+        # *   **RISK_LEVEL**: risk level
+        # *   **STATUS**: state
         self.sort_types = sort_types
+        # The IDs of standards.
         self.standard_ids = standard_ids
+        # The states of check items. Separate multiple states with commas (,). Valid values:
+        # 
+        # *   **PASS**\
+        # *   **NOT_PASS**\
+        # *   **CHECKING**\
+        # *   **NOT_CHECK**\
+        # *   **WHITELIST**\
         self.statuses = statuses
+        # The cloud service providers. Valid values:
+        # 
+        # *   **ALIYUN**: Alibaba Cloud
         self.vendors = vendors
 
     def validate(self):
@@ -39224,11 +49587,17 @@ class ListCheckResultResponseBodyChecksCheckPolicies(TeaModel):
         standard_id: int = None,
         standard_show_name: str = None,
     ):
+        # The requirement item ID of the check item.
         self.requirement_id = requirement_id
+        # The item display name of the check item.
         self.requirement_show_name = requirement_show_name
+        # The section ID of the check item.
         self.section_id = section_id
+        # The section display name of the check item.
         self.section_show_name = section_show_name
+        # The standard ID of the check item.
         self.standard_id = standard_id
+        # The standard display name of the check item.
         self.standard_show_name = standard_show_name
 
     def validate(self):
@@ -39287,17 +49656,88 @@ class ListCheckResultResponseBodyChecks(TeaModel):
         vendor: str = None,
         vendor_show_name: str = None,
     ):
+        # The ID of the check item.
         self.check_id = check_id
+        # The check policies.
         self.check_policies = check_policies
+        # The name of the check item.
         self.check_show_name = check_show_name
+        # The asset subtype of the cloud service. Valid values:
+        # 
+        # *   If the **InstanceType** parameter is set to **ECS**, this parameter supports the following valid values:
+        # 
+        #     *   **INSTANCE**\
+        #     *   **DISK**\
+        #     *   **SECURITY_GROUP**\
+        # 
+        # *   If the **InstanceType** parameter is set to **ACR**, this parameter supports the following valid values:
+        # 
+        #     *   **REPOSITORY_ENTERPRISE**\
+        #     *   **REPOSITORY_PERSON**\
+        # 
+        # *   If the **InstanceType** parameter is set to **RAM**, this parameter supports the following valid values:
+        # 
+        #     *   **ALIAS**\
+        #     *   **USER**\
+        #     *   **POLICY**\
+        #     *   **GROUP**\
+        # 
+        # *   If the **InstanceType** parameter is set to **WAF**, this parameter supports the following valid values:
+        # 
+        #     *   **DOMAIN**\
+        # 
+        # *   If the **InstanceType** parameter is set to other values, this parameter supports the following valid values:
+        # 
+        #     *   **INSTANCE**\
         self.instance_sub_type = instance_sub_type
+        # The asset type of the cloud service. Valid values:
+        # 
+        # *   **ECS**: ECS
+        # *   **SLB**: SLB
+        # *   **RDS**: ApsaraDB RDS
+        # *   **MONGODB**: MongoDB
+        # *   **KVSTORE**: Redis
+        # *   **ACR**: Container Registry
+        # *   **CSK**: ACK
+        # *   **VPC**: VPC
+        # *   **ACTIONTRAIL**: ActionTrail
+        # *   **CDN**: CDN
+        # *   **CAS**: Certificate Management Service (formerly SSL Certificates Service)
+        # *   **RDC**: Apsara Devops
+        # *   **RAM**: RAM
+        # *   **DDOS**: Anti-DDoS
+        # *   **WAF**: WAF
+        # *   **OSS**: OSS
+        # *   **POLARDB**: PolarDB
+        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
+        # *   **MSE**: MSE
+        # *   **NAS**: NAS
+        # *   **SDDP**: SDDP
+        # *   **EIP**: EIP
         self.instance_type = instance_type
+        # The timestamp when the last check was performed. Unit: milliseconds.
         self.last_check_time = last_check_time
+        # The risk level of the check item. Valid values:
+        # 
+        # *   **HIGH**\
+        # *   **MEDIUM**\
+        # *   **LOW**\
         self.risk_level = risk_level
+        # The state of the check item. Valid values:
+        # 
+        # *   **PASS**\
+        # *   **NOT_PASS**\
+        # *   **CHECKING**\
+        # *   **NOT_CHECK**\
+        # *   **WHITELIST**\
         self.status = status
+        # The ID of the check task.
         self.task_id = task_id
+        # The flag that whether this check item needs trial permission.
         self.trial_permission = trial_permission
+        # The value of the cloud service provider.
         self.vendor = vendor
+        # The name of the cloud service provider.
         self.vendor_show_name = vendor_show_name
 
     def validate(self):
@@ -39380,9 +49820,13 @@ class ListCheckResultResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -39424,8 +49868,11 @@ class ListCheckResultResponseBody(TeaModel):
         page_info: ListCheckResultResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the check items.
         self.checks = checks
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -39521,11 +49968,17 @@ class ListHoneypotRequest(TeaModel):
         node_name: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The IDs of honeypots.
         self.honeypot_ids = honeypot_ids
+        # The name of the honeypot.
         self.honeypot_name = honeypot_name
+        # The ID of the management node to which the honeypot belongs.
         self.node_id = node_id
+        # The name of the management node to which the honeypot belongs.
         self.node_name = node_name
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -39581,14 +50034,23 @@ class ListHoneypotResponseBodyList(TeaModel):
         preset_id: str = None,
         state: List[str] = None,
     ):
+        # The name of the management node to which the honeypot is deployed.
         self.control_node_name = control_node_name
+        # The ID of the honeypot.
         self.honeypot_id = honeypot_id
+        # The display name of the image that is used for the honeypot.
         self.honeypot_image_display_name = honeypot_image_display_name
+        # The ID of the image that is used for the honeypot.
         self.honeypot_image_id = honeypot_image_id
+        # The name of the image that is used for the honeypot.
         self.honeypot_image_name = honeypot_image_name
+        # The name of the honeypot.
         self.honeypot_name = honeypot_name
+        # The ID of the management node.
         self.node_id = node_id
+        # The ID of the custom configuration for the honeypot.
         self.preset_id = preset_id
+        # An array that consists of the status information of the honeypot.
         self.state = state
 
     def validate(self):
@@ -39651,9 +50113,13 @@ class ListHoneypotResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -39699,12 +50165,21 @@ class ListHoneypotResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
         self.list = list
+        # The error message returned.
         self.message = message
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -39817,12 +50292,23 @@ class ListHoneypotAlarmEventsRequest(TeaModel):
         risk_level_list: List[str] = None,
         src_ip: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The status of the alert events. Valid values:
+        # 
+        # *   **y**: handled
+        # *   **n**: unhandled
+        # *   **a**: all states
         self.dealed = dealed
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The number of entries to return on each page. Default value: **100**.
         self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The risk levels of the alert events.
         self.risk_level_list = risk_level_list
+        # The source IP address.
         self.src_ip = src_ip
 
     def validate(self):
@@ -39877,9 +50363,13 @@ class ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEventsMergeFieldList(TeaMo
         field_type: str = None,
         field_value: str = None,
     ):
+        # The extended value that corresponds to the field key.
         self.field_ext_info = field_ext_info
+        # The key of the field.
         self.field_key = field_key
+        # The type of the field.
         self.field_type = field_type
+        # The value of the field key.
         self.field_value = field_value
 
     def validate(self):
@@ -39928,15 +50418,33 @@ class ListHoneypotAlarmEventsResponseBodyHoneypotAlarmEvents(TeaModel):
         operate_status: int = None,
         risk_level: str = None,
     ):
+        # The ID of the alert event.
         self.alarm_event_id = alarm_event_id
+        # The name of the alert event.
         self.alarm_event_name = alarm_event_name
+        # The type of the alert event.
         self.alarm_event_type = alarm_event_type
+        # The unique identifier of the alert event.
         self.alarm_unique_info = alarm_unique_info
+        # The total number of times that the alert event was generated.
         self.event_count = event_count
+        # The timestamp when the alert event was first detected.
         self.first_time = first_time
+        # The timestamp when the alert event was last detected.
         self.last_time = last_time
+        # An array that consists of risk information.
         self.merge_field_list = merge_field_list
+        # The handling status of the alert event. Valid values:
+        # 
+        # *   **1**: pending handling
+        # *   **2**: ignored
+        # *   **4**: confirmed
         self.operate_status = operate_status
+        # The risk level of the alert event. Valid values:
+        # 
+        # *   **2**: low
+        # *   **3**: medium
+        # *   **4**: high
         self.risk_level = risk_level
 
     def validate(self):
@@ -40011,9 +50519,13 @@ class ListHoneypotAlarmEventsResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: 20.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -40055,8 +50567,11 @@ class ListHoneypotAlarmEventsResponseBody(TeaModel):
         page_info: ListHoneypotAlarmEventsResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array that consists of the alert events.
         self.honeypot_alarm_events = honeypot_alarm_events
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -40150,9 +50665,13 @@ class ListHoneypotNodeRequest(TeaModel):
         node_name: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The ID of the management node.
         self.node_id = node_id
+        # The name of the management node.
         self.node_name = node_name
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):
@@ -40205,18 +50724,40 @@ class ListHoneypotNodeResponseBodyHoneypotNodeList(TeaModel):
         total_status: int = None,
         upgrade_available: bool = None,
     ):
+        # Indicates whether the honeypot is allowed to access the Internet.
+        # 
+        # *   **true**: The honeypot is allowed to access the Internet.
+        # *   **false**: The honeypot is not allowed to access the Internet.
         self.allow_honeypot_access_internet = allow_honeypot_access_internet
+        # The time when the management node was created.
         self.create_time = create_time
+        # The type of the management node. Default value: **false**. Valid values:
+        # 
+        # *   **false**: non-default type
+        # *   **true**: default type
         self.default_node = default_node
+        # The ID of the Elastic Compute Service (ECS) instance.
         self.ecs_instance_id = ecs_instance_id
+        # The maximum number of honeypots that can be deployed on the management node.
         self.honeypot_total_count = honeypot_total_count
+        # The number of honeypots that are deployed on the management node.
         self.honeypot_used_count = honeypot_used_count
+        # The ID of the management node.
         self.node_id = node_id
+        # The IP address of the management node.
         self.node_ip = node_ip
+        # The name of the management node.
         self.node_name = node_name
+        # The maximum number of probes that can be used.
         self.probe_total_count = probe_total_count
+        # The number of probes that are used.
         self.probe_used_count = probe_used_count
+        # An array that consists of the allowed CIDR blocks.
         self.security_group_probe_ip_list = security_group_probe_ip_list
+        # The status of the management node. Valid values:
+        # 
+        # *   **1**: normal
+        # *   **2**: abnormal
         self.total_status = total_status
         self.upgrade_available = upgrade_available
 
@@ -40300,9 +50841,13 @@ class ListHoneypotNodeResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -40348,12 +50893,22 @@ class ListHoneypotNodeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # An array that consists of the information about the management nodes.
         self.honeypot_node_list = honeypot_node_list
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -40455,18 +51010,24 @@ class ListHoneypotNodeResponse(TeaModel):
         return self
 
 
-class ListVulAutoRepairConfigRequest(TeaModel):
+class ListHoneypotPresetRequest(TeaModel):
     def __init__(
         self,
-        alias_name: str = None,
         current_page: int = None,
+        honeypot_image_name: str = None,
+        lang: str = None,
+        node_id: str = None,
+        node_name: str = None,
         page_size: int = None,
-        type: str = None,
+        preset_name: str = None,
     ):
-        self.alias_name = alias_name
         self.current_page = current_page
+        self.honeypot_image_name = honeypot_image_name
+        self.lang = lang
+        self.node_id = node_id
+        self.node_name = node_name
         self.page_size = page_size
-        self.type = type
+        self.preset_name = preset_name
 
     def validate(self):
         pass
@@ -40477,30 +51038,105 @@ class ListVulAutoRepairConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.alias_name is not None:
-            result['AliasName'] = self.alias_name
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.honeypot_image_name is not None:
+            result['HoneypotImageName'] = self.honeypot_image_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.type is not None:
-            result['Type'] = self.type
+        if self.preset_name is not None:
+            result['PresetName'] = self.preset_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AliasName') is not None:
-            self.alias_name = m.get('AliasName')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('HoneypotImageName') is not None:
+            self.honeypot_image_name = m.get('HoneypotImageName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
+        if m.get('PresetName') is not None:
+            self.preset_name = m.get('PresetName')
         return self
 
 
-class ListVulAutoRepairConfigResponseBodyPageInfo(TeaModel):
+class ListHoneypotPresetResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        control_node_name: str = None,
+        honeypot_image_display_name: str = None,
+        honeypot_image_name: str = None,
+        honeypot_preset_id: str = None,
+        node_id: str = None,
+        preset_name: str = None,
+        preset_type: str = None,
+    ):
+        self.control_node_name = control_node_name
+        self.honeypot_image_display_name = honeypot_image_display_name
+        self.honeypot_image_name = honeypot_image_name
+        self.honeypot_preset_id = honeypot_preset_id
+        self.node_id = node_id
+        self.preset_name = preset_name
+        self.preset_type = preset_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.control_node_name is not None:
+            result['ControlNodeName'] = self.control_node_name
+        if self.honeypot_image_display_name is not None:
+            result['HoneypotImageDisplayName'] = self.honeypot_image_display_name
+        if self.honeypot_image_name is not None:
+            result['HoneypotImageName'] = self.honeypot_image_name
+        if self.honeypot_preset_id is not None:
+            result['HoneypotPresetId'] = self.honeypot_preset_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.preset_name is not None:
+            result['PresetName'] = self.preset_name
+        if self.preset_type is not None:
+            result['PresetType'] = self.preset_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ControlNodeName') is not None:
+            self.control_node_name = m.get('ControlNodeName')
+        if m.get('HoneypotImageDisplayName') is not None:
+            self.honeypot_image_display_name = m.get('HoneypotImageDisplayName')
+        if m.get('HoneypotImageName') is not None:
+            self.honeypot_image_name = m.get('HoneypotImageName')
+        if m.get('HoneypotPresetId') is not None:
+            self.honeypot_preset_id = m.get('HoneypotPresetId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PresetName') is not None:
+            self.preset_name = m.get('PresetName')
+        if m.get('PresetType') is not None:
+            self.preset_type = m.get('PresetType')
+        return self
+
+
+class ListHoneypotPresetResponseBodyPageInfo(TeaModel):
     def __init__(
         self,
         count: int = None,
@@ -40545,6 +51181,882 @@ class ListVulAutoRepairConfigResponseBodyPageInfo(TeaModel):
         return self
 
 
+class ListHoneypotPresetResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        list: List[ListHoneypotPresetResponseBodyList] = None,
+        message: str = None,
+        page_info: ListHoneypotPresetResponseBodyPageInfo = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.list = list
+        self.message = message
+        self.page_info = page_info
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListHoneypotPresetResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageInfo') is not None:
+            temp_model = ListHoneypotPresetResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListHoneypotPresetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHoneypotPresetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHoneypotPresetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHoneypotProbeRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        display_name: str = None,
+        lang: str = None,
+        page_size: int = None,
+        probe_status: str = None,
+        probe_type: str = None,
+    ):
+        self.current_page = current_page
+        self.display_name = display_name
+        self.lang = lang
+        self.page_size = page_size
+        self.probe_status = probe_status
+        self.probe_type = probe_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.probe_status is not None:
+            result['ProbeStatus'] = self.probe_status
+        if self.probe_type is not None:
+            result['ProbeType'] = self.probe_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProbeStatus') is not None:
+            self.probe_status = m.get('ProbeStatus')
+        if m.get('ProbeType') is not None:
+            self.probe_type = m.get('ProbeType')
+        return self
+
+
+class ListHoneypotProbeResponseBodyListControlNode(TeaModel):
+    def __init__(
+        self,
+        ecs_instance_id: str = None,
+        node_id: str = None,
+        node_name: str = None,
+    ):
+        self.ecs_instance_id = ecs_instance_id
+        self.node_id = node_id
+        self.node_name = node_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_instance_id is not None:
+            result['EcsInstanceId'] = self.ecs_instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsInstanceId') is not None:
+            self.ecs_instance_id = m.get('EcsInstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        return self
+
+
+class ListHoneypotProbeResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        control_node: ListHoneypotProbeResponseBodyListControlNode = None,
+        deploy_time: int = None,
+        display_name: str = None,
+        host_ip: str = None,
+        os_type: str = None,
+        probe_id: str = None,
+        probe_type: str = None,
+        probe_version: str = None,
+        status: str = None,
+        uuid: str = None,
+        vpc_id: str = None,
+    ):
+        self.control_node = control_node
+        self.deploy_time = deploy_time
+        self.display_name = display_name
+        self.host_ip = host_ip
+        self.os_type = os_type
+        self.probe_id = probe_id
+        self.probe_type = probe_type
+        self.probe_version = probe_version
+        self.status = status
+        self.uuid = uuid
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.control_node:
+            self.control_node.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.control_node is not None:
+            result['ControlNode'] = self.control_node.to_map()
+        if self.deploy_time is not None:
+            result['DeployTime'] = self.deploy_time
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.host_ip is not None:
+            result['HostIp'] = self.host_ip
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.probe_id is not None:
+            result['ProbeId'] = self.probe_id
+        if self.probe_type is not None:
+            result['ProbeType'] = self.probe_type
+        if self.probe_version is not None:
+            result['ProbeVersion'] = self.probe_version
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ControlNode') is not None:
+            temp_model = ListHoneypotProbeResponseBodyListControlNode()
+            self.control_node = temp_model.from_map(m['ControlNode'])
+        if m.get('DeployTime') is not None:
+            self.deploy_time = m.get('DeployTime')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('HostIp') is not None:
+            self.host_ip = m.get('HostIp')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('ProbeId') is not None:
+            self.probe_id = m.get('ProbeId')
+        if m.get('ProbeType') is not None:
+            self.probe_type = m.get('ProbeType')
+        if m.get('ProbeVersion') is not None:
+            self.probe_version = m.get('ProbeVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListHoneypotProbeResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.count = count
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListHoneypotProbeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        list: List[ListHoneypotProbeResponseBodyList] = None,
+        message: str = None,
+        page_info: ListHoneypotProbeResponseBodyPageInfo = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.list = list
+        self.message = message
+        self.page_info = page_info
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListHoneypotProbeResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageInfo') is not None:
+            temp_model = ListHoneypotProbeResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListHoneypotProbeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHoneypotProbeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHoneypotProbeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUninstallAegisMachinesRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        os: str = None,
+        page_size: int = None,
+        region_id_str: str = None,
+        region_no: str = None,
+        remark: str = None,
+        source_ip: str = None,
+        vendor: int = None,
+    ):
+        # The number of the page to return. Default value: **1**.
+        self.current_page = current_page
+        # The operating system of the server.
+        # 
+        # >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name** parameter in the response is **osType**, the value of the **Values** parameter indicates an operating system.
+        self.os = os
+        # The number of entries to return on each page. Default value: **5**.
+        self.page_size = page_size
+        # The region in which the server resides.
+        # 
+        # >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name** parameter in the response is **regionId**, the value of the **Values** parameter indicates a region ID.
+        self.region_id_str = region_id_str
+        # The region in which the server resides.
+        # 
+        # >  The value of this parameter is the value of the Values parameter that is returned by calling the [DescribeCriteria](~~DescribeCriteria~~) operation. If the value of the **Name** parameter in the response is **regionId**, the value of the **Values** parameter indicates a region ID.
+        self.region_no = region_no
+        # The information about the server that you want to query. The value can be the name or the public IP address of the server.
+        self.remark = remark
+        # The source IP address of the request.
+        self.source_ip = source_ip
+        # The source of the server. Valid values:
+        # 
+        # *   **0**: an asset provided by Alibaba Cloud.
+        # *   **1**: a third-party cloud server
+        # *   **2**: a server in a data center
+        # *   **3**, **4**, **5**, and **7**: other cloud asset
+        # *   **8**: a lightweight asset
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id_str is not None:
+            result['RegionIdStr'] = self.region_id_str
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionIdStr') is not None:
+            self.region_id_str = m.get('RegionIdStr')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class ListUninstallAegisMachinesResponseBodyMachineList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        internet_ip: str = None,
+        intranet_ip: str = None,
+        machine_region: str = None,
+        os: str = None,
+        region_id: str = None,
+        uuid: str = None,
+        vendor: int = None,
+        vendor_name: str = None,
+    ):
+        # The ID of the server.
+        self.instance_id = instance_id
+        # The name of the server.
+        self.instance_name = instance_name
+        # The public IP address of the server.
+        self.internet_ip = internet_ip
+        # The private IP address of the server.
+        self.intranet_ip = intranet_ip
+        # The region in which the server resides.
+        self.machine_region = machine_region
+        # The operating system of the server. Valid values:
+        # 
+        # *   **linux**\
+        # *   **windows**\
+        # *   **windows-2003**\
+        self.os = os
+        # The ID of the region in which the server resides.
+        self.region_id = region_id
+        # The UUID of the server.
+        self.uuid = uuid
+        # The source of the server. Valid values:
+        # 
+        # *   **0**: an asset provided by Alibaba Cloud
+        # *   **1**: a third-party cloud server
+        # *   **2**: a server in a data center
+        # *   **3**, **4**, **5**, and **7**: other cloud asset
+        # *   **8**: a lightweight asset
+        self.vendor = vendor
+        # The name of the service provider (SP) for the server.
+        # 
+        # Valid values:
+        # 
+        # *   **ALIYUN**: Alibaba Cloud
+        # *   **OUT**: a third-party service provider
+        # *   **IDC**: a data center
+        # *   **TENCENT**: Tencent Cloud
+        # *   **HUAWEICLOUD**: Huawei Cloud
+        # *   **Microsoft**: Microsoft
+        # *   **AWS**: Amazon Web Services (AWS)
+        # *   **TRIPARTITE**: a lightweight server
+        self.vendor_name = vendor_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.intranet_ip is not None:
+            result['IntranetIp'] = self.intranet_ip
+        if self.machine_region is not None:
+            result['MachineRegion'] = self.machine_region
+        if self.os is not None:
+            result['Os'] = self.os
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        if self.vendor_name is not None:
+            result['VendorName'] = self.vendor_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('IntranetIp') is not None:
+            self.intranet_ip = m.get('IntranetIp')
+        if m.get('MachineRegion') is not None:
+            self.machine_region = m.get('MachineRegion')
+        if m.get('Os') is not None:
+            self.os = m.get('Os')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        if m.get('VendorName') is not None:
+            self.vendor_name = m.get('VendorName')
+        return self
+
+
+class ListUninstallAegisMachinesResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        machine_list: List[ListUninstallAegisMachinesResponseBodyMachineList] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The page number of the returned page.
+        self.current_page = current_page
+        # An array that consists of the information about servers.
+        self.machine_list = machine_list
+        # The number of entries returned per page.
+        self.page_size = page_size
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.machine_list:
+            for k in self.machine_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['MachineList'] = []
+        if self.machine_list is not None:
+            for k in self.machine_list:
+                result['MachineList'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.machine_list = []
+        if m.get('MachineList') is not None:
+            for k in m.get('MachineList'):
+                temp_model = ListUninstallAegisMachinesResponseBodyMachineList()
+                self.machine_list.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUninstallAegisMachinesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUninstallAegisMachinesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUninstallAegisMachinesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVulAutoRepairConfigRequest(TeaModel):
+    def __init__(
+        self,
+        alias_name: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        type: str = None,
+    ):
+        # The alias of the vulnerability.
+        self.alias_name = alias_name
+        # The number of the page to return. Default value: **1**.
+        self.current_page = current_page
+        # The number of entries to return on each page. Default value: **10**.
+        self.page_size = page_size
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListVulAutoRepairConfigResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # The number of entries returned on the current page.
+        self.count = count
+        # The page number of the returned page.
+        self.current_page = current_page
+        # The number of entries returned per page. Default value: **10**.
+        self.page_size = page_size
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
 class ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList(TeaModel):
     def __init__(
         self,
@@ -40554,10 +52066,18 @@ class ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList(TeaModel):
         reason: str = None,
         type: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # The configuration ID of the vulnerability.
         self.id = id
+        # The name of the vulnerability.
         self.name = name
+        # The reason why the vulnerability can be automatically fixed.
         self.reason = reason
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
         self.type = type
 
     def validate(self):
@@ -40607,12 +52127,22 @@ class ListVulAutoRepairConfigResponseBody(TeaModel):
         success: bool = None,
         vul_auto_repair_config_list: List[ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList] = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # An array consisting of the existing configurations of vulnerabilities that can be automatically fixed.
         self.vul_auto_repair_config_list = vul_auto_repair_config_list
 
     def validate(self):
@@ -40727,14 +52257,51 @@ class ModifyAntiBruteForceRuleRequest(TeaModel):
         span: int = None,
         uuid_list: List[str] = None,
     ):
+        # Specifies whether to set the defense rule as the default rule. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.default_rule = default_rule
+        # The threshold of logon failures that you specify. Valid values:
+        # 
+        # *   **2**\
+        # *   **3**\
+        # *   **4**\
+        # *   **5**\
+        # *   **10**\
+        # *   **50**\
+        # *   **80**\
+        # *   **100**\
         self.fail_count = fail_count
+        # The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
+        # 
+        # *   **5**\
+        # *   **15**\
+        # *   **30**\
+        # *   **60**\
+        # *   **120**\
+        # *   **360**\
+        # *   **720**\
+        # *   **1440**\
+        # *   **10080**\
+        # *   **52560000**: permanent
         self.forbidden_time = forbidden_time
+        # The ID of the defense rule.
         self.id = id
+        # The name of the defense rule.
         self.name = name
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The period of time during which logon failures from an account are measured. Unit: minutes. Valid values:
+        # 
+        # *   **1**\
+        # *   **2**\
+        # *   **5**\
+        # *   **10**\
+        # *   **15**\
         self.span = span
+        # An array consisting of the UUIDs of the servers to which the defense rule is applied.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -40794,6 +52361,7 @@ class ModifyAntiBruteForceRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -40867,8 +52435,15 @@ class ModifyAssetGroupRequest(TeaModel):
         source_ip: str = None,
         uuids: str = None,
     ):
+        # The ID of the new server group to which the servers belong.
+        # 
+        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
         self.group_id = group_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUIDs of the servers for which you want to change the server group. Separate multiple UUIDs with commas (,).
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuids = uuids
 
     def validate(self):
@@ -40904,6 +52479,7 @@ class ModifyAssetGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -40980,11 +52556,39 @@ class ModifyBackupPolicyRequest(TeaModel):
         policy_version: str = None,
         uuid_list: List[str] = None,
     ):
+        # The ID of the anti-ransomware policy that you want to modify.
         self.id = id
+        # The name of the anti-ransomware policy that you want to modify.
         self.name = name
+        # The new configurations of the anti-ransomware policy that you want to modify. The value is a JSON string that contains the following fields:
+        # 
+        # *   **Source**: the directory that you want to protect. If you want to protect all directories, set this field to brackets \[].
+        # 
+        # *   **Include**: the format of the file that you want to protect. Examples: "\*.jpg" and "\*.doc".
+        # 
+        # *   **Exclude**: the directory that you want to exclude from the anti-ransomware policy. You can call the DescribeExcludeSystemPath operation to query all directories before you specify the directory that you want to exclude. Example: "/home/user".
+        # 
+        # *   **Schedule**: the start time and interval of a data backup task. We recommend that you specify a start time that begins during off-peak hours but does not start on the hour.
+        # 
+        #     *   If you set this field to I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+        #     *   If you set this field to I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+        # 
+        # *   **Retention**: the period during which backup data is retained. Unit: days. If you set this field to 7, backup data is retained for a week. If you set this field to 365, backup data is retained for a year. If you set this field to -1, backup data is permanently retained.
+        # 
+        # *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If you set this field to 12:15:15360|6:12:5120, the maximum bandwidth for a data backup task is 15 Mbit/s from 12:00 to 15:00 and 5 Mbit/s from 06:00 to 12:00.
+        # 
+        # If you back up data on an Elastic Compute Service (ECS) instance that is connected over an internal network, we recommend that you leave this field empty. If this field is left empty, the bandwidth for data backup tasks is unlimited.
         self.policy = policy
+        # The region ID of the server to which the anti-ransomware policy is applied.
+        # 
+        # You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions in which the anti-ransomware feature is supported.
         self.policy_region_id = policy_region_id
+        # The version of the anti-ransomware policy. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies.
+        # 
+        # *   **1.0.0**\
+        # *   **2.0.0**\
         self.policy_version = policy_version
+        # The UUIDs of the servers to which the anti-ransomware policy is applied.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -41037,11 +52641,39 @@ class ModifyBackupPolicyShrinkRequest(TeaModel):
         policy_version: str = None,
         uuid_list: List[str] = None,
     ):
+        # The ID of the anti-ransomware policy that you want to modify.
         self.id = id
+        # The name of the anti-ransomware policy that you want to modify.
         self.name = name
+        # The new configurations of the anti-ransomware policy that you want to modify. The value is a JSON string that contains the following fields:
+        # 
+        # *   **Source**: the directory that you want to protect. If you want to protect all directories, set this field to brackets \[].
+        # 
+        # *   **Include**: the format of the file that you want to protect. Examples: "\*.jpg" and "\*.doc".
+        # 
+        # *   **Exclude**: the directory that you want to exclude from the anti-ransomware policy. You can call the DescribeExcludeSystemPath operation to query all directories before you specify the directory that you want to exclude. Example: "/home/user".
+        # 
+        # *   **Schedule**: the start time and interval of a data backup task. We recommend that you specify a start time that begins during off-peak hours but does not start on the hour.
+        # 
+        #     *   If you set this field to I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+        #     *   If you set this field to I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+        # 
+        # *   **Retention**: the period during which backup data is retained. Unit: days. If you set this field to 7, backup data is retained for a week. If you set this field to 365, backup data is retained for a year. If you set this field to -1, backup data is permanently retained.
+        # 
+        # *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If you set this field to 12:15:15360|6:12:5120, the maximum bandwidth for a data backup task is 15 Mbit/s from 12:00 to 15:00 and 5 Mbit/s from 06:00 to 12:00.
+        # 
+        # If you back up data on an Elastic Compute Service (ECS) instance that is connected over an internal network, we recommend that you leave this field empty. If this field is left empty, the bandwidth for data backup tasks is unlimited.
         self.policy_shrink = policy_shrink
+        # The region ID of the server to which the anti-ransomware policy is applied.
+        # 
+        # You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions in which the anti-ransomware feature is supported.
         self.policy_region_id = policy_region_id
+        # The version of the anti-ransomware policy. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies.
+        # 
+        # *   **1.0.0**\
+        # *   **2.0.0**\
         self.policy_version = policy_version
+        # The UUIDs of the servers to which the anti-ransomware policy is applied.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -41089,6 +52721,7 @@ class ModifyBackupPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -41162,8 +52795,16 @@ class ModifyBackupPolicyStatusRequest(TeaModel):
         policy_version: str = None,
         status: str = None,
     ):
+        # The ID of the anti-ransomware policy.
         self.id = id
+        # The version of the anti-ransomware policy. Set the value to **2.0.0**.
         self.policy_version = policy_version
+        # Specifies whether to enable or disable the anti-ransomware policy. Valid values:
+        # 
+        # *   **enabled**: enables the anti-ransomware policy. After you enable the anti-ransomware policy, the anti-ransomware feature protects data on your servers. Data on your servers is backed up based on the policy.
+        # *   **disabled**: disables the anti-ransomware policy. After you disable the anti-ransomware policy, the data backup task that is running based on the policy stops.
+        # 
+        # >  When the system runs data backup tasks, your network bandwidth is consumed. We recommend that you enable the anti-ransomware policy during peak-off hours to back up data.
         self.status = status
 
     def validate(self):
@@ -41199,6 +52840,7 @@ class ModifyBackupPolicyStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -41273,9 +52915,16 @@ class ModifyClearLogstoreStorageRequest(TeaModel):
         user_log_store: str = None,
         user_project: str = None,
     ):
+        # The ID of the request source. Set the value to **sas**.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the Logstore that stores logs.
         self.user_log_store = user_log_store
+        # The name of the project.
         self.user_project = user_project
 
     def validate(self):
@@ -41315,6 +52964,7 @@ class ModifyClearLogstoreStorageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -41388,8 +53038,56 @@ class ModifyCreateVulWhitelistRequest(TeaModel):
         target_info: str = None,
         whitelist: str = None,
     ):
+        # The reason why you add the vulnerability to the whitelist.
         self.reason = reason
+        # The applicable scope of the whitelist. The value is a JSON string that contains the following fields:
+        # 
+        # *   **type**: the type of the applicable scope. Valid values:
+        # 
+        #     *   **GroupId**: groups
+        #     *   **Uuid**: hosts
+        # 
+        # *   **uuids**: the UUIDs of hosts.
+        # 
+        # *   **groupIds**: the IDs of groups.
+        # 
+        # >  If you leave this parameter unspecified, the whitelist takes effect on all hosts. If you set **type** to **GroupId**, you must specify the **groupIds** parameter. If you set **type** to **Uuid**, you must specify the **uuids** parameter.
         self.target_info = target_info
+        # The information about the vulnerability that you want to add to the whitelist. The value is a JSON string that contains the following fields:
+        # 
+        # *   **Status**: the status of the vulnerability.
+        # 
+        # *   **GmtLast**: the timestamp when the vulnerability was last detected. Unit: milliseconds.
+        # 
+        # *   **LaterCount**: the number of vulnerabilities that have the medium priority.
+        # 
+        # *   **AsapCount**: the number of vulnerabilities that have the high priority.
+        # 
+        # *   **Name**: the name of the vulnerability.
+        # 
+        # *   **Type**: the type of the vulnerability. Valid values:
+        # 
+        #     *   **cve**: Linux software vulnerability
+        #     *   **sys**: Windows system vulnerability
+        #     *   **cms**: Web-CMS vulnerability
+        #     *   **app**: application vulnerability
+        #     *   **emg**: urgent vulnerabilities
+        # 
+        # *   **Related**: the Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
+        # 
+        # *   **HandledCount**: the number of handled vulnerabilities.
+        # 
+        # *   **AliasName**: the alias of the vulnerability.
+        # 
+        # *   **RuleModifyTime**: the time when the vulnerability was last disclosed.
+        # 
+        # *   **NntfCount**: the number of vulnerabilities that have the low priority.
+        # 
+        # *   **TotalFixCount**: the total number of fixed vulnerabilities.
+        # 
+        # *   **Tags**: the tag that is added to the vulnerability.
+        # 
+        # >  You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to query the information about the vulnerability that you want to add to the whitelist.
         self.whitelist = whitelist
 
     def validate(self):
@@ -41425,6 +53123,7 @@ class ModifyCreateVulWhitelistResponseBodyVulWhitelistList(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the whitelist.
         self.id = id
 
     def validate(self):
@@ -41453,7 +53152,9 @@ class ModifyCreateVulWhitelistResponseBody(TeaModel):
         request_id: str = None,
         vul_whitelist_list: List[ModifyCreateVulWhitelistResponseBodyVulWhitelistList] = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the information about the whitelist.
         self.vul_whitelist_list = vul_whitelist_list
 
     def validate(self):
@@ -41539,8 +53240,17 @@ class ModifyEmgVulSubmitRequest(TeaModel):
         name: str = None,
         user_agreement: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The name of the vulnerability.
         self.name = name
+        # Specifies whether to scan for urgent vulnerabilities. Valid values:
+        # 
+        # *   **yes**\
+        # *   **no**\
         self.user_agreement = user_agreement
 
     def validate(self):
@@ -41576,6 +53286,7 @@ class ModifyEmgVulSubmitResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -41647,6 +53358,14 @@ class ModifyGroupPropertyRequest(TeaModel):
         self,
         data: str = None,
     ):
+        # The new attributes of the server group. You can specify the following parameters to configure the attributes:
+        # 
+        # *   **groupFlag**: the type of the server group. Valid values: 0 and 1. The value **0** specifies the Default server group. The value **1** specifies other server groups.
+        # *   **groupId**: the ID of the server group.
+        # *   **groupIndex**: no meaning. You can leave this parameter empty.
+        # *   **groupName**: the name of the server group. The value is the new name of the server group. The new name cannot be the same as the original name of the server group.
+        # 
+        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the values of the groupFlag and groupId parameters. You cannot change the value of the groupFlag or groupId parameter. You can change only the value of the groupName parameter.
         self.data = data
 
     def validate(self):
@@ -41674,6 +53393,7 @@ class ModifyGroupPropertyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -41748,9 +53468,12 @@ class ModifyInstanceAntiBruteForceRuleRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The ID of the defense rule.
         self.new_rule_id = new_rule_id
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the server for which you want to modify the defense rule. You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -41790,6 +53513,7 @@ class ModifyInstanceAntiBruteForceRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -41863,8 +53587,46 @@ class ModifyLoginBaseConfigRequest(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The details about the configuration that is used to detect unusual logons to your servers. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # - **totalCount**: the total number of assets. 
+        # - **uuidCount**: the number of servers to which the configuration is applied. 
+        # - **id**: the ID of the configuration. 
+        # - **location**: the name of the common logon location. 
+        # 
+        # > You must specify the location parameter only if the Type parameter is set to login_common_location. 
+        # 
+        # - **ip**: the common logon IP address. 
+        # 
+        # > You must specify the ip parameter only if the Type parameter is set to login_common_ip. 
+        # 
+        # - **endTime**: the end time of the common logon time range. 
+        # 
+        # > You must specify the endTime parameter only if the Type parameter is set to login_common_time. 
+        # 
+        # - **startTime**: the start time of the common logon time range. 
+        # 
+        # > You must specify the startTime parameter only if the Type parameter is set to login_common_time. 
+        # 
+        # - **account**: the common logon account. 
+        # 
+        # > You must specify the account parameter only if the Type parameter is set to login_common_account.
         self.config = config
+        # The configuration of the server to which the configuration used to detect unusual logons is applied. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # - **Target**: the UUID of the server that you want to add or remove. 
+        # - **targetType*: the type based on which you add servers. Valid values:
+        #     - **uuid**: servers 
+        #     - **groupId**: server groups 
+        # - **flag**: the operation that you want to perform on the server. Valid values:
+        #     - **del**: removes the server from the configuration. 
+        #     - **add**: adds the server to the configuration.
         self.target = target
+        # The type of logon configuration that you want to modify. Valid values:
+        # - **login_common_location**: common logon location 
+        # - **login_common_ip**: common logon IP address 
+        # - **login_common_time**: common logon time range 
+        # - **login_common_account**: common logon account
         self.type = type
 
     def validate(self):
@@ -41898,9 +53660,16 @@ class ModifyLoginBaseConfigRequest(TeaModel):
 class ModifyLoginBaseConfigResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.code = code
+        self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -41911,14 +53680,26 @@ class ModifyLoginBaseConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -41972,7 +53753,16 @@ class ModifyLoginSwitchConfigRequest(TeaModel):
         item: str = None,
         status: int = None,
     ):
+        # The type of the alert that you want to enable or disable. Valid values:
+        # 
+        # *   **login\_common_ip**: alerts for unapproved logon IP addresses
+        # *   **login\_common_time**: alerts for unapproved logon time ranges
+        # *   **login\_common_account**: alerts for unapproved logon accounts
         self.item = item
+        # Specifies whether to enable the logon security settings. Valid values:
+        # 
+        # *   **0**: disables the logon security settings
+        # *   **1**: enables the logon security settings
         self.status = status
 
     def validate(self):
@@ -42004,6 +53794,7 @@ class ModifyLoginSwitchConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42075,6 +53866,11 @@ class ModifyOpenLogShipperRequest(TeaModel):
         self,
         from_: str = None,
     ):
+        # The ID of the request source. The default value is **aegis**. Valid values:
+        # - **aegis**: Server Guard
+        # - **sas**: Security Center
+        # 
+        # > If you use Server Guard, set the value to **aegis**. If you use Security Center, set the value to **sas**.
         self.from_ = from_
 
     def validate(self):
@@ -42102,6 +53898,7 @@ class ModifyOpenLogShipperResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42176,9 +53973,49 @@ class ModifyOperateVulRequest(TeaModel):
         reason: str = None,
         type: str = None,
     ):
+        # The details of the vulnerability. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **name**: the name of the vulnerability.
+        # 
+        # *   **uuid**: the UUID of the server on which the vulnerability is detected.
+        # 
+        # *   **tag**: the tag that is added to the vulnerability. Valid values:
+        # 
+        #     *   **oval**: Linux software vulnerability
+        #     *   **system**: Windows system vulnerability
+        #     *   **cms**: Web-CMS vulnerability
+        # 
+        # >  You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the tags that are added to vulnerabilities of other types.
+        # 
+        # *   **isFront**: specifies whether a pre-patch is required to fix the Windows system vulnerability. This field is required only for Windows system vulnerabilities. Valid values:
+        # 
+        #     *   **0**: no
+        #     *   **1**: yes
+        # 
+        # >  You can fix multiple vulnerabilities at a time. Separate the details of multiple vulnerabilities with commas (,). You can call the [DescribeVulLIst](~~DescribeVulList~~) operation to query the details of vulnerabilities.
         self.info = info
+        # The operation that you want to perform on the vulnerability. Valid values:
+        # 
+        # *   **vul_fix**: fixes the vulnerability.
+        # *   **vul_verify**: verifies the vulnerability.
+        # *   **vul_ignore**: ignores the vulnerability.
+        # *   **vul\_undo_ignore**: cancels ignoring the vulnerability.
+        # *   **vul_delete**: deletes the vulnerability.
         self.operate_type = operate_type
+        # The reason why the vulnerability is **ignored**.
+        # 
+        # >  This parameter is required only when you set **OperateType** to **vul_ignore**.
         self.reason = reason
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **app**: application vulnerability
+        # *   **sca**: vulnerability that is detected based on software component analysis
+        # 
+        # >  You cannot fix the urgent vulnerabilities, application vulnerabilities, or vulnerabilities that are detected based on software component analysis.
         self.type = type
 
     def validate(self):
@@ -42218,6 +54055,7 @@ class ModifyOperateVulResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42290,7 +54128,26 @@ class ModifyPropertyScheduleConfigRequest(TeaModel):
         schedule_time: str = None,
         type: str = None,
     ):
+        # The new collection frequency of asset fingerprints. Valid values:
+        # 
+        # *   **0**: disabled, which indicates that the asset fingerprints are not automatically or periodically collected.
+        # *   **1**: collects asset fingerprints once an hour.
+        # *   **3**: collects asset fingerprints once every 3 hours.
+        # *   **12**: collects asset fingerprints once every 12 hours.
+        # *   **24**: collects asset fingerprints once a day.
+        # *   **168**: collects asset fingerprints once every 7 days.
         self.schedule_time = schedule_time
+        # The type of the asset fingerprints for which you want to modify the collection frequency. Valid values:
+        # 
+        # *   **scheduler\_port_period**: listening port
+        # *   **scheduler\_process_period**: running process
+        # *   **scheduler\_account_period**: account
+        # *   **scheduler\_software_period**: software
+        # *   **scheduler\_cron_period**: scheduled task
+        # *   **scheduler\_sca_period**: middleware, database, or web service
+        # *   **scheduler\_autorun_period**: startup item
+        # *   **scheduler\_lkm_period**: kernel module
+        # *   **scheduler\_sca\_proxy_period**: website
         self.type = type
 
     def validate(self):
@@ -42323,7 +54180,12 @@ class ModifyPropertyScheduleConfigResponseBody(TeaModel):
         modify_result: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the collection frequency of asset fingerprints is modified. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.modify_result = modify_result
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42401,8 +54263,23 @@ class ModifyPushAllTaskRequest(TeaModel):
         tasks: str = None,
         uuids: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The check items. Separate multiple check items with commas (,). Valid values:
+        # 
+        # *   **OVAL_ENTITY**: Common Vulnerabilities and Exposures (CVE) vulnerabilities
+        # *   **CMS**: Web-CMS vulnerabilities
+        # *   **SYSVUL**: Windows system vulnerabilities
+        # *   **SCA**: application vulnerabilities
+        # *   **HEALTH_CHECK**: baselines
+        # *   **WEBSHELL**: webshells
+        # *   **PROC_SNAPSHOT**: processes
+        # *   **PORT_SNAPSHOT**: ports
+        # *   **ACCOUNT_SNAPSHOT**: accounts
+        # *   **SOFTWARE_SNAPSHOT**: software assets
+        # *   **SCA_SNAPSHOT**: middleware
         self.tasks = tasks
+        # The UUIDs of servers on which you want to perform security check tasks. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -42447,15 +54324,33 @@ class ModifyPushAllTaskResponseBodyPushTaskRspPushTaskResultList(TeaModel):
         success: bool = None,
         uuid: str = None,
     ):
+        # The ID of the server group to which the server belongs.
         self.group_id = group_id
+        # The ID of the server.
         self.instance_id = instance_id
+        # The name of the server.
         self.instance_name = instance_name
+        # The IP address of the server.
         self.ip = ip
+        # The message that describes the security check failure.
         self.message = message
+        # Indicates whether the Security Center agent is online. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  If the Security Center agent of the server is offline, Security Center does not protect the server.
         self.online = online
+        # The operating system version of the server.
         self.os_version = os_version
+        # The region in which the server resides.
         self.region = region
+        # Indicates whether the security check task is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -42519,6 +54414,7 @@ class ModifyPushAllTaskResponseBodyPushTaskRsp(TeaModel):
         self,
         push_task_result_list: List[ModifyPushAllTaskResponseBodyPushTaskRspPushTaskResultList] = None,
     ):
+        # An array consisting of the servers on which security check tasks failed.
         self.push_task_result_list = push_task_result_list
 
     def validate(self):
@@ -42555,7 +54451,9 @@ class ModifyPushAllTaskResponseBody(TeaModel):
         push_task_rsp: ModifyPushAllTaskResponseBodyPushTaskRsp = None,
         request_id: str = None,
     ):
+        # The results of security check tasks.
         self.push_task_rsp = push_task_rsp
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42638,11 +54536,22 @@ class ModifyRiskCheckStatusRequest(TeaModel):
         status: str = None,
         task_id: int = None,
     ):
+        # The ID of the check item.
         self.item_id = item_id
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The method to handle the check item. Valid values:
+        # 
+        # *   **ignored**: ignores the check item.
+        # *   **reset**: cancels ignoring the check item.
         self.status = status
+        # The ID of the check task to which the check item belongs.
         self.task_id = task_id
 
     def validate(self):
@@ -42690,6 +54599,7 @@ class ModifyRiskCheckStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42766,11 +54676,22 @@ class ModifyRiskSingleResultStatusRequest(TeaModel):
         status: str = None,
         task_id: int = None,
     ):
+        # The IDs of the affected assets.
         self.ids = ids
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The method to handle the risk item. Valid values:
+        # 
+        # *   **ignored**: ignores the risk item.
+        # *   **failed**: cancels the ignore operation on the risk item.
         self.status = status
+        # The ID of the check task to which the affected asset belongs.
         self.task_id = task_id
 
     def validate(self):
@@ -42818,6 +54739,7 @@ class ModifyRiskSingleResultStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -42894,11 +54816,37 @@ class ModifySecurityCheckScheduleConfigRequest(TeaModel):
         source_ip: str = None,
         start_time: int = None,
     ):
+        # The days on which the automatic configuration check runs. You can specify multiple days. Separate multiple days with commas (,). Valid values:
+        # 
+        # *   **1**: Monday
+        # *   **2**: Tuesday
+        # *   **3**: Wednesday
+        # *   **4**: Thursday
+        # *   **5**: Friday
+        # *   **6**: Saturday
+        # *   **7**: Sunday
         self.days_of_week = days_of_week
+        # The time period during which the automatic configuration check ends. Valid values:
+        # 
+        # *   **0**: 00:00 to 06:00
+        # *   **6**: 06:00 to 12:00
+        # *   **12**: 12:00 to 18:00
+        # *   **18**: 18:00 to 24:00
         self.end_time = end_time
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The time period during which the automatic configuration check starts. Valid values:
+        # 
+        # *   **0**: 00:00 to 06:00
+        # *   **6**: 06:00 to 12:00
+        # *   **12**: 12:00 to 18:00
+        # *   **18**: 18:00 to 24:00
         self.start_time = start_time
 
     def validate(self):
@@ -42946,6 +54894,7 @@ class ModifySecurityCheckScheduleConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -43018,7 +54967,18 @@ class ModifyStartVulScanRequest(TeaModel):
         types: str = None,
         uuids: str = None,
     ):
+        # The types of vulnerabilities that can be detected. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerabilities
+        # *   **sys**: Windows system vulnerabilities
+        # *   **cms**: Web-CMS vulnerabilities
+        # *   **app**: application vulnerabilities
+        # *   **emg**: urgent vulnerabilities
+        # *   **image**: container image vulnerabilities
+        # 
+        # >  If you leave this parameter empty, all types of vulnerabilities can be detected.
         self.types = types
+        # The UUIDs of servers.
         self.uuids = uuids
 
     def validate(self):
@@ -43050,6 +55010,7 @@ class ModifyStartVulScanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -43131,16 +55092,60 @@ class ModifyStrategyRequest(TeaModel):
         start_time: str = None,
         target_type: str = None,
     ):
+        # The type of the baseline check policy. Valid values:
+        # 
+        # *   **custom**: a custom baseline check policy
+        # *   **common**: a standard baseline check policy
         self.custom_type = custom_type
+        # The new interval of the baseline check. Valid values:
+        # 
+        # *   **1**: every 2 days
+        # *   **3**: every 4 days
+        # *   **7**: every 8 days
+        # *   **30**: every 31 days
         self.cycle_days = cycle_days
+        # The new time range during which the baseline check starts. Valid values:
+        # 
+        # *   **0**: The baseline check starts within the time range from 00:00 to 06:00.
+        # *   **6**: The baseline check starts within the time range from 06:00 to 12:00.
+        # *   **12**: The baseline check starts within the time range from 12:00 to 18:00.
+        # *   **18**: The baseline check starts within the time range from 18:00 to 24:00.
+        # 
+        # >  This parameter is deprecated.
         self.cycle_start_time = cycle_start_time
+        # The time when the baseline check based on the baseline check policy ends.
         self.end_time = end_time
+        # The ID of the baseline check policy.
         self.id = id
+        # The new name of the baseline check policy.
         self.name = name
+        # The custom configurations of the baseline. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **typeName**: the name of the baseline.
+        # 
+        # *   **checkDetails**: the details of the baseline. The value is in the JSON format.
+        # 
+        #     *   **checkId**: the ID of the check item.
+        # 
+        #     *   **rules**: the rule configurations. The value is in the JSON format.
+        # 
+        #         *   **ruleId**: the ID of the rule.
+        # 
+        #         *   **paramList**: the list of parameters in the rule. The value is in the JSON format.
+        # 
+        #             *   **paramName**: the name of the parameter.
+        #             *   **value**: the value of the parameter.
         self.risk_custom_params = risk_custom_params
+        # The subtype of the baselines. You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to query the subtypes of baselines.
         self.risk_sub_type_name = risk_sub_type_name
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The time when the baseline check based on the baseline check policy starts.
         self.start_time = start_time
+        # The method that is used to apply the baseline check policy. Valid values:
+        # 
+        # *   **groupId**: asset groups
+        # *   **uuid**: assets
         self.target_type = target_type
 
     def validate(self):
@@ -43208,6 +55213,7 @@ class ModifyStrategyResponseBodyResult(TeaModel):
         self,
         strategy_id: int = None,
     ):
+        # The ID of the baseline check policy.
         self.strategy_id = strategy_id
 
     def validate(self):
@@ -43238,9 +55244,16 @@ class ModifyStrategyResponseBody(TeaModel):
         result: ModifyStrategyResponseBodyResult = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The result returned.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -43329,9 +55342,26 @@ class ModifyStrategyTargetRequest(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The ID of the baseline check policy. The ID is returned after the policy is created. The value of this parameter is in the JSON format and contains the following field:
+        # 
+        # *   **strategyId**: the ID of the policy
         self.config = config
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The information about the asset group to which the policy is applied. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **TargetType**: the type of the asset to which the policy is applied. Set the value to **groupId**, which indicates that the policy is applied to an asset group.
+        # 
+        # *   **BindUuidCount**: the number of servers to which the policy is applied.
+        # 
+        # *   **Target**: the ID of the asset group.
+        # 
+        # *   **Flag**: the operation that you want to perform on the asset group. Valid values:
+        # 
+        #     *   **del**: removes the asset group from the policy.
+        #     *   **add**: adds the asset group to the policy.
         self.target = target
+        # The configuration type. Set the value to **hc_strategy**.
         self.type = type
 
     def validate(self):
@@ -43371,6 +55401,7 @@ class ModifyStrategyTargetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -43445,9 +55476,24 @@ class ModifyTagWithUuidRequest(TeaModel):
         tag_list: str = None,
         uuid_list: str = None,
     ):
+        # The type of the assets whose tags you want to modify. Valid values:
+        # 
+        # *   **ecs**: Elastic Compute Service (ECS) instances or servers that are not deployed on Alibaba Cloud.
+        # *   **cloud_product**: Alibaba Cloud service.
+        # 
+        # >  If you do not specify this parameter, the default value **ecs** is used.
         self.machine_types = machine_types
+        # The ID of the tag whose name you want to change.
+        # 
+        # >  You can call the [DescribeGroupedTags](~~DescribeGroupedTags~~) operation to query the IDs of the tags.
         self.tag_id = tag_id
+        # The tag names that you want to change. Separate multiple tag names with commas (,).
+        # 
+        # >  You can call the [DescribeGroupedTags](~~DescribeGroupedTags~~) operation to query the names of the tags that are added to assets.
         self.tag_list = tag_list
+        # The UUIDs of the assets whose tags you want to modify. Separate multiple UUIDs with commas (,).
+        # 
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of assets to which the tags are added. If you do not specify this parameter, the tags that are specified in **TagList** parameter are removed from all assets.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -43487,6 +55533,7 @@ class ModifyTagWithUuidResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -43559,7 +55606,14 @@ class ModifyVpcHoneyPotRequest(TeaModel):
         honey_pot_action: str = None,
         vpc_id: str = None,
     ):
+        # Specifies whether to enable or disable the honeypot. Valid values:
+        # 
+        # *   **disable**\
+        # *   **enable**\
         self.honey_pot_action = honey_pot_action
+        # The ID of the virtual private cloud (VPC) on which the honeypot is deployed.
+        # 
+        # >  You can call the [DescribeVpcHoneyPotList](~~DescribeVpcHoneyPotList~~) operation to query the IDs of VPCs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -43591,6 +55645,7 @@ class ModifyVpcHoneyPotResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -43665,9 +55720,21 @@ class ModifyVulTargetConfigRequest(TeaModel):
         type: str = None,
         uuid: str = None,
     ):
+        # Specifies whether to enable vulnerability detection. Valid values:
+        # 
+        # *   **on**: yes
+        # *   **off**: no
         self.config = config
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Linux software vulnerability
+        # *   **sys**: Windows system vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **emg**: urgent vulnerability
         self.type = type
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -43707,6 +55774,7 @@ class ModifyVulTargetConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -43773,6 +55841,122 @@ class ModifyVulTargetConfigResponse(TeaModel):
         return self
 
 
+class ModifyVulWhitelistTargetRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        reason: str = None,
+        source_ip: str = None,
+        target_info: str = None,
+    ):
+        self.id = id
+        self.reason = reason
+        self.source_ip = source_ip
+        self.target_info = target_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.target_info is not None:
+            result['TargetInfo'] = self.target_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('TargetInfo') is not None:
+            self.target_info = m.get('TargetInfo')
+        return self
+
+
+class ModifyVulWhitelistTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyVulWhitelistTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyVulWhitelistTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyVulWhitelistTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyWebLockCreateConfigRequest(TeaModel):
     def __init__(
         self,
@@ -43789,17 +55973,80 @@ class ModifyWebLockCreateConfigRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The prevention mode. Valid values:
+        # 
+        # *   **block**: Interception Mode
+        # *   **audit**: Alert Mode
         self.defence_mode = defence_mode
+        # The directory that you want to protect.
         self.dir = dir
+        # The directory for which you want to disable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_dir = exclusive_dir
+        # The file for which you want to disable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_file = exclusive_file
+        # The type of file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # 
+        # *   php
+        # *   jsp
+        # *   asp
+        # *   aspx
+        # *   js
+        # *   cgi
+        # *   html
+        # *   htm
+        # *   xml
+        # *   shtml
+        # *   shtm
+        # *   jpg
+        # *   gif
+        # *   png
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_file_type = exclusive_file_type
+        # The file for which you want to enable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **whitelist**, you must specify this parameter.
         self.inclusive_file = inclusive_file
+        # The type of file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # 
+        # *   php
+        # *   jsp
+        # *   asp
+        # *   aspx
+        # *   js
+        # *   cgi
+        # *   html
+        # *   htm
+        # *   xml
+        # *   shtml
+        # *   shtm
+        # *   jpg
+        # *   gif
+        # *   png
+        # 
+        # >  If you set **Mode** to **whitelist**, you must specify this parameter.
         self.inclusive_file_type = inclusive_file_type
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The local path to the backup files of the protected directory.
         self.local_backup_dir = local_backup_dir
+        # The protection mode of web tamper proofing. Valid values:
+        # 
+        # *   **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
+        # *   **blacklist**: In this mode, web tamper proofing is enabled for the unspecified sub-directories, file types, and files in the protected directories.
         self.mode = mode
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the server for which you want to add a directory to protect.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -43871,6 +56118,7 @@ class ModifyWebLockCreateConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -43945,9 +56193,18 @@ class ModifyWebLockDeleteConfigRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The ID of the protected directory that you want to delete. 
+        # > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to query the IDs of protected directories.
         self.id = id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the server for which you want to delete the protected directory. 
+        # > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to query the UUID of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -43987,6 +56244,7 @@ class ModifyWebLockDeleteConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44066,14 +56324,71 @@ class ModifyWebLockStartRequest(TeaModel):
         mode: str = None,
         uuid: str = None,
     ):
+        # The prevention mode. Valid values:
+        # 
+        # *   **block**: Interception Mode
+        # *   **audit**: Alert Mode
         self.defence_mode = defence_mode
+        # The directory for which you want to enable web tamper proofing. Separate multiple directories with commas (,).
         self.dir = dir
+        # The directory for which you want to disable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_dir = exclusive_dir
+        # The file for which you want to disable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_file = exclusive_file
+        # The type of file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # 
+        # *   php
+        # *   jsp
+        # *   asp
+        # *   aspx
+        # *   js
+        # *   cgi
+        # *   html
+        # *   htm
+        # *   xml
+        # *   shtml
+        # *   shtm
+        # *   jpg
+        # *   gif
+        # *   png
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_file_type = exclusive_file_type
+        # The type of file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # 
+        # *   php
+        # *   jsp
+        # *   asp
+        # *   aspx
+        # *   js
+        # *   cgi
+        # *   html
+        # *   htm
+        # *   xml
+        # *   shtml
+        # *   shtm
+        # *   jpg
+        # *   gif
+        # *   png
+        # 
+        # >  If you set **Mode** to **whitelist**, you must specify this parameter.
         self.inclusive_file_type = inclusive_file_type
+        # The local path to the backup files of the protected directory.\
+        # The directory format of a Linux server is different from that of a Windows server. You must enter the directory in the required format based on your operating system. Examples of directory formats:
+        # 
+        # *   Linux server: /usr/local/aegis/bak
+        # *   Windows server: C:\Program Files (x86)\Alibaba\Aegis\bak
         self.local_backup_dir = local_backup_dir
+        # The protection mode of web tamper proofing. Valid values:
+        # 
+        # *   **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
+        # *   **blacklist**: In this mode, web tamper proofing is enabled for the unspecified sub-directories, file types, and files in the protected directories.
         self.mode = mode
+        # The UUID of the server for which you want to enable web tamper proofing.
         self.uuid = uuid
 
     def validate(self):
@@ -44133,6 +56448,7 @@ class ModifyWebLockStartResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44207,9 +56523,21 @@ class ModifyWebLockStatusRequest(TeaModel):
         status: str = None,
         uuid: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # Specifies whether to enable or disable web tamper proofing for the specified server. Valid values:
+        # 
+        # *   **on**: enables web tamper proofing
+        # *   **off**: disables web tamper proofing
+        # 
+        # >  After you disable web tamper proofing for the specified server, one quota is released.
         self.status = status
+        # The UUID of the server for which you want to enable or disable web tamper proofing. You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -44249,6 +56577,7 @@ class ModifyWebLockStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44315,6 +56644,104 @@ class ModifyWebLockStatusResponse(TeaModel):
         return self
 
 
+class ModifyWebLockUnbindRequest(TeaModel):
+    def __init__(
+        self,
+        uuid: str = None,
+    ):
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class ModifyWebLockUnbindResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyWebLockUnbindResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyWebLockUnbindResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyWebLockUnbindResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyWebLockUpdateConfigRequest(TeaModel):
     def __init__(
         self,
@@ -44332,18 +56759,88 @@ class ModifyWebLockUpdateConfigRequest(TeaModel):
         source_ip: str = None,
         uuid: str = None,
     ):
+        # The prevention mode. Valid values:
+        # 
+        # *   **block**: Interception Mode
+        # *   **audit**: Alert Mode
         self.defence_mode = defence_mode
+        # The directory for which you want to enable web tamper proofing.
         self.dir = dir
+        # The directory for which you want to disable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_dir = exclusive_dir
+        # The file for which you want to disable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_file = exclusive_file
+        # The type of file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # 
+        # *   php
+        # *   jsp
+        # *   asp
+        # *   aspx
+        # *   js
+        # *   cgi
+        # *   html
+        # *   htm
+        # *   xml
+        # *   shtml
+        # *   shtm
+        # *   jpg
+        # *   gif
+        # *   png
+        # 
+        # >  If you set **Mode** to **blacklist**, you must specify this parameter.
         self.exclusive_file_type = exclusive_file_type
+        # The ID of the protected directory that you want to modify.
+        # 
+        # >  You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigListl~~) operation to query the IDs of protected directories.
         self.id = id
+        # The file for which you want to enable web tamper proofing.
+        # 
+        # >  If you set **Mode** to **whitelist**, you must specify this parameter.
         self.inclusive_file = inclusive_file
+        # The type of file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # 
+        # *   php
+        # *   jsp
+        # *   asp
+        # *   aspx
+        # *   js
+        # *   cgi
+        # *   html
+        # *   htm
+        # *   xml
+        # *   shtml
+        # *   shtm
+        # *   jpg
+        # *   gif
+        # *   png
+        # 
+        # >  If you set **Mode** to **whitelist**, you must specify this parameter.
         self.inclusive_file_type = inclusive_file_type
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The local path to the backup files of the protected directory.\
+        # The directory format of a Linux server is different from that of a Windows server. You must enter the directory in the required format based on your operating system. Examples of directory formats:
+        # 
+        # *   Linux server: /usr/local/aegis/bak
+        # *   Windows server: C:\Program Files (x86)\Alibaba\Aegis\bak
         self.local_backup_dir = local_backup_dir
+        # The protection mode of web tamper proofing. Valid values:
+        # 
+        # *   **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
+        # *   **blacklist**: In this mode, web tamper proofing is enabled for the unspecified sub-directories, file types, and files in the protected directories.
         self.mode = mode
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUID of the server whose protected directory you want to modify.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -44419,6 +56916,7 @@ class ModifyWebLockUpdateConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44490,6 +56988,10 @@ class OpenSensitiveFileScanRequest(TeaModel):
         self,
         switch_on: str = None,
     ):
+        # Specifies whether to enable or disable sensitive file scan. Valid values:
+        # 
+        # *   **on**: enables sensitive file scan
+        # *   **off**: disables sensitive file scan
         self.switch_on = switch_on
 
     def validate(self):
@@ -44517,6 +57019,10 @@ class OpenSensitiveFileScanResponseBodyData(TeaModel):
         self,
         switch_on: str = None,
     ):
+        # Indicates whether sensitive file scan is enabled or disabled. Valid values:
+        # 
+        # *   **on**: enabled
+        # *   **off**: disabled
         self.switch_on = switch_on
 
     def validate(self):
@@ -44549,11 +57055,20 @@ class OpenSensitiveFileScanResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -44649,8 +57164,14 @@ class OperateAgentClientInstallRequest(TeaModel):
         lang: str = None,
         uuids: str = None,
     ):
+        # The IDs of the servers on which you want to install the Security Center agent. Separate multiple IDs with commas (,).
+        # 
+        # >  You must specify at least one of the **InstanceIds** and **Uuids** parameters before you can call this operation.
         self.instance_ids = instance_ids
         self.lang = lang
+        # The UUIDs of the servers on which you want to install the Security Center agent. Separate multiple UUIDs with commas (,).
+        # 
+        # >  You must specify at least one of the **InstanceIds** and **Uuids** parameters before you can call this operation.
         self.uuids = uuids
 
     def validate(self):
@@ -44688,8 +57209,11 @@ class OperateAgentClientInstallResponseBodyAegisCelintInstallResposeList(TeaMode
         record_id: int = None,
         uuid: str = None,
     ):
+        # The ID of the server.
         self.instance_id = instance_id
+        # The ID of the installation task.
         self.record_id = record_id
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):
@@ -44726,7 +57250,9 @@ class OperateAgentClientInstallResponseBody(TeaModel):
         aegis_celint_install_respose_list: List[OperateAgentClientInstallResponseBodyAegisCelintInstallResposeList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the returned results.
         self.aegis_celint_install_respose_list = aegis_celint_install_respose_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44812,8 +57338,85 @@ class OperateCommonOverallConfigRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # Specifies whether to enable or disable the feature. Valid values:
+        # 
+        # *   **on**: enable
+        # *   **off**: disable
         self.config = config
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the feature. Valid values:
+        # 
+        # *   **kdump_switch**: Active defense experience optimization
+        # *   **threat_detect**: Dynamic adaptive threat detection capability
+        # *   **suspicious_aggregation**: Alert Association
+        # *   **alidetect**: File Test
+        # *   **USER-ENABLE-SWITCH-TYPE\_38857**: Entrance service execution high-risk operation (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50858**: Web service performs high-risk operations (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50859**: Entrance service execution suspicious operation (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50862**: Cloud Assistant Advanced Protection (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50867**: Create malicious files (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50868**: Create suspicious files (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_64025**: Ingress service execute command \[enhanced mode] (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51229**: Browser service execution a high-risk operation (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51230**: Entrance service execution suspicious operation (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51232**: System processes execution high-risk operations (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51233**: Java service execution high-risk operations (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51234**: Office components execution high-risk operations (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51235**: Web service performs high-risk operations (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52820**: Create malicious files (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52826**: Entrance service execution high-risk operation (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_55251**: Database services execution high-risk operations (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_63725**: Ingress service implants suspicious script/binary file (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_3277**: Suspicious process startup (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50983**: obfuscated command (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51200**: Command line download and run malicious files (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_71131**: Ingress service executes sequence of suspicious behavior (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51225**: Powershell executes high-risk commands (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51226**: Powershell execute suspicious command (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52821**: Suspicious process startup (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_57242**: Malicious command execution (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_57340**: Command line download and run malicious files (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_39659**: Sensitive Registry Key Protection (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52816**: high-risk account manipulation behavior (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54365**: Create service autorun item (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54366**: Create high-risk autorun item (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54367**: Create scheduled task autorun item (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54368**: Create registry autorun item (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54369**: Create WMI autorun item (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50869**: Unauthorized execution of high-risk orders (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_53272**: Exploiting Kernel Vulnerabilities to Elevate Privileges (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54395**: Unauthorized reading and writing of sensitive files (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_57897**: suspected privilege escalation (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52825**: Unauthorized execution of high-risk orders (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_5507**: malicious drivers (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50876**: Against security software (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_53168**: process debugging (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54699**: Hijack dynamic link library (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_62981**: Bypassing security monitoring (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52815**: Load high-risk drivers (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52823**: Running high-risk ARK tools (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54373**: Against security software (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54374**: Intrusion trace cleanup (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54265**: Hijacking the PAM Module (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54953**: Hashdump Attack (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54383**: MimiKatz Credential Stealing (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54384**: Hashdump Attack (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50861**: Information detection (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52818**: Information detection (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_54034**: Intranet scan (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51228**: High-risk lateral penetration tools (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50870**: Rebound Shell (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50873**: WebShell execute command
+        # *   **USER-ENABLE-SWITCH-TYPE\_51236**: Rebound Shell (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50877**: Malicious soft communication (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50884**: Suspicious worm script behavior (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_50885**: malicious script behavior (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51201**: ransomware (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_51202**: Suspected Extortion (Linux)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52827**: ransomware (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52828**: Suspected Extortion (Windows)
+        # *   **USER-ENABLE-SWITCH-TYPE\_52829**: delete system backup behavior (Windows)
         self.type = type
 
     def validate(self):
@@ -44849,6 +57452,7 @@ class OperateCommonOverallConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -44915,6 +57519,128 @@ class OperateCommonOverallConfigResponse(TeaModel):
         return self
 
 
+class OperateImageBaselineWhitelistRequest(TeaModel):
+    def __init__(
+        self,
+        baseline_item_key_list: str = None,
+        image_uuid: str = None,
+        lang: str = None,
+        operation: str = None,
+        scan_range: List[str] = None,
+    ):
+        self.baseline_item_key_list = baseline_item_key_list
+        self.image_uuid = image_uuid
+        self.lang = lang
+        self.operation = operation
+        self.scan_range = scan_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_item_key_list is not None:
+            result['BaselineItemKeyList'] = self.baseline_item_key_list
+        if self.image_uuid is not None:
+            result['ImageUuid'] = self.image_uuid
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.scan_range is not None:
+            result['ScanRange'] = self.scan_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineItemKeyList') is not None:
+            self.baseline_item_key_list = m.get('BaselineItemKeyList')
+        if m.get('ImageUuid') is not None:
+            self.image_uuid = m.get('ImageUuid')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('ScanRange') is not None:
+            self.scan_range = m.get('ScanRange')
+        return self
+
+
+class OperateImageBaselineWhitelistResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class OperateImageBaselineWhitelistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OperateImageBaselineWhitelistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OperateImageBaselineWhitelistResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OperateSuspiciousOverallConfigRequest(TeaModel):
     def __init__(
         self,
@@ -44924,10 +57650,33 @@ class OperateSuspiciousOverallConfigRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # Specifies whether to enable the feature. Valid values:
+        # 
+        # *   **on**: yes
+        # *   **off**: no
         self.config = config
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # Specifies whether to configure assets for the feature. Default value: **false**. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  This parameter takes effect only when you set **Config** to **on**.
         self.no_target_as_on = no_target_as_on
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the feature. Valid values:
+        # 
+        # *   **auto_breaking**: Anti-Virus
+        # *   **ransomware_breaking**: Anti-ransomware (Bait Capture)
+        # *   **webshell\_cloud_breaking**: Webshell Protection
+        # *   **alinet**: Behavior prevention
+        # *   **k8s\_log_analysis**: K8s Threat Detection
+        # *   **alisecguard**: Defense mode for Client Protection
         self.type = type
 
     def validate(self):
@@ -44971,6 +57720,7 @@ class OperateSuspiciousOverallConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -45046,10 +57796,30 @@ class OperateSuspiciousTargetConfigRequest(TeaModel):
         target_type: str = None,
         type: str = None,
     ):
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The configuration of proactive defense for your server. The value includes the following fields:
+        # 
+        # *   **targetType**: specifies the dimension from which you manage proactive defense. UUIDs are supported. Set the value to **uuid**.
+        # *   **target**: specifies the UUID of the server for which you want to configure proactive defense.
+        # *   **flag**: specifies whether to enable or disable proactive defense for your server. Valid values are **add** and **del**. The value add indicates that proactive defense will be enabled for your server. The value del indicates that proactive defense will be disabled for your server.
         self.target_operations = target_operations
+        # The dimension from which you manage proactive defense. Only the server UUID dimension is supported.
+        # 
+        # Set the value to **uuid**.
         self.target_type = target_type
+        # The type of proactive defense. Valid Values:
+        # 
+        # *   **auto_breaking**: automatic blocking
+        # *   **webshell_cloud_breaking**: webshell defense
+        # *   **alinet**: malicious behavior defense
+        # *   **ransomware_breaking**: ransomware capture
+        # *   **alisecguard**: client protection
         self.type = type
 
     def validate(self):
@@ -45093,6 +57863,7 @@ class OperateSuspiciousTargetConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -45167,9 +57938,13 @@ class OperateVulsRequest(TeaModel):
         uuids: List[str] = None,
         vul_names: List[str] = None,
     ):
+        # The operation on the vulnerabilities. Set the value to **vul_fix**, which indicates vulnerability fixing.
         self.operate_type = operate_type
+        # The type of the vulnerabilities that you want to fix. Set the value to **cve**, which indicates Linux software vulnerabilities.
         self.type = type
+        # The UUIDs of servers for which you want to fix vulnerabilities.
         self.uuids = uuids
+        # The names of the vulnerabilities that you want to fix.
         self.vul_names = vul_names
 
     def validate(self):
@@ -45209,6 +57984,7 @@ class OperateVulsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -45280,6 +58056,7 @@ class OperationCancelIgnoreSuspEventRequest(TeaModel):
         self,
         security_event_ids: List[int] = None,
     ):
+        # The IDs of alert events.
         self.security_event_ids = security_event_ids
 
     def validate(self):
@@ -45312,11 +58089,20 @@ class OperationCancelIgnoreSuspEventResponseBody(TeaModel):
         success: bool = None,
         time_cost: int = None,
     ):
+        # The status code returned. The status code **200** indicates that the request was is successful. Other status codes indicate that the request fails. You can identify the cause of the failure based on the status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The handling result of an exception. Valid values:
+        # 
+        # *   **true**: successful
+        # *   **false**: failed
         self.success = success
+        # The time consumed for the request. Unit: seconds.
         self.time_cost = time_cost
 
     def validate(self):
@@ -45413,11 +58199,34 @@ class OperationSuspEventsRequest(TeaModel):
         suspicious_event_ids: str = None,
         warn_type: str = None,
     ):
+        # The ID of the request source.
+        # 
+        # Set the value to **sas**, which indicates that the request is sent from Security Center.
         self.from_ = from_
+        # The operation that you want to perform on alerts. Valid values:
+        # 
+        # *   **deal**: quarantines the source file of the malicious process.
+        # *   **ignore**: ignores the alerts.
+        # *   **mark\_mis_info**: marks the alerts as false positives by adding the alerts to the whitelist.
+        # *   **rm\_mark\_mis_info**: cancels marking the alerts as false positives by removing the alerts from the whitelist.
+        # *   **offline_handled**: marks the alerts as handled.
         self.operation = operation
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The suboperation that you want to perform when you quarantine the source file of the malicious process. Valid values:
+        # 
+        # *   **killAndQuaraFileByPidAndMd5andPath**: terminates the process based on its process ID (PID) and quarantines the source file of the process.
+        # *   **quaraFileByMd5andPath**: quarantines the source file of the process.
+        # *   **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the source file of the process.
         self.sub_operation = sub_operation
+        # The IDs of alert events.
+        # 
+        # >  You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to obtain the IDs of alert events from the SecurityEventIds response parameter.
         self.suspicious_event_ids = suspicious_event_ids
+        # The type of the exceptions. Valid values:
+        # 
+        # *   **alarm**: alerts
+        # *   **null**: exceptions
         self.warn_type = warn_type
 
     def validate(self):
@@ -45467,8 +58276,17 @@ class OperationSuspEventsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether you have access permissions. Valid values:
+        # 
+        # *   **pass**: yes
+        # *   **no_permission**: no
         self.access_code = access_code
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether exceptions are handled. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -45549,7 +58367,11 @@ class PauseClientRequest(TeaModel):
         uuids: str = None,
         value: str = None,
     ):
+        # The list of servers for which you want to enable or disable the Security Center agent.
         self.uuids = uuids
+        # The status of the Security Center agent. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.value = value
 
     def validate(self):
@@ -45581,6 +58403,7 @@ class PauseClientResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -45660,14 +58483,27 @@ class PublicCreateImageScanTaskRequest(TeaModel):
         source_ip: str = None,
         tags: str = None,
     ):
+        # The SHA-256 value of the image digest. Separate multiple SHA-256 values with commas (,).
         self.digests = digests
+        # The ID of the Container Registry instance in which the image repository is created. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID of the image. Separate multiple IDs with commas (,).
         self.region_ids = region_ids
+        # The type of the image repository. Separate multiple types with commas (,). Valid values:
+        # 
+        # *   **acr**\
+        # *   **harbor**\
+        # *   **quay**\
         self.registry_types = registry_types
+        # The ID of the image repository. Separate multiple IDs with commas (,).
         self.repo_ids = repo_ids
+        # The name of the image repository. Separate multiple names with commas (,).
         self.repo_names = repo_names
+        # The namespace to which the image repository belongs. Separate multiple namespaces with commas (,).
         self.repo_namespaces = repo_namespaces
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The tag that is added to the image. Separate multiple tags with commas (,).
         self.tags = tags
 
     def validate(self):
@@ -45735,14 +58571,38 @@ class PublicCreateImageScanTaskResponseBodyData(TeaModel):
         task_id: str = None,
         total_count: int = None,
     ):
+        # Indicates whether you can create more image scan tasks. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  By default, a maximum of 10 image scan tasks can be running at the same time. If 10 image scan tasks are running, you cannot create an image scan task by calling this operation. You must wait for at least one of the 10 existing image scan tasks to complete before you can create an image scan task.
         self.can_create = can_create
+        # The timestamp when the information about the images was collected. Unit: milliseconds.
         self.collect_time = collect_time
+        # The timestamp when the image scan task started to run. Unit: milliseconds.
         self.exec_time = exec_time
+        # The number of images that have been scanned.
         self.finish_count = finish_count
+        # The progress of the image scan task. Unit: percent.
         self.progress = progress
+        # The result of the image scan task. Valid values:
+        # 
+        # *   **SUCCESS**: The task is successful.
+        # *   **TASK_NOT_SUPPORT_REGION**: The images are deployed in a region that is not supported by container image scan.
+        # 
+        # >  For more information about the regions supported by container image scan, see the "Regions supported by container image scan" section in this topic.
         self.result = result
+        # The status of the image scan task. Valid values:
+        # 
+        # *   **INIT**: The task is being initialized.
+        # *   **PRE_ANALYZER**: The task is being pre-processed.
+        # *   **SUCCESS**: The task is successful.
+        # *   **FAIL**: The task failed.
         self.status = status
+        # The ID of the image scan task.
         self.task_id = task_id
+        # The total number of images that need to be scanned.
         self.total_count = total_count
 
     def validate(self):
@@ -45803,7 +58663,9 @@ class PublicCreateImageScanTaskResponseBody(TeaModel):
         data: PublicCreateImageScanTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned if the call is successful.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -45889,14 +58751,27 @@ class PublicPreCheckImageScanTaskRequest(TeaModel):
         source_ip: str = None,
         tags: str = None,
     ):
+        # The SHA-256 value of the image digest. Separate multiple SHA-256 values with commas (,).
         self.digests = digests
+        # The ID of the Container Registry instance in which the image repository is created. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        # The region ID of the image. Separate multiple IDs with commas (,).
         self.region_ids = region_ids
+        # The type of the image repository. Separate multiple types with commas (,). Valid values:
+        # 
+        # *   **acr**\
+        # *   **harbor**\
+        # *   **quay**\
         self.registry_types = registry_types
+        # The ID of the image repository. Separate multiple IDs with commas (,).
         self.repo_ids = repo_ids
+        # The name of the image repository. Separate multiple names with commas (,).
         self.repo_names = repo_names
+        # The namespace to which the image repository belongs. Separate multiple namespaces with commas (,).
         self.repo_namespaces = repo_namespaces
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The tag that is added to the image. Separate multiple tags with commas (,).
         self.tags = tags
 
     def validate(self):
@@ -45957,7 +58832,9 @@ class PublicPreCheckImageScanTaskResponseBodyData(TeaModel):
         need_auth_count: int = None,
         scan_image_count: int = None,
     ):
+        # The number of images to scan in the task.
         self.need_auth_count = need_auth_count
+        # The quota for container image scan to be consumed by the task.
         self.scan_image_count = scan_image_count
 
     def validate(self):
@@ -45990,7 +58867,9 @@ class PublicPreCheckImageScanTaskResponseBody(TeaModel):
         data: PublicPreCheckImageScanTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned if the call is successful.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -46069,7 +58948,33 @@ class PublicSyncAndCreateImageScanTaskRequest(TeaModel):
         images: str = None,
         source_ip: str = None,
     ):
+        # The information about the images. The value of this parameter is in the JSON format and contains the following fields:
+        # 
+        # *   **RegistryType**: the type of the image repository. Valid values:
+        # 
+        #     *   acr
+        #     *   harbor
+        #     *   quay
+        # 
+        # *   **RepoId**: the ID of the image repository.
+        # 
+        # *   **InstanceId**: the ID of the Container Registry instance to which the image repository belongs.
+        # 
+        # *   **RepoNamespace**: the namespace to which the image repository belongs.
+        # 
+        # *   **RegionId**: the region ID of the image.
+        # 
+        # *   **RepoName**: the name of the image repository.
+        # 
+        # *   **Digest**: the digest of the image.
+        # 
+        # *   **Tag**: the tag that is added to the image.
+        # 
+        # *   **CreateTime**: the timestamp when the image was created. Unit: milliseconds.
+        # 
+        # *   **UpdateTime**: the timestamp when the image was updated. Unit: milliseconds.
         self.images = images
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -46109,14 +59014,36 @@ class PublicSyncAndCreateImageScanTaskResponseBodyData(TeaModel):
         task_id: str = None,
         total_count: int = None,
     ):
+        # Indicates whether you can create more image scan tasks. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
+        # 
+        # >  By default, a maximum of 10 image scan tasks can be running at the same time. If 10 image scan tasks are running, you cannot create an image scan task by calling this operation. You must wait for at least one of the 10 existing image scan tasks to complete before you can create an image scan task.
         self.can_create = can_create
+        # The timestamp when the image information was collected. Unit: milliseconds.
         self.collect_time = collect_time
+        # The timestamp when the image scan task started to run. Unit: milliseconds.
         self.exec_time = exec_time
+        # The number of images that have been scanned.
         self.finish_count = finish_count
+        # The progress of the image scan task.
         self.progress = progress
+        # The result of the image scan task. Valid values:
+        # 
+        # *   **SUCCESS**: The task is successful.
+        # *   **TASK\_NOT\_SUPPORT_REGION**: The image is deployed in a region that is not supported by container image scan.
         self.result = result
+        # The status of the image scan task. Valid values:
+        # 
+        # *   **INIT**: The task is being initialized.
+        # *   **PRE_ANALYZER**: The task is being pre-processed.
+        # *   **SUCCESS**: The task is successful.
+        # *   **FAIL**: The task failed.
         self.status = status
+        # The ID of the image scan task.
         self.task_id = task_id
+        # The total number of images to scan.
         self.total_count = total_count
 
     def validate(self):
@@ -46177,7 +59104,9 @@ class PublicSyncAndCreateImageScanTaskResponseBody(TeaModel):
         data: PublicSyncAndCreateImageScanTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned if the call is successful.
         self.data = data
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -46256,7 +59185,9 @@ class QueryGroupIdByGroupNameRequest(TeaModel):
         group_name: str = None,
         source_ip: str = None,
     ):
+        # The name of the asset group.
         self.group_name = group_name
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -46289,7 +59220,9 @@ class QueryGroupIdByGroupNameResponseBody(TeaModel):
         group_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the asset group.
         self.group_id = group_id
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -46372,13 +59305,32 @@ class QueryGroupedSecurityEventMarkMissListRequest(TeaModel):
         remark: str = None,
         source_ip: str = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The handling method. Valid values:
+        # 
+        # *   **1**: Automatically Added to Whitelist
+        # *   **2**: Defense Without Notification
         self.disposal_way = disposal_way
+        # The name of the alert event. The value indicates a subtype.
         self.event_name = event_name
+        # The ID of the request source. Set the value to sas.
         self.from_ = from_
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The condition that is used to query alert events by asset. You can specify a value of the following types:
+        # 
+        # *   The IP address of the asset.
+        # *   The public IP address of the asset.
+        # *   The private IP address of the asset.
+        # *   The name of the asset.
         self.remark = remark
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -46444,16 +59396,36 @@ class QueryGroupedSecurityEventMarkMissListResponseBodyList(TeaModel):
         operate: str = None,
         uuids: str = None,
     ):
+        # The ID of the user.
         self.ali_uid = ali_uid
+        # The handling method. Valid values:
+        # 
+        # *   **auto\_add_white**: Automatically Added to Whitelist
+        # *   **defense\_not_notification**: Defense Without Notification
         self.disposal_way = disposal_way
+        # The name of the alert event. The value indicates a subtype.
         self.event_name = event_name
+        # The name of the alert event. The value indicates a type.
         self.event_name_original = event_name_original
+        # The subtype of the alert event.
         self.event_type = event_type
+        # The type of the alert event.
         self.event_type_original = event_type_original
+        # The field that is used in the whitelist rule.
         self.field = field
+        # The value of the field.
         self.field_value = field_value
+        # The alias of the field.
         self.filed_alias_name = filed_alias_name
+        # The operator. Valid values:
+        # 
+        # *   **contains**: contains
+        # *   **notContains**: does not contain
+        # *   **strEqual**: equals
+        # *   **strNotEqual**: does not equal
+        # *   **regex**: regular expression
         self.operate = operate
+        # The UUIDs of assets. Multiple UUIDs are separated by commas (,).
         self.uuids = uuids
 
     def validate(self):
@@ -46524,9 +59496,13 @@ class QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page. Default value: **20**.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -46571,11 +59547,20 @@ class QueryGroupedSecurityEventMarkMissListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. The status code **200** indicates that the request is successful. Other status codes indicate that the request fails. You can identify the cause of the failure based on the status code.
         self.code = code
+        # An array that consists of the whitelist rules.
         self.list = list
+        # The error message returned.
         self.message = message
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -46678,6 +59663,9 @@ class RebootMachineRequest(TeaModel):
         self,
         uuid: str = None,
     ):
+        # The UUID of the server that you want to restart.
+        # 
+        # >  You can call the [DescribeCloudCenterInstances](~~describecloudcenterinstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):
@@ -46705,6 +59693,7 @@ class RebootMachineResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -46778,8 +59767,40 @@ class RefreshAssetsRequest(TeaModel):
         cloud_asset_sub_type: int = None,
         cloud_asset_type: int = None,
     ):
+        # The type of the asset that you want to synchronize.default **ecs**, Valid values:
+        # 
+        # *   **cloud_product**: Alibaba Cloud service
+        # *   **ecs**: Elastic Compute Service (ECS) instance
+        # *   **container_image**: container image
         self.asset_type = asset_type
+        # The subtype of the cloud service.
+        # 
+        # >  The following list describes the subtypes of cloud services.
         self.cloud_asset_sub_type = cloud_asset_sub_type
+        # The type of the cloud service. Valid values:
+        # 
+        # *   **0**: ECS
+        # *   **1**: Server Load Balancer (SLB)
+        # *   **3**: ApsaraDB RDS
+        # *   **4**: ApsaraDB for MongoDB (MongoDB)
+        # *   **5**: ApsaraDB for Redis (Redis)
+        # *   **6**: Container Registry
+        # *   **8**: Container Service for Kubernetes (ACK)
+        # *   **9**: Virtual Private Cloud (VPC)
+        # *   **11**: ActionTrail
+        # *   **12**: Alibaba Cloud CDN (CDN)
+        # *   **13**: Certificate Management Service (formerly SSL Certificates Service)
+        # *   **14**: Apsara Devops
+        # *   **15**: Resource Access Management (RAM)
+        # *   **16**: Anti-DDoS
+        # *   **17**: Web Application Firewall (WAF)
+        # *   **18**: Object Storage Service (OSS)
+        # *   **19**: PolarDB
+        # *   **20**: ApsaraDB RDS for PostgreSQL
+        # *   **21**: Microservices Engine (MSE)
+        # *   **22**: Apsara File Storage NAS (NAS)
+        # *   **23**: Data Security Center (DSC)
+        # *   **24**: Elastic IP Address (EIP)
         self.cloud_asset_type = cloud_asset_type
 
     def validate(self):
@@ -46815,6 +59836,7 @@ class RefreshAssetsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -46886,6 +59908,10 @@ class RefreshContainerAssetsRequest(TeaModel):
         self,
         asset_type: str = None,
     ):
+        # The type of the container asset whose statistics you want to refresh. Valid values:
+        # 
+        # *   **IMAGE**\
+        # *   **CONTAINER**\
         self.asset_type = asset_type
 
     def validate(self):
@@ -46913,6 +59939,7 @@ class RefreshContainerAssetsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -46986,8 +60013,12 @@ class RollbackSuspEventQuaraFileRequest(TeaModel):
         quara_file_id: int = None,
         source_ip: str = None,
     ):
+        # The ID of the request source. Set the value to sas.
         self.from_ = from_
+        # The ID of the quarantined file.   
+        # > If you do not configure this parameter, you cannot call the RollbackSuspEventQuaraFile operation to restore a quarantined file. You can call the [DescribeSuspEventQuaraFiles](~~DescribeSuspEventQuaraFiles~~) operation to query the IDs of quarantined files.
         self.quara_file_id = quara_file_id
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -47023,6 +60054,7 @@ class RollbackSuspEventQuaraFileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -47094,6 +60126,7 @@ class SasInstallCodeRequest(TeaModel):
         self,
         source_ip: str = None,
     ):
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -47122,7 +60155,9 @@ class SasInstallCodeResponseBody(TeaModel):
         request_id: str = None,
         data: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The installation verification code that is used to run the installation command when you manually install the Security Center agent.
         self.data = data
 
     def validate(self):
@@ -47202,10 +60237,22 @@ class StartBaselineSecurityCheckRequest(TeaModel):
         source_ip: str = None,
         type: str = None,
     ):
+        # The IDs of the check items.
+        # 
+        # >  To perform a check task on cloud service configurations, you must specify the IDs of the check items. You can call the  [DescribeRiskItemType ](~~DescribeRiskItemType~~)  operation to query the IDs of check items.
         self.item_ids = item_ids
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The type of the check task. Valid values:
+        # 
+        # *   **check**\
+        # *   **verify**\
         self.type = type
 
     def validate(self):
@@ -47249,6 +60296,7 @@ class StartBaselineSecurityCheckResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -47320,6 +60368,19 @@ class StartVirusScanTaskRequest(TeaModel):
         self,
         target_info: str = None,
     ):
+        # The information about the asset on which you want to perform a virus scan task. You can select servers or server groups to scan for viruses. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        # *   **type**: the type of the asset on which you want to perform a virus scan task. Valid values:
+        # 
+        #     *   **groupId**: server group.
+        #     *   **uuid**: server.
+        # 
+        # *   **name**: the name of the server or server group.
+        # 
+        # *   **target**: the asset on which you want to perform a virus scan task.
+        # 
+        #     *   If you set **type** to **groupId**, you must set this field to the ID of the server group. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
+        #     *   If you set **type** to **uuid**, you must set this field to the UUID of the server. You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.target_info = target_info
 
     def validate(self):
@@ -47348,7 +60409,9 @@ class StartVirusScanTaskResponseBody(TeaModel):
         request_id: str = None,
         scan_task_id: int = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The ID of the virus scan task.
         self.scan_task_id = scan_task_id
 
     def validate(self):
@@ -47424,6 +60487,8 @@ class UnbindAegisRequest(TeaModel):
         self,
         uuids: str = None,
     ):
+        # The UUID of the server that you want to unbind. Separate multiple UUIDs with commas (,). 
+        # You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuids = uuids
 
     def validate(self):
@@ -47451,6 +60516,7 @@ class UnbindAegisResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -47524,8 +60590,18 @@ class UninstallBackupClientRequest(TeaModel):
         uuid: str = None,
         uuid_list: List[str] = None,
     ):
+        # The version of the anti-ransomware policy. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies. Valid values:
+        # 
+        # *   **1.0.0**\
+        # *   **2.0.0**\
         self.policy_version = policy_version
+        # The UUID of the server from which you want to uninstall the anti-ransomware agent.
+        # 
+        # >  You must specify at least one of the UuidList and Uuid parameters.
         self.uuid = uuid
+        # The UUIDs of the servers from which you want to uninstall the anti-ransomware agent.
+        # 
+        # >  You must specify at least one of the UuidList and Uuid parameters.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -47561,6 +60637,7 @@ class UninstallBackupClientResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -47627,6 +60704,637 @@ class UninstallBackupClientResponse(TeaModel):
         return self
 
 
+class UpdateHoneypotRequest(TeaModel):
+    def __init__(
+        self,
+        honeypot_id: str = None,
+        honeypot_name: str = None,
+        meta: str = None,
+    ):
+        self.honeypot_id = honeypot_id
+        self.honeypot_name = honeypot_name
+        self.meta = meta
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_id is not None:
+            result['HoneypotId'] = self.honeypot_id
+        if self.honeypot_name is not None:
+            result['HoneypotName'] = self.honeypot_name
+        if self.meta is not None:
+            result['Meta'] = self.meta
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotId') is not None:
+            self.honeypot_id = m.get('HoneypotId')
+        if m.get('HoneypotName') is not None:
+            self.honeypot_name = m.get('HoneypotName')
+        if m.get('Meta') is not None:
+            self.meta = m.get('Meta')
+        return self
+
+
+class UpdateHoneypotResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        honeypot_id: str = None,
+        honeypot_image_display_name: str = None,
+        honeypot_image_name: str = None,
+        honeypot_name: str = None,
+        node_id: str = None,
+        preset_id: str = None,
+        state: List[str] = None,
+    ):
+        self.honeypot_id = honeypot_id
+        self.honeypot_image_display_name = honeypot_image_display_name
+        self.honeypot_image_name = honeypot_image_name
+        self.honeypot_name = honeypot_name
+        self.node_id = node_id
+        self.preset_id = preset_id
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_id is not None:
+            result['HoneypotId'] = self.honeypot_id
+        if self.honeypot_image_display_name is not None:
+            result['HoneypotImageDisplayName'] = self.honeypot_image_display_name
+        if self.honeypot_image_name is not None:
+            result['HoneypotImageName'] = self.honeypot_image_name
+        if self.honeypot_name is not None:
+            result['HoneypotName'] = self.honeypot_name
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.preset_id is not None:
+            result['PresetId'] = self.preset_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotId') is not None:
+            self.honeypot_id = m.get('HoneypotId')
+        if m.get('HoneypotImageDisplayName') is not None:
+            self.honeypot_image_display_name = m.get('HoneypotImageDisplayName')
+        if m.get('HoneypotImageName') is not None:
+            self.honeypot_image_name = m.get('HoneypotImageName')
+        if m.get('HoneypotName') is not None:
+            self.honeypot_name = m.get('HoneypotName')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PresetId') is not None:
+            self.preset_id = m.get('PresetId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class UpdateHoneypotResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateHoneypotResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateHoneypotResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateHoneypotResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHoneypotResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHoneypotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHoneypotNodeRequest(TeaModel):
+    def __init__(
+        self,
+        available_probe_num: int = None,
+        node_id: str = None,
+        node_name: str = None,
+        security_group_probe_ip_list: List[str] = None,
+    ):
+        self.available_probe_num = available_probe_num
+        self.node_id = node_id
+        self.node_name = node_name
+        self.security_group_probe_ip_list = security_group_probe_ip_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_probe_num is not None:
+            result['AvailableProbeNum'] = self.available_probe_num
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.security_group_probe_ip_list is not None:
+            result['SecurityGroupProbeIpList'] = self.security_group_probe_ip_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableProbeNum') is not None:
+            self.available_probe_num = m.get('AvailableProbeNum')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('SecurityGroupProbeIpList') is not None:
+            self.security_group_probe_ip_list = m.get('SecurityGroupProbeIpList')
+        return self
+
+
+class UpdateHoneypotNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateHoneypotNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHoneypotNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHoneypotNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHoneypotPresetRequest(TeaModel):
+    def __init__(
+        self,
+        honeypot_image_name: str = None,
+        honeypot_preset_id: str = None,
+        meta: str = None,
+        preset_name: str = None,
+    ):
+        self.honeypot_image_name = honeypot_image_name
+        self.honeypot_preset_id = honeypot_preset_id
+        self.meta = meta
+        self.preset_name = preset_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.honeypot_image_name is not None:
+            result['HoneypotImageName'] = self.honeypot_image_name
+        if self.honeypot_preset_id is not None:
+            result['HoneypotPresetId'] = self.honeypot_preset_id
+        if self.meta is not None:
+            result['Meta'] = self.meta
+        if self.preset_name is not None:
+            result['PresetName'] = self.preset_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoneypotImageName') is not None:
+            self.honeypot_image_name = m.get('HoneypotImageName')
+        if m.get('HoneypotPresetId') is not None:
+            self.honeypot_preset_id = m.get('HoneypotPresetId')
+        if m.get('Meta') is not None:
+            self.meta = m.get('Meta')
+        if m.get('PresetName') is not None:
+            self.preset_name = m.get('PresetName')
+        return self
+
+
+class UpdateHoneypotPresetResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateHoneypotPresetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHoneypotPresetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHoneypotPresetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHoneypotProbeRequest(TeaModel):
+    def __init__(
+        self,
+        arp: bool = None,
+        display_name: str = None,
+        ping: bool = None,
+        probe_id: str = None,
+        service_ip_list: List[str] = None,
+    ):
+        self.arp = arp
+        self.display_name = display_name
+        self.ping = ping
+        self.probe_id = probe_id
+        self.service_ip_list = service_ip_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arp is not None:
+            result['Arp'] = self.arp
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.ping is not None:
+            result['Ping'] = self.ping
+        if self.probe_id is not None:
+            result['ProbeId'] = self.probe_id
+        if self.service_ip_list is not None:
+            result['ServiceIpList'] = self.service_ip_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arp') is not None:
+            self.arp = m.get('Arp')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Ping') is not None:
+            self.ping = m.get('Ping')
+        if m.get('ProbeId') is not None:
+            self.probe_id = m.get('ProbeId')
+        if m.get('ServiceIpList') is not None:
+            self.service_ip_list = m.get('ServiceIpList')
+        return self
+
+
+class UpdateHoneypotProbeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateHoneypotProbeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHoneypotProbeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHoneypotProbeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ValidateHcWarningsRequest(TeaModel):
     def __init__(
         self,
@@ -47634,8 +61342,11 @@ class ValidateHcWarningsRequest(TeaModel):
         source_ip: str = None,
         uuids: str = None,
     ):
+        # The IDs of risk items that you want to verify. Separate multiple IDs with commas (,).
         self.risk_ids = risk_ids
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The UUIDs of servers on which you want to verify risk items.
         self.uuids = uuids
 
     def validate(self):
@@ -47671,6 +61382,7 @@ class ValidateHcWarningsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
