@@ -61,7 +61,9 @@ class ScanImageRequest(TeaModel):
         scene: List[str] = None,
         task: List[ScanImageRequestTask] = None,
     ):
+        # 1
         self.scene = scene
+        # 1
         self.task = task
 
     def validate(self):
@@ -153,7 +155,9 @@ class ScanImageAdvanceRequest(TeaModel):
         scene: List[str] = None,
         task: List[ScanImageAdvanceRequestTask] = None,
     ):
+        # 1
         self.scene = scene
+        # 1
         self.task = task
 
     def validate(self):
@@ -466,6 +470,7 @@ class ScanImageResponseBodyDataResultsSubResults(TeaModel):
         self.hint_words_info_list = hint_words_info_list
         self.label = label
         self.logo_data_list = logo_data_list
+        # 1
         self.ocrdata_list = ocrdata_list
         self.program_code_data_list = program_code_data_list
         self.rate = rate
@@ -800,7 +805,9 @@ class ScanTextRequest(TeaModel):
         labels: List[ScanTextRequestLabels] = None,
         tasks: List[ScanTextRequestTasks] = None,
     ):
+        # 1
         self.labels = labels
+        # 1
         self.tasks = tasks
 
     def validate(self):

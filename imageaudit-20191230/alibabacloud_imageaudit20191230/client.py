@@ -167,7 +167,7 @@ class Client(OpenApiClient):
         scan_image_req = imageaudit_20191230_models.ScanImageRequest()
         OpenApiUtilClient.convert(request, scan_image_req)
         if not UtilClient.is_unset(request.task):
-            i = 0
+            i_0 = 0
             for item_0 in request.task:
                 if not UtilClient.is_unset(item_0.image_urlobject):
                     auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
@@ -192,9 +192,9 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = scan_image_req.task[i]
+                    tmp = scan_image_req.task[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         scan_image_resp = self.scan_image_with_options(scan_image_req, runtime)
         return scan_image_resp
 
@@ -243,7 +243,7 @@ class Client(OpenApiClient):
         scan_image_req = imageaudit_20191230_models.ScanImageRequest()
         OpenApiUtilClient.convert(request, scan_image_req)
         if not UtilClient.is_unset(request.task):
-            i = 0
+            i_0 = 0
             for item_0 in request.task:
                 if not UtilClient.is_unset(item_0.image_urlobject):
                     auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
@@ -268,9 +268,9 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = scan_image_req.task[i]
+                    tmp = scan_image_req.task[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         scan_image_resp = await self.scan_image_with_options_async(scan_image_req, runtime)
         return scan_image_resp
 
