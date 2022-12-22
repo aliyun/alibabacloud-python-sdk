@@ -34411,12 +34411,14 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        product_type: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.product_type = product_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -34435,6 +34437,8 @@ class DescribeRegionsRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -34449,6 +34453,8 @@ class DescribeRegionsRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -43147,6 +43153,223 @@ class DescribeVpnConnectionResponse(TeaModel):
         return self
 
 
+class DescribeVpnConnectionLogsRequest(TeaModel):
+    def __init__(
+        self,
+        from_: int = None,
+        minute_period: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        to: int = None,
+        vpn_connection_id: str = None,
+    ):
+        self.from_ = from_
+        self.minute_period = minute_period
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.to = to
+        self.vpn_connection_id = vpn_connection_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.minute_period is not None:
+            result['MinutePeriod'] = self.minute_period
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.to is not None:
+            result['To'] = self.to
+        if self.vpn_connection_id is not None:
+            result['VpnConnectionId'] = self.vpn_connection_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('MinutePeriod') is not None:
+            self.minute_period = m.get('MinutePeriod')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        if m.get('VpnConnectionId') is not None:
+            self.vpn_connection_id = m.get('VpnConnectionId')
+        return self
+
+
+class DescribeVpnConnectionLogsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        logs: List[str] = None,
+    ):
+        self.logs = logs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logs is not None:
+            result['Logs'] = self.logs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Logs') is not None:
+            self.logs = m.get('Logs')
+        return self
+
+
+class DescribeVpnConnectionLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        data: DescribeVpnConnectionLogsResponseBodyData = None,
+        is_completed: bool = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+    ):
+        self.count = count
+        self.data = data
+        self.is_completed = is_completed
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.is_completed is not None:
+            result['IsCompleted'] = self.is_completed
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Data') is not None:
+            temp_model = DescribeVpnConnectionLogsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('IsCompleted') is not None:
+            self.is_completed = m.get('IsCompleted')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVpnConnectionLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVpnConnectionLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVpnConnectionLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVpnConnectionsRequest(TeaModel):
     def __init__(
         self,
@@ -46119,6 +46342,140 @@ class DetachDhcpOptionsSetFromVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachDhcpOptionsSetFromVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DiagnoseVpnGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        ipsec_extend_info: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        vpn_gateway_id: str = None,
+    ):
+        self.client_token = client_token
+        self.ipsec_extend_info = ipsec_extend_info
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.vpn_gateway_id = vpn_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.ipsec_extend_info is not None:
+            result['IPsecExtendInfo'] = self.ipsec_extend_info
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.vpn_gateway_id is not None:
+            result['VpnGatewayId'] = self.vpn_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('IPsecExtendInfo') is not None:
+            self.ipsec_extend_info = m.get('IPsecExtendInfo')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('VpnGatewayId') is not None:
+            self.vpn_gateway_id = m.get('VpnGatewayId')
+        return self
+
+
+class DiagnoseVpnGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        diagnose_id: str = None,
+        request_id: str = None,
+    ):
+        self.diagnose_id = diagnose_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnose_id is not None:
+            result['DiagnoseId'] = self.diagnose_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnoseId') is not None:
+            self.diagnose_id = m.get('DiagnoseId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DiagnoseVpnGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DiagnoseVpnGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DiagnoseVpnGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -50032,6 +50389,223 @@ class GetVpcRouteEntrySummaryResponse(TeaModel):
         return self
 
 
+class GetVpnGatewayDiagnoseResultRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        diagnose_id: str = None,
+        region_id: str = None,
+        vpn_gateway_id: str = None,
+    ):
+        self.client_token = client_token
+        self.diagnose_id = diagnose_id
+        self.region_id = region_id
+        self.vpn_gateway_id = vpn_gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.diagnose_id is not None:
+            result['DiagnoseId'] = self.diagnose_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpn_gateway_id is not None:
+            result['VpnGatewayId'] = self.vpn_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DiagnoseId') is not None:
+            self.diagnose_id = m.get('DiagnoseId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpnGatewayId') is not None:
+            self.vpn_gateway_id = m.get('VpnGatewayId')
+        return self
+
+
+class GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult(TeaModel):
+    def __init__(
+        self,
+        diagnose_name: str = None,
+        diagnose_result_description: str = None,
+        diagnose_result_level: str = None,
+    ):
+        self.diagnose_name = diagnose_name
+        self.diagnose_result_description = diagnose_result_description
+        self.diagnose_result_level = diagnose_result_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnose_name is not None:
+            result['DiagnoseName'] = self.diagnose_name
+        if self.diagnose_result_description is not None:
+            result['DiagnoseResultDescription'] = self.diagnose_result_description
+        if self.diagnose_result_level is not None:
+            result['DiagnoseResultLevel'] = self.diagnose_result_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnoseName') is not None:
+            self.diagnose_name = m.get('DiagnoseName')
+        if m.get('DiagnoseResultDescription') is not None:
+            self.diagnose_result_description = m.get('DiagnoseResultDescription')
+        if m.get('DiagnoseResultLevel') is not None:
+            self.diagnose_result_level = m.get('DiagnoseResultLevel')
+        return self
+
+
+class GetVpnGatewayDiagnoseResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        begin_time: str = None,
+        diagnose_id: str = None,
+        diagnose_result: List[GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult] = None,
+        finish_time: str = None,
+        finished_count: int = None,
+        request_id: str = None,
+        resource_instance_id: str = None,
+        resource_type: str = None,
+        total_count: int = None,
+        vpn_gateway_id: str = None,
+    ):
+        self.begin_time = begin_time
+        self.diagnose_id = diagnose_id
+        self.diagnose_result = diagnose_result
+        self.finish_time = finish_time
+        self.finished_count = finished_count
+        self.request_id = request_id
+        self.resource_instance_id = resource_instance_id
+        self.resource_type = resource_type
+        self.total_count = total_count
+        self.vpn_gateway_id = vpn_gateway_id
+
+    def validate(self):
+        if self.diagnose_result:
+            for k in self.diagnose_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.diagnose_id is not None:
+            result['DiagnoseId'] = self.diagnose_id
+        result['DiagnoseResult'] = []
+        if self.diagnose_result is not None:
+            for k in self.diagnose_result:
+                result['DiagnoseResult'].append(k.to_map() if k else None)
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.finished_count is not None:
+            result['FinishedCount'] = self.finished_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_instance_id is not None:
+            result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.vpn_gateway_id is not None:
+            result['VpnGatewayId'] = self.vpn_gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('DiagnoseId') is not None:
+            self.diagnose_id = m.get('DiagnoseId')
+        self.diagnose_result = []
+        if m.get('DiagnoseResult') is not None:
+            for k in m.get('DiagnoseResult'):
+                temp_model = GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult()
+                self.diagnose_result.append(temp_model.from_map(k))
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('FinishedCount') is not None:
+            self.finished_count = m.get('FinishedCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceInstanceId') is not None:
+            self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('VpnGatewayId') is not None:
+            self.vpn_gateway_id = m.get('VpnGatewayId')
+        return self
+
+
+class GetVpnGatewayDiagnoseResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVpnGatewayDiagnoseResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVpnGatewayDiagnoseResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GrantInstanceToCenRequest(TeaModel):
     def __init__(
         self,
@@ -51687,6 +52261,170 @@ class ListGeographicSubRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGeographicSubRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIpsecServerLogsRequest(TeaModel):
+    def __init__(
+        self,
+        from_: int = None,
+        ipsec_server_id: str = None,
+        minute_period: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        to: int = None,
+    ):
+        self.from_ = from_
+        self.ipsec_server_id = ipsec_server_id
+        self.minute_period = minute_period
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.ipsec_server_id is not None:
+            result['IpsecServerId'] = self.ipsec_server_id
+        if self.minute_period is not None:
+            result['MinutePeriod'] = self.minute_period
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('IpsecServerId') is not None:
+            self.ipsec_server_id = m.get('IpsecServerId')
+        if m.get('MinutePeriod') is not None:
+            self.minute_period = m.get('MinutePeriod')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class ListIpsecServerLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        data: List[str] = None,
+        is_completed: bool = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+    ):
+        self.count = count
+        self.data = data
+        self.is_completed = is_completed
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.is_completed is not None:
+            result['IsCompleted'] = self.is_completed
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('IsCompleted') is not None:
+            self.is_completed = m.get('IsCompleted')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListIpsecServerLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIpsecServerLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIpsecServerLogsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

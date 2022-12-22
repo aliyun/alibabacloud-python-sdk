@@ -18300,6 +18300,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -18336,6 +18338,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -20693,6 +20697,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpn_connection_with_options_async(request, runtime)
 
+    def describe_vpn_connection_logs_with_options(
+        self,
+        request: vpc_20160428_models.DescribeVpnConnectionLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeVpnConnectionLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.minute_period):
+            query['MinutePeriod'] = request.minute_period
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.vpn_connection_id):
+            query['VpnConnectionId'] = request.vpn_connection_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpnConnectionLogs',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpn_connection_logs_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeVpnConnectionLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeVpnConnectionLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.minute_period):
+            query['MinutePeriod'] = request.minute_period
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.vpn_connection_id):
+            query['VpnConnectionId'] = request.vpn_connection_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpnConnectionLogs',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpn_connection_logs(
+        self,
+        request: vpc_20160428_models.DescribeVpnConnectionLogsRequest,
+    ) -> vpc_20160428_models.DescribeVpnConnectionLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpn_connection_logs_with_options(request, runtime)
+
+    async def describe_vpn_connection_logs_async(
+        self,
+        request: vpc_20160428_models.DescribeVpnConnectionLogsRequest,
+    ) -> vpc_20160428_models.DescribeVpnConnectionLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpn_connection_logs_with_options_async(request, runtime)
+
     def describe_vpn_connections_with_options(
         self,
         request: vpc_20160428_models.DescribeVpnConnectionsRequest,
@@ -21618,6 +21732,122 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detach_dhcp_options_set_from_vpc_with_options_async(request, runtime)
+
+    def diagnose_vpn_gateway_with_options(
+        self,
+        request: vpc_20160428_models.DiagnoseVpnGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DiagnoseVpnGatewayResponse:
+        """
+        VPN网关发起诊断
+        
+        @param request: DiagnoseVpnGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiagnoseVpnGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.ipsec_extend_info):
+            query['IPsecExtendInfo'] = request.ipsec_extend_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DiagnoseVpnGateway',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DiagnoseVpnGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def diagnose_vpn_gateway_with_options_async(
+        self,
+        request: vpc_20160428_models.DiagnoseVpnGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DiagnoseVpnGatewayResponse:
+        """
+        VPN网关发起诊断
+        
+        @param request: DiagnoseVpnGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiagnoseVpnGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.ipsec_extend_info):
+            query['IPsecExtendInfo'] = request.ipsec_extend_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DiagnoseVpnGateway',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DiagnoseVpnGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def diagnose_vpn_gateway(
+        self,
+        request: vpc_20160428_models.DiagnoseVpnGatewayRequest,
+    ) -> vpc_20160428_models.DiagnoseVpnGatewayResponse:
+        """
+        VPN网关发起诊断
+        
+        @param request: DiagnoseVpnGatewayRequest
+        @return: DiagnoseVpnGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.diagnose_vpn_gateway_with_options(request, runtime)
+
+    async def diagnose_vpn_gateway_async(
+        self,
+        request: vpc_20160428_models.DiagnoseVpnGatewayRequest,
+    ) -> vpc_20160428_models.DiagnoseVpnGatewayResponse:
+        """
+        VPN网关发起诊断
+        
+        @param request: DiagnoseVpnGatewayRequest
+        @return: DiagnoseVpnGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.diagnose_vpn_gateway_with_options_async(request, runtime)
 
     def disable_nat_gateway_ecs_metric_with_options(
         self,
@@ -23565,6 +23795,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_vpc_route_entry_summary_with_options_async(request, runtime)
 
+    def get_vpn_gateway_diagnose_result_with_options(
+        self,
+        request: vpc_20160428_models.GetVpnGatewayDiagnoseResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
+        """
+        查询VPN网关一键诊断结果
+        
+        @param request: GetVpnGatewayDiagnoseResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpnGatewayDiagnoseResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.diagnose_id):
+            query['DiagnoseId'] = request.diagnose_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVpnGatewayDiagnoseResult',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vpn_gateway_diagnose_result_with_options_async(
+        self,
+        request: vpc_20160428_models.GetVpnGatewayDiagnoseResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
+        """
+        查询VPN网关一键诊断结果
+        
+        @param request: GetVpnGatewayDiagnoseResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpnGatewayDiagnoseResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.diagnose_id):
+            query['DiagnoseId'] = request.diagnose_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVpnGatewayDiagnoseResult',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vpn_gateway_diagnose_result(
+        self,
+        request: vpc_20160428_models.GetVpnGatewayDiagnoseResultRequest,
+    ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
+        """
+        查询VPN网关一键诊断结果
+        
+        @param request: GetVpnGatewayDiagnoseResultRequest
+        @return: GetVpnGatewayDiagnoseResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_vpn_gateway_diagnose_result_with_options(request, runtime)
+
+    async def get_vpn_gateway_diagnose_result_async(
+        self,
+        request: vpc_20160428_models.GetVpnGatewayDiagnoseResultRequest,
+    ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
+        """
+        查询VPN网关一键诊断结果
+        
+        @param request: GetVpnGatewayDiagnoseResultRequest
+        @return: GetVpnGatewayDiagnoseResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vpn_gateway_diagnose_result_with_options_async(request, runtime)
+
     def grant_instance_to_cen_with_options(
         self,
         request: vpc_20160428_models.GrantInstanceToCenRequest,
@@ -24320,6 +24658,100 @@ class Client(OpenApiClient):
     async def list_geographic_sub_regions_async(self) -> vpc_20160428_models.ListGeographicSubRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_geographic_sub_regions_with_options_async(runtime)
+
+    def list_ipsec_server_logs_with_options(
+        self,
+        request: vpc_20160428_models.ListIpsecServerLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.ipsec_server_id):
+            query['IpsecServerId'] = request.ipsec_server_id
+        if not UtilClient.is_unset(request.minute_period):
+            query['MinutePeriod'] = request.minute_period
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpsecServerLogs',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListIpsecServerLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ipsec_server_logs_with_options_async(
+        self,
+        request: vpc_20160428_models.ListIpsecServerLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.ipsec_server_id):
+            query['IpsecServerId'] = request.ipsec_server_id
+        if not UtilClient.is_unset(request.minute_period):
+            query['MinutePeriod'] = request.minute_period
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpsecServerLogs',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListIpsecServerLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ipsec_server_logs(
+        self,
+        request: vpc_20160428_models.ListIpsecServerLogsRequest,
+    ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_ipsec_server_logs_with_options(request, runtime)
+
+    async def list_ipsec_server_logs_async(
+        self,
+        request: vpc_20160428_models.ListIpsecServerLogsRequest,
+    ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ipsec_server_logs_with_options_async(request, runtime)
 
     def list_ipsec_servers_with_options(
         self,

@@ -1,3 +1,10 @@
+2022-12-22 Version: 2.0.15
+- Support FlowLog Managed.
+- Add error code for DeleteFullNatEntry, ListFullNatEntries, DescribeNatGateways.
+- Change timeout for CreateFullNatEntry, DescribeNatGateways.
+- Add error code.
+- TagCode ExpressConnect.
+
 2022-12-15 Version: 2.0.14
 - Change DeleteFullNatEntry timeout.
 - Add error code.
