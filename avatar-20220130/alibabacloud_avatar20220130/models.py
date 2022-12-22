@@ -731,10 +731,12 @@ class GetVideoTaskInfoShrinkRequest(TeaModel):
 class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
     def __init__(
         self,
+        fail_code: str = None,
         fail_reason: str = None,
         subtitles_url: str = None,
         video_url: str = None,
     ):
+        self.fail_code = fail_code
         self.fail_reason = fail_reason
         self.subtitles_url = subtitles_url
         self.video_url = video_url
@@ -748,6 +750,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
             return _map
 
         result = dict()
+        if self.fail_code is not None:
+            result['FailCode'] = self.fail_code
         if self.fail_reason is not None:
             result['FailReason'] = self.fail_reason
         if self.subtitles_url is not None:
@@ -758,6 +762,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FailCode') is not None:
+            self.fail_code = m.get('FailCode')
         if m.get('FailReason') is not None:
             self.fail_reason = m.get('FailReason')
         if m.get('SubtitlesUrl') is not None:
@@ -1493,6 +1499,7 @@ class SendMessageResponseBody(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # Id of the request
         self.code = code
         self.data = data
         self.message = message
@@ -2096,6 +2103,7 @@ class StopInstanceResponseBody(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # Id of the request
         self.code = code
         self.data = data
         self.message = message
