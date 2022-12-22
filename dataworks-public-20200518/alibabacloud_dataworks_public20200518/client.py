@@ -151,6 +151,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.abolish_data_service_api_with_options_async(request, runtime)
 
+    def add_meta_collection_entity_with_options(
+        self,
+        request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_qualified_name):
+            query['CollectionQualifiedName'] = request.collection_qualified_name
+        if not UtilClient.is_unset(request.entity_qualified_name):
+            query['EntityQualifiedName'] = request.entity_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddMetaCollectionEntity',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.AddMetaCollectionEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_meta_collection_entity_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_qualified_name):
+            query['CollectionQualifiedName'] = request.collection_qualified_name
+        if not UtilClient.is_unset(request.entity_qualified_name):
+            query['EntityQualifiedName'] = request.entity_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddMetaCollectionEntity',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.AddMetaCollectionEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_meta_collection_entity(
+        self,
+        request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
+    ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_meta_collection_entity_with_options(request, runtime)
+
+    async def add_meta_collection_entity_async(
+        self,
+        request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
+    ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_meta_collection_entity_with_options_async(request, runtime)
+
     def add_project_member_to_role_with_options(
         self,
         request: dataworks_public_20200518_models.AddProjectMemberToRoleRequest,
@@ -2657,6 +2731,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_meta_category_with_options_async(request, runtime)
 
+    def create_meta_collection_with_options(
+        self,
+        request: dataworks_public_20200518_models.CreateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_type):
+            query['CollectionType'] = request.collection_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_qualified_name):
+            query['ParentQualifiedName'] = request.parent_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetaCollection',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.CreateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_type):
+            query['CollectionType'] = request.collection_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_qualified_name):
+            query['ParentQualifiedName'] = request.parent_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMetaCollection',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.CreateMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_meta_collection(
+        self,
+        request: dataworks_public_20200518_models.CreateMetaCollectionRequest,
+    ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_meta_collection_with_options(request, runtime)
+
+    async def create_meta_collection_async(
+        self,
+        request: dataworks_public_20200518_models.CreateMetaCollectionRequest,
+    ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_meta_collection_with_options_async(request, runtime)
+
     def create_permission_apply_order_with_options(
         self,
         request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
@@ -4654,6 +4810,150 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.DeleteMetaCategoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_meta_category_with_options_async(request, runtime)
+
+    def delete_meta_collection_with_options(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCollection',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCollection',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_meta_collection(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_meta_collection_with_options(request, runtime)
+
+    async def delete_meta_collection_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_meta_collection_with_options_async(request, runtime)
+
+    def delete_meta_collection_entity_with_options(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_qualified_name):
+            query['CollectionQualifiedName'] = request.collection_qualified_name
+        if not UtilClient.is_unset(request.entity_qualified_name):
+            query['EntityQualifiedName'] = request.entity_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCollectionEntity',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_meta_collection_entity_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_qualified_name):
+            query['CollectionQualifiedName'] = request.collection_qualified_name
+        if not UtilClient.is_unset(request.entity_qualified_name):
+            query['EntityQualifiedName'] = request.entity_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMetaCollectionEntity',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_meta_collection_entity(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_meta_collection_entity_with_options(request, runtime)
+
+    async def delete_meta_collection_entity_async(
+        self,
+        request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
+    ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_meta_collection_entity_with_options_async(request, runtime)
 
     def delete_project_member_with_options(
         self,
@@ -8509,6 +8809,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_category_with_options_async(request, runtime)
 
+    def get_meta_collection_detail_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetaCollectionDetail',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetMetaCollectionDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_meta_collection_detail_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetaCollectionDetail',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetMetaCollectionDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_meta_collection_detail(
+        self,
+        request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
+    ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_meta_collection_detail_with_options(request, runtime)
+
+    async def get_meta_collection_detail_async(
+        self,
+        request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
+    ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_meta_collection_detail_with_options_async(request, runtime)
+
     def get_meta_column_lineage_with_options(
         self,
         request: dataworks_public_20200518_models.GetMetaColumnLineageRequest,
@@ -9518,6 +9888,96 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_partition_with_options_async(request, runtime)
+
+    def get_meta_table_producing_tasks_with_options(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetaTableProducingTasks',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetMetaTableProducingTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_meta_table_producing_tasks_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetaTableProducingTasks',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.GetMetaTableProducingTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_meta_table_producing_tasks(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
+    ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_meta_table_producing_tasks_with_options(request, runtime)
+
+    async def get_meta_table_producing_tasks_async(
+        self,
+        request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
+    ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_meta_table_producing_tasks_with_options_async(request, runtime)
 
     def get_meta_table_theme_level_with_options(
         self,
@@ -14058,6 +14518,194 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_manual_dag_instances_with_options_async(request, runtime)
+
+    def list_meta_collection_entities_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_qualified_name):
+            query['CollectionQualifiedName'] = request.collection_qualified_name
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCollectionEntities',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_collection_entities_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection_qualified_name):
+            query['CollectionQualifiedName'] = request.collection_qualified_name
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCollectionEntities',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_collection_entities(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_meta_collection_entities_with_options(request, runtime)
+
+    async def list_meta_collection_entities_async(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_meta_collection_entities_with_options_async(request, runtime)
+
+    def list_meta_collections_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.administrator):
+            query['Administrator'] = request.administrator
+        if not UtilClient.is_unset(request.collection_type):
+            query['CollectionType'] = request.collection_type
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.follower):
+            query['Follower'] = request.follower
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_qualified_name):
+            query['ParentQualifiedName'] = request.parent_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCollections',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListMetaCollectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_collections_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.administrator):
+            query['Administrator'] = request.administrator
+        if not UtilClient.is_unset(request.collection_type):
+            query['CollectionType'] = request.collection_type
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.follower):
+            query['Follower'] = request.follower
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_qualified_name):
+            query['ParentQualifiedName'] = request.parent_qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetaCollections',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListMetaCollectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_collections(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_meta_collections_with_options(request, runtime)
+
+    async def list_meta_collections_async(
+        self,
+        request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
+    ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_meta_collections_with_options_async(request, runtime)
 
     def list_meta_dbwith_options(
         self,
@@ -19744,6 +20392,84 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.UpdateMetaCategoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_meta_category_with_options_async(request, runtime)
+
+    def update_meta_collection_with_options(
+        self,
+        request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetaCollection',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateMetaCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_meta_collection_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetaCollection',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateMetaCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_meta_collection(
+        self,
+        request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
+    ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_meta_collection_with_options(request, runtime)
+
+    async def update_meta_collection_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
+    ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_meta_collection_with_options_async(request, runtime)
 
     def update_meta_table_with_options(
         self,
