@@ -672,6 +672,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_faces_with_options_async(request, runtime)
 
+    def batch_add_faces_advance(
+        self,
+        request: facebody_20191230_models.BatchAddFacesAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.BatchAddFacesResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        batch_add_faces_req = facebody_20191230_models.BatchAddFacesRequest()
+        OpenApiUtilClient.convert(request, batch_add_faces_req)
+        if not UtilClient.is_unset(request.faces):
+            i_0 = 0
+            for item_0 in request.faces:
+                if not UtilClient.is_unset(item_0.image_urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.image_urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = batch_add_faces_req.faces[i0]
+                    tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        batch_add_faces_resp = self.batch_add_faces_with_options(batch_add_faces_req, runtime)
+        return batch_add_faces_resp
+
+    async def batch_add_faces_advance_async(
+        self,
+        request: facebody_20191230_models.BatchAddFacesAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.BatchAddFacesResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        batch_add_faces_req = facebody_20191230_models.BatchAddFacesRequest()
+        OpenApiUtilClient.convert(request, batch_add_faces_req)
+        if not UtilClient.is_unset(request.faces):
+            i_0 = 0
+            for item_0 in request.faces:
+                if not UtilClient.is_unset(item_0.image_urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.image_urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = batch_add_faces_req.faces[i0]
+                    tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        batch_add_faces_resp = await self.batch_add_faces_with_options_async(batch_add_faces_req, runtime)
+        return batch_add_faces_resp
+
     def beautify_body_with_options(
         self,
         tmp_req: facebody_20191230_models.BeautifyBodyRequest,

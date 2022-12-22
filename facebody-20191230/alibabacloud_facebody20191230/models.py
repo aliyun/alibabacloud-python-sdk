@@ -610,6 +610,104 @@ class BatchAddFacesRequest(TeaModel):
         return self
 
 
+class BatchAddFacesAdvanceRequestFaces(TeaModel):
+    def __init__(
+        self,
+        extra_data: str = None,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.extra_data = extra_data
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extra_data is not None:
+            result['ExtraData'] = self.extra_data
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtraData') is not None:
+            self.extra_data = m.get('ExtraData')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        return self
+
+
+class BatchAddFacesAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        entity_id: str = None,
+        faces: List[BatchAddFacesAdvanceRequestFaces] = None,
+        quality_score_threshold: float = None,
+        similarity_score_threshold_between_entity: float = None,
+        similarity_score_threshold_in_entity: float = None,
+    ):
+        self.db_name = db_name
+        self.entity_id = entity_id
+        self.faces = faces
+        self.quality_score_threshold = quality_score_threshold
+        self.similarity_score_threshold_between_entity = similarity_score_threshold_between_entity
+        self.similarity_score_threshold_in_entity = similarity_score_threshold_in_entity
+
+    def validate(self):
+        if self.faces:
+            for k in self.faces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        result['Faces'] = []
+        if self.faces is not None:
+            for k in self.faces:
+                result['Faces'].append(k.to_map() if k else None)
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
+        if self.similarity_score_threshold_between_entity is not None:
+            result['SimilarityScoreThresholdBetweenEntity'] = self.similarity_score_threshold_between_entity
+        if self.similarity_score_threshold_in_entity is not None:
+            result['SimilarityScoreThresholdInEntity'] = self.similarity_score_threshold_in_entity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        self.faces = []
+        if m.get('Faces') is not None:
+            for k in m.get('Faces'):
+                temp_model = BatchAddFacesAdvanceRequestFaces()
+                self.faces.append(temp_model.from_map(k))
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
+        if m.get('SimilarityScoreThresholdBetweenEntity') is not None:
+            self.similarity_score_threshold_between_entity = m.get('SimilarityScoreThresholdBetweenEntity')
+        if m.get('SimilarityScoreThresholdInEntity') is not None:
+            self.similarity_score_threshold_in_entity = m.get('SimilarityScoreThresholdInEntity')
+        return self
+
+
 class BatchAddFacesShrinkRequest(TeaModel):
     def __init__(
         self,
