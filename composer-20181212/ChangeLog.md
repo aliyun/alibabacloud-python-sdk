@@ -1,3 +1,6 @@
+2022-12-22 Version: 2.0.2
+- Supported resource group.
+
 2021-10-27 Version: 2.0.1
 - Supported Python2, C plus plus and java-async.
 

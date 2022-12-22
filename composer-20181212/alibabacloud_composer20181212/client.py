@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_composer20181212 import models as composer_20181212_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -45,13 +46,37 @@ class Client(OpenApiClient):
         request: composer_20181212_models.CloneFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.CloneFlowResponse:
+        """
+        @deprecated
+        
+        @param request: CloneFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneFlowResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.CloneFlowResponse(),
-            self.do_rpcrequest('CloneFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def clone_flow_with_options_async(
@@ -59,19 +84,50 @@ class Client(OpenApiClient):
         request: composer_20181212_models.CloneFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.CloneFlowResponse:
+        """
+        @deprecated
+        
+        @param request: CloneFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneFlowResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.CloneFlowResponse(),
-            await self.do_rpcrequest_async('CloneFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def clone_flow(
         self,
         request: composer_20181212_models.CloneFlowRequest,
     ) -> composer_20181212_models.CloneFlowResponse:
+        """
+        @deprecated
+        
+        @param request: CloneFlowRequest
+        @return: CloneFlowResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.clone_flow_with_options(request, runtime)
 
@@ -79,6 +135,13 @@ class Client(OpenApiClient):
         self,
         request: composer_20181212_models.CloneFlowRequest,
     ) -> composer_20181212_models.CloneFlowResponse:
+        """
+        @deprecated
+        
+        @param request: CloneFlowRequest
+        @return: CloneFlowResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clone_flow_with_options_async(request, runtime)
 
@@ -87,13 +150,44 @@ class Client(OpenApiClient):
         request: composer_20181212_models.CreateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.CreateFlowResponse:
+        """
+        After you create a workflow, the system automatically creates a version for the workflow. You can call the GetVersion operation to obtain the version information.
+        
+        @param request: CreateFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.flow_description):
+            body['FlowDescription'] = request.flow_description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.flow_source):
+            body['FlowSource'] = request.flow_source
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.CreateFlowResponse(),
-            self.do_rpcrequest('CreateFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_flow_with_options_async(
@@ -101,19 +195,56 @@ class Client(OpenApiClient):
         request: composer_20181212_models.CreateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.CreateFlowResponse:
+        """
+        After you create a workflow, the system automatically creates a version for the workflow. You can call the GetVersion operation to obtain the version information.
+        
+        @param request: CreateFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.flow_description):
+            body['FlowDescription'] = request.flow_description
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.flow_source):
+            body['FlowSource'] = request.flow_source
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.CreateFlowResponse(),
-            await self.do_rpcrequest_async('CreateFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_flow(
         self,
         request: composer_20181212_models.CreateFlowRequest,
     ) -> composer_20181212_models.CreateFlowResponse:
+        """
+        After you create a workflow, the system automatically creates a version for the workflow. You can call the GetVersion operation to obtain the version information.
+        
+        @param request: CreateFlowRequest
+        @return: CreateFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_flow_with_options(request, runtime)
 
@@ -121,6 +252,12 @@ class Client(OpenApiClient):
         self,
         request: composer_20181212_models.CreateFlowRequest,
     ) -> composer_20181212_models.CreateFlowResponse:
+        """
+        After you create a workflow, the system automatically creates a version for the workflow. You can call the GetVersion operation to obtain the version information.
+        
+        @param request: CreateFlowRequest
+        @return: CreateFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_with_options_async(request, runtime)
 
@@ -129,13 +266,34 @@ class Client(OpenApiClient):
         request: composer_20181212_models.DeleteFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.DeleteFlowResponse:
+        """
+        If you delete a workflow, all the versions and execution records of the workflow are automatically deleted.
+        
+        @param request: DeleteFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.DeleteFlowResponse(),
-            self.do_rpcrequest('DeleteFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_flow_with_options_async(
@@ -143,19 +301,46 @@ class Client(OpenApiClient):
         request: composer_20181212_models.DeleteFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.DeleteFlowResponse:
+        """
+        If you delete a workflow, all the versions and execution records of the workflow are automatically deleted.
+        
+        @param request: DeleteFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.DeleteFlowResponse(),
-            await self.do_rpcrequest_async('DeleteFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_flow(
         self,
         request: composer_20181212_models.DeleteFlowRequest,
     ) -> composer_20181212_models.DeleteFlowResponse:
+        """
+        If you delete a workflow, all the versions and execution records of the workflow are automatically deleted.
+        
+        @param request: DeleteFlowRequest
+        @return: DeleteFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_flow_with_options(request, runtime)
 
@@ -163,6 +348,12 @@ class Client(OpenApiClient):
         self,
         request: composer_20181212_models.DeleteFlowRequest,
     ) -> composer_20181212_models.DeleteFlowResponse:
+        """
+        If you delete a workflow, all the versions and execution records of the workflow are automatically deleted.
+        
+        @param request: DeleteFlowRequest
+        @return: DeleteFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_flow_with_options_async(request, runtime)
 
@@ -172,12 +363,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.DisableFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.DisableFlowResponse(),
-            self.do_rpcrequest('DisableFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_flow_with_options_async(
@@ -186,12 +391,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.DisableFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.DisableFlowResponse(),
-            await self.do_rpcrequest_async('DisableFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_flow(
@@ -214,12 +433,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.EnableFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.EnableFlowResponse(),
-            self.do_rpcrequest('EnableFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_flow_with_options_async(
@@ -228,12 +461,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.EnableFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.EnableFlowResponse(),
-            await self.do_rpcrequest_async('EnableFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_flow(
@@ -256,12 +503,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GetFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GetFlowResponse(),
-            self.do_rpcrequest('GetFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_flow_with_options_async(
@@ -270,12 +531,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GetFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GetFlowResponse(),
-            await self.do_rpcrequest_async('GetFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_flow(
@@ -298,12 +573,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GetTemplateResponse(),
-            self.do_rpcrequest('GetTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_with_options_async(
@@ -312,12 +601,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GetTemplateResponse(),
-            await self.do_rpcrequest_async('GetTemplate', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template(
@@ -340,12 +643,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GetVersionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVersion',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GetVersionResponse(),
-            self.do_rpcrequest('GetVersion', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_version_with_options_async(
@@ -354,12 +673,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GetVersionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.version_id):
+            body['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetVersion',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GetVersionResponse(),
-            await self.do_rpcrequest_async('GetVersion', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_version(
@@ -381,13 +716,48 @@ class Client(OpenApiClient):
         request: composer_20181212_models.GroupInvokeFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GroupInvokeFlowResponse:
+        """
+        You can call this operation to trigger a workflow to be executed more than 100 times per second. If the desired execution frequency does not exceed 100 times per second, we recommend that you call the InvokeFlow operation.
+        *   However, you may need to call the GroupInvokeFlow operation multiple times. For example, assume that you want a workflow to be executed 1,000 times per second and the 1,000 times of execution are divided into ten groups. You need to call the operation ten times for the ten groups and specify a group key for each group.
+        *   Each call corresponds to a group execution. Logic Composer automatically determines when a group execution starts. You must set the Data parameter to a JSON array of strings to specify the information required by the execution. Each string provides the information required by one time of execution. The string must use the format of the Data parameter in the InvokeFlow operation.
+        
+        @param request: GroupInvokeFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupInvokeFlowResponse
+        """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.group_key):
+            body['GroupKey'] = request.group_key
+        if not UtilClient.is_unset(request.total_count):
+            body['TotalCount'] = request.total_count
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupInvokeFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GroupInvokeFlowResponse(),
-            self.do_rpcrequest('GroupInvokeFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def group_invoke_flow_with_options_async(
@@ -395,19 +765,62 @@ class Client(OpenApiClient):
         request: composer_20181212_models.GroupInvokeFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.GroupInvokeFlowResponse:
+        """
+        You can call this operation to trigger a workflow to be executed more than 100 times per second. If the desired execution frequency does not exceed 100 times per second, we recommend that you call the InvokeFlow operation.
+        *   However, you may need to call the GroupInvokeFlow operation multiple times. For example, assume that you want a workflow to be executed 1,000 times per second and the 1,000 times of execution are divided into ten groups. You need to call the operation ten times for the ten groups and specify a group key for each group.
+        *   Each call corresponds to a group execution. Logic Composer automatically determines when a group execution starts. You must set the Data parameter to a JSON array of strings to specify the information required by the execution. Each string provides the information required by one time of execution. The string must use the format of the Data parameter in the InvokeFlow operation.
+        
+        @param request: GroupInvokeFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupInvokeFlowResponse
+        """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.group_key):
+            body['GroupKey'] = request.group_key
+        if not UtilClient.is_unset(request.total_count):
+            body['TotalCount'] = request.total_count
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupInvokeFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.GroupInvokeFlowResponse(),
-            await self.do_rpcrequest_async('GroupInvokeFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def group_invoke_flow(
         self,
         request: composer_20181212_models.GroupInvokeFlowRequest,
     ) -> composer_20181212_models.GroupInvokeFlowResponse:
+        """
+        You can call this operation to trigger a workflow to be executed more than 100 times per second. If the desired execution frequency does not exceed 100 times per second, we recommend that you call the InvokeFlow operation.
+        *   However, you may need to call the GroupInvokeFlow operation multiple times. For example, assume that you want a workflow to be executed 1,000 times per second and the 1,000 times of execution are divided into ten groups. You need to call the operation ten times for the ten groups and specify a group key for each group.
+        *   Each call corresponds to a group execution. Logic Composer automatically determines when a group execution starts. You must set the Data parameter to a JSON array of strings to specify the information required by the execution. Each string provides the information required by one time of execution. The string must use the format of the Data parameter in the InvokeFlow operation.
+        
+        @param request: GroupInvokeFlowRequest
+        @return: GroupInvokeFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.group_invoke_flow_with_options(request, runtime)
 
@@ -415,6 +828,14 @@ class Client(OpenApiClient):
         self,
         request: composer_20181212_models.GroupInvokeFlowRequest,
     ) -> composer_20181212_models.GroupInvokeFlowResponse:
+        """
+        You can call this operation to trigger a workflow to be executed more than 100 times per second. If the desired execution frequency does not exceed 100 times per second, we recommend that you call the InvokeFlow operation.
+        *   However, you may need to call the GroupInvokeFlow operation multiple times. For example, assume that you want a workflow to be executed 1,000 times per second and the 1,000 times of execution are divided into ten groups. You need to call the operation ten times for the ten groups and specify a group key for each group.
+        *   Each call corresponds to a group execution. Logic Composer automatically determines when a group execution starts. You must set the Data parameter to a JSON array of strings to specify the information required by the execution. Each string provides the information required by one time of execution. The string must use the format of the Data parameter in the InvokeFlow operation.
+        
+        @param request: GroupInvokeFlowRequest
+        @return: GroupInvokeFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.group_invoke_flow_with_options_async(request, runtime)
 
@@ -424,12 +845,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.InvokeFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InvokeFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.InvokeFlowResponse(),
-            self.do_rpcrequest('InvokeFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def invoke_flow_with_options_async(
@@ -438,12 +879,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.InvokeFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.parameters):
+            body['Parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InvokeFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.InvokeFlowResponse(),
-            await self.do_rpcrequest_async('InvokeFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def invoke_flow(
@@ -466,12 +927,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListFlowsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFlows',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListFlowsResponse(),
-            self.do_rpcrequest('ListFlows', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_flows_with_options_async(
@@ -480,12 +963,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListFlowsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.filter):
+            body['Filter'] = request.filter
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFlows',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListFlowsResponse(),
-            await self.do_rpcrequest_async('ListFlows', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_flows(
@@ -508,12 +1013,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListTagResourcesResponse(),
-            self.do_rpcrequest('ListTagResources', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -522,12 +1049,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListTagResourcesResponse(),
-            await self.do_rpcrequest_async('ListTagResources', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -550,12 +1099,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListTemplatesResponse(),
-            self.do_rpcrequest('ListTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_templates_with_options_async(
@@ -564,12 +1135,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListTemplatesResponse(),
-            await self.do_rpcrequest_async('ListTemplates', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_templates(
@@ -592,12 +1185,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListVersionsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVersions',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListVersionsResponse(),
-            self.do_rpcrequest('ListVersions', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_versions_with_options_async(
@@ -606,12 +1217,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.ListVersionsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVersions',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.ListVersionsResponse(),
-            await self.do_rpcrequest_async('ListVersions', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_versions(
@@ -634,12 +1263,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -648,12 +1295,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -676,12 +1341,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.all):
+            body['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            body['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.UntagResourcesResponse(),
-            self.do_rpcrequest('UntagResources', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -690,12 +1375,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.all):
+            body['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            body['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.UntagResourcesResponse(),
-            await self.do_rpcrequest_async('UntagResources', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -718,12 +1423,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.UpdateFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.flow_description):
+            body['FlowDescription'] = request.flow_description
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.UpdateFlowResponse(),
-            self.do_rpcrequest('UpdateFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_flow_with_options_async(
@@ -732,12 +1457,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> composer_20181212_models.UpdateFlowResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.flow_description):
+            body['FlowDescription'] = request.flow_description
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlow',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             composer_20181212_models.UpdateFlowResponse(),
-            await self.do_rpcrequest_async('UpdateFlow', '2018-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_flow(
