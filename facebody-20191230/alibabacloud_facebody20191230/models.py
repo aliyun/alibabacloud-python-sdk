@@ -2530,6 +2530,10 @@ class CompareFaceResponseBodyData(TeaModel):
     def __init__(
         self,
         confidence: float = None,
+        is_mask_a: int = None,
+        is_mask_b: int = None,
+        landmarks_alist: List[int] = None,
+        landmarks_blist: List[int] = None,
         message_tips: str = None,
         quality_score_a: float = None,
         quality_score_b: float = None,
@@ -2538,6 +2542,10 @@ class CompareFaceResponseBodyData(TeaModel):
         thresholds: List[float] = None,
     ):
         self.confidence = confidence
+        self.is_mask_a = is_mask_a
+        self.is_mask_b = is_mask_b
+        self.landmarks_alist = landmarks_alist
+        self.landmarks_blist = landmarks_blist
         self.message_tips = message_tips
         self.quality_score_a = quality_score_a
         self.quality_score_b = quality_score_b
@@ -2559,6 +2567,14 @@ class CompareFaceResponseBodyData(TeaModel):
         result = dict()
         if self.confidence is not None:
             result['Confidence'] = self.confidence
+        if self.is_mask_a is not None:
+            result['IsMaskA'] = self.is_mask_a
+        if self.is_mask_b is not None:
+            result['IsMaskB'] = self.is_mask_b
+        if self.landmarks_alist is not None:
+            result['LandmarksAList'] = self.landmarks_alist
+        if self.landmarks_blist is not None:
+            result['LandmarksBList'] = self.landmarks_blist
         if self.message_tips is not None:
             result['MessageTips'] = self.message_tips
         if self.quality_score_a is not None:
@@ -2577,6 +2593,14 @@ class CompareFaceResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('Confidence') is not None:
             self.confidence = m.get('Confidence')
+        if m.get('IsMaskA') is not None:
+            self.is_mask_a = m.get('IsMaskA')
+        if m.get('IsMaskB') is not None:
+            self.is_mask_b = m.get('IsMaskB')
+        if m.get('LandmarksAList') is not None:
+            self.landmarks_alist = m.get('LandmarksAList')
+        if m.get('LandmarksBList') is not None:
+            self.landmarks_blist = m.get('LandmarksBList')
         if m.get('MessageTips') is not None:
             self.message_tips = m.get('MessageTips')
         if m.get('QualityScoreA') is not None:
