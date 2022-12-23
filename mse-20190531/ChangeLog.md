@@ -1,3 +1,6 @@
+2022-12-23 Version: 3.0.52
+- Modify api read type.
+
 2022-12-16 Version: 3.0.51
 - Supported active notification and process details for losslessRule.
 

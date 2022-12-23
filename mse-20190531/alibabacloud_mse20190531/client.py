@@ -808,6 +808,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_slb_with_options_async(request, runtime)
 
+    def add_migration_task_with_options(
+        self,
+        request: mse_20190531_models.AddMigrationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddMigrationTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.origin_instance_address):
+            query['OriginInstanceAddress'] = request.origin_instance_address
+        if not UtilClient.is_unset(request.origin_instance_name):
+            query['OriginInstanceName'] = request.origin_instance_name
+        if not UtilClient.is_unset(request.origin_instance_namespace):
+            query['OriginInstanceNamespace'] = request.origin_instance_namespace
+        if not UtilClient.is_unset(request.project_desc):
+            query['ProjectDesc'] = request.project_desc
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.target_cluster_name):
+            query['TargetClusterName'] = request.target_cluster_name
+        if not UtilClient.is_unset(request.target_cluster_url):
+            query['TargetClusterUrl'] = request.target_cluster_url
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddMigrationTask',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddMigrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_migration_task_with_options_async(
+        self,
+        request: mse_20190531_models.AddMigrationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddMigrationTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.origin_instance_address):
+            query['OriginInstanceAddress'] = request.origin_instance_address
+        if not UtilClient.is_unset(request.origin_instance_name):
+            query['OriginInstanceName'] = request.origin_instance_name
+        if not UtilClient.is_unset(request.origin_instance_namespace):
+            query['OriginInstanceNamespace'] = request.origin_instance_namespace
+        if not UtilClient.is_unset(request.project_desc):
+            query['ProjectDesc'] = request.project_desc
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.target_cluster_name):
+            query['TargetClusterName'] = request.target_cluster_name
+        if not UtilClient.is_unset(request.target_cluster_url):
+            query['TargetClusterUrl'] = request.target_cluster_url
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddMigrationTask',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddMigrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_migration_task(
+        self,
+        request: mse_20190531_models.AddMigrationTaskRequest,
+    ) -> mse_20190531_models.AddMigrationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_migration_task_with_options(request, runtime)
+
+    async def add_migration_task_async(
+        self,
+        request: mse_20190531_models.AddMigrationTaskRequest,
+    ) -> mse_20190531_models.AddMigrationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_migration_task_with_options_async(request, runtime)
+
     def add_mock_rule_with_options(
         self,
         request: mse_20190531_models.AddMockRuleRequest,
@@ -10108,6 +10218,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_cluster_disk_specification_with_options_async(request, runtime)
 
+    def query_cluster_info_with_options(
+        self,
+        request: mse_20190531_models.QueryClusterInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryClusterInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.acl_switch):
+            query['AclSwitch'] = request.acl_switch
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryClusterInfo',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryClusterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cluster_info_with_options_async(
+        self,
+        request: mse_20190531_models.QueryClusterInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryClusterInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.acl_switch):
+            query['AclSwitch'] = request.acl_switch
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryClusterInfo',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryClusterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cluster_info(
+        self,
+        request: mse_20190531_models.QueryClusterInfoRequest,
+    ) -> mse_20190531_models.QueryClusterInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_cluster_info_with_options(request, runtime)
+
+    async def query_cluster_info_async(
+        self,
+        request: mse_20190531_models.QueryClusterInfoRequest,
+    ) -> mse_20190531_models.QueryClusterInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_cluster_info_with_options_async(request, runtime)
+
     def query_cluster_specification_with_options(
         self,
         request: mse_20190531_models.QueryClusterSpecificationRequest,
@@ -10457,6 +10661,96 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.QueryGovernanceKubernetesClusterResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_governance_kubernetes_cluster_with_options_async(request, runtime)
+
+    def query_instances_info_with_options(
+        self,
+        request: mse_20190531_models.QueryInstancesInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryInstancesInfo',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryInstancesInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_instances_info_with_options_async(
+        self,
+        request: mse_20190531_models.QueryInstancesInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryInstancesInfo',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryInstancesInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_instances_info(
+        self,
+        request: mse_20190531_models.QueryInstancesInfoRequest,
+    ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_instances_info_with_options(request, runtime)
+
+    async def query_instances_info_async(
+        self,
+        request: mse_20190531_models.QueryInstancesInfoRequest,
+    ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_instances_info_with_options_async(request, runtime)
 
     def query_monitor_with_options(
         self,
