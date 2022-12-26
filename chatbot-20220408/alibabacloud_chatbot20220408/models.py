@@ -14,17 +14,11 @@ class AssociateRequest(TeaModel):
         session_id: str = None,
         utterance: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 视角编码，用于调用同一知识标题下不同视角的答案。在拼装请求参数时，需要以Perspective={视角编码}的格式传递参数。如：&Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准。目前仅支持一个视角答案的调用。       （公有云）
         self.perspective = perspective
-        # 推荐问题数量，1-10，当出推荐的时候才生效，返回不大于RecommendN
         self.recommend_num = recommend_num
-        # 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。
         self.session_id = session_id
-        # 用户表述
         self.utterance = utterance
 
     def validate(self):
@@ -77,17 +71,11 @@ class AssociateShrinkRequest(TeaModel):
         session_id: str = None,
         utterance: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 视角编码，用于调用同一知识标题下不同视角的答案。在拼装请求参数时，需要以Perspective={视角编码}的格式传递参数。如：&Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准。目前仅支持一个视角答案的调用。       （公有云）
         self.perspective_shrink = perspective_shrink
-        # 推荐问题数量，1-10，当出推荐的时候才生效，返回不大于RecommendN
         self.recommend_num = recommend_num
-        # 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。
         self.session_id = session_id
-        # 用户表述
         self.utterance = utterance
 
     def validate(self):
@@ -136,9 +124,7 @@ class AssociateResponseBodyAssociate(TeaModel):
         meta: str = None,
         title: str = None,
     ):
-        # 附带信息
         self.meta = meta
-        # 关联问题的标题
         self.title = title
 
     def validate(self):
@@ -173,13 +159,9 @@ class AssociateResponseBody(TeaModel):
         request_id: str = None,
         session_id: str = None,
     ):
-        # 联想的列表
         self.associate = associate
-        # 本条会话应答消息的ID
         self.message_id = message_id
-        # 请求id
         self.request_id = request_id
-        # 本次会话的ID
         self.session_id = session_id
 
     def validate(self):
@@ -272,9 +254,7 @@ class BeginSessionRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -307,9 +287,7 @@ class BeginSessionResponseBody(TeaModel):
         request_id: str = None,
         welcome_message: str = None,
     ):
-        # 请求id
         self.request_id = request_id
-        # 欢迎语
         self.welcome_message = welcome_message
 
     def validate(self):
@@ -387,11 +365,8 @@ class CancelInstancePublishTaskRequest(TeaModel):
         id: int = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 任务ID
         self.id = id
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -434,21 +409,13 @@ class CancelInstancePublishTaskResponseBody(TeaModel):
         response: str = None,
         status: str = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # job失败信息
         self.error = error
-        # 任务Id
         self.id = id
-        # 任务修改的 UTC 时间
         self.modify_time = modify_time
-        # 请求Id
         self.request_id = request_id
-        # 任务Id
         self.response = response
-        # 任务状态
         self.status = status
 
     def validate(self):
@@ -549,9 +516,7 @@ class CancelPublishTaskRequest(TeaModel):
         agent_key: str = None,
         id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 任务ID
         self.id = id
 
     def validate(self):
@@ -590,21 +555,13 @@ class CancelPublishTaskResponseBody(TeaModel):
         response: str = None,
         status: str = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # job失败信息
         self.error = error
-        # 任务Id
         self.id = id
-        # 任务修改的 UTC 时间
         self.modify_time = modify_time
-        # 请求Id
         self.request_id = request_id
-        # 任务Id
         self.response = response
-        # 任务状态
         self.status = status
 
     def validate(self):
@@ -713,23 +670,14 @@ class ChatRequest(TeaModel):
         utterance: str = None,
         vendor_param: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人实例ID。登录云小蜜控制台，机器人详情->会话接口，查看机器人实例信息，可获得该实例ID。
         self.instance_id = instance_id
-        # 对话流中意图名称。 若指定此名称，机器人会直接进入此意图做问答
         self.intent_name = intent_name
-        # 知识库中知识标题的ID。若指定此ID，那么机器人会直接返回指定知识标题的答案
         self.knowledge_id = knowledge_id
-        # 视角编码，用于调用同一知识标题下不同视角的答案。如：Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准
         self.perspective = perspective
-        # 访问者ID。用于识别当前会话中的用户
         self.sender_id = sender_id
-        # 当前会话中访问的昵称
         self.sender_nick = sender_nick
-        # 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。长度限制是64个字符
         self.session_id = session_id
-        # 机器人访问者的输入
         self.utterance = utterance
         self.vendor_param = vendor_param
 
@@ -803,23 +751,14 @@ class ChatShrinkRequest(TeaModel):
         utterance: str = None,
         vendor_param: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人实例ID。登录云小蜜控制台，机器人详情->会话接口，查看机器人实例信息，可获得该实例ID。
         self.instance_id = instance_id
-        # 对话流中意图名称。 若指定此名称，机器人会直接进入此意图做问答
         self.intent_name = intent_name
-        # 知识库中知识标题的ID。若指定此ID，那么机器人会直接返回指定知识标题的答案
         self.knowledge_id = knowledge_id
-        # 视角编码，用于调用同一知识标题下不同视角的答案。如：Perspective=["FZJBY3raWr"]。使用SDK时以SDK中定义的参数为准
         self.perspective_shrink = perspective_shrink
-        # 访问者ID。用于识别当前会话中的用户
         self.sender_id = sender_id
-        # 当前会话中访问的昵称
         self.sender_nick = sender_nick
-        # 会话ID，用于标识一个访问者的会话和保持上下文信息。对于一个新的访问者，首次调用Chat接口时无需传递此字段，机器人会开启一个会话，并在Chat接口的响应中返回该会话的SessionId。对于该访问者的后续轮次的会话，调用Chat接口时传递当前会话的SessionId，机器人即可基于SessionId继续该轮次会话。长度限制是64个字符
         self.session_id = session_id
-        # 机器人访问者的输入
         self.utterance = utterance
         self.vendor_param = vendor_param
 
@@ -885,9 +824,7 @@ class ChatResponseBodyMessagesKnowledgeRelatedKnowledges(TeaModel):
         knowledge_id: str = None,
         title: str = None,
     ):
-        # 知识关联知识的ID
         self.knowledge_id = knowledge_id
-        # 知识的关联知识的标题
         self.title = title
 
     def validate(self):
@@ -928,26 +865,15 @@ class ChatResponseBodyMessagesKnowledge(TeaModel):
         summary: str = None,
         title: str = None,
     ):
-        # 区分答案类型。
-        # KnowledgeBase:知识库条；
         self.answer_source = answer_source
-        # 知识类目
         self.category = category
-        # 命中问题的内容
         self.content = content
-        # 纯文本/富文本答案的标示
         self.content_type = content_type
-        # 命中语句
         self.hit_statement = hit_statement
-        # 命中问题在知识库中的ID
         self.id = id
-        # 关联知识列表
         self.related_knowledges = related_knowledges
-        # 分数
         self.score = score
-        # 命中问题的简介
         self.summary = summary
-        # 命中问题的标题
         self.title = title
 
     def validate(self):
@@ -1022,16 +948,9 @@ class ChatResponseBodyMessagesRecommends(TeaModel):
         score: float = None,
         title: str = None,
     ):
-        # 澄清来源的标识
         self.answer_source = answer_source
-        # 澄清的知识id
         self.knowledge_id = knowledge_id
-        # 推荐内容的分数，当AnswerSource为KNOWLEDGE时，此字段有值
         self.score = score
-        # 澄清内容，可能是
-        # 图谱问答的实体、
-        # 知识问答的知识标题、
-        # 表格问答的列值
         self.title = title
 
     def validate(self):
@@ -1127,40 +1046,27 @@ class ChatResponseBodyMessagesText(TeaModel):
         meta_data: str = None,
         node_id: str = None,
         node_name: str = None,
+        response_type: str = None,
         score: float = None,
         slots: List[ChatResponseBodyMessagesTextSlots] = None,
         user_defined_chat_title: str = None,
     ):
-        # 区分答案类型
         self.answer_source = answer_source
-        # 当AnswerSource为MACHINE_READ时，此字段返回命中文章标题
         self.article_title = article_title
-        # 指令参数，如转人工指令的转人工技能组
         self.commands = commands
-        # 文本消息的内容
         self.content = content
-        # 纯文本/富文本答案的标示
         self.content_type = content_type
-        # 当AnswerSource为BotFramework时，此字段返回对话单元名称
         self.dialog_name = dialog_name
-        # 此字段返回透传参数
         self.ext = ext
-        # 当AnswerSource为BotFramework时，此字段返回透传参数
         self.external_flags = external_flags
-        # 命中语句
         self.hit_statement = hit_statement
-        # 当AnswerSource为BotFramework时，此字段返回意图名称
         self.intent_name = intent_name
         self.meta_data = meta_data
-        # 当AnswerSource为BotFramework时，此字段返回节点Id
         self.node_id = node_id
-        # 当AnswerSource为BotFramework时，此字段返回节点名称
         self.node_name = node_name
-        # 分数
+        self.response_type = response_type
         self.score = score
-        # 当AnswerSource为BotFramework时，此字段返回专有名词列表
         self.slots = slots
-        # 自定义闲聊主题title
         self.user_defined_chat_title = user_defined_chat_title
 
     def validate(self):
@@ -1201,6 +1107,8 @@ class ChatResponseBodyMessagesText(TeaModel):
             result['NodeId'] = self.node_id
         if self.node_name is not None:
             result['NodeName'] = self.node_name
+        if self.response_type is not None:
+            result['ResponseType'] = self.response_type
         if self.score is not None:
             result['Score'] = self.score
         result['Slots'] = []
@@ -1239,6 +1147,8 @@ class ChatResponseBodyMessagesText(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+        if m.get('ResponseType') is not None:
+            self.response_type = m.get('ResponseType')
         if m.get('Score') is not None:
             self.score = m.get('Score')
         self.slots = []
@@ -1262,19 +1172,12 @@ class ChatResponseBodyMessages(TeaModel):
         title: str = None,
         voice_title: str = None,
     ):
-        # 当AnswerType为Recommend时，此字段表示推荐的答案来源
         self.answer_source = answer_source
-        # 本条消息的类型
         self.answer_type = answer_type
-        # 当AnswerType为Knowledge时，此字段包含机器人返回的Knowledge对象
         self.knowledge = knowledge
-        # 当AnswerType为Recommend时，此字段包含机器人返回的Recommend的列表
         self.recommends = recommends
-        # 当AnswerType为Text时，此字段包含机器人返回的Text对象
         self.text = text
-        # 当AnswerType为Recommend时，此字段表示推荐或者反问的标题话术
         self.title = title
-        # 当AnswerType为Recommend时，并且问答的机器人为语音机器人，此字段表示列表型答案在语音场景渲染之后的答案内容
         self.voice_title = voice_title
 
     def validate(self):
@@ -1344,15 +1247,10 @@ class ChatResponseBody(TeaModel):
         request_id: str = None,
         session_id: str = None,
     ):
-        # 本条会话应答消息的ID
         self.message_id = message_id
-        # 消息的列表
         self.messages = messages
-        # query的分词结果，可能为空
         self.query_seg_list = query_seg_list
-        # 请求id
         self.request_id = request_id
-        # 本次会话的ID
         self.session_id = session_id
 
     def validate(self):
@@ -1450,11 +1348,8 @@ class ContinueInstancePublishTaskRequest(TeaModel):
         id: int = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 任务ID
         self.id = id
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -1499,25 +1394,15 @@ class ContinueInstancePublishTaskResponseBody(TeaModel):
         status: str = None,
         warnings: Dict[str, Any] = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # job失败信息
         self.error = error
-        # 各子发布模块的错误信息，key是子发布模块，value是错误信息
         self.errors = errors
-        # 任务Id
         self.id = id
-        # 任务修改的 UTC 时间
         self.modify_time = modify_time
-        # 请求Id
         self.request_id = request_id
-        # 任务Id
         self.response = response
-        # 任务状态
         self.status = status
-        # 各子发布模块的警告信息，key是子发布模块，value是警告信息
         self.warnings = warnings
 
     def validate(self):
@@ -1627,11 +1512,8 @@ class CreateCategoryRequest(TeaModel):
         name: str = None,
         parent_category_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 类目名称
         self.name = name
-        # 父类目ID，默认-1，对应根目录
         self.parent_category_id = parent_category_id
 
     def validate(self):
@@ -1670,7 +1552,6 @@ class CreateCategoryResponseBodyCategory(TeaModel):
         parent_category_id: int = None,
         status: int = None,
     ):
-        # 类目ID
         self.category_id = category_id
         self.name = name
         self.parent_category_id = parent_category_id
@@ -1714,7 +1595,6 @@ class CreateCategoryResponseBody(TeaModel):
         category: CreateCategoryResponseBodyCategory = None,
         request_id: str = None,
     ):
-        # 类目信息
         self.category = category
         self.request_id = request_id
 
@@ -1795,7 +1675,6 @@ class CreateConnQuestionRequest(TeaModel):
         conn_question_id: int = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.conn_question_id = conn_question_id
         self.knowledge_id = knowledge_id
@@ -1834,7 +1713,6 @@ class CreateConnQuestionResponseBody(TeaModel):
         outline_id: int = None,
         request_id: str = None,
     ):
-        # 关联关系ID
         self.outline_id = outline_id
         self.request_id = request_id
 
@@ -1914,13 +1792,9 @@ class CreateDSEntityRequest(TeaModel):
         entity_type: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体名称，仅支持中文、大小写字母、数字、下划线
         self.entity_name = entity_name
-        # 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
         self.entity_type = entity_type
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -2041,12 +1915,9 @@ class CreateDSEntityValueRequest(TeaModel):
         instance_id: str = None,
         synonyms: List[str] = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.content = content
-        # 实体ID，修改实体成员时可为空
         self.entity_id = entity_id
-        # 机器人ID
         self.instance_id = instance_id
         self.synonyms = synonyms
 
@@ -2095,12 +1966,9 @@ class CreateDSEntityValueShrinkRequest(TeaModel):
         instance_id: str = None,
         synonyms_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.content = content
-        # 实体ID，修改实体成员时可为空
         self.entity_id = entity_id
-        # 机器人ID
         self.instance_id = instance_id
         self.synonyms_shrink = synonyms_shrink
 
@@ -2228,19 +2096,12 @@ class CreateFaqRequest(TeaModel):
         start_date: str = None,
         title: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识的类目ID
         self.category_id = category_id
-        # 失效时间
         self.end_date = end_date
-        # 默认答案内容
         self.solution_content = solution_content
-        # 默认答案类型
         self.solution_type = solution_type
-        # 生效时间
         self.start_date = start_date
-        # 知识标题
         self.title = title
 
     def validate(self):
@@ -2293,7 +2154,6 @@ class CreateFaqResponseBody(TeaModel):
         knowledge_id: int = None,
         request_id: str = None,
     ):
-        # 知识ID
         self.knowledge_id = knowledge_id
         self.request_id = request_id
 
@@ -2374,15 +2234,10 @@ class CreateInstanceRequest(TeaModel):
         name: str = None,
         robot_type: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人备注，不超过50字
         self.introduction = introduction
-        # 机器人服务的语言，如zh-cn、en-us，参考 http://www.lingoes.net/zh/translator/langcode.htm   入参全小写，当前只支持 zh-cn、en-us
         self.language_code = language_code
-        # 机器人名称，不超过50字
         self.name = name
-        # 机器人类型
         self.robot_type = robot_type
 
     def validate(self):
@@ -2427,7 +2282,6 @@ class CreateInstanceResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # 机器人唯一标识
         self.instance_id = instance_id
         # Id of the request
         self.request_id = request_id
@@ -2506,9 +2360,7 @@ class CreateInstancePublishTaskRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人唯一标识
         self.instance_id = instance_id
 
     def validate(self):
@@ -2547,21 +2399,13 @@ class CreateInstancePublishTaskResponseBody(TeaModel):
         response: str = None,
         status: str = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # job失败信息
         self.error = error
-        # 任务Id
         self.id = id
-        # 任务修改的 UTC 时间
         self.modify_time = modify_time
-        # 请求Id
         self.request_id = request_id
-        # 任务Id
         self.response = response
-        # 任务状态
         self.status = status
 
     def validate(self):
@@ -2666,16 +2510,11 @@ class CreateIntentRequestIntentDefinitionSlotInfos(TeaModel):
         slot_id: str = None,
         value: str = None,
     ):
-        # 是否数组
         self.array = array
-        # 是否脱敏
         self.encrypt = encrypt
-        # 是否交互式
         self.interactive = interactive
-        # 槽位名
         self.name = name
         self.slot_id = slot_id
-        # 关联的实体名
         self.value = value
 
     def validate(self):
@@ -2725,11 +2564,8 @@ class CreateIntentRequestIntentDefinition(TeaModel):
         intent_name: str = None,
         slot_infos: List[CreateIntentRequestIntentDefinitionSlotInfos] = None,
     ):
-        # 意图别名
         self.alias_name = alias_name
-        # 意图名称
         self.intent_name = intent_name
-        # 槽位信息
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -2775,11 +2611,8 @@ class CreateIntentRequest(TeaModel):
         instance_id: str = None,
         intent_definition: CreateIntentRequestIntentDefinition = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图定义结构体
         self.intent_definition = intent_definition
 
     def validate(self):
@@ -2819,11 +2652,8 @@ class CreateIntentShrinkRequest(TeaModel):
         instance_id: str = None,
         intent_definition_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图定义结构体
         self.intent_definition_shrink = intent_definition_shrink
 
     def validate(self):
@@ -2937,9 +2767,7 @@ class CreateLgfRequestLgfDefinition(TeaModel):
         intent_id: int = None,
         rule_text: str = None,
     ):
-        # 意图ID
         self.intent_id = intent_id
-        # LGF配置
         self.rule_text = rule_text
 
     def validate(self):
@@ -2973,9 +2801,7 @@ class CreateLgfRequest(TeaModel):
         instance_id: str = None,
         lgf_definition: CreateLgfRequestLgfDefinition = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.lgf_definition = lgf_definition
 
@@ -3016,9 +2842,7 @@ class CreateLgfShrinkRequest(TeaModel):
         instance_id: str = None,
         lgf_definition_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.lgf_definition_shrink = lgf_definition_shrink
 
@@ -3056,6 +2880,7 @@ class CreateLgfResponseBody(TeaModel):
         lgf_id: int = None,
         request_id: str = None,
     ):
+        # LGF ID
         self.lgf_id = lgf_id
         self.request_id = request_id
 
@@ -3134,11 +2959,8 @@ class CreatePerspectiveRequest(TeaModel):
         description: str = None,
         name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 视角描述
         self.description = description
-        # 视角名称，长度不超过50字
         self.name = name
 
     def validate(self):
@@ -3175,9 +2997,7 @@ class CreatePerspectiveResponseBody(TeaModel):
         perspective_id: str = None,
         request_id: str = None,
     ):
-        # 视角主键（code_id）
         self.perspective_id = perspective_id
-        # 请求Id
         self.request_id = request_id
 
     def validate(self):
@@ -3255,11 +3075,8 @@ class CreatePublishTaskRequest(TeaModel):
         biz_type: str = None,
         data_id_list: List[str] = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 发布单元类型，机器人发布请使用 CreateInstancePublishTask API
         self.biz_type = biz_type
-        # 附加发布信息，当前支持：如果BizType是faq，此字段填写类目Id，表示只发布这些类目下面的知识
         self.data_id_list = data_id_list
 
     def validate(self):
@@ -3297,11 +3114,8 @@ class CreatePublishTaskShrinkRequest(TeaModel):
         biz_type: str = None,
         data_id_list_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 发布单元类型，机器人发布请使用 CreateInstancePublishTask API
         self.biz_type = biz_type
-        # 附加发布信息，当前支持：如果BizType是faq，此字段填写类目Id，表示只发布这些类目下面的知识
         self.data_id_list_shrink = data_id_list_shrink
 
     def validate(self):
@@ -3344,21 +3158,13 @@ class CreatePublishTaskResponseBody(TeaModel):
         response: str = None,
         status: str = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # job失败信息
         self.error = error
-        # 任务Id
         self.id = id
-        # 任务修改的 UTC 时间
         self.modify_time = modify_time
-        # 请求Id
         self.request_id = request_id
-        # 任务Id
         self.response = response
-        # 任务状态
         self.status = status
 
     def validate(self):
@@ -3460,11 +3266,8 @@ class CreateSimQuestionRequest(TeaModel):
         knowledge_id: int = None,
         title: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识ID
         self.knowledge_id = knowledge_id
-        # 相似问标题，字数上限-120
         self.title = title
 
     def validate(self):
@@ -3502,7 +3305,6 @@ class CreateSimQuestionResponseBody(TeaModel):
         sim_question_id: int = None,
     ):
         self.request_id = request_id
-        # 相似问ID
         self.sim_question_id = sim_question_id
 
     def validate(self):
@@ -3582,15 +3384,10 @@ class CreateSolutionRequest(TeaModel):
         knowledge_id: int = None,
         perspective_codes: List[str] = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 答案内容
         self.content = content
-        # 答案类型
         self.content_type = content_type
-        # 知识ID
         self.knowledge_id = knowledge_id
-        # 视角code列表
         self.perspective_codes = perspective_codes
 
     def validate(self):
@@ -3636,7 +3433,6 @@ class CreateSolutionResponseBody(TeaModel):
         solution_id: int = None,
     ):
         self.request_id = request_id
-        # 答案ID
         self.solution_id = solution_id
 
     def validate(self):
@@ -3714,11 +3510,8 @@ class CreateUserSayRequestUserSayDefinitionSlotInfos(TeaModel):
         slot_id: str = None,
         start_index: int = None,
     ):
-        # 槽位在意图话术中的结束下标（不含）
         self.end_index = end_index
-        # 划槽ID
         self.slot_id = slot_id
-        # 槽位在意图话术中的起始下标
         self.start_index = start_index
 
     def validate(self):
@@ -3756,11 +3549,8 @@ class CreateUserSayRequestUserSayDefinition(TeaModel):
         intent_id: int = None,
         slot_infos: List[CreateUserSayRequestUserSayDefinitionSlotInfos] = None,
     ):
-        # 用户话术
         self.content = content
-        # 意图ID
         self.intent_id = intent_id
-        # 划槽信息
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -3806,9 +3596,7 @@ class CreateUserSayRequest(TeaModel):
         instance_id: str = None,
         user_say_definition: CreateUserSayRequestUserSayDefinition = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.user_say_definition = user_say_definition
 
@@ -3849,9 +3637,7 @@ class CreateUserSayShrinkRequest(TeaModel):
         instance_id: str = None,
         user_say_definition_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.user_say_definition_shrink = user_say_definition_shrink
 
@@ -3966,9 +3752,7 @@ class DeleteCategoryRequest(TeaModel):
         agent_key: str = None,
         category_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 类目ID
         self.category_id = category_id
 
     def validate(self):
@@ -4072,7 +3856,6 @@ class DeleteConnQuestionRequest(TeaModel):
         agent_key: str = None,
         outline_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.outline_id = outline_id
 
@@ -4178,11 +3961,8 @@ class DeleteDSEntityRequest(TeaModel):
         entity_id: int = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体ID
         self.entity_id = entity_id
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -4298,13 +4078,9 @@ class DeleteDSEntityValueRequest(TeaModel):
         entity_value_id: int = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体ID
         self.entity_id = entity_id
-        # 实体成员ID
         self.entity_value_id = entity_value_id
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -4422,9 +4198,7 @@ class DeleteFaqRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识ID，创建知识该值为空
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -4528,9 +4302,7 @@ class DeleteInstanceRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -4570,23 +4342,14 @@ class DeleteInstanceResponseBody(TeaModel):
         response: int = None,
         status: str = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # 任务创建人Id
         self.create_user_id = create_user_id
-        # 任务创建人
         self.create_user_name = create_user_name
-        # 错误信息
         self.error = error
-        # 任务id
         self.id = id
-        # 请求Id
         self.request_id = request_id
-        # 任务id
         self.response = response
-        # 任务状态，可以在GetInstancePublishTaskState API 了解更多的状态
         self.status = status
 
     def validate(self):
@@ -4692,11 +4455,8 @@ class DeleteIntentRequest(TeaModel):
         instance_id: str = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图ID
         self.intent_id = intent_id
 
     def validate(self):
@@ -4812,11 +4572,10 @@ class DeleteLgfRequest(TeaModel):
         intent_id: int = None,
         lgf_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.intent_id = intent_id
+        # lgf Id
         self.lgf_id = lgf_id
 
     def validate(self):
@@ -4857,6 +4616,7 @@ class DeleteLgfResponseBody(TeaModel):
         lgf_id: int = None,
         request_id: str = None,
     ):
+        # LGF ID
         self.lgf_id = lgf_id
         self.request_id = request_id
 
@@ -4934,9 +4694,7 @@ class DeletePerspectiveRequest(TeaModel):
         agent_key: str = None,
         perspective_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 视角主键（code_id）
         self.perspective_id = perspective_id
 
     def validate(self):
@@ -4969,9 +4727,7 @@ class DeletePerspectiveResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # 请求Id
         self.request_id = request_id
-        # 删除视角的结果
         self.result = result
 
     def validate(self):
@@ -5048,9 +4804,7 @@ class DeleteSimQuestionRequest(TeaModel):
         agent_key: str = None,
         sim_question_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 相似问ID
         self.sim_question_id = sim_question_id
 
     def validate(self):
@@ -5154,9 +4908,7 @@ class DeleteSolutionRequest(TeaModel):
         agent_key: str = None,
         solution_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 答案ID
         self.solution_id = solution_id
 
     def validate(self):
@@ -5262,7 +5014,6 @@ class DeleteUserSayRequest(TeaModel):
         intent_id: int = None,
         user_say_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.instance_id = instance_id
         self.intent_id = intent_id
@@ -5383,9 +5134,7 @@ class DescribeCategoryRequest(TeaModel):
         agent_key: str = None,
         category_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 类目ID
         self.category_id = category_id
 
     def validate(self):
@@ -5420,7 +5169,6 @@ class DescribeCategoryResponseBodyCategory(TeaModel):
         parent_category_id: int = None,
         status: int = None,
     ):
-        # 类目ID
         self.category_id = category_id
         self.name = name
         self.parent_category_id = parent_category_id
@@ -5464,7 +5212,6 @@ class DescribeCategoryResponseBody(TeaModel):
         category: DescribeCategoryResponseBodyCategory = None,
         request_id: str = None,
     ):
-        # 类目信息
         self.category = category
         self.request_id = request_id
 
@@ -5545,11 +5292,8 @@ class DescribeDSEntityRequest(TeaModel):
         entity_id: int = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体ID
         self.entity_id = entity_id
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -5598,17 +5342,13 @@ class DescribeDSEntityResponseBody(TeaModel):
         self.create_time = create_time
         self.create_user_id = create_user_id
         self.create_user_name = create_user_name
-        # 实体ID
         self.entity_id = entity_id
-        # 实体名称，仅支持中文、大小写字母、数字、下划线
         self.entity_name = entity_name
-        # 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
         self.entity_type = entity_type
         self.modify_time = modify_time
         self.modify_user_id = modify_user_id
         self.modify_user_name = modify_user_name
         self.request_id = request_id
-        # 系统实体code，如@sys.date
         self.sys_entity_code = sys_entity_code
 
     def validate(self):
@@ -5721,9 +5461,7 @@ class DescribeFaqRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识ID
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -5759,15 +5497,10 @@ class DescribeFaqResponseBodyOutlines(TeaModel):
         outline_id: int = None,
         title: str = None,
     ):
-        # 关联知识ID
         self.conn_question_id = conn_question_id
-        # 创建时间(UTC 时间)
         self.create_time = create_time
-        # 修改时间(UTC 时间)
         self.modify_time = modify_time
-        # 关联关系ID
         self.outline_id = outline_id
-        # 关联知识标题
         self.title = title
 
     def validate(self):
@@ -5814,13 +5547,9 @@ class DescribeFaqResponseBodySimQuestions(TeaModel):
         sim_question_id: int = None,
         title: str = None,
     ):
-        # 创建时间(UTC 时间)
         self.create_time = create_time
-        # 修改时间(UTC 时间)
         self.modify_time = modify_time
-        # 相似问ID
         self.sim_question_id = sim_question_id
-        # 相似问标题
         self.title = title
 
     def validate(self):
@@ -5866,19 +5595,12 @@ class DescribeFaqResponseBodySolutions(TeaModel):
         plain_text: str = None,
         solution_id: int = None,
     ):
-        # 答案内容
         self.content = content
-        # 答案类型(0纯文本，1富文本）
         self.content_type = content_type
-        # 创建时间(UTC 时间)
         self.create_time = create_time
-        # 修改时间(UTC 时间)
         self.modify_time = modify_time
-        # 视角code列表
         self.perspective_codes = perspective_codes
-        # 答案纯文本内容
         self.plain_text = plain_text
-        # 答案ID
         self.solution_id = solution_id
 
     def validate(self):
@@ -5944,34 +5666,20 @@ class DescribeFaqResponseBody(TeaModel):
         status: int = None,
         title: str = None,
     ):
-        # 类目ID
         self.category_id = category_id
-        # 创建时间（UTC时间）
         self.create_time = create_time
-        # 创建人
         self.create_user_name = create_user_name
-        # 知识生效状态,根据StartDate, EndDate计算出来: 20-生效中, 21-已失效, 22-待生效
         self.effect_status = effect_status
-        # 失效时间（UTC时间）
         self.end_date = end_date
-        # 知识ID
         self.knowledge_id = knowledge_id
-        # 修改时间（UTC时间）
         self.modify_time = modify_time
-        # 修改人
         self.modify_user_name = modify_user_name
-        # 关联问列表
         self.outlines = outlines
         self.request_id = request_id
-        # 相似问列表
         self.sim_questions = sim_questions
-        # 答案列表
         self.solutions = solutions
-        # 生效时间（UTC时间）
         self.start_date = start_date
-        # 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
         self.status = status
-        # 标题
         self.title = title
 
     def validate(self):
@@ -6126,9 +5834,7 @@ class DescribeInstanceRequest(TeaModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -6162,11 +5868,8 @@ class DescribeInstanceResponseBodyCategories(TeaModel):
         name: str = None,
         parent_category_id: int = None,
     ):
-        # 类目id
         self.category_id = category_id
-        # 类目名称
         self.name = name
-        # 父类目id，-1表示根目录
         self.parent_category_id = parent_category_id
 
     def validate(self):
@@ -6212,27 +5915,16 @@ class DescribeInstanceResponseBody(TeaModel):
         robot_type: str = None,
         time_zone: str = None,
     ):
-        # 机器人头像的URL
         self.avatar = avatar
-        # 类目列表
         self.categories = categories
-        # 机器人创建的 UTC 时间
         self.create_time = create_time
-        # 机器人状态： EDITING(编辑中)、 PUBLISHED(已发布)
         self.edit_status = edit_status
-        # 机器人唯一标识
         self.instance_id = instance_id
-        # 机器人备注
         self.introduction = introduction
-        # 机器人服务的语言，如zh-cn、en-us
         self.language_code = language_code
-        # 机器人名称
         self.name = name
-        # 请求Id
         self.request_id = request_id
-        # 机器人类型
         self.robot_type = robot_type
-        # 机器人的时区，参考《公共-时区码》
         self.time_zone = time_zone
 
     def validate(self):
@@ -6354,11 +6046,8 @@ class DescribeIntentRequest(TeaModel):
         instance_id: str = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图ID
         self.intent_id = intent_id
 
     def validate(self):
@@ -6591,9 +6280,7 @@ class DescribePerspectiveRequest(TeaModel):
         agent_key: str = None,
         perspective_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 视角Id
         self.perspective_id = perspective_id
 
     def validate(self):
@@ -6632,21 +6319,13 @@ class DescribePerspectiveResponseBody(TeaModel):
         self_define: bool = None,
         status: int = None,
     ):
-        # 创建时间 UTC时间
         self.create_time = create_time
-        # 修改时间 UTC时间
         self.modify_time = modify_time
-        # 视角名称
         self.name = name
-        # 视角编码（用于问答api）
         self.perspective_code = perspective_code
-        # 视角主键（code_id）
         self.perspective_id = perspective_id
-        # 请求Id
         self.request_id = request_id
-        # 是否自定义
         self.self_define = self_define
-        # 数据状态：3：选中；1：未选中
         self.status = status
 
     def validate(self):
@@ -6751,17 +6430,11 @@ class FeedbackRequest(TeaModel):
         message_id: str = None,
         session_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # good-点赞、bad-点踩
         self.feedback = feedback
-        # 点赞、点踩的内容
         self.feedback_content = feedback_content
-        # 机器人ID
         self.instance_id = instance_id
-        # 会话窗单次会话标识
         self.message_id = message_id
-        # 会话Session标识，标识：IM唯一标识会话
         self.session_id = session_id
 
     def validate(self):
@@ -6811,11 +6484,8 @@ class FeedbackResponseBody(TeaModel):
         message_id: str = None,
         request_id: str = None,
     ):
-        # good-点赞、bad-点踩
         self.feedback = feedback
-        # 会话窗单次会话标识
         self.message_id = message_id
-        # 请求id
         self.request_id = request_id
 
     def validate(self):
@@ -7055,9 +6725,7 @@ class GetAsyncResultRequest(TeaModel):
         agent_key: str = None,
         task_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 从Chat接口返回参数中获取TASK_ID
         self.task_id = task_id
 
     def validate(self):
@@ -7174,11 +6842,8 @@ class GetInstancePublishTaskStateRequest(TeaModel):
         id: int = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 任务ID
         self.id = id
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -7223,25 +6888,15 @@ class GetInstancePublishTaskStateResponseBody(TeaModel):
         status: str = None,
         warnings: Dict[str, Any] = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # job失败信息
         self.error = error
-        # 各子发布模块的错误信息，key是子发布模块，value是错误信息
         self.errors = errors
-        # 任务Id
         self.id = id
-        # 任务修改的 UTC 时间
         self.modify_time = modify_time
-        # 请求Id
         self.request_id = request_id
-        # 任务Id
         self.response = response
-        # 任务状态
         self.status = status
-        # 各子发布模块的警告信息，key是子发布模块，value是警告信息
         self.warnings = warnings
 
     def validate(self):
@@ -7350,9 +7005,7 @@ class GetPublishTaskStateRequest(TeaModel):
         agent_key: str = None,
         id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 任务ID
         self.id = id
 
     def validate(self):
@@ -7393,25 +7046,15 @@ class GetPublishTaskStateResponseBody(TeaModel):
         status: str = None,
         warnings: Dict[str, Any] = None,
     ):
-        # 业务类型列表
         self.biz_type_list = biz_type_list
-        # 任务创建的 UTC 时间
         self.create_time = create_time
-        # job失败信息
         self.error = error
-        # 各子发布模块的错误信息，key是子发布模块，value是错误信息
         self.errors = errors
-        # 任务Id
         self.id = id
-        # 任务修改的 UTC 时间
         self.modify_time = modify_time
-        # 请求Id
         self.request_id = request_id
-        # 任务Id
         self.response = response
-        # 任务状态
         self.status = status
-        # 各子发布模块的警告信息，key是子发布模块，value是警告信息
         self.warnings = warnings
 
     def validate(self):
@@ -7514,6 +7157,140 @@ class GetPublishTaskStateResponse(TeaModel):
         return self
 
 
+class InitIMConnectRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        from_: str = None,
+        user_access_token: str = None,
+    ):
+        self.agent_key = agent_key
+        self.from_ = from_
+        self.user_access_token = user_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.user_access_token is not None:
+            result['UserAccessToken'] = self.user_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('UserAccessToken') is not None:
+            self.user_access_token = m.get('UserAccessToken')
+        return self
+
+
+class InitIMConnectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class InitIMConnectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitIMConnectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitIMConnectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class LinkInstanceCategoryRequest(TeaModel):
     def __init__(
         self,
@@ -7521,11 +7298,8 @@ class LinkInstanceCategoryRequest(TeaModel):
         category_ids: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识类目Id
         self.category_ids = category_ids
-        # 机器人唯一标识
         self.instance_id = instance_id
 
     def validate(self):
@@ -7561,7 +7335,6 @@ class LinkInstanceCategoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求Id
         self.request_id = request_id
 
     def validate(self):
@@ -7810,9 +7583,7 @@ class ListCategoryRequest(TeaModel):
         agent_key: str = None,
         parent_category_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 父类目ID
         self.parent_category_id = parent_category_id
 
     def validate(self):
@@ -7847,7 +7618,6 @@ class ListCategoryResponseBodyCategories(TeaModel):
         parent_category_id: int = None,
         status: int = None,
     ):
-        # 类目ID
         self.category_id = category_id
         self.name = name
         self.parent_category_id = parent_category_id
@@ -7891,7 +7661,6 @@ class ListCategoryResponseBody(TeaModel):
         categories: List[ListCategoryResponseBodyCategories] = None,
         request_id: str = None,
     ):
-        # list结果
         self.categories = categories
         self.request_id = request_id
 
@@ -7977,7 +7746,6 @@ class ListConnQuestionRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.knowledge_id = knowledge_id
 
@@ -8014,15 +7782,10 @@ class ListConnQuestionResponseBodyOutlines(TeaModel):
         outline_id: int = None,
         title: str = None,
     ):
-        # 关联知识ID
         self.conn_question_id = conn_question_id
-        # 创建时间(UTC 时间)
         self.create_time = create_time
-        # 修改时间(UTC 时间)
         self.modify_time = modify_time
-        # 关联关系ID
         self.outline_id = outline_id
-        # 关联知识题目
         self.title = title
 
     def validate(self):
@@ -8156,13 +7919,9 @@ class ListDSEntityRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 为空：全量自定义实体（默认）
         self.entity_type = entity_type
-        # 机器人ID
         self.instance_id = instance_id
-        # 筛选项，contains匹配，范围：实体名称（未来扩展：实体成员、同义词）
         self.keyword = keyword
         self.page_number = page_number
         self.page_size = page_size
@@ -8230,7 +7989,6 @@ class ListDSEntityResponseBodyEntities(TeaModel):
         self.modify_time = modify_time
         self.modify_user_id = modify_user_id
         self.modify_user_name = modify_user_name
-        # 系统实体code，如@sys.date
         self.sys_entity_code = sys_entity_code
 
     def validate(self):
@@ -8403,19 +8161,12 @@ class ListDSEntityValueRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体ID
         self.entity_id = entity_id
-        # 实体成员ID
         self.entity_value_id = entity_value_id
-        # 机器人ID
         self.instance_id = instance_id
-        # 实体成员名称搜索关键词
         self.keyword = keyword
-        # 页码
         self.page_number = page_number
-        # 分页大小
         self.page_size = page_size
 
     def validate(self):
@@ -8631,15 +8382,10 @@ class ListInstanceRequest(TeaModel):
         page_size: int = None,
         robot_type: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 按机器人名称模糊搜索
         self.name = name
-        # 分页-第几页，默认1
         self.page_number = page_number
-        # 分页-页面大小，默认10
         self.page_size = page_size
-        # 按机器人类型筛选
         self.robot_type = robot_type
 
     def validate(self):
@@ -8689,19 +8435,12 @@ class ListInstanceResponseBodyInstances(TeaModel):
         name: str = None,
         robot_type: str = None,
     ):
-        # 机器人头像的URL
         self.avatar = avatar
-        # 机器人创建的 UTC 时间
         self.create_time = create_time
-        # 机器人唯一标识
         self.instance_id = instance_id
-        # 机器人备注
         self.introduction = introduction
-        # 机器人服务的语言
         self.language_code = language_code
-        # 机器人名称
         self.name = name
-        # 机器人类型
         self.robot_type = robot_type
 
     def validate(self):
@@ -8757,15 +8496,10 @@ class ListInstanceResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 机器人列表信息
         self.instances = instances
-        # 分页-第几页
         self.page_number = page_number
-        # 分页-页面大小
         self.page_size = page_size
-        # 请求Id
         self.request_id = request_id
-        # 总条数
         self.total_count = total_count
 
     def validate(self):
@@ -8865,11 +8599,8 @@ class ListIntentRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图名称
         self.intent_name = intent_name
         self.page_number = page_number
         self.page_size = page_size
@@ -8920,17 +8651,11 @@ class ListIntentResponseBodyIntentsSlotInfos(TeaModel):
         slot_id: str = None,
         value: str = None,
     ):
-        # 是否数组
         self.array = array
-        # 是否敏感
         self.encrypt = encrypt
-        # 是否交互式收集
         self.interactive = interactive
-        # 槽位名
         self.name = name
-        # 槽位ID
         self.slot_id = slot_id
-        # 槽位值（实体名）
         self.value = value
 
     def validate(self):
@@ -9175,13 +8900,9 @@ class ListLgfRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图ID
         self.intent_id = intent_id
-        # 筛选语义配置内容
         self.lgf_text = lgf_text
         self.page_number = page_number
         self.page_size = page_size
@@ -9235,15 +8956,11 @@ class ListLgfResponseBodyLgfs(TeaModel):
         modify_time: str = None,
         rule_text: str = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 意图ID
         self.intent_id = intent_id
         # LGF ID
         self.lgf_id = lgf_id
-        # 修改时间
         self.modify_time = modify_time
-        # LGF规则
         self.rule_text = rule_text
 
     def validate(self):
@@ -9391,9 +9108,7 @@ class ListSimQuestionRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识ID
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -9428,13 +9143,9 @@ class ListSimQuestionResponseBodySimQuestions(TeaModel):
         sim_question_id: int = None,
         title: str = None,
     ):
-        # 创建时间(UTC 时间)
         self.create_time = create_time
-        # 修改时间(UTC 时间)
         self.modify_time = modify_time
-        # 相似问ID
         self.sim_question_id = sim_question_id
-        # 相似问标题
         self.title = title
 
     def validate(self):
@@ -9476,7 +9187,6 @@ class ListSimQuestionResponseBody(TeaModel):
         sim_questions: List[ListSimQuestionResponseBodySimQuestions] = None,
     ):
         self.request_id = request_id
-        # 相似问列表
         self.sim_questions = sim_questions
 
     def validate(self):
@@ -9561,9 +9271,7 @@ class ListSolutionRequest(TeaModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识ID
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -9601,19 +9309,12 @@ class ListSolutionResponseBodySolutions(TeaModel):
         plain_text: str = None,
         solution_id: int = None,
     ):
-        # 答案内容
         self.content = content
-        # 答案类型(0纯文本，1富文本）
         self.content_type = content_type
-        # 创建时间(UTC 时间)
         self.create_time = create_time
-        # 修改时间(UTC 时间)
         self.modify_time = modify_time
-        # 视角code列表
         self.perspective_codes = perspective_codes
-        # 答案纯文本内容
         self.plain_text = plain_text
-        # 答案ID
         self.solution_id = solution_id
 
     def validate(self):
@@ -9667,7 +9368,6 @@ class ListSolutionResponseBody(TeaModel):
         solutions: List[ListSolutionResponseBodySolutions] = None,
     ):
         self.request_id = request_id
-        # 答案列表
         self.solutions = solutions
 
     def validate(self):
@@ -9756,13 +9456,9 @@ class ListUserSayRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 筛选用户话术
         self.content = content
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图ID
         self.intent_id = intent_id
         self.page_number = page_number
         self.page_size = page_size
@@ -9814,11 +9510,8 @@ class ListUserSayResponseBodyUserSaysSlotInfos(TeaModel):
         slot_id: str = None,
         start_index: int = None,
     ):
-        # 槽位在意图话术中的下标
         self.end_index = end_index
-        # 意图槽位ID
         self.slot_id = slot_id
-        # 槽位在意图话术中的下标
         self.start_index = start_index
 
     def validate(self):
@@ -10024,11 +9717,8 @@ class NluRequest(TeaModel):
         instance_id: str = None,
         utterance: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 用户表述
         self.utterance = utterance
 
     def validate(self):
@@ -10065,9 +9755,7 @@ class NluResponseBodyMessagesDialogHubNluInfoGlobalDictList(TeaModel):
         standard_word: str = None,
         word: str = None,
     ):
-        # 名词
         self.standard_word = standard_word
-        # 同义词
         self.word = word
 
     def validate(self):
@@ -10100,9 +9788,7 @@ class NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList(TeaModel):
         standard_word: str = None,
         word: str = None,
     ):
-        # 名词
         self.standard_word = standard_word
-        # 同义词
         self.word = word
 
     def validate(self):
@@ -10135,9 +9821,7 @@ class NluResponseBodyMessagesDialogHubNluInfo(TeaModel):
         global_dict_list: List[NluResponseBodyMessagesDialogHubNluInfoGlobalDictList] = None,
         global_sensitive_word_list: List[NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList] = None,
     ):
-        # 全局名词列表
         self.global_dict_list = global_dict_list
-        # 全局敏感词列表
         self.global_sensitive_word_list = global_sensitive_word_list
 
     def validate(self):
@@ -10189,13 +9873,9 @@ class NluResponseBodyMessagesDsNluInfoEntityList(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # 实体名称
         self.name = name
-        # 实体原词（实体成员）
         self.origin = origin
-        # 实体类型，当前只有text类型
         self.type = type
-        # 实体同义词
         self.value = value
 
     def validate(self):
@@ -10238,13 +9918,9 @@ class NluResponseBodyMessagesDsNluInfoIntentListSlotList(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # 实体名称
         self.name = name
-        # 实体原词（实体成员）
         self.origin = origin
-        # 实体类型，当前只有text类型
         self.type = type
-        # 实体同义词
         self.value = value
 
     def validate(self):
@@ -10289,17 +9965,11 @@ class NluResponseBodyMessagesDsNluInfoIntentList(TeaModel):
         score: float = None,
         slot_list: List[NluResponseBodyMessagesDsNluInfoIntentListSlotList] = None,
     ):
-        # 意图id
         self.intent_id = intent_id
-        # 匹配详情（匹配过程）
         self.match_detail = match_detail
-        # 匹配类型，其枚举值含义如下：  Similarity：query与意图通过意图话术相似度匹配 Lgf：query与意图通过LGF匹配 Classify：query与意图通过模型训练匹配 FewShotLearning：query与意图通过系统内置fewshot模型匹配 BuildIn： query与系统内置意图匹配
         self.match_type = match_type
-        # 意图名称
         self.name = name
-        # 分数
         self.score = score
-        # 命中意图的槽位列表
         self.slot_list = slot_list
 
     def validate(self):
@@ -10356,9 +10026,7 @@ class NluResponseBodyMessagesDsNluInfo(TeaModel):
         entity_list: List[NluResponseBodyMessagesDsNluInfoEntityList] = None,
         intent_list: List[NluResponseBodyMessagesDsNluInfoIntentList] = None,
     ):
-        # 实体列表
         self.entity_list = entity_list
-        # 意图列表
         self.intent_list = intent_list
 
     def validate(self):
@@ -10408,9 +10076,7 @@ class NluResponseBodyMessages(TeaModel):
         dialog_hub_nlu_info: NluResponseBodyMessagesDialogHubNluInfo = None,
         ds_nlu_info: NluResponseBodyMessagesDsNluInfo = None,
     ):
-        # 对话中控的nlu信息
         self.dialog_hub_nlu_info = dialog_hub_nlu_info
-        # 对话工厂的nlu信息
         self.ds_nlu_info = ds_nlu_info
 
     def validate(self):
@@ -10449,11 +10115,8 @@ class NluResponseBody(TeaModel):
         messages: List[NluResponseBodyMessages] = None,
         request_id: str = None,
     ):
-        # 本条语言理解应答消息的ID
         self.message_id = message_id
-        # 消息的列表
         self.messages = messages
-        # 请求id
         self.request_id = request_id
 
     def validate(self):
@@ -10541,7 +10204,6 @@ class QueryPerspectivesRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
 
     def validate(self):
@@ -10575,19 +10237,12 @@ class QueryPerspectivesResponseBodyPerspectives(TeaModel):
         self_define: bool = None,
         status: int = None,
     ):
-        # 创建时间 UTC时间
         self.create_time = create_time
-        # 修改时间 UTC时间
         self.modify_time = modify_time
-        # 视角名称
         self.name = name
-        # 视角编码（用于问答api）
         self.perspective_code = perspective_code
-        # 视角主键（code_id）
         self.perspective_id = perspective_id
-        # 是否自定义
         self.self_define = self_define
-        # 数据状态：3：选中；1：未选中
         self.status = status
 
     def validate(self):
@@ -10640,9 +10295,7 @@ class QueryPerspectivesResponseBody(TeaModel):
         perspectives: List[QueryPerspectivesResponseBodyPerspectives] = None,
         request_id: str = None,
     ):
-        # 视角列表
         self.perspectives = perspectives
-        # 请求Id
         self.request_id = request_id
 
     def validate(self):
@@ -10742,39 +10395,22 @@ class SearchFaqRequest(TeaModel):
         start_time_end: str = None,
         status: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 类目唯一标识
         self.category_ids = category_ids
-        # 创建开始时间
         self.create_time_begin = create_time_begin
-        # 创建结束时间
         self.create_time_end = create_time_end
-        # 创建人
         self.create_user_name = create_user_name
-        # 失效开始时间
         self.end_time_begin = end_time_begin
-        # 失效结束时间
         self.end_time_end = end_time_end
-        # 关键字
         self.keyword = keyword
-        # 修改开始时间
         self.modify_time_begin = modify_time_begin
-        # 修改结束时间
         self.modify_time_end = modify_time_end
-        # 修改人
         self.modify_user_name = modify_user_name
-        # 页码 默认1
         self.page_number = page_number
-        # 每页数量，默认10，最大50
         self.page_size = page_size
-        # 搜索范围： 1-搜索标题相似问, 2-搜索答案, 3-搜索全部
         self.search_scope = search_scope
-        # 生效开始时间
         self.start_time_begin = start_time_begin
-        # 生效结束时间
         self.start_time_end = start_time_end
-        # 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
         self.status = status
 
     def validate(self):
@@ -10882,39 +10518,22 @@ class SearchFaqShrinkRequest(TeaModel):
         start_time_end: str = None,
         status: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 类目唯一标识
         self.category_ids_shrink = category_ids_shrink
-        # 创建开始时间
         self.create_time_begin = create_time_begin
-        # 创建结束时间
         self.create_time_end = create_time_end
-        # 创建人
         self.create_user_name = create_user_name
-        # 失效开始时间
         self.end_time_begin = end_time_begin
-        # 失效结束时间
         self.end_time_end = end_time_end
-        # 关键字
         self.keyword = keyword
-        # 修改开始时间
         self.modify_time_begin = modify_time_begin
-        # 修改结束时间
         self.modify_time_end = modify_time_end
-        # 修改人
         self.modify_user_name = modify_user_name
-        # 页码 默认1
         self.page_number = page_number
-        # 每页数量，默认10，最大50
         self.page_size = page_size
-        # 搜索范围： 1-搜索标题相似问, 2-搜索答案, 3-搜索全部
         self.search_scope = search_scope
-        # 生效开始时间
         self.start_time_begin = start_time_begin
-        # 生效结束时间
         self.start_time_end = start_time_end
-        # 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
         self.status = status
 
     def validate(self):
@@ -11018,31 +10637,18 @@ class SearchFaqResponseBodyFaqHits(TeaModel):
         status: int = None,
         title: str = None,
     ):
-        # 类目ID
         self.category_id = category_id
-        # 创建时间（UTC时间）
         self.create_time = create_time
-        # 创建人ID
         self.create_user_id = create_user_id
-        # 创建人
         self.create_user_name = create_user_name
-        # 知识生效状态,根据StartDate, EndDate计算出来: 20-生效中, 21-已失效, 22-待生效
         self.effect_status = effect_status
-        # 命中的相似问
         self.hit_similar_titles = hit_similar_titles
-        # 命中的答案
         self.hit_solutions = hit_solutions
-        # 知识ID
         self.knowledge_id = knowledge_id
-        # 修改时间（UTC时间）
         self.modify_time = modify_time
-        # 修改人ID
         self.modify_user_id = modify_user_id
-        # 修改人
         self.modify_user_name = modify_user_name
-        # 知识状态: -1-已删除未发布, 1-未发布, 2-已发布, 3-已更新未发布
         self.status = status
-        # 标题
         self.title = title
 
     def validate(self):
@@ -11123,12 +10729,9 @@ class SearchFaqResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.faq_hits = faq_hits
-        # 页码 默认1
         self.page_number = page_number
-        # 每页数量，默认10，最大500
         self.page_size = page_size
         self.request_id = request_id
-        # 总条数
         self.total_count = total_count
 
     def validate(self):
@@ -11226,11 +10829,8 @@ class UpdateCategoryRequest(TeaModel):
         category_id: int = None,
         name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 类目ID
         self.category_id = category_id
-        # 类目名称
         self.name = name
 
     def validate(self):
@@ -11339,7 +10939,6 @@ class UpdateConnQuestionRequest(TeaModel):
         conn_question_id: int = None,
         outline_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.conn_question_id = conn_question_id
         self.outline_id = outline_id
@@ -11452,15 +11051,10 @@ class UpdateDSEntityRequest(TeaModel):
         entity_type: str = None,
         instance_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体ID
         self.entity_id = entity_id
-        # 实体名称，仅支持中文、大小写字母、数字、下划线
         self.entity_name = entity_name
-        # 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
         self.entity_type = entity_type
-        # 机器人ID
         self.instance_id = instance_id
 
     def validate(self):
@@ -11586,17 +11180,11 @@ class UpdateDSEntityValueRequest(TeaModel):
         instance_id: str = None,
         synonyms: List[str] = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体类型为synonyms时，表示实体归一化值；当实体类型为regex时，表示正则表达式文本
         self.content = content
-        # 实体ID，修改实体成员时可为空
         self.entity_id = entity_id
-        # 实体成员ID，创建实体成员时为空
         self.entity_value_id = entity_value_id
-        # 机器人ID
         self.instance_id = instance_id
-        # 实体同义词
         self.synonyms = synonyms
 
     def validate(self):
@@ -11649,17 +11237,11 @@ class UpdateDSEntityValueShrinkRequest(TeaModel):
         instance_id: str = None,
         synonyms_shrink: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 实体类型为synonyms时，表示实体归一化值；当实体类型为regex时，表示正则表达式文本
         self.content = content
-        # 实体ID，修改实体成员时可为空
         self.entity_id = entity_id
-        # 实体成员ID，创建实体成员时为空
         self.entity_value_id = entity_value_id
-        # 机器人ID
         self.instance_id = instance_id
-        # 实体同义词
         self.synonyms_shrink = synonyms_shrink
 
     def validate(self):
@@ -11789,17 +11371,11 @@ class UpdateFaqRequest(TeaModel):
         start_date: str = None,
         title: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 知识的类目ID
         self.category_id = category_id
-        # 失效时间
         self.end_date = end_date
-        # 知识ID
         self.knowledge_id = knowledge_id
-        # 生效时间
         self.start_date = start_date
-        # 知识标题
         self.title = title
 
     def validate(self):
@@ -11921,13 +11497,9 @@ class UpdateInstanceRequest(TeaModel):
         introduction: str = None,
         name: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 要修改的机器人备注
         self.introduction = introduction
-        # 要修改的机器人名称
         self.name = name
 
     def validate(self):
@@ -11967,7 +11539,6 @@ class UpdateInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -12044,16 +11615,11 @@ class UpdateIntentRequestIntentDefinitionSlotInfos(TeaModel):
         slot_id: str = None,
         value: str = None,
     ):
-        # 是否数组
         self.array = array
-        # 是否脱敏
         self.encrypt = encrypt
-        # 是否交互式
         self.interactive = interactive
-        # 槽位名
         self.name = name
         self.slot_id = slot_id
-        # 关联的实体名
         self.value = value
 
     def validate(self):
@@ -12103,11 +11669,8 @@ class UpdateIntentRequestIntentDefinition(TeaModel):
         intent_name: str = None,
         slot_infos: List[UpdateIntentRequestIntentDefinitionSlotInfos] = None,
     ):
-        # 意图别名
         self.alias_name = alias_name
-        # 意图名称
         self.intent_name = intent_name
-        # 槽位信息
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -12154,13 +11717,9 @@ class UpdateIntentRequest(TeaModel):
         intent_definition: UpdateIntentRequestIntentDefinition = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图定义结构体
         self.intent_definition = intent_definition
-        # 意图ID
         self.intent_id = intent_id
 
     def validate(self):
@@ -12205,13 +11764,9 @@ class UpdateIntentShrinkRequest(TeaModel):
         intent_definition_shrink: str = None,
         intent_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
-        # 意图定义结构体
         self.intent_definition_shrink = intent_definition_shrink
-        # 意图ID
         self.intent_id = intent_id
 
     def validate(self):
@@ -12329,9 +11884,7 @@ class UpdateLgfRequestLgfDefinition(TeaModel):
         intent_id: int = None,
         rule_text: str = None,
     ):
-        # 意图ID
         self.intent_id = intent_id
-        # LGF配置
         self.rule_text = rule_text
 
     def validate(self):
@@ -12366,9 +11919,7 @@ class UpdateLgfRequest(TeaModel):
         lgf_definition: UpdateLgfRequestLgfDefinition = None,
         lgf_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.lgf_definition = lgf_definition
         # LGF ID
@@ -12416,9 +11967,7 @@ class UpdateLgfShrinkRequest(TeaModel):
         lgf_definition_shrink: str = None,
         lgf_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.lgf_definition_shrink = lgf_definition_shrink
         # LGF ID
@@ -12540,11 +12089,8 @@ class UpdatePerspectiveRequest(TeaModel):
         name: str = None,
         perspective_id: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 视角名称
         self.name = name
-        # 视角主键（code_id）
         self.perspective_id = perspective_id
 
     def validate(self):
@@ -12580,7 +12126,6 @@ class UpdatePerspectiveResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求Id
         self.request_id = request_id
 
     def validate(self):
@@ -12654,11 +12199,8 @@ class UpdateSimQuestionRequest(TeaModel):
         sim_question_id: int = None,
         title: str = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 相似问ID
         self.sim_question_id = sim_question_id
-        # 相似问标题，字数上限-120
         self.title = title
 
     def validate(self):
@@ -12769,15 +12311,10 @@ class UpdateSolutionRequest(TeaModel):
         perspective_codes: List[str] = None,
         solution_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 答案内容
         self.content = content
-        # 答案类型
         self.content_type = content_type
-        # 视角code列表
         self.perspective_codes = perspective_codes
-        # 答案ID
         self.solution_id = solution_id
 
     def validate(self):
@@ -12894,11 +12431,8 @@ class UpdateUserSayRequestUserSayDefinitionSlotInfos(TeaModel):
         slot_id: str = None,
         start_index: int = None,
     ):
-        # 槽位在意图话术中的结束下标（不含）
         self.end_index = end_index
-        # 划槽ID
         self.slot_id = slot_id
-        # 槽位在意图话术中的起始下标
         self.start_index = start_index
 
     def validate(self):
@@ -12936,11 +12470,8 @@ class UpdateUserSayRequestUserSayDefinition(TeaModel):
         intent_id: int = None,
         slot_infos: List[UpdateUserSayRequestUserSayDefinitionSlotInfos] = None,
     ):
-        # 用户话术
         self.content = content
-        # 意图ID
         self.intent_id = intent_id
-        # 划槽信息
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -12987,12 +12518,9 @@ class UpdateUserSayRequest(TeaModel):
         user_say_definition: UpdateUserSayRequestUserSayDefinition = None,
         user_say_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.user_say_definition = user_say_definition
-        # 用户话术ID
         self.user_say_id = user_say_id
 
     def validate(self):
@@ -13037,12 +12565,9 @@ class UpdateUserSayShrinkRequest(TeaModel):
         user_say_definition_shrink: str = None,
         user_say_id: int = None,
     ):
-        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
-        # 机器人ID
         self.instance_id = instance_id
         self.user_say_definition_shrink = user_say_definition_shrink
-        # 用户话术ID
         self.user_say_id = user_say_id
 
     def validate(self):
