@@ -2133,6 +2133,64 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.CommonApplySyncHeaders()
         return await self.common_apply_sync_with_options_async(request, headers, runtime)
 
+    def corp_auth_link_info_query_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CorpAuthLinkInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/corp-authority-link/v1/info',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def corp_auth_link_info_query_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CorpAuthLinkInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/corp-authority-link/v1/info',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def corp_auth_link_info_query(self) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.corp_auth_link_info_query_with_options(headers, runtime)
+
+    async def corp_auth_link_info_query_async(self) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.corp_auth_link_info_query_with_options_async(headers, runtime)
+
     def corp_token_with_options(
         self,
         request: btrip_open_20220520_models.CorpTokenRequest,

@@ -1,3 +1,6 @@
+2022-12-26 Version: 1.0.35
+- Add get CorpLink.
+
 2022-12-16 Version: 1.0.34
 - Add result param leave_status.
 

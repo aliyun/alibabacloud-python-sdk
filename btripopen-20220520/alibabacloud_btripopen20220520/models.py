@@ -8841,6 +8841,225 @@ class CommonApplySyncResponse(TeaModel):
         return self
 
 
+class CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps(TeaModel):
+    def __init__(
+        self,
+        corp_name: str = None,
+        open_corp_id: str = None,
+        true_corp_id: str = None,
+    ):
+        self.corp_name = corp_name
+        self.open_corp_id = open_corp_id
+        self.true_corp_id = true_corp_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.corp_name is not None:
+            result['corp_name'] = self.corp_name
+        if self.open_corp_id is not None:
+            result['open_corp_id'] = self.open_corp_id
+        if self.true_corp_id is not None:
+            result['true_corp_id'] = self.true_corp_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('corp_name') is not None:
+            self.corp_name = m.get('corp_name')
+        if m.get('open_corp_id') is not None:
+            self.open_corp_id = m.get('open_corp_id')
+        if m.get('true_corp_id') is not None:
+            self.true_corp_id = m.get('true_corp_id')
+        return self
+
+
+class CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp(TeaModel):
+    def __init__(
+        self,
+        corp_name: str = None,
+        open_corp_id: str = None,
+        true_corp_id: str = None,
+    ):
+        self.corp_name = corp_name
+        self.open_corp_id = open_corp_id
+        self.true_corp_id = true_corp_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.corp_name is not None:
+            result['corp_name'] = self.corp_name
+        if self.open_corp_id is not None:
+            result['open_corp_id'] = self.open_corp_id
+        if self.true_corp_id is not None:
+            result['true_corp_id'] = self.true_corp_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('corp_name') is not None:
+            self.corp_name = m.get('corp_name')
+        if m.get('open_corp_id') is not None:
+            self.open_corp_id = m.get('open_corp_id')
+        if m.get('true_corp_id') is not None:
+            self.true_corp_id = m.get('true_corp_id')
+        return self
+
+
+class CorpAuthLinkInfoQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        link_corps: List[CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps] = None,
+        org_corp: CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp = None,
+    ):
+        self.link_corps = link_corps
+        self.org_corp = org_corp
+
+    def validate(self):
+        if self.link_corps:
+            for k in self.link_corps:
+                if k:
+                    k.validate()
+        if self.org_corp:
+            self.org_corp.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['link_corps'] = []
+        if self.link_corps is not None:
+            for k in self.link_corps:
+                result['link_corps'].append(k.to_map() if k else None)
+        if self.org_corp is not None:
+            result['org_corp'] = self.org_corp.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.link_corps = []
+        if m.get('link_corps') is not None:
+            for k in m.get('link_corps'):
+                temp_model = CorpAuthLinkInfoQueryResponseBodyModuleLinkCorps()
+                self.link_corps.append(temp_model.from_map(k))
+        if m.get('org_corp') is not None:
+            temp_model = CorpAuthLinkInfoQueryResponseBodyModuleOrgCorp()
+            self.org_corp = temp_model.from_map(m['org_corp'])
+        return self
+
+
+class CorpAuthLinkInfoQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: CorpAuthLinkInfoQueryResponseBodyModule = None,
+        request_id: str = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = CorpAuthLinkInfoQueryResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class CorpAuthLinkInfoQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CorpAuthLinkInfoQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CorpAuthLinkInfoQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CorpTokenHeaders(TeaModel):
     def __init__(
         self,
