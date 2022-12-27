@@ -1,3 +1,6 @@
+2022-12-27 Version: 1.1.0
+- Add DescribeDcdnWafLogs.
+
 2022-12-09 Version: 1.0.28
 - Add DescribeDdosAllEventList.
 
