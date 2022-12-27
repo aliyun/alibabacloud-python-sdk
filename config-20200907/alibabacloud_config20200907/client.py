@@ -271,6 +271,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_config_rule_to_compliance_pack_with_options_async(request, runtime)
 
+    def copy_compliance_packs_with_options(
+        self,
+        request: config_20200907_models.CopyCompliancePacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CopyCompliancePacksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.des_aggregator_ids):
+            query['DesAggregatorIds'] = request.des_aggregator_ids
+        if not UtilClient.is_unset(request.src_aggregator_id):
+            query['SrcAggregatorId'] = request.src_aggregator_id
+        if not UtilClient.is_unset(request.src_compliance_pack_ids):
+            query['SrcCompliancePackIds'] = request.src_compliance_pack_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyCompliancePacks',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CopyCompliancePacksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_compliance_packs_with_options_async(
+        self,
+        request: config_20200907_models.CopyCompliancePacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CopyCompliancePacksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.des_aggregator_ids):
+            query['DesAggregatorIds'] = request.des_aggregator_ids
+        if not UtilClient.is_unset(request.src_aggregator_id):
+            query['SrcAggregatorId'] = request.src_aggregator_id
+        if not UtilClient.is_unset(request.src_compliance_pack_ids):
+            query['SrcCompliancePackIds'] = request.src_compliance_pack_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyCompliancePacks',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CopyCompliancePacksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_compliance_packs(
+        self,
+        request: config_20200907_models.CopyCompliancePacksRequest,
+    ) -> config_20200907_models.CopyCompliancePacksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.copy_compliance_packs_with_options(request, runtime)
+
+    async def copy_compliance_packs_async(
+        self,
+        request: config_20200907_models.CopyCompliancePacksRequest,
+    ) -> config_20200907_models.CopyCompliancePacksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_compliance_packs_with_options_async(request, runtime)
+
+    def copy_config_rules_with_options(
+        self,
+        request: config_20200907_models.CopyConfigRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CopyConfigRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.des_aggregator_ids):
+            query['DesAggregatorIds'] = request.des_aggregator_ids
+        if not UtilClient.is_unset(request.src_aggregator_id):
+            query['SrcAggregatorId'] = request.src_aggregator_id
+        if not UtilClient.is_unset(request.src_config_rule_ids):
+            query['SrcConfigRuleIds'] = request.src_config_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyConfigRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CopyConfigRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_config_rules_with_options_async(
+        self,
+        request: config_20200907_models.CopyConfigRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CopyConfigRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.des_aggregator_ids):
+            query['DesAggregatorIds'] = request.des_aggregator_ids
+        if not UtilClient.is_unset(request.src_aggregator_id):
+            query['SrcAggregatorId'] = request.src_aggregator_id
+        if not UtilClient.is_unset(request.src_config_rule_ids):
+            query['SrcConfigRuleIds'] = request.src_config_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyConfigRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CopyConfigRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_config_rules(
+        self,
+        request: config_20200907_models.CopyConfigRulesRequest,
+    ) -> config_20200907_models.CopyConfigRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.copy_config_rules_with_options(request, runtime)
+
+    async def copy_config_rules_async(
+        self,
+        request: config_20200907_models.CopyConfigRulesRequest,
+    ) -> config_20200907_models.CopyConfigRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_config_rules_with_options_async(request, runtime)
+
     def create_aggregate_compliance_pack_with_options(
         self,
         tmp_req: config_20200907_models.CreateAggregateCompliancePackRequest,
@@ -296,8 +452,18 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -342,8 +508,18 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -864,8 +1040,18 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -908,8 +1094,18 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1194,6 +1390,116 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.CreateConfigRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_config_rule_with_options_async(request, runtime)
+
+    def create_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.CreateDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            body['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
+            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            body['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            body['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            body['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            body['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.CreateDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            body['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
+            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            body['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            body['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            body['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            body['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_delivery_channel(
+        self,
+        request: config_20200907_models.CreateDeliveryChannelRequest,
+    ) -> config_20200907_models.CreateDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_delivery_channel_with_options(request, runtime)
+
+    async def create_delivery_channel_async(
+        self,
+        request: config_20200907_models.CreateDeliveryChannelRequest,
+    ) -> config_20200907_models.CreateDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_delivery_channel_with_options_async(request, runtime)
 
     def create_remediation_with_options(
         self,
@@ -1515,6 +1821,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_aggregate_compliance_packs_with_options_async(request, runtime)
 
+    def delete_aggregate_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.DeleteAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aggregate_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.DeleteAggregateConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAggregateConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aggregate_config_delivery_channel(
+        self,
+        request: config_20200907_models.DeleteAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_aggregate_config_delivery_channel_with_options(request, runtime)
+
+    async def delete_aggregate_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.DeleteAggregateConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_aggregate_config_delivery_channel_with_options_async(request, runtime)
+
     def delete_aggregate_config_rules_with_options(
         self,
         request: config_20200907_models.DeleteAggregateConfigRulesRequest,
@@ -1815,6 +2195,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_compliance_packs_with_options_async(request, runtime)
 
+    def delete_config_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.DeleteConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteConfigDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_config_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.DeleteConfigDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            query['DeliveryChannelId'] = request.delivery_channel_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfigDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteConfigDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_config_delivery_channel(
+        self,
+        request: config_20200907_models.DeleteConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_config_delivery_channel_with_options(request, runtime)
+
+    async def delete_config_delivery_channel_async(
+        self,
+        request: config_20200907_models.DeleteConfigDeliveryChannelRequest,
+    ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_config_delivery_channel_with_options_async(request, runtime)
+
     def delete_remediations_with_options(
         self,
         request: config_20200907_models.DeleteRemediationsRequest,
@@ -2036,6 +2486,88 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.DetachConfigRuleToCompliancePackResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detach_config_rule_to_compliance_pack_with_options_async(request, runtime)
+
+    def evaluate_pre_config_rules_with_options(
+        self,
+        tmp_req: config_20200907_models.EvaluatePreConfigRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.EvaluatePreConfigRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_evaluate_items):
+            request.resource_evaluate_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_evaluate_items, 'ResourceEvaluateItems', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.enable_managed_rules):
+            body['EnableManagedRules'] = request.enable_managed_rules
+        if not UtilClient.is_unset(request.resource_evaluate_items_shrink):
+            body['ResourceEvaluateItems'] = request.resource_evaluate_items_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EvaluatePreConfigRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.EvaluatePreConfigRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def evaluate_pre_config_rules_with_options_async(
+        self,
+        tmp_req: config_20200907_models.EvaluatePreConfigRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.EvaluatePreConfigRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_evaluate_items):
+            request.resource_evaluate_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_evaluate_items, 'ResourceEvaluateItems', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.enable_managed_rules):
+            body['EnableManagedRules'] = request.enable_managed_rules
+        if not UtilClient.is_unset(request.resource_evaluate_items_shrink):
+            body['ResourceEvaluateItems'] = request.resource_evaluate_items_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EvaluatePreConfigRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.EvaluatePreConfigRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def evaluate_pre_config_rules(
+        self,
+        request: config_20200907_models.EvaluatePreConfigRulesRequest,
+    ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.evaluate_pre_config_rules_with_options(request, runtime)
+
+    async def evaluate_pre_config_rules_async(
+        self,
+        request: config_20200907_models.EvaluatePreConfigRulesRequest,
+    ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.evaluate_pre_config_rules_with_options_async(request, runtime)
 
     def generate_aggregate_compliance_pack_report_with_options(
         self,
@@ -4281,6 +4813,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_discovered_resource_counts_group_by_resource_type_with_options_async(request, runtime)
 
+    def get_integrated_service_status_with_options(
+        self,
+        request: config_20200907_models.GetIntegratedServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIntegratedServiceStatus',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetIntegratedServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_integrated_service_status_with_options_async(
+        self,
+        request: config_20200907_models.GetIntegratedServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIntegratedServiceStatus',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetIntegratedServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_integrated_service_status(
+        self,
+        request: config_20200907_models.GetIntegratedServiceStatusRequest,
+    ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_integrated_service_status_with_options(request, runtime)
+
+    async def get_integrated_service_status_async(
+        self,
+        request: config_20200907_models.GetIntegratedServiceStatusRequest,
+    ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_integrated_service_status_with_options_async(request, runtime)
+
     def get_managed_rule_with_options(
         self,
         request: config_20200907_models.GetManagedRuleRequest,
@@ -5101,7 +5703,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationResultsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5110,7 +5732,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5127,7 +5749,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationResultsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5136,7 +5778,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6063,6 +6705,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_managed_rules_with_options_async(request, runtime)
 
+    def list_pre_managed_rules_with_options(
+        self,
+        tmp_req: config_20200907_models.ListPreManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListPreManagedRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.ListPreManagedRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_types):
+            request.resource_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types, 'ResourceTypes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_types_shrink):
+            body['ResourceTypes'] = request.resource_types_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPreManagedRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListPreManagedRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pre_managed_rules_with_options_async(
+        self,
+        tmp_req: config_20200907_models.ListPreManagedRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListPreManagedRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.ListPreManagedRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_types):
+            request.resource_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types, 'ResourceTypes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_types_shrink):
+            body['ResourceTypes'] = request.resource_types_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPreManagedRules',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListPreManagedRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pre_managed_rules(
+        self,
+        request: config_20200907_models.ListPreManagedRulesRequest,
+    ) -> config_20200907_models.ListPreManagedRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_pre_managed_rules_with_options(request, runtime)
+
+    async def list_pre_managed_rules_async(
+        self,
+        request: config_20200907_models.ListPreManagedRulesRequest,
+    ) -> config_20200907_models.ListPreManagedRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_pre_managed_rules_with_options_async(request, runtime)
+
     def list_remediation_templates_with_options(
         self,
         request: config_20200907_models.ListRemediationTemplatesRequest,
@@ -6785,6 +7513,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_remediation_with_options_async(request, runtime)
 
+    def stop_configuration_recorder_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StopConfigurationRecorderResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='StopConfigurationRecorder',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StopConfigurationRecorderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_configuration_recorder_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StopConfigurationRecorderResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='StopConfigurationRecorder',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StopConfigurationRecorderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_configuration_recorder(self) -> config_20200907_models.StopConfigurationRecorderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_configuration_recorder_with_options(runtime)
+
+    async def stop_configuration_recorder_async(self) -> config_20200907_models.StopConfigurationRecorderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_configuration_recorder_with_options_async(runtime)
+
     def tag_resources_with_options(
         self,
         tmp_req: config_20200907_models.TagResourcesRequest,
@@ -6984,8 +7762,18 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7028,8 +7816,18 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7544,8 +8342,18 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7586,8 +8394,18 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7872,3 +8690,285 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateConfigRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_config_rule_with_options_async(request, runtime)
+
+    def update_delivery_channel_with_options(
+        self,
+        request: config_20200907_models.UpdateDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            body['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
+            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            body['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            body['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            body['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            body['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateDeliveryChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_delivery_channel_with_options_async(
+        self,
+        request: config_20200907_models.UpdateDeliveryChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.configuration_item_change_notification):
+            body['ConfigurationItemChangeNotification'] = request.configuration_item_change_notification
+        if not UtilClient.is_unset(request.configuration_snapshot):
+            body['ConfigurationSnapshot'] = request.configuration_snapshot
+        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
+            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            body['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            body['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            body['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.non_compliant_notification):
+            body['NonCompliantNotification'] = request.non_compliant_notification
+        if not UtilClient.is_unset(request.oversized_data_osstarget_arn):
+            body['OversizedDataOSSTargetArn'] = request.oversized_data_osstarget_arn
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeliveryChannel',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateDeliveryChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_delivery_channel(
+        self,
+        request: config_20200907_models.UpdateDeliveryChannelRequest,
+    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_delivery_channel_with_options(request, runtime)
+
+    async def update_delivery_channel_async(
+        self,
+        request: config_20200907_models.UpdateDeliveryChannelRequest,
+    ) -> config_20200907_models.UpdateDeliveryChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_delivery_channel_with_options_async(request, runtime)
+
+    def update_integrated_service_status_with_options(
+        self,
+        request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIntegratedServiceStatus',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateIntegratedServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_integrated_service_status_with_options_async(
+        self,
+        request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIntegratedServiceStatus',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateIntegratedServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_integrated_service_status(
+        self,
+        request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
+    ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_integrated_service_status_with_options(request, runtime)
+
+    async def update_integrated_service_status_async(
+        self,
+        request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
+    ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_integrated_service_status_with_options_async(request, runtime)
+
+    def update_remediation_with_options(
+        self,
+        request: config_20200907_models.UpdateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_id):
+            body['RemediationId'] = request.remediation_id
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateRemediationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_remediation_with_options_async(
+        self,
+        request: config_20200907_models.UpdateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_id):
+            body['RemediationId'] = request.remediation_id
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateRemediationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_remediation(
+        self,
+        request: config_20200907_models.UpdateRemediationRequest,
+    ) -> config_20200907_models.UpdateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_remediation_with_options(request, runtime)
+
+    async def update_remediation_async(
+        self,
+        request: config_20200907_models.UpdateRemediationRequest,
+    ) -> config_20200907_models.UpdateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_remediation_with_options_async(request, runtime)
