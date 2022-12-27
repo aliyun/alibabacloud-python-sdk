@@ -1,3 +1,6 @@
+2022-12-27 Version: 1.0.8
+- Support Sms Verification for Dypnsapi.
+
 2022-11-30 Version: 1.0.7
 - Support Sms Verification for Dypnsapi.
 
