@@ -1,3 +1,6 @@
+2022-12-27 Version: 1.2.0
+- Add ModifyCdnDomainOwner.
+
 2022-12-09 Version: 1.1.8
 - Delete DescribeLiveStreamRecordContent.
 
