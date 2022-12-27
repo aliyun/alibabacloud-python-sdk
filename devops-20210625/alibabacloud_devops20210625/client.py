@@ -41,23 +41,189 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_repository_member(
+    def add_group_member_with_options(
         self,
-        repository_id: str,
-        request: devops_20210625_models.AddRepositoryMemberRequest,
-    ) -> devops_20210625_models.AddRepositoryMemberResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.add_repository_member_with_options(repository_id, request, headers, runtime)
+        group_id: str,
+        request: devops_20210625_models.AddGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.AddGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.access_level):
+            body['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.aliyun_pks):
+            body['aliyunPks'] = request.aliyun_pks
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/members/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.AddGroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
 
-    async def add_repository_member_async(
+    async def add_group_member_with_options_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.AddRepositoryMemberRequest,
-    ) -> devops_20210625_models.AddRepositoryMemberResponse:
+        group_id: str,
+        request: devops_20210625_models.AddGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.AddGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.access_level):
+            body['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.aliyun_pks):
+            body['aliyunPks'] = request.aliyun_pks
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/members/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.AddGroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_group_member(
+        self,
+        group_id: str,
+        request: devops_20210625_models.AddGroupMemberRequest,
+    ) -> devops_20210625_models.AddGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_repository_member_with_options_async(repository_id, request, headers, runtime)
+        return self.add_group_member_with_options(group_id, request, headers, runtime)
+
+    async def add_group_member_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.AddGroupMemberRequest,
+    ) -> devops_20210625_models.AddGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_group_member_with_options_async(group_id, request, headers, runtime)
+
+    def add_pipeline_relations_with_options(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.AddPipelineRelationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_object_ids):
+            query['relObjectIds'] = request.rel_object_ids
+        if not UtilClient.is_unset(request.rel_object_type):
+            query['relObjectType'] = request.rel_object_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddPipelineRelations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRelations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.AddPipelineRelationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_pipeline_relations_with_options_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.AddPipelineRelationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_object_ids):
+            query['relObjectIds'] = request.rel_object_ids
+        if not UtilClient.is_unset(request.rel_object_type):
+            query['relObjectType'] = request.rel_object_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddPipelineRelations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRelations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.AddPipelineRelationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_pipeline_relations(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.AddPipelineRelationsRequest,
+    ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_pipeline_relations_with_options(organization_id, pipeline_id, request, headers, runtime)
+
+    async def add_pipeline_relations_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.AddPipelineRelationsRequest,
+    ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_pipeline_relations_with_options_async(organization_id, pipeline_id, request, headers, runtime)
 
     def add_repository_member_with_options(
         self,
@@ -137,23 +303,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_webhook(
+    def add_repository_member(
         self,
         repository_id: str,
-        request: devops_20210625_models.AddWebhookRequest,
-    ) -> devops_20210625_models.AddWebhookResponse:
+        request: devops_20210625_models.AddRepositoryMemberRequest,
+    ) -> devops_20210625_models.AddRepositoryMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_webhook_with_options(repository_id, request, headers, runtime)
+        return self.add_repository_member_with_options(repository_id, request, headers, runtime)
 
-    async def add_webhook_async(
+    async def add_repository_member_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.AddWebhookRequest,
-    ) -> devops_20210625_models.AddWebhookResponse:
+        request: devops_20210625_models.AddRepositoryMemberRequest,
+    ) -> devops_20210625_models.AddRepositoryMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_webhook_with_options_async(repository_id, request, headers, runtime)
+        return await self.add_repository_member_with_options_async(repository_id, request, headers, runtime)
 
     def add_webhook_with_options(
         self,
@@ -257,23 +423,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_branch(
+    def add_webhook(
         self,
         repository_id: str,
-        request: devops_20210625_models.CreateBranchRequest,
-    ) -> devops_20210625_models.CreateBranchResponse:
+        request: devops_20210625_models.AddWebhookRequest,
+    ) -> devops_20210625_models.AddWebhookResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_branch_with_options(repository_id, request, headers, runtime)
+        return self.add_webhook_with_options(repository_id, request, headers, runtime)
 
-    async def create_branch_async(
+    async def add_webhook_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.CreateBranchRequest,
-    ) -> devops_20210625_models.CreateBranchResponse:
+        request: devops_20210625_models.AddWebhookRequest,
+    ) -> devops_20210625_models.AddWebhookResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_branch_with_options_async(repository_id, request, headers, runtime)
+        return await self.add_webhook_with_options_async(repository_id, request, headers, runtime)
 
     def create_branch_with_options(
         self,
@@ -353,23 +519,119 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_file(
+    def create_branch(
         self,
         repository_id: str,
-        request: devops_20210625_models.CreateFileRequest,
-    ) -> devops_20210625_models.CreateFileResponse:
+        request: devops_20210625_models.CreateBranchRequest,
+    ) -> devops_20210625_models.CreateBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_file_with_options(repository_id, request, headers, runtime)
+        return self.create_branch_with_options(repository_id, request, headers, runtime)
 
-    async def create_file_async(
+    async def create_branch_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.CreateFileRequest,
-    ) -> devops_20210625_models.CreateFileResponse:
+        request: devops_20210625_models.CreateBranchRequest,
+    ) -> devops_20210625_models.CreateBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_file_with_options_async(repository_id, request, headers, runtime)
+        return await self.create_branch_with_options_async(repository_id, request, headers, runtime)
+
+    def create_deploy_key_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateDeployKeyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateDeployKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['key'] = request.key
+        if not UtilClient.is_unset(request.title):
+            body['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeployKey',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/keys/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateDeployKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_deploy_key_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateDeployKeyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateDeployKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['key'] = request.key
+        if not UtilClient.is_unset(request.title):
+            body['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeployKey',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/keys/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateDeployKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_deploy_key(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateDeployKeyRequest,
+    ) -> devops_20210625_models.CreateDeployKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_deploy_key_with_options(repository_id, request, headers, runtime)
+
+    async def create_deploy_key_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateDeployKeyRequest,
+    ) -> devops_20210625_models.CreateDeployKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_deploy_key_with_options_async(repository_id, request, headers, runtime)
 
     def create_file_with_options(
         self,
@@ -461,23 +723,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_flow_tag(
+    def create_file(
         self,
-        organization_id: str,
-        request: devops_20210625_models.CreateFlowTagRequest,
-    ) -> devops_20210625_models.CreateFlowTagResponse:
+        repository_id: str,
+        request: devops_20210625_models.CreateFileRequest,
+    ) -> devops_20210625_models.CreateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_flow_tag_with_options(organization_id, request, headers, runtime)
+        return self.create_file_with_options(repository_id, request, headers, runtime)
 
-    async def create_flow_tag_async(
+    async def create_file_async(
         self,
-        organization_id: str,
-        request: devops_20210625_models.CreateFlowTagRequest,
-    ) -> devops_20210625_models.CreateFlowTagResponse:
+        repository_id: str,
+        request: devops_20210625_models.CreateFileRequest,
+    ) -> devops_20210625_models.CreateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_flow_tag_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_file_with_options_async(repository_id, request, headers, runtime)
 
     def create_flow_tag_with_options(
         self,
@@ -549,23 +811,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_flow_tag_group(
+    def create_flow_tag(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateFlowTagGroupRequest,
-    ) -> devops_20210625_models.CreateFlowTagGroupResponse:
+        request: devops_20210625_models.CreateFlowTagRequest,
+    ) -> devops_20210625_models.CreateFlowTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_flow_tag_group_with_options(organization_id, request, headers, runtime)
+        return self.create_flow_tag_with_options(organization_id, request, headers, runtime)
 
-    async def create_flow_tag_group_async(
+    async def create_flow_tag_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateFlowTagGroupRequest,
-    ) -> devops_20210625_models.CreateFlowTagGroupResponse:
+        request: devops_20210625_models.CreateFlowTagRequest,
+    ) -> devops_20210625_models.CreateFlowTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_flow_tag_group_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_flow_tag_with_options_async(organization_id, request, headers, runtime)
 
     def create_flow_tag_group_with_options(
         self,
@@ -629,23 +891,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_host_group(
+    def create_flow_tag_group(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateHostGroupRequest,
-    ) -> devops_20210625_models.CreateHostGroupResponse:
+        request: devops_20210625_models.CreateFlowTagGroupRequest,
+    ) -> devops_20210625_models.CreateFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_host_group_with_options(organization_id, request, headers, runtime)
+        return self.create_flow_tag_group_with_options(organization_id, request, headers, runtime)
 
-    async def create_host_group_async(
+    async def create_flow_tag_group_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateHostGroupRequest,
-    ) -> devops_20210625_models.CreateHostGroupResponse:
+        request: devops_20210625_models.CreateFlowTagGroupRequest,
+    ) -> devops_20210625_models.CreateFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_host_group_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_flow_tag_group_with_options_async(organization_id, request, headers, runtime)
 
     def create_host_group_with_options(
         self,
@@ -745,21 +1007,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_oauth_token(
+    def create_host_group(
         self,
-        request: devops_20210625_models.CreateOAuthTokenRequest,
-    ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        organization_id: str,
+        request: devops_20210625_models.CreateHostGroupRequest,
+    ) -> devops_20210625_models.CreateHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_oauth_token_with_options(request, headers, runtime)
+        return self.create_host_group_with_options(organization_id, request, headers, runtime)
 
-    async def create_oauth_token_async(
+    async def create_host_group_async(
         self,
-        request: devops_20210625_models.CreateOAuthTokenRequest,
-    ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        organization_id: str,
+        request: devops_20210625_models.CreateHostGroupRequest,
+    ) -> devops_20210625_models.CreateHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_oauth_token_with_options_async(request, headers, runtime)
+        return await self.create_host_group_with_options_async(organization_id, request, headers, runtime)
 
     def create_oauth_token_with_options(
         self,
@@ -841,23 +1105,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_pipeline_group(
+    def create_oauth_token(
         self,
-        organization_id: str,
-        request: devops_20210625_models.CreatePipelineGroupRequest,
-    ) -> devops_20210625_models.CreatePipelineGroupResponse:
+        request: devops_20210625_models.CreateOAuthTokenRequest,
+    ) -> devops_20210625_models.CreateOAuthTokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_pipeline_group_with_options(organization_id, request, headers, runtime)
+        return self.create_oauth_token_with_options(request, headers, runtime)
 
-    async def create_pipeline_group_async(
+    async def create_oauth_token_async(
         self,
-        organization_id: str,
-        request: devops_20210625_models.CreatePipelineGroupRequest,
-    ) -> devops_20210625_models.CreatePipelineGroupResponse:
+        request: devops_20210625_models.CreateOAuthTokenRequest,
+    ) -> devops_20210625_models.CreateOAuthTokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_pipeline_group_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_oauth_token_with_options_async(request, headers, runtime)
 
     def create_pipeline_group_with_options(
         self,
@@ -921,23 +1183,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_project(
+    def create_pipeline_group(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateProjectRequest,
-    ) -> devops_20210625_models.CreateProjectResponse:
+        request: devops_20210625_models.CreatePipelineGroupRequest,
+    ) -> devops_20210625_models.CreatePipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_project_with_options(organization_id, request, headers, runtime)
+        return self.create_pipeline_group_with_options(organization_id, request, headers, runtime)
 
-    async def create_project_async(
+    async def create_pipeline_group_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateProjectRequest,
-    ) -> devops_20210625_models.CreateProjectResponse:
+        request: devops_20210625_models.CreatePipelineGroupRequest,
+    ) -> devops_20210625_models.CreatePipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_project_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_pipeline_group_with_options_async(organization_id, request, headers, runtime)
 
     def create_project_with_options(
         self,
@@ -1013,23 +1275,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_protectd_branch(
+    def create_project(
         self,
-        repository_id: str,
-        request: devops_20210625_models.CreateProtectdBranchRequest,
-    ) -> devops_20210625_models.CreateProtectdBranchResponse:
+        organization_id: str,
+        request: devops_20210625_models.CreateProjectRequest,
+    ) -> devops_20210625_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_protectd_branch_with_options(repository_id, request, headers, runtime)
+        return self.create_project_with_options(organization_id, request, headers, runtime)
 
-    async def create_protectd_branch_async(
+    async def create_project_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.CreateProtectdBranchRequest,
-    ) -> devops_20210625_models.CreateProtectdBranchResponse:
+        organization_id: str,
+        request: devops_20210625_models.CreateProjectRequest,
+    ) -> devops_20210625_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_protectd_branch_with_options_async(repository_id, request, headers, runtime)
+        return await self.create_project_with_options_async(organization_id, request, headers, runtime)
 
     def create_protectd_branch_with_options(
         self,
@@ -1133,21 +1395,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_repository(
+    def create_protectd_branch(
         self,
-        request: devops_20210625_models.CreateRepositoryRequest,
-    ) -> devops_20210625_models.CreateRepositoryResponse:
+        repository_id: str,
+        request: devops_20210625_models.CreateProtectdBranchRequest,
+    ) -> devops_20210625_models.CreateProtectdBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_repository_with_options(request, headers, runtime)
+        return self.create_protectd_branch_with_options(repository_id, request, headers, runtime)
 
-    async def create_repository_async(
+    async def create_protectd_branch_async(
         self,
-        request: devops_20210625_models.CreateRepositoryRequest,
-    ) -> devops_20210625_models.CreateRepositoryResponse:
+        repository_id: str,
+        request: devops_20210625_models.CreateProtectdBranchRequest,
+    ) -> devops_20210625_models.CreateProtectdBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_repository_with_options_async(request, headers, runtime)
+        return await self.create_protectd_branch_with_options_async(repository_id, request, headers, runtime)
 
     def create_repository_with_options(
         self,
@@ -1293,27 +1557,129 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_resource_member(
+    def create_repository(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-        request: devops_20210625_models.CreateResourceMemberRequest,
-    ) -> devops_20210625_models.CreateResourceMemberResponse:
+        request: devops_20210625_models.CreateRepositoryRequest,
+    ) -> devops_20210625_models.CreateRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_resource_member_with_options(organization_id, resource_type, resource_id, request, headers, runtime)
+        return self.create_repository_with_options(request, headers, runtime)
 
-    async def create_resource_member_async(
+    async def create_repository_async(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-        request: devops_20210625_models.CreateResourceMemberRequest,
-    ) -> devops_20210625_models.CreateResourceMemberResponse:
+        request: devops_20210625_models.CreateRepositoryRequest,
+    ) -> devops_20210625_models.CreateRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_resource_member_with_options_async(organization_id, resource_type, resource_id, request, headers, runtime)
+        return await self.create_repository_with_options_async(request, headers, runtime)
+
+    def create_repository_group_with_options(
+        self,
+        request: devops_20210625_models.CreateRepositoryGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.avatar_url):
+            body['avatarUrl'] = request.avatar_url
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.parent_id):
+            body['parentId'] = request.parent_id
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRepositoryGroup',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateRepositoryGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_repository_group_with_options_async(
+        self,
+        request: devops_20210625_models.CreateRepositoryGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.avatar_url):
+            body['avatarUrl'] = request.avatar_url
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.parent_id):
+            body['parentId'] = request.parent_id
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRepositoryGroup',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateRepositoryGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_repository_group(
+        self,
+        request: devops_20210625_models.CreateRepositoryGroupRequest,
+    ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_repository_group_with_options(request, headers, runtime)
+
+    async def create_repository_group_async(
+        self,
+        request: devops_20210625_models.CreateRepositoryGroupRequest,
+    ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_repository_group_with_options_async(request, headers, runtime)
 
     def create_resource_member_with_options(
         self,
@@ -1385,23 +1751,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_sprint(
+    def create_resource_member(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateSprintRequest,
-    ) -> devops_20210625_models.CreateSprintResponse:
+        resource_type: str,
+        resource_id: str,
+        request: devops_20210625_models.CreateResourceMemberRequest,
+    ) -> devops_20210625_models.CreateResourceMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_sprint_with_options(organization_id, request, headers, runtime)
+        return self.create_resource_member_with_options(organization_id, resource_type, resource_id, request, headers, runtime)
 
-    async def create_sprint_async(
+    async def create_resource_member_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateSprintRequest,
-    ) -> devops_20210625_models.CreateSprintResponse:
+        resource_type: str,
+        resource_id: str,
+        request: devops_20210625_models.CreateResourceMemberRequest,
+    ) -> devops_20210625_models.CreateResourceMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_sprint_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_resource_member_with_options_async(organization_id, resource_type, resource_id, request, headers, runtime)
 
     def create_sprint_with_options(
         self,
@@ -1481,21 +1851,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_ssh_key(
+    def create_sprint(
         self,
         organization_id: str,
-    ) -> devops_20210625_models.CreateSshKeyResponse:
+        request: devops_20210625_models.CreateSprintRequest,
+    ) -> devops_20210625_models.CreateSprintResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_ssh_key_with_options(organization_id, headers, runtime)
+        return self.create_sprint_with_options(organization_id, request, headers, runtime)
 
-    async def create_ssh_key_async(
+    async def create_sprint_async(
         self,
         organization_id: str,
-    ) -> devops_20210625_models.CreateSshKeyResponse:
+        request: devops_20210625_models.CreateSprintRequest,
+    ) -> devops_20210625_models.CreateSprintResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_ssh_key_with_options_async(organization_id, headers, runtime)
+        return await self.create_sprint_with_options_async(organization_id, request, headers, runtime)
 
     def create_ssh_key_with_options(
         self,
@@ -1547,23 +1919,121 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_variable_group(
+    def create_ssh_key(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateVariableGroupRequest,
-    ) -> devops_20210625_models.CreateVariableGroupResponse:
+    ) -> devops_20210625_models.CreateSshKeyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_variable_group_with_options(organization_id, request, headers, runtime)
+        return self.create_ssh_key_with_options(organization_id, headers, runtime)
 
-    async def create_variable_group_async(
+    async def create_ssh_key_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateVariableGroupRequest,
-    ) -> devops_20210625_models.CreateVariableGroupResponse:
+    ) -> devops_20210625_models.CreateSshKeyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_variable_group_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_ssh_key_with_options_async(organization_id, headers, runtime)
+
+    def create_tag_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.message):
+            body['message'] = request.message
+        if not UtilClient.is_unset(request.ref):
+            body['ref'] = request.ref
+        if not UtilClient.is_unset(request.tag_name):
+            body['tagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tags/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.message):
+            body['message'] = request.message
+        if not UtilClient.is_unset(request.ref):
+            body['ref'] = request.ref
+        if not UtilClient.is_unset(request.tag_name):
+            body['tagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tags/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateTagRequest,
+    ) -> devops_20210625_models.CreateTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_tag_with_options(repository_id, request, headers, runtime)
+
+    async def create_tag_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateTagRequest,
+    ) -> devops_20210625_models.CreateTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_tag_with_options_async(repository_id, request, headers, runtime)
 
     def create_variable_group_with_options(
         self,
@@ -1635,23 +2105,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_workitem(
+    def create_variable_group(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemRequest,
-    ) -> devops_20210625_models.CreateWorkitemResponse:
+        request: devops_20210625_models.CreateVariableGroupRequest,
+    ) -> devops_20210625_models.CreateVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_workitem_with_options(organization_id, request, headers, runtime)
+        return self.create_variable_group_with_options(organization_id, request, headers, runtime)
 
-    async def create_workitem_async(
+    async def create_variable_group_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemRequest,
-    ) -> devops_20210625_models.CreateWorkitemResponse:
+        request: devops_20210625_models.CreateVariableGroupRequest,
+    ) -> devops_20210625_models.CreateVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_workitem_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_variable_group_with_options_async(organization_id, request, headers, runtime)
 
     def create_workitem_with_options(
         self,
@@ -1771,23 +2241,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_workitem_comment(
+    def create_workitem(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemCommentRequest,
-    ) -> devops_20210625_models.CreateWorkitemCommentResponse:
+        request: devops_20210625_models.CreateWorkitemRequest,
+    ) -> devops_20210625_models.CreateWorkitemResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_workitem_comment_with_options(organization_id, request, headers, runtime)
+        return self.create_workitem_with_options(organization_id, request, headers, runtime)
 
-    async def create_workitem_comment_async(
+    async def create_workitem_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemCommentRequest,
-    ) -> devops_20210625_models.CreateWorkitemCommentResponse:
+        request: devops_20210625_models.CreateWorkitemRequest,
+    ) -> devops_20210625_models.CreateWorkitemResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_workitem_comment_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_workitem_with_options_async(organization_id, request, headers, runtime)
 
     def create_workitem_comment_with_options(
         self,
@@ -1863,23 +2333,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_workitem_estimate(
+    def create_workitem_comment(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemEstimateRequest,
-    ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
+        request: devops_20210625_models.CreateWorkitemCommentRequest,
+    ) -> devops_20210625_models.CreateWorkitemCommentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_workitem_estimate_with_options(organization_id, request, headers, runtime)
+        return self.create_workitem_comment_with_options(organization_id, request, headers, runtime)
 
-    async def create_workitem_estimate_async(
+    async def create_workitem_comment_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemEstimateRequest,
-    ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
+        request: devops_20210625_models.CreateWorkitemCommentRequest,
+    ) -> devops_20210625_models.CreateWorkitemCommentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_workitem_estimate_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_workitem_comment_with_options_async(organization_id, request, headers, runtime)
 
     def create_workitem_estimate_with_options(
         self,
@@ -1959,23 +2429,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_workitem_record(
+    def create_workitem_estimate(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemRecordRequest,
-    ) -> devops_20210625_models.CreateWorkitemRecordResponse:
+        request: devops_20210625_models.CreateWorkitemEstimateRequest,
+    ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_workitem_record_with_options(organization_id, request, headers, runtime)
+        return self.create_workitem_estimate_with_options(organization_id, request, headers, runtime)
 
-    async def create_workitem_record_async(
+    async def create_workitem_estimate_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.CreateWorkitemRecordRequest,
-    ) -> devops_20210625_models.CreateWorkitemRecordResponse:
+        request: devops_20210625_models.CreateWorkitemEstimateRequest,
+    ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_workitem_record_with_options_async(organization_id, request, headers, runtime)
+        return await self.create_workitem_estimate_with_options_async(organization_id, request, headers, runtime)
 
     def create_workitem_record_with_options(
         self,
@@ -2063,21 +2533,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_workspace(
+    def create_workitem_record(
         self,
-        request: devops_20210625_models.CreateWorkspaceRequest,
-    ) -> devops_20210625_models.CreateWorkspaceResponse:
+        organization_id: str,
+        request: devops_20210625_models.CreateWorkitemRecordRequest,
+    ) -> devops_20210625_models.CreateWorkitemRecordResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_workspace_with_options(request, headers, runtime)
+        return self.create_workitem_record_with_options(organization_id, request, headers, runtime)
 
-    async def create_workspace_async(
+    async def create_workitem_record_async(
         self,
-        request: devops_20210625_models.CreateWorkspaceRequest,
-    ) -> devops_20210625_models.CreateWorkspaceResponse:
+        organization_id: str,
+        request: devops_20210625_models.CreateWorkitemRecordRequest,
+    ) -> devops_20210625_models.CreateWorkitemRecordResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_workspace_with_options_async(request, headers, runtime)
+        return await self.create_workitem_record_with_options_async(organization_id, request, headers, runtime)
 
     def create_workspace_with_options(
         self,
@@ -2167,23 +2639,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_branch(
+    def create_workspace(
         self,
-        repository_id: str,
-        request: devops_20210625_models.DeleteBranchRequest,
-    ) -> devops_20210625_models.DeleteBranchResponse:
+        request: devops_20210625_models.CreateWorkspaceRequest,
+    ) -> devops_20210625_models.CreateWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_branch_with_options(repository_id, request, headers, runtime)
+        return self.create_workspace_with_options(request, headers, runtime)
 
-    async def delete_branch_async(
+    async def create_workspace_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.DeleteBranchRequest,
-    ) -> devops_20210625_models.DeleteBranchResponse:
+        request: devops_20210625_models.CreateWorkspaceRequest,
+    ) -> devops_20210625_models.CreateWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_branch_with_options_async(repository_id, request, headers, runtime)
+        return await self.create_workspace_with_options_async(request, headers, runtime)
 
     def delete_branch_with_options(
         self,
@@ -2255,23 +2725,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_file(
+    def delete_branch(
         self,
         repository_id: str,
-        request: devops_20210625_models.DeleteFileRequest,
-    ) -> devops_20210625_models.DeleteFileResponse:
+        request: devops_20210625_models.DeleteBranchRequest,
+    ) -> devops_20210625_models.DeleteBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_file_with_options(repository_id, request, headers, runtime)
+        return self.delete_branch_with_options(repository_id, request, headers, runtime)
 
-    async def delete_file_async(
+    async def delete_branch_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.DeleteFileRequest,
-    ) -> devops_20210625_models.DeleteFileResponse:
+        request: devops_20210625_models.DeleteBranchRequest,
+    ) -> devops_20210625_models.DeleteBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_file_with_options_async(repository_id, request, headers, runtime)
+        return await self.delete_branch_with_options_async(repository_id, request, headers, runtime)
 
     def delete_file_with_options(
         self,
@@ -2351,23 +2821,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_flow_tag(
+    def delete_file(
         self,
-        organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.DeleteFlowTagResponse:
+        repository_id: str,
+        request: devops_20210625_models.DeleteFileRequest,
+    ) -> devops_20210625_models.DeleteFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_flow_tag_with_options(organization_id, id, headers, runtime)
+        return self.delete_file_with_options(repository_id, request, headers, runtime)
 
-    async def delete_flow_tag_async(
+    async def delete_file_async(
         self,
-        organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.DeleteFlowTagResponse:
+        repository_id: str,
+        request: devops_20210625_models.DeleteFileRequest,
+    ) -> devops_20210625_models.DeleteFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_flow_tag_with_options_async(organization_id, id, headers, runtime)
+        return await self.delete_file_with_options_async(repository_id, request, headers, runtime)
 
     def delete_flow_tag_with_options(
         self,
@@ -2421,23 +2891,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_flow_tag_group(
+    def delete_flow_tag(
         self,
         organization_id: str,
         id: str,
-    ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
+    ) -> devops_20210625_models.DeleteFlowTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_flow_tag_group_with_options(organization_id, id, headers, runtime)
+        return self.delete_flow_tag_with_options(organization_id, id, headers, runtime)
 
-    async def delete_flow_tag_group_async(
+    async def delete_flow_tag_async(
         self,
         organization_id: str,
         id: str,
-    ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
+    ) -> devops_20210625_models.DeleteFlowTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_flow_tag_group_with_options_async(organization_id, id, headers, runtime)
+        return await self.delete_flow_tag_with_options_async(organization_id, id, headers, runtime)
 
     def delete_flow_tag_group_with_options(
         self,
@@ -2491,23 +2961,119 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_host_group(
+    def delete_flow_tag_group(
         self,
         organization_id: str,
         id: str,
-    ) -> devops_20210625_models.DeleteHostGroupResponse:
+    ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_host_group_with_options(organization_id, id, headers, runtime)
+        return self.delete_flow_tag_group_with_options(organization_id, id, headers, runtime)
 
-    async def delete_host_group_async(
+    async def delete_flow_tag_group_async(
         self,
         organization_id: str,
         id: str,
-    ) -> devops_20210625_models.DeleteHostGroupResponse:
+    ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_host_group_with_options_async(organization_id, id, headers, runtime)
+        return await self.delete_flow_tag_group_with_options_async(organization_id, id, headers, runtime)
+
+    def delete_group_member_with_options(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.aliyun_pk):
+            query['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/members/remove/aliyun_pk',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteGroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_group_member_with_options_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.aliyun_pk):
+            query['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/members/remove/aliyun_pk',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteGroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_group_member(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteGroupMemberRequest,
+    ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_group_member_with_options(group_id, request, headers, runtime)
+
+    async def delete_group_member_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteGroupMemberRequest,
+    ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_group_member_with_options_async(group_id, request, headers, runtime)
 
     def delete_host_group_with_options(
         self,
@@ -2561,23 +3127,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_pipeline(
+    def delete_host_group(
         self,
         organization_id: str,
-        pipeline_id: str,
-    ) -> devops_20210625_models.DeletePipelineResponse:
+        id: str,
+    ) -> devops_20210625_models.DeleteHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_pipeline_with_options(organization_id, pipeline_id, headers, runtime)
+        return self.delete_host_group_with_options(organization_id, id, headers, runtime)
 
-    async def delete_pipeline_async(
+    async def delete_host_group_async(
         self,
         organization_id: str,
-        pipeline_id: str,
-    ) -> devops_20210625_models.DeletePipelineResponse:
+        id: str,
+    ) -> devops_20210625_models.DeleteHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_pipeline_with_options_async(organization_id, pipeline_id, headers, runtime)
+        return await self.delete_host_group_with_options_async(organization_id, id, headers, runtime)
 
     def delete_pipeline_with_options(
         self,
@@ -2631,23 +3197,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_pipeline_group(
+    def delete_pipeline(
         self,
         organization_id: str,
-        group_id: str,
-    ) -> devops_20210625_models.DeletePipelineGroupResponse:
+        pipeline_id: str,
+    ) -> devops_20210625_models.DeletePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_pipeline_group_with_options(organization_id, group_id, headers, runtime)
+        return self.delete_pipeline_with_options(organization_id, pipeline_id, headers, runtime)
 
-    async def delete_pipeline_group_async(
+    async def delete_pipeline_async(
         self,
         organization_id: str,
-        group_id: str,
-    ) -> devops_20210625_models.DeletePipelineGroupResponse:
+        pipeline_id: str,
+    ) -> devops_20210625_models.DeletePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_pipeline_group_with_options_async(organization_id, group_id, headers, runtime)
+        return await self.delete_pipeline_with_options_async(organization_id, pipeline_id, headers, runtime)
 
     def delete_pipeline_group_with_options(
         self,
@@ -2701,23 +3267,111 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_project(
+    def delete_pipeline_group(
         self,
         organization_id: str,
-        request: devops_20210625_models.DeleteProjectRequest,
-    ) -> devops_20210625_models.DeleteProjectResponse:
+        group_id: str,
+    ) -> devops_20210625_models.DeletePipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(organization_id, request, headers, runtime)
+        return self.delete_pipeline_group_with_options(organization_id, group_id, headers, runtime)
 
-    async def delete_project_async(
+    async def delete_pipeline_group_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.DeleteProjectRequest,
-    ) -> devops_20210625_models.DeleteProjectResponse:
+        group_id: str,
+    ) -> devops_20210625_models.DeletePipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(organization_id, request, headers, runtime)
+        return await self.delete_pipeline_group_with_options_async(organization_id, group_id, headers, runtime)
+
+    def delete_pipeline_relations_with_options(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.DeletePipelineRelationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_object_id):
+            query['relObjectId'] = request.rel_object_id
+        if not UtilClient.is_unset(request.rel_object_type):
+            query['relObjectType'] = request.rel_object_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePipelineRelations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRelations',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeletePipelineRelationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pipeline_relations_with_options_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.DeletePipelineRelationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_object_id):
+            query['relObjectId'] = request.rel_object_id
+        if not UtilClient.is_unset(request.rel_object_type):
+            query['relObjectType'] = request.rel_object_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePipelineRelations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRelations',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeletePipelineRelationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pipeline_relations(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.DeletePipelineRelationsRequest,
+    ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_pipeline_relations_with_options(organization_id, pipeline_id, request, headers, runtime)
+
+    async def delete_pipeline_relations_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.DeletePipelineRelationsRequest,
+    ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_pipeline_relations_with_options_async(organization_id, pipeline_id, request, headers, runtime)
 
     def delete_project_with_options(
         self,
@@ -2781,25 +3435,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_protected_branch(
+    def delete_project(
         self,
-        repository_id: str,
-        protected_branch_id: str,
-        request: devops_20210625_models.DeleteProtectedBranchRequest,
-    ) -> devops_20210625_models.DeleteProtectedBranchResponse:
+        organization_id: str,
+        request: devops_20210625_models.DeleteProjectRequest,
+    ) -> devops_20210625_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_protected_branch_with_options(repository_id, protected_branch_id, request, headers, runtime)
+        return self.delete_project_with_options(organization_id, request, headers, runtime)
 
-    async def delete_protected_branch_async(
+    async def delete_project_async(
         self,
-        repository_id: str,
-        protected_branch_id: str,
-        request: devops_20210625_models.DeleteProtectedBranchRequest,
-    ) -> devops_20210625_models.DeleteProtectedBranchResponse:
+        organization_id: str,
+        request: devops_20210625_models.DeleteProjectRequest,
+    ) -> devops_20210625_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_protected_branch_with_options_async(repository_id, protected_branch_id, request, headers, runtime)
+        return await self.delete_project_with_options_async(organization_id, request, headers, runtime)
 
     def delete_protected_branch_with_options(
         self,
@@ -2869,23 +3521,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_repository(
+    def delete_protected_branch(
         self,
         repository_id: str,
-        request: devops_20210625_models.DeleteRepositoryRequest,
-    ) -> devops_20210625_models.DeleteRepositoryResponse:
+        protected_branch_id: str,
+        request: devops_20210625_models.DeleteProtectedBranchRequest,
+    ) -> devops_20210625_models.DeleteProtectedBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_repository_with_options(repository_id, request, headers, runtime)
+        return self.delete_protected_branch_with_options(repository_id, protected_branch_id, request, headers, runtime)
 
-    async def delete_repository_async(
+    async def delete_protected_branch_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.DeleteRepositoryRequest,
-    ) -> devops_20210625_models.DeleteRepositoryResponse:
+        protected_branch_id: str,
+        request: devops_20210625_models.DeleteProtectedBranchRequest,
+    ) -> devops_20210625_models.DeleteProtectedBranchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_repository_with_options_async(repository_id, request, headers, runtime)
+        return await self.delete_protected_branch_with_options_async(repository_id, protected_branch_id, request, headers, runtime)
 
     def delete_repository_with_options(
         self,
@@ -2961,25 +3615,211 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_repository_webhook(
+    def delete_repository(
         self,
         repository_id: str,
-        hook_id: str,
-        request: devops_20210625_models.DeleteRepositoryWebhookRequest,
-    ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
+        request: devops_20210625_models.DeleteRepositoryRequest,
+    ) -> devops_20210625_models.DeleteRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_repository_webhook_with_options(repository_id, hook_id, request, headers, runtime)
+        return self.delete_repository_with_options(repository_id, request, headers, runtime)
 
-    async def delete_repository_webhook_async(
+    async def delete_repository_async(
         self,
         repository_id: str,
-        hook_id: str,
-        request: devops_20210625_models.DeleteRepositoryWebhookRequest,
-    ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
+        request: devops_20210625_models.DeleteRepositoryRequest,
+    ) -> devops_20210625_models.DeleteRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_repository_webhook_with_options_async(repository_id, hook_id, request, headers, runtime)
+        return await self.delete_repository_with_options_async(repository_id, request, headers, runtime)
+
+    def delete_repository_group_with_options(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteRepositoryGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepositoryGroup',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/remove',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteRepositoryGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_repository_group_with_options_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteRepositoryGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepositoryGroup',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/remove',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteRepositoryGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_repository_group(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteRepositoryGroupRequest,
+    ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_repository_group_with_options(group_id, request, headers, runtime)
+
+    async def delete_repository_group_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.DeleteRepositoryGroupRequest,
+    ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_repository_group_with_options_async(group_id, request, headers, runtime)
+
+    def delete_repository_member_with_options(
+        self,
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.DeleteRepositoryMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepositoryMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/members/delete/{OpenApiUtilClient.get_encode_param(aliyun_pk)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteRepositoryMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_repository_member_with_options_async(
+        self,
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.DeleteRepositoryMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepositoryMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/members/delete/{OpenApiUtilClient.get_encode_param(aliyun_pk)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteRepositoryMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_repository_member(
+        self,
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.DeleteRepositoryMemberRequest,
+    ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_repository_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
+
+    async def delete_repository_member_async(
+        self,
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.DeleteRepositoryMemberRequest,
+    ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_repository_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
 
     def delete_repository_webhook_with_options(
         self,
@@ -3049,27 +3889,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_resource_member(
+    def delete_repository_webhook(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-        account_id: str,
-    ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        repository_id: str,
+        hook_id: str,
+        request: devops_20210625_models.DeleteRepositoryWebhookRequest,
+    ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_member_with_options(organization_id, resource_type, resource_id, account_id, headers, runtime)
+        return self.delete_repository_webhook_with_options(repository_id, hook_id, request, headers, runtime)
 
-    async def delete_resource_member_async(
+    async def delete_repository_webhook_async(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-        account_id: str,
-    ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        repository_id: str,
+        hook_id: str,
+        request: devops_20210625_models.DeleteRepositoryWebhookRequest,
+    ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_member_with_options_async(organization_id, resource_type, resource_id, account_id, headers, runtime)
+        return await self.delete_repository_webhook_with_options_async(repository_id, hook_id, request, headers, runtime)
 
     def delete_resource_member_with_options(
         self,
@@ -3127,23 +3965,115 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_variable_group(
+    def delete_resource_member(
         self,
         organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        resource_type: str,
+        resource_id: str,
+        account_id: str,
+    ) -> devops_20210625_models.DeleteResourceMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_variable_group_with_options(organization_id, id, headers, runtime)
+        return self.delete_resource_member_with_options(organization_id, resource_type, resource_id, account_id, headers, runtime)
 
-    async def delete_variable_group_async(
+    async def delete_resource_member_async(
         self,
         organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        resource_type: str,
+        resource_id: str,
+        account_id: str,
+    ) -> devops_20210625_models.DeleteResourceMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_variable_group_with_options_async(organization_id, id, headers, runtime)
+        return await self.delete_resource_member_with_options_async(organization_id, resource_type, resource_id, account_id, headers, runtime)
+
+    def delete_tag_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['tagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tags/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tag_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['tagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tags/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tag(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteTagRequest,
+    ) -> devops_20210625_models.DeleteTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_tag_with_options(repository_id, request, headers, runtime)
+
+    async def delete_tag_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteTagRequest,
+    ) -> devops_20210625_models.DeleteTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_tag_with_options_async(repository_id, request, headers, runtime)
 
     def delete_variable_group_with_options(
         self,
@@ -3197,23 +4127,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_workitem_all_comment(
+    def delete_variable_group(
         self,
         organization_id: str,
-        request: devops_20210625_models.DeleteWorkitemAllCommentRequest,
-    ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
+        id: str,
+    ) -> devops_20210625_models.DeleteVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_workitem_all_comment_with_options(organization_id, request, headers, runtime)
+        return self.delete_variable_group_with_options(organization_id, id, headers, runtime)
 
-    async def delete_workitem_all_comment_async(
+    async def delete_variable_group_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.DeleteWorkitemAllCommentRequest,
-    ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
+        id: str,
+    ) -> devops_20210625_models.DeleteVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_workitem_all_comment_with_options_async(organization_id, request, headers, runtime)
+        return await self.delete_variable_group_with_options_async(organization_id, id, headers, runtime)
 
     def delete_workitem_all_comment_with_options(
         self,
@@ -3277,23 +4207,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_workitem_comment(
+    def delete_workitem_all_comment(
         self,
         organization_id: str,
-        request: devops_20210625_models.DeleteWorkitemCommentRequest,
-    ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
+        request: devops_20210625_models.DeleteWorkitemAllCommentRequest,
+    ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_workitem_comment_with_options(organization_id, request, headers, runtime)
+        return self.delete_workitem_all_comment_with_options(organization_id, request, headers, runtime)
 
-    async def delete_workitem_comment_async(
+    async def delete_workitem_all_comment_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.DeleteWorkitemCommentRequest,
-    ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
+        request: devops_20210625_models.DeleteWorkitemAllCommentRequest,
+    ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_workitem_comment_with_options_async(organization_id, request, headers, runtime)
+        return await self.delete_workitem_all_comment_with_options_async(organization_id, request, headers, runtime)
 
     def delete_workitem_comment_with_options(
         self,
@@ -3361,21 +4291,111 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def frozen_workspace(
+    def delete_workitem_comment(
         self,
-        workspace_id: str,
-    ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        organization_id: str,
+        request: devops_20210625_models.DeleteWorkitemCommentRequest,
+    ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.frozen_workspace_with_options(workspace_id, headers, runtime)
+        return self.delete_workitem_comment_with_options(organization_id, request, headers, runtime)
 
-    async def frozen_workspace_async(
+    async def delete_workitem_comment_async(
         self,
-        workspace_id: str,
-    ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        organization_id: str,
+        request: devops_20210625_models.DeleteWorkitemCommentRequest,
+    ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.frozen_workspace_with_options_async(workspace_id, headers, runtime)
+        return await self.delete_workitem_comment_with_options_async(organization_id, request, headers, runtime)
+
+    def enable_deploy_key_with_options(
+        self,
+        repository_id: str,
+        key_id: str,
+        request: devops_20210625_models.EnableDeployKeyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.EnableDeployKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDeployKey',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/keys/{OpenApiUtilClient.get_encode_param(key_id)}/enable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.EnableDeployKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_deploy_key_with_options_async(
+        self,
+        repository_id: str,
+        key_id: str,
+        request: devops_20210625_models.EnableDeployKeyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.EnableDeployKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDeployKey',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/keys/{OpenApiUtilClient.get_encode_param(key_id)}/enable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.EnableDeployKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_deploy_key(
+        self,
+        repository_id: str,
+        key_id: str,
+        request: devops_20210625_models.EnableDeployKeyRequest,
+    ) -> devops_20210625_models.EnableDeployKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.enable_deploy_key_with_options(repository_id, key_id, request, headers, runtime)
+
+    async def enable_deploy_key_async(
+        self,
+        repository_id: str,
+        key_id: str,
+        request: devops_20210625_models.EnableDeployKeyRequest,
+    ) -> devops_20210625_models.EnableDeployKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.enable_deploy_key_with_options_async(repository_id, key_id, request, headers, runtime)
 
     def frozen_workspace_with_options(
         self,
@@ -3427,23 +4447,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_branch_info(
+    def frozen_workspace(
         self,
-        repository_id: str,
-        request: devops_20210625_models.GetBranchInfoRequest,
-    ) -> devops_20210625_models.GetBranchInfoResponse:
+        workspace_id: str,
+    ) -> devops_20210625_models.FrozenWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_branch_info_with_options(repository_id, request, headers, runtime)
+        return self.frozen_workspace_with_options(workspace_id, headers, runtime)
 
-    async def get_branch_info_async(
+    async def frozen_workspace_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.GetBranchInfoRequest,
-    ) -> devops_20210625_models.GetBranchInfoResponse:
+        workspace_id: str,
+    ) -> devops_20210625_models.FrozenWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_branch_info_with_options_async(repository_id, request, headers, runtime)
+        return await self.frozen_workspace_with_options_async(workspace_id, headers, runtime)
 
     def get_branch_info_with_options(
         self,
@@ -3515,23 +4533,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_codeup_organization(
+    def get_branch_info(
         self,
-        identity: str,
-        request: devops_20210625_models.GetCodeupOrganizationRequest,
-    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        repository_id: str,
+        request: devops_20210625_models.GetBranchInfoRequest,
+    ) -> devops_20210625_models.GetBranchInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_codeup_organization_with_options(identity, request, headers, runtime)
+        return self.get_branch_info_with_options(repository_id, request, headers, runtime)
 
-    async def get_codeup_organization_async(
+    async def get_branch_info_async(
         self,
-        identity: str,
-        request: devops_20210625_models.GetCodeupOrganizationRequest,
-    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        repository_id: str,
+        request: devops_20210625_models.GetBranchInfoRequest,
+    ) -> devops_20210625_models.GetBranchInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_codeup_organization_with_options_async(identity, request, headers, runtime)
+        return await self.get_branch_info_with_options_async(repository_id, request, headers, runtime)
 
     def get_codeup_organization_with_options(
         self,
@@ -3595,25 +4613,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_custom_field_option(
+    def get_codeup_organization(
         self,
-        organization_id: str,
-        field_id: str,
-        request: devops_20210625_models.GetCustomFieldOptionRequest,
-    ) -> devops_20210625_models.GetCustomFieldOptionResponse:
+        identity: str,
+        request: devops_20210625_models.GetCodeupOrganizationRequest,
+    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_custom_field_option_with_options(organization_id, field_id, request, headers, runtime)
+        return self.get_codeup_organization_with_options(identity, request, headers, runtime)
 
-    async def get_custom_field_option_async(
+    async def get_codeup_organization_async(
         self,
-        organization_id: str,
-        field_id: str,
-        request: devops_20210625_models.GetCustomFieldOptionRequest,
-    ) -> devops_20210625_models.GetCustomFieldOptionResponse:
+        identity: str,
+        request: devops_20210625_models.GetCodeupOrganizationRequest,
+    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_custom_field_option_with_options_async(organization_id, field_id, request, headers, runtime)
+        return await self.get_codeup_organization_with_options_async(identity, request, headers, runtime)
 
     def get_custom_field_option_with_options(
         self,
@@ -3687,23 +4703,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_file_blobs(
+    def get_custom_field_option(
         self,
-        repository_id: str,
-        request: devops_20210625_models.GetFileBlobsRequest,
-    ) -> devops_20210625_models.GetFileBlobsResponse:
+        organization_id: str,
+        field_id: str,
+        request: devops_20210625_models.GetCustomFieldOptionRequest,
+    ) -> devops_20210625_models.GetCustomFieldOptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_file_blobs_with_options(repository_id, request, headers, runtime)
+        return self.get_custom_field_option_with_options(organization_id, field_id, request, headers, runtime)
 
-    async def get_file_blobs_async(
+    async def get_custom_field_option_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.GetFileBlobsRequest,
-    ) -> devops_20210625_models.GetFileBlobsResponse:
+        organization_id: str,
+        field_id: str,
+        request: devops_20210625_models.GetCustomFieldOptionRequest,
+    ) -> devops_20210625_models.GetCustomFieldOptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_file_blobs_with_options_async(repository_id, request, headers, runtime)
+        return await self.get_custom_field_option_with_options_async(organization_id, field_id, request, headers, runtime)
 
     def get_file_blobs_with_options(
         self,
@@ -3787,23 +4805,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_file_last_commit(
+    def get_file_blobs(
         self,
         repository_id: str,
-        request: devops_20210625_models.GetFileLastCommitRequest,
-    ) -> devops_20210625_models.GetFileLastCommitResponse:
+        request: devops_20210625_models.GetFileBlobsRequest,
+    ) -> devops_20210625_models.GetFileBlobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_file_last_commit_with_options(repository_id, request, headers, runtime)
+        return self.get_file_blobs_with_options(repository_id, request, headers, runtime)
 
-    async def get_file_last_commit_async(
+    async def get_file_blobs_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.GetFileLastCommitRequest,
-    ) -> devops_20210625_models.GetFileLastCommitResponse:
+        request: devops_20210625_models.GetFileBlobsRequest,
+    ) -> devops_20210625_models.GetFileBlobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_file_last_commit_with_options_async(repository_id, request, headers, runtime)
+        return await self.get_file_blobs_with_options_async(repository_id, request, headers, runtime)
 
     def get_file_last_commit_with_options(
         self,
@@ -3883,23 +4901,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_flow_tag_group(
+    def get_file_last_commit(
         self,
-        organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.GetFlowTagGroupResponse:
+        repository_id: str,
+        request: devops_20210625_models.GetFileLastCommitRequest,
+    ) -> devops_20210625_models.GetFileLastCommitResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_flow_tag_group_with_options(organization_id, id, headers, runtime)
+        return self.get_file_last_commit_with_options(repository_id, request, headers, runtime)
 
-    async def get_flow_tag_group_async(
+    async def get_file_last_commit_async(
         self,
-        organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.GetFlowTagGroupResponse:
+        repository_id: str,
+        request: devops_20210625_models.GetFileLastCommitRequest,
+    ) -> devops_20210625_models.GetFileLastCommitResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_flow_tag_group_with_options_async(organization_id, id, headers, runtime)
+        return await self.get_file_last_commit_with_options_async(repository_id, request, headers, runtime)
 
     def get_flow_tag_group_with_options(
         self,
@@ -3953,23 +4971,107 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_host_group(
+    def get_flow_tag_group(
         self,
         organization_id: str,
         id: str,
-    ) -> devops_20210625_models.GetHostGroupResponse:
+    ) -> devops_20210625_models.GetFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_host_group_with_options(organization_id, id, headers, runtime)
+        return self.get_flow_tag_group_with_options(organization_id, id, headers, runtime)
 
-    async def get_host_group_async(
+    async def get_flow_tag_group_async(
         self,
         organization_id: str,
         id: str,
-    ) -> devops_20210625_models.GetHostGroupResponse:
+    ) -> devops_20210625_models.GetFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_host_group_with_options_async(organization_id, id, headers, runtime)
+        return await self.get_flow_tag_group_with_options_async(organization_id, id, headers, runtime)
+
+    def get_group_detail_with_options(
+        self,
+        request: devops_20210625_models.GetGroupDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetGroupDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGroupDetail',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/get_detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetGroupDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_group_detail_with_options_async(
+        self,
+        request: devops_20210625_models.GetGroupDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetGroupDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGroupDetail',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/get_detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetGroupDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_group_detail(
+        self,
+        request: devops_20210625_models.GetGroupDetailRequest,
+    ) -> devops_20210625_models.GetGroupDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_group_detail_with_options(request, headers, runtime)
+
+    async def get_group_detail_async(
+        self,
+        request: devops_20210625_models.GetGroupDetailRequest,
+    ) -> devops_20210625_models.GetGroupDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_group_detail_with_options_async(request, headers, runtime)
 
     def get_host_group_with_options(
         self,
@@ -4023,23 +5125,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_organization_member(
+    def get_host_group(
         self,
         organization_id: str,
-        account_id: str,
-    ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        id: str,
+    ) -> devops_20210625_models.GetHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_organization_member_with_options(organization_id, account_id, headers, runtime)
+        return self.get_host_group_with_options(organization_id, id, headers, runtime)
 
-    async def get_organization_member_async(
+    async def get_host_group_async(
         self,
         organization_id: str,
-        account_id: str,
-    ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        id: str,
+    ) -> devops_20210625_models.GetHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_organization_member_with_options_async(organization_id, account_id, headers, runtime)
+        return await self.get_host_group_with_options_async(organization_id, id, headers, runtime)
 
     def get_organization_member_with_options(
         self,
@@ -4093,23 +5195,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline(
+    def get_organization_member(
         self,
         organization_id: str,
-        pipeline_id: str,
-    ) -> devops_20210625_models.GetPipelineResponse:
+        account_id: str,
+    ) -> devops_20210625_models.GetOrganizationMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_with_options(organization_id, pipeline_id, headers, runtime)
+        return self.get_organization_member_with_options(organization_id, account_id, headers, runtime)
 
-    async def get_pipeline_async(
+    async def get_organization_member_async(
         self,
         organization_id: str,
-        pipeline_id: str,
-    ) -> devops_20210625_models.GetPipelineResponse:
+        account_id: str,
+    ) -> devops_20210625_models.GetOrganizationMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_with_options_async(organization_id, pipeline_id, headers, runtime)
+        return await self.get_organization_member_with_options_async(organization_id, account_id, headers, runtime)
 
     def get_pipeline_with_options(
         self,
@@ -4163,23 +5265,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline_artifact_url(
+    def get_pipeline(
         self,
         organization_id: str,
-        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
-    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        pipeline_id: str,
+    ) -> devops_20210625_models.GetPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_artifact_url_with_options(organization_id, request, headers, runtime)
+        return self.get_pipeline_with_options(organization_id, pipeline_id, headers, runtime)
 
-    async def get_pipeline_artifact_url_async(
+    async def get_pipeline_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
-    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        pipeline_id: str,
+    ) -> devops_20210625_models.GetPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_artifact_url_with_options_async(organization_id, request, headers, runtime)
+        return await self.get_pipeline_with_options_async(organization_id, pipeline_id, headers, runtime)
 
     def get_pipeline_artifact_url_with_options(
         self,
@@ -4247,31 +5349,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline_emas_artifact_url(
+    def get_pipeline_artifact_url(
         self,
         organization_id: str,
-        emas_job_instance_id: str,
-        md_5: str,
-        pipeline_id: str,
-        pipeline_run_id: str,
-        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
-    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_emas_artifact_url_with_options(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
+        return self.get_pipeline_artifact_url_with_options(organization_id, request, headers, runtime)
 
-    async def get_pipeline_emas_artifact_url_async(
+    async def get_pipeline_artifact_url_async(
         self,
         organization_id: str,
-        emas_job_instance_id: str,
-        md_5: str,
-        pipeline_id: str,
-        pipeline_run_id: str,
-        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
-    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_emas_artifact_url_with_options_async(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
+        return await self.get_pipeline_artifact_url_with_options_async(organization_id, request, headers, runtime)
 
     def get_pipeline_emas_artifact_url_with_options(
         self,
@@ -4343,23 +5437,31 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline_group(
+    def get_pipeline_emas_artifact_url(
         self,
         organization_id: str,
-        group_id: str,
-    ) -> devops_20210625_models.GetPipelineGroupResponse:
+        emas_job_instance_id: str,
+        md_5: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_group_with_options(organization_id, group_id, headers, runtime)
+        return self.get_pipeline_emas_artifact_url_with_options(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
 
-    async def get_pipeline_group_async(
+    async def get_pipeline_emas_artifact_url_async(
         self,
         organization_id: str,
-        group_id: str,
-    ) -> devops_20210625_models.GetPipelineGroupResponse:
+        emas_job_instance_id: str,
+        md_5: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_group_with_options_async(organization_id, group_id, headers, runtime)
+        return await self.get_pipeline_emas_artifact_url_with_options_async(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
 
     def get_pipeline_group_with_options(
         self,
@@ -4413,25 +5515,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline_run(
+    def get_pipeline_group(
         self,
         organization_id: str,
-        pipeline_id: str,
-        pipeline_run_id: str,
-    ) -> devops_20210625_models.GetPipelineRunResponse:
+        group_id: str,
+    ) -> devops_20210625_models.GetPipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_run_with_options(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
+        return self.get_pipeline_group_with_options(organization_id, group_id, headers, runtime)
 
-    async def get_pipeline_run_async(
+    async def get_pipeline_group_async(
         self,
         organization_id: str,
-        pipeline_id: str,
-        pipeline_run_id: str,
-    ) -> devops_20210625_models.GetPipelineRunResponse:
+        group_id: str,
+    ) -> devops_20210625_models.GetPipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
+        return await self.get_pipeline_group_with_options_async(organization_id, group_id, headers, runtime)
 
     def get_pipeline_run_with_options(
         self,
@@ -4487,23 +5587,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pipeline_scan_report_url(
+    def get_pipeline_run(
         self,
         organization_id: str,
-        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
-    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        pipeline_id: str,
+        pipeline_run_id: str,
+    ) -> devops_20210625_models.GetPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_pipeline_scan_report_url_with_options(organization_id, request, headers, runtime)
+        return self.get_pipeline_run_with_options(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
 
-    async def get_pipeline_scan_report_url_async(
+    async def get_pipeline_run_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
-    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        pipeline_id: str,
+        pipeline_run_id: str,
+    ) -> devops_20210625_models.GetPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_pipeline_scan_report_url_with_options_async(organization_id, request, headers, runtime)
+        return await self.get_pipeline_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
 
     def get_pipeline_scan_report_url_with_options(
         self,
@@ -4567,23 +5669,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_project_info(
+    def get_pipeline_scan_report_url(
         self,
         organization_id: str,
-        project_id: str,
-    ) -> devops_20210625_models.GetProjectInfoResponse:
+        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
+    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_info_with_options(organization_id, project_id, headers, runtime)
+        return self.get_pipeline_scan_report_url_with_options(organization_id, request, headers, runtime)
 
-    async def get_project_info_async(
+    async def get_pipeline_scan_report_url_async(
         self,
         organization_id: str,
-        project_id: str,
-    ) -> devops_20210625_models.GetProjectInfoResponse:
+        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
+    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_info_with_options_async(organization_id, project_id, headers, runtime)
+        return await self.get_pipeline_scan_report_url_with_options_async(organization_id, request, headers, runtime)
 
     def get_project_info_with_options(
         self,
@@ -4637,25 +5739,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_project_member(
+    def get_project_info(
         self,
-        repository_id: str,
-        aliyun_pk: str,
-        request: devops_20210625_models.GetProjectMemberRequest,
-    ) -> devops_20210625_models.GetProjectMemberResponse:
+        organization_id: str,
+        project_id: str,
+    ) -> devops_20210625_models.GetProjectInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
+        return self.get_project_info_with_options(organization_id, project_id, headers, runtime)
 
-    async def get_project_member_async(
+    async def get_project_info_async(
         self,
-        repository_id: str,
-        aliyun_pk: str,
-        request: devops_20210625_models.GetProjectMemberRequest,
-    ) -> devops_20210625_models.GetProjectMemberResponse:
+        organization_id: str,
+        project_id: str,
+    ) -> devops_20210625_models.GetProjectInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
+        return await self.get_project_info_with_options_async(organization_id, project_id, headers, runtime)
 
     def get_project_member_with_options(
         self,
@@ -4725,21 +5825,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_repository(
+    def get_project_member(
         self,
-        request: devops_20210625_models.GetRepositoryRequest,
-    ) -> devops_20210625_models.GetRepositoryResponse:
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.GetProjectMemberRequest,
+    ) -> devops_20210625_models.GetProjectMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_repository_with_options(request, headers, runtime)
+        return self.get_project_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
 
-    async def get_repository_async(
+    async def get_project_member_async(
         self,
-        request: devops_20210625_models.GetRepositoryRequest,
-    ) -> devops_20210625_models.GetRepositoryResponse:
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.GetProjectMemberRequest,
+    ) -> devops_20210625_models.GetProjectMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_repository_with_options_async(request, headers, runtime)
+        return await self.get_project_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
 
     def get_repository_with_options(
         self,
@@ -4809,25 +5913,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_repository_commit(
+    def get_repository(
         self,
-        repository_id: str,
-        sha: str,
-        request: devops_20210625_models.GetRepositoryCommitRequest,
-    ) -> devops_20210625_models.GetRepositoryCommitResponse:
+        request: devops_20210625_models.GetRepositoryRequest,
+    ) -> devops_20210625_models.GetRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_repository_commit_with_options(repository_id, sha, request, headers, runtime)
+        return self.get_repository_with_options(request, headers, runtime)
 
-    async def get_repository_commit_async(
+    async def get_repository_async(
         self,
-        repository_id: str,
-        sha: str,
-        request: devops_20210625_models.GetRepositoryCommitRequest,
-    ) -> devops_20210625_models.GetRepositoryCommitResponse:
+        request: devops_20210625_models.GetRepositoryRequest,
+    ) -> devops_20210625_models.GetRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_repository_commit_with_options_async(repository_id, sha, request, headers, runtime)
+        return await self.get_repository_with_options_async(request, headers, runtime)
 
     def get_repository_commit_with_options(
         self,
@@ -4901,23 +6001,113 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_sprint_info(
+    def get_repository_commit(
         self,
-        organization_id: str,
-        sprint_id: str,
-    ) -> devops_20210625_models.GetSprintInfoResponse:
+        repository_id: str,
+        sha: str,
+        request: devops_20210625_models.GetRepositoryCommitRequest,
+    ) -> devops_20210625_models.GetRepositoryCommitResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_sprint_info_with_options(organization_id, sprint_id, headers, runtime)
+        return self.get_repository_commit_with_options(repository_id, sha, request, headers, runtime)
 
-    async def get_sprint_info_async(
+    async def get_repository_commit_async(
         self,
-        organization_id: str,
-        sprint_id: str,
-    ) -> devops_20210625_models.GetSprintInfoResponse:
+        repository_id: str,
+        sha: str,
+        request: devops_20210625_models.GetRepositoryCommitRequest,
+    ) -> devops_20210625_models.GetRepositoryCommitResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_sprint_info_with_options_async(organization_id, sprint_id, headers, runtime)
+        return await self.get_repository_commit_with_options_async(repository_id, sha, request, headers, runtime)
+
+    def get_repository_tag_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetRepositoryTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetRepositoryTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['tagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRepositoryTag',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tag/info',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetRepositoryTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_repository_tag_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetRepositoryTagRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetRepositoryTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['tagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRepositoryTag',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tag/info',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetRepositoryTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_repository_tag(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetRepositoryTagRequest,
+    ) -> devops_20210625_models.GetRepositoryTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_repository_tag_with_options(repository_id, request, headers, runtime)
+
+    async def get_repository_tag_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetRepositoryTagRequest,
+    ) -> devops_20210625_models.GetRepositoryTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_repository_tag_with_options_async(repository_id, request, headers, runtime)
 
     def get_sprint_info_with_options(
         self,
@@ -4971,25 +6161,99 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_vmdeploy_order(
+    def get_sprint_info(
         self,
         organization_id: str,
-        pipeline_id: str,
-        deploy_order_id: str,
-    ) -> devops_20210625_models.GetVMDeployOrderResponse:
+        sprint_id: str,
+    ) -> devops_20210625_models.GetSprintInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
+        return self.get_sprint_info_with_options(organization_id, sprint_id, headers, runtime)
 
-    async def get_vmdeploy_order_async(
+    async def get_sprint_info_async(
         self,
         organization_id: str,
-        pipeline_id: str,
-        deploy_order_id: str,
-    ) -> devops_20210625_models.GetVMDeployOrderResponse:
+        sprint_id: str,
+    ) -> devops_20210625_models.GetSprintInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
+        return await self.get_sprint_info_with_options_async(organization_id, sprint_id, headers, runtime)
+
+    def get_user_info_with_options(
+        self,
+        request: devops_20210625_models.GetUserInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserInfo',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/users/current',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_info_with_options_async(
+        self,
+        request: devops_20210625_models.GetUserInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserInfo',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/users/current',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_info(
+        self,
+        request: devops_20210625_models.GetUserInfoRequest,
+    ) -> devops_20210625_models.GetUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_user_info_with_options(request, headers, runtime)
+
+    async def get_user_info_async(
+        self,
+        request: devops_20210625_models.GetUserInfoRequest,
+    ) -> devops_20210625_models.GetUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_user_info_with_options_async(request, headers, runtime)
 
     def get_vmdeploy_order_with_options(
         self,
@@ -5045,23 +6309,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_variable_group(
+    def get_vmdeploy_order(
         self,
         organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.GetVariableGroupResponse:
+        pipeline_id: str,
+        deploy_order_id: str,
+    ) -> devops_20210625_models.GetVMDeployOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_variable_group_with_options(organization_id, id, headers, runtime)
+        return self.get_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
 
-    async def get_variable_group_async(
+    async def get_vmdeploy_order_async(
         self,
         organization_id: str,
-        id: str,
-    ) -> devops_20210625_models.GetVariableGroupResponse:
+        pipeline_id: str,
+        deploy_order_id: str,
+    ) -> devops_20210625_models.GetVMDeployOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_variable_group_with_options_async(organization_id, id, headers, runtime)
+        return await self.get_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
 
     def get_variable_group_with_options(
         self,
@@ -5115,23 +6381,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_work_item_activity(
+    def get_variable_group(
         self,
         organization_id: str,
-        workitem_id: str,
-    ) -> devops_20210625_models.GetWorkItemActivityResponse:
+        id: str,
+    ) -> devops_20210625_models.GetVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_work_item_activity_with_options(organization_id, workitem_id, headers, runtime)
+        return self.get_variable_group_with_options(organization_id, id, headers, runtime)
 
-    async def get_work_item_activity_async(
+    async def get_variable_group_async(
         self,
         organization_id: str,
-        workitem_id: str,
-    ) -> devops_20210625_models.GetWorkItemActivityResponse:
+        id: str,
+    ) -> devops_20210625_models.GetVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_work_item_activity_with_options_async(organization_id, workitem_id, headers, runtime)
+        return await self.get_variable_group_with_options_async(organization_id, id, headers, runtime)
 
     def get_work_item_activity_with_options(
         self,
@@ -5185,23 +6451,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_work_item_info(
+    def get_work_item_activity(
         self,
         organization_id: str,
         workitem_id: str,
-    ) -> devops_20210625_models.GetWorkItemInfoResponse:
+    ) -> devops_20210625_models.GetWorkItemActivityResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_work_item_info_with_options(organization_id, workitem_id, headers, runtime)
+        return self.get_work_item_activity_with_options(organization_id, workitem_id, headers, runtime)
 
-    async def get_work_item_info_async(
+    async def get_work_item_activity_async(
         self,
         organization_id: str,
         workitem_id: str,
-    ) -> devops_20210625_models.GetWorkItemInfoResponse:
+    ) -> devops_20210625_models.GetWorkItemActivityResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_work_item_info_with_options_async(organization_id, workitem_id, headers, runtime)
+        return await self.get_work_item_activity_with_options_async(organization_id, workitem_id, headers, runtime)
 
     def get_work_item_info_with_options(
         self,
@@ -5255,25 +6521,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_work_item_work_flow_info(
+    def get_work_item_info(
         self,
         organization_id: str,
         workitem_id: str,
-        request: devops_20210625_models.GetWorkItemWorkFlowInfoRequest,
-    ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
+    ) -> devops_20210625_models.GetWorkItemInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_work_item_work_flow_info_with_options(organization_id, workitem_id, request, headers, runtime)
+        return self.get_work_item_info_with_options(organization_id, workitem_id, headers, runtime)
 
-    async def get_work_item_work_flow_info_async(
+    async def get_work_item_info_async(
         self,
         organization_id: str,
         workitem_id: str,
-        request: devops_20210625_models.GetWorkItemWorkFlowInfoRequest,
-    ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
+    ) -> devops_20210625_models.GetWorkItemInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_work_item_work_flow_info_with_options_async(organization_id, workitem_id, request, headers, runtime)
+        return await self.get_work_item_info_with_options_async(organization_id, workitem_id, headers, runtime)
 
     def get_work_item_work_flow_info_with_options(
         self,
@@ -5339,23 +6603,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_workitem_comment_list(
+    def get_work_item_work_flow_info(
         self,
         organization_id: str,
         workitem_id: str,
-    ) -> devops_20210625_models.GetWorkitemCommentListResponse:
+        request: devops_20210625_models.GetWorkItemWorkFlowInfoRequest,
+    ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_workitem_comment_list_with_options(organization_id, workitem_id, headers, runtime)
+        return self.get_work_item_work_flow_info_with_options(organization_id, workitem_id, request, headers, runtime)
 
-    async def get_workitem_comment_list_async(
+    async def get_work_item_work_flow_info_async(
         self,
         organization_id: str,
         workitem_id: str,
-    ) -> devops_20210625_models.GetWorkitemCommentListResponse:
+        request: devops_20210625_models.GetWorkItemWorkFlowInfoRequest,
+    ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_workitem_comment_list_with_options_async(organization_id, workitem_id, headers, runtime)
+        return await self.get_work_item_work_flow_info_with_options_async(organization_id, workitem_id, request, headers, runtime)
 
     def get_workitem_comment_list_with_options(
         self,
@@ -5409,25 +6675,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_workitem_relations(
+    def get_workitem_comment_list(
         self,
         organization_id: str,
         workitem_id: str,
-        request: devops_20210625_models.GetWorkitemRelationsRequest,
-    ) -> devops_20210625_models.GetWorkitemRelationsResponse:
+    ) -> devops_20210625_models.GetWorkitemCommentListResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_workitem_relations_with_options(organization_id, workitem_id, request, headers, runtime)
+        return self.get_workitem_comment_list_with_options(organization_id, workitem_id, headers, runtime)
 
-    async def get_workitem_relations_async(
+    async def get_workitem_comment_list_async(
         self,
         organization_id: str,
         workitem_id: str,
-        request: devops_20210625_models.GetWorkitemRelationsRequest,
-    ) -> devops_20210625_models.GetWorkitemRelationsResponse:
+    ) -> devops_20210625_models.GetWorkitemCommentListResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_workitem_relations_with_options_async(organization_id, workitem_id, request, headers, runtime)
+        return await self.get_workitem_comment_list_with_options_async(organization_id, workitem_id, headers, runtime)
 
     def get_workitem_relations_with_options(
         self,
@@ -5493,21 +6757,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_workitem_time_type_list(
+    def get_workitem_relations(
         self,
         organization_id: str,
-    ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
+        workitem_id: str,
+        request: devops_20210625_models.GetWorkitemRelationsRequest,
+    ) -> devops_20210625_models.GetWorkitemRelationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_workitem_time_type_list_with_options(organization_id, headers, runtime)
+        return self.get_workitem_relations_with_options(organization_id, workitem_id, request, headers, runtime)
 
-    async def get_workitem_time_type_list_async(
+    async def get_workitem_relations_async(
         self,
         organization_id: str,
-    ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
+        workitem_id: str,
+        request: devops_20210625_models.GetWorkitemRelationsRequest,
+    ) -> devops_20210625_models.GetWorkitemRelationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_workitem_time_type_list_with_options_async(organization_id, headers, runtime)
+        return await self.get_workitem_relations_with_options_async(organization_id, workitem_id, request, headers, runtime)
 
     def get_workitem_time_type_list_with_options(
         self,
@@ -5559,21 +6827,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_workspace(
+    def get_workitem_time_type_list(
         self,
-        workspace_id: str,
-    ) -> devops_20210625_models.GetWorkspaceResponse:
+        organization_id: str,
+    ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_workspace_with_options(workspace_id, headers, runtime)
+        return self.get_workitem_time_type_list_with_options(organization_id, headers, runtime)
 
-    async def get_workspace_async(
+    async def get_workitem_time_type_list_async(
         self,
-        workspace_id: str,
-    ) -> devops_20210625_models.GetWorkspaceResponse:
+        organization_id: str,
+    ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_workspace_with_options_async(workspace_id, headers, runtime)
+        return await self.get_workitem_time_type_list_with_options_async(organization_id, headers, runtime)
 
     def get_workspace_with_options(
         self,
@@ -5625,23 +6893,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def join_pipeline_group(
+    def get_workspace(
         self,
-        organization_id: str,
-        request: devops_20210625_models.JoinPipelineGroupRequest,
-    ) -> devops_20210625_models.JoinPipelineGroupResponse:
+        workspace_id: str,
+    ) -> devops_20210625_models.GetWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.join_pipeline_group_with_options(organization_id, request, headers, runtime)
+        return self.get_workspace_with_options(workspace_id, headers, runtime)
 
-    async def join_pipeline_group_async(
+    async def get_workspace_async(
         self,
-        organization_id: str,
-        request: devops_20210625_models.JoinPipelineGroupRequest,
-    ) -> devops_20210625_models.JoinPipelineGroupResponse:
+        workspace_id: str,
+    ) -> devops_20210625_models.GetWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.join_pipeline_group_with_options_async(organization_id, request, headers, runtime)
+        return await self.get_workspace_with_options_async(workspace_id, headers, runtime)
 
     def join_pipeline_group_with_options(
         self,
@@ -5709,21 +6975,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_flow_tag_groups(
+    def join_pipeline_group(
         self,
         organization_id: str,
-    ) -> devops_20210625_models.ListFlowTagGroupsResponse:
+        request: devops_20210625_models.JoinPipelineGroupRequest,
+    ) -> devops_20210625_models.JoinPipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_flow_tag_groups_with_options(organization_id, headers, runtime)
+        return self.join_pipeline_group_with_options(organization_id, request, headers, runtime)
 
-    async def list_flow_tag_groups_async(
+    async def join_pipeline_group_async(
         self,
         organization_id: str,
-    ) -> devops_20210625_models.ListFlowTagGroupsResponse:
+        request: devops_20210625_models.JoinPipelineGroupRequest,
+    ) -> devops_20210625_models.JoinPipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_flow_tag_groups_with_options_async(organization_id, headers, runtime)
+        return await self.join_pipeline_group_with_options_async(organization_id, request, headers, runtime)
 
     def list_flow_tag_groups_with_options(
         self,
@@ -5775,23 +7043,201 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_host_groups(
+    def list_flow_tag_groups(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListHostGroupsRequest,
-    ) -> devops_20210625_models.ListHostGroupsResponse:
+    ) -> devops_20210625_models.ListFlowTagGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_host_groups_with_options(organization_id, request, headers, runtime)
+        return self.list_flow_tag_groups_with_options(organization_id, headers, runtime)
 
-    async def list_host_groups_async(
+    async def list_flow_tag_groups_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListHostGroupsRequest,
-    ) -> devops_20210625_models.ListHostGroupsResponse:
+    ) -> devops_20210625_models.ListFlowTagGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_host_groups_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_flow_tag_groups_with_options_async(organization_id, headers, runtime)
+
+    def list_group_member_with_options(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListGroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_member_with_options_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListGroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_member(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupMemberRequest,
+    ) -> devops_20210625_models.ListGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_group_member_with_options(group_id, request, headers, runtime)
+
+    async def list_group_member_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupMemberRequest,
+    ) -> devops_20210625_models.ListGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_group_member_with_options_async(group_id, request, headers, runtime)
+
+    def list_group_repositories_with_options(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupRepositoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupRepositories',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/projects',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListGroupRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_repositories_with_options_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupRepositoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupRepositories',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/projects',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListGroupRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_repositories(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupRepositoriesRequest,
+    ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_group_repositories_with_options(group_id, request, headers, runtime)
+
+    async def list_group_repositories_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.ListGroupRepositoriesRequest,
+    ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_group_repositories_with_options_async(group_id, request, headers, runtime)
 
     def list_host_groups_with_options(
         self,
@@ -5887,23 +7333,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_organization_members(
+    def list_host_groups(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListOrganizationMembersRequest,
-    ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        request: devops_20210625_models.ListHostGroupsRequest,
+    ) -> devops_20210625_models.ListHostGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_organization_members_with_options(organization_id, request, headers, runtime)
+        return self.list_host_groups_with_options(organization_id, request, headers, runtime)
 
-    async def list_organization_members_async(
+    async def list_host_groups_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListOrganizationMembersRequest,
-    ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        request: devops_20210625_models.ListHostGroupsRequest,
+    ) -> devops_20210625_models.ListHostGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_organization_members_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_host_groups_with_options_async(organization_id, request, headers, runtime)
 
     def list_organization_members_with_options(
         self,
@@ -5995,25 +7441,103 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_group_pipelines(
+    def list_organization_members(
         self,
         organization_id: str,
-        group_id: str,
-        request: devops_20210625_models.ListPipelineGroupPipelinesRequest,
-    ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
+        request: devops_20210625_models.ListOrganizationMembersRequest,
+    ) -> devops_20210625_models.ListOrganizationMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_group_pipelines_with_options(organization_id, group_id, request, headers, runtime)
+        return self.list_organization_members_with_options(organization_id, request, headers, runtime)
 
-    async def list_pipeline_group_pipelines_async(
+    async def list_organization_members_async(
         self,
         organization_id: str,
-        group_id: str,
-        request: devops_20210625_models.ListPipelineGroupPipelinesRequest,
-    ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
+        request: devops_20210625_models.ListOrganizationMembersRequest,
+    ) -> devops_20210625_models.ListOrganizationMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_group_pipelines_with_options_async(organization_id, group_id, request, headers, runtime)
+        return await self.list_organization_members_with_options_async(organization_id, request, headers, runtime)
+
+    def list_organizations_with_options(
+        self,
+        request: devops_20210625_models.ListOrganizationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListOrganizationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_level):
+            query['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.min_access_level):
+            query['minAccessLevel'] = request.min_access_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOrganizations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organizations/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListOrganizationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_organizations_with_options_async(
+        self,
+        request: devops_20210625_models.ListOrganizationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListOrganizationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_level):
+            query['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.min_access_level):
+            query['minAccessLevel'] = request.min_access_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOrganizations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organizations/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListOrganizationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_organizations(
+        self,
+        request: devops_20210625_models.ListOrganizationsRequest,
+    ) -> devops_20210625_models.ListOrganizationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_organizations_with_options(request, headers, runtime)
+
+    async def list_organizations_async(
+        self,
+        request: devops_20210625_models.ListOrganizationsRequest,
+    ) -> devops_20210625_models.ListOrganizationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_organizations_with_options_async(request, headers, runtime)
 
     def list_pipeline_group_pipelines_with_options(
         self,
@@ -6107,23 +7631,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_groups(
+    def list_pipeline_group_pipelines(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListPipelineGroupsRequest,
-    ) -> devops_20210625_models.ListPipelineGroupsResponse:
+        group_id: str,
+        request: devops_20210625_models.ListPipelineGroupPipelinesRequest,
+    ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_groups_with_options(organization_id, request, headers, runtime)
+        return self.list_pipeline_group_pipelines_with_options(organization_id, group_id, request, headers, runtime)
 
-    async def list_pipeline_groups_async(
+    async def list_pipeline_group_pipelines_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListPipelineGroupsRequest,
-    ) -> devops_20210625_models.ListPipelineGroupsResponse:
+        group_id: str,
+        request: devops_20210625_models.ListPipelineGroupPipelinesRequest,
+    ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_groups_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_pipeline_group_pipelines_with_options_async(organization_id, group_id, request, headers, runtime)
 
     def list_pipeline_groups_with_options(
         self,
@@ -6191,25 +7717,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_job_historys(
+    def list_pipeline_groups(
         self,
         organization_id: str,
-        pipeline_id: str,
-        request: devops_20210625_models.ListPipelineJobHistorysRequest,
-    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        request: devops_20210625_models.ListPipelineGroupsRequest,
+    ) -> devops_20210625_models.ListPipelineGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_job_historys_with_options(organization_id, pipeline_id, request, headers, runtime)
+        return self.list_pipeline_groups_with_options(organization_id, request, headers, runtime)
 
-    async def list_pipeline_job_historys_async(
+    async def list_pipeline_groups_async(
         self,
         organization_id: str,
-        pipeline_id: str,
-        request: devops_20210625_models.ListPipelineJobHistorysRequest,
-    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        request: devops_20210625_models.ListPipelineGroupsRequest,
+    ) -> devops_20210625_models.ListPipelineGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_job_historys_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+        return await self.list_pipeline_groups_with_options_async(organization_id, request, headers, runtime)
 
     def list_pipeline_job_historys_with_options(
         self,
@@ -6287,25 +7811,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_jobs(
+    def list_pipeline_job_historys(
         self,
         organization_id: str,
         pipeline_id: str,
-        request: devops_20210625_models.ListPipelineJobsRequest,
-    ) -> devops_20210625_models.ListPipelineJobsResponse:
+        request: devops_20210625_models.ListPipelineJobHistorysRequest,
+    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_jobs_with_options(organization_id, pipeline_id, request, headers, runtime)
+        return self.list_pipeline_job_historys_with_options(organization_id, pipeline_id, request, headers, runtime)
 
-    async def list_pipeline_jobs_async(
+    async def list_pipeline_job_historys_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        request: devops_20210625_models.ListPipelineJobsRequest,
-    ) -> devops_20210625_models.ListPipelineJobsResponse:
+        request: devops_20210625_models.ListPipelineJobHistorysRequest,
+    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_jobs_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+        return await self.list_pipeline_job_historys_with_options_async(organization_id, pipeline_id, request, headers, runtime)
 
     def list_pipeline_jobs_with_options(
         self,
@@ -6371,25 +7895,109 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_runs(
+    def list_pipeline_jobs(
         self,
         organization_id: str,
         pipeline_id: str,
-        request: devops_20210625_models.ListPipelineRunsRequest,
-    ) -> devops_20210625_models.ListPipelineRunsResponse:
+        request: devops_20210625_models.ListPipelineJobsRequest,
+    ) -> devops_20210625_models.ListPipelineJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_runs_with_options(organization_id, pipeline_id, request, headers, runtime)
+        return self.list_pipeline_jobs_with_options(organization_id, pipeline_id, request, headers, runtime)
 
-    async def list_pipeline_runs_async(
+    async def list_pipeline_jobs_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        request: devops_20210625_models.ListPipelineRunsRequest,
-    ) -> devops_20210625_models.ListPipelineRunsResponse:
+        request: devops_20210625_models.ListPipelineJobsRequest,
+    ) -> devops_20210625_models.ListPipelineJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_runs_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+        return await self.list_pipeline_jobs_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+
+    def list_pipeline_relations_with_options(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineRelationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_object_type):
+            query['relObjectType'] = request.rel_object_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRelations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRelations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPipelineRelationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipeline_relations_with_options_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineRelationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rel_object_type):
+            query['relObjectType'] = request.rel_object_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRelations',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRelations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPipelineRelationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipeline_relations(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineRelationsRequest,
+    ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_pipeline_relations_with_options(organization_id, pipeline_id, request, headers, runtime)
+
+    async def list_pipeline_relations_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineRelationsRequest,
+    ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_pipeline_relations_with_options_async(organization_id, pipeline_id, request, headers, runtime)
 
     def list_pipeline_runs_with_options(
         self,
@@ -6475,23 +8083,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipelines(
+    def list_pipeline_runs(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListPipelinesRequest,
-    ) -> devops_20210625_models.ListPipelinesResponse:
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineRunsRequest,
+    ) -> devops_20210625_models.ListPipelineRunsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipelines_with_options(organization_id, request, headers, runtime)
+        return self.list_pipeline_runs_with_options(organization_id, pipeline_id, request, headers, runtime)
 
-    async def list_pipelines_async(
+    async def list_pipeline_runs_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListPipelinesRequest,
-    ) -> devops_20210625_models.ListPipelinesResponse:
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineRunsRequest,
+    ) -> devops_20210625_models.ListPipelineRunsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipelines_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_pipeline_runs_with_options_async(organization_id, pipeline_id, request, headers, runtime)
 
     def list_pipelines_with_options(
         self,
@@ -6591,25 +8201,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_project_members(
+    def list_pipelines(
         self,
         organization_id: str,
-        project_id: str,
-        request: devops_20210625_models.ListProjectMembersRequest,
-    ) -> devops_20210625_models.ListProjectMembersResponse:
+        request: devops_20210625_models.ListPipelinesRequest,
+    ) -> devops_20210625_models.ListPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_members_with_options(organization_id, project_id, request, headers, runtime)
+        return self.list_pipelines_with_options(organization_id, request, headers, runtime)
 
-    async def list_project_members_async(
+    async def list_pipelines_async(
         self,
         organization_id: str,
-        project_id: str,
-        request: devops_20210625_models.ListProjectMembersRequest,
-    ) -> devops_20210625_models.ListProjectMembersResponse:
+        request: devops_20210625_models.ListPipelinesRequest,
+    ) -> devops_20210625_models.ListPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_members_with_options_async(organization_id, project_id, request, headers, runtime)
+        return await self.list_pipelines_with_options_async(organization_id, request, headers, runtime)
 
     def list_project_members_with_options(
         self,
@@ -6675,23 +8283,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_project_templates(
+    def list_project_members(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListProjectTemplatesRequest,
-    ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        project_id: str,
+        request: devops_20210625_models.ListProjectMembersRequest,
+    ) -> devops_20210625_models.ListProjectMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_templates_with_options(organization_id, request, headers, runtime)
+        return self.list_project_members_with_options(organization_id, project_id, request, headers, runtime)
 
-    async def list_project_templates_async(
+    async def list_project_members_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListProjectTemplatesRequest,
-    ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        project_id: str,
+        request: devops_20210625_models.ListProjectMembersRequest,
+    ) -> devops_20210625_models.ListProjectMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_templates_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_project_members_with_options_async(organization_id, project_id, request, headers, runtime)
 
     def list_project_templates_with_options(
         self,
@@ -6755,25 +8365,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_project_workitem_types(
+    def list_project_templates(
         self,
         organization_id: str,
-        project_id: str,
-        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
-    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        request: devops_20210625_models.ListProjectTemplatesRequest,
+    ) -> devops_20210625_models.ListProjectTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_workitem_types_with_options(organization_id, project_id, request, headers, runtime)
+        return self.list_project_templates_with_options(organization_id, request, headers, runtime)
 
-    async def list_project_workitem_types_async(
+    async def list_project_templates_async(
         self,
         organization_id: str,
-        project_id: str,
-        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
-    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        request: devops_20210625_models.ListProjectTemplatesRequest,
+    ) -> devops_20210625_models.ListProjectTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_workitem_types_with_options_async(organization_id, project_id, request, headers, runtime)
+        return await self.list_project_templates_with_options_async(organization_id, request, headers, runtime)
 
     def list_project_workitem_types_with_options(
         self,
@@ -6843,23 +8451,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_projects(
+    def list_project_workitem_types(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListProjectsRequest,
-    ) -> devops_20210625_models.ListProjectsResponse:
+        project_id: str,
+        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
+    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_projects_with_options(organization_id, request, headers, runtime)
+        return self.list_project_workitem_types_with_options(organization_id, project_id, request, headers, runtime)
 
-    async def list_projects_async(
+    async def list_project_workitem_types_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListProjectsRequest,
-    ) -> devops_20210625_models.ListProjectsResponse:
+        project_id: str,
+        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
+    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_projects_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_project_workitem_types_with_options_async(organization_id, project_id, request, headers, runtime)
 
     def list_projects_with_options(
         self,
@@ -6943,23 +8553,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_protected_branches(
+    def list_projects(
         self,
-        repository_id: str,
-        request: devops_20210625_models.ListProtectedBranchesRequest,
-    ) -> devops_20210625_models.ListProtectedBranchesResponse:
+        organization_id: str,
+        request: devops_20210625_models.ListProjectsRequest,
+    ) -> devops_20210625_models.ListProjectsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_protected_branches_with_options(repository_id, request, headers, runtime)
+        return self.list_projects_with_options(organization_id, request, headers, runtime)
 
-    async def list_protected_branches_async(
+    async def list_projects_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.ListProtectedBranchesRequest,
-    ) -> devops_20210625_models.ListProtectedBranchesResponse:
+        organization_id: str,
+        request: devops_20210625_models.ListProjectsRequest,
+    ) -> devops_20210625_models.ListProjectsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_protected_branches_with_options_async(repository_id, request, headers, runtime)
+        return await self.list_projects_with_options_async(organization_id, request, headers, runtime)
 
     def list_protected_branches_with_options(
         self,
@@ -7027,21 +8637,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_repositories(
+    def list_protected_branches(
         self,
-        request: devops_20210625_models.ListRepositoriesRequest,
-    ) -> devops_20210625_models.ListRepositoriesResponse:
+        repository_id: str,
+        request: devops_20210625_models.ListProtectedBranchesRequest,
+    ) -> devops_20210625_models.ListProtectedBranchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_repositories_with_options(request, headers, runtime)
+        return self.list_protected_branches_with_options(repository_id, request, headers, runtime)
 
-    async def list_repositories_async(
+    async def list_protected_branches_async(
         self,
-        request: devops_20210625_models.ListRepositoriesRequest,
-    ) -> devops_20210625_models.ListRepositoriesResponse:
+        repository_id: str,
+        request: devops_20210625_models.ListProtectedBranchesRequest,
+    ) -> devops_20210625_models.ListProtectedBranchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_repositories_with_options_async(request, headers, runtime)
+        return await self.list_protected_branches_with_options_async(repository_id, request, headers, runtime)
 
     def list_repositories_with_options(
         self,
@@ -7131,23 +8743,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_repository_branches(
+    def list_repositories(
         self,
-        repository_id: str,
-        request: devops_20210625_models.ListRepositoryBranchesRequest,
-    ) -> devops_20210625_models.ListRepositoryBranchesResponse:
+        request: devops_20210625_models.ListRepositoriesRequest,
+    ) -> devops_20210625_models.ListRepositoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_repository_branches_with_options(repository_id, request, headers, runtime)
+        return self.list_repositories_with_options(request, headers, runtime)
 
-    async def list_repository_branches_async(
+    async def list_repositories_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.ListRepositoryBranchesRequest,
-    ) -> devops_20210625_models.ListRepositoryBranchesResponse:
+        request: devops_20210625_models.ListRepositoriesRequest,
+    ) -> devops_20210625_models.ListRepositoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_repository_branches_with_options_async(repository_id, request, headers, runtime)
+        return await self.list_repositories_with_options_async(request, headers, runtime)
 
     def list_repository_branches_with_options(
         self,
@@ -7231,25 +8841,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_repository_commit_diff(
+    def list_repository_branches(
         self,
         repository_id: str,
-        sha: str,
-        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
-    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        request: devops_20210625_models.ListRepositoryBranchesRequest,
+    ) -> devops_20210625_models.ListRepositoryBranchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_repository_commit_diff_with_options(repository_id, sha, request, headers, runtime)
+        return self.list_repository_branches_with_options(repository_id, request, headers, runtime)
 
-    async def list_repository_commit_diff_async(
+    async def list_repository_branches_async(
         self,
         repository_id: str,
-        sha: str,
-        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
-    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        request: devops_20210625_models.ListRepositoryBranchesRequest,
+    ) -> devops_20210625_models.ListRepositoryBranchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_repository_commit_diff_with_options_async(repository_id, sha, request, headers, runtime)
+        return await self.list_repository_branches_with_options_async(repository_id, request, headers, runtime)
 
     def list_repository_commit_diff_with_options(
         self,
@@ -7323,23 +8931,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_repository_commits(
+    def list_repository_commit_diff(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryCommitsRequest,
-    ) -> devops_20210625_models.ListRepositoryCommitsResponse:
+        sha: str,
+        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
+    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_repository_commits_with_options(repository_id, request, headers, runtime)
+        return self.list_repository_commit_diff_with_options(repository_id, sha, request, headers, runtime)
 
-    async def list_repository_commits_async(
+    async def list_repository_commit_diff_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryCommitsRequest,
-    ) -> devops_20210625_models.ListRepositoryCommitsResponse:
+        sha: str,
+        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
+    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_repository_commits_with_options_async(repository_id, request, headers, runtime)
+        return await self.list_repository_commit_diff_with_options_async(repository_id, sha, request, headers, runtime)
 
     def list_repository_commits_with_options(
         self,
@@ -7443,23 +9053,131 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_repository_member_with_inherited(
+    def list_repository_commits(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
-    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        request: devops_20210625_models.ListRepositoryCommitsRequest,
+    ) -> devops_20210625_models.ListRepositoryCommitsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_repository_member_with_inherited_with_options(repository_id, request, headers, runtime)
+        return self.list_repository_commits_with_options(repository_id, request, headers, runtime)
 
-    async def list_repository_member_with_inherited_async(
+    async def list_repository_commits_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
-    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        request: devops_20210625_models.ListRepositoryCommitsRequest,
+    ) -> devops_20210625_models.ListRepositoryCommitsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_repository_member_with_inherited_with_options_async(repository_id, request, headers, runtime)
+        return await self.list_repository_commits_with_options_async(repository_id, request, headers, runtime)
+
+    def list_repository_groups_with_options(
+        self,
+        request: devops_20210625_models.ListRepositoryGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.include_personal):
+            query['includePersonal'] = request.include_personal
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_id):
+            query['parentId'] = request.parent_id
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryGroups',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/get/all',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_repository_groups_with_options_async(
+        self,
+        request: devops_20210625_models.ListRepositoryGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.include_personal):
+            query['includePersonal'] = request.include_personal
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_id):
+            query['parentId'] = request.parent_id
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryGroups',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/get/all',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_repository_groups(
+        self,
+        request: devops_20210625_models.ListRepositoryGroupsRequest,
+    ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_repository_groups_with_options(request, headers, runtime)
+
+    async def list_repository_groups_async(
+        self,
+        request: devops_20210625_models.ListRepositoryGroupsRequest,
+    ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_repository_groups_with_options_async(request, headers, runtime)
 
     def list_repository_member_with_inherited_with_options(
         self,
@@ -7527,23 +9245,123 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_repository_tree(
+    def list_repository_member_with_inherited(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryTreeRequest,
-    ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
+    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_repository_tree_with_options(repository_id, request, headers, runtime)
+        return self.list_repository_member_with_inherited_with_options(repository_id, request, headers, runtime)
 
-    async def list_repository_tree_async(
+    async def list_repository_member_with_inherited_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryTreeRequest,
-    ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
+    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_repository_tree_with_options_async(repository_id, request, headers, runtime)
+        return await self.list_repository_member_with_inherited_with_options_async(repository_id, request, headers, runtime)
+
+    def list_repository_tags_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryTags',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tag/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_repository_tags_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryTags',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/tag/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_repository_tags(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTagsRequest,
+    ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_repository_tags_with_options(repository_id, request, headers, runtime)
+
+    async def list_repository_tags_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTagsRequest,
+    ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_repository_tags_with_options_async(repository_id, request, headers, runtime)
 
     def list_repository_tree_with_options(
         self,
@@ -7623,23 +9441,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_repository_webhook(
+    def list_repository_tree(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryWebhookRequest,
-    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        request: devops_20210625_models.ListRepositoryTreeRequest,
+    ) -> devops_20210625_models.ListRepositoryTreeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_repository_webhook_with_options(repository_id, request, headers, runtime)
+        return self.list_repository_tree_with_options(repository_id, request, headers, runtime)
 
-    async def list_repository_webhook_async(
+    async def list_repository_tree_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.ListRepositoryWebhookRequest,
-    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        request: devops_20210625_models.ListRepositoryTreeRequest,
+    ) -> devops_20210625_models.ListRepositoryTreeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_repository_webhook_with_options_async(repository_id, request, headers, runtime)
+        return await self.list_repository_tree_with_options_async(repository_id, request, headers, runtime)
 
     def list_repository_webhook_with_options(
         self,
@@ -7715,25 +9533,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resource_members(
+    def list_repository_webhook(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-    ) -> devops_20210625_models.ListResourceMembersResponse:
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryWebhookRequest,
+    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resource_members_with_options(organization_id, resource_type, resource_id, headers, runtime)
+        return self.list_repository_webhook_with_options(repository_id, request, headers, runtime)
 
-    async def list_resource_members_async(
+    async def list_repository_webhook_async(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-    ) -> devops_20210625_models.ListResourceMembersResponse:
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryWebhookRequest,
+    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resource_members_with_options_async(organization_id, resource_type, resource_id, headers, runtime)
+        return await self.list_repository_webhook_with_options_async(repository_id, request, headers, runtime)
 
     def list_resource_members_with_options(
         self,
@@ -7789,23 +9605,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_service_connections(
+    def list_resource_members(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListServiceConnectionsRequest,
-    ) -> devops_20210625_models.ListServiceConnectionsResponse:
+        resource_type: str,
+        resource_id: str,
+    ) -> devops_20210625_models.ListResourceMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_service_connections_with_options(organization_id, request, headers, runtime)
+        return self.list_resource_members_with_options(organization_id, resource_type, resource_id, headers, runtime)
 
-    async def list_service_connections_async(
+    async def list_resource_members_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListServiceConnectionsRequest,
-    ) -> devops_20210625_models.ListServiceConnectionsResponse:
+        resource_type: str,
+        resource_id: str,
+    ) -> devops_20210625_models.ListResourceMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_service_connections_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_resource_members_with_options_async(organization_id, resource_type, resource_id, headers, runtime)
 
     def list_service_connections_with_options(
         self,
@@ -7869,23 +9687,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_sprints(
+    def list_service_connections(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListSprintsRequest,
-    ) -> devops_20210625_models.ListSprintsResponse:
+        request: devops_20210625_models.ListServiceConnectionsRequest,
+    ) -> devops_20210625_models.ListServiceConnectionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_sprints_with_options(organization_id, request, headers, runtime)
+        return self.list_service_connections_with_options(organization_id, request, headers, runtime)
 
-    async def list_sprints_async(
+    async def list_service_connections_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListSprintsRequest,
-    ) -> devops_20210625_models.ListSprintsResponse:
+        request: devops_20210625_models.ListServiceConnectionsRequest,
+    ) -> devops_20210625_models.ListServiceConnectionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_sprints_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_service_connections_with_options_async(organization_id, request, headers, runtime)
 
     def list_sprints_with_options(
         self,
@@ -7961,23 +9779,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_variable_groups(
+    def list_sprints(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListVariableGroupsRequest,
-    ) -> devops_20210625_models.ListVariableGroupsResponse:
+        request: devops_20210625_models.ListSprintsRequest,
+    ) -> devops_20210625_models.ListSprintsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_variable_groups_with_options(organization_id, request, headers, runtime)
+        return self.list_sprints_with_options(organization_id, request, headers, runtime)
 
-    async def list_variable_groups_async(
+    async def list_sprints_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListVariableGroupsRequest,
-    ) -> devops_20210625_models.ListVariableGroupsResponse:
+        request: devops_20210625_models.ListSprintsRequest,
+    ) -> devops_20210625_models.ListSprintsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_variable_groups_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_sprints_with_options_async(organization_id, request, headers, runtime)
 
     def list_variable_groups_with_options(
         self,
@@ -8053,23 +9871,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_work_item_all_fields(
+    def list_variable_groups(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
-    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        request: devops_20210625_models.ListVariableGroupsRequest,
+    ) -> devops_20210625_models.ListVariableGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_work_item_all_fields_with_options(organization_id, request, headers, runtime)
+        return self.list_variable_groups_with_options(organization_id, request, headers, runtime)
 
-    async def list_work_item_all_fields_async(
+    async def list_variable_groups_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
-    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        request: devops_20210625_models.ListVariableGroupsRequest,
+    ) -> devops_20210625_models.ListVariableGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_work_item_all_fields_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_variable_groups_with_options_async(organization_id, request, headers, runtime)
 
     def list_work_item_all_fields_with_options(
         self,
@@ -8141,23 +9959,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_work_item_work_flow_status(
+    def list_work_item_all_fields(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
-    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
+    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_work_item_work_flow_status_with_options(organization_id, request, headers, runtime)
+        return self.list_work_item_all_fields_with_options(organization_id, request, headers, runtime)
 
-    async def list_work_item_work_flow_status_async(
+    async def list_work_item_all_fields_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
-    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
+    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_work_item_work_flow_status_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_work_item_all_fields_with_options_async(organization_id, request, headers, runtime)
 
     def list_work_item_work_flow_status_with_options(
         self,
@@ -8233,23 +10051,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_workitem_time(
+    def list_work_item_work_flow_status(
         self,
         organization_id: str,
-        workitem_id: str,
-    ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
+    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_workitem_time_with_options(organization_id, workitem_id, headers, runtime)
+        return self.list_work_item_work_flow_status_with_options(organization_id, request, headers, runtime)
 
-    async def list_workitem_time_async(
+    async def list_work_item_work_flow_status_async(
         self,
         organization_id: str,
-        workitem_id: str,
-    ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
+    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_workitem_time_with_options_async(organization_id, workitem_id, headers, runtime)
+        return await self.list_work_item_work_flow_status_with_options_async(organization_id, request, headers, runtime)
 
     def list_workitem_time_with_options(
         self,
@@ -8303,23 +10121,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_workitems(
+    def list_workitem_time(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListWorkitemsRequest,
-    ) -> devops_20210625_models.ListWorkitemsResponse:
+        workitem_id: str,
+    ) -> devops_20210625_models.ListWorkitemTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_workitems_with_options(organization_id, request, headers, runtime)
+        return self.list_workitem_time_with_options(organization_id, workitem_id, headers, runtime)
 
-    async def list_workitems_async(
+    async def list_workitem_time_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.ListWorkitemsRequest,
-    ) -> devops_20210625_models.ListWorkitemsResponse:
+        workitem_id: str,
+    ) -> devops_20210625_models.ListWorkitemTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_workitems_with_options_async(organization_id, request, headers, runtime)
+        return await self.list_workitem_time_with_options_async(organization_id, workitem_id, headers, runtime)
 
     def list_workitems_with_options(
         self,
@@ -8419,21 +10237,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_workspaces(
+    def list_workitems(
         self,
-        request: devops_20210625_models.ListWorkspacesRequest,
-    ) -> devops_20210625_models.ListWorkspacesResponse:
+        organization_id: str,
+        request: devops_20210625_models.ListWorkitemsRequest,
+    ) -> devops_20210625_models.ListWorkitemsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_workspaces_with_options(request, headers, runtime)
+        return self.list_workitems_with_options(organization_id, request, headers, runtime)
 
-    async def list_workspaces_async(
+    async def list_workitems_async(
         self,
-        request: devops_20210625_models.ListWorkspacesRequest,
-    ) -> devops_20210625_models.ListWorkspacesResponse:
+        organization_id: str,
+        request: devops_20210625_models.ListWorkitemsRequest,
+    ) -> devops_20210625_models.ListWorkitemsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_workspaces_with_options_async(request, headers, runtime)
+        return await self.list_workitems_with_options_async(organization_id, request, headers, runtime)
 
     def list_workspaces_with_options(
         self,
@@ -8519,27 +10339,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def log_pipeline_job_run(
+    def list_workspaces(
         self,
-        organization_id: str,
-        pipeline_id: str,
-        job_id: str,
-        pipeline_run_id: str,
-    ) -> devops_20210625_models.LogPipelineJobRunResponse:
+        request: devops_20210625_models.ListWorkspacesRequest,
+    ) -> devops_20210625_models.ListWorkspacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.log_pipeline_job_run_with_options(organization_id, pipeline_id, job_id, pipeline_run_id, headers, runtime)
+        return self.list_workspaces_with_options(request, headers, runtime)
 
-    async def log_pipeline_job_run_async(
+    async def list_workspaces_async(
         self,
-        organization_id: str,
-        pipeline_id: str,
-        job_id: str,
-        pipeline_run_id: str,
-    ) -> devops_20210625_models.LogPipelineJobRunResponse:
+        request: devops_20210625_models.ListWorkspacesRequest,
+    ) -> devops_20210625_models.ListWorkspacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.log_pipeline_job_run_with_options_async(organization_id, pipeline_id, job_id, pipeline_run_id, headers, runtime)
+        return await self.list_workspaces_with_options_async(request, headers, runtime)
 
     def log_pipeline_job_run_with_options(
         self,
@@ -8597,27 +10411,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def log_vmdeploy_machine(
+    def log_pipeline_job_run(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-        machine_sn: str,
-    ) -> devops_20210625_models.LogVMDeployMachineResponse:
+        job_id: str,
+        pipeline_run_id: str,
+    ) -> devops_20210625_models.LogPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.log_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
+        return self.log_pipeline_job_run_with_options(organization_id, pipeline_id, job_id, pipeline_run_id, headers, runtime)
 
-    async def log_vmdeploy_machine_async(
+    async def log_pipeline_job_run_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-        machine_sn: str,
-    ) -> devops_20210625_models.LogVMDeployMachineResponse:
+        job_id: str,
+        pipeline_run_id: str,
+    ) -> devops_20210625_models.LogPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.log_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
+        return await self.log_pipeline_job_run_with_options_async(organization_id, pipeline_id, job_id, pipeline_run_id, headers, runtime)
 
     def log_vmdeploy_machine_with_options(
         self,
@@ -8675,27 +10489,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def pass_pipeline_validate(
+    def log_vmdeploy_machine(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.PassPipelineValidateResponse:
+        deploy_order_id: str,
+        machine_sn: str,
+    ) -> devops_20210625_models.LogVMDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.pass_pipeline_validate_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return self.log_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
 
-    async def pass_pipeline_validate_async(
+    async def log_vmdeploy_machine_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.PassPipelineValidateResponse:
+        deploy_order_id: str,
+        machine_sn: str,
+    ) -> devops_20210625_models.LogVMDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.pass_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return await self.log_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
 
     def pass_pipeline_validate_with_options(
         self,
@@ -8753,27 +10567,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def refuse_pipeline_validate(
+    def pass_pipeline_validate(
         self,
         organization_id: str,
         pipeline_id: str,
         pipeline_run_id: str,
         job_id: str,
-    ) -> devops_20210625_models.RefusePipelineValidateResponse:
+    ) -> devops_20210625_models.PassPipelineValidateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.refuse_pipeline_validate_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return self.pass_pipeline_validate_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
-    async def refuse_pipeline_validate_async(
+    async def pass_pipeline_validate_async(
         self,
         organization_id: str,
         pipeline_id: str,
         pipeline_run_id: str,
         job_id: str,
-    ) -> devops_20210625_models.RefusePipelineValidateResponse:
+    ) -> devops_20210625_models.PassPipelineValidateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.refuse_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return await self.pass_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
     def refuse_pipeline_validate_with_options(
         self,
@@ -8831,21 +10645,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def release_workspace(
+    def refuse_pipeline_validate(
         self,
-        workspace_id: str,
-    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        organization_id: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        job_id: str,
+    ) -> devops_20210625_models.RefusePipelineValidateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.release_workspace_with_options(workspace_id, headers, runtime)
+        return self.refuse_pipeline_validate_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
-    async def release_workspace_async(
+    async def refuse_pipeline_validate_async(
         self,
-        workspace_id: str,
-    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        organization_id: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        job_id: str,
+    ) -> devops_20210625_models.RefusePipelineValidateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.release_workspace_with_options_async(workspace_id, headers, runtime)
+        return await self.refuse_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
     def release_workspace_with_options(
         self,
@@ -8897,21 +10717,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def reset_ssh_key(
+    def release_workspace(
         self,
-        organization_id: str,
-    ) -> devops_20210625_models.ResetSshKeyResponse:
+        workspace_id: str,
+    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.reset_ssh_key_with_options(organization_id, headers, runtime)
+        return self.release_workspace_with_options(workspace_id, headers, runtime)
 
-    async def reset_ssh_key_async(
+    async def release_workspace_async(
         self,
-        organization_id: str,
-    ) -> devops_20210625_models.ResetSshKeyResponse:
+        workspace_id: str,
+    ) -> devops_20210625_models.ReleaseWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.reset_ssh_key_with_options_async(organization_id, headers, runtime)
+        return await self.release_workspace_with_options_async(workspace_id, headers, runtime)
 
     def reset_ssh_key_with_options(
         self,
@@ -8963,25 +10783,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def resume_vmdeploy_order(
+    def reset_ssh_key(
         self,
         organization_id: str,
-        pipeline_id: str,
-        deploy_order_id: str,
-    ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
+    ) -> devops_20210625_models.ResetSshKeyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
+        return self.reset_ssh_key_with_options(organization_id, headers, runtime)
 
-    async def resume_vmdeploy_order_async(
+    async def reset_ssh_key_async(
         self,
         organization_id: str,
-        pipeline_id: str,
-        deploy_order_id: str,
-    ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
+    ) -> devops_20210625_models.ResetSshKeyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
+        return await self.reset_ssh_key_with_options_async(organization_id, headers, runtime)
 
     def resume_vmdeploy_order_with_options(
         self,
@@ -9037,27 +10853,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def retry_pipeline_job_run(
+    def resume_vmdeploy_order(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        deploy_order_id: str,
+    ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.retry_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return self.resume_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
 
-    async def retry_pipeline_job_run_async(
+    async def resume_vmdeploy_order_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        deploy_order_id: str,
+    ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.retry_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return await self.resume_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
 
     def retry_pipeline_job_run_with_options(
         self,
@@ -9115,27 +10929,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def retry_vmdeploy_machine(
+    def retry_pipeline_job_run(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-        machine_sn: str,
-    ) -> devops_20210625_models.RetryVMDeployMachineResponse:
+        pipeline_run_id: str,
+        job_id: str,
+    ) -> devops_20210625_models.RetryPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.retry_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
+        return self.retry_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
-    async def retry_vmdeploy_machine_async(
+    async def retry_pipeline_job_run_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-        machine_sn: str,
-    ) -> devops_20210625_models.RetryVMDeployMachineResponse:
+        pipeline_run_id: str,
+        job_id: str,
+    ) -> devops_20210625_models.RetryPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.retry_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
+        return await self.retry_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
     def retry_vmdeploy_machine_with_options(
         self,
@@ -9193,27 +11007,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def skip_pipeline_job_run(
+    def retry_vmdeploy_machine(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        deploy_order_id: str,
+        machine_sn: str,
+    ) -> devops_20210625_models.RetryVMDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.skip_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return self.retry_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
 
-    async def skip_pipeline_job_run_async(
+    async def retry_vmdeploy_machine_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        deploy_order_id: str,
+        machine_sn: str,
+    ) -> devops_20210625_models.RetryVMDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.skip_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return await self.retry_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
 
     def skip_pipeline_job_run_with_options(
         self,
@@ -9271,27 +11085,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def skip_vmdeploy_machine(
+    def skip_pipeline_job_run(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-        machine_sn: str,
-    ) -> devops_20210625_models.SkipVMDeployMachineResponse:
+        pipeline_run_id: str,
+        job_id: str,
+    ) -> devops_20210625_models.SkipPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.skip_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
+        return self.skip_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
-    async def skip_vmdeploy_machine_async(
+    async def skip_pipeline_job_run_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-        machine_sn: str,
-    ) -> devops_20210625_models.SkipVMDeployMachineResponse:
+        pipeline_run_id: str,
+        job_id: str,
+    ) -> devops_20210625_models.SkipPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.skip_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
+        return await self.skip_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
     def skip_vmdeploy_machine_with_options(
         self,
@@ -9349,25 +11163,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_pipeline_run(
+    def skip_vmdeploy_machine(
         self,
         organization_id: str,
         pipeline_id: str,
-        request: devops_20210625_models.StartPipelineRunRequest,
-    ) -> devops_20210625_models.StartPipelineRunResponse:
+        deploy_order_id: str,
+        machine_sn: str,
+    ) -> devops_20210625_models.SkipVMDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_pipeline_run_with_options(organization_id, pipeline_id, request, headers, runtime)
+        return self.skip_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
 
-    async def start_pipeline_run_async(
+    async def skip_vmdeploy_machine_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        request: devops_20210625_models.StartPipelineRunRequest,
-    ) -> devops_20210625_models.StartPipelineRunResponse:
+        deploy_order_id: str,
+        machine_sn: str,
+    ) -> devops_20210625_models.SkipVMDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_pipeline_run_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+        return await self.skip_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
 
     def start_pipeline_run_with_options(
         self,
@@ -9433,27 +11249,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_pipeline_job_run(
+    def start_pipeline_run(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        request: devops_20210625_models.StartPipelineRunRequest,
+    ) -> devops_20210625_models.StartPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return self.start_pipeline_run_with_options(organization_id, pipeline_id, request, headers, runtime)
 
-    async def stop_pipeline_job_run_async(
+    async def start_pipeline_run_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        pipeline_run_id: str,
-        job_id: str,
-    ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        request: devops_20210625_models.StartPipelineRunRequest,
+    ) -> devops_20210625_models.StartPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+        return await self.start_pipeline_run_with_options_async(organization_id, pipeline_id, request, headers, runtime)
 
     def stop_pipeline_job_run_with_options(
         self,
@@ -9511,25 +11325,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_pipeline_run(
+    def stop_pipeline_job_run(
         self,
         organization_id: str,
         pipeline_id: str,
         pipeline_run_id: str,
-    ) -> devops_20210625_models.StopPipelineRunResponse:
+        job_id: str,
+    ) -> devops_20210625_models.StopPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_pipeline_run_with_options(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
+        return self.stop_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
-    async def stop_pipeline_run_async(
+    async def stop_pipeline_job_run_async(
         self,
         organization_id: str,
         pipeline_id: str,
         pipeline_run_id: str,
-    ) -> devops_20210625_models.StopPipelineRunResponse:
+        job_id: str,
+    ) -> devops_20210625_models.StopPipelineJobRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_pipeline_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
+        return await self.stop_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
     def stop_pipeline_run_with_options(
         self,
@@ -9585,25 +11401,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_vmdeploy_order(
+    def stop_pipeline_run(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-    ) -> devops_20210625_models.StopVMDeployOrderResponse:
+        pipeline_run_id: str,
+    ) -> devops_20210625_models.StopPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
+        return self.stop_pipeline_run_with_options(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
 
-    async def stop_vmdeploy_order_async(
+    async def stop_pipeline_run_async(
         self,
         organization_id: str,
         pipeline_id: str,
-        deploy_order_id: str,
-    ) -> devops_20210625_models.StopVMDeployOrderResponse:
+        pipeline_run_id: str,
+    ) -> devops_20210625_models.StopPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
+        return await self.stop_pipeline_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
 
     def stop_vmdeploy_order_with_options(
         self,
@@ -9659,23 +11475,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def trigger_repository_mirror_sync(
+    def stop_vmdeploy_order(
         self,
-        repository_id: str,
-        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
-    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        organization_id: str,
+        pipeline_id: str,
+        deploy_order_id: str,
+    ) -> devops_20210625_models.StopVMDeployOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.trigger_repository_mirror_sync_with_options(repository_id, request, headers, runtime)
+        return self.stop_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
 
-    async def trigger_repository_mirror_sync_async(
+    async def stop_vmdeploy_order_async(
         self,
-        repository_id: str,
-        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
-    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        organization_id: str,
+        pipeline_id: str,
+        deploy_order_id: str,
+    ) -> devops_20210625_models.StopVMDeployOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.trigger_repository_mirror_sync_with_options_async(repository_id, request, headers, runtime)
+        return await self.stop_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
 
     def trigger_repository_mirror_sync_with_options(
         self,
@@ -9751,23 +11569,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_file(
+    def trigger_repository_mirror_sync(
         self,
         repository_id: str,
-        request: devops_20210625_models.UpdateFileRequest,
-    ) -> devops_20210625_models.UpdateFileResponse:
+        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
+    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_file_with_options(repository_id, request, headers, runtime)
+        return self.trigger_repository_mirror_sync_with_options(repository_id, request, headers, runtime)
 
-    async def update_file_async(
+    async def trigger_repository_mirror_sync_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.UpdateFileRequest,
-    ) -> devops_20210625_models.UpdateFileResponse:
+        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
+    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_file_with_options_async(repository_id, request, headers, runtime)
+        return await self.trigger_repository_mirror_sync_with_options_async(repository_id, request, headers, runtime)
 
     def update_file_with_options(
         self,
@@ -9863,25 +11681,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_flow_tag(
+    def update_file(
         self,
-        organization_id: str,
-        id: str,
-        request: devops_20210625_models.UpdateFlowTagRequest,
-    ) -> devops_20210625_models.UpdateFlowTagResponse:
+        repository_id: str,
+        request: devops_20210625_models.UpdateFileRequest,
+    ) -> devops_20210625_models.UpdateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_flow_tag_with_options(organization_id, id, request, headers, runtime)
+        return self.update_file_with_options(repository_id, request, headers, runtime)
 
-    async def update_flow_tag_async(
+    async def update_file_async(
         self,
-        organization_id: str,
-        id: str,
-        request: devops_20210625_models.UpdateFlowTagRequest,
-    ) -> devops_20210625_models.UpdateFlowTagResponse:
+        repository_id: str,
+        request: devops_20210625_models.UpdateFileRequest,
+    ) -> devops_20210625_models.UpdateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_flow_tag_with_options_async(organization_id, id, request, headers, runtime)
+        return await self.update_file_with_options_async(repository_id, request, headers, runtime)
 
     def update_flow_tag_with_options(
         self,
@@ -9955,25 +11771,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_flow_tag_group(
+    def update_flow_tag(
         self,
         organization_id: str,
         id: str,
-        request: devops_20210625_models.UpdateFlowTagGroupRequest,
-    ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
+        request: devops_20210625_models.UpdateFlowTagRequest,
+    ) -> devops_20210625_models.UpdateFlowTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_flow_tag_group_with_options(organization_id, id, request, headers, runtime)
+        return self.update_flow_tag_with_options(organization_id, id, request, headers, runtime)
 
-    async def update_flow_tag_group_async(
+    async def update_flow_tag_async(
         self,
         organization_id: str,
         id: str,
-        request: devops_20210625_models.UpdateFlowTagGroupRequest,
-    ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
+        request: devops_20210625_models.UpdateFlowTagRequest,
+    ) -> devops_20210625_models.UpdateFlowTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_flow_tag_group_with_options_async(organization_id, id, request, headers, runtime)
+        return await self.update_flow_tag_with_options_async(organization_id, id, request, headers, runtime)
 
     def update_flow_tag_group_with_options(
         self,
@@ -10039,25 +11855,125 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_host_group(
+    def update_flow_tag_group(
         self,
         organization_id: str,
         id: str,
-        request: devops_20210625_models.UpdateHostGroupRequest,
-    ) -> devops_20210625_models.UpdateHostGroupResponse:
+        request: devops_20210625_models.UpdateFlowTagGroupRequest,
+    ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_host_group_with_options(organization_id, id, request, headers, runtime)
+        return self.update_flow_tag_group_with_options(organization_id, id, request, headers, runtime)
 
-    async def update_host_group_async(
+    async def update_flow_tag_group_async(
         self,
         organization_id: str,
         id: str,
-        request: devops_20210625_models.UpdateHostGroupRequest,
-    ) -> devops_20210625_models.UpdateHostGroupResponse:
+        request: devops_20210625_models.UpdateFlowTagGroupRequest,
+    ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_host_group_with_options_async(organization_id, id, request, headers, runtime)
+        return await self.update_flow_tag_group_with_options_async(organization_id, id, request, headers, runtime)
+
+    def update_group_member_with_options(
+        self,
+        group_id: str,
+        request: devops_20210625_models.UpdateGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.aliyun_pk):
+            query['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.access_level):
+            body['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/members/update/aliyun_pk',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateGroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_member_with_options_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.UpdateGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.aliyun_pk):
+            query['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.access_level):
+            body['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/groups/{OpenApiUtilClient.get_encode_param(group_id)}/members/update/aliyun_pk',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateGroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group_member(
+        self,
+        group_id: str,
+        request: devops_20210625_models.UpdateGroupMemberRequest,
+    ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_group_member_with_options(group_id, request, headers, runtime)
+
+    async def update_group_member_async(
+        self,
+        group_id: str,
+        request: devops_20210625_models.UpdateGroupMemberRequest,
+    ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_group_member_with_options_async(group_id, request, headers, runtime)
 
     def update_host_group_with_options(
         self,
@@ -10159,25 +12075,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_pipeline_base_info(
+    def update_host_group(
         self,
         organization_id: str,
-        pipeline_id: str,
-        request: devops_20210625_models.UpdatePipelineBaseInfoRequest,
-    ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
+        id: str,
+        request: devops_20210625_models.UpdateHostGroupRequest,
+    ) -> devops_20210625_models.UpdateHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_pipeline_base_info_with_options(organization_id, pipeline_id, request, headers, runtime)
+        return self.update_host_group_with_options(organization_id, id, request, headers, runtime)
 
-    async def update_pipeline_base_info_async(
+    async def update_host_group_async(
         self,
         organization_id: str,
-        pipeline_id: str,
-        request: devops_20210625_models.UpdatePipelineBaseInfoRequest,
-    ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
+        id: str,
+        request: devops_20210625_models.UpdateHostGroupRequest,
+    ) -> devops_20210625_models.UpdateHostGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_pipeline_base_info_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+        return await self.update_host_group_with_options_async(organization_id, id, request, headers, runtime)
 
     def update_pipeline_base_info_with_options(
         self,
@@ -10251,25 +12167,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_pipeline_group(
+    def update_pipeline_base_info(
         self,
         organization_id: str,
-        group_id: str,
-        request: devops_20210625_models.UpdatePipelineGroupRequest,
-    ) -> devops_20210625_models.UpdatePipelineGroupResponse:
+        pipeline_id: str,
+        request: devops_20210625_models.UpdatePipelineBaseInfoRequest,
+    ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_pipeline_group_with_options(organization_id, group_id, request, headers, runtime)
+        return self.update_pipeline_base_info_with_options(organization_id, pipeline_id, request, headers, runtime)
 
-    async def update_pipeline_group_async(
+    async def update_pipeline_base_info_async(
         self,
         organization_id: str,
-        group_id: str,
-        request: devops_20210625_models.UpdatePipelineGroupRequest,
-    ) -> devops_20210625_models.UpdatePipelineGroupResponse:
+        pipeline_id: str,
+        request: devops_20210625_models.UpdatePipelineBaseInfoRequest,
+    ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_pipeline_group_with_options_async(organization_id, group_id, request, headers, runtime)
+        return await self.update_pipeline_base_info_with_options_async(organization_id, pipeline_id, request, headers, runtime)
 
     def update_pipeline_group_with_options(
         self,
@@ -10335,25 +12251,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_project_member(
+    def update_pipeline_group(
         self,
         organization_id: str,
-        project_id: str,
-        request: devops_20210625_models.UpdateProjectMemberRequest,
-    ) -> devops_20210625_models.UpdateProjectMemberResponse:
+        group_id: str,
+        request: devops_20210625_models.UpdatePipelineGroupRequest,
+    ) -> devops_20210625_models.UpdatePipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_project_member_with_options(organization_id, project_id, request, headers, runtime)
+        return self.update_pipeline_group_with_options(organization_id, group_id, request, headers, runtime)
 
-    async def update_project_member_async(
+    async def update_pipeline_group_async(
         self,
         organization_id: str,
-        project_id: str,
-        request: devops_20210625_models.UpdateProjectMemberRequest,
-    ) -> devops_20210625_models.UpdateProjectMemberResponse:
+        group_id: str,
+        request: devops_20210625_models.UpdatePipelineGroupRequest,
+    ) -> devops_20210625_models.UpdatePipelineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_project_member_with_options_async(organization_id, project_id, request, headers, runtime)
+        return await self.update_pipeline_group_with_options_async(organization_id, group_id, request, headers, runtime)
 
     def update_project_member_with_options(
         self,
@@ -10435,25 +12351,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_protected_branches(
+    def update_project_member(
         self,
-        repository_id: str,
-        id: str,
-        request: devops_20210625_models.UpdateProtectedBranchesRequest,
-    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        organization_id: str,
+        project_id: str,
+        request: devops_20210625_models.UpdateProjectMemberRequest,
+    ) -> devops_20210625_models.UpdateProjectMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_protected_branches_with_options(repository_id, id, request, headers, runtime)
+        return self.update_project_member_with_options(organization_id, project_id, request, headers, runtime)
 
-    async def update_protected_branches_async(
+    async def update_project_member_async(
         self,
-        repository_id: str,
-        id: str,
-        request: devops_20210625_models.UpdateProtectedBranchesRequest,
-    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        organization_id: str,
+        project_id: str,
+        request: devops_20210625_models.UpdateProjectMemberRequest,
+    ) -> devops_20210625_models.UpdateProjectMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_protected_branches_with_options_async(repository_id, id, request, headers, runtime)
+        return await self.update_project_member_with_options_async(organization_id, project_id, request, headers, runtime)
 
     def update_protected_branches_with_options(
         self,
@@ -10559,23 +12475,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_repository(
+    def update_protected_branches(
         self,
         repository_id: str,
-        request: devops_20210625_models.UpdateRepositoryRequest,
-    ) -> devops_20210625_models.UpdateRepositoryResponse:
+        id: str,
+        request: devops_20210625_models.UpdateProtectedBranchesRequest,
+    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_repository_with_options(repository_id, request, headers, runtime)
+        return self.update_protected_branches_with_options(repository_id, id, request, headers, runtime)
 
-    async def update_repository_async(
+    async def update_protected_branches_async(
         self,
         repository_id: str,
-        request: devops_20210625_models.UpdateRepositoryRequest,
-    ) -> devops_20210625_models.UpdateRepositoryResponse:
+        id: str,
+        request: devops_20210625_models.UpdateProtectedBranchesRequest,
+    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_repository_with_options_async(repository_id, request, headers, runtime)
+        return await self.update_protected_branches_with_options_async(repository_id, id, request, headers, runtime)
 
     def update_repository_with_options(
         self,
@@ -10715,25 +12633,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_repository_member(
+    def update_repository(
         self,
         repository_id: str,
-        aliyun_pk: str,
-        request: devops_20210625_models.UpdateRepositoryMemberRequest,
-    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        request: devops_20210625_models.UpdateRepositoryRequest,
+    ) -> devops_20210625_models.UpdateRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_repository_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
+        return self.update_repository_with_options(repository_id, request, headers, runtime)
 
-    async def update_repository_member_async(
+    async def update_repository_async(
         self,
         repository_id: str,
-        aliyun_pk: str,
-        request: devops_20210625_models.UpdateRepositoryMemberRequest,
-    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        request: devops_20210625_models.UpdateRepositoryRequest,
+    ) -> devops_20210625_models.UpdateRepositoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_repository_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
+        return await self.update_repository_with_options_async(repository_id, request, headers, runtime)
 
     def update_repository_member_with_options(
         self,
@@ -10827,29 +12743,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_resource_member(
+    def update_repository_member(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-        account_id: str,
-        request: devops_20210625_models.UpdateResourceMemberRequest,
-    ) -> devops_20210625_models.UpdateResourceMemberResponse:
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.UpdateRepositoryMemberRequest,
+    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_resource_member_with_options(organization_id, resource_type, resource_id, account_id, request, headers, runtime)
+        return self.update_repository_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
 
-    async def update_resource_member_async(
+    async def update_repository_member_async(
         self,
-        organization_id: str,
-        resource_type: str,
-        resource_id: str,
-        account_id: str,
-        request: devops_20210625_models.UpdateResourceMemberRequest,
-    ) -> devops_20210625_models.UpdateResourceMemberResponse:
+        repository_id: str,
+        aliyun_pk: str,
+        request: devops_20210625_models.UpdateRepositoryMemberRequest,
+    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_resource_member_with_options_async(organization_id, resource_type, resource_id, account_id, request, headers, runtime)
+        return await self.update_repository_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
 
     def update_resource_member_with_options(
         self,
@@ -10919,25 +12831,29 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_variable_group(
+    def update_resource_member(
         self,
         organization_id: str,
-        id: str,
-        request: devops_20210625_models.UpdateVariableGroupRequest,
-    ) -> devops_20210625_models.UpdateVariableGroupResponse:
+        resource_type: str,
+        resource_id: str,
+        account_id: str,
+        request: devops_20210625_models.UpdateResourceMemberRequest,
+    ) -> devops_20210625_models.UpdateResourceMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_variable_group_with_options(organization_id, id, request, headers, runtime)
+        return self.update_resource_member_with_options(organization_id, resource_type, resource_id, account_id, request, headers, runtime)
 
-    async def update_variable_group_async(
+    async def update_resource_member_async(
         self,
         organization_id: str,
-        id: str,
-        request: devops_20210625_models.UpdateVariableGroupRequest,
-    ) -> devops_20210625_models.UpdateVariableGroupResponse:
+        resource_type: str,
+        resource_id: str,
+        account_id: str,
+        request: devops_20210625_models.UpdateResourceMemberRequest,
+    ) -> devops_20210625_models.UpdateResourceMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_variable_group_with_options_async(organization_id, id, request, headers, runtime)
+        return await self.update_resource_member_with_options_async(organization_id, resource_type, resource_id, account_id, request, headers, runtime)
 
     def update_variable_group_with_options(
         self,
@@ -11011,23 +12927,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_work_item(
+    def update_variable_group(
         self,
         organization_id: str,
-        request: devops_20210625_models.UpdateWorkItemRequest,
-    ) -> devops_20210625_models.UpdateWorkItemResponse:
+        id: str,
+        request: devops_20210625_models.UpdateVariableGroupRequest,
+    ) -> devops_20210625_models.UpdateVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_work_item_with_options(organization_id, request, headers, runtime)
+        return self.update_variable_group_with_options(organization_id, id, request, headers, runtime)
 
-    async def update_work_item_async(
+    async def update_variable_group_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.UpdateWorkItemRequest,
-    ) -> devops_20210625_models.UpdateWorkItemResponse:
+        id: str,
+        request: devops_20210625_models.UpdateVariableGroupRequest,
+    ) -> devops_20210625_models.UpdateVariableGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_work_item_with_options_async(organization_id, request, headers, runtime)
+        return await self.update_variable_group_with_options_async(organization_id, id, request, headers, runtime)
 
     def update_work_item_with_options(
         self,
@@ -11103,23 +13021,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_workitem_comment(
+    def update_work_item(
         self,
         organization_id: str,
-        request: devops_20210625_models.UpdateWorkitemCommentRequest,
-    ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        request: devops_20210625_models.UpdateWorkItemRequest,
+    ) -> devops_20210625_models.UpdateWorkItemResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_workitem_comment_with_options(organization_id, request, headers, runtime)
+        return self.update_work_item_with_options(organization_id, request, headers, runtime)
 
-    async def update_workitem_comment_async(
+    async def update_work_item_async(
         self,
         organization_id: str,
-        request: devops_20210625_models.UpdateWorkitemCommentRequest,
-    ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        request: devops_20210625_models.UpdateWorkItemRequest,
+    ) -> devops_20210625_models.UpdateWorkItemResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_workitem_comment_with_options_async(organization_id, request, headers, runtime)
+        return await self.update_work_item_with_options_async(organization_id, request, headers, runtime)
 
     def update_workitem_comment_with_options(
         self,
@@ -11194,3 +13112,21 @@ class Client(OpenApiClient):
             devops_20210625_models.UpdateWorkitemCommentResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_workitem_comment(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.UpdateWorkitemCommentRequest,
+    ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_workitem_comment_with_options(organization_id, request, headers, runtime)
+
+    async def update_workitem_comment_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.UpdateWorkitemCommentRequest,
+    ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_workitem_comment_with_options_async(organization_id, request, headers, runtime)
