@@ -1,3 +1,6 @@
+2022-12-27 Version: 2.1.0
+- Open Integrated Api.
+
 2021-12-14 Version: 2.0.3
 - Support query resourceType.
 

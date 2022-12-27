@@ -52,10 +52,10 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.ActiveConfigRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ActiveConfigRules',
@@ -65,7 +65,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -80,10 +80,10 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.ActiveConfigRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ActiveConfigRules',
@@ -93,7 +93,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -122,10 +122,10 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.DeleteConfigRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteConfigRules',
@@ -135,7 +135,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -150,10 +150,10 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.DeleteConfigRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteConfigRules',
@@ -163,7 +163,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -191,7 +191,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeComplianceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -200,10 +212,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -217,7 +229,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeComplianceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -226,10 +250,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -257,7 +281,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeComplianceSummaryResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -266,10 +294,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -283,7 +311,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeComplianceSummaryResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -292,10 +324,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -323,7 +355,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -332,10 +370,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -349,7 +387,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeConfigRuleResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -358,10 +402,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -393,10 +437,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -414,10 +458,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -439,7 +483,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeDeliveryChannelsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_ids):
+            query['DeliveryChannelIds'] = request.delivery_channel_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -448,10 +494,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -465,7 +511,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeDeliveryChannelsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.delivery_channel_ids):
+            query['DeliveryChannelIds'] = request.delivery_channel_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -474,10 +522,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -505,7 +553,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeDiscoveredResourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -514,10 +572,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -531,7 +589,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.DescribeDiscoveredResourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -540,10 +608,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -583,7 +651,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -609,7 +677,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -649,7 +717,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -675,7 +743,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -703,7 +771,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetDiscoveredResourceCountsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -712,10 +786,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -729,7 +803,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetDiscoveredResourceCountsResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.group_by_key):
+            query['GroupByKey'] = request.group_by_key
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -738,10 +818,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -769,7 +849,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetDiscoveredResourceSummaryResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -778,10 +862,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -795,7 +879,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetDiscoveredResourceSummaryResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -804,10 +892,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -835,7 +923,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetResourceComplianceTimelineResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -844,10 +950,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -861,7 +967,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetResourceComplianceTimelineResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -870,10 +994,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -901,7 +1025,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetResourceConfigurationTimelineResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -910,10 +1052,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -927,7 +1069,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.GetResourceConfigurationTimelineResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -936,10 +1096,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -971,10 +1131,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -992,10 +1152,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1017,7 +1177,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1026,10 +1202,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1043,7 +1219,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListAggregateDiscoveredResourcesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1052,10 +1244,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1083,7 +1275,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_name):
+            query['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_state):
+            query['ConfigRuleState'] = request.config_rule_state
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1092,10 +1302,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1109,7 +1319,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListConfigRulesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_type):
+            query['ComplianceType'] = request.compliance_type
+        if not UtilClient.is_unset(request.config_rule_name):
+            query['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_state):
+            query['ConfigRuleState'] = request.config_rule_state
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1118,10 +1346,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1149,7 +1377,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListDiscoveredResourcesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1158,10 +1402,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1175,7 +1419,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.ListDiscoveredResourcesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1184,10 +1444,10 @@ class Client(OpenApiClient):
             version='2019-01-08',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1216,11 +1476,12 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.ListRemediationTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ManagedRuleIdentifier'] = request.managed_rule_identifier
-        query['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.managed_rule_identifier):
+            query['ManagedRuleIdentifier'] = request.managed_rule_identifier
+        if not UtilClient.is_unset(request.remediation_type):
+            query['RemediationType'] = request.remediation_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListRemediationTemplates',
@@ -1230,7 +1491,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1245,11 +1506,12 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.ListRemediationTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ManagedRuleIdentifier'] = request.managed_rule_identifier
-        query['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.managed_rule_identifier):
+            query['ManagedRuleIdentifier'] = request.managed_rule_identifier
+        if not UtilClient.is_unset(request.remediation_type):
+            query['RemediationType'] = request.remediation_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListRemediationTemplates',
@@ -1259,7 +1521,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1288,11 +1550,38 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.PutConfigRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MemberId'] = request.member_id
-        query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.input_parameters):
+            body['InputParameters'] = request.input_parameters
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.scope_compliance_resource_id):
+            body['ScopeComplianceResourceId'] = request.scope_compliance_resource_id
+        if not UtilClient.is_unset(request.scope_compliance_resource_types):
+            body['ScopeComplianceResourceTypes'] = request.scope_compliance_resource_types
+        if not UtilClient.is_unset(request.source_detail_message_type):
+            body['SourceDetailMessageType'] = request.source_detail_message_type
+        if not UtilClient.is_unset(request.source_identifier):
+            body['SourceIdentifier'] = request.source_identifier
+        if not UtilClient.is_unset(request.source_maximum_execution_frequency):
+            body['SourceMaximumExecutionFrequency'] = request.source_maximum_execution_frequency
+        if not UtilClient.is_unset(request.source_owner):
+            body['SourceOwner'] = request.source_owner
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutConfigRule',
@@ -1317,11 +1606,38 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.PutConfigRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MemberId'] = request.member_id
-        query['MultiAccount'] = request.multi_account
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.multi_account):
+            query['MultiAccount'] = request.multi_account
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.input_parameters):
+            body['InputParameters'] = request.input_parameters
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.scope_compliance_resource_id):
+            body['ScopeComplianceResourceId'] = request.scope_compliance_resource_id
+        if not UtilClient.is_unset(request.scope_compliance_resource_types):
+            body['ScopeComplianceResourceTypes'] = request.scope_compliance_resource_types
+        if not UtilClient.is_unset(request.source_detail_message_type):
+            body['SourceDetailMessageType'] = request.source_detail_message_type
+        if not UtilClient.is_unset(request.source_identifier):
+            body['SourceIdentifier'] = request.source_identifier
+        if not UtilClient.is_unset(request.source_maximum_execution_frequency):
+            body['SourceMaximumExecutionFrequency'] = request.source_maximum_execution_frequency
+        if not UtilClient.is_unset(request.source_owner):
+            body['SourceOwner'] = request.source_owner
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutConfigRule',
@@ -1359,8 +1675,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigurationRecorderResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_types):
+            body['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutConfigurationRecorder',
@@ -1384,8 +1703,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutConfigurationRecorderResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_types):
+            body['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutConfigurationRecorder',
@@ -1422,9 +1744,35 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutDeliveryChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
+        """
+        ***\
+        
+        @param request: PutDeliveryChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutDeliveryChannelResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
+            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            body['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            body['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            body['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            body['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutDeliveryChannel',
@@ -1447,9 +1795,35 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutDeliveryChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
+        """
+        ***\
+        
+        @param request: PutDeliveryChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutDeliveryChannelResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delivery_channel_assume_role_arn):
+            body['DeliveryChannelAssumeRoleArn'] = request.delivery_channel_assume_role_arn
+        if not UtilClient.is_unset(request.delivery_channel_condition):
+            body['DeliveryChannelCondition'] = request.delivery_channel_condition
+        if not UtilClient.is_unset(request.delivery_channel_id):
+            body['DeliveryChannelId'] = request.delivery_channel_id
+        if not UtilClient.is_unset(request.delivery_channel_name):
+            body['DeliveryChannelName'] = request.delivery_channel_name
+        if not UtilClient.is_unset(request.delivery_channel_target_arn):
+            body['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_channel_type):
+            body['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutDeliveryChannel',
@@ -1471,6 +1845,12 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutDeliveryChannelRequest,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
+        """
+        ***\
+        
+        @param request: PutDeliveryChannelRequest
+        @return: PutDeliveryChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_delivery_channel_with_options(request, runtime)
 
@@ -1478,6 +1858,12 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutDeliveryChannelRequest,
     ) -> config_20190108_models.PutDeliveryChannelResponse:
+        """
+        ***\
+        
+        @param request: PutDeliveryChannelRequest
+        @return: PutDeliveryChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_delivery_channel_with_options_async(request, runtime)
 
@@ -1486,9 +1872,21 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutEvaluationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutEvaluationsResponse:
+        """
+        ***\
+        
+        @param request: PutEvaluationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutEvaluationsResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.evaluations):
+            body['Evaluations'] = request.evaluations
+        if not UtilClient.is_unset(request.result_token):
+            body['ResultToken'] = request.result_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutEvaluations',
@@ -1511,9 +1909,21 @@ class Client(OpenApiClient):
         request: config_20190108_models.PutEvaluationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.PutEvaluationsResponse:
+        """
+        ***\
+        
+        @param request: PutEvaluationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutEvaluationsResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.evaluations):
+            body['Evaluations'] = request.evaluations
+        if not UtilClient.is_unset(request.result_token):
+            body['ResultToken'] = request.result_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PutEvaluations',
@@ -1535,6 +1945,12 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutEvaluationsRequest,
     ) -> config_20190108_models.PutEvaluationsResponse:
+        """
+        ***\
+        
+        @param request: PutEvaluationsRequest
+        @return: PutEvaluationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_evaluations_with_options(request, runtime)
 
@@ -1542,6 +1958,12 @@ class Client(OpenApiClient):
         self,
         request: config_20190108_models.PutEvaluationsRequest,
     ) -> config_20190108_models.PutEvaluationsResponse:
+        """
+        ***\
+        
+        @param request: PutEvaluationsRequest
+        @return: PutEvaluationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_evaluations_with_options_async(request, runtime)
 
@@ -1552,12 +1974,14 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CompliancePackId'] = request.compliance_pack_id
-        query['ConfigRuleId'] = request.config_rule_id
-        query['RevertEvaluation'] = request.revert_evaluation
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.revert_evaluation):
+            query['RevertEvaluation'] = request.revert_evaluation
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartConfigRuleEvaluation',
@@ -1567,7 +1991,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1582,12 +2006,14 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.StartConfigRuleEvaluationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CompliancePackId'] = request.compliance_pack_id
-        query['ConfigRuleId'] = request.config_rule_id
-        query['RevertEvaluation'] = request.revert_evaluation
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.revert_evaluation):
+            query['RevertEvaluation'] = request.revert_evaluation
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartConfigRuleEvaluation',
@@ -1597,7 +2023,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1625,8 +2051,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigurationRecorderResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enterprise_edition):
+            body['EnterpriseEdition'] = request.enterprise_edition
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StartConfigurationRecorder',
@@ -1650,8 +2079,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20190108_models.StartConfigurationRecorderResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enterprise_edition):
+            body['EnterpriseEdition'] = request.enterprise_edition
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StartConfigurationRecorder',
@@ -1690,10 +2122,10 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.StopConfigRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopConfigRules',
@@ -1703,7 +2135,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1718,10 +2150,10 @@ class Client(OpenApiClient):
     ) -> config_20190108_models.StopConfigRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigRuleIds'] = request.config_rule_ids
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopConfigRules',
@@ -1731,7 +2163,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
