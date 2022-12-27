@@ -1,3 +1,6 @@
+2022-12-27 Version: 3.0.11
+- Support Snapshot API.
+
 2022-11-29 Version: 3.0.10
 - Support DescribeARMServerInstances.
 - Support DeleteInstances.

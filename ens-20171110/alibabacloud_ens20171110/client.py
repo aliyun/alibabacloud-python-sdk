@@ -6388,6 +6388,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionIdResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
+        """
+        ***\
+        
+        @param request: DescribeEnsRegionIdResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRegionIdResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6426,6 +6433,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionIdResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
+        """
+        ***\
+        
+        @param request: DescribeEnsRegionIdResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRegionIdResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6463,6 +6477,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRegionIdResourceRequest,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
+        """
+        ***\
+        
+        @param request: DescribeEnsRegionIdResourceRequest
+        @return: DescribeEnsRegionIdResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_region_id_resource_with_options(request, runtime)
 
@@ -6470,6 +6490,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRegionIdResourceRequest,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
+        """
+        ***\
+        
+        @param request: DescribeEnsRegionIdResourceRequest
+        @return: DescribeEnsRegionIdResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_region_id_resource_with_options_async(request, runtime)
 
@@ -8959,6 +8985,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_mount_targets_with_options_async(request, runtime)
 
+    def describe_ncinformation_with_options(
+        self,
+        request: ens_20171110_models.DescribeNCInformationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNCInformationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNCInformation',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNCInformationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ncinformation_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeNCInformationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNCInformationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNCInformation',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNCInformationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ncinformation(
+        self,
+        request: ens_20171110_models.DescribeNCInformationRequest,
+    ) -> ens_20171110_models.DescribeNCInformationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ncinformation_with_options(request, runtime)
+
+    async def describe_ncinformation_async(
+        self,
+        request: ens_20171110_models.DescribeNCInformationRequest,
+    ) -> ens_20171110_models.DescribeNCInformationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ncinformation_with_options_async(request, runtime)
+
     def describe_nat_gateways_with_options(
         self,
         request: ens_20171110_models.DescribeNatGatewaysRequest,
@@ -9595,6 +9687,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_region_isps_with_options_async(request, runtime)
 
+    def describe_region_resource_with_options(
+        self,
+        request: ens_20171110_models.DescribeRegionResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionResource',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeRegionResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_region_resource_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeRegionResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegionResource',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeRegionResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_region_resource(
+        self,
+        request: ens_20171110_models.DescribeRegionResourceRequest,
+    ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_region_resource_with_options(request, runtime)
+
+    async def describe_region_resource_async(
+        self,
+        request: ens_20171110_models.DescribeRegionResourceRequest,
+    ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_region_resource_with_options_async(request, runtime)
+
     def describe_reserved_resource_with_options(
         self,
         request: ens_20171110_models.DescribeReservedResourceRequest,
@@ -9664,6 +9822,72 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeReservedResourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_reserved_resource_with_options_async(request, runtime)
+
+    def describe_resource_timeline_with_options(
+        self,
+        request: ens_20171110_models.DescribeResourceTimelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceTimeline',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeResourceTimelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resource_timeline_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeResourceTimelineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceTimeline',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeResourceTimelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resource_timeline(
+        self,
+        request: ens_20171110_models.DescribeResourceTimelineRequest,
+    ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resource_timeline_with_options(request, runtime)
+
+    async def describe_resource_timeline_async(
+        self,
+        request: ens_20171110_models.DescribeResourceTimelineRequest,
+    ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resource_timeline_with_options_async(request, runtime)
 
     def describe_security_group_attribute_with_options(
         self,
@@ -11716,14 +11940,16 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11750,14 +11976,16 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12747,6 +12975,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reboot_instance_with_options_async(request, runtime)
 
+    def reboot_instances_with_options(
+        self,
+        tmp_req: ens_20171110_models.RebootInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RebootInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RebootInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RebootInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_instances_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.RebootInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RebootInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RebootInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RebootInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_instances(
+        self,
+        request: ens_20171110_models.RebootInstancesRequest,
+    ) -> ens_20171110_models.RebootInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reboot_instances_with_options(request, runtime)
+
+    async def reboot_instances_async(
+        self,
+        request: ens_20171110_models.RebootInstancesRequest,
+    ) -> ens_20171110_models.RebootInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reboot_instances_with_options_async(request, runtime)
+
     def reinit_instance_with_options(
         self,
         request: ens_20171110_models.ReinitInstanceRequest,
@@ -12824,6 +13130,92 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.ReinitInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.reinit_instance_with_options_async(request, runtime)
+
+    def reinit_instances_with_options(
+        self,
+        tmp_req: ens_20171110_models.ReinitInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ReinitInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ReinitInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReinitInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ReinitInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reinit_instances_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.ReinitInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ReinitInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.ReinitInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReinitInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ReinitInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reinit_instances(
+        self,
+        request: ens_20171110_models.ReinitInstancesRequest,
+    ) -> ens_20171110_models.ReinitInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reinit_instances_with_options(request, runtime)
+
+    async def reinit_instances_async(
+        self,
+        request: ens_20171110_models.ReinitInstancesRequest,
+    ) -> ens_20171110_models.ReinitInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reinit_instances_with_options_async(request, runtime)
 
     def release_armserver_instance_with_options(
         self,
@@ -15076,6 +15468,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: SetLoadBalancerUDPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerUDPListenerAttributeResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -15126,6 +15526,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: SetLoadBalancerUDPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerUDPListenerAttributeResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -15175,6 +15583,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: SetLoadBalancerUDPListenerAttributeRequest
+        @return: SetLoadBalancerUDPListenerAttributeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_udplistener_attribute_with_options(request, runtime)
 
@@ -15182,6 +15597,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: SetLoadBalancerUDPListenerAttributeRequest
+        @return: SetLoadBalancerUDPListenerAttributeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_udplistener_attribute_with_options_async(request, runtime)
 
@@ -15324,6 +15746,84 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.StartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_instance_with_options_async(request, runtime)
+
+    def start_instances_with_options(
+        self,
+        tmp_req: ens_20171110_models.StartInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StartInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.StartInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StartInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_instances_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.StartInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StartInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.StartInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StartInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_instances(
+        self,
+        request: ens_20171110_models.StartInstancesRequest,
+    ) -> ens_20171110_models.StartInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_instances_with_options(request, runtime)
+
+    async def start_instances_async(
+        self,
+        request: ens_20171110_models.StartInstancesRequest,
+    ) -> ens_20171110_models.StartInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_instances_with_options_async(request, runtime)
 
     def start_load_balancer_listener_with_options(
         self,
@@ -15550,6 +16050,84 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.StopInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
+
+    def stop_instances_with_options(
+        self,
+        tmp_req: ens_20171110_models.StopInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StopInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.StopInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StopInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_instances_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.StopInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.StopInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.StopInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopInstances',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.StopInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_instances(
+        self,
+        request: ens_20171110_models.StopInstancesRequest,
+    ) -> ens_20171110_models.StopInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_instances_with_options(request, runtime)
+
+    async def stop_instances_async(
+        self,
+        request: ens_20171110_models.StopInstancesRequest,
+    ) -> ens_20171110_models.StopInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_instances_with_options_async(request, runtime)
 
     def stop_load_balancer_listener_with_options(
         self,

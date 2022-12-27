@@ -346,6 +346,45 @@ class InstanceActiveOpsTask(TeaModel):
         return self
 
 
+class InstanceOperateResponse(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        instance_id: str = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.instance_id = instance_id
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
 class SecurityGroupRule(TeaModel):
     def __init__(
         self,
@@ -1296,6 +1335,7 @@ class AssignPrivateIpAddressesResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.assigned_private_ip_addresses_set = assigned_private_ip_addresses_set
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1717,6 +1757,7 @@ class AuthorizeSecurityGroupRequest(TeaModel):
         self.security_group_id = security_group_id
         self.source_cidr_ip = source_cidr_ip
         self.source_port_range = source_port_range
+        # 2017-11-10
         self.version = version
 
     def validate(self):
@@ -1857,6 +1898,7 @@ class AuthorizeSecurityGroupEgressRequest(TeaModel):
         self.priority = priority
         self.security_group_id = security_group_id
         self.source_port_range = source_port_range
+        # 2017-11-10
         self.version = version
 
     def validate(self):
@@ -2316,6 +2358,7 @@ class CreateClassicNetworkResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.network_id = network_id
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2711,6 +2754,7 @@ class CreateEnsRouteEntryResponseBody(TeaModel):
         request_id: str = None,
         route_entry_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
         self.route_entry_id = route_entry_id
 
@@ -3043,6 +3087,7 @@ class CreateFileSystemRequestOrderDetails(TeaModel):
         self.file_system_name = file_system_name
         self.mount_target_domain = mount_target_domain
         self.network_id = network_id
+        # BUY。
         self.order_type = order_type
         self.protocol_type = protocol_type
         self.storge_type = storge_type
@@ -3322,6 +3367,7 @@ class CreateForwardEntryResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.forward_entry_id = forward_entry_id
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6327,6 +6373,7 @@ class DeleteEnsRouteEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -9697,6 +9744,7 @@ class DescribeCloudDiskAvailableResourceInfoResponseBody(TeaModel):
         request_id: str = None,
         support_resources: DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources = None,
     ):
+        # Id of the request
         self.request_id = request_id
         self.support_resources = support_resources
 
@@ -9775,6 +9823,7 @@ class DescribeCloudDiskTypesRequest(TeaModel):
         self,
         ens_region_id: str = None,
     ):
+        # A short description of struct
         self.ens_region_id = ens_region_id
 
     def validate(self):
@@ -11122,6 +11171,7 @@ class DescribeDeviceServiceRequest(TeaModel):
         self.instance_id = instance_id
         self.order_id = order_id
         self.region_id = region_id
+        # Service ID
         self.service_id = service_id
 
     def validate(self):
@@ -11623,6 +11673,7 @@ class DescribeDeviceServiceResponseBody(TeaModel):
     ):
         self.app_meta_data = app_meta_data
         self.app_status = app_status
+        # Id of the request
         self.request_id = request_id
         self.resource_detail_infos = resource_detail_infos
         self.resource_infos = resource_infos
@@ -14034,6 +14085,7 @@ class DescribeEnsResourceUsageResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.ens_resource_usage = ens_resource_usage
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -14308,6 +14360,7 @@ class DescribeEnsRouteEntryListResponseBody(TeaModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
         self.route_entrys = route_entrys
         self.total_count = total_count
@@ -18271,6 +18324,7 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         self.disk_type = disk_type
         self.name = name
         self.storage = storage
+        # UUID。
         self.uuid = uuid
 
     def validate(self):
@@ -18678,6 +18732,7 @@ class DescribeInstancesResponseBodyInstancesInstanceSystemDisk(TeaModel):
         self.disk_type = disk_type
         self.name = name
         self.storage = storage
+        # UUID。
         self.uuid = uuid
 
     def validate(self):
@@ -18777,6 +18832,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.memory = memory
+        # Schema of Response
         self.network_attributes = network_attributes
         self.osname = osname
         self.private_ip_addresses = private_ip_addresses
@@ -18785,6 +18841,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.security_group_ids = security_group_ids
         self.spec_name = spec_name
         self.status = status
+        # Schema of Response
         self.system_disk = system_disk
 
     def validate(self):
@@ -20113,6 +20170,7 @@ class DescribeLoadBalancerSpecResponseBody(TeaModel):
         self.load_balancer_specs = load_balancer_specs
         self.page_number = page_number
         self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
         self.total_count = total_count
 
@@ -21534,6 +21592,900 @@ class DescribeMountTargetsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeMountTargetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNCInformationRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        resource_id: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class DescribeNCInformationResponseBodyDataCpu(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeNCInformationResponseBodyDataGpu(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeNCInformationResponseBodyDataHdd(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeNCInformationResponseBodyDataInfo(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        name: str = None,
+        tag: List[str] = None,
+        uuid: str = None,
+    ):
+        self.ip = ip
+        self.name = name
+        self.tag = tag
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class DescribeNCInformationResponseBodyDataMemory(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeNCInformationResponseBodyDataNvme(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeNCInformationResponseBodyDataSsd(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeNCInformationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cpu: DescribeNCInformationResponseBodyDataCpu = None,
+        gpu: DescribeNCInformationResponseBodyDataGpu = None,
+        hdd: DescribeNCInformationResponseBodyDataHdd = None,
+        info: DescribeNCInformationResponseBodyDataInfo = None,
+        memory: DescribeNCInformationResponseBodyDataMemory = None,
+        nvme: DescribeNCInformationResponseBodyDataNvme = None,
+        online: bool = None,
+        region: str = None,
+        ssd: DescribeNCInformationResponseBodyDataSsd = None,
+        virtual: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.hdd = hdd
+        self.info = info
+        self.memory = memory
+        self.nvme = nvme
+        self.online = online
+        self.region = region
+        self.ssd = ssd
+        self.virtual = virtual
+
+    def validate(self):
+        if self.cpu:
+            self.cpu.validate()
+        if self.gpu:
+            self.gpu.validate()
+        if self.hdd:
+            self.hdd.validate()
+        if self.info:
+            self.info.validate()
+        if self.memory:
+            self.memory.validate()
+        if self.nvme:
+            self.nvme.validate()
+        if self.ssd:
+            self.ssd.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu.to_map()
+        if self.gpu is not None:
+            result['Gpu'] = self.gpu.to_map()
+        if self.hdd is not None:
+            result['Hdd'] = self.hdd.to_map()
+        if self.info is not None:
+            result['Info'] = self.info.to_map()
+        if self.memory is not None:
+            result['Memory'] = self.memory.to_map()
+        if self.nvme is not None:
+            result['Nvme'] = self.nvme.to_map()
+        if self.online is not None:
+            result['Online'] = self.online
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.ssd is not None:
+            result['Ssd'] = self.ssd.to_map()
+        if self.virtual is not None:
+            result['Virtual'] = self.virtual
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            temp_model = DescribeNCInformationResponseBodyDataCpu()
+            self.cpu = temp_model.from_map(m['Cpu'])
+        if m.get('Gpu') is not None:
+            temp_model = DescribeNCInformationResponseBodyDataGpu()
+            self.gpu = temp_model.from_map(m['Gpu'])
+        if m.get('Hdd') is not None:
+            temp_model = DescribeNCInformationResponseBodyDataHdd()
+            self.hdd = temp_model.from_map(m['Hdd'])
+        if m.get('Info') is not None:
+            temp_model = DescribeNCInformationResponseBodyDataInfo()
+            self.info = temp_model.from_map(m['Info'])
+        if m.get('Memory') is not None:
+            temp_model = DescribeNCInformationResponseBodyDataMemory()
+            self.memory = temp_model.from_map(m['Memory'])
+        if m.get('Nvme') is not None:
+            temp_model = DescribeNCInformationResponseBodyDataNvme()
+            self.nvme = temp_model.from_map(m['Nvme'])
+        if m.get('Online') is not None:
+            self.online = m.get('Online')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Ssd') is not None:
+            temp_model = DescribeNCInformationResponseBodyDataSsd()
+            self.ssd = temp_model.from_map(m['Ssd'])
+        if m.get('Virtual') is not None:
+            self.virtual = m.get('Virtual')
+        return self
+
+
+class DescribeNCInformationResponseBodyPager(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        size: int = None,
+        total: int = None,
+    ):
+        self.page = page
+        self.size = size
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeNCInformationResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        data: List[DescribeNCInformationResponseBodyData] = None,
+        desc: str = None,
+        msg: str = None,
+        pager: DescribeNCInformationResponseBodyPager = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.data = data
+        self.desc = desc
+        self.msg = msg
+        self.pager = pager
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.pager:
+            self.pager.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.pager is not None:
+            result['Pager'] = self.pager.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeNCInformationResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Pager') is not None:
+            temp_model = DescribeNCInformationResponseBodyPager()
+            self.pager = temp_model.from_map(m['Pager'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeNCInformationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNCInformationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNCInformationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23814,6 +24766,7 @@ class DescribeRegionIspsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.isps = isps
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -23888,6 +24841,1764 @@ class DescribeRegionIspsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionIspsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRegionResourceRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        isp_type: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.isp_type = isp_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.isp_type is not None:
+            result['IspType'] = self.isp_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('IspType') is not None:
+            self.isp_type = m.get('IspType')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataArmCard(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataBandwidth(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataBlockStorage(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataCpu(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataGpu(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataHdd(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataIpv4s(TeaModel):
+    def __init__(
+        self,
+        display: str = None,
+        isp: str = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+        vlan: str = None,
+    ):
+        self.display = display
+        self.isp = isp
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+        self.vlan = vlan
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        if self.vlan is not None:
+            result['Vlan'] = self.vlan
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        if m.get('Vlan') is not None:
+            self.vlan = m.get('Vlan')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataIpv6s(TeaModel):
+    def __init__(
+        self,
+        display: str = None,
+        isp: str = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+        vlan: str = None,
+    ):
+        self.display = display
+        self.isp = isp
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+        self.vlan = vlan
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        if self.vlan is not None:
+            result['Vlan'] = self.vlan
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        if m.get('Vlan') is not None:
+            self.vlan = m.get('Vlan')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataMemory(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataNvme(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataOssStorage(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataPangu(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataPcfarmNum(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyDataSsd(TeaModel):
+    def __init__(
+        self,
+        display: bool = None,
+        oversell_ratio: int = None,
+        remain: int = None,
+        reserve_disable: bool = None,
+        reserve_disable_total: int = None,
+        reserved: int = None,
+        status_disable: bool = None,
+        status_disable_total: int = None,
+        total: int = None,
+        type: str = None,
+        used: int = None,
+        used_ratio: int = None,
+    ):
+        self.display = display
+        self.oversell_ratio = oversell_ratio
+        self.remain = remain
+        self.reserve_disable = reserve_disable
+        self.reserve_disable_total = reserve_disable_total
+        self.reserved = reserved
+        self.status_disable = status_disable
+        self.status_disable_total = status_disable_total
+        self.total = total
+        self.type = type
+        self.used = used
+        self.used_ratio = used_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display is not None:
+            result['Display'] = self.display
+        if self.oversell_ratio is not None:
+            result['OversellRatio'] = self.oversell_ratio
+        if self.remain is not None:
+            result['Remain'] = self.remain
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.reserve_disable_total is not None:
+            result['ReserveDisableTotal'] = self.reserve_disable_total
+        if self.reserved is not None:
+            result['Reserved'] = self.reserved
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.status_disable_total is not None:
+            result['StatusDisableTotal'] = self.status_disable_total
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_ratio is not None:
+            result['UsedRatio'] = self.used_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Display') is not None:
+            self.display = m.get('Display')
+        if m.get('OversellRatio') is not None:
+            self.oversell_ratio = m.get('OversellRatio')
+        if m.get('Remain') is not None:
+            self.remain = m.get('Remain')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('ReserveDisableTotal') is not None:
+            self.reserve_disable_total = m.get('ReserveDisableTotal')
+        if m.get('Reserved') is not None:
+            self.reserved = m.get('Reserved')
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('StatusDisableTotal') is not None:
+            self.status_disable_total = m.get('StatusDisableTotal')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedRatio') is not None:
+            self.used_ratio = m.get('UsedRatio')
+        return self
+
+
+class DescribeRegionResourceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        area_code: str = None,
+        area_name: str = None,
+        arm_card: DescribeRegionResourceResponseBodyDataArmCard = None,
+        attributes: List[str] = None,
+        bandwidth: DescribeRegionResourceResponseBodyDataBandwidth = None,
+        block_storage: DescribeRegionResourceResponseBodyDataBlockStorage = None,
+        country_code: str = None,
+        country_name: str = None,
+        cpu: DescribeRegionResourceResponseBodyDataCpu = None,
+        gpu: DescribeRegionResourceResponseBodyDataGpu = None,
+        hdd: DescribeRegionResourceResponseBodyDataHdd = None,
+        house_id: str = None,
+        ipv_4s: List[DescribeRegionResourceResponseBodyDataIpv4s] = None,
+        ipv_6s: List[DescribeRegionResourceResponseBodyDataIpv6s] = None,
+        isp_types: List[str] = None,
+        memory: DescribeRegionResourceResponseBodyDataMemory = None,
+        name: str = None,
+        nvme: DescribeRegionResourceResponseBodyDataNvme = None,
+        oss_storage: DescribeRegionResourceResponseBodyDataOssStorage = None,
+        pangu: DescribeRegionResourceResponseBodyDataPangu = None,
+        pcfarm_num: DescribeRegionResourceResponseBodyDataPcfarmNum = None,
+        poc: bool = None,
+        province_code: str = None,
+        province_name: str = None,
+        reserve_disable: bool = None,
+        ssd: DescribeRegionResourceResponseBodyDataSsd = None,
+        status_disable: bool = None,
+        type: str = None,
+        uuid: str = None,
+        virtual: str = None,
+    ):
+        self.area_code = area_code
+        self.area_name = area_name
+        self.arm_card = arm_card
+        self.attributes = attributes
+        self.bandwidth = bandwidth
+        self.block_storage = block_storage
+        self.country_code = country_code
+        self.country_name = country_name
+        self.cpu = cpu
+        self.gpu = gpu
+        self.hdd = hdd
+        self.house_id = house_id
+        self.ipv_4s = ipv_4s
+        self.ipv_6s = ipv_6s
+        self.isp_types = isp_types
+        self.memory = memory
+        self.name = name
+        self.nvme = nvme
+        self.oss_storage = oss_storage
+        self.pangu = pangu
+        self.pcfarm_num = pcfarm_num
+        self.poc = poc
+        self.province_code = province_code
+        self.province_name = province_name
+        self.reserve_disable = reserve_disable
+        self.ssd = ssd
+        self.status_disable = status_disable
+        self.type = type
+        self.uuid = uuid
+        self.virtual = virtual
+
+    def validate(self):
+        if self.arm_card:
+            self.arm_card.validate()
+        if self.bandwidth:
+            self.bandwidth.validate()
+        if self.block_storage:
+            self.block_storage.validate()
+        if self.cpu:
+            self.cpu.validate()
+        if self.gpu:
+            self.gpu.validate()
+        if self.hdd:
+            self.hdd.validate()
+        if self.ipv_4s:
+            for k in self.ipv_4s:
+                if k:
+                    k.validate()
+        if self.ipv_6s:
+            for k in self.ipv_6s:
+                if k:
+                    k.validate()
+        if self.memory:
+            self.memory.validate()
+        if self.nvme:
+            self.nvme.validate()
+        if self.oss_storage:
+            self.oss_storage.validate()
+        if self.pangu:
+            self.pangu.validate()
+        if self.pcfarm_num:
+            self.pcfarm_num.validate()
+        if self.ssd:
+            self.ssd.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_code is not None:
+            result['AreaCode'] = self.area_code
+        if self.area_name is not None:
+            result['AreaName'] = self.area_name
+        if self.arm_card is not None:
+            result['ArmCard'] = self.arm_card.to_map()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth.to_map()
+        if self.block_storage is not None:
+            result['BlockStorage'] = self.block_storage.to_map()
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.country_name is not None:
+            result['CountryName'] = self.country_name
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu.to_map()
+        if self.gpu is not None:
+            result['Gpu'] = self.gpu.to_map()
+        if self.hdd is not None:
+            result['Hdd'] = self.hdd.to_map()
+        if self.house_id is not None:
+            result['HouseId'] = self.house_id
+        result['Ipv4s'] = []
+        if self.ipv_4s is not None:
+            for k in self.ipv_4s:
+                result['Ipv4s'].append(k.to_map() if k else None)
+        result['Ipv6s'] = []
+        if self.ipv_6s is not None:
+            for k in self.ipv_6s:
+                result['Ipv6s'].append(k.to_map() if k else None)
+        if self.isp_types is not None:
+            result['IspTypes'] = self.isp_types
+        if self.memory is not None:
+            result['Memory'] = self.memory.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nvme is not None:
+            result['Nvme'] = self.nvme.to_map()
+        if self.oss_storage is not None:
+            result['OssStorage'] = self.oss_storage.to_map()
+        if self.pangu is not None:
+            result['Pangu'] = self.pangu.to_map()
+        if self.pcfarm_num is not None:
+            result['PcfarmNum'] = self.pcfarm_num.to_map()
+        if self.poc is not None:
+            result['Poc'] = self.poc
+        if self.province_code is not None:
+            result['ProvinceCode'] = self.province_code
+        if self.province_name is not None:
+            result['ProvinceName'] = self.province_name
+        if self.reserve_disable is not None:
+            result['ReserveDisable'] = self.reserve_disable
+        if self.ssd is not None:
+            result['Ssd'] = self.ssd.to_map()
+        if self.status_disable is not None:
+            result['StatusDisable'] = self.status_disable
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.virtual is not None:
+            result['Virtual'] = self.virtual
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaCode') is not None:
+            self.area_code = m.get('AreaCode')
+        if m.get('AreaName') is not None:
+            self.area_name = m.get('AreaName')
+        if m.get('ArmCard') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataArmCard()
+            self.arm_card = temp_model.from_map(m['ArmCard'])
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('Bandwidth') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataBandwidth()
+            self.bandwidth = temp_model.from_map(m['Bandwidth'])
+        if m.get('BlockStorage') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataBlockStorage()
+            self.block_storage = temp_model.from_map(m['BlockStorage'])
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('CountryName') is not None:
+            self.country_name = m.get('CountryName')
+        if m.get('Cpu') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataCpu()
+            self.cpu = temp_model.from_map(m['Cpu'])
+        if m.get('Gpu') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataGpu()
+            self.gpu = temp_model.from_map(m['Gpu'])
+        if m.get('Hdd') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataHdd()
+            self.hdd = temp_model.from_map(m['Hdd'])
+        if m.get('HouseId') is not None:
+            self.house_id = m.get('HouseId')
+        self.ipv_4s = []
+        if m.get('Ipv4s') is not None:
+            for k in m.get('Ipv4s'):
+                temp_model = DescribeRegionResourceResponseBodyDataIpv4s()
+                self.ipv_4s.append(temp_model.from_map(k))
+        self.ipv_6s = []
+        if m.get('Ipv6s') is not None:
+            for k in m.get('Ipv6s'):
+                temp_model = DescribeRegionResourceResponseBodyDataIpv6s()
+                self.ipv_6s.append(temp_model.from_map(k))
+        if m.get('IspTypes') is not None:
+            self.isp_types = m.get('IspTypes')
+        if m.get('Memory') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataMemory()
+            self.memory = temp_model.from_map(m['Memory'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Nvme') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataNvme()
+            self.nvme = temp_model.from_map(m['Nvme'])
+        if m.get('OssStorage') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataOssStorage()
+            self.oss_storage = temp_model.from_map(m['OssStorage'])
+        if m.get('Pangu') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataPangu()
+            self.pangu = temp_model.from_map(m['Pangu'])
+        if m.get('PcfarmNum') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataPcfarmNum()
+            self.pcfarm_num = temp_model.from_map(m['PcfarmNum'])
+        if m.get('Poc') is not None:
+            self.poc = m.get('Poc')
+        if m.get('ProvinceCode') is not None:
+            self.province_code = m.get('ProvinceCode')
+        if m.get('ProvinceName') is not None:
+            self.province_name = m.get('ProvinceName')
+        if m.get('ReserveDisable') is not None:
+            self.reserve_disable = m.get('ReserveDisable')
+        if m.get('Ssd') is not None:
+            temp_model = DescribeRegionResourceResponseBodyDataSsd()
+            self.ssd = temp_model.from_map(m['Ssd'])
+        if m.get('StatusDisable') is not None:
+            self.status_disable = m.get('StatusDisable')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Virtual') is not None:
+            self.virtual = m.get('Virtual')
+        return self
+
+
+class DescribeRegionResourceResponseBodyPager(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        size: int = None,
+        total: int = None,
+    ):
+        self.page = page
+        self.size = size
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeRegionResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeRegionResourceResponseBodyData] = None,
+        desc: str = None,
+        msg: str = None,
+        pager: DescribeRegionResourceResponseBodyPager = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.desc = desc
+        self.msg = msg
+        self.pager = pager
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.pager:
+            self.pager.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.pager is not None:
+            result['Pager'] = self.pager.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeRegionResourceResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Pager') is not None:
+            temp_model = DescribeRegionResourceResponseBodyPager()
+            self.pager = temp_model.from_map(m['Pager'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRegionResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRegionResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRegionResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24222,6 +26933,367 @@ class DescribeReservedResourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeReservedResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourceTimelineRequest(TeaModel):
+    def __init__(
+        self,
+        begin_time: str = None,
+        end_time: str = None,
+        uuid: str = None,
+    ):
+        self.begin_time = begin_time
+        self.end_time = end_time
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class DescribeResourceTimelineResponseBodyAvailableEvents(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        occurrence_time: str = None,
+        reason: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.occurrence_time = occurrence_time
+        self.reason = reason
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.occurrence_time is not None:
+            result['OccurrenceTime'] = self.occurrence_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OccurrenceTime') is not None:
+            self.occurrence_time = m.get('OccurrenceTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeResourceTimelineResponseBodyBizEvents(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        occurrence_time: str = None,
+        reason: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.occurrence_time = occurrence_time
+        self.reason = reason
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.occurrence_time is not None:
+            result['OccurrenceTime'] = self.occurrence_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OccurrenceTime') is not None:
+            self.occurrence_time = m.get('OccurrenceTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeResourceTimelineResponseBodyInventoryEvents(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        occurrence_time: str = None,
+        reason: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.occurrence_time = occurrence_time
+        self.reason = reason
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.occurrence_time is not None:
+            result['OccurrenceTime'] = self.occurrence_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OccurrenceTime') is not None:
+            self.occurrence_time = m.get('OccurrenceTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeResourceTimelineResponseBodyReserveEvents(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        occurrence_time: str = None,
+        reason: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.occurrence_time = occurrence_time
+        self.reason = reason
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.occurrence_time is not None:
+            result['OccurrenceTime'] = self.occurrence_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OccurrenceTime') is not None:
+            self.occurrence_time = m.get('OccurrenceTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeResourceTimelineResponseBody(TeaModel):
+    def __init__(
+        self,
+        available_events: List[DescribeResourceTimelineResponseBodyAvailableEvents] = None,
+        biz_events: List[DescribeResourceTimelineResponseBodyBizEvents] = None,
+        desc: str = None,
+        inventory_events: List[DescribeResourceTimelineResponseBodyInventoryEvents] = None,
+        msg: str = None,
+        request_id: str = None,
+        reserve_events: List[DescribeResourceTimelineResponseBodyReserveEvents] = None,
+    ):
+        self.available_events = available_events
+        self.biz_events = biz_events
+        self.desc = desc
+        self.inventory_events = inventory_events
+        self.msg = msg
+        self.request_id = request_id
+        self.reserve_events = reserve_events
+
+    def validate(self):
+        if self.available_events:
+            for k in self.available_events:
+                if k:
+                    k.validate()
+        if self.biz_events:
+            for k in self.biz_events:
+                if k:
+                    k.validate()
+        if self.inventory_events:
+            for k in self.inventory_events:
+                if k:
+                    k.validate()
+        if self.reserve_events:
+            for k in self.reserve_events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableEvents'] = []
+        if self.available_events is not None:
+            for k in self.available_events:
+                result['AvailableEvents'].append(k.to_map() if k else None)
+        result['BizEvents'] = []
+        if self.biz_events is not None:
+            for k in self.biz_events:
+                result['BizEvents'].append(k.to_map() if k else None)
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        result['InventoryEvents'] = []
+        if self.inventory_events is not None:
+            for k in self.inventory_events:
+                result['InventoryEvents'].append(k.to_map() if k else None)
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ReserveEvents'] = []
+        if self.reserve_events is not None:
+            for k in self.reserve_events:
+                result['ReserveEvents'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_events = []
+        if m.get('AvailableEvents') is not None:
+            for k in m.get('AvailableEvents'):
+                temp_model = DescribeResourceTimelineResponseBodyAvailableEvents()
+                self.available_events.append(temp_model.from_map(k))
+        self.biz_events = []
+        if m.get('BizEvents') is not None:
+            for k in m.get('BizEvents'):
+                temp_model = DescribeResourceTimelineResponseBodyBizEvents()
+                self.biz_events.append(temp_model.from_map(k))
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        self.inventory_events = []
+        if m.get('InventoryEvents') is not None:
+            for k in m.get('InventoryEvents'):
+                temp_model = DescribeResourceTimelineResponseBodyInventoryEvents()
+                self.inventory_events.append(temp_model.from_map(k))
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.reserve_events = []
+        if m.get('ReserveEvents') is not None:
+            for k in m.get('ReserveEvents'):
+                temp_model = DescribeResourceTimelineResponseBodyReserveEvents()
+                self.reserve_events.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeResourceTimelineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResourceTimelineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceTimelineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28312,6 +31384,7 @@ class ModifyImageAttributeRequest(TeaModel):
     ):
         self.image_id = image_id
         self.image_name = image_name
+        # 2017-11-10
         self.version = version
         self.product = product
 
@@ -28537,15 +31610,17 @@ class ModifyImageSharePermissionResponse(TeaModel):
 class ModifyInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
+        host_name: str = None,
         instance_id: str = None,
         instance_name: str = None,
         password: str = None,
-        version: str = None,
+        user_data: str = None,
     ):
+        self.host_name = host_name
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.password = password
-        self.version = version
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -28556,26 +31631,30 @@ class ModifyInstanceAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.password is not None:
             result['Password'] = self.password
-        if self.version is not None:
-            result['Version'] = self.version
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('Password') is not None:
             self.password = m.get('Password')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -29735,6 +32814,7 @@ class ReInitDiskRequest(TeaModel):
     ):
         self.disk_id = disk_id
         self.image_id = image_id
+        # 2017-11-10
         self.version = version
 
     def validate(self):
@@ -30154,6 +33234,145 @@ class RebootInstanceResponse(TeaModel):
         return self
 
 
+class RebootInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+    ):
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class RebootInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids_shrink: str = None,
+    ):
+        self.instance_ids_shrink = instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        return self
+
+
+class RebootInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_responses: List[InstanceOperateResponse] = None,
+        request_id: str = None,
+    ):
+        self.instance_responses = instance_responses
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_responses:
+            for k in self.instance_responses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceResponses'] = []
+        if self.instance_responses is not None:
+            for k in self.instance_responses:
+                result['InstanceResponses'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_responses = []
+        if m.get('InstanceResponses') is not None:
+            for k in m.get('InstanceResponses'):
+                temp_model = InstanceOperateResponse()
+                self.instance_responses.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RebootInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RebootInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RebootInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReinitInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -30260,6 +33479,169 @@ class ReinitInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReinitInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReinitInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        instance_ids: List[str] = None,
+        password: str = None,
+    ):
+        self.image_id = image_id
+        self.instance_ids = instance_ids
+        self.password = password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.password is not None:
+            result['Password'] = self.password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        return self
+
+
+class ReinitInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        instance_ids_shrink: str = None,
+        password: str = None,
+    ):
+        self.image_id = image_id
+        self.instance_ids_shrink = instance_ids_shrink
+        self.password = password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.password is not None:
+            result['Password'] = self.password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        return self
+
+
+class ReinitInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_responses: List[InstanceOperateResponse] = None,
+        request_id: str = None,
+    ):
+        self.instance_responses = instance_responses
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_responses:
+            for k in self.instance_responses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceResponses'] = []
+        if self.instance_responses is not None:
+            for k in self.instance_responses:
+                result['InstanceResponses'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_responses = []
+        if m.get('InstanceResponses') is not None:
+            for k in m.get('InstanceResponses'):
+                temp_model = InstanceOperateResponse()
+                self.instance_responses.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReinitInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReinitInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReinitInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31656,6 +35038,7 @@ class RescaleDeviceServiceResponseBody(TeaModel):
     ):
         self.device_ids = device_ids
         self.order_id = order_id
+        # Id of the request
         self.request_id = request_id
         self.resource_detail_infos = resource_detail_infos
 
@@ -32190,6 +35573,7 @@ class RevokeSecurityGroupRequest(TeaModel):
         self.security_group_id = security_group_id
         self.source_cidr_ip = source_cidr_ip
         self.source_port_range = source_port_range
+        # 2017-11-10
         self.version = version
 
     def validate(self):
@@ -34681,6 +38065,145 @@ class StartInstanceResponse(TeaModel):
         return self
 
 
+class StartInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+    ):
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class StartInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids_shrink: str = None,
+    ):
+        self.instance_ids_shrink = instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        return self
+
+
+class StartInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_responses: List[InstanceOperateResponse] = None,
+        request_id: str = None,
+    ):
+        self.instance_responses = instance_responses
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_responses:
+            for k in self.instance_responses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceResponses'] = []
+        if self.instance_responses is not None:
+            for k in self.instance_responses:
+                result['InstanceResponses'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_responses = []
+        if m.get('InstanceResponses') is not None:
+            for k in m.get('InstanceResponses'):
+                temp_model = InstanceOperateResponse()
+                self.instance_responses.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartLoadBalancerListenerRequest(TeaModel):
     def __init__(
         self,
@@ -35005,6 +38528,145 @@ class StopInstanceResponse(TeaModel):
         return self
 
 
+class StopInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+    ):
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class StopInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids_shrink: str = None,
+    ):
+        self.instance_ids_shrink = instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        return self
+
+
+class StopInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_responses: List[InstanceOperateResponse] = None,
+        request_id: str = None,
+    ):
+        self.instance_responses = instance_responses
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_responses:
+            for k in self.instance_responses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceResponses'] = []
+        if self.instance_responses is not None:
+            for k in self.instance_responses:
+                result['InstanceResponses'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_responses = []
+        if m.get('InstanceResponses') is not None:
+            for k in m.get('InstanceResponses'):
+                temp_model = InstanceOperateResponse()
+                self.instance_responses.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopLoadBalancerListenerRequest(TeaModel):
     def __init__(
         self,
@@ -35251,6 +38913,7 @@ class UnassignPrivateIpAddressesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
