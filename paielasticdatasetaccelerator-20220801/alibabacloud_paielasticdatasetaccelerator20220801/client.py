@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_paielasticdatasetaccelerator20220801 import models as paielastic_dataset_accelerator_20220801_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_paielasticdatasetaccelerator20220801 import models as paielastic_dataset_accelerator_20220801_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -40,24 +40,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
-
-    def bind_endpoint(
-        self,
-        endpoint_id: str,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.BindEndpointResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.bind_endpoint_with_options(endpoint_id, slot_id, headers, runtime)
-
-    async def bind_endpoint_async(
-        self,
-        endpoint_id: str,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.BindEndpointResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.bind_endpoint_with_options_async(endpoint_id, slot_id, headers, runtime)
 
     def bind_endpoint_with_options(
         self,
@@ -111,21 +93,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_endpoint(
+    def bind_endpoint(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateEndpointRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateEndpointResponse:
+        endpoint_id: str,
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.BindEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_endpoint_with_options(request, headers, runtime)
+        return self.bind_endpoint_with_options(endpoint_id, slot_id, headers, runtime)
 
-    async def create_endpoint_async(
+    async def bind_endpoint_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateEndpointRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateEndpointResponse:
+        endpoint_id: str,
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.BindEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_endpoint_with_options_async(request, headers, runtime)
+        return await self.bind_endpoint_with_options_async(endpoint_id, slot_id, headers, runtime)
 
     def create_endpoint_with_options(
         self,
@@ -199,21 +183,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_instance(
+    def create_endpoint(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateInstanceRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateInstanceResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateEndpointRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_instance_with_options(request, headers, runtime)
+        return self.create_endpoint_with_options(request, headers, runtime)
 
-    async def create_instance_async(
+    async def create_endpoint_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateInstanceRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateInstanceResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateEndpointRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_instance_with_options_async(request, headers, runtime)
+        return await self.create_endpoint_with_options_async(request, headers, runtime)
 
     def create_instance_with_options(
         self,
@@ -299,21 +283,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_slot(
+    def create_instance(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateSlotRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateInstanceRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_slot_with_options(request, headers, runtime)
+        return self.create_instance_with_options(request, headers, runtime)
 
-    async def create_slot_async(
+    async def create_instance_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateSlotRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateInstanceRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_slot_with_options_async(request, headers, runtime)
+        return await self.create_instance_with_options_async(request, headers, runtime)
 
     def create_slot_with_options(
         self,
@@ -411,21 +395,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_tag(
+    def create_slot(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateTagRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateTagResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateSlotRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_tag_with_options(request, headers, runtime)
+        return self.create_slot_with_options(request, headers, runtime)
 
-    async def create_tag_async(
+    async def create_slot_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.CreateTagRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.CreateTagResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateSlotRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_tag_with_options_async(request, headers, runtime)
+        return await self.create_slot_with_options_async(request, headers, runtime)
 
     def create_tag_with_options(
         self,
@@ -499,21 +483,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_instance(
+    def create_tag(
         self,
-        instance_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DeleteInstanceResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateTagRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_instance_with_options(instance_id, headers, runtime)
+        return self.create_tag_with_options(request, headers, runtime)
 
-    async def delete_instance_async(
+    async def create_tag_async(
         self,
-        instance_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DeleteInstanceResponse:
+        request: paielastic_dataset_accelerator_20220801_models.CreateTagRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_instance_with_options_async(instance_id, headers, runtime)
+        return await self.create_tag_with_options_async(request, headers, runtime)
 
     def delete_instance_with_options(
         self,
@@ -565,21 +549,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_slot(
+    def delete_instance(
         self,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
+        instance_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_slot_with_options(slot_id, headers, runtime)
+        return self.delete_instance_with_options(instance_id, headers, runtime)
 
-    async def delete_slot_async(
+    async def delete_instance_async(
         self,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
+        instance_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_slot_with_options_async(slot_id, headers, runtime)
+        return await self.delete_instance_with_options_async(instance_id, headers, runtime)
 
     def delete_slot_with_options(
         self,
@@ -631,21 +615,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_tag(
+    def delete_slot(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.DeleteTagRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.DeleteTagResponse:
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_tag_with_options(request, headers, runtime)
+        return self.delete_slot_with_options(slot_id, headers, runtime)
 
-    async def delete_tag_async(
+    async def delete_slot_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.DeleteTagRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.DeleteTagResponse:
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_tag_with_options_async(request, headers, runtime)
+        return await self.delete_slot_with_options_async(slot_id, headers, runtime)
 
     def delete_tag_with_options(
         self,
@@ -715,23 +699,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_component(
+    def delete_tag(
         self,
-        component_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.DescribeComponentRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeComponentResponse:
+        request: paielastic_dataset_accelerator_20220801_models.DeleteTagRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_component_with_options(component_id, request, headers, runtime)
+        return self.delete_tag_with_options(request, headers, runtime)
 
-    async def describe_component_async(
+    async def delete_tag_async(
         self,
-        component_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.DescribeComponentRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeComponentResponse:
+        request: paielastic_dataset_accelerator_20220801_models.DeleteTagRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.DeleteTagResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_component_with_options_async(component_id, request, headers, runtime)
+        return await self.delete_tag_with_options_async(request, headers, runtime)
 
     def describe_component_with_options(
         self,
@@ -807,21 +789,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_endpoint(
+    def describe_component(
         self,
-        endpoint_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeEndpointResponse:
+        component_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.DescribeComponentRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeComponentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_endpoint_with_options(endpoint_id, headers, runtime)
+        return self.describe_component_with_options(component_id, request, headers, runtime)
 
-    async def describe_endpoint_async(
+    async def describe_component_async(
         self,
-        endpoint_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeEndpointResponse:
+        component_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.DescribeComponentRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeComponentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_endpoint_with_options_async(endpoint_id, headers, runtime)
+        return await self.describe_component_with_options_async(component_id, request, headers, runtime)
 
     def describe_endpoint_with_options(
         self,
@@ -873,21 +857,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_instance(
+    def describe_endpoint(
         self,
-        instance_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeInstanceResponse:
+        endpoint_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_instance_with_options(instance_id, headers, runtime)
+        return self.describe_endpoint_with_options(endpoint_id, headers, runtime)
 
-    async def describe_instance_async(
+    async def describe_endpoint_async(
         self,
-        instance_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeInstanceResponse:
+        endpoint_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_instance_with_options_async(instance_id, headers, runtime)
+        return await self.describe_endpoint_with_options_async(endpoint_id, headers, runtime)
 
     def describe_instance_with_options(
         self,
@@ -939,21 +923,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_slot(
+    def describe_instance(
         self,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeSlotResponse:
+        instance_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_slot_with_options(slot_id, headers, runtime)
+        return self.describe_instance_with_options(instance_id, headers, runtime)
 
-    async def describe_slot_async(
+    async def describe_instance_async(
         self,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.DescribeSlotResponse:
+        instance_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_slot_with_options_async(slot_id, headers, runtime)
+        return await self.describe_instance_with_options_async(instance_id, headers, runtime)
 
     def describe_slot_with_options(
         self,
@@ -1005,21 +989,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_components(
+    def describe_slot(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListComponentsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListComponentsResponse:
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_components_with_options(request, headers, runtime)
+        return self.describe_slot_with_options(slot_id, headers, runtime)
 
-    async def list_components_async(
+    async def describe_slot_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListComponentsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListComponentsResponse:
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.DescribeSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_components_with_options_async(request, headers, runtime)
+        return await self.describe_slot_with_options_async(slot_id, headers, runtime)
 
     def list_components_with_options(
         self,
@@ -1105,21 +1089,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_endpoints(
+    def list_components(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListEndpointsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListEndpointsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListComponentsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_endpoints_with_options(request, headers, runtime)
+        return self.list_components_with_options(request, headers, runtime)
 
-    async def list_endpoints_async(
+    async def list_components_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListEndpointsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListEndpointsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListComponentsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_endpoints_with_options_async(request, headers, runtime)
+        return await self.list_components_with_options_async(request, headers, runtime)
 
     def list_endpoints_with_options(
         self,
@@ -1209,21 +1193,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instances(
+    def list_endpoints(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListInstancesRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListInstancesResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListEndpointsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListEndpointsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instances_with_options(request, headers, runtime)
+        return self.list_endpoints_with_options(request, headers, runtime)
 
-    async def list_instances_async(
+    async def list_endpoints_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListInstancesRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListInstancesResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListEndpointsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListEndpointsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instances_with_options_async(request, headers, runtime)
+        return await self.list_endpoints_with_options_async(request, headers, runtime)
 
     def list_instances_with_options(
         self,
@@ -1317,21 +1301,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_slots(
+    def list_instances(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListSlotsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListSlotsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListInstancesRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_slots_with_options(request, headers, runtime)
+        return self.list_instances_with_options(request, headers, runtime)
 
-    async def list_slots_async(
+    async def list_instances_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListSlotsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListSlotsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListInstancesRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_slots_with_options_async(request, headers, runtime)
+        return await self.list_instances_with_options_async(request, headers, runtime)
 
     def list_slots_with_options(
         self,
@@ -1425,21 +1409,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tags(
+    def list_slots(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListTagsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListTagsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListSlotsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListSlotsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tags_with_options(request, headers, runtime)
+        return self.list_slots_with_options(request, headers, runtime)
 
-    async def list_tags_async(
+    async def list_slots_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.ListTagsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.ListTagsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListSlotsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListSlotsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tags_with_options_async(request, headers, runtime)
+        return await self.list_slots_with_options_async(request, headers, runtime)
 
     def list_tags_with_options(
         self,
@@ -1529,23 +1513,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_instance_metrics(
+    def list_tags(
         self,
-        instance_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListTagsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_instance_metrics_with_options(instance_id, request, headers, runtime)
+        return self.list_tags_with_options(request, headers, runtime)
 
-    async def query_instance_metrics_async(
+    async def list_tags_async(
         self,
-        instance_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsResponse:
+        request: paielastic_dataset_accelerator_20220801_models.ListTagsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.ListTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_instance_metrics_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_tags_with_options_async(request, headers, runtime)
 
     def query_instance_metrics_with_options(
         self,
@@ -1633,23 +1615,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_slot_metrics(
+    def query_instance_metrics(
         self,
-        slot_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsResponse:
+        instance_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_slot_metrics_with_options(slot_id, request, headers, runtime)
+        return self.query_instance_metrics_with_options(instance_id, request, headers, runtime)
 
-    async def query_slot_metrics_async(
+    async def query_instance_metrics_async(
         self,
-        slot_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsResponse:
+        instance_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.QueryInstanceMetricsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_slot_metrics_with_options_async(slot_id, request, headers, runtime)
+        return await self.query_instance_metrics_with_options_async(instance_id, request, headers, runtime)
 
     def query_slot_metrics_with_options(
         self,
@@ -1737,21 +1719,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_statistic(
+    def query_slot_metrics(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.QueryStatisticRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.QueryStatisticResponse:
+        slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_statistic_with_options(request, headers, runtime)
+        return self.query_slot_metrics_with_options(slot_id, request, headers, runtime)
 
-    async def query_statistic_async(
+    async def query_slot_metrics_async(
         self,
-        request: paielastic_dataset_accelerator_20220801_models.QueryStatisticRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.QueryStatisticResponse:
+        slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.QuerySlotMetricsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_statistic_with_options_async(request, headers, runtime)
+        return await self.query_slot_metrics_with_options_async(slot_id, request, headers, runtime)
 
     def query_statistic_with_options(
         self,
@@ -1821,21 +1805,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_slot(
+    def query_statistic(
         self,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.StopSlotResponse:
+        request: paielastic_dataset_accelerator_20220801_models.QueryStatisticRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.QueryStatisticResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_slot_with_options(slot_id, headers, runtime)
+        return self.query_statistic_with_options(request, headers, runtime)
 
-    async def stop_slot_async(
+    async def query_statistic_async(
         self,
-        slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.StopSlotResponse:
+        request: paielastic_dataset_accelerator_20220801_models.QueryStatisticRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.QueryStatisticResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_slot_with_options_async(slot_id, headers, runtime)
+        return await self.query_statistic_with_options_async(request, headers, runtime)
 
     def stop_slot_with_options(
         self,
@@ -1887,23 +1871,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def unbind_endpoint(
+    def stop_slot(
         self,
-        endpoint_id: str,
         slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.UnbindEndpointResponse:
+    ) -> paielastic_dataset_accelerator_20220801_models.StopSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.unbind_endpoint_with_options(endpoint_id, slot_id, headers, runtime)
+        return self.stop_slot_with_options(slot_id, headers, runtime)
 
-    async def unbind_endpoint_async(
+    async def stop_slot_async(
         self,
-        endpoint_id: str,
         slot_id: str,
-    ) -> paielastic_dataset_accelerator_20220801_models.UnbindEndpointResponse:
+    ) -> paielastic_dataset_accelerator_20220801_models.StopSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.unbind_endpoint_with_options_async(endpoint_id, slot_id, headers, runtime)
+        return await self.stop_slot_with_options_async(slot_id, headers, runtime)
 
     def unbind_endpoint_with_options(
         self,
@@ -1957,23 +1939,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_instance(
+    def unbind_endpoint(
         self,
-        instance_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.UpdateInstanceRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.UpdateInstanceResponse:
+        endpoint_id: str,
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.UnbindEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_instance_with_options(instance_id, request, headers, runtime)
+        return self.unbind_endpoint_with_options(endpoint_id, slot_id, headers, runtime)
 
-    async def update_instance_async(
+    async def unbind_endpoint_async(
         self,
-        instance_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.UpdateInstanceRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.UpdateInstanceResponse:
+        endpoint_id: str,
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.UnbindEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.unbind_endpoint_with_options_async(endpoint_id, slot_id, headers, runtime)
 
     def update_instance_with_options(
         self,
@@ -2045,23 +2027,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_slot(
+    def update_instance(
         self,
-        slot_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.UpdateSlotRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.UpdateSlotResponse:
+        instance_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.UpdateInstanceRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.UpdateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_slot_with_options(slot_id, request, headers, runtime)
+        return self.update_instance_with_options(instance_id, request, headers, runtime)
 
-    async def update_slot_async(
+    async def update_instance_async(
         self,
-        slot_id: str,
-        request: paielastic_dataset_accelerator_20220801_models.UpdateSlotRequest,
-    ) -> paielastic_dataset_accelerator_20220801_models.UpdateSlotResponse:
+        instance_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.UpdateInstanceRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.UpdateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_slot_with_options_async(slot_id, request, headers, runtime)
+        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
 
     def update_slot_with_options(
         self,
@@ -2148,3 +2130,21 @@ class Client(OpenApiClient):
             paielastic_dataset_accelerator_20220801_models.UpdateSlotResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_slot(
+        self,
+        slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.UpdateSlotRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.UpdateSlotResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_slot_with_options(slot_id, request, headers, runtime)
+
+    async def update_slot_async(
+        self,
+        slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.UpdateSlotRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.UpdateSlotResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_slot_with_options_async(slot_id, request, headers, runtime)

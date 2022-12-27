@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
-class EndpointStatusDetail(TeaModel):
+class IpPort(TeaModel):
     def __init__(
         self,
-        ip_port_mapping: Dict[str, Any] = None,
+        ip: str = None,
+        port: str = None,
     ):
-        self.ip_port_mapping = ip_port_mapping
+        self.ip = ip
+        self.port = port
 
     def validate(self):
         pass
@@ -20,14 +22,53 @@ class EndpointStatusDetail(TeaModel):
             return _map
 
         result = dict()
-        if self.ip_port_mapping is not None:
-            result['IpPortMapping'] = self.ip_port_mapping
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.port is not None:
+            result['Port'] = self.port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class EndpointStatusDetail(TeaModel):
+    def __init__(
+        self,
+        ip_port_mapping: Dict[str, IpPort] = None,
+    ):
+        self.ip_port_mapping = ip_port_mapping
+
+    def validate(self):
+        if self.ip_port_mapping:
+            for v in self.ip_port_mapping.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IpPortMapping'] = {}
+        if self.ip_port_mapping is not None:
+            for k, v in self.ip_port_mapping.items():
+                result['IpPortMapping'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ip_port_mapping = {}
         if m.get('IpPortMapping') is not None:
-            self.ip_port_mapping = m.get('IpPortMapping')
+            for k, v in m.get('IpPortMapping').items():
+                temp_model = IpPort()
+                self.ip_port_mapping[k] = temp_model.from_map(v)
         return self
 
 
