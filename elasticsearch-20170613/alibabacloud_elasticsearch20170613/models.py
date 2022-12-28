@@ -49,6 +49,242 @@ class ClientNodeConfiguration(TeaModel):
         return self
 
 
+class CollectorDeployMachineMachines(TeaModel):
+    def __init__(
+        self,
+        agent_status: str = None,
+        instance_id: str = None,
+    ):
+        self.agent_status = agent_status
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_status is not None:
+            result['agentStatus'] = self.agent_status
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentStatus') is not None:
+            self.agent_status = m.get('agentStatus')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        return self
+
+
+class CollectorDeployMachine(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        group_id: str = None,
+        instance_id: str = None,
+        machines: List[CollectorDeployMachineMachines] = None,
+        success_pods_count: str = None,
+        total_pods_count: str = None,
+        type: str = None,
+    ):
+        self.config_type = config_type
+        self.group_id = group_id
+        self.instance_id = instance_id
+        self.machines = machines
+        self.success_pods_count = success_pods_count
+        self.total_pods_count = total_pods_count
+        self.type = type
+
+    def validate(self):
+        if self.machines:
+            for k in self.machines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['configType'] = self.config_type
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        result['machines'] = []
+        if self.machines is not None:
+            for k in self.machines:
+                result['machines'].append(k.to_map() if k else None)
+        if self.success_pods_count is not None:
+            result['successPodsCount'] = self.success_pods_count
+        if self.total_pods_count is not None:
+            result['totalPodsCount'] = self.total_pods_count
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        self.machines = []
+        if m.get('machines') is not None:
+            for k in m.get('machines'):
+                temp_model = CollectorDeployMachineMachines()
+                self.machines.append(temp_model.from_map(k))
+        if m.get('successPodsCount') is not None:
+            self.success_pods_count = m.get('successPodsCount')
+        if m.get('totalPodsCount') is not None:
+            self.total_pods_count = m.get('totalPodsCount')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CollectorKibanaInstance(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        host: str = None,
+        instance_id: str = None,
+        kibana_host: str = None,
+        password: str = None,
+        protocol: str = None,
+        user_name: str = None,
+    ):
+        self.config_type = config_type
+        self.host = host
+        self.instance_id = instance_id
+        self.kibana_host = kibana_host
+        self.password = password
+        self.protocol = protocol
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['configType'] = self.config_type
+        if self.host is not None:
+            result['host'] = self.host
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.kibana_host is not None:
+            result['kibanaHost'] = self.kibana_host
+        if self.password is not None:
+            result['password'] = self.password
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('kibanaHost') is not None:
+            self.kibana_host = m.get('kibanaHost')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class CollectorTargetInstance(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        enable_monitoring: bool = None,
+        hosts: List[str] = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        password: str = None,
+        protocol: str = None,
+        user_name: str = None,
+    ):
+        self.config_type = config_type
+        self.enable_monitoring = enable_monitoring
+        self.hosts = hosts
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.password = password
+        self.protocol = protocol
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['configType'] = self.config_type
+        if self.enable_monitoring is not None:
+            result['enableMonitoring'] = self.enable_monitoring
+        if self.hosts is not None:
+            result['hosts'] = self.hosts
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.password is not None:
+            result['password'] = self.password
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
+        if m.get('enableMonitoring') is not None:
+            self.enable_monitoring = m.get('enableMonitoring')
+        if m.get('hosts') is not None:
+            self.hosts = m.get('hosts')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
 class DictInfo(TeaModel):
     def __init__(
         self,
@@ -2823,14 +3059,14 @@ class CloseManagedIndexResponse(TeaModel):
         return self
 
 
-class CreateCollectorRequest(TeaModel):
+class CreateCollectorRequestConfigs(TeaModel):
     def __init__(
         self,
-        body: str = None,
-        client_token: str = None,
+        content: str = None,
+        file_name: str = None,
     ):
-        self.body = body
-        self.client_token = client_token
+        self.content = content
+        self.file_name = file_name
 
     def validate(self):
         pass
@@ -2841,16 +3077,99 @@ class CreateCollectorRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.body is not None:
-            result['body'] = self.body
+        if self.content is not None:
+            result['content'] = self.content
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        return self
+
+
+class CreateCollectorRequest(TeaModel):
+    def __init__(
+        self,
+        collector_paths: List[str] = None,
+        configs: List[CreateCollectorRequestConfigs] = None,
+        dry_run: bool = None,
+        extend_configs: List[Dict[str, Any]] = None,
+        name: str = None,
+        res_type: str = None,
+        res_version: str = None,
+        vpc_id: str = None,
+        client_token: str = None,
+    ):
+        self.collector_paths = collector_paths
+        self.configs = configs
+        self.dry_run = dry_run
+        self.extend_configs = extend_configs
+        self.name = name
+        self.res_type = res_type
+        self.res_version = res_version
+        self.vpc_id = vpc_id
+        self.client_token = client_token
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collector_paths is not None:
+            result['collectorPaths'] = self.collector_paths
+        result['configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['configs'].append(k.to_map() if k else None)
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        if self.extend_configs is not None:
+            result['extendConfigs'] = self.extend_configs
+        if self.name is not None:
+            result['name'] = self.name
+        if self.res_type is not None:
+            result['resType'] = self.res_type
+        if self.res_version is not None:
+            result['resVersion'] = self.res_version
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('body') is not None:
-            self.body = m.get('body')
+        if m.get('collectorPaths') is not None:
+            self.collector_paths = m.get('collectorPaths')
+        self.configs = []
+        if m.get('configs') is not None:
+            for k in m.get('configs'):
+                temp_model = CreateCollectorRequestConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        if m.get('extendConfigs') is not None:
+            self.extend_configs = m.get('extendConfigs')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('resType') is not None:
+            self.res_type = m.get('resType')
+        if m.get('resVersion') is not None:
+            self.res_version = m.get('resVersion')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -3906,14 +4225,16 @@ class CreateILMPolicyResponse(TeaModel):
         return self
 
 
-class CreateIndexTemplateRequest(TeaModel):
+class CreateIndexTemplateRequestTemplate(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
-        body: str = None,
+        aliases: str = None,
+        mappings: str = None,
+        settings: str = None,
     ):
-        self.client_token = client_token
-        self.body = body
+        self.aliases = aliases
+        self.mappings = mappings
+        self.settings = settings
 
     def validate(self):
         pass
@@ -3924,18 +4245,87 @@ class CreateIndexTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.aliases is not None:
+            result['aliases'] = self.aliases
+        if self.mappings is not None:
+            result['mappings'] = self.mappings
+        if self.settings is not None:
+            result['settings'] = self.settings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliases') is not None:
+            self.aliases = m.get('aliases')
+        if m.get('mappings') is not None:
+            self.mappings = m.get('mappings')
+        if m.get('settings') is not None:
+            self.settings = m.get('settings')
+        return self
+
+
+class CreateIndexTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        data_stream: bool = None,
+        ilm_policy: str = None,
+        index_patterns: List[str] = None,
+        index_template: str = None,
+        priority: int = None,
+        template: CreateIndexTemplateRequestTemplate = None,
+    ):
+        self.client_token = client_token
+        self.data_stream = data_stream
+        self.ilm_policy = ilm_policy
+        self.index_patterns = index_patterns
+        self.index_template = index_template
+        self.priority = priority
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            self.template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.body is not None:
-            result['body'] = self.body
+        if self.data_stream is not None:
+            result['dataStream'] = self.data_stream
+        if self.ilm_policy is not None:
+            result['ilmPolicy'] = self.ilm_policy
+        if self.index_patterns is not None:
+            result['indexPatterns'] = self.index_patterns
+        if self.index_template is not None:
+            result['indexTemplate'] = self.index_template
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.template is not None:
+            result['template'] = self.template.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('body') is not None:
-            self.body = m.get('body')
+        if m.get('dataStream') is not None:
+            self.data_stream = m.get('dataStream')
+        if m.get('ilmPolicy') is not None:
+            self.ilm_policy = m.get('ilmPolicy')
+        if m.get('indexPatterns') is not None:
+            self.index_patterns = m.get('indexPatterns')
+        if m.get('indexTemplate') is not None:
+            self.index_template = m.get('indexTemplate')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('template') is not None:
+            temp_model = CreateIndexTemplateRequestTemplate()
+            self.template = temp_model.from_map(m['template'])
         return self
 
 

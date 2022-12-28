@@ -870,10 +870,27 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.collector_paths):
+            body['collectorPaths'] = request.collector_paths
+        if not UtilClient.is_unset(request.configs):
+            body['configs'] = request.configs
+        if not UtilClient.is_unset(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.extend_configs):
+            body['extendConfigs'] = request.extend_configs
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.res_type):
+            body['resType'] = request.res_type
+        if not UtilClient.is_unset(request.res_version):
+            body['resVersion'] = request.res_version
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCollector',
@@ -901,10 +918,27 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.collector_paths):
+            body['collectorPaths'] = request.collector_paths
+        if not UtilClient.is_unset(request.configs):
+            body['configs'] = request.configs
+        if not UtilClient.is_unset(request.dry_run):
+            body['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.extend_configs):
+            body['extendConfigs'] = request.extend_configs
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.res_type):
+            body['resType'] = request.res_type
+        if not UtilClient.is_unset(request.res_version):
+            body['resVersion'] = request.res_version
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCollector',
@@ -1283,10 +1317,23 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.data_stream):
+            body['dataStream'] = request.data_stream
+        if not UtilClient.is_unset(request.ilm_policy):
+            body['ilmPolicy'] = request.ilm_policy
+        if not UtilClient.is_unset(request.index_patterns):
+            body['indexPatterns'] = request.index_patterns
+        if not UtilClient.is_unset(request.index_template):
+            body['indexTemplate'] = request.index_template
+        if not UtilClient.is_unset(request.priority):
+            body['priority'] = request.priority
+        if not UtilClient.is_unset(request.template):
+            body['template'] = request.template
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateIndexTemplate',
@@ -1315,10 +1362,23 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.data_stream):
+            body['dataStream'] = request.data_stream
+        if not UtilClient.is_unset(request.ilm_policy):
+            body['ilmPolicy'] = request.ilm_policy
+        if not UtilClient.is_unset(request.index_patterns):
+            body['indexPatterns'] = request.index_patterns
+        if not UtilClient.is_unset(request.index_template):
+            body['indexTemplate'] = request.index_template
+        if not UtilClient.is_unset(request.priority):
+            body['priority'] = request.priority
+        if not UtilClient.is_unset(request.template):
+            body['template'] = request.template
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateIndexTemplate',
