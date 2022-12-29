@@ -1,3 +1,6 @@
+2022-12-29 Version: 1.0.4
+- Modify some interfaces.
+
 2022-12-08 Version: 1.0.3
 - Modify some interfaces.
 
