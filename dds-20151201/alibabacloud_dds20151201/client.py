@@ -46,6 +46,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.AllocateNodePrivateNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.AllocateNodePrivateNetworkAddressResponse:
+        """
+        This operation applies only to sharded cluster instances. For more information, see [Apply for an endpoint for a shard or Configserver node](~~134037~~).
+        >  The requested endpoint can only be accessed over the internal network. If you want to access the endpoint over the Internet, call the [AllocatePublicNetworkAddress](~~67602~~) operation to apply for a public endpoint.
+        
+        @param request: AllocateNodePrivateNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateNodePrivateNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -92,6 +100,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.AllocateNodePrivateNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.AllocateNodePrivateNetworkAddressResponse:
+        """
+        This operation applies only to sharded cluster instances. For more information, see [Apply for an endpoint for a shard or Configserver node](~~134037~~).
+        >  The requested endpoint can only be accessed over the internal network. If you want to access the endpoint over the Internet, call the [AllocatePublicNetworkAddress](~~67602~~) operation to apply for a public endpoint.
+        
+        @param request: AllocateNodePrivateNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateNodePrivateNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -137,6 +153,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.AllocateNodePrivateNetworkAddressRequest,
     ) -> dds_20151201_models.AllocateNodePrivateNetworkAddressResponse:
+        """
+        This operation applies only to sharded cluster instances. For more information, see [Apply for an endpoint for a shard or Configserver node](~~134037~~).
+        >  The requested endpoint can only be accessed over the internal network. If you want to access the endpoint over the Internet, call the [AllocatePublicNetworkAddress](~~67602~~) operation to apply for a public endpoint.
+        
+        @param request: AllocateNodePrivateNetworkAddressRequest
+        @return: AllocateNodePrivateNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allocate_node_private_network_address_with_options(request, runtime)
 
@@ -144,6 +167,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.AllocateNodePrivateNetworkAddressRequest,
     ) -> dds_20151201_models.AllocateNodePrivateNetworkAddressResponse:
+        """
+        This operation applies only to sharded cluster instances. For more information, see [Apply for an endpoint for a shard or Configserver node](~~134037~~).
+        >  The requested endpoint can only be accessed over the internal network. If you want to access the endpoint over the Internet, call the [AllocatePublicNetworkAddress](~~67602~~) operation to apply for a public endpoint.
+        
+        @param request: AllocateNodePrivateNetworkAddressRequest
+        @return: AllocateNodePrivateNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_node_private_network_address_with_options_async(request, runtime)
 
@@ -246,6 +276,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CheckCloudResourceAuthorizedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CheckCloudResourceAuthorizedResponse:
+        """
+        Before you enable Transparent Data Encryption (TDE) by calling the [ModifyDBInstanceTDE](~~131267~~) operation, you can call this operation to check whether KMS keys are authorized to ApsaraDB for MongoDB instances.
+        >  TDE cannot be enabled if KMS keys are not authorized to ApsaraDB for MongoDB instances. You can [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm#/ticket/createIndex) to modify the authorization information.
+        
+        @param request: CheckCloudResourceAuthorizedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -286,6 +324,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CheckCloudResourceAuthorizedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CheckCloudResourceAuthorizedResponse:
+        """
+        Before you enable Transparent Data Encryption (TDE) by calling the [ModifyDBInstanceTDE](~~131267~~) operation, you can call this operation to check whether KMS keys are authorized to ApsaraDB for MongoDB instances.
+        >  TDE cannot be enabled if KMS keys are not authorized to ApsaraDB for MongoDB instances. You can [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm#/ticket/createIndex) to modify the authorization information.
+        
+        @param request: CheckCloudResourceAuthorizedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -325,6 +371,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CheckCloudResourceAuthorizedRequest,
     ) -> dds_20151201_models.CheckCloudResourceAuthorizedResponse:
+        """
+        Before you enable Transparent Data Encryption (TDE) by calling the [ModifyDBInstanceTDE](~~131267~~) operation, you can call this operation to check whether KMS keys are authorized to ApsaraDB for MongoDB instances.
+        >  TDE cannot be enabled if KMS keys are not authorized to ApsaraDB for MongoDB instances. You can [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm#/ticket/createIndex) to modify the authorization information.
+        
+        @param request: CheckCloudResourceAuthorizedRequest
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_cloud_resource_authorized_with_options(request, runtime)
 
@@ -332,6 +385,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CheckCloudResourceAuthorizedRequest,
     ) -> dds_20151201_models.CheckCloudResourceAuthorizedResponse:
+        """
+        Before you enable Transparent Data Encryption (TDE) by calling the [ModifyDBInstanceTDE](~~131267~~) operation, you can call this operation to check whether KMS keys are authorized to ApsaraDB for MongoDB instances.
+        >  TDE cannot be enabled if KMS keys are not authorized to ApsaraDB for MongoDB instances. You can [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm#/ticket/createIndex) to modify the authorization information.
+        
+        @param request: CheckCloudResourceAuthorizedRequest
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_cloud_resource_authorized_with_options_async(request, runtime)
 
@@ -340,6 +400,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CheckRecoveryConditionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
+        """
+        This operation is applicable to replica set instances or sharded cluster instances.
+        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        
+        @param request: CheckRecoveryConditionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckRecoveryConditionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -386,6 +454,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CheckRecoveryConditionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
+        """
+        This operation is applicable to replica set instances or sharded cluster instances.
+        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        
+        @param request: CheckRecoveryConditionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckRecoveryConditionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -431,6 +507,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CheckRecoveryConditionRequest,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
+        """
+        This operation is applicable to replica set instances or sharded cluster instances.
+        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        
+        @param request: CheckRecoveryConditionRequest
+        @return: CheckRecoveryConditionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_recovery_condition_with_options(request, runtime)
 
@@ -438,6 +521,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CheckRecoveryConditionRequest,
     ) -> dds_20151201_models.CheckRecoveryConditionResponse:
+        """
+        This operation is applicable to replica set instances or sharded cluster instances.
+        >  After you confirm that the data recovery conditions are met by calling this operation, you can call the [CreateDBInstance](~~61763~~) operation to restore data to a new instance.
+        
+        @param request: CheckRecoveryConditionRequest
+        @return: CheckRecoveryConditionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_recovery_condition_with_options_async(request, runtime)
 
@@ -446,6 +536,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateBackupResponse:
+        """
+        ## Usage
+        When you call this operation, the instance must be in the Running state.
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_method):
@@ -486,6 +584,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateBackupResponse:
+        """
+        ## Usage
+        When you call this operation, the instance must be in the Running state.
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_method):
@@ -525,6 +631,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateBackupRequest,
     ) -> dds_20151201_models.CreateBackupResponse:
+        """
+        ## Usage
+        When you call this operation, the instance must be in the Running state.
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backup_with_options(request, runtime)
 
@@ -532,6 +645,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateBackupRequest,
     ) -> dds_20151201_models.CreateBackupResponse:
+        """
+        ## Usage
+        When you call this operation, the instance must be in the Running state.
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
@@ -540,6 +660,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        
+        @param request: CreateDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_password):
@@ -636,6 +765,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        
+        @param request: CreateDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_password):
@@ -731,6 +869,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        
+        @param request: CreateDBInstanceRequest
+        @return: CreateDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dbinstance_with_options(request, runtime)
 
@@ -738,6 +884,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
+        
+        @param request: CreateDBInstanceRequest
+        @return: CreateDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
 
@@ -746,6 +900,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -806,6 +968,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -865,6 +1035,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateNodeRequest,
     ) -> dds_20151201_models.CreateNodeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeRequest
+        @return: CreateNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_node_with_options(request, runtime)
 
@@ -872,6 +1049,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateNodeRequest,
     ) -> dds_20151201_models.CreateNodeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeRequest
+        @return: CreateNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_node_with_options_async(request, runtime)
 
@@ -880,6 +1064,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNodeBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -936,6 +1128,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateNodeBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNodeBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -991,6 +1191,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateNodeBatchRequest,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeBatchRequest
+        @return: CreateNodeBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_node_batch_with_options(request, runtime)
 
@@ -998,6 +1205,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateNodeBatchRequest,
     ) -> dds_20151201_models.CreateNodeBatchResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: CreateNodeBatchRequest
+        @return: CreateNodeBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_node_batch_with_options_async(request, runtime)
 
@@ -1006,6 +1220,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateShardingDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        
+        @param request: CreateShardingDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateShardingDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_password):
@@ -1092,6 +1315,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateShardingDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        
+        @param request: CreateShardingDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateShardingDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_password):
@@ -1177,6 +1409,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateShardingDBInstanceRequest,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        
+        @param request: CreateShardingDBInstanceRequest
+        @return: CreateShardingDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_sharding_dbinstance_with_options(request, runtime)
 
@@ -1184,6 +1424,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.CreateShardingDBInstanceRequest,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
+        *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
+        
+        @param request: CreateShardingDBInstanceRequest
+        @return: CreateShardingDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_sharding_dbinstance_with_options_async(request, runtime)
 
@@ -1192,6 +1440,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DeleteDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
+        """
+        Ensure that the instance meets the following conditions when you call this operation:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        
+        @param request: DeleteDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1232,6 +1490,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DeleteDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
+        """
+        Ensure that the instance meets the following conditions when you call this operation:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        
+        @param request: DeleteDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1271,6 +1539,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DeleteDBInstanceRequest,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
+        """
+        Ensure that the instance meets the following conditions when you call this operation:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        
+        @param request: DeleteDBInstanceRequest
+        @return: DeleteDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbinstance_with_options(request, runtime)
 
@@ -1278,6 +1555,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DeleteDBInstanceRequest,
     ) -> dds_20151201_models.DeleteDBInstanceResponse:
+        """
+        Ensure that the instance meets the following conditions when you call this operation:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        >  After an instance is released, all the data in the instance is lost and cannot be retrieved. Exercise caution when you release instances.
+        
+        @param request: DeleteDBInstanceRequest
+        @return: DeleteDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
@@ -1286,6 +1572,17 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DeleteNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DeleteNodeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a sharded cluster instance.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The number of the shard or mongos nodes in the instance is greater than two.
+        
+        @param request: DeleteNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1328,6 +1625,17 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DeleteNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DeleteNodeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a sharded cluster instance.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The number of the shard or mongos nodes in the instance is greater than two.
+        
+        @param request: DeleteNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1369,6 +1677,16 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DeleteNodeRequest,
     ) -> dds_20151201_models.DeleteNodeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a sharded cluster instance.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The number of the shard or mongos nodes in the instance is greater than two.
+        
+        @param request: DeleteNodeRequest
+        @return: DeleteNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_node_with_options(request, runtime)
 
@@ -1376,6 +1694,16 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DeleteNodeRequest,
     ) -> dds_20151201_models.DeleteNodeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a sharded cluster instance.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The number of the shard or mongos nodes in the instance is greater than two.
+        
+        @param request: DeleteNodeRequest
+        @return: DeleteNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_node_with_options_async(request, runtime)
 
@@ -1384,6 +1712,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAccountsResponse:
+        """
+        >  This operation can query only the information of the root account.
+        
+        @param request: DescribeAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1424,6 +1759,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAccountsResponse:
+        """
+        >  This operation can query only the information of the root account.
+        
+        @param request: DescribeAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1463,6 +1805,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAccountsRequest,
     ) -> dds_20151201_models.DescribeAccountsResponse:
+        """
+        >  This operation can query only the information of the root account.
+        
+        @param request: DescribeAccountsRequest
+        @return: DescribeAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_accounts_with_options(request, runtime)
 
@@ -1470,6 +1818,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAccountsRequest,
     ) -> dds_20151201_models.DescribeAccountsResponse:
+        """
+        >  This operation can query only the information of the root account.
+        
+        @param request: DescribeAccountsRequest
+        @return: DescribeAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
 
@@ -1662,6 +2016,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditLogFilterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditLogFilterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditLogFilterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1702,6 +2065,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditLogFilterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditLogFilterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditLogFilterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1741,6 +2113,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAuditLogFilterRequest,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditLogFilterRequest
+        @return: DescribeAuditLogFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_audit_log_filter_with_options(request, runtime)
 
@@ -1748,6 +2128,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAuditLogFilterRequest,
     ) -> dds_20151201_models.DescribeAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditLogFilterRequest
+        @return: DescribeAuditLogFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_log_filter_with_options_async(request, runtime)
 
@@ -1756,6 +2144,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditPolicyResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1794,6 +2191,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditPolicyResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1831,6 +2237,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAuditPolicyRequest,
     ) -> dds_20151201_models.DescribeAuditPolicyResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditPolicyRequest
+        @return: DescribeAuditPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_audit_policy_with_options(request, runtime)
 
@@ -1838,6 +2252,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAuditPolicyRequest,
     ) -> dds_20151201_models.DescribeAuditPolicyResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditPolicyRequest
+        @return: DescribeAuditPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_policy_with_options_async(request, runtime)
 
@@ -1846,6 +2268,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditRecordsResponse:
+        """
+        When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1904,6 +2335,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeAuditRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeAuditRecordsResponse:
+        """
+        When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1961,6 +2401,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAuditRecordsRequest,
     ) -> dds_20151201_models.DescribeAuditRecordsResponse:
+        """
+        When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditRecordsRequest
+        @return: DescribeAuditRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_audit_records_with_options(request, runtime)
 
@@ -1968,6 +2416,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeAuditRecordsRequest,
     ) -> dds_20151201_models.DescribeAuditRecordsResponse:
+        """
+        When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeAuditRecordsRequest
+        @return: DescribeAuditRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_records_with_options_async(request, runtime)
 
@@ -2172,6 +2628,20 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeBackupDBsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeBackupDBsResponse:
+        """
+        ## Precautions
+        You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one or more databases of an ApsaraDB for MongoDB instance](~~112274~~).
+        Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance was created after March 26, 2019.
+        *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore (Singapore) region. Other regions are not supported.
+        *   The instance is a replica set instance.
+        *   The version of the database engine is 3.4, 4.0, or 4.2.
+        *   The storage engine of the instance is WiredTiger.
+        
+        @param request: DescribeBackupDBsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupDBsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -2220,6 +2690,20 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeBackupDBsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeBackupDBsResponse:
+        """
+        ## Precautions
+        You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one or more databases of an ApsaraDB for MongoDB instance](~~112274~~).
+        Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance was created after March 26, 2019.
+        *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore (Singapore) region. Other regions are not supported.
+        *   The instance is a replica set instance.
+        *   The version of the database engine is 3.4, 4.0, or 4.2.
+        *   The storage engine of the instance is WiredTiger.
+        
+        @param request: DescribeBackupDBsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupDBsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -2267,6 +2751,19 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeBackupDBsRequest,
     ) -> dds_20151201_models.DescribeBackupDBsResponse:
+        """
+        ## Precautions
+        You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one or more databases of an ApsaraDB for MongoDB instance](~~112274~~).
+        Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance was created after March 26, 2019.
+        *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore (Singapore) region. Other regions are not supported.
+        *   The instance is a replica set instance.
+        *   The version of the database engine is 3.4, 4.0, or 4.2.
+        *   The storage engine of the instance is WiredTiger.
+        
+        @param request: DescribeBackupDBsRequest
+        @return: DescribeBackupDBsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_dbs_with_options(request, runtime)
 
@@ -2274,6 +2771,19 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeBackupDBsRequest,
     ) -> dds_20151201_models.DescribeBackupDBsResponse:
+        """
+        ## Precautions
+        You can call the [CreateDBInstance](~~61763~~) operation to restore a database for an ApsaraDB for MongoDB instance. For more information, see [Restore one or more databases of an ApsaraDB for MongoDB instance](~~112274~~).
+        Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance was created after March 26, 2019.
+        *   The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore (Singapore) region. Other regions are not supported.
+        *   The instance is a replica set instance.
+        *   The version of the database engine is 3.4, 4.0, or 4.2.
+        *   The storage engine of the instance is WiredTiger.
+        
+        @param request: DescribeBackupDBsRequest
+        @return: DescribeBackupDBsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_dbs_with_options_async(request, runtime)
 
@@ -2584,6 +3094,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceEncryptionKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceEncryptionKeyResponse:
+        """
+        ## Usage
+        When you call the DescribeDBInstanceEncryptionKey operation, the instance must have transparent data encryption (TDE) enabled in BYOK mode. You can call the [ModifyDBInstanceTDE](~~131267~~) operation to enable TDE.
+        
+        @param request: DescribeDBInstanceEncryptionKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceEncryptionKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2624,6 +3142,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceEncryptionKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceEncryptionKeyResponse:
+        """
+        ## Usage
+        When you call the DescribeDBInstanceEncryptionKey operation, the instance must have transparent data encryption (TDE) enabled in BYOK mode. You can call the [ModifyDBInstanceTDE](~~131267~~) operation to enable TDE.
+        
+        @param request: DescribeDBInstanceEncryptionKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceEncryptionKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2663,6 +3189,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstanceEncryptionKeyRequest,
     ) -> dds_20151201_models.DescribeDBInstanceEncryptionKeyResponse:
+        """
+        ## Usage
+        When you call the DescribeDBInstanceEncryptionKey operation, the instance must have transparent data encryption (TDE) enabled in BYOK mode. You can call the [ModifyDBInstanceTDE](~~131267~~) operation to enable TDE.
+        
+        @param request: DescribeDBInstanceEncryptionKeyRequest
+        @return: DescribeDBInstanceEncryptionKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_encryption_key_with_options(request, runtime)
 
@@ -2670,6 +3203,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstanceEncryptionKeyRequest,
     ) -> dds_20151201_models.DescribeDBInstanceEncryptionKeyResponse:
+        """
+        ## Usage
+        When you call the DescribeDBInstanceEncryptionKey operation, the instance must have transparent data encryption (TDE) enabled in BYOK mode. You can call the [ModifyDBInstanceTDE](~~131267~~) operation to enable TDE.
+        
+        @param request: DescribeDBInstanceEncryptionKeyRequest
+        @return: DescribeDBInstanceEncryptionKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_encryption_key_with_options_async(request, runtime)
 
@@ -2882,6 +3422,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceSSLResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The database version of the instance is 3.4 or 4.0.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2920,6 +3470,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceSSLResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The database version of the instance is 3.4 or 4.0.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2957,6 +3517,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstanceSSLRequest,
     ) -> dds_20151201_models.DescribeDBInstanceSSLResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The database version of the instance is 3.4 or 4.0.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @return: DescribeDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_sslwith_options(request, runtime)
 
@@ -2964,6 +3533,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstanceSSLRequest,
     ) -> dds_20151201_models.DescribeDBInstanceSSLResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The database version of the instance is 3.4 or 4.0.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @return: DescribeDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_sslwith_options_async(request, runtime)
 
@@ -2972,6 +3550,17 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceTDEInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
+        """
+        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        
+        @param request: DescribeDBInstanceTDEInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceTDEInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3010,6 +3599,17 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstanceTDEInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
+        """
+        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        
+        @param request: DescribeDBInstanceTDEInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceTDEInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3047,6 +3647,16 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstanceTDEInfoRequest,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
+        """
+        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        
+        @param request: DescribeDBInstanceTDEInfoRequest
+        @return: DescribeDBInstanceTDEInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_tdeinfo_with_options(request, runtime)
 
@@ -3054,6 +3664,16 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstanceTDEInfoRequest,
     ) -> dds_20151201_models.DescribeDBInstanceTDEInfoResponse:
+        """
+        >  For more information about this function, see [~~131048~~](~~131048~~)Configure TDE.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version of your instance is earlier than 4.0, you can call [UpgradeDBInstanceEngineVersion](~~67608~~) to upgrade the database engine.
+        
+        @param request: DescribeDBInstanceTDEInfoRequest
+        @return: DescribeDBInstanceTDEInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_tdeinfo_with_options_async(request, runtime)
 
@@ -3062,6 +3682,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        """
+        The list of replica set and standalone instances is displayed when the *DBInstanceType** parameter uses the default value **replicate**. To query the list of sharded cluster instances, you must set the **DBInstanceType** parameter to **sharding**.
+        
+        @param request: DescribeDBInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -3078,6 +3705,8 @@ class Client(OpenApiClient):
             query['DBInstanceStatus'] = request.dbinstance_status
         if not UtilClient.is_unset(request.dbinstance_type):
             query['DBInstanceType'] = request.dbinstance_type
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -3140,6 +3769,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        """
+        The list of replica set and standalone instances is displayed when the *DBInstanceType** parameter uses the default value **replicate**. To query the list of sharded cluster instances, you must set the **DBInstanceType** parameter to **sharding**.
+        
+        @param request: DescribeDBInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -3156,6 +3792,8 @@ class Client(OpenApiClient):
             query['DBInstanceStatus'] = request.dbinstance_status
         if not UtilClient.is_unset(request.dbinstance_type):
             query['DBInstanceType'] = request.dbinstance_type
+        if not UtilClient.is_unset(request.dbnode_type):
+            query['DBNodeType'] = request.dbnode_type
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -3217,6 +3855,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstancesRequest,
     ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        """
+        The list of replica set and standalone instances is displayed when the *DBInstanceType** parameter uses the default value **replicate**. To query the list of sharded cluster instances, you must set the **DBInstanceType** parameter to **sharding**.
+        
+        @param request: DescribeDBInstancesRequest
+        @return: DescribeDBInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstances_with_options(request, runtime)
 
@@ -3224,6 +3868,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstancesRequest,
     ) -> dds_20151201_models.DescribeDBInstancesResponse:
+        """
+        The list of replica set and standalone instances is displayed when the *DBInstanceType** parameter uses the default value **replicate**. To query the list of sharded cluster instances, you must set the **DBInstanceType** parameter to **sharding**.
+        
+        @param request: DescribeDBInstancesRequest
+        @return: DescribeDBInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_with_options_async(request, runtime)
 
@@ -3232,6 +3882,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstancesOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstancesOverviewResponse:
+        """
+        If you do not specify an instance when you call this operation, the overview information of all instances in the specified region within this account is returned.
+        *   Paged query is disabled for this operation.
+        
+        @param request: DescribeDBInstancesOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancesOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -3292,6 +3950,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeDBInstancesOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeDBInstancesOverviewResponse:
+        """
+        If you do not specify an instance when you call this operation, the overview information of all instances in the specified region within this account is returned.
+        *   Paged query is disabled for this operation.
+        
+        @param request: DescribeDBInstancesOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancesOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -3351,6 +4017,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstancesOverviewRequest,
     ) -> dds_20151201_models.DescribeDBInstancesOverviewResponse:
+        """
+        If you do not specify an instance when you call this operation, the overview information of all instances in the specified region within this account is returned.
+        *   Paged query is disabled for this operation.
+        
+        @param request: DescribeDBInstancesOverviewRequest
+        @return: DescribeDBInstancesOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstances_overview_with_options(request, runtime)
 
@@ -3358,6 +4031,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeDBInstancesOverviewRequest,
     ) -> dds_20151201_models.DescribeDBInstancesOverviewResponse:
+        """
+        If you do not specify an instance when you call this operation, the overview information of all instances in the specified region within this account is returned.
+        *   Paged query is disabled for this operation.
+        
+        @param request: DescribeDBInstancesOverviewRequest
+        @return: DescribeDBInstancesOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_overview_with_options_async(request, runtime)
 
@@ -3496,6 +4176,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeErrorLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeErrorLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeErrorLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3550,6 +4238,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeErrorLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeErrorLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeErrorLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3603,6 +4299,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeErrorLogRecordsRequest,
     ) -> dds_20151201_models.DescribeErrorLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @return: DescribeErrorLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_error_log_records_with_options(request, runtime)
 
@@ -3610,6 +4313,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeErrorLogRecordsRequest,
     ) -> dds_20151201_models.DescribeErrorLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeErrorLogRecordsRequest
+        @return: DescribeErrorLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_error_log_records_with_options_async(request, runtime)
 
@@ -3618,6 +4328,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeInstanceAutoRenewalAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3664,6 +4381,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeInstanceAutoRenewalAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3709,6 +4433,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeInstanceAutoRenewalAttributeRequest,
     ) -> dds_20151201_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_auto_renewal_attribute_with_options(request, runtime)
 
@@ -3716,6 +4446,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeInstanceAutoRenewalAttributeRequest,
     ) -> dds_20151201_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_auto_renewal_attribute_with_options_async(request, runtime)
 
@@ -3814,6 +4550,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeMongoDBLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeMongoDBLogConfigResponse:
+        """
+        This operation is applicable only to *general-purpose local-disk** and **dedicated local-disk** instances.
+        This operation depends on the audit log feature of ApsaraDB for MongoDB. You can enable the audit log feature based on your business needs. For more information, see [Enable the audit log feature](~~59903~~)
+        *   Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](~~377480~~)
+        *   The official edition is charged based on the storage usage and retention period. For more information, see the [Pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) tab of the ApsaraDB for MongoDB product page.
+        
+        @param request: DescribeMongoDBLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMongoDBLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3852,6 +4598,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeMongoDBLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeMongoDBLogConfigResponse:
+        """
+        This operation is applicable only to *general-purpose local-disk** and **dedicated local-disk** instances.
+        This operation depends on the audit log feature of ApsaraDB for MongoDB. You can enable the audit log feature based on your business needs. For more information, see [Enable the audit log feature](~~59903~~)
+        *   Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](~~377480~~)
+        *   The official edition is charged based on the storage usage and retention period. For more information, see the [Pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) tab of the ApsaraDB for MongoDB product page.
+        
+        @param request: DescribeMongoDBLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMongoDBLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3889,6 +4645,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeMongoDBLogConfigRequest,
     ) -> dds_20151201_models.DescribeMongoDBLogConfigResponse:
+        """
+        This operation is applicable only to *general-purpose local-disk** and **dedicated local-disk** instances.
+        This operation depends on the audit log feature of ApsaraDB for MongoDB. You can enable the audit log feature based on your business needs. For more information, see [Enable the audit log feature](~~59903~~)
+        *   Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](~~377480~~)
+        *   The official edition is charged based on the storage usage and retention period. For more information, see the [Pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) tab of the ApsaraDB for MongoDB product page.
+        
+        @param request: DescribeMongoDBLogConfigRequest
+        @return: DescribeMongoDBLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_mongo_dblog_config_with_options(request, runtime)
 
@@ -3896,6 +4661,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeMongoDBLogConfigRequest,
     ) -> dds_20151201_models.DescribeMongoDBLogConfigResponse:
+        """
+        This operation is applicable only to *general-purpose local-disk** and **dedicated local-disk** instances.
+        This operation depends on the audit log feature of ApsaraDB for MongoDB. You can enable the audit log feature based on your business needs. For more information, see [Enable the audit log feature](~~59903~~)
+        *   Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](~~377480~~)
+        *   The official edition is charged based on the storage usage and retention period. For more information, see the [Pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) tab of the ApsaraDB for MongoDB product page.
+        
+        @param request: DescribeMongoDBLogConfigRequest
+        @return: DescribeMongoDBLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_mongo_dblog_config_with_options_async(request, runtime)
 
@@ -4328,6 +5102,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRegionsResponse:
+        """
+        >  To query available regions and zones where ApsaraDB for MongoDB instances can be created, call the [DescribeAvailableResource](~~149719~~) operation.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4368,6 +5149,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRegionsResponse:
+        """
+        >  To query available regions and zones where ApsaraDB for MongoDB instances can be created, call the [DescribeAvailableResource](~~149719~~) operation.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4407,6 +5195,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRegionsRequest,
     ) -> dds_20151201_models.DescribeRegionsResponse:
+        """
+        >  To query available regions and zones where ApsaraDB for MongoDB instances can be created, call the [DescribeAvailableResource](~~149719~~) operation.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -4414,6 +5208,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRegionsRequest,
     ) -> dds_20151201_models.DescribeRegionsResponse:
+        """
+        >  To query available regions and zones where ApsaraDB for MongoDB instances can be created, call the [DescribeAvailableResource](~~149719~~) operation.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -4422,6 +5222,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRenewalPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeRenewalPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenewalPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_info):
@@ -4464,6 +5271,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRenewalPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeRenewalPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenewalPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_info):
@@ -4505,6 +5319,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRenewalPriceRequest,
     ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeRenewalPriceRequest
+        @return: DescribeRenewalPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_renewal_price_with_options(request, runtime)
 
@@ -4512,6 +5332,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRenewalPriceRequest,
     ) -> dds_20151201_models.DescribeRenewalPriceResponse:
+        """
+        This operation is applicable to subscription instances.
+        
+        @param request: DescribeRenewalPriceRequest
+        @return: DescribeRenewalPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_renewal_price_with_options_async(request, runtime)
 
@@ -4520,6 +5346,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeReplicaSetRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeReplicaSetRoleResponse:
+        """
+        This operation is applicable to replica set instances and standalone instances, but not to sharded cluster instances.
+        
+        @param request: DescribeReplicaSetRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReplicaSetRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4558,6 +5391,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeReplicaSetRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeReplicaSetRoleResponse:
+        """
+        This operation is applicable to replica set instances and standalone instances, but not to sharded cluster instances.
+        
+        @param request: DescribeReplicaSetRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReplicaSetRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4595,6 +5435,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeReplicaSetRoleRequest,
     ) -> dds_20151201_models.DescribeReplicaSetRoleResponse:
+        """
+        This operation is applicable to replica set instances and standalone instances, but not to sharded cluster instances.
+        
+        @param request: DescribeReplicaSetRoleRequest
+        @return: DescribeReplicaSetRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_replica_set_role_with_options(request, runtime)
 
@@ -4602,6 +5448,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeReplicaSetRoleRequest,
     ) -> dds_20151201_models.DescribeReplicaSetRoleResponse:
+        """
+        This operation is applicable to replica set instances and standalone instances, but not to sharded cluster instances.
+        
+        @param request: DescribeReplicaSetRoleRequest
+        @return: DescribeReplicaSetRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_replica_set_role_with_options_async(request, runtime)
 
@@ -4610,6 +5462,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRoleZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRoleZoneInfoResponse:
+        """
+        >  For more information, see [View the zone of a node](~~123825~~).
+        This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRoleZoneInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4648,6 +5508,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRoleZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRoleZoneInfoResponse:
+        """
+        >  For more information, see [View the zone of a node](~~123825~~).
+        This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRoleZoneInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4685,6 +5553,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRoleZoneInfoRequest,
     ) -> dds_20151201_models.DescribeRoleZoneInfoResponse:
+        """
+        >  For more information, see [View the zone of a node](~~123825~~).
+        This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @return: DescribeRoleZoneInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_role_zone_info_with_options(request, runtime)
 
@@ -4692,6 +5567,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRoleZoneInfoRequest,
     ) -> dds_20151201_models.DescribeRoleZoneInfoResponse:
+        """
+        >  For more information, see [View the zone of a node](~~123825~~).
+        This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @return: DescribeRoleZoneInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_role_zone_info_with_options_async(request, runtime)
 
@@ -4700,6 +5582,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRunningLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRunningLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeRunningLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRunningLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4758,6 +5648,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeRunningLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeRunningLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeRunningLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRunningLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4815,6 +5713,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRunningLogRecordsRequest,
     ) -> dds_20151201_models.DescribeRunningLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeRunningLogRecordsRequest
+        @return: DescribeRunningLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_running_log_records_with_options(request, runtime)
 
@@ -4822,6 +5727,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeRunningLogRecordsRequest,
     ) -> dds_20151201_models.DescribeRunningLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeRunningLogRecordsRequest
+        @return: DescribeRunningLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_running_log_records_with_options_async(request, runtime)
 
@@ -5010,6 +5922,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeShardingNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeShardingNetworkAddressResponse:
+        """
+        This operation supports sharded cluster instances only.
+        
+        @param request: DescribeShardingNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeShardingNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5050,6 +5969,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeShardingNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeShardingNetworkAddressResponse:
+        """
+        This operation supports sharded cluster instances only.
+        
+        @param request: DescribeShardingNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeShardingNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5089,6 +6015,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeShardingNetworkAddressRequest,
     ) -> dds_20151201_models.DescribeShardingNetworkAddressResponse:
+        """
+        This operation supports sharded cluster instances only.
+        
+        @param request: DescribeShardingNetworkAddressRequest
+        @return: DescribeShardingNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sharding_network_address_with_options(request, runtime)
 
@@ -5096,6 +6028,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeShardingNetworkAddressRequest,
     ) -> dds_20151201_models.DescribeShardingNetworkAddressResponse:
+        """
+        This operation supports sharded cluster instances only.
+        
+        @param request: DescribeShardingNetworkAddressRequest
+        @return: DescribeShardingNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sharding_network_address_with_options_async(request, runtime)
 
@@ -5104,6 +6042,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeSlowLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5158,6 +6104,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeSlowLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5211,6 +6165,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeSlowLogRecordsRequest,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @return: DescribeSlowLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_slow_log_records_with_options(request, runtime)
 
@@ -5218,6 +6179,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeSlowLogRecordsRequest,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @return: DescribeSlowLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
 
@@ -5324,6 +6292,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        """
+        You can use the custom key obtained by calling the DescribeUserEncryptionKeyList operation to enable TDE. For more information, see [ModifyDBInstanceTDE](~~131267~~).
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5364,6 +6339,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        """
+        You can use the custom key obtained by calling the DescribeUserEncryptionKeyList operation to enable TDE. For more information, see [ModifyDBInstanceTDE](~~131267~~).
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5403,6 +6385,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
     ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        """
+        You can use the custom key obtained by calling the DescribeUserEncryptionKeyList operation to enable TDE. For more information, see [ModifyDBInstanceTDE](~~131267~~).
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_encryption_key_list_with_options(request, runtime)
 
@@ -5410,6 +6398,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DescribeUserEncryptionKeyListRequest,
     ) -> dds_20151201_models.DescribeUserEncryptionKeyListResponse:
+        """
+        You can use the custom key obtained by calling the DescribeUserEncryptionKeyList operation to enable TDE. For more information, see [ModifyDBInstanceTDE](~~131267~~).
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
 
@@ -5418,6 +6412,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DestroyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DestroyInstanceResponse:
+        """
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The billing method of the instance is subscription.
+        *   The instance has expired and is in the **Locking** state.
+        
+        @param request: DestroyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DestroyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5462,6 +6465,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DestroyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DestroyInstanceResponse:
+        """
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The billing method of the instance is subscription.
+        *   The instance has expired and is in the **Locking** state.
+        
+        @param request: DestroyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DestroyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5505,6 +6517,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DestroyInstanceRequest,
     ) -> dds_20151201_models.DestroyInstanceResponse:
+        """
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The billing method of the instance is subscription.
+        *   The instance has expired and is in the **Locking** state.
+        
+        @param request: DestroyInstanceRequest
+        @return: DestroyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.destroy_instance_with_options(request, runtime)
 
@@ -5512,6 +6532,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.DestroyInstanceRequest,
     ) -> dds_20151201_models.DestroyInstanceResponse:
+        """
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The billing method of the instance is subscription.
+        *   The instance has expired and is in the **Locking** state.
+        
+        @param request: DestroyInstanceRequest
+        @return: DestroyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.destroy_instance_with_options_async(request, runtime)
 
@@ -5520,6 +6548,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.EvaluateResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.EvaluateResourceResponse:
+        """
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        >  You can call this operation a maximum of 200 times per minute.
+        
+        @param request: EvaluateResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvaluateResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -5574,6 +6610,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.EvaluateResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.EvaluateResourceResponse:
+        """
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        >  You can call this operation a maximum of 200 times per minute.
+        
+        @param request: EvaluateResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvaluateResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -5627,6 +6671,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.EvaluateResourceRequest,
     ) -> dds_20151201_models.EvaluateResourceResponse:
+        """
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        >  You can call this operation a maximum of 200 times per minute.
+        
+        @param request: EvaluateResourceRequest
+        @return: EvaluateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.evaluate_resource_with_options(request, runtime)
 
@@ -5634,6 +6685,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.EvaluateResourceRequest,
     ) -> dds_20151201_models.EvaluateResourceResponse:
+        """
+        This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
+        >  You can call this operation a maximum of 200 times per minute.
+        
+        @param request: EvaluateResourceRequest
+        @return: EvaluateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.evaluate_resource_with_options_async(request, runtime)
 
@@ -5744,6 +6802,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.MigrateAvailableZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
+        """
+        ## Precautions
+        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
+        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   The source zone and the destination zone belong to the same region.
+        *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
+        
+        @param request: MigrateAvailableZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateAvailableZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5786,6 +6856,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.MigrateAvailableZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
+        """
+        ## Precautions
+        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
+        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   The source zone and the destination zone belong to the same region.
+        *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
+        
+        @param request: MigrateAvailableZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateAvailableZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5827,6 +6909,17 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.MigrateAvailableZoneRequest,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
+        """
+        ## Precautions
+        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
+        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   The source zone and the destination zone belong to the same region.
+        *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
+        
+        @param request: MigrateAvailableZoneRequest
+        @return: MigrateAvailableZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.migrate_available_zone_with_options(request, runtime)
 
@@ -5834,6 +6927,17 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.MigrateAvailableZoneRequest,
     ) -> dds_20151201_models.MigrateAvailableZoneResponse:
+        """
+        ## Precautions
+        *   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+        *   If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint before you call the MigrateAvailableZone operation.
+        *   Transparent data encryption (TDE) is disabled for the instance.
+        *   The source zone and the destination zone belong to the same region.
+        *   A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](~~65387~~).
+        
+        @param request: MigrateAvailableZoneRequest
+        @return: MigrateAvailableZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.migrate_available_zone_with_options_async(request, runtime)
 
@@ -5842,6 +6946,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.MigrateToOtherZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.MigrateToOtherZoneResponse:
+        """
+        This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances.
+        >  If you have applied for a public endpoint of the instance, you must first call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint.
+        
+        @param request: MigrateToOtherZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateToOtherZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_time):
@@ -5884,6 +6996,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.MigrateToOtherZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.MigrateToOtherZoneResponse:
+        """
+        This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances.
+        >  If you have applied for a public endpoint of the instance, you must first call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint.
+        
+        @param request: MigrateToOtherZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateToOtherZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_time):
@@ -5925,6 +7045,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.MigrateToOtherZoneRequest,
     ) -> dds_20151201_models.MigrateToOtherZoneResponse:
+        """
+        This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances.
+        >  If you have applied for a public endpoint of the instance, you must first call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint.
+        
+        @param request: MigrateToOtherZoneRequest
+        @return: MigrateToOtherZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.migrate_to_other_zone_with_options(request, runtime)
 
@@ -5932,6 +7059,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.MigrateToOtherZoneRequest,
     ) -> dds_20151201_models.MigrateToOtherZoneResponse:
+        """
+        This operation is applicable only to replica set instances, but not to standalone instances or sharded cluster instances.
+        >  If you have applied for a public endpoint of the instance, you must first call the [ReleasePublicNetworkAddress](~~67604~~) operation to release the public endpoint.
+        
+        @param request: MigrateToOtherZoneRequest
+        @return: MigrateToOtherZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.migrate_to_other_zone_with_options_async(request, runtime)
 
@@ -6038,6 +7172,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyAuditLogFilterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditLogFilterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAuditLogFilterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6080,6 +7223,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyAuditLogFilterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditLogFilterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAuditLogFilterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6121,6 +7273,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyAuditLogFilterRequest,
     ) -> dds_20151201_models.ModifyAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditLogFilterRequest
+        @return: ModifyAuditLogFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_audit_log_filter_with_options(request, runtime)
 
@@ -6128,6 +7288,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyAuditLogFilterRequest,
     ) -> dds_20151201_models.ModifyAuditLogFilterResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        *   This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditLogFilterRequest
+        @return: ModifyAuditLogFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_audit_log_filter_with_options_async(request, runtime)
 
@@ -6136,6 +7304,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyAuditPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyAuditPolicyResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAuditPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_log_switch_source):
@@ -6182,6 +7358,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyAuditPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyAuditPolicyResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAuditPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_log_switch_source):
@@ -6227,6 +7411,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyAuditPolicyRequest,
     ) -> dds_20151201_models.ModifyAuditPolicyResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditPolicyRequest
+        @return: ModifyAuditPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_audit_policy_with_options(request, runtime)
 
@@ -6234,6 +7425,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyAuditPolicyRequest,
     ) -> dds_20151201_models.ModifyAuditPolicyResponse:
+        """
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
+        *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
+        
+        @param request: ModifyAuditPolicyRequest
+        @return: ModifyAuditPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_audit_policy_with_options_async(request, runtime)
 
@@ -6658,6 +7856,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceMonitorResponse:
+        """
+        >  operation is currently unavailable.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   MongoDB 3.4 (the latest minor version) or 4.0 must be selected.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6698,6 +7906,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceMonitorResponse:
+        """
+        >  operation is currently unavailable.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   MongoDB 3.4 (the latest minor version) or 4.0 must be selected.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6737,6 +7955,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceMonitorRequest,
     ) -> dds_20151201_models.ModifyDBInstanceMonitorResponse:
+        """
+        >  operation is currently unavailable.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   MongoDB 3.4 (the latest minor version) or 4.0 must be selected.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @return: ModifyDBInstanceMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_monitor_with_options(request, runtime)
 
@@ -6744,6 +7971,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceMonitorRequest,
     ) -> dds_20151201_models.ModifyDBInstanceMonitorResponse:
+        """
+        >  operation is currently unavailable.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   MongoDB 3.4 (the latest minor version) or 4.0 must be selected.
+        
+        @param request: ModifyDBInstanceMonitorRequest
+        @return: ModifyDBInstanceMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_monitor_with_options_async(request, runtime)
 
@@ -6752,6 +7988,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceNetExpireTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceNetExpireTimeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The network of the instance is in hybrid access mode.
+        >  This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: ModifyDBInstanceNetExpireTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceNetExpireTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.classic_expend_expired_days):
@@ -6794,6 +8040,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceNetExpireTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceNetExpireTimeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The network of the instance is in hybrid access mode.
+        >  This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: ModifyDBInstanceNetExpireTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceNetExpireTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.classic_expend_expired_days):
@@ -6835,6 +8091,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceNetExpireTimeRequest,
     ) -> dds_20151201_models.ModifyDBInstanceNetExpireTimeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The network of the instance is in hybrid access mode.
+        >  This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: ModifyDBInstanceNetExpireTimeRequest
+        @return: ModifyDBInstanceNetExpireTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_net_expire_time_with_options(request, runtime)
 
@@ -6842,6 +8107,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceNetExpireTimeRequest,
     ) -> dds_20151201_models.ModifyDBInstanceNetExpireTimeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The network of the instance is in hybrid access mode.
+        >  This operation is applicable only to replica set and sharded cluster instances, but not to standalone instances.
+        
+        @param request: ModifyDBInstanceNetExpireTimeRequest
+        @return: ModifyDBInstanceNetExpireTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_net_expire_time_with_options_async(request, runtime)
 
@@ -6850,6 +8124,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceNetworkTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        This operation is applicable only to replica set instances and sharded cluster instances.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.classic_expired_days):
@@ -6898,6 +8179,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceNetworkTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        This operation is applicable only to replica set instances and sharded cluster instances.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.classic_expired_days):
@@ -6945,6 +8233,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceNetworkTypeRequest,
     ) -> dds_20151201_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        This operation is applicable only to replica set instances and sharded cluster instances.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_network_type_with_options(request, runtime)
 
@@ -6952,6 +8246,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceNetworkTypeRequest,
     ) -> dds_20151201_models.ModifyDBInstanceNetworkTypeResponse:
+        """
+        This operation is applicable only to replica set instances and sharded cluster instances.
+        
+        @param request: ModifyDBInstanceNetworkTypeRequest
+        @return: ModifyDBInstanceNetworkTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_network_type_with_options_async(request, runtime)
 
@@ -6960,6 +8260,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceSSLResponse:
+        """
+        ## Usage
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The engine version of the instance is \\<ph props="intl">3.4 or 4.0\\</ph>\\<ph props="china">3.4, 4.0, or 4.2\\</ph>.
+        >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7000,6 +8312,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceSSLResponse:
+        """
+        ## Usage
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The engine version of the instance is \\<ph props="intl">3.4 or 4.0\\</ph>\\<ph props="china">3.4, 4.0, or 4.2\\</ph>.
+        >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7039,6 +8363,17 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceSSLRequest,
     ) -> dds_20151201_models.ModifyDBInstanceSSLResponse:
+        """
+        ## Usage
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The engine version of the instance is \\<ph props="intl">3.4 or 4.0\\</ph>\\<ph props="china">3.4, 4.0, or 4.2\\</ph>.
+        >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @return: ModifyDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_sslwith_options(request, runtime)
 
@@ -7046,6 +8381,17 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceSSLRequest,
     ) -> dds_20151201_models.ModifyDBInstanceSSLResponse:
+        """
+        ## Usage
+        Before you call this operation, make sure that the following requirements are met:
+        *   The instance is in the running state.
+        *   The instance is a replica set instance.
+        *   The engine version of the instance is \\<ph props="intl">3.4 or 4.0\\</ph>\\<ph props="china">3.4, 4.0, or 4.2\\</ph>.
+        >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @return: ModifyDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_sslwith_options_async(request, runtime)
 
@@ -7054,6 +8400,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to standalone and replica set instances. To modify the specifications of sharded cluster instances, you can call the [ModifyNodeSpec](~~61923~~), [CreateNode](~~61911~~), [DeleteNode](~~61922~~), or [ModifyNodeSpecBatch](~~61816~~) operation.
+        
+        @param request: ModifyDBInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7110,6 +8464,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to standalone and replica set instances. To modify the specifications of sharded cluster instances, you can call the [ModifyNodeSpec](~~61923~~), [CreateNode](~~61911~~), [DeleteNode](~~61922~~), or [ModifyNodeSpecBatch](~~61816~~) operation.
+        
+        @param request: ModifyDBInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7165,6 +8527,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceSpecRequest,
     ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to standalone and replica set instances. To modify the specifications of sharded cluster instances, you can call the [ModifyNodeSpec](~~61923~~), [CreateNode](~~61911~~), [DeleteNode](~~61922~~), or [ModifyNodeSpecBatch](~~61816~~) operation.
+        
+        @param request: ModifyDBInstanceSpecRequest
+        @return: ModifyDBInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_spec_with_options(request, runtime)
 
@@ -7172,6 +8541,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceSpecRequest,
     ) -> dds_20151201_models.ModifyDBInstanceSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        This operation applies only to standalone and replica set instances. To modify the specifications of sharded cluster instances, you can call the [ModifyNodeSpec](~~61923~~), [CreateNode](~~61911~~), [DeleteNode](~~61922~~), or [ModifyNodeSpecBatch](~~61816~~) operation.
+        
+        @param request: ModifyDBInstanceSpecRequest
+        @return: ModifyDBInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_spec_with_options_async(request, runtime)
 
@@ -7180,6 +8556,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
+        """
+        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
+        >  After TDE is enabled, it cannot be disabled.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        
+        @param request: ModifyDBInstanceTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7226,6 +8614,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyDBInstanceTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
+        """
+        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
+        >  After TDE is enabled, it cannot be disabled.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        
+        @param request: ModifyDBInstanceTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7271,6 +8671,17 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceTDERequest,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
+        """
+        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
+        >  After TDE is enabled, it cannot be disabled.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        
+        @param request: ModifyDBInstanceTDERequest
+        @return: ModifyDBInstanceTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_tdewith_options(request, runtime)
 
@@ -7278,6 +8689,17 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyDBInstanceTDERequest,
     ) -> dds_20151201_models.ModifyDBInstanceTDEResponse:
+        """
+        TDE can be used to perform real-time I/O encryption and decryption on data files. Data is encrypted before being written to disks, and decrypted before being read from disks to the memory. For more information, see [Configure TDE](~~131048~~).
+        >  After TDE is enabled, it cannot be disabled.
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The storage engine of the instance is WiredTiger.
+        *   The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        
+        @param request: ModifyDBInstanceTDERequest
+        @return: ModifyDBInstanceTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_tdewith_options_async(request, runtime)
 
@@ -7286,6 +8708,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyInstanceAutoRenewalAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyInstanceAutoRenewalAttributeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable to subscription instances.
+        >  When auto-renewal is enabled, your payment will be collected nine days before the expiration date of ApsaraDB for MongoDB. Ensure that your account has sufficient balance.
+        
+        @param request: ModifyInstanceAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAutoRenewalAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -7330,6 +8761,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyInstanceAutoRenewalAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyInstanceAutoRenewalAttributeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable to subscription instances.
+        >  When auto-renewal is enabled, your payment will be collected nine days before the expiration date of ApsaraDB for MongoDB. Ensure that your account has sufficient balance.
+        
+        @param request: ModifyInstanceAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAutoRenewalAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -7373,6 +8813,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> dds_20151201_models.ModifyInstanceAutoRenewalAttributeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable to subscription instances.
+        >  When auto-renewal is enabled, your payment will be collected nine days before the expiration date of ApsaraDB for MongoDB. Ensure that your account has sufficient balance.
+        
+        @param request: ModifyInstanceAutoRenewalAttributeRequest
+        @return: ModifyInstanceAutoRenewalAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_auto_renewal_attribute_with_options(request, runtime)
 
@@ -7380,6 +8828,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> dds_20151201_models.ModifyInstanceAutoRenewalAttributeResponse:
+        """
+        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable to subscription instances.
+        >  When auto-renewal is enabled, your payment will be collected nine days before the expiration date of ApsaraDB for MongoDB. Ensure that your account has sufficient balance.
+        
+        @param request: ModifyInstanceAutoRenewalAttributeRequest
+        @return: ModifyInstanceAutoRenewalAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_auto_renewal_attribute_with_options_async(request, runtime)
 
@@ -7388,6 +8844,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyInstanceVpcAuthModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        
+        @param request: ModifyInstanceVpcAuthModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceVpcAuthModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7430,6 +8896,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyInstanceVpcAuthModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        
+        @param request: ModifyInstanceVpcAuthModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceVpcAuthModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7471,6 +8947,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyInstanceVpcAuthModeRequest,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        
+        @param request: ModifyInstanceVpcAuthModeRequest
+        @return: ModifyInstanceVpcAuthModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_vpc_auth_mode_with_options(request, runtime)
 
@@ -7478,6 +8963,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyInstanceVpcAuthModeRequest,
     ) -> dds_20151201_models.ModifyInstanceVpcAuthModeResponse:
+        """
+        Before you call this operation, make sure that the following requirements are met:
+        *   A replica set or sharded cluster instance is used.
+        *   The database version of the instance is 4.0 (with the minor version of mongodb\\_20190408\\_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](~~67608~~) operation to upgrade the database engine.
+        *   The instance is in a VPC. If the network type is Classic Network, you can call the [ModifyDBInstanceNetworkType](~~62138~~) operation to switch the network type to VPC.
+        
+        @param request: ModifyInstanceVpcAuthModeRequest
+        @return: ModifyInstanceVpcAuthModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_vpc_auth_mode_with_options_async(request, runtime)
 
@@ -7486,6 +8980,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyNodeSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyNodeSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        >  This operation applies only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodeSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7548,6 +9050,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyNodeSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyNodeSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        >  This operation applies only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodeSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7609,6 +9119,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyNodeSpecRequest,
     ) -> dds_20151201_models.ModifyNodeSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        >  This operation applies only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecRequest
+        @return: ModifyNodeSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_node_spec_with_options(request, runtime)
 
@@ -7616,6 +9133,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyNodeSpecRequest,
     ) -> dds_20151201_models.ModifyNodeSpecResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB.
+        >  This operation applies only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecRequest
+        @return: ModifyNodeSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_node_spec_with_options_async(request, runtime)
 
@@ -7624,6 +9148,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyNodeSpecBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodeSpecBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7678,6 +9210,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyNodeSpecBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodeSpecBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7731,6 +9271,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyNodeSpecBatchRequest,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecBatchRequest
+        @return: ModifyNodeSpecBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_node_spec_batch_with_options(request, runtime)
 
@@ -7738,6 +9285,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyNodeSpecBatchRequest,
     ) -> dds_20151201_models.ModifyNodeSpecBatchResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of ApsaraDB for MongoDB. For more information, go to the Pricing tab of the ApsaraDB for MongoDB product page at [the international site (alibabacloud.com)](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        This operation is applicable only to sharded cluster instances.
+        
+        @param request: ModifyNodeSpecBatchRequest
+        @return: ModifyNodeSpecBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_node_spec_batch_with_options_async(request, runtime)
 
@@ -7746,6 +9300,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyParametersResponse:
+        """
+        ## Precautions
+        *   The instance must be in the Running state when you call this operation.
+        *   If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](~~67618~~) operation to query the parameters that take effect only after the instance is restarted.
+        
+        @param request: ModifyParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.character_type):
@@ -7792,6 +9355,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyParametersResponse:
+        """
+        ## Precautions
+        *   The instance must be in the Running state when you call this operation.
+        *   If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](~~67618~~) operation to query the parameters that take effect only after the instance is restarted.
+        
+        @param request: ModifyParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.character_type):
@@ -7837,6 +9409,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyParametersRequest,
     ) -> dds_20151201_models.ModifyParametersResponse:
+        """
+        ## Precautions
+        *   The instance must be in the Running state when you call this operation.
+        *   If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](~~67618~~) operation to query the parameters that take effect only after the instance is restarted.
+        
+        @param request: ModifyParametersRequest
+        @return: ModifyParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_parameters_with_options(request, runtime)
 
@@ -7844,6 +9424,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyParametersRequest,
     ) -> dds_20151201_models.ModifyParametersResponse:
+        """
+        ## Precautions
+        *   The instance must be in the Running state when you call this operation.
+        *   If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](~~67618~~) operation to query the parameters that take effect only after the instance is restarted.
+        
+        @param request: ModifyParametersRequest
+        @return: ModifyParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameters_with_options_async(request, runtime)
 
@@ -7852,6 +9440,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        """
+        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        
+        @param request: ModifyResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7894,6 +9489,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifyResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        """
+        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        
+        @param request: ModifyResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7935,6 +9537,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyResourceGroupRequest,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        """
+        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        
+        @param request: ModifyResourceGroupRequest
+        @return: ModifyResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_resource_group_with_options(request, runtime)
 
@@ -7942,6 +9550,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifyResourceGroupRequest,
     ) -> dds_20151201_models.ModifyResourceGroupResponse:
+        """
+        Resource Management enables you to build an organizational structure for resources based on your business needs. You can use a resource directory, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        
+        @param request: ModifyResourceGroupRequest
+        @return: ModifyResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_resource_group_with_options_async(request, runtime)
 
@@ -7950,6 +9564,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifySecurityGroupConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifySecurityGroupConfigurationResponse:
+        """
+        >  For a sharded cluster instance, the bound ECS security group takes effect only for mongos nodes.
+        
+        @param request: ModifySecurityGroupConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7990,6 +9611,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ModifySecurityGroupConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ModifySecurityGroupConfigurationResponse:
+        """
+        >  For a sharded cluster instance, the bound ECS security group takes effect only for mongos nodes.
+        
+        @param request: ModifySecurityGroupConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8029,6 +9657,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifySecurityGroupConfigurationRequest,
     ) -> dds_20151201_models.ModifySecurityGroupConfigurationResponse:
+        """
+        >  For a sharded cluster instance, the bound ECS security group takes effect only for mongos nodes.
+        
+        @param request: ModifySecurityGroupConfigurationRequest
+        @return: ModifySecurityGroupConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_security_group_configuration_with_options(request, runtime)
 
@@ -8036,6 +9670,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ModifySecurityGroupConfigurationRequest,
     ) -> dds_20151201_models.ModifySecurityGroupConfigurationResponse:
+        """
+        >  For a sharded cluster instance, the bound ECS security group takes effect only for mongos nodes.
+        
+        @param request: ModifySecurityGroupConfigurationRequest
+        @return: ModifySecurityGroupConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_group_configuration_with_options_async(request, runtime)
 
@@ -8150,6 +9790,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ReleaseNodePrivateNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ReleaseNodePrivateNetworkAddressResponse:
+        """
+        This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](~~134067~~).
+        *   To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](~~67604~~) operation.
+        
+        @param request: ReleaseNodePrivateNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseNodePrivateNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8192,6 +9840,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ReleaseNodePrivateNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ReleaseNodePrivateNetworkAddressResponse:
+        """
+        This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](~~134067~~).
+        *   To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](~~67604~~) operation.
+        
+        @param request: ReleaseNodePrivateNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseNodePrivateNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8233,6 +9889,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ReleaseNodePrivateNetworkAddressRequest,
     ) -> dds_20151201_models.ReleaseNodePrivateNetworkAddressResponse:
+        """
+        This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](~~134067~~).
+        *   To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](~~67604~~) operation.
+        
+        @param request: ReleaseNodePrivateNetworkAddressRequest
+        @return: ReleaseNodePrivateNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_node_private_network_address_with_options(request, runtime)
 
@@ -8240,6 +9903,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ReleaseNodePrivateNetworkAddressRequest,
     ) -> dds_20151201_models.ReleaseNodePrivateNetworkAddressResponse:
+        """
+        This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](~~134067~~).
+        *   To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](~~67604~~) operation.
+        
+        @param request: ReleaseNodePrivateNetworkAddressRequest
+        @return: ReleaseNodePrivateNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_node_private_network_address_with_options_async(request, runtime)
 
@@ -8342,6 +10012,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RenewDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
+        """
+        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+        This parameter is only applicable to Subscription instances.
+        
+        @param request: RenewDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -8390,6 +10068,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RenewDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
+        """
+        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+        This parameter is only applicable to Subscription instances.
+        
+        @param request: RenewDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -8437,6 +10123,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.RenewDBInstanceRequest,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
+        """
+        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+        This parameter is only applicable to Subscription instances.
+        
+        @param request: RenewDBInstanceRequest
+        @return: RenewDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_dbinstance_with_options(request, runtime)
 
@@ -8444,6 +10137,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.RenewDBInstanceRequest,
     ) -> dds_20151201_models.RenewDBInstanceResponse:
+        """
+        Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+        This parameter is only applicable to Subscription instances.
+        
+        @param request: RenewDBInstanceRequest
+        @return: RenewDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_dbinstance_with_options_async(request, runtime)
 
@@ -8452,6 +10152,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ResetAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ResetAccountPasswordResponse:
+        """
+        >  This operation can reset only the password of the root account of an instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -8494,6 +10201,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.ResetAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.ResetAccountPasswordResponse:
+        """
+        >  This operation can reset only the password of the root account of an instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -8535,6 +10249,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ResetAccountPasswordRequest,
     ) -> dds_20151201_models.ResetAccountPasswordResponse:
+        """
+        >  This operation can reset only the password of the root account of an instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @return: ResetAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_account_password_with_options(request, runtime)
 
@@ -8542,6 +10262,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.ResetAccountPasswordRequest,
     ) -> dds_20151201_models.ResetAccountPasswordResponse:
+        """
+        >  This operation can reset only the password of the root account of an instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @return: ResetAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
 
@@ -8550,6 +10276,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RestartDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RestartDBInstanceResponse:
+        """
+        This operation can also be used to restart a shard or mongos node in a sharded cluster instance.
+        
+        @param request: RestartDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8590,6 +10323,13 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RestartDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RestartDBInstanceResponse:
+        """
+        This operation can also be used to restart a shard or mongos node in a sharded cluster instance.
+        
+        @param request: RestartDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8629,6 +10369,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.RestartDBInstanceRequest,
     ) -> dds_20151201_models.RestartDBInstanceResponse:
+        """
+        This operation can also be used to restart a shard or mongos node in a sharded cluster instance.
+        
+        @param request: RestartDBInstanceRequest
+        @return: RestartDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_dbinstance_with_options(request, runtime)
 
@@ -8636,6 +10382,12 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.RestartDBInstanceRequest,
     ) -> dds_20151201_models.RestartDBInstanceResponse:
+        """
+        This operation can also be used to restart a shard or mongos node in a sharded cluster instance.
+        
+        @param request: RestartDBInstanceRequest
+        @return: RestartDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_dbinstance_with_options_async(request, runtime)
 
@@ -8644,6 +10396,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RestoreDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RestoreDBInstanceResponse:
+        """
+        This operation is applicable to replica set instances, but cannot be called on standalone instances or sharded cluster instances. You can use the following methods to clone an instance: [Create an instance from a backup](~~55013~~) to clone a standalone instance. Call the [CreateShardingDBInstance](~~61884~~) operation to clone a sharded cluster instance.
+        >  This operation overwrites the data of the current instance, and the data cannot be recovered. Exercise caution when performing this operation.
+        
+        @param request: RestoreDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -8684,6 +10444,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.RestoreDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.RestoreDBInstanceResponse:
+        """
+        This operation is applicable to replica set instances, but cannot be called on standalone instances or sharded cluster instances. You can use the following methods to clone an instance: [Create an instance from a backup](~~55013~~) to clone a standalone instance. Call the [CreateShardingDBInstance](~~61884~~) operation to clone a sharded cluster instance.
+        >  This operation overwrites the data of the current instance, and the data cannot be recovered. Exercise caution when performing this operation.
+        
+        @param request: RestoreDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -8723,6 +10491,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.RestoreDBInstanceRequest,
     ) -> dds_20151201_models.RestoreDBInstanceResponse:
+        """
+        This operation is applicable to replica set instances, but cannot be called on standalone instances or sharded cluster instances. You can use the following methods to clone an instance: [Create an instance from a backup](~~55013~~) to clone a standalone instance. Call the [CreateShardingDBInstance](~~61884~~) operation to clone a sharded cluster instance.
+        >  This operation overwrites the data of the current instance, and the data cannot be recovered. Exercise caution when performing this operation.
+        
+        @param request: RestoreDBInstanceRequest
+        @return: RestoreDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restore_dbinstance_with_options(request, runtime)
 
@@ -8730,6 +10505,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.RestoreDBInstanceRequest,
     ) -> dds_20151201_models.RestoreDBInstanceResponse:
+        """
+        This operation is applicable to replica set instances, but cannot be called on standalone instances or sharded cluster instances. You can use the following methods to clone an instance: [Create an instance from a backup](~~55013~~) to clone a standalone instance. Call the [CreateShardingDBInstance](~~61884~~) operation to clone a sharded cluster instance.
+        >  This operation overwrites the data of the current instance, and the data cannot be recovered. Exercise caution when performing this operation.
+        
+        @param request: RestoreDBInstanceRequest
+        @return: RestoreDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restore_dbinstance_with_options_async(request, runtime)
 
@@ -8738,6 +10520,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.SwitchDBInstanceHARequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        
+        @param request: SwitchDBInstanceHARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDBInstanceHAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8782,6 +10573,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.SwitchDBInstanceHARequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        
+        @param request: SwitchDBInstanceHARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDBInstanceHAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8825,6 +10625,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.SwitchDBInstanceHARequest,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        
+        @param request: SwitchDBInstanceHARequest
+        @return: SwitchDBInstanceHAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_dbinstance_hawith_options(request, runtime)
 
@@ -8832,6 +10640,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.SwitchDBInstanceHARequest,
     ) -> dds_20151201_models.SwitchDBInstanceHAResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+        > * On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+        
+        @param request: SwitchDBInstanceHARequest
+        @return: SwitchDBInstanceHAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_dbinstance_hawith_options_async(request, runtime)
 
@@ -8840,6 +10656,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.TagResourcesResponse:
+        """
+        You can create multiple tags and bind them to multiple instances. This allows you to classify and filter instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can have the same value.
+        *   If the tag you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances each time you call the operation.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -8884,6 +10712,18 @@ class Client(OpenApiClient):
         request: dds_20151201_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.TagResourcesResponse:
+        """
+        You can create multiple tags and bind them to multiple instances. This allows you to classify and filter instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can have the same value.
+        *   If the tag you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances each time you call the operation.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -8927,6 +10767,17 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.TagResourcesRequest,
     ) -> dds_20151201_models.TagResourcesResponse:
+        """
+        You can create multiple tags and bind them to multiple instances. This allows you to classify and filter instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can have the same value.
+        *   If the tag you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances each time you call the operation.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -8934,14 +10785,199 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.TagResourcesRequest,
     ) -> dds_20151201_models.TagResourcesResponse:
+        """
+        You can create multiple tags and bind them to multiple instances. This allows you to classify and filter instances by tag.
+        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can have the same value.
+        *   If the tag you specify does not exist, this tag is automatically created and bound to the specified instance.
+        *   If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
+        *   You can bind up to 20 tags to each instance.
+        *   You can bind tags to up to 50 instances each time you call the operation.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def transform_instance_charge_type_with_options(
+        self,
+        request: dds_20151201_models.TransformInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
+        """
+        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
+        When calling this interface, the instance must meet the following conditions:
+        - The instance status is Running.
+        - The instance does not have a conversion payment type order that has not been paid.
+        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
+        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        
+        @param request: TransformInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformInstanceChargeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformInstanceChargeType',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.TransformInstanceChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transform_instance_charge_type_with_options_async(
+        self,
+        request: dds_20151201_models.TransformInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
+        """
+        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
+        When calling this interface, the instance must meet the following conditions:
+        - The instance status is Running.
+        - The instance does not have a conversion payment type order that has not been paid.
+        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
+        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        
+        @param request: TransformInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformInstanceChargeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformInstanceChargeType',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.TransformInstanceChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transform_instance_charge_type(
+        self,
+        request: dds_20151201_models.TransformInstanceChargeTypeRequest,
+    ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
+        """
+        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
+        When calling this interface, the instance must meet the following conditions:
+        - The instance status is Running.
+        - The instance does not have a conversion payment type order that has not been paid.
+        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
+        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        
+        @param request: TransformInstanceChargeTypeRequest
+        @return: TransformInstanceChargeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.transform_instance_charge_type_with_options(request, runtime)
+
+    async def transform_instance_charge_type_async(
+        self,
+        request: dds_20151201_models.TransformInstanceChargeTypeRequest,
+    ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
+        """
+        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
+        When calling this interface, the instance must meet the following conditions:
+        - The instance status is Running.
+        - The instance does not have a conversion payment type order that has not been paid.
+        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
+        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        
+        @param request: TransformInstanceChargeTypeRequest
+        @return: TransformInstanceChargeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.transform_instance_charge_type_with_options_async(request, runtime)
 
     def transform_to_pre_paid_with_options(
         self,
         request: dds_20151201_models.TransformToPrePaidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.TransformToPrePaidResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        A subscription instance cannot be changed to a pay-as-you-go instance. To avoid wasting resources, proceed with caution.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The instance has no unpaid subscription orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        >  To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
+        
+        @param request: TransformToPrePaidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformToPrePaidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -8990,6 +11026,20 @@ class Client(OpenApiClient):
         request: dds_20151201_models.TransformToPrePaidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.TransformToPrePaidResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        A subscription instance cannot be changed to a pay-as-you-go instance. To avoid wasting resources, proceed with caution.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The instance has no unpaid subscription orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        >  To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
+        
+        @param request: TransformToPrePaidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformToPrePaidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -9037,6 +11087,19 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.TransformToPrePaidRequest,
     ) -> dds_20151201_models.TransformToPrePaidResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        A subscription instance cannot be changed to a pay-as-you-go instance. To avoid wasting resources, proceed with caution.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The instance has no unpaid subscription orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        >  To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
+        
+        @param request: TransformToPrePaidRequest
+        @return: TransformToPrePaidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.transform_to_pre_paid_with_options(request, runtime)
 
@@ -9044,6 +11107,19 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.TransformToPrePaidRequest,
     ) -> dds_20151201_models.TransformToPrePaidResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        A subscription instance cannot be changed to a pay-as-you-go instance. To avoid wasting resources, proceed with caution.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the running state.
+        *   The billing method of the instance is pay-as-you-go.
+        *   The instance has no unpaid subscription orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        >  To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
+        
+        @param request: TransformToPrePaidRequest
+        @return: TransformToPrePaidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.transform_to_pre_paid_with_options_async(request, runtime)
 
@@ -9052,6 +11128,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UntagResourcesResponse:
+        """
+        >  You can unbind up to 20 tags at a time.
+        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -9098,6 +11182,14 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UntagResourcesResponse:
+        """
+        >  You can unbind up to 20 tags at a time.
+        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -9143,6 +11235,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.UntagResourcesRequest,
     ) -> dds_20151201_models.UntagResourcesResponse:
+        """
+        >  You can unbind up to 20 tags at a time.
+        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -9150,6 +11249,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.UntagResourcesRequest,
     ) -> dds_20151201_models.UntagResourcesResponse:
+        """
+        >  You can unbind up to 20 tags at a time.
+        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -9158,6 +11264,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UpgradeDBInstanceEngineVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UpgradeDBInstanceEngineVersionResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * The available database versions depend on the storage engine used by the instance. For more information, see [Upgrades of MongoDB major versions](~~398673~~). You can also call the [DescribeAvailableEngineVersion](~~141355~~) operation to query the available database versions.
+        > * You cannot downgrade the MongoDB version of an instance after you upgrade it.
+        > * The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
+        
+        @param request: UpgradeDBInstanceEngineVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceEngineVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -9198,6 +11314,16 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UpgradeDBInstanceEngineVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UpgradeDBInstanceEngineVersionResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * The available database versions depend on the storage engine used by the instance. For more information, see [Upgrades of MongoDB major versions](~~398673~~). You can also call the [DescribeAvailableEngineVersion](~~141355~~) operation to query the available database versions.
+        > * You cannot downgrade the MongoDB version of an instance after you upgrade it.
+        > * The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
+        
+        @param request: UpgradeDBInstanceEngineVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceEngineVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -9237,6 +11363,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.UpgradeDBInstanceEngineVersionRequest,
     ) -> dds_20151201_models.UpgradeDBInstanceEngineVersionResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * The available database versions depend on the storage engine used by the instance. For more information, see [Upgrades of MongoDB major versions](~~398673~~). You can also call the [DescribeAvailableEngineVersion](~~141355~~) operation to query the available database versions.
+        > * You cannot downgrade the MongoDB version of an instance after you upgrade it.
+        > * The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
+        
+        @param request: UpgradeDBInstanceEngineVersionRequest
+        @return: UpgradeDBInstanceEngineVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_dbinstance_engine_version_with_options(request, runtime)
 
@@ -9244,6 +11379,15 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.UpgradeDBInstanceEngineVersionRequest,
     ) -> dds_20151201_models.UpgradeDBInstanceEngineVersionResponse:
+        """
+        The instance must be in the running state when you call this operation.
+        > * The available database versions depend on the storage engine used by the instance. For more information, see [Upgrades of MongoDB major versions](~~398673~~). You can also call the [DescribeAvailableEngineVersion](~~141355~~) operation to query the available database versions.
+        > * You cannot downgrade the MongoDB version of an instance after you upgrade it.
+        > * The instance is automatically restarted for two to three times during the upgrade process. Make sure that you upgrade the instance during off-peak hours.
+        
+        @param request: UpgradeDBInstanceEngineVersionRequest
+        @return: UpgradeDBInstanceEngineVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_dbinstance_engine_version_with_options_async(request, runtime)
 
@@ -9252,6 +11396,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UpgradeDBInstanceKernelVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        When you call the UpgradeDBInstanceKernelVersion operation, the instance must be in the Running state.
+        > * The UpgradeDBInstanceKernelVersion operation is applicable to replica set and sharded cluster instances, but not to standalone instances.
+        > * The instance will be restarted once during the upgrade. Call this operation during off-peak hours.
+        
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -9290,6 +11443,15 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UpgradeDBInstanceKernelVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        When you call the UpgradeDBInstanceKernelVersion operation, the instance must be in the Running state.
+        > * The UpgradeDBInstanceKernelVersion operation is applicable to replica set and sharded cluster instances, but not to standalone instances.
+        > * The instance will be restarted once during the upgrade. Call this operation during off-peak hours.
+        
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -9327,6 +11489,14 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.UpgradeDBInstanceKernelVersionRequest,
     ) -> dds_20151201_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        When you call the UpgradeDBInstanceKernelVersion operation, the instance must be in the Running state.
+        > * The UpgradeDBInstanceKernelVersion operation is applicable to replica set and sharded cluster instances, but not to standalone instances.
+        > * The instance will be restarted once during the upgrade. Call this operation during off-peak hours.
+        
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_dbinstance_kernel_version_with_options(request, runtime)
 
@@ -9334,5 +11504,13 @@ class Client(OpenApiClient):
         self,
         request: dds_20151201_models.UpgradeDBInstanceKernelVersionRequest,
     ) -> dds_20151201_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        When you call the UpgradeDBInstanceKernelVersion operation, the instance must be in the Running state.
+        > * The UpgradeDBInstanceKernelVersion operation is applicable to replica set and sharded cluster instances, but not to standalone instances.
+        > * The instance will be restarted once during the upgrade. Call this operation during off-peak hours.
+        
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_dbinstance_kernel_version_with_options_async(request, runtime)
