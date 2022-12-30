@@ -1,3 +1,8 @@
+2022-12-30 Version: 3.0.53
+- Fix read.
+- Fix writeOrRead type.
+- Supported for gateway auth with header paramters.
+
 2022-12-23 Version: 3.0.52
 - Modify api read type.
 
