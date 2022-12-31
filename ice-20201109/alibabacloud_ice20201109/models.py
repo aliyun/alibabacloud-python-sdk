@@ -503,6 +503,7 @@ class AddEditingProjectMaterialsResponseBodyMediaInfos(TeaModel):
         media_basic_info: AddEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # FileInfos
         self.file_info_list = file_info_list
         self.media_basic_info = media_basic_info
         self.media_id = media_id
@@ -912,6 +913,7 @@ class AddTemplateResponseBody(TeaModel):
         request_id: str = None,
         template: AddTemplateResponseBodyTemplate = None,
     ):
+        # Id of the request
         self.request_id = request_id
         self.template = template
 
@@ -1163,6 +1165,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         self.deleted_time = deleted_time
         self.description = description
         self.input_url = input_url
+        # MediaId
         self.media_id = media_id
         self.media_tags = media_tags
         self.media_type = media_type
@@ -1270,6 +1273,7 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
         media_basic_info: BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # FileInfos
         self.file_info_list = file_info_list
         self.media_basic_info = media_basic_info
         self.media_id = media_id
@@ -2022,6 +2026,7 @@ class CreateEditingProjectResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.project = project
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2104,9 +2109,13 @@ class CreateLiveRecordTemplateRequestRecordFormat(TeaModel):
         slice_oss_object_prefix: str = None,
     ):
         self.cycle_duration = cycle_duration
+        # 格式
         self.format = format
+        # Oss对象名，不包含后缀
         self.oss_object_prefix = oss_object_prefix
+        # 切片时长
         self.slice_duration = slice_duration
+        # 切片Oss对象名，不包含后缀
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):
@@ -2151,7 +2160,9 @@ class CreateLiveRecordTemplateRequest(TeaModel):
         name: str = None,
         record_format: List[CreateLiveRecordTemplateRequestRecordFormat] = None,
     ):
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 录制格式
         self.record_format = record_format
 
     def validate(self):
@@ -2192,7 +2203,9 @@ class CreateLiveRecordTemplateShrinkRequest(TeaModel):
         name: str = None,
         record_format_shrink: str = None,
     ):
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 录制格式
         self.record_format_shrink = record_format_shrink
 
     def validate(self):
@@ -2226,6 +2239,7 @@ class CreateLiveRecordTemplateResponseBody(TeaModel):
         template_id: str = None,
     ):
         self.request_id = request_id
+        # 代表资源一级ID的资源属性字段
         self.template_id = template_id
 
     def validate(self):
@@ -3709,6 +3723,7 @@ class DeleteLiveRecordFilesResponseBody(TeaModel):
     ):
         self.delete_file_info_list = delete_file_info_list
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3796,6 +3811,7 @@ class DeleteLiveRecordTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # 代表资源一级ID的资源属性字段
         self.template_id = template_id
 
     def validate(self):
@@ -4759,6 +4775,7 @@ class DeleteSmartJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -5171,6 +5188,7 @@ class DescribeMeterIceEditUsageResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # Id
         self.request_id = request_id
 
     def validate(self):
@@ -5340,6 +5358,7 @@ class DescribeMeterIceLiveMediaConvertUsageResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # Id
         self.request_id = request_id
 
     def validate(self):
@@ -5509,6 +5528,7 @@ class DescribeMeterIceMediaConvertUHDUsageResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # Id
         self.request_id = request_id
 
     def validate(self):
@@ -5678,6 +5698,7 @@ class DescribeMeterIceMediaConvertUsageResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # Id
         self.request_id = request_id
 
     def validate(self):
@@ -5847,6 +5868,7 @@ class DescribeMeterIceMpsAiUsageResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # Id
         self.request_id = request_id
 
     def validate(self):
@@ -10086,8 +10108,11 @@ class GetDynamicImageJobResponseBodyDynamicImageJobInputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # OSS Bucket
         self.bucket = bucket
+        # OSS Location
         self.location = location
+        # OSS Object
         self.object = object
 
     def validate(self):
@@ -10166,8 +10191,11 @@ class GetDynamicImageJobResponseBodyDynamicImageJobOutputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # OSS Bucket
         self.bucket = bucket
+        # OSS Location
         self.location = location
+        # OSS Object
         self.object = object
 
     def validate(self):
@@ -10450,8 +10478,10 @@ class GetEditingProjectRequest(TeaModel):
     def __init__(
         self,
         project_id: str = None,
+        request_source: str = None,
     ):
         self.project_id = project_id
+        self.request_source = request_source
 
     def validate(self):
         pass
@@ -10464,12 +10494,16 @@ class GetEditingProjectRequest(TeaModel):
         result = dict()
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
         return self
 
 
@@ -10492,6 +10526,8 @@ class GetEditingProjectResponseBodyProject(TeaModel):
         template_id: str = None,
         template_type: str = None,
         timeline: str = None,
+        timeline_convert_error_message: str = None,
+        timeline_convert_status: str = None,
         title: str = None,
     ):
         self.business_config = business_config
@@ -10510,6 +10546,8 @@ class GetEditingProjectResponseBodyProject(TeaModel):
         self.template_id = template_id
         self.template_type = template_type
         self.timeline = timeline
+        self.timeline_convert_error_message = timeline_convert_error_message
+        self.timeline_convert_status = timeline_convert_status
         self.title = title
 
     def validate(self):
@@ -10553,6 +10591,10 @@ class GetEditingProjectResponseBodyProject(TeaModel):
             result['TemplateType'] = self.template_type
         if self.timeline is not None:
             result['Timeline'] = self.timeline
+        if self.timeline_convert_error_message is not None:
+            result['TimelineConvertErrorMessage'] = self.timeline_convert_error_message
+        if self.timeline_convert_status is not None:
+            result['TimelineConvertStatus'] = self.timeline_convert_status
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -10591,6 +10633,10 @@ class GetEditingProjectResponseBodyProject(TeaModel):
             self.template_type = m.get('TemplateType')
         if m.get('Timeline') is not None:
             self.timeline = m.get('Timeline')
+        if m.get('TimelineConvertErrorMessage') is not None:
+            self.timeline_convert_error_message = m.get('TimelineConvertErrorMessage')
+        if m.get('TimelineConvertStatus') is not None:
+            self.timeline_convert_status = m.get('TimelineConvertStatus')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -10892,6 +10938,7 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         self.deleted_time = deleted_time
         self.description = description
         self.input_url = input_url
+        # MediaId
         self.media_id = media_id
         self.media_tags = media_tags
         self.media_type = media_type
@@ -10999,7 +11046,9 @@ class GetEditingProjectMaterialsResponseBodyMediaInfos(TeaModel):
         media_basic_info: GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # FileInfos
         self.file_info_list = file_info_list
+        # BasicInfo
         self.media_basic_info = media_basic_info
         self.media_id = media_id
 
@@ -11849,14 +11898,21 @@ class GetLiveRecordJobResponseBodyRecordJob(TeaModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.create_time = create_time
+        # 代表资源名称的资源属性字段
         self.job_id = job_id
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 回调地址
         self.notify_url = notify_url
         self.record_output = record_output
+        # 代表资源名称的资源属性字段
         self.status = status
         self.stream_input = stream_input
+        # 录制模板ID
         self.template_id = template_id
+        # 录制模板ID
         self.template_name = template_name
 
     def validate(self):
@@ -11922,6 +11978,7 @@ class GetLiveRecordJobResponseBody(TeaModel):
         record_job: GetLiveRecordJobResponseBodyRecordJob = None,
         request_id: str = None,
     ):
+        # 录制任务
         self.record_job = record_job
         self.request_id = request_id
 
@@ -12038,9 +12095,12 @@ class GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList(TeaModel):
         slice_oss_object_prefix: str = None,
     ):
         self.cycle_duration = cycle_duration
+        # 格式
         self.format = format
+        # Oss对象名，不包含后缀
         self.oss_object_prefix = oss_object_prefix
         self.slice_duration = slice_duration
+        # 切片Oss对象名，不包含后缀
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):
@@ -12089,11 +12149,17 @@ class GetLiveRecordTemplateResponseBodyRecordTemplate(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.create_time = create_time
+        # 代表创建时间的资源属性字段
         self.last_modified = last_modified
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 录制格式
         self.record_format_list = record_format_list
+        # 代表资源一级ID的资源属性字段
         self.template_id = template_id
+        # 代表资源名称的资源属性字段
         self.type = type
 
     def validate(self):
@@ -12150,6 +12216,7 @@ class GetLiveRecordTemplateResponseBody(TeaModel):
         record_template: GetLiveRecordTemplateResponseBodyRecordTemplate = None,
         request_id: str = None,
     ):
+        # 录制模板
         self.record_template = record_template
         self.request_id = request_id
 
@@ -13274,10 +13341,14 @@ class GetMediaInfoRequest(TeaModel):
 class GetMediaInfoResponseBodyMediaInfoAiRoughData(TeaModel):
     def __init__(
         self,
+        ai_category: str = None,
+        ai_job_id: str = None,
         result: str = None,
         save_type: str = None,
         status: str = None,
     ):
+        self.ai_category = ai_category
+        self.ai_job_id = ai_job_id
         self.result = result
         self.save_type = save_type
         self.status = status
@@ -13291,6 +13362,10 @@ class GetMediaInfoResponseBodyMediaInfoAiRoughData(TeaModel):
             return _map
 
         result = dict()
+        if self.ai_category is not None:
+            result['AiCategory'] = self.ai_category
+        if self.ai_job_id is not None:
+            result['AiJobId'] = self.ai_job_id
         if self.result is not None:
             result['Result'] = self.result
         if self.save_type is not None:
@@ -13301,6 +13376,10 @@ class GetMediaInfoResponseBodyMediaInfoAiRoughData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiCategory') is not None:
+            self.ai_category = m.get('AiCategory')
+        if m.get('AiJobId') is not None:
+            self.ai_job_id = m.get('AiJobId')
         if m.get('Result') is not None:
             self.result = m.get('Result')
         if m.get('SaveType') is not None:
@@ -13893,6 +13972,7 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
         self.deleted_time = deleted_time
         self.description = description
         self.input_url = input_url
+        # MediaId
         self.media_id = media_id
         self.media_tags = media_tags
         self.media_type = media_type
@@ -14015,6 +14095,7 @@ class GetMediaInfoResponseBodyMediaInfo(TeaModel):
     ):
         self.ai_rough_data = ai_rough_data
         self.file_info_list = file_info_list
+        # BasicInfo
         self.media_basic_info = media_basic_info
         self.media_id = media_id
 
@@ -14771,6 +14852,7 @@ class GetMediaInfoJobResponseBody(TeaModel):
         media_info_job: GetMediaInfoJobResponseBodyMediaInfoJob = None,
         request_id: str = None,
     ):
+        # MediaInfoJobDTO
         self.media_info_job = media_info_job
         self.request_id = request_id
 
@@ -15664,6 +15746,7 @@ class GetPlayInfoResponseBodyPlayInfoList(TeaModel):
         fps: str = None,
         hdrtype: str = None,
         height: int = None,
+        job_id: str = None,
         modification_time: str = None,
         narrow_band_type: str = None,
         play_url: str = None,
@@ -15687,6 +15770,7 @@ class GetPlayInfoResponseBodyPlayInfoList(TeaModel):
         self.fps = fps
         self.hdrtype = hdrtype
         self.height = height
+        self.job_id = job_id
         self.modification_time = modification_time
         self.narrow_band_type = narrow_band_type
         self.play_url = play_url
@@ -15731,6 +15815,8 @@ class GetPlayInfoResponseBodyPlayInfoList(TeaModel):
             result['HDRType'] = self.hdrtype
         if self.height is not None:
             result['Height'] = self.height
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.modification_time is not None:
             result['ModificationTime'] = self.modification_time
         if self.narrow_band_type is not None:
@@ -15779,6 +15865,8 @@ class GetPlayInfoResponseBodyPlayInfoList(TeaModel):
             self.hdrtype = m.get('HDRType')
         if m.get('Height') is not None:
             self.height = m.get('Height')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('ModificationTime') is not None:
             self.modification_time = m.get('ModificationTime')
         if m.get('NarrowBandType') is not None:
@@ -16517,6 +16605,7 @@ class GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
         self.create_time = create_time
         self.deleted_time = deleted_time
         self.description = description
+        # MediaId
         self.media_id = media_id
         self.media_tags = media_tags
         self.media_type = media_type
@@ -16612,7 +16701,9 @@ class GetPublicMediaInfoResponseBodyMediaInfo(TeaModel):
         media_id: str = None,
     ):
         self.dynamic_meta_data = dynamic_meta_data
+        # FileInfos
         self.file_info_list = file_info_list
+        # BasicInfo
         self.media_basic_info = media_basic_info
         self.media_id = media_id
 
@@ -16669,6 +16760,7 @@ class GetPublicMediaInfoResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.media_info = media_info
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -16801,7 +16893,9 @@ class GetSmartHandleJobResponseBodySmartJobInfoOutputConfig(TeaModel):
         bucket: str = None,
         object: str = None,
     ):
+        # OSS Bucket
         self.bucket = bucket
+        # OSS Object
         self.object = object
 
     def validate(self):
@@ -16847,6 +16941,7 @@ class GetSmartHandleJobResponseBodySmartJobInfo(TeaModel):
         self.modified_time = modified_time
         self.output_config = output_config
         self.title = title
+        # userid。
         self.user_id = user_id
 
     def validate(self):
@@ -17039,8 +17134,11 @@ class GetSnapshotJobResponseBodySnapshotJobInputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # OSS Bucket
         self.bucket = bucket
+        # OSS Location
         self.location = location
+        # OSS Object
         self.object = object
 
     def validate(self):
@@ -17119,8 +17217,11 @@ class GetSnapshotJobResponseBodySnapshotJobOutputOssFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # OSS Bucket
         self.bucket = bucket
+        # OSS Location
         self.location = location
+        # OSS Object
         self.object = object
 
     def validate(self):
@@ -17983,6 +18084,7 @@ class GetTemplateMaterialsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.material_urls = material_urls
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -21042,6 +21144,7 @@ class GetTranscodeJobResponseBody(TeaModel):
         transcode_parent_job: GetTranscodeJobResponseBodyTranscodeParentJob = None,
     ):
         self.request_id = request_id
+        # TranscodeParentJobWithSubJobDTO
         self.transcode_parent_job = transcode_parent_job
 
     def validate(self):
@@ -22507,13 +22610,17 @@ class ListLiveRecordJobsResponseBodyLiveRecordJobs(TeaModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.create_time = create_time
         self.job_id = job_id
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 回调地址
         self.notify_url = notify_url
         self.record_output = record_output
         self.status = status
         self.stream_input = stream_input
+        # 录制模板ID
         self.template_id = template_id
         self.template_name = template_name
 
@@ -22750,9 +22857,13 @@ class ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList(TeaM
         slice_oss_object_prefix: str = None,
     ):
         self.cycle_duration = cycle_duration
+        # 格式
         self.format = format
+        # Oss对象名，不包含后缀
         self.oss_object_prefix = oss_object_prefix
+        # 切片时长
         self.slice_duration = slice_duration
+        # 切片Oss对象名，不包含后缀
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):
@@ -22801,11 +22912,17 @@ class ListLiveRecordTemplatesResponseBodyRecordTemplateList(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.create_time = create_time
+        # 最后修改时间
         self.last_modified = last_modified
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 录制格式
         self.record_format_list = record_format_list
+        # 代表资源一级ID的资源属性字段
         self.template_id = template_id
+        # 代表资源名称的资源属性字段
         self.type = type
 
     def validate(self):
@@ -23029,6 +23146,7 @@ class ListLiveSnapshotFilesResponseBodyFileList(TeaModel):
         self.create_time = create_time
         self.create_timestamp = create_timestamp
         self.is_overlay = is_overlay
+        # OSS bucket。
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
         self.oss_object = oss_object
@@ -24744,7 +24862,9 @@ class ListMediaBasicInfosResponseBodyMediaInfos(TeaModel):
         media_basic_info: ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # FileInfos
         self.file_info_list = file_info_list
+        # BasicInfo
         self.media_basic_info = media_basic_info
         self.media_id = media_id
 
@@ -26415,6 +26535,7 @@ class ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(TeaModel):
         self.deleted_time = deleted_time
         self.description = description
         self.input_url = input_url
+        # MediaId
         self.media_id = media_id
         self.media_tags = media_tags
         self.media_type = media_type
@@ -26517,7 +26638,9 @@ class ListPublicMediaBasicInfosResponseBodyMediaInfos(TeaModel):
         media_basic_info: ListPublicMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # FileInfos
         self.file_info_list = file_info_list
+        # BasicInfo
         self.media_basic_info = media_basic_info
         self.media_id = media_id
 
@@ -26765,7 +26888,9 @@ class ListSmartJobsResponseBodySmartJobListOutputConfig(TeaModel):
         bucket: str = None,
         object: str = None,
     ):
+        # OSS Bucket
         self.bucket = bucket
+        # OSS Object
         self.object = object
 
     def validate(self):
@@ -27632,6 +27757,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         template_id: str = None,
         type: str = None,
     ):
+        # ClipsParam
         self.clips_param = clips_param
         self.config = config
         self.cover_url = cover_url
@@ -32919,13 +33045,13 @@ class SearchMediaResponseBodyMediaInfoListAiData(TeaModel):
 class SearchMediaResponseBodyMediaInfoListAiRoughData(TeaModel):
     def __init__(
         self,
-        ai_category_level_1: str = None,
+        ai_category: str = None,
         ai_job_id: str = None,
         result: str = None,
         save_type: str = None,
         status: str = None,
     ):
-        self.ai_category_level_1 = ai_category_level_1
+        self.ai_category = ai_category
         self.ai_job_id = ai_job_id
         self.result = result
         self.save_type = save_type
@@ -32940,8 +33066,8 @@ class SearchMediaResponseBodyMediaInfoListAiRoughData(TeaModel):
             return _map
 
         result = dict()
-        if self.ai_category_level_1 is not None:
-            result['AiCategoryLevel1'] = self.ai_category_level_1
+        if self.ai_category is not None:
+            result['AiCategory'] = self.ai_category
         if self.ai_job_id is not None:
             result['AiJobId'] = self.ai_job_id
         if self.result is not None:
@@ -32954,8 +33080,8 @@ class SearchMediaResponseBodyMediaInfoListAiRoughData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AiCategoryLevel1') is not None:
-            self.ai_category_level_1 = m.get('AiCategoryLevel1')
+        if m.get('AiCategory') is not None:
+            self.ai_category = m.get('AiCategory')
         if m.get('AiJobId') is not None:
             self.ai_job_id = m.get('AiJobId')
         if m.get('Result') is not None:
@@ -33265,6 +33391,7 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
     ):
         self.ai_data = ai_data
         self.ai_rough_data = ai_rough_data
+        # FileInfos。
         self.file_info_list = file_info_list
         self.media_basic_info = media_basic_info
         self.media_id = media_id
@@ -33552,6 +33679,7 @@ class SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo(T
         self.create_time = create_time
         self.deleted_time = deleted_time
         self.description = description
+        # MediaId
         self.media_id = media_id
         self.media_tags = media_tags
         self.media_type = media_type
@@ -33646,6 +33774,7 @@ class SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo(TeaModel):
         media_id: str = None,
     ):
         self.dynamic_meta_data = dynamic_meta_data
+        # BasicInfo
         self.media_basic_info = media_basic_info
         self.media_id = media_id
 
@@ -35851,10 +35980,13 @@ class SubmitLiveRecordJobRequest(TeaModel):
         stream_input: SubmitLiveRecordJobRequestStreamInput = None,
         template_id: str = None,
     ):
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 回调地址
         self.notify_url = notify_url
         self.record_output = record_output
         self.stream_input = stream_input
+        # 录制模板ID
         self.template_id = template_id
 
     def validate(self):
@@ -35907,10 +36039,13 @@ class SubmitLiveRecordJobShrinkRequest(TeaModel):
         stream_input_shrink: str = None,
         template_id: str = None,
     ):
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 回调地址
         self.notify_url = notify_url
         self.record_output_shrink = record_output_shrink
         self.stream_input_shrink = stream_input_shrink
+        # 录制模板ID
         self.template_id = template_id
 
     def validate(self):
@@ -37652,6 +37787,7 @@ class SubmitMediaInfoJobResponseBody(TeaModel):
         media_info_job: SubmitMediaInfoJobResponseBodyMediaInfoJob = None,
         request_id: str = None,
     ):
+        # MediaInfoJobDTO
         self.media_info_job = media_info_job
         self.request_id = request_id
 
@@ -38311,9 +38447,11 @@ class SubmitSmarttagJobRequest(TeaModel):
         self.content = content
         self.content_addr = content_addr
         self.content_type = content_type
+        # input
         self.input = input
         self.notify_url = notify_url
         self.params = params
+        # scheduleConfig
         self.schedule_config = schedule_config
         self.template_id = template_id
         self.title = title
@@ -38397,9 +38535,11 @@ class SubmitSmarttagJobShrinkRequest(TeaModel):
         self.content = content
         self.content_addr = content_addr
         self.content_type = content_type
+        # input
         self.input_shrink = input_shrink
         self.notify_url = notify_url
         self.params = params
+        # scheduleConfig
         self.schedule_config_shrink = schedule_config_shrink
         self.template_id = template_id
         self.title = title
@@ -39928,6 +40068,7 @@ class SubmitSyncMediaInfoJobResponseBody(TeaModel):
         media_info_job: SubmitSyncMediaInfoJobResponseBodyMediaInfoJob = None,
         request_id: str = None,
     ):
+        # MediaInfoJobDTO
         self.media_info_job = media_info_job
         self.request_id = request_id
 
@@ -44235,6 +44376,7 @@ class SubmitTranscodeJobResponseBody(TeaModel):
         transcode_parent_job: SubmitTranscodeJobResponseBodyTranscodeParentJob = None,
     ):
         self.request_id = request_id
+        # TranscodeParentJobWithSubJobDTO
         self.transcode_parent_job = transcode_parent_job
 
     def validate(self):
@@ -44677,9 +44819,13 @@ class UpdateLiveRecordTemplateRequestRecordFormat(TeaModel):
         slice_oss_object_prefix: str = None,
     ):
         self.cycle_duration = cycle_duration
+        # 格式
         self.format = format
+        # Oss对象名，不包含后缀
         self.oss_object_prefix = oss_object_prefix
+        # 切片时长
         self.slice_duration = slice_duration
+        # 切片Oss对象名，不包含后缀
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):
@@ -44725,8 +44871,11 @@ class UpdateLiveRecordTemplateRequest(TeaModel):
         record_format: List[UpdateLiveRecordTemplateRequestRecordFormat] = None,
         template_id: str = None,
     ):
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 录制格式
         self.record_format = record_format
+        # 代表资源一级ID的资源属性字段
         self.template_id = template_id
 
     def validate(self):
@@ -44772,8 +44921,11 @@ class UpdateLiveRecordTemplateShrinkRequest(TeaModel):
         record_format_shrink: str = None,
         template_id: str = None,
     ):
+        # 代表资源名称的资源属性字段
         self.name = name
+        # 录制格式
         self.record_format_shrink = record_format_shrink
+        # 代表资源一级ID的资源属性字段
         self.template_id = template_id
 
     def validate(self):
@@ -44809,6 +44961,7 @@ class UpdateLiveRecordTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # 代表资源一级ID的资源属性字段
         self.request_id = request_id
 
     def validate(self):

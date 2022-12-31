@@ -4695,6 +4695,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4723,6 +4725,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11117,6 +11121,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSubtitleProduceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSubtitleProduceJobResponse:
+        """
+        @deprecated
+        
+        @param request: SubmitSubtitleProduceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSubtitleProduceJobResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11159,6 +11171,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitSubtitleProduceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSubtitleProduceJobResponse:
+        """
+        @deprecated
+        
+        @param request: SubmitSubtitleProduceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSubtitleProduceJobResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11200,6 +11220,13 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSubtitleProduceJobRequest,
     ) -> ice20201109_models.SubmitSubtitleProduceJobResponse:
+        """
+        @deprecated
+        
+        @param request: SubmitSubtitleProduceJobRequest
+        @return: SubmitSubtitleProduceJobResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_subtitle_produce_job_with_options(request, runtime)
 
@@ -11207,6 +11234,13 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSubtitleProduceJobRequest,
     ) -> ice20201109_models.SubmitSubtitleProduceJobResponse:
+        """
+        @deprecated
+        
+        @param request: SubmitSubtitleProduceJobRequest
+        @return: SubmitSubtitleProduceJobResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_subtitle_produce_job_with_options_async(request, runtime)
 
@@ -12217,6 +12251,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateSmartJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateSmartJobResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateSmartJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmartJobResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feextend):
@@ -12247,6 +12289,14 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateSmartJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateSmartJobResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateSmartJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmartJobResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feextend):
@@ -12276,6 +12326,13 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateSmartJobRequest,
     ) -> ice20201109_models.UpdateSmartJobResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateSmartJobRequest
+        @return: UpdateSmartJobResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_smart_job_with_options(request, runtime)
 
@@ -12283,6 +12340,13 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateSmartJobRequest,
     ) -> ice20201109_models.UpdateSmartJobResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateSmartJobRequest
+        @return: UpdateSmartJobResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_smart_job_with_options_async(request, runtime)
 
