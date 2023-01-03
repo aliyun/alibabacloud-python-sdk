@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_smartag20180313.
 
-Created on 18/11/2022
+Created on 03/01/2023
 
 @author: Alibaba Cloud SDK
 """

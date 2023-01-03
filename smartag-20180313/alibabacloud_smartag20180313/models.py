@@ -955,6 +955,7 @@ class AddSmartAccessGatewayDnsForwardResponseBody(TeaModel):
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -7713,6 +7714,7 @@ class DeleteSmartAccessGatewayDnsForwardResponseBody(TeaModel):
         self.code = code
         self.http_status_code = http_status_code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -34665,7 +34667,6 @@ class UpdateEnterpriseCodeResponse(TeaModel):
 class UpdateProbeTaskRequest(TeaModel):
     def __init__(
         self,
-        address_type: str = None,
         domain: str = None,
         enable: bool = None,
         packet_number: int = None,
@@ -34678,7 +34679,6 @@ class UpdateProbeTaskRequest(TeaModel):
         sn: str = None,
         task_name: str = None,
     ):
-        self.address_type = address_type
         self.domain = domain
         self.enable = enable
         self.packet_number = packet_number
@@ -34700,8 +34700,6 @@ class UpdateProbeTaskRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.address_type is not None:
-            result['AddressType'] = self.address_type
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.enable is not None:
@@ -34728,8 +34726,6 @@ class UpdateProbeTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AddressType') is not None:
-            self.address_type = m.get('AddressType')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('Enable') is not None:
@@ -35923,6 +35919,7 @@ class UpdateSmartAccessGatewayDnsForwardResponseBody(TeaModel):
         self.code = code
         self.http_status_code = http_status_code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -37652,6 +37649,7 @@ class ViewSmartAccessGatewayDnsForwardsResponseBody(TeaModel):
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.success = success
 

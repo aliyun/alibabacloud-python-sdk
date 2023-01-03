@@ -11556,6 +11556,13 @@ class Client(OpenApiClient):
         request: smartag_20180313_models.GetQosAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> smartag_20180313_models.GetQosAttributeResponse:
+        """
+        ***\
+        
+        @param request: GetQosAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQosAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qos_id):
@@ -11586,6 +11593,13 @@ class Client(OpenApiClient):
         request: smartag_20180313_models.GetQosAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> smartag_20180313_models.GetQosAttributeResponse:
+        """
+        ***\
+        
+        @param request: GetQosAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQosAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qos_id):
@@ -11615,6 +11629,12 @@ class Client(OpenApiClient):
         self,
         request: smartag_20180313_models.GetQosAttributeRequest,
     ) -> smartag_20180313_models.GetQosAttributeResponse:
+        """
+        ***\
+        
+        @param request: GetQosAttributeRequest
+        @return: GetQosAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_qos_attribute_with_options(request, runtime)
 
@@ -11622,6 +11642,12 @@ class Client(OpenApiClient):
         self,
         request: smartag_20180313_models.GetQosAttributeRequest,
     ) -> smartag_20180313_models.GetQosAttributeResponse:
+        """
+        ***\
+        
+        @param request: GetQosAttributeRequest
+        @return: GetQosAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_qos_attribute_with_options_async(request, runtime)
 
@@ -17970,8 +17996,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.UpdateProbeTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.address_type):
-            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.enable):
@@ -18020,8 +18044,6 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.UpdateProbeTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.address_type):
-            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.enable):
