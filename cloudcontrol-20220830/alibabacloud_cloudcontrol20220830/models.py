@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
 class CancelTaskResponseBody(TeaModel):
@@ -309,6 +309,503 @@ class DeleteResourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetResourceTypeHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_accept_language: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_accept_language = x_acs_accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_accept_language is not None:
+            result['x-acs-accept-language'] = self.x_acs_accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-accept-language') is not None:
+            self.x_acs_accept_language = m.get('x-acs-accept-language')
+        return self
+
+
+class GetResourceTypeResponseBodyResourceTypeHandlersCreate(TeaModel):
+    def __init__(
+        self,
+        permissions: List[str] = None,
+    ):
+        self.permissions = permissions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('permissions') is not None:
+            self.permissions = m.get('permissions')
+        return self
+
+
+class GetResourceTypeResponseBodyResourceTypeHandlersDelete(TeaModel):
+    def __init__(
+        self,
+        permissions: List[str] = None,
+    ):
+        self.permissions = permissions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('permissions') is not None:
+            self.permissions = m.get('permissions')
+        return self
+
+
+class GetResourceTypeResponseBodyResourceTypeHandlersGet(TeaModel):
+    def __init__(
+        self,
+        permissions: List[str] = None,
+    ):
+        self.permissions = permissions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('permissions') is not None:
+            self.permissions = m.get('permissions')
+        return self
+
+
+class GetResourceTypeResponseBodyResourceTypeHandlersList(TeaModel):
+    def __init__(
+        self,
+        permissions: List[str] = None,
+    ):
+        self.permissions = permissions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('permissions') is not None:
+            self.permissions = m.get('permissions')
+        return self
+
+
+class GetResourceTypeResponseBodyResourceTypeHandlersUpdate(TeaModel):
+    def __init__(
+        self,
+        permissions: List[str] = None,
+    ):
+        self.permissions = permissions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('permissions') is not None:
+            self.permissions = m.get('permissions')
+        return self
+
+
+class GetResourceTypeResponseBodyResourceTypeHandlers(TeaModel):
+    def __init__(
+        self,
+        create: GetResourceTypeResponseBodyResourceTypeHandlersCreate = None,
+        delete: GetResourceTypeResponseBodyResourceTypeHandlersDelete = None,
+        get: GetResourceTypeResponseBodyResourceTypeHandlersGet = None,
+        list: GetResourceTypeResponseBodyResourceTypeHandlersList = None,
+        update: GetResourceTypeResponseBodyResourceTypeHandlersUpdate = None,
+    ):
+        self.create = create
+        self.delete = delete
+        self.get = get
+        self.list = list
+        self.update = update
+
+    def validate(self):
+        if self.create:
+            self.create.validate()
+        if self.delete:
+            self.delete.validate()
+        if self.get:
+            self.get.validate()
+        if self.list:
+            self.list.validate()
+        if self.update:
+            self.update.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create is not None:
+            result['create'] = self.create.to_map()
+        if self.delete is not None:
+            result['delete'] = self.delete.to_map()
+        if self.get is not None:
+            result['get'] = self.get.to_map()
+        if self.list is not None:
+            result['list'] = self.list.to_map()
+        if self.update is not None:
+            result['update'] = self.update.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('create') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceTypeHandlersCreate()
+            self.create = temp_model.from_map(m['create'])
+        if m.get('delete') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceTypeHandlersDelete()
+            self.delete = temp_model.from_map(m['delete'])
+        if m.get('get') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceTypeHandlersGet()
+            self.get = temp_model.from_map(m['get'])
+        if m.get('list') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceTypeHandlersList()
+            self.list = temp_model.from_map(m['list'])
+        if m.get('update') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceTypeHandlersUpdate()
+            self.update = temp_model.from_map(m['update'])
+        return self
+
+
+class GetResourceTypeResponseBodyResourceTypeInfo(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        delivery_scope: str = None,
+        description: str = None,
+        title: str = None,
+    ):
+        self.charge_type = charge_type
+        self.delivery_scope = delivery_scope
+        self.description = description
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['chargeType'] = self.charge_type
+        if self.delivery_scope is not None:
+            result['deliveryScope'] = self.delivery_scope
+        if self.description is not None:
+            result['description'] = self.description
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chargeType') is not None:
+            self.charge_type = m.get('chargeType')
+        if m.get('deliveryScope') is not None:
+            self.delivery_scope = m.get('deliveryScope')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class GetResourceTypeResponseBodyResourceType(TeaModel):
+    def __init__(
+        self,
+        create_only_properties: List[str] = None,
+        delete_only_properties: List[str] = None,
+        filter_properties: List[str] = None,
+        get_only_properties: List[str] = None,
+        get_response_properties: List[str] = None,
+        handlers: GetResourceTypeResponseBodyResourceTypeHandlers = None,
+        info: GetResourceTypeResponseBodyResourceTypeInfo = None,
+        list_only_properties: List[str] = None,
+        list_response_properties: List[str] = None,
+        primary_identifier: str = None,
+        product: str = None,
+        properties: Dict[str, Any] = None,
+        public_properties: List[str] = None,
+        read_only_properties: List[str] = None,
+        required: List[str] = None,
+        resource_type: str = None,
+        sensitive_info_properties: List[str] = None,
+        update_only_properties: List[str] = None,
+        update_type_properties: List[str] = None,
+    ):
+        self.create_only_properties = create_only_properties
+        self.delete_only_properties = delete_only_properties
+        self.filter_properties = filter_properties
+        self.get_only_properties = get_only_properties
+        self.get_response_properties = get_response_properties
+        self.handlers = handlers
+        self.info = info
+        self.list_only_properties = list_only_properties
+        self.list_response_properties = list_response_properties
+        self.primary_identifier = primary_identifier
+        self.product = product
+        self.properties = properties
+        self.public_properties = public_properties
+        self.read_only_properties = read_only_properties
+        self.required = required
+        self.resource_type = resource_type
+        self.sensitive_info_properties = sensitive_info_properties
+        self.update_only_properties = update_only_properties
+        self.update_type_properties = update_type_properties
+
+    def validate(self):
+        if self.handlers:
+            self.handlers.validate()
+        if self.info:
+            self.info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_only_properties is not None:
+            result['createOnlyProperties'] = self.create_only_properties
+        if self.delete_only_properties is not None:
+            result['deleteOnlyProperties'] = self.delete_only_properties
+        if self.filter_properties is not None:
+            result['filterProperties'] = self.filter_properties
+        if self.get_only_properties is not None:
+            result['getOnlyProperties'] = self.get_only_properties
+        if self.get_response_properties is not None:
+            result['getResponseProperties'] = self.get_response_properties
+        if self.handlers is not None:
+            result['handlers'] = self.handlers.to_map()
+        if self.info is not None:
+            result['info'] = self.info.to_map()
+        if self.list_only_properties is not None:
+            result['listOnlyProperties'] = self.list_only_properties
+        if self.list_response_properties is not None:
+            result['listResponseProperties'] = self.list_response_properties
+        if self.primary_identifier is not None:
+            result['primaryIdentifier'] = self.primary_identifier
+        if self.product is not None:
+            result['product'] = self.product
+        if self.properties is not None:
+            result['properties'] = self.properties
+        if self.public_properties is not None:
+            result['publicProperties'] = self.public_properties
+        if self.read_only_properties is not None:
+            result['readOnlyProperties'] = self.read_only_properties
+        if self.required is not None:
+            result['required'] = self.required
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.sensitive_info_properties is not None:
+            result['sensitiveInfoProperties'] = self.sensitive_info_properties
+        if self.update_only_properties is not None:
+            result['updateOnlyProperties'] = self.update_only_properties
+        if self.update_type_properties is not None:
+            result['updateTypeProperties'] = self.update_type_properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createOnlyProperties') is not None:
+            self.create_only_properties = m.get('createOnlyProperties')
+        if m.get('deleteOnlyProperties') is not None:
+            self.delete_only_properties = m.get('deleteOnlyProperties')
+        if m.get('filterProperties') is not None:
+            self.filter_properties = m.get('filterProperties')
+        if m.get('getOnlyProperties') is not None:
+            self.get_only_properties = m.get('getOnlyProperties')
+        if m.get('getResponseProperties') is not None:
+            self.get_response_properties = m.get('getResponseProperties')
+        if m.get('handlers') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceTypeHandlers()
+            self.handlers = temp_model.from_map(m['handlers'])
+        if m.get('info') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceTypeInfo()
+            self.info = temp_model.from_map(m['info'])
+        if m.get('listOnlyProperties') is not None:
+            self.list_only_properties = m.get('listOnlyProperties')
+        if m.get('listResponseProperties') is not None:
+            self.list_response_properties = m.get('listResponseProperties')
+        if m.get('primaryIdentifier') is not None:
+            self.primary_identifier = m.get('primaryIdentifier')
+        if m.get('product') is not None:
+            self.product = m.get('product')
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        if m.get('publicProperties') is not None:
+            self.public_properties = m.get('publicProperties')
+        if m.get('readOnlyProperties') is not None:
+            self.read_only_properties = m.get('readOnlyProperties')
+        if m.get('required') is not None:
+            self.required = m.get('required')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('sensitiveInfoProperties') is not None:
+            self.sensitive_info_properties = m.get('sensitiveInfoProperties')
+        if m.get('updateOnlyProperties') is not None:
+            self.update_only_properties = m.get('updateOnlyProperties')
+        if m.get('updateTypeProperties') is not None:
+            self.update_type_properties = m.get('updateTypeProperties')
+        return self
+
+
+class GetResourceTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_type: GetResourceTypeResponseBodyResourceType = None,
+    ):
+        self.request_id = request_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.resource_type:
+            self.resource_type.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('resourceType') is not None:
+            temp_model = GetResourceTypeResponseBodyResourceType()
+            self.resource_type = temp_model.from_map(m['resourceType'])
+        return self
+
+
+class GetResourceTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetResourceTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetResourceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

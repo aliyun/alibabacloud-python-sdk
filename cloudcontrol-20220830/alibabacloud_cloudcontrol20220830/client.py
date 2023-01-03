@@ -341,6 +341,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_resource_with_options_async(resource_path, request, headers, runtime)
 
+    def get_resource_type_with_options(
+        self,
+        resource_path: str,
+        headers: cloudcontrol_20220830_models.GetResourceTypeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_accept_language):
+            real_headers['x-acs-accept-language'] = UtilClient.to_jsonstring(headers.x_acs_accept_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2022-08-30',
+            protocol='HTTPS',
+            pathname=f'{resource_path}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudcontrol_20220830_models.GetResourceTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_type_with_options_async(
+        self,
+        resource_path: str,
+        headers: cloudcontrol_20220830_models.GetResourceTypeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_accept_language):
+            real_headers['x-acs-accept-language'] = UtilClient.to_jsonstring(headers.x_acs_accept_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2022-08-30',
+            protocol='HTTPS',
+            pathname=f'{resource_path}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudcontrol_20220830_models.GetResourceTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_type(
+        self,
+        resource_path: str,
+    ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = cloudcontrol_20220830_models.GetResourceTypeHeaders()
+        return self.get_resource_type_with_options(resource_path, headers, runtime)
+
+    async def get_resource_type_async(
+        self,
+        resource_path: str,
+    ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = cloudcontrol_20220830_models.GetResourceTypeHeaders()
+        return await self.get_resource_type_with_options_async(resource_path, headers, runtime)
+
     def get_resources_with_options(
         self,
         resource_path: str,
