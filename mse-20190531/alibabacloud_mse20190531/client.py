@@ -12141,6 +12141,8 @@ class Client(OpenApiClient):
             query['ConfigSecretEnabled'] = request.config_secret_enabled
         if not UtilClient.is_unset(request.config_type):
             query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.extended_types_enable):
+            query['ExtendedTypesEnable'] = request.extended_types_enable
         if not UtilClient.is_unset(request.init_limit):
             query['InitLimit'] = request.init_limit
         if not UtilClient.is_unset(request.instance_id):
@@ -12213,6 +12215,8 @@ class Client(OpenApiClient):
             query['ConfigSecretEnabled'] = request.config_secret_enabled
         if not UtilClient.is_unset(request.config_type):
             query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.extended_types_enable):
+            query['ExtendedTypesEnable'] = request.extended_types_enable
         if not UtilClient.is_unset(request.init_limit):
             query['InitLimit'] = request.init_limit
         if not UtilClient.is_unset(request.instance_id):
