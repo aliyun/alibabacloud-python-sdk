@@ -568,11 +568,17 @@ class Client(OpenApiClient):
     def delete_slot_with_options(
         self,
         slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.DeleteSlotRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSlot',
@@ -593,11 +599,17 @@ class Client(OpenApiClient):
     async def delete_slot_with_options_async(
         self,
         slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.DeleteSlotRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSlot',
@@ -618,18 +630,20 @@ class Client(OpenApiClient):
     def delete_slot(
         self,
         slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.DeleteSlotRequest,
     ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_slot_with_options(slot_id, headers, runtime)
+        return self.delete_slot_with_options(slot_id, request, headers, runtime)
 
     async def delete_slot_async(
         self,
         slot_id: str,
+        request: paielastic_dataset_accelerator_20220801_models.DeleteSlotRequest,
     ) -> paielastic_dataset_accelerator_20220801_models.DeleteSlotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_slot_with_options_async(slot_id, headers, runtime)
+        return await self.delete_slot_with_options_async(slot_id, request, headers, runtime)
 
     def delete_tag_with_options(
         self,

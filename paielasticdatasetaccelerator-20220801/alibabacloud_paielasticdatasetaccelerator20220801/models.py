@@ -911,9 +911,11 @@ class CreateSlotRequest(TeaModel):
 class CreateSlotResponseBody(TeaModel):
     def __init__(
         self,
+        endpoint_ids: str = None,
         request_id: str = None,
         slot_id: str = None,
     ):
+        self.endpoint_ids = endpoint_ids
         self.request_id = request_id
         self.slot_id = slot_id
 
@@ -926,6 +928,8 @@ class CreateSlotResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.endpoint_ids is not None:
+            result['EndpointIds'] = self.endpoint_ids
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.slot_id is not None:
@@ -934,6 +938,8 @@ class CreateSlotResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndpointIds') is not None:
+            self.endpoint_ids = m.get('EndpointIds')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SlotId') is not None:
@@ -1169,6 +1175,33 @@ class DeleteInstanceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DeleteInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSlotRequest(TeaModel):
+    def __init__(
+        self,
+        force: bool = None,
+    ):
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         return self
 
 
