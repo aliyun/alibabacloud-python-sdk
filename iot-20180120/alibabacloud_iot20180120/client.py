@@ -1054,6 +1054,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_check_import_device_with_options_async(request, runtime)
 
+    def batch_check_vehicle_device_with_options(
+        self,
+        request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCheckVehicleDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCheckVehicleDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_check_vehicle_device_with_options_async(
+        self,
+        request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCheckVehicleDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchCheckVehicleDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_check_vehicle_device(
+        self,
+        request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
+    ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_check_vehicle_device_with_options(request, runtime)
+
+    async def batch_check_vehicle_device_async(
+        self,
+        request: iot_20180120_models.BatchCheckVehicleDeviceRequest,
+    ) -> iot_20180120_models.BatchCheckVehicleDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_check_vehicle_device_with_options_async(request, runtime)
+
     def batch_clear_edge_instance_device_config_with_options(
         self,
         request: iot_20180120_models.BatchClearEdgeInstanceDeviceConfigRequest,
@@ -2161,6 +2239,84 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchImportDeviceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.batch_import_device_with_options_async(request, runtime)
+
+    def batch_import_vehicle_device_with_options(
+        self,
+        request: iot_20180120_models.BatchImportVehicleDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchImportVehicleDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchImportVehicleDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_import_vehicle_device_with_options_async(
+        self,
+        request: iot_20180120_models.BatchImportVehicleDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchImportVehicleDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchImportVehicleDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_import_vehicle_device(
+        self,
+        request: iot_20180120_models.BatchImportVehicleDeviceRequest,
+    ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_import_vehicle_device_with_options(request, runtime)
+
+    async def batch_import_vehicle_device_async(
+        self,
+        request: iot_20180120_models.BatchImportVehicleDeviceRequest,
+    ) -> iot_20180120_models.BatchImportVehicleDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_import_vehicle_device_with_options_async(request, runtime)
 
     def batch_pub_with_options(
         self,
@@ -26670,6 +26826,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_topic_route_table_with_options_async(request, runtime)
 
+    def query_vehicle_device_with_options(
+        self,
+        request: iot_20180120_models.QueryVehicleDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVehicleDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryVehicleDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_vehicle_device_with_options_async(
+        self,
+        request: iot_20180120_models.QueryVehicleDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVehicleDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryVehicleDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_vehicle_device(
+        self,
+        request: iot_20180120_models.QueryVehicleDeviceRequest,
+    ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_vehicle_device_with_options(request, runtime)
+
+    async def query_vehicle_device_async(
+        self,
+        request: iot_20180120_models.QueryVehicleDeviceRequest,
+    ) -> iot_20180120_models.QueryVehicleDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_vehicle_device_with_options_async(request, runtime)
+
     def r_rpc_with_options(
         self,
         request: iot_20180120_models.RRpcRequest,
@@ -26677,6 +26911,8 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.RRpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
         if not UtilClient.is_unset(request.device_name):
             query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -26715,6 +26951,8 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.RRpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
         if not UtilClient.is_unset(request.device_name):
             query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
