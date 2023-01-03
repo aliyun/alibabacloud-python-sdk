@@ -1,3 +1,7 @@
+2023-01-03 Version: 1.0.15
+- Add ContextMessageId.
+- Add ChannelType viber
+
 2022-11-18 Version: 1.0.14
 - Mark deprecated parameter.
 - Add CustSpaceId parameter.
