@@ -1,3 +1,6 @@
+2023-01-04 Version: 1.2.4
+- Support images from private docker registry.
+
 2022-12-13 Version: 1.2.3
 - CreateJob supports params SuccessPolicy.
 

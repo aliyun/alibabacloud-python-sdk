@@ -827,6 +827,45 @@ class GPUDetail(TeaModel):
         return self
 
 
+class ImageConfig(TeaModel):
+    def __init__(
+        self,
+        docker_registry: str = None,
+        password: str = None,
+        username: str = None,
+    ):
+        self.docker_registry = docker_registry
+        self.password = password
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.docker_registry is not None:
+            result['DockerRegistry'] = self.docker_registry
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DockerRegistry') is not None:
+            self.docker_registry = m.get('DockerRegistry')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
 class ImageItem(TeaModel):
     def __init__(
         self,
@@ -1115,6 +1154,7 @@ class JobSpec(TeaModel):
         ecs_spec: str = None,
         extra_pod_spec: ExtraPodSpec = None,
         image: str = None,
+        image_config: ImageConfig = None,
         pod_count: int = None,
         resource_config: ResourceConfig = None,
         type: str = None,
@@ -1123,6 +1163,7 @@ class JobSpec(TeaModel):
         self.ecs_spec = ecs_spec
         self.extra_pod_spec = extra_pod_spec
         self.image = image
+        self.image_config = image_config
         self.pod_count = pod_count
         self.resource_config = resource_config
         self.type = type
@@ -1131,6 +1172,8 @@ class JobSpec(TeaModel):
     def validate(self):
         if self.extra_pod_spec:
             self.extra_pod_spec.validate()
+        if self.image_config:
+            self.image_config.validate()
         if self.resource_config:
             self.resource_config.validate()
 
@@ -1146,6 +1189,8 @@ class JobSpec(TeaModel):
             result['ExtraPodSpec'] = self.extra_pod_spec.to_map()
         if self.image is not None:
             result['Image'] = self.image
+        if self.image_config is not None:
+            result['ImageConfig'] = self.image_config.to_map()
         if self.pod_count is not None:
             result['PodCount'] = self.pod_count
         if self.resource_config is not None:
@@ -1165,6 +1210,9 @@ class JobSpec(TeaModel):
             self.extra_pod_spec = temp_model.from_map(m['ExtraPodSpec'])
         if m.get('Image') is not None:
             self.image = m.get('Image')
+        if m.get('ImageConfig') is not None:
+            temp_model = ImageConfig()
+            self.image_config = temp_model.from_map(m['ImageConfig'])
         if m.get('PodCount') is not None:
             self.pod_count = m.get('PodCount')
         if m.get('ResourceConfig') is not None:
@@ -1180,6 +1228,7 @@ class JobSpec(TeaModel):
 class JobSettings(TeaModel):
     def __init__(
         self,
+        advanced_settings: Dict[str, str] = None,
         business_user_id: str = None,
         caller: str = None,
         enable_error_monitoring_in_aimaster: bool = None,
@@ -1190,6 +1239,7 @@ class JobSettings(TeaModel):
         pipeline_id: str = None,
         tags: Dict[str, str] = None,
     ):
+        self.advanced_settings = advanced_settings
         self.business_user_id = business_user_id
         self.caller = caller
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
@@ -1209,6 +1259,8 @@ class JobSettings(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
         if self.business_user_id is not None:
             result['BusinessUserId'] = self.business_user_id
         if self.caller is not None:
@@ -1231,6 +1283,8 @@ class JobSettings(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
         if m.get('BusinessUserId') is not None:
             self.business_user_id = m.get('BusinessUserId')
         if m.get('Caller') is not None:
