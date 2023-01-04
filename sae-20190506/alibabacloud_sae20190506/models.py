@@ -2119,12 +2119,14 @@ class CreateConfigMapResponse(TeaModel):
 class CreateGreyTagRouteRequest(TeaModel):
     def __init__(
         self,
+        alb_rules: str = None,
         app_id: str = None,
         description: str = None,
         dubbo_rules: str = None,
         name: str = None,
         sc_rules: str = None,
     ):
+        self.alb_rules = alb_rules
         self.app_id = app_id
         self.description = description
         self.dubbo_rules = dubbo_rules
@@ -2140,6 +2142,8 @@ class CreateGreyTagRouteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.alb_rules is not None:
+            result['AlbRules'] = self.alb_rules
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.description is not None:
@@ -2154,6 +2158,8 @@ class CreateGreyTagRouteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlbRules') is not None:
+            self.alb_rules = m.get('AlbRules')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('Description') is not None:
@@ -2536,6 +2542,7 @@ class CreateJobRequest(TeaModel):
         cpu: int = None,
         custom_host_alias: str = None,
         edas_container_version: str = None,
+        enable_image_accl: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -2590,6 +2597,7 @@ class CreateJobRequest(TeaModel):
         self.cpu = cpu
         self.custom_host_alias = custom_host_alias
         self.edas_container_version = edas_container_version
+        self.enable_image_accl = enable_image_accl
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
         self.image_url = image_url
@@ -2666,6 +2674,8 @@ class CreateJobRequest(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.enable_image_accl is not None:
+            result['EnableImageAccl'] = self.enable_image_accl
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -2776,6 +2786,8 @@ class CreateJobRequest(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EnableImageAccl') is not None:
+            self.enable_image_accl = m.get('EnableImageAccl')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -3004,10 +3016,12 @@ class CreateJobResponse(TeaModel):
 class CreateNamespaceRequest(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_description = namespace_description
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
@@ -3021,6 +3035,8 @@ class CreateNamespaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
             result['NamespaceDescription'] = self.namespace_description
         if self.namespace_id is not None:
@@ -3031,6 +3047,8 @@ class CreateNamespaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
             self.namespace_description = m.get('NamespaceDescription')
         if m.get('NamespaceId') is not None:
@@ -3043,11 +3061,13 @@ class CreateNamespaceRequest(TeaModel):
 class CreateNamespaceResponseBodyData(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         region_id: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_description = namespace_description
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
@@ -3062,6 +3082,8 @@ class CreateNamespaceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
             result['NamespaceDescription'] = self.namespace_description
         if self.namespace_id is not None:
@@ -3074,6 +3096,8 @@ class CreateNamespaceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
             self.namespace_description = m.get('NamespaceDescription')
         if m.get('NamespaceId') is not None:
@@ -4438,8 +4462,10 @@ class DeleteJobResponse(TeaModel):
 class DeleteNamespaceRequest(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_id: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -4451,12 +4477,16 @@ class DeleteNamespaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         return self
@@ -4768,6 +4798,7 @@ class DeployApplicationRequest(TeaModel):
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
         oss_mount_descs: str = None,
+        package_type: str = None,
         package_url: str = None,
         package_version: str = None,
         php_arms_config_location: str = None,
@@ -4820,6 +4851,7 @@ class DeployApplicationRequest(TeaModel):
         self.oss_ak_id = oss_ak_id
         self.oss_ak_secret = oss_ak_secret
         self.oss_mount_descs = oss_mount_descs
+        self.package_type = package_type
         self.package_url = package_url
         self.package_version = package_version
         self.php_arms_config_location = php_arms_config_location
@@ -4914,6 +4946,8 @@ class DeployApplicationRequest(TeaModel):
             result['OssAkSecret'] = self.oss_ak_secret
         if self.oss_mount_descs is not None:
             result['OssMountDescs'] = self.oss_mount_descs
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
         if self.package_url is not None:
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
@@ -5020,6 +5054,8 @@ class DeployApplicationRequest(TeaModel):
             self.oss_ak_secret = m.get('OssAkSecret')
         if m.get('OssMountDescs') is not None:
             self.oss_mount_descs = m.get('OssMountDescs')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
         if m.get('PackageUrl') is not None:
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
@@ -10242,6 +10278,122 @@ class DescribeGreyTagRouteRequest(TeaModel):
         return self
 
 
+class DescribeGreyTagRouteResponseBodyDataAlbRulesItems(TeaModel):
+    def __init__(
+        self,
+        cond: str = None,
+        expr: str = None,
+        index: int = None,
+        name: str = None,
+        operator: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.cond = cond
+        self.expr = expr
+        self.index = index
+        self.name = name
+        self.operator = operator
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cond is not None:
+            result['cond'] = self.cond
+        if self.expr is not None:
+            result['expr'] = self.expr
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cond') is not None:
+            self.cond = m.get('cond')
+        if m.get('expr') is not None:
+            self.expr = m.get('expr')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class DescribeGreyTagRouteResponseBodyDataAlbRules(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        ingress_id: str = None,
+        items: List[DescribeGreyTagRouteResponseBodyDataAlbRulesItems] = None,
+        service_id: str = None,
+    ):
+        self.condition = condition
+        self.ingress_id = ingress_id
+        self.items = items
+        self.service_id = service_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        if self.ingress_id is not None:
+            result['ingressId'] = self.ingress_id
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        if m.get('ingressId') is not None:
+            self.ingress_id = m.get('ingressId')
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = DescribeGreyTagRouteResponseBodyDataAlbRulesItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        return self
+
+
 class DescribeGreyTagRouteResponseBodyDataDubboRulesItems(TeaModel):
     def __init__(
         self,
@@ -10483,6 +10635,7 @@ class DescribeGreyTagRouteResponseBodyDataScRules(TeaModel):
 class DescribeGreyTagRouteResponseBodyData(TeaModel):
     def __init__(
         self,
+        alb_rules: List[DescribeGreyTagRouteResponseBodyDataAlbRules] = None,
         app_id: str = None,
         create_time: int = None,
         description: str = None,
@@ -10492,6 +10645,7 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         sc_rules: List[DescribeGreyTagRouteResponseBodyDataScRules] = None,
         update_time: int = None,
     ):
+        self.alb_rules = alb_rules
         self.app_id = app_id
         self.create_time = create_time
         self.description = description
@@ -10502,6 +10656,10 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.alb_rules:
+            for k in self.alb_rules:
+                if k:
+                    k.validate()
         if self.dubbo_rules:
             for k in self.dubbo_rules:
                 if k:
@@ -10517,6 +10675,10 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        result['AlbRules'] = []
+        if self.alb_rules is not None:
+            for k in self.alb_rules:
+                result['AlbRules'].append(k.to_map() if k else None)
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.create_time is not None:
@@ -10541,6 +10703,11 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.alb_rules = []
+        if m.get('AlbRules') is not None:
+            for k in m.get('AlbRules'):
+                temp_model = DescribeGreyTagRouteResponseBodyDataAlbRules()
+                self.alb_rules.append(temp_model.from_map(k))
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
@@ -12532,8 +12699,10 @@ class DescribeJobStatusResponse(TeaModel):
 class DescribeNamespaceRequest(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_id: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -12545,12 +12714,16 @@ class DescribeNamespaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         return self
@@ -12559,11 +12732,13 @@ class DescribeNamespaceRequest(TeaModel):
 class DescribeNamespaceResponseBodyData(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         region_id: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_description = namespace_description
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
@@ -12578,6 +12753,8 @@ class DescribeNamespaceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
             result['NamespaceDescription'] = self.namespace_description
         if self.namespace_id is not None:
@@ -12590,6 +12767,8 @@ class DescribeNamespaceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
             self.namespace_description = m.get('NamespaceDescription')
         if m.get('NamespaceId') is not None:
@@ -12750,6 +12929,7 @@ class DescribeNamespaceListResponseBodyData(TeaModel):
         current: bool = None,
         custom: bool = None,
         hybrid_cloud_enable: bool = None,
+        name_space_short_id: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         region_id: str = None,
@@ -12761,6 +12941,7 @@ class DescribeNamespaceListResponseBodyData(TeaModel):
         self.current = current
         self.custom = custom
         self.hybrid_cloud_enable = hybrid_cloud_enable
+        self.name_space_short_id = name_space_short_id
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
         self.region_id = region_id
@@ -12787,6 +12968,8 @@ class DescribeNamespaceListResponseBodyData(TeaModel):
             result['Custom'] = self.custom
         if self.hybrid_cloud_enable is not None:
             result['HybridCloudEnable'] = self.hybrid_cloud_enable
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.namespace_name is not None:
@@ -12811,6 +12994,8 @@ class DescribeNamespaceListResponseBodyData(TeaModel):
             self.custom = m.get('Custom')
         if m.get('HybridCloudEnable') is not None:
             self.hybrid_cloud_enable = m.get('HybridCloudEnable')
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('NamespaceName') is not None:
@@ -12944,8 +13129,10 @@ class DescribeNamespaceListResponse(TeaModel):
 class DescribeNamespaceResourcesRequest(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_id: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -12957,12 +13144,16 @@ class DescribeNamespaceResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         return self
@@ -12979,6 +13170,7 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
         last_change_order_id: str = None,
         last_change_order_running: bool = None,
         last_change_order_status: str = None,
+        name_space_short_id: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         notification_expired: bool = None,
@@ -12998,6 +13190,7 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
         self.last_change_order_id = last_change_order_id
         self.last_change_order_running = last_change_order_running
         self.last_change_order_status = last_change_order_status
+        self.name_space_short_id = name_space_short_id
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
         self.notification_expired = notification_expired
@@ -13036,6 +13229,8 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
             result['LastChangeOrderRunning'] = self.last_change_order_running
         if self.last_change_order_status is not None:
             result['LastChangeOrderStatus'] = self.last_change_order_status
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.namespace_name is not None:
@@ -13076,6 +13271,8 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
             self.last_change_order_running = m.get('LastChangeOrderRunning')
         if m.get('LastChangeOrderStatus') is not None:
             self.last_change_order_status = m.get('LastChangeOrderStatus')
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('NamespaceName') is not None:
@@ -13246,6 +13443,7 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
         self,
         access_key: str = None,
         address_server_host: str = None,
+        name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
@@ -13255,6 +13453,7 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
     ):
         self.access_key = access_key
         self.address_server_host = address_server_host
+        self.name_space_short_id = name_space_short_id
         self.namespace_description = namespace_description
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
@@ -13275,6 +13474,8 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
             result['AccessKey'] = self.access_key
         if self.address_server_host is not None:
             result['AddressServerHost'] = self.address_server_host
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
             result['NamespaceDescription'] = self.namespace_description
         if self.namespace_id is not None:
@@ -13295,6 +13496,8 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
             self.access_key = m.get('AccessKey')
         if m.get('AddressServerHost') is not None:
             self.address_server_host = m.get('AddressServerHost')
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
             self.namespace_description = m.get('NamespaceDescription')
         if m.get('NamespaceId') is not None:
@@ -16440,6 +16643,122 @@ class ListGreyTagRouteRequest(TeaModel):
         return self
 
 
+class ListGreyTagRouteResponseBodyDataResultAlbRulesItems(TeaModel):
+    def __init__(
+        self,
+        cond: str = None,
+        expr: str = None,
+        index: int = None,
+        name: str = None,
+        operator: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.cond = cond
+        self.expr = expr
+        self.index = index
+        self.name = name
+        self.operator = operator
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cond is not None:
+            result['cond'] = self.cond
+        if self.expr is not None:
+            result['expr'] = self.expr
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cond') is not None:
+            self.cond = m.get('cond')
+        if m.get('expr') is not None:
+            self.expr = m.get('expr')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListGreyTagRouteResponseBodyDataResultAlbRules(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        ingress_id: str = None,
+        items: List[ListGreyTagRouteResponseBodyDataResultAlbRulesItems] = None,
+        service_id: str = None,
+    ):
+        self.condition = condition
+        self.ingress_id = ingress_id
+        self.items = items
+        self.service_id = service_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        if self.ingress_id is not None:
+            result['ingressId'] = self.ingress_id
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        if m.get('ingressId') is not None:
+            self.ingress_id = m.get('ingressId')
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ListGreyTagRouteResponseBodyDataResultAlbRulesItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        return self
+
+
 class ListGreyTagRouteResponseBodyDataResultDubboRulesItems(TeaModel):
     def __init__(
         self,
@@ -16681,6 +17000,7 @@ class ListGreyTagRouteResponseBodyDataResultScRules(TeaModel):
 class ListGreyTagRouteResponseBodyDataResult(TeaModel):
     def __init__(
         self,
+        alb_rules: List[ListGreyTagRouteResponseBodyDataResultAlbRules] = None,
         create_time: int = None,
         description: str = None,
         dubbo_rules: List[ListGreyTagRouteResponseBodyDataResultDubboRules] = None,
@@ -16689,6 +17009,7 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
         sc_rules: List[ListGreyTagRouteResponseBodyDataResultScRules] = None,
         update_time: int = None,
     ):
+        self.alb_rules = alb_rules
         self.create_time = create_time
         self.description = description
         self.dubbo_rules = dubbo_rules
@@ -16698,6 +17019,10 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.alb_rules:
+            for k in self.alb_rules:
+                if k:
+                    k.validate()
         if self.dubbo_rules:
             for k in self.dubbo_rules:
                 if k:
@@ -16713,6 +17038,10 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
             return _map
 
         result = dict()
+        result['AlbRules'] = []
+        if self.alb_rules is not None:
+            for k in self.alb_rules:
+                result['AlbRules'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -16735,6 +17064,11 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.alb_rules = []
+        if m.get('AlbRules') is not None:
+            for k in m.get('AlbRules'):
+                temp_model = ListGreyTagRouteResponseBodyDataResultAlbRules()
+                self.alb_rules.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -22533,11 +22867,13 @@ class UpdateConfigMapResponse(TeaModel):
 class UpdateGreyTagRouteRequest(TeaModel):
     def __init__(
         self,
+        alb_rules: str = None,
         description: str = None,
         dubbo_rules: str = None,
         grey_tag_route_id: int = None,
         sc_rules: str = None,
     ):
+        self.alb_rules = alb_rules
         self.description = description
         self.dubbo_rules = dubbo_rules
         self.grey_tag_route_id = grey_tag_route_id
@@ -22552,6 +22888,8 @@ class UpdateGreyTagRouteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.alb_rules is not None:
+            result['AlbRules'] = self.alb_rules
         if self.description is not None:
             result['Description'] = self.description
         if self.dubbo_rules is not None:
@@ -22564,6 +22902,8 @@ class UpdateGreyTagRouteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlbRules') is not None:
+            self.alb_rules = m.get('AlbRules')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DubboRules') is not None:
@@ -22935,6 +23275,7 @@ class UpdateJobRequest(TeaModel):
         config_map_mount_desc: str = None,
         custom_host_alias: str = None,
         edas_container_version: str = None,
+        enable_image_accl: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -22980,6 +23321,7 @@ class UpdateJobRequest(TeaModel):
         self.config_map_mount_desc = config_map_mount_desc
         self.custom_host_alias = custom_host_alias
         self.edas_container_version = edas_container_version
+        self.enable_image_accl = enable_image_accl
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
         self.image_url = image_url
@@ -23044,6 +23386,8 @@ class UpdateJobRequest(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.enable_image_accl is not None:
+            result['EnableImageAccl'] = self.enable_image_accl
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -23136,6 +23480,8 @@ class UpdateJobRequest(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EnableImageAccl') is not None:
+            self.enable_image_accl = m.get('EnableImageAccl')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -23352,10 +23698,12 @@ class UpdateJobResponse(TeaModel):
 class UpdateNamespaceRequest(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_description = namespace_description
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
@@ -23369,6 +23717,8 @@ class UpdateNamespaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
             result['NamespaceDescription'] = self.namespace_description
         if self.namespace_id is not None:
@@ -23379,6 +23729,8 @@ class UpdateNamespaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
             self.namespace_description = m.get('NamespaceDescription')
         if m.get('NamespaceId') is not None:
@@ -23391,11 +23743,13 @@ class UpdateNamespaceRequest(TeaModel):
 class UpdateNamespaceResponseBodyData(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         region_id: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_description = namespace_description
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
@@ -23410,6 +23764,8 @@ class UpdateNamespaceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
             result['NamespaceDescription'] = self.namespace_description
         if self.namespace_id is not None:
@@ -23422,6 +23778,8 @@ class UpdateNamespaceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
             self.namespace_description = m.get('NamespaceDescription')
         if m.get('NamespaceId') is not None:
@@ -23545,9 +23903,11 @@ class UpdateNamespaceResponse(TeaModel):
 class UpdateNamespaceVpcRequest(TeaModel):
     def __init__(
         self,
+        name_space_short_id: str = None,
         namespace_id: str = None,
         vpc_id: str = None,
     ):
+        self.name_space_short_id = name_space_short_id
         self.namespace_id = namespace_id
         self.vpc_id = vpc_id
 
@@ -23560,6 +23920,8 @@ class UpdateNamespaceVpcRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name_space_short_id is not None:
+            result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.vpc_id is not None:
@@ -23568,6 +23930,8 @@ class UpdateNamespaceVpcRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NameSpaceShortId') is not None:
+            self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('VpcId') is not None:

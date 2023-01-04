@@ -1021,6 +1021,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alb_rules):
+            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
@@ -1059,6 +1061,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alb_rules):
+            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
@@ -1328,6 +1332,8 @@ class Client(OpenApiClient):
             body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_image_accl):
+            body['EnableImageAccl'] = request.enable_image_accl
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
@@ -1464,6 +1470,8 @@ class Client(OpenApiClient):
             body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_image_accl):
+            body['EnableImageAccl'] = request.enable_image_accl
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
@@ -1517,6 +1525,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
             query['NamespaceDescription'] = request.namespace_description
         if not UtilClient.is_unset(request.namespace_id):
@@ -1551,6 +1561,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
             query['NamespaceDescription'] = request.namespace_description
         if not UtilClient.is_unset(request.namespace_id):
@@ -2233,6 +2245,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.DeleteNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -2263,6 +2277,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.DeleteNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -2443,6 +2459,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.package_type):
+            query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):
@@ -2575,6 +2593,8 @@ class Client(OpenApiClient):
             query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.package_type):
+            query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):
@@ -4313,6 +4333,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.DescribeNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -4343,6 +4365,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.DescribeNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -4469,6 +4493,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -4499,6 +4525,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -7997,6 +8025,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alb_rules):
+            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dubbo_rules):
@@ -8033,6 +8063,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.alb_rules):
+            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dubbo_rules):
@@ -8276,6 +8308,8 @@ class Client(OpenApiClient):
             body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_image_accl):
+            body['EnableImageAccl'] = request.enable_image_accl
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
@@ -8394,6 +8428,8 @@ class Client(OpenApiClient):
             body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.enable_image_accl):
+            body['EnableImageAccl'] = request.enable_image_accl
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
@@ -8449,6 +8485,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
             query['NamespaceDescription'] = request.namespace_description
         if not UtilClient.is_unset(request.namespace_id):
@@ -8483,6 +8521,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
             query['NamespaceDescription'] = request.namespace_description
         if not UtilClient.is_unset(request.namespace_id):
@@ -8533,6 +8573,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -8565,6 +8607,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name_space_short_id):
+            query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.vpc_id):
