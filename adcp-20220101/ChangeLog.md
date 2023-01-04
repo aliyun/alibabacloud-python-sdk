@@ -1,3 +1,7 @@
+2023-01-04 Version: 1.0.2
+- UpdateHubClusterFeature Support workflow configuration.
+
+
 2022-09-23 Version: 1.0.1
 - DescribeHubClusters support parameter filtering.
 

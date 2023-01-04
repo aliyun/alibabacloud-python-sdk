@@ -825,10 +825,14 @@ class Client(OpenApiClient):
 
     def update_hub_cluster_feature_with_options(
         self,
-        request: adcp_20220101_models.UpdateHubClusterFeatureRequest,
+        tmp_req: adcp_20220101_models.UpdateHubClusterFeatureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adcp_20220101_models.UpdateHubClusterFeatureResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.UpdateHubClusterFeatureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.units):
+            request.units_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.units, 'Units', 'json')
         query = {}
         if not UtilClient.is_unset(request.api_server_eip_id):
             query['ApiServerEipId'] = request.api_server_eip_id
@@ -842,10 +846,20 @@ class Client(OpenApiClient):
             query['EnableArgoCD'] = request.enable_argo_cd
         if not UtilClient.is_unset(request.enable_mesh):
             query['EnableMesh'] = request.enable_mesh
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.price_limit):
+            query['PriceLimit'] = request.price_limit
         if not UtilClient.is_unset(request.public_api_server_enabled):
             query['PublicApiServerEnabled'] = request.public_api_server_enabled
+        if not UtilClient.is_unset(request.schedule_mode):
+            query['ScheduleMode'] = request.schedule_mode
+        if not UtilClient.is_unset(request.server_enabled):
+            query['ServerEnabled'] = request.server_enabled
+        if not UtilClient.is_unset(request.units_shrink):
+            query['Units'] = request.units_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -867,10 +881,14 @@ class Client(OpenApiClient):
 
     async def update_hub_cluster_feature_with_options_async(
         self,
-        request: adcp_20220101_models.UpdateHubClusterFeatureRequest,
+        tmp_req: adcp_20220101_models.UpdateHubClusterFeatureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adcp_20220101_models.UpdateHubClusterFeatureResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.UpdateHubClusterFeatureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.units):
+            request.units_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.units, 'Units', 'json')
         query = {}
         if not UtilClient.is_unset(request.api_server_eip_id):
             query['ApiServerEipId'] = request.api_server_eip_id
@@ -884,10 +902,20 @@ class Client(OpenApiClient):
             query['EnableArgoCD'] = request.enable_argo_cd
         if not UtilClient.is_unset(request.enable_mesh):
             query['EnableMesh'] = request.enable_mesh
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.price_limit):
+            query['PriceLimit'] = request.price_limit
         if not UtilClient.is_unset(request.public_api_server_enabled):
             query['PublicApiServerEnabled'] = request.public_api_server_enabled
+        if not UtilClient.is_unset(request.schedule_mode):
+            query['ScheduleMode'] = request.schedule_mode
+        if not UtilClient.is_unset(request.server_enabled):
+            query['ServerEnabled'] = request.server_enabled
+        if not UtilClient.is_unset(request.units_shrink):
+            query['Units'] = request.units_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

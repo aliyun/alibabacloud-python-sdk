@@ -11,8 +11,11 @@ class AttachClusterToHubRequest(TeaModel):
         cluster_id: str = None,
         cluster_ids: str = None,
     ):
+        # Specifies whether to associate the clusters with Service Mesh (ASM) instances. Valid values:
         self.attach_to_mesh = attach_to_mesh
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # A JSON string that can be parsed into a string array. The string specifies the clusters that you want to associate with the master instance.
         self.cluster_ids = cluster_ids
 
     def validate(self):
@@ -51,9 +54,13 @@ class AttachClusterToHubResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # A list of the IDs of the clusters that you want to associate with the master instance.
         self.managed_cluster_ids = managed_cluster_ids
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -144,13 +151,26 @@ class CreateHubClusterRequest(TeaModel):
         v_switches: str = None,
         vpc_id: str = None,
     ):
+        # Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
         self.api_server_public_eip = api_server_public_eip
+        # Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
         self.audit_log_enabled = audit_log_enabled
+        # Specifies whether the security group is an advanced security group.
         self.is_enterprise_security_group = is_enterprise_security_group
+        # The name of the master instance.
         self.name = name
+        # Scenario-oriented master control type. The value can be:
+        # 
+        # - `Default`: Standard scenario Master instance.
+        # - `XFlow`: Workflow scenario master instance.
+        # 
+        # Default Value: `Default`.
         self.profile = profile
+        # The ID of the region. You can call the DescribeRegions operation to query available regions.
         self.region_id = region_id
+        # The ID of the vSwitch.
         self.v_switches = v_switches
+        # The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -208,8 +228,11 @@ class CreateHubClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -290,7 +313,9 @@ class DeleteHubClusterRequest(TeaModel):
         cluster_id: str = None,
         force: bool = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # Specifies whether to forcefully delete the master instance. Valid values: - true: forcefully delete the master instance. - false: does not forcefully delete the master instance. Default value: false.
         self.force = force
 
     def validate(self):
@@ -324,8 +349,11 @@ class DeleteHubClusterResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the master instance.
         self.task_id = task_id
 
     def validate(self):
@@ -405,6 +433,7 @@ class DescribeHubClusterDetailsRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -434,8 +463,11 @@ class DescribeHubClusterDetailsResponseBodyClusterApiServer(TeaModel):
         enabled_public: bool = None,
         load_balancer_id: str = None,
     ):
+        # The ID of the elastic IP address (EIP).
         self.api_server_eip_id = api_server_eip_id
+        # Indicates whether a public endpoint is used to expose the API server. Valid values: - true: a public endpoint is used to expose the API server. - false: no public endpoint is used to expose the API server.
         self.enabled_public = enabled_public
+        # The ID of the Server Load Balancer (SLB) instance.
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -480,15 +512,25 @@ class DescribeHubClusterDetailsResponseBodyClusterClusterInfo(TeaModel):
         update_time: str = None,
         version: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # The specification of the master instance. Valid values: - ack.pro.small: ACK Pro
         self.cluster_spec = cluster_spec
+        # The time when the master instance was created.
         self.creation_time = creation_time
+        # The error message that is returned when the system fails to create the master instance.
         self.error_message = error_message
+        # The name of the master instance.
         self.name = name
+        # The configurations of the master instance.
         self.profile = profile
+        # The ID of the region in which the master instance resides.
         self.region_id = region_id
+        # The status of the master instance. Valid values: - initial: The master instance is being initialized. - failed: The master instance failed to be created. - running: The master instance is running. - inactive: The master instance is inactive. - deleting: The master instance is being deleted. - delete_failed: The master instance failed to be deleted. - deleted: The master instance is deleted.
         self.state = state
+        # The time when the master instance was updated.
         self.update_time = update_time
+        # The Kubernetes version of the master instance.
         self.version = version
 
     def validate(self):
@@ -555,9 +597,16 @@ class DescribeHubClusterDetailsResponseBodyClusterConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # 删除条件错误信息
         self.message = message
+        # 删除条件原因
         self.reason = reason
+        # 删除条件状态，取值
+        # - True 不能删除
+        # - False 允许删除
+        # - Unknow 未知
         self.status = status
+        # 删除条件类型
         self.type = type
 
     def validate(self):
@@ -598,7 +647,9 @@ class DescribeHubClusterDetailsResponseBodyClusterEndpoints(TeaModel):
         intranet_api_server_endpoint: str = None,
         public_api_server_endpoint: str = None,
     ):
+        # The internal endpoint of the API server of the master instance.
         self.intranet_api_server_endpoint = intranet_api_server_endpoint
+        # The public endpoint of the API server of the master instance.
         self.public_api_server_endpoint = public_api_server_endpoint
 
     def validate(self):
@@ -632,8 +683,11 @@ class DescribeHubClusterDetailsResponseBodyClusterLogConfig(TeaModel):
         log_project: str = None,
         log_store_ttl: str = None,
     ):
+        # Indicates whether audit logs are enabled. Valid values: - true: audit logs are enabled. - false: audit logs are disabled.
         self.enable_log = enable_log
+        # The name of the Log Service project.
         self.log_project = log_project
+        # The retention period of the logs.
         self.log_store_ttl = log_store_ttl
 
     def validate(self):
@@ -670,7 +724,9 @@ class DescribeHubClusterDetailsResponseBodyClusterMeshConfig(TeaModel):
         enable_mesh: bool = None,
         mesh_id: str = None,
     ):
+        # Indicates whether ASM is enabled. Valid values: - true: ASM is enabled. - false: ASM is disabled.
         self.enable_mesh = enable_mesh
+        # The ID of the ASM instance.
         self.mesh_id = mesh_id
 
     def validate(self):
@@ -706,10 +762,15 @@ class DescribeHubClusterDetailsResponseBodyClusterNetwork(TeaModel):
         v_switches: List[str] = None,
         vpc_id: str = None,
     ):
+        # The domain name of the master instance.
         self.cluster_domain = cluster_domain
+        # The IP version that is supported by the master instance. Valid values: - ipv4: IPv4. - ipv6: IPv6. - dual: IPv4 and IPv6.
         self.ipstack = ipstack
+        # The ID of the associated security group.
         self.security_group_ids = security_group_ids
+        # A list of the vSwitches that are used by the master instance.
         self.v_switches = v_switches
+        # The ID of the virtual private cloud (VPC) in which the master instance resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -759,12 +820,19 @@ class DescribeHubClusterDetailsResponseBodyCluster(TeaModel):
         mesh_config: DescribeHubClusterDetailsResponseBodyClusterMeshConfig = None,
         network: DescribeHubClusterDetailsResponseBodyClusterNetwork = None,
     ):
+        # Information about the API server of the master instance.
         self.api_server = api_server
+        # The details about the master instance.
         self.cluster_info = cluster_info
+        # 集群删除条件信息列表
         self.conditions = conditions
+        # The endpoint of the master instance.
         self.endpoints = endpoints
+        # The logging configuration.
         self.log_config = log_config
+        # The Service Mesh (ASM) configurations.
         self.mesh_config = mesh_config
+        # The network configurations of the master instance.
         self.network = network
 
     def validate(self):
@@ -843,7 +911,9 @@ class DescribeHubClusterDetailsResponseBody(TeaModel):
         cluster: DescribeHubClusterDetailsResponseBodyCluster = None,
         request_id: str = None,
     ):
+        # The details about the master instance.
         self.cluster = cluster
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -922,7 +992,9 @@ class DescribeHubClusterKubeconfigRequest(TeaModel):
         cluster_id: str = None,
         private_ip_address: bool = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # Specifies whether to obtain the credential that is used to connect to the master instance over the internal network. Valid values: - `true`: obtains only the credential that is used to access the master instance over the internal network. - `false`: obtains only the credential that is used to access the master instance over the Internet. Default value: `false`.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -955,7 +1027,9 @@ class DescribeHubClusterKubeconfigResponseBody(TeaModel):
         kubeconfig: str = None,
         request_id: str = None,
     ):
+        # The content of the kubeconfig file of the master instance.
         self.kubeconfig = kubeconfig
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1031,6 +1105,7 @@ class DescribeHubClusterLogsRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -1061,9 +1136,13 @@ class DescribeHubClusterLogsResponseBodyLogs(TeaModel):
         creation_time: str = None,
         log_level: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # A log of the master instance.
         self.cluster_log = cluster_log
+        # The time when the log was created. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC time).
         self.creation_time = creation_time
+        # The severity level of the log. Valid values: - error: errors. - warn: warnings. - info: information.
         self.log_level = log_level
 
     def validate(self):
@@ -1104,7 +1183,9 @@ class DescribeHubClusterLogsResponseBody(TeaModel):
         logs: List[DescribeHubClusterLogsResponseBodyLogs] = None,
         request_id: str = None,
     ):
+        # Brief information about operation logs.
         self.logs = logs
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1188,6 +1269,12 @@ class DescribeHubClustersRequest(TeaModel):
         self,
         profile: str = None,
     ):
+        # The scenario where master instances are used. Valid values:
+        # 
+        # *   `Default`: standard scenarios.
+        # *   `XFlow`: workflow scenarios.
+        # 
+        # Default value: `Default`.
         self.profile = profile
 
     def validate(self):
@@ -1217,8 +1304,14 @@ class DescribeHubClustersResponseBodyClustersApiServer(TeaModel):
         enabled_public: bool = None,
         load_balancer_id: str = None,
     ):
+        # The ID of the elastic IP address (EIP).
         self.api_server_eip_id = api_server_eip_id
+        # Indicates whether the API server is accessible over the Internet. Valid values:
+        # 
+        # *   true: The API server is accessible over the Internet.
+        # *   false: The API server is inaccessible over the Internet.
         self.enabled_public = enabled_public
+        # The ID of the Server Load Balancer (SLB) instance that is associated with the Kubernetes API server.
         self.load_balancer_id = load_balancer_id
 
     def validate(self):
@@ -1263,15 +1356,35 @@ class DescribeHubClustersResponseBodyClustersClusterInfo(TeaModel):
         update_time: str = None,
         version: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # The specification of the master instance.
+        # 
+        # *   ack.pro.small: ACK Pro cluster
         self.cluster_spec = cluster_spec
+        # The time when the master instance was created.
         self.creation_time = creation_time
+        # The error message returned when the master instance failed to be created.
         self.error_message = error_message
+        # The name of the master instance.
         self.name = name
+        # The configurations of the master instance.
         self.profile = profile
+        # The ID of the region in which the master instance resides.
         self.region_id = region_id
+        # The status of the master instance. Valid values:
+        # 
+        # *   initial: The master instance is being initialized.
+        # *   failed: The master instance failed to be created.
+        # *   running: The master instance is running
+        # *   inactive: The master instance is pending.
+        # *   deleting: The master instance is being deleted.
+        # *   delete_failed: The master instance failed to be deleted.
+        # *   deleted: The master instance is deleted.
         self.state = state
+        # The last time when the master instance was updated.
         self.update_time = update_time
+        # The Kubernetes version of the master instance.
         self.version = version
 
     def validate(self):
@@ -1338,9 +1451,17 @@ class DescribeHubClustersResponseBodyClustersConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The error message of the deletion condition.
         self.message = message
+        # The reason for the deletion condition.
         self.reason = reason
+        # The status of the deletion condition. Valid values:
+        # 
+        # *   True: The master instance cannot be deleted.
+        # *   False: The master instance can be deleted.
+        # *   Unknow: Whether the master instance can be deleted is unknown.
         self.status = status
+        # The type of deletion condition.
         self.type = type
 
     def validate(self):
@@ -1381,7 +1502,9 @@ class DescribeHubClustersResponseBodyClustersEndpoints(TeaModel):
         intranet_api_server_endpoint: str = None,
         public_api_server_endpoint: str = None,
     ):
+        # The internal endpoint of the API server.
         self.intranet_api_server_endpoint = intranet_api_server_endpoint
+        # The public endpoint of the API server.
         self.public_api_server_endpoint = public_api_server_endpoint
 
     def validate(self):
@@ -1415,8 +1538,14 @@ class DescribeHubClustersResponseBodyClustersLogConfig(TeaModel):
         log_project: str = None,
         log_store_ttl: str = None,
     ):
+        # Indicates whether audit logging is enabled. Valid values:
+        # 
+        # *   true: Audit logging is enabled.
+        # *   false: Audit logging is disabled.
         self.enable_log = enable_log
+        # The name of the project of Log Service.
         self.log_project = log_project
+        # The number of days that logs are retained by Log Service.
         self.log_store_ttl = log_store_ttl
 
     def validate(self):
@@ -1453,7 +1582,12 @@ class DescribeHubClustersResponseBodyClustersMeshConfig(TeaModel):
         enable_mesh: bool = None,
         mesh_id: str = None,
     ):
+        # Indicates whether ASM is enabled. Valid values:
+        # 
+        # *   true: ASM is enabled.
+        # *   false: ASM is disabled.
         self.enable_mesh = enable_mesh
+        # The ID of the ASM instance.
         self.mesh_id = mesh_id
 
     def validate(self):
@@ -1488,9 +1622,13 @@ class DescribeHubClustersResponseBodyClustersNetwork(TeaModel):
         v_switches: List[str] = None,
         vpc_id: str = None,
     ):
+        # The domain name of the master instance.
         self.cluster_domain = cluster_domain
+        # The security group IDs of the master instance.
         self.security_group_ids = security_group_ids
+        # The IDs of the vSwitches to which the master instance is connected.
         self.v_switches = v_switches
+        # The ID of the virtual private cloud (VPC) to which the master instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1536,12 +1674,19 @@ class DescribeHubClustersResponseBodyClusters(TeaModel):
         mesh_config: DescribeHubClustersResponseBodyClustersMeshConfig = None,
         network: DescribeHubClustersResponseBodyClustersNetwork = None,
     ):
+        # The details of the Kubernetes API server.
         self.api_server = api_server
+        # The details of the master instance.
         self.cluster_info = cluster_info
+        # The list of the deletion conditions of the master instance.
         self.conditions = conditions
+        # The endpoint of the master instance.
         self.endpoints = endpoints
+        # The logging configurations.
         self.log_config = log_config
+        # The configurations of Alibaba Cloud Service Mesh (ASM).
         self.mesh_config = mesh_config
+        # The network configurations of the master instance.
         self.network = network
 
     def validate(self):
@@ -1620,7 +1765,9 @@ class DescribeHubClustersResponseBody(TeaModel):
         clusters: List[DescribeHubClustersResponseBodyClusters] = None,
         request_id: str = None,
     ):
+        # The list of the master instances returned.
         self.clusters = clusters
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1704,6 +1851,7 @@ class DescribeManagedClustersRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -1744,19 +1892,33 @@ class DescribeManagedClustersResponseBodyClustersCluster(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # The specification of the master instance. Valid values: - ack.pro.small: ACK Pro.
         self.cluster_spec = cluster_spec
+        # The type of the master instance.
         self.cluster_type = cluster_type
+        # The time when the master instance was created.
         self.created = created
+        # The current Kubernetes version of the master instance.
         self.current_version = current_version
+        # The original Kubernetes version of the master instance.
         self.init_version = init_version
+        # The name of the master instance.
         self.name = name
+        # The name of the master instance.
         self.profile = profile
+        # The region in which the master instance resides.
         self.region = region
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the associated clusters. Valid values: - initial: The associated clusters are being initialized. - failed: The associated clustersfailed to be created. - running: The associated clusters are running. - inactive: The associated clusters are inactive. - deleting: The associated clusters are being deleted. - deleted: The associated clusters are deleted.
         self.state = state
+        # The time when the master instance was updated.
         self.updated = updated
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1836,6 +1998,7 @@ class DescribeManagedClustersResponseBodyClustersMeshStatus(TeaModel):
         self,
         in_mesh: bool = None,
     ):
+        # Indicates whether the clusters are associated with ASM instances. Valid values: - true: The clusters are associated with ASM instances. - false: The clusters are not associated with ASM instances.
         self.in_mesh = in_mesh
 
     def validate(self):
@@ -1864,7 +2027,9 @@ class DescribeManagedClustersResponseBodyClustersStatus(TeaModel):
         message: str = None,
         state: str = None,
     ):
+        # The status information.
         self.message = message
+        # The status of the association between the clusters and the master instance. Valid values: - Installing: The clusters are being associated with the master instance. - Successed: The clusters are associated with the master instance. - Failed: The clusters failed to be associated with the master instance. - Deleting: The clusters are being disassociated from the master instance. - Deleted: The clusters are disassociated from the master instance.
         self.state = state
 
     def validate(self):
@@ -1898,8 +2063,11 @@ class DescribeManagedClustersResponseBodyClusters(TeaModel):
         mesh_status: DescribeManagedClustersResponseBodyClustersMeshStatus = None,
         status: DescribeManagedClustersResponseBodyClustersStatus = None,
     ):
+        # The name of the master instance.
         self.cluster = cluster
+        # The status of the association between the clusters and Service Mesh (ASM).
         self.mesh_status = mesh_status
+        # The status of the association between the clusters and the master instance.
         self.status = status
 
     def validate(self):
@@ -1944,7 +2112,9 @@ class DescribeManagedClustersResponseBody(TeaModel):
         clusters: List[DescribeManagedClustersResponseBodyClusters] = None,
         request_id: str = None,
     ):
+        # Information about the master instance.
         self.clusters = clusters
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2028,6 +2198,7 @@ class DescribeRegionsRequest(TeaModel):
         self,
         language: str = None,
     ):
+        # The language. Valid values: zh, en, and jp.
         self.language = language
 
     def validate(self):
@@ -2056,7 +2227,9 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -2089,7 +2262,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # A list of available regions that are returned.
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2175,8 +2350,11 @@ class DetachClusterFromHubRequest(TeaModel):
         cluster_ids: str = None,
         detach_from_mesh: bool = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # A JSON string that can be parsed into a string array. The string specifies the clusters that you want to disassociate from the master instance.
         self.cluster_ids = cluster_ids
+        # Specifies whether to only disassociate the clusters from Service Mesh (ASM) instances. Valid values: - true: only disassociates the clusters from ASM instances. - false: disassociates the clusters from the master instance and ASM instances.
         self.detach_from_mesh = detach_from_mesh
 
     def validate(self):
@@ -2215,9 +2393,13 @@ class DetachClusterFromHubResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # The IDs of the clusters that are disassociated from the master instance.
         self.managed_cluster_ids = managed_cluster_ids
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -2296,6 +2478,86 @@ class DetachClusterFromHubResponse(TeaModel):
         return self
 
 
+class UpdateHubClusterFeatureRequestUnitsVSwitches(TeaModel):
+    def __init__(
+        self,
+        vswitch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.vswitch_id = vswitch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateHubClusterFeatureRequestUnits(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        v_switches: List[UpdateHubClusterFeatureRequestUnitsVSwitches] = None,
+        vpc_id: str = None,
+    ):
+        self.region_id = region_id
+        self.v_switches = v_switches
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.v_switches:
+            for k in self.v_switches:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['VSwitches'] = []
+        if self.v_switches is not None:
+            for k in self.v_switches:
+                result['VSwitches'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.v_switches = []
+        if m.get('VSwitches') is not None:
+            for k in m.get('VSwitches'):
+                temp_model = UpdateHubClusterFeatureRequestUnitsVSwitches()
+                self.v_switches.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class UpdateHubClusterFeatureRequest(TeaModel):
     def __init__(
         self,
@@ -2305,17 +2567,156 @@ class UpdateHubClusterFeatureRequest(TeaModel):
         deletion_protection: bool = None,
         enable_argo_cd: bool = None,
         enable_mesh: bool = None,
+        enabled: bool = None,
         name: str = None,
+        price_limit: str = None,
         public_api_server_enabled: bool = None,
+        schedule_mode: str = None,
+        server_enabled: bool = None,
+        units: List[UpdateHubClusterFeatureRequestUnits] = None,
     ):
+        # The ID of the EIP.
         self.api_server_eip_id = api_server_eip_id
+        # Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
         self.audit_log_enabled = audit_log_enabled
+        # The ID of the master instance.
         self.cluster_id = cluster_id
+        # Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
         self.deletion_protection = deletion_protection
+        # Whether to enable ArgoCD.
+        # 
+        # - true Enabled
+        # - false Disabled
         self.enable_argo_cd = enable_argo_cd
+        # Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
         self.enable_mesh = enable_mesh
+        self.enabled = enabled
+        # The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
         self.name = name
+        self.price_limit = price_limit
+        # Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
         self.public_api_server_enabled = public_api_server_enabled
+        self.schedule_mode = schedule_mode
+        self.server_enabled = server_enabled
+        self.units = units
+
+    def validate(self):
+        if self.units:
+            for k in self.units:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_server_eip_id is not None:
+            result['ApiServerEipId'] = self.api_server_eip_id
+        if self.audit_log_enabled is not None:
+            result['AuditLogEnabled'] = self.audit_log_enabled
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
+        if self.enable_argo_cd is not None:
+            result['EnableArgoCD'] = self.enable_argo_cd
+        if self.enable_mesh is not None:
+            result['EnableMesh'] = self.enable_mesh
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.price_limit is not None:
+            result['PriceLimit'] = self.price_limit
+        if self.public_api_server_enabled is not None:
+            result['PublicApiServerEnabled'] = self.public_api_server_enabled
+        if self.schedule_mode is not None:
+            result['ScheduleMode'] = self.schedule_mode
+        if self.server_enabled is not None:
+            result['ServerEnabled'] = self.server_enabled
+        result['Units'] = []
+        if self.units is not None:
+            for k in self.units:
+                result['Units'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiServerEipId') is not None:
+            self.api_server_eip_id = m.get('ApiServerEipId')
+        if m.get('AuditLogEnabled') is not None:
+            self.audit_log_enabled = m.get('AuditLogEnabled')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
+        if m.get('EnableArgoCD') is not None:
+            self.enable_argo_cd = m.get('EnableArgoCD')
+        if m.get('EnableMesh') is not None:
+            self.enable_mesh = m.get('EnableMesh')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PriceLimit') is not None:
+            self.price_limit = m.get('PriceLimit')
+        if m.get('PublicApiServerEnabled') is not None:
+            self.public_api_server_enabled = m.get('PublicApiServerEnabled')
+        if m.get('ScheduleMode') is not None:
+            self.schedule_mode = m.get('ScheduleMode')
+        if m.get('ServerEnabled') is not None:
+            self.server_enabled = m.get('ServerEnabled')
+        self.units = []
+        if m.get('Units') is not None:
+            for k in m.get('Units'):
+                temp_model = UpdateHubClusterFeatureRequestUnits()
+                self.units.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateHubClusterFeatureShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        api_server_eip_id: str = None,
+        audit_log_enabled: bool = None,
+        cluster_id: str = None,
+        deletion_protection: bool = None,
+        enable_argo_cd: bool = None,
+        enable_mesh: bool = None,
+        enabled: bool = None,
+        name: str = None,
+        price_limit: str = None,
+        public_api_server_enabled: bool = None,
+        schedule_mode: str = None,
+        server_enabled: bool = None,
+        units_shrink: str = None,
+    ):
+        # The ID of the EIP.
+        self.api_server_eip_id = api_server_eip_id
+        # Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
+        self.audit_log_enabled = audit_log_enabled
+        # The ID of the master instance.
+        self.cluster_id = cluster_id
+        # Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
+        self.deletion_protection = deletion_protection
+        # Whether to enable ArgoCD.
+        # 
+        # - true Enabled
+        # - false Disabled
+        self.enable_argo_cd = enable_argo_cd
+        # Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
+        self.enable_mesh = enable_mesh
+        self.enabled = enabled
+        # The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
+        self.name = name
+        self.price_limit = price_limit
+        # Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
+        self.public_api_server_enabled = public_api_server_enabled
+        self.schedule_mode = schedule_mode
+        self.server_enabled = server_enabled
+        self.units_shrink = units_shrink
 
     def validate(self):
         pass
@@ -2338,10 +2739,20 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             result['EnableArgoCD'] = self.enable_argo_cd
         if self.enable_mesh is not None:
             result['EnableMesh'] = self.enable_mesh
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
         if self.name is not None:
             result['Name'] = self.name
+        if self.price_limit is not None:
+            result['PriceLimit'] = self.price_limit
         if self.public_api_server_enabled is not None:
             result['PublicApiServerEnabled'] = self.public_api_server_enabled
+        if self.schedule_mode is not None:
+            result['ScheduleMode'] = self.schedule_mode
+        if self.server_enabled is not None:
+            result['ServerEnabled'] = self.server_enabled
+        if self.units_shrink is not None:
+            result['Units'] = self.units_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -2358,10 +2769,20 @@ class UpdateHubClusterFeatureRequest(TeaModel):
             self.enable_argo_cd = m.get('EnableArgoCD')
         if m.get('EnableMesh') is not None:
             self.enable_mesh = m.get('EnableMesh')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PriceLimit') is not None:
+            self.price_limit = m.get('PriceLimit')
         if m.get('PublicApiServerEnabled') is not None:
             self.public_api_server_enabled = m.get('PublicApiServerEnabled')
+        if m.get('ScheduleMode') is not None:
+            self.schedule_mode = m.get('ScheduleMode')
+        if m.get('ServerEnabled') is not None:
+            self.server_enabled = m.get('ServerEnabled')
+        if m.get('Units') is not None:
+            self.units_shrink = m.get('Units')
         return self
 
 
@@ -2370,6 +2791,7 @@ class UpdateHubClusterFeatureResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
