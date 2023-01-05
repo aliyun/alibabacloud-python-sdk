@@ -2528,7 +2528,8 @@ class GetStyleTopResponseBodyData(TeaModel):
         material: str = None,
         price: float = None,
         product_link: str = None,
-        sales_volume: float = None,
+        sales: float = None,
+        sales_volume: int = None,
         search_volume: float = None,
         shop_id: int = None,
         shop_name: str = None,
@@ -2545,6 +2546,7 @@ class GetStyleTopResponseBodyData(TeaModel):
         self.material = material
         self.price = price
         self.product_link = product_link
+        self.sales = sales
         self.sales_volume = sales_volume
         self.search_volume = search_volume
         self.shop_id = shop_id
@@ -2581,6 +2583,8 @@ class GetStyleTopResponseBodyData(TeaModel):
             result['Price'] = self.price
         if self.product_link is not None:
             result['ProductLink'] = self.product_link
+        if self.sales is not None:
+            result['Sales'] = self.sales
         if self.sales_volume is not None:
             result['SalesVolume'] = self.sales_volume
         if self.search_volume is not None:
@@ -2617,6 +2621,8 @@ class GetStyleTopResponseBodyData(TeaModel):
             self.price = m.get('Price')
         if m.get('ProductLink') is not None:
             self.product_link = m.get('ProductLink')
+        if m.get('Sales') is not None:
+            self.sales = m.get('Sales')
         if m.get('SalesVolume') is not None:
             self.sales_volume = m.get('SalesVolume')
         if m.get('SearchVolume') is not None:
