@@ -804,6 +804,8 @@ class Client(OpenApiClient):
             body['BaselineName'] = request.baseline_name
         if not UtilClient.is_unset(request.baseline_type):
             body['BaselineType'] = request.baseline_type
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.overtime_settings):
             body['OvertimeSettings'] = request.overtime_settings
         if not UtilClient.is_unset(request.owner):
@@ -812,8 +814,6 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.task_ids):
-            body['TaskIds'] = request.task_ids
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -846,6 +846,8 @@ class Client(OpenApiClient):
             body['BaselineName'] = request.baseline_name
         if not UtilClient.is_unset(request.baseline_type):
             body['BaselineType'] = request.baseline_type
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.overtime_settings):
             body['OvertimeSettings'] = request.overtime_settings
         if not UtilClient.is_unset(request.owner):
@@ -854,8 +856,6 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.task_ids):
-            body['TaskIds'] = request.task_ids
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -16847,6 +16847,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_topics_with_options_async(request, runtime)
 
+    def mount_directory_with_options(
+        self,
+        request: dataworks_public_20200518_models.MountDirectoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.target_id):
+            body['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MountDirectory',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.MountDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mount_directory_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.MountDirectoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.target_id):
+            body['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MountDirectory',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.MountDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mount_directory(
+        self,
+        request: dataworks_public_20200518_models.MountDirectoryRequest,
+    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mount_directory_with_options(request, runtime)
+
+    async def mount_directory_async(
+        self,
+        request: dataworks_public_20200518_models.MountDirectoryRequest,
+    ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mount_directory_with_options_async(request, runtime)
+
     def offline_node_with_options(
         self,
         request: dataworks_public_20200518_models.OfflineNodeRequest,
@@ -19261,6 +19335,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.top_ten_error_times_instance_with_options_async(request, runtime)
 
+    def umount_directory_with_options(
+        self,
+        request: dataworks_public_20200518_models.UmountDirectoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.target_id):
+            body['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UmountDirectory',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UmountDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def umount_directory_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.UmountDirectoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.target_id):
+            body['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UmountDirectory',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UmountDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def umount_directory(
+        self,
+        request: dataworks_public_20200518_models.UmountDirectoryRequest,
+    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.umount_directory_with_options(request, runtime)
+
+    async def umount_directory_async(
+        self,
+        request: dataworks_public_20200518_models.UmountDirectoryRequest,
+    ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.umount_directory_with_options_async(request, runtime)
+
     def update_baseline_with_options(
         self,
         tmp_req: dataworks_public_20200518_models.UpdateBaselineRequest,
@@ -19288,6 +19436,8 @@ class Client(OpenApiClient):
             body['BaselineType'] = request.baseline_type
         if not UtilClient.is_unset(request.enabled):
             body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.overtime_settings_shrink):
             body['OvertimeSettings'] = request.overtime_settings_shrink
         if not UtilClient.is_unset(request.owner):
@@ -19296,10 +19446,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.remove_task_ids):
-            body['RemoveTaskIds'] = request.remove_task_ids
-        if not UtilClient.is_unset(request.task_ids):
-            body['TaskIds'] = request.task_ids
+        if not UtilClient.is_unset(request.remove_node_ids):
+            body['RemoveNodeIds'] = request.remove_node_ids
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -19346,6 +19494,8 @@ class Client(OpenApiClient):
             body['BaselineType'] = request.baseline_type
         if not UtilClient.is_unset(request.enabled):
             body['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.node_ids):
+            body['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.overtime_settings_shrink):
             body['OvertimeSettings'] = request.overtime_settings_shrink
         if not UtilClient.is_unset(request.owner):
@@ -19354,10 +19504,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.remove_task_ids):
-            body['RemoveTaskIds'] = request.remove_task_ids
-        if not UtilClient.is_unset(request.task_ids):
-            body['TaskIds'] = request.task_ids
+        if not UtilClient.is_unset(request.remove_node_ids):
+            body['RemoveNodeIds'] = request.remove_node_ids
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
