@@ -1,3 +1,7 @@
+2023-01-05 Version: 1.0.3
+- DeleteHubCluster Support retain resources.
+
+
 2023-01-04 Version: 1.0.2
 - UpdateHubClusterFeature Support workflow configuration.
 

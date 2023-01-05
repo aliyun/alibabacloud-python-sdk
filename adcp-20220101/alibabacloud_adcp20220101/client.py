@@ -249,15 +249,21 @@ class Client(OpenApiClient):
 
     def delete_hub_cluster_with_options(
         self,
-        request: adcp_20220101_models.DeleteHubClusterRequest,
+        tmp_req: adcp_20220101_models.DeleteHubClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adcp_20220101_models.DeleteHubClusterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.DeleteHubClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.retain_resources):
+            request.retain_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_resources, 'RetainResources', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.retain_resources_shrink):
+            query['RetainResources'] = request.retain_resources_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -279,15 +285,21 @@ class Client(OpenApiClient):
 
     async def delete_hub_cluster_with_options_async(
         self,
-        request: adcp_20220101_models.DeleteHubClusterRequest,
+        tmp_req: adcp_20220101_models.DeleteHubClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adcp_20220101_models.DeleteHubClusterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.DeleteHubClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.retain_resources):
+            request.retain_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_resources, 'RetainResources', 'json')
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.force):
             query['Force'] = request.force
+        if not UtilClient.is_unset(request.retain_resources_shrink):
+            query['RetainResources'] = request.retain_resources_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
