@@ -127,6 +127,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_video_task_with_options_async(request, runtime)
 
+    def close_timed_reset_operate_with_options(
+        self,
+        request: avatar_20220130_models.CloseTimedResetOperateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.CloseTimedResetOperateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseTimedResetOperate',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.CloseTimedResetOperateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_timed_reset_operate_with_options_async(
+        self,
+        request: avatar_20220130_models.CloseTimedResetOperateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.CloseTimedResetOperateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseTimedResetOperate',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.CloseTimedResetOperateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_timed_reset_operate(
+        self,
+        request: avatar_20220130_models.CloseTimedResetOperateRequest,
+    ) -> avatar_20220130_models.CloseTimedResetOperateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.close_timed_reset_operate_with_options(request, runtime)
+
+    async def close_timed_reset_operate_async(
+        self,
+        request: avatar_20220130_models.CloseTimedResetOperateRequest,
+    ) -> avatar_20220130_models.CloseTimedResetOperateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.close_timed_reset_operate_with_options_async(request, runtime)
+
     def duplex_decision_with_options(
         self,
         tmp_req: avatar_20220130_models.DuplexDecisionRequest,
@@ -405,6 +479,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_running_instance_with_options_async(request, runtime)
 
+    def query_timed_reset_operate_status_with_options(
+        self,
+        request: avatar_20220130_models.QueryTimedResetOperateStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.QueryTimedResetOperateStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTimedResetOperateStatus',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.QueryTimedResetOperateStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_timed_reset_operate_status_with_options_async(
+        self,
+        request: avatar_20220130_models.QueryTimedResetOperateStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.QueryTimedResetOperateStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTimedResetOperateStatus',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.QueryTimedResetOperateStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_timed_reset_operate_status(
+        self,
+        request: avatar_20220130_models.QueryTimedResetOperateStatusRequest,
+    ) -> avatar_20220130_models.QueryTimedResetOperateStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_timed_reset_operate_status_with_options(request, runtime)
+
+    async def query_timed_reset_operate_status_async(
+        self,
+        request: avatar_20220130_models.QueryTimedResetOperateStatusRequest,
+    ) -> avatar_20220130_models.QueryTimedResetOperateStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_timed_reset_operate_status_with_options_async(request, runtime)
+
     def send_message_with_options(
         self,
         tmp_req: avatar_20220130_models.SendMessageRequest,
@@ -604,6 +752,80 @@ class Client(OpenApiClient):
     ) -> avatar_20220130_models.StartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_instance_with_options_async(request, runtime)
+
+    def start_timed_reset_operate_with_options(
+        self,
+        request: avatar_20220130_models.StartTimedResetOperateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.StartTimedResetOperateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartTimedResetOperate',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.StartTimedResetOperateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_timed_reset_operate_with_options_async(
+        self,
+        request: avatar_20220130_models.StartTimedResetOperateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.StartTimedResetOperateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartTimedResetOperate',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.StartTimedResetOperateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_timed_reset_operate(
+        self,
+        request: avatar_20220130_models.StartTimedResetOperateRequest,
+    ) -> avatar_20220130_models.StartTimedResetOperateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_timed_reset_operate_with_options(request, runtime)
+
+    async def start_timed_reset_operate_async(
+        self,
+        request: avatar_20220130_models.StartTimedResetOperateRequest,
+    ) -> avatar_20220130_models.StartTimedResetOperateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_timed_reset_operate_with_options_async(request, runtime)
 
     def stop_instance_with_options(
         self,
