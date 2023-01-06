@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.CreateQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.CreateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to create a quota alert for a quota whose ID is `q_hvnoqv`. This quota represents the maximum number of rules that can be created by a user. The quota belongs to Cloud Config whose service code is `config`.
+        
+        @param request: CreateQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_name):
@@ -88,6 +95,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.CreateQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.CreateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to create a quota alert for a quota whose ID is `q_hvnoqv`. This quota represents the maximum number of rules that can be created by a user. The quota belongs to Cloud Config whose service code is `config`.
+        
+        @param request: CreateQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_name):
@@ -129,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.CreateQuotaAlarmRequest,
     ) -> quotas_20200510_models.CreateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to create a quota alert for a quota whose ID is `q_hvnoqv`. This quota represents the maximum number of rules that can be created by a user. The quota belongs to Cloud Config whose service code is `config`.
+        
+        @param request: CreateQuotaAlarmRequest
+        @return: CreateQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_quota_alarm_with_options(request, runtime)
 
@@ -136,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.CreateQuotaAlarmRequest,
     ) -> quotas_20200510_models.CreateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to create a quota alert for a quota whose ID is `q_hvnoqv`. This quota represents the maximum number of rules that can be created by a user. The quota belongs to Cloud Config whose service code is `config`.
+        
+        @param request: CreateQuotaAlarmRequest
+        @return: CreateQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_quota_alarm_with_options_async(request, runtime)
 
@@ -144,6 +170,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.CreateQuotaApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.CreateQuotaApplicationResponse:
+        """
+        In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The requested value of the quota is `804`, the application reason is `Scale Out`, and the region of the quota is `cn-hangzhou`.
+        
+        @param request: CreateQuotaApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.audit_mode):
@@ -152,8 +185,12 @@ class Client(OpenApiClient):
             body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.effective_time):
+            body['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.env_language):
             body['EnvLanguage'] = request.env_language
+        if not UtilClient.is_unset(request.expire_time):
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.notice_type):
             body['NoticeType'] = request.notice_type
         if not UtilClient.is_unset(request.product_code):
@@ -188,6 +225,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.CreateQuotaApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.CreateQuotaApplicationResponse:
+        """
+        In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The requested value of the quota is `804`, the application reason is `Scale Out`, and the region of the quota is `cn-hangzhou`.
+        
+        @param request: CreateQuotaApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.audit_mode):
@@ -196,8 +240,12 @@ class Client(OpenApiClient):
             body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.effective_time):
+            body['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.env_language):
             body['EnvLanguage'] = request.env_language
+        if not UtilClient.is_unset(request.expire_time):
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.notice_type):
             body['NoticeType'] = request.notice_type
         if not UtilClient.is_unset(request.product_code):
@@ -231,6 +279,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.CreateQuotaApplicationRequest,
     ) -> quotas_20200510_models.CreateQuotaApplicationResponse:
+        """
+        In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The requested value of the quota is `804`, the application reason is `Scale Out`, and the region of the quota is `cn-hangzhou`.
+        
+        @param request: CreateQuotaApplicationRequest
+        @return: CreateQuotaApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_quota_application_with_options(request, runtime)
 
@@ -238,6 +292,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.CreateQuotaApplicationRequest,
     ) -> quotas_20200510_models.CreateQuotaApplicationResponse:
+        """
+        In this example, the operation is called to submit an application to increase the value of a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The requested value of the quota is `804`, the application reason is `Scale Out`, and the region of the quota is `cn-hangzhou`.
+        
+        @param request: CreateQuotaApplicationRequest
+        @return: CreateQuotaApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_quota_application_with_options_async(request, runtime)
 
@@ -252,14 +312,20 @@ class Client(OpenApiClient):
             body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.effective_time):
+            body['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.env_language):
             body['EnvLanguage'] = request.env_language
+        if not UtilClient.is_unset(request.expire_time):
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.notice_type):
             body['NoticeType'] = request.notice_type
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -290,14 +356,20 @@ class Client(OpenApiClient):
             body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.effective_time):
+            body['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.env_language):
             body['EnvLanguage'] = request.env_language
+        if not UtilClient.is_unset(request.expire_time):
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.notice_type):
             body['NoticeType'] = request.notice_type
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -336,6 +408,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.DeleteQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.DeleteQuotaAlarmResponse:
+        """
+        In this example, the operation is called to delete a quota alert whose ID is `6b512ab7-da3a-4142-b529-2b2a9294***`.
+        
+        @param request: DeleteQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -364,6 +443,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.DeleteQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.DeleteQuotaAlarmResponse:
+        """
+        In this example, the operation is called to delete a quota alert whose ID is `6b512ab7-da3a-4142-b529-2b2a9294***`.
+        
+        @param request: DeleteQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -391,6 +477,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.DeleteQuotaAlarmRequest,
     ) -> quotas_20200510_models.DeleteQuotaAlarmResponse:
+        """
+        In this example, the operation is called to delete a quota alert whose ID is `6b512ab7-da3a-4142-b529-2b2a9294***`.
+        
+        @param request: DeleteQuotaAlarmRequest
+        @return: DeleteQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_quota_alarm_with_options(request, runtime)
 
@@ -398,6 +490,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.DeleteQuotaAlarmRequest,
     ) -> quotas_20200510_models.DeleteQuotaAlarmResponse:
+        """
+        In this example, the operation is called to delete a quota alert whose ID is `6b512ab7-da3a-4142-b529-2b2a9294***`.
+        
+        @param request: DeleteQuotaAlarmRequest
+        @return: DeleteQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_quota_alarm_with_options_async(request, runtime)
 
@@ -476,6 +574,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetProductQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetProductQuotaResponse:
+        """
+        In this example, the operation is called to query the details about a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details about the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
+        
+        @param request: GetProductQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProductQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -508,6 +613,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetProductQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetProductQuotaResponse:
+        """
+        In this example, the operation is called to query the details about a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details about the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
+        
+        @param request: GetProductQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProductQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -539,6 +651,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetProductQuotaRequest,
     ) -> quotas_20200510_models.GetProductQuotaResponse:
+        """
+        In this example, the operation is called to query the details about a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details about the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
+        
+        @param request: GetProductQuotaRequest
+        @return: GetProductQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_product_quota_with_options(request, runtime)
 
@@ -546,6 +664,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetProductQuotaRequest,
     ) -> quotas_20200510_models.GetProductQuotaResponse:
+        """
+        In this example, the operation is called to query the details about a quota whose ID is `q_security-groups` and whose name is Maximum Number of Security Groups. This quota belongs to Elastic Compute Service (ECS). The query result shows the details about the quota. The details include the name, ID, description, quota value, used quota, unit, and dimension of the quota. In this example, the quota name is `Maximum Number of Security Groups`. The quota ID is `q_security-groups`. The description is `The maximum number of security groups that can be created for the current account`. The quota value is `801`. The used quota is `26`. The quota unit is `security groups`. The quota dimension is `{"regionId":"cn-hangzhou"}`.
+        
+        @param request: GetProductQuotaRequest
+        @return: GetProductQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_product_quota_with_options_async(request, runtime)
 
@@ -554,6 +678,15 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetProductQuotaDimensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetProductQuotaDimensionResponse:
+        """
+        In this example, the operation is called to query the details about a quota dimension whose key is `regionId`. The quota dimension belongs to ECS Quotas by Instance Type whose service code is ecs-spec. The following query result is returned:
+        *   The values of the quota dimension include `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
+        *   The name of the quota dimension is `region`.
+        
+        @param request: GetProductQuotaDimensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProductQuotaDimensionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dependent_dimensions):
@@ -586,6 +719,15 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetProductQuotaDimensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetProductQuotaDimensionResponse:
+        """
+        In this example, the operation is called to query the details about a quota dimension whose key is `regionId`. The quota dimension belongs to ECS Quotas by Instance Type whose service code is ecs-spec. The following query result is returned:
+        *   The values of the quota dimension include `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
+        *   The name of the quota dimension is `region`.
+        
+        @param request: GetProductQuotaDimensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProductQuotaDimensionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dependent_dimensions):
@@ -617,6 +759,14 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetProductQuotaDimensionRequest,
     ) -> quotas_20200510_models.GetProductQuotaDimensionResponse:
+        """
+        In this example, the operation is called to query the details about a quota dimension whose key is `regionId`. The quota dimension belongs to ECS Quotas by Instance Type whose service code is ecs-spec. The following query result is returned:
+        *   The values of the quota dimension include `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
+        *   The name of the quota dimension is `region`.
+        
+        @param request: GetProductQuotaDimensionRequest
+        @return: GetProductQuotaDimensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_product_quota_dimension_with_options(request, runtime)
 
@@ -624,6 +774,14 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetProductQuotaDimensionRequest,
     ) -> quotas_20200510_models.GetProductQuotaDimensionResponse:
+        """
+        In this example, the operation is called to query the details about a quota dimension whose key is `regionId`. The quota dimension belongs to ECS Quotas by Instance Type whose service code is ecs-spec. The following query result is returned:
+        *   The values of the quota dimension include `cn-shenzhen`, `cn-beijing`, and `cn-hangzhou`.
+        *   The name of the quota dimension is `region`.
+        
+        @param request: GetProductQuotaDimensionRequest
+        @return: GetProductQuotaDimensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_product_quota_dimension_with_options_async(request, runtime)
 
@@ -632,6 +790,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetQuotaAlarmResponse:
+        """
+        In this example, the operation is called to query the details of a quota alert whose ID is `78d7e436-4b25-4897-84b5-d7b656bb***`. The details of the alert are returned. The query result includes the alert ID, alert name, alert contact, and the time when the quota alert was created.
+        
+        @param request: GetQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -660,6 +825,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetQuotaAlarmResponse:
+        """
+        In this example, the operation is called to query the details of a quota alert whose ID is `78d7e436-4b25-4897-84b5-d7b656bb***`. The details of the alert are returned. The query result includes the alert ID, alert name, alert contact, and the time when the quota alert was created.
+        
+        @param request: GetQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -687,6 +859,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetQuotaAlarmRequest,
     ) -> quotas_20200510_models.GetQuotaAlarmResponse:
+        """
+        In this example, the operation is called to query the details of a quota alert whose ID is `78d7e436-4b25-4897-84b5-d7b656bb***`. The details of the alert are returned. The query result includes the alert ID, alert name, alert contact, and the time when the quota alert was created.
+        
+        @param request: GetQuotaAlarmRequest
+        @return: GetQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_quota_alarm_with_options(request, runtime)
 
@@ -694,6 +872,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetQuotaAlarmRequest,
     ) -> quotas_20200510_models.GetQuotaAlarmResponse:
+        """
+        In this example, the operation is called to query the details of a quota alert whose ID is `78d7e436-4b25-4897-84b5-d7b656bb***`. The details of the alert are returned. The query result includes the alert ID, alert name, alert contact, and the time when the quota alert was created.
+        
+        @param request: GetQuotaAlarmRequest
+        @return: GetQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_quota_alarm_with_options_async(request, runtime)
 
@@ -702,6 +886,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetQuotaApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetQuotaApplicationResponse:
+        """
+        In this example, the operation is called to query the details about an application whose ID is `d314d6ae-867d-484c-9009-3d421a80***`. The query result shows the details about the application. The details include the application ID, application time, expected quota value, and application result.
+        
+        @param request: GetQuotaApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -730,6 +921,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.GetQuotaApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.GetQuotaApplicationResponse:
+        """
+        In this example, the operation is called to query the details about an application whose ID is `d314d6ae-867d-484c-9009-3d421a80***`. The query result shows the details about the application. The details include the application ID, application time, expected quota value, and application result.
+        
+        @param request: GetQuotaApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -757,6 +955,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetQuotaApplicationRequest,
     ) -> quotas_20200510_models.GetQuotaApplicationResponse:
+        """
+        In this example, the operation is called to query the details about an application whose ID is `d314d6ae-867d-484c-9009-3d421a80***`. The query result shows the details about the application. The details include the application ID, application time, expected quota value, and application result.
+        
+        @param request: GetQuotaApplicationRequest
+        @return: GetQuotaApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_quota_application_with_options(request, runtime)
 
@@ -764,6 +968,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.GetQuotaApplicationRequest,
     ) -> quotas_20200510_models.GetQuotaApplicationResponse:
+        """
+        In this example, the operation is called to query the details about an application whose ID is `d314d6ae-867d-484c-9009-3d421a80***`. The query result shows the details about the application. The details include the application ID, application time, expected quota value, and application result.
+        
+        @param request: GetQuotaApplicationRequest
+        @return: GetQuotaApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_quota_application_with_options_async(request, runtime)
 
@@ -932,6 +1142,16 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListDependentQuotasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListDependentQuotasResponse:
+        """
+        In this example, the operation is called to query the list of quotas. A quota whose ID is `q_i5uzm3` depends on these quotas. The name of the quota is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result indicates that the specified quota depends on the following three quotas:
+        *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by the current account. The regions of the quota dimension include `cn-shenzhen`, `cn-beijing`, `cn-hangzhou`.
+        *   A Server Load Balancer (SLB) quota whose ID is `q_fh20b0`. This quota is the number of servers that can be attached to the backend of an SLB instance.
+        *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by a user.
+        
+        @param request: ListDependentQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDependentQuotasResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.product_code):
@@ -962,6 +1182,16 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListDependentQuotasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListDependentQuotasResponse:
+        """
+        In this example, the operation is called to query the list of quotas. A quota whose ID is `q_i5uzm3` depends on these quotas. The name of the quota is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result indicates that the specified quota depends on the following three quotas:
+        *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by the current account. The regions of the quota dimension include `cn-shenzhen`, `cn-beijing`, `cn-hangzhou`.
+        *   A Server Load Balancer (SLB) quota whose ID is `q_fh20b0`. This quota is the number of servers that can be attached to the backend of an SLB instance.
+        *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by a user.
+        
+        @param request: ListDependentQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDependentQuotasResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.product_code):
@@ -991,6 +1221,15 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListDependentQuotasRequest,
     ) -> quotas_20200510_models.ListDependentQuotasResponse:
+        """
+        In this example, the operation is called to query the list of quotas. A quota whose ID is `q_i5uzm3` depends on these quotas. The name of the quota is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result indicates that the specified quota depends on the following three quotas:
+        *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by the current account. The regions of the quota dimension include `cn-shenzhen`, `cn-beijing`, `cn-hangzhou`.
+        *   A Server Load Balancer (SLB) quota whose ID is `q_fh20b0`. This quota is the number of servers that can be attached to the backend of an SLB instance.
+        *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by a user.
+        
+        @param request: ListDependentQuotasRequest
+        @return: ListDependentQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dependent_quotas_with_options(request, runtime)
 
@@ -998,6 +1237,15 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListDependentQuotasRequest,
     ) -> quotas_20200510_models.ListDependentQuotasResponse:
+        """
+        In this example, the operation is called to query the list of quotas. A quota whose ID is `q_i5uzm3` depends on these quotas. The name of the quota is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result indicates that the specified quota depends on the following three quotas:
+        *   An Elastic Compute Service (ECS) quota whose ID is `q_elastic-network-interfaces`. This quota is the maximum number of ENIs (Secondary ENIs) that can be owned by the current account. The regions of the quota dimension include `cn-shenzhen`, `cn-beijing`, `cn-hangzhou`.
+        *   A Server Load Balancer (SLB) quota whose ID is `q_fh20b0`. This quota is the number of servers that can be attached to the backend of an SLB instance.
+        *   An SLB quota whose ID is `q_3mmbsp`. This quota is the number of SLB instances that can be owned by a user.
+        
+        @param request: ListDependentQuotasRequest
+        @return: ListDependentQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dependent_quotas_with_options_async(request, runtime)
 
@@ -1006,6 +1254,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListProductDimensionGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        """
+        This topic provides an example on how to call the ListProductDimensionGroups operation to query the dimension groups of Object Storage Service (OSS). In this example, a dimension group is returned. The group name is `OSS_Group`, the group code is `oss_wf1ngqmd7q`, and the group key is `chargeType`.
+        
+        @param request: ListProductDimensionGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductDimensionGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -1038,6 +1293,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListProductDimensionGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        """
+        This topic provides an example on how to call the ListProductDimensionGroups operation to query the dimension groups of Object Storage Service (OSS). In this example, a dimension group is returned. The group name is `OSS_Group`, the group code is `oss_wf1ngqmd7q`, and the group key is `chargeType`.
+        
+        @param request: ListProductDimensionGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductDimensionGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -1069,6 +1331,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListProductDimensionGroupsRequest,
     ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        """
+        This topic provides an example on how to call the ListProductDimensionGroups operation to query the dimension groups of Object Storage Service (OSS). In this example, a dimension group is returned. The group name is `OSS_Group`, the group code is `oss_wf1ngqmd7q`, and the group key is `chargeType`.
+        
+        @param request: ListProductDimensionGroupsRequest
+        @return: ListProductDimensionGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_product_dimension_groups_with_options(request, runtime)
 
@@ -1076,6 +1344,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListProductDimensionGroupsRequest,
     ) -> quotas_20200510_models.ListProductDimensionGroupsResponse:
+        """
+        This topic provides an example on how to call the ListProductDimensionGroups operation to query the dimension groups of Object Storage Service (OSS). In this example, a dimension group is returned. The group name is `OSS_Group`, the group code is `oss_wf1ngqmd7q`, and the group key is `chargeType`.
+        
+        @param request: ListProductDimensionGroupsRequest
+        @return: ListProductDimensionGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_dimension_groups_with_options_async(request, runtime)
 
@@ -1084,6 +1358,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListProductQuotaDimensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListProductQuotaDimensionsResponse:
+        """
+        In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query result shows all the quota dimensions that are supported by ECS.
+        
+        @param request: ListProductQuotaDimensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductQuotaDimensionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -1118,6 +1399,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListProductQuotaDimensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListProductQuotaDimensionsResponse:
+        """
+        In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query result shows all the quota dimensions that are supported by ECS.
+        
+        @param request: ListProductQuotaDimensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductQuotaDimensionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -1151,6 +1439,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListProductQuotaDimensionsRequest,
     ) -> quotas_20200510_models.ListProductQuotaDimensionsResponse:
+        """
+        In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query result shows all the quota dimensions that are supported by ECS.
+        
+        @param request: ListProductQuotaDimensionsRequest
+        @return: ListProductQuotaDimensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_product_quota_dimensions_with_options(request, runtime)
 
@@ -1158,6 +1452,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListProductQuotaDimensionsRequest,
     ) -> quotas_20200510_models.ListProductQuotaDimensionsResponse:
+        """
+        In this example, the operation is called to query the quota dimensions that are supported by Elastic Compute Service (ECS). The query result shows all the quota dimensions that are supported by ECS.
+        
+        @param request: ListProductQuotaDimensionsRequest
+        @return: ListProductQuotaDimensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_quota_dimensions_with_options_async(request, runtime)
 
@@ -1166,6 +1466,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListProductQuotasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListProductQuotasResponse:
+        """
+        In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to ECS Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
+        
+        @param request: ListProductQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductQuotasResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -1212,6 +1519,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListProductQuotasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListProductQuotasResponse:
+        """
+        In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to ECS Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
+        
+        @param request: ListProductQuotasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductQuotasResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -1257,6 +1571,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListProductQuotasRequest,
     ) -> quotas_20200510_models.ListProductQuotasResponse:
+        """
+        In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to ECS Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
+        
+        @param request: ListProductQuotasRequest
+        @return: ListProductQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_product_quotas_with_options(request, runtime)
 
@@ -1264,6 +1584,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListProductQuotasRequest,
     ) -> quotas_20200510_models.ListProductQuotasResponse:
+        """
+        In this example, the operation is called to query the quotas whose instance type is `ecs.g5.2xlarge`. The quotas belong to ECS Quotas by Instance Type. The query result includes the name, ID, unit, dimensions, and cycle of each quota.
+        
+        @param request: ListProductQuotasRequest
+        @return: ListProductQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_quotas_with_options_async(request, runtime)
 
@@ -1443,12 +1769,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1481,12 +1811,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.product_code):
             body['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
+        if not UtilClient.is_unset(request.quota_category):
+            body['QuotaCategory'] = request.quota_category
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1526,6 +1860,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListQuotaApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListQuotaApplicationsResponse:
+        """
+        In this example, the operation is called to query the details about an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details about the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0***`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
+        
+        @param request: ListQuotaApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotaApplicationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -1568,6 +1909,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ListQuotaApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ListQuotaApplicationsResponse:
+        """
+        In this example, the operation is called to query the details about an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details about the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0***`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
+        
+        @param request: ListQuotaApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotaApplicationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -1609,6 +1957,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListQuotaApplicationsRequest,
     ) -> quotas_20200510_models.ListQuotaApplicationsResponse:
+        """
+        In this example, the operation is called to query the details about an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details about the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0***`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
+        
+        @param request: ListQuotaApplicationsRequest
+        @return: ListQuotaApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_quota_applications_with_options(request, runtime)
 
@@ -1616,6 +1970,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ListQuotaApplicationsRequest,
     ) -> quotas_20200510_models.ListQuotaApplicationsResponse:
+        """
+        In this example, the operation is called to query the details about an application that is submitted to increase a quota whose ID is `q_i5uzm3` and whose name is Maximum Number of Nodes. This quota belongs to Container Service for Kubernetes (ACK). The query result shows the details about the application. The details include the application ID, application time, requested quota, and application result. In this example, the application ID is `b926571d-cc09-4711-b547-58a615f0***`. The application time is `2021-01-15T09:13:53Z`. The expected quota value is `101`. The application result is `Agree`.
+        
+        @param request: ListQuotaApplicationsRequest
+        @return: ListQuotaApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_quota_applications_with_options_async(request, runtime)
 
@@ -1624,6 +1984,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ModifyQuotaTemplateServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ModifyQuotaTemplateServiceStatusResponse:
+        """
+        By default, the status of a quota template is enabled.
+        
+        @param request: ModifyQuotaTemplateServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyQuotaTemplateServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_status):
@@ -1652,6 +2019,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.ModifyQuotaTemplateServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ModifyQuotaTemplateServiceStatusResponse:
+        """
+        By default, the status of a quota template is enabled.
+        
+        @param request: ModifyQuotaTemplateServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyQuotaTemplateServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_status):
@@ -1679,6 +2053,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ModifyQuotaTemplateServiceStatusRequest,
     ) -> quotas_20200510_models.ModifyQuotaTemplateServiceStatusResponse:
+        """
+        By default, the status of a quota template is enabled.
+        
+        @param request: ModifyQuotaTemplateServiceStatusRequest
+        @return: ModifyQuotaTemplateServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_quota_template_service_status_with_options(request, runtime)
 
@@ -1686,6 +2066,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.ModifyQuotaTemplateServiceStatusRequest,
     ) -> quotas_20200510_models.ModifyQuotaTemplateServiceStatusResponse:
+        """
+        By default, the status of a quota template is enabled.
+        
+        @param request: ModifyQuotaTemplateServiceStatusRequest
+        @return: ModifyQuotaTemplateServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_quota_template_service_status_with_options_async(request, runtime)
 
@@ -1695,13 +2081,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ModifyTemplateQuotaItemResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.quota_category):
+            query['QuotaCategory'] = request.quota_category
         body = {}
         if not UtilClient.is_unset(request.desire_value):
             body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.effective_time):
+            body['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.env_language):
             body['EnvLanguage'] = request.env_language
+        if not UtilClient.is_unset(request.expire_time):
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.notice_type):
@@ -1711,6 +2104,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1735,13 +2129,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.ModifyTemplateQuotaItemResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.quota_category):
+            query['QuotaCategory'] = request.quota_category
         body = {}
         if not UtilClient.is_unset(request.desire_value):
             body['DesireValue'] = request.desire_value
         if not UtilClient.is_unset(request.dimensions):
             body['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.effective_time):
+            body['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.env_language):
             body['EnvLanguage'] = request.env_language
+        if not UtilClient.is_unset(request.expire_time):
+            body['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.notice_type):
@@ -1751,6 +2152,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.quota_action_code):
             body['QuotaActionCode'] = request.quota_action_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1788,6 +2190,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.UpdateQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.UpdateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012***` and name is `rules`. The alert threshold is changed from `150` to `160`.
+        
+        @param request: UpdateQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -1826,6 +2235,13 @@ class Client(OpenApiClient):
         request: quotas_20200510_models.UpdateQuotaAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quotas_20200510_models.UpdateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012***` and name is `rules`. The alert threshold is changed from `150` to `160`.
+        
+        @param request: UpdateQuotaAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaAlarmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -1863,6 +2279,12 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.UpdateQuotaAlarmRequest,
     ) -> quotas_20200510_models.UpdateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012***` and name is `rules`. The alert threshold is changed from `150` to `160`.
+        
+        @param request: UpdateQuotaAlarmRequest
+        @return: UpdateQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_quota_alarm_with_options(request, runtime)
 
@@ -1870,5 +2292,11 @@ class Client(OpenApiClient):
         self,
         request: quotas_20200510_models.UpdateQuotaAlarmRequest,
     ) -> quotas_20200510_models.UpdateQuotaAlarmResponse:
+        """
+        In this example, the operation is called to modify the information about a quota alert whose ID is `a2efa7fc-832f-47bb-8054-39e28012***` and name is `rules`. The alert threshold is changed from `150` to `160`.
+        
+        @param request: UpdateQuotaAlarmRequest
+        @return: UpdateQuotaAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_quota_alarm_with_options_async(request, runtime)
