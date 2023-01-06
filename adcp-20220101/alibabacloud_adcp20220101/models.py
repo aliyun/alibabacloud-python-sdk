@@ -139,11 +139,151 @@ class AttachClusterToHubResponse(TeaModel):
         return self
 
 
+class CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches(TeaModel):
+    def __init__(
+        self,
+        vswitch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.vswitch_id = vswitch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateHubClusterRequestClusterConfigurationWorkflowUnits(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        v_switches: List[CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches] = None,
+        vpc_id: str = None,
+    ):
+        self.region_id = region_id
+        self.v_switches = v_switches
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.v_switches:
+            for k in self.v_switches:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['VSwitches'] = []
+        if self.v_switches is not None:
+            for k in self.v_switches:
+                result['VSwitches'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.v_switches = []
+        if m.get('VSwitches') is not None:
+            for k in m.get('VSwitches'):
+                temp_model = CreateHubClusterRequestClusterConfigurationWorkflowUnitsVSwitches()
+                self.v_switches.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateHubClusterRequestClusterConfiguration(TeaModel):
+    def __init__(
+        self,
+        argo_server_enabled: bool = None,
+        price_limit: str = None,
+        worflow_enabled: bool = None,
+        workflow_schedule_mode: str = None,
+        workflow_units: List[CreateHubClusterRequestClusterConfigurationWorkflowUnits] = None,
+    ):
+        self.argo_server_enabled = argo_server_enabled
+        self.price_limit = price_limit
+        self.worflow_enabled = worflow_enabled
+        self.workflow_schedule_mode = workflow_schedule_mode
+        self.workflow_units = workflow_units
+
+    def validate(self):
+        if self.workflow_units:
+            for k in self.workflow_units:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.argo_server_enabled is not None:
+            result['ArgoServerEnabled'] = self.argo_server_enabled
+        if self.price_limit is not None:
+            result['PriceLimit'] = self.price_limit
+        if self.worflow_enabled is not None:
+            result['WorflowEnabled'] = self.worflow_enabled
+        if self.workflow_schedule_mode is not None:
+            result['WorkflowScheduleMode'] = self.workflow_schedule_mode
+        result['WorkflowUnits'] = []
+        if self.workflow_units is not None:
+            for k in self.workflow_units:
+                result['WorkflowUnits'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArgoServerEnabled') is not None:
+            self.argo_server_enabled = m.get('ArgoServerEnabled')
+        if m.get('PriceLimit') is not None:
+            self.price_limit = m.get('PriceLimit')
+        if m.get('WorflowEnabled') is not None:
+            self.worflow_enabled = m.get('WorflowEnabled')
+        if m.get('WorkflowScheduleMode') is not None:
+            self.workflow_schedule_mode = m.get('WorkflowScheduleMode')
+        self.workflow_units = []
+        if m.get('WorkflowUnits') is not None:
+            for k in m.get('WorkflowUnits'):
+                temp_model = CreateHubClusterRequestClusterConfigurationWorkflowUnits()
+                self.workflow_units.append(temp_model.from_map(k))
+        return self
+
+
 class CreateHubClusterRequest(TeaModel):
     def __init__(
         self,
         api_server_public_eip: bool = None,
         audit_log_enabled: bool = None,
+        cluster_configuration: CreateHubClusterRequestClusterConfiguration = None,
         is_enterprise_security_group: bool = None,
         name: str = None,
         profile: str = None,
@@ -155,6 +295,97 @@ class CreateHubClusterRequest(TeaModel):
         self.api_server_public_eip = api_server_public_eip
         # Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
         self.audit_log_enabled = audit_log_enabled
+        self.cluster_configuration = cluster_configuration
+        # Specifies whether the security group is an advanced security group.
+        self.is_enterprise_security_group = is_enterprise_security_group
+        # The name of the master instance.
+        self.name = name
+        # Scenario-oriented master control type. The value can be:
+        # 
+        # - `Default`: Standard scenario Master instance.
+        # - `XFlow`: Workflow scenario master instance.
+        # 
+        # Default Value: `Default`.
+        self.profile = profile
+        # The ID of the region. You can call the DescribeRegions operation to query available regions.
+        self.region_id = region_id
+        # The ID of the vSwitch.
+        self.v_switches = v_switches
+        # The ID of the virtual private cloud (VPC) to which the master instance belongs. You can call the DescribeVpcs operation to query available VPCs.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.cluster_configuration:
+            self.cluster_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_server_public_eip is not None:
+            result['ApiServerPublicEip'] = self.api_server_public_eip
+        if self.audit_log_enabled is not None:
+            result['AuditLogEnabled'] = self.audit_log_enabled
+        if self.cluster_configuration is not None:
+            result['ClusterConfiguration'] = self.cluster_configuration.to_map()
+        if self.is_enterprise_security_group is not None:
+            result['IsEnterpriseSecurityGroup'] = self.is_enterprise_security_group
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.profile is not None:
+            result['Profile'] = self.profile
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiServerPublicEip') is not None:
+            self.api_server_public_eip = m.get('ApiServerPublicEip')
+        if m.get('AuditLogEnabled') is not None:
+            self.audit_log_enabled = m.get('AuditLogEnabled')
+        if m.get('ClusterConfiguration') is not None:
+            temp_model = CreateHubClusterRequestClusterConfiguration()
+            self.cluster_configuration = temp_model.from_map(m['ClusterConfiguration'])
+        if m.get('IsEnterpriseSecurityGroup') is not None:
+            self.is_enterprise_security_group = m.get('IsEnterpriseSecurityGroup')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VSwitches') is not None:
+            self.v_switches = m.get('VSwitches')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateHubClusterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        api_server_public_eip: bool = None,
+        audit_log_enabled: bool = None,
+        cluster_configuration_shrink: str = None,
+        is_enterprise_security_group: bool = None,
+        name: str = None,
+        profile: str = None,
+        region_id: str = None,
+        v_switches: str = None,
+        vpc_id: str = None,
+    ):
+        # Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
+        self.api_server_public_eip = api_server_public_eip
+        # Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
+        self.audit_log_enabled = audit_log_enabled
+        self.cluster_configuration_shrink = cluster_configuration_shrink
         # Specifies whether the security group is an advanced security group.
         self.is_enterprise_security_group = is_enterprise_security_group
         # The name of the master instance.
@@ -186,6 +417,8 @@ class CreateHubClusterRequest(TeaModel):
             result['ApiServerPublicEip'] = self.api_server_public_eip
         if self.audit_log_enabled is not None:
             result['AuditLogEnabled'] = self.audit_log_enabled
+        if self.cluster_configuration_shrink is not None:
+            result['ClusterConfiguration'] = self.cluster_configuration_shrink
         if self.is_enterprise_security_group is not None:
             result['IsEnterpriseSecurityGroup'] = self.is_enterprise_security_group
         if self.name is not None:
@@ -206,6 +439,8 @@ class CreateHubClusterRequest(TeaModel):
             self.api_server_public_eip = m.get('ApiServerPublicEip')
         if m.get('AuditLogEnabled') is not None:
             self.audit_log_enabled = m.get('AuditLogEnabled')
+        if m.get('ClusterConfiguration') is not None:
+            self.cluster_configuration_shrink = m.get('ClusterConfiguration')
         if m.get('IsEnterpriseSecurityGroup') is not None:
             self.is_enterprise_security_group = m.get('IsEnterpriseSecurityGroup')
         if m.get('Name') is not None:

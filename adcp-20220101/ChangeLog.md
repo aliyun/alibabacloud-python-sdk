@@ -1,3 +1,7 @@
+2023-01-06 Version: 1.0.4
+- CreateHubCluster SheduleMode and PriceLimit can be configured.
+
+
 2023-01-05 Version: 1.0.3
 - DeleteHubCluster Support retain resources.
 
