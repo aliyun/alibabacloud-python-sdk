@@ -1,3 +1,6 @@
+2023-01-06 Version: 2.0.6
+- Add tag api tagResources、untagResources、listTagResources
+
 2022-02-25 Version: 2.0.5
 - Add global switch AllowUserToManagePersonalDingTalk.
 
