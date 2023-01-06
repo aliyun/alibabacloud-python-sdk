@@ -1,3 +1,6 @@
+2023-01-06 Version: 4.0.4
+- Release DetectInfraredLivingFace and CompareFaceWithMask.
+
 2022-12-23 Version: 4.0.3
 - Publish Swift.
 
