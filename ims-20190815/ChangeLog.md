@@ -1,3 +1,6 @@
+2023-01-09 Version: 2.0.7
+- Add verification configuration for risky logins.
+
 2023-01-06 Version: 2.0.6
 - Add tag api tagResources、untagResources、listTagResources
 
