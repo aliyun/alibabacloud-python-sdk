@@ -1,3 +1,6 @@
+2023-01-09 Version: 2.1.1
+- Update UpdateFigureCluster Response.
+
 2022-12-19 Version: 2.1.0
 - Add similar image cluster.
 - Rename GetWebofficeURL to GenerateWebofficeToken.

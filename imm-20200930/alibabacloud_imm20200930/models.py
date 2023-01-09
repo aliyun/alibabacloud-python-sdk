@@ -20581,15 +20581,12 @@ class UpdateFigureClusterShrinkRequest(TeaModel):
 class UpdateFigureClusterResponseBody(TeaModel):
     def __init__(
         self,
-        figure_cluster: FigureCluster = None,
         request_id: str = None,
     ):
-        self.figure_cluster = figure_cluster
         self.request_id = request_id
 
     def validate(self):
-        if self.figure_cluster:
-            self.figure_cluster.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -20597,17 +20594,12 @@ class UpdateFigureClusterResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.figure_cluster is not None:
-            result['FigureCluster'] = self.figure_cluster.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FigureCluster') is not None:
-            temp_model = FigureCluster()
-            self.figure_cluster = temp_model.from_map(m['FigureCluster'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
