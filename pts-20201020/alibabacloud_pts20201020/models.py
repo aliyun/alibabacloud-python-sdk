@@ -10,9 +10,7 @@ class AdjustJMeterSceneSpeedRequest(TeaModel):
         report_id: str = None,
         speed: int = None,
     ):
-        # 报告id
         self.report_id = report_id
-        # 要调整到的压力值
         self.speed = speed
 
     def validate(self):
@@ -52,7 +50,6 @@ class AdjustJMeterSceneSpeedResponseBody(TeaModel):
         self.code = code
         self.http_status_code = http_status_code
         self.message = message
-        # 报告ID
         self.report_id = report_id
         self.request_id = request_id
         self.success = success
@@ -904,21 +901,14 @@ class GetJMeterLogsRequest(TeaModel):
         report_id: str = None,
         thread: str = None,
     ):
-        # 第几台引擎，起始为0
         self.agent_index = agent_index
-        # 开始时间
         self.begin_time = begin_time
-        # 结束时间
         self.end_time = end_time
-        # 关键字
         self.keyword = keyword
-        # 日志等级
         self.level = level
         self.page_number = page_number
         self.page_size = page_size
-        # 报告ID
         self.report_id = report_id
-        # 线程名
         self.thread = thread
 
     def validate(self):
@@ -986,10 +976,8 @@ class GetJMeterLogsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # 引擎数量，想要获得第几台引擎的日志可以根据引擎数量传值
         self.agent_count = agent_count
         self.code = code
-        # 日志内容
         self.logs = logs
         self.message = message
         self.page_number = page_number
@@ -1102,13 +1090,9 @@ class GetJMeterSampleMetricsRequest(TeaModel):
         report_id: str = None,
         sampler_id: int = None,
     ):
-        # 开始时间
         self.begin_time = begin_time
-        # 结束时间
         self.end_time = end_time
-        # 报告ID
         self.report_id = report_id
-        # 采样器索引，从0开始。-1返回全场景
         self.sampler_id = sampler_id
 
     def validate(self):
@@ -1156,9 +1140,7 @@ class GetJMeterSampleMetricsResponseBody(TeaModel):
         self.code = code
         self.message = message
         self.request_id = request_id
-        # 采样器聚合数据列表
         self.sample_metric_list = sample_metric_list
-        # 采样器列表，可根据该列表传递需要查询的采样器
         self.sampler_map = sampler_map
         self.success = success
 
@@ -1263,28 +1245,18 @@ class GetJMeterSamplingLogsRequest(TeaModel):
         success: bool = None,
         thread: str = None,
     ):
-        # 压测引擎编号
         self.agent_id = agent_id
-        # 开始时间
         self.begin_time = begin_time
-        # 结束时间
         self.end_time = end_time
-        # 关键字
         self.keyword = keyword
-        # 最大响应时间，单位ms
         self.max_rt = max_rt
-        # 最小响应时间，单位ms
         self.min_rt = min_rt
         self.page_number = page_number
         self.page_size = page_size
-        # 报告ID
         self.report_id = report_id
         self.response_code = response_code
-        # 第几个采样器，从0开始
         self.sampler_id = sampler_id
-        # 采样结果是否成功
         self.success = success
-        # 线程
         self.thread = thread
 
     def validate(self):
@@ -1374,7 +1346,6 @@ class GetJMeterSamplingLogsResponseBody(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.request_id = request_id
-        # 采样器的采样结果
         self.sample_results = sample_results
         self.success = success
         self.total_count = total_count
@@ -1480,7 +1451,6 @@ class GetJMeterSceneRunningDataRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
-        # 场景id
         self.scene_id = scene_id
 
     def validate(self):
@@ -1521,33 +1491,19 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
         status: str = None,
         vum: int = None,
     ):
-        # 压测引擎数量
         self.agent_count = agent_count
-        # 压测引擎列表
         self.agent_id_list = agent_id_list
-        # 场景整体的采样状态
         self.all_sample_stat = all_sample_stat
-        # 并发量
         self.concurrency = concurrency
-        # 是否生成了报告
         self.has_report = has_report
-        # 压测计划持续时间，单位s
         self.hold_for = hold_for
-        # 是否是调试
         self.is_debugging = is_debugging
-        # 每一个采样器的状态
         self.sample_stat_list = sample_stat_list
-        # 场景id
         self.scene_id = scene_id
-        # 场景名称
         self.scene_name = scene_name
-        # 当前所处阶段
         self.stage_name = stage_name
-        # 压测计划开始时间戳，单位ms
         self.start_time_ts = start_time_ts
-        # 状态
         self.status = status
-        # 目前消耗的vum
         self.vum = vum
 
     def validate(self):
@@ -1638,7 +1594,6 @@ class GetJMeterSceneRunningDataResponseBody(TeaModel):
         self.http_status_code = http_status_code
         self.message = message
         self.request_id = request_id
-        # 运行中的数据
         self.running_data = running_data
         self.success = success
 
@@ -1737,7 +1692,6 @@ class GetOpenJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
-        # 场景ID
         self.scene_id = scene_id
 
     def validate(self):
@@ -1770,17 +1724,11 @@ class GetOpenJMeterSceneResponseBodySceneBaseInfo(TeaModel):
         remark: str = None,
         resource: str = None,
     ):
-        # 创建人名
         self.create_name = create_name
-        # 修改人名
         self.modify_name = modify_name
-        # 操作类型
         self.operate_type = operate_type
-        # 场景压测负责人
         self.principal = principal
-        # 备注
         self.remark = remark
-        # 场景来源
         self.resource = resource
 
     def validate(self):
@@ -1830,11 +1778,8 @@ class GetOpenJMeterSceneResponseBodySceneDnsCacheConfig(TeaModel):
         dns_servers: List[str] = None,
         host_table: Dict[str, Any] = None,
     ):
-        # 是否清除缓存
         self.clear_cache_each_iteration = clear_cache_each_iteration
-        # DNS服务器
         self.dns_servers = dns_servers
-        # 域名绑定
         self.host_table = host_table
 
     def validate(self):
@@ -1876,19 +1821,12 @@ class GetOpenJMeterSceneResponseBodySceneFileList(TeaModel):
         md_5: str = None,
         split_csv: bool = None,
     ):
-        # 文件名
         self.file_name = file_name
-        # 文件地址
         self.file_oss_address = file_oss_address
-        # 文件大小
         self.file_size = file_size
-        # 文件类型
         self.file_type = file_type
-        # 文件ID
         self.id = id
-        # 文件的md5值
         self.md_5 = md_5
-        # csv文件是否切分
         self.split_csv = split_csv
 
     def validate(self):
@@ -1963,50 +1901,29 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 施压机数量
         self.agent_count = agent_count
-        # 基本信息
         self.base_info = base_info
-        # 最大并发，并发模式下生效
         self.concurrency = concurrency
-        # constantThroughputTimerType
         self.constant_throughput_timer_type = constant_throughput_timer_type
-        # DNS配置
         self.dns_cache_config = dns_cache_config
-        # 压测持续时间，单位为s
         self.duration = duration
-        # 环境id
         self.environment_id = environment_id
-        # 文件列表
         self.file_list = file_list
-        # 是否为VPC压测
         self.is_vpc_test = is_vpc_test
         self.max_rps = max_rps
-        # 施压模式，concurrency_mode表示并发压测,tps_mode表示RPS压测
         self.mode = mode
-        # 压力来源。“”表示公网，intranet-vpc表示VPC
         self.pool = pool
-        # 递增时间，单位s
         self.ramp_up = ramp_up
-        # VPC压测时配置
         self.region_id = region_id
-        # 场景id
         self.scene_id = scene_id
-        # 场景名
         self.scene_name = scene_name
-        # 安全组id，VPC压测时配置
         self.security_group_id = security_group_id
         self.start_concurrency = start_concurrency
         self.start_rps = start_rps
-        # 递增阶梯数。预热时间和预热阶段数都不配置时 使用固定压力值 只配置预热时间，不配置阶段数时 使用均匀递增 预热时间和阶段数都配置时，并且steps<rampUp 使用阶梯递增 不能只配置steps，不配置rampUp 如果这样配置，默认使用固定压力值
         self.steps = steps
-        # synchronizing timer 类型
         self.sync_timer_type = sync_timer_type
-        # 测试文件
         self.test_file = test_file
-        # 交换机id，VPC压测时配置
         self.v_switch_id = v_switch_id
-        # vpc的id，VPC压测时配置
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2149,7 +2066,6 @@ class GetOpenJMeterSceneResponseBody(TeaModel):
         self.http_status_code = http_status_code
         self.message = message
         self.request_id = request_id
-        # 场景详情
         self.scene = scene
         self.success = success
 
@@ -3019,6 +2935,7 @@ class GetPtsReportDetailsResponseBodySceneSnapShotRelationListApiList(TeaModel):
         timeout_in_second: int = None,
         url: str = None,
     ):
+        # API ID。
         self.api_id = api_id
         self.api_name = api_name
         self.body = body
@@ -5323,6 +5240,7 @@ class GetPtsSceneRunningDataResponseBody(TeaModel):
         status: int = None,
         success: bool = None,
         total_agents: int = None,
+        total_real_qps: int = None,
         total_request_count: int = None,
         tps_limit: int = None,
         vum: int = None,
@@ -5347,6 +5265,7 @@ class GetPtsSceneRunningDataResponseBody(TeaModel):
         self.status = status
         self.success = success
         self.total_agents = total_agents
+        self.total_real_qps = total_real_qps
         self.total_request_count = total_request_count
         self.tps_limit = tps_limit
         self.vum = vum
@@ -5411,6 +5330,8 @@ class GetPtsSceneRunningDataResponseBody(TeaModel):
             result['Success'] = self.success
         if self.total_agents is not None:
             result['TotalAgents'] = self.total_agents
+        if self.total_real_qps is not None:
+            result['TotalRealQps'] = self.total_real_qps
         if self.total_request_count is not None:
             result['TotalRequestCount'] = self.total_request_count
         if self.tps_limit is not None:
@@ -5467,6 +5388,8 @@ class GetPtsSceneRunningDataResponseBody(TeaModel):
             self.success = m.get('Success')
         if m.get('TotalAgents') is not None:
             self.total_agents = m.get('TotalAgents')
+        if m.get('TotalRealQps') is not None:
+            self.total_real_qps = m.get('TotalRealQps')
         if m.get('TotalRequestCount') is not None:
             self.total_request_count = m.get('TotalRequestCount')
         if m.get('TpsLimit') is not None:
@@ -6355,9 +6278,7 @@ class ListEnvsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # 环境ID
         self.env_id = env_id
-        # 环境名
         self.env_name = env_name
         self.page_number = page_number
         self.page_size = page_size
@@ -6403,15 +6324,10 @@ class ListEnvsResponseBodyEnvsFiles(TeaModel):
         file_size: int = None,
         md_5: str = None,
     ):
-        # 文件ID
         self.file_id = file_id
-        # 文件名
         self.file_name = file_name
-        # 文件的oss地址
         self.file_oss_address = file_oss_address
-        # 文件大小，单位为Byte
         self.file_size = file_size
-        # jar包的md5值
         self.md_5 = md_5
 
     def validate(self):
@@ -6457,11 +6373,8 @@ class ListEnvsResponseBodyEnvsProperties(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # 描述
         self.description = description
-        # 属性名
         self.name = name
-        # 属性值
         self.value = value
 
     def validate(self):
@@ -6506,25 +6419,15 @@ class ListEnvsResponseBodyEnvs(TeaModel):
         running_scenes: List[str] = None,
         used_capacity: int = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 环境ID
         self.env_id = env_id
-        # 环境名
         self.env_name = env_name
-        # 依赖的jmeter版本
         self.env_version = env_version
-        # 包含的jar包
         self.files = files
-        # 修改时间
         self.modified_time = modified_time
-        # jmeter属性
         self.properties = properties
-        # 关联的场景
         self.related_scenes = related_scenes
-        # 关联的场景id
         self.running_scenes = running_scenes
-        # 环境的文件总大小
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -6614,7 +6517,6 @@ class ListEnvsResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.code = code
-        # 环境列表
         self.envs = envs
         self.http_status_code = http_status_code
         self.message = message
@@ -6739,17 +6641,12 @@ class ListJMeterReportsRequest(TeaModel):
         report_id: str = None,
         scene_id: str = None,
     ):
-        # 报告的起始时间，单位为ms
         self.begin_time = begin_time
-        # 报告的结束时间
         self.end_time = end_time
-        # 报告关键字
         self.keyword = keyword
         self.page_number = page_number
         self.page_size = page_size
-        # 报告ID
         self.report_id = report_id
-        # 要查看的报告的场景id
         self.scene_id = scene_id
 
     def validate(self):
@@ -6805,15 +6702,10 @@ class ListJMeterReportsResponseBodyReports(TeaModel):
         report_name: str = None,
         vum: int = None,
     ):
-        # 压测开始时间
         self.actual_start_time = actual_start_time
-        # 压测持续时间
         self.duration = duration
-        # 报告id
         self.report_id = report_id
-        # 报告名称
         self.report_name = report_name
-        # 消耗的vum
         self.vum = vum
 
     def validate(self):
@@ -6989,9 +6881,7 @@ class ListOpenJMeterScenesRequest(TeaModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
-        # 场景id
         self.scene_id = scene_id
-        # 场景名
         self.scene_name = scene_name
 
     def validate(self):
@@ -7033,11 +6923,8 @@ class ListOpenJMeterScenesResponseBodyJMeterScene(TeaModel):
         scene_id: str = None,
         scene_name: str = None,
     ):
-        # 压测持续时间
         self.duration_str = duration_str
-        # 场景id
         self.scene_id = scene_id
-        # 场景名
         self.scene_name = scene_name
 
     def validate(self):
@@ -7509,7 +7396,6 @@ class RemoveEnvRequest(TeaModel):
         self,
         env_id: str = None,
     ):
-        # 要删除的环境ID
         self.env_id = env_id
 
     def validate(self):
@@ -7632,7 +7518,6 @@ class RemoveOpenJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
-        # 场景ID
         self.scene_id = scene_id
 
     def validate(self):
@@ -7756,9 +7641,7 @@ class SaveEnvRequestEnvFiles(TeaModel):
         file_name: str = None,
         file_oss_address: str = None,
     ):
-        # 文件名
         self.file_name = file_name
-        # 文件oss地址，目前只支持上海region的oss地址
         self.file_oss_address = file_oss_address
 
     def validate(self):
@@ -7792,11 +7675,8 @@ class SaveEnvRequestEnvProperties(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # 描述
         self.description = description
-        # 属性名
         self.name = name
-        # 属性值
         self.value = value
 
     def validate(self):
@@ -7836,15 +7716,10 @@ class SaveEnvRequestEnv(TeaModel):
         jmeter_plugin_label: str = None,
         properties: List[SaveEnvRequestEnvProperties] = None,
     ):
-        # 环境id，不填表示新建环境，填了表示修改该环境
         self.env_id = env_id
-        # 环境名称
         self.env_name = env_name
-        # 环境依赖的文件
         self.files = files
-        # jmeter插件的环境标签
         self.jmeter_plugin_label = jmeter_plugin_label
-        # jmeter属性
         self.properties = properties
 
     def validate(self):
@@ -7905,7 +7780,6 @@ class SaveEnvRequest(TeaModel):
         self,
         env: SaveEnvRequestEnv = None,
     ):
-        # 环境
         self.env = env
 
     def validate(self):
@@ -7935,7 +7809,6 @@ class SaveEnvShrinkRequest(TeaModel):
         self,
         env_shrink: str = None,
     ):
-        # 环境
         self.env_shrink = env_shrink
 
     def validate(self):
@@ -7969,7 +7842,6 @@ class SaveEnvResponseBody(TeaModel):
         success: bool = None,
     ):
         self.code = code
-        # 操作的环境id
         self.env_id = env_id
         self.http_status_code = http_status_code
         self.message = message
@@ -8110,19 +7982,12 @@ class SaveOpenJMeterSceneRequestOpenJMeterSceneFileList(TeaModel):
         split_csv: bool = None,
         tags: str = None,
     ):
-        # 文件id
         self.file_id = file_id
-        # 文件名
         self.file_name = file_name
-        # 文件公网可访问的oss地址
         self.file_oss_address = file_oss_address
-        # 文件大小，单位byte
         self.file_size = file_size
-        # 文件的MD5
         self.md_5 = md_5
-        # 是否切分，仅针对csv有效
         self.split_csv = split_csv
-        # 文件tag
         self.tags = tags
 
     def validate(self):
@@ -8230,50 +8095,29 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 施压引擎数量
         self.agent_count = agent_count
-        # 最大并发
         self.concurrency = concurrency
-        # constantThroughputTimerType
         self.constant_throughput_timer_type = constant_throughput_timer_type
-        # DNS配置
         self.dns_cache_config = dns_cache_config
-        # 压测持续时间
         self.duration = duration
-        # 关联的环境id
         self.environment_id = environment_id
-        # 文件列表
         self.file_list = file_list
-        # 是否为VPC测试，默认为false表示公网测试，此值为true时VPC相关配置才生效
         self.is_vpc_test = is_vpc_test
-        # Jmeter属性
         self.jmeter_properties = jmeter_properties
-        # jmeter插件的环境标签
         self.jmeter_plugin_label = jmeter_plugin_label
         self.max_rps = max_rps
-        # 压力模式
         self.mode = mode
-        # 预热时间
         self.ramp_up = ramp_up
-        # region的id，VPC压测时配置
         self.region_id = region_id
-        # 场景ID
         self.scene_id = scene_id
-        # 场景名
         self.scene_name = scene_name
-        # 安全组id，VPC压测时配置
         self.security_group_id = security_group_id
         self.start_concurrency = start_concurrency
         self.start_rps = start_rps
-        # 预热阶段
         self.steps = steps
-        # synchronizing timer 类型
         self.sync_timer_type = sync_timer_type
-        # 测试文件
         self.test_file = test_file
-        # 交换机id，VPC压测时配置
         self.v_switch_id = v_switch_id
-        # vpc的id，VPC压测时配置
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8413,7 +8257,6 @@ class SaveOpenJMeterSceneRequest(TeaModel):
         self,
         open_jmeter_scene: SaveOpenJMeterSceneRequestOpenJMeterScene = None,
     ):
-        # 场景详情
         self.open_jmeter_scene = open_jmeter_scene
 
     def validate(self):
@@ -8443,7 +8286,6 @@ class SaveOpenJMeterSceneShrinkRequest(TeaModel):
         self,
         open_jmeter_scene_shrink: str = None,
     ):
-        # 场景详情
         self.open_jmeter_scene_shrink = open_jmeter_scene_shrink
 
     def validate(self):
@@ -8480,7 +8322,6 @@ class SaveOpenJMeterSceneResponseBody(TeaModel):
         self.http_status_code = http_status_code
         self.message = message
         self.request_id = request_id
-        # 场景id
         self.scene_id = scene_id
         self.success = success
 
@@ -8574,9 +8415,7 @@ class SavePtsSceneRequestSceneAdvanceSettingDomainBindingList(TeaModel):
         domain: str = None,
         ips: List[str] = None,
     ):
-        # 域名
         self.domain = domain
-        # 对应的IP
         self.ips = ips
 
     def validate(self):
@@ -8611,13 +8450,9 @@ class SavePtsSceneRequestSceneAdvanceSetting(TeaModel):
         log_rate: int = None,
         success_code: str = None,
     ):
-        # 超时时间，单位秒
         self.connection_timeout_in_second = connection_timeout_in_second
-        # 域名绑定IP关系
         self.domain_binding_list = domain_binding_list
-        # 日志采样率，[1,50]，且是10的倍数
         self.log_rate = log_rate
-        # 新增成功状态码，多个用英文逗号隔开
         self.success_code = success_code
 
     def validate(self):
@@ -8666,9 +8501,7 @@ class SavePtsSceneRequestSceneFileParameterList(TeaModel):
         file_name: str = None,
         file_oss_address: str = None,
     ):
-        # 文件名
         self.file_name = file_name
-        # 文件的oss地址，必须是公网可访问的
         self.file_oss_address = file_oss_address
 
     def validate(self):
@@ -8701,9 +8534,7 @@ class SavePtsSceneRequestSceneGlobalParameterList(TeaModel):
         param_name: str = None,
         param_value: str = None,
     ):
-        # 参数名
         self.param_name = param_name
-        # 全局参数值，不可参数化
         self.param_value = param_value
 
     def validate(self):
@@ -8737,11 +8568,9 @@ class SavePtsSceneRequestSceneLoadConfigApiLoadConfigList(TeaModel):
         rps_begin: int = None,
         rps_limit: int = None,
     ):
-        # apiId
+        # API ID。
         self.api_id = api_id
-        # 起始RPS值
         self.rps_begin = rps_begin
-        # 最大RPS值
         self.rps_limit = rps_limit
 
     def validate(self):
@@ -8780,13 +8609,9 @@ class SavePtsSceneRequestSceneLoadConfigConfiguration(TeaModel):
         all_rps_begin: int = None,
         all_rps_limit: int = None,
     ):
-        # 所有链路的起始并发总值，均分给每个链路，在并发模式下使用，若不设置该值，则relationLoadConfig必须填写
         self.all_concurrency_begin = all_concurrency_begin
-        # 所有链路的最大并发总值，均分给每个链路，在并发模式下使用，若不设置该值，则relationLoadConfig必须填写
         self.all_concurrency_limit = all_concurrency_limit
-        # 所有API的起始RPS总值，均分给每个API，在RPS模式下使用，若不设置该值，则apiLoadConfig必须填写
         self.all_rps_begin = all_rps_begin
-        # 所有API的最大RPS总值，均分给每个API，在RPS模式下使用，若不设置该值，则apiLoadConfig必须填写
         self.all_rps_limit = all_rps_limit
 
     def validate(self):
@@ -8828,11 +8653,8 @@ class SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList(TeaModel):
         concurrency_limit: int = None,
         relation_id: str = None,
     ):
-        # concurrencyBegin
         self.concurrency_begin = concurrency_begin
-        # 最大并发
         self.concurrency_limit = concurrency_limit
-        # 链路id
         self.relation_id = relation_id
 
     def validate(self):
@@ -8871,13 +8693,10 @@ class SavePtsSceneRequestSceneLoadConfigVpcLoadConfig(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # regionId
         self.region_id = region_id
-        # 安全组的Id
         self.security_group_id = security_group_id
-        # 交换机的Id
         self.v_switch_id = v_switch_id
-        # vpcId
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8926,25 +8745,15 @@ class SavePtsSceneRequestSceneLoadConfig(TeaModel):
         test_mode: str = None,
         vpc_load_config: SavePtsSceneRequestSceneLoadConfigVpcLoadConfig = None,
     ):
-        # 指定机器数，并发必须大于250(RPS大于2000)才能使用，最大扩展机器数不能超过 最大并发/250(最大RPS/2000)
         self.agent_count = agent_count
-        # API的起始、最大RPS值设置，在RPS模式下使用
         self.api_load_config_list = api_load_config_list
-        # 是否自动递增，只有在并发模式下有效，即 testMode=concurrency_mode 时
         self.auto_step = auto_step
-        # 场景施压量级配置信息
         self.configuration = configuration
-        # 递增百分比，取值范围[10,100]，且是整十倍；只有在并发模式且是自动递增模式下有效，即 testMode=concurrency_mode 且 autoStep=true 时
         self.increment = increment
-        # 单量级持续时长，单位分钟，一定是小于施压时长 maxRunningTime
         self.keep_time = keep_time
-        # 施压时长，单位分钟，[1-1440]
         self.max_running_time = max_running_time
-        # 链路的起始、最大并发值设置，在并发模式下使用
         self.relation_load_config_list = relation_load_config_list
-        # 施压模式，并发模式(concurrency_mode) 和RPS模式(tps_mode)
         self.test_mode = test_mode
-        # VPC配置
         self.vpc_load_config = vpc_load_config
 
     def validate(self):
@@ -9032,9 +8841,7 @@ class SavePtsSceneRequestSceneRelationListApiListBody(TeaModel):
         body_value: str = None,
         content_type: str = None,
     ):
-        # body 的实际内容 形式 {"key1":"value2","key2":"value2"}
         self.body_value = body_value
-        # body 类型，默认 application/x-www-form-urlencoded
         self.content_type = content_type
 
     def validate(self):
@@ -9069,13 +8876,9 @@ class SavePtsSceneRequestSceneRelationListApiListCheckPointList(TeaModel):
         expect_value: str = None,
         operator: str = None,
     ):
-        # 检查对象 type=HEADER 时，表示header中的字段，type=EXPORTED_PARAM ，表示出参名
         self.check_point = check_point
-        # 检查点类型 响应body(BODY_TEXT)，响应header(HEADER)， 响应状态码(STATUS_CODE) ，出参（EXPORTED_PARAM）
         self.check_type = check_type
-        # 检查内容，即期望值
         self.expect_value = expect_value
-        # 检查条件 CheckPointOperator 中
         self.operator = operator
 
     def validate(self):
@@ -9118,13 +8921,9 @@ class SavePtsSceneRequestSceneRelationListApiListExportList(TeaModel):
         export_type: str = None,
         export_value: str = None,
     ):
-        # 第几个匹配项，可以是数字 或 random（ BODY_TEXT情况下才需要count）
         self.count = count
-        # 出参名
         self.export_name = export_name
-        # 出参来源 请求体(BODY_TEXT)，请求体(BODY_JSON)，请求头(HEADER)，响应状态码(STATUS_CODE)
         self.export_type = export_type
-        # 出参的解析表达式
         self.export_value = export_value
 
     def validate(self):
@@ -9165,9 +8964,7 @@ class SavePtsSceneRequestSceneRelationListApiListHeaderList(TeaModel):
         header_name: str = None,
         header_value: str = None,
     ):
-        # header参数名
         self.header_name = header_name
-        # 参数对应的值
         self.header_value = header_value
 
     def validate(self):
@@ -9208,25 +9005,15 @@ class SavePtsSceneRequestSceneRelationListApiList(TeaModel):
         timeout_in_second: int = None,
         url: str = None,
     ):
-        # API的id
         self.api_id = api_id
-        # API名
         self.api_name = api_name
-        # 请求body
         self.body = body
-        # 检查点
         self.check_point_list = check_point_list
-        # 出参
         self.export_list = export_list
-        # headerList
         self.header_list = header_list
-        # 请求方法
         self.method = method
-        # 重定向次数，只能是0（允许重定向）或者10（不允许重定向）
         self.redirect_count_limit = redirect_count_limit
-        # API超时时间，单位秒，默认5s，范围[1-60]
         self.timeout_in_second = timeout_in_second
-        # 压测URL
         self.url = url
 
     def validate(self):
@@ -9322,13 +9109,9 @@ class SavePtsSceneRequestSceneRelationListFileParameterExplainList(TeaModel):
         file_name: str = None,
         file_param_name: str = None,
     ):
-        # 是否作为基准文件
         self.base_file = base_file
-        # 文件是否轮询一次
         self.cycle_once = cycle_once
-        # 文件名
         self.file_name = file_name
-        # 文件使用的参数列名
         self.file_param_name = file_param_name
 
     def validate(self):
@@ -9371,13 +9154,9 @@ class SavePtsSceneRequestSceneRelationList(TeaModel):
         relation_id: str = None,
         relation_name: str = None,
     ):
-        # 链路下的API信息
         self.api_list = api_list
-        # 链路中的文件参数配置信息
         self.file_parameter_explain_list = file_parameter_explain_list
-        # 链路id
         self.relation_id = relation_id
-        # 链路名
         self.relation_name = relation_name
 
     def validate(self):
@@ -9440,19 +9219,12 @@ class SavePtsSceneRequestScene(TeaModel):
         scene_id: str = None,
         scene_name: str = None,
     ):
-        # 高级设置
         self.advance_setting = advance_setting
-        # 文件参数
         self.file_parameter_list = file_parameter_list
-        # 全局自定义参数
         self.global_parameter_list = global_parameter_list
-        # 施压配置
         self.load_config = load_config
-        # 链路配置
         self.relation_list = relation_list
-        # 场景ID，不传为新建，传递为修改
         self.scene_id = scene_id
-        # 场景名
         self.scene_name = scene_name
 
     def validate(self):
@@ -9536,7 +9308,6 @@ class SavePtsSceneRequest(TeaModel):
         self,
         scene: SavePtsSceneRequestScene = None,
     ):
-        # 场景详细信息
         self.scene = scene
 
     def validate(self):
@@ -9566,7 +9337,6 @@ class SavePtsSceneShrinkRequest(TeaModel):
         self,
         scene_shrink: str = None,
     ):
-        # 场景详细信息
         self.scene_shrink = scene_shrink
 
     def validate(self):
@@ -9603,7 +9373,6 @@ class SavePtsSceneResponseBody(TeaModel):
         self.http_status_code = http_status_code
         self.message = message
         self.request_id = request_id
-        # 场景ID
         self.scene_id = scene_id
         self.success = success
 
@@ -9824,7 +9593,6 @@ class StartDebuggingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
-        # 场景id
         self.scene_id = scene_id
 
     def validate(self):
@@ -10081,7 +9849,6 @@ class StartTestingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
-        # 场景id
         self.scene_id = scene_id
 
     def validate(self):
@@ -10338,7 +10105,6 @@ class StopDebuggingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
-        # 场景id
         self.scene_id = scene_id
 
     def validate(self):
@@ -10583,7 +10349,6 @@ class StopTestingJMeterSceneRequest(TeaModel):
         self,
         scene_id: str = None,
     ):
-        # 场景id
         self.scene_id = scene_id
 
     def validate(self):

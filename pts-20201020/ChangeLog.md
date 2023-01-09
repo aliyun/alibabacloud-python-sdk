@@ -1,3 +1,7 @@
+2023-01-09 Version: 1.8.17
+- Supported adjust PTS scene speed.
+- Supported open PTS product.
+
 2022-05-11 Version: 1.8.16
 - Adjust Param To Form-Data.
 

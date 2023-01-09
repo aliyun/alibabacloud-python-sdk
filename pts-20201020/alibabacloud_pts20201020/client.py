@@ -2206,7 +2206,7 @@ class Client(OpenApiClient):
         request = pts20201020_models.SaveEnvShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.env):
-            request.env_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.env), 'Env', 'json')
+            request.env_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.env, 'Env', 'json')
         query = {}
         if not UtilClient.is_unset(request.env_shrink):
             query['Env'] = request.env_shrink
@@ -2238,7 +2238,7 @@ class Client(OpenApiClient):
         request = pts20201020_models.SaveEnvShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.env):
-            request.env_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.env), 'Env', 'json')
+            request.env_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.env, 'Env', 'json')
         query = {}
         if not UtilClient.is_unset(request.env_shrink):
             query['Env'] = request.env_shrink
@@ -2284,7 +2284,7 @@ class Client(OpenApiClient):
         request = pts20201020_models.SaveOpenJMeterSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.open_jmeter_scene):
-            request.open_jmeter_scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_jmeter_scene), 'OpenJMeterScene', 'json')
+            request.open_jmeter_scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_jmeter_scene, 'OpenJMeterScene', 'json')
         query = {}
         if not UtilClient.is_unset(request.open_jmeter_scene_shrink):
             query['OpenJMeterScene'] = request.open_jmeter_scene_shrink
@@ -2316,7 +2316,7 @@ class Client(OpenApiClient):
         request = pts20201020_models.SaveOpenJMeterSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.open_jmeter_scene):
-            request.open_jmeter_scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.open_jmeter_scene), 'OpenJMeterScene', 'json')
+            request.open_jmeter_scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_jmeter_scene, 'OpenJMeterScene', 'json')
         query = {}
         if not UtilClient.is_unset(request.open_jmeter_scene_shrink):
             query['OpenJMeterScene'] = request.open_jmeter_scene_shrink
@@ -2362,7 +2362,7 @@ class Client(OpenApiClient):
         request = pts20201020_models.SavePtsSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.scene):
-            request.scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scene), 'Scene', 'json')
+            request.scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene, 'Scene', 'json')
         query = {}
         if not UtilClient.is_unset(request.scene_shrink):
             query['Scene'] = request.scene_shrink
@@ -2394,7 +2394,7 @@ class Client(OpenApiClient):
         request = pts20201020_models.SavePtsSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.scene):
-            request.scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scene), 'Scene', 'json')
+            request.scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scene, 'Scene', 'json')
         query = {}
         if not UtilClient.is_unset(request.scene_shrink):
             query['Scene'] = request.scene_shrink
