@@ -1711,7 +1711,6 @@ class PhoneNumberEncryptRequest(TeaModel):
         auth_code: str = None,
         input_number: str = None,
         mask: str = None,
-        number_type: int = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -1719,7 +1718,6 @@ class PhoneNumberEncryptRequest(TeaModel):
         self.auth_code = auth_code
         self.input_number = input_number
         self.mask = mask
-        self.number_type = number_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1739,8 +1737,6 @@ class PhoneNumberEncryptRequest(TeaModel):
             result['InputNumber'] = self.input_number
         if self.mask is not None:
             result['Mask'] = self.mask
-        if self.number_type is not None:
-            result['NumberType'] = self.number_type
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -1757,8 +1753,6 @@ class PhoneNumberEncryptRequest(TeaModel):
             self.input_number = m.get('InputNumber')
         if m.get('Mask') is not None:
             self.mask = m.get('Mask')
-        if m.get('NumberType') is not None:
-            self.number_type = m.get('NumberType')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:

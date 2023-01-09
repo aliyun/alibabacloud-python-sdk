@@ -1,3 +1,6 @@
+2023-01-09 Version: 1.0.23
+- Delete numberType.
+
 2023-01-09 Version: 1.0.22
 - Support Service of number analysis.
 
