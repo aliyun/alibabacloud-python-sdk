@@ -1,3 +1,6 @@
+2023-01-09 Version: 1.0.5
+- Support ent verify.
+
 2022-12-20 Version: 1.0.4
 - Support ent verify.
 
