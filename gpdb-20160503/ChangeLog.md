@@ -1,3 +1,7 @@
+2023-01-09 Version: 1.1.21
+- Support Pause and Resume Instance.
+
+
 2022-12-13 Version: 1.1.20
 - Support describe cluster support features.
 
