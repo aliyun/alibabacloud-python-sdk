@@ -856,6 +856,8 @@ class Client(OpenApiClient):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
             query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.number_type):
+            query['NumberType'] = request.number_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -894,6 +896,8 @@ class Client(OpenApiClient):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
             query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.number_type):
+            query['NumberType'] = request.number_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
