@@ -1,3 +1,7 @@
+2023-01-09 Version: 3.0.55
+- Supported gateway new parameters.
+- Insert AHAS into mse.
+
 2023-01-03 Version: 3.0.54
 - Support zookeeper extendedTypesEnabled.
 
