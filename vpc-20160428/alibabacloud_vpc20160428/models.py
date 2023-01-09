@@ -10710,6 +10710,7 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -10721,6 +10722,7 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -10749,6 +10751,8 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -10773,6 +10777,8 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -10785,9 +10791,11 @@ class CreatePublicIpAddressPoolResponseBody(TeaModel):
         self,
         pulbic_ip_address_pool_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
         self.pulbic_ip_address_pool_id = pulbic_ip_address_pool_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -10802,6 +10810,8 @@ class CreatePublicIpAddressPoolResponseBody(TeaModel):
             result['PulbicIpAddressPoolId'] = self.pulbic_ip_address_pool_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10810,6 +10820,8 @@ class CreatePublicIpAddressPoolResponseBody(TeaModel):
             self.pulbic_ip_address_pool_id = m.get('PulbicIpAddressPoolId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -14561,6 +14573,7 @@ class CreateVpcPrefixListRequest(TeaModel):
         prefix_list_entries: List[CreateVpcPrefixListRequestPrefixListEntries] = None,
         prefix_list_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -14574,6 +14587,7 @@ class CreateVpcPrefixListRequest(TeaModel):
         self.prefix_list_entries = prefix_list_entries
         self.prefix_list_name = prefix_list_name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -14611,6 +14625,8 @@ class CreateVpcPrefixListRequest(TeaModel):
             result['PrefixListName'] = self.prefix_list_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -14642,6 +14658,8 @@ class CreateVpcPrefixListRequest(TeaModel):
             self.prefix_list_name = m.get('PrefixListName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -14654,9 +14672,11 @@ class CreateVpcPrefixListResponseBody(TeaModel):
         self,
         prefix_list_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
         self.prefix_list_id = prefix_list_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -14671,6 +14691,8 @@ class CreateVpcPrefixListResponseBody(TeaModel):
             result['PrefixListId'] = self.prefix_list_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14679,6 +14701,8 @@ class CreateVpcPrefixListResponseBody(TeaModel):
             self.prefix_list_id = m.get('PrefixListId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -28348,6 +28372,8 @@ class DescribeGrantRulesToCenRequest(TeaModel):
         instance_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
@@ -28358,6 +28384,8 @@ class DescribeGrantRulesToCenRequest(TeaModel):
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -28382,6 +28410,10 @@ class DescribeGrantRulesToCenRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -28404,6 +28436,10 @@ class DescribeGrantRulesToCenRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -50436,6 +50472,7 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
         region_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
+        resource_uid: str = None,
         status: str = None,
     ):
         self.owner_id = owner_id
@@ -50444,6 +50481,7 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_type = resource_type
+        self.resource_uid = resource_uid
         self.status = status
 
     def validate(self):
@@ -50467,6 +50505,8 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -50485,6 +50525,8 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -54269,6 +54311,39 @@ class ListNatIpsResponse(TeaModel):
         return self
 
 
+class ListPrefixListsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListPrefixListsRequest(TeaModel):
     def __init__(
         self,
@@ -54279,8 +54354,10 @@ class ListPrefixListsRequest(TeaModel):
         prefix_list_ids: List[str] = None,
         prefix_list_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[ListPrefixListsRequestTags] = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
@@ -54289,11 +54366,16 @@ class ListPrefixListsRequest(TeaModel):
         self.prefix_list_ids = prefix_list_ids
         self.prefix_list_name = prefix_list_name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -54315,10 +54397,16 @@ class ListPrefixListsRequest(TeaModel):
             result['PrefixListName'] = self.prefix_list_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -54337,10 +54425,50 @@ class ListPrefixListsRequest(TeaModel):
             self.prefix_list_name = m.get('PrefixListName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListPrefixListsRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListPrefixListsResponseBodyPrefixListsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -54357,8 +54485,10 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
         prefix_list_name: str = None,
         prefix_list_status: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         share_type: str = None,
         status: str = None,
+        tags: List[ListPrefixListsResponseBodyPrefixListsTags] = None,
     ):
         self.cidr_blocks = cidr_blocks
         self.creation_time = creation_time
@@ -54370,11 +54500,16 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
         self.prefix_list_name = prefix_list_name
         self.prefix_list_status = prefix_list_status
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.share_type = share_type
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -54402,10 +54537,16 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
             result['PrefixListStatus'] = self.prefix_list_status
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.share_type is not None:
             result['ShareType'] = self.share_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -54430,10 +54571,17 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
             self.prefix_list_status = m.get('PrefixListStatus')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListPrefixListsResponseBodyPrefixListsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -54781,6 +54929,39 @@ class ListPublicIpAddressPoolCidrBlocksResponse(TeaModel):
         return self
 
 
+class ListPublicIpAddressPoolsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListPublicIpAddressPoolsRequest(TeaModel):
     def __init__(
         self,
@@ -54793,9 +54974,11 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         owner_id: int = None,
         public_ip_address_pool_ids: List[str] = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         status: str = None,
+        tags: List[ListPublicIpAddressPoolsRequestTags] = None,
     ):
         self.dry_run = dry_run
         self.isp = isp
@@ -54806,12 +54989,17 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         self.owner_id = owner_id
         self.public_ip_address_pool_ids = public_ip_address_pool_ids
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -54837,12 +55025,18 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
             result['PublicIpAddressPoolIds'] = self.public_ip_address_pool_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -54865,12 +55059,52 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
             self.public_ip_address_pool_ids = m.get('PublicIpAddressPoolIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListPublicIpAddressPoolsRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -54885,8 +55119,10 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
         owner_id: int = None,
         public_ip_address_pool_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         share_type: str = None,
         status: str = None,
+        tags: List[ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags] = None,
         total_ip_num: int = None,
         used_ip_num: int = None,
     ):
@@ -54898,13 +55134,18 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
         self.owner_id = owner_id
         self.public_ip_address_pool_id = public_ip_address_pool_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.share_type = share_type
         self.status = status
+        self.tags = tags
         self.total_ip_num = total_ip_num
         self.used_ip_num = used_ip_num
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -54928,10 +55169,16 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
             result['PublicIpAddressPoolId'] = self.public_ip_address_pool_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.share_type is not None:
             result['ShareType'] = self.share_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.total_ip_num is not None:
             result['TotalIpNum'] = self.total_ip_num
         if self.used_ip_num is not None:
@@ -54956,10 +55203,17 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
             self.public_ip_address_pool_id = m.get('PublicIpAddressPoolId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ShareType') is not None:
             self.share_type = m.get('ShareType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TotalIpNum') is not None:
             self.total_ip_num = m.get('TotalIpNum')
         if m.get('UsedIpNum') is not None:
