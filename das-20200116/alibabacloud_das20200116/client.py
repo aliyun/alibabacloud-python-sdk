@@ -828,6 +828,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_stop_gateway_with_options_async(request, runtime)
 
+    def describe_auto_scaling_config_with_options(
+        self,
+        request: das20200116_models.DescribeAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeAutoScalingConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoScalingConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_auto_scaling_config_with_options_async(
+        self,
+        request: das20200116_models.DescribeAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeAutoScalingConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoScalingConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_auto_scaling_config(
+        self,
+        request: das20200116_models.DescribeAutoScalingConfigRequest,
+    ) -> das20200116_models.DescribeAutoScalingConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_auto_scaling_config_with_options(request, runtime)
+
+    async def describe_auto_scaling_config_async(
+        self,
+        request: das20200116_models.DescribeAutoScalingConfigRequest,
+    ) -> das20200116_models.DescribeAutoScalingConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_auto_scaling_config_with_options_async(request, runtime)
+
     def describe_cache_analysis_job_with_options(
         self,
         request: das20200116_models.DescribeCacheAnalysisJobRequest,
@@ -1218,80 +1288,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloudbench_task_config_with_options_async(request, runtime)
 
-    def describe_das_advanced_info_with_options(
-        self,
-        request: das20200116_models.DescribeDasAdvancedInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.DescribeDasAdvancedInfoResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.commodity_instance_id):
-            body['CommodityInstanceId'] = request.commodity_instance_id
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeDasAdvancedInfo',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.DescribeDasAdvancedInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_das_advanced_info_with_options_async(
-        self,
-        request: das20200116_models.DescribeDasAdvancedInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.DescribeDasAdvancedInfoResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.commodity_instance_id):
-            body['CommodityInstanceId'] = request.commodity_instance_id
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeDasAdvancedInfo',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.DescribeDasAdvancedInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_das_advanced_info(
-        self,
-        request: das20200116_models.DescribeDasAdvancedInfoRequest,
-    ) -> das20200116_models.DescribeDasAdvancedInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_das_advanced_info_with_options(request, runtime)
-
-    async def describe_das_advanced_info_async(
-        self,
-        request: das20200116_models.DescribeDasAdvancedInfoRequest,
-    ) -> das20200116_models.DescribeDasAdvancedInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_das_advanced_info_with_options_async(request, runtime)
-
     def describe_diagnostic_report_list_with_options(
         self,
         request: das20200116_models.DescribeDiagnosticReportListRequest,
@@ -1599,100 +1595,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.DescribeInstanceDasProResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_das_pro_with_options_async(request, runtime)
-
-    def describe_sql_log_instances_paging_with_options(
-        self,
-        request: das20200116_models.DescribeSqlLogInstancesPagingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.DescribeSqlLogInstancesPagingResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
-        body = {}
-        if not UtilClient.is_unset(request.bid):
-            body['Bid'] = request.bid
-        if not UtilClient.is_unset(request.page_no):
-            body['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            body['Region'] = request.region
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeSqlLogInstancesPaging',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.DescribeSqlLogInstancesPagingResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_sql_log_instances_paging_with_options_async(
-        self,
-        request: das20200116_models.DescribeSqlLogInstancesPagingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.DescribeSqlLogInstancesPagingResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
-        body = {}
-        if not UtilClient.is_unset(request.bid):
-            body['Bid'] = request.bid
-        if not UtilClient.is_unset(request.page_no):
-            body['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
-            body['Region'] = request.region
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeSqlLogInstancesPaging',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.DescribeSqlLogInstancesPagingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_sql_log_instances_paging(
-        self,
-        request: das20200116_models.DescribeSqlLogInstancesPagingRequest,
-    ) -> das20200116_models.DescribeSqlLogInstancesPagingResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sql_log_instances_paging_with_options(request, runtime)
-
-    async def describe_sql_log_instances_paging_async(
-        self,
-        request: das20200116_models.DescribeSqlLogInstancesPagingRequest,
-    ) -> das20200116_models.DescribeSqlLogInstancesPagingResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sql_log_instances_paging_with_options_async(request, runtime)
 
     def describe_top_big_keys_with_options(
         self,
@@ -2161,6 +2063,84 @@ class Client(OpenApiClient):
     ) -> das20200116_models.DisableDasProResponse:
         runtime = util_models.RuntimeOptions()
         return await self.disable_das_pro_with_options_async(request, runtime)
+
+    def disable_instance_das_config_with_options(
+        self,
+        request: das20200116_models.DisableInstanceDasConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableInstanceDasConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableInstanceDasConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableInstanceDasConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_instance_das_config_with_options_async(
+        self,
+        request: das20200116_models.DisableInstanceDasConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableInstanceDasConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableInstanceDasConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableInstanceDasConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_instance_das_config(
+        self,
+        request: das20200116_models.DisableInstanceDasConfigRequest,
+    ) -> das20200116_models.DisableInstanceDasConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_instance_das_config_with_options(request, runtime)
+
+    async def disable_instance_das_config_async(
+        self,
+        request: das20200116_models.DisableInstanceDasConfigRequest,
+    ) -> das20200116_models.DisableInstanceDasConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_instance_das_config_with_options_async(request, runtime)
 
     def disable_sql_concurrency_control_with_options(
         self,
@@ -3884,28 +3864,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_inspections_with_options_async(request, runtime)
 
-    def get_pfs_metric_trends_with_options(
+    def get_instance_sql_optimize_statistic_with_options(
         self,
-        request: das20200116_models.GetPfsMetricTrendsRequest,
+        request: das20200116_models.GetInstanceSqlOptimizeStatisticRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsMetricTrendsResponse:
+    ) -> das20200116_models.GetInstanceSqlOptimizeStatisticResponse:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filter_enable):
+            query['FilterEnable'] = request.filter_enable
         if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.metric):
-            body['Metric'] = request.metric
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.use_merging):
+            query['UseMerging'] = request.use_merging
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPfsMetricTrends',
+            action='GetInstanceSqlOptimizeStatistic',
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
@@ -3916,32 +3900,36 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            das20200116_models.GetPfsMetricTrendsResponse(),
+            das20200116_models.GetInstanceSqlOptimizeStatisticResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_pfs_metric_trends_with_options_async(
+    async def get_instance_sql_optimize_statistic_with_options_async(
         self,
-        request: das20200116_models.GetPfsMetricTrendsRequest,
+        request: das20200116_models.GetInstanceSqlOptimizeStatisticRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsMetricTrendsResponse:
+    ) -> das20200116_models.GetInstanceSqlOptimizeStatisticResponse:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filter_enable):
+            query['FilterEnable'] = request.filter_enable
         if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.metric):
-            body['Metric'] = request.metric
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.use_merging):
+            query['UseMerging'] = request.use_merging
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPfsMetricTrends',
+            action='GetInstanceSqlOptimizeStatistic',
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
@@ -3952,58 +3940,44 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            das20200116_models.GetPfsMetricTrendsResponse(),
+            das20200116_models.GetInstanceSqlOptimizeStatisticResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pfs_metric_trends(
+    def get_instance_sql_optimize_statistic(
         self,
-        request: das20200116_models.GetPfsMetricTrendsRequest,
-    ) -> das20200116_models.GetPfsMetricTrendsResponse:
+        request: das20200116_models.GetInstanceSqlOptimizeStatisticRequest,
+    ) -> das20200116_models.GetInstanceSqlOptimizeStatisticResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_pfs_metric_trends_with_options(request, runtime)
+        return self.get_instance_sql_optimize_statistic_with_options(request, runtime)
 
-    async def get_pfs_metric_trends_async(
+    async def get_instance_sql_optimize_statistic_async(
         self,
-        request: das20200116_models.GetPfsMetricTrendsRequest,
-    ) -> das20200116_models.GetPfsMetricTrendsResponse:
+        request: das20200116_models.GetInstanceSqlOptimizeStatisticRequest,
+    ) -> das20200116_models.GetInstanceSqlOptimizeStatisticResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_pfs_metric_trends_with_options_async(request, runtime)
+        return await self.get_instance_sql_optimize_statistic_with_options_async(request, runtime)
 
-    def get_pfs_sql_comparison_with_options(
+    def get_partitions_heatmap_with_options(
         self,
-        request: das20200116_models.GetPfsSqlComparisonRequest,
+        request: das20200116_models.GetPartitionsHeatmapRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlComparisonResponse:
+    ) -> das20200116_models.GetPartitionsHeatmapResponse:
         UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.asc):
-            body['Asc'] = request.asc
-        if not UtilClient.is_unset(request.end_one):
-            body['EndOne'] = request.end_one
-        if not UtilClient.is_unset(request.end_two):
-            body['EndTwo'] = request.end_two
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.keyword):
-            body['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.order_by):
-            body['OrderBy'] = request.order_by
-        if not UtilClient.is_unset(request.page_no):
-            body['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_one):
-            body['StartOne'] = request.start_one
-        if not UtilClient.is_unset(request.start_two):
-            body['StartTwo'] = request.start_two
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPfsSqlComparison',
+            action='GetPartitionsHeatmap',
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
@@ -4014,44 +3988,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            das20200116_models.GetPfsSqlComparisonResponse(),
+            das20200116_models.GetPartitionsHeatmapResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_pfs_sql_comparison_with_options_async(
+    async def get_partitions_heatmap_with_options_async(
         self,
-        request: das20200116_models.GetPfsSqlComparisonRequest,
+        request: das20200116_models.GetPartitionsHeatmapRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlComparisonResponse:
+    ) -> das20200116_models.GetPartitionsHeatmapResponse:
         UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.asc):
-            body['Asc'] = request.asc
-        if not UtilClient.is_unset(request.end_one):
-            body['EndOne'] = request.end_one
-        if not UtilClient.is_unset(request.end_two):
-            body['EndTwo'] = request.end_two
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.keyword):
-            body['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.order_by):
-            body['OrderBy'] = request.order_by
-        if not UtilClient.is_unset(request.page_no):
-            body['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_one):
-            body['StartOne'] = request.start_one
-        if not UtilClient.is_unset(request.start_two):
-            body['StartTwo'] = request.start_two
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.time_range):
+            query['TimeRange'] = request.time_range
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPfsSqlComparison',
+            action='GetPartitionsHeatmap',
             version='2020-01-16',
             protocol='HTTPS',
             pathname='/',
@@ -4062,305 +4022,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            das20200116_models.GetPfsSqlComparisonResponse(),
+            das20200116_models.GetPartitionsHeatmapResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_pfs_sql_comparison(
+    def get_partitions_heatmap(
         self,
-        request: das20200116_models.GetPfsSqlComparisonRequest,
-    ) -> das20200116_models.GetPfsSqlComparisonResponse:
+        request: das20200116_models.GetPartitionsHeatmapRequest,
+    ) -> das20200116_models.GetPartitionsHeatmapResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_pfs_sql_comparison_with_options(request, runtime)
+        return self.get_partitions_heatmap_with_options(request, runtime)
 
-    async def get_pfs_sql_comparison_async(
+    async def get_partitions_heatmap_async(
         self,
-        request: das20200116_models.GetPfsSqlComparisonRequest,
-    ) -> das20200116_models.GetPfsSqlComparisonResponse:
+        request: das20200116_models.GetPartitionsHeatmapRequest,
+    ) -> das20200116_models.GetPartitionsHeatmapResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_pfs_sql_comparison_with_options_async(request, runtime)
-
-    def get_pfs_sql_metric_trends_with_options(
-        self,
-        request: das20200116_models.GetPfsSqlMetricTrendsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlMetricTrendsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.metric):
-            body['Metric'] = request.metric
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.sql_id):
-            body['SqlId'] = request.sql_id
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetPfsSqlMetricTrends',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetPfsSqlMetricTrendsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_pfs_sql_metric_trends_with_options_async(
-        self,
-        request: das20200116_models.GetPfsSqlMetricTrendsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlMetricTrendsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.metric):
-            body['Metric'] = request.metric
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.sql_id):
-            body['SqlId'] = request.sql_id
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetPfsSqlMetricTrends',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetPfsSqlMetricTrendsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_pfs_sql_metric_trends(
-        self,
-        request: das20200116_models.GetPfsSqlMetricTrendsRequest,
-    ) -> das20200116_models.GetPfsSqlMetricTrendsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_pfs_sql_metric_trends_with_options(request, runtime)
-
-    async def get_pfs_sql_metric_trends_async(
-        self,
-        request: das20200116_models.GetPfsSqlMetricTrendsRequest,
-    ) -> das20200116_models.GetPfsSqlMetricTrendsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_pfs_sql_metric_trends_with_options_async(request, runtime)
-
-    def get_pfs_sql_sample_with_options(
-        self,
-        request: das20200116_models.GetPfsSqlSampleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlSampleResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.sql_id):
-            body['SqlId'] = request.sql_id
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetPfsSqlSample',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetPfsSqlSampleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_pfs_sql_sample_with_options_async(
-        self,
-        request: das20200116_models.GetPfsSqlSampleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlSampleResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.sql_id):
-            body['SqlId'] = request.sql_id
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetPfsSqlSample',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetPfsSqlSampleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_pfs_sql_sample(
-        self,
-        request: das20200116_models.GetPfsSqlSampleRequest,
-    ) -> das20200116_models.GetPfsSqlSampleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_pfs_sql_sample_with_options(request, runtime)
-
-    async def get_pfs_sql_sample_async(
-        self,
-        request: das20200116_models.GetPfsSqlSampleRequest,
-    ) -> das20200116_models.GetPfsSqlSampleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_pfs_sql_sample_with_options_async(request, runtime)
-
-    def get_pfs_sql_summaries_with_options(
-        self,
-        request: das20200116_models.GetPfsSqlSummariesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlSummariesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.asc):
-            body['Asc'] = request.asc
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.keywords):
-            body['Keywords'] = request.keywords
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.order_by):
-            body['OrderBy'] = request.order_by
-        if not UtilClient.is_unset(request.page_no):
-            body['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sql_id):
-            body['SqlId'] = request.sql_id
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetPfsSqlSummaries',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetPfsSqlSummariesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_pfs_sql_summaries_with_options_async(
-        self,
-        request: das20200116_models.GetPfsSqlSummariesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetPfsSqlSummariesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.asc):
-            body['Asc'] = request.asc
-        if not UtilClient.is_unset(request.end_time):
-            body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.keywords):
-            body['Keywords'] = request.keywords
-        if not UtilClient.is_unset(request.node_id):
-            body['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.order_by):
-            body['OrderBy'] = request.order_by
-        if not UtilClient.is_unset(request.page_no):
-            body['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sql_id):
-            body['SqlId'] = request.sql_id
-        if not UtilClient.is_unset(request.start_time):
-            body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetPfsSqlSummaries',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetPfsSqlSummariesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_pfs_sql_summaries(
-        self,
-        request: das20200116_models.GetPfsSqlSummariesRequest,
-    ) -> das20200116_models.GetPfsSqlSummariesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_pfs_sql_summaries_with_options(request, runtime)
-
-    async def get_pfs_sql_summaries_async(
-        self,
-        request: das20200116_models.GetPfsSqlSummariesRequest,
-    ) -> das20200116_models.GetPfsSqlSummariesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_pfs_sql_summaries_with_options_async(request, runtime)
+        return await self.get_partitions_heatmap_with_options_async(request, runtime)
 
     def get_query_optimize_data_stats_with_options(
         self,
@@ -5394,76 +5072,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_sql_optimize_advice_with_options_async(request, runtime)
 
-    def is_support_pfswith_options(
-        self,
-        request: das20200116_models.IsSupportPFSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.IsSupportPFSResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='IsSupportPFS',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.IsSupportPFSResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def is_support_pfswith_options_async(
-        self,
-        request: das20200116_models.IsSupportPFSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.IsSupportPFSResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.instance_id):
-            body['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='IsSupportPFS',
-            version='2020-01-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            das20200116_models.IsSupportPFSResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def is_support_pfs(
-        self,
-        request: das20200116_models.IsSupportPFSRequest,
-    ) -> das20200116_models.IsSupportPFSResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.is_support_pfswith_options(request, runtime)
-
-    async def is_support_pfs_async(
-        self,
-        request: das20200116_models.IsSupportPFSRequest,
-    ) -> das20200116_models.IsSupportPFSResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.is_support_pfswith_options_async(request, runtime)
-
     def kill_instance_all_session_with_options(
         self,
         request: das20200116_models.KillInstanceAllSessionRequest,
@@ -5538,6 +5146,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.kill_instance_all_session_with_options_async(request, runtime)
 
+    def modify_auto_scaling_config_with_options(
+        self,
+        request: das20200116_models.ModifyAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.ModifyAutoScalingConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.shard):
+            query['Shard'] = request.shard
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoScalingConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.ModifyAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_auto_scaling_config_with_options_async(
+        self,
+        request: das20200116_models.ModifyAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.ModifyAutoScalingConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.shard):
+            query['Shard'] = request.shard
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoScalingConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.ModifyAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_auto_scaling_config(
+        self,
+        request: das20200116_models.ModifyAutoScalingConfigRequest,
+    ) -> das20200116_models.ModifyAutoScalingConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_auto_scaling_config_with_options(request, runtime)
+
+    async def modify_auto_scaling_config_async(
+        self,
+        request: das20200116_models.ModifyAutoScalingConfigRequest,
+    ) -> das20200116_models.ModifyAutoScalingConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_auto_scaling_config_with_options_async(request, runtime)
+
     def run_cloud_bench_task_with_options(
         self,
         request: das20200116_models.RunCloudBenchTaskRequest,
@@ -5607,6 +5305,108 @@ class Client(OpenApiClient):
     ) -> das20200116_models.RunCloudBenchTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.run_cloud_bench_task_with_options_async(request, runtime)
+
+    def set_event_subscription_with_options(
+        self,
+        request: das20200116_models.SetEventSubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.SetEventSubscriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active):
+            query['Active'] = request.active
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.contact_group_name):
+            query['ContactGroupName'] = request.contact_group_name
+        if not UtilClient.is_unset(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.event_context):
+            query['EventContext'] = request.event_context
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.min_interval):
+            query['MinInterval'] = request.min_interval
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetEventSubscription',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.SetEventSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_event_subscription_with_options_async(
+        self,
+        request: das20200116_models.SetEventSubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.SetEventSubscriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.active):
+            query['Active'] = request.active
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.contact_group_name):
+            query['ContactGroupName'] = request.contact_group_name
+        if not UtilClient.is_unset(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.event_context):
+            query['EventContext'] = request.event_context
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.min_interval):
+            query['MinInterval'] = request.min_interval
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetEventSubscription',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.SetEventSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_event_subscription(
+        self,
+        request: das20200116_models.SetEventSubscriptionRequest,
+    ) -> das20200116_models.SetEventSubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_event_subscription_with_options(request, runtime)
+
+    async def set_event_subscription_async(
+        self,
+        request: das20200116_models.SetEventSubscriptionRequest,
+    ) -> das20200116_models.SetEventSubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_event_subscription_with_options_async(request, runtime)
 
     def stop_cloud_bench_task_with_options(
         self,

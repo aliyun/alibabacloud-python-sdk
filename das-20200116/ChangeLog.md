@@ -1,3 +1,6 @@
+2023-01-10 Version: 2.0.31
+- Public SetEventSubscription API.
+
 2022-09-19 Version: 2.0.29
 - ADD GetRedisSession.
 
