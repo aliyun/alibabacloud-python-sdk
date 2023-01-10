@@ -10361,6 +10361,569 @@ class GetCodeupOrganizationResponse(TeaModel):
         return self
 
 
+class GetCompareDetailRequest(TeaModel):
+    def __init__(
+        self,
+        from_: str = None,
+        max_diff_byte: int = None,
+        max_diff_file: int = None,
+        merge_base: bool = None,
+        organization_id: str = None,
+        to: str = None,
+    ):
+        self.from_ = from_
+        self.max_diff_byte = max_diff_byte
+        self.max_diff_file = max_diff_file
+        self.merge_base = merge_base
+        self.organization_id = organization_id
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['from'] = self.from_
+        if self.max_diff_byte is not None:
+            result['maxDiffByte'] = self.max_diff_byte
+        if self.max_diff_file is not None:
+            result['maxDiffFile'] = self.max_diff_file
+        if self.merge_base is not None:
+            result['mergeBase'] = self.merge_base
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.to is not None:
+            result['to'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('from') is not None:
+            self.from_ = m.get('from')
+        if m.get('maxDiffByte') is not None:
+            self.max_diff_byte = m.get('maxDiffByte')
+        if m.get('maxDiffFile') is not None:
+            self.max_diff_file = m.get('maxDiffFile')
+        if m.get('mergeBase') is not None:
+            self.merge_base = m.get('mergeBase')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        return self
+
+
+class GetCompareDetailResponseBodyResultCommitsAuthor(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        extern_uid: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+        website_url: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.extern_uid = extern_uid
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+        self.website_url = website_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.extern_uid is not None:
+            result['externUid'] = self.extern_uid
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        if self.website_url is not None:
+            result['websiteUrl'] = self.website_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('externUid') is not None:
+            self.extern_uid = m.get('externUid')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('websiteUrl') is not None:
+            self.website_url = m.get('websiteUrl')
+        return self
+
+
+class GetCompareDetailResponseBodyResultCommitsCommitter(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        email: str = None,
+        extern_uid: str = None,
+        id: int = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+        website_url: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.email = email
+        self.extern_uid = extern_uid
+        self.id = id
+        self.name = name
+        self.state = state
+        self.username = username
+        self.website_url = website_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.extern_uid is not None:
+            result['externUid'] = self.extern_uid
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        if self.website_url is not None:
+            result['websiteUrl'] = self.website_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('externUid') is not None:
+            self.extern_uid = m.get('externUid')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('websiteUrl') is not None:
+            self.website_url = m.get('websiteUrl')
+        return self
+
+
+class GetCompareDetailResponseBodyResultCommits(TeaModel):
+    def __init__(
+        self,
+        author: GetCompareDetailResponseBodyResultCommitsAuthor = None,
+        author_email: str = None,
+        author_name: str = None,
+        authored_date: str = None,
+        comments_count: int = None,
+        committed_date: str = None,
+        committer: GetCompareDetailResponseBodyResultCommitsCommitter = None,
+        committer_email: str = None,
+        committer_name: str = None,
+        created_at: str = None,
+        id: str = None,
+        message: str = None,
+        parent_ids: List[str] = None,
+        short_id: str = None,
+        title: str = None,
+    ):
+        self.author = author
+        self.author_email = author_email
+        self.author_name = author_name
+        self.authored_date = authored_date
+        self.comments_count = comments_count
+        self.committed_date = committed_date
+        self.committer = committer
+        self.committer_email = committer_email
+        self.committer_name = committer_name
+        self.created_at = created_at
+        self.id = id
+        self.message = message
+        self.parent_ids = parent_ids
+        self.short_id = short_id
+        self.title = title
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.committer:
+            self.committer.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.author_email is not None:
+            result['authorEmail'] = self.author_email
+        if self.author_name is not None:
+            result['authorName'] = self.author_name
+        if self.authored_date is not None:
+            result['authoredDate'] = self.authored_date
+        if self.comments_count is not None:
+            result['commentsCount'] = self.comments_count
+        if self.committed_date is not None:
+            result['committedDate'] = self.committed_date
+        if self.committer is not None:
+            result['committer'] = self.committer.to_map()
+        if self.committer_email is not None:
+            result['committerEmail'] = self.committer_email
+        if self.committer_name is not None:
+            result['committerName'] = self.committer_name
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.id is not None:
+            result['id'] = self.id
+        if self.message is not None:
+            result['message'] = self.message
+        if self.parent_ids is not None:
+            result['parentIds'] = self.parent_ids
+        if self.short_id is not None:
+            result['shortId'] = self.short_id
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = GetCompareDetailResponseBodyResultCommitsAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('authorEmail') is not None:
+            self.author_email = m.get('authorEmail')
+        if m.get('authorName') is not None:
+            self.author_name = m.get('authorName')
+        if m.get('authoredDate') is not None:
+            self.authored_date = m.get('authoredDate')
+        if m.get('commentsCount') is not None:
+            self.comments_count = m.get('commentsCount')
+        if m.get('committedDate') is not None:
+            self.committed_date = m.get('committedDate')
+        if m.get('committer') is not None:
+            temp_model = GetCompareDetailResponseBodyResultCommitsCommitter()
+            self.committer = temp_model.from_map(m['committer'])
+        if m.get('committerEmail') is not None:
+            self.committer_email = m.get('committerEmail')
+        if m.get('committerName') is not None:
+            self.committer_name = m.get('committerName')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('parentIds') is not None:
+            self.parent_ids = m.get('parentIds')
+        if m.get('shortId') is not None:
+            self.short_id = m.get('shortId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class GetCompareDetailResponseBodyResultDiffs(TeaModel):
+    def __init__(
+        self,
+        a_mode: str = None,
+        b_mode: str = None,
+        deleted_file: bool = None,
+        diff: str = None,
+        is_binary: bool = None,
+        is_new_lfs: bool = None,
+        is_old_lfs: bool = None,
+        new_file: bool = None,
+        new_id: str = None,
+        new_path: str = None,
+        old_id: str = None,
+        old_path: str = None,
+        renamed_file: bool = None,
+    ):
+        self.a_mode = a_mode
+        self.b_mode = b_mode
+        self.deleted_file = deleted_file
+        self.diff = diff
+        self.is_binary = is_binary
+        self.is_new_lfs = is_new_lfs
+        self.is_old_lfs = is_old_lfs
+        self.new_file = new_file
+        self.new_id = new_id
+        self.new_path = new_path
+        self.old_id = old_id
+        self.old_path = old_path
+        self.renamed_file = renamed_file
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.a_mode is not None:
+            result['aMode'] = self.a_mode
+        if self.b_mode is not None:
+            result['bMode'] = self.b_mode
+        if self.deleted_file is not None:
+            result['deletedFile'] = self.deleted_file
+        if self.diff is not None:
+            result['diff'] = self.diff
+        if self.is_binary is not None:
+            result['isBinary'] = self.is_binary
+        if self.is_new_lfs is not None:
+            result['isNewLfs'] = self.is_new_lfs
+        if self.is_old_lfs is not None:
+            result['isOldLfs'] = self.is_old_lfs
+        if self.new_file is not None:
+            result['newFile'] = self.new_file
+        if self.new_id is not None:
+            result['newId'] = self.new_id
+        if self.new_path is not None:
+            result['newPath'] = self.new_path
+        if self.old_id is not None:
+            result['oldId'] = self.old_id
+        if self.old_path is not None:
+            result['oldPath'] = self.old_path
+        if self.renamed_file is not None:
+            result['renamedFile'] = self.renamed_file
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aMode') is not None:
+            self.a_mode = m.get('aMode')
+        if m.get('bMode') is not None:
+            self.b_mode = m.get('bMode')
+        if m.get('deletedFile') is not None:
+            self.deleted_file = m.get('deletedFile')
+        if m.get('diff') is not None:
+            self.diff = m.get('diff')
+        if m.get('isBinary') is not None:
+            self.is_binary = m.get('isBinary')
+        if m.get('isNewLfs') is not None:
+            self.is_new_lfs = m.get('isNewLfs')
+        if m.get('isOldLfs') is not None:
+            self.is_old_lfs = m.get('isOldLfs')
+        if m.get('newFile') is not None:
+            self.new_file = m.get('newFile')
+        if m.get('newId') is not None:
+            self.new_id = m.get('newId')
+        if m.get('newPath') is not None:
+            self.new_path = m.get('newPath')
+        if m.get('oldId') is not None:
+            self.old_id = m.get('oldId')
+        if m.get('oldPath') is not None:
+            self.old_path = m.get('oldPath')
+        if m.get('renamedFile') is not None:
+            self.renamed_file = m.get('renamedFile')
+        return self
+
+
+class GetCompareDetailResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        commits: List[GetCompareDetailResponseBodyResultCommits] = None,
+        diffs: List[GetCompareDetailResponseBodyResultDiffs] = None,
+        messages: List[str] = None,
+    ):
+        self.commits = commits
+        self.diffs = diffs
+        self.messages = messages
+
+    def validate(self):
+        if self.commits:
+            for k in self.commits:
+                if k:
+                    k.validate()
+        if self.diffs:
+            for k in self.diffs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['commits'] = []
+        if self.commits is not None:
+            for k in self.commits:
+                result['commits'].append(k.to_map() if k else None)
+        result['diffs'] = []
+        if self.diffs is not None:
+            for k in self.diffs:
+                result['diffs'].append(k.to_map() if k else None)
+        if self.messages is not None:
+            result['messages'] = self.messages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.commits = []
+        if m.get('commits') is not None:
+            for k in m.get('commits'):
+                temp_model = GetCompareDetailResponseBodyResultCommits()
+                self.commits.append(temp_model.from_map(k))
+        self.diffs = []
+        if m.get('diffs') is not None:
+            for k in m.get('diffs'):
+                temp_model = GetCompareDetailResponseBodyResultDiffs()
+                self.diffs.append(temp_model.from_map(k))
+        if m.get('messages') is not None:
+            self.messages = m.get('messages')
+        return self
+
+
+class GetCompareDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: GetCompareDetailResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetCompareDetailResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetCompareDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCompareDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCompareDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCustomFieldOptionRequest(TeaModel):
     def __init__(
         self,
@@ -14960,6 +15523,294 @@ class GetRepositoryTagResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRepositoryTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSearchCodePreviewRequest(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        is_dsl: bool = None,
+        keyword: str = None,
+        organization_id: str = None,
+    ):
+        self.doc_id = doc_id
+        self.is_dsl = is_dsl
+        self.keyword = keyword
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.is_dsl is not None:
+            result['isDsl'] = self.is_dsl
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('isDsl') is not None:
+            self.is_dsl = m.get('isDsl')
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class GetSearchCodePreviewResponseBodyResultHighlightTextMap(TeaModel):
+    def __init__(
+        self,
+        clob: str = None,
+        file_name: str = None,
+        organization_id: str = None,
+    ):
+        self.clob = clob
+        self.file_name = file_name
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clob is not None:
+            result['clob'] = self.clob
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clob') is not None:
+            self.clob = m.get('clob')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class GetSearchCodePreviewResponseBodyResultSource(TeaModel):
+    def __init__(
+        self,
+        branch: str = None,
+        checkin_date: str = None,
+        file_name: str = None,
+        file_path: str = None,
+        language: str = None,
+        organization_id: str = None,
+        repo_path: str = None,
+    ):
+        self.branch = branch
+        self.checkin_date = checkin_date
+        self.file_name = file_name
+        self.file_path = file_path
+        self.language = language
+        self.organization_id = organization_id
+        self.repo_path = repo_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch is not None:
+            result['branch'] = self.branch
+        if self.checkin_date is not None:
+            result['checkinDate'] = self.checkin_date
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.language is not None:
+            result['language'] = self.language
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('branch') is not None:
+            self.branch = m.get('branch')
+        if m.get('checkinDate') is not None:
+            self.checkin_date = m.get('checkinDate')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repoPath') is not None:
+            self.repo_path = m.get('repoPath')
+        return self
+
+
+class GetSearchCodePreviewResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        highlight_text_map: GetSearchCodePreviewResponseBodyResultHighlightTextMap = None,
+        source: GetSearchCodePreviewResponseBodyResultSource = None,
+    ):
+        self.doc_id = doc_id
+        self.highlight_text_map = highlight_text_map
+        self.source = source
+
+    def validate(self):
+        if self.highlight_text_map:
+            self.highlight_text_map.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.highlight_text_map is not None:
+            result['highlightTextMap'] = self.highlight_text_map.to_map()
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('highlightTextMap') is not None:
+            temp_model = GetSearchCodePreviewResponseBodyResultHighlightTextMap()
+            self.highlight_text_map = temp_model.from_map(m['highlightTextMap'])
+        if m.get('source') is not None:
+            temp_model = GetSearchCodePreviewResponseBodyResultSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
+class GetSearchCodePreviewResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: GetSearchCodePreviewResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetSearchCodePreviewResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetSearchCodePreviewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSearchCodePreviewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSearchCodePreviewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25627,6 +26478,1244 @@ class ListResourceMembersResponse(TeaModel):
         return self
 
 
+class ListSearchCommitRequestRepoPath(TeaModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        operator_type: str = None,
+        value: str = None,
+    ):
+        self.match_type = match_type
+        self.operator_type = operator_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+        if self.operator_type is not None:
+            result['operatorType'] = self.operator_type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+        if m.get('operatorType') is not None:
+            self.operator_type = m.get('operatorType')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListSearchCommitRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        order: str = None,
+        page: int = None,
+        page_size: int = None,
+        repo_path: ListSearchCommitRequestRepoPath = None,
+        scope: str = None,
+        sort: str = None,
+        organization_id: str = None,
+    ):
+        self.keyword = keyword
+        self.order = order
+        self.page = page
+        self.page_size = page_size
+        self.repo_path = repo_path
+        self.scope = scope
+        self.sort = sort
+        self.organization_id = organization_id
+
+    def validate(self):
+        if self.repo_path:
+            self.repo_path.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.order is not None:
+            result['order'] = self.order
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path.to_map()
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.sort is not None:
+            result['sort'] = self.sort
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('repoPath') is not None:
+            temp_model = ListSearchCommitRequestRepoPath()
+            self.repo_path = temp_model.from_map(m['repoPath'])
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListSearchCommitResponseBodyResultHighlightTextMap(TeaModel):
+    def __init__(
+        self,
+        commit_id: str = None,
+        commit_message: str = None,
+        organization_id: str = None,
+        title: str = None,
+    ):
+        self.commit_id = commit_id
+        self.commit_message = commit_message
+        self.organization_id = organization_id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.commit_message is not None:
+            result['commitMessage'] = self.commit_message
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('commitMessage') is not None:
+            self.commit_message = m.get('commitMessage')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class ListSearchCommitResponseBodyResultSourceAuthor(TeaModel):
+    def __init__(
+        self,
+        email: str = None,
+        name: str = None,
+    ):
+        self.email = email
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.email is not None:
+            result['email'] = self.email
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ListSearchCommitResponseBodyResultSource(TeaModel):
+    def __init__(
+        self,
+        author: ListSearchCommitResponseBodyResultSourceAuthor = None,
+        author_time: str = None,
+        commit_id: str = None,
+        commit_message: str = None,
+        organization_id: str = None,
+        repo_path: str = None,
+        title: str = None,
+    ):
+        self.author = author
+        self.author_time = author_time
+        self.commit_id = commit_id
+        self.commit_message = commit_message
+        self.organization_id = organization_id
+        self.repo_path = repo_path
+        self.title = title
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.author_time is not None:
+            result['authorTime'] = self.author_time
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.commit_message is not None:
+            result['commitMessage'] = self.commit_message
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = ListSearchCommitResponseBodyResultSourceAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('authorTime') is not None:
+            self.author_time = m.get('authorTime')
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('commitMessage') is not None:
+            self.commit_message = m.get('commitMessage')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repoPath') is not None:
+            self.repo_path = m.get('repoPath')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class ListSearchCommitResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        highlight_text_map: ListSearchCommitResponseBodyResultHighlightTextMap = None,
+        source: ListSearchCommitResponseBodyResultSource = None,
+    ):
+        self.doc_id = doc_id
+        self.highlight_text_map = highlight_text_map
+        self.source = source
+
+    def validate(self):
+        if self.highlight_text_map:
+            self.highlight_text_map.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.highlight_text_map is not None:
+            result['highlightTextMap'] = self.highlight_text_map.to_map()
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('highlightTextMap') is not None:
+            temp_model = ListSearchCommitResponseBodyResultHighlightTextMap()
+            self.highlight_text_map = temp_model.from_map(m['highlightTextMap'])
+        if m.get('source') is not None:
+            temp_model = ListSearchCommitResponseBodyResultSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
+class ListSearchCommitResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListSearchCommitResponseBodyResult] = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListSearchCommitResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListSearchCommitResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSearchCommitResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSearchCommitResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSearchRepositoryRequestRepoPath(TeaModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        operator_type: str = None,
+        value: str = None,
+    ):
+        self.match_type = match_type
+        self.operator_type = operator_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+        if self.operator_type is not None:
+            result['operatorType'] = self.operator_type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+        if m.get('operatorType') is not None:
+            self.operator_type = m.get('operatorType')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListSearchRepositoryRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        keyword: str = None,
+        order: str = None,
+        page: int = None,
+        page_size: int = None,
+        repo_path: ListSearchRepositoryRequestRepoPath = None,
+        scope: str = None,
+        sort: str = None,
+        visibility_level: int = None,
+        organization_id: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.keyword = keyword
+        self.order = order
+        self.page = page
+        self.page_size = page_size
+        self.repo_path = repo_path
+        self.scope = scope
+        self.sort = sort
+        self.visibility_level = visibility_level
+        self.organization_id = organization_id
+
+    def validate(self):
+        if self.repo_path:
+            self.repo_path.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.order is not None:
+            result['order'] = self.order
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path.to_map()
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.sort is not None:
+            result['sort'] = self.sort
+        if self.visibility_level is not None:
+            result['visibilityLevel'] = self.visibility_level
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('repoPath') is not None:
+            temp_model = ListSearchRepositoryRequestRepoPath()
+            self.repo_path = temp_model.from_map(m['repoPath'])
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        if m.get('visibilityLevel') is not None:
+            self.visibility_level = m.get('visibilityLevel')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListSearchRepositoryResponseBodyResultHighlightTextMap(TeaModel):
+    def __init__(
+        self,
+        creator_user_id: str = None,
+        description: str = None,
+        organization_id: str = None,
+        read_me: str = None,
+        repo_name_with_namespace: str = None,
+        repo_path: str = None,
+    ):
+        self.creator_user_id = creator_user_id
+        self.description = description
+        self.organization_id = organization_id
+        self.read_me = read_me
+        self.repo_name_with_namespace = repo_name_with_namespace
+        self.repo_path = repo_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_user_id is not None:
+            result['creatorUserId'] = self.creator_user_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.read_me is not None:
+            result['readMe'] = self.read_me
+        if self.repo_name_with_namespace is not None:
+            result['repoNameWithNamespace'] = self.repo_name_with_namespace
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creatorUserId') is not None:
+            self.creator_user_id = m.get('creatorUserId')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('readMe') is not None:
+            self.read_me = m.get('readMe')
+        if m.get('repoNameWithNamespace') is not None:
+            self.repo_name_with_namespace = m.get('repoNameWithNamespace')
+        if m.get('repoPath') is not None:
+            self.repo_path = m.get('repoPath')
+        return self
+
+
+class ListSearchRepositoryResponseBodyResultSource(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        last_activity_time: str = None,
+        organization_id: str = None,
+        read_me: str = None,
+        repo_name: str = None,
+        repo_path: str = None,
+        visibility_level: int = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.last_activity_time = last_activity_time
+        self.organization_id = organization_id
+        self.read_me = read_me
+        self.repo_name = repo_name
+        self.repo_path = repo_path
+        self.visibility_level = visibility_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.last_activity_time is not None:
+            result['lastActivityTime'] = self.last_activity_time
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.read_me is not None:
+            result['readMe'] = self.read_me
+        if self.repo_name is not None:
+            result['repoName'] = self.repo_name
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path
+        if self.visibility_level is not None:
+            result['visibilityLevel'] = self.visibility_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('lastActivityTime') is not None:
+            self.last_activity_time = m.get('lastActivityTime')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('readMe') is not None:
+            self.read_me = m.get('readMe')
+        if m.get('repoName') is not None:
+            self.repo_name = m.get('repoName')
+        if m.get('repoPath') is not None:
+            self.repo_path = m.get('repoPath')
+        if m.get('visibilityLevel') is not None:
+            self.visibility_level = m.get('visibilityLevel')
+        return self
+
+
+class ListSearchRepositoryResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        highlight_text_map: ListSearchRepositoryResponseBodyResultHighlightTextMap = None,
+        source: ListSearchRepositoryResponseBodyResultSource = None,
+    ):
+        self.doc_id = doc_id
+        self.highlight_text_map = highlight_text_map
+        self.source = source
+
+    def validate(self):
+        if self.highlight_text_map:
+            self.highlight_text_map.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.highlight_text_map is not None:
+            result['highlightTextMap'] = self.highlight_text_map.to_map()
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('highlightTextMap') is not None:
+            temp_model = ListSearchRepositoryResponseBodyResultHighlightTextMap()
+            self.highlight_text_map = temp_model.from_map(m['highlightTextMap'])
+        if m.get('source') is not None:
+            temp_model = ListSearchRepositoryResponseBodyResultSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
+class ListSearchRepositoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListSearchRepositoryResponseBodyResult] = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListSearchRepositoryResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListSearchRepositoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSearchRepositoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSearchRepositoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSearchSourceCodeRequestFilePath(TeaModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        operator_type: str = None,
+        value: str = None,
+    ):
+        self.match_type = match_type
+        self.operator_type = operator_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+        if self.operator_type is not None:
+            result['operatorType'] = self.operator_type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+        if m.get('operatorType') is not None:
+            self.operator_type = m.get('operatorType')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListSearchSourceCodeRequestRepoPath(TeaModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        operator_type: str = None,
+        value: str = None,
+    ):
+        self.match_type = match_type
+        self.operator_type = operator_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+        if self.operator_type is not None:
+            result['operatorType'] = self.operator_type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+        if m.get('operatorType') is not None:
+            self.operator_type = m.get('operatorType')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListSearchSourceCodeRequest(TeaModel):
+    def __init__(
+        self,
+        file_path: ListSearchSourceCodeRequestFilePath = None,
+        is_code_block: bool = None,
+        keyword: str = None,
+        language: str = None,
+        order: str = None,
+        page: int = None,
+        page_size: int = None,
+        repo_path: ListSearchSourceCodeRequestRepoPath = None,
+        scope: str = None,
+        sort: str = None,
+        organization_id: str = None,
+    ):
+        self.file_path = file_path
+        self.is_code_block = is_code_block
+        self.keyword = keyword
+        self.language = language
+        self.order = order
+        self.page = page
+        self.page_size = page_size
+        self.repo_path = repo_path
+        self.scope = scope
+        self.sort = sort
+        self.organization_id = organization_id
+
+    def validate(self):
+        if self.file_path:
+            self.file_path.validate()
+        if self.repo_path:
+            self.repo_path.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_path is not None:
+            result['filePath'] = self.file_path.to_map()
+        if self.is_code_block is not None:
+            result['isCodeBlock'] = self.is_code_block
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.language is not None:
+            result['language'] = self.language
+        if self.order is not None:
+            result['order'] = self.order
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path.to_map()
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.sort is not None:
+            result['sort'] = self.sort
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filePath') is not None:
+            temp_model = ListSearchSourceCodeRequestFilePath()
+            self.file_path = temp_model.from_map(m['filePath'])
+        if m.get('isCodeBlock') is not None:
+            self.is_code_block = m.get('isCodeBlock')
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('repoPath') is not None:
+            temp_model = ListSearchSourceCodeRequestRepoPath()
+            self.repo_path = temp_model.from_map(m['repoPath'])
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListSearchSourceCodeResponseBodyResultHighlightTextMap(TeaModel):
+    def __init__(
+        self,
+        clob: str = None,
+        file_name: str = None,
+        language: str = None,
+        organization_id: str = None,
+    ):
+        self.clob = clob
+        self.file_name = file_name
+        self.language = language
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clob is not None:
+            result['clob'] = self.clob
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.language is not None:
+            result['language'] = self.language
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clob') is not None:
+            self.clob = m.get('clob')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListSearchSourceCodeResponseBodyResultSource(TeaModel):
+    def __init__(
+        self,
+        branch: str = None,
+        checkin_date: str = None,
+        file_name: str = None,
+        file_path: str = None,
+        language: str = None,
+        organization_id: str = None,
+        repo_path: str = None,
+    ):
+        self.branch = branch
+        self.checkin_date = checkin_date
+        self.file_name = file_name
+        self.file_path = file_path
+        self.language = language
+        self.organization_id = organization_id
+        self.repo_path = repo_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch is not None:
+            result['branch'] = self.branch
+        if self.checkin_date is not None:
+            result['checkinDate'] = self.checkin_date
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.language is not None:
+            result['language'] = self.language
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repo_path is not None:
+            result['repoPath'] = self.repo_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('branch') is not None:
+            self.branch = m.get('branch')
+        if m.get('checkinDate') is not None:
+            self.checkin_date = m.get('checkinDate')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repoPath') is not None:
+            self.repo_path = m.get('repoPath')
+        return self
+
+
+class ListSearchSourceCodeResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        highlight_text_map: ListSearchSourceCodeResponseBodyResultHighlightTextMap = None,
+        source: ListSearchSourceCodeResponseBodyResultSource = None,
+    ):
+        self.doc_id = doc_id
+        self.highlight_text_map = highlight_text_map
+        self.source = source
+
+    def validate(self):
+        if self.highlight_text_map:
+            self.highlight_text_map.validate()
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.highlight_text_map is not None:
+            result['highlightTextMap'] = self.highlight_text_map.to_map()
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('highlightTextMap') is not None:
+            temp_model = ListSearchSourceCodeResponseBodyResultHighlightTextMap()
+            self.highlight_text_map = temp_model.from_map(m['highlightTextMap'])
+        if m.get('source') is not None:
+            temp_model = ListSearchSourceCodeResponseBodyResultSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
+class ListSearchSourceCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListSearchSourceCodeResponseBodyResult] = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListSearchSourceCodeResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListSearchSourceCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSearchSourceCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSearchSourceCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServiceConnectionsRequest(TeaModel):
     def __init__(
         self,
@@ -31653,6 +33742,163 @@ class UpdateProtectedBranchesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateProtectedBranchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePushReviewOnOffRequest(TeaModel):
+    def __init__(
+        self,
+        organization_id: str = None,
+        trunk_mode: bool = None,
+    ):
+        self.organization_id = organization_id
+        self.trunk_mode = trunk_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.trunk_mode is not None:
+            result['trunkMode'] = self.trunk_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('trunkMode') is not None:
+            self.trunk_mode = m.get('trunkMode')
+        return self
+
+
+class UpdatePushReviewOnOffResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class UpdatePushReviewOnOffResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: UpdatePushReviewOnOffResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdatePushReviewOnOffResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdatePushReviewOnOffResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePushReviewOnOffResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePushReviewOnOffResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

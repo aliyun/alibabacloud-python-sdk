@@ -4631,6 +4631,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_codeup_organization_with_options_async(identity, request, headers, runtime)
 
+    def get_compare_detail_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetCompareDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetCompareDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.max_diff_byte):
+            query['maxDiffByte'] = request.max_diff_byte
+        if not UtilClient.is_unset(request.max_diff_file):
+            query['maxDiffFile'] = request.max_diff_file
+        if not UtilClient.is_unset(request.merge_base):
+            query['mergeBase'] = request.merge_base
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCompareDetail',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/commits/compare/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetCompareDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compare_detail_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetCompareDetailRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetCompareDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.max_diff_byte):
+            query['maxDiffByte'] = request.max_diff_byte
+        if not UtilClient.is_unset(request.max_diff_file):
+            query['maxDiffFile'] = request.max_diff_file
+        if not UtilClient.is_unset(request.merge_base):
+            query['mergeBase'] = request.merge_base
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCompareDetail',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/commits/compare/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetCompareDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compare_detail(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetCompareDetailRequest,
+    ) -> devops_20210625_models.GetCompareDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_compare_detail_with_options(repository_id, request, headers, runtime)
+
+    async def get_compare_detail_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetCompareDetailRequest,
+    ) -> devops_20210625_models.GetCompareDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_compare_detail_with_options_async(repository_id, request, headers, runtime)
+
     def get_custom_field_option_with_options(
         self,
         organization_id: str,
@@ -6108,6 +6208,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_repository_tag_with_options_async(repository_id, request, headers, runtime)
+
+    def get_search_code_preview_with_options(
+        self,
+        request: devops_20210625_models.GetSearchCodePreviewRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_id):
+            query['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.is_dsl):
+            query['isDsl'] = request.is_dsl
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSearchCodePreview',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/code_preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetSearchCodePreviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_search_code_preview_with_options_async(
+        self,
+        request: devops_20210625_models.GetSearchCodePreviewRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_id):
+            query['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.is_dsl):
+            query['isDsl'] = request.is_dsl
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSearchCodePreview',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/code_preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetSearchCodePreviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_search_code_preview(
+        self,
+        request: devops_20210625_models.GetSearchCodePreviewRequest,
+    ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_search_code_preview_with_options(request, headers, runtime)
+
+    async def get_search_code_preview_async(
+        self,
+        request: devops_20210625_models.GetSearchCodePreviewRequest,
+    ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_search_code_preview_with_options_async(request, headers, runtime)
 
     def get_sprint_info_with_options(
         self,
@@ -9625,6 +9813,350 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_resource_members_with_options_async(organization_id, resource_type, resource_id, headers, runtime)
 
+    def list_search_commit_with_options(
+        self,
+        request: devops_20210625_models.ListSearchCommitRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSearchCommitResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_path):
+            body['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchCommit',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/commit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSearchCommitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_commit_with_options_async(
+        self,
+        request: devops_20210625_models.ListSearchCommitRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSearchCommitResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.keyword):
+            body['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_path):
+            body['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchCommit',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/commit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSearchCommitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_commit(
+        self,
+        request: devops_20210625_models.ListSearchCommitRequest,
+    ) -> devops_20210625_models.ListSearchCommitResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_search_commit_with_options(request, headers, runtime)
+
+    async def list_search_commit_async(
+        self,
+        request: devops_20210625_models.ListSearchCommitRequest,
+    ) -> devops_20210625_models.ListSearchCommitResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_search_commit_with_options_async(request, headers, runtime)
+
+    def list_search_repository_with_options(
+        self,
+        request: devops_20210625_models.ListSearchRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_pk):
+            body['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.keyword):
+            body['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_path):
+            body['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/repo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSearchRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_repository_with_options_async(
+        self,
+        request: devops_20210625_models.ListSearchRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.aliyun_pk):
+            body['aliyunPk'] = request.aliyun_pk
+        if not UtilClient.is_unset(request.keyword):
+            body['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_path):
+            body['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/repo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSearchRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_repository(
+        self,
+        request: devops_20210625_models.ListSearchRepositoryRequest,
+    ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_search_repository_with_options(request, headers, runtime)
+
+    async def list_search_repository_async(
+        self,
+        request: devops_20210625_models.ListSearchRepositoryRequest,
+    ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_search_repository_with_options_async(request, headers, runtime)
+
+    def list_search_source_code_with_options(
+        self,
+        request: devops_20210625_models.ListSearchSourceCodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.is_code_block):
+            body['isCodeBlock'] = request.is_code_block
+        if not UtilClient.is_unset(request.keyword):
+            body['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_path):
+            body['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchSourceCode',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/code',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSearchSourceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_source_code_with_options_async(
+        self,
+        request: devops_20210625_models.ListSearchSourceCodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.is_code_block):
+            body['isCodeBlock'] = request.is_code_block
+        if not UtilClient.is_unset(request.keyword):
+            body['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.order):
+            body['order'] = request.order
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_path):
+            body['repoPath'] = request.repo_path
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.sort):
+            body['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSearchSourceCode',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/search/code',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSearchSourceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_source_code(
+        self,
+        request: devops_20210625_models.ListSearchSourceCodeRequest,
+    ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_search_source_code_with_options(request, headers, runtime)
+
+    async def list_search_source_code_async(
+        self,
+        request: devops_20210625_models.ListSearchSourceCodeRequest,
+    ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_search_source_code_with_options_async(request, headers, runtime)
+
     def list_service_connections_with_options(
         self,
         organization_id: str,
@@ -12494,6 +13026,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_protected_branches_with_options_async(repository_id, id, request, headers, runtime)
+
+    def update_push_review_on_off_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdatePushReviewOnOffRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.trunk_mode):
+            query['trunkMode'] = request.trunk_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePushReviewOnOff',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/settings/trunk_mode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdatePushReviewOnOffResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_push_review_on_off_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdatePushReviewOnOffRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.trunk_mode):
+            query['trunkMode'] = request.trunk_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePushReviewOnOff',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/settings/trunk_mode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdatePushReviewOnOffResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_push_review_on_off(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdatePushReviewOnOffRequest,
+    ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_push_review_on_off_with_options(repository_id, request, headers, runtime)
+
+    async def update_push_review_on_off_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdatePushReviewOnOffRequest,
+    ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_push_review_on_off_with_options_async(repository_id, request, headers, runtime)
 
     def update_repository_with_options(
         self,
