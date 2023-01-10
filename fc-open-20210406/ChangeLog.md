@@ -1,3 +1,6 @@
+2023-01-10 Version: 2.0.2
+- Fix java async sdk signature algorithem.
+
 2022-11-21 Version: 2.0.0
 - Incompatible changes, some of dependencies paths should be altered to v2 paths.
 

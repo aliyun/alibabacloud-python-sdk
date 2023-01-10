@@ -66,22 +66,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def claim_gpuinstance(
-        self,
-        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
-    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ClaimGPUInstanceHeaders()
-        return self.claim_gpuinstance_with_options(request, headers, runtime)
-
-    async def claim_gpuinstance_async(
-        self,
-        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
-    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ClaimGPUInstanceHeaders()
-        return await self.claim_gpuinstance_with_options_async(request, headers, runtime)
-
     def claim_gpuinstance_with_options(
         self,
         request: fc__open_20210406_models.ClaimGPUInstanceRequest,
@@ -102,12 +86,20 @@ class Client(OpenApiClient):
             body['internetBandwidthOut'] = request.internet_bandwidth_out
         if not UtilClient.is_unset(request.password):
             body['password'] = request.password
+        if not UtilClient.is_unset(request.role):
+            body['role'] = request.role
+        if not UtilClient.is_unset(request.sg_id):
+            body['sgId'] = request.sg_id
         if not UtilClient.is_unset(request.source_cidr_ip):
             body['sourceCidrIp'] = request.source_cidr_ip
         if not UtilClient.is_unset(request.tcp_port_range):
             body['tcpPortRange'] = request.tcp_port_range
         if not UtilClient.is_unset(request.udp_port_range):
             body['udpPortRange'] = request.udp_port_range
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vsw_id):
+            body['vswId'] = request.vsw_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -157,12 +149,20 @@ class Client(OpenApiClient):
             body['internetBandwidthOut'] = request.internet_bandwidth_out
         if not UtilClient.is_unset(request.password):
             body['password'] = request.password
+        if not UtilClient.is_unset(request.role):
+            body['role'] = request.role
+        if not UtilClient.is_unset(request.sg_id):
+            body['sgId'] = request.sg_id
         if not UtilClient.is_unset(request.source_cidr_ip):
             body['sourceCidrIp'] = request.source_cidr_ip
         if not UtilClient.is_unset(request.tcp_port_range):
             body['tcpPortRange'] = request.tcp_port_range
         if not UtilClient.is_unset(request.udp_port_range):
             body['udpPortRange'] = request.udp_port_range
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vsw_id):
+            body['vswId'] = request.vsw_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -192,23 +192,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_alias(
+    def claim_gpuinstance(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.CreateAliasRequest,
-    ) -> fc__open_20210406_models.CreateAliasResponse:
+        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
+    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateAliasHeaders()
-        return self.create_alias_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ClaimGPUInstanceHeaders()
+        return self.claim_gpuinstance_with_options(request, headers, runtime)
 
-    async def create_alias_async(
+    async def claim_gpuinstance_async(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.CreateAliasRequest,
-    ) -> fc__open_20210406_models.CreateAliasResponse:
+        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
+    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateAliasHeaders()
-        return await self.create_alias_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ClaimGPUInstanceHeaders()
+        return await self.claim_gpuinstance_with_options_async(request, headers, runtime)
 
     def create_alias_with_options(
         self,
@@ -310,21 +308,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_custom_domain(
+    def create_alias(
         self,
-        request: fc__open_20210406_models.CreateCustomDomainRequest,
-    ) -> fc__open_20210406_models.CreateCustomDomainResponse:
+        service_name: str,
+        request: fc__open_20210406_models.CreateAliasRequest,
+    ) -> fc__open_20210406_models.CreateAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateCustomDomainHeaders()
-        return self.create_custom_domain_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.CreateAliasHeaders()
+        return self.create_alias_with_options(service_name, request, headers, runtime)
 
-    async def create_custom_domain_async(
+    async def create_alias_async(
         self,
-        request: fc__open_20210406_models.CreateCustomDomainRequest,
-    ) -> fc__open_20210406_models.CreateCustomDomainResponse:
+        service_name: str,
+        request: fc__open_20210406_models.CreateAliasRequest,
+    ) -> fc__open_20210406_models.CreateAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateCustomDomainHeaders()
-        return await self.create_custom_domain_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.CreateAliasHeaders()
+        return await self.create_alias_with_options_async(service_name, request, headers, runtime)
 
     def create_custom_domain_with_options(
         self,
@@ -420,23 +420,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_function(
+    def create_custom_domain(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.CreateFunctionRequest,
-    ) -> fc__open_20210406_models.CreateFunctionResponse:
+        request: fc__open_20210406_models.CreateCustomDomainRequest,
+    ) -> fc__open_20210406_models.CreateCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateFunctionHeaders()
-        return self.create_function_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateCustomDomainHeaders()
+        return self.create_custom_domain_with_options(request, headers, runtime)
 
-    async def create_function_async(
+    async def create_custom_domain_async(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.CreateFunctionRequest,
-    ) -> fc__open_20210406_models.CreateFunctionResponse:
+        request: fc__open_20210406_models.CreateCustomDomainRequest,
+    ) -> fc__open_20210406_models.CreateCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateFunctionHeaders()
-        return await self.create_function_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateCustomDomainHeaders()
+        return await self.create_custom_domain_with_options_async(request, headers, runtime)
 
     def create_function_with_options(
         self,
@@ -606,23 +604,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_layer_version(
+    def create_function(
         self,
-        layer_name: str,
-        request: fc__open_20210406_models.CreateLayerVersionRequest,
-    ) -> fc__open_20210406_models.CreateLayerVersionResponse:
+        service_name: str,
+        request: fc__open_20210406_models.CreateFunctionRequest,
+    ) -> fc__open_20210406_models.CreateFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateLayerVersionHeaders()
-        return self.create_layer_version_with_options(layer_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateFunctionHeaders()
+        return self.create_function_with_options(service_name, request, headers, runtime)
 
-    async def create_layer_version_async(
+    async def create_function_async(
         self,
-        layer_name: str,
-        request: fc__open_20210406_models.CreateLayerVersionRequest,
-    ) -> fc__open_20210406_models.CreateLayerVersionResponse:
+        service_name: str,
+        request: fc__open_20210406_models.CreateFunctionRequest,
+    ) -> fc__open_20210406_models.CreateFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateLayerVersionHeaders()
-        return await self.create_layer_version_with_options_async(layer_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateFunctionHeaders()
+        return await self.create_function_with_options_async(service_name, request, headers, runtime)
 
     def create_layer_version_with_options(
         self,
@@ -712,21 +710,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_service(
+    def create_layer_version(
         self,
-        request: fc__open_20210406_models.CreateServiceRequest,
-    ) -> fc__open_20210406_models.CreateServiceResponse:
+        layer_name: str,
+        request: fc__open_20210406_models.CreateLayerVersionRequest,
+    ) -> fc__open_20210406_models.CreateLayerVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateServiceHeaders()
-        return self.create_service_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.CreateLayerVersionHeaders()
+        return self.create_layer_version_with_options(layer_name, request, headers, runtime)
 
-    async def create_service_async(
+    async def create_layer_version_async(
         self,
-        request: fc__open_20210406_models.CreateServiceRequest,
-    ) -> fc__open_20210406_models.CreateServiceResponse:
+        layer_name: str,
+        request: fc__open_20210406_models.CreateLayerVersionRequest,
+    ) -> fc__open_20210406_models.CreateLayerVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateServiceHeaders()
-        return await self.create_service_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.CreateLayerVersionHeaders()
+        return await self.create_layer_version_with_options_async(layer_name, request, headers, runtime)
 
     def create_service_with_options(
         self,
@@ -838,25 +838,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_trigger(
+    def create_service(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.CreateTriggerRequest,
-    ) -> fc__open_20210406_models.CreateTriggerResponse:
+        request: fc__open_20210406_models.CreateServiceRequest,
+    ) -> fc__open_20210406_models.CreateServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateTriggerHeaders()
-        return self.create_trigger_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateServiceHeaders()
+        return self.create_service_with_options(request, headers, runtime)
 
-    async def create_trigger_async(
+    async def create_service_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.CreateTriggerRequest,
-    ) -> fc__open_20210406_models.CreateTriggerResponse:
+        request: fc__open_20210406_models.CreateServiceRequest,
+    ) -> fc__open_20210406_models.CreateServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateTriggerHeaders()
-        return await self.create_trigger_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateServiceHeaders()
+        return await self.create_service_with_options_async(request, headers, runtime)
 
     def create_trigger_with_options(
         self,
@@ -964,23 +960,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_vpc_binding(
+    def create_trigger(
         self,
         service_name: str,
-        request: fc__open_20210406_models.CreateVpcBindingRequest,
-    ) -> fc__open_20210406_models.CreateVpcBindingResponse:
+        function_name: str,
+        request: fc__open_20210406_models.CreateTriggerRequest,
+    ) -> fc__open_20210406_models.CreateTriggerResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateVpcBindingHeaders()
-        return self.create_vpc_binding_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateTriggerHeaders()
+        return self.create_trigger_with_options(service_name, function_name, request, headers, runtime)
 
-    async def create_vpc_binding_async(
+    async def create_trigger_async(
         self,
         service_name: str,
-        request: fc__open_20210406_models.CreateVpcBindingRequest,
-    ) -> fc__open_20210406_models.CreateVpcBindingResponse:
+        function_name: str,
+        request: fc__open_20210406_models.CreateTriggerRequest,
+    ) -> fc__open_20210406_models.CreateTriggerResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.CreateVpcBindingHeaders()
-        return await self.create_vpc_binding_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.CreateTriggerHeaders()
+        return await self.create_trigger_with_options_async(service_name, function_name, request, headers, runtime)
 
     def create_vpc_binding_with_options(
         self,
@@ -1062,23 +1060,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_alias(
+    def create_vpc_binding(
         self,
         service_name: str,
-        alias_name: str,
-    ) -> fc__open_20210406_models.DeleteAliasResponse:
+        request: fc__open_20210406_models.CreateVpcBindingRequest,
+    ) -> fc__open_20210406_models.CreateVpcBindingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteAliasHeaders()
-        return self.delete_alias_with_options(service_name, alias_name, headers, runtime)
+        headers = fc__open_20210406_models.CreateVpcBindingHeaders()
+        return self.create_vpc_binding_with_options(service_name, request, headers, runtime)
 
-    async def delete_alias_async(
+    async def create_vpc_binding_async(
         self,
         service_name: str,
-        alias_name: str,
-    ) -> fc__open_20210406_models.DeleteAliasResponse:
+        request: fc__open_20210406_models.CreateVpcBindingRequest,
+    ) -> fc__open_20210406_models.CreateVpcBindingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteAliasHeaders()
-        return await self.delete_alias_with_options_async(service_name, alias_name, headers, runtime)
+        headers = fc__open_20210406_models.CreateVpcBindingHeaders()
+        return await self.create_vpc_binding_with_options_async(service_name, request, headers, runtime)
 
     def delete_alias_with_options(
         self,
@@ -1154,21 +1152,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_custom_domain(
+    def delete_alias(
         self,
-        domain_name: str,
-    ) -> fc__open_20210406_models.DeleteCustomDomainResponse:
+        service_name: str,
+        alias_name: str,
+    ) -> fc__open_20210406_models.DeleteAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteCustomDomainHeaders()
-        return self.delete_custom_domain_with_options(domain_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteAliasHeaders()
+        return self.delete_alias_with_options(service_name, alias_name, headers, runtime)
 
-    async def delete_custom_domain_async(
+    async def delete_alias_async(
         self,
-        domain_name: str,
-    ) -> fc__open_20210406_models.DeleteCustomDomainResponse:
+        service_name: str,
+        alias_name: str,
+    ) -> fc__open_20210406_models.DeleteAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteCustomDomainHeaders()
-        return await self.delete_custom_domain_with_options_async(domain_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteAliasHeaders()
+        return await self.delete_alias_with_options_async(service_name, alias_name, headers, runtime)
 
     def delete_custom_domain_with_options(
         self,
@@ -1238,23 +1238,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_function(
+    def delete_custom_domain(
         self,
-        service_name: str,
-        function_name: str,
-    ) -> fc__open_20210406_models.DeleteFunctionResponse:
+        domain_name: str,
+    ) -> fc__open_20210406_models.DeleteCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteFunctionHeaders()
-        return self.delete_function_with_options(service_name, function_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteCustomDomainHeaders()
+        return self.delete_custom_domain_with_options(domain_name, headers, runtime)
 
-    async def delete_function_async(
+    async def delete_custom_domain_async(
         self,
-        service_name: str,
-        function_name: str,
-    ) -> fc__open_20210406_models.DeleteFunctionResponse:
+        domain_name: str,
+    ) -> fc__open_20210406_models.DeleteCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteFunctionHeaders()
-        return await self.delete_function_with_options_async(service_name, function_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteCustomDomainHeaders()
+        return await self.delete_custom_domain_with_options_async(domain_name, headers, runtime)
 
     def delete_function_with_options(
         self,
@@ -1330,25 +1328,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_function_async_invoke_config(
+    def delete_function(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigRequest,
-    ) -> fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse:
+    ) -> fc__open_20210406_models.DeleteFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigHeaders()
-        return self.delete_function_async_invoke_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.DeleteFunctionHeaders()
+        return self.delete_function_with_options(service_name, function_name, headers, runtime)
 
-    async def delete_function_async_invoke_config_async(
+    async def delete_function_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigRequest,
-    ) -> fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse:
+    ) -> fc__open_20210406_models.DeleteFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigHeaders()
-        return await self.delete_function_async_invoke_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.DeleteFunctionHeaders()
+        return await self.delete_function_with_options_async(service_name, function_name, headers, runtime)
 
     def delete_function_async_invoke_config_with_options(
         self,
@@ -1432,25 +1428,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_function_on_demand_config(
+    def delete_function_async_invoke_config(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.DeleteFunctionOnDemandConfigRequest,
-    ) -> fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse:
+        request: fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigRequest,
+    ) -> fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteFunctionOnDemandConfigHeaders()
-        return self.delete_function_on_demand_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigHeaders()
+        return self.delete_function_async_invoke_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def delete_function_on_demand_config_async(
+    async def delete_function_async_invoke_config_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.DeleteFunctionOnDemandConfigRequest,
-    ) -> fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse:
+        request: fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigRequest,
+    ) -> fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteFunctionOnDemandConfigHeaders()
-        return await self.delete_function_on_demand_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigHeaders()
+        return await self.delete_function_async_invoke_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def delete_function_on_demand_config_with_options(
         self,
@@ -1538,23 +1534,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_layer_version(
+    def delete_function_on_demand_config(
         self,
-        layer_name: str,
-        version: str,
-    ) -> fc__open_20210406_models.DeleteLayerVersionResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.DeleteFunctionOnDemandConfigRequest,
+    ) -> fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteLayerVersionHeaders()
-        return self.delete_layer_version_with_options(layer_name, version, headers, runtime)
+        headers = fc__open_20210406_models.DeleteFunctionOnDemandConfigHeaders()
+        return self.delete_function_on_demand_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def delete_layer_version_async(
+    async def delete_function_on_demand_config_async(
         self,
-        layer_name: str,
-        version: str,
-    ) -> fc__open_20210406_models.DeleteLayerVersionResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.DeleteFunctionOnDemandConfigRequest,
+    ) -> fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteLayerVersionHeaders()
-        return await self.delete_layer_version_with_options_async(layer_name, version, headers, runtime)
+        headers = fc__open_20210406_models.DeleteFunctionOnDemandConfigHeaders()
+        return await self.delete_function_on_demand_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def delete_layer_version_with_options(
         self,
@@ -1626,21 +1624,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_service(
+    def delete_layer_version(
         self,
-        service_name: str,
-    ) -> fc__open_20210406_models.DeleteServiceResponse:
+        layer_name: str,
+        version: str,
+    ) -> fc__open_20210406_models.DeleteLayerVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteServiceHeaders()
-        return self.delete_service_with_options(service_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteLayerVersionHeaders()
+        return self.delete_layer_version_with_options(layer_name, version, headers, runtime)
 
-    async def delete_service_async(
+    async def delete_layer_version_async(
         self,
-        service_name: str,
-    ) -> fc__open_20210406_models.DeleteServiceResponse:
+        layer_name: str,
+        version: str,
+    ) -> fc__open_20210406_models.DeleteLayerVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteServiceHeaders()
-        return await self.delete_service_with_options_async(service_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteLayerVersionHeaders()
+        return await self.delete_layer_version_with_options_async(layer_name, version, headers, runtime)
 
     def delete_service_with_options(
         self,
@@ -1714,23 +1714,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_service_version(
+    def delete_service(
         self,
         service_name: str,
-        version_id: str,
-    ) -> fc__open_20210406_models.DeleteServiceVersionResponse:
+    ) -> fc__open_20210406_models.DeleteServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteServiceVersionHeaders()
-        return self.delete_service_version_with_options(service_name, version_id, headers, runtime)
+        headers = fc__open_20210406_models.DeleteServiceHeaders()
+        return self.delete_service_with_options(service_name, headers, runtime)
 
-    async def delete_service_version_async(
+    async def delete_service_async(
         self,
         service_name: str,
-        version_id: str,
-    ) -> fc__open_20210406_models.DeleteServiceVersionResponse:
+    ) -> fc__open_20210406_models.DeleteServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteServiceVersionHeaders()
-        return await self.delete_service_version_with_options_async(service_name, version_id, headers, runtime)
+        headers = fc__open_20210406_models.DeleteServiceHeaders()
+        return await self.delete_service_with_options_async(service_name, headers, runtime)
 
     def delete_service_version_with_options(
         self,
@@ -1802,25 +1800,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_trigger(
+    def delete_service_version(
         self,
         service_name: str,
-        function_name: str,
-        trigger_name: str,
-    ) -> fc__open_20210406_models.DeleteTriggerResponse:
+        version_id: str,
+    ) -> fc__open_20210406_models.DeleteServiceVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteTriggerHeaders()
-        return self.delete_trigger_with_options(service_name, function_name, trigger_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteServiceVersionHeaders()
+        return self.delete_service_version_with_options(service_name, version_id, headers, runtime)
 
-    async def delete_trigger_async(
+    async def delete_service_version_async(
         self,
         service_name: str,
-        function_name: str,
-        trigger_name: str,
-    ) -> fc__open_20210406_models.DeleteTriggerResponse:
+        version_id: str,
+    ) -> fc__open_20210406_models.DeleteServiceVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteTriggerHeaders()
-        return await self.delete_trigger_with_options_async(service_name, function_name, trigger_name, headers, runtime)
+        headers = fc__open_20210406_models.DeleteServiceVersionHeaders()
+        return await self.delete_service_version_with_options_async(service_name, version_id, headers, runtime)
 
     def delete_trigger_with_options(
         self,
@@ -1898,23 +1894,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_vpc_binding(
+    def delete_trigger(
         self,
         service_name: str,
-        vpc_id: str,
-    ) -> fc__open_20210406_models.DeleteVpcBindingResponse:
+        function_name: str,
+        trigger_name: str,
+    ) -> fc__open_20210406_models.DeleteTriggerResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteVpcBindingHeaders()
-        return self.delete_vpc_binding_with_options(service_name, vpc_id, headers, runtime)
+        headers = fc__open_20210406_models.DeleteTriggerHeaders()
+        return self.delete_trigger_with_options(service_name, function_name, trigger_name, headers, runtime)
 
-    async def delete_vpc_binding_async(
+    async def delete_trigger_async(
         self,
         service_name: str,
-        vpc_id: str,
-    ) -> fc__open_20210406_models.DeleteVpcBindingResponse:
+        function_name: str,
+        trigger_name: str,
+    ) -> fc__open_20210406_models.DeleteTriggerResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeleteVpcBindingHeaders()
-        return await self.delete_vpc_binding_with_options_async(service_name, vpc_id, headers, runtime)
+        headers = fc__open_20210406_models.DeleteTriggerHeaders()
+        return await self.delete_trigger_with_options_async(service_name, function_name, trigger_name, headers, runtime)
 
     def delete_vpc_binding_with_options(
         self,
@@ -1986,27 +1984,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def deregister_event_source(
+    def delete_vpc_binding(
         self,
         service_name: str,
-        function_name: str,
-        source_arn: str,
-        request: fc__open_20210406_models.DeregisterEventSourceRequest,
-    ) -> fc__open_20210406_models.DeregisterEventSourceResponse:
+        vpc_id: str,
+    ) -> fc__open_20210406_models.DeleteVpcBindingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeregisterEventSourceHeaders()
-        return self.deregister_event_source_with_options(service_name, function_name, source_arn, request, headers, runtime)
+        headers = fc__open_20210406_models.DeleteVpcBindingHeaders()
+        return self.delete_vpc_binding_with_options(service_name, vpc_id, headers, runtime)
 
-    async def deregister_event_source_async(
+    async def delete_vpc_binding_async(
         self,
         service_name: str,
-        function_name: str,
-        source_arn: str,
-        request: fc__open_20210406_models.DeregisterEventSourceRequest,
-    ) -> fc__open_20210406_models.DeregisterEventSourceResponse:
+        vpc_id: str,
+    ) -> fc__open_20210406_models.DeleteVpcBindingResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.DeregisterEventSourceHeaders()
-        return await self.deregister_event_source_with_options_async(service_name, function_name, source_arn, request, headers, runtime)
+        headers = fc__open_20210406_models.DeleteVpcBindingHeaders()
+        return await self.delete_vpc_binding_with_options_async(service_name, vpc_id, headers, runtime)
 
     def deregister_event_source_with_options(
         self,
@@ -2092,15 +2086,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_account_settings(self) -> fc__open_20210406_models.GetAccountSettingsResponse:
+    def deregister_event_source(
+        self,
+        service_name: str,
+        function_name: str,
+        source_arn: str,
+        request: fc__open_20210406_models.DeregisterEventSourceRequest,
+    ) -> fc__open_20210406_models.DeregisterEventSourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetAccountSettingsHeaders()
-        return self.get_account_settings_with_options(headers, runtime)
+        headers = fc__open_20210406_models.DeregisterEventSourceHeaders()
+        return self.deregister_event_source_with_options(service_name, function_name, source_arn, request, headers, runtime)
 
-    async def get_account_settings_async(self) -> fc__open_20210406_models.GetAccountSettingsResponse:
+    async def deregister_event_source_async(
+        self,
+        service_name: str,
+        function_name: str,
+        source_arn: str,
+        request: fc__open_20210406_models.DeregisterEventSourceRequest,
+    ) -> fc__open_20210406_models.DeregisterEventSourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetAccountSettingsHeaders()
-        return await self.get_account_settings_with_options_async(headers, runtime)
+        headers = fc__open_20210406_models.DeregisterEventSourceHeaders()
+        return await self.deregister_event_source_with_options_async(service_name, function_name, source_arn, request, headers, runtime)
 
     def get_account_settings_with_options(
         self,
@@ -2168,23 +2174,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_alias(
-        self,
-        service_name: str,
-        alias_name: str,
-    ) -> fc__open_20210406_models.GetAliasResponse:
+    def get_account_settings(self) -> fc__open_20210406_models.GetAccountSettingsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetAliasHeaders()
-        return self.get_alias_with_options(service_name, alias_name, headers, runtime)
+        headers = fc__open_20210406_models.GetAccountSettingsHeaders()
+        return self.get_account_settings_with_options(headers, runtime)
 
-    async def get_alias_async(
-        self,
-        service_name: str,
-        alias_name: str,
-    ) -> fc__open_20210406_models.GetAliasResponse:
+    async def get_account_settings_async(self) -> fc__open_20210406_models.GetAccountSettingsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetAliasHeaders()
-        return await self.get_alias_with_options_async(service_name, alias_name, headers, runtime)
+        headers = fc__open_20210406_models.GetAccountSettingsHeaders()
+        return await self.get_account_settings_with_options_async(headers, runtime)
 
     def get_alias_with_options(
         self,
@@ -2256,21 +2254,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_custom_domain(
+    def get_alias(
         self,
-        domain_name: str,
-    ) -> fc__open_20210406_models.GetCustomDomainResponse:
+        service_name: str,
+        alias_name: str,
+    ) -> fc__open_20210406_models.GetAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetCustomDomainHeaders()
-        return self.get_custom_domain_with_options(domain_name, headers, runtime)
+        headers = fc__open_20210406_models.GetAliasHeaders()
+        return self.get_alias_with_options(service_name, alias_name, headers, runtime)
 
-    async def get_custom_domain_async(
+    async def get_alias_async(
         self,
-        domain_name: str,
-    ) -> fc__open_20210406_models.GetCustomDomainResponse:
+        service_name: str,
+        alias_name: str,
+    ) -> fc__open_20210406_models.GetAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetCustomDomainHeaders()
-        return await self.get_custom_domain_with_options_async(domain_name, headers, runtime)
+        headers = fc__open_20210406_models.GetAliasHeaders()
+        return await self.get_alias_with_options_async(service_name, alias_name, headers, runtime)
 
     def get_custom_domain_with_options(
         self,
@@ -2340,25 +2340,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function(
+    def get_custom_domain(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.GetFunctionRequest,
-    ) -> fc__open_20210406_models.GetFunctionResponse:
+        domain_name: str,
+    ) -> fc__open_20210406_models.GetCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionHeaders()
-        return self.get_function_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetCustomDomainHeaders()
+        return self.get_custom_domain_with_options(domain_name, headers, runtime)
 
-    async def get_function_async(
+    async def get_custom_domain_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.GetFunctionRequest,
-    ) -> fc__open_20210406_models.GetFunctionResponse:
+        domain_name: str,
+    ) -> fc__open_20210406_models.GetCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionHeaders()
-        return await self.get_function_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetCustomDomainHeaders()
+        return await self.get_custom_domain_with_options_async(domain_name, headers, runtime)
 
     def get_function_with_options(
         self,
@@ -2442,25 +2438,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_async_invoke_config(
+    def get_function(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.GetFunctionAsyncInvokeConfigRequest,
-    ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        request: fc__open_20210406_models.GetFunctionRequest,
+    ) -> fc__open_20210406_models.GetFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders()
-        return self.get_function_async_invoke_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionHeaders()
+        return self.get_function_with_options(service_name, function_name, request, headers, runtime)
 
-    async def get_function_async_invoke_config_async(
+    async def get_function_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.GetFunctionAsyncInvokeConfigRequest,
-    ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        request: fc__open_20210406_models.GetFunctionRequest,
+    ) -> fc__open_20210406_models.GetFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders()
-        return await self.get_function_async_invoke_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionHeaders()
+        return await self.get_function_with_options_async(service_name, function_name, request, headers, runtime)
 
     def get_function_async_invoke_config_with_options(
         self,
@@ -2470,6 +2466,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @param headers: GetFunctionAsyncInvokeConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2511,6 +2515,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @param headers: GetFunctionAsyncInvokeConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2544,25 +2556,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_code(
+    def get_function_async_invoke_config(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.GetFunctionCodeRequest,
-    ) -> fc__open_20210406_models.GetFunctionCodeResponse:
+        request: fc__open_20210406_models.GetFunctionAsyncInvokeConfigRequest,
+    ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionCodeHeaders()
-        return self.get_function_code_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders()
+        return self.get_function_async_invoke_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def get_function_code_async(
+    async def get_function_async_invoke_config_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.GetFunctionCodeRequest,
-    ) -> fc__open_20210406_models.GetFunctionCodeResponse:
+        request: fc__open_20210406_models.GetFunctionAsyncInvokeConfigRequest,
+    ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionCodeHeaders()
-        return await self.get_function_code_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders()
+        return await self.get_function_async_invoke_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def get_function_code_with_options(
         self,
@@ -2646,25 +2670,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function_on_demand_config(
+    def get_function_code(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.GetFunctionOnDemandConfigRequest,
-    ) -> fc__open_20210406_models.GetFunctionOnDemandConfigResponse:
+        request: fc__open_20210406_models.GetFunctionCodeRequest,
+    ) -> fc__open_20210406_models.GetFunctionCodeResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionOnDemandConfigHeaders()
-        return self.get_function_on_demand_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionCodeHeaders()
+        return self.get_function_code_with_options(service_name, function_name, request, headers, runtime)
 
-    async def get_function_on_demand_config_async(
+    async def get_function_code_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.GetFunctionOnDemandConfigRequest,
-    ) -> fc__open_20210406_models.GetFunctionOnDemandConfigResponse:
+        request: fc__open_20210406_models.GetFunctionCodeRequest,
+    ) -> fc__open_20210406_models.GetFunctionCodeResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetFunctionOnDemandConfigHeaders()
-        return await self.get_function_on_demand_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionCodeHeaders()
+        return await self.get_function_code_with_options_async(service_name, function_name, request, headers, runtime)
 
     def get_function_on_demand_config_with_options(
         self,
@@ -2748,23 +2772,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_layer_version(
+    def get_function_on_demand_config(
         self,
-        layer_name: str,
-        version: str,
-    ) -> fc__open_20210406_models.GetLayerVersionResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.GetFunctionOnDemandConfigRequest,
+    ) -> fc__open_20210406_models.GetFunctionOnDemandConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetLayerVersionHeaders()
-        return self.get_layer_version_with_options(layer_name, version, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionOnDemandConfigHeaders()
+        return self.get_function_on_demand_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def get_layer_version_async(
+    async def get_function_on_demand_config_async(
         self,
-        layer_name: str,
-        version: str,
-    ) -> fc__open_20210406_models.GetLayerVersionResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.GetFunctionOnDemandConfigRequest,
+    ) -> fc__open_20210406_models.GetFunctionOnDemandConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetLayerVersionHeaders()
-        return await self.get_layer_version_with_options_async(layer_name, version, headers, runtime)
+        headers = fc__open_20210406_models.GetFunctionOnDemandConfigHeaders()
+        return await self.get_function_on_demand_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def get_layer_version_with_options(
         self,
@@ -2836,25 +2862,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_provision_config(
+    def get_layer_version(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.GetProvisionConfigRequest,
-    ) -> fc__open_20210406_models.GetProvisionConfigResponse:
+        layer_name: str,
+        version: str,
+    ) -> fc__open_20210406_models.GetLayerVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetProvisionConfigHeaders()
-        return self.get_provision_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetLayerVersionHeaders()
+        return self.get_layer_version_with_options(layer_name, version, headers, runtime)
 
-    async def get_provision_config_async(
+    async def get_layer_version_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.GetProvisionConfigRequest,
-    ) -> fc__open_20210406_models.GetProvisionConfigResponse:
+        layer_name: str,
+        version: str,
+    ) -> fc__open_20210406_models.GetLayerVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetProvisionConfigHeaders()
-        return await self.get_provision_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetLayerVersionHeaders()
+        return await self.get_layer_version_with_options_async(layer_name, version, headers, runtime)
 
     def get_provision_config_with_options(
         self,
@@ -2938,21 +2962,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_resource_tags(
+    def get_provision_config(
         self,
-        request: fc__open_20210406_models.GetResourceTagsRequest,
-    ) -> fc__open_20210406_models.GetResourceTagsResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.GetProvisionConfigRequest,
+    ) -> fc__open_20210406_models.GetProvisionConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetResourceTagsHeaders()
-        return self.get_resource_tags_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.GetProvisionConfigHeaders()
+        return self.get_provision_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def get_resource_tags_async(
+    async def get_provision_config_async(
         self,
-        request: fc__open_20210406_models.GetResourceTagsRequest,
-    ) -> fc__open_20210406_models.GetResourceTagsResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.GetProvisionConfigRequest,
+    ) -> fc__open_20210406_models.GetProvisionConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetResourceTagsHeaders()
-        return await self.get_resource_tags_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.GetProvisionConfigHeaders()
+        return await self.get_provision_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def get_resource_tags_with_options(
         self,
@@ -3032,23 +3060,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_service(
+    def get_resource_tags(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.GetServiceRequest,
-    ) -> fc__open_20210406_models.GetServiceResponse:
+        request: fc__open_20210406_models.GetResourceTagsRequest,
+    ) -> fc__open_20210406_models.GetResourceTagsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetServiceHeaders()
-        return self.get_service_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetResourceTagsHeaders()
+        return self.get_resource_tags_with_options(request, headers, runtime)
 
-    async def get_service_async(
+    async def get_resource_tags_async(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.GetServiceRequest,
-    ) -> fc__open_20210406_models.GetServiceResponse:
+        request: fc__open_20210406_models.GetResourceTagsRequest,
+    ) -> fc__open_20210406_models.GetResourceTagsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetServiceHeaders()
-        return await self.get_service_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetResourceTagsHeaders()
+        return await self.get_resource_tags_with_options_async(request, headers, runtime)
 
     def get_service_with_options(
         self,
@@ -3130,27 +3156,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_stateful_async_invocation(
+    def get_service(
         self,
         service_name: str,
-        function_name: str,
-        invocation_id: str,
-        request: fc__open_20210406_models.GetStatefulAsyncInvocationRequest,
-    ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
+        request: fc__open_20210406_models.GetServiceRequest,
+    ) -> fc__open_20210406_models.GetServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetStatefulAsyncInvocationHeaders()
-        return self.get_stateful_async_invocation_with_options(service_name, function_name, invocation_id, request, headers, runtime)
+        headers = fc__open_20210406_models.GetServiceHeaders()
+        return self.get_service_with_options(service_name, request, headers, runtime)
 
-    async def get_stateful_async_invocation_async(
+    async def get_service_async(
         self,
         service_name: str,
-        function_name: str,
-        invocation_id: str,
-        request: fc__open_20210406_models.GetStatefulAsyncInvocationRequest,
-    ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
+        request: fc__open_20210406_models.GetServiceRequest,
+    ) -> fc__open_20210406_models.GetServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetStatefulAsyncInvocationHeaders()
-        return await self.get_stateful_async_invocation_with_options_async(service_name, function_name, invocation_id, request, headers, runtime)
+        headers = fc__open_20210406_models.GetServiceHeaders()
+        return await self.get_service_with_options_async(service_name, request, headers, runtime)
 
     def get_stateful_async_invocation_with_options(
         self,
@@ -3161,6 +3183,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetStatefulAsyncInvocationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: GetStatefulAsyncInvocationRequest
+        @param headers: GetStatefulAsyncInvocationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStatefulAsyncInvocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3209,6 +3239,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetStatefulAsyncInvocationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: GetStatefulAsyncInvocationRequest
+        @param headers: GetStatefulAsyncInvocationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStatefulAsyncInvocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3248,25 +3286,39 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_trigger(
+    def get_stateful_async_invocation(
         self,
         service_name: str,
         function_name: str,
-        trigger_name: str,
-    ) -> fc__open_20210406_models.GetTriggerResponse:
+        invocation_id: str,
+        request: fc__open_20210406_models.GetStatefulAsyncInvocationRequest,
+    ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: GetStatefulAsyncInvocationRequest
+        @return: GetStatefulAsyncInvocationResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetTriggerHeaders()
-        return self.get_trigger_with_options(service_name, function_name, trigger_name, headers, runtime)
+        headers = fc__open_20210406_models.GetStatefulAsyncInvocationHeaders()
+        return self.get_stateful_async_invocation_with_options(service_name, function_name, invocation_id, request, headers, runtime)
 
-    async def get_trigger_async(
+    async def get_stateful_async_invocation_async(
         self,
         service_name: str,
         function_name: str,
-        trigger_name: str,
-    ) -> fc__open_20210406_models.GetTriggerResponse:
+        invocation_id: str,
+        request: fc__open_20210406_models.GetStatefulAsyncInvocationRequest,
+    ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: GetStatefulAsyncInvocationRequest
+        @return: GetStatefulAsyncInvocationResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.GetTriggerHeaders()
-        return await self.get_trigger_with_options_async(service_name, function_name, trigger_name, headers, runtime)
+        headers = fc__open_20210406_models.GetStatefulAsyncInvocationHeaders()
+        return await self.get_stateful_async_invocation_with_options_async(service_name, function_name, invocation_id, request, headers, runtime)
 
     def get_trigger_with_options(
         self,
@@ -3340,25 +3392,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def invoke_function(
+    def get_trigger(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.InvokeFunctionRequest,
-    ) -> fc__open_20210406_models.InvokeFunctionResponse:
+        trigger_name: str,
+    ) -> fc__open_20210406_models.GetTriggerResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.InvokeFunctionHeaders()
-        return self.invoke_function_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetTriggerHeaders()
+        return self.get_trigger_with_options(service_name, function_name, trigger_name, headers, runtime)
 
-    async def invoke_function_async(
+    async def get_trigger_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.InvokeFunctionRequest,
-    ) -> fc__open_20210406_models.InvokeFunctionResponse:
+        trigger_name: str,
+    ) -> fc__open_20210406_models.GetTriggerResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.InvokeFunctionHeaders()
-        return await self.invoke_function_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.GetTriggerHeaders()
+        return await self.get_trigger_with_options_async(service_name, function_name, trigger_name, headers, runtime)
 
     def invoke_function_with_options(
         self,
@@ -3462,23 +3514,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_aliases(
+    def invoke_function(
         self,
         service_name: str,
-        request: fc__open_20210406_models.ListAliasesRequest,
-    ) -> fc__open_20210406_models.ListAliasesResponse:
+        function_name: str,
+        request: fc__open_20210406_models.InvokeFunctionRequest,
+    ) -> fc__open_20210406_models.InvokeFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListAliasesHeaders()
-        return self.list_aliases_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.InvokeFunctionHeaders()
+        return self.invoke_function_with_options(service_name, function_name, request, headers, runtime)
 
-    async def list_aliases_async(
+    async def invoke_function_async(
         self,
         service_name: str,
-        request: fc__open_20210406_models.ListAliasesRequest,
-    ) -> fc__open_20210406_models.ListAliasesResponse:
+        function_name: str,
+        request: fc__open_20210406_models.InvokeFunctionRequest,
+    ) -> fc__open_20210406_models.InvokeFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListAliasesHeaders()
-        return await self.list_aliases_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.InvokeFunctionHeaders()
+        return await self.invoke_function_with_options_async(service_name, function_name, request, headers, runtime)
 
     def list_aliases_with_options(
         self,
@@ -3572,21 +3626,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_custom_domains(
+    def list_aliases(
         self,
-        request: fc__open_20210406_models.ListCustomDomainsRequest,
-    ) -> fc__open_20210406_models.ListCustomDomainsResponse:
+        service_name: str,
+        request: fc__open_20210406_models.ListAliasesRequest,
+    ) -> fc__open_20210406_models.ListAliasesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListCustomDomainsHeaders()
-        return self.list_custom_domains_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListAliasesHeaders()
+        return self.list_aliases_with_options(service_name, request, headers, runtime)
 
-    async def list_custom_domains_async(
+    async def list_aliases_async(
         self,
-        request: fc__open_20210406_models.ListCustomDomainsRequest,
-    ) -> fc__open_20210406_models.ListCustomDomainsResponse:
+        service_name: str,
+        request: fc__open_20210406_models.ListAliasesRequest,
+    ) -> fc__open_20210406_models.ListAliasesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListCustomDomainsHeaders()
-        return await self.list_custom_domains_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListAliasesHeaders()
+        return await self.list_aliases_with_options_async(service_name, request, headers, runtime)
 
     def list_custom_domains_with_options(
         self,
@@ -3678,25 +3734,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_event_sources(
+    def list_custom_domains(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListEventSourcesRequest,
-    ) -> fc__open_20210406_models.ListEventSourcesResponse:
+        request: fc__open_20210406_models.ListCustomDomainsRequest,
+    ) -> fc__open_20210406_models.ListCustomDomainsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListEventSourcesHeaders()
-        return self.list_event_sources_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListCustomDomainsHeaders()
+        return self.list_custom_domains_with_options(request, headers, runtime)
 
-    async def list_event_sources_async(
+    async def list_custom_domains_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListEventSourcesRequest,
-    ) -> fc__open_20210406_models.ListEventSourcesResponse:
+        request: fc__open_20210406_models.ListCustomDomainsRequest,
+    ) -> fc__open_20210406_models.ListCustomDomainsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListEventSourcesHeaders()
-        return await self.list_event_sources_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListCustomDomainsHeaders()
+        return await self.list_custom_domains_with_options_async(request, headers, runtime)
 
     def list_event_sources_with_options(
         self,
@@ -3780,25 +3832,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_function_async_invoke_configs(
+    def list_event_sources(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsRequest,
-    ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        request: fc__open_20210406_models.ListEventSourcesRequest,
+    ) -> fc__open_20210406_models.ListEventSourcesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders()
-        return self.list_function_async_invoke_configs_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListEventSourcesHeaders()
+        return self.list_event_sources_with_options(service_name, function_name, request, headers, runtime)
 
-    async def list_function_async_invoke_configs_async(
+    async def list_event_sources_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsRequest,
-    ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        request: fc__open_20210406_models.ListEventSourcesRequest,
+    ) -> fc__open_20210406_models.ListEventSourcesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders()
-        return await self.list_function_async_invoke_configs_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListEventSourcesHeaders()
+        return await self.list_event_sources_with_options_async(service_name, function_name, request, headers, runtime)
 
     def list_function_async_invoke_configs_with_options(
         self,
@@ -3808,6 +3860,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @param headers: ListFunctionAsyncInvokeConfigsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -3857,6 +3917,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @param headers: ListFunctionAsyncInvokeConfigsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -3898,23 +3966,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_functions(
+    def list_function_async_invoke_configs(
         self,
         service_name: str,
-        request: fc__open_20210406_models.ListFunctionsRequest,
-    ) -> fc__open_20210406_models.ListFunctionsResponse:
+        function_name: str,
+        request: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsRequest,
+    ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListFunctionsHeaders()
-        return self.list_functions_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders()
+        return self.list_function_async_invoke_configs_with_options(service_name, function_name, request, headers, runtime)
 
-    async def list_functions_async(
+    async def list_function_async_invoke_configs_async(
         self,
         service_name: str,
-        request: fc__open_20210406_models.ListFunctionsRequest,
-    ) -> fc__open_20210406_models.ListFunctionsResponse:
+        function_name: str,
+        request: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsRequest,
+    ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListFunctionsHeaders()
-        return await self.list_functions_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders()
+        return await self.list_function_async_invoke_configs_with_options_async(service_name, function_name, request, headers, runtime)
 
     def list_functions_with_options(
         self,
@@ -4012,25 +4094,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instances(
+    def list_functions(
         self,
         service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListInstancesRequest,
-    ) -> fc__open_20210406_models.ListInstancesResponse:
+        request: fc__open_20210406_models.ListFunctionsRequest,
+    ) -> fc__open_20210406_models.ListFunctionsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListInstancesHeaders()
-        return self.list_instances_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListFunctionsHeaders()
+        return self.list_functions_with_options(service_name, request, headers, runtime)
 
-    async def list_instances_async(
+    async def list_functions_async(
         self,
         service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListInstancesRequest,
-    ) -> fc__open_20210406_models.ListInstancesResponse:
+        request: fc__open_20210406_models.ListFunctionsRequest,
+    ) -> fc__open_20210406_models.ListFunctionsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListInstancesHeaders()
-        return await self.list_instances_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListFunctionsHeaders()
+        return await self.list_functions_with_options_async(service_name, request, headers, runtime)
 
     def list_instances_with_options(
         self,
@@ -4040,6 +4120,15 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListInstancesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListInstancesResponse:
+        """
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
+        
+        @param request: ListInstancesRequest
+        @param headers: ListInstancesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -4081,6 +4170,15 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListInstancesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListInstancesResponse:
+        """
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
+        
+        @param request: ListInstancesRequest
+        @param headers: ListInstancesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -4114,23 +4212,39 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_layer_versions(
+    def list_instances(
         self,
-        layer_name: str,
-        request: fc__open_20210406_models.ListLayerVersionsRequest,
-    ) -> fc__open_20210406_models.ListLayerVersionsResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        """
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListLayerVersionsHeaders()
-        return self.list_layer_versions_with_options(layer_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListInstancesHeaders()
+        return self.list_instances_with_options(service_name, function_name, request, headers, runtime)
 
-    async def list_layer_versions_async(
+    async def list_instances_async(
         self,
-        layer_name: str,
-        request: fc__open_20210406_models.ListLayerVersionsRequest,
-    ) -> fc__open_20210406_models.ListLayerVersionsResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        """
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListLayerVersionsHeaders()
-        return await self.list_layer_versions_with_options_async(layer_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListInstancesHeaders()
+        return await self.list_instances_with_options_async(service_name, function_name, request, headers, runtime)
 
     def list_layer_versions_with_options(
         self,
@@ -4216,21 +4330,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_layers(
+    def list_layer_versions(
         self,
-        request: fc__open_20210406_models.ListLayersRequest,
-    ) -> fc__open_20210406_models.ListLayersResponse:
+        layer_name: str,
+        request: fc__open_20210406_models.ListLayerVersionsRequest,
+    ) -> fc__open_20210406_models.ListLayerVersionsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListLayersHeaders()
-        return self.list_layers_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListLayerVersionsHeaders()
+        return self.list_layer_versions_with_options(layer_name, request, headers, runtime)
 
-    async def list_layers_async(
+    async def list_layer_versions_async(
         self,
-        request: fc__open_20210406_models.ListLayersRequest,
-    ) -> fc__open_20210406_models.ListLayersResponse:
+        layer_name: str,
+        request: fc__open_20210406_models.ListLayerVersionsRequest,
+    ) -> fc__open_20210406_models.ListLayerVersionsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListLayersHeaders()
-        return await self.list_layers_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListLayerVersionsHeaders()
+        return await self.list_layer_versions_with_options_async(layer_name, request, headers, runtime)
 
     def list_layers_with_options(
         self,
@@ -4330,21 +4446,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_on_demand_configs(
+    def list_layers(
         self,
-        request: fc__open_20210406_models.ListOnDemandConfigsRequest,
-    ) -> fc__open_20210406_models.ListOnDemandConfigsResponse:
+        request: fc__open_20210406_models.ListLayersRequest,
+    ) -> fc__open_20210406_models.ListLayersResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListOnDemandConfigsHeaders()
-        return self.list_on_demand_configs_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListLayersHeaders()
+        return self.list_layers_with_options(request, headers, runtime)
 
-    async def list_on_demand_configs_async(
+    async def list_layers_async(
         self,
-        request: fc__open_20210406_models.ListOnDemandConfigsRequest,
-    ) -> fc__open_20210406_models.ListOnDemandConfigsResponse:
+        request: fc__open_20210406_models.ListLayersRequest,
+    ) -> fc__open_20210406_models.ListLayersResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListOnDemandConfigsHeaders()
-        return await self.list_on_demand_configs_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListLayersHeaders()
+        return await self.list_layers_with_options_async(request, headers, runtime)
 
     def list_on_demand_configs_with_options(
         self,
@@ -4436,21 +4552,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_provision_configs(
+    def list_on_demand_configs(
         self,
-        request: fc__open_20210406_models.ListProvisionConfigsRequest,
-    ) -> fc__open_20210406_models.ListProvisionConfigsResponse:
+        request: fc__open_20210406_models.ListOnDemandConfigsRequest,
+    ) -> fc__open_20210406_models.ListOnDemandConfigsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListProvisionConfigsHeaders()
-        return self.list_provision_configs_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListOnDemandConfigsHeaders()
+        return self.list_on_demand_configs_with_options(request, headers, runtime)
 
-    async def list_provision_configs_async(
+    async def list_on_demand_configs_async(
         self,
-        request: fc__open_20210406_models.ListProvisionConfigsRequest,
-    ) -> fc__open_20210406_models.ListProvisionConfigsResponse:
+        request: fc__open_20210406_models.ListOnDemandConfigsRequest,
+    ) -> fc__open_20210406_models.ListOnDemandConfigsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListProvisionConfigsHeaders()
-        return await self.list_provision_configs_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListOnDemandConfigsHeaders()
+        return await self.list_on_demand_configs_with_options_async(request, headers, runtime)
 
     def list_provision_configs_with_options(
         self,
@@ -4542,21 +4658,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_reserved_capacities(
+    def list_provision_configs(
         self,
-        request: fc__open_20210406_models.ListReservedCapacitiesRequest,
-    ) -> fc__open_20210406_models.ListReservedCapacitiesResponse:
+        request: fc__open_20210406_models.ListProvisionConfigsRequest,
+    ) -> fc__open_20210406_models.ListProvisionConfigsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListReservedCapacitiesHeaders()
-        return self.list_reserved_capacities_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListProvisionConfigsHeaders()
+        return self.list_provision_configs_with_options(request, headers, runtime)
 
-    async def list_reserved_capacities_async(
+    async def list_provision_configs_async(
         self,
-        request: fc__open_20210406_models.ListReservedCapacitiesRequest,
-    ) -> fc__open_20210406_models.ListReservedCapacitiesResponse:
+        request: fc__open_20210406_models.ListProvisionConfigsRequest,
+    ) -> fc__open_20210406_models.ListProvisionConfigsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListReservedCapacitiesHeaders()
-        return await self.list_reserved_capacities_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListProvisionConfigsHeaders()
+        return await self.list_provision_configs_with_options_async(request, headers, runtime)
 
     def list_reserved_capacities_with_options(
         self,
@@ -4640,23 +4756,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_service_versions(
+    def list_reserved_capacities(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.ListServiceVersionsRequest,
-    ) -> fc__open_20210406_models.ListServiceVersionsResponse:
+        request: fc__open_20210406_models.ListReservedCapacitiesRequest,
+    ) -> fc__open_20210406_models.ListReservedCapacitiesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListServiceVersionsHeaders()
-        return self.list_service_versions_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListReservedCapacitiesHeaders()
+        return self.list_reserved_capacities_with_options(request, headers, runtime)
 
-    async def list_service_versions_async(
+    async def list_reserved_capacities_async(
         self,
-        service_name: str,
-        request: fc__open_20210406_models.ListServiceVersionsRequest,
-    ) -> fc__open_20210406_models.ListServiceVersionsResponse:
+        request: fc__open_20210406_models.ListReservedCapacitiesRequest,
+    ) -> fc__open_20210406_models.ListReservedCapacitiesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListServiceVersionsHeaders()
-        return await self.list_service_versions_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListReservedCapacitiesHeaders()
+        return await self.list_reserved_capacities_with_options_async(request, headers, runtime)
 
     def list_service_versions_with_options(
         self,
@@ -4750,21 +4864,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_services(
+    def list_service_versions(
         self,
-        request: fc__open_20210406_models.ListServicesRequest,
-    ) -> fc__open_20210406_models.ListServicesResponse:
+        service_name: str,
+        request: fc__open_20210406_models.ListServiceVersionsRequest,
+    ) -> fc__open_20210406_models.ListServiceVersionsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListServicesHeaders()
-        return self.list_services_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListServiceVersionsHeaders()
+        return self.list_service_versions_with_options(service_name, request, headers, runtime)
 
-    async def list_services_async(
+    async def list_service_versions_async(
         self,
-        request: fc__open_20210406_models.ListServicesRequest,
-    ) -> fc__open_20210406_models.ListServicesResponse:
+        service_name: str,
+        request: fc__open_20210406_models.ListServiceVersionsRequest,
+    ) -> fc__open_20210406_models.ListServiceVersionsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListServicesHeaders()
-        return await self.list_services_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListServiceVersionsHeaders()
+        return await self.list_service_versions_with_options_async(service_name, request, headers, runtime)
 
     def list_services_with_options(
         self,
@@ -4856,21 +4972,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_stateful_async_invocation_functions(
+    def list_services(
         self,
-        request: fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsRequest,
-    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsResponse:
+        request: fc__open_20210406_models.ListServicesRequest,
+    ) -> fc__open_20210406_models.ListServicesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsHeaders()
-        return self.list_stateful_async_invocation_functions_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListServicesHeaders()
+        return self.list_services_with_options(request, headers, runtime)
 
-    async def list_stateful_async_invocation_functions_async(
+    async def list_services_async(
         self,
-        request: fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsRequest,
-    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsResponse:
+        request: fc__open_20210406_models.ListServicesRequest,
+    ) -> fc__open_20210406_models.ListServicesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsHeaders()
-        return await self.list_stateful_async_invocation_functions_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListServicesHeaders()
+        return await self.list_services_with_options_async(request, headers, runtime)
 
     def list_stateful_async_invocation_functions_with_options(
         self,
@@ -4878,6 +4994,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationFunctionsRequest
+        @param headers: ListStatefulAsyncInvocationFunctionsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatefulAsyncInvocationFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -4919,6 +5043,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationFunctionsRequest
+        @param headers: ListStatefulAsyncInvocationFunctionsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatefulAsyncInvocationFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -4954,25 +5086,33 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_stateful_async_invocations(
+    def list_stateful_async_invocation_functions(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListStatefulAsyncInvocationsRequest,
-    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
+        request: fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsRequest,
+    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationFunctionsRequest
+        @return: ListStatefulAsyncInvocationFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListStatefulAsyncInvocationsHeaders()
-        return self.list_stateful_async_invocations_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsHeaders()
+        return self.list_stateful_async_invocation_functions_with_options(request, headers, runtime)
 
-    async def list_stateful_async_invocations_async(
+    async def list_stateful_async_invocation_functions_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListStatefulAsyncInvocationsRequest,
-    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
+        request: fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsRequest,
+    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationFunctionsRequest
+        @return: ListStatefulAsyncInvocationFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListStatefulAsyncInvocationsHeaders()
-        return await self.list_stateful_async_invocations_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListStatefulAsyncInvocationFunctionsHeaders()
+        return await self.list_stateful_async_invocation_functions_with_options_async(request, headers, runtime)
 
     def list_stateful_async_invocations_with_options(
         self,
@@ -4982,6 +5122,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListStatefulAsyncInvocationsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationsRequest
+        @param headers: ListStatefulAsyncInvocationsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatefulAsyncInvocationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_payload):
@@ -5045,6 +5193,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListStatefulAsyncInvocationsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationsRequest
+        @param headers: ListStatefulAsyncInvocationsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatefulAsyncInvocationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_payload):
@@ -5100,21 +5256,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tagged_resources(
+    def list_stateful_async_invocations(
         self,
-        request: fc__open_20210406_models.ListTaggedResourcesRequest,
-    ) -> fc__open_20210406_models.ListTaggedResourcesResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListStatefulAsyncInvocationsRequest,
+    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationsRequest
+        @return: ListStatefulAsyncInvocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListTaggedResourcesHeaders()
-        return self.list_tagged_resources_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.ListStatefulAsyncInvocationsHeaders()
+        return self.list_stateful_async_invocations_with_options(service_name, function_name, request, headers, runtime)
 
-    async def list_tagged_resources_async(
+    async def list_stateful_async_invocations_async(
         self,
-        request: fc__open_20210406_models.ListTaggedResourcesRequest,
-    ) -> fc__open_20210406_models.ListTaggedResourcesResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListStatefulAsyncInvocationsRequest,
+    ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: ListStatefulAsyncInvocationsRequest
+        @return: ListStatefulAsyncInvocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListTaggedResourcesHeaders()
-        return await self.list_tagged_resources_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.ListStatefulAsyncInvocationsHeaders()
+        return await self.list_stateful_async_invocations_with_options_async(service_name, function_name, request, headers, runtime)
 
     def list_tagged_resources_with_options(
         self,
@@ -5198,25 +5370,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_triggers(
+    def list_tagged_resources(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListTriggersRequest,
-    ) -> fc__open_20210406_models.ListTriggersResponse:
+        request: fc__open_20210406_models.ListTaggedResourcesRequest,
+    ) -> fc__open_20210406_models.ListTaggedResourcesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListTriggersHeaders()
-        return self.list_triggers_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListTaggedResourcesHeaders()
+        return self.list_tagged_resources_with_options(request, headers, runtime)
 
-    async def list_triggers_async(
+    async def list_tagged_resources_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.ListTriggersRequest,
-    ) -> fc__open_20210406_models.ListTriggersResponse:
+        request: fc__open_20210406_models.ListTaggedResourcesRequest,
+    ) -> fc__open_20210406_models.ListTaggedResourcesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListTriggersHeaders()
-        return await self.list_triggers_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListTaggedResourcesHeaders()
+        return await self.list_tagged_resources_with_options_async(request, headers, runtime)
 
     def list_triggers_with_options(
         self,
@@ -5312,21 +5480,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_vpc_bindings(
+    def list_triggers(
         self,
         service_name: str,
-    ) -> fc__open_20210406_models.ListVpcBindingsResponse:
+        function_name: str,
+        request: fc__open_20210406_models.ListTriggersRequest,
+    ) -> fc__open_20210406_models.ListTriggersResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListVpcBindingsHeaders()
-        return self.list_vpc_bindings_with_options(service_name, headers, runtime)
+        headers = fc__open_20210406_models.ListTriggersHeaders()
+        return self.list_triggers_with_options(service_name, function_name, request, headers, runtime)
 
-    async def list_vpc_bindings_async(
+    async def list_triggers_async(
         self,
         service_name: str,
-    ) -> fc__open_20210406_models.ListVpcBindingsResponse:
+        function_name: str,
+        request: fc__open_20210406_models.ListTriggersRequest,
+    ) -> fc__open_20210406_models.ListTriggersResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ListVpcBindingsHeaders()
-        return await self.list_vpc_bindings_with_options_async(service_name, headers, runtime)
+        headers = fc__open_20210406_models.ListTriggersHeaders()
+        return await self.list_triggers_with_options_async(service_name, function_name, request, headers, runtime)
 
     def list_vpc_bindings_with_options(
         self,
@@ -5396,23 +5568,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def publish_service_version(
+    def list_vpc_bindings(
         self,
         service_name: str,
-        request: fc__open_20210406_models.PublishServiceVersionRequest,
-    ) -> fc__open_20210406_models.PublishServiceVersionResponse:
+    ) -> fc__open_20210406_models.ListVpcBindingsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PublishServiceVersionHeaders()
-        return self.publish_service_version_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListVpcBindingsHeaders()
+        return self.list_vpc_bindings_with_options(service_name, headers, runtime)
 
-    async def publish_service_version_async(
+    async def list_vpc_bindings_async(
         self,
         service_name: str,
-        request: fc__open_20210406_models.PublishServiceVersionRequest,
-    ) -> fc__open_20210406_models.PublishServiceVersionResponse:
+    ) -> fc__open_20210406_models.ListVpcBindingsResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PublishServiceVersionHeaders()
-        return await self.publish_service_version_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.ListVpcBindingsHeaders()
+        return await self.list_vpc_bindings_with_options_async(service_name, headers, runtime)
 
     def publish_service_version_with_options(
         self,
@@ -5498,25 +5668,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_function_async_invoke_config(
+    def publish_service_version(
         self,
         service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.PutFunctionAsyncInvokeConfigRequest,
-    ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
+        request: fc__open_20210406_models.PublishServiceVersionRequest,
+    ) -> fc__open_20210406_models.PublishServiceVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutFunctionAsyncInvokeConfigHeaders()
-        return self.put_function_async_invoke_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PublishServiceVersionHeaders()
+        return self.publish_service_version_with_options(service_name, request, headers, runtime)
 
-    async def put_function_async_invoke_config_async(
+    async def publish_service_version_async(
         self,
         service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.PutFunctionAsyncInvokeConfigRequest,
-    ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
+        request: fc__open_20210406_models.PublishServiceVersionRequest,
+    ) -> fc__open_20210406_models.PublishServiceVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutFunctionAsyncInvokeConfigHeaders()
-        return await self.put_function_async_invoke_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PublishServiceVersionHeaders()
+        return await self.publish_service_version_with_options_async(service_name, request, headers, runtime)
 
     def put_function_async_invoke_config_with_options(
         self,
@@ -5526,6 +5694,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.PutFunctionAsyncInvokeConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation specifies the configurations of the asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: PutFunctionAsyncInvokeConfigRequest
+        @param headers: PutFunctionAsyncInvokeConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutFunctionAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -5577,6 +5753,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.PutFunctionAsyncInvokeConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation specifies the configurations of the asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: PutFunctionAsyncInvokeConfigRequest
+        @param headers: PutFunctionAsyncInvokeConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutFunctionAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -5620,25 +5804,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_function_on_demand_config(
+    def put_function_async_invoke_config(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.PutFunctionOnDemandConfigRequest,
-    ) -> fc__open_20210406_models.PutFunctionOnDemandConfigResponse:
+        request: fc__open_20210406_models.PutFunctionAsyncInvokeConfigRequest,
+    ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation specifies the configurations of the asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: PutFunctionAsyncInvokeConfigRequest
+        @return: PutFunctionAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutFunctionOnDemandConfigHeaders()
-        return self.put_function_on_demand_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutFunctionAsyncInvokeConfigHeaders()
+        return self.put_function_async_invoke_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def put_function_on_demand_config_async(
+    async def put_function_async_invoke_config_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.PutFunctionOnDemandConfigRequest,
-    ) -> fc__open_20210406_models.PutFunctionOnDemandConfigResponse:
+        request: fc__open_20210406_models.PutFunctionAsyncInvokeConfigRequest,
+    ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation specifies the configurations of the asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: PutFunctionAsyncInvokeConfigRequest
+        @return: PutFunctionAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutFunctionOnDemandConfigHeaders()
-        return await self.put_function_on_demand_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutFunctionAsyncInvokeConfigHeaders()
+        return await self.put_function_async_invoke_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def put_function_on_demand_config_with_options(
         self,
@@ -5734,23 +5930,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_layer_acl(
+    def put_function_on_demand_config(
         self,
-        layer_name: str,
-        request: fc__open_20210406_models.PutLayerACLRequest,
-    ) -> fc__open_20210406_models.PutLayerACLResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.PutFunctionOnDemandConfigRequest,
+    ) -> fc__open_20210406_models.PutFunctionOnDemandConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutLayerACLHeaders()
-        return self.put_layer_aclwith_options(layer_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutFunctionOnDemandConfigHeaders()
+        return self.put_function_on_demand_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def put_layer_acl_async(
+    async def put_function_on_demand_config_async(
         self,
-        layer_name: str,
-        request: fc__open_20210406_models.PutLayerACLRequest,
-    ) -> fc__open_20210406_models.PutLayerACLResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.PutFunctionOnDemandConfigRequest,
+    ) -> fc__open_20210406_models.PutFunctionOnDemandConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutLayerACLHeaders()
-        return await self.put_layer_aclwith_options_async(layer_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutFunctionOnDemandConfigHeaders()
+        return await self.put_function_on_demand_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def put_layer_aclwith_options(
         self,
@@ -5832,25 +6030,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_provision_config(
+    def put_layer_acl(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.PutProvisionConfigRequest,
-    ) -> fc__open_20210406_models.PutProvisionConfigResponse:
+        layer_name: str,
+        request: fc__open_20210406_models.PutLayerACLRequest,
+    ) -> fc__open_20210406_models.PutLayerACLResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutProvisionConfigHeaders()
-        return self.put_provision_config_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutLayerACLHeaders()
+        return self.put_layer_aclwith_options(layer_name, request, headers, runtime)
 
-    async def put_provision_config_async(
+    async def put_layer_acl_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.PutProvisionConfigRequest,
-    ) -> fc__open_20210406_models.PutProvisionConfigResponse:
+        layer_name: str,
+        request: fc__open_20210406_models.PutLayerACLRequest,
+    ) -> fc__open_20210406_models.PutLayerACLResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.PutProvisionConfigHeaders()
-        return await self.put_provision_config_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutLayerACLHeaders()
+        return await self.put_layer_aclwith_options_async(layer_name, request, headers, runtime)
 
     def put_provision_config_with_options(
         self,
@@ -5954,25 +6150,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def register_event_source(
+    def put_provision_config(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.RegisterEventSourceRequest,
-    ) -> fc__open_20210406_models.RegisterEventSourceResponse:
+        request: fc__open_20210406_models.PutProvisionConfigRequest,
+    ) -> fc__open_20210406_models.PutProvisionConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.RegisterEventSourceHeaders()
-        return self.register_event_source_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutProvisionConfigHeaders()
+        return self.put_provision_config_with_options(service_name, function_name, request, headers, runtime)
 
-    async def register_event_source_async(
+    async def put_provision_config_async(
         self,
         service_name: str,
         function_name: str,
-        request: fc__open_20210406_models.RegisterEventSourceRequest,
-    ) -> fc__open_20210406_models.RegisterEventSourceResponse:
+        request: fc__open_20210406_models.PutProvisionConfigRequest,
+    ) -> fc__open_20210406_models.PutProvisionConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.RegisterEventSourceHeaders()
-        return await self.register_event_source_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.PutProvisionConfigHeaders()
+        return await self.put_provision_config_with_options_async(service_name, function_name, request, headers, runtime)
 
     def register_event_source_with_options(
         self,
@@ -6064,21 +6260,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def release_gpuinstance(
+    def register_event_source(
         self,
-        instance_id: str,
-    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.RegisterEventSourceRequest,
+    ) -> fc__open_20210406_models.RegisterEventSourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ReleaseGPUInstanceHeaders()
-        return self.release_gpuinstance_with_options(instance_id, headers, runtime)
+        headers = fc__open_20210406_models.RegisterEventSourceHeaders()
+        return self.register_event_source_with_options(service_name, function_name, request, headers, runtime)
 
-    async def release_gpuinstance_async(
+    async def register_event_source_async(
         self,
-        instance_id: str,
-    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.RegisterEventSourceRequest,
+    ) -> fc__open_20210406_models.RegisterEventSourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.ReleaseGPUInstanceHeaders()
-        return await self.release_gpuinstance_with_options_async(instance_id, headers, runtime)
+        headers = fc__open_20210406_models.RegisterEventSourceHeaders()
+        return await self.register_event_source_with_options_async(service_name, function_name, request, headers, runtime)
 
     def release_gpuinstance_with_options(
         self,
@@ -6148,27 +6348,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_stateful_async_invocation(
+    def release_gpuinstance(
         self,
-        service_name: str,
-        function_name: str,
-        invocation_id: str,
-        request: fc__open_20210406_models.StopStatefulAsyncInvocationRequest,
-    ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
+        instance_id: str,
+    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.StopStatefulAsyncInvocationHeaders()
-        return self.stop_stateful_async_invocation_with_options(service_name, function_name, invocation_id, request, headers, runtime)
+        headers = fc__open_20210406_models.ReleaseGPUInstanceHeaders()
+        return self.release_gpuinstance_with_options(instance_id, headers, runtime)
 
-    async def stop_stateful_async_invocation_async(
+    async def release_gpuinstance_async(
         self,
-        service_name: str,
-        function_name: str,
-        invocation_id: str,
-        request: fc__open_20210406_models.StopStatefulAsyncInvocationRequest,
-    ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
+        instance_id: str,
+    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.StopStatefulAsyncInvocationHeaders()
-        return await self.stop_stateful_async_invocation_with_options_async(service_name, function_name, invocation_id, request, headers, runtime)
+        headers = fc__open_20210406_models.ReleaseGPUInstanceHeaders()
+        return await self.release_gpuinstance_with_options_async(instance_id, headers, runtime)
 
     def stop_stateful_async_invocation_with_options(
         self,
@@ -6179,6 +6373,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.StopStatefulAsyncInvocationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: StopStatefulAsyncInvocationRequest
+        @param headers: StopStatefulAsyncInvocationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopStatefulAsyncInvocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -6221,6 +6423,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.StopStatefulAsyncInvocationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: StopStatefulAsyncInvocationRequest
+        @param headers: StopStatefulAsyncInvocationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopStatefulAsyncInvocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -6254,21 +6464,39 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def tag_resource(
+    def stop_stateful_async_invocation(
         self,
-        request: fc__open_20210406_models.TagResourceRequest,
-    ) -> fc__open_20210406_models.TagResourceResponse:
+        service_name: str,
+        function_name: str,
+        invocation_id: str,
+        request: fc__open_20210406_models.StopStatefulAsyncInvocationRequest,
+    ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: StopStatefulAsyncInvocationRequest
+        @return: StopStatefulAsyncInvocationResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.TagResourceHeaders()
-        return self.tag_resource_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.StopStatefulAsyncInvocationHeaders()
+        return self.stop_stateful_async_invocation_with_options(service_name, function_name, invocation_id, request, headers, runtime)
 
-    async def tag_resource_async(
+    async def stop_stateful_async_invocation_async(
         self,
-        request: fc__open_20210406_models.TagResourceRequest,
-    ) -> fc__open_20210406_models.TagResourceResponse:
+        service_name: str,
+        function_name: str,
+        invocation_id: str,
+        request: fc__open_20210406_models.StopStatefulAsyncInvocationRequest,
+    ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
+        """
+        StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+        
+        @param request: StopStatefulAsyncInvocationRequest
+        @return: StopStatefulAsyncInvocationResponse
+        """
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.TagResourceHeaders()
-        return await self.tag_resource_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.StopStatefulAsyncInvocationHeaders()
+        return await self.stop_stateful_async_invocation_with_options_async(service_name, function_name, invocation_id, request, headers, runtime)
 
     def tag_resource_with_options(
         self,
@@ -6352,21 +6580,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def untag_resource(
+    def tag_resource(
         self,
-        request: fc__open_20210406_models.UntagResourceRequest,
-    ) -> fc__open_20210406_models.UntagResourceResponse:
+        request: fc__open_20210406_models.TagResourceRequest,
+    ) -> fc__open_20210406_models.TagResourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UntagResourceHeaders()
-        return self.untag_resource_with_options(request, headers, runtime)
+        headers = fc__open_20210406_models.TagResourceHeaders()
+        return self.tag_resource_with_options(request, headers, runtime)
 
-    async def untag_resource_async(
+    async def tag_resource_async(
         self,
-        request: fc__open_20210406_models.UntagResourceRequest,
-    ) -> fc__open_20210406_models.UntagResourceResponse:
+        request: fc__open_20210406_models.TagResourceRequest,
+    ) -> fc__open_20210406_models.TagResourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UntagResourceHeaders()
-        return await self.untag_resource_with_options_async(request, headers, runtime)
+        headers = fc__open_20210406_models.TagResourceHeaders()
+        return await self.tag_resource_with_options_async(request, headers, runtime)
 
     def untag_resource_with_options(
         self,
@@ -6454,25 +6682,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_alias(
+    def untag_resource(
         self,
-        service_name: str,
-        alias_name: str,
-        request: fc__open_20210406_models.UpdateAliasRequest,
-    ) -> fc__open_20210406_models.UpdateAliasResponse:
+        request: fc__open_20210406_models.UntagResourceRequest,
+    ) -> fc__open_20210406_models.UntagResourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateAliasHeaders()
-        return self.update_alias_with_options(service_name, alias_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UntagResourceHeaders()
+        return self.untag_resource_with_options(request, headers, runtime)
 
-    async def update_alias_async(
+    async def untag_resource_async(
         self,
-        service_name: str,
-        alias_name: str,
-        request: fc__open_20210406_models.UpdateAliasRequest,
-    ) -> fc__open_20210406_models.UpdateAliasResponse:
+        request: fc__open_20210406_models.UntagResourceRequest,
+    ) -> fc__open_20210406_models.UntagResourceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateAliasHeaders()
-        return await self.update_alias_with_options_async(service_name, alias_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UntagResourceHeaders()
+        return await self.untag_resource_with_options_async(request, headers, runtime)
 
     def update_alias_with_options(
         self,
@@ -6576,23 +6800,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_custom_domain(
+    def update_alias(
         self,
-        domain_name: str,
-        request: fc__open_20210406_models.UpdateCustomDomainRequest,
-    ) -> fc__open_20210406_models.UpdateCustomDomainResponse:
+        service_name: str,
+        alias_name: str,
+        request: fc__open_20210406_models.UpdateAliasRequest,
+    ) -> fc__open_20210406_models.UpdateAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateCustomDomainHeaders()
-        return self.update_custom_domain_with_options(domain_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateAliasHeaders()
+        return self.update_alias_with_options(service_name, alias_name, request, headers, runtime)
 
-    async def update_custom_domain_async(
+    async def update_alias_async(
         self,
-        domain_name: str,
-        request: fc__open_20210406_models.UpdateCustomDomainRequest,
-    ) -> fc__open_20210406_models.UpdateCustomDomainResponse:
+        service_name: str,
+        alias_name: str,
+        request: fc__open_20210406_models.UpdateAliasRequest,
+    ) -> fc__open_20210406_models.UpdateAliasResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateCustomDomainHeaders()
-        return await self.update_custom_domain_with_options_async(domain_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateAliasHeaders()
+        return await self.update_alias_with_options_async(service_name, alias_name, request, headers, runtime)
 
     def update_custom_domain_with_options(
         self,
@@ -6686,25 +6912,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_function(
+    def update_custom_domain(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.UpdateFunctionRequest,
-    ) -> fc__open_20210406_models.UpdateFunctionResponse:
+        domain_name: str,
+        request: fc__open_20210406_models.UpdateCustomDomainRequest,
+    ) -> fc__open_20210406_models.UpdateCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateFunctionHeaders()
-        return self.update_function_with_options(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateCustomDomainHeaders()
+        return self.update_custom_domain_with_options(domain_name, request, headers, runtime)
 
-    async def update_function_async(
+    async def update_custom_domain_async(
         self,
-        service_name: str,
-        function_name: str,
-        request: fc__open_20210406_models.UpdateFunctionRequest,
-    ) -> fc__open_20210406_models.UpdateFunctionResponse:
+        domain_name: str,
+        request: fc__open_20210406_models.UpdateCustomDomainRequest,
+    ) -> fc__open_20210406_models.UpdateCustomDomainResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateFunctionHeaders()
-        return await self.update_function_with_options_async(service_name, function_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateCustomDomainHeaders()
+        return await self.update_custom_domain_with_options_async(domain_name, request, headers, runtime)
 
     def update_function_with_options(
         self,
@@ -6876,23 +7100,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_service(
+    def update_function(
         self,
         service_name: str,
-        request: fc__open_20210406_models.UpdateServiceRequest,
-    ) -> fc__open_20210406_models.UpdateServiceResponse:
+        function_name: str,
+        request: fc__open_20210406_models.UpdateFunctionRequest,
+    ) -> fc__open_20210406_models.UpdateFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateServiceHeaders()
-        return self.update_service_with_options(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateFunctionHeaders()
+        return self.update_function_with_options(service_name, function_name, request, headers, runtime)
 
-    async def update_service_async(
+    async def update_function_async(
         self,
         service_name: str,
-        request: fc__open_20210406_models.UpdateServiceRequest,
-    ) -> fc__open_20210406_models.UpdateServiceResponse:
+        function_name: str,
+        request: fc__open_20210406_models.UpdateFunctionRequest,
+    ) -> fc__open_20210406_models.UpdateFunctionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateServiceHeaders()
-        return await self.update_service_with_options_async(service_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateFunctionHeaders()
+        return await self.update_function_with_options_async(service_name, function_name, request, headers, runtime)
 
     def update_service_with_options(
         self,
@@ -7006,27 +7232,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_trigger(
+    def update_service(
         self,
         service_name: str,
-        function_name: str,
-        trigger_name: str,
-        request: fc__open_20210406_models.UpdateTriggerRequest,
-    ) -> fc__open_20210406_models.UpdateTriggerResponse:
+        request: fc__open_20210406_models.UpdateServiceRequest,
+    ) -> fc__open_20210406_models.UpdateServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateTriggerHeaders()
-        return self.update_trigger_with_options(service_name, function_name, trigger_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateServiceHeaders()
+        return self.update_service_with_options(service_name, request, headers, runtime)
 
-    async def update_trigger_async(
+    async def update_service_async(
         self,
         service_name: str,
-        function_name: str,
-        trigger_name: str,
-        request: fc__open_20210406_models.UpdateTriggerRequest,
-    ) -> fc__open_20210406_models.UpdateTriggerResponse:
+        request: fc__open_20210406_models.UpdateServiceRequest,
+    ) -> fc__open_20210406_models.UpdateServiceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = fc__open_20210406_models.UpdateTriggerHeaders()
-        return await self.update_trigger_with_options_async(service_name, function_name, trigger_name, request, headers, runtime)
+        headers = fc__open_20210406_models.UpdateServiceHeaders()
+        return await self.update_service_with_options_async(service_name, request, headers, runtime)
 
     def update_trigger_with_options(
         self,
@@ -7127,6 +7349,28 @@ class Client(OpenApiClient):
             fc__open_20210406_models.UpdateTriggerResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_trigger(
+        self,
+        service_name: str,
+        function_name: str,
+        trigger_name: str,
+        request: fc__open_20210406_models.UpdateTriggerRequest,
+    ) -> fc__open_20210406_models.UpdateTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.UpdateTriggerHeaders()
+        return self.update_trigger_with_options(service_name, function_name, trigger_name, request, headers, runtime)
+
+    async def update_trigger_async(
+        self,
+        service_name: str,
+        function_name: str,
+        trigger_name: str,
+        request: fc__open_20210406_models.UpdateTriggerRequest,
+    ) -> fc__open_20210406_models.UpdateTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.UpdateTriggerHeaders()
+        return await self.update_trigger_with_options_async(service_name, function_name, trigger_name, request, headers, runtime)
 
     def invoke_httptrigger(
         self,
