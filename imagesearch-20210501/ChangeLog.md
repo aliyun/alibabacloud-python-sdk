@@ -1,3 +1,7 @@
+2023-01-10 Version: 1.2.2
+- Support multi pid.
+- Modify some filed name.
+
 2021-10-29 Version: 1.2.1
 - Support multi pid.
 - Modify some filed name.
