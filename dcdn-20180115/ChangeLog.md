@@ -1,3 +1,6 @@
+2023-01-10 Version: 1.1.1
+- Update DescribeDcdnWafLogs.
+
 2022-12-27 Version: 1.1.0
 - Add DescribeDcdnWafLogs.
 
