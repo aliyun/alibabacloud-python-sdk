@@ -1,3 +1,6 @@
+2023-01-11 Version: 3.0.9
+- Update sdk.
+
 2022-12-16 Version: 3.0.8
 - Release MergeVideoModelFace.
 
