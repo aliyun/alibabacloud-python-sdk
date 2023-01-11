@@ -742,7 +742,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = batch_add_faces_req.faces[i0]
+                    tmp = batch_add_faces_req.faces[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         batch_add_faces_resp = self.batch_add_faces_with_options(batch_add_faces_req, runtime)
@@ -818,7 +818,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = batch_add_faces_req.faces[i0]
+                    tmp = batch_add_faces_req.faces[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         batch_add_faces_resp = await self.batch_add_faces_with_options_async(batch_add_faces_req, runtime)
@@ -3602,7 +3602,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_living_face_req.tasks[i0]
+                    tmp = detect_living_face_req.tasks[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_living_face_resp = self.detect_living_face_with_options(detect_living_face_req, runtime)
@@ -3678,7 +3678,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_living_face_req.tasks[i0]
+                    tmp = detect_living_face_req.tasks[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_living_face_resp = await self.detect_living_face_with_options_async(detect_living_face_req, runtime)
@@ -7984,7 +7984,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = recognize_action_req.urllist[i0]
+                    tmp = recognize_action_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         if not UtilClient.is_unset(request.video_url_object):
@@ -8084,7 +8084,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = recognize_action_req.urllist[i0]
+                    tmp = recognize_action_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         if not UtilClient.is_unset(request.video_url_object):
@@ -8934,7 +8934,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = recognize_public_face_req.task[i0]
+                    tmp = recognize_public_face_req.task[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_public_face_resp = self.recognize_public_face_with_options(recognize_public_face_req, runtime)
@@ -9010,7 +9010,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = recognize_public_face_req.task[i0]
+                    tmp = recognize_public_face_req.task[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_public_face_resp = await self.recognize_public_face_with_options_async(recognize_public_face_req, runtime)
