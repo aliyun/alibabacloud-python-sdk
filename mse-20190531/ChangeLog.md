@@ -1,3 +1,7 @@
+2023-01-11 Version: 3.0.56
+- Fixed bugs for UpdateGatewaySls.
+- Traffic gover block.
+
 2023-01-09 Version: 3.0.55
 - Supported gateway new parameters.
 - Insert AHAS into mse.

@@ -4020,10 +4020,9 @@ class AddServiceSourceRequest(TeaModel):
         self.ingress_options_request = ingress_options_request
         # The name.
         # 
-        # >  The parameter value varies based on the source type.
+        # > The parameter value varies based on the source type.
         # 
         # *   If Type is set to K8S, this parameter specifies the name of the ACK cluster.
-        # 
         # *   If Type is set to NACOS, this parameter specifies the ID of the instance.
         self.name = name
         # An array of service root paths.
@@ -4122,10 +4121,9 @@ class AddServiceSourceShrinkRequest(TeaModel):
         self.ingress_options_request_shrink = ingress_options_request_shrink
         # The name.
         # 
-        # >  The parameter value varies based on the source type.
+        # > The parameter value varies based on the source type.
         # 
         # *   If Type is set to K8S, this parameter specifies the name of the ACK cluster.
-        # 
         # *   If Type is set to NACOS, this parameter specifies the ID of the instance.
         self.name = name
         # An array of service root paths.
@@ -5079,8 +5077,8 @@ class CreateApplicationRequest(TeaModel):
         self,
         accept_language: str = None,
         app_name: str = None,
-        extra_info: str = None,
         language: str = None,
+        namespace: str = None,
         region: str = None,
         sentinel_enable: str = None,
         source: str = None,
@@ -5093,10 +5091,9 @@ class CreateApplicationRequest(TeaModel):
         self.accept_language = accept_language
         # The name of the application.
         self.app_name = app_name
-        # The additional information.
-        self.extra_info = extra_info
         # The programming language of the application.
         self.language = language
+        self.namespace = namespace
         # The region to which the application belongs.
         self.region = region
         # Specifies whether to enable the Sentinel-compatible mode.
@@ -5119,10 +5116,10 @@ class CreateApplicationRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.app_name is not None:
             result['AppName'] = self.app_name
-        if self.extra_info is not None:
-            result['ExtraInfo'] = self.extra_info
         if self.language is not None:
             result['Language'] = self.language
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.region is not None:
             result['Region'] = self.region
         if self.sentinel_enable is not None:
@@ -5139,10 +5136,10 @@ class CreateApplicationRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
-        if m.get('ExtraInfo') is not None:
-            self.extra_info = m.get('ExtraInfo')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('SentinelEnable') is not None:
@@ -5163,11 +5160,13 @@ class CreateApplicationResponseBodyData(TeaModel):
         extra_info: str = None,
         language: str = None,
         license_key: str = None,
+        namespace: str = None,
         region_id: str = None,
         source: str = None,
         status: int = None,
         update_time: int = None,
         user_id: str = None,
+        version: str = None,
     ):
         # The ID of the application.
         self.app_id = app_id
@@ -5181,6 +5180,7 @@ class CreateApplicationResponseBodyData(TeaModel):
         self.language = language
         # The license key in use.
         self.license_key = license_key
+        self.namespace = namespace
         # The region ID.
         self.region_id = region_id
         # The service where the application is deployed. Valid values:
@@ -5194,6 +5194,7 @@ class CreateApplicationResponseBodyData(TeaModel):
         self.update_time = update_time
         # The ID of the Alibaba Cloud account.
         self.user_id = user_id
+        self.version = version
 
     def validate(self):
         pass
@@ -5216,6 +5217,8 @@ class CreateApplicationResponseBodyData(TeaModel):
             result['Language'] = self.language
         if self.license_key is not None:
             result['LicenseKey'] = self.license_key
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.source is not None:
@@ -5226,6 +5229,8 @@ class CreateApplicationResponseBodyData(TeaModel):
             result['UpdateTime'] = self.update_time
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -5242,6 +5247,8 @@ class CreateApplicationResponseBodyData(TeaModel):
             self.language = m.get('Language')
         if m.get('LicenseKey') is not None:
             self.license_key = m.get('LicenseKey')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Source') is not None:
@@ -5252,6 +5259,8 @@ class CreateApplicationResponseBodyData(TeaModel):
             self.update_time = m.get('UpdateTime')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -44493,8 +44502,10 @@ class UpdateMessageQueueRouteRequest(TeaModel):
         self,
         accept_language: str = None,
         app_id: str = None,
+        app_name: str = None,
         enable: bool = None,
         filter_side: str = None,
+        namespace: str = None,
         region: str = None,
         tags: List[str] = None,
     ):
@@ -44505,6 +44516,7 @@ class UpdateMessageQueueRouteRequest(TeaModel):
         self.accept_language = accept_language
         # The ID of the application.
         self.app_id = app_id
+        self.app_name = app_name
         # Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
         # 
         # *   `true`: enabled
@@ -44512,6 +44524,7 @@ class UpdateMessageQueueRouteRequest(TeaModel):
         self.enable = enable
         # The side for message filtering when the canary release for messaging feature is enabled.
         self.filter_side = filter_side
+        self.namespace = namespace
         # The region ID.
         self.region = region
         # The tag that is negligible for the untagged environment of the application.
@@ -44530,10 +44543,14 @@ class UpdateMessageQueueRouteRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.filter_side is not None:
             result['FilterSide'] = self.filter_side
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.region is not None:
             result['Region'] = self.region
         if self.tags is not None:
@@ -44546,10 +44563,14 @@ class UpdateMessageQueueRouteRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('FilterSide') is not None:
             self.filter_side = m.get('FilterSide')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('Tags') is not None:
@@ -44562,8 +44583,10 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
         self,
         accept_language: str = None,
         app_id: str = None,
+        app_name: str = None,
         enable: bool = None,
         filter_side: str = None,
+        namespace: str = None,
         region: str = None,
         tags_shrink: str = None,
     ):
@@ -44574,6 +44597,7 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
         self.accept_language = accept_language
         # The ID of the application.
         self.app_id = app_id
+        self.app_name = app_name
         # Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
         # 
         # *   `true`: enabled
@@ -44581,6 +44605,7 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
         self.enable = enable
         # The side for message filtering when the canary release for messaging feature is enabled.
         self.filter_side = filter_side
+        self.namespace = namespace
         # The region ID.
         self.region = region
         # The tag that is negligible for the untagged environment of the application.
@@ -44599,10 +44624,14 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.filter_side is not None:
             result['FilterSide'] = self.filter_side
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.region is not None:
             result['Region'] = self.region
         if self.tags_shrink is not None:
@@ -44615,10 +44644,14 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('FilterSide') is not None:
             self.filter_side = m.get('FilterSide')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('Tags') is not None:
