@@ -1,3 +1,10 @@
+2023-01-11 Version: 3.0.2
+- Add error code for ModifyInstanceNetworkSpec.
+- Add invalid account buying spot error code.
+- Support ip prefix for eni.
+- Update the StorageLocationArn to private.
+- Security Group Rule support rule id.
+
 2022-10-14 Version: 3.0.1
 - Add GPUMemorySize to DescribeInstanceTypes api.
 
