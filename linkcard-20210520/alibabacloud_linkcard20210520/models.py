@@ -15,6 +15,7 @@ class AddCardToDirectionalGroupRequest(TeaModel):
         serial_no: str = None,
     ):
         self.add_type = add_type
+        # Linkcard
         self.api_product = api_product
         self.group_id = group_id
         self.iccid_list = iccid_list
@@ -72,6 +73,7 @@ class AddCardToDirectionalGroupShrinkRequest(TeaModel):
         serial_no: str = None,
     ):
         self.add_type = add_type
+        # Linkcard
         self.api_product = api_product
         self.group_id = group_id
         self.iccid_list_shrink = iccid_list_shrink
@@ -2303,6 +2305,785 @@ class GetCardFlowInfoResponse(TeaModel):
         return self
 
 
+class GetCardLatestFlowRequest(TeaModel):
+    def __init__(
+        self,
+        iccid: str = None,
+    ):
+        self.iccid = iccid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iccid is not None:
+            result['Iccid'] = self.iccid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Iccid') is not None:
+            self.iccid = m.get('Iccid')
+        return self
+
+
+class GetCardLatestFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCardLatestFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCardLatestFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCardLatestFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        left_flow_percentage_warn_count: int = None,
+        stop_count: int = None,
+        waring_total_count: int = None,
+        warning_count: int = None,
+    ):
+        self.left_flow_percentage_warn_count = left_flow_percentage_warn_count
+        self.stop_count = stop_count
+        self.waring_total_count = waring_total_count
+        self.warning_count = warning_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.left_flow_percentage_warn_count is not None:
+            result['LeftFlowPercentageWarnCount'] = self.left_flow_percentage_warn_count
+        if self.stop_count is not None:
+            result['StopCount'] = self.stop_count
+        if self.waring_total_count is not None:
+            result['WaringTotalCount'] = self.waring_total_count
+        if self.warning_count is not None:
+            result['WarningCount'] = self.warning_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LeftFlowPercentageWarnCount') is not None:
+            self.left_flow_percentage_warn_count = m.get('LeftFlowPercentageWarnCount')
+        if m.get('StopCount') is not None:
+            self.stop_count = m.get('StopCount')
+        if m.get('WaringTotalCount') is not None:
+            self.waring_total_count = m.get('WaringTotalCount')
+        if m.get('WarningCount') is not None:
+            self.warning_count = m.get('WarningCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO(TeaModel):
+    def __init__(
+        self,
+        less_flow_percentage_10count: int = None,
+        less_flow_percentage_30count: int = None,
+    ):
+        self.less_flow_percentage_10count = less_flow_percentage_10count
+        self.less_flow_percentage_30count = less_flow_percentage_30count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.less_flow_percentage_10count is not None:
+            result['LessFlowPercentage10Count'] = self.less_flow_percentage_10count
+        if self.less_flow_percentage_30count is not None:
+            result['LessFlowPercentage30Count'] = self.less_flow_percentage_30count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LessFlowPercentage10Count') is not None:
+            self.less_flow_percentage_10count = m.get('LessFlowPercentage10Count')
+        if m.get('LessFlowPercentage30Count') is not None:
+            self.less_flow_percentage_30count = m.get('LessFlowPercentage30Count')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO(TeaModel):
+    def __init__(
+        self,
+        pool_count: int = None,
+        same_flow_card_count: int = None,
+        single_card_count: int = None,
+        total_count: int = None,
+    ):
+        self.pool_count = pool_count
+        self.same_flow_card_count = same_flow_card_count
+        self.single_card_count = single_card_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pool_count is not None:
+            result['PoolCount'] = self.pool_count
+        if self.same_flow_card_count is not None:
+            result['SameFlowCardCount'] = self.same_flow_card_count
+        if self.single_card_count is not None:
+            result['SingleCardCount'] = self.single_card_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PoolCount') is not None:
+            self.pool_count = m.get('PoolCount')
+        if m.get('SameFlowCardCount') is not None:
+            self.same_flow_card_count = m.get('SameFlowCardCount')
+        if m.get('SingleCardCount') is not None:
+            self.single_card_count = m.get('SingleCardCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetCardStatusStatisticsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_stop_statistics_dto: GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO = None,
+        exhaust_stop_statistics_dto: GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO = None,
+        expire_stop_statistics_dto: GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO = None,
+        flow_out_statistics_dto: GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO = None,
+        manage_stop_statistics_dto: GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO = None,
+        risk_waring_statistics_dto: GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO = None,
+        sing_card_period_left_flow_warn_dto: GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO = None,
+        un_certified_stop_statistics_dto: GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO = None,
+        unbind_resume_statistics_dto: GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO = None,
+        week_warn_statistics_dto: GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO = None,
+    ):
+        self.error_stop_statistics_dto = error_stop_statistics_dto
+        self.exhaust_stop_statistics_dto = exhaust_stop_statistics_dto
+        self.expire_stop_statistics_dto = expire_stop_statistics_dto
+        self.flow_out_statistics_dto = flow_out_statistics_dto
+        self.manage_stop_statistics_dto = manage_stop_statistics_dto
+        self.risk_waring_statistics_dto = risk_waring_statistics_dto
+        self.sing_card_period_left_flow_warn_dto = sing_card_period_left_flow_warn_dto
+        self.un_certified_stop_statistics_dto = un_certified_stop_statistics_dto
+        self.unbind_resume_statistics_dto = unbind_resume_statistics_dto
+        self.week_warn_statistics_dto = week_warn_statistics_dto
+
+    def validate(self):
+        if self.error_stop_statistics_dto:
+            self.error_stop_statistics_dto.validate()
+        if self.exhaust_stop_statistics_dto:
+            self.exhaust_stop_statistics_dto.validate()
+        if self.expire_stop_statistics_dto:
+            self.expire_stop_statistics_dto.validate()
+        if self.flow_out_statistics_dto:
+            self.flow_out_statistics_dto.validate()
+        if self.manage_stop_statistics_dto:
+            self.manage_stop_statistics_dto.validate()
+        if self.risk_waring_statistics_dto:
+            self.risk_waring_statistics_dto.validate()
+        if self.sing_card_period_left_flow_warn_dto:
+            self.sing_card_period_left_flow_warn_dto.validate()
+        if self.un_certified_stop_statistics_dto:
+            self.un_certified_stop_statistics_dto.validate()
+        if self.unbind_resume_statistics_dto:
+            self.unbind_resume_statistics_dto.validate()
+        if self.week_warn_statistics_dto:
+            self.week_warn_statistics_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_stop_statistics_dto is not None:
+            result['ErrorStopStatisticsDTO'] = self.error_stop_statistics_dto.to_map()
+        if self.exhaust_stop_statistics_dto is not None:
+            result['ExhaustStopStatisticsDTO'] = self.exhaust_stop_statistics_dto.to_map()
+        if self.expire_stop_statistics_dto is not None:
+            result['ExpireStopStatisticsDTO'] = self.expire_stop_statistics_dto.to_map()
+        if self.flow_out_statistics_dto is not None:
+            result['FlowOutStatisticsDTO'] = self.flow_out_statistics_dto.to_map()
+        if self.manage_stop_statistics_dto is not None:
+            result['ManageStopStatisticsDTO'] = self.manage_stop_statistics_dto.to_map()
+        if self.risk_waring_statistics_dto is not None:
+            result['RiskWaringStatisticsDTO'] = self.risk_waring_statistics_dto.to_map()
+        if self.sing_card_period_left_flow_warn_dto is not None:
+            result['SingCardPeriodLeftFlowWarnDTO'] = self.sing_card_period_left_flow_warn_dto.to_map()
+        if self.un_certified_stop_statistics_dto is not None:
+            result['UnCertifiedStopStatisticsDTO'] = self.un_certified_stop_statistics_dto.to_map()
+        if self.unbind_resume_statistics_dto is not None:
+            result['UnbindResumeStatisticsDTO'] = self.unbind_resume_statistics_dto.to_map()
+        if self.week_warn_statistics_dto is not None:
+            result['WeekWarnStatisticsDTO'] = self.week_warn_statistics_dto.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorStopStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataErrorStopStatisticsDTO()
+            self.error_stop_statistics_dto = temp_model.from_map(m['ErrorStopStatisticsDTO'])
+        if m.get('ExhaustStopStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataExhaustStopStatisticsDTO()
+            self.exhaust_stop_statistics_dto = temp_model.from_map(m['ExhaustStopStatisticsDTO'])
+        if m.get('ExpireStopStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataExpireStopStatisticsDTO()
+            self.expire_stop_statistics_dto = temp_model.from_map(m['ExpireStopStatisticsDTO'])
+        if m.get('FlowOutStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataFlowOutStatisticsDTO()
+            self.flow_out_statistics_dto = temp_model.from_map(m['FlowOutStatisticsDTO'])
+        if m.get('ManageStopStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataManageStopStatisticsDTO()
+            self.manage_stop_statistics_dto = temp_model.from_map(m['ManageStopStatisticsDTO'])
+        if m.get('RiskWaringStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataRiskWaringStatisticsDTO()
+            self.risk_waring_statistics_dto = temp_model.from_map(m['RiskWaringStatisticsDTO'])
+        if m.get('SingCardPeriodLeftFlowWarnDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataSingCardPeriodLeftFlowWarnDTO()
+            self.sing_card_period_left_flow_warn_dto = temp_model.from_map(m['SingCardPeriodLeftFlowWarnDTO'])
+        if m.get('UnCertifiedStopStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataUnCertifiedStopStatisticsDTO()
+            self.un_certified_stop_statistics_dto = temp_model.from_map(m['UnCertifiedStopStatisticsDTO'])
+        if m.get('UnbindResumeStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataUnbindResumeStatisticsDTO()
+            self.unbind_resume_statistics_dto = temp_model.from_map(m['UnbindResumeStatisticsDTO'])
+        if m.get('WeekWarnStatisticsDTO') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyDataWeekWarnStatisticsDTO()
+            self.week_warn_statistics_dto = temp_model.from_map(m['WeekWarnStatisticsDTO'])
+        return self
+
+
+class GetCardStatusStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetCardStatusStatisticsResponseBodyData = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetCardStatusStatisticsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCardStatusStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCardStatusStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCardStatusStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCredentialPoolStatisticsRequest(TeaModel):
     def __init__(
         self,
@@ -2540,6 +3321,582 @@ class GetCredentialPoolStatisticsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCredentialPoolStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOperateResultRequest(TeaModel):
+    def __init__(
+        self,
+        api_product: str = None,
+        res_id: str = None,
+        serial_no: str = None,
+    ):
+        self.api_product = api_product
+        self.res_id = res_id
+        self.serial_no = serial_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_product is not None:
+            result['ApiProduct'] = self.api_product
+        if self.res_id is not None:
+            result['ResId'] = self.res_id
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiProduct') is not None:
+            self.api_product = m.get('ApiProduct')
+        if m.get('ResId') is not None:
+            self.res_id = m.get('ResId')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        return self
+
+
+class GetOperateResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        operate_type: str = None,
+        result: bool = None,
+        status: str = None,
+    ):
+        self.operate_type = operate_type
+        self.result = result
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetOperateResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetOperateResultResponseBodyData = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetOperateResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetOperateResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOperateResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOperateResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRealNameStatusRequest(TeaModel):
+    def __init__(
+        self,
+        iccid: str = None,
+        list_msisdns: List[str] = None,
+    ):
+        self.iccid = iccid
+        self.list_msisdns = list_msisdns
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iccid is not None:
+            result['Iccid'] = self.iccid
+        if self.list_msisdns is not None:
+            result['ListMsisdns'] = self.list_msisdns
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Iccid') is not None:
+            self.iccid = m.get('Iccid')
+        if m.get('ListMsisdns') is not None:
+            self.list_msisdns = m.get('ListMsisdns')
+        return self
+
+
+class GetRealNameStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        iccid: str = None,
+        list_msisdns_shrink: str = None,
+    ):
+        self.iccid = iccid
+        self.list_msisdns_shrink = list_msisdns_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iccid is not None:
+            result['Iccid'] = self.iccid
+        if self.list_msisdns_shrink is not None:
+            result['ListMsisdns'] = self.list_msisdns_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Iccid') is not None:
+            self.iccid = m.get('Iccid')
+        if m.get('ListMsisdns') is not None:
+            self.list_msisdns_shrink = m.get('ListMsisdns')
+        return self
+
+
+class GetRealNameStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        real_name_status: str = None,
+    ):
+        self.desc = desc
+        self.real_name_status = real_name_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.real_name_status is not None:
+            result['RealNameStatus'] = self.real_name_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('RealNameStatus') is not None:
+            self.real_name_status = m.get('RealNameStatus')
+        return self
+
+
+class GetRealNameStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetRealNameStatusResponseBodyData = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetRealNameStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRealNameStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRealNameStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRealNameStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSimCardStateDistributionRequest(TeaModel):
+    def __init__(
+        self,
+        credential_no: str = None,
+        date: str = None,
+    ):
+        self.credential_no = credential_no
+        self.date = date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_no is not None:
+            result['CredentialNO'] = self.credential_no
+        if self.date is not None:
+            result['Date'] = self.date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialNO') is not None:
+            self.credential_no = m.get('CredentialNO')
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        return self
+
+
+class GetSimCardStateDistributionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        card_count: int = None,
+        destoryed_count: int = None,
+        shut_down_count: int = None,
+        stop_count: int = None,
+        test_count: int = None,
+        unused_count: int = None,
+        using_count: int = None,
+    ):
+        self.card_count = card_count
+        self.destoryed_count = destoryed_count
+        self.shut_down_count = shut_down_count
+        self.stop_count = stop_count
+        self.test_count = test_count
+        self.unused_count = unused_count
+        self.using_count = using_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.card_count is not None:
+            result['CardCount'] = self.card_count
+        if self.destoryed_count is not None:
+            result['DestoryedCount'] = self.destoryed_count
+        if self.shut_down_count is not None:
+            result['ShutDownCount'] = self.shut_down_count
+        if self.stop_count is not None:
+            result['StopCount'] = self.stop_count
+        if self.test_count is not None:
+            result['TestCount'] = self.test_count
+        if self.unused_count is not None:
+            result['UnusedCount'] = self.unused_count
+        if self.using_count is not None:
+            result['UsingCount'] = self.using_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CardCount') is not None:
+            self.card_count = m.get('CardCount')
+        if m.get('DestoryedCount') is not None:
+            self.destoryed_count = m.get('DestoryedCount')
+        if m.get('ShutDownCount') is not None:
+            self.shut_down_count = m.get('ShutDownCount')
+        if m.get('StopCount') is not None:
+            self.stop_count = m.get('StopCount')
+        if m.get('TestCount') is not None:
+            self.test_count = m.get('TestCount')
+        if m.get('UnusedCount') is not None:
+            self.unused_count = m.get('UnusedCount')
+        if m.get('UsingCount') is not None:
+            self.using_count = m.get('UsingCount')
+        return self
+
+
+class GetSimCardStateDistributionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetSimCardStateDistributionResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetSimCardStateDistributionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSimCardStateDistributionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSimCardStateDistributionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSimCardStateDistributionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
