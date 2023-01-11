@@ -1721,7 +1721,7 @@ class Client(OpenApiClient):
         recognize_logo_req = imagerecog_20190930_models.RecognizeLogoRequest()
         OpenApiUtilClient.convert(request, recognize_logo_req)
         if not UtilClient.is_unset(request.tasks):
-            i = 0
+            i_0 = 0
             for item_0 in request.tasks:
                 if not UtilClient.is_unset(item_0.image_urlobject):
                     auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
@@ -1746,9 +1746,9 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = recognize_logo_req.tasks[i]
+                    tmp = recognize_logo_req.tasks[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_logo_resp = self.recognize_logo_with_options(recognize_logo_req, runtime)
         return recognize_logo_resp
 
@@ -1797,7 +1797,7 @@ class Client(OpenApiClient):
         recognize_logo_req = imagerecog_20190930_models.RecognizeLogoRequest()
         OpenApiUtilClient.convert(request, recognize_logo_req)
         if not UtilClient.is_unset(request.tasks):
-            i = 0
+            i_0 = 0
             for item_0 in request.tasks:
                 if not UtilClient.is_unset(item_0.image_urlobject):
                     auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
@@ -1822,9 +1822,9 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = recognize_logo_req.tasks[i]
+                    tmp = recognize_logo_req.tasks[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_logo_resp = await self.recognize_logo_with_options_async(recognize_logo_req, runtime)
         return recognize_logo_resp
 
