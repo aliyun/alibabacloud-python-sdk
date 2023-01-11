@@ -1,3 +1,6 @@
+2023-01-11 Version: 2.0.14
+- Update sdk.
+
 2022-11-10 Version: 2.0.13
 - Release RecognizeVATInvoice.
 
