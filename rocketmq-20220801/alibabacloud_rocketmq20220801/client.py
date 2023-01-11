@@ -940,14 +940,20 @@ class Client(OpenApiClient):
     def list_topics_with_options(
         self,
         instance_id: str,
-        request: rocket_mq20220801_models.ListTopicsRequest,
+        tmp_req: rocket_mq20220801_models.ListTopicsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rocket_mq20220801_models.ListTopicsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.message_types):
+            request.message_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.message_types, 'messageTypes', 'simple')
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
+        if not UtilClient.is_unset(request.message_types_shrink):
+            query['messageTypes'] = request.message_types_shrink
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -975,14 +981,20 @@ class Client(OpenApiClient):
     async def list_topics_with_options_async(
         self,
         instance_id: str,
-        request: rocket_mq20220801_models.ListTopicsRequest,
+        tmp_req: rocket_mq20220801_models.ListTopicsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rocket_mq20220801_models.ListTopicsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.message_types):
+            request.message_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.message_types, 'messageTypes', 'simple')
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
+        if not UtilClient.is_unset(request.message_types_shrink):
+            query['messageTypes'] = request.message_types_shrink
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
