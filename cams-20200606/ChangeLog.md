@@ -1,3 +1,6 @@
+2023-01-11 Version: 1.0.16
+- Add embed sign up
+
 2023-01-03 Version: 1.0.15
 - Add ContextMessageId.
 - Add ChannelType viber
