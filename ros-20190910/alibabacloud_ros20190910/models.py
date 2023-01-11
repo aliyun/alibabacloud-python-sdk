@@ -1,7 +1,123 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class CancelStackOperationRequest(TeaModel):
+    def __init__(
+        self,
+        allowed_stack_operations: List[str] = None,
+        cancel_type: str = None,
+        region_id: str = None,
+        stack_id: str = None,
+    ):
+        self.allowed_stack_operations = allowed_stack_operations
+        self.cancel_type = cancel_type
+        self.region_id = region_id
+        self.stack_id = stack_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allowed_stack_operations is not None:
+            result['AllowedStackOperations'] = self.allowed_stack_operations
+        if self.cancel_type is not None:
+            result['CancelType'] = self.cancel_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowedStackOperations') is not None:
+            self.allowed_stack_operations = m.get('AllowedStackOperations')
+        if m.get('CancelType') is not None:
+            self.cancel_type = m.get('CancelType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
+        return self
+
+
+class CancelStackOperationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelStackOperationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelStackOperationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelStackOperationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CancelUpdateStackRequest(TeaModel):
@@ -167,6 +283,7 @@ class ContinueCreateStackRequest(TeaModel):
         self.dry_run = dry_run
         self.mode = mode
         self.parallelism = parallelism
+        # test
         self.parameters = parameters
         self.ram_role_name = ram_role_name
         self.recreating_options = recreating_options
@@ -818,6 +935,7 @@ class CreateStackRequest(TeaModel):
         self.disable_rollback = disable_rollback
         self.notification_urls = notification_urls
         self.parallelism = parallelism
+        # test
         self.parameters = parameters
         self.ram_role_name = ram_role_name
         self.region_id = region_id
@@ -825,6 +943,7 @@ class CreateStackRequest(TeaModel):
         self.stack_name = stack_name
         self.stack_policy_body = stack_policy_body
         self.stack_policy_url = stack_policy_url
+        # test
         self.tags = tags
         self.template_body = template_body
         self.template_id = template_id
@@ -1151,6 +1270,7 @@ class CreateStackGroupRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.execution_role_name = execution_role_name
+        # test
         self.parameters = parameters
         self.permission_model = permission_model
         self.region_id = region_id
@@ -1348,6 +1468,7 @@ class CreateStackGroupShrinkRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.execution_role_name = execution_role_name
+        # test
         self.parameters = parameters
         self.permission_model = permission_model
         self.region_id = region_id
@@ -1610,6 +1731,7 @@ class CreateStackInstancesRequest(TeaModel):
         self.disable_rollback = disable_rollback
         self.operation_description = operation_description
         self.operation_preferences = operation_preferences
+        # test
         self.parameter_overrides = parameter_overrides
         self.region_id = region_id
         self.region_ids = region_ids
@@ -1741,6 +1863,7 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         self.disable_rollback = disable_rollback
         self.operation_description = operation_description
         self.operation_preferences_shrink = operation_preferences_shrink
+        # test
         self.parameter_overrides = parameter_overrides
         self.region_id = region_id
         self.region_ids_shrink = region_ids_shrink
@@ -7293,6 +7416,7 @@ class GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets(Tea
         rd_folder_ids: List[str] = None,
     ):
         self.account_ids = account_ids
+        # test
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -7332,6 +7456,7 @@ class GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences(
         self.failure_tolerance_percentage = failure_tolerance_percentage
         self.max_concurrent_count = max_concurrent_count
         self.max_concurrent_percentage = max_concurrent_percentage
+        # test
         self.region_ids_order = region_ids_order
 
     def validate(self):
@@ -8991,6 +9116,39 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         return self
 
 
+class GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources(TeaModel):
+    def __init__(
+        self,
+        property_name: str = None,
+        resource_type: str = None,
+    ):
+        self.property_name = property_name
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
 class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
     def __init__(
         self,
@@ -9000,6 +9158,7 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         behavior_reason: str = None,
         illegal_value_by_parameter_constraints: List[Any] = None,
         illegal_value_by_rules: List[Any] = None,
+        not_support_resources: List[GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources] = None,
         parameter_key: str = None,
         type: str = None,
     ):
@@ -9009,11 +9168,15 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         self.behavior_reason = behavior_reason
         self.illegal_value_by_parameter_constraints = illegal_value_by_parameter_constraints
         self.illegal_value_by_rules = illegal_value_by_rules
+        self.not_support_resources = not_support_resources
         self.parameter_key = parameter_key
         self.type = type
 
     def validate(self):
-        pass
+        if self.not_support_resources:
+            for k in self.not_support_resources:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9033,6 +9196,10 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
             result['IllegalValueByParameterConstraints'] = self.illegal_value_by_parameter_constraints
         if self.illegal_value_by_rules is not None:
             result['IllegalValueByRules'] = self.illegal_value_by_rules
+        result['NotSupportResources'] = []
+        if self.not_support_resources is not None:
+            for k in self.not_support_resources:
+                result['NotSupportResources'].append(k.to_map() if k else None)
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
         if self.type is not None:
@@ -9053,6 +9220,11 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
             self.illegal_value_by_parameter_constraints = m.get('IllegalValueByParameterConstraints')
         if m.get('IllegalValueByRules') is not None:
             self.illegal_value_by_rules = m.get('IllegalValueByRules')
+        self.not_support_resources = []
+        if m.get('NotSupportResources') is not None:
+            for k in m.get('NotSupportResources'):
+                temp_model = GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources()
+                self.not_support_resources.append(temp_model.from_map(k))
         if m.get('ParameterKey') is not None:
             self.parameter_key = m.get('ParameterKey')
         if m.get('Type') is not None:
@@ -9668,6 +9840,7 @@ class GetTemplateSummaryRequest(TeaModel):
     ):
         self.change_set_id = change_set_id
         self.client_token = client_token
+        # test
         self.parameters = parameters
         self.region_id = region_id
         self.stack_group_name = stack_group_name
@@ -14381,6 +14554,7 @@ class PreviewStackRequest(TeaModel):
         self.disable_rollback = disable_rollback
         self.enable_pre_config = enable_pre_config
         self.parallelism = parallelism
+        # test
         self.parameters = parameters
         self.region_id = region_id
         self.stack_id = stack_id
@@ -16049,6 +16223,7 @@ class UpdateStackGroupRequestDeploymentTargets(TeaModel):
         rd_folder_ids: List[str] = None,
     ):
         self.account_ids = account_ids
+        # test
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -16139,6 +16314,7 @@ class UpdateStackGroupRequest(TeaModel):
         self.execution_role_name = execution_role_name
         self.operation_description = operation_description
         self.operation_preferences = operation_preferences
+        # test
         self.parameters = parameters
         self.permission_model = permission_model
         self.region_id = region_id
@@ -16315,6 +16491,7 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         self.execution_role_name = execution_role_name
         self.operation_description = operation_description
         self.operation_preferences_shrink = operation_preferences_shrink
+        # test
         self.parameters = parameters
         self.permission_model = permission_model
         self.region_id = region_id
@@ -16505,6 +16682,7 @@ class UpdateStackInstancesRequestDeploymentTargets(TeaModel):
         rd_folder_ids: List[str] = None,
     ):
         self.account_ids = account_ids
+        # test
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -16583,6 +16761,7 @@ class UpdateStackInstancesRequest(TeaModel):
         self.deployment_targets = deployment_targets
         self.operation_description = operation_description
         self.operation_preferences = operation_preferences
+        # test
         self.parameter_overrides = parameter_overrides
         self.region_id = region_id
         self.region_ids = region_ids
@@ -16708,6 +16887,7 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         self.deployment_targets_shrink = deployment_targets_shrink
         self.operation_description = operation_description
         self.operation_preferences_shrink = operation_preferences_shrink
+        # test
         self.parameter_overrides = parameter_overrides
         self.region_id = region_id
         self.region_ids_shrink = region_ids_shrink

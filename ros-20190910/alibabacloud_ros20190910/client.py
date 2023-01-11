@@ -41,6 +41,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_stack_operation_with_options(
+        self,
+        request: ros20190910_models.CancelStackOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CancelStackOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allowed_stack_operations):
+            query['AllowedStackOperations'] = request.allowed_stack_operations
+        if not UtilClient.is_unset(request.cancel_type):
+            query['CancelType'] = request.cancel_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelStackOperation',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CancelStackOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_stack_operation_with_options_async(
+        self,
+        request: ros20190910_models.CancelStackOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CancelStackOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allowed_stack_operations):
+            query['AllowedStackOperations'] = request.allowed_stack_operations
+        if not UtilClient.is_unset(request.cancel_type):
+            query['CancelType'] = request.cancel_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelStackOperation',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CancelStackOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_stack_operation(
+        self,
+        request: ros20190910_models.CancelStackOperationRequest,
+    ) -> ros20190910_models.CancelStackOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_stack_operation_with_options(request, runtime)
+
+    async def cancel_stack_operation_async(
+        self,
+        request: ros20190910_models.CancelStackOperationRequest,
+    ) -> ros20190910_models.CancelStackOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_stack_operation_with_options_async(request, runtime)
+
     def cancel_update_stack_with_options(
         self,
         request: ros20190910_models.CancelUpdateStackRequest,
