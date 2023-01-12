@@ -2326,7 +2326,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = generate_video_req.file_list[i0]
+                    tmp = generate_video_req.file_list[i_0]
                     tmp.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         generate_video_resp = self.generate_video_with_options(generate_video_req, runtime)
@@ -2402,7 +2402,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = generate_video_req.file_list[i0]
+                    tmp = generate_video_req.file_list[i_0]
                     tmp.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         generate_video_resp = await self.generate_video_with_options_async(generate_video_req, runtime)
