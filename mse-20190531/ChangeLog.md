@@ -1,3 +1,7 @@
+2023-01-12 Version: 3.0.57
+- Insert ahas into mse.
+- Supported gray.
+
 2023-01-11 Version: 3.0.56
 - Fixed bugs for UpdateGatewaySls.
 - Traffic gover block.

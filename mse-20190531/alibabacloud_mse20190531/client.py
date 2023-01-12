@@ -2520,10 +2520,14 @@ class Client(OpenApiClient):
 
     def create_or_update_swimming_lane_with_options(
         self,
-        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateOrUpdateSwimmingLaneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.gateway_swimming_lane_route_json):
+            request.gateway_swimming_lane_route_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_swimming_lane_route_json, 'GatewaySwimmingLaneRouteJson', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -2535,6 +2539,8 @@ class Client(OpenApiClient):
             query['EntryRule'] = request.entry_rule
         if not UtilClient.is_unset(request.entry_rules):
             query['EntryRules'] = request.entry_rules
+        if not UtilClient.is_unset(request.gateway_swimming_lane_route_json_shrink):
+            query['GatewaySwimmingLaneRouteJson'] = request.gateway_swimming_lane_route_json_shrink
         if not UtilClient.is_unset(request.gmt_create):
             query['GmtCreate'] = request.gmt_create
         if not UtilClient.is_unset(request.gmt_modified):
@@ -2578,10 +2584,14 @@ class Client(OpenApiClient):
 
     async def create_or_update_swimming_lane_with_options_async(
         self,
-        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreateOrUpdateSwimmingLaneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.gateway_swimming_lane_route_json):
+            request.gateway_swimming_lane_route_json_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_swimming_lane_route_json, 'GatewaySwimmingLaneRouteJson', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -2593,6 +2603,8 @@ class Client(OpenApiClient):
             query['EntryRule'] = request.entry_rule
         if not UtilClient.is_unset(request.entry_rules):
             query['EntryRules'] = request.entry_rules
+        if not UtilClient.is_unset(request.gateway_swimming_lane_route_json_shrink):
+            query['GatewaySwimmingLaneRouteJson'] = request.gateway_swimming_lane_route_json_shrink
         if not UtilClient.is_unset(request.gmt_create):
             query['GmtCreate'] = request.gmt_create
         if not UtilClient.is_unset(request.gmt_modified):
