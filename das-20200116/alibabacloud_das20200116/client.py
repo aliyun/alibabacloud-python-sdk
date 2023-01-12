@@ -3244,6 +3244,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_error_request_sample_with_options_async(request, runtime)
 
+    def get_event_subscription_with_options(
+        self,
+        request: das20200116_models.GetEventSubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetEventSubscriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEventSubscription',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetEventSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_event_subscription_with_options_async(
+        self,
+        request: das20200116_models.GetEventSubscriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetEventSubscriptionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEventSubscription',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetEventSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_event_subscription(
+        self,
+        request: das20200116_models.GetEventSubscriptionRequest,
+    ) -> das20200116_models.GetEventSubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_event_subscription_with_options(request, runtime)
+
+    async def get_event_subscription_async(
+        self,
+        request: das20200116_models.GetEventSubscriptionRequest,
+    ) -> das20200116_models.GetEventSubscriptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_event_subscription_with_options_async(request, runtime)
+
     def get_full_request_origin_stat_by_instance_id_with_options(
         self,
         request: das20200116_models.GetFullRequestOriginStatByInstanceIdRequest,
