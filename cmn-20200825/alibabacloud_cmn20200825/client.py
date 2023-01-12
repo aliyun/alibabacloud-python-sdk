@@ -324,6 +324,14 @@ class Client(OpenApiClient):
         tmp_req: cmn_20200825_models.CreateConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.CreateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: CreateConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = cmn_20200825_models.CreateConfigurationSpecificationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -372,6 +380,14 @@ class Client(OpenApiClient):
         tmp_req: cmn_20200825_models.CreateConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.CreateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: CreateConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = cmn_20200825_models.CreateConfigurationSpecificationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -419,6 +435,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.CreateConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.CreateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: CreateConfigurationSpecificationRequest
+        @return: CreateConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_configuration_specification_with_options(request, runtime)
 
@@ -426,6 +449,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.CreateConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.CreateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: CreateConfigurationSpecificationRequest
+        @return: CreateConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_configuration_specification_with_options_async(request, runtime)
 
@@ -1778,6 +1808,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.CreateResourceInformationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.CreateResourceInformationResponse:
+        """
+        @deprecated
+        
+        @param request: CreateResourceInformationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceInformationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1821,6 +1859,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.CreateResourceInformationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.CreateResourceInformationResponse:
+        """
+        @deprecated
+        
+        @param request: CreateResourceInformationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceInformationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1863,6 +1909,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.CreateResourceInformationRequest,
     ) -> cmn_20200825_models.CreateResourceInformationResponse:
+        """
+        @deprecated
+        
+        @param request: CreateResourceInformationRequest
+        @return: CreateResourceInformationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_resource_information_with_options(request, runtime)
 
@@ -1870,6 +1923,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.CreateResourceInformationRequest,
     ) -> cmn_20200825_models.CreateResourceInformationResponse:
+        """
+        @deprecated
+        
+        @param request: CreateResourceInformationRequest
+        @return: CreateResourceInformationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_resource_information_with_options_async(request, runtime)
 
@@ -2464,6 +2524,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.DeleteConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.DeleteConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2496,6 +2564,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.DeleteConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.DeleteConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2527,6 +2603,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.DeleteConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.DeleteConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConfigurationSpecificationRequest
+        @return: DeleteConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_configuration_specification_with_options(request, runtime)
 
@@ -2534,6 +2617,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.DeleteConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.DeleteConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConfigurationSpecificationRequest
+        @return: DeleteConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_configuration_specification_with_options_async(request, runtime)
 
@@ -4160,6 +4250,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.GetConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.GetConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: GetConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4186,6 +4284,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.GetConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.GetConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: GetConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4211,6 +4317,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.GetConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.GetConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: GetConfigurationSpecificationRequest
+        @return: GetConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_configuration_specification_with_options(request, runtime)
 
@@ -4218,6 +4331,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.GetConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.GetConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: GetConfigurationSpecificationRequest
+        @return: GetConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_configuration_specification_with_options_async(request, runtime)
 
@@ -6086,6 +6206,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.ListArchitectureAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListArchitectureAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ListArchitectureAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListArchitectureAttributeResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6112,6 +6240,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.ListArchitectureAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListArchitectureAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ListArchitectureAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListArchitectureAttributeResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6137,6 +6273,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.ListArchitectureAttributeRequest,
     ) -> cmn_20200825_models.ListArchitectureAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ListArchitectureAttributeRequest
+        @return: ListArchitectureAttributeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_architecture_attribute_with_options(request, runtime)
 
@@ -6144,6 +6287,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.ListArchitectureAttributeRequest,
     ) -> cmn_20200825_models.ListArchitectureAttributeResponse:
+        """
+        @deprecated
+        
+        @param request: ListArchitectureAttributeRequest
+        @return: ListArchitectureAttributeResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_architecture_attribute_with_options_async(request, runtime)
 
@@ -6152,6 +6302,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.ListConfigurationSpecificationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListConfigurationSpecificationsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConfigurationSpecificationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigurationSpecificationsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6178,6 +6336,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.ListConfigurationSpecificationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListConfigurationSpecificationsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConfigurationSpecificationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigurationSpecificationsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6203,6 +6369,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.ListConfigurationSpecificationsRequest,
     ) -> cmn_20200825_models.ListConfigurationSpecificationsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConfigurationSpecificationsRequest
+        @return: ListConfigurationSpecificationsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_configuration_specifications_with_options(request, runtime)
 
@@ -6210,6 +6383,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.ListConfigurationSpecificationsRequest,
     ) -> cmn_20200825_models.ListConfigurationSpecificationsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConfigurationSpecificationsRequest
+        @return: ListConfigurationSpecificationsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_configuration_specifications_with_options_async(request, runtime)
 
@@ -6284,6 +6464,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.ListConnectionPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListConnectionPoliciesResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionPoliciesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6330,6 +6518,14 @@ class Client(OpenApiClient):
         request: cmn_20200825_models.ListConnectionPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListConnectionPoliciesResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionPoliciesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6375,6 +6571,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.ListConnectionPoliciesRequest,
     ) -> cmn_20200825_models.ListConnectionPoliciesResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionPoliciesRequest
+        @return: ListConnectionPoliciesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_connection_policies_with_options(request, runtime)
 
@@ -6382,6 +6585,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.ListConnectionPoliciesRequest,
     ) -> cmn_20200825_models.ListConnectionPoliciesResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionPoliciesRequest
+        @return: ListConnectionPoliciesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_connection_policies_with_options_async(request, runtime)
 
@@ -7635,6 +7845,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_notification_histories_with_options_async(request, runtime)
 
+    def list_notification_histories_statistics_with_options(
+        self,
+        request: cmn_20200825_models.ListNotificationHistoriesStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListNotificationHistoriesStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNotificationHistoriesStatistics',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.ListNotificationHistoriesStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_notification_histories_statistics_with_options_async(
+        self,
+        request: cmn_20200825_models.ListNotificationHistoriesStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.ListNotificationHistoriesStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNotificationHistoriesStatistics',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.ListNotificationHistoriesStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_notification_histories_statistics(
+        self,
+        request: cmn_20200825_models.ListNotificationHistoriesStatisticsRequest,
+    ) -> cmn_20200825_models.ListNotificationHistoriesStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_notification_histories_statistics_with_options(request, runtime)
+
+    async def list_notification_histories_statistics_async(
+        self,
+        request: cmn_20200825_models.ListNotificationHistoriesStatisticsRequest,
+    ) -> cmn_20200825_models.ListNotificationHistoriesStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_notification_histories_statistics_with_options_async(request, runtime)
+
     def list_os_versions_with_options(
         self,
         request: cmn_20200825_models.ListOsVersionsRequest,
@@ -8645,7 +8921,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.retry_tasks):
             request.retry_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retry_tasks, 'RetryTasks', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.retry_tasks_shrink):
+            query['RetryTasks'] = request.retry_tasks_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8654,7 +8934,7 @@ class Client(OpenApiClient):
             version='2020-08-25',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -8675,7 +8955,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.retry_tasks):
             request.retry_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retry_tasks, 'RetryTasks', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.retry_tasks_shrink):
+            query['RetryTasks'] = request.retry_tasks_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8684,7 +8968,7 @@ class Client(OpenApiClient):
             version='2020-08-25',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -8714,6 +8998,14 @@ class Client(OpenApiClient):
         tmp_req: cmn_20200825_models.UpdateConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.UpdateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: UpdateConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = cmn_20200825_models.UpdateConfigurationSpecificationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8762,6 +9054,14 @@ class Client(OpenApiClient):
         tmp_req: cmn_20200825_models.UpdateConfigurationSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.UpdateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: UpdateConfigurationSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigurationSpecificationResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = cmn_20200825_models.UpdateConfigurationSpecificationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8809,6 +9109,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.UpdateConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.UpdateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateConfigurationSpecificationRequest
+        @return: UpdateConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_configuration_specification_with_options(request, runtime)
 
@@ -8816,6 +9123,13 @@ class Client(OpenApiClient):
         self,
         request: cmn_20200825_models.UpdateConfigurationSpecificationRequest,
     ) -> cmn_20200825_models.UpdateConfigurationSpecificationResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateConfigurationSpecificationRequest
+        @return: UpdateConfigurationSpecificationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_configuration_specification_with_options_async(request, runtime)
 
