@@ -1,3 +1,6 @@
+2023-01-12 Version: 1.0.19
+- Add PostPay Basic Ga.
+
 2022-12-09 Version: 1.0.18
 - Update sdk.
 
