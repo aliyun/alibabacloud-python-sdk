@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Dict, Any, List
 
 
 class CancelTaskResponseBody(TeaModel):
@@ -78,7 +78,7 @@ class CancelTaskResponse(TeaModel):
 class CreateResourceRequest(TeaModel):
     def __init__(
         self,
-        body: str = None,
+        body: Dict[str, Any] = None,
         client_token: str = None,
         region_id: str = None,
     ):
@@ -903,7 +903,7 @@ class GetResourcesShrinkRequest(TeaModel):
 class GetResourcesResponseBodyResource(TeaModel):
     def __init__(
         self,
-        resource_attributes: str = None,
+        resource_attributes: Dict[str, Any] = None,
         resource_id: str = None,
     ):
         self.resource_attributes = resource_attributes
@@ -936,7 +936,7 @@ class GetResourcesResponseBodyResource(TeaModel):
 class GetResourcesResponseBodyResources(TeaModel):
     def __init__(
         self,
-        resource_attributes: str = None,
+        resource_attributes: Dict[str, Any] = None,
         resource_id: str = None,
     ):
         self.resource_attributes = resource_attributes
@@ -2255,7 +2255,7 @@ class ListResourceTypesResponse(TeaModel):
 class UpdateResourceRequest(TeaModel):
     def __init__(
         self,
-        body: str = None,
+        body: Dict[str, Any] = None,
         client_token: str = None,
         region_id: str = None,
     ):

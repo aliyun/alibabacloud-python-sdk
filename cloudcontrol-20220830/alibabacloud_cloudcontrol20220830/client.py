@@ -109,7 +109,7 @@ class Client(OpenApiClient):
 
     def create_resource_with_options(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -117,7 +117,7 @@ class Client(OpenApiClient):
         """
         POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -132,13 +132,13 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateResource',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -152,7 +152,7 @@ class Client(OpenApiClient):
 
     async def create_resource_with_options_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -160,7 +160,7 @@ class Client(OpenApiClient):
         """
         POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -175,13 +175,13 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateResource',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -195,39 +195,39 @@ class Client(OpenApiClient):
 
     def create_resource(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
         """
         POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_resource_with_options(resource_path, request, headers, runtime)
+        return self.create_resource_with_options(request_path, request, headers, runtime)
 
     async def create_resource_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
         """
         POST /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_resource_with_options_async(resource_path, request, headers, runtime)
+        return await self.create_resource_with_options_async(request_path, request, headers, runtime)
 
     def delete_resource_with_options(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -235,7 +235,7 @@ class Client(OpenApiClient):
         """
         DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: DeleteResourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -255,7 +255,7 @@ class Client(OpenApiClient):
             action='DeleteResource',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -269,7 +269,7 @@ class Client(OpenApiClient):
 
     async def delete_resource_with_options_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -277,7 +277,7 @@ class Client(OpenApiClient):
         """
         DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: DeleteResourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -297,7 +297,7 @@ class Client(OpenApiClient):
             action='DeleteResource',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -311,39 +311,39 @@ class Client(OpenApiClient):
 
     def delete_resource(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
         """
         DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: DeleteResourceRequest
         @return: DeleteResourceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_with_options(resource_path, request, headers, runtime)
+        return self.delete_resource_with_options(request_path, request, headers, runtime)
 
     async def delete_resource_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
         """
         DELETE /api/v1/providers/{provider}/products/{product}/resources/{parentResourcePath}/{resourceTypeCode}/{resourceId}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: DeleteResourceRequest
         @return: DeleteResourceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_with_options_async(resource_path, request, headers, runtime)
+        return await self.delete_resource_with_options_async(request_path, request, headers, runtime)
 
     def get_resource_type_with_options(
         self,
-        resource_path: str,
+        request_path: str,
         headers: cloudcontrol_20220830_models.GetResourceTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
@@ -359,7 +359,7 @@ class Client(OpenApiClient):
             action='GetResourceType',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -373,7 +373,7 @@ class Client(OpenApiClient):
 
     async def get_resource_type_with_options_async(
         self,
-        resource_path: str,
+        request_path: str,
         headers: cloudcontrol_20220830_models.GetResourceTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
@@ -389,7 +389,7 @@ class Client(OpenApiClient):
             action='GetResourceType',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -403,23 +403,23 @@ class Client(OpenApiClient):
 
     def get_resource_type(
         self,
-        resource_path: str,
+        request_path: str,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
         runtime = util_models.RuntimeOptions()
         headers = cloudcontrol_20220830_models.GetResourceTypeHeaders()
-        return self.get_resource_type_with_options(resource_path, headers, runtime)
+        return self.get_resource_type_with_options(request_path, headers, runtime)
 
     async def get_resource_type_async(
         self,
-        resource_path: str,
+        request_path: str,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
         runtime = util_models.RuntimeOptions()
         headers = cloudcontrol_20220830_models.GetResourceTypeHeaders()
-        return await self.get_resource_type_with_options_async(resource_path, headers, runtime)
+        return await self.get_resource_type_with_options_async(request_path, headers, runtime)
 
     def get_resources_with_options(
         self,
-        resource_path: str,
+        request_path: str,
         tmp_req: cloudcontrol_20220830_models.GetResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -446,7 +446,7 @@ class Client(OpenApiClient):
             action='GetResources',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -460,7 +460,7 @@ class Client(OpenApiClient):
 
     async def get_resources_with_options_async(
         self,
-        resource_path: str,
+        request_path: str,
         tmp_req: cloudcontrol_20220830_models.GetResourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -487,7 +487,7 @@ class Client(OpenApiClient):
             action='GetResources',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -501,21 +501,21 @@ class Client(OpenApiClient):
 
     def get_resources(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.GetResourcesRequest,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_resources_with_options(resource_path, request, headers, runtime)
+        return self.get_resources_with_options(request_path, request, headers, runtime)
 
     async def get_resources_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.GetResourcesRequest,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_resources_with_options_async(resource_path, request, headers, runtime)
+        return await self.get_resources_with_options_async(request_path, request, headers, runtime)
 
     def get_task_with_options(
         self,
@@ -609,7 +609,7 @@ class Client(OpenApiClient):
 
     def list_data_sources_with_options(
         self,
-        resource_path: str,
+        request_path: str,
         tmp_req: cloudcontrol_20220830_models.ListDataSourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -617,7 +617,7 @@ class Client(OpenApiClient):
         """
         GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param tmp_req: ListDataSourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -641,7 +641,7 @@ class Client(OpenApiClient):
             action='ListDataSources',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -655,7 +655,7 @@ class Client(OpenApiClient):
 
     async def list_data_sources_with_options_async(
         self,
-        resource_path: str,
+        request_path: str,
         tmp_req: cloudcontrol_20220830_models.ListDataSourcesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -663,7 +663,7 @@ class Client(OpenApiClient):
         """
         GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param tmp_req: ListDataSourcesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -687,7 +687,7 @@ class Client(OpenApiClient):
             action='ListDataSources',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -701,35 +701,35 @@ class Client(OpenApiClient):
 
     def list_data_sources(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
         """
         GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: ListDataSourcesRequest
         @return: ListDataSourcesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_data_sources_with_options(resource_path, request, headers, runtime)
+        return self.list_data_sources_with_options(request_path, request, headers, runtime)
 
     async def list_data_sources_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
         """
         GET /api/v1/providers/{provider}/products/{product}/dataSources/{resourceType}。
         
-        @param resource_path: the whole path of resource string
+        @param request_path: the whole path of resource string
         @param request: ListDataSourcesRequest
         @return: ListDataSourcesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_data_sources_with_options_async(resource_path, request, headers, runtime)
+        return await self.list_data_sources_with_options_async(request_path, request, headers, runtime)
 
     def list_products_with_options(
         self,
@@ -993,7 +993,7 @@ class Client(OpenApiClient):
 
     def update_resource_with_options(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -1007,13 +1007,13 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateResource',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1027,7 +1027,7 @@ class Client(OpenApiClient):
 
     async def update_resource_with_options_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -1041,13 +1041,13 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateResource',
             version='2022-08-30',
             protocol='HTTPS',
-            pathname=f'{resource_path}',
+            pathname=f'{request_path}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1061,18 +1061,18 @@ class Client(OpenApiClient):
 
     def update_resource(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_resource_with_options(resource_path, request, headers, runtime)
+        return self.update_resource_with_options(request_path, request, headers, runtime)
 
     async def update_resource_async(
         self,
-        resource_path: str,
+        request_path: str,
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_resource_with_options_async(resource_path, request, headers, runtime)
+        return await self.update_resource_with_options_async(request_path, request, headers, runtime)

@@ -1,3 +1,8 @@
+2023-01-12 Version: 1.0.3
+- CCAPI java v3 for user.
+- CCAPI python v3 for user.
+- CCAPI go v3 for user.
+
 2023-01-06 Version: 1.0.2
 - CCAPI java v2 for user.
 - CCAPI python v2 for user.
