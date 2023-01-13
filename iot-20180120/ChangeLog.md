@@ -1,3 +1,6 @@
+2023-01-13 Version: 0.3.0
+- Add ClearDeviceDesiredProperty open api.
+
 2023-01-03 Version: 3.0.15
 - Pub Support MessageExpiryInterval and Retained.
 - Rrpc Support ContentType.
