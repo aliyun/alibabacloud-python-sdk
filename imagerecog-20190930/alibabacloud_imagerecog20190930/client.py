@@ -1746,7 +1746,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = recognize_logo_req.tasks[i0]
+                    tmp = recognize_logo_req.tasks[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_logo_resp = self.recognize_logo_with_options(recognize_logo_req, runtime)
@@ -1822,7 +1822,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = recognize_logo_req.tasks[i0]
+                    tmp = recognize_logo_req.tasks[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_logo_resp = await self.recognize_logo_with_options_async(recognize_logo_req, runtime)
