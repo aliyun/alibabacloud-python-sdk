@@ -63,12 +63,16 @@ class CheckResultResponseBodyResult(TeaModel):
         ext_face_info: str = None,
         ext_id_info: str = None,
         ext_risk_info: str = None,
+        passed: str = None,
+        sub_code: str = None,
     ):
         self.ekyc_result = ekyc_result
         self.ext_basic_info = ext_basic_info
         self.ext_face_info = ext_face_info
         self.ext_id_info = ext_id_info
         self.ext_risk_info = ext_risk_info
+        self.passed = passed
+        self.sub_code = sub_code
 
     def validate(self):
         pass
@@ -89,6 +93,10 @@ class CheckResultResponseBodyResult(TeaModel):
             result['ExtIdInfo'] = self.ext_id_info
         if self.ext_risk_info is not None:
             result['ExtRiskInfo'] = self.ext_risk_info
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
         return result
 
     def from_map(self, m: dict = None):
@@ -103,6 +111,10 @@ class CheckResultResponseBodyResult(TeaModel):
             self.ext_id_info = m.get('ExtIdInfo')
         if m.get('ExtRiskInfo') is not None:
             self.ext_risk_info = m.get('ExtRiskInfo')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
         return self
 
 
@@ -197,10 +209,194 @@ class CheckResultResponse(TeaModel):
         return self
 
 
+class FaceCompareRequest(TeaModel):
+    def __init__(
+        self,
+        merchant_biz_id: str = None,
+        source_face_picture: str = None,
+        source_face_picture_url: str = None,
+        target_face_picture: str = None,
+        target_face_picture_url: str = None,
+    ):
+        self.merchant_biz_id = merchant_biz_id
+        self.source_face_picture = source_face_picture
+        self.source_face_picture_url = source_face_picture_url
+        self.target_face_picture = target_face_picture
+        self.target_face_picture_url = target_face_picture_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+        if self.source_face_picture is not None:
+            result['SourceFacePicture'] = self.source_face_picture
+        if self.source_face_picture_url is not None:
+            result['SourceFacePictureUrl'] = self.source_face_picture_url
+        if self.target_face_picture is not None:
+            result['TargetFacePicture'] = self.target_face_picture
+        if self.target_face_picture_url is not None:
+            result['TargetFacePictureUrl'] = self.target_face_picture_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+        if m.get('SourceFacePicture') is not None:
+            self.source_face_picture = m.get('SourceFacePicture')
+        if m.get('SourceFacePictureUrl') is not None:
+            self.source_face_picture_url = m.get('SourceFacePictureUrl')
+        if m.get('TargetFacePicture') is not None:
+            self.target_face_picture = m.get('TargetFacePicture')
+        if m.get('TargetFacePictureUrl') is not None:
+            self.target_face_picture_url = m.get('TargetFacePictureUrl')
+        return self
+
+
+class FaceCompareResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        face_comparison_score: float = None,
+        passed: str = None,
+        transaction_id: str = None,
+    ):
+        self.face_comparison_score = face_comparison_score
+        self.passed = passed
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_comparison_score is not None:
+            result['FaceComparisonScore'] = self.face_comparison_score
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceComparisonScore') is not None:
+            self.face_comparison_score = m.get('FaceComparisonScore')
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class FaceCompareResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: FaceCompareResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = FaceCompareResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class FaceCompareResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FaceCompareResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FaceCompareResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitializeRequest(TeaModel):
     def __init__(
         self,
         doc_type: str = None,
+        face_picture_base_64: str = None,
+        face_picture_url: str = None,
         flow_type: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
@@ -213,6 +409,8 @@ class InitializeRequest(TeaModel):
         service_level: str = None,
     ):
         self.doc_type = doc_type
+        self.face_picture_base_64 = face_picture_base_64
+        self.face_picture_url = face_picture_url
         self.flow_type = flow_type
         self.merchant_biz_id = merchant_biz_id
         self.merchant_user_id = merchant_user_id
@@ -235,6 +433,10 @@ class InitializeRequest(TeaModel):
         result = dict()
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
+        if self.face_picture_base_64 is not None:
+            result['FacePictureBase64'] = self.face_picture_base_64
+        if self.face_picture_url is not None:
+            result['FacePictureUrl'] = self.face_picture_url
         if self.flow_type is not None:
             result['FlowType'] = self.flow_type
         if self.merchant_biz_id is not None:
@@ -261,6 +463,10 @@ class InitializeRequest(TeaModel):
         m = m or dict()
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
+        if m.get('FacePictureBase64') is not None:
+            self.face_picture_base_64 = m.get('FacePictureBase64')
+        if m.get('FacePictureUrl') is not None:
+            self.face_picture_url = m.get('FacePictureUrl')
         if m.get('FlowType') is not None:
             self.flow_type = m.get('FlowType')
         if m.get('MerchantBizId') is not None:

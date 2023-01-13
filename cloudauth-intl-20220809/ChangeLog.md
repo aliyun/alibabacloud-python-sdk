@@ -1,3 +1,6 @@
+2023-01-13 Version: 1.0.7
+- Support faceverify.
+
 2022-08-17 Version: 1.0.6
 - Support ekyc.
 
