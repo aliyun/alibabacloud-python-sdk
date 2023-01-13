@@ -1,3 +1,6 @@
+2023-01-13 Version: 1.0.3
+- CreateScalingGroup and DescribeScalingGroup support resourcegroup.
+
 2022-10-14 Version: 1.0.2
 - Support user custom removal  function policy.
 
