@@ -344,6 +344,8 @@ class Client(OpenApiClient):
             body['routeConfig'] = request.route_config
         if not UtilClient.is_unset(request.tls_config):
             body['tlsConfig'] = request.tls_config
+        if not UtilClient.is_unset(request.waf_config):
+            body['wafConfig'] = request.waf_config
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -391,6 +393,8 @@ class Client(OpenApiClient):
             body['routeConfig'] = request.route_config
         if not UtilClient.is_unset(request.tls_config):
             body['tlsConfig'] = request.tls_config
+        if not UtilClient.is_unset(request.waf_config):
+            body['wafConfig'] = request.waf_config
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6837,6 +6841,8 @@ class Client(OpenApiClient):
             body['routeConfig'] = request.route_config
         if not UtilClient.is_unset(request.tls_config):
             body['tlsConfig'] = request.tls_config
+        if not UtilClient.is_unset(request.waf_config):
+            body['wafConfig'] = request.waf_config
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6883,6 +6889,8 @@ class Client(OpenApiClient):
             body['routeConfig'] = request.route_config
         if not UtilClient.is_unset(request.tls_config):
             body['tlsConfig'] = request.tls_config
+        if not UtilClient.is_unset(request.waf_config):
+            body['wafConfig'] = request.waf_config
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers

@@ -1,3 +1,6 @@
+2023-01-13 Version: 2.0.3
+- Fix java async sdk signature algorithem.
+
 2023-01-10 Version: 2.0.2
 - Fix java async sdk signature algorithem.
 
