@@ -3246,7 +3246,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = recognize_qr_code_req.tasks[i0]
+                    tmp = recognize_qr_code_req.tasks[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_qr_code_resp = self.recognize_qr_code_with_options(recognize_qr_code_req, runtime)
@@ -3322,7 +3322,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = recognize_qr_code_req.tasks[i0]
+                    tmp = recognize_qr_code_req.tasks[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_qr_code_resp = await self.recognize_qr_code_with_options_async(recognize_qr_code_req, runtime)
