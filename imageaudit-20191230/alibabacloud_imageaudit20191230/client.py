@@ -192,7 +192,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = scan_image_req.task[i0]
+                    tmp = scan_image_req.task[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         scan_image_resp = self.scan_image_with_options(scan_image_req, runtime)
@@ -268,7 +268,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = scan_image_req.task[i0]
+                    tmp = scan_image_req.task[i_0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         scan_image_resp = await self.scan_image_with_options_async(scan_image_req, runtime)
