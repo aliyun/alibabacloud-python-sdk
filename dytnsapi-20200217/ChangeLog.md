@@ -1,3 +1,6 @@
+2023-01-13 Version: 1.0.24
+- Support Service of empty number.
+
 2023-01-09 Version: 1.0.23
 - Delete numberType.
 
