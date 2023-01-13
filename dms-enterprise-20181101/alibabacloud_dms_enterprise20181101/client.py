@@ -360,6 +360,15 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        """
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
+        
+        @param tmp_req: AddTaskFlowEdgesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTaskFlowEdgesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.AddTaskFlowEdgesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -396,6 +405,15 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        """
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
+        
+        @param tmp_req: AddTaskFlowEdgesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTaskFlowEdgesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.AddTaskFlowEdgesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -431,6 +449,14 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        """
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
+        
+        @param request: AddTaskFlowEdgesRequest
+        @return: AddTaskFlowEdgesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_task_flow_edges_with_options(request, runtime)
 
@@ -438,6 +464,14 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        """
+        When you add directed edges for a task node, take note of the following limits:
+        1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
+        2. After a backward edge is added, the DAG does not contain loops.
+        
+        @param request: AddTaskFlowEdgesRequest
+        @return: AddTaskFlowEdgesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_task_flow_edges_with_options_async(request, runtime)
 
@@ -529,7 +563,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        ## Description
         During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param tmp_req: BackFillRequest
@@ -587,7 +620,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        ## Description
         During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param tmp_req: BackFillRequest
@@ -644,7 +676,6 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BackFillRequest,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        ## Description
         During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param request: BackFillRequest
@@ -658,7 +689,6 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BackFillRequest,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        ## Description
         During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param request: BackFillRequest
@@ -3581,7 +3611,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        ### Usage notes
         When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
@@ -3619,7 +3648,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        ### Usage notes
         When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
@@ -3656,7 +3684,6 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteScenarioRequest,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        ### Usage notes
         When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
@@ -3670,7 +3697,6 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteScenarioRequest,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        ### Usage notes
         When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
@@ -5836,6 +5862,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        """
+        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        
+        @param request: GetIntervalLimitOfSLARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntervalLimitOfSLAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -5866,6 +5899,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        """
+        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        
+        @param request: GetIntervalLimitOfSLARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntervalLimitOfSLAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -5895,6 +5935,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        """
+        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        
+        @param request: GetIntervalLimitOfSLARequest
+        @return: GetIntervalLimitOfSLAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_interval_limit_of_slawith_options(request, runtime)
 
@@ -5902,6 +5948,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        """
+        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        
+        @param request: GetIntervalLimitOfSLARequest
+        @return: GetIntervalLimitOfSLAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_interval_limit_of_slawith_options_async(request, runtime)
 
@@ -13259,8 +13311,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites:
-        You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13343,8 +13394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites:
-        You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13426,8 +13476,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites:
-        You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @return: RegisterInstanceResponse
@@ -13440,8 +13489,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites:
-        You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @return: RegisterInstanceResponse
@@ -13648,6 +13696,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        """
+        You can call this operation only for task flows that are suspended.
+        
+        @param request: ResumeTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -13682,6 +13737,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        """
+        You can call this operation only for task flows that are suspended.
+        
+        @param request: ResumeTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -13715,6 +13777,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        """
+        You can call this operation only for task flows that are suspended.
+        
+        @param request: ResumeTaskFlowInstanceRequest
+        @return: ResumeTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_task_flow_instance_with_options(request, runtime)
 
@@ -13722,6 +13790,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        """
+        You can call this operation only for task flows that are suspended.
+        
+        @param request: ResumeTaskFlowInstanceRequest
+        @return: ResumeTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_task_flow_instance_with_options_async(request, runtime)
 
@@ -14844,6 +14918,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.UpdateSLARulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        """
+        SLA rules take effect after task flows are deployed and published.
+        
+        @param tmp_req: UpdateSLARulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSLARulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.UpdateSLARulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14880,6 +14961,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.UpdateSLARulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        """
+        SLA rules take effect after task flows are deployed and published.
+        
+        @param tmp_req: UpdateSLARulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSLARulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.UpdateSLARulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14915,6 +15003,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateSLARulesRequest,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        """
+        SLA rules take effect after task flows are deployed and published.
+        
+        @param request: UpdateSLARulesRequest
+        @return: UpdateSLARulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_slarules_with_options(request, runtime)
 
@@ -14922,6 +15016,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateSLARulesRequest,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        """
+        SLA rules take effect after task flows are deployed and published.
+        
+        @param request: UpdateSLARulesRequest
+        @return: UpdateSLARulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_slarules_with_options_async(request, runtime)
 
@@ -15012,6 +15112,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        """
+        You can call this operation to configure a failed task or rerun a task.
+        
+        @param request: UpdateTaskConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_config):
@@ -15044,6 +15151,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        """
+        You can call this operation to configure a failed task or rerun a task.
+        
+        @param request: UpdateTaskConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_config):
@@ -15075,6 +15189,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        """
+        You can call this operation to configure a failed task or rerun a task.
+        
+        @param request: UpdateTaskConfigRequest
+        @return: UpdateTaskConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_config_with_options(request, runtime)
 
@@ -15082,6 +15202,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        """
+        You can call this operation to configure a failed task or rerun a task.
+        
+        @param request: UpdateTaskConfigRequest
+        @return: UpdateTaskConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_config_with_options_async(request, runtime)
 
@@ -15367,11 +15493,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ## Usage notes
         The edges can be updated only when the following conditions are met:
-        1\\. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
-        2\\. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
-        3\\. After the update, no loop appears in the DAG.
+        1. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
+        2. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
+        3. After the update, no loop appears in the DAG.
         
         @param tmp_req: UpdateTaskFlowEdgesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15414,11 +15539,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ## Usage notes
         The edges can be updated only when the following conditions are met:
-        1\\. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
-        2\\. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
-        3\\. After the update, no loop appears in the DAG.
+        1. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
+        2. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
+        3. After the update, no loop appears in the DAG.
         
         @param tmp_req: UpdateTaskFlowEdgesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15460,11 +15584,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ## Usage notes
         The edges can be updated only when the following conditions are met:
-        1\\. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
-        2\\. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
-        3\\. After the update, no loop appears in the DAG.
+        1. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
+        2. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
+        3. After the update, no loop appears in the DAG.
         
         @param request: UpdateTaskFlowEdgesRequest
         @return: UpdateTaskFlowEdgesResponse
@@ -15477,11 +15600,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ## Usage notes
         The edges can be updated only when the following conditions are met:
-        1\\. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
-        2\\. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
-        3\\. After the update, no loop appears in the DAG.
+        1. The specified edge exists in the Directed Acyclic Graph (DAG) of the task flow. The DAG is identified by DagId.
+        2. The end points of the specified edge exist in the DAG of the task flow. The DAG is identified by DagId.
+        3. After the update, no loop appears in the DAG.
         
         @param request: UpdateTaskFlowEdgesRequest
         @return: UpdateTaskFlowEdgesResponse
@@ -15878,6 +16000,14 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        """
+        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
+        
+        @param request: UpdateTaskFlowScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_begin_date):
@@ -15924,6 +16054,14 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        """
+        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
+        
+        @param request: UpdateTaskFlowScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_begin_date):
@@ -15969,6 +16107,13 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        """
+        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
+        
+        @param request: UpdateTaskFlowScheduleRequest
+        @return: UpdateTaskFlowScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_flow_schedule_with_options(request, runtime)
 
@@ -15976,6 +16121,13 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        """
+        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
+        
+        @param request: UpdateTaskFlowScheduleRequest
+        @return: UpdateTaskFlowScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_flow_schedule_with_options_async(request, runtime)
 
@@ -16141,7 +16293,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        ## Usage notes
         Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest
@@ -16181,7 +16332,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        ## Usage notes
         Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest
@@ -16220,7 +16370,6 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        ## Usage notes
         Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest
@@ -16234,7 +16383,6 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        ## Usage notes
         Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest

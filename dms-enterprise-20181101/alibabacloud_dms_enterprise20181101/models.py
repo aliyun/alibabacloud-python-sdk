@@ -1027,7 +1027,7 @@ class AddLogicTableRouteConfigRequest(TeaModel):
         # The unique key of the routing algorithm. 
         # 
         # > - You can create a custom unique key for the routing algorithm. No requirements are imposed on custom unique keys.
-        # - The unique key of the routing algorithm in the same logical table must be unique.
+        # > - The unique key of the routing algorithm in the same logical table must be unique.
         self.route_key = route_key
         # The ID of the logical table. You can call the [ListLogicTables](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogictables) operation to query the ID of the logical table.
         self.table_id = table_id
@@ -1168,7 +1168,9 @@ class AddTaskFlowEdgesRequestEdges(TeaModel):
         node_end: int = None,
         node_from: int = None,
     ):
+        # The ID of the node where the end node of the edge is located.
         self.node_end = node_end
+        # The ID of the node where the start node of the edge is located.
         self.node_from = node_from
 
     def validate(self):
@@ -1202,8 +1204,13 @@ class AddTaskFlowEdgesRequest(TeaModel):
         edges: List[AddTaskFlowEdgesRequestEdges] = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The list of edges of the task flow.
         self.edges = edges
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -1249,8 +1256,13 @@ class AddTaskFlowEdgesShrinkRequest(TeaModel):
         edges_shrink: str = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The list of edges of the task flow.
         self.edges_shrink = edges_shrink
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -1318,9 +1330,16 @@ class AddTaskFlowEdgesResponseBody(TeaModel):
         success: bool = None,
     ):
         self.edge_ids = edge_ids
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -1857,9 +1876,23 @@ class BuyPayAsYouGoOrderRequest(TeaModel):
         tid: int = None,
         version_type: str = None,
     ):
+        # The type of the resource that you want to purchase.
+        # 
+        # *   **VersionType**: DMS that supports control modes
+        # *   **SensitiveDataProtection**: DMS that supports sensitive data protection
         self.commodity_type = commodity_type
+        # The number of database instances that you want to use DMS to manage.
+        # 
+        # > A quota can be used for only one database instance.
         self.ins_num = ins_num
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
+        # The control mode of DMS. Valid values:
+        # 
+        # *   **stand**: Stable Change
+        # *   **safety**: Security Collaboration
         self.version_type = version_type
 
     def validate(self):
@@ -1903,10 +1936,18 @@ class BuyPayAsYouGoOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # If the purchase is successful, the ID of the purchased instance is returned.
         self.instance_id = instance_id
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -2520,8 +2561,7 @@ class CreateDataCorrectOrderRequestParam(TeaModel):
         self.rollback_attachment_name = rollback_attachment_name
         # The SQL statements used to roll back the data change.
         # 
-        # > 
-        # *   This parameter is required if you set the **RollbackSqlType** parameter to **TEXT**.
+        # > This parameter is required if you set the **RollbackSqlType** parameter to **TEXT**.
         self.rollback_sql = rollback_sql
         # The format of the SQL statements used to roll back the data change. Valid values:
         # 
@@ -2721,7 +2761,7 @@ class CreateDataCorrectOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the ticket.
+        # The IDs of the tickets.
         self.create_order_result = create_order_result
         # The error code returned if the request fails.
         self.error_code = error_code
@@ -6071,13 +6111,23 @@ class CreateTaskRequest(TeaModel):
         tid: int = None,
         time_variables: str = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The position of the node on the Directed Acyclic Graph (DAG).
         self.graph_param = graph_param
+        # The configuration for the node.
         self.node_content = node_content
+        # The name of the node you want to create.
         self.node_name = node_name
+        # The output variables for the task.
         self.node_output = node_output
+        # The type of the node you want to create. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
         self.node_type = node_type
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
+        # The time variables configured for the node.
         self.time_variables = time_variables
 
     def validate(self):
@@ -6137,10 +6187,18 @@ class CreateTaskResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the task node returned when the task was created.
         self.node_id = node_id
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -8332,7 +8390,11 @@ class DeleteUserRequest(TeaModel):
         tid: int = None,
         uid: str = None,
     ):
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
         self.tid = tid
+        # The UID of the user. You can view your UID by moving the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console.
         self.uid = uid
 
     def validate(self):
@@ -8367,9 +8429,16 @@ class DeleteUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -8455,6 +8524,7 @@ class DisableUserRequest(TeaModel):
         uid: str = None,
     ):
         self.tid = tid
+        # The UID of the Alibaba Cloud account.
         self.uid = uid
 
     def validate(self):
@@ -8489,9 +8559,16 @@ class DisableUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -8778,7 +8855,11 @@ class EnableUserRequest(TeaModel):
         tid: int = None,
         uid: str = None,
     ):
+        # The ID of the tenant.
+        # 
+        # >  To obtain the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Tenant information](~~181330~~).
         self.tid = tid
+        # The UID of the Alibaba Cloud account.
         self.uid = uid
 
     def validate(self):
@@ -8813,9 +8894,16 @@ class EnableUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -11249,7 +11337,11 @@ class GetDataCorrectRollbackFileRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -11285,10 +11377,18 @@ class GetDataCorrectRollbackFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The download URL of the attachment.
         self.file_url = file_url
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -11680,7 +11780,11 @@ class GetDataCronClearConfigRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -11719,13 +11823,28 @@ class GetDataCronClearConfigResponseBodyDataCronClearConfig(TeaModel):
         duration: str = None,
         optimize_table_after_every_clear_times: int = None,
     ):
+        # The number of times that the task is run.
         self.cron_call_times = cron_call_times
+        # The crontab expression that you can use to run the task at a specified time. For more information, see [Crontab expression](~~206581~~).
         self.cron_format = cron_format
+        # The time when the task was last run.
         self.cron_last_call_start_time = cron_last_call_start_time
+        # The time when the task is run next time. This parameter is displayed only when the status of the scheduled task is SUCCESS.
         self.cron_next_call_time = cron_next_call_time
+        # The status of the scheduled task. If this parameter is empty, it indicates the task is not run. Valid values:
+        # 
+        # *   PAUSE: The task is suspended.
+        # *   WAITING: The task is waiting to be run.
+        # *   SUCCESS: The task is complete.
         self.cron_status = cron_status
+        # The number of times that the Optimize Table statement is automatically exeuted. This parameter is valid only when the value of the OptimizeTableAfterEveryClearTimes parameter is greater than 0.
         self.current_clear_task_count = current_clear_task_count
+        # The execution duration of the task. Unit: hours. If the value is 0, it indicates the duration is not specified.
         self.duration = duration
+        # Specifies whether to enable automatic execution of the OPTIMIZE TABLE statement. Valid values:
+        # 
+        # *   0: disables automatic execution
+        # *   A number greater than 0: enables automatic execution. The number specifies the number of times that cleanup operations must be performed before the OPTIMIZE TABLE statement is automatically executed.
         self.optimize_table_after_every_clear_times = optimize_table_after_every_clear_times
 
     def validate(self):
@@ -11787,8 +11906,14 @@ class GetDataCronClearConfigResponseBody(TeaModel):
     ):
         self.data_cron_clear_config = data_cron_clear_config
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -13382,7 +13507,11 @@ class GetIntervalLimitOfSLARequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -13418,10 +13547,18 @@ class GetIntervalLimitOfSLAResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The minimum scheduling cycle. Unit: minutes.
         self.interval_limit = interval_limit
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -14913,7 +15050,7 @@ class GetOpLogRequest(TeaModel):
         # *   **PERMISSION**: permissions
         # *   **OWNER**: data owner
         # *   **SQL_CONSOLE**: data query
-        # *   **SQL_CONSOLE_EXPORT**: query result export
+        # *   **SQL\_CONSOLE\_EXPORT**: query result export
         # *   **DATA_CHANGE**: data change
         # *   **DATA_EXPORT**: data export
         # *   **SQL_REVIEW**: SQL review
@@ -14925,7 +15062,7 @@ class GetOpLogRequest(TeaModel):
         # *   **SECURITY_RULE**: security rule
         # *   **CONFIG_MANAGE**: configuration management
         # *   **RESOURCE_AUTH**: resource authorization
-        # *   **ACCESS_WHITE_IP**: access IP address allowlist
+        # *   **ACCESS\_WHITE\_IP**: access IP address allowlist
         self.module = module
         # The number of the page to return. Pages start from page 1.
         self.page_number = page_number
@@ -14994,8 +15131,8 @@ class GetOpLogResponseBodyOpLogDetailsOpLogDetail(TeaModel):
     ):
         # The endpoint of the database instance.
         # 
-        # > *   This parameter is valid only for database instances of the LocalInstance type.
-        # *   This parameter is valid only for operations on the functional modules related to tasks.
+        # > * This parameter is valid only for database instances of the LocalInstance type.
+        # > * This parameter is valid only for operations on the functional modules related to tasks.
         self.database = database
         # The functional module for which the operation log is queried.
         self.module = module
@@ -15215,7 +15352,11 @@ class GetOrderAttachmentFileRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -15251,10 +15392,21 @@ class GetOrderAttachmentFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request is successful.
+        # *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The download URL of the attachment.
         self.file_url = file_url
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -16701,6 +16853,7 @@ class GetProxyResponseBody(TeaModel):
         proxy_id: int = None,
         public_enable: bool = None,
         public_host: str = None,
+        region_id: str = None,
         request_id: str = None,
         success: bool = None,
     ):
@@ -16732,8 +16885,9 @@ class GetProxyResponseBody(TeaModel):
         # The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled.  
         # 
         # > - If the value of the PublicEnable parameter is **true**, a valid public endpoint that can be resolved by using Alibaba Cloud DNS (DNS) is returned.
-        # - If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using DNS is returned.
+        # > - If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using DNS is returned.
         self.public_host = public_host
+        self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
@@ -16777,6 +16931,8 @@ class GetProxyResponseBody(TeaModel):
             result['PublicEnable'] = self.public_enable
         if self.public_host is not None:
             result['PublicHost'] = self.public_host
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -16811,6 +16967,8 @@ class GetProxyResponseBody(TeaModel):
             self.public_enable = m.get('PublicEnable')
         if m.get('PublicHost') is not None:
             self.public_host = m.get('PublicHost')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
@@ -19574,7 +19732,11 @@ class GetTaskRequest(TeaModel):
         node_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
         self.node_id = node_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -19613,13 +19775,21 @@ class GetTaskResponseBodyTask(TeaModel):
         node_type: str = None,
         time_variables: str = None,
     ):
+        # The ID of the task flow to which the node belongs.
         self.dag_id = dag_id
+        # The position of the node on the Directed Acyclic Graph (DAG).
         self.graph_param = graph_param
+        # The advanced configuration for the node.
         self.node_config = node_config
+        # The configuration for the node.
         self.node_content = node_content
+        # The name of the node.
         self.node_name = node_name
+        # The output variables for the node. This parameter is available only for some types of nodes.
         self.node_output = node_output
+        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
         self.node_type = node_type
+        # The time variables configured for the node.
         self.time_variables = time_variables
 
     def validate(self):
@@ -19679,10 +19849,18 @@ class GetTaskResponseBody(TeaModel):
         success: bool = None,
         task: GetTaskResponseBodyTask = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The task node.
         self.task = task
 
     def validate(self):
@@ -20179,7 +20357,11 @@ class GetTaskFlowNotificationRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -20213,8 +20395,20 @@ class GetTaskFlowNotificationResponseBodyNotification(TeaModel):
         dag_notification_sla: bool = None,
         dag_notification_success: bool = None,
     ):
+        # Indicates whether notifications for failed task flows are enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.dag_notification_fail = dag_notification_fail
+        # Indicates whether service level agreement (SLA) global notifications for task flows are enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.dag_notification_sla = dag_notification_sla
+        # Indicates whether notifications for successful task flows are enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.dag_notification_success = dag_notification_success
 
     def validate(self):
@@ -20254,10 +20448,18 @@ class GetTaskFlowNotificationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The notification settings specified by the user.
         self.notification = notification
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -20739,15 +20941,13 @@ class GetUserResponseBodyUser(TeaModel):
         self.cur_result_count = cur_result_count
         # The DingTalk chatbot URL that is used to receive notifications.
         # 
-        # > 
-        # *   The system returns this parameter if the user has set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # *   The system does not return this parameter if the user has not set a DingTalk chatbot URL.
+        # > * The system returns this parameter if the user has set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+        # > * The system does not return this parameter if the user has not set a DingTalk chatbot URL.
         self.ding_robot = ding_robot
         # The email address that is used to receive notifications.
         # 
-        # > 
-        # *   The system returns this parameter if the user has set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # *   The system does not return this parameter if the user has not set an email address.
+        # > * The system returns this parameter if the user has set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+        # > * The system does not return this parameter if the user has not set an email address.
         self.email = email
         # The last time when the user logged on to the console.
         self.last_login_time = last_login_time
@@ -20757,9 +20957,8 @@ class GetUserResponseBodyUser(TeaModel):
         self.max_result_count = max_result_count
         # The mobile phone number that is used to receive notifications.
         # 
-        # > 
-        # *   The system returns this parameter if the user has set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # *   The system does not return this parameter if the user has not set a mobile phone number.
+        # > * The system returns this parameter if the user has set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+        # > * The system does not return this parameter if the user has not set a mobile phone number.
         self.mobile = mobile
         # The nickname of the user.
         self.nick_name = nick_name
@@ -20794,7 +20993,7 @@ class GetUserResponseBodyUser(TeaModel):
         # The signature method that is used to secure connections when a webhook URL is used. Valid values:
         # 
         # *   **NONE**: no signature.
-        # *   **HMAC_SHA1**: HMAC_SHA1.
+        # *   **HMAC\_SHA1**: HMAC_SHA1.
         self.signature_method = signature_method
         # The status of the user. Valid values:
         # 
@@ -20808,9 +21007,8 @@ class GetUserResponseBodyUser(TeaModel):
         self.user_id = user_id
         # The webhook URL that is used to receive notifications.
         # 
-        # > 
-        # *   If the user has set a webhook URL, DMS sends notifications to the specified URL.
-        # *   The system does not return this parameter if the user has not set a webhook URL.
+        # > * If the user has set a webhook URL, DMS sends notifications to the specified URL.
+        # > * The system does not return this parameter if the user has not set a webhook URL.
         self.webhook = webhook
 
     def validate(self):
@@ -21837,6 +22035,9 @@ class ListClassificationTemplatesRequest(TeaModel):
         self,
         tid: int = None,
     ):
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -21867,9 +22068,16 @@ class ListClassificationTemplatesResponseBodyTemplateList(TeaModel):
         template_id: int = None,
         template_type: str = None,
     ):
+        # The name of the classification template.
         self.name = name
+        # The remarks.
         self.remark = remark
+        # The ID of the classification template.
         self.template_id = template_id
+        # The type of the classification template. Valid values:
+        # 
+        # *   **INNER**: built-in template
+        # *   **USER_DEFINE**: custom template
         self.template_type = template_type
 
     def validate(self):
@@ -21913,10 +22121,18 @@ class ListClassificationTemplatesResponseBody(TeaModel):
         success: bool = None,
         template_list: List[ListClassificationTemplatesResponseBodyTemplateList] = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The list of templates.
         self.template_list = template_list
 
     def validate(self):
@@ -25214,6 +25430,9 @@ class ListEffectiveOrdersRequest(TeaModel):
         self,
         tid: int = None,
     ):
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -25246,11 +25465,17 @@ class ListEffectiveOrdersResponseBodyOrderSummaryOrderList(TeaModel):
         order_id: str = None,
         start_time: str = None,
     ):
+        # The UID of the user who placed the order.
         self.buyer_id = buyer_id
+        # The time when the instance expires.
         self.end_time = end_time
+        # The maximum number of database instances that you can use DMS to manage.
         self.ins_num = ins_num
+        # The ID of the instance for the purchased service.
         self.instance_id = instance_id
+        # The ID of the order.
         self.order_id = order_id
+        # The time when the instance is started.
         self.start_time = start_time
 
     def validate(self):
@@ -25302,10 +25527,24 @@ class ListEffectiveOrdersResponseBodyOrderSummary(TeaModel):
         total_quota: int = None,
         version_type: str = None,
     ):
+        # The commodity code of DMS.
+        # 
+        # *   dms_pre_public_cn: DMS that uses the subscription billing method
+        # *   dms_post_public_cn: DMS that uses the pay-as-you-go billing method
         self.commodity_code = commodity_code
+        # The type of the service.
+        # 
+        # *   **VersionType**: DMS that supports control modes
+        # *   **SensitiveDataProtection**: DMS that supports sensitive data protection
         self.commodity_type = commodity_type
+        # Details about the orders.
         self.order_list = order_list
+        # The sum of the number of instances that you can use DMS to manage in all orders.
         self.total_quota = total_quota
+        # The control mode of DMS. Valid values:
+        # 
+        # *   **stand**: Stable Change
+        # *   **safety**: Security Collaboration
         self.version_type = version_type
 
     def validate(self):
@@ -25361,10 +25600,18 @@ class ListEffectiveOrdersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The information about orders.
         self.order_summary = order_summary
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -28848,6 +29095,7 @@ class ListProxiesResponseBodyProxyList(TeaModel):
         proxy_id: int = None,
         public_enable: bool = None,
         public_host: str = None,
+        region_id: str = None,
     ):
         # The ID of the user who enabled the secure access proxy feature.
         self.creator_id = creator_id
@@ -28873,8 +29121,9 @@ class ListProxiesResponseBodyProxyList(TeaModel):
         # The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled.  
         # 
         # > - If the value of the PublicEnable parameter is **true**, a valid public endpoint that can be resolved by using Alibaba Cloud DNS (DNS) is returned.
-        # - If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using DNS is returned.
+        # > - If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using DNS is returned.
         self.public_host = public_host
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -28907,6 +29156,8 @@ class ListProxiesResponseBodyProxyList(TeaModel):
             result['PublicEnable'] = self.public_enable
         if self.public_host is not None:
             result['PublicHost'] = self.public_host
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -28933,6 +29184,8 @@ class ListProxiesResponseBodyProxyList(TeaModel):
             self.public_enable = m.get('PublicEnable')
         if m.get('PublicHost') is not None:
             self.public_host = m.get('PublicHost')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -29655,7 +29908,11 @@ class ListSLARulesRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -29691,10 +29948,18 @@ class ListSLARulesResponseBodySLARuleListSLARule(TeaModel):
         node_id: int = None,
         rule_type: int = None,
     ):
+        # The ID of the task flow.
         self.dag_id = dag_id
+        # The ID of the SLA rule.
         self.id = id
+        # The timeout period. Unit: minutes.
         self.interval_minutes = interval_minutes
+        # The ID of the task node.
         self.node_id = node_id
+        # The type of the rule. Valid values:
+        # 
+        # *   **0**: an SLA rule for a task flow
+        # *   **1**: an SLA rule for a task node
         self.rule_type = rule_type
 
     def validate(self):
@@ -29777,10 +30042,18 @@ class ListSLARulesResponseBody(TeaModel):
         slarule_list: ListSLARulesResponseBodySLARuleList = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # The list of SLA rules.
         self.slarule_list = slarule_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -30669,6 +30942,9 @@ class ListScenariosRequest(TeaModel):
         self,
         tid: int = None,
     ):
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -30699,9 +30975,13 @@ class ListScenariosResponseBodyScenarioList(TeaModel):
         id: int = None,
         scenario_name: str = None,
     ):
+        # The ID of the user who created the business scenario.
         self.creator_id = creator_id
+        # The description of the business scenario.
         self.description = description
+        # The ID of the business scenario.
         self.id = id
+        # The name of the business scenario.
         self.scenario_name = scenario_name
 
     def validate(self):
@@ -30745,10 +31025,18 @@ class ListScenariosResponseBody(TeaModel):
         scenario_list: List[ListScenariosResponseBodyScenarioList] = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the returned business scenarios.
         self.scenario_list = scenario_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -31178,9 +31466,8 @@ class ListSensitiveColumnsDetailRequest(TeaModel):
         self.logic = logic
         # The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the database.
         # 
-        # > 
-        # *   You can also call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the name of a physical database.
-        # *   You can also call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to obtain the name of a logical database.
+        # > * You can also call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the name of a physical database.
+        # > * You can also call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to obtain the name of a logical database.
         self.schema_name = schema_name
         # The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the table.
         # 
@@ -31477,15 +31764,30 @@ class ListSensitiveDataAuditLogRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
+        # The name of the column that contains sensitive data.
         self.column_name = column_name
+        # The name of the database that stores the sensitive data.
         self.db_name = db_name
+        # The end of the time range for which you want to query the audit logs for sensitive information. Specify the time in the yyyy-MM-DD HH:mm:ss format.
         self.end_time = end_time
+        # The function module whose audit logs you want to query for sensitive data. If you do not specify this parameter, all audit logs are queried. Valid values:
+        # 
+        # *   **SQL_CONSOLE**: data query
+        # *   **SQL_CONSOLE_EXPORT**: query result export
+        # *   **DATA_CHANGE**: data change
+        # *   **DATA_EXPORT**: data export
         self.module_name = module_name
+        # The username of the requester.
         self.op_user_name = op_user_name
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page. Example: 100
         self.page_size = page_size
+        # The beginning of the time range for which you want to query the audit logs for sensitive information. Specify the time in the yyyy-MM-DD HH:mm:ss format.
         self.start_time = start_time
+        # The name of the table that stores the sensitive data.
         self.table_name = table_name
+        # The ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -31553,10 +31855,26 @@ class ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogListSensitiveDat
         security_level: str = None,
         table_name: str = None,
     ):
+        # The name of the column that contains sensitive data.
         self.column_name = column_name
+        # The permission that the user has on the column. Valid values:
+        # 
+        # *   **No permission**\
+        # *   **Partial redaction**\
+        # *   **Plaintext**\
+        # *   **Change**\
+        # *   **Enable data masking**\
+        # *   **Disable data masking**\
         self.column_permission_type = column_permission_type
+        # The algorithm used for data masking.
         self.desensitization_rule = desensitization_rule
+        # The sensitivity level of the data. Valid values:
+        # 
+        # *   **Low**\
+        # *   **Medium**\
+        # *   **High**\
         self.security_level = security_level
+        # The name of the table that stores the sensitive data.
         self.table_name = table_name
 
     def validate(self):
@@ -31607,13 +31925,24 @@ class ListSensitiveDataAuditLogResponseBodySensitiveDataAuditLogList(TeaModel):
         user_id: int = None,
         user_name: str = None,
     ):
+        # The name of the database that stores the sensitive data.
         self.db_display_name = db_display_name
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the function module whose audit logs were queried.
         self.module_name = module_name
+        # The time when the operation was performed. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.op_time = op_time
+        # The logs for sensitive data.
         self.sensitive_data_log = sensitive_data_log
+        # The details of the object on which the operation was performed. The value of this parameter is in one of the following formats:
+        # 
+        # *   Object name - object ID
+        # *   Object name (object ID)
         self.target_name = target_name
+        # The user ID of the requester.
         self.user_id = user_id
+        # The username of the requester.
         self.user_name = user_name
 
     def validate(self):
@@ -31682,11 +32011,20 @@ class ListSensitiveDataAuditLogResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # The audit logs for sensitive data.
         self.sensitive_data_audit_log_list = sensitive_data_audit_log_list
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -32629,7 +32967,11 @@ class ListTaskFlowConstantsRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -32662,7 +33004,9 @@ class ListTaskFlowConstantsResponseBodyDagConstantsDagConstant(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The constant key.
         self.key = key
+        # The constant value.
         self.value = value
 
     def validate(self):
@@ -32733,10 +33077,18 @@ class ListTaskFlowConstantsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # A list of constant key-value pairs for the task flow.
         self.dag_constants = dag_constants
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -33619,7 +33971,11 @@ class ListTaskFlowTimeVariablesRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -33652,7 +34008,9 @@ class ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable(TeaModel):
         name: str = None,
         pattern: str = None,
     ):
+        # The name of the time variable.
         self.name = name
+        # The format of the time variable.
         self.pattern = pattern
 
     def validate(self):
@@ -33723,10 +34081,18 @@ class ListTaskFlowTimeVariablesResponseBody(TeaModel):
         success: bool = None,
         time_variables: ListTaskFlowTimeVariablesResponseBodyTimeVariables = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The time variables for the task flow.
         self.time_variables = time_variables
 
     def validate(self):
@@ -33819,9 +34185,15 @@ class ListTaskFlowsByPageRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
+        # The number of the page to return.
         self.page_index = page_index
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The keyword that is used to search for task flow names.
         self.search_key = search_key
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -33870,15 +34242,33 @@ class ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow(TeaModel):
         latest_instance_time: str = None,
         status: int = None,
     ):
+        # The ID of the user who created the task flow.
         self.creator_id = creator_id
+        # The username of the user who created the task flow.
         self.creator_nick_name = creator_nick_name
+        # The name of the task flow.
         self.dag_name = dag_name
+        # The username of the owner of the task flow.
         self.dag_owner_nick_name = dag_owner_nick_name
+        # The ID of the last deployment record of the task flow.
         self.deploy_id = deploy_id
+        # The description of the task flow.
         self.description = description
+        # The ID of the task flow.
         self.id = id
+        # The status of the last execution of the task flow. Valid values:
+        # 
+        # *   **0**: invalid
+        # *   **1**: scheduling disabled
+        # *   **2**: waiting to be scheduled
         self.latest_instance_status = latest_instance_status
+        # The time when the last execution record was created.
         self.latest_instance_time = latest_instance_time
+        # The status of the task flow. Valid values:
+        # 
+        # *   **0**: invalid
+        # *   **1**: scheduling disabled
+        # *   **2**: waiting to be scheduled
         self.status = status
 
     def validate(self):
@@ -33982,11 +34372,20 @@ class ListTaskFlowsByPageResponseBody(TeaModel):
         task_flow_list: ListTaskFlowsByPageResponseBodyTaskFlowList = None,
         total_count: int = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
+        # The details of the returned task flows.
         self.task_flow_list = task_flow_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -35055,7 +35454,7 @@ class ListUsersRequest(TeaModel):
         # *   **DBA**: a database administrator (DBA) role.
         # *   **ADMIN**: a Data Management (DMS) administrator role.
         # *   **SECURITY_ADMIN**: a security administrator role.
-        # *   **STRUCT_READ_ONLY**: a schema read-only user role.
+        # *   **STRUCT\_READ\_ONLY**: a schema read-only user role.
         # 
         # >  To check your role, move the pointer over the profile picture in the upper-right corner of the DMS console.
         self.role = role
@@ -35192,15 +35591,13 @@ class ListUsersResponseBodyUserListUser(TeaModel):
         self.cur_result_count = cur_result_count
         # The DingTalk chatbot URL that is used to receive notifications.
         # 
-        # > 
-        # *   The system returns this parameter if the user has set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # *   The system does not return this parameter if the user has not set a DingTalk chatbot URL.
+        # > * The system returns this parameter if the user has set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+        # > * The system does not return this parameter if the user has not set a DingTalk chatbot URL.
         self.ding_robot = ding_robot
         # The email address that is used to receive notifications.
         # 
-        # > 
-        # *   The system returns this parameter if the user has set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # *   The system does not return this parameter if the user has not set an email address.
+        # > * The system returns this parameter if the user has set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+        # > * The system does not return this parameter if the user has not set an email address.
         self.email = email
         # The last time when the user logged on to the console.
         self.last_login_time = last_login_time
@@ -35210,9 +35607,8 @@ class ListUsersResponseBodyUserListUser(TeaModel):
         self.max_result_count = max_result_count
         # The mobile phone number that is used to receive notifications.
         # 
-        # > 
-        # *   The system returns this parameter if the user has set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-        # *   The system does not return this parameter if the user has not set a mobile phone number.
+        # > * The system returns this parameter if the user has set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+        # > * The system does not return this parameter if the user has not set a mobile phone number.
         self.mobile = mobile
         # The nickname of the user.
         self.nick_name = nick_name
@@ -35240,7 +35636,7 @@ class ListUsersResponseBodyUserListUser(TeaModel):
         # *   **DBA**: a DBA.
         # *   **ADMIN**: a DMS administrator.
         # *   **SECURITY_ADMIN**: a security administrator.
-        # *   **STRUCT_READ_ONLY**: a schema read-only user.
+        # *   **STRUCT\_READ\_ONLY**: a schema read-only user.
         self.role_name_list = role_name_list
         # The signature method that is used to secure connections when a webhook URL is used. Valid values:
         # 
@@ -35259,9 +35655,8 @@ class ListUsersResponseBodyUserListUser(TeaModel):
         self.user_id = user_id
         # The webhook URL that is used to receive notifications.
         # 
-        # > 
-        # *   If the user has set a webhook URL, DMS sends notifications to the specified URL.
-        # *   The system does not return this parameter if the user has not set a webhook URL.
+        # > * If the user has set a webhook URL, DMS sends notifications to the specified URL.
+        # > * The system does not return this parameter if the user has not set a webhook URL.
         self.webhook = webhook
 
     def validate(self):
@@ -35814,7 +36209,11 @@ class ListWorkFlowTemplatesRequest(TeaModel):
         search_name: str = None,
         tid: int = None,
     ):
+        # The name that is used to query approval templates.
         self.search_name = search_name
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -35852,12 +36251,22 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflow
         position: int = None,
         template_id: int = None,
     ):
+        # The description of the approval node.
         self.comment = comment
+        # The ID of the creator.
         self.create_user_id = create_user_id
+        # The ID of the approval node.
         self.node_id = node_id
+        # The name of the approval node.
         self.node_name = node_name
+        # The type of the approval node. Valid values:
+        # 
+        # *   SYS: The approval node is predefined by the system.
+        # *   USER_LIST: The approval node is created by a user.
         self.node_type = node_type
+        # The position of the approval node.
         self.position = position
+        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):
@@ -35950,12 +36359,25 @@ class ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate(TeaMode
         template_name: str = None,
         workflow_nodes: ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodes = None,
     ):
+        # The description of the approval template.
         self.comment = comment
+        # The ID of the creator.
         self.create_user_id = create_user_id
+        # Indicates whether the approval template is enabled. Valid values:
+        # 
+        # *   Y: The approval template is enabled.
+        # *   N: The approval template is disabled.
         self.enabled = enabled
+        # Indicates whether the approval template is predefined by the system. Valid values:
+        # 
+        # *   1: The approval template is predefined by the system.
+        # *   0: The approval template is not predefined by the system.
         self.is_system = is_system
+        # The ID of the approval template.
         self.template_id = template_id
+        # The name of the approval template.
         self.template_name = template_name
+        # The details of approval nodes.
         self.workflow_nodes = workflow_nodes
 
     def validate(self):
@@ -36048,10 +36470,15 @@ class ListWorkFlowTemplatesResponseBody(TeaModel):
         success: bool = None,
         work_flow_templates: ListWorkFlowTemplatesResponseBodyWorkFlowTemplates = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The approval templates.
         self.work_flow_templates = work_flow_templates
 
     def validate(self):
@@ -36143,8 +36570,13 @@ class MakeTaskFlowInstanceSuccessRequest(TeaModel):
         dag_instance_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
         self.dag_instance_id = dag_instance_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -36183,9 +36615,16 @@ class MakeTaskFlowInstanceSuccessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -36434,9 +36873,8 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
         self.rule_id = rule_id
         # The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to query the database name.
         # 
-        # > 
-        # *   If the database is a physical database, you can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to query the database name.
-        # *   If the database is a logical database, you can call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to query the database name.
+        # > * If the database is a physical database, you can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to query the database name.
+        # > * If the database is a logical database, you can call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to query the database name.
         self.schema_name = schema_name
         # The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to query the table name.
         # 
@@ -36605,8 +37043,13 @@ class MoveTaskFlowToScenarioRequest(TeaModel):
         scenario_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the business scenario to which you want to migrate your task flow. If this parameter is set to the default value or a value that is less than or equal to 0, the task flow is migrated to the default business scenario.
         self.scenario_id = scenario_id
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -36645,9 +37088,16 @@ class MoveTaskFlowToScenarioResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -37014,8 +37464,13 @@ class PublishAndDeployTaskFlowRequest(TeaModel):
         tid: int = None,
         version_comments: str = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
+        # The description of the version.
         self.version_comments = version_comments
 
     def validate(self):
@@ -37055,10 +37510,18 @@ class PublishAndDeployTaskFlowResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the deployment record.
         self.deploy_id = deploy_id
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -37439,7 +37902,11 @@ class RefundPayAsYouGoOrderRequest(TeaModel):
         order_id: str = None,
         tid: int = None,
     ):
+        # The order ID of the order for the pay-as-you-go resource. You can call the ListEffectiveOrders operation to query the order ID.
         self.order_id = order_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -37474,9 +37941,16 @@ class RefundPayAsYouGoOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -37584,10 +38058,12 @@ class RegisterInstanceRequest(TeaModel):
         use_dsql: int = None,
         vpc_id: str = None,
     ):
-        # The name of the data link for cross-database query.
+        # The name of the database link for cross-database query.
         # 
         # > 
+        # 
         # *   This parameter is required if the UseDsql parameter is set to 1.
+        # 
         # *   The name can contain only lowercase letters and underscores (\_).
         # *   The name must be unique within a tenant.
         self.data_link_name = data_link_name
@@ -37595,35 +38071,37 @@ class RegisterInstanceRequest(TeaModel):
         self.database_password = database_password
         # The account that is used to log on to the database.
         self.database_user = database_user
-        # The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to obtain the user ID.
+        # The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to query the user ID.
         self.dba_uid = dba_uid
         # Specifies whether to enable the lock-free schema change feature for the database instance. Valid values:
         # 
-        # *   0: The feature is disabled.
-        # *   1: The native online DDL feature takes precedence.
-        # *   2: The lock-free schema change feature of DMS takes precedence.
+        # *   **0:** disables the lock-free schema change feature
+        # *   **1:** uses the online DDL of MySQL first
+        # *   **2:** uses the lock-free schema change feature of DMS first
         # 
-        # >  Supported database types: ApsaraDB RDS for MySQL, PolarDB for MySQL, ApsaraDB MyBase for MySQL, and MySQL databases from other sources.
+        # > Supported database types: ApsaraDB RDS for MySQL, PolarDB for MySQL, ApsaraDB MyBase for MySQL, and third-party MySQL databases.
         self.ddl_online = ddl_online
-        # The ID of the ECS instance.
+        # The ID of the ECS instance on which the database instance is deployed.
         # 
-        # >  This parameter is required if the InstanceSource parameter is set to ECS_OWN.
+        # > This parameter is required if the InstanceSource parameter is set to ECS_OWN.
         self.ecs_instance_id = ecs_instance_id
         # The ID of the region in which the database instance resides.
         # 
-        # >  This parameter is required if the InstanceSource parameter is set to RDS, ECS_OWN, or VPC_IDC.
+        # > This parameter is required if the InstanceSource parameter is set to RDS, ECS_OWN, or VPC_IDC.
         self.ecs_region = ecs_region
+        # *   **Y:** enables the sensitive data protection feature
+        # *   **NULL or other:** disables the sensitive data protection feature
         self.enable_sell_sitd = enable_sell_sitd
-        # The type of the environment to which the database instance belongs. Valid values:
+        # The type of the environment in which the database instance is deployed. Valid values:
         # 
         # *   product: production environment
         # *   dev: development environment
-        # *   pre: staging environment
+        # *   pre: pre-release environment
         # *   test: test environment
         # *   sit: system integration testing (SIT) environment
         # *   uat: user acceptance testing (UAT) environment
         # *   pet: stress testing environment
-        # *   stag: STAG environment
+        # *   stag: staging environment
         self.env_type = env_type
         # The timeout period for exporting data from the database instance. Unit: seconds.
         self.export_timeout = export_timeout
@@ -37633,47 +38111,49 @@ class RegisterInstanceRequest(TeaModel):
         self.instance_alias = instance_alias
         # The source of the database instance. Valid values:
         # 
-        # *   **PUBLIC_OWN**: a self-managed database instance that is deployed on the Internet
-        # *   **RDS**: an ApsaraDB RDS instance
-        # *   **ECS_OWN**: a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
-        # *   **VPC_IDC**: a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
+        # *   **PUBLIC_OWN:** a self-managed database instance that is deployed on the Internet
+        # *   **RDS:** an ApsaraDB RDS instance
+        # *   **ECS_OWN:** a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
+        # *   **VPC_IDC:** a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
         self.instance_source = instance_source
         # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
         self.instance_type = instance_type
         # The network type of the database instance. Valid values:
         # 
-        # *   **CLASSIC**: classic network
-        # *   **VPC**: VPC
+        # *   **CLASSIC:** classic network
+        # *   **VPC:** VPC
         self.network_type = network_type
-        # The port number that is used to connect to the database instance.
+        # The port that is used to connect to the database instance.
         self.port = port
         # The timeout period for querying data in the database instance. Unit: seconds.
         self.query_timeout = query_timeout
-        # The name of the security rule set for the database. You can call the [ListStandardGroups](~~417891~~) or [GetInstance](~~141567~~) operation to obtain the name of the security rule set that you want to use.
+        # The name of the security rule set (GroupName) for the database instance. You can call the [ListStandardGroups](~~417891~~) or [GetInstance](~~141567~~) operation to query the name of the security rule set.
         self.safe_rule = safe_rule
         # The system ID (SID) of the database.
         # 
-        # >  This parameter is required if the InstanceType parameter is set to ORACLE.
+        # > This parameter is required if the InstanceType parameter is set to ORACLE.
         self.sid = sid
-        # Specifies whether to skip connectivity test. Valid values:
+        # Specifies whether to skip the connectivity test. Valid values:
         # 
-        # *   **true**: The connectivity test is skipped.
-        # *   **false**: The connectivity test is not skipped.
+        # *   **true:** skips the connectivity test
+        # *   **false:** does not skip the connectivity test
         self.skip_test = skip_test
+        # The ID of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template ID.
         self.template_id = template_id
+        # The type of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template type.
         self.template_type = template_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
         self.tid = tid
         # Specifies whether to enable the cross-database query feature for the database instance. Valid values:
         # 
-        # *   0: The feature is disabled.
-        # *   1: The feature is enabled.
+        # *   **0:** disables the cross-database query feature
+        # *   **1:** enables the cross-database query feature
         # 
-        # >  Supported database types: MySQL, SQL Server, PostgreSQL, PolarDB for Oracle, and ApsaraDB for Redis.
+        # > Supported database types: MySQL, SQL Server, PostgreSQL, PolarDB for Oracle, and ApsaraDB for Redis.
         self.use_dsql = use_dsql
-        # The ID of the VPC.
+        # The ID of the VPC to which the database instance belongs.
         # 
-        # >  This parameter is required if the InstanceSource parameter is set to VPC_IDC.
+        # > This parameter is required if the InstanceSource parameter is set to VPC_IDC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -37800,16 +38280,16 @@ class RegisterInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code that is returned.
+        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message that is returned.
+        # The error message returned if the request failed.
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # *   **true:** The request was successful.
+        # *   **false:** The request failed.
         self.success = success
 
     def validate(self):
@@ -38205,9 +38685,13 @@ class ResumeTaskFlowInstanceRequest(TeaModel):
         dag_version: str = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
         self.dag_instance_id = dag_instance_id
+        # The version number of the task flow. You can call the [ListDAGVersions](~~424682~~) operation to query the version number.
         self.dag_version = dag_version
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -38250,9 +38734,16 @@ class ResumeTaskFlowInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -38493,12 +38984,11 @@ class RevokeUserPermissionRequest(TeaModel):
         self.instance_id = instance_id
         # Specifies whether the database is a logical database. Valid values:
         # 
-        # *   **true**: The database is a logical database.
-        # *   **false**: The database is a physical database.
+        # * **true**: The database is a logical database.
+        # * **false**: The database is a physical database.
         # 
-        # > 
-        # *   If the database is a logical database, set this parameter to **true**.
-        # *   If the database is a physical database, set this parameter to **false**.
+        # > * If the database is a logical database, set this parameter to **true**.
+        # > * If the database is a physical database, set this parameter to **false**.
         self.logic = logic
         # The type of the permission. Valid values:
         # 
@@ -38813,6 +39303,7 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabase(TeaModel):
     def __init__(
         self,
         alias: str = None,
+        catalog_name: str = None,
         database_id: str = None,
         datalink_name: str = None,
         db_type: str = None,
@@ -38830,6 +39321,7 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabase(TeaModel):
     ):
         # The alias of the database.
         self.alias = alias
+        self.catalog_name = catalog_name
         # The ID of the database.
         self.database_id = database_id
         # The name of the data link for cross-database queries.
@@ -38876,6 +39368,8 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabase(TeaModel):
         result = dict()
         if self.alias is not None:
             result['Alias'] = self.alias
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
         if self.datalink_name is not None:
@@ -38910,6 +39404,8 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabase(TeaModel):
         m = m or dict()
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
         if m.get('DatabaseId') is not None:
             self.database_id = m.get('DatabaseId')
         if m.get('DatalinkName') is not None:
@@ -39641,8 +40137,13 @@ class StopTaskFlowInstanceRequest(TeaModel):
         dag_instance_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
         self.dag_instance_id = dag_instance_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -39681,9 +40182,16 @@ class StopTaskFlowInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -40019,8 +40527,13 @@ class SuspendTaskFlowInstanceRequest(TeaModel):
         dag_instance_id: int = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
         self.dag_instance_id = dag_instance_id
+        # The ID of the tenant.
+        # 
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -40059,9 +40572,16 @@ class SuspendTaskFlowInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -40425,10 +40945,12 @@ class UpdateInstanceRequest(TeaModel):
         use_dsql: int = None,
         vpc_id: str = None,
     ):
-        # The name of the data link for cross-database query.
+        # The name of the database link for cross-database query.
         # 
         # > 
+        # 
         # *   This parameter is required if the UseDsql parameter is set to 1.
+        # 
         # *   The name can contain only lowercase letters and underscores (\_).
         # *   The name must be unique within a tenant.
         self.data_link_name = data_link_name
@@ -40436,33 +40958,36 @@ class UpdateInstanceRequest(TeaModel):
         self.database_password = database_password
         # The account that is used to log on to the database.
         self.database_user = database_user
-        # The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to obtain the user ID.
+        # The ID of the user who assumes the database administrator (DBA) role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to query the user ID.
         self.dba_id = dba_id
         # Specifies whether to enable the lock-free schema change feature for the database instance. Valid values:
         # 
-        # *   0: The feature is disabled.
-        # *   1: The native online DDL feature takes precedence.
-        # *   2: The lock-free schema change feature of DMS takes precedence.
+        # *   **0:** disables the lock-free schema change feature
+        # *   **1:** uses the online DDL of MySQL first
+        # *   **2:** uses the lock-free schema change feature of DMS first
         self.ddl_online = ddl_online
-        # The ID of the ECS instance.
+        # The ID of the ECS instance on which the database instance is deployed.
         # 
-        # >  This parameter is required if the InstanceSource parameter is set to ECS_OWN.
+        # > This parameter is required if the InstanceSource parameter is set to ECS_OWN.
         self.ecs_instance_id = ecs_instance_id
         # The ID of the region in which the database instance resides.
         # 
-        # >  This parameter is required if the InstanceSource parameter is set to RDS, ECS_OWN, or VPC_IDC.
+        # > This parameter is required if the InstanceSource parameter is set to RDS, ECS_OWN, or VPC_IDC.
         self.ecs_region = ecs_region
+        # *   **Y:** enables the sensitive data protection feature
+        # *   **N:** disables the sensitive data protection feature
+        # *   **NULL or other:** does not update the status of the sensitive data protection feature
         self.enable_sell_sitd = enable_sell_sitd
-        # The type of the environment to which the database instance belongs. Valid values:
+        # The type of the environment in which the database instance is deployed. Valid values:
         # 
-        # *   **product**: production environment
-        # *   **dev**: development environment
-        # *   **pre**: staging environment
-        # *   **test**: test environment
-        # *   **sit**: system integration testing (SIT) environment
-        # *   **uat**: user acceptance testing (UAT) environment
-        # *   **pet**: stress testing environment
-        # *   **stag**: STAG environment
+        # *   **product:** production environment
+        # *   **dev:** development environment
+        # *   **pre:** pre-release environment
+        # *   **test:** test environment
+        # *   **sit:** system integration testing (SIT) environment
+        # *   **uat:** user acceptance testing (UAT) environment
+        # *   **pet:** stress testing environment
+        # *   **stag:** staging environment
         self.env_type = env_type
         # The timeout period for exporting data from the database instance.
         self.export_timeout = export_timeout
@@ -40470,46 +40995,48 @@ class UpdateInstanceRequest(TeaModel):
         self.host = host
         # The alias of the database instance. Specify an alias that can help you identify the database instance in DMS.
         self.instance_alias = instance_alias
-        # The ID of the database instance. You can call the [GetInstance](~~141567~~) operation to obtain the instance ID.
+        # The ID of the database instance. You can call the [GetInstance](~~141567~~) operation to query the instance ID.
         self.instance_id = instance_id
         # The source of the database instance. Valid values:
         # 
-        # *   **PUBLIC_OWN**: a self-managed database instance that is deployed on the Internet
-        # *   **RDS**: an ApsaraDB RDS instance
-        # *   **ECS_OWN**: a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
-        # *   **VPC_IDC**: a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
+        # *   **PUBLIC_OWN:** a self-managed database instance that is deployed on the Internet
+        # *   **RDS:** an ApsaraDB RDS instance
+        # *   **ECS_OWN:** a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
+        # *   **VPC_IDC:** a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
         self.instance_source = instance_source
         # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
         self.instance_type = instance_type
-        # The port number that is used to connect to the database instance.
+        # The port that is used to connect to the database instance.
         self.port = port
         # The timeout period for querying data in the database instance.
         self.query_timeout = query_timeout
-        # The ID of the security rule set for the instance. You can call the [ListStandardGroups](~~417891~~) or [GetInstance](~~141567~~) operation to obtain the name of the security rule set that you want to use.
+        # The name of the security rule set (GroupName) for the instance. You can call the [ListStandardGroups](~~417891~~) or [GetInstance](~~141567~~) operation to query the name of the security rule set.
         self.safe_rule_id = safe_rule_id
         # The system ID (SID) of the database instance.
         # 
-        # >  This parameter is required if the InstanceType parameter is set to ORACLE.
+        # > This parameter is required if the InstanceType parameter is set to ORACLE.
         self.sid = sid
-        # Specifies whether to skip connectivity test. Valid values:
+        # Specifies whether to skip the connectivity test. Valid values:
         # 
-        # *   **true**: The connectivity test is skipped.
-        # *   **false**: The connectivity test is not skipped.
+        # *   **true:** skips the connectivity test
+        # *   **false:** does not skip the connectivity test
         self.skip_test = skip_test
+        # The ID of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template ID.
         self.template_id = template_id
+        # The type of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template type.
         self.template_type = template_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
         self.tid = tid
         # Specifies whether to enable the cross-database query feature for the database instance. Valid values:
         # 
-        # *   0: The feature is disabled.
-        # *   1: The feature is enabled.
+        # *   **0:** disables the cross-database query feature
+        # *   **1:** enables the cross-database query feature
         # 
-        # >  Supported database types: MySQL, SQL Server, PostgreSQL, PolarDB for Oracle, and ApsaraDB for Redis.
+        # > Supported database types: MySQL, SQL Server, PostgreSQL, PolarDB for Oracle, and ApsaraDB for Redis.
         self.use_dsql = use_dsql
-        # The ID of the VPC.
+        # The ID of the VPC to which the database instance belongs.
         # 
-        # >  This parameter is required if the InstanceSource parameter is set to VPC_IDC.
+        # > This parameter is required if the InstanceSource parameter is set to VPC_IDC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -40636,16 +41163,16 @@ class UpdateInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code that is returned.
+        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message that is returned.
+        # The error message returned if the request failed.
         self.error_message = error_message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # *   **true:** The request was successful.
+        # *   **false:** The request failed.
         self.success = success
 
     def validate(self):
@@ -40732,9 +41259,16 @@ class UpdateSLARulesRequestSlaRuleList(TeaModel):
         node_id: int = None,
         type: int = None,
     ):
+        # The ID of the task flow.
         self.dag_id = dag_id
+        # The timeout period. Unit: minutes.
         self.interval_minutes = interval_minutes
+        # The ID of the task node.
         self.node_id = node_id
+        # The rule type. Valid values:
+        # 
+        # *   **0**: SLA rules for task flows
+        # *   **1**: SLA rules for nodes
         self.type = type
 
     def validate(self):
@@ -40776,8 +41310,13 @@ class UpdateSLARulesRequest(TeaModel):
         sla_rule_list: List[UpdateSLARulesRequestSlaRuleList] = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The list of SLA rules.
         self.sla_rule_list = sla_rule_list
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -40823,8 +41362,13 @@ class UpdateSLARulesShrinkRequest(TeaModel):
         sla_rule_list_shrink: str = None,
         tid: int = None,
     ):
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The list of SLA rules.
         self.sla_rule_list_shrink = sla_rule_list_shrink
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -40863,9 +41407,16 @@ class UpdateSLARulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -40952,9 +41503,15 @@ class UpdateScenarioRequest(TeaModel):
         scenario_name: str = None,
         tid: int = None,
     ):
+        # The description of the business scenario.
         self.description = description
+        # The ID of the business scenario.
         self.scenario_id = scenario_id
+        # The name of the business scenario.
         self.scenario_name = scenario_name
+        # The ID of the tenant.
+        # 
+        # >  The ID of the tenant is displayed when you move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the ["View information about the current tenant"](~~181330~~) section of the Manage DMS tenants topic.
         self.tid = tid
 
     def validate(self):
@@ -40997,9 +41554,16 @@ class UpdateScenarioResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -41085,8 +41649,11 @@ class UpdateTaskConfigRequest(TeaModel):
         node_id: str = None,
         tid: int = None,
     ):
+        # The advanced configuration for the node. The value of this parameter must be a JSON string.
         self.node_config = node_config
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
         self.node_id = node_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -41125,9 +41692,16 @@ class UpdateTaskConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -41576,8 +42150,13 @@ class UpdateTaskFlowCooperatorsRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
+        # The IDs of the users who are involved in the task flow to be updated.
         self.cooperator_ids = cooperator_ids
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -41615,8 +42194,13 @@ class UpdateTaskFlowCooperatorsShrinkRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
+        # The IDs of the users who are involved in the task flow to be updated.
         self.cooperator_ids_shrink = cooperator_ids_shrink
+        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -41655,9 +42239,16 @@ class UpdateTaskFlowCooperatorsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -42659,15 +43250,39 @@ class UpdateTaskFlowScheduleRequest(TeaModel):
         time_zone_id: str = None,
         trigger_type: str = None,
     ):
+        # The start of the time range for scheduling.
         self.cron_begin_date = cron_begin_date
+        # The end of the time range for scheduling.
         self.cron_end_date = cron_end_date
+        # The cron expression for timed scheduling.
         self.cron_str = cron_str
+        # The type of the scheduling cycle. Valid values:
+        # 
+        # *   **MINUTE**: scheduling by minute
+        # *   **HOUR**: scheduling by hour
+        # *   **DAY**: scheduling by day
+        # *   **WEEK**: scheduling by week
+        # *   **MONTH**: scheduling by month
         self.cron_type = cron_type
+        # The ID of the task flow.
         self.dag_id = dag_id
+        # The event scheduling configuration. The value of this parameter is a JSON string.
         self.schedule_param = schedule_param
+        # Specifies whether to enable scheduling. Valid values:
+        # 
+        # *   **Enable**\
+        # *   **Disable**\
         self.schedule_switch = schedule_switch
+        # The ID of the tenant.
+        # 
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
+        # The time zone. The default time zone is UTC+8 (Asia/Shanghai).
         self.time_zone_id = time_zone_id
+        # The mode in which the task flow is triggered. Valid values:
+        # 
+        # *   **Cron**: The task flow is triggered based on timed scheduling.
+        # *   **Event**: The task flow is triggered by events.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -42734,9 +43349,16 @@ class UpdateTaskFlowScheduleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -42822,8 +43444,13 @@ class UpdateTaskFlowTimeVariablesRequest(TeaModel):
         tid: int = None,
         time_variables: str = None,
     ):
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
         self.dag_id = dag_id
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
+        # The time variables for the task flow.
         self.time_variables = time_variables
 
     def validate(self):
@@ -42862,9 +43489,16 @@ class UpdateTaskFlowTimeVariablesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -43230,8 +43864,13 @@ class UpdateTaskTimeVariablesRequest(TeaModel):
         tid: int = None,
         time_variables: str = None,
     ):
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
         self.node_id = node_id
+        # The ID of the tenant.
+        # 
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
         self.tid = tid
+        # The time variables configured for the node. The value of this parameter must be a JSON string.
         self.time_variables = time_variables
 
     def validate(self):
@@ -43270,9 +43909,16 @@ class UpdateTaskTimeVariablesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -43366,7 +44012,11 @@ class UpdateUserRequest(TeaModel):
         self.max_result_count = max_result_count
         self.mobile = mobile
         self.role_names = role_names
+        # The ID of the tenant.
+        # 
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
         self.tid = tid
+        # The UID of the user. You can view your UID by moving the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console.
         self.uid = uid
         self.user_nick = user_nick
 
@@ -43422,9 +44072,16 @@ class UpdateUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
