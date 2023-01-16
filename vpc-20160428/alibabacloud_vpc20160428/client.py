@@ -770,6 +770,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
             query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.cidr_mask):
+            query['CidrMask'] = request.cidr_mask
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -814,6 +816,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
             query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.cidr_mask):
+            query['CidrMask'] = request.cidr_mask
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -6136,6 +6140,8 @@ class Client(OpenApiClient):
             query['SecurityProtectionEnabled'] = request.security_protection_enabled
         if not UtilClient.is_unset(request.spec):
             query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -6204,6 +6210,8 @@ class Client(OpenApiClient):
             query['SecurityProtectionEnabled'] = request.security_protection_enabled
         if not UtilClient.is_unset(request.spec):
             query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -36758,3 +36766,101 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_vpc_gateway_endpoint_attribute_with_options_async(request, runtime)
+
+    def vpc_describe_vpc_nat_gateway_network_interface_quota_with_options(
+        self,
+        request: vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VpcDescribeVpcNatGatewayNetworkInterfaceQuota',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vpc_describe_vpc_nat_gateway_network_interface_quota_with_options_async(
+        self,
+        request: vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VpcDescribeVpcNatGatewayNetworkInterfaceQuota',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vpc_describe_vpc_nat_gateway_network_interface_quota(
+        self,
+        request: vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest,
+    ) -> vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.vpc_describe_vpc_nat_gateway_network_interface_quota_with_options(request, runtime)
+
+    async def vpc_describe_vpc_nat_gateway_network_interface_quota_async(
+        self,
+        request: vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest,
+    ) -> vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.vpc_describe_vpc_nat_gateway_network_interface_quota_with_options_async(request, runtime)

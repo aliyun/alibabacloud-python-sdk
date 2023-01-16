@@ -1,3 +1,8 @@
+2023-01-16 Version: 2.0.18
+- Supported set high definition monitor log status for eip.
+- Supported batch associate eip to cloud products.
+- Supported VpcDescribeVpcNatGatewayNetworkInterfaceQuota.
+
 2023-01-09 Version: 2.0.17
 - Fix typos in ErrorCodes.
 - Add ErrorMessage translation.
