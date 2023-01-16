@@ -1,3 +1,6 @@
+2023-01-16 Version: 1.0.36
+- Add dtb.
+
 2022-12-26 Version: 1.0.35
 - Add get CorpLink.
 
