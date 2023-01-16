@@ -1,3 +1,8 @@
+2023-01-16 Version: 2.1.2
+- Remove deprecated APIs.
+- Change severral APIs to private.
+- Drop unused parameters.
+
 2023-01-09 Version: 2.1.1
 - Update UpdateFigureCluster Response.
 
