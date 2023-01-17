@@ -213,8 +213,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.AddFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.trigger_arn):
             query['TriggerARN'] = request.trigger_arn
         body = {}
@@ -257,8 +255,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.AddFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.trigger_arn):
             query['TriggerARN'] = request.trigger_arn
         body = {}
@@ -1202,8 +1198,6 @@ class Client(OpenApiClient):
             query['Organization'] = request.organization
         if not UtilClient.is_unset(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sans):
             query['SANs'] = request.sans
         if not UtilClient.is_unset(request.state):
@@ -1253,8 +1247,6 @@ class Client(OpenApiClient):
             query['Organization'] = request.organization
         if not UtilClient.is_unset(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sans):
             query['SANs'] = request.sans
         if not UtilClient.is_unset(request.state):
@@ -1317,9 +1309,6 @@ class Client(OpenApiClient):
         @return: CreateCdnDeliverTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.deliver):
             body['Deliver'] = request.deliver
@@ -1332,7 +1321,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.schedule):
             body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1364,9 +1352,6 @@ class Client(OpenApiClient):
         @return: CreateCdnDeliverTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.deliver):
             body['Deliver'] = request.deliver
@@ -1379,7 +1364,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.schedule):
             body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1438,16 +1422,12 @@ class Client(OpenApiClient):
         @return: CreateCdnSubTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.domain_name):
             body['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.report_ids):
             body['ReportIds'] = request.report_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1480,16 +1460,12 @@ class Client(OpenApiClient):
         @return: CreateCdnSubTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.domain_name):
             body['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.report_ids):
             body['ReportIds'] = request.report_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1552,8 +1528,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_name):
             query['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.time_point):
@@ -1593,8 +1567,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_name):
             query['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.time_point):
@@ -1763,8 +1735,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_name):
@@ -1813,8 +1783,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_name):
@@ -1887,8 +1855,6 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_name):
@@ -1931,8 +1897,6 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_name):
@@ -2000,8 +1964,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deliver_id):
             query['DeliverId'] = request.deliver_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2037,8 +1999,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deliver_id):
             query['DeliverId'] = request.deliver_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2198,7 +2158,6 @@ class Client(OpenApiClient):
 
     def delete_cdn_sub_task_with_options(
         self,
-        request: cdn_20180510_models.DeleteCdnSubTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         """
@@ -2208,13 +2167,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCdnSubTaskResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DeleteCdnSubTask',
             version='2018-05-10',
@@ -2233,7 +2186,6 @@ class Client(OpenApiClient):
 
     async def delete_cdn_sub_task_with_options_async(
         self,
-        request: cdn_20180510_models.DeleteCdnSubTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         """
@@ -2243,13 +2195,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteCdnSubTaskResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DeleteCdnSubTask',
             version='2018-05-10',
@@ -2266,31 +2212,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_cdn_sub_task(
-        self,
-        request: cdn_20180510_models.DeleteCdnSubTaskRequest,
-    ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
+    def delete_cdn_sub_task(self) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         """
         >  You can call this API operation up to three times per second per account.
         
-        @param request: DeleteCdnSubTaskRequest
         @return: DeleteCdnSubTaskResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.delete_cdn_sub_task_with_options(request, runtime)
+        return self.delete_cdn_sub_task_with_options(runtime)
 
-    async def delete_cdn_sub_task_async(
-        self,
-        request: cdn_20180510_models.DeleteCdnSubTaskRequest,
-    ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
+    async def delete_cdn_sub_task_async(self) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         """
         >  You can call this API operation up to three times per second per account.
         
-        @param request: DeleteCdnSubTaskRequest
         @return: DeleteCdnSubTaskResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.delete_cdn_sub_task_with_options_async(request, runtime)
+        return await self.delete_cdn_sub_task_with_options_async(runtime)
 
     def delete_fctrigger_with_options(
         self,
@@ -2299,8 +2237,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.trigger_arn):
             query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
@@ -2329,8 +2265,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.trigger_arn):
             query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
@@ -2780,8 +2714,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -2817,8 +2749,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -2880,8 +2810,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -2917,8 +2845,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -3280,8 +3206,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3319,8 +3243,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3932,8 +3854,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.function_names):
             query['FunctionNames'] = request.function_names
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3971,8 +3891,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.function_names):
             query['FunctionNames'] = request.function_names
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4034,8 +3952,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4075,8 +3991,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4332,8 +4246,6 @@ class Client(OpenApiClient):
             query['HttpCode'] = request.http_code
         if not UtilClient.is_unset(request.is_overseas):
             query['IsOverseas'] = request.is_overseas
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.report_id):
             query['ReportId'] = request.report_id
         if not UtilClient.is_unset(request.start_time):
@@ -4381,8 +4293,6 @@ class Client(OpenApiClient):
             query['HttpCode'] = request.http_code
         if not UtilClient.is_unset(request.is_overseas):
             query['IsOverseas'] = request.is_overseas
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.report_id):
             query['ReportId'] = request.report_id
         if not UtilClient.is_unset(request.start_time):
@@ -4447,8 +4357,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.report_id):
             query['ReportId'] = request.report_id
         req = open_api_models.OpenApiRequest(
@@ -4485,8 +4393,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.report_id):
             query['ReportId'] = request.report_id
         req = open_api_models.OpenApiRequest(
@@ -4846,7 +4752,6 @@ class Client(OpenApiClient):
 
     def describe_cdn_sub_list_with_options(
         self,
-        request: cdn_20180510_models.DescribeCdnSubListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
@@ -4857,13 +4762,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCdnSubListResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeCdnSubList',
             version='2018-05-10',
@@ -4882,7 +4781,6 @@ class Client(OpenApiClient):
 
     async def describe_cdn_sub_list_with_options_async(
         self,
-        request: cdn_20180510_models.DescribeCdnSubListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
@@ -4893,13 +4791,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCdnSubListResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeCdnSubList',
             version='2018-05-10',
@@ -4916,33 +4808,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cdn_sub_list(
-        self,
-        request: cdn_20180510_models.DescribeCdnSubListRequest,
-    ) -> cdn_20180510_models.DescribeCdnSubListResponse:
+    def describe_cdn_sub_list(self) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
         > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
         - You can call this API operation up to three times per second per account.
         
-        @param request: DescribeCdnSubListRequest
         @return: DescribeCdnSubListResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_cdn_sub_list_with_options(request, runtime)
+        return self.describe_cdn_sub_list_with_options(runtime)
 
-    async def describe_cdn_sub_list_async(
-        self,
-        request: cdn_20180510_models.DescribeCdnSubListRequest,
-    ) -> cdn_20180510_models.DescribeCdnSubListResponse:
+    async def describe_cdn_sub_list_async(self) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
         > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
         - You can call this API operation up to three times per second per account.
         
-        @param request: DescribeCdnSubListRequest
         @return: DescribeCdnSubListResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_cdn_sub_list_with_options_async(request, runtime)
+        return await self.describe_cdn_sub_list_with_options_async(runtime)
 
     def describe_cdn_user_bill_history_with_options(
         self,
@@ -4961,8 +4845,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5001,8 +4883,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5078,8 +4958,6 @@ class Client(OpenApiClient):
             query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5127,8 +5005,6 @@ class Client(OpenApiClient):
             query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5197,8 +5073,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5229,8 +5103,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5691,8 +5563,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -5725,8 +5595,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -6545,8 +6413,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6599,8 +6465,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -10508,8 +10372,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -10553,8 +10415,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -10777,8 +10637,6 @@ class Client(OpenApiClient):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.location_name_en):
             query['LocationNameEn'] = request.location_name_en
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -10827,8 +10685,6 @@ class Client(OpenApiClient):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.location_name_en):
             query['LocationNameEn'] = request.location_name_en
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -10905,8 +10761,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -10951,8 +10805,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.start_time):
@@ -11796,8 +11648,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.start_time):
@@ -11837,8 +11687,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.start_time):
@@ -11904,8 +11752,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.start_time):
@@ -11945,8 +11791,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.start_time):
@@ -12077,8 +11921,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -12115,8 +11957,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -12462,6 +12302,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_l2vips_by_domain_with_options_async(request, runtime)
 
+    def describe_preload_detail_by_id_with_options(
+        self,
+        request: cdn_20180510_models.DescribePreloadDetailByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribePreloadDetailByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePreloadDetailById',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribePreloadDetailByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_preload_detail_by_id_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribePreloadDetailByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribePreloadDetailByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePreloadDetailById',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribePreloadDetailByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_preload_detail_by_id(
+        self,
+        request: cdn_20180510_models.DescribePreloadDetailByIdRequest,
+    ) -> cdn_20180510_models.DescribePreloadDetailByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_preload_detail_by_id_with_options(request, runtime)
+
+    async def describe_preload_detail_by_id_async(
+        self,
+        request: cdn_20180510_models.DescribePreloadDetailByIdRequest,
+    ) -> cdn_20180510_models.DescribePreloadDetailByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_preload_detail_by_id_with_options_async(request, runtime)
+
     def describe_range_data_by_locate_and_isp_service_with_options(
         self,
         request: cdn_20180510_models.DescribeRangeDataByLocateAndIspServiceRequest,
@@ -12602,8 +12512,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.log_store):
             query['LogStore'] = request.log_store
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
         if not UtilClient.is_unset(request.start_time):
@@ -12647,8 +12555,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.log_store):
             query['LogStore'] = request.log_store
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.project):
             query['Project'] = request.project
         if not UtilClient.is_unset(request.start_time):
@@ -13064,7 +12970,6 @@ class Client(OpenApiClient):
 
     def describe_staging_ip_with_options(
         self,
-        request: cdn_20180510_models.DescribeStagingIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeStagingIpResponse:
         """
@@ -13074,13 +12979,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeStagingIpResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeStagingIp',
             version='2018-05-10',
@@ -13099,7 +12998,6 @@ class Client(OpenApiClient):
 
     async def describe_staging_ip_with_options_async(
         self,
-        request: cdn_20180510_models.DescribeStagingIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeStagingIpResponse:
         """
@@ -13109,13 +13007,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeStagingIpResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeStagingIp',
             version='2018-05-10',
@@ -13132,31 +13024,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_staging_ip(
-        self,
-        request: cdn_20180510_models.DescribeStagingIpRequest,
-    ) -> cdn_20180510_models.DescribeStagingIpResponse:
+    def describe_staging_ip(self) -> cdn_20180510_models.DescribeStagingIpResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 30.
         
-        @param request: DescribeStagingIpRequest
         @return: DescribeStagingIpResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_staging_ip_with_options(request, runtime)
+        return self.describe_staging_ip_with_options(runtime)
 
-    async def describe_staging_ip_async(
-        self,
-        request: cdn_20180510_models.DescribeStagingIpRequest,
-    ) -> cdn_20180510_models.DescribeStagingIpResponse:
+    async def describe_staging_ip_async(self) -> cdn_20180510_models.DescribeStagingIpResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 30.
         
-        @param request: DescribeStagingIpRequest
         @return: DescribeStagingIpResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_staging_ip_with_options_async(request, runtime)
+        return await self.describe_staging_ip_with_options_async(runtime)
 
     def describe_tag_resources_with_options(
         self,
@@ -13286,8 +13170,6 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -13329,8 +13211,6 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -13384,7 +13264,6 @@ class Client(OpenApiClient):
 
     def describe_user_certificate_expire_count_with_options(
         self,
-        request: cdn_20180510_models.DescribeUserCertificateExpireCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
@@ -13394,13 +13273,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserCertificateExpireCountResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeUserCertificateExpireCount',
             version='2018-05-10',
@@ -13419,7 +13292,6 @@ class Client(OpenApiClient):
 
     async def describe_user_certificate_expire_count_with_options_async(
         self,
-        request: cdn_20180510_models.DescribeUserCertificateExpireCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
@@ -13429,13 +13301,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserCertificateExpireCountResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeUserCertificateExpireCount',
             version='2018-05-10',
@@ -13452,31 +13318,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_user_certificate_expire_count(
-        self,
-        request: cdn_20180510_models.DescribeUserCertificateExpireCountRequest,
-    ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
+    def describe_user_certificate_expire_count(self) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: DescribeUserCertificateExpireCountRequest
         @return: DescribeUserCertificateExpireCountResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_user_certificate_expire_count_with_options(request, runtime)
+        return self.describe_user_certificate_expire_count_with_options(runtime)
 
-    async def describe_user_certificate_expire_count_async(
-        self,
-        request: cdn_20180510_models.DescribeUserCertificateExpireCountRequest,
-    ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
+    async def describe_user_certificate_expire_count_async(self) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: DescribeUserCertificateExpireCountRequest
         @return: DescribeUserCertificateExpireCountResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_user_certificate_expire_count_with_options_async(request, runtime)
+        return await self.describe_user_certificate_expire_count_with_options_async(runtime)
 
     def describe_user_configs_with_options(
         self,
@@ -13744,7 +13602,6 @@ class Client(OpenApiClient):
 
     def describe_user_tags_with_options(
         self,
-        request: cdn_20180510_models.DescribeUserTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserTagsResponse:
         """
@@ -13754,13 +13611,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserTagsResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeUserTags',
             version='2018-05-10',
@@ -13779,7 +13630,6 @@ class Client(OpenApiClient):
 
     async def describe_user_tags_with_options_async(
         self,
-        request: cdn_20180510_models.DescribeUserTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserTagsResponse:
         """
@@ -13789,13 +13639,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUserTagsResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeUserTags',
             version='2018-05-10',
@@ -13812,31 +13656,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_user_tags(
-        self,
-        request: cdn_20180510_models.DescribeUserTagsRequest,
-    ) -> cdn_20180510_models.DescribeUserTagsResponse:
+    def describe_user_tags(self) -> cdn_20180510_models.DescribeUserTagsResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: DescribeUserTagsRequest
         @return: DescribeUserTagsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_user_tags_with_options(request, runtime)
+        return self.describe_user_tags_with_options(runtime)
 
-    async def describe_user_tags_async(
-        self,
-        request: cdn_20180510_models.DescribeUserTagsRequest,
-    ) -> cdn_20180510_models.DescribeUserTagsResponse:
+    async def describe_user_tags_async(self) -> cdn_20180510_models.DescribeUserTagsResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: DescribeUserTagsRequest
         @return: DescribeUserTagsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_user_tags_with_options_async(request, runtime)
+        return await self.describe_user_tags_with_options_async(runtime)
 
     def describe_user_usage_data_export_task_with_options(
         self,
@@ -13852,8 +13688,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -13891,8 +13725,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -13957,8 +13789,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -13997,8 +13827,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -14158,8 +13986,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14195,8 +14021,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14704,7 +14528,6 @@ class Client(OpenApiClient):
 
     def list_realtime_log_delivery_infos_with_options(
         self,
-        request: cdn_20180510_models.ListRealtimeLogDeliveryInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse:
         """
@@ -14714,11 +14537,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRealtimeLogDeliveryInfosResponse
         """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListRealtimeLogDeliveryInfos',
             version='2018-05-10',
@@ -14737,7 +14556,6 @@ class Client(OpenApiClient):
 
     async def list_realtime_log_delivery_infos_with_options_async(
         self,
-        request: cdn_20180510_models.ListRealtimeLogDeliveryInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse:
         """
@@ -14747,11 +14565,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRealtimeLogDeliveryInfosResponse
         """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListRealtimeLogDeliveryInfos',
             version='2018-05-10',
@@ -14768,35 +14582,26 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_realtime_log_delivery_infos(
-        self,
-        request: cdn_20180510_models.ListRealtimeLogDeliveryInfosRequest,
-    ) -> cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse:
+    def list_realtime_log_delivery_infos(self) -> cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: ListRealtimeLogDeliveryInfosRequest
         @return: ListRealtimeLogDeliveryInfosResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.list_realtime_log_delivery_infos_with_options(request, runtime)
+        return self.list_realtime_log_delivery_infos_with_options(runtime)
 
-    async def list_realtime_log_delivery_infos_async(
-        self,
-        request: cdn_20180510_models.ListRealtimeLogDeliveryInfosRequest,
-    ) -> cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse:
+    async def list_realtime_log_delivery_infos_async(self) -> cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: ListRealtimeLogDeliveryInfosRequest
         @return: ListRealtimeLogDeliveryInfosResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.list_realtime_log_delivery_infos_with_options_async(request, runtime)
+        return await self.list_realtime_log_delivery_infos_with_options_async(runtime)
 
     def list_user_custom_log_config_with_options(
         self,
-        request: cdn_20180510_models.ListUserCustomLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ListUserCustomLogConfigResponse:
         """
@@ -14806,11 +14611,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUserCustomLogConfigResponse
         """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListUserCustomLogConfig',
             version='2018-05-10',
@@ -14829,7 +14630,6 @@ class Client(OpenApiClient):
 
     async def list_user_custom_log_config_with_options_async(
         self,
-        request: cdn_20180510_models.ListUserCustomLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ListUserCustomLogConfigResponse:
         """
@@ -14839,11 +14639,7 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUserCustomLogConfigResponse
         """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListUserCustomLogConfig',
             version='2018-05-10',
@@ -14860,31 +14656,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_user_custom_log_config(
-        self,
-        request: cdn_20180510_models.ListUserCustomLogConfigRequest,
-    ) -> cdn_20180510_models.ListUserCustomLogConfigResponse:
+    def list_user_custom_log_config(self) -> cdn_20180510_models.ListUserCustomLogConfigResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: ListUserCustomLogConfigRequest
         @return: ListUserCustomLogConfigResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.list_user_custom_log_config_with_options(request, runtime)
+        return self.list_user_custom_log_config_with_options(runtime)
 
-    async def list_user_custom_log_config_async(
-        self,
-        request: cdn_20180510_models.ListUserCustomLogConfigRequest,
-    ) -> cdn_20180510_models.ListUserCustomLogConfigResponse:
+    async def list_user_custom_log_config_async(self) -> cdn_20180510_models.ListUserCustomLogConfigResponse:
         """
         >  The maximum number of times that each user can call this operation per second is 100.
         
-        @param request: ListUserCustomLogConfigRequest
         @return: ListUserCustomLogConfigResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.list_user_custom_log_config_with_options_async(request, runtime)
+        return await self.list_user_custom_log_config_with_options_async(runtime)
 
     def modify_cdn_domain_with_options(
         self,
@@ -15018,8 +14806,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.property):
             query['Property'] = request.property
         req = open_api_models.OpenApiRequest(
@@ -15057,8 +14843,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.property):
             query['Property'] = request.property
         req = open_api_models.OpenApiRequest(
@@ -15322,8 +15106,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15359,8 +15141,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15440,6 +15220,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.with_header):
+            query['WithHeader'] = request.with_header
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15493,6 +15275,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.with_header):
+            query['WithHeader'] = request.with_header
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15726,8 +15510,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15763,8 +15545,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15826,8 +15606,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.server_certificate):
             query['ServerCertificate'] = request.server_certificate
         req = open_api_models.OpenApiRequest(
@@ -15865,8 +15643,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.server_certificate):
             query['ServerCertificate'] = request.server_certificate
         req = open_api_models.OpenApiRequest(
@@ -16044,8 +15820,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.functions):
             query['Functions'] = request.functions
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16083,8 +15857,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.functions):
             query['Functions'] = request.functions
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16374,8 +16146,6 @@ class Client(OpenApiClient):
             query['GapTime'] = request.gap_time
         if not UtilClient.is_unset(request.max_time_wait):
             query['MaxTimeWait'] = request.max_time_wait
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.wait_uri):
             query['WaitUri'] = request.wait_uri
         if not UtilClient.is_unset(request.wait_url):
@@ -16421,8 +16191,6 @@ class Client(OpenApiClient):
             query['GapTime'] = request.gap_time
         if not UtilClient.is_unset(request.max_time_wait):
             query['MaxTimeWait'] = request.max_time_wait
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.wait_uri):
             query['WaitUri'] = request.wait_uri
         if not UtilClient.is_unset(request.wait_url):
@@ -16702,8 +16470,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
@@ -16743,8 +16509,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
@@ -16812,8 +16576,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
@@ -16855,8 +16617,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
@@ -16921,9 +16681,6 @@ class Client(OpenApiClient):
         @return: UpdateCdnDeliverTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.deliver):
             body['Deliver'] = request.deliver
@@ -16938,7 +16695,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.schedule):
             body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -16970,9 +16726,6 @@ class Client(OpenApiClient):
         @return: UpdateCdnDeliverTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.deliver):
             body['Deliver'] = request.deliver
@@ -16987,7 +16740,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.schedule):
             body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -17045,9 +16797,6 @@ class Client(OpenApiClient):
         @return: UpdateCdnSubTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.domain_name):
             body['DomainName'] = request.domain_name
@@ -17058,7 +16807,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -17090,9 +16838,6 @@ class Client(OpenApiClient):
         @return: UpdateCdnSubTaskResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         body = {}
         if not UtilClient.is_unset(request.domain_name):
             body['DomainName'] = request.domain_name
@@ -17103,7 +16848,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -17155,8 +16899,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.trigger_arn):
             query['TriggerARN'] = request.trigger_arn
         body = {}
@@ -17195,8 +16937,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.trigger_arn):
             query['TriggerARN'] = request.trigger_arn
         body = {}

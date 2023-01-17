@@ -1,3 +1,6 @@
+2023-01-17 Version: 1.2.1
+- Update PushObjectCache.
+
 2022-12-27 Version: 1.2.0
 - Add ModifyCdnDomainOwner.
 
