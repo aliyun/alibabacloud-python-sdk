@@ -1709,6 +1709,8 @@ class Client(OpenApiClient):
             query['AcceleratorType'] = request.accelerator_type
         if not UtilClient.is_unset(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.order):
@@ -1759,6 +1761,8 @@ class Client(OpenApiClient):
             query['AcceleratorType'] = request.accelerator_type
         if not UtilClient.is_unset(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.order):

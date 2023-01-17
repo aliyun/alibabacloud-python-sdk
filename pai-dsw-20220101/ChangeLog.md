@@ -1,3 +1,6 @@
+2023-01-17 Version: 1.1.32
+- Support instance id filter in list instance.
+
 2022-12-13 Version: 1.1.31
 - Support Instance Snapshot with Labels.
 

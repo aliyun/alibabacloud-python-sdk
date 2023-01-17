@@ -317,6 +317,7 @@ class CreateInstanceRequestUserVpc(TeaModel):
     ):
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
+        # Vpc Id。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1705,6 +1706,7 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
     ):
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
+        # Vpc Id。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1796,6 +1798,7 @@ class GetInstanceResponseBody(TeaModel):
         self.instance_name = instance_name
         self.instance_shutdown_timer = instance_shutdown_timer
         self.instance_url = instance_url
+        # Jupyterlab Url。
         self.jupyterlab_url = jupyterlab_url
         self.labels = labels
         self.latest_snapshot = latest_snapshot
@@ -1814,6 +1817,7 @@ class GetInstanceResponseBody(TeaModel):
         self.user_id = user_id
         self.user_name = user_name
         self.user_vpc = user_vpc
+        # Web IDE url。
         self.web_ideurl = web_ideurl
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
@@ -3967,6 +3971,7 @@ class ListInstancesRequest(TeaModel):
         self,
         accelerator_type: str = None,
         accessibility: str = None,
+        instance_id: str = None,
         instance_name: str = None,
         order: str = None,
         page_number: int = None,
@@ -3979,6 +3984,7 @@ class ListInstancesRequest(TeaModel):
     ):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
+        self.instance_id = instance_id
         self.instance_name = instance_name
         self.order = order
         self.page_number = page_number
@@ -4002,6 +4008,8 @@ class ListInstancesRequest(TeaModel):
             result['AcceleratorType'] = self.accelerator_type
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.order is not None:
@@ -4028,6 +4036,8 @@ class ListInstancesRequest(TeaModel):
             self.accelerator_type = m.get('AcceleratorType')
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('Order') is not None:
@@ -4334,6 +4344,7 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
     ):
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
+        # Vpc Id。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4418,6 +4429,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.instance_name = instance_name
         self.instance_shutdown_timer = instance_shutdown_timer
         self.instance_url = instance_url
+        # Jupyterlab Url。
         self.jupyterlab_url = jupyterlab_url
         self.labels = labels
         self.latest_snapshot = latest_snapshot
@@ -4433,6 +4445,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.user_id = user_id
         self.user_name = user_name
         self.user_vpc = user_vpc
+        # Web IDE url。
         self.web_ideurl = web_ideurl
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
@@ -5058,6 +5071,7 @@ class UpdateInstanceRequestUserVpc(TeaModel):
     ):
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
+        # Vpc Id。
         self.vpc_id = vpc_id
 
     def validate(self):
