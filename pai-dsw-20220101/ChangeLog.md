@@ -1,3 +1,6 @@
+2023-01-17 Version: 1.1.34
+- DSW instance id filter in list instance API.
+
 2023-01-17 Version: 1.1.32
 - Support instance id filter in list instance.
 
