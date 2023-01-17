@@ -7055,14 +7055,10 @@ class Client(OpenApiClient):
             query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.engine_concurrency):
-            query['EngineConcurrency'] = request.engine_concurrency
         if not UtilClient.is_unset(request.project_max_dataset_count):
             query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.project_queries_per_second):
-            query['ProjectQueriesPerSecond'] = request.project_queries_per_second
         if not UtilClient.is_unset(request.service_role):
             query['ServiceRole'] = request.service_role
         if not UtilClient.is_unset(request.template_id):
@@ -7105,14 +7101,10 @@ class Client(OpenApiClient):
             query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.engine_concurrency):
-            query['EngineConcurrency'] = request.engine_concurrency
         if not UtilClient.is_unset(request.project_max_dataset_count):
             query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.project_queries_per_second):
-            query['ProjectQueriesPerSecond'] = request.project_queries_per_second
         if not UtilClient.is_unset(request.service_role):
             query['ServiceRole'] = request.service_role
         if not UtilClient.is_unset(request.template_id):

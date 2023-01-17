@@ -18596,10 +18596,8 @@ class UpdateProjectRequest(TeaModel):
         dataset_max_relation_count: int = None,
         dataset_max_total_file_size: int = None,
         description: str = None,
-        engine_concurrency: int = None,
         project_max_dataset_count: int = None,
         project_name: str = None,
-        project_queries_per_second: int = None,
         service_role: str = None,
         template_id: str = None,
     ):
@@ -18609,10 +18607,8 @@ class UpdateProjectRequest(TeaModel):
         self.dataset_max_relation_count = dataset_max_relation_count
         self.dataset_max_total_file_size = dataset_max_total_file_size
         self.description = description
-        self.engine_concurrency = engine_concurrency
         self.project_max_dataset_count = project_max_dataset_count
         self.project_name = project_name
-        self.project_queries_per_second = project_queries_per_second
         self.service_role = service_role
         self.template_id = template_id
 
@@ -18637,14 +18633,10 @@ class UpdateProjectRequest(TeaModel):
             result['DatasetMaxTotalFileSize'] = self.dataset_max_total_file_size
         if self.description is not None:
             result['Description'] = self.description
-        if self.engine_concurrency is not None:
-            result['EngineConcurrency'] = self.engine_concurrency
         if self.project_max_dataset_count is not None:
             result['ProjectMaxDatasetCount'] = self.project_max_dataset_count
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.project_queries_per_second is not None:
-            result['ProjectQueriesPerSecond'] = self.project_queries_per_second
         if self.service_role is not None:
             result['ServiceRole'] = self.service_role
         if self.template_id is not None:
@@ -18665,14 +18657,10 @@ class UpdateProjectRequest(TeaModel):
             self.dataset_max_total_file_size = m.get('DatasetMaxTotalFileSize')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('EngineConcurrency') is not None:
-            self.engine_concurrency = m.get('EngineConcurrency')
         if m.get('ProjectMaxDatasetCount') is not None:
             self.project_max_dataset_count = m.get('ProjectMaxDatasetCount')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('ProjectQueriesPerSecond') is not None:
-            self.project_queries_per_second = m.get('ProjectQueriesPerSecond')
         if m.get('ServiceRole') is not None:
             self.service_role = m.get('ServiceRole')
         if m.get('TemplateId') is not None:
