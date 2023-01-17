@@ -1707,112 +1707,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_slr_and_sls_project_with_options_async(request, runtime)
 
-    def dcdn_http_request_test_tool_with_options(
-        self,
-        tmp_req: dcdn_20180115_models.DcdnHttpRequestTestToolRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.DcdnHttpRequestTestToolResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dcdn_20180115_models.DcdnHttpRequestTestToolShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.header):
-            request.header_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.header, 'Header', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.args):
-            body['Args'] = request.args
-        if not UtilClient.is_unset(request.body):
-            body['Body'] = request.body
-        if not UtilClient.is_unset(request.header_shrink):
-            body['Header'] = request.header_shrink
-        if not UtilClient.is_unset(request.host):
-            body['Host'] = request.host
-        if not UtilClient.is_unset(request.method):
-            body['Method'] = request.method
-        if not UtilClient.is_unset(request.proxy_ip):
-            body['ProxyIp'] = request.proxy_ip
-        if not UtilClient.is_unset(request.scheme):
-            body['Scheme'] = request.scheme
-        if not UtilClient.is_unset(request.uri):
-            body['Uri'] = request.uri
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DcdnHttpRequestTestTool',
-            version='2018-01-15',
-            protocol='HTTP',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.DcdnHttpRequestTestToolResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def dcdn_http_request_test_tool_with_options_async(
-        self,
-        tmp_req: dcdn_20180115_models.DcdnHttpRequestTestToolRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.DcdnHttpRequestTestToolResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dcdn_20180115_models.DcdnHttpRequestTestToolShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.header):
-            request.header_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.header, 'Header', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.args):
-            body['Args'] = request.args
-        if not UtilClient.is_unset(request.body):
-            body['Body'] = request.body
-        if not UtilClient.is_unset(request.header_shrink):
-            body['Header'] = request.header_shrink
-        if not UtilClient.is_unset(request.host):
-            body['Host'] = request.host
-        if not UtilClient.is_unset(request.method):
-            body['Method'] = request.method
-        if not UtilClient.is_unset(request.proxy_ip):
-            body['ProxyIp'] = request.proxy_ip
-        if not UtilClient.is_unset(request.scheme):
-            body['Scheme'] = request.scheme
-        if not UtilClient.is_unset(request.uri):
-            body['Uri'] = request.uri
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DcdnHttpRequestTestTool',
-            version='2018-01-15',
-            protocol='HTTP',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.DcdnHttpRequestTestToolResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def dcdn_http_request_test_tool(
-        self,
-        request: dcdn_20180115_models.DcdnHttpRequestTestToolRequest,
-    ) -> dcdn_20180115_models.DcdnHttpRequestTestToolResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.dcdn_http_request_test_tool_with_options(request, runtime)
-
-    async def dcdn_http_request_test_tool_async(
-        self,
-        request: dcdn_20180115_models.DcdnHttpRequestTestToolRequest,
-    ) -> dcdn_20180115_models.DcdnHttpRequestTestToolResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.dcdn_http_request_test_tool_with_options_async(request, runtime)
-
     def delete_dcdn_deliver_task_with_options(
         self,
         request: dcdn_20180115_models.DeleteDcdnDeliverTaskRequest,
@@ -2128,6 +2022,80 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DeleteDcdnIpaSpecificConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_dcdn_ipa_specific_config_with_options_async(request, runtime)
+
+    def delete_dcdn_kv_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnKvResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDcdnKv',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnKvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dcdn_kv_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnKvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnKvResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDcdnKv',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnKvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dcdn_kv(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnKvRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnKvResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dcdn_kv_with_options(request, runtime)
+
+    async def delete_dcdn_kv_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnKvRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnKvResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dcdn_kv_with_options_async(request, runtime)
 
     def delete_dcdn_real_time_log_project_with_options(
         self,
@@ -3322,6 +3290,21 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnDomainBpsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3360,6 +3343,21 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnDomainBpsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3397,6 +3395,20 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataRequest
+        @return: DescribeDcdnDomainBpsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dcdn_domain_bps_data_with_options(request, runtime)
 
@@ -3404,6 +3416,20 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnDomainBpsDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainBpsDataResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        * If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both the **StartTime** and **EndTime** parameters, the request returns the data collected within the specified time range.
+        **Time granularity**\
+        The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
+        |Time granularity|Maximum time range per query|Historical data available|Data delay|
+        |---|---|---|---|
+        |5 minutes|3 days|93 days|15 minutes|
+        |1 hour|31 days|186 days|4 hours|
+        |1 day|366 days|366 days|04:00 on the next day|
+        
+        @param request: DescribeDcdnDomainBpsDataRequest
+        @return: DescribeDcdnDomainBpsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_domain_bps_data_with_options_async(request, runtime)
 
@@ -10554,6 +10580,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        
+        @param request: DescribeDcdnWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnWafRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -10586,6 +10619,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        
+        @param request: DescribeDcdnWafRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnWafRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -10617,6 +10657,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
     ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        
+        @param request: DescribeDcdnWafRulesRequest
+        @return: DescribeDcdnWafRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dcdn_waf_rules_with_options(request, runtime)
 
@@ -10624,6 +10670,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
     ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        """
+        You can call this operation up to 20 times per second per account.
+        
+        @param request: DescribeDcdnWafRulesRequest
+        @return: DescribeDcdnWafRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_waf_rules_with_options_async(request, runtime)
 
@@ -12064,6 +12116,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.bind_domains):
             body['BindDomains'] = request.bind_domains
+        if not UtilClient.is_unset(request.method):
+            body['Method'] = request.method
         if not UtilClient.is_unset(request.policy_id):
             body['PolicyId'] = request.policy_id
         if not UtilClient.is_unset(request.unbind_domains):
@@ -12096,6 +12150,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.bind_domains):
             body['BindDomains'] = request.bind_domains
+        if not UtilClient.is_unset(request.method):
+            body['Method'] = request.method
         if not UtilClient.is_unset(request.policy_id):
             body['PolicyId'] = request.policy_id
         if not UtilClient.is_unset(request.unbind_domains):
@@ -12314,6 +12370,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.with_header):
+            query['WithHeader'] = request.with_header
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12350,6 +12408,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.with_header):
+            query['WithHeader'] = request.with_header
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13442,6 +13502,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.TagDcdnResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.TagDcdnResourcesResponse:
+        """
+        >  You can call this API operation up to 100 times per second per account.
+        
+        @param request: TagDcdnResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagDcdnResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -13474,6 +13541,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.TagDcdnResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.TagDcdnResourcesResponse:
+        """
+        >  You can call this API operation up to 100 times per second per account.
+        
+        @param request: TagDcdnResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagDcdnResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -13505,6 +13579,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.TagDcdnResourcesRequest,
     ) -> dcdn_20180115_models.TagDcdnResourcesResponse:
+        """
+        >  You can call this API operation up to 100 times per second per account.
+        
+        @param request: TagDcdnResourcesRequest
+        @return: TagDcdnResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_dcdn_resources_with_options(request, runtime)
 
@@ -13512,6 +13592,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.TagDcdnResourcesRequest,
     ) -> dcdn_20180115_models.TagDcdnResourcesResponse:
+        """
+        >  You can call this API operation up to 100 times per second per account.
+        
+        @param request: TagDcdnResourcesRequest
+        @return: TagDcdnResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_dcdn_resources_with_options_async(request, runtime)
 

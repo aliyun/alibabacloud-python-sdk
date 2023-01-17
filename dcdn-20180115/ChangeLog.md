@@ -1,3 +1,6 @@
+2023-01-17 Version: 1.1.2
+- Add DeleteDcdnKv.
+
 2023-01-10 Version: 1.1.1
 - Update DescribeDcdnWafLogs.
 
