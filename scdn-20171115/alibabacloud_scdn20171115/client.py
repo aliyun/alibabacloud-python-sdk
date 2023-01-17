@@ -4080,6 +4080,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.with_header):
+            query['WithHeader'] = request.with_header
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4116,6 +4118,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.with_header):
+            query['WithHeader'] = request.with_header
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4690,84 +4694,6 @@ class Client(OpenApiClient):
     ) -> scdn_20171115_models.StopScdnDomainResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_scdn_domain_with_options_async(request, runtime)
-
-    def test_amp_describe_scdn_domain_isp_data_with_options(
-        self,
-        request: scdn_20171115_models.TestAmpDescribeScdnDomainIspDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> scdn_20171115_models.TestAmpDescribeScdnDomainIspDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TestAmpDescribeScdnDomainIspData',
-            version='2017-11-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            scdn_20171115_models.TestAmpDescribeScdnDomainIspDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def test_amp_describe_scdn_domain_isp_data_with_options_async(
-        self,
-        request: scdn_20171115_models.TestAmpDescribeScdnDomainIspDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> scdn_20171115_models.TestAmpDescribeScdnDomainIspDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TestAmpDescribeScdnDomainIspData',
-            version='2017-11-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            scdn_20171115_models.TestAmpDescribeScdnDomainIspDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def test_amp_describe_scdn_domain_isp_data(
-        self,
-        request: scdn_20171115_models.TestAmpDescribeScdnDomainIspDataRequest,
-    ) -> scdn_20171115_models.TestAmpDescribeScdnDomainIspDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.test_amp_describe_scdn_domain_isp_data_with_options(request, runtime)
-
-    async def test_amp_describe_scdn_domain_isp_data_async(
-        self,
-        request: scdn_20171115_models.TestAmpDescribeScdnDomainIspDataRequest,
-    ) -> scdn_20171115_models.TestAmpDescribeScdnDomainIspDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.test_amp_describe_scdn_domain_isp_data_with_options_async(request, runtime)
 
     def update_scdn_domain_with_options(
         self,

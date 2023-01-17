@@ -3221,6 +3221,7 @@ class DescribeScdnDomainCnameResponseBodyCnameDatasData(TeaModel):
         domain: str = None,
         status: int = None,
     ):
+        # Cname
         self.cname = cname
         self.domain = domain
         self.status = status
@@ -5824,8 +5825,10 @@ class DescribeScdnDomainQpsDataResponseBodyQpsDataPerIntervalDataModule(TeaModel
     ):
         self.acc_value = acc_value
         self.http_acc_value = http_acc_value
+        # http QPS。
         self.http_qps_value = http_qps_value
         self.https_acc_value = https_acc_value
+        # https QPS。
         self.https_qps_value = https_qps_value
         self.qps_value = qps_value
         self.time_stamp = time_stamp
@@ -11021,12 +11024,14 @@ class PreloadScdnObjectCachesRequest(TeaModel):
         object_path: str = None,
         owner_id: int = None,
         security_token: str = None,
+        with_header: str = None,
     ):
         self.area = area
         self.l_2preload = l_2preload
         self.object_path = object_path
         self.owner_id = owner_id
         self.security_token = security_token
+        self.with_header = with_header
 
     def validate(self):
         pass
@@ -11047,6 +11052,8 @@ class PreloadScdnObjectCachesRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.with_header is not None:
+            result['WithHeader'] = self.with_header
         return result
 
     def from_map(self, m: dict = None):
@@ -11061,6 +11068,8 @@ class PreloadScdnObjectCachesRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('WithHeader') is not None:
+            self.with_header = m.get('WithHeader')
         return self
 
 
@@ -11937,276 +11946,6 @@ class StopScdnDomainResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopScdnDomainResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class TestAmpDescribeScdnDomainIspDataRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        end_time: str = None,
-        start_time: str = None,
-    ):
-        self.domain_name = domain_name
-        self.end_time = end_time
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData(TeaModel):
-    def __init__(
-        self,
-        avg_object_size: str = None,
-        avg_response_rate: str = None,
-        avg_response_time: str = None,
-        bps: str = None,
-        bytes_proportion: str = None,
-        isp: str = None,
-        isp_ename: str = None,
-        proportion: str = None,
-        qps: str = None,
-        req_err_rate: str = None,
-        total_bytes: str = None,
-        total_query: str = None,
-    ):
-        self.avg_object_size = avg_object_size
-        self.avg_response_rate = avg_response_rate
-        self.avg_response_time = avg_response_time
-        self.bps = bps
-        self.bytes_proportion = bytes_proportion
-        self.isp = isp
-        self.isp_ename = isp_ename
-        self.proportion = proportion
-        self.qps = qps
-        self.req_err_rate = req_err_rate
-        self.total_bytes = total_bytes
-        self.total_query = total_query
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.avg_object_size is not None:
-            result['AvgObjectSize'] = self.avg_object_size
-        if self.avg_response_rate is not None:
-            result['AvgResponseRate'] = self.avg_response_rate
-        if self.avg_response_time is not None:
-            result['AvgResponseTime'] = self.avg_response_time
-        if self.bps is not None:
-            result['Bps'] = self.bps
-        if self.bytes_proportion is not None:
-            result['BytesProportion'] = self.bytes_proportion
-        if self.isp is not None:
-            result['ISP'] = self.isp
-        if self.isp_ename is not None:
-            result['IspEname'] = self.isp_ename
-        if self.proportion is not None:
-            result['Proportion'] = self.proportion
-        if self.qps is not None:
-            result['Qps'] = self.qps
-        if self.req_err_rate is not None:
-            result['ReqErrRate'] = self.req_err_rate
-        if self.total_bytes is not None:
-            result['TotalBytes'] = self.total_bytes
-        if self.total_query is not None:
-            result['TotalQuery'] = self.total_query
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AvgObjectSize') is not None:
-            self.avg_object_size = m.get('AvgObjectSize')
-        if m.get('AvgResponseRate') is not None:
-            self.avg_response_rate = m.get('AvgResponseRate')
-        if m.get('AvgResponseTime') is not None:
-            self.avg_response_time = m.get('AvgResponseTime')
-        if m.get('Bps') is not None:
-            self.bps = m.get('Bps')
-        if m.get('BytesProportion') is not None:
-            self.bytes_proportion = m.get('BytesProportion')
-        if m.get('ISP') is not None:
-            self.isp = m.get('ISP')
-        if m.get('IspEname') is not None:
-            self.isp_ename = m.get('IspEname')
-        if m.get('Proportion') is not None:
-            self.proportion = m.get('Proportion')
-        if m.get('Qps') is not None:
-            self.qps = m.get('Qps')
-        if m.get('ReqErrRate') is not None:
-            self.req_err_rate = m.get('ReqErrRate')
-        if m.get('TotalBytes') is not None:
-            self.total_bytes = m.get('TotalBytes')
-        if m.get('TotalQuery') is not None:
-            self.total_query = m.get('TotalQuery')
-        return self
-
-
-class TestAmpDescribeScdnDomainIspDataResponseBodyValue(TeaModel):
-    def __init__(
-        self,
-        ispproportion_data: List[TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData] = None,
-    ):
-        self.ispproportion_data = ispproportion_data
-
-    def validate(self):
-        if self.ispproportion_data:
-            for k in self.ispproportion_data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ISPProportionData'] = []
-        if self.ispproportion_data is not None:
-            for k in self.ispproportion_data:
-                result['ISPProportionData'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.ispproportion_data = []
-        if m.get('ISPProportionData') is not None:
-            for k in m.get('ISPProportionData'):
-                temp_model = TestAmpDescribeScdnDomainIspDataResponseBodyValueISPProportionData()
-                self.ispproportion_data.append(temp_model.from_map(k))
-        return self
-
-
-class TestAmpDescribeScdnDomainIspDataResponseBody(TeaModel):
-    def __init__(
-        self,
-        data_interval: str = None,
-        domain_name: str = None,
-        end_time: str = None,
-        request_id: str = None,
-        start_time: str = None,
-        value: TestAmpDescribeScdnDomainIspDataResponseBodyValue = None,
-    ):
-        self.data_interval = data_interval
-        self.domain_name = domain_name
-        self.end_time = end_time
-        self.request_id = request_id
-        self.start_time = start_time
-        self.value = value
-
-    def validate(self):
-        if self.value:
-            self.value.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data_interval is not None:
-            result['DataInterval'] = self.data_interval
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.value is not None:
-            result['Value'] = self.value.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DataInterval') is not None:
-            self.data_interval = m.get('DataInterval')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Value') is not None:
-            temp_model = TestAmpDescribeScdnDomainIspDataResponseBodyValue()
-            self.value = temp_model.from_map(m['Value'])
-        return self
-
-
-class TestAmpDescribeScdnDomainIspDataResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: TestAmpDescribeScdnDomainIspDataResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = TestAmpDescribeScdnDomainIspDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
