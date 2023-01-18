@@ -4487,6 +4487,144 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.FlightRefundPreCalHeaders()
         return await self.flight_refund_pre_cal_with_options_async(request, headers, runtime)
 
+    def flight_search_list_with_options(
+        self,
+        request: btrip_open_20220520_models.FlightSearchListRequest,
+        headers: btrip_open_20220520_models.FlightSearchListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.airline_code):
+            query['airline_code'] = request.airline_code
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.arr_city_name):
+            query['arr_city_name'] = request.arr_city_name
+        if not UtilClient.is_unset(request.arr_date):
+            query['arr_date'] = request.arr_date
+        if not UtilClient.is_unset(request.cabin_class):
+            query['cabin_class'] = request.cabin_class
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_city_name):
+            query['dep_city_name'] = request.dep_city_name
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.flight_no):
+            query['flight_no'] = request.flight_no
+        if not UtilClient.is_unset(request.need_multi_class_price):
+            query['need_multi_class_price'] = request.need_multi_class_price
+        if not UtilClient.is_unset(request.transfer_city_code):
+            query['transfer_city_code'] = request.transfer_city_code
+        if not UtilClient.is_unset(request.transfer_flight_no):
+            query['transfer_flight_no'] = request.transfer_flight_no
+        if not UtilClient.is_unset(request.transfer_leave_date):
+            query['transfer_leave_date'] = request.transfer_leave_date
+        if not UtilClient.is_unset(request.trip_type):
+            query['trip_type'] = request.trip_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightSearchList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/huge/dtb-flight/v1/flight/action/search-list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightSearchListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_search_list_with_options_async(
+        self,
+        request: btrip_open_20220520_models.FlightSearchListRequest,
+        headers: btrip_open_20220520_models.FlightSearchListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.airline_code):
+            query['airline_code'] = request.airline_code
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.arr_city_name):
+            query['arr_city_name'] = request.arr_city_name
+        if not UtilClient.is_unset(request.arr_date):
+            query['arr_date'] = request.arr_date
+        if not UtilClient.is_unset(request.cabin_class):
+            query['cabin_class'] = request.cabin_class
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_city_name):
+            query['dep_city_name'] = request.dep_city_name
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.flight_no):
+            query['flight_no'] = request.flight_no
+        if not UtilClient.is_unset(request.need_multi_class_price):
+            query['need_multi_class_price'] = request.need_multi_class_price
+        if not UtilClient.is_unset(request.transfer_city_code):
+            query['transfer_city_code'] = request.transfer_city_code
+        if not UtilClient.is_unset(request.transfer_flight_no):
+            query['transfer_flight_no'] = request.transfer_flight_no
+        if not UtilClient.is_unset(request.transfer_leave_date):
+            query['transfer_leave_date'] = request.transfer_leave_date
+        if not UtilClient.is_unset(request.trip_type):
+            query['trip_type'] = request.trip_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightSearchList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/huge/dtb-flight/v1/flight/action/search-list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightSearchListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_search_list(
+        self,
+        request: btrip_open_20220520_models.FlightSearchListRequest,
+    ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightSearchListHeaders()
+        return self.flight_search_list_with_options(request, headers, runtime)
+
+    async def flight_search_list_async(
+        self,
+        request: btrip_open_20220520_models.FlightSearchListRequest,
+    ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightSearchListHeaders()
+        return await self.flight_search_list_with_options_async(request, headers, runtime)
+
     def hotel_bill_settlement_query_with_options(
         self,
         request: btrip_open_20220520_models.HotelBillSettlementQueryRequest,
