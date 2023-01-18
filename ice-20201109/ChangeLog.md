@@ -1,3 +1,6 @@
+2023-01-18 Version: 1.3.5
+- Add DNA API.
+
 2022-12-31 Version: 1.3.4
 - Add RequestSource param to GetEditingProject API.
 
