@@ -24088,14 +24088,18 @@ class ListEventsResponse(TeaModel):
 class ListInspectionDevicesRequest(TeaModel):
     def __init__(
         self,
+        app_state: str = None,
         instance_id: str = None,
         model: List[str] = None,
         role: str = None,
+        space: str = None,
         vendor: str = None,
     ):
+        self.app_state = app_state
         self.instance_id = instance_id
         self.model = model
         self.role = role
+        self.space = space
         self.vendor = vendor
 
     def validate(self):
@@ -24107,24 +24111,32 @@ class ListInspectionDevicesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_state is not None:
+            result['AppState'] = self.app_state
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.model is not None:
             result['Model'] = self.model
         if self.role is not None:
             result['Role'] = self.role
+        if self.space is not None:
+            result['Space'] = self.space
         if self.vendor is not None:
             result['Vendor'] = self.vendor
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppState') is not None:
+            self.app_state = m.get('AppState')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Model') is not None:
             self.model = m.get('Model')
         if m.get('Role') is not None:
             self.role = m.get('Role')
+        if m.get('Space') is not None:
+            self.space = m.get('Space')
         if m.get('Vendor') is not None:
             self.vendor = m.get('Vendor')
         return self
@@ -24133,14 +24145,18 @@ class ListInspectionDevicesRequest(TeaModel):
 class ListInspectionDevicesShrinkRequest(TeaModel):
     def __init__(
         self,
+        app_state: str = None,
         instance_id: str = None,
         model_shrink: str = None,
         role: str = None,
+        space: str = None,
         vendor: str = None,
     ):
+        self.app_state = app_state
         self.instance_id = instance_id
         self.model_shrink = model_shrink
         self.role = role
+        self.space = space
         self.vendor = vendor
 
     def validate(self):
@@ -24152,24 +24168,32 @@ class ListInspectionDevicesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_state is not None:
+            result['AppState'] = self.app_state
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.model_shrink is not None:
             result['Model'] = self.model_shrink
         if self.role is not None:
             result['Role'] = self.role
+        if self.space is not None:
+            result['Space'] = self.space
         if self.vendor is not None:
             result['Vendor'] = self.vendor
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppState') is not None:
+            self.app_state = m.get('AppState')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Model') is not None:
             self.model_shrink = m.get('Model')
         if m.get('Role') is not None:
             self.role = m.get('Role')
+        if m.get('Space') is not None:
+            self.space = m.get('Space')
         if m.get('Vendor') is not None:
             self.vendor = m.get('Vendor')
         return self
@@ -24178,6 +24202,7 @@ class ListInspectionDevicesShrinkRequest(TeaModel):
 class ListInspectionDevicesResponseBodyInspectionScripts(TeaModel):
     def __init__(
         self,
+        app_state: str = None,
         device_id: str = None,
         device_state: str = None,
         host_name: str = None,
@@ -24187,6 +24212,7 @@ class ListInspectionDevicesResponseBodyInspectionScripts(TeaModel):
         space: str = None,
         vendor: str = None,
     ):
+        self.app_state = app_state
         self.device_id = device_id
         self.device_state = device_state
         self.host_name = host_name
@@ -24205,6 +24231,8 @@ class ListInspectionDevicesResponseBodyInspectionScripts(TeaModel):
             return _map
 
         result = dict()
+        if self.app_state is not None:
+            result['AppState'] = self.app_state
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.device_state is not None:
@@ -24225,6 +24253,8 @@ class ListInspectionDevicesResponseBodyInspectionScripts(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppState') is not None:
+            self.app_state = m.get('AppState')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('DeviceState') is not None:
