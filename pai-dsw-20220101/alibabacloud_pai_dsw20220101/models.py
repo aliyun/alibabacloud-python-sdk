@@ -1556,6 +1556,81 @@ class GetInstanceResponseBodyInstanceShutdownTimer(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyInstanceSnapshotList(TeaModel):
+    def __init__(
+        self,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        image_url: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        repository_url: str = None,
+        status: str = None,
+    ):
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.image_id = image_id
+        self.image_name = image_name
+        self.image_url = image_url
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.repository_url = repository_url
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.repository_url is not None:
+            result['RepositoryUrl'] = self.repository_url
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('RepositoryUrl') is not None:
+            self.repository_url = m.get('RepositoryUrl')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class GetInstanceResponseBodyLabels(TeaModel):
     def __init__(
         self,
@@ -1597,14 +1672,20 @@ class GetInstanceResponseBodyLatestSnapshot(TeaModel):
         image_id: str = None,
         image_name: str = None,
         image_url: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
         repository_url: str = None,
+        status: str = None,
     ):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.image_id = image_id
         self.image_name = image_name
         self.image_url = image_url
+        self.reason_code = reason_code
+        self.reason_message = reason_message
         self.repository_url = repository_url
+        self.status = status
 
     def validate(self):
         pass
@@ -1625,8 +1706,14 @@ class GetInstanceResponseBodyLatestSnapshot(TeaModel):
             result['ImageName'] = self.image_name
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
         if self.repository_url is not None:
             result['RepositoryUrl'] = self.repository_url
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -1641,8 +1728,14 @@ class GetInstanceResponseBodyLatestSnapshot(TeaModel):
             self.image_name = m.get('ImageName')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
         if m.get('RepositoryUrl') is not None:
             self.repository_url = m.get('RepositoryUrl')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -1757,6 +1850,7 @@ class GetInstanceResponseBody(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         instance_shutdown_timer: GetInstanceResponseBodyInstanceShutdownTimer = None,
+        instance_snapshot_list: List[GetInstanceResponseBodyInstanceSnapshotList] = None,
         instance_url: str = None,
         jupyterlab_url: str = None,
         labels: List[GetInstanceResponseBodyLabels] = None,
@@ -1797,6 +1891,7 @@ class GetInstanceResponseBody(TeaModel):
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.instance_shutdown_timer = instance_shutdown_timer
+        self.instance_snapshot_list = instance_snapshot_list
         self.instance_url = instance_url
         # Jupyterlab Url。
         self.jupyterlab_url = jupyterlab_url
@@ -1831,6 +1926,10 @@ class GetInstanceResponseBody(TeaModel):
             self.idle_instance_culler.validate()
         if self.instance_shutdown_timer:
             self.instance_shutdown_timer.validate()
+        if self.instance_snapshot_list:
+            for k in self.instance_snapshot_list:
+                if k:
+                    k.validate()
         if self.labels:
             for k in self.labels:
                 if k:
@@ -1884,6 +1983,10 @@ class GetInstanceResponseBody(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_shutdown_timer is not None:
             result['InstanceShutdownTimer'] = self.instance_shutdown_timer.to_map()
+        result['InstanceSnapshotList'] = []
+        if self.instance_snapshot_list is not None:
+            for k in self.instance_snapshot_list:
+                result['InstanceSnapshotList'].append(k.to_map() if k else None)
         if self.instance_url is not None:
             result['InstanceUrl'] = self.instance_url
         if self.jupyterlab_url is not None:
@@ -1973,6 +2076,11 @@ class GetInstanceResponseBody(TeaModel):
         if m.get('InstanceShutdownTimer') is not None:
             temp_model = GetInstanceResponseBodyInstanceShutdownTimer()
             self.instance_shutdown_timer = temp_model.from_map(m['InstanceShutdownTimer'])
+        self.instance_snapshot_list = []
+        if m.get('InstanceSnapshotList') is not None:
+            for k in m.get('InstanceSnapshotList'):
+                temp_model = GetInstanceResponseBodyInstanceSnapshotList()
+                self.instance_snapshot_list.append(temp_model.from_map(k))
         if m.get('InstanceUrl') is not None:
             self.instance_url = m.get('InstanceUrl')
         if m.get('JupyterlabUrl') is not None:
@@ -4194,6 +4302,81 @@ class ListInstancesResponseBodyInstancesInstanceShutdownTimer(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesInstanceSnapshotList(TeaModel):
+    def __init__(
+        self,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        image_url: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        repository_url: str = None,
+        status: str = None,
+    ):
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.image_id = image_id
+        self.image_name = image_name
+        self.image_url = image_url
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.repository_url = repository_url
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.repository_url is not None:
+            result['RepositoryUrl'] = self.repository_url
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('RepositoryUrl') is not None:
+            self.repository_url = m.get('RepositoryUrl')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class ListInstancesResponseBodyInstancesLabels(TeaModel):
     def __init__(
         self,
@@ -4235,14 +4418,20 @@ class ListInstancesResponseBodyInstancesLatestSnapshot(TeaModel):
         image_id: str = None,
         image_name: str = None,
         image_url: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
         repository_url: str = None,
+        status: str = None,
     ):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.image_id = image_id
         self.image_name = image_name
         self.image_url = image_url
+        self.reason_code = reason_code
+        self.reason_message = reason_message
         self.repository_url = repository_url
+        self.status = status
 
     def validate(self):
         pass
@@ -4263,8 +4452,14 @@ class ListInstancesResponseBodyInstancesLatestSnapshot(TeaModel):
             result['ImageName'] = self.image_name
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
         if self.repository_url is not None:
             result['RepositoryUrl'] = self.repository_url
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -4279,8 +4474,14 @@ class ListInstancesResponseBodyInstancesLatestSnapshot(TeaModel):
             self.image_name = m.get('ImageName')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
         if m.get('RepositoryUrl') is not None:
             self.repository_url = m.get('RepositoryUrl')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -4393,6 +4594,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         instance_shutdown_timer: ListInstancesResponseBodyInstancesInstanceShutdownTimer = None,
+        instance_snapshot_list: List[ListInstancesResponseBodyInstancesInstanceSnapshotList] = None,
         instance_url: str = None,
         jupyterlab_url: str = None,
         labels: List[ListInstancesResponseBodyInstancesLabels] = None,
@@ -4428,6 +4630,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.instance_shutdown_timer = instance_shutdown_timer
+        self.instance_snapshot_list = instance_snapshot_list
         self.instance_url = instance_url
         # Jupyterlab Url。
         self.jupyterlab_url = jupyterlab_url
@@ -4459,6 +4662,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.idle_instance_culler.validate()
         if self.instance_shutdown_timer:
             self.instance_shutdown_timer.validate()
+        if self.instance_snapshot_list:
+            for k in self.instance_snapshot_list:
+                if k:
+                    k.validate()
         if self.labels:
             for k in self.labels:
                 if k:
@@ -4508,6 +4715,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_shutdown_timer is not None:
             result['InstanceShutdownTimer'] = self.instance_shutdown_timer.to_map()
+        result['InstanceSnapshotList'] = []
+        if self.instance_snapshot_list is not None:
+            for k in self.instance_snapshot_list:
+                result['InstanceSnapshotList'].append(k.to_map() if k else None)
         if self.instance_url is not None:
             result['InstanceUrl'] = self.instance_url
         if self.jupyterlab_url is not None:
@@ -4587,6 +4798,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
         if m.get('InstanceShutdownTimer') is not None:
             temp_model = ListInstancesResponseBodyInstancesInstanceShutdownTimer()
             self.instance_shutdown_timer = temp_model.from_map(m['InstanceShutdownTimer'])
+        self.instance_snapshot_list = []
+        if m.get('InstanceSnapshotList') is not None:
+            for k in m.get('InstanceSnapshotList'):
+                temp_model = ListInstancesResponseBodyInstancesInstanceSnapshotList()
+                self.instance_snapshot_list.append(temp_model.from_map(k))
         if m.get('InstanceUrl') is not None:
             self.instance_url = m.get('InstanceUrl')
         if m.get('JupyterlabUrl') is not None:
