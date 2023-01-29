@@ -1264,9 +1264,11 @@ class DeleteAutoSnapshotPolicyResponse(TeaModel):
 class DeleteDbfsRequest(TeaModel):
     def __init__(
         self,
+        force: bool = None,
         fs_id: str = None,
         region_id: str = None,
     ):
+        self.force = force
         self.fs_id = fs_id
         self.region_id = region_id
 
@@ -1279,6 +1281,8 @@ class DeleteDbfsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
         if self.fs_id is not None:
             result['FsId'] = self.fs_id
         if self.region_id is not None:
@@ -1287,6 +1291,8 @@ class DeleteDbfsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('FsId') is not None:
             self.fs_id = m.get('FsId')
         if m.get('RegionId') is not None:
@@ -2301,7 +2307,7 @@ class GetDbfsResponseBodyDBFSInfoSnapshotInfo(TeaModel):
         if self.snapshot_count is not None:
             result['SnapshotCount'] = self.snapshot_count
         if self.total_size is not None:
-            result['totalSize'] = self.total_size
+            result['TotalSize'] = self.total_size
         return result
 
     def from_map(self, m: dict = None):
@@ -2312,8 +2318,8 @@ class GetDbfsResponseBodyDBFSInfoSnapshotInfo(TeaModel):
             self.policy_id = m.get('PolicyId')
         if m.get('SnapshotCount') is not None:
             self.snapshot_count = m.get('SnapshotCount')
-        if m.get('totalSize') is not None:
-            self.total_size = m.get('totalSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
         return self
 
 
@@ -2757,6 +2763,228 @@ class GetServiceLinkedRoleResponse(TeaModel):
         return self
 
 
+class GetSnapshotLinkRequest(TeaModel):
+    def __init__(
+        self,
+        link_id: str = None,
+        region_id: str = None,
+    ):
+        self.link_id = link_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.link_id is not None:
+            result['LinkId'] = self.link_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LinkId') is not None:
+            self.link_id = m.get('LinkId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetSnapshotLinkResponseBodyDataEcsList(TeaModel):
+    def __init__(
+        self,
+        ecs_id: str = None,
+    ):
+        self.ecs_id = ecs_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_id is not None:
+            result['EcsId'] = self.ecs_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsId') is not None:
+            self.ecs_id = m.get('EcsId')
+        return self
+
+
+class GetSnapshotLinkResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        ecs_list: List[GetSnapshotLinkResponseBodyDataEcsList] = None,
+        fs_id: str = None,
+        fs_name: str = None,
+        link_id: str = None,
+        snapshot_count: int = None,
+        source_size: int = None,
+        status: str = None,
+        total_size: int = None,
+    ):
+        self.category = category
+        self.ecs_list = ecs_list
+        self.fs_id = fs_id
+        self.fs_name = fs_name
+        self.link_id = link_id
+        self.snapshot_count = snapshot_count
+        self.source_size = source_size
+        self.status = status
+        self.total_size = total_size
+
+    def validate(self):
+        if self.ecs_list:
+            for k in self.ecs_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        result['EcsList'] = []
+        if self.ecs_list is not None:
+            for k in self.ecs_list:
+                result['EcsList'].append(k.to_map() if k else None)
+        if self.fs_id is not None:
+            result['FsId'] = self.fs_id
+        if self.fs_name is not None:
+            result['FsName'] = self.fs_name
+        if self.link_id is not None:
+            result['LinkId'] = self.link_id
+        if self.snapshot_count is not None:
+            result['SnapshotCount'] = self.snapshot_count
+        if self.source_size is not None:
+            result['SourceSize'] = self.source_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        self.ecs_list = []
+        if m.get('EcsList') is not None:
+            for k in m.get('EcsList'):
+                temp_model = GetSnapshotLinkResponseBodyDataEcsList()
+                self.ecs_list.append(temp_model.from_map(k))
+        if m.get('FsId') is not None:
+            self.fs_id = m.get('FsId')
+        if m.get('FsName') is not None:
+            self.fs_name = m.get('FsName')
+        if m.get('LinkId') is not None:
+            self.link_id = m.get('LinkId')
+        if m.get('SnapshotCount') is not None:
+            self.snapshot_count = m.get('SnapshotCount')
+        if m.get('SourceSize') is not None:
+            self.source_size = m.get('SourceSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class GetSnapshotLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetSnapshotLinkResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetSnapshotLinkResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSnapshotLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSnapshotLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSnapshotLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAutoSnapshotPoliciesRequest(TeaModel):
     def __init__(
         self,
@@ -3068,9 +3296,9 @@ class ListAutoSnapshotPolicyAppliedDbfsResponseBodyDbfsList(TeaModel):
         fs_name: str = None,
         region_id: str = None,
         size_g: int = None,
-        snapshot_count: str = None,
+        snapshot_count: int = None,
         status: str = None,
-        total_size: str = None,
+        total_size: int = None,
     ):
         self.fs_id = fs_id
         self.fs_name = fs_name
@@ -3285,7 +3513,7 @@ class ListAutoSnapshotPolicyUnappliedDbfsResponseBodyDbfsList(TeaModel):
         fs_name: str = None,
         region_id: str = None,
         size_g: int = None,
-        snapshot_count: str = None,
+        snapshot_count: int = None,
         status: str = None,
         total_size: int = None,
     ):
@@ -4631,6 +4859,264 @@ class ListSnapshotResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSnapshotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSnapshotLinksRequest(TeaModel):
+    def __init__(
+        self,
+        filter_key: str = None,
+        filter_value: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        self.filter_key = filter_key
+        self.filter_value = filter_value
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListSnapshotLinksResponseBodySnapshotLinksEcsList(TeaModel):
+    def __init__(
+        self,
+        ecs_id: str = None,
+    ):
+        self.ecs_id = ecs_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_id is not None:
+            result['EcsId'] = self.ecs_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsId') is not None:
+            self.ecs_id = m.get('EcsId')
+        return self
+
+
+class ListSnapshotLinksResponseBodySnapshotLinks(TeaModel):
+    def __init__(
+        self,
+        ecs_list: List[ListSnapshotLinksResponseBodySnapshotLinksEcsList] = None,
+        fs_id: str = None,
+        fs_name: str = None,
+        link_id: str = None,
+        snapshot_count: int = None,
+        source_size: int = None,
+        status: str = None,
+        total_size: int = None,
+    ):
+        self.ecs_list = ecs_list
+        self.fs_id = fs_id
+        self.fs_name = fs_name
+        self.link_id = link_id
+        self.snapshot_count = snapshot_count
+        self.source_size = source_size
+        self.status = status
+        self.total_size = total_size
+
+    def validate(self):
+        if self.ecs_list:
+            for k in self.ecs_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EcsList'] = []
+        if self.ecs_list is not None:
+            for k in self.ecs_list:
+                result['EcsList'].append(k.to_map() if k else None)
+        if self.fs_id is not None:
+            result['FsId'] = self.fs_id
+        if self.fs_name is not None:
+            result['FsName'] = self.fs_name
+        if self.link_id is not None:
+            result['LinkId'] = self.link_id
+        if self.snapshot_count is not None:
+            result['SnapshotCount'] = self.snapshot_count
+        if self.source_size is not None:
+            result['SourceSize'] = self.source_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ecs_list = []
+        if m.get('EcsList') is not None:
+            for k in m.get('EcsList'):
+                temp_model = ListSnapshotLinksResponseBodySnapshotLinksEcsList()
+                self.ecs_list.append(temp_model.from_map(k))
+        if m.get('FsId') is not None:
+            self.fs_id = m.get('FsId')
+        if m.get('FsName') is not None:
+            self.fs_name = m.get('FsName')
+        if m.get('LinkId') is not None:
+            self.link_id = m.get('LinkId')
+        if m.get('SnapshotCount') is not None:
+            self.snapshot_count = m.get('SnapshotCount')
+        if m.get('SourceSize') is not None:
+            self.source_size = m.get('SourceSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class ListSnapshotLinksResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        snapshot_links: List[ListSnapshotLinksResponseBodySnapshotLinks] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.snapshot_links = snapshot_links
+        self.total_count = total_count
+
+    def validate(self):
+        if self.snapshot_links:
+            for k in self.snapshot_links:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SnapshotLinks'] = []
+        if self.snapshot_links is not None:
+            for k in self.snapshot_links:
+                result['SnapshotLinks'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.snapshot_links = []
+        if m.get('SnapshotLinks') is not None:
+            for k in m.get('SnapshotLinks'):
+                temp_model = ListSnapshotLinksResponseBodySnapshotLinks()
+                self.snapshot_links.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSnapshotLinksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSnapshotLinksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSnapshotLinksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

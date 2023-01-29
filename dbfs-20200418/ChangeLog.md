@@ -1,3 +1,6 @@
+2023-01-29 Version: 3.2.1
+- Update autoSnapshotPolicy.
+
 2023-01-03 Version: 3.2.0
 - Supported snapshot link for DBFS.
 - Supported showing snapshot info.
