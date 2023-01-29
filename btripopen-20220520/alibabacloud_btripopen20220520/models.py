@@ -22263,6 +22263,7 @@ class FlightSearchListResponseBodyModuleFlightList(TeaModel):
         airline_info: FlightSearchListResponseBodyModuleFlightListAirlineInfo = None,
         arr_airport_info: FlightSearchListResponseBodyModuleFlightListArrAirportInfo = None,
         arr_date: str = None,
+        basic_cabin_price: int = None,
         build_price: int = None,
         cabin: str = None,
         cabin_class: str = None,
@@ -22306,6 +22307,7 @@ class FlightSearchListResponseBodyModuleFlightList(TeaModel):
         self.airline_info = airline_info
         self.arr_airport_info = arr_airport_info
         self.arr_date = arr_date
+        self.basic_cabin_price = basic_cabin_price
         self.build_price = build_price
         self.cabin = cabin
         self.cabin_class = cabin_class
@@ -22376,6 +22378,8 @@ class FlightSearchListResponseBodyModuleFlightList(TeaModel):
             result['arr_airport_info'] = self.arr_airport_info.to_map()
         if self.arr_date is not None:
             result['arr_date'] = self.arr_date
+        if self.basic_cabin_price is not None:
+            result['basic_cabin_price'] = self.basic_cabin_price
         if self.build_price is not None:
             result['build_price'] = self.build_price
         if self.cabin is not None:
@@ -22470,6 +22474,8 @@ class FlightSearchListResponseBodyModuleFlightList(TeaModel):
             self.arr_airport_info = temp_model.from_map(m['arr_airport_info'])
         if m.get('arr_date') is not None:
             self.arr_date = m.get('arr_date')
+        if m.get('basic_cabin_price') is not None:
+            self.basic_cabin_price = m.get('basic_cabin_price')
         if m.get('build_price') is not None:
             self.build_price = m.get('build_price')
         if m.get('cabin') is not None:

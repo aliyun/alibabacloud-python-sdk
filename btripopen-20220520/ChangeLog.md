@@ -1,3 +1,6 @@
+2023-01-29 Version: 1.0.38
+- Update flight search list.
+
 2023-01-18 Version: 1.0.37
 - Add flight search list.
 
