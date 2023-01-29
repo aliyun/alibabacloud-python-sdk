@@ -1153,6 +1153,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_lifecycle_with_options_async(instance_id, request, headers, runtime)
 
+    def get_resource_group_statistics_with_options(
+        self,
+        request: pai_dsw_20220101_models.GetResourceGroupStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceGroupStatistics',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/resourcegroupstatistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_group_statistics_with_options_async(
+        self,
+        request: pai_dsw_20220101_models.GetResourceGroupStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceGroupStatistics',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/resourcegroupstatistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetResourceGroupStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_group_statistics(
+        self,
+        request: pai_dsw_20220101_models.GetResourceGroupStatisticsRequest,
+    ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_resource_group_statistics_with_options(request, headers, runtime)
+
+    async def get_resource_group_statistics_async(
+        self,
+        request: pai_dsw_20220101_models.GetResourceGroupStatisticsRequest,
+    ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_resource_group_statistics_with_options_async(request, headers, runtime)
+
     def get_token_with_options(
         self,
         request: pai_dsw_20220101_models.GetTokenRequest,

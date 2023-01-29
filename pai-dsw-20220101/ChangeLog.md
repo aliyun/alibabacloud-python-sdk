@@ -1,3 +1,6 @@
+2023-01-29 Version: 1.1.40
+- Support Resource Group Statistics.
+
 2023-01-29 Version: 1.1.37
 - Support Resource Group Statistics.
 
