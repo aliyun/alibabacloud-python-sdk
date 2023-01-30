@@ -1,3 +1,6 @@
+2023-01-30 Version: 2.2.14
+- Modify DescribeApis.
+
 2022-12-05 Version: 2.2.13
 - Modify QueryRequestLogs.
 
