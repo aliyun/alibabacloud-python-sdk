@@ -2527,6 +2527,190 @@ class FileForReq(TeaModel):
         return self
 
 
+class InputOSS(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        match_expressions: List[str] = None,
+        prefix: str = None,
+    ):
+        self.bucket = bucket
+        self.match_expressions = match_expressions
+        self.prefix = prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.match_expressions is not None:
+            result['MatchExpressions'] = self.match_expressions
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('MatchExpressions') is not None:
+            self.match_expressions = m.get('MatchExpressions')
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
+        return self
+
+
+class Input(TeaModel):
+    def __init__(
+        self,
+        oss: InputOSS = None,
+    ):
+        self.oss = oss
+
+    def validate(self):
+        if self.oss:
+            self.oss.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss is not None:
+            result['OSS'] = self.oss.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OSS') is not None:
+            temp_model = InputOSS()
+            self.oss = temp_model.from_map(m['OSS'])
+        return self
+
+
+class InputFileFigures(TeaModel):
+    def __init__(
+        self,
+        figure_cluster_id: str = None,
+        figure_id: str = None,
+        figure_type: str = None,
+    ):
+        self.figure_cluster_id = figure_cluster_id
+        self.figure_id = figure_id
+        self.figure_type = figure_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_cluster_id is not None:
+            result['FigureClusterId'] = self.figure_cluster_id
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        if self.figure_type is not None:
+            result['FigureType'] = self.figure_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureClusterId') is not None:
+            self.figure_cluster_id = m.get('FigureClusterId')
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        if m.get('FigureType') is not None:
+            self.figure_type = m.get('FigureType')
+        return self
+
+
+class InputFile(TeaModel):
+    def __init__(
+        self,
+        content_type: str = None,
+        custom_id: str = None,
+        custom_labels: Dict[str, Any] = None,
+        figures: List[InputFileFigures] = None,
+        file_hash: str = None,
+        media_type: str = None,
+        ossuri: str = None,
+        uri: str = None,
+    ):
+        self.content_type = content_type
+        self.custom_id = custom_id
+        self.custom_labels = custom_labels
+        self.figures = figures
+        self.file_hash = file_hash
+        self.media_type = media_type
+        self.ossuri = ossuri
+        self.uri = uri
+
+    def validate(self):
+        if self.figures:
+            for k in self.figures:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.custom_id is not None:
+            result['CustomId'] = self.custom_id
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        result['Figures'] = []
+        if self.figures is not None:
+            for k in self.figures:
+                result['Figures'].append(k.to_map() if k else None)
+        if self.file_hash is not None:
+            result['FileHash'] = self.file_hash
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.ossuri is not None:
+            result['OSSURI'] = self.ossuri
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('CustomId') is not None:
+            self.custom_id = m.get('CustomId')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        self.figures = []
+        if m.get('Figures') is not None:
+            for k in m.get('Figures'):
+                temp_model = InputFileFigures()
+                self.figures.append(temp_model.from_map(k))
+        if m.get('FileHash') is not None:
+            self.file_hash = m.get('FileHash')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('OSSURI') is not None:
+            self.ossuri = m.get('OSSURI')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
 class KdtreeOption(TeaModel):
     def __init__(
         self,
@@ -11071,6 +11255,110 @@ class CreateVideoModerationTaskResponse(TeaModel):
         return self
 
 
+class DeleteBatchRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        project_name: str = None,
+    ):
+        self.id = id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class DeleteBatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteBatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBatchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteBindingRequest(TeaModel):
     def __init__(
         self,
@@ -11715,6 +12003,110 @@ class DeleteStoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTriggerRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        project_name: str = None,
+    ):
+        self.id = id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class DeleteTriggerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTriggerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTriggerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17200,6 +17592,214 @@ class RemoveStoryFilesResponse(TeaModel):
         return self
 
 
+class ResumeBatchRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        project_name: str = None,
+    ):
+        self.id = id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ResumeBatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResumeBatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResumeBatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResumeBatchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResumeTriggerRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        project_name: str = None,
+    ):
+        self.id = id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ResumeTriggerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResumeTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResumeTriggerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResumeTriggerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SearchImageFigureClusterRequest(TeaModel):
     def __init__(
         self,
@@ -17942,6 +18542,479 @@ class SimpleQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SimpleQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SuspendBatchRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        project_name: str = None,
+    ):
+        self.id = id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class SuspendBatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SuspendBatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SuspendBatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SuspendBatchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SuspendTriggerRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        project_name: str = None,
+    ):
+        self.id = id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class SuspendTriggerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SuspendTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SuspendTriggerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SuspendTriggerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateBatchRequestActions(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        parameters: List[str] = None,
+    ):
+        self.name = name
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        return self
+
+
+class UpdateBatchRequestNotification(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        topic: str = None,
+    ):
+        self.endpoint = endpoint
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class UpdateBatchRequest(TeaModel):
+    def __init__(
+        self,
+        actions: List[UpdateBatchRequestActions] = None,
+        id: str = None,
+        input: Input = None,
+        notification: UpdateBatchRequestNotification = None,
+        project_name: str = None,
+        tags: Dict[str, Any] = None,
+    ):
+        self.actions = actions
+        self.id = id
+        self.input = input
+        self.notification = notification
+        self.project_name = project_name
+        self.tags = tags
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+        if self.input:
+            self.input.validate()
+        if self.notification:
+            self.notification.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['Actions'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('Actions') is not None:
+            for k in m.get('Actions'):
+                temp_model = UpdateBatchRequestActions()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Input') is not None:
+            temp_model = Input()
+            self.input = temp_model.from_map(m['Input'])
+        if m.get('Notification') is not None:
+            temp_model = UpdateBatchRequestNotification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class UpdateBatchShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        actions_shrink: str = None,
+        id: str = None,
+        input_shrink: str = None,
+        notification_shrink: str = None,
+        project_name: str = None,
+        tags_shrink: str = None,
+    ):
+        self.actions_shrink = actions_shrink
+        self.id = id
+        self.input_shrink = input_shrink
+        self.notification_shrink = notification_shrink
+        self.project_name = project_name
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actions_shrink is not None:
+            result['Actions'] = self.actions_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.input_shrink is not None:
+            result['Input'] = self.input_shrink
+        if self.notification_shrink is not None:
+            result['Notification'] = self.notification_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Actions') is not None:
+            self.actions_shrink = m.get('Actions')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Input') is not None:
+            self.input_shrink = m.get('Input')
+        if m.get('Notification') is not None:
+            self.notification_shrink = m.get('Notification')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class UpdateBatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateBatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateBatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateBatchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18969,6 +20042,271 @@ class UpdateStoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTriggerRequestActions(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        parameters: List[str] = None,
+    ):
+        self.name = name
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        return self
+
+
+class UpdateTriggerRequestNotification(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        topic: str = None,
+    ):
+        self.endpoint = endpoint
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class UpdateTriggerRequest(TeaModel):
+    def __init__(
+        self,
+        actions: List[UpdateTriggerRequestActions] = None,
+        id: str = None,
+        input: Input = None,
+        notification: UpdateTriggerRequestNotification = None,
+        project_name: str = None,
+        tags: Dict[str, Any] = None,
+    ):
+        self.actions = actions
+        self.id = id
+        self.input = input
+        self.notification = notification
+        self.project_name = project_name
+        self.tags = tags
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+        if self.input:
+            self.input.validate()
+        if self.notification:
+            self.notification.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['Actions'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('Actions') is not None:
+            for k in m.get('Actions'):
+                temp_model = UpdateTriggerRequestActions()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Input') is not None:
+            temp_model = Input()
+            self.input = temp_model.from_map(m['Input'])
+        if m.get('Notification') is not None:
+            temp_model = UpdateTriggerRequestNotification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class UpdateTriggerShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        actions_shrink: str = None,
+        id: str = None,
+        input_shrink: str = None,
+        notification_shrink: str = None,
+        project_name: str = None,
+        tags_shrink: str = None,
+    ):
+        self.actions_shrink = actions_shrink
+        self.id = id
+        self.input_shrink = input_shrink
+        self.notification_shrink = notification_shrink
+        self.project_name = project_name
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actions_shrink is not None:
+            result['Actions'] = self.actions_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.input_shrink is not None:
+            result['Input'] = self.input_shrink
+        if self.notification_shrink is not None:
+            result['Notification'] = self.notification_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Actions') is not None:
+            self.actions_shrink = m.get('Actions')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Input') is not None:
+            self.input_shrink = m.get('Input')
+        if m.get('Notification') is not None:
+            self.notification_shrink = m.get('Notification')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class UpdateTriggerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateTriggerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTriggerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTriggerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

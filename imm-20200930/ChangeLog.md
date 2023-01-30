@@ -1,3 +1,7 @@
+2023-01-30 Version: 2.1.4
+- Add InputFile struct for IndexFileMeta and BatchIndexFileMeta.
+- Add DataIngestion related APIs.
+
 2023-01-17 Version: 2.1.3
 - Remove redundant parameters.
 
