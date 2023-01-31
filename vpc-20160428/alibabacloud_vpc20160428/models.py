@@ -57806,6 +57806,7 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         is_fake_asn: bool = None,
+        local_asn: int = None,
         name: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -57813,6 +57814,7 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        route_quota: int = None,
     ):
         self.auth_key = auth_key
         self.bgp_group_id = bgp_group_id
@@ -57820,6 +57822,7 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.is_fake_asn = is_fake_asn
+        self.local_asn = local_asn
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -57827,6 +57830,7 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.route_quota = route_quota
 
     def validate(self):
         pass
@@ -57849,6 +57853,8 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
             result['Description'] = self.description
         if self.is_fake_asn is not None:
             result['IsFakeAsn'] = self.is_fake_asn
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_account is not None:
@@ -57863,6 +57869,8 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.route_quota is not None:
+            result['RouteQuota'] = self.route_quota
         return result
 
     def from_map(self, m: dict = None):
@@ -57879,6 +57887,8 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('IsFakeAsn') is not None:
             self.is_fake_asn = m.get('IsFakeAsn')
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerAccount') is not None:
@@ -57893,6 +57903,8 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RouteQuota') is not None:
+            self.route_quota = m.get('RouteQuota')
         return self
 
 

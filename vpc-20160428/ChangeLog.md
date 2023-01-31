@@ -1,3 +1,8 @@
+2023-01-31 Version: 2.0.20
+- Supported set high definition monitor log status for eip.
+- Supported batch associate eip to cloud products.
+- Supported VpcDescribeVpcNatGatewayNetworkInterfaceQuota.
+
 2023-01-31 Version: 2.0.19
 - Supported set high definition monitor log status for eip.
 - Supported batch associate eip to cloud products.

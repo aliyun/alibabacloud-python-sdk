@@ -26778,6 +26778,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.is_fake_asn):
             query['IsFakeAsn'] = request.is_fake_asn
+        if not UtilClient.is_unset(request.local_asn):
+            query['LocalAsn'] = request.local_asn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -26792,6 +26794,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_quota):
+            query['RouteQuota'] = request.route_quota
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -26830,6 +26834,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.is_fake_asn):
             query['IsFakeAsn'] = request.is_fake_asn
+        if not UtilClient.is_unset(request.local_asn):
+            query['LocalAsn'] = request.local_asn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -26844,6 +26850,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_quota):
+            query['RouteQuota'] = request.route_quota
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
