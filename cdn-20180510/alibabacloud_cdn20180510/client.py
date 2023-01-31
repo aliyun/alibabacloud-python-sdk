@@ -9570,7 +9570,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        >  You can call this API operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9603,7 +9603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        >  You can call this API operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9635,7 +9635,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        >  You can call this API operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @return: DescribeDomainRealtimeLogDeliveryResponse
@@ -9648,7 +9648,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        >  You can call this API operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @return: DescribeDomainRealtimeLogDeliveryResponse
@@ -12723,8 +12723,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -12761,8 +12759,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(

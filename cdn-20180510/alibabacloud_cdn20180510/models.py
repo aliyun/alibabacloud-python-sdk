@@ -17319,7 +17319,7 @@ class DescribeDomainRealtimeLogDeliveryResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        # The name of the Logstore where log entries are stored.
         self.logstore = logstore
         # The name of the Log Service project that is used for real-time log delivery.
         self.project = project
@@ -17327,7 +17327,10 @@ class DescribeDomainRealtimeLogDeliveryResponseBody(TeaModel):
         self.region = region
         # The ID of the request.
         self.request_id = request_id
-        # The status of the real-time log delivery feature.
+        # The status of the real-time log delivery feature. Valid values:
+        # 
+        # *   **online**\
+        # *   **offline**\
         self.status = status
 
     def validate(self):
@@ -24271,10 +24274,8 @@ class DescribeRefreshQuotaResponse(TeaModel):
 class DescribeRefreshTaskByIdRequest(TeaModel):
     def __init__(
         self,
-        owner_id: int = None,
         task_id: str = None,
     ):
-        self.owner_id = owner_id
         # The ID of the task that you want to query.
         # 
         # You can call the [RefreshObjectCaches](~~91164~~) operation to query task IDs. Then, you can use the task IDs to query task status.
@@ -24291,16 +24292,12 @@ class DescribeRefreshTaskByIdRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self

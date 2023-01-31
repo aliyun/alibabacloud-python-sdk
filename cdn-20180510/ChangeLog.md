@@ -1,3 +1,6 @@
+2023-01-31 Version: 1.2.2
+- Update PushObjectCache.
+
 2023-01-17 Version: 1.2.1
 - Update PushObjectCache.
 
