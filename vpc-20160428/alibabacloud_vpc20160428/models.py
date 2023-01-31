@@ -5768,6 +5768,7 @@ class CreateBgpGroupRequest(TeaModel):
         description: str = None,
         ip_version: str = None,
         is_fake_asn: bool = None,
+        local_asn: int = None,
         name: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -5775,6 +5776,7 @@ class CreateBgpGroupRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        route_quota: int = None,
         router_id: str = None,
     ):
         self.auth_key = auth_key
@@ -5782,6 +5784,7 @@ class CreateBgpGroupRequest(TeaModel):
         self.description = description
         self.ip_version = ip_version
         self.is_fake_asn = is_fake_asn
+        self.local_asn = local_asn
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5789,6 +5792,7 @@ class CreateBgpGroupRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.route_quota = route_quota
         self.router_id = router_id
 
     def validate(self):
@@ -5810,6 +5814,8 @@ class CreateBgpGroupRequest(TeaModel):
             result['IpVersion'] = self.ip_version
         if self.is_fake_asn is not None:
             result['IsFakeAsn'] = self.is_fake_asn
+        if self.local_asn is not None:
+            result['LocalAsn'] = self.local_asn
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_account is not None:
@@ -5824,6 +5830,8 @@ class CreateBgpGroupRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.route_quota is not None:
+            result['RouteQuota'] = self.route_quota
         if self.router_id is not None:
             result['RouterId'] = self.router_id
         return result
@@ -5840,6 +5848,8 @@ class CreateBgpGroupRequest(TeaModel):
             self.ip_version = m.get('IpVersion')
         if m.get('IsFakeAsn') is not None:
             self.is_fake_asn = m.get('IsFakeAsn')
+        if m.get('LocalAsn') is not None:
+            self.local_asn = m.get('LocalAsn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerAccount') is not None:
@@ -5854,6 +5864,8 @@ class CreateBgpGroupRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RouteQuota') is not None:
+            self.route_quota = m.get('RouteQuota')
         if m.get('RouterId') is not None:
             self.router_id = m.get('RouterId')
         return self
@@ -8805,7 +8817,6 @@ class CreateIpv6GatewayRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        spec: str = None,
         vpc_id: str = None,
     ):
         self.client_token = client_token
@@ -8816,7 +8827,6 @@ class CreateIpv6GatewayRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.spec = spec
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8844,8 +8854,6 @@ class CreateIpv6GatewayRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.spec is not None:
-            result['Spec'] = self.spec
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -8868,8 +8876,6 @@ class CreateIpv6GatewayRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('Spec') is not None:
-            self.spec = m.get('Spec')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -31256,7 +31262,6 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         name: str = None,
         region_id: str = None,
         request_id: str = None,
-        spec: str = None,
         status: str = None,
         vpc_id: str = None,
     ):
@@ -31269,7 +31274,6 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         self.name = name
         self.region_id = region_id
         self.request_id = request_id
-        self.spec = spec
         self.status = status
         self.vpc_id = vpc_id
 
@@ -31300,8 +31304,6 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.spec is not None:
-            result['Spec'] = self.spec
         if self.status is not None:
             result['Status'] = self.status
         if self.vpc_id is not None:
@@ -31328,8 +31330,6 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Spec') is not None:
-            self.spec = m.get('Spec')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('VpcId') is not None:
@@ -31473,7 +31473,6 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         ipv_6gateway_id: str = None,
         name: str = None,
         region_id: str = None,
-        spec: str = None,
         status: str = None,
         vpc_id: str = None,
     ):
@@ -31485,7 +31484,6 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         self.name = name
         self.region_id = region_id
-        self.spec = spec
         self.status = status
         self.vpc_id = vpc_id
 
@@ -31514,8 +31512,6 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.spec is not None:
-            result['Spec'] = self.spec
         if self.status is not None:
             result['Status'] = self.status
         if self.vpc_id is not None:
@@ -31540,8 +31536,6 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('Spec') is not None:
-            self.spec = m.get('Spec')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('VpcId') is not None:

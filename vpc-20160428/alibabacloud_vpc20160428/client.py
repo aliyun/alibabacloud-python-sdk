@@ -4020,6 +4020,8 @@ class Client(OpenApiClient):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.is_fake_asn):
             query['IsFakeAsn'] = request.is_fake_asn
+        if not UtilClient.is_unset(request.local_asn):
+            query['LocalAsn'] = request.local_asn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -4034,6 +4036,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_quota):
+            query['RouteQuota'] = request.route_quota
         if not UtilClient.is_unset(request.router_id):
             query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
@@ -4072,6 +4076,8 @@ class Client(OpenApiClient):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.is_fake_asn):
             query['IsFakeAsn'] = request.is_fake_asn
+        if not UtilClient.is_unset(request.local_asn):
+            query['LocalAsn'] = request.local_asn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -4086,6 +4092,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_quota):
+            query['RouteQuota'] = request.route_quota
         if not UtilClient.is_unset(request.router_id):
             query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
@@ -6010,8 +6018,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.spec):
-            query['Spec'] = request.spec
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -6058,8 +6064,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.spec):
-            query['Spec'] = request.spec
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
