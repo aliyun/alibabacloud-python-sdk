@@ -3121,9 +3121,11 @@ class SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo(TeaModel):
     def __init__(
         self,
         angle: int = None,
+        code: str = None,
         locate: int = None,
     ):
         self.angle = angle
+        self.code = code
         self.locate = locate
 
     def validate(self):
@@ -3137,6 +3139,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo(TeaModel):
         result = dict()
         if self.angle is not None:
             result['Angle'] = self.angle
+        if self.code is not None:
+            result['Code'] = self.code
         if self.locate is not None:
             result['Locate'] = self.locate
         return result
@@ -3145,6 +3149,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo(TeaModel):
         m = m or dict()
         if m.get('Angle') is not None:
             self.angle = m.get('Angle')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Locate') is not None:
             self.locate = m.get('Locate')
         return self
