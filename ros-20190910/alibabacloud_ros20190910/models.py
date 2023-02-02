@@ -12,6 +12,7 @@ class CancelStackOperationRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
+        # test
         self.allowed_stack_operations = allowed_stack_operations
         self.cancel_type = cancel_type
         self.region_id = region_id
@@ -5056,6 +5057,74 @@ class GetFeatureDetailsResponseBodyResourceCleaner(TeaModel):
         return self
 
 
+class GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes(TeaModel):
+    def __init__(
+        self,
+        properties: List[str] = None,
+        resource_type: str = None,
+    ):
+        self.properties = properties
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.properties is not None:
+            result['Properties'] = self.properties
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetFeatureDetailsResponseBodyTemplateParameterConstraints(TeaModel):
+    def __init__(
+        self,
+        supported_resource_types: List[GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes] = None,
+    ):
+        self.supported_resource_types = supported_resource_types
+
+    def validate(self):
+        if self.supported_resource_types:
+            for k in self.supported_resource_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SupportedResourceTypes'] = []
+        if self.supported_resource_types is not None:
+            for k in self.supported_resource_types:
+                result['SupportedResourceTypes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.supported_resource_types = []
+        if m.get('SupportedResourceTypes') is not None:
+            for k in m.get('SupportedResourceTypes'):
+                temp_model = GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes()
+                self.supported_resource_types.append(temp_model.from_map(k))
+        return self
+
+
 class GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes(TeaModel):
     def __init__(
         self,
@@ -5357,17 +5426,21 @@ class GetFeatureDetailsResponseBody(TeaModel):
         self,
         request_id: str = None,
         resource_cleaner: GetFeatureDetailsResponseBodyResourceCleaner = None,
+        template_parameter_constraints: GetFeatureDetailsResponseBodyTemplateParameterConstraints = None,
         template_scratch: GetFeatureDetailsResponseBodyTemplateScratch = None,
         terraform: GetFeatureDetailsResponseBodyTerraform = None,
     ):
         self.request_id = request_id
         self.resource_cleaner = resource_cleaner
+        self.template_parameter_constraints = template_parameter_constraints
         self.template_scratch = template_scratch
         self.terraform = terraform
 
     def validate(self):
         if self.resource_cleaner:
             self.resource_cleaner.validate()
+        if self.template_parameter_constraints:
+            self.template_parameter_constraints.validate()
         if self.template_scratch:
             self.template_scratch.validate()
         if self.terraform:
@@ -5383,6 +5456,8 @@ class GetFeatureDetailsResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_cleaner is not None:
             result['ResourceCleaner'] = self.resource_cleaner.to_map()
+        if self.template_parameter_constraints is not None:
+            result['TemplateParameterConstraints'] = self.template_parameter_constraints.to_map()
         if self.template_scratch is not None:
             result['TemplateScratch'] = self.template_scratch.to_map()
         if self.terraform is not None:
@@ -5396,6 +5471,9 @@ class GetFeatureDetailsResponseBody(TeaModel):
         if m.get('ResourceCleaner') is not None:
             temp_model = GetFeatureDetailsResponseBodyResourceCleaner()
             self.resource_cleaner = temp_model.from_map(m['ResourceCleaner'])
+        if m.get('TemplateParameterConstraints') is not None:
+            temp_model = GetFeatureDetailsResponseBodyTemplateParameterConstraints()
+            self.template_parameter_constraints = temp_model.from_map(m['TemplateParameterConstraints'])
         if m.get('TemplateScratch') is not None:
             temp_model = GetFeatureDetailsResponseBodyTemplateScratch()
             self.template_scratch = temp_model.from_map(m['TemplateScratch'])
@@ -9149,6 +9227,45 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportR
         return self
 
 
+class GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        self.error_message = error_message
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
 class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
     def __init__(
         self,
@@ -9160,6 +9277,7 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         illegal_value_by_rules: List[Any] = None,
         not_support_resources: List[GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportResources] = None,
         parameter_key: str = None,
+        query_errors: List[GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors] = None,
         type: str = None,
     ):
         self.allowed_values = allowed_values
@@ -9170,11 +9288,16 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         self.illegal_value_by_rules = illegal_value_by_rules
         self.not_support_resources = not_support_resources
         self.parameter_key = parameter_key
+        self.query_errors = query_errors
         self.type = type
 
     def validate(self):
         if self.not_support_resources:
             for k in self.not_support_resources:
+                if k:
+                    k.validate()
+        if self.query_errors:
+            for k in self.query_errors:
                 if k:
                     k.validate()
 
@@ -9202,6 +9325,10 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
                 result['NotSupportResources'].append(k.to_map() if k else None)
         if self.parameter_key is not None:
             result['ParameterKey'] = self.parameter_key
+        result['QueryErrors'] = []
+        if self.query_errors is not None:
+            for k in self.query_errors:
+                result['QueryErrors'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -9227,6 +9354,11 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
                 self.not_support_resources.append(temp_model.from_map(k))
         if m.get('ParameterKey') is not None:
             self.parameter_key = m.get('ParameterKey')
+        self.query_errors = []
+        if m.get('QueryErrors') is not None:
+            for k in m.get('QueryErrors'):
+                temp_model = GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors()
+                self.query_errors.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -15953,6 +16085,7 @@ class UpdateStackRequest(TeaModel):
         self,
         client_token: str = None,
         disable_rollback: bool = None,
+        dry_run: bool = None,
         parallelism: int = None,
         parameters: List[UpdateStackRequestParameters] = None,
         ram_role_name: str = None,
@@ -15974,6 +16107,7 @@ class UpdateStackRequest(TeaModel):
     ):
         self.client_token = client_token
         self.disable_rollback = disable_rollback
+        self.dry_run = dry_run
         self.parallelism = parallelism
         self.parameters = parameters
         self.ram_role_name = ram_role_name
@@ -16013,6 +16147,8 @@ class UpdateStackRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.disable_rollback is not None:
             result['DisableRollback'] = self.disable_rollback
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.parallelism is not None:
             result['Parallelism'] = self.parallelism
         result['Parameters'] = []
@@ -16061,6 +16197,8 @@ class UpdateStackRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DisableRollback') is not None:
             self.disable_rollback = m.get('DisableRollback')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Parallelism') is not None:
             self.parallelism = m.get('Parallelism')
         self.parameters = []
@@ -16106,14 +16244,24 @@ class UpdateStackRequest(TeaModel):
         return self
 
 
-class UpdateStackResponseBody(TeaModel):
+class UpdateStackResponseBodyDryRunResult(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        stack_id: str = None,
+        parameters_allowed_to_be_modified: List[str] = None,
+        parameters_cause_interruption_if_modified: List[str] = None,
+        parameters_conditionally_allowed_to_be_modified: List[str] = None,
+        parameters_conditionally_cause_interruption_if_modified: List[str] = None,
+        parameters_not_allowed_to_be_modified: List[str] = None,
+        parameters_uncertainly_allowed_to_be_modified: List[str] = None,
+        parameters_uncertainly_cause_interruption_if_modified: List[str] = None,
     ):
-        self.request_id = request_id
-        self.stack_id = stack_id
+        self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
+        self.parameters_cause_interruption_if_modified = parameters_cause_interruption_if_modified
+        self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
+        self.parameters_conditionally_cause_interruption_if_modified = parameters_conditionally_cause_interruption_if_modified
+        self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
+        self.parameters_uncertainly_allowed_to_be_modified = parameters_uncertainly_allowed_to_be_modified
+        self.parameters_uncertainly_cause_interruption_if_modified = parameters_uncertainly_cause_interruption_if_modified
 
     def validate(self):
         pass
@@ -16124,6 +16272,64 @@ class UpdateStackResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.parameters_allowed_to_be_modified is not None:
+            result['ParametersAllowedToBeModified'] = self.parameters_allowed_to_be_modified
+        if self.parameters_cause_interruption_if_modified is not None:
+            result['ParametersCauseInterruptionIfModified'] = self.parameters_cause_interruption_if_modified
+        if self.parameters_conditionally_allowed_to_be_modified is not None:
+            result['ParametersConditionallyAllowedToBeModified'] = self.parameters_conditionally_allowed_to_be_modified
+        if self.parameters_conditionally_cause_interruption_if_modified is not None:
+            result['ParametersConditionallyCauseInterruptionIfModified'] = self.parameters_conditionally_cause_interruption_if_modified
+        if self.parameters_not_allowed_to_be_modified is not None:
+            result['ParametersNotAllowedToBeModified'] = self.parameters_not_allowed_to_be_modified
+        if self.parameters_uncertainly_allowed_to_be_modified is not None:
+            result['ParametersUncertainlyAllowedToBeModified'] = self.parameters_uncertainly_allowed_to_be_modified
+        if self.parameters_uncertainly_cause_interruption_if_modified is not None:
+            result['ParametersUncertainlyCauseInterruptionIfModified'] = self.parameters_uncertainly_cause_interruption_if_modified
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParametersAllowedToBeModified') is not None:
+            self.parameters_allowed_to_be_modified = m.get('ParametersAllowedToBeModified')
+        if m.get('ParametersCauseInterruptionIfModified') is not None:
+            self.parameters_cause_interruption_if_modified = m.get('ParametersCauseInterruptionIfModified')
+        if m.get('ParametersConditionallyAllowedToBeModified') is not None:
+            self.parameters_conditionally_allowed_to_be_modified = m.get('ParametersConditionallyAllowedToBeModified')
+        if m.get('ParametersConditionallyCauseInterruptionIfModified') is not None:
+            self.parameters_conditionally_cause_interruption_if_modified = m.get('ParametersConditionallyCauseInterruptionIfModified')
+        if m.get('ParametersNotAllowedToBeModified') is not None:
+            self.parameters_not_allowed_to_be_modified = m.get('ParametersNotAllowedToBeModified')
+        if m.get('ParametersUncertainlyAllowedToBeModified') is not None:
+            self.parameters_uncertainly_allowed_to_be_modified = m.get('ParametersUncertainlyAllowedToBeModified')
+        if m.get('ParametersUncertainlyCauseInterruptionIfModified') is not None:
+            self.parameters_uncertainly_cause_interruption_if_modified = m.get('ParametersUncertainlyCauseInterruptionIfModified')
+        return self
+
+
+class UpdateStackResponseBody(TeaModel):
+    def __init__(
+        self,
+        dry_run_result: UpdateStackResponseBodyDryRunResult = None,
+        request_id: str = None,
+        stack_id: str = None,
+    ):
+        self.dry_run_result = dry_run_result
+        self.request_id = request_id
+        self.stack_id = stack_id
+
+    def validate(self):
+        if self.dry_run_result:
+            self.dry_run_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.stack_id is not None:
@@ -16132,6 +16338,9 @@ class UpdateStackResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRunResult') is not None:
+            temp_model = UpdateStackResponseBodyDryRunResult()
+            self.dry_run_result = temp_model.from_map(m['DryRunResult'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('StackId') is not None:
@@ -17859,6 +18068,69 @@ class ValidateTemplateResponseBodyResources(TeaModel):
         return self
 
 
+class ValidateTemplateResponseBodyUpdateInfo(TeaModel):
+    def __init__(
+        self,
+        parameters_allowed_to_be_modified: List[str] = None,
+        parameters_cause_interruption_if_modified: List[str] = None,
+        parameters_conditionally_allowed_to_be_modified: List[str] = None,
+        parameters_conditionally_cause_interruption_if_modified: List[str] = None,
+        parameters_not_allowed_to_be_modified: List[str] = None,
+        parameters_uncertainly_allowed_to_be_modified: List[str] = None,
+        parameters_uncertainly_cause_interruption_if_modified: List[str] = None,
+    ):
+        self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
+        self.parameters_cause_interruption_if_modified = parameters_cause_interruption_if_modified
+        self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
+        self.parameters_conditionally_cause_interruption_if_modified = parameters_conditionally_cause_interruption_if_modified
+        self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
+        self.parameters_uncertainly_allowed_to_be_modified = parameters_uncertainly_allowed_to_be_modified
+        self.parameters_uncertainly_cause_interruption_if_modified = parameters_uncertainly_cause_interruption_if_modified
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters_allowed_to_be_modified is not None:
+            result['ParametersAllowedToBeModified'] = self.parameters_allowed_to_be_modified
+        if self.parameters_cause_interruption_if_modified is not None:
+            result['ParametersCauseInterruptionIfModified'] = self.parameters_cause_interruption_if_modified
+        if self.parameters_conditionally_allowed_to_be_modified is not None:
+            result['ParametersConditionallyAllowedToBeModified'] = self.parameters_conditionally_allowed_to_be_modified
+        if self.parameters_conditionally_cause_interruption_if_modified is not None:
+            result['ParametersConditionallyCauseInterruptionIfModified'] = self.parameters_conditionally_cause_interruption_if_modified
+        if self.parameters_not_allowed_to_be_modified is not None:
+            result['ParametersNotAllowedToBeModified'] = self.parameters_not_allowed_to_be_modified
+        if self.parameters_uncertainly_allowed_to_be_modified is not None:
+            result['ParametersUncertainlyAllowedToBeModified'] = self.parameters_uncertainly_allowed_to_be_modified
+        if self.parameters_uncertainly_cause_interruption_if_modified is not None:
+            result['ParametersUncertainlyCauseInterruptionIfModified'] = self.parameters_uncertainly_cause_interruption_if_modified
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParametersAllowedToBeModified') is not None:
+            self.parameters_allowed_to_be_modified = m.get('ParametersAllowedToBeModified')
+        if m.get('ParametersCauseInterruptionIfModified') is not None:
+            self.parameters_cause_interruption_if_modified = m.get('ParametersCauseInterruptionIfModified')
+        if m.get('ParametersConditionallyAllowedToBeModified') is not None:
+            self.parameters_conditionally_allowed_to_be_modified = m.get('ParametersConditionallyAllowedToBeModified')
+        if m.get('ParametersConditionallyCauseInterruptionIfModified') is not None:
+            self.parameters_conditionally_cause_interruption_if_modified = m.get('ParametersConditionallyCauseInterruptionIfModified')
+        if m.get('ParametersNotAllowedToBeModified') is not None:
+            self.parameters_not_allowed_to_be_modified = m.get('ParametersNotAllowedToBeModified')
+        if m.get('ParametersUncertainlyAllowedToBeModified') is not None:
+            self.parameters_uncertainly_allowed_to_be_modified = m.get('ParametersUncertainlyAllowedToBeModified')
+        if m.get('ParametersUncertainlyCauseInterruptionIfModified') is not None:
+            self.parameters_uncertainly_cause_interruption_if_modified = m.get('ParametersUncertainlyCauseInterruptionIfModified')
+        return self
+
+
 class ValidateTemplateResponseBody(TeaModel):
     def __init__(
         self,
@@ -17868,6 +18140,7 @@ class ValidateTemplateResponseBody(TeaModel):
         request_id: str = None,
         resource_types: ValidateTemplateResponseBodyResourceTypes = None,
         resources: List[ValidateTemplateResponseBodyResources] = None,
+        update_info: ValidateTemplateResponseBodyUpdateInfo = None,
     ):
         self.description = description
         self.outputs = outputs
@@ -17875,6 +18148,7 @@ class ValidateTemplateResponseBody(TeaModel):
         self.request_id = request_id
         self.resource_types = resource_types
         self.resources = resources
+        self.update_info = update_info
 
     def validate(self):
         if self.outputs:
@@ -17887,6 +18161,8 @@ class ValidateTemplateResponseBody(TeaModel):
             for k in self.resources:
                 if k:
                     k.validate()
+        if self.update_info:
+            self.update_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -17910,6 +18186,8 @@ class ValidateTemplateResponseBody(TeaModel):
         if self.resources is not None:
             for k in self.resources:
                 result['Resources'].append(k.to_map() if k else None)
+        if self.update_info is not None:
+            result['UpdateInfo'] = self.update_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -17933,6 +18211,9 @@ class ValidateTemplateResponseBody(TeaModel):
             for k in m.get('Resources'):
                 temp_model = ValidateTemplateResponseBodyResources()
                 self.resources.append(temp_model.from_map(k))
+        if m.get('UpdateInfo') is not None:
+            temp_model = ValidateTemplateResponseBodyUpdateInfo()
+            self.update_info = temp_model.from_map(m['UpdateInfo'])
         return self
 
 
