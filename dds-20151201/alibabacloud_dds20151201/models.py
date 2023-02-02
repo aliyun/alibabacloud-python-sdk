@@ -2991,8 +2991,8 @@ class DescribeActiveOperationTaskTypeResponseBodyTypeList(TeaModel):
         self.count = count
         # The type of the task. Valid values:
         # 
-        # *   **rds_apsaradb_transfer**: instance migration
-        # *   **rds_apsaradb_upgrade**: minor version update
+        # *   **rds\_apsaradb\_transfer**: instance migration
+        # *   **rds\_apsaradb\_upgrade**: minor version update
         self.task_type = task_type
         # The task type (English).
         self.task_type_info_en = task_type_info_en
@@ -6106,6 +6106,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         dbinstance_status: str = None,
         dbinstance_storage: int = None,
         dbinstance_type: str = None,
+        destroy_time: str = None,
         engine: str = None,
         engine_version: str = None,
         expire_time: str = None,
@@ -6130,6 +6131,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         secondary_zone_id: str = None,
         shard_list: DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList = None,
         storage_engine: str = None,
+        storage_type: str = None,
         tags: DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags = None,
         vpccloud_instance_ids: str = None,
         vpcid: str = None,
@@ -6172,6 +6174,11 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # *   **replicate**: replica set instance
         # *   **sharding**: sharded cluster instance
         self.dbinstance_type = dbinstance_type
+        # The time when the instance data was destroyed. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.  
+        # 
+        # > - Subscription instances are released 15 days after expiration. After an instance is released, its data is deleted and cannot be restored.
+        # > - Pay-as-you-go instances are locked after the payments have been overdue for longer than 24 hours. The instances are released after the payments have been overdue for longer than 15 days. The data of released instances is deleted and cannot be restored.
+        self.destroy_time = destroy_time
         # The database engine of the instance.
         self.engine = engine
         # The database engine version of the instance. Valid values:
@@ -6308,6 +6315,11 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.shard_list = shard_list
         # The storage engine of the instance.
         self.storage_engine = storage_engine
+        # The storage type of the instance. Valid values:
+        # 
+        # *   **cloud_essd**: enhanced SSD (ESSD)
+        # *   **local_ssd**: local SSD
+        self.storage_type = storage_type
         # Details of the instance tags.
         self.tags = tags
         # The ID of the instance.
@@ -6373,6 +6385,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             result['DBInstanceStorage'] = self.dbinstance_storage
         if self.dbinstance_type is not None:
             result['DBInstanceType'] = self.dbinstance_type
+        if self.destroy_time is not None:
+            result['DestroyTime'] = self.destroy_time
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -6421,6 +6435,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             result['ShardList'] = self.shard_list.to_map()
         if self.storage_engine is not None:
             result['StorageEngine'] = self.storage_engine
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.vpccloud_instance_ids is not None:
@@ -6462,6 +6478,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             self.dbinstance_storage = m.get('DBInstanceStorage')
         if m.get('DBInstanceType') is not None:
             self.dbinstance_type = m.get('DBInstanceType')
+        if m.get('DestroyTime') is not None:
+            self.destroy_time = m.get('DestroyTime')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -6513,6 +6531,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             self.shard_list = temp_model.from_map(m['ShardList'])
         if m.get('StorageEngine') is not None:
             self.storage_engine = m.get('StorageEngine')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('Tags') is not None:
             temp_model = DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -9265,563 +9285,6 @@ class DescribeDBInstancesOverviewResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDBInstancesOverviewResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeDedicatedClusterInstanceListRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        dedicated_host_name: str = None,
-        engine: str = None,
-        engine_version: str = None,
-        instance_id: str = None,
-        instance_net_type: str = None,
-        instance_status: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        page_number: int = None,
-        page_size: int = None,
-        region_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        security_token: str = None,
-        zone_id: str = None,
-    ):
-        # The ID of the dedicated cluster to which the instance belongs.
-        # 
-        # >  Separate multiple IDs with commas (,).
-        self.cluster_id = cluster_id
-        # The name of the dedicated host.
-        # 
-        # >  Separate multiple names with commas (,).
-        self.dedicated_host_name = dedicated_host_name
-        # The database engine. Set the value to MongoDB.
-        self.engine = engine
-        # The version number of the database engine. Set the value to **4.2**.
-        self.engine_version = engine_version
-        # The ID of the ApsaraDB for MongoDB instance.
-        # 
-        # >  Separate multiple IDs with commas (,).
-        self.instance_id = instance_id
-        # The network type of the instance. Valid values:
-        # 
-        # *   0: The instance is connected over the Internet.
-        # *   1: The instance is connected over an internal network.
-        # *   2\. The instance is deployed in a VPC.
-        # 
-        # Default value: 1.
-        self.instance_net_type = instance_net_type
-        # The status of the instance. For information about the valid values of this parameter, see [Valid values of the InstanceStatus parameter for DescribeDedicatedClusterInstanceList](~~190071~~).
-        self.instance_status = instance_status
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The number of the page to return. Valid values: any non-zero positive integer. Default value: **1**.
-        self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
-        self.page_size = page_size
-        # The ID of the region. You can call the [DescribeRegions](~~61933~~) operation to query the most recent region list.
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
-        # The ID of the zone. You can call [DescribeZones](~~61933~~) to query the zone ID.
-        self.zone_id = zone_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.dedicated_host_name is not None:
-            result['DedicatedHostName'] = self.dedicated_host_name
-        if self.engine is not None:
-            result['Engine'] = self.engine
-        if self.engine_version is not None:
-            result['EngineVersion'] = self.engine_version
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.instance_net_type is not None:
-            result['InstanceNetType'] = self.instance_net_type
-        if self.instance_status is not None:
-            result['InstanceStatus'] = self.instance_status
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('DedicatedHostName') is not None:
-            self.dedicated_host_name = m.get('DedicatedHostName')
-        if m.get('Engine') is not None:
-            self.engine = m.get('Engine')
-        if m.get('EngineVersion') is not None:
-            self.engine_version = m.get('EngineVersion')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('InstanceNetType') is not None:
-            self.instance_net_type = m.get('InstanceNetType')
-        if m.get('InstanceStatus') is not None:
-            self.instance_status = m.get('InstanceStatus')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        return self
-
-
-class DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes(TeaModel):
-    def __init__(
-        self,
-        dedicated_host_name: str = None,
-        ins_name: str = None,
-        node_id: int = None,
-        node_ip: str = None,
-        node_type: str = None,
-        port: int = None,
-        role: str = None,
-        zone_id: str = None,
-    ):
-        # The ID of the host to which the instances in a dedicated cluster belong.
-        self.dedicated_host_name = dedicated_host_name
-        # The name of the shard.
-        self.ins_name = ins_name
-        # The ID of the node.
-        self.node_id = node_id
-        # The IP address of the node.
-        self.node_ip = node_ip
-        # The type of the node.
-        self.node_type = node_type
-        # The port number corresponding to the node.
-        self.port = port
-        # The role of the node. Valid values:
-        # 
-        # *   **master**: a primary node.
-        # *   **slave**: a secondary node.
-        self.role = role
-        # The zone ID of the instance.
-        self.zone_id = zone_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dedicated_host_name is not None:
-            result['DedicatedHostName'] = self.dedicated_host_name
-        if self.ins_name is not None:
-            result['InsName'] = self.ins_name
-        if self.node_id is not None:
-            result['NodeId'] = self.node_id
-        if self.node_ip is not None:
-            result['NodeIp'] = self.node_ip
-        if self.node_type is not None:
-            result['NodeType'] = self.node_type
-        if self.port is not None:
-            result['Port'] = self.port
-        if self.role is not None:
-            result['Role'] = self.role
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DedicatedHostName') is not None:
-            self.dedicated_host_name = m.get('DedicatedHostName')
-        if m.get('InsName') is not None:
-            self.ins_name = m.get('InsName')
-        if m.get('NodeId') is not None:
-            self.node_id = m.get('NodeId')
-        if m.get('NodeIp') is not None:
-            self.node_ip = m.get('NodeIp')
-        if m.get('NodeType') is not None:
-            self.node_type = m.get('NodeType')
-        if m.get('Port') is not None:
-            self.port = m.get('Port')
-        if m.get('Role') is not None:
-            self.role = m.get('Role')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        return self
-
-
-class DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList(TeaModel):
-    def __init__(
-        self,
-        instance_nodes: List[DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes] = None,
-    ):
-        self.instance_nodes = instance_nodes
-
-    def validate(self):
-        if self.instance_nodes:
-            for k in self.instance_nodes:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['InstanceNodes'] = []
-        if self.instance_nodes is not None:
-            for k in self.instance_nodes:
-                result['InstanceNodes'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.instance_nodes = []
-        if m.get('InstanceNodes') is not None:
-            for k in m.get('InstanceNodes'):
-                temp_model = DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeListInstanceNodes()
-                self.instance_nodes.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance(TeaModel):
-    def __init__(
-        self,
-        character_type: str = None,
-        cluster_id: str = None,
-        cluster_name: str = None,
-        create_time: str = None,
-        custom_id: str = None,
-        engine: str = None,
-        engine_version: str = None,
-        instance_class: str = None,
-        instance_id: str = None,
-        instance_name: str = None,
-        instance_node_list: DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList = None,
-        instance_status: str = None,
-        maintain_end_time: str = None,
-        maintain_start_time: str = None,
-        region: str = None,
-        region_id: str = None,
-        storage_type: str = None,
-        vpc_id: str = None,
-        vswitch_id: str = None,
-        zone_id: str = None,
-    ):
-        # The type of the ApsaraDB for MongoDB instance. Valid value: **normal**.
-        # 
-        # **normal**: a replica set instance.
-        self.character_type = character_type
-        # The ID of the dedicated cluster to which the instance belongs.
-        self.cluster_id = cluster_id
-        # The name of the dedicated cluster to which the instance belongs.
-        self.cluster_name = cluster_name
-        # The time when the instance was created. The time is displayed in the *yyyy*-*MM*-*dd*T*HH*:*mm*:*ss*Z format.
-        self.create_time = create_time
-        # The instance ID of the backend O\&M platform.
-        self.custom_id = custom_id
-        # The database engine. Valid value: **MongoDB**.
-        self.engine = engine
-        # The version number of the database engine. Valid value: **4.2**.
-        self.engine_version = engine_version
-        # The instance type. For more information, see **Table 1. Standalone or replica set instance types** in [Instance types](~~57141~~).
-        self.instance_class = instance_class
-        # The ID of the ApsaraDB for MongoDB instance.
-        self.instance_id = instance_id
-        # The name of the ApsaraDB for MongoDB instance.
-        self.instance_name = instance_name
-        # Details about the instance nodes.
-        self.instance_node_list = instance_node_list
-        # The status of the instance. More details of status, please see [instance status list](~~190071~~).
-        self.instance_status = instance_status
-        # The end time of the maintenance window. The time is in the *HH:mmZ* format. The time is displayed in UTC.
-        self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
-        self.maintain_start_time = maintain_start_time
-        # The region where the instance is deployed.
-        self.region = region
-        # The ID of the region where the instance is deployed.
-        self.region_id = region_id
-        # The type of the storage.
-        self.storage_type = storage_type
-        # The ID of the VPC.
-        self.vpc_id = vpc_id
-        # The vSwitch ID of the VPC.
-        self.vswitch_id = vswitch_id
-        # The zone ID of the instance.
-        self.zone_id = zone_id
-
-    def validate(self):
-        if self.instance_node_list:
-            self.instance_node_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.character_type is not None:
-            result['CharacterType'] = self.character_type
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.cluster_name is not None:
-            result['ClusterName'] = self.cluster_name
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.custom_id is not None:
-            result['CustomId'] = self.custom_id
-        if self.engine is not None:
-            result['Engine'] = self.engine
-        if self.engine_version is not None:
-            result['EngineVersion'] = self.engine_version
-        if self.instance_class is not None:
-            result['InstanceClass'] = self.instance_class
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
-        if self.instance_node_list is not None:
-            result['InstanceNodeList'] = self.instance_node_list.to_map()
-        if self.instance_status is not None:
-            result['InstanceStatus'] = self.instance_status
-        if self.maintain_end_time is not None:
-            result['MaintainEndTime'] = self.maintain_end_time
-        if self.maintain_start_time is not None:
-            result['MaintainStartTime'] = self.maintain_start_time
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.storage_type is not None:
-            result['StorageType'] = self.storage_type
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
-        if self.vswitch_id is not None:
-            result['VswitchId'] = self.vswitch_id
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CharacterType') is not None:
-            self.character_type = m.get('CharacterType')
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('ClusterName') is not None:
-            self.cluster_name = m.get('ClusterName')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('CustomId') is not None:
-            self.custom_id = m.get('CustomId')
-        if m.get('Engine') is not None:
-            self.engine = m.get('Engine')
-        if m.get('EngineVersion') is not None:
-            self.engine_version = m.get('EngineVersion')
-        if m.get('InstanceClass') is not None:
-            self.instance_class = m.get('InstanceClass')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
-        if m.get('InstanceNodeList') is not None:
-            temp_model = DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstanceInstanceNodeList()
-            self.instance_node_list = temp_model.from_map(m['InstanceNodeList'])
-        if m.get('InstanceStatus') is not None:
-            self.instance_status = m.get('InstanceStatus')
-        if m.get('MaintainEndTime') is not None:
-            self.maintain_end_time = m.get('MaintainEndTime')
-        if m.get('MaintainStartTime') is not None:
-            self.maintain_start_time = m.get('MaintainStartTime')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('StorageType') is not None:
-            self.storage_type = m.get('StorageType')
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
-        if m.get('VswitchId') is not None:
-            self.vswitch_id = m.get('VswitchId')
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-        return self
-
-
-class DescribeDedicatedClusterInstanceListResponseBodyInstances(TeaModel):
-    def __init__(
-        self,
-        db_instance: List[DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance] = None,
-    ):
-        self.db_instance = db_instance
-
-    def validate(self):
-        if self.db_instance:
-            for k in self.db_instance:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['dbInstance'] = []
-        if self.db_instance is not None:
-            for k in self.db_instance:
-                result['dbInstance'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.db_instance = []
-        if m.get('dbInstance') is not None:
-            for k in m.get('dbInstance'):
-                temp_model = DescribeDedicatedClusterInstanceListResponseBodyInstancesDbInstance()
-                self.db_instance.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeDedicatedClusterInstanceListResponseBody(TeaModel):
-    def __init__(
-        self,
-        instances: DescribeDedicatedClusterInstanceListResponseBodyInstances = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        # Details about the instances.
-        self.instances = instances
-        # The number of the page to return.
-        self.page_number = page_number
-        # The number of entries returned per page.
-        self.page_size = page_size
-        # The ID of the request.
-        self.request_id = request_id
-        # The number of instances in the response.
-        self.total_count = total_count
-
-    def validate(self):
-        if self.instances:
-            self.instances.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instances is not None:
-            result['Instances'] = self.instances.to_map()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Instances') is not None:
-            temp_model = DescribeDedicatedClusterInstanceListResponseBodyInstances()
-            self.instances = temp_model.from_map(m['Instances'])
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class DescribeDedicatedClusterInstanceListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeDedicatedClusterInstanceListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeDedicatedClusterInstanceListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15954,6 +15417,7 @@ class EvaluateResourceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
         shards_info: str = None,
+        storage: str = None,
         zone_id: str = None,
     ):
         # The instance type.
@@ -16018,6 +15482,7 @@ class EvaluateResourceRequest(TeaModel):
         #     *   NodeId: the ID of the node. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the node ID.
         #     *   NodeClass: the instance type of the node. For more information, see [Instance types](~~57141~~).
         self.shards_info = shards_info
+        self.storage = storage
         # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
@@ -16056,6 +15521,8 @@ class EvaluateResourceRequest(TeaModel):
             result['SecurityToken'] = self.security_token
         if self.shards_info is not None:
             result['ShardsInfo'] = self.shards_info
+        if self.storage is not None:
+            result['Storage'] = self.storage
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -16088,6 +15555,8 @@ class EvaluateResourceRequest(TeaModel):
             self.security_token = m.get('SecurityToken')
         if m.get('ShardsInfo') is not None:
             self.shards_info = m.get('ShardsInfo')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -17658,17 +17127,21 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
     ):
         # The name of the instance.
         # 
-        # > * The name cannot start with `http://` or `https://`.
-        # > * The name must start with a letter.
-        # > * The name must be 2 to 256 characters in length, and can contain letters, underscores (\_), hyphens (-), and digits.
-        self.dbinstance_description = dbinstance_description
-        # The ID of the instance.
+        # > 
         # 
-        # >  To modify the name of a shard or mongos node in a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # *   The name cannot start with `http://` or `https://`.
+        # 
+        # *   The name must start with a letter.
+        # 
+        # *   The name must be 2 to 256 characters in length, and can contain letters, underscores (\_), hyphens (-), and digits.
+        self.dbinstance_description = dbinstance_description
+        # The ID of the instance
+        # 
+        # > To modify the name of a shard or mongos node in a sharded cluster instance, you must also specify the **NodeId** parameter.
         self.dbinstance_id = dbinstance_id
         # The ID of the shard or mongos node in the sharded cluster instance.
         # 
-        # >  This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # > This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18554,6 +18027,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         dbinstance_id: str = None,
         dbinstance_storage: str = None,
         effective_time: str = None,
+        extra_param: str = None,
         order_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -18588,6 +18062,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # *   **Immediately**: The configurations immediately take effect.
         # *   **MaintainTime**: The configurations take effect during the maintenance window of the instance.
         self.effective_time = effective_time
+        self.extra_param = extra_param
         # The type of the modification. Valid values:
         # 
         # *   **UPGRADE**\
@@ -18637,6 +18112,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['DBInstanceStorage'] = self.dbinstance_storage
         if self.effective_time is not None:
             result['EffectiveTime'] = self.effective_time
+        if self.extra_param is not None:
+            result['ExtraParam'] = self.extra_param
         if self.order_type is not None:
             result['OrderType'] = self.order_type
         if self.owner_account is not None:
@@ -18671,6 +18148,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.dbinstance_storage = m.get('DBInstanceStorage')
         if m.get('EffectiveTime') is not None:
             self.effective_time = m.get('EffectiveTime')
+        if m.get('ExtraParam') is not None:
+            self.extra_param = m.get('ExtraParam')
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
         if m.get('OwnerAccount') is not None:
@@ -21593,38 +21072,32 @@ class TransformInstanceChargeTypeRequest(TeaModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables automatic payment.
-        # *   **false**: disables automatic payment. For more information, see [Renew an ApsaraDB for MongoDB subscription instance](~~85052~~).
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  Default value: **true**.
+        # > The default value is **true**.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  Default value: **false**.
+        # > The default value is **false**.
         self.auto_renew = auto_renew
         # The business information. This is an additional parameter.
         self.business_info = business_info
         # The billing method of the instance. Valid values:
         # 
-        # *   **PostPaid: pay-as-you-go.**\
         # *   **PrePaid**: subscription
-        # 
-        # >  If you specify this parameter to **PrePaid**, you must also specify the **Period** parameter.
+        # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
         # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
-        # The ID of the instance.
+        # The ID of the instance
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription period of the instance. Unit: months.
-        # 
-        # Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
-        # 
-        # >  If you set the ChargeType property to PrePaid, you must configure this property.
+        # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -21969,27 +21442,27 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to unbind all tags from the instance. Valid values:
+        # Specifies whether to remove all tags from the instances. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: Remove all tags from the instances.
+        # *   **false**: Do not remove all tags from the instances.
         # 
         # > * Default value: **false**.
-        # > * If you specify both this parameter and **TagKey.N**, this parameter is invalid.
+        # > * If you specify the **TagKey** parameter together with this parameter, this parameter does not take effect.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the resource group to which the instances you want to query belong.
         self.resource_group_id = resource_group_id
-        # The resource IDs.
+        # The list of resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
         self.resource_type = resource_type
-        # The keys of the tags.
+        # The tag keys of the resource.
         self.tag_key = tag_key
 
     def validate(self):

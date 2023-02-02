@@ -4041,136 +4041,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_overview_with_options_async(request, runtime)
 
-    def describe_dedicated_cluster_instance_list_with_options(
-        self,
-        request: dds_20151201_models.DescribeDedicatedClusterInstanceListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeDedicatedClusterInstanceListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.dedicated_host_name):
-            query['DedicatedHostName'] = request.dedicated_host_name
-        if not UtilClient.is_unset(request.engine):
-            query['Engine'] = request.engine
-        if not UtilClient.is_unset(request.engine_version):
-            query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_net_type):
-            query['InstanceNetType'] = request.instance_net_type
-        if not UtilClient.is_unset(request.instance_status):
-            query['InstanceStatus'] = request.instance_status
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDedicatedClusterInstanceList',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeDedicatedClusterInstanceListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dedicated_cluster_instance_list_with_options_async(
-        self,
-        request: dds_20151201_models.DescribeDedicatedClusterInstanceListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeDedicatedClusterInstanceListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.dedicated_host_name):
-            query['DedicatedHostName'] = request.dedicated_host_name
-        if not UtilClient.is_unset(request.engine):
-            query['Engine'] = request.engine
-        if not UtilClient.is_unset(request.engine_version):
-            query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_net_type):
-            query['InstanceNetType'] = request.instance_net_type
-        if not UtilClient.is_unset(request.instance_status):
-            query['InstanceStatus'] = request.instance_status
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDedicatedClusterInstanceList',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeDedicatedClusterInstanceListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dedicated_cluster_instance_list(
-        self,
-        request: dds_20151201_models.DescribeDedicatedClusterInstanceListRequest,
-    ) -> dds_20151201_models.DescribeDedicatedClusterInstanceListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dedicated_cluster_instance_list_with_options(request, runtime)
-
-    async def describe_dedicated_cluster_instance_list_async(
-        self,
-        request: dds_20151201_models.DescribeDedicatedClusterInstanceListRequest,
-    ) -> dds_20151201_models.DescribeDedicatedClusterInstanceListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dedicated_cluster_instance_list_with_options_async(request, runtime)
-
     def describe_error_log_records_with_options(
         self,
         request: dds_20151201_models.DescribeErrorLogRecordsRequest,
@@ -6584,6 +6454,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shards_info):
             query['ShardsInfo'] = request.shards_info
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -6646,6 +6518,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shards_info):
             query['ShardsInfo'] = request.shards_info
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -8424,6 +8298,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.effective_time):
             query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.extra_param):
+            query['ExtraParam'] = request.extra_param
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_account):
@@ -8488,6 +8364,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.effective_time):
             query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.extra_param):
+            query['ExtraParam'] = request.extra_param
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
         if not UtilClient.is_unset(request.owner_account):
@@ -10805,12 +10683,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
         """
-        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
-        When calling this interface, the instance must meet the following conditions:
-        - The instance status is Running.
-        - The instance does not have a conversion payment type order that has not been paid.
-        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
-        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the Running state.
+        *   Your instance has no unpaid billing method change orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10867,12 +10745,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
         """
-        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
-        When calling this interface, the instance must meet the following conditions:
-        - The instance status is Running.
-        - The instance does not have a conversion payment type order that has not been paid.
-        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
-        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the Running state.
+        *   Your instance has no unpaid billing method change orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10928,12 +10806,12 @@ class Client(OpenApiClient):
         request: dds_20151201_models.TransformInstanceChargeTypeRequest,
     ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
         """
-        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
-        When calling this interface, the instance must meet the following conditions:
-        - The instance status is Running.
-        - The instance does not have a conversion payment type order that has not been paid.
-        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
-        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the Running state.
+        *   Your instance has no unpaid billing method change orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -10946,12 +10824,12 @@ class Client(OpenApiClient):
         request: dds_20151201_models.TransformInstanceChargeTypeRequest,
     ) -> dds_20151201_models.TransformInstanceChargeTypeResponse:
         """
-        Please ensure that you have fully understood the charging method and [Price](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of MongoDB products before using this API.
-        When calling this interface, the instance must meet the following conditions:
-        - The instance status is Running.
-        - The instance does not have a conversion payment type order that has not been paid.
-        - The instance type cannot be a historical type (no longer sold). For the list of historical types, see [Instance Type Table](~~57141~~).
-        > To convert the payment type of the historical type instance, first call the [ModifyDBInstanceSpec] (~~61816~~) or [ModifyNodeSpec] (~~61923~~) interface to change the instance type.
+        Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB.
+        Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
+        *   The instance is in the Running state.
+        *   Your instance has no unpaid billing method change orders.
+        *   The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](~~57141~~).
+        > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](~~61816~~) or [ModifyNodeSpec](~~61923~~) operation to first change the instance type.
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -11129,8 +11007,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        >  You can unbind up to 20 tags at a time.
-        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        - You can remove up to 20 tags at a time.
+        - If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11183,8 +11061,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        >  You can unbind up to 20 tags at a time.
-        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        - You can remove up to 20 tags at a time.
+        - If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11236,8 +11114,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UntagResourcesRequest,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        >  You can unbind up to 20 tags at a time.
-        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        - You can remove up to 20 tags at a time.
+        - If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -11250,8 +11128,8 @@ class Client(OpenApiClient):
         request: dds_20151201_models.UntagResourcesRequest,
     ) -> dds_20151201_models.UntagResourcesResponse:
         """
-        >  You can unbind up to 20 tags at a time.
-        > * When a tag is unbound from all instances, the tag is automatically deleted.
+        - You can remove up to 20 tags at a time.
+        - If you remove a tag from all instances, the tag is automatically deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
