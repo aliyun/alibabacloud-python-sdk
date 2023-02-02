@@ -10,13 +10,25 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that you want to attach to the specified resource.
+        # 
+        # *   If you include this parameter in a request, the value of this parameter cannot be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the tag that you want to attach to the specified resource.
+        # 
+        # *   The value of this parameter can be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -37,16 +49,27 @@ class ListTagResourcesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        resource_type: str = None,
         next_token: str = None,
-        tag: List[ListTagResourcesRequestTag] = None,
         resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The ID of the instance to which the resource whose tags you want to query belongs.
+        # 
+        # > : This parameter is required when you query the tags of a topic or a group.
         self.instance_id = instance_id
-        self.resource_type = resource_type
+        # The token that determines the start point of the query.
         self.next_token = next_token
-        self.tag = tag
+        # The list of resource IDs.
         self.resource_id = resource_id
+        # The type of the resource to which you want to attach tags. Valid values:
+        # 
+        # *   **INSTANCE**\
+        # *   **TOPIC**\
+        # *   **GROUP**\
+        self.resource_type = resource_type
+        # The list of tags that are attached to the resources. A maximum of 20 tags can be included in the list.
+        self.tag = tag
 
     def validate(self):
         if self.tag:
@@ -55,83 +78,100 @@ class ListTagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
                 temp_model = ListTagResourcesRequestTag()
                 self.tag.append(temp_model.from_map(k))
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
         return self
 
 
 class ListTagResourcesResponseBodyTagResources(TeaModel):
     def __init__(
         self,
-        resource_type: str = None,
         instance_id: str = None,
-        tag_value: str = None,
         resource_id: str = None,
+        resource_type: str = None,
         tag_key: str = None,
+        tag_value: str = None,
     ):
-        self.resource_type = resource_type
+        # The ID of the instance.
         self.instance_id = instance_id
-        self.tag_value = tag_value
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource to which you want to attach tags.
+        # 
+        # *   ALIYUN::MQ::INSTANCE: indicates that the resource is an instance.
+        # *   ALIYUN::MQ::TOPIC: indicates that the resource is a topic.
+        # *   ALIYUN::MQ::GROUP: indicates that the resource is a group.
+        self.resource_type = resource_type
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
+        self.tag_value = tag_value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.tag_value is not None:
-            result['TagValue'] = self.tag_value
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('TagValue') is not None:
-            self.tag_value = m.get('TagValue')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -142,8 +182,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The token that determines the start point of the query.
         self.next_token = next_token
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Details of the resource and tags, including the resource ID, the resource type, and the keys and values of tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -153,6 +196,10 @@ class ListTagResourcesResponseBody(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -182,21 +229,30 @@ class ListTagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListTagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -205,6 +261,8 @@ class ListTagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -214,33 +272,43 @@ class ListTagResourcesResponse(TeaModel):
 class OnsConsumerAccumulateRequest(TeaModel):
     def __init__(
         self,
-        group_id: str = None,
         detail: bool = None,
+        group_id: str = None,
         instance_id: str = None,
     ):
-        self.group_id = group_id
+        # Specifies whether to query the details of each topic to which the consumer group subscribes. Valid values:
+        # 
+        # *   **true**: The details of each topic are queried. You can obtain the details from the **DetailInTopicList** response parameter.
+        # *   **false**: The details of each topic are not queried. This is the default value. If you use this value, the value of the **DetailInTopicList** response parameter is empty.
         self.detail = detail
+        # The ID of the consumer group whose message accumulation you want to query.
+        self.group_id = group_id
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
         if self.detail is not None:
             result['Detail'] = self.detail
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
         if m.get('Detail') is not None:
             self.detail = m.get('Detail')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -250,40 +318,48 @@ class OnsConsumerAccumulateResponseBodyDataDetailInTopicListDetailInTopicDo(TeaM
     def __init__(
         self,
         delay_time: int = None,
-        total_diff: int = None,
         last_timestamp: int = None,
         topic: str = None,
+        total_diff: int = None,
     ):
+        # The maximum latency of message consumption in the topic.
         self.delay_time = delay_time
-        self.total_diff = total_diff
+        # The point in time when the latest consumed message in the topic was produced.
         self.last_timestamp = last_timestamp
+        # The name of the topic.
         self.topic = topic
+        # The number of accumulated messages in the topic.
+        self.total_diff = total_diff
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.delay_time is not None:
             result['DelayTime'] = self.delay_time
-        if self.total_diff is not None:
-            result['TotalDiff'] = self.total_diff
         if self.last_timestamp is not None:
             result['LastTimestamp'] = self.last_timestamp
         if self.topic is not None:
             result['Topic'] = self.topic
+        if self.total_diff is not None:
+            result['TotalDiff'] = self.total_diff
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DelayTime') is not None:
             self.delay_time = m.get('DelayTime')
-        if m.get('TotalDiff') is not None:
-            self.total_diff = m.get('TotalDiff')
         if m.get('LastTimestamp') is not None:
             self.last_timestamp = m.get('LastTimestamp')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
+        if m.get('TotalDiff') is not None:
+            self.total_diff = m.get('TotalDiff')
         return self
 
 
@@ -301,6 +377,10 @@ class OnsConsumerAccumulateResponseBodyDataDetailInTopicList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DetailInTopicDo'] = []
         if self.detail_in_topic_do is not None:
@@ -323,36 +403,49 @@ class OnsConsumerAccumulateResponseBodyData(TeaModel):
         self,
         consume_tps: float = None,
         delay_time: int = None,
-        last_timestamp: int = None,
-        total_diff: int = None,
-        online: bool = None,
         detail_in_topic_list: OnsConsumerAccumulateResponseBodyDataDetailInTopicList = None,
+        last_timestamp: int = None,
+        online: bool = None,
+        total_diff: int = None,
     ):
+        # The transactions per second (TPS) for message consumption performed by consumers in the group.
         self.consume_tps = consume_tps
+        # The consumption latency.
         self.delay_time = delay_time
-        self.last_timestamp = last_timestamp
-        self.total_diff = total_diff
-        self.online = online
+        # The information about each topic to which the consumer group subscribes. If the **Detail** parameter in the request is set to **false**, the value of this parameter is empty.
         self.detail_in_topic_list = detail_in_topic_list
+        # The point in time when the latest message that was consumed by a consumer in the consumer group was produced.
+        self.last_timestamp = last_timestamp
+        # Indicates whether the consumer group is online. The group is online if one of the consumers in the group is online. Valid values:
+        # 
+        # *   **true**: The consumer group is online.
+        # *   **false**: The consumer group is offline.
+        self.online = online
+        # The total number of accumulated messages in all topics to which the consumer group subscribes.
+        self.total_diff = total_diff
 
     def validate(self):
         if self.detail_in_topic_list:
             self.detail_in_topic_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.consume_tps is not None:
             result['ConsumeTps'] = self.consume_tps
         if self.delay_time is not None:
             result['DelayTime'] = self.delay_time
-        if self.last_timestamp is not None:
-            result['LastTimestamp'] = self.last_timestamp
-        if self.total_diff is not None:
-            result['TotalDiff'] = self.total_diff
-        if self.online is not None:
-            result['Online'] = self.online
         if self.detail_in_topic_list is not None:
             result['DetailInTopicList'] = self.detail_in_topic_list.to_map()
+        if self.last_timestamp is not None:
+            result['LastTimestamp'] = self.last_timestamp
+        if self.online is not None:
+            result['Online'] = self.online
+        if self.total_diff is not None:
+            result['TotalDiff'] = self.total_diff
         return result
 
     def from_map(self, m: dict = None):
@@ -361,46 +454,52 @@ class OnsConsumerAccumulateResponseBodyData(TeaModel):
             self.consume_tps = m.get('ConsumeTps')
         if m.get('DelayTime') is not None:
             self.delay_time = m.get('DelayTime')
-        if m.get('LastTimestamp') is not None:
-            self.last_timestamp = m.get('LastTimestamp')
-        if m.get('TotalDiff') is not None:
-            self.total_diff = m.get('TotalDiff')
-        if m.get('Online') is not None:
-            self.online = m.get('Online')
         if m.get('DetailInTopicList') is not None:
             temp_model = OnsConsumerAccumulateResponseBodyDataDetailInTopicList()
             self.detail_in_topic_list = temp_model.from_map(m['DetailInTopicList'])
+        if m.get('LastTimestamp') is not None:
+            self.last_timestamp = m.get('LastTimestamp')
+        if m.get('Online') is not None:
+            self.online = m.get('Online')
+        if m.get('TotalDiff') is not None:
+            self.total_diff = m.get('TotalDiff')
         return self
 
 
 class OnsConsumerAccumulateResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsConsumerAccumulateResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The information about message accumulation of topics to which the consumer group subscribes.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsConsumerAccumulateResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -408,21 +507,30 @@ class OnsConsumerAccumulateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsConsumerAccumulateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -431,6 +539,8 @@ class OnsConsumerAccumulateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsConsumerAccumulateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -443,13 +553,19 @@ class OnsConsumerGetConnectionRequest(TeaModel):
         group_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the consumer group whose client connection status you want to query.
         self.group_id = group_id
+        # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -469,41 +585,49 @@ class OnsConsumerGetConnectionRequest(TeaModel):
 class OnsConsumerGetConnectionResponseBodyDataConnectionListConnectionDo(TeaModel):
     def __init__(
         self,
-        version: str = None,
         client_addr: str = None,
-        language: str = None,
         client_id: str = None,
+        language: str = None,
+        version: str = None,
     ):
-        self.version = version
+        # The IP address and port number of the consumer instance.
         self.client_addr = client_addr
-        self.language = language
+        # The ID of the consumer instance.
         self.client_id = client_id
+        # The programming language in which the consumer application was developed.
+        self.language = language
+        # The version of the consumer client.
+        self.version = version
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
         if self.client_addr is not None:
             result['ClientAddr'] = self.client_addr
-        if self.language is not None:
-            result['Language'] = self.language
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         if m.get('ClientAddr') is not None:
             self.client_addr = m.get('ClientAddr')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -521,6 +645,10 @@ class OnsConsumerGetConnectionResponseBodyDataConnectionList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConnectionDo'] = []
         if self.connection_do is not None:
@@ -543,6 +671,7 @@ class OnsConsumerGetConnectionResponseBodyData(TeaModel):
         self,
         connection_list: OnsConsumerGetConnectionResponseBodyDataConnectionList = None,
     ):
+        # The connection information about the consumers in the specified group.
         self.connection_list = connection_list
 
     def validate(self):
@@ -550,6 +679,10 @@ class OnsConsumerGetConnectionResponseBodyData(TeaModel):
             self.connection_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.connection_list is not None:
             result['ConnectionList'] = self.connection_list.to_map()
@@ -566,31 +699,37 @@ class OnsConsumerGetConnectionResponseBodyData(TeaModel):
 class OnsConsumerGetConnectionResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsConsumerGetConnectionResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The data that is returned.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsConsumerGetConnectionResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -598,21 +737,30 @@ class OnsConsumerGetConnectionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsConsumerGetConnectionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -621,6 +769,8 @@ class OnsConsumerGetConnectionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsConsumerGetConnectionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -631,46 +781,63 @@ class OnsConsumerResetOffsetRequest(TeaModel):
     def __init__(
         self,
         group_id: str = None,
+        instance_id: str = None,
+        reset_timestamp: int = None,
         topic: str = None,
         type: int = None,
-        reset_timestamp: int = None,
-        instance_id: str = None,
     ):
+        # The ID of the consumer group for which you want to reset the consumer offset.
         self.group_id = group_id
-        self.topic = topic
-        self.type = type
-        self.reset_timestamp = reset_timestamp
+        # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
+        # The timestamp to which you want to reset the consumer offset. This parameter takes effect only when the **Type** parameter is set to **1**. Unit: milliseconds.
+        self.reset_timestamp = reset_timestamp
+        # The name of the topic for which you want to reset the consumer offset.
+        self.topic = topic
+        # The method that you want to use to clear accumulated messages. Valid values:
+        # 
+        # *   **0:** All accumulated messages are cleared. Messages that are not consumed are ignored. Consumers in the specified consumer group consume only messages that are published to the topic after the current point in time.
+        # 
+        # If "reconsumeLater" is returned, the accumulated messages are not cleared because the system is retrying to send the messages to consumers.
+        # 
+        # *   **1:** The messages that were published to the topic before a specified point in time are cleared. You must specify a point in time. Consumers in the specified consumer group consume only the messages that are published to the topic after the specified point in time.
+        # 
+        # You can specify a point in time within the time range that is from the earliest point in time when a message was published to the topic to the most recent point in time when a message was published to the topic. Points in time that are not within the allowed time range are invalid.
+        self.type = type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.reset_timestamp is not None:
+            result['ResetTimestamp'] = self.reset_timestamp
         if self.topic is not None:
             result['Topic'] = self.topic
         if self.type is not None:
             result['Type'] = self.type
-        if self.reset_timestamp is not None:
-            result['ResetTimestamp'] = self.reset_timestamp
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ResetTimestamp') is not None:
+            self.reset_timestamp = m.get('ResetTimestamp')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('ResetTimestamp') is not None:
-            self.reset_timestamp = m.get('ResetTimestamp')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         return self
 
 
@@ -679,12 +846,17 @@ class OnsConsumerResetOffsetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -701,21 +873,30 @@ class OnsConsumerResetOffsetResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsConsumerResetOffsetResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -724,6 +905,8 @@ class OnsConsumerResetOffsetResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsConsumerResetOffsetResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -733,88 +916,114 @@ class OnsConsumerResetOffsetResponse(TeaModel):
 class OnsConsumerStatusRequest(TeaModel):
     def __init__(
         self,
-        group_id: str = None,
         detail: bool = None,
-        need_jstack: bool = None,
+        group_id: str = None,
         instance_id: str = None,
+        need_jstack: bool = None,
     ):
-        self.group_id = group_id
+        # Specifies whether to query the details of the consumer group. Valid values:
+        # 
+        # *   **true**: The details of the consumer group are queried. You can obtain details from the **ConsumerConnectionInfoList** and **DetailInTopicList** response parameters.
+        # *   **false**: The details of the consumer group are not queried. The values of the **ConsumerConnectionInfoList** and **DetailInTopicList** response parameters are empty. This value is the default value of the Detail parameter.
         self.detail = detail
-        self.need_jstack = need_jstack
+        # The ID of the consumer group whose details you want to query.
+        self.group_id = group_id
+        # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
+        # Specifies whether to query the information about thread stack traces. Valid values:
+        # 
+        # *   **true**: The information about thread stack traces is queried. You can obtain the information from the **Jstack** response parameter.
+        # 
+        # >  If you want to obtain the information about thread stack traces, make sure that the **Detail** parameter in the request is set to **true**.
+        # 
+        # *   **false**: The information about thread stack traces is not queried. The value of the **Jstack** response parameter is empty. This value is the default value of the NeedJstack parameter.
+        self.need_jstack = need_jstack
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
         if self.detail is not None:
             result['Detail'] = self.detail
-        if self.need_jstack is not None:
-            result['NeedJstack'] = self.need_jstack
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.need_jstack is not None:
+            result['NeedJstack'] = self.need_jstack
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
         if m.get('Detail') is not None:
             self.detail = m.get('Detail')
-        if m.get('NeedJstack') is not None:
-            self.need_jstack = m.get('NeedJstack')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NeedJstack') is not None:
+            self.need_jstack = m.get('NeedJstack')
         return self
 
 
 class OnsConsumerStatusResponseBodyDataConnectionSetConnectionDo(TeaModel):
     def __init__(
         self,
+        client_addr: str = None,
+        client_id: str = None,
+        language: str = None,
         remote_ip: str = None,
         version: str = None,
-        client_addr: str = None,
-        language: str = None,
-        client_id: str = None,
     ):
-        self.remote_ip = remote_ip
-        self.version = version
+        # The IP address and port number of the consumer instance.
         self.client_addr = client_addr
-        self.language = language
+        # The ID of the consumer instance.
         self.client_id = client_id
+        # The programming language that the consumer client supports.
+        self.language = language
+        # The private or public IP address of the host.
+        self.remote_ip = remote_ip
+        # The version of the consumer client.
+        self.version = version
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.client_addr is not None:
+            result['ClientAddr'] = self.client_addr
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.language is not None:
+            result['Language'] = self.language
         if self.remote_ip is not None:
             result['RemoteIP'] = self.remote_ip
         if self.version is not None:
             result['Version'] = self.version
-        if self.client_addr is not None:
-            result['ClientAddr'] = self.client_addr
-        if self.language is not None:
-            result['Language'] = self.language
-        if self.client_id is not None:
-            result['ClientId'] = self.client_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientAddr') is not None:
+            self.client_addr = m.get('ClientAddr')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('RemoteIP') is not None:
             self.remote_ip = m.get('RemoteIP')
         if m.get('Version') is not None:
             self.version = m.get('Version')
-        if m.get('ClientAddr') is not None:
-            self.client_addr = m.get('ClientAddr')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
-        if m.get('ClientId') is not None:
-            self.client_id = m.get('ClientId')
         return self
 
 
@@ -832,6 +1041,10 @@ class OnsConsumerStatusResponseBodyDataConnectionSet(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConnectionDo'] = []
         if self.connection_do is not None:
@@ -849,56 +1062,165 @@ class OnsConsumerStatusResponseBodyDataConnectionSet(TeaModel):
         return self
 
 
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataListConsumerRunningDataDo(TeaModel):
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList(TeaModel):
     def __init__(
         self,
-        group_id: str = None,
-        rt: float = None,
-        topic: str = None,
-        failed_count_per_hour: int = None,
-        ok_tps: float = None,
-        failed_tps: float = None,
+        track: List[str] = None,
     ):
-        self.group_id = group_id
-        self.rt = rt
-        self.topic = topic
-        self.failed_count_per_hour = failed_count_per_hour
-        self.ok_tps = ok_tps
-        self.failed_tps = failed_tps
+        self.track = track
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.rt is not None:
-            result['Rt'] = self.rt
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.failed_count_per_hour is not None:
-            result['FailedCountPerHour'] = self.failed_count_per_hour
-        if self.ok_tps is not None:
-            result['OkTps'] = self.ok_tps
-        if self.failed_tps is not None:
-            result['FailedTps'] = self.failed_tps
+        if self.track is not None:
+            result['Track'] = self.track
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Track') is not None:
+            self.track = m.get('Track')
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo(TeaModel):
+    def __init__(
+        self,
+        thread: str = None,
+        track_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList = None,
+    ):
+        # The name of the thread.
+        self.thread = thread
+        # The details of thread stack traces.
+        self.track_list = track_list
+
+    def validate(self):
+        if self.track_list:
+            self.track_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.thread is not None:
+            result['Thread'] = self.thread
+        if self.track_list is not None:
+            result['TrackList'] = self.track_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Thread') is not None:
+            self.thread = m.get('Thread')
+        if m.get('TrackList') is not None:
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList()
+            self.track_list = temp_model.from_map(m['TrackList'])
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack(TeaModel):
+    def __init__(
+        self,
+        thread_track_do: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo] = None,
+    ):
+        self.thread_track_do = thread_track_do
+
+    def validate(self):
+        if self.thread_track_do:
+            for k in self.thread_track_do:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ThreadTrackDo'] = []
+        if self.thread_track_do is not None:
+            for k in self.thread_track_do:
+                result['ThreadTrackDo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.thread_track_do = []
+        if m.get('ThreadTrackDo') is not None:
+            for k in m.get('ThreadTrackDo'):
+                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo()
+                self.thread_track_do.append(temp_model.from_map(k))
+        return self
+
+
+class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataListConsumerRunningDataDo(TeaModel):
+    def __init__(
+        self,
+        failed_count_per_hour: int = None,
+        failed_tps: float = None,
+        group_id: str = None,
+        ok_tps: float = None,
+        rt: float = None,
+        topic: str = None,
+    ):
+        # The number of messages that failed to be consumed each hour.
+        self.failed_count_per_hour = failed_count_per_hour
+        # The TPS for failed message consumption.
+        self.failed_tps = failed_tps
+        # The ID of the consumer group.
+        self.group_id = group_id
+        # The TPS for successful message consumption.
+        self.ok_tps = ok_tps
+        # The consumption RT. Unit: milliseconds.
+        self.rt = rt
+        # The name of the topic to which the consumer subscribes.
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count_per_hour is not None:
+            result['FailedCountPerHour'] = self.failed_count_per_hour
+        if self.failed_tps is not None:
+            result['FailedTps'] = self.failed_tps
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.ok_tps is not None:
+            result['OkTps'] = self.ok_tps
+        if self.rt is not None:
+            result['Rt'] = self.rt
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCountPerHour') is not None:
+            self.failed_count_per_hour = m.get('FailedCountPerHour')
+        if m.get('FailedTps') is not None:
+            self.failed_tps = m.get('FailedTps')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('OkTps') is not None:
+            self.ok_tps = m.get('OkTps')
         if m.get('Rt') is not None:
             self.rt = m.get('Rt')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        if m.get('FailedCountPerHour') is not None:
-            self.failed_count_per_hour = m.get('FailedCountPerHour')
-        if m.get('OkTps') is not None:
-            self.ok_tps = m.get('OkTps')
-        if m.get('FailedTps') is not None:
-            self.failed_tps = m.get('FailedTps')
         return self
 
 
@@ -916,6 +1238,10 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConsumerRunningDataDo'] = []
         if self.consumer_running_data_do is not None:
@@ -944,6 +1270,10 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.tag is not None:
             result['Tag'] = self.tag
@@ -961,28 +1291,36 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
         self,
         sub_string: str = None,
         sub_version: int = None,
-        topic: str = None,
         tags_set: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionDataTagsSet = None,
+        topic: str = None,
     ):
+        # The expression that is used to specify the tags of messages in the subscribed topic.
         self.sub_string = sub_string
+        # The subscription version. The value is of the LONG type and is automatically incremented.
         self.sub_version = sub_version
-        self.topic = topic
+        # The information about the tags of the topic to which the consumer subscribes.
         self.tags_set = tags_set
+        # The name of the topic to which the consumer subscribes.
+        self.topic = topic
 
     def validate(self):
         if self.tags_set:
             self.tags_set.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sub_string is not None:
             result['SubString'] = self.sub_string
         if self.sub_version is not None:
             result['SubVersion'] = self.sub_version
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.tags_set is not None:
             result['TagsSet'] = self.tags_set.to_map()
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
@@ -991,11 +1329,11 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
             self.sub_string = m.get('SubString')
         if m.get('SubVersion') is not None:
             self.sub_version = m.get('SubVersion')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('TagsSet') is not None:
             temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSetSubscriptionDataTagsSet()
             self.tags_set = temp_model.from_map(m['TagsSet'])
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -1013,6 +1351,10 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubscriptionData'] = []
         if self.subscription_data is not None:
@@ -1030,185 +1372,128 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnect
         return self
 
 
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList(TeaModel):
-    def __init__(
-        self,
-        track: List[str] = None,
-    ):
-        self.track = track
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.track is not None:
-            result['Track'] = self.track
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Track') is not None:
-            self.track = m.get('Track')
-        return self
-
-
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo(TeaModel):
-    def __init__(
-        self,
-        track_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList = None,
-        thread: str = None,
-    ):
-        self.track_list = track_list
-        self.thread = thread
-
-    def validate(self):
-        if self.track_list:
-            self.track_list.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.track_list is not None:
-            result['TrackList'] = self.track_list.to_map()
-        if self.thread is not None:
-            result['Thread'] = self.thread
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TrackList') is not None:
-            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDoTrackList()
-            self.track_list = temp_model.from_map(m['TrackList'])
-        if m.get('Thread') is not None:
-            self.thread = m.get('Thread')
-        return self
-
-
-class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack(TeaModel):
-    def __init__(
-        self,
-        thread_track_do: List[OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo] = None,
-    ):
-        self.thread_track_do = thread_track_do
-
-    def validate(self):
-        if self.thread_track_do:
-            for k in self.thread_track_do:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['ThreadTrackDo'] = []
-        if self.thread_track_do is not None:
-            for k in self.thread_track_do:
-                result['ThreadTrackDo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.thread_track_do = []
-        if m.get('ThreadTrackDo') is not None:
-            for k in m.get('ThreadTrackDo'):
-                temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstackThreadTrackDo()
-                self.thread_track_do.append(temp_model.from_map(k))
-        return self
-
-
 class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDo(TeaModel):
     def __init__(
         self,
-        consume_model: str = None,
-        running_data_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList = None,
-        subscription_set: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet = None,
-        jstack: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack = None,
-        last_time_stamp: int = None,
-        start_time_stamp: int = None,
-        language: str = None,
         client_id: str = None,
         connection: str = None,
-        version: str = None,
+        consume_model: str = None,
         consume_type: str = None,
+        jstack: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack = None,
+        language: str = None,
+        last_time_stamp: int = None,
+        running_data_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList = None,
+        start_time_stamp: int = None,
+        subscription_set: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet = None,
         thread_count: int = None,
+        version: str = None,
     ):
-        self.consume_model = consume_model
-        self.running_data_list = running_data_list
-        self.subscription_set = subscription_set
-        self.jstack = jstack
-        self.last_time_stamp = last_time_stamp
-        self.start_time_stamp = start_time_stamp
-        self.language = language
+        # The ID of the consumer instance.
         self.client_id = client_id
+        # The connection information.
         self.connection = connection
-        self.version = version
+        # The consumption mode. Valid values:
+        # 
+        # *   **CLUSTERING:** the clustering consumption mode
+        # *   **BROADCASTING:** the broadcasting consumption mode
+        # 
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+        self.consume_model = consume_model
+        # The mode in which the consumer consumes messages. Valid values:
+        # 
+        # *   **PUSH:** The Message Queue for Apache RocketMQ broker pushes messages to the consumer.
+        # *   **PULL:** The consumer pulls messages from the Message Queue for Apache RocketMQ broker.
         self.consume_type = consume_type
+        # The information about thread stack traces. If you want to obtain the information about thread stack traces, make sure that the **NeedJstack** parameter in the request is set to **true**. If the NeedJstack parameter is not set to true, the value of this parameter is empty.
+        self.jstack = jstack
+        # The programming language that the consumer supports.
+        self.language = language
+        # The most recent point in time when a message was consumed.
+        # 
+        # The value of this parameter is a UNIX timestamp in milliseconds.
+        self.last_time_stamp = last_time_stamp
+        # The real-time statistics.
+        self.running_data_list = running_data_list
+        # The earliest point in time when a message was consumed.
+        # 
+        # The value of this parameter is a UNIX timestamp in milliseconds.
+        self.start_time_stamp = start_time_stamp
+        # The information about subscriptions.
+        self.subscription_set = subscription_set
+        # The number of consumer threads.
         self.thread_count = thread_count
+        # The version of the consumer client.
+        self.version = version
 
     def validate(self):
+        if self.jstack:
+            self.jstack.validate()
         if self.running_data_list:
             self.running_data_list.validate()
         if self.subscription_set:
             self.subscription_set.validate()
-        if self.jstack:
-            self.jstack.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.consume_model is not None:
-            result['ConsumeModel'] = self.consume_model
-        if self.running_data_list is not None:
-            result['RunningDataList'] = self.running_data_list.to_map()
-        if self.subscription_set is not None:
-            result['SubscriptionSet'] = self.subscription_set.to_map()
-        if self.jstack is not None:
-            result['Jstack'] = self.jstack.to_map()
-        if self.last_time_stamp is not None:
-            result['LastTimeStamp'] = self.last_time_stamp
-        if self.start_time_stamp is not None:
-            result['StartTimeStamp'] = self.start_time_stamp
-        if self.language is not None:
-            result['Language'] = self.language
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.connection is not None:
             result['Connection'] = self.connection
-        if self.version is not None:
-            result['Version'] = self.version
+        if self.consume_model is not None:
+            result['ConsumeModel'] = self.consume_model
         if self.consume_type is not None:
             result['ConsumeType'] = self.consume_type
+        if self.jstack is not None:
+            result['Jstack'] = self.jstack.to_map()
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.last_time_stamp is not None:
+            result['LastTimeStamp'] = self.last_time_stamp
+        if self.running_data_list is not None:
+            result['RunningDataList'] = self.running_data_list.to_map()
+        if self.start_time_stamp is not None:
+            result['StartTimeStamp'] = self.start_time_stamp
+        if self.subscription_set is not None:
+            result['SubscriptionSet'] = self.subscription_set.to_map()
         if self.thread_count is not None:
             result['ThreadCount'] = self.thread_count
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsumeModel') is not None:
-            self.consume_model = m.get('ConsumeModel')
-        if m.get('RunningDataList') is not None:
-            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList()
-            self.running_data_list = temp_model.from_map(m['RunningDataList'])
-        if m.get('SubscriptionSet') is not None:
-            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet()
-            self.subscription_set = temp_model.from_map(m['SubscriptionSet'])
-        if m.get('Jstack') is not None:
-            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack()
-            self.jstack = temp_model.from_map(m['Jstack'])
-        if m.get('LastTimeStamp') is not None:
-            self.last_time_stamp = m.get('LastTimeStamp')
-        if m.get('StartTimeStamp') is not None:
-            self.start_time_stamp = m.get('StartTimeStamp')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('Connection') is not None:
             self.connection = m.get('Connection')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
+        if m.get('ConsumeModel') is not None:
+            self.consume_model = m.get('ConsumeModel')
         if m.get('ConsumeType') is not None:
             self.consume_type = m.get('ConsumeType')
+        if m.get('Jstack') is not None:
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoJstack()
+            self.jstack = temp_model.from_map(m['Jstack'])
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('LastTimeStamp') is not None:
+            self.last_time_stamp = m.get('LastTimeStamp')
+        if m.get('RunningDataList') is not None:
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoRunningDataList()
+            self.running_data_list = temp_model.from_map(m['RunningDataList'])
+        if m.get('StartTimeStamp') is not None:
+            self.start_time_stamp = m.get('StartTimeStamp')
+        if m.get('SubscriptionSet') is not None:
+            temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoListConsumerConnectionInfoDoSubscriptionSet()
+            self.subscription_set = temp_model.from_map(m['SubscriptionSet'])
         if m.get('ThreadCount') is not None:
             self.thread_count = m.get('ThreadCount')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -1226,6 +1511,10 @@ class OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ConsumerConnectionInfoDo'] = []
         if self.consumer_connection_info_do is not None:
@@ -1247,40 +1536,50 @@ class OnsConsumerStatusResponseBodyDataDetailInTopicListDetailInTopicDo(TeaModel
     def __init__(
         self,
         delay_time: int = None,
-        total_diff: int = None,
         last_timestamp: int = None,
         topic: str = None,
+        total_diff: int = None,
     ):
+        # The latency of message consumption in the topic. Unit: milliseconds.
         self.delay_time = delay_time
-        self.total_diff = total_diff
+        # The most recent point in time when a message was consumed.
+        # 
+        # The value of this parameter is a UNIX timestamp in milliseconds.
         self.last_timestamp = last_timestamp
+        # The name of the topic.
         self.topic = topic
+        # The number of accumulated messages in the topic.
+        self.total_diff = total_diff
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.delay_time is not None:
             result['DelayTime'] = self.delay_time
-        if self.total_diff is not None:
-            result['TotalDiff'] = self.total_diff
         if self.last_timestamp is not None:
             result['LastTimestamp'] = self.last_timestamp
         if self.topic is not None:
             result['Topic'] = self.topic
+        if self.total_diff is not None:
+            result['TotalDiff'] = self.total_diff
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DelayTime') is not None:
             self.delay_time = m.get('DelayTime')
-        if m.get('TotalDiff') is not None:
-            self.total_diff = m.get('TotalDiff')
         if m.get('LastTimestamp') is not None:
             self.last_timestamp = m.get('LastTimestamp')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
+        if m.get('TotalDiff') is not None:
+            self.total_diff = m.get('TotalDiff')
         return self
 
 
@@ -1298,6 +1597,10 @@ class OnsConsumerStatusResponseBodyDataDetailInTopicList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['DetailInTopicDo'] = []
         if self.detail_in_topic_do is not None:
@@ -1318,31 +1621,53 @@ class OnsConsumerStatusResponseBodyDataDetailInTopicList(TeaModel):
 class OnsConsumerStatusResponseBodyData(TeaModel):
     def __init__(
         self,
-        consume_tps: float = None,
-        consume_model: str = None,
         connection_set: OnsConsumerStatusResponseBodyDataConnectionSet = None,
-        total_diff: int = None,
+        consume_model: str = None,
+        consume_tps: float = None,
         consumer_connection_info_list: OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList = None,
-        instance_id: str = None,
-        detail_in_topic_list: OnsConsumerStatusResponseBodyDataDetailInTopicList = None,
-        subscription_same: bool = None,
         delay_time: int = None,
+        detail_in_topic_list: OnsConsumerStatusResponseBodyDataDetailInTopicList = None,
+        instance_id: str = None,
         last_timestamp: int = None,
         online: bool = None,
         rebalance_ok: bool = None,
+        subscription_same: bool = None,
+        total_diff: int = None,
     ):
-        self.consume_tps = consume_tps
-        self.consume_model = consume_model
+        # The information about online consumers in the consumer group.
         self.connection_set = connection_set
-        self.total_diff = total_diff
+        # The consumption mode. Valid values:
+        # 
+        # *   **CLUSTERING:** the clustering consumption mode
+        # *   **BROADCASTING:** the broadcasting consumption mode
+        # 
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
+        self.consume_model = consume_model
+        # The TPS for message consumption.
+        self.consume_tps = consume_tps
+        # The details of online consumers in the consumer group, including the information about the thread stack traces and the consumption response time (RT). If you want to obtain the details of online consumers in the consumer group, make sure that the **Detail** parameter in the request is set to **true**. If the Detail parameter is not set to true, the value of this parameter is empty.
         self.consumer_connection_info_list = consumer_connection_info_list
-        self.instance_id = instance_id
-        self.detail_in_topic_list = detail_in_topic_list
-        self.subscription_same = subscription_same
+        # The maximum latency of message consumption in all topics to which the consumer group subscribe. Unit: milliseconds.
         self.delay_time = delay_time
+        # The information about message consumption by topic. If you want to obtain the information about the consumption status of each topic, make sure that the **Detail** parameter in the request is set to **true**. If the Detail parameter is not set to true, the value of this parameter is empty.
+        self.detail_in_topic_list = detail_in_topic_list
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The most recent point in time when a message was consumed.
+        # 
+        # The value of this parameter is a UNIX timestamp in milliseconds.
         self.last_timestamp = last_timestamp
+        # Indicates whether the consumer group is online.
         self.online = online
+        # Indicates whether load balancing is performed as expected. Valid values:
+        # 
+        # *   **true:** Load balancing is performed as expected.
+        # *   **false:** Load balancing is not performed as expected.
         self.rebalance_ok = rebalance_ok
+        # Indicates whether all consumers in the consumer group subscribe to the same topics and tags.
+        self.subscription_same = subscription_same
+        # The total number of accumulated messages.
+        self.total_diff = total_diff
 
     def validate(self):
         if self.connection_set:
@@ -1353,93 +1678,103 @@ class OnsConsumerStatusResponseBodyData(TeaModel):
             self.detail_in_topic_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.consume_tps is not None:
-            result['ConsumeTps'] = self.consume_tps
-        if self.consume_model is not None:
-            result['ConsumeModel'] = self.consume_model
         if self.connection_set is not None:
             result['ConnectionSet'] = self.connection_set.to_map()
-        if self.total_diff is not None:
-            result['TotalDiff'] = self.total_diff
+        if self.consume_model is not None:
+            result['ConsumeModel'] = self.consume_model
+        if self.consume_tps is not None:
+            result['ConsumeTps'] = self.consume_tps
         if self.consumer_connection_info_list is not None:
             result['ConsumerConnectionInfoList'] = self.consumer_connection_info_list.to_map()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.detail_in_topic_list is not None:
-            result['DetailInTopicList'] = self.detail_in_topic_list.to_map()
-        if self.subscription_same is not None:
-            result['SubscriptionSame'] = self.subscription_same
         if self.delay_time is not None:
             result['DelayTime'] = self.delay_time
+        if self.detail_in_topic_list is not None:
+            result['DetailInTopicList'] = self.detail_in_topic_list.to_map()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.last_timestamp is not None:
             result['LastTimestamp'] = self.last_timestamp
         if self.online is not None:
             result['Online'] = self.online
         if self.rebalance_ok is not None:
             result['RebalanceOK'] = self.rebalance_ok
+        if self.subscription_same is not None:
+            result['SubscriptionSame'] = self.subscription_same
+        if self.total_diff is not None:
+            result['TotalDiff'] = self.total_diff
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsumeTps') is not None:
-            self.consume_tps = m.get('ConsumeTps')
-        if m.get('ConsumeModel') is not None:
-            self.consume_model = m.get('ConsumeModel')
         if m.get('ConnectionSet') is not None:
             temp_model = OnsConsumerStatusResponseBodyDataConnectionSet()
             self.connection_set = temp_model.from_map(m['ConnectionSet'])
-        if m.get('TotalDiff') is not None:
-            self.total_diff = m.get('TotalDiff')
+        if m.get('ConsumeModel') is not None:
+            self.consume_model = m.get('ConsumeModel')
+        if m.get('ConsumeTps') is not None:
+            self.consume_tps = m.get('ConsumeTps')
         if m.get('ConsumerConnectionInfoList') is not None:
             temp_model = OnsConsumerStatusResponseBodyDataConsumerConnectionInfoList()
             self.consumer_connection_info_list = temp_model.from_map(m['ConsumerConnectionInfoList'])
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
+        if m.get('DelayTime') is not None:
+            self.delay_time = m.get('DelayTime')
         if m.get('DetailInTopicList') is not None:
             temp_model = OnsConsumerStatusResponseBodyDataDetailInTopicList()
             self.detail_in_topic_list = temp_model.from_map(m['DetailInTopicList'])
-        if m.get('SubscriptionSame') is not None:
-            self.subscription_same = m.get('SubscriptionSame')
-        if m.get('DelayTime') is not None:
-            self.delay_time = m.get('DelayTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('LastTimestamp') is not None:
             self.last_timestamp = m.get('LastTimestamp')
         if m.get('Online') is not None:
             self.online = m.get('Online')
         if m.get('RebalanceOK') is not None:
             self.rebalance_ok = m.get('RebalanceOK')
+        if m.get('SubscriptionSame') is not None:
+            self.subscription_same = m.get('SubscriptionSame')
+        if m.get('TotalDiff') is not None:
+            self.total_diff = m.get('TotalDiff')
         return self
 
 
 class OnsConsumerStatusResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsConsumerStatusResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The query results.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsConsumerStatusResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1447,21 +1782,30 @@ class OnsConsumerStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsConsumerStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1470,6 +1814,8 @@ class OnsConsumerStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsConsumerStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1480,112 +1826,134 @@ class OnsConsumerTimeSpanRequest(TeaModel):
     def __init__(
         self,
         group_id: str = None,
-        topic: str = None,
         instance_id: str = None,
+        topic: str = None,
     ):
+        # The ID of the consumer group whose reset time range you want to query.
         self.group_id = group_id
-        self.topic = topic
+        # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
+        # The topic to which the consumer group subscribes.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsConsumerTimeSpanResponseBodyData(TeaModel):
     def __init__(
         self,
-        max_time_stamp: int = None,
         consume_time_stamp: int = None,
-        topic: str = None,
-        min_time_stamp: int = None,
         instance_id: str = None,
+        max_time_stamp: int = None,
+        min_time_stamp: int = None,
+        topic: str = None,
     ):
-        self.max_time_stamp = max_time_stamp
+        # The most recent point in time when a message in the topic was consumed by the customer group.
         self.consume_time_stamp = consume_time_stamp
-        self.topic = topic
-        self.min_time_stamp = min_time_stamp
+        # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
+        # The earliest point in time when a message was published to the topic.
+        self.max_time_stamp = max_time_stamp
+        # The most recent point in time when a message was published to the topic.
+        self.min_time_stamp = min_time_stamp
+        # The name of the topic that you want to query.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.max_time_stamp is not None:
-            result['MaxTimeStamp'] = self.max_time_stamp
         if self.consume_time_stamp is not None:
             result['ConsumeTimeStamp'] = self.consume_time_stamp
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.min_time_stamp is not None:
-            result['MinTimeStamp'] = self.min_time_stamp
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.max_time_stamp is not None:
+            result['MaxTimeStamp'] = self.max_time_stamp
+        if self.min_time_stamp is not None:
+            result['MinTimeStamp'] = self.min_time_stamp
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaxTimeStamp') is not None:
-            self.max_time_stamp = m.get('MaxTimeStamp')
         if m.get('ConsumeTimeStamp') is not None:
             self.consume_time_stamp = m.get('ConsumeTimeStamp')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('MinTimeStamp') is not None:
-            self.min_time_stamp = m.get('MinTimeStamp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MaxTimeStamp') is not None:
+            self.max_time_stamp = m.get('MaxTimeStamp')
+        if m.get('MinTimeStamp') is not None:
+            self.min_time_stamp = m.get('MinTimeStamp')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsConsumerTimeSpanResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsConsumerTimeSpanResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The query results.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsConsumerTimeSpanResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1593,21 +1961,30 @@ class OnsConsumerTimeSpanResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsConsumerTimeSpanResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1616,6 +1993,8 @@ class OnsConsumerTimeSpanResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsConsumerTimeSpanResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1625,64 +2004,84 @@ class OnsConsumerTimeSpanResponse(TeaModel):
 class OnsDLQMessageGetByIdRequest(TeaModel):
     def __init__(
         self,
-        msg_id: str = None,
         group_id: str = None,
         instance_id: str = None,
+        msg_id: str = None,
     ):
-        self.msg_id = msg_id
+        # The ID of the consumer group whose dead-letter messages you want to query.
         self.group_id = group_id
+        # The ID of the instance to which the message you want to query belongs.
         self.instance_id = instance_id
+        # The ID of the dead-letter message that you want to query.
+        self.msg_id = msg_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
         return self
 
 
 class OnsDLQMessageGetByIdResponseBodyDataPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
-        value: str = None,
         name: str = None,
+        value: str = None,
     ):
-        self.value = value
+        # The name of the attribute. Valid values:
+        # 
+        # *   **TRACE_ON**: indicates whether a trace of the message exists.
+        # *   **KEYS**: indicates the message key of the message.
+        # *   **TAGS**: indicates the tag that is attached to the message.
+        # *   **INSTANCE_ID**: indicates the ID of the instance that contains the dead-letter message.
+        # 
+        # For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
         self.name = name
+        # The value of the attribute.
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
         if self.name is not None:
             result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1700,6 +2099,10 @@ class OnsDLQMessageGetByIdResponseBodyDataPropertyList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MessageProperty'] = []
         if self.message_property is not None:
@@ -1720,116 +2123,137 @@ class OnsDLQMessageGetByIdResponseBodyDataPropertyList(TeaModel):
 class OnsDLQMessageGetByIdResponseBodyData(TeaModel):
     def __init__(
         self,
-        store_size: int = None,
-        reconsume_times: int = None,
-        store_timestamp: int = None,
-        instance_id: str = None,
-        msg_id: str = None,
-        store_host: str = None,
-        topic: str = None,
-        property_list: OnsDLQMessageGetByIdResponseBodyDataPropertyList = None,
-        born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
+        born_timestamp: int = None,
+        instance_id: str = None,
+        msg_id: str = None,
+        property_list: OnsDLQMessageGetByIdResponseBodyDataPropertyList = None,
+        reconsume_times: int = None,
+        store_host: str = None,
+        store_size: int = None,
+        store_timestamp: int = None,
+        topic: str = None,
     ):
-        self.store_size = store_size
-        self.reconsume_times = reconsume_times
-        self.store_timestamp = store_timestamp
-        self.instance_id = instance_id
-        self.msg_id = msg_id
-        self.store_host = store_host
-        self.topic = topic
-        self.property_list = property_list
-        self.born_timestamp = born_timestamp
+        # The cyclic redundancy check (CRC) value of the message body.
         self.body_crc = body_crc
+        # The producer instance that generated the message.
         self.born_host = born_host
+        # The timestamp that indicates the point in time when the dead-letter message was generated. Unit: milliseconds.
+        self.born_timestamp = born_timestamp
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The ID of the dead-letter message.
+        self.msg_id = msg_id
+        # The attributes of the message.
+        self.property_list = property_list
+        # The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+        self.reconsume_times = reconsume_times
+        # The Message Queue for Apache RocketMQ broker that stores the message.
+        self.store_host = store_host
+        # The size of the message. Unit: KB.
+        self.store_size = store_size
+        # The timestamp when the Message Queue for Apache RocketMQ broker stored the message. Unit: milliseconds.
+        self.store_timestamp = store_timestamp
+        # The topic to which the message belongs.
+        self.topic = topic
 
     def validate(self):
         if self.property_list:
             self.property_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.store_size is not None:
-            result['StoreSize'] = self.store_size
-        if self.reconsume_times is not None:
-            result['ReconsumeTimes'] = self.reconsume_times
-        if self.store_timestamp is not None:
-            result['StoreTimestamp'] = self.store_timestamp
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
-        if self.store_host is not None:
-            result['StoreHost'] = self.store_host
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.property_list is not None:
-            result['PropertyList'] = self.property_list.to_map()
-        if self.born_timestamp is not None:
-            result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
             result['BodyCRC'] = self.body_crc
         if self.born_host is not None:
             result['BornHost'] = self.born_host
+        if self.born_timestamp is not None:
+            result['BornTimestamp'] = self.born_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.property_list is not None:
+            result['PropertyList'] = self.property_list.to_map()
+        if self.reconsume_times is not None:
+            result['ReconsumeTimes'] = self.reconsume_times
+        if self.store_host is not None:
+            result['StoreHost'] = self.store_host
+        if self.store_size is not None:
+            result['StoreSize'] = self.store_size
+        if self.store_timestamp is not None:
+            result['StoreTimestamp'] = self.store_timestamp
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StoreSize') is not None:
-            self.store_size = m.get('StoreSize')
-        if m.get('ReconsumeTimes') is not None:
-            self.reconsume_times = m.get('ReconsumeTimes')
-        if m.get('StoreTimestamp') is not None:
-            self.store_timestamp = m.get('StoreTimestamp')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
-        if m.get('StoreHost') is not None:
-            self.store_host = m.get('StoreHost')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('PropertyList') is not None:
-            temp_model = OnsDLQMessageGetByIdResponseBodyDataPropertyList()
-            self.property_list = temp_model.from_map(m['PropertyList'])
-        if m.get('BornTimestamp') is not None:
-            self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
             self.body_crc = m.get('BodyCRC')
         if m.get('BornHost') is not None:
             self.born_host = m.get('BornHost')
+        if m.get('BornTimestamp') is not None:
+            self.born_timestamp = m.get('BornTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('PropertyList') is not None:
+            temp_model = OnsDLQMessageGetByIdResponseBodyDataPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
+        if m.get('ReconsumeTimes') is not None:
+            self.reconsume_times = m.get('ReconsumeTimes')
+        if m.get('StoreHost') is not None:
+            self.store_host = m.get('StoreHost')
+        if m.get('StoreSize') is not None:
+            self.store_size = m.get('StoreSize')
+        if m.get('StoreTimestamp') is not None:
+            self.store_timestamp = m.get('StoreTimestamp')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsDLQMessageGetByIdResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsDLQMessageGetByIdResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The returned results.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsDLQMessageGetByIdResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1837,21 +2261,30 @@ class OnsDLQMessageGetByIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsDLQMessageGetByIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1860,6 +2293,8 @@ class OnsDLQMessageGetByIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsDLQMessageGetByIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1869,88 +2304,112 @@ class OnsDLQMessageGetByIdResponse(TeaModel):
 class OnsDLQMessagePageQueryByGroupIdRequest(TeaModel):
     def __init__(
         self,
-        group_id: str = None,
         begin_time: int = None,
-        end_time: int = None,
-        task_id: str = None,
         current_page: int = None,
-        page_size: int = None,
+        end_time: int = None,
+        group_id: str = None,
         instance_id: str = None,
+        page_size: int = None,
+        task_id: str = None,
     ):
-        self.group_id = group_id
+        # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the BeginTime parameter that you specified in the request when you created the specified query task.
         self.begin_time = begin_time
-        self.end_time = end_time
-        self.task_id = task_id
+        # The number of the page to return. Pages start from page 1. Valid values: 1 to 50.
         self.current_page = current_page
-        self.page_size = page_size
+        # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the EndTime parameter that you specified in the request when you created the specified query task.
+        self.end_time = end_time
+        # The ID of the consumer group whose dead-letter messages you want to query.
+        self.group_id = group_id
+        # The ID of the instance to which the dead-letter messages you want to query belong.
         self.instance_id = instance_id
+        # The number of dead-letter messages to return on each page. Valid values: 5 to 50. Default value: 20. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the PageSize parameter that you specified in the request when you created the specified query task.
+        self.page_size = page_size
+        # The ID of the query task. The first time you call this operation to query dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is not required. This parameter is required in subsequent queries for dead-letter messages on a specified page. You can obtain the task ID from the returned result of the first query.
+        self.task_id = task_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
 class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
-        value: str = None,
         name: str = None,
+        value: str = None,
     ):
-        self.value = value
+        # The name of the attribute. Valid values:
+        # 
+        # *   **TRACE_ON**: indicates whether a trace of the message exists.
+        # *   **KEYS**: indicates the message key of the message.
+        # *   **TAGS**: indicates the tag of the message.
+        # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+        # 
+        # For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
         self.name = name
+        # The value of the attribute.
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
         if self.name is not None:
             result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1968,6 +2427,10 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMe
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MessageProperty'] = []
         if self.message_property is not None:
@@ -1988,85 +2451,100 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMe
 class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo(TeaModel):
     def __init__(
         self,
-        store_size: int = None,
-        reconsume_times: int = None,
-        store_timestamp: int = None,
-        instance_id: str = None,
-        msg_id: str = None,
-        store_host: str = None,
-        topic: str = None,
-        property_list: OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList = None,
-        born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
+        born_timestamp: int = None,
+        instance_id: str = None,
+        msg_id: str = None,
+        property_list: OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList = None,
+        reconsume_times: int = None,
+        store_host: str = None,
+        store_size: int = None,
+        store_timestamp: int = None,
+        topic: str = None,
     ):
-        self.store_size = store_size
-        self.reconsume_times = reconsume_times
-        self.store_timestamp = store_timestamp
-        self.instance_id = instance_id
-        self.msg_id = msg_id
-        self.store_host = store_host
-        self.topic = topic
-        self.property_list = property_list
-        self.born_timestamp = born_timestamp
+        # The cyclic redundancy check (CRC) value of the message body.
         self.body_crc = body_crc
+        # The producer instance that generated the message.
         self.born_host = born_host
+        # The timestamp when the message was produced.
+        self.born_timestamp = born_timestamp
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The ID of the message.
+        self.msg_id = msg_id
+        # The attributes of the message.
+        self.property_list = property_list
+        # The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+        self.reconsume_times = reconsume_times
+        # The Message Queue for Apache RocketMQ broker that stores the message.
+        self.store_host = store_host
+        # The size of the message. Unit: KB.
+        self.store_size = store_size
+        # The timestamp when the Message Queue for Apache RocketMQ broker stored the message.
+        self.store_timestamp = store_timestamp
+        # The topic to which the message belongs.
+        self.topic = topic
 
     def validate(self):
         if self.property_list:
             self.property_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.store_size is not None:
-            result['StoreSize'] = self.store_size
-        if self.reconsume_times is not None:
-            result['ReconsumeTimes'] = self.reconsume_times
-        if self.store_timestamp is not None:
-            result['StoreTimestamp'] = self.store_timestamp
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
-        if self.store_host is not None:
-            result['StoreHost'] = self.store_host
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.property_list is not None:
-            result['PropertyList'] = self.property_list.to_map()
-        if self.born_timestamp is not None:
-            result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
             result['BodyCRC'] = self.body_crc
         if self.born_host is not None:
             result['BornHost'] = self.born_host
+        if self.born_timestamp is not None:
+            result['BornTimestamp'] = self.born_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.property_list is not None:
+            result['PropertyList'] = self.property_list.to_map()
+        if self.reconsume_times is not None:
+            result['ReconsumeTimes'] = self.reconsume_times
+        if self.store_host is not None:
+            result['StoreHost'] = self.store_host
+        if self.store_size is not None:
+            result['StoreSize'] = self.store_size
+        if self.store_timestamp is not None:
+            result['StoreTimestamp'] = self.store_timestamp
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StoreSize') is not None:
-            self.store_size = m.get('StoreSize')
-        if m.get('ReconsumeTimes') is not None:
-            self.reconsume_times = m.get('ReconsumeTimes')
-        if m.get('StoreTimestamp') is not None:
-            self.store_timestamp = m.get('StoreTimestamp')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
-        if m.get('StoreHost') is not None:
-            self.store_host = m.get('StoreHost')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('PropertyList') is not None:
-            temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList()
-            self.property_list = temp_model.from_map(m['PropertyList'])
-        if m.get('BornTimestamp') is not None:
-            self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
             self.body_crc = m.get('BodyCRC')
         if m.get('BornHost') is not None:
             self.born_host = m.get('BornHost')
+        if m.get('BornTimestamp') is not None:
+            self.born_timestamp = m.get('BornTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('PropertyList') is not None:
+            temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
+        if m.get('ReconsumeTimes') is not None:
+            self.reconsume_times = m.get('ReconsumeTimes')
+        if m.get('StoreHost') is not None:
+            self.store_host = m.get('StoreHost')
+        if m.get('StoreSize') is not None:
+            self.store_size = m.get('StoreSize')
+        if m.get('StoreTimestamp') is not None:
+            self.store_timestamp = m.get('StoreTimestamp')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -2084,6 +2562,10 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList(TeaModel
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OnsRestMessageDo'] = []
         if self.ons_rest_message_do is not None:
@@ -2105,13 +2587,17 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
     def __init__(
         self,
         current_page: int = None,
-        msg_found_list: OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList = None,
         max_page_count: int = None,
+        msg_found_list: OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList = None,
         task_id: str = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
-        self.msg_found_list = msg_found_list
+        # The total number of returned pages.
         self.max_page_count = max_page_count
+        # The information about dead-letter messages that are returned on the current page. The information that is contained in this parameter is the same as the information that is returned by the [OnsDLQMessageGetById](~~112667~~) operation.
+        self.msg_found_list = msg_found_list
+        # The ID of the query task. The first time you call this operation to query the dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is returned. You can use the task ID to query the details of dead-letter messages on other returned pages.
         self.task_id = task_id
 
     def validate(self):
@@ -2119,13 +2605,17 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
             self.msg_found_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.msg_found_list is not None:
-            result['MsgFoundList'] = self.msg_found_list.to_map()
         if self.max_page_count is not None:
             result['MaxPageCount'] = self.max_page_count
+        if self.msg_found_list is not None:
+            result['MsgFoundList'] = self.msg_found_list.to_map()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -2134,11 +2624,11 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('MaxPageCount') is not None:
+            self.max_page_count = m.get('MaxPageCount')
         if m.get('MsgFoundList') is not None:
             temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDoMsgFoundList()
             self.msg_found_list = temp_model.from_map(m['MsgFoundList'])
-        if m.get('MaxPageCount') is not None:
-            self.max_page_count = m.get('MaxPageCount')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -2147,31 +2637,37 @@ class OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo(TeaModel):
 class OnsDLQMessagePageQueryByGroupIdResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         msg_found_do: OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The returned results.
         self.msg_found_do = msg_found_do
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.msg_found_do:
             self.msg_found_do.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.msg_found_do is not None:
             result['MsgFoundDo'] = self.msg_found_do.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('MsgFoundDo') is not None:
             temp_model = OnsDLQMessagePageQueryByGroupIdResponseBodyMsgFoundDo()
             self.msg_found_do = temp_model.from_map(m['MsgFoundDo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2179,21 +2675,30 @@ class OnsDLQMessagePageQueryByGroupIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsDLQMessagePageQueryByGroupIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2202,6 +2707,8 @@ class OnsDLQMessagePageQueryByGroupIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsDLQMessagePageQueryByGroupIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2211,35 +2718,42 @@ class OnsDLQMessagePageQueryByGroupIdResponse(TeaModel):
 class OnsDLQMessageResendByIdRequest(TeaModel):
     def __init__(
         self,
-        msg_id: str = None,
         group_id: str = None,
         instance_id: str = None,
+        msg_id: str = None,
     ):
-        self.msg_id = msg_id
+        # The ID of the consumer group whose dead-letter messages you want to query.
         self.group_id = group_id
+        # The ID of the instance to which the message you want to query belongs.
         self.instance_id = instance_id
+        # The ID of the dead-letter message that you want to query.
+        self.msg_id = msg_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
         return self
 
 
@@ -2254,6 +2768,10 @@ class OnsDLQMessageResendByIdResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
@@ -2269,31 +2787,37 @@ class OnsDLQMessageResendByIdResponseBodyData(TeaModel):
 class OnsDLQMessageResendByIdResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsDLQMessageResendByIdResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The returned messages.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsDLQMessageResendByIdResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2301,21 +2825,30 @@ class OnsDLQMessageResendByIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsDLQMessageResendByIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2324,6 +2857,8 @@ class OnsDLQMessageResendByIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsDLQMessageResendByIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2334,34 +2869,46 @@ class OnsGroupConsumerUpdateRequest(TeaModel):
     def __init__(
         self,
         group_id: str = None,
-        read_enable: bool = None,
         instance_id: str = None,
+        read_enable: bool = None,
     ):
+        # The ID of the consumer group for which you want to configure the read permissions.
         self.group_id = group_id
-        self.read_enable = read_enable
+        # The ID of the instance to which the consumer group you want to configure belongs.
         self.instance_id = instance_id
+        # Specifies whether to authorize the consumer group with the specified ID to read messages. Valid values:
+        # 
+        # *   **true**: Authorize the consumer group with the specified ID to read messages.
+        # *   **false**: Do not authorize the consumer group with the specified group ID to read messages.
+        # 
+        # Default value: **true**.
+        self.read_enable = read_enable
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
-        if self.read_enable is not None:
-            result['ReadEnable'] = self.read_enable
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.read_enable is not None:
+            result['ReadEnable'] = self.read_enable
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
-        if m.get('ReadEnable') is not None:
-            self.read_enable = m.get('ReadEnable')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ReadEnable') is not None:
+            self.read_enable = m.get('ReadEnable')
         return self
 
 
@@ -2370,12 +2917,17 @@ class OnsGroupConsumerUpdateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2392,21 +2944,30 @@ class OnsGroupConsumerUpdateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsGroupConsumerUpdateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2415,6 +2976,8 @@ class OnsGroupConsumerUpdateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsGroupConsumerUpdateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2425,40 +2988,61 @@ class OnsGroupCreateRequest(TeaModel):
     def __init__(
         self,
         group_id: str = None,
-        remark: str = None,
-        instance_id: str = None,
         group_type: str = None,
+        instance_id: str = None,
+        remark: str = None,
     ):
+        # The ID of the consumer group that you want to create. Specify the group ID based on the following rules:
+        # 
+        # *   The group ID must be 2 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (\_).
+        # *   If the Message Queue for Apache RocketMQ instance in which you want to create the consumer group uses a namespace, the group ID must be unique in the instance. The group ID cannot be the same as an existing group ID or a topic name in the instance. The group ID can be the same as a group ID or a topic name in another instance that uses a different namespace. For example, if Instance A and Instance B use different namespaces, a group ID in Instance A can be the same as a group ID or a topic name in Instance B.
+        # *   If the instance does not use a namespace, the group ID must be globally unique across instances and regions. The group ID cannot be the same as an existing group ID or topic name in Message Queue for Apache RocketMQ instances that belong to your Alibaba Cloud account.
+        # 
+        # > 
+        # 
+        # *   After the consumer group is created, the group ID cannot be changed.
+        # 
+        # *   To check whether an instance uses a namespace, log on to the Message Queue for Apache RocketMQ console, go to the **Instance Details** page, and then view the value of the Namespace field in the **Basic Information** section.
         self.group_id = group_id
-        self.remark = remark
-        self.instance_id = instance_id
+        # The protocol over which clients in the consumer group communicate with the Message Queue for Apache RocketMQ broker. All clients in a consumer group communicate with the Message Queue for Apache RocketMQ broker over the same protocol. You must create different groups for TCP clients and HTTP clients. Valid values:
+        # 
+        # *   **tcp**: Clients in the consumer group consume messages over TCP. This is the default value.
+        # *   **http**: Clients in the consumer group consume messages over HTTP.
         self.group_type = group_type
+        # The ID of the instance in which you want to create the consumer group.
+        self.instance_id = instance_id
+        # The description of the consumer group.
+        self.remark = remark
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
-        if self.remark is not None:
-            result['Remark'] = self.remark
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.group_type is not None:
             result['GroupType'] = self.group_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
-        if m.get('Remark') is not None:
-            self.remark = m.get('Remark')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('GroupType') is not None:
             self.group_type = m.get('GroupType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 
@@ -2467,12 +3051,17 @@ class OnsGroupCreateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2489,21 +3078,30 @@ class OnsGroupCreateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsGroupCreateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2512,6 +3110,8 @@ class OnsGroupCreateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsGroupCreateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2524,13 +3124,19 @@ class OnsGroupDeleteRequest(TeaModel):
         group_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the consumer group that you want to delete.
         self.group_id = group_id
+        # The ID of the Message Queue for Apache RocketMQ instance that contains the specified group.
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -2552,12 +3158,17 @@ class OnsGroupDeleteResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -2574,21 +3185,30 @@ class OnsGroupDeleteResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsGroupDeleteResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2597,6 +3217,8 @@ class OnsGroupDeleteResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsGroupDeleteResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2609,13 +3231,25 @@ class OnsGroupListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag that is attached to the consumer group. This parameter is not required. If you configure this parameter, you must configure the **Tag.N.Value** parameter.**** If you configure both the Tag.N.Key and Tag.N.Value parameters, the group IDs are filtered based on the specified tag. If you do not configure these parameters, all group IDs are queried.
+        # 
+        # *   The value of this parameter cannot be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the tag that is attached to the group. This parameter is not required. If you configure this parameter, you must configure the **Tag.N.Value** parameter.**** If you configure both the Tag.N.Key and Tag.N.Value parameters, the group IDs are filtered based on the specified tag. If you do not configure these parameters, all group IDs are queried.
+        # 
+        # *   The value of this parameter can be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -2635,14 +3269,23 @@ class OnsGroupListRequestTag(TeaModel):
 class OnsGroupListRequest(TeaModel):
     def __init__(
         self,
-        instance_id: str = None,
         group_id: str = None,
         group_type: str = None,
+        instance_id: str = None,
         tag: List[OnsGroupListRequestTag] = None,
     ):
-        self.instance_id = instance_id
+        # This parameter is required only when you query specific consumer groups by using the fuzzy query method. If this parameter is not configured, the system queries all consumer groups that can be accessed by the current account.
+        # 
+        # If you set this parameter to GID_ABC, the information about the consumer groups whose IDs contain GID_ABC is returned. For example, the information about the GID_test_GID_ABC\_123 and GID_ABC\_356 consumer groups is returned.
         self.group_id = group_id
+        # The protocol over which the queried consumer groups consume messages. All clients in a consumer group communicate with the Message Queue for Apache RocketMQ broker over the same protocol. A consumer group cannot contain TCP clients and HTTP clients at the same time. You must create different consumer groups for TCP clients and HTTP clients. Valid values:
+        # 
+        # *   **tcp**: specifies the consumer groups that consume messages over TCP. This is the default value.
+        # *   **http**: indicates that the consumer group consumes messages over HTTP.
         self.group_type = group_type
+        # The ID of the instance to which the consumer group you want to query belongs.
+        self.instance_id = instance_id
+        # The list of tags that are attached to the consumer group. A maximum of 20 tags can be included in the list.
         self.tag = tag
 
     def validate(self):
@@ -2652,13 +3295,17 @@ class OnsGroupListRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.group_type is not None:
             result['GroupType'] = self.group_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -2667,12 +3314,12 @@ class OnsGroupListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('GroupType') is not None:
             self.group_type = m.get('GroupType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -2687,13 +3334,19 @@ class OnsGroupListResponseBodyDataSubscribeInfoDoTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -2724,6 +3377,10 @@ class OnsGroupListResponseBodyDataSubscribeInfoDoTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -2744,73 +3401,92 @@ class OnsGroupListResponseBodyDataSubscribeInfoDoTags(TeaModel):
 class OnsGroupListResponseBodyDataSubscribeInfoDo(TeaModel):
     def __init__(
         self,
-        owner: str = None,
-        update_time: int = None,
-        independent_naming: bool = None,
-        group_id: str = None,
-        remark: str = None,
         create_time: int = None,
-        tags: OnsGroupListResponseBodyDataSubscribeInfoDoTags = None,
-        instance_id: str = None,
+        group_id: str = None,
         group_type: str = None,
+        independent_naming: bool = None,
+        instance_id: str = None,
+        owner: str = None,
+        remark: str = None,
+        tags: OnsGroupListResponseBodyDataSubscribeInfoDoTags = None,
+        update_time: int = None,
     ):
-        self.owner = owner
-        self.update_time = update_time
-        self.independent_naming = independent_naming
-        self.group_id = group_id
-        self.remark = remark
+        # The time when the group was created.
         self.create_time = create_time
-        self.tags = tags
-        self.instance_id = instance_id
+        # The ID of the consumer group.
+        self.group_id = group_id
+        # The protocol over which the queried consumer groups consume messages. All clients in a consumer group communicate with the Message Queue for Apache RocketMQ broker over the same protocol. A consumer group cannot contain TCP clients and HTTP clients at the same time. You must create different consumer groups for TCP clients and HTTP clients. Valid values:
+        # 
+        # *   **tcp**: indicates that the consumer group consumes messages over TCP.
+        # *   **http**: indicates that the consumer group consumes messages over HTTP.
         self.group_type = group_type
+        # Indicates whether the instance uses a namespace. Valid values:
+        # 
+        # *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+        # *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
+        self.independent_naming = independent_naming
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The ID of the user who created the consumer group.
+        self.owner = owner
+        # The description of the consumer group.
+        self.remark = remark
+        # The tags that are attached to the consumer group.
+        self.tags = tags
+        # The time when the group ID was updated.
+        self.update_time = update_time
 
     def validate(self):
         if self.tags:
             self.tags.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        if self.independent_naming is not None:
-            result['IndependentNaming'] = self.independent_naming
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.remark is not None:
-            result['Remark'] = self.remark
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.tags is not None:
-            result['Tags'] = self.tags.to_map()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.group_type is not None:
             result['GroupType'] = self.group_type
+        if self.independent_naming is not None:
+            result['IndependentNaming'] = self.independent_naming
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        if m.get('IndependentNaming') is not None:
-            self.independent_naming = m.get('IndependentNaming')
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('Remark') is not None:
-            self.remark = m.get('Remark')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('IndependentNaming') is not None:
+            self.independent_naming = m.get('IndependentNaming')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('Tags') is not None:
             temp_model = OnsGroupListResponseBodyDataSubscribeInfoDoTags()
             self.tags = temp_model.from_map(m['Tags'])
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('GroupType') is not None:
-            self.group_type = m.get('GroupType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         return self
 
 
@@ -2828,6 +3504,10 @@ class OnsGroupListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubscribeInfoDo'] = []
         if self.subscribe_info_do is not None:
@@ -2848,31 +3528,37 @@ class OnsGroupListResponseBodyData(TeaModel):
 class OnsGroupListResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsGroupListResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The returned list of subscriptions.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsGroupListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2880,21 +3566,30 @@ class OnsGroupListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsGroupListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2903,6 +3598,8 @@ class OnsGroupListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsGroupListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2912,29 +3609,35 @@ class OnsGroupListResponse(TeaModel):
 class OnsGroupSubDetailRequest(TeaModel):
     def __init__(
         self,
-        instance_id: str = None,
         group_id: str = None,
+        instance_id: str = None,
     ):
-        self.instance_id = instance_id
+        # The ID of the consumer group that you want to query.
         self.group_id = group_id
+        # The ID of the instance to which the consumer group you want to query belongs.
+        self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         return self
 
 
@@ -2944,13 +3647,19 @@ class OnsGroupSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(
         sub_string: str = None,
         topic: str = None,
     ):
+        # The expression based on which consumers in the consumer group subscribe to the topic.
         self.sub_string = sub_string
+        # The name of the topic to which consumers in the consumer group subscribe.
         self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.sub_string is not None:
             result['SubString'] = self.sub_string
@@ -2981,6 +3690,10 @@ class OnsGroupSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubscriptionDataList'] = []
         if self.subscription_data_list is not None:
@@ -3001,74 +3714,93 @@ class OnsGroupSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
 class OnsGroupSubDetailResponseBodyData(TeaModel):
     def __init__(
         self,
-        subscription_data_list: OnsGroupSubDetailResponseBodyDataSubscriptionDataList = None,
         group_id: str = None,
         message_model: str = None,
         online: bool = None,
+        subscription_data_list: OnsGroupSubDetailResponseBodyDataSubscriptionDataList = None,
     ):
-        self.subscription_data_list = subscription_data_list
+        # The ID of the consumer group that you want to query.
         self.group_id = group_id
+        # The consumption mode. Valid values:
+        # 
+        # *   **CLUSTERING**: the clustering consumption mode
+        # *   **BROADCASTING**: the broadcasting consumption mode
+        # 
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
         self.message_model = message_model
+        # Indicates whether consumers in the group are online.
         self.online = online
+        # The topics to which consumers in the consumer group subscribe. If all consumers in the specified group are offline, no topics are returned.
+        self.subscription_data_list = subscription_data_list
 
     def validate(self):
         if self.subscription_data_list:
             self.subscription_data_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.subscription_data_list is not None:
-            result['SubscriptionDataList'] = self.subscription_data_list.to_map()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.message_model is not None:
             result['MessageModel'] = self.message_model
         if self.online is not None:
             result['Online'] = self.online
+        if self.subscription_data_list is not None:
+            result['SubscriptionDataList'] = self.subscription_data_list.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SubscriptionDataList') is not None:
-            temp_model = OnsGroupSubDetailResponseBodyDataSubscriptionDataList()
-            self.subscription_data_list = temp_model.from_map(m['SubscriptionDataList'])
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('MessageModel') is not None:
             self.message_model = m.get('MessageModel')
         if m.get('Online') is not None:
             self.online = m.get('Online')
+        if m.get('SubscriptionDataList') is not None:
+            temp_model = OnsGroupSubDetailResponseBodyDataSubscriptionDataList()
+            self.subscription_data_list = temp_model.from_map(m['SubscriptionDataList'])
         return self
 
 
 class OnsGroupSubDetailResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsGroupSubDetailResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The data that is returned.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsGroupSubDetailResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3076,21 +3808,30 @@ class OnsGroupSubDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsGroupSubDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3099,6 +3840,8 @@ class OnsGroupSubDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsGroupSubDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3110,12 +3853,17 @@ class OnsInstanceBaseInfoRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance that you want to query.
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -3131,120 +3879,197 @@ class OnsInstanceBaseInfoRequest(TeaModel):
 class OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints(TeaModel):
     def __init__(
         self,
-        tcp_endpoint: str = None,
-        http_internet_endpoint: str = None,
         http_internal_endpoint: str = None,
+        http_internet_endpoint: str = None,
         http_internet_secure_endpoint: str = None,
+        tcp_endpoint: str = None,
+        tcp_internet_endpoint: str = None,
     ):
-        self.tcp_endpoint = tcp_endpoint
-        self.http_internet_endpoint = http_internet_endpoint
+        # The private HTTP endpoint of the instance.
         self.http_internal_endpoint = http_internal_endpoint
+        # The public HTTP endpoint of the instance.
+        self.http_internet_endpoint = http_internet_endpoint
+        # The public HTTPS endpoint of the instance.
         self.http_internet_secure_endpoint = http_internet_secure_endpoint
+        # The private TCP endpoint of the instance.
+        self.tcp_endpoint = tcp_endpoint
+        # The public TCP endpoint of the instance.
+        # 
+        # *   Only instances that are deployed in the China (Chengdu), China (Qingdao), or China (Shenzhen) region can be accessed by using public TCP endpoints.
+        # 
+        # *   Before you use a public TCP endpoint, make sure that your client SDK meets the following requirements:
+        # 
+        #     *   TCP client SDK for Java: V2.0.0.Final or later For more information, see [Release notes for the SDK for Java](~~325569~~).
+        #     *   TCP client SDK for C++: V3.0.0 or later For more information, see [Release notes for the SDK for C++](~~325570~~).
+        # 
+        # *   You must pay the data transfer cost when you use a public TCP endpoint. For more information, see [Internet traffic fee](~~325571~~).
+        self.tcp_internet_endpoint = tcp_internet_endpoint
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.tcp_endpoint is not None:
-            result['TcpEndpoint'] = self.tcp_endpoint
-        if self.http_internet_endpoint is not None:
-            result['HttpInternetEndpoint'] = self.http_internet_endpoint
         if self.http_internal_endpoint is not None:
             result['HttpInternalEndpoint'] = self.http_internal_endpoint
+        if self.http_internet_endpoint is not None:
+            result['HttpInternetEndpoint'] = self.http_internet_endpoint
         if self.http_internet_secure_endpoint is not None:
             result['HttpInternetSecureEndpoint'] = self.http_internet_secure_endpoint
+        if self.tcp_endpoint is not None:
+            result['TcpEndpoint'] = self.tcp_endpoint
+        if self.tcp_internet_endpoint is not None:
+            result['TcpInternetEndpoint'] = self.tcp_internet_endpoint
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TcpEndpoint') is not None:
-            self.tcp_endpoint = m.get('TcpEndpoint')
-        if m.get('HttpInternetEndpoint') is not None:
-            self.http_internet_endpoint = m.get('HttpInternetEndpoint')
         if m.get('HttpInternalEndpoint') is not None:
             self.http_internal_endpoint = m.get('HttpInternalEndpoint')
+        if m.get('HttpInternetEndpoint') is not None:
+            self.http_internet_endpoint = m.get('HttpInternetEndpoint')
         if m.get('HttpInternetSecureEndpoint') is not None:
             self.http_internet_secure_endpoint = m.get('HttpInternetSecureEndpoint')
+        if m.get('TcpEndpoint') is not None:
+            self.tcp_endpoint = m.get('TcpEndpoint')
+        if m.get('TcpInternetEndpoint') is not None:
+            self.tcp_internet_endpoint = m.get('TcpInternetEndpoint')
         return self
 
 
 class OnsInstanceBaseInfoResponseBodyInstanceBaseInfo(TeaModel):
     def __init__(
         self,
+        create_time: str = None,
         endpoints: OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints = None,
         independent_naming: bool = None,
-        max_tps: int = None,
-        remark: str = None,
-        instance_name: str = None,
-        release_time: int = None,
-        topic_capacity: int = None,
-        instance_status: int = None,
         instance_id: str = None,
+        instance_name: str = None,
+        instance_status: int = None,
         instance_type: int = None,
+        max_tps: int = None,
+        release_time: int = None,
+        remark: str = None,
+        topic_capacity: int = None,
+        sp_instance_id: str = None,
+        sp_instance_type: int = None,
     ):
+        self.create_time = create_time
+        # The endpoints that correspond to different protocols.
         self.endpoints = endpoints
+        # Indicates whether the instance uses a namespace. Valid values:
+        # 
+        # *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+        # *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
         self.independent_naming = independent_naming
-        self.max_tps = max_tps
-        self.remark = remark
-        self.instance_name = instance_name
-        self.release_time = release_time
-        self.topic_capacity = topic_capacity
-        self.instance_status = instance_status
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
+        # 
+        # The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        self.instance_name = instance_name
+        # The status of the instance. Valid values:
+        # 
+        # *   **0**: The instance is being deployed. This value is valid only for Enterprise Platinum Edition instances.
+        # *   **2**: The instance has overdue payments. This value is valid only for Standard Edition instances.
+        # *   **5**: The instance is running. This value is valid for Standard Edition instances and Enterprise Platinum Edition instances.
+        # *   **7**: The instance is being upgraded and is running. This value is valid only for Enterprise Platinum Edition instances.
+        self.instance_status = instance_status
+        # The instance type. Valid values:
+        # 
+        # *   **1**: The instance is a Standard Edition instance that uses the pay-as-you-go billing method.
+        # *   **2**: The instance is an Enterprise Platinum Edition instance that uses the subscription billing method.
+        # 
+        # For information about the editions and specifications of Message Queue for Apache RocketMQ instances, see [Instance editions](~~185261~~).
         self.instance_type = instance_type
+        # The maximum transactions per second (TPS) for sending and receiving messages. Valid values: 5000, 10000, 20000, 50000, 100000, 200000, 300000, 500000, 800000, and 1000000.
+        # 
+        # For more information, see the description on the buy page.
+        # 
+        # >  This parameter is available only for Message Queue for Apache RocketMQ instances of the Enterprise Platinum Edition.
+        self.max_tps = max_tps
+        # The point in time when the Enterprise Platinum Edition instance expires.
+        self.release_time = release_time
+        # The description of the instance.
+        self.remark = remark
+        # The maximum number of topics that can be created on the instance. Valid values: 25, 50, 100, 300, and 500.
+        # 
+        # >  This parameter is available only for Message Queue for Apache RocketMQ instances of the Enterprise Platinum Edition.
+        self.topic_capacity = topic_capacity
+        self.sp_instance_id = sp_instance_id
+        self.sp_instance_type = sp_instance_type
 
     def validate(self):
         if self.endpoints:
             self.endpoints.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.endpoints is not None:
             result['Endpoints'] = self.endpoints.to_map()
         if self.independent_naming is not None:
             result['IndependentNaming'] = self.independent_naming
-        if self.max_tps is not None:
-            result['MaxTps'] = self.max_tps
-        if self.remark is not None:
-            result['Remark'] = self.remark
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
-        if self.release_time is not None:
-            result['ReleaseTime'] = self.release_time
-        if self.topic_capacity is not None:
-            result['TopicCapacity'] = self.topic_capacity
-        if self.instance_status is not None:
-            result['InstanceStatus'] = self.instance_status
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.max_tps is not None:
+            result['MaxTps'] = self.max_tps
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.topic_capacity is not None:
+            result['TopicCapacity'] = self.topic_capacity
+        if self.sp_instance_id is not None:
+            result['spInstanceId'] = self.sp_instance_id
+        if self.sp_instance_type is not None:
+            result['spInstanceType'] = self.sp_instance_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('Endpoints') is not None:
             temp_model = OnsInstanceBaseInfoResponseBodyInstanceBaseInfoEndpoints()
             self.endpoints = temp_model.from_map(m['Endpoints'])
         if m.get('IndependentNaming') is not None:
             self.independent_naming = m.get('IndependentNaming')
-        if m.get('MaxTps') is not None:
-            self.max_tps = m.get('MaxTps')
-        if m.get('Remark') is not None:
-            self.remark = m.get('Remark')
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
-        if m.get('ReleaseTime') is not None:
-            self.release_time = m.get('ReleaseTime')
-        if m.get('TopicCapacity') is not None:
-            self.topic_capacity = m.get('TopicCapacity')
-        if m.get('InstanceStatus') is not None:
-            self.instance_status = m.get('InstanceStatus')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('MaxTps') is not None:
+            self.max_tps = m.get('MaxTps')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('TopicCapacity') is not None:
+            self.topic_capacity = m.get('TopicCapacity')
+        if m.get('spInstanceId') is not None:
+            self.sp_instance_id = m.get('spInstanceId')
+        if m.get('spInstanceType') is not None:
+            self.sp_instance_type = m.get('spInstanceType')
         return self
 
 
@@ -3254,7 +4079,9 @@ class OnsInstanceBaseInfoResponseBody(TeaModel):
         instance_base_info: OnsInstanceBaseInfoResponseBodyInstanceBaseInfo = None,
         request_id: str = None,
     ):
+        # The information about the instance.
         self.instance_base_info = instance_base_info
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3262,6 +4089,10 @@ class OnsInstanceBaseInfoResponseBody(TeaModel):
             self.instance_base_info.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_base_info is not None:
             result['InstanceBaseInfo'] = self.instance_base_info.to_map()
@@ -3283,21 +4114,30 @@ class OnsInstanceBaseInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsInstanceBaseInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3306,6 +4146,8 @@ class OnsInstanceBaseInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsInstanceBaseInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3315,29 +4157,38 @@ class OnsInstanceBaseInfoResponse(TeaModel):
 class OnsInstanceCreateRequest(TeaModel):
     def __init__(
         self,
-        remark: str = None,
         instance_name: str = None,
+        remark: str = None,
     ):
-        self.remark = remark
+        # The name of the instance. Valid values:
+        # 
+        # *   The name of the instance must be unique in the region where the instance is deployed.
+        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
         self.instance_name = instance_name
+        # The description of the instance.
+        self.remark = remark
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.remark is not None:
-            result['Remark'] = self.remark
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Remark') is not None:
-            self.remark = m.get('Remark')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 
@@ -3347,13 +4198,21 @@ class OnsInstanceCreateResponseBodyData(TeaModel):
         instance_id: str = None,
         instance_type: int = None,
     ):
+        # The ID of the instance that you created.
         self.instance_id = instance_id
+        # The edition of the instance. Valid value:
+        # 
+        # *   **1**: Standard Edition
         self.instance_type = instance_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -3373,31 +4232,37 @@ class OnsInstanceCreateResponseBodyData(TeaModel):
 class OnsInstanceCreateResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsInstanceCreateResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The results that are returned.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsInstanceCreateResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3405,21 +4270,30 @@ class OnsInstanceCreateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsInstanceCreateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3428,6 +4302,8 @@ class OnsInstanceCreateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsInstanceCreateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3439,12 +4315,17 @@ class OnsInstanceDeleteRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -3462,12 +4343,17 @@ class OnsInstanceDeleteResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3484,21 +4370,30 @@ class OnsInstanceDeleteResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsInstanceDeleteResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3507,6 +4402,8 @@ class OnsInstanceDeleteResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsInstanceDeleteResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3519,13 +4416,25 @@ class OnsInstanceInServiceListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag that is attached to the instances you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the instances that use the specified tags. If you do not include these parameters in a request, this operation queries all instances that you can access.
+        # 
+        # *   The value of this parameter cannot be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The value of a tag that is attached to the instances you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the instances that use the specified tags. If you do not include these parameters in a request, this operation queries all instances that you can access.
+        # 
+        # *   The value of this parameter can be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -3547,6 +4456,7 @@ class OnsInstanceInServiceListRequest(TeaModel):
         self,
         tag: List[OnsInstanceInServiceListRequestTag] = None,
     ):
+        # The list of tags that are attached to the instance. A maximum of 20 tags can be included in a list.
         self.tag = tag
 
     def validate(self):
@@ -3556,6 +4466,10 @@ class OnsInstanceInServiceListRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -3579,13 +4493,19 @@ class OnsInstanceInServiceListResponseBodyDataInstanceVOTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -3616,6 +4536,10 @@ class OnsInstanceInServiceListResponseBodyDataInstanceVOTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -3636,61 +4560,93 @@ class OnsInstanceInServiceListResponseBodyDataInstanceVOTags(TeaModel):
 class OnsInstanceInServiceListResponseBodyDataInstanceVO(TeaModel):
     def __init__(
         self,
+        create_time: int = None,
         independent_naming: bool = None,
-        instance_name: str = None,
-        release_time: int = None,
-        instance_status: int = None,
-        tags: OnsInstanceInServiceListResponseBodyDataInstanceVOTags = None,
         instance_id: str = None,
+        instance_name: str = None,
+        instance_status: int = None,
         instance_type: int = None,
+        release_time: int = None,
+        tags: OnsInstanceInServiceListResponseBodyDataInstanceVOTags = None,
     ):
+        self.create_time = create_time
+        # Indicates whether the instance uses a namespace. Valid values:
+        # 
+        # *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+        # *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
         self.independent_naming = independent_naming
-        self.instance_name = instance_name
-        self.release_time = release_time
-        self.instance_status = instance_status
-        self.tags = tags
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
+        # 
+        # The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        self.instance_name = instance_name
+        # The status of the instance. Valid values:
+        # 
+        # *   **0**: The instance is being deployed. This value is valid only for Enterprise Platinum Edition instances.
+        # *   **2**: The instance has overdue payments. This value is valid only for Standard Edition instances.
+        # *   **5**: The instance is running. This value is valid for Standard Edition instances and Enterprise Platinum Edition instances.
+        # *   **7**: The instance is being upgraded and is running. This value is valid only for Enterprise Platinum Edition instances.
+        self.instance_status = instance_status
+        # The instance type. Valid values:
+        # 
+        # *   **1**: Standard Edition
+        # *   **2**: Enterprise Platinum Edition
+        # 
+        # For more information about the instance editions and differences between the editions, see [Instance editions](~~185261~~).
         self.instance_type = instance_type
+        # The point in time when the instance expires. If the instance is an Enterprise Platinum Edition instance, this parameter is returned.
+        self.release_time = release_time
+        # The tags that are attached to the instance.
+        self.tags = tags
 
     def validate(self):
         if self.tags:
             self.tags.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.independent_naming is not None:
             result['IndependentNaming'] = self.independent_naming
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
-        if self.release_time is not None:
-            result['ReleaseTime'] = self.release_time
-        if self.instance_status is not None:
-            result['InstanceStatus'] = self.instance_status
-        if self.tags is not None:
-            result['Tags'] = self.tags.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('IndependentNaming') is not None:
             self.independent_naming = m.get('IndependentNaming')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
-        if m.get('ReleaseTime') is not None:
-            self.release_time = m.get('ReleaseTime')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
         if m.get('Tags') is not None:
             temp_model = OnsInstanceInServiceListResponseBodyDataInstanceVOTags()
             self.tags = temp_model.from_map(m['Tags'])
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('InstanceType') is not None:
-            self.instance_type = m.get('InstanceType')
         return self
 
 
@@ -3708,6 +4664,10 @@ class OnsInstanceInServiceListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['InstanceVO'] = []
         if self.instance_vo is not None:
@@ -3728,31 +4688,37 @@ class OnsInstanceInServiceListResponseBodyData(TeaModel):
 class OnsInstanceInServiceListResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsInstanceInServiceListResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The returned list of all published instances.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsInstanceInServiceListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3760,21 +4726,30 @@ class OnsInstanceInServiceListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsInstanceInServiceListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3783,6 +4758,8 @@ class OnsInstanceInServiceListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsInstanceInServiceListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3792,35 +4769,46 @@ class OnsInstanceInServiceListResponse(TeaModel):
 class OnsInstanceUpdateRequest(TeaModel):
     def __init__(
         self,
-        remark: str = None,
-        instance_name: str = None,
         instance_id: str = None,
+        instance_name: str = None,
+        remark: str = None,
     ):
-        self.remark = remark
-        self.instance_name = instance_name
+        # The ID of the instance whose name or description you want to update.
         self.instance_id = instance_id
+        # The new name of the instance. The name must meet the following rules:
+        # 
+        # *   The name of the instance must be unique in the region where the instance is deployed.
+        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # *   If you do not configure this parameter, the instance name remains unchanged.
+        self.instance_name = instance_name
+        # The updated description of the instance. If you do not configure this parameter, the instance description remains unchanged.
+        self.remark = remark
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.remark is not None:
-            result['Remark'] = self.remark
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Remark') is not None:
-            self.remark = m.get('Remark')
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 
@@ -3829,12 +4817,17 @@ class OnsInstanceUpdateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -3851,21 +4844,30 @@ class OnsInstanceUpdateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsInstanceUpdateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3874,8 +4876,296 @@ class OnsInstanceUpdateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsInstanceUpdateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OnsMessageDetailRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        msg_id: str = None,
+        topic: str = None,
+    ):
+        # The ID of the Message Queue for Apache RocketMQ Instance.
+        self.instance_id = instance_id
+        # The ID of the message that you want to query.
+        self.msg_id = msg_id
+        # The name of the topic in which the message you want to query is stored.
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class OnsMessageDetailResponseBodyDataPropertyList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        # The name of the attribute. Valid values:
+        # 
+        # *   **BODY**: indicates the message body
+        # *   **TRACE_ON**: indicates whether the trace of the message exists.
+        # *   **KEYS**: indicates the key of the message.
+        # *   **TAGS**: indicates the tag that is attached to the message.
+        # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+        # 
+        # For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
+        self.name = name
+        # The value of the attribute.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class OnsMessageDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+        body_crc: int = None,
+        body_str: str = None,
+        born_host: str = None,
+        born_timestamp: int = None,
+        instance_id: str = None,
+        msg_id: str = None,
+        property_list: List[OnsMessageDetailResponseBodyDataPropertyList] = None,
+        reconsume_times: int = None,
+        store_host: str = None,
+        store_size: int = None,
+        store_timestamp: int = None,
+        topic: str = None,
+    ):
+        # The body of the message.
+        self.body = body
+        # The cyclic redundancy check (CRC) value of the message body.
+        self.body_crc = body_crc
+        # 消息体内容。
+        self.body_str = body_str
+        # The producer instance that generated the message.
+        self.born_host = born_host
+        # The timestamp that indicates the point in time when the message was generated. Unit: milliseconds.
+        self.born_timestamp = born_timestamp
+        # The ID of the Message Queue for Apache RocketMQ Instance.
+        self.instance_id = instance_id
+        # The ID of the message.
+        self.msg_id = msg_id
+        # The attributes of the message.
+        self.property_list = property_list
+        # The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+        self.reconsume_times = reconsume_times
+        # The Message Queue for Apache RocketMQ broker that stores the message.
+        self.store_host = store_host
+        # The size of the message. Unit: KB.
+        self.store_size = store_size
+        # The timestamp that indicates the point in time when the Message Queue for Apache RocketMQ broker stored the message. Unit: milliseconds.
+        self.store_timestamp = store_timestamp
+        # The topic to which the message belongs.
+        self.topic = topic
+
+    def validate(self):
+        if self.property_list:
+            for k in self.property_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.body_crc is not None:
+            result['BodyCRC'] = self.body_crc
+        if self.body_str is not None:
+            result['BodyStr'] = self.body_str
+        if self.born_host is not None:
+            result['BornHost'] = self.born_host
+        if self.born_timestamp is not None:
+            result['BornTimestamp'] = self.born_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        result['PropertyList'] = []
+        if self.property_list is not None:
+            for k in self.property_list:
+                result['PropertyList'].append(k.to_map() if k else None)
+        if self.reconsume_times is not None:
+            result['ReconsumeTimes'] = self.reconsume_times
+        if self.store_host is not None:
+            result['StoreHost'] = self.store_host
+        if self.store_size is not None:
+            result['StoreSize'] = self.store_size
+        if self.store_timestamp is not None:
+            result['StoreTimestamp'] = self.store_timestamp
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('BodyCRC') is not None:
+            self.body_crc = m.get('BodyCRC')
+        if m.get('BodyStr') is not None:
+            self.body_str = m.get('BodyStr')
+        if m.get('BornHost') is not None:
+            self.born_host = m.get('BornHost')
+        if m.get('BornTimestamp') is not None:
+            self.born_timestamp = m.get('BornTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        self.property_list = []
+        if m.get('PropertyList') is not None:
+            for k in m.get('PropertyList'):
+                temp_model = OnsMessageDetailResponseBodyDataPropertyList()
+                self.property_list.append(temp_model.from_map(k))
+        if m.get('ReconsumeTimes') is not None:
+            self.reconsume_times = m.get('ReconsumeTimes')
+        if m.get('StoreHost') is not None:
+            self.store_host = m.get('StoreHost')
+        if m.get('StoreSize') is not None:
+            self.store_size = m.get('StoreSize')
+        if m.get('StoreTimestamp') is not None:
+            self.store_timestamp = m.get('StoreTimestamp')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class OnsMessageDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: OnsMessageDetailResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The data returned.
+        self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = OnsMessageDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class OnsMessageDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OnsMessageDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OnsMessageDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3883,64 +5173,86 @@ class OnsInstanceUpdateResponse(TeaModel):
 class OnsMessageGetByKeyRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
-        key: str = None,
         instance_id: str = None,
+        key: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
-        self.key = key
+        # The ID of the instance where the message that you want to query resides.
         self.instance_id = instance_id
+        # The key of the message that you want to query.
+        self.key = key
+        # The topic that contains the message that you want to query.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.key is not None:
-            result['Key'] = self.key
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
-        value: str = None,
         name: str = None,
+        value: str = None,
     ):
-        self.value = value
+        # The name of the attribute. Valid values:
+        # 
+        # *   **TRACE_ON**: indicates whether a trace of the message exists.
+        # 
+        # \-\*\* KEYS\*\*: indicates the key of the message.
+        # 
+        # *   **TAGS**: indicates the tag that is attached to the message.
+        # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+        # 
+        # For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
         self.name = name
+        # The value of the attribute.
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
         if self.name is not None:
             result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -3958,6 +5270,10 @@ class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MessageProperty'] = []
         if self.message_property is not None:
@@ -3978,85 +5294,100 @@ class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList(TeaModel):
 class OnsMessageGetByKeyResponseBodyDataOnsRestMessageDo(TeaModel):
     def __init__(
         self,
-        store_size: int = None,
-        reconsume_times: int = None,
-        store_timestamp: int = None,
-        instance_id: str = None,
-        msg_id: str = None,
-        store_host: str = None,
-        topic: str = None,
-        property_list: OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList = None,
-        born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
+        born_timestamp: int = None,
+        instance_id: str = None,
+        msg_id: str = None,
+        property_list: OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList = None,
+        reconsume_times: int = None,
+        store_host: str = None,
+        store_size: int = None,
+        store_timestamp: int = None,
+        topic: str = None,
     ):
-        self.store_size = store_size
-        self.reconsume_times = reconsume_times
-        self.store_timestamp = store_timestamp
-        self.instance_id = instance_id
-        self.msg_id = msg_id
-        self.store_host = store_host
-        self.topic = topic
-        self.property_list = property_list
-        self.born_timestamp = born_timestamp
+        # The cyclic redundancy check (CRC) value of the message body.
         self.body_crc = body_crc
+        # The producer client that generated the message.
         self.born_host = born_host
+        # The timestamp when the message was produced.
+        self.born_timestamp = born_timestamp
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The ID of the message.
+        self.msg_id = msg_id
+        # The attributes of the message.
+        self.property_list = property_list
+        # The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+        self.reconsume_times = reconsume_times
+        # The Message Queue for Apache RocketMQ broker that stores the message.
+        self.store_host = store_host
+        # The size of the message.
+        self.store_size = store_size
+        # The timestamp when the Message Queue for Apache RocketMQ broker stored the message.
+        self.store_timestamp = store_timestamp
+        # The topic to which the message belongs.
+        self.topic = topic
 
     def validate(self):
         if self.property_list:
             self.property_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.store_size is not None:
-            result['StoreSize'] = self.store_size
-        if self.reconsume_times is not None:
-            result['ReconsumeTimes'] = self.reconsume_times
-        if self.store_timestamp is not None:
-            result['StoreTimestamp'] = self.store_timestamp
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
-        if self.store_host is not None:
-            result['StoreHost'] = self.store_host
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.property_list is not None:
-            result['PropertyList'] = self.property_list.to_map()
-        if self.born_timestamp is not None:
-            result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
             result['BodyCRC'] = self.body_crc
         if self.born_host is not None:
             result['BornHost'] = self.born_host
+        if self.born_timestamp is not None:
+            result['BornTimestamp'] = self.born_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.property_list is not None:
+            result['PropertyList'] = self.property_list.to_map()
+        if self.reconsume_times is not None:
+            result['ReconsumeTimes'] = self.reconsume_times
+        if self.store_host is not None:
+            result['StoreHost'] = self.store_host
+        if self.store_size is not None:
+            result['StoreSize'] = self.store_size
+        if self.store_timestamp is not None:
+            result['StoreTimestamp'] = self.store_timestamp
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StoreSize') is not None:
-            self.store_size = m.get('StoreSize')
-        if m.get('ReconsumeTimes') is not None:
-            self.reconsume_times = m.get('ReconsumeTimes')
-        if m.get('StoreTimestamp') is not None:
-            self.store_timestamp = m.get('StoreTimestamp')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
-        if m.get('StoreHost') is not None:
-            self.store_host = m.get('StoreHost')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('PropertyList') is not None:
-            temp_model = OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList()
-            self.property_list = temp_model.from_map(m['PropertyList'])
-        if m.get('BornTimestamp') is not None:
-            self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
             self.body_crc = m.get('BodyCRC')
         if m.get('BornHost') is not None:
             self.born_host = m.get('BornHost')
+        if m.get('BornTimestamp') is not None:
+            self.born_timestamp = m.get('BornTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('PropertyList') is not None:
+            temp_model = OnsMessageGetByKeyResponseBodyDataOnsRestMessageDoPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
+        if m.get('ReconsumeTimes') is not None:
+            self.reconsume_times = m.get('ReconsumeTimes')
+        if m.get('StoreHost') is not None:
+            self.store_host = m.get('StoreHost')
+        if m.get('StoreSize') is not None:
+            self.store_size = m.get('StoreSize')
+        if m.get('StoreTimestamp') is not None:
+            self.store_timestamp = m.get('StoreTimestamp')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -4074,6 +5405,10 @@ class OnsMessageGetByKeyResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OnsRestMessageDo'] = []
         if self.ons_rest_message_do is not None:
@@ -4094,31 +5429,37 @@ class OnsMessageGetByKeyResponseBodyData(TeaModel):
 class OnsMessageGetByKeyResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsMessageGetByKeyResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The information about the message that is queried.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsMessageGetByKeyResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4126,21 +5467,30 @@ class OnsMessageGetByKeyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsMessageGetByKeyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4149,6 +5499,8 @@ class OnsMessageGetByKeyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsMessageGetByKeyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4158,64 +5510,84 @@ class OnsMessageGetByKeyResponse(TeaModel):
 class OnsMessageGetByMsgIdRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
         msg_id: str = None,
         topic: str = None,
-        instance_id: str = None,
     ):
-        self.msg_id = msg_id
-        self.topic = topic
+        # The ID of the instance where the message that you want to query resides.
         self.instance_id = instance_id
+        # The ID of the message that you want to query.
+        self.msg_id = msg_id
+        # The topic that contains the message that you want to query.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
         if self.topic is not None:
             result['Topic'] = self.topic
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('MsgId') is not None:
             self.msg_id = m.get('MsgId')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         return self
 
 
 class OnsMessageGetByMsgIdResponseBodyDataPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
-        value: str = None,
         name: str = None,
+        value: str = None,
     ):
-        self.value = value
+        # The name of the attribute. Valid values:
+        # 
+        # *   **TRACE_ON**: indicates whether a trace of the message exists.
+        # *   **KEYS**: indicates the key of the message.
+        # *   **TAGS**: indicates the tag that is attached to the message.
+        # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+        # 
+        # For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
         self.name = name
+        # The value of the attribute.
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
         if self.name is not None:
             result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -4233,6 +5605,10 @@ class OnsMessageGetByMsgIdResponseBodyDataPropertyList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MessageProperty'] = []
         if self.message_property is not None:
@@ -4253,116 +5629,137 @@ class OnsMessageGetByMsgIdResponseBodyDataPropertyList(TeaModel):
 class OnsMessageGetByMsgIdResponseBodyData(TeaModel):
     def __init__(
         self,
-        store_size: int = None,
-        reconsume_times: int = None,
-        store_timestamp: int = None,
-        instance_id: str = None,
-        msg_id: str = None,
-        store_host: str = None,
-        topic: str = None,
-        property_list: OnsMessageGetByMsgIdResponseBodyDataPropertyList = None,
-        born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
+        born_timestamp: int = None,
+        instance_id: str = None,
+        msg_id: str = None,
+        property_list: OnsMessageGetByMsgIdResponseBodyDataPropertyList = None,
+        reconsume_times: int = None,
+        store_host: str = None,
+        store_size: int = None,
+        store_timestamp: int = None,
+        topic: str = None,
     ):
-        self.store_size = store_size
-        self.reconsume_times = reconsume_times
-        self.store_timestamp = store_timestamp
-        self.instance_id = instance_id
-        self.msg_id = msg_id
-        self.store_host = store_host
-        self.topic = topic
-        self.property_list = property_list
-        self.born_timestamp = born_timestamp
+        # The cyclic redundancy check (CRC) value of the message body.
         self.body_crc = body_crc
+        # The producer client that generated the message.
         self.born_host = born_host
+        # The timestamp when the message was produced.
+        self.born_timestamp = born_timestamp
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The ID of the message.
+        self.msg_id = msg_id
+        # The attributes of the message.
+        self.property_list = property_list
+        # The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+        self.reconsume_times = reconsume_times
+        # The Message Queue for Apache RocketMQ broker that stores the message.
+        self.store_host = store_host
+        # The size of the message.
+        self.store_size = store_size
+        # The timestamp when the Message Queue for Apache RocketMQ broker stored the message.
+        self.store_timestamp = store_timestamp
+        # The topic to which the message belongs.
+        self.topic = topic
 
     def validate(self):
         if self.property_list:
             self.property_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.store_size is not None:
-            result['StoreSize'] = self.store_size
-        if self.reconsume_times is not None:
-            result['ReconsumeTimes'] = self.reconsume_times
-        if self.store_timestamp is not None:
-            result['StoreTimestamp'] = self.store_timestamp
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
-        if self.store_host is not None:
-            result['StoreHost'] = self.store_host
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.property_list is not None:
-            result['PropertyList'] = self.property_list.to_map()
-        if self.born_timestamp is not None:
-            result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
             result['BodyCRC'] = self.body_crc
         if self.born_host is not None:
             result['BornHost'] = self.born_host
+        if self.born_timestamp is not None:
+            result['BornTimestamp'] = self.born_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.property_list is not None:
+            result['PropertyList'] = self.property_list.to_map()
+        if self.reconsume_times is not None:
+            result['ReconsumeTimes'] = self.reconsume_times
+        if self.store_host is not None:
+            result['StoreHost'] = self.store_host
+        if self.store_size is not None:
+            result['StoreSize'] = self.store_size
+        if self.store_timestamp is not None:
+            result['StoreTimestamp'] = self.store_timestamp
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StoreSize') is not None:
-            self.store_size = m.get('StoreSize')
-        if m.get('ReconsumeTimes') is not None:
-            self.reconsume_times = m.get('ReconsumeTimes')
-        if m.get('StoreTimestamp') is not None:
-            self.store_timestamp = m.get('StoreTimestamp')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
-        if m.get('StoreHost') is not None:
-            self.store_host = m.get('StoreHost')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('PropertyList') is not None:
-            temp_model = OnsMessageGetByMsgIdResponseBodyDataPropertyList()
-            self.property_list = temp_model.from_map(m['PropertyList'])
-        if m.get('BornTimestamp') is not None:
-            self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
             self.body_crc = m.get('BodyCRC')
         if m.get('BornHost') is not None:
             self.born_host = m.get('BornHost')
+        if m.get('BornTimestamp') is not None:
+            self.born_timestamp = m.get('BornTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('PropertyList') is not None:
+            temp_model = OnsMessageGetByMsgIdResponseBodyDataPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
+        if m.get('ReconsumeTimes') is not None:
+            self.reconsume_times = m.get('ReconsumeTimes')
+        if m.get('StoreHost') is not None:
+            self.store_host = m.get('StoreHost')
+        if m.get('StoreSize') is not None:
+            self.store_size = m.get('StoreSize')
+        if m.get('StoreTimestamp') is not None:
+            self.store_timestamp = m.get('StoreTimestamp')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsMessageGetByMsgIdResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsMessageGetByMsgIdResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The information about the message that is queried.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsMessageGetByMsgIdResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4370,21 +5767,30 @@ class OnsMessageGetByMsgIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsMessageGetByMsgIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4393,6 +5799,8 @@ class OnsMessageGetByMsgIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsMessageGetByMsgIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4402,88 +5810,112 @@ class OnsMessageGetByMsgIdResponse(TeaModel):
 class OnsMessagePageQueryByTopicRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
         begin_time: int = None,
-        end_time: int = None,
-        task_id: str = None,
         current_page: int = None,
-        page_size: int = None,
+        end_time: int = None,
         instance_id: str = None,
+        page_size: int = None,
+        task_id: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
+        # The beginning of the time range to query. Set the value to a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the BeginTime parameter that you specified in the request when you created the specified query task.
         self.begin_time = begin_time
-        self.end_time = end_time
-        self.task_id = task_id
+        # The number of the page to return. Pages start from page 1. Valid values: 1 to 50.
         self.current_page = current_page
-        self.page_size = page_size
+        # The end of the time range to query. Set the value to a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the EndTime parameter that you specified in the request when you created the specified query task.
+        self.end_time = end_time
+        # The ID of the instance where the message that you want to query resides.
         self.instance_id = instance_id
+        # The number of entries to return on each page. Valid values: 5 to 50. Default value: 20. If you specify a valid value for the **TaskId** parameter in the request, this parameter does not take effect. The system uses the value of the PageSize parameter that you specified in the request for creating the query task.
+        self.page_size = page_size
+        # The ID of the query task. The first time you call this operation to query dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is not required. This parameter is required in subsequent queries for dead-letter messages on a specified page. You can obtain the task ID from the returned result of the first query.
+        self.task_id = task_id
+        # The topic in which the messages you want to query are stored.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyListMessageProperty(TeaModel):
     def __init__(
         self,
-        value: str = None,
         name: str = None,
+        value: str = None,
     ):
-        self.value = value
+        # The name of the attribute. Valid values:
+        # 
+        # *   **TRACE_ON**: indicates whether a trace of the message exists.
+        # *   **KEYS**: indicates the key of the message.
+        # *   **TAGS**: indicates the tag that is attached to the message.
+        # *   **INSTANCE_ID**: indicates the ID of the instance that contains the message.
+        # 
+        # For more information about the terms that are used in Message Queue for Apache RocketMQ, see [Terms](~~29533~~).
         self.name = name
+        # The value of the attribute.
+        self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
         if self.name is not None:
             result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -4501,6 +5933,10 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessage
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MessageProperty'] = []
         if self.message_property is not None:
@@ -4521,85 +5957,100 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessage
 class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDo(TeaModel):
     def __init__(
         self,
-        store_size: int = None,
-        reconsume_times: int = None,
-        store_timestamp: int = None,
-        instance_id: str = None,
-        msg_id: str = None,
-        store_host: str = None,
-        topic: str = None,
-        property_list: OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList = None,
-        born_timestamp: int = None,
         body_crc: int = None,
         born_host: str = None,
+        born_timestamp: int = None,
+        instance_id: str = None,
+        msg_id: str = None,
+        property_list: OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList = None,
+        reconsume_times: int = None,
+        store_host: str = None,
+        store_size: int = None,
+        store_timestamp: int = None,
+        topic: str = None,
     ):
-        self.store_size = store_size
-        self.reconsume_times = reconsume_times
-        self.store_timestamp = store_timestamp
-        self.instance_id = instance_id
-        self.msg_id = msg_id
-        self.store_host = store_host
-        self.topic = topic
-        self.property_list = property_list
-        self.born_timestamp = born_timestamp
+        # The cyclic redundancy check (CRC) value of the message body.
         self.body_crc = body_crc
+        # The producer client that generated the message.
         self.born_host = born_host
+        # The timestamp when the message was generated. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        self.born_timestamp = born_timestamp
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The ID of the message.
+        self.msg_id = msg_id
+        # The attributes of the message.
+        self.property_list = property_list
+        # The number of retries that Message Queue for Apache RocketMQ performed to send the message to consumers.
+        self.reconsume_times = reconsume_times
+        # The Message Queue for Apache RocketMQ broker that stores the message.
+        self.store_host = store_host
+        # The size of the message. Unit: KB.
+        self.store_size = store_size
+        # The timestamp when the Message Queue for Apache RocketMQ broker stored the message. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        self.store_timestamp = store_timestamp
+        # The topic to which the message belongs.
+        self.topic = topic
 
     def validate(self):
         if self.property_list:
             self.property_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.store_size is not None:
-            result['StoreSize'] = self.store_size
-        if self.reconsume_times is not None:
-            result['ReconsumeTimes'] = self.reconsume_times
-        if self.store_timestamp is not None:
-            result['StoreTimestamp'] = self.store_timestamp
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
-        if self.store_host is not None:
-            result['StoreHost'] = self.store_host
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.property_list is not None:
-            result['PropertyList'] = self.property_list.to_map()
-        if self.born_timestamp is not None:
-            result['BornTimestamp'] = self.born_timestamp
         if self.body_crc is not None:
             result['BodyCRC'] = self.body_crc
         if self.born_host is not None:
             result['BornHost'] = self.born_host
+        if self.born_timestamp is not None:
+            result['BornTimestamp'] = self.born_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.property_list is not None:
+            result['PropertyList'] = self.property_list.to_map()
+        if self.reconsume_times is not None:
+            result['ReconsumeTimes'] = self.reconsume_times
+        if self.store_host is not None:
+            result['StoreHost'] = self.store_host
+        if self.store_size is not None:
+            result['StoreSize'] = self.store_size
+        if self.store_timestamp is not None:
+            result['StoreTimestamp'] = self.store_timestamp
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('StoreSize') is not None:
-            self.store_size = m.get('StoreSize')
-        if m.get('ReconsumeTimes') is not None:
-            self.reconsume_times = m.get('ReconsumeTimes')
-        if m.get('StoreTimestamp') is not None:
-            self.store_timestamp = m.get('StoreTimestamp')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
-        if m.get('StoreHost') is not None:
-            self.store_host = m.get('StoreHost')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('PropertyList') is not None:
-            temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList()
-            self.property_list = temp_model.from_map(m['PropertyList'])
-        if m.get('BornTimestamp') is not None:
-            self.born_timestamp = m.get('BornTimestamp')
         if m.get('BodyCRC') is not None:
             self.body_crc = m.get('BodyCRC')
         if m.get('BornHost') is not None:
             self.born_host = m.get('BornHost')
+        if m.get('BornTimestamp') is not None:
+            self.born_timestamp = m.get('BornTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('PropertyList') is not None:
+            temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundListOnsRestMessageDoPropertyList()
+            self.property_list = temp_model.from_map(m['PropertyList'])
+        if m.get('ReconsumeTimes') is not None:
+            self.reconsume_times = m.get('ReconsumeTimes')
+        if m.get('StoreHost') is not None:
+            self.store_host = m.get('StoreHost')
+        if m.get('StoreSize') is not None:
+            self.store_size = m.get('StoreSize')
+        if m.get('StoreTimestamp') is not None:
+            self.store_timestamp = m.get('StoreTimestamp')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -4617,6 +6068,10 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['OnsRestMessageDo'] = []
         if self.ons_rest_message_do is not None:
@@ -4638,13 +6093,17 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
     def __init__(
         self,
         current_page: int = None,
-        msg_found_list: OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList = None,
         max_page_count: int = None,
+        msg_found_list: OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList = None,
         task_id: str = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
-        self.msg_found_list = msg_found_list
+        # The total number of returned pages.
         self.max_page_count = max_page_count
+        # The information about messages on the returned page. The information that is contained in this parameter is the same as the information that is returned by the [OnsMessageGetByMsgId](~~29607~~) operation.
+        self.msg_found_list = msg_found_list
+        # The ID of the query task. The first time you call this operation to query the dead-letter messages that are sent to a specified consumer group within a specified time range, this parameter is returned. You can use the task ID to query the details of dead-letter messages on other returned pages.
         self.task_id = task_id
 
     def validate(self):
@@ -4652,13 +6111,17 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
             self.msg_found_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
-        if self.msg_found_list is not None:
-            result['MsgFoundList'] = self.msg_found_list.to_map()
         if self.max_page_count is not None:
             result['MaxPageCount'] = self.max_page_count
+        if self.msg_found_list is not None:
+            result['MsgFoundList'] = self.msg_found_list.to_map()
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -4667,11 +6130,11 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('MaxPageCount') is not None:
+            self.max_page_count = m.get('MaxPageCount')
         if m.get('MsgFoundList') is not None:
             temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDoMsgFoundList()
             self.msg_found_list = temp_model.from_map(m['MsgFoundList'])
-        if m.get('MaxPageCount') is not None:
-            self.max_page_count = m.get('MaxPageCount')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -4680,31 +6143,37 @@ class OnsMessagePageQueryByTopicResponseBodyMsgFoundDo(TeaModel):
 class OnsMessagePageQueryByTopicResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         msg_found_do: OnsMessagePageQueryByTopicResponseBodyMsgFoundDo = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The information about the message that is queried.
         self.msg_found_do = msg_found_do
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.msg_found_do:
             self.msg_found_do.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.msg_found_do is not None:
             result['MsgFoundDo'] = self.msg_found_do.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('MsgFoundDo') is not None:
             temp_model = OnsMessagePageQueryByTopicResponseBodyMsgFoundDo()
             self.msg_found_do = temp_model.from_map(m['MsgFoundDo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4712,21 +6181,30 @@ class OnsMessagePageQueryByTopicResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsMessagePageQueryByTopicResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4735,6 +6213,8 @@ class OnsMessagePageQueryByTopicResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsMessagePageQueryByTopicResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4744,47 +6224,56 @@ class OnsMessagePageQueryByTopicResponse(TeaModel):
 class OnsMessagePushRequest(TeaModel):
     def __init__(
         self,
-        group_id: str = None,
         client_id: str = None,
+        group_id: str = None,
+        instance_id: str = None,
         msg_id: str = None,
         topic: str = None,
-        instance_id: str = None,
     ):
-        self.group_id = group_id
+        # The ID of the consumer. You can call the [OnsConsumerGetConnection](~~29598~~) operation to query the ID of each consumer in a consumer group.
         self.client_id = client_id
-        self.msg_id = msg_id
-        self.topic = topic
+        # The ID of the consumer group. For information about what a consumer group is, see [Terms](~~29533~~).
+        self.group_id = group_id
+        # The ID of the Message Queue for Apache RocketMQ instance to which the specified consumer group belongs.
         self.instance_id = instance_id
+        # The ID of the message.
+        self.msg_id = msg_id
+        # The topic to which the message is pushed.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
         if self.topic is not None:
             result['Topic'] = self.topic
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('MsgId') is not None:
             self.msg_id = m.get('MsgId')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         return self
 
 
@@ -4793,12 +6282,17 @@ class OnsMessagePushResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -4815,21 +6309,30 @@ class OnsMessagePushResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsMessagePushResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4838,117 +6341,10 @@ class OnsMessagePushResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsMessagePushResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMessageSendRequest(TeaModel):
-    def __init__(
-        self,
-        topic: str = None,
-        tag: str = None,
-        key: str = None,
-        message: str = None,
-        instance_id: str = None,
-    ):
-        self.topic = topic
-        self.tag = tag
-        self.key = key
-        self.message = message
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.tag is not None:
-            result['Tag'] = self.tag
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('Tag') is not None:
-            self.tag = m.get('Tag')
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMessageSendResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class OnsMessageSendResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMessageSendResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMessageSendResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4956,70 +6352,90 @@ class OnsMessageSendResponse(TeaModel):
 class OnsMessageTraceRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
-        msg_id: str = None,
         instance_id: str = None,
+        msg_id: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
-        self.msg_id = msg_id
+        # The ID of the instance where the message that you want to query resides.
         self.instance_id = instance_id
+        # The ID of the message that you want to query.
+        self.msg_id = msg_id
+        # The topic to which the message belongs.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsMessageTraceResponseBodyDataMessageTrack(TeaModel):
     def __init__(
         self,
-        track_type: str = None,
         consumer_group: str = None,
         instance_id: str = None,
+        track_type: str = None,
     ):
-        self.track_type = track_type
+        # The ID of the consumer group that subscribes to the topic.
         self.consumer_group = consumer_group
+        # The ID of the instance where the message that you want to query resides.
         self.instance_id = instance_id
+        # The status of the message. Valid values:
+        # 
+        # *   **CONSUMED**: The message is consumed.
+        # *   **CONSUMED_BUT_FILTERED:** No consumer groups subscribe to the message. The message is filtered out and not consumed.
+        # *   **NOT_CONSUME_YET**: The message is pending to be consumed.
+        # *   **NOT_ONLINE**: The consumer group is offline.
+        # *   **UNKNOWN**: The message is not consumed due to unknown reasons.
+        self.track_type = track_type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.track_type is not None:
-            result['TrackType'] = self.track_type
         if self.consumer_group is not None:
             result['ConsumerGroup'] = self.consumer_group
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.track_type is not None:
+            result['TrackType'] = self.track_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TrackType') is not None:
-            self.track_type = m.get('TrackType')
         if m.get('ConsumerGroup') is not None:
             self.consumer_group = m.get('ConsumerGroup')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('TrackType') is not None:
+            self.track_type = m.get('TrackType')
         return self
 
 
@@ -5037,6 +6453,10 @@ class OnsMessageTraceResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['MessageTrack'] = []
         if self.message_track is not None:
@@ -5057,31 +6477,37 @@ class OnsMessageTraceResponseBodyData(TeaModel):
 class OnsMessageTraceResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsMessageTraceResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The information about the message that is queried.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsMessageTraceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -5089,21 +6515,30 @@ class OnsMessageTraceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsMessageTraceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5112,1241 +6547,10 @@ class OnsMessageTraceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsMessageTraceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttGroupIdCreateRequest(TeaModel):
-    def __init__(
-        self,
-        topic: str = None,
-        group_id: str = None,
-        instance_id: str = None,
-    ):
-        self.topic = topic
-        self.group_id = group_id
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttGroupIdCreateResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class OnsMqttGroupIdCreateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttGroupIdCreateResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttGroupIdCreateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttGroupIdDeleteRequest(TeaModel):
-    def __init__(
-        self,
-        group_id: str = None,
-        instance_id: str = None,
-    ):
-        self.group_id = group_id
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttGroupIdDeleteResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class OnsMqttGroupIdDeleteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttGroupIdDeleteResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttGroupIdDeleteResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttGroupIdListRequest(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-    ):
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttGroupIdListResponseBodyDataMqttGroupIdDo(TeaModel):
-    def __init__(
-        self,
-        update_time: int = None,
-        independent_naming: bool = None,
-        group_id: str = None,
-        create_time: int = None,
-        instance_id: str = None,
-    ):
-        self.update_time = update_time
-        self.independent_naming = independent_naming
-        self.group_id = group_id
-        self.create_time = create_time
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        if self.independent_naming is not None:
-            result['IndependentNaming'] = self.independent_naming
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        if m.get('IndependentNaming') is not None:
-            self.independent_naming = m.get('IndependentNaming')
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttGroupIdListResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        mqtt_group_id_do: List[OnsMqttGroupIdListResponseBodyDataMqttGroupIdDo] = None,
-    ):
-        self.mqtt_group_id_do = mqtt_group_id_do
-
-    def validate(self):
-        if self.mqtt_group_id_do:
-            for k in self.mqtt_group_id_do:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['MqttGroupIdDo'] = []
-        if self.mqtt_group_id_do is not None:
-            for k in self.mqtt_group_id_do:
-                result['MqttGroupIdDo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.mqtt_group_id_do = []
-        if m.get('MqttGroupIdDo') is not None:
-            for k in m.get('MqttGroupIdDo'):
-                temp_model = OnsMqttGroupIdListResponseBodyDataMqttGroupIdDo()
-                self.mqtt_group_id_do.append(temp_model.from_map(k))
-        return self
-
-
-class OnsMqttGroupIdListResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: OnsMqttGroupIdListResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = OnsMqttGroupIdListResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class OnsMqttGroupIdListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttGroupIdListResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttGroupIdListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttQueryClientByClientIdRequest(TeaModel):
-    def __init__(
-        self,
-        client_id: str = None,
-        instance_id: str = None,
-    ):
-        self.client_id = client_id
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.client_id is not None:
-            result['ClientId'] = self.client_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientId') is not None:
-            self.client_id = m.get('ClientId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonDataSubscriptionDo(TeaModel):
-    def __init__(
-        self,
-        sub_topic: str = None,
-        parent_topic: str = None,
-        qos: int = None,
-    ):
-        self.sub_topic = sub_topic
-        self.parent_topic = parent_topic
-        self.qos = qos
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.sub_topic is not None:
-            result['SubTopic'] = self.sub_topic
-        if self.parent_topic is not None:
-            result['ParentTopic'] = self.parent_topic
-        if self.qos is not None:
-            result['Qos'] = self.qos
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('SubTopic') is not None:
-            self.sub_topic = m.get('SubTopic')
-        if m.get('ParentTopic') is not None:
-            self.parent_topic = m.get('ParentTopic')
-        if m.get('Qos') is not None:
-            self.qos = m.get('Qos')
-        return self
-
-
-class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData(TeaModel):
-    def __init__(
-        self,
-        subscription_do: List[OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonDataSubscriptionDo] = None,
-    ):
-        self.subscription_do = subscription_do
-
-    def validate(self):
-        if self.subscription_do:
-            for k in self.subscription_do:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['SubscriptionDo'] = []
-        if self.subscription_do is not None:
-            for k in self.subscription_do:
-                result['SubscriptionDo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.subscription_do = []
-        if m.get('SubscriptionDo') is not None:
-            for k in m.get('SubscriptionDo'):
-                temp_model = OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonDataSubscriptionDo()
-                self.subscription_do.append(temp_model.from_map(k))
-        return self
-
-
-class OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo(TeaModel):
-    def __init__(
-        self,
-        online: bool = None,
-        last_touch: int = None,
-        socket_channel: str = None,
-        client_id: str = None,
-        sub_scripton_data: OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData = None,
-    ):
-        self.online = online
-        self.last_touch = last_touch
-        self.socket_channel = socket_channel
-        self.client_id = client_id
-        self.sub_scripton_data = sub_scripton_data
-
-    def validate(self):
-        if self.sub_scripton_data:
-            self.sub_scripton_data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.online is not None:
-            result['Online'] = self.online
-        if self.last_touch is not None:
-            result['LastTouch'] = self.last_touch
-        if self.socket_channel is not None:
-            result['SocketChannel'] = self.socket_channel
-        if self.client_id is not None:
-            result['ClientId'] = self.client_id
-        if self.sub_scripton_data is not None:
-            result['SubScriptonData'] = self.sub_scripton_data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Online') is not None:
-            self.online = m.get('Online')
-        if m.get('LastTouch') is not None:
-            self.last_touch = m.get('LastTouch')
-        if m.get('SocketChannel') is not None:
-            self.socket_channel = m.get('SocketChannel')
-        if m.get('ClientId') is not None:
-            self.client_id = m.get('ClientId')
-        if m.get('SubScriptonData') is not None:
-            temp_model = OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDoSubScriptonData()
-            self.sub_scripton_data = temp_model.from_map(m['SubScriptonData'])
-        return self
-
-
-class OnsMqttQueryClientByClientIdResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        mqtt_client_info_do: OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo = None,
-    ):
-        self.request_id = request_id
-        self.mqtt_client_info_do = mqtt_client_info_do
-
-    def validate(self):
-        if self.mqtt_client_info_do:
-            self.mqtt_client_info_do.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.mqtt_client_info_do is not None:
-            result['MqttClientInfoDo'] = self.mqtt_client_info_do.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MqttClientInfoDo') is not None:
-            temp_model = OnsMqttQueryClientByClientIdResponseBodyMqttClientInfoDo()
-            self.mqtt_client_info_do = temp_model.from_map(m['MqttClientInfoDo'])
-        return self
-
-
-class OnsMqttQueryClientByClientIdResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttQueryClientByClientIdResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttQueryClientByClientIdResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttQueryClientByGroupIdRequest(TeaModel):
-    def __init__(
-        self,
-        group_id: str = None,
-        instance_id: str = None,
-    ):
-        self.group_id = group_id
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttQueryClientByGroupIdResponseBodyMqttClientSetDo(TeaModel):
-    def __init__(
-        self,
-        online_count: int = None,
-    ):
-        self.online_count = online_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.online_count is not None:
-            result['OnlineCount'] = self.online_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OnlineCount') is not None:
-            self.online_count = m.get('OnlineCount')
-        return self
-
-
-class OnsMqttQueryClientByGroupIdResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        mqtt_client_set_do: OnsMqttQueryClientByGroupIdResponseBodyMqttClientSetDo = None,
-    ):
-        self.request_id = request_id
-        self.mqtt_client_set_do = mqtt_client_set_do
-
-    def validate(self):
-        if self.mqtt_client_set_do:
-            self.mqtt_client_set_do.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.mqtt_client_set_do is not None:
-            result['MqttClientSetDo'] = self.mqtt_client_set_do.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MqttClientSetDo') is not None:
-            temp_model = OnsMqttQueryClientByGroupIdResponseBodyMqttClientSetDo()
-            self.mqtt_client_set_do = temp_model.from_map(m['MqttClientSetDo'])
-        return self
-
-
-class OnsMqttQueryClientByGroupIdResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttQueryClientByGroupIdResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttQueryClientByGroupIdResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttQueryClientByTopicRequest(TeaModel):
-    def __init__(
-        self,
-        parent_topic: str = None,
-        sub_topic: str = None,
-        instance_id: str = None,
-    ):
-        self.parent_topic = parent_topic
-        self.sub_topic = sub_topic
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.parent_topic is not None:
-            result['ParentTopic'] = self.parent_topic
-        if self.sub_topic is not None:
-            result['SubTopic'] = self.sub_topic
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ParentTopic') is not None:
-            self.parent_topic = m.get('ParentTopic')
-        if m.get('SubTopic') is not None:
-            self.sub_topic = m.get('SubTopic')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttQueryClientByTopicResponseBodyMqttClientSetDo(TeaModel):
-    def __init__(
-        self,
-        online_count: int = None,
-    ):
-        self.online_count = online_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.online_count is not None:
-            result['OnlineCount'] = self.online_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OnlineCount') is not None:
-            self.online_count = m.get('OnlineCount')
-        return self
-
-
-class OnsMqttQueryClientByTopicResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        mqtt_client_set_do: OnsMqttQueryClientByTopicResponseBodyMqttClientSetDo = None,
-    ):
-        self.request_id = request_id
-        self.mqtt_client_set_do = mqtt_client_set_do
-
-    def validate(self):
-        if self.mqtt_client_set_do:
-            self.mqtt_client_set_do.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.mqtt_client_set_do is not None:
-            result['MqttClientSetDo'] = self.mqtt_client_set_do.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('MqttClientSetDo') is not None:
-            temp_model = OnsMqttQueryClientByTopicResponseBodyMqttClientSetDo()
-            self.mqtt_client_set_do = temp_model.from_map(m['MqttClientSetDo'])
-        return self
-
-
-class OnsMqttQueryClientByTopicResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttQueryClientByTopicResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttQueryClientByTopicResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttQueryHistoryOnlineRequest(TeaModel):
-    def __init__(
-        self,
-        group_id: str = None,
-        begin_time: int = None,
-        end_time: int = None,
-        instance_id: str = None,
-    ):
-        self.group_id = group_id
-        self.begin_time = begin_time
-        self.end_time = end_time
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.begin_time is not None:
-            result['BeginTime'] = self.begin_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('BeginTime') is not None:
-            self.begin_time = m.get('BeginTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttQueryHistoryOnlineResponseBodyDataRecordsStatsDataDo(TeaModel):
-    def __init__(
-        self,
-        y: float = None,
-        x: int = None,
-    ):
-        self.y = y
-        self.x = x
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.y is not None:
-            result['Y'] = self.y
-        if self.x is not None:
-            result['X'] = self.x
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
-        if m.get('X') is not None:
-            self.x = m.get('X')
-        return self
-
-
-class OnsMqttQueryHistoryOnlineResponseBodyDataRecords(TeaModel):
-    def __init__(
-        self,
-        stats_data_do: List[OnsMqttQueryHistoryOnlineResponseBodyDataRecordsStatsDataDo] = None,
-    ):
-        self.stats_data_do = stats_data_do
-
-    def validate(self):
-        if self.stats_data_do:
-            for k in self.stats_data_do:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['StatsDataDo'] = []
-        if self.stats_data_do is not None:
-            for k in self.stats_data_do:
-                result['StatsDataDo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.stats_data_do = []
-        if m.get('StatsDataDo') is not None:
-            for k in m.get('StatsDataDo'):
-                temp_model = OnsMqttQueryHistoryOnlineResponseBodyDataRecordsStatsDataDo()
-                self.stats_data_do.append(temp_model.from_map(k))
-        return self
-
-
-class OnsMqttQueryHistoryOnlineResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        records: OnsMqttQueryHistoryOnlineResponseBodyDataRecords = None,
-        xunit: str = None,
-        yunit: str = None,
-        title: str = None,
-    ):
-        self.records = records
-        self.xunit = xunit
-        self.yunit = yunit
-        self.title = title
-
-    def validate(self):
-        if self.records:
-            self.records.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.records is not None:
-            result['Records'] = self.records.to_map()
-        if self.xunit is not None:
-            result['XUnit'] = self.xunit
-        if self.yunit is not None:
-            result['YUnit'] = self.yunit
-        if self.title is not None:
-            result['Title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Records') is not None:
-            temp_model = OnsMqttQueryHistoryOnlineResponseBodyDataRecords()
-            self.records = temp_model.from_map(m['Records'])
-        if m.get('XUnit') is not None:
-            self.xunit = m.get('XUnit')
-        if m.get('YUnit') is not None:
-            self.yunit = m.get('YUnit')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        return self
-
-
-class OnsMqttQueryHistoryOnlineResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: OnsMqttQueryHistoryOnlineResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = OnsMqttQueryHistoryOnlineResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class OnsMqttQueryHistoryOnlineResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttQueryHistoryOnlineResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttQueryHistoryOnlineResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsMqttQueryMsgTransTrendRequest(TeaModel):
-    def __init__(
-        self,
-        tps_type: str = None,
-        trans_type: str = None,
-        parent_topic: str = None,
-        sub_topic: str = None,
-        msg_type: str = None,
-        qos: int = None,
-        begin_time: int = None,
-        end_time: int = None,
-        instance_id: str = None,
-    ):
-        self.tps_type = tps_type
-        self.trans_type = trans_type
-        self.parent_topic = parent_topic
-        self.sub_topic = sub_topic
-        self.msg_type = msg_type
-        self.qos = qos
-        self.begin_time = begin_time
-        self.end_time = end_time
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.tps_type is not None:
-            result['TpsType'] = self.tps_type
-        if self.trans_type is not None:
-            result['TransType'] = self.trans_type
-        if self.parent_topic is not None:
-            result['ParentTopic'] = self.parent_topic
-        if self.sub_topic is not None:
-            result['SubTopic'] = self.sub_topic
-        if self.msg_type is not None:
-            result['MsgType'] = self.msg_type
-        if self.qos is not None:
-            result['Qos'] = self.qos
-        if self.begin_time is not None:
-            result['BeginTime'] = self.begin_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TpsType') is not None:
-            self.tps_type = m.get('TpsType')
-        if m.get('TransType') is not None:
-            self.trans_type = m.get('TransType')
-        if m.get('ParentTopic') is not None:
-            self.parent_topic = m.get('ParentTopic')
-        if m.get('SubTopic') is not None:
-            self.sub_topic = m.get('SubTopic')
-        if m.get('MsgType') is not None:
-            self.msg_type = m.get('MsgType')
-        if m.get('Qos') is not None:
-            self.qos = m.get('Qos')
-        if m.get('BeginTime') is not None:
-            self.begin_time = m.get('BeginTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsMqttQueryMsgTransTrendResponseBodyDataRecordsStatsDataDo(TeaModel):
-    def __init__(
-        self,
-        y: float = None,
-        x: int = None,
-    ):
-        self.y = y
-        self.x = x
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.y is not None:
-            result['Y'] = self.y
-        if self.x is not None:
-            result['X'] = self.x
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
-        if m.get('X') is not None:
-            self.x = m.get('X')
-        return self
-
-
-class OnsMqttQueryMsgTransTrendResponseBodyDataRecords(TeaModel):
-    def __init__(
-        self,
-        stats_data_do: List[OnsMqttQueryMsgTransTrendResponseBodyDataRecordsStatsDataDo] = None,
-    ):
-        self.stats_data_do = stats_data_do
-
-    def validate(self):
-        if self.stats_data_do:
-            for k in self.stats_data_do:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        result['StatsDataDo'] = []
-        if self.stats_data_do is not None:
-            for k in self.stats_data_do:
-                result['StatsDataDo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.stats_data_do = []
-        if m.get('StatsDataDo') is not None:
-            for k in m.get('StatsDataDo'):
-                temp_model = OnsMqttQueryMsgTransTrendResponseBodyDataRecordsStatsDataDo()
-                self.stats_data_do.append(temp_model.from_map(k))
-        return self
-
-
-class OnsMqttQueryMsgTransTrendResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        records: OnsMqttQueryMsgTransTrendResponseBodyDataRecords = None,
-        xunit: str = None,
-        yunit: str = None,
-        title: str = None,
-    ):
-        self.records = records
-        self.xunit = xunit
-        self.yunit = yunit
-        self.title = title
-
-    def validate(self):
-        if self.records:
-            self.records.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.records is not None:
-            result['Records'] = self.records.to_map()
-        if self.xunit is not None:
-            result['XUnit'] = self.xunit
-        if self.yunit is not None:
-            result['YUnit'] = self.yunit
-        if self.title is not None:
-            result['Title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Records') is not None:
-            temp_model = OnsMqttQueryMsgTransTrendResponseBodyDataRecords()
-            self.records = temp_model.from_map(m['Records'])
-        if m.get('XUnit') is not None:
-            self.xunit = m.get('XUnit')
-        if m.get('YUnit') is not None:
-            self.yunit = m.get('YUnit')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        return self
-
-
-class OnsMqttQueryMsgTransTrendResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: OnsMqttQueryMsgTransTrendResponseBodyData = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            temp_model = OnsMqttQueryMsgTransTrendResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        return self
-
-
-class OnsMqttQueryMsgTransTrendResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsMqttQueryMsgTransTrendResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsMqttQueryMsgTransTrendResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6354,29 +6558,35 @@ class OnsMqttQueryMsgTransTrendResponse(TeaModel):
 class OnsRegionListResponseBodyDataRegionDo(TeaModel):
     def __init__(
         self,
-        region_name: str = None,
         ons_region_id: str = None,
+        region_name: str = None,
     ):
-        self.region_name = region_name
+        # The ID of the region.
         self.ons_region_id = ons_region_id
+        # The ID of the region.
+        self.region_name = region_name
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.region_name is not None:
-            result['RegionName'] = self.region_name
         if self.ons_region_id is not None:
             result['OnsRegionId'] = self.ons_region_id
+        if self.region_name is not None:
+            result['RegionName'] = self.region_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionName') is not None:
-            self.region_name = m.get('RegionName')
         if m.get('OnsRegionId') is not None:
             self.ons_region_id = m.get('OnsRegionId')
+        if m.get('RegionName') is not None:
+            self.region_name = m.get('RegionName')
         return self
 
 
@@ -6394,6 +6604,10 @@ class OnsRegionListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['RegionDo'] = []
         if self.region_do is not None:
@@ -6414,31 +6628,37 @@ class OnsRegionListResponseBodyData(TeaModel):
 class OnsRegionListResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsRegionListResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The information about the message that is queried.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsRegionListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -6446,21 +6666,30 @@ class OnsRegionListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsRegionListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6469,6 +6698,8 @@ class OnsRegionListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsRegionListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6478,41 +6709,64 @@ class OnsRegionListResponse(TeaModel):
 class OnsTopicCreateRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
+        instance_id: str = None,
         message_type: int = None,
         remark: str = None,
-        instance_id: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
-        self.message_type = message_type
-        self.remark = remark
+        # The ID of the instance in which you want to create the topic.
         self.instance_id = instance_id
+        # The type of the message. Valid values:
+        # 
+        # *   **0**: normal messages
+        # *   **1**: partitionally ordered messages
+        # *   **2**: globally ordered messages
+        # *   **4**: transactional messages
+        # *   **5**: scheduled or delayed messages
+        # 
+        # For more information about message types, see [Message types](~~155952~~).
+        self.message_type = message_type
+        # The description of the topic that you want to create.
+        self.remark = remark
+        # The name of the topic that you want to create. The name must meet the following rules:
+        # 
+        # *   The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # *   The topic name cannot start with CID or GID because CID and GID are reserved prefixes for group IDs.
+        # *   If the Message Queue for Apache RocketMQ instance in which you want to create the topic uses a namespace, the topic name must be unique in the instance. The topic name cannot be the same as an existing topic name or a group ID in the instance. The topic name can be the same as a topic name or a group ID in another instance that uses a different namespace. For example, if Instance A and Instance B use different namespaces, a topic name in Instance A can be the same as a topic name or a group ID in Instance B.
+        # *   If the instance in which you want to create the topic does not use a namespace, the topic name must be globally unique across instances and regions. The topic name cannot be the same as an existing topic name or group ID in Message Queue for Apache RocketMQ instances that belong to your Alibaba Cloud account.
+        # 
+        # >  To check whether an instance uses a namespace, log on to the Message Queue for Apache RocketMQ console, go to the **Instance Details** page, and then view the value of the Namespace field in the **Basic Information** section.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.message_type is not None:
             result['MessageType'] = self.message_type
         if self.remark is not None:
             result['Remark'] = self.remark
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('MessageType') is not None:
             self.message_type = m.get('MessageType')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -6521,12 +6775,17 @@ class OnsTopicCreateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6543,21 +6802,30 @@ class OnsTopicCreateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTopicCreateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6566,6 +6834,8 @@ class OnsTopicCreateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTopicCreateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6575,29 +6845,35 @@ class OnsTopicCreateResponse(TeaModel):
 class OnsTopicDeleteRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
         instance_id: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
+        # The ID of the instance that contains the topic you want to delete.
         self.instance_id = instance_id
+        # The name of the topic that you want to delete.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -6606,12 +6882,17 @@ class OnsTopicDeleteResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -6628,21 +6909,30 @@ class OnsTopicDeleteResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTopicDeleteResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6651,6 +6941,8 @@ class OnsTopicDeleteResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTopicDeleteResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6663,13 +6955,25 @@ class OnsTopicListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Value** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+        # 
+        # *   The value of this parameter cannot be an empty string.
+        # *   The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+        # 
+        # *   The value of this parameter can be an empty string.
+        # *   The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6689,13 +6993,18 @@ class OnsTopicListRequestTag(TeaModel):
 class OnsTopicListRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
         instance_id: str = None,
         tag: List[OnsTopicListRequestTag] = None,
+        topic: str = None,
+        user_id: str = None,
     ):
-        self.topic = topic
+        # The ID of the instance that contains the topics you want to query.
         self.instance_id = instance_id
+        # The list of tags that are attached to the topic. A maximum of 20 tags can be included in the list.
         self.tag = tag
+        # The name of the topic that you want to query. This parameter is required when you want to query a specific topic. If you do not include this parameter in a request, all topics that you can access are queried.
+        self.topic = topic
+        self.user_id = user_id
 
     def validate(self):
         if self.tag:
@@ -6704,21 +7013,25 @@ class OnsTopicListRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         self.tag = []
@@ -6726,6 +7039,10 @@ class OnsTopicListRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = OnsTopicListRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -6735,13 +7052,19 @@ class OnsTopicListResponseBodyDataPublishInfoDoTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -6772,6 +7095,10 @@ class OnsTopicListResponseBodyDataPublishInfoDoTags(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Tag'] = []
         if self.tag is not None:
@@ -6792,79 +7119,117 @@ class OnsTopicListResponseBodyDataPublishInfoDoTags(TeaModel):
 class OnsTopicListResponseBodyDataPublishInfoDo(TeaModel):
     def __init__(
         self,
-        message_type: int = None,
-        relation_name: str = None,
-        owner: str = None,
-        independent_naming: bool = None,
-        remark: str = None,
-        relation: int = None,
         create_time: int = None,
-        topic: str = None,
-        tags: OnsTopicListResponseBodyDataPublishInfoDoTags = None,
+        independent_naming: bool = None,
         instance_id: str = None,
+        message_type: int = None,
+        owner: str = None,
+        relation: int = None,
+        relation_name: str = None,
+        remark: str = None,
+        service_status: int = None,
+        tags: OnsTopicListResponseBodyDataPublishInfoDoTags = None,
+        topic: str = None,
     ):
-        self.message_type = message_type
-        self.relation_name = relation_name
-        self.owner = owner
-        self.independent_naming = independent_naming
-        self.remark = remark
-        self.relation = relation
+        # The point in time when the topic was created.
         self.create_time = create_time
-        self.topic = topic
-        self.tags = tags
+        # Indicates whether the instance that contains the topic uses a namespace. Valid values:
+        # 
+        # *   **true**: The instance uses a separate namespace. The name of each resource must be unique in the instance. The names of resources in different instances can be the same.
+        # *   **false**: The instance does not use a separate namespace. The name of each resource must be globally unique within and across all instances.
+        self.independent_naming = independent_naming
+        # The ID of the instance that contains the topic.
         self.instance_id = instance_id
+        # The type of the messages. Valid values:
+        # 
+        # *   **0**: normal messages
+        # *   **1**: partitionally ordered messages
+        # *   **2**: globally ordered messages
+        # *   **4**: transactional messages
+        # *   **5**: scheduled or delayed messages
+        self.message_type = message_type
+        # The user ID of the topic owner.
+        self.owner = owner
+        # The code of the relationship between the current account and the topic. Valid values:
+        # 
+        # *   **1**: The current account is the owner of the topic.
+        # *   **2**: The current account can publish messages to the topic.
+        # *   **4**: The current account can subscribe to the topic.
+        # *   **6**: The current account can publish messages to and subscribe to the topic.
+        self.relation = relation
+        # The name of the relationship between the current account and the topic. The value of this parameter indicates that the current account is the owner of the topic, the current account can publish messages to the topic, the current account can subscribe to the topic, or the current account can publish messages to and subscribe to the topic.
+        self.relation_name = relation_name
+        # The description of the topic.
+        self.remark = remark
+        # The status of the topic. Valid values:
+        # 
+        # *   **0**: The topic is being created.
+        # *   **1**: The topic is being used.
+        self.service_status = service_status
+        # The tags that are attached to the topic.
+        self.tags = tags
+        # The name of the topic.
+        self.topic = topic
 
     def validate(self):
         if self.tags:
             self.tags.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.message_type is not None:
-            result['MessageType'] = self.message_type
-        if self.relation_name is not None:
-            result['RelationName'] = self.relation_name
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.independent_naming is not None:
-            result['IndependentNaming'] = self.independent_naming
-        if self.remark is not None:
-            result['Remark'] = self.remark
-        if self.relation is not None:
-            result['Relation'] = self.relation
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.tags is not None:
-            result['Tags'] = self.tags.to_map()
+        if self.independent_naming is not None:
+            result['IndependentNaming'] = self.independent_naming
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.relation is not None:
+            result['Relation'] = self.relation
+        if self.relation_name is not None:
+            result['RelationName'] = self.relation_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MessageType') is not None:
-            self.message_type = m.get('MessageType')
-        if m.get('RelationName') is not None:
-            self.relation_name = m.get('RelationName')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('IndependentNaming') is not None:
-            self.independent_naming = m.get('IndependentNaming')
-        if m.get('Remark') is not None:
-            self.remark = m.get('Remark')
-        if m.get('Relation') is not None:
-            self.relation = m.get('Relation')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
+        if m.get('IndependentNaming') is not None:
+            self.independent_naming = m.get('IndependentNaming')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Relation') is not None:
+            self.relation = m.get('Relation')
+        if m.get('RelationName') is not None:
+            self.relation_name = m.get('RelationName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
         if m.get('Tags') is not None:
             temp_model = OnsTopicListResponseBodyDataPublishInfoDoTags()
             self.tags = temp_model.from_map(m['Tags'])
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -6882,6 +7247,10 @@ class OnsTopicListResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['PublishInfoDo'] = []
         if self.publish_info_do is not None:
@@ -6902,31 +7271,37 @@ class OnsTopicListResponseBodyData(TeaModel):
 class OnsTopicListResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsTopicListResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The information about the topics.
         self.data = data
+        # The ID of the request. This is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsTopicListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -6934,21 +7309,30 @@ class OnsTopicListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTopicListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6957,6 +7341,8 @@ class OnsTopicListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTopicListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6966,62 +7352,83 @@ class OnsTopicListResponse(TeaModel):
 class OnsTopicStatusRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
         instance_id: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
+        # The ID of the instance that contains the topic you want to query.
         self.instance_id = instance_id
+        # The name of the topic that you want to query.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsTopicStatusResponseBodyData(TeaModel):
     def __init__(
         self,
-        perm: int = None,
         last_time_stamp: int = None,
+        perm: int = None,
         total_count: int = None,
     ):
-        self.perm = perm
+        # The point in time when the latest message is ready in the topic. If no message exists in the topic, the return value of this parameter is 0.
+        # 
+        # The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # For information about the definition of ready messages and ready time, see [Terms](~~29533~~).
         self.last_time_stamp = last_time_stamp
+        # Indicates the operations that you can perform on the topic. Valid values:
+        # 
+        # *   **2**: You can publish messages to the topic.
+        # *   **4**: You can subscribe to the topic.
+        # *   **6**: You can publish messages to and subscribe to the topic.
+        self.perm = perm
+        # The total number of messages in all partitions of the topic.
         self.total_count = total_count
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.perm is not None:
-            result['Perm'] = self.perm
         if self.last_time_stamp is not None:
             result['LastTimeStamp'] = self.last_time_stamp
+        if self.perm is not None:
+            result['Perm'] = self.perm
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Perm') is not None:
-            self.perm = m.get('Perm')
         if m.get('LastTimeStamp') is not None:
             self.last_time_stamp = m.get('LastTimeStamp')
+        if m.get('Perm') is not None:
+            self.perm = m.get('Perm')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -7030,31 +7437,37 @@ class OnsTopicStatusResponseBodyData(TeaModel):
 class OnsTopicStatusResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsTopicStatusResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The data structure of the queried topic.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsTopicStatusResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -7062,21 +7475,30 @@ class OnsTopicStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTopicStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7085,6 +7507,8 @@ class OnsTopicStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTopicStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7097,13 +7521,19 @@ class OnsTopicSubDetailRequest(TeaModel):
         instance_id: str = None,
         topic: str = None,
     ):
+        # The ID of the instance that contains the topic you want to query.
         self.instance_id = instance_id
+        # The name of the topic that you want to query.
         self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -7127,14 +7557,26 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataListSubscriptionDataList(
         message_model: str = None,
         sub_string: str = None,
     ):
+        # The ID of the consumer group.
         self.group_id = group_id
+        # The consumption mode. Valid values:
+        # 
+        # *   **CLUSTERING**: the clustering consumption mode
+        # *   **BROADCASTING**: the broadcasting consumption mode
+        # 
+        # For more information about consumption modes, see [Clustering consumption and broadcasting consumption](~~43163~~).
         self.message_model = message_model
+        # The expression based on which consumers in the consumer group subscribe to the topic.
         self.sub_string = sub_string
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -7169,6 +7611,10 @@ class OnsTopicSubDetailResponseBodyDataSubscriptionDataList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubscriptionDataList'] = []
         if self.subscription_data_list is not None:
@@ -7192,7 +7638,9 @@ class OnsTopicSubDetailResponseBodyData(TeaModel):
         subscription_data_list: OnsTopicSubDetailResponseBodyDataSubscriptionDataList = None,
         topic: str = None,
     ):
+        # The information about the online consumer groups that subscribe to the topic.
         self.subscription_data_list = subscription_data_list
+        # The name of the topic.
         self.topic = topic
 
     def validate(self):
@@ -7200,6 +7648,10 @@ class OnsTopicSubDetailResponseBodyData(TeaModel):
             self.subscription_data_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.subscription_data_list is not None:
             result['SubscriptionDataList'] = self.subscription_data_list.to_map()
@@ -7220,31 +7672,37 @@ class OnsTopicSubDetailResponseBodyData(TeaModel):
 class OnsTopicSubDetailResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsTopicSubDetailResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The returned data.
         self.data = data
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsTopicSubDetailResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -7252,21 +7710,30 @@ class OnsTopicSubDetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTopicSubDetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7275,6 +7742,8 @@ class OnsTopicSubDetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTopicSubDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7284,35 +7753,46 @@ class OnsTopicSubDetailResponse(TeaModel):
 class OnsTopicUpdateRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
-        perm: int = None,
         instance_id: str = None,
+        perm: int = None,
+        topic: str = None,
     ):
-        self.topic = topic
-        self.perm = perm
+        # The ID of the instance to which the topic belongs.
         self.instance_id = instance_id
+        # The read/write mode that you want to configure for the topic. Valid values:
+        # 
+        # *   **6:** Both read and write operations are allowed.
+        # *   **4:** Write operations are forbidden.
+        # *   **2:** Read operations are forbidden.
+        self.perm = perm
+        # The name of the topic that you want to manage.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.perm is not None:
-            result['Perm'] = self.perm
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.perm is not None:
+            result['Perm'] = self.perm
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('Perm') is not None:
-            self.perm = m.get('Perm')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Perm') is not None:
+            self.perm = m.get('Perm')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -7321,12 +7801,17 @@ class OnsTopicUpdateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7343,21 +7828,30 @@ class OnsTopicUpdateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTopicUpdateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7366,6 +7860,8 @@ class OnsTopicUpdateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTopicUpdateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7377,12 +7873,17 @@ class OnsTraceGetResultRequest(TeaModel):
         self,
         query_id: str = None,
     ):
+        # The ID of the task that was created to query the trace of the message.
         self.query_id = query_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.query_id is not None:
             result['QueryId'] = self.query_id
@@ -7398,53 +7899,69 @@ class OnsTraceGetResultRequest(TeaModel):
 class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoClientListSubClientInfoDo(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        sub_time: int = None,
-        reconsume_times: int = None,
-        sub_group_name: str = None,
         client_host: str = None,
         cost_time: int = None,
+        reconsume_times: int = None,
+        status: str = None,
+        sub_group_name: str = None,
+        sub_time: int = None,
     ):
-        self.status = status
-        self.sub_time = sub_time
-        self.reconsume_times = reconsume_times
-        self.sub_group_name = sub_group_name
+        # The address of the consumer.
         self.client_host = client_host
+        # The period of time that the system took to consume the message. Unit: milliseconds.
         self.cost_time = cost_time
+        # The number of attempts that the Message Queue for Apache RocketMQ broker tried to send the message to the consumer.
+        self.reconsume_times = reconsume_times
+        # Indicates whether the message is consumed. Valid values:
+        # 
+        # *   **CONSUME_FAILED**: The message failed to be consumed.
+        # *   **CONSUME_SUCCESS**: The message is consumed.
+        # *   **CONSUME_NOT_RETURN:** No responses are returned.
+        # *   **SEND_UNKNOWN:** The message is a transactional message and is not committed.
+        # *   **SEND_DELAY:** The message is a scheduled or delayed message and is waiting to be consumed at the specified point in time.
+        self.status = status
+        # The ID of the group that contains the consumer.
+        self.sub_group_name = sub_group_name
+        # The earliest point in time when the message was consumed.
+        self.sub_time = sub_time
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.sub_time is not None:
-            result['SubTime'] = self.sub_time
-        if self.reconsume_times is not None:
-            result['ReconsumeTimes'] = self.reconsume_times
-        if self.sub_group_name is not None:
-            result['SubGroupName'] = self.sub_group_name
         if self.client_host is not None:
             result['ClientHost'] = self.client_host
         if self.cost_time is not None:
             result['CostTime'] = self.cost_time
+        if self.reconsume_times is not None:
+            result['ReconsumeTimes'] = self.reconsume_times
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_group_name is not None:
+            result['SubGroupName'] = self.sub_group_name
+        if self.sub_time is not None:
+            result['SubTime'] = self.sub_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('SubTime') is not None:
-            self.sub_time = m.get('SubTime')
-        if m.get('ReconsumeTimes') is not None:
-            self.reconsume_times = m.get('ReconsumeTimes')
-        if m.get('SubGroupName') is not None:
-            self.sub_group_name = m.get('SubGroupName')
         if m.get('ClientHost') is not None:
             self.client_host = m.get('ClientHost')
         if m.get('CostTime') is not None:
             self.cost_time = m.get('CostTime')
+        if m.get('ReconsumeTimes') is not None:
+            self.reconsume_times = m.get('ReconsumeTimes')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubGroupName') is not None:
+            self.sub_group_name = m.get('SubGroupName')
+        if m.get('SubTime') is not None:
+            self.sub_time = m.get('SubTime')
         return self
 
 
@@ -7462,6 +7979,10 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDoCl
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubClientInfoDo'] = []
         if self.sub_client_info_do is not None:
@@ -7487,9 +8008,13 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDo(T
         sub_group_name: str = None,
         success_count: int = None,
     ):
+        # The information about message consumption by consumers in the group.
         self.client_list = client_list
+        # The number of consumption failures.
         self.fail_count = fail_count
+        # The ID of the consumer group.
         self.sub_group_name = sub_group_name
+        # The number of successful consumptions.
         self.success_count = success_count
 
     def validate(self):
@@ -7497,6 +8022,10 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubListSubMapDo(T
             self.client_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.client_list is not None:
             result['ClientList'] = self.client_list.to_map()
@@ -7536,6 +8065,10 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList(TeaModel)
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['SubMapDo'] = []
         if self.sub_map_do is not None:
@@ -7556,79 +8089,99 @@ class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList(TeaModel)
 class OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDo(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        msg_key: str = None,
-        pub_time: int = None,
-        sub_list: OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList = None,
-        topic: str = None,
-        cost_time: int = None,
-        tag: str = None,
-        msg_id: str = None,
-        pub_group_name: str = None,
         born_host: str = None,
+        cost_time: int = None,
+        msg_id: str = None,
+        msg_key: str = None,
+        pub_group_name: str = None,
+        pub_time: int = None,
+        status: str = None,
+        sub_list: OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList = None,
+        tag: str = None,
+        topic: str = None,
     ):
-        self.status = status
-        self.msg_key = msg_key
-        self.pub_time = pub_time
-        self.sub_list = sub_list
-        self.topic = topic
-        self.cost_time = cost_time
-        self.tag = tag
-        self.msg_id = msg_id
-        self.pub_group_name = pub_group_name
+        # The address of the producer that generated the message.
         self.born_host = born_host
+        # The period of time that the system took to send the message. Unit: milliseconds.
+        self.cost_time = cost_time
+        # The ID of the message.
+        self.msg_id = msg_id
+        # The key of the message.
+        self.msg_key = msg_key
+        # The ID of the group that contains the producer.
+        self.pub_group_name = pub_group_name
+        # The point in time when the message was sent.
+        self.pub_time = pub_time
+        # Indicates whether the message is sent. Valid values:
+        # 
+        # *   **SEND_SUCCESS**: The message is sent.
+        # *   **SEND_FAILED**: The message failed to be sent.
+        # *   **SEND_ROLLBACK:** The message is a transactional message and is rolled back.
+        # *   **SEND_UNKNOWN:** The message is a transactional message and is not committed.
+        # *   **SEND_DELAY:** The message is a scheduled or delayed message and is waiting to be sent at the specified point in time.
+        self.status = status
+        # The consumption traces of the message.
+        self.sub_list = sub_list
+        # The tag of the message.
+        self.tag = tag
+        # The topic in which the message is stored.
+        self.topic = topic
 
     def validate(self):
         if self.sub_list:
             self.sub_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.msg_key is not None:
-            result['MsgKey'] = self.msg_key
-        if self.pub_time is not None:
-            result['PubTime'] = self.pub_time
-        if self.sub_list is not None:
-            result['SubList'] = self.sub_list.to_map()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.cost_time is not None:
-            result['CostTime'] = self.cost_time
-        if self.tag is not None:
-            result['Tag'] = self.tag
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
-        if self.pub_group_name is not None:
-            result['PubGroupName'] = self.pub_group_name
         if self.born_host is not None:
             result['BornHost'] = self.born_host
+        if self.cost_time is not None:
+            result['CostTime'] = self.cost_time
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.msg_key is not None:
+            result['MsgKey'] = self.msg_key
+        if self.pub_group_name is not None:
+            result['PubGroupName'] = self.pub_group_name
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_list is not None:
+            result['SubList'] = self.sub_list.to_map()
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
+        if m.get('BornHost') is not None:
+            self.born_host = m.get('BornHost')
+        if m.get('CostTime') is not None:
+            self.cost_time = m.get('CostTime')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
         if m.get('MsgKey') is not None:
             self.msg_key = m.get('MsgKey')
+        if m.get('PubGroupName') is not None:
+            self.pub_group_name = m.get('PubGroupName')
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('SubList') is not None:
             temp_model = OnsTraceGetResultResponseBodyTraceDataTraceListTraceMapDoSubList()
             self.sub_list = temp_model.from_map(m['SubList'])
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('CostTime') is not None:
-            self.cost_time = m.get('CostTime')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
-        if m.get('PubGroupName') is not None:
-            self.pub_group_name = m.get('PubGroupName')
-        if m.get('BornHost') is not None:
-            self.born_host = m.get('BornHost')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
@@ -7646,6 +8199,10 @@ class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['TraceMapDo'] = []
         if self.trace_map_do is not None:
@@ -7666,79 +8223,97 @@ class OnsTraceGetResultResponseBodyTraceDataTraceList(TeaModel):
 class OnsTraceGetResultResponseBodyTraceData(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        msg_key: str = None,
-        update_time: int = None,
         create_time: int = None,
-        topic: str = None,
-        user_id: str = None,
         instance_id: str = None,
         msg_id: str = None,
-        trace_list: OnsTraceGetResultResponseBodyTraceDataTraceList = None,
+        msg_key: str = None,
         query_id: str = None,
+        status: str = None,
+        topic: str = None,
+        trace_list: OnsTraceGetResultResponseBodyTraceDataTraceList = None,
+        update_time: int = None,
+        user_id: str = None,
     ):
-        self.status = status
-        self.msg_key = msg_key
-        self.update_time = update_time
+        # The point in time when the task was created.
         self.create_time = create_time
-        self.topic = topic
-        self.user_id = user_id
+        # The ID of the instance that contains the message.
         self.instance_id = instance_id
+        # The ID of the message that is queried.
         self.msg_id = msg_id
-        self.trace_list = trace_list
+        # The key of the message that is queried.
+        self.msg_key = msg_key
+        # The ID of the task.
         self.query_id = query_id
+        # The status of the task. Valid values:
+        # 
+        # *   **finish**: The task is complete.
+        # *   **working**: The task is in progress.
+        # *   **removed**: The task is deleted.
+        self.status = status
+        # The topic in which the message is stored.
+        self.topic = topic
+        # The details of the message trace.
+        self.trace_list = trace_list
+        # The most recent point in time when the task was updated.
+        self.update_time = update_time
+        # The ID of the user who created the task.
+        self.user_id = user_id
 
     def validate(self):
         if self.trace_list:
             self.trace_list.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.msg_key is not None:
-            result['MsgKey'] = self.msg_key
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
-        if self.trace_list is not None:
-            result['TraceList'] = self.trace_list.to_map()
+        if self.msg_key is not None:
+            result['MsgKey'] = self.msg_key
         if self.query_id is not None:
             result['QueryId'] = self.query_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.trace_list is not None:
+            result['TraceList'] = self.trace_list.to_map()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('MsgKey') is not None:
-            self.msg_key = m.get('MsgKey')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MsgId') is not None:
             self.msg_id = m.get('MsgId')
+        if m.get('MsgKey') is not None:
+            self.msg_key = m.get('MsgKey')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         if m.get('TraceList') is not None:
             temp_model = OnsTraceGetResultResponseBodyTraceDataTraceList()
             self.trace_list = temp_model.from_map(m['TraceList'])
-        if m.get('QueryId') is not None:
-            self.query_id = m.get('QueryId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -7748,7 +8323,9 @@ class OnsTraceGetResultResponseBody(TeaModel):
         request_id: str = None,
         trace_data: OnsTraceGetResultResponseBodyTraceData = None,
     ):
+        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
         self.request_id = request_id
+        # The details of the message trace.
         self.trace_data = trace_data
 
     def validate(self):
@@ -7756,6 +8333,10 @@ class OnsTraceGetResultResponseBody(TeaModel):
             self.trace_data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -7777,21 +8358,30 @@ class OnsTraceGetResultResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTraceGetResultResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7800,6 +8390,8 @@ class OnsTraceGetResultResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTraceGetResultResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7809,76 +8401,91 @@ class OnsTraceGetResultResponse(TeaModel):
 class OnsTraceQueryByMsgIdRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
-        msg_id: str = None,
         begin_time: int = None,
         end_time: int = None,
         instance_id: str = None,
+        msg_id: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
-        self.msg_id = msg_id
+        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.begin_time = begin_time
+        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The ID of the Message Queue for Apache RocketMQ instance which contains the specified topic.
         self.instance_id = instance_id
+        # The ID of the message that you want to query.
+        self.msg_id = msg_id
+        # The topic in which the message you want to query is stored.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.msg_id is not None:
-            result['MsgId'] = self.msg_id
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.msg_id is not None:
+            result['MsgId'] = self.msg_id
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('MsgId') is not None:
-            self.msg_id = m.get('MsgId')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MsgId') is not None:
+            self.msg_id = m.get('MsgId')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsTraceQueryByMsgIdResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         query_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The ID of the query task. You can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
         self.query_id = query_id
+        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.query_id is not None:
             result['QueryId'] = self.query_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('QueryId') is not None:
             self.query_id = m.get('QueryId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -7886,21 +8493,30 @@ class OnsTraceQueryByMsgIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTraceQueryByMsgIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7909,6 +8525,8 @@ class OnsTraceQueryByMsgIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTraceQueryByMsgIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7918,76 +8536,91 @@ class OnsTraceQueryByMsgIdResponse(TeaModel):
 class OnsTraceQueryByMsgKeyRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
-        msg_key: str = None,
         begin_time: int = None,
         end_time: int = None,
         instance_id: str = None,
+        msg_key: str = None,
+        topic: str = None,
     ):
-        self.topic = topic
-        self.msg_key = msg_key
+        # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
         self.begin_time = begin_time
+        # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The ID of the Message Queue for Apache RocketMQ instance that contains the specified topic.
         self.instance_id = instance_id
+        # The key of the messages that you want to query.
+        self.msg_key = msg_key
+        # The topic that contains the messages you want to query.
+        self.topic = topic
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.msg_key is not None:
-            result['MsgKey'] = self.msg_key
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.msg_key is not None:
+            result['MsgKey'] = self.msg_key
+        if self.topic is not None:
+            result['Topic'] = self.topic
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('MsgKey') is not None:
-            self.msg_key = m.get('MsgKey')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MsgKey') is not None:
+            self.msg_key = m.get('MsgKey')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
         return self
 
 
 class OnsTraceQueryByMsgKeyResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         query_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The ID of the query task. You can call the [OnsTraceGetResult](~~59832~~) operation to query the details of the message trace based on the task ID.
         self.query_id = query_id
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.query_id is not None:
             result['QueryId'] = self.query_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('QueryId') is not None:
             self.query_id = m.get('QueryId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -7995,21 +8628,30 @@ class OnsTraceQueryByMsgKeyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTraceQueryByMsgKeyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8018,6 +8660,8 @@ class OnsTraceQueryByMsgKeyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTraceQueryByMsgKeyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8027,88 +8671,108 @@ class OnsTraceQueryByMsgKeyResponse(TeaModel):
 class OnsTrendGroupOutputTpsRequest(TeaModel):
     def __init__(
         self,
-        group_id: str = None,
-        topic: str = None,
         begin_time: int = None,
         end_time: int = None,
-        type: int = None,
+        group_id: str = None,
         instance_id: str = None,
         period: int = None,
+        topic: str = None,
+        type: int = None,
     ):
-        self.group_id = group_id
-        self.topic = topic
+        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.begin_time = begin_time
+        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        self.type = type
+        # The ID of the consumer group that you want to query.
+        self.group_id = group_id
+        # The ID of the Message Queue for Apache RocketMQ instance which contains the specified consumer group.
         self.instance_id = instance_id
+        # The sampling period. Unit: minutes. Valid values: 1, 5, and 10.
         self.period = period
+        # The name of the topic that you want to query.
+        self.topic = topic
+        # The type of information that you want to query. Valid values:
+        # 
+        # *   **0**: the number of messages that are consumed during each sampling period.
+        # *   **1**: the TPS for message consumption during each sampling period.
+        self.type = type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.type is not None:
-            result['Type'] = self.type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.period is not None:
             result['Period'] = self.period
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class OnsTrendGroupOutputTpsResponseBodyDataRecordsStatsDataDo(TeaModel):
     def __init__(
         self,
-        y: float = None,
         x: int = None,
+        y: float = None,
     ):
-        self.y = y
+        # Indicates the timestamp. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.x = x
+        # Indicates the TPS for message consumption or the number of messages that are consumed.
+        self.y = y
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.y is not None:
-            result['Y'] = self.y
         if self.x is not None:
             result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
         if m.get('X') is not None:
             self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
         return self
 
 
@@ -8126,6 +8790,10 @@ class OnsTrendGroupOutputTpsResponseBodyDataRecords(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['StatsDataDo'] = []
         if self.stats_data_do is not None:
@@ -8147,29 +8815,37 @@ class OnsTrendGroupOutputTpsResponseBodyData(TeaModel):
     def __init__(
         self,
         records: OnsTrendGroupOutputTpsResponseBodyDataRecords = None,
+        title: str = None,
         xunit: str = None,
         yunit: str = None,
-        title: str = None,
     ):
+        # The data set that is returned based on sampling period.
         self.records = records
-        self.xunit = xunit
-        self.yunit = yunit
+        # The name of the table that stores the data.
         self.title = title
+        # The unit of the timestamp. Unit: milliseconds.
+        self.xunit = xunit
+        # The unit of the value of the Y parameter.
+        self.yunit = yunit
 
     def validate(self):
         if self.records:
             self.records.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.records is not None:
             result['Records'] = self.records.to_map()
+        if self.title is not None:
+            result['Title'] = self.title
         if self.xunit is not None:
             result['XUnit'] = self.xunit
         if self.yunit is not None:
             result['YUnit'] = self.yunit
-        if self.title is not None:
-            result['Title'] = self.title
         return result
 
     def from_map(self, m: dict = None):
@@ -8177,43 +8853,49 @@ class OnsTrendGroupOutputTpsResponseBodyData(TeaModel):
         if m.get('Records') is not None:
             temp_model = OnsTrendGroupOutputTpsResponseBodyDataRecords()
             self.records = temp_model.from_map(m['Records'])
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('XUnit') is not None:
             self.xunit = m.get('XUnit')
         if m.get('YUnit') is not None:
             self.yunit = m.get('YUnit')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
         return self
 
 
 class OnsTrendGroupOutputTpsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsTrendGroupOutputTpsResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The data that is returned.
         self.data = data
+        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsTrendGroupOutputTpsResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -8221,21 +8903,30 @@ class OnsTrendGroupOutputTpsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTrendGroupOutputTpsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8244,6 +8935,8 @@ class OnsTrendGroupOutputTpsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTrendGroupOutputTpsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8253,82 +8946,101 @@ class OnsTrendGroupOutputTpsResponse(TeaModel):
 class OnsTrendTopicInputTpsRequest(TeaModel):
     def __init__(
         self,
-        topic: str = None,
         begin_time: int = None,
         end_time: int = None,
-        type: int = None,
         instance_id: str = None,
         period: int = None,
+        topic: str = None,
+        type: int = None,
     ):
-        self.topic = topic
+        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.begin_time = begin_time
+        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        self.type = type
+        # The ID of the Message Queue for Apache RocketMQ instance which contains the topic you want to query.
         self.instance_id = instance_id
+        # The sampling period. Unit: minutes. Valid values: 1, 5, and 10.
         self.period = period
+        # The name of the topic that you want to query.
+        self.topic = topic
+        # The type of information that you want to query. Valid values:
+        # 
+        # *   **0**: the number of the messages that are published to the specified topic during each sampling period.
+        # *   **1**: the TPS for message publishing to the specified topic during each sampling period.
+        self.type = type
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.topic is not None:
-            result['Topic'] = self.topic
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.type is not None:
-            result['Type'] = self.type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.period is not None:
             result['Period'] = self.period
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class OnsTrendTopicInputTpsResponseBodyDataRecordsStatsDataDo(TeaModel):
     def __init__(
         self,
-        y: float = None,
         x: int = None,
+        y: float = None,
     ):
-        self.y = y
+        # Indicates the timestamp. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.x = x
+        # Indicates the TPS for message publishing or the number of messages that are published to the topic.
+        self.y = y
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.y is not None:
-            result['Y'] = self.y
         if self.x is not None:
             result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
         if m.get('X') is not None:
             self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
         return self
 
 
@@ -8346,6 +9058,10 @@ class OnsTrendTopicInputTpsResponseBodyDataRecords(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['StatsDataDo'] = []
         if self.stats_data_do is not None:
@@ -8367,29 +9083,37 @@ class OnsTrendTopicInputTpsResponseBodyData(TeaModel):
     def __init__(
         self,
         records: OnsTrendTopicInputTpsResponseBodyDataRecords = None,
+        title: str = None,
         xunit: str = None,
         yunit: str = None,
-        title: str = None,
     ):
+        # The data set that is returned based on each sampling period.
         self.records = records
-        self.xunit = xunit
-        self.yunit = yunit
+        # The name of the table that stores the data.
         self.title = title
+        # The unit of the timestamp. Unit: milliseconds.
+        self.xunit = xunit
+        # The unit of the value of the Y parameter.
+        self.yunit = yunit
 
     def validate(self):
         if self.records:
             self.records.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.records is not None:
             result['Records'] = self.records.to_map()
+        if self.title is not None:
+            result['Title'] = self.title
         if self.xunit is not None:
             result['XUnit'] = self.xunit
         if self.yunit is not None:
             result['YUnit'] = self.yunit
-        if self.title is not None:
-            result['Title'] = self.title
         return result
 
     def from_map(self, m: dict = None):
@@ -8397,43 +9121,49 @@ class OnsTrendTopicInputTpsResponseBodyData(TeaModel):
         if m.get('Records') is not None:
             temp_model = OnsTrendTopicInputTpsResponseBodyDataRecords()
             self.records = temp_model.from_map(m['Records'])
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('XUnit') is not None:
             self.xunit = m.get('XUnit')
         if m.get('YUnit') is not None:
             self.yunit = m.get('YUnit')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
         return self
 
 
 class OnsTrendTopicInputTpsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: OnsTrendTopicInputTpsResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The data that is returned.
         self.data = data
+        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = OnsTrendTopicInputTpsResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -8441,21 +9171,30 @@ class OnsTrendTopicInputTpsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OnsTrendTopicInputTpsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8464,226 +9203,10 @@ class OnsTrendTopicInputTpsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OnsTrendTopicInputTpsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsWarnCreateRequest(TeaModel):
-    def __init__(
-        self,
-        group_id: str = None,
-        topic: str = None,
-        threshold: str = None,
-        contacts: str = None,
-        delay_time: str = None,
-        block_time: str = None,
-        alert_time: str = None,
-        level: str = None,
-        instance_id: str = None,
-    ):
-        self.group_id = group_id
-        self.topic = topic
-        self.threshold = threshold
-        self.contacts = contacts
-        self.delay_time = delay_time
-        self.block_time = block_time
-        self.alert_time = alert_time
-        self.level = level
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.threshold is not None:
-            result['Threshold'] = self.threshold
-        if self.contacts is not None:
-            result['Contacts'] = self.contacts
-        if self.delay_time is not None:
-            result['DelayTime'] = self.delay_time
-        if self.block_time is not None:
-            result['BlockTime'] = self.block_time
-        if self.alert_time is not None:
-            result['AlertTime'] = self.alert_time
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('Threshold') is not None:
-            self.threshold = m.get('Threshold')
-        if m.get('Contacts') is not None:
-            self.contacts = m.get('Contacts')
-        if m.get('DelayTime') is not None:
-            self.delay_time = m.get('DelayTime')
-        if m.get('BlockTime') is not None:
-            self.block_time = m.get('BlockTime')
-        if m.get('AlertTime') is not None:
-            self.alert_time = m.get('AlertTime')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsWarnCreateResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class OnsWarnCreateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsWarnCreateResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsWarnCreateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OnsWarnDeleteRequest(TeaModel):
-    def __init__(
-        self,
-        group_id: str = None,
-        topic: str = None,
-        instance_id: str = None,
-    ):
-        self.group_id = group_id
-        self.topic = topic
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.topic is not None:
-            result['Topic'] = self.topic
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('Topic') is not None:
-            self.topic = m.get('Topic')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        return self
-
-
-class OnsWarnDeleteResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class OnsWarnDeleteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OnsWarnDeleteResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OnsWarnDeleteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8691,29 +9214,35 @@ class OnsWarnDeleteResponse(TeaModel):
 class OpenOnsServiceResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         order_id: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -8721,21 +9250,30 @@ class OpenOnsServiceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OpenOnsServiceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8744,6 +9282,8 @@ class OpenOnsServiceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OpenOnsServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8756,13 +9296,27 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that you want to attach to the specified resource. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.****\
+        # 
+        # *   The value of N can be an integer value from 1 to 20.
+        # *   The value of this parameter cannot be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the tag that you want to attach to the specified resource. If you configure this parameter, you must also configure the **Tag.N.Key** parameter.****\
+        # 
+        # *   The value of N can be an integer value from 1 to 20.
+        # *   The value of this parameter can be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
@@ -8783,14 +9337,24 @@ class TagResourcesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
-        resource_id: List[str] = None,
     ):
+        # The ID of the Message Queue for Apache RocketMQ instance which contains the resource to which you want to attach tags.
+        # 
+        # > : This parameter is required when you attach tags to a topic or a group.
         self.instance_id = instance_id
-        self.resource_type = resource_type
-        self.tag = tag
+        # The list of resource IDs.
         self.resource_id = resource_id
+        # The type of the resource to which you want to attach tags. Valid values:
+        # 
+        # *   **INSTANCE**\
+        # *   **TOPIC**\
+        # *   **GROUP**\
+        self.resource_type = resource_type
+        # The list of tags that are attached to the resources.
+        self.tag = tag
 
     def validate(self):
         if self.tag:
@@ -8799,23 +9363,29 @@ class TagResourcesRequest(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         self.tag = []
@@ -8823,8 +9393,6 @@ class TagResourcesRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = TagResourcesRequestTag()
                 self.tag.append(temp_model.from_map(k))
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
         return self
 
 
@@ -8833,12 +9401,17 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8855,21 +9428,30 @@ class TagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8878,6 +9460,8 @@ class TagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8887,45 +9471,58 @@ class TagResourcesResponse(TeaModel):
 class UntagResourcesRequest(TeaModel):
     def __init__(
         self,
-        instance_id: str = None,
-        resource_type: str = None,
         all: bool = None,
+        instance_id: str = None,
         resource_id: List[str] = None,
+        resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        self.instance_id = instance_id
-        self.resource_type = resource_type
+        # Specifies whether to remove all tags that are attached to the specified resource. This parameter takes effect only when the **TagKey.N** parameter is not configured. Default value: **false**.
         self.all = all
+        # This parameter is required when you detach tags from a topic or a group.
+        self.instance_id = instance_id
+        # The list of resource IDs.
         self.resource_id = resource_id
+        # The type of the resources from which you want to detach tags. Valid values:
+        # 
+        # *   **INSTANCE**\
+        # *   **TOPIC**\
+        # *   **GROUP**\
+        self.resource_type = resource_type
+        # The tag keys of the resource.
         self.tag_key = tag_key
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
         if self.all is not None:
             result['All'] = self.all
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
         if m.get('All') is not None:
             self.all = m.get('All')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         return self
@@ -8936,12 +9533,17 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -8958,21 +9560,30 @@ class UntagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UntagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8981,6 +9592,8 @@ class UntagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
