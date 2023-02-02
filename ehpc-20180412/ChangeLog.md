@@ -1,3 +1,6 @@
+2023-02-02 Version: 1.14.21
+- Support Async parameter in DescribeJob API.
+
 2022-12-07 Version: 1.14.20
 - Support async parameter in Job APIs.
 

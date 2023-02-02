@@ -2698,6 +2698,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        ***\
+        
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2724,6 +2731,13 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        ***\
+        
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2749,6 +2763,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribePriceRequest,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        ***\
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_with_options(request, runtime)
 
@@ -2756,6 +2776,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc20180412_models.DescribePriceRequest,
     ) -> ehpc20180412_models.DescribePriceResponse:
+        """
+        ***\
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
 

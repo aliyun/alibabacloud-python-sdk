@@ -535,6 +535,8 @@ class AddNodesRequest(TeaModel):
         client_token: str = None,
         cluster_id: str = None,
         compute_enable_ht: bool = None,
+        compute_spot_duration: int = None,
+        compute_spot_interruption_behavior: str = None,
         compute_spot_price_limit: str = None,
         compute_spot_strategy: str = None,
         count: int = None,
@@ -566,6 +568,8 @@ class AddNodesRequest(TeaModel):
         self.client_token = client_token
         self.cluster_id = cluster_id
         self.compute_enable_ht = compute_enable_ht
+        self.compute_spot_duration = compute_spot_duration
+        self.compute_spot_interruption_behavior = compute_spot_interruption_behavior
         self.compute_spot_price_limit = compute_spot_price_limit
         self.compute_spot_strategy = compute_spot_strategy
         self.count = count
@@ -615,6 +619,10 @@ class AddNodesRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.compute_enable_ht is not None:
             result['ComputeEnableHt'] = self.compute_enable_ht
+        if self.compute_spot_duration is not None:
+            result['ComputeSpotDuration'] = self.compute_spot_duration
+        if self.compute_spot_interruption_behavior is not None:
+            result['ComputeSpotInterruptionBehavior'] = self.compute_spot_interruption_behavior
         if self.compute_spot_price_limit is not None:
             result['ComputeSpotPriceLimit'] = self.compute_spot_price_limit
         if self.compute_spot_strategy is not None:
@@ -681,6 +689,10 @@ class AddNodesRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('ComputeEnableHt') is not None:
             self.compute_enable_ht = m.get('ComputeEnableHt')
+        if m.get('ComputeSpotDuration') is not None:
+            self.compute_spot_duration = m.get('ComputeSpotDuration')
+        if m.get('ComputeSpotInterruptionBehavior') is not None:
+            self.compute_spot_interruption_behavior = m.get('ComputeSpotInterruptionBehavior')
         if m.get('ComputeSpotPriceLimit') is not None:
             self.compute_spot_price_limit = m.get('ComputeSpotPriceLimit')
         if m.get('ComputeSpotStrategy') is not None:
@@ -1103,9 +1115,11 @@ class AddUsersRequestUser(TeaModel):
 class AddUsersRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         user: List[AddUsersRequestUser] = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.user = user
 
@@ -1121,6 +1135,8 @@ class AddUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         result['User'] = []
@@ -1131,6 +1147,8 @@ class AddUsersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         self.user = []
@@ -2485,6 +2503,7 @@ class CreateGWSClusterRequest(TeaModel):
         self.cluster_type = cluster_type
         self.name = name
         self.v_switch_id = v_switch_id
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5182,9 +5201,11 @@ class DeleteUsersRequestUser(TeaModel):
 class DeleteUsersRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         user: List[DeleteUsersRequestUser] = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.user = user
 
@@ -5200,6 +5221,8 @@ class DeleteUsersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         result['User'] = []
@@ -5210,6 +5233,8 @@ class DeleteUsersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         self.user = []
@@ -5933,6 +5958,8 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         on_premise_info: DescribeClusterResponseBodyClusterInfoOnPremiseInfo = None,
         os_tag: str = None,
         post_install_scripts: DescribeClusterResponseBodyClusterInfoPostInstallScripts = None,
+        ram_node_types: str = None,
+        ram_role_name: str = None,
         region_id: str = None,
         remote_directory: str = None,
         scc_cluster_id: str = None,
@@ -5966,6 +5993,8 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         self.on_premise_info = on_premise_info
         self.os_tag = os_tag
         self.post_install_scripts = post_install_scripts
+        self.ram_node_types = ram_node_types
+        self.ram_role_name = ram_role_name
         self.region_id = region_id
         self.remote_directory = remote_directory
         self.scc_cluster_id = scc_cluster_id
@@ -6035,6 +6064,10 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
             result['OsTag'] = self.os_tag
         if self.post_install_scripts is not None:
             result['PostInstallScripts'] = self.post_install_scripts.to_map()
+        if self.ram_node_types is not None:
+            result['RamNodeTypes'] = self.ram_node_types
+        if self.ram_role_name is not None:
+            result['RamRoleName'] = self.ram_role_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.remote_directory is not None:
@@ -6107,6 +6140,10 @@ class DescribeClusterResponseBodyClusterInfo(TeaModel):
         if m.get('PostInstallScripts') is not None:
             temp_model = DescribeClusterResponseBodyClusterInfoPostInstallScripts()
             self.post_install_scripts = temp_model.from_map(m['PostInstallScripts'])
+        if m.get('RamNodeTypes') is not None:
+            self.ram_node_types = m.get('RamNodeTypes')
+        if m.get('RamRoleName') is not None:
+            self.ram_role_name = m.get('RamRoleName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RemoteDirectory') is not None:
@@ -8127,9 +8164,11 @@ class DescribeImagePriceResponse(TeaModel):
 class DescribeJobRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         job_id: str = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.job_id = job_id
 
@@ -8142,6 +8181,8 @@ class DescribeJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.job_id is not None:
@@ -8150,6 +8191,8 @@ class DescribeJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('JobId') is not None:
@@ -9337,6 +9380,8 @@ class GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo
         self,
         host_name_prefix: str = None,
         instance_type: str = None,
+        spot_duration: int = None,
+        spot_interruption_behavior: str = None,
         spot_price_limit: float = None,
         spot_strategy: str = None,
         v_switch_id: str = None,
@@ -9344,6 +9389,8 @@ class GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo
     ):
         self.host_name_prefix = host_name_prefix
         self.instance_type = instance_type
+        self.spot_duration = spot_duration
+        self.spot_interruption_behavior = spot_interruption_behavior
         self.spot_price_limit = spot_price_limit
         self.spot_strategy = spot_strategy
         self.v_switch_id = v_switch_id
@@ -9362,6 +9409,10 @@ class GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo
             result['HostNamePrefix'] = self.host_name_prefix
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
+        if self.spot_interruption_behavior is not None:
+            result['SpotInterruptionBehavior'] = self.spot_interruption_behavior
         if self.spot_price_limit is not None:
             result['SpotPriceLimit'] = self.spot_price_limit
         if self.spot_strategy is not None:
@@ -9378,6 +9429,10 @@ class GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypesInstanceTypeInfo
             self.host_name_prefix = m.get('HostNamePrefix')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
+        if m.get('SpotInterruptionBehavior') is not None:
+            self.spot_interruption_behavior = m.get('SpotInterruptionBehavior')
         if m.get('SpotPriceLimit') is not None:
             self.spot_price_limit = m.get('SpotPriceLimit')
         if m.get('SpotStrategy') is not None:
@@ -21954,12 +22009,16 @@ class ModifyClusterAttributesRequest(TeaModel):
         image_id: str = None,
         image_owner_alias: str = None,
         name: str = None,
+        ram_node_types: List[str] = None,
+        ram_role_name: str = None,
     ):
         self.cluster_id = cluster_id
         self.description = description
         self.image_id = image_id
         self.image_owner_alias = image_owner_alias
         self.name = name
+        self.ram_node_types = ram_node_types
+        self.ram_role_name = ram_role_name
 
     def validate(self):
         pass
@@ -21980,6 +22039,10 @@ class ModifyClusterAttributesRequest(TeaModel):
             result['ImageOwnerAlias'] = self.image_owner_alias
         if self.name is not None:
             result['Name'] = self.name
+        if self.ram_node_types is not None:
+            result['RamNodeTypes'] = self.ram_node_types
+        if self.ram_role_name is not None:
+            result['RamRoleName'] = self.ram_role_name
         return result
 
     def from_map(self, m: dict = None):
@@ -21994,6 +22057,10 @@ class ModifyClusterAttributesRequest(TeaModel):
             self.image_owner_alias = m.get('ImageOwnerAlias')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('RamNodeTypes') is not None:
+            self.ram_node_types = m.get('RamNodeTypes')
+        if m.get('RamRoleName') is not None:
+            self.ram_role_name = m.get('RamRoleName')
         return self
 
 
@@ -22401,9 +22468,11 @@ class ModifyUserGroupsRequestUser(TeaModel):
 class ModifyUserGroupsRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         user: List[ModifyUserGroupsRequestUser] = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.user = user
 
@@ -22419,6 +22488,8 @@ class ModifyUserGroupsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         result['User'] = []
@@ -22429,6 +22500,8 @@ class ModifyUserGroupsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         self.user = []
@@ -22546,9 +22619,11 @@ class ModifyUserPasswordsRequestUser(TeaModel):
 class ModifyUserPasswordsRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         user: List[ModifyUserPasswordsRequestUser] = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.user = user
 
@@ -22564,6 +22639,8 @@ class ModifyUserPasswordsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         result['User'] = []
@@ -22574,6 +22651,8 @@ class ModifyUserPasswordsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         self.user = []
@@ -23806,12 +23885,16 @@ class SetAutoScaleConfigRequestQueuesInstanceTypes(TeaModel):
     def __init__(
         self,
         instance_type: str = None,
+        spot_duration: int = None,
+        spot_interruption_behavior: str = None,
         spot_price_limit: float = None,
         spot_strategy: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
         self.instance_type = instance_type
+        self.spot_duration = spot_duration
+        self.spot_interruption_behavior = spot_interruption_behavior
         self.spot_price_limit = spot_price_limit
         self.spot_strategy = spot_strategy
         self.v_switch_id = v_switch_id
@@ -23828,6 +23911,10 @@ class SetAutoScaleConfigRequestQueuesInstanceTypes(TeaModel):
         result = dict()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
+        if self.spot_interruption_behavior is not None:
+            result['SpotInterruptionBehavior'] = self.spot_interruption_behavior
         if self.spot_price_limit is not None:
             result['SpotPriceLimit'] = self.spot_price_limit
         if self.spot_strategy is not None:
@@ -23842,6 +23929,10 @@ class SetAutoScaleConfigRequestQueuesInstanceTypes(TeaModel):
         m = m or dict()
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
+        if m.get('SpotInterruptionBehavior') is not None:
+            self.spot_interruption_behavior = m.get('SpotInterruptionBehavior')
         if m.get('SpotPriceLimit') is not None:
             self.spot_price_limit = m.get('SpotPriceLimit')
         if m.get('SpotStrategy') is not None:
