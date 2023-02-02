@@ -7,8 +7,8 @@ from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_gateway_sls.client import Client as GatewayClientClient
-from alibabacloud_sls20201230 import models as sls_20201230_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_sls20201230 import models as sls_20201230_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
@@ -27,26 +27,6 @@ class Client(OpenApiClient):
         self._client = GatewayClientClient()
         self._spi = self._client
         self._endpoint_rule = 'central'
-
-    def apply_config_to_machine_group(
-        self,
-        project: str,
-        machine_group: str,
-        config_name: str,
-    ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.apply_config_to_machine_group_with_options(project, machine_group, config_name, headers, runtime)
-
-    async def apply_config_to_machine_group_async(
-        self,
-        project: str,
-        machine_group: str,
-        config_name: str,
-    ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.apply_config_to_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
 
     def apply_config_to_machine_group_with_options(
         self,
@@ -108,25 +88,109 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_consumer_group(
+    def apply_config_to_machine_group(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateConsumerGroupRequest,
-    ) -> sls_20201230_models.CreateConsumerGroupResponse:
+        machine_group: str,
+        config_name: str,
+    ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_consumer_group_with_options(project, logstore, request, headers, runtime)
+        return self.apply_config_to_machine_group_with_options(project, machine_group, config_name, headers, runtime)
 
-    async def create_consumer_group_async(
+    async def apply_config_to_machine_group_async(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateConsumerGroupRequest,
-    ) -> sls_20201230_models.CreateConsumerGroupResponse:
+        machine_group: str,
+        config_name: str,
+    ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_consumer_group_with_options_async(project, logstore, request, headers, runtime)
+        return await self.apply_config_to_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
+
+    def change_resource_group_with_options(
+        self,
+        request: sls_20201230_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/resourcegroup',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ChangeResourceGroupResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: sls_20201230_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/resourcegroup',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ChangeResourceGroupResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: sls_20201230_models.ChangeResourceGroupRequest,
+    ) -> sls_20201230_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.change_resource_group_with_options(request, headers, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: sls_20201230_models.ChangeResourceGroupRequest,
+    ) -> sls_20201230_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.change_resource_group_with_options_async(request, headers, runtime)
 
     def create_consumer_group_with_options(
         self,
@@ -206,23 +270,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_domain(
+    def create_consumer_group(
         self,
         project: str,
-        request: sls_20201230_models.CreateDomainRequest,
-    ) -> sls_20201230_models.CreateDomainResponse:
+        logstore: str,
+        request: sls_20201230_models.CreateConsumerGroupRequest,
+    ) -> sls_20201230_models.CreateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_domain_with_options(project, request, headers, runtime)
+        return self.create_consumer_group_with_options(project, logstore, request, headers, runtime)
 
-    async def create_domain_async(
+    async def create_consumer_group_async(
         self,
         project: str,
-        request: sls_20201230_models.CreateDomainRequest,
-    ) -> sls_20201230_models.CreateDomainResponse:
+        logstore: str,
+        request: sls_20201230_models.CreateConsumerGroupRequest,
+    ) -> sls_20201230_models.CreateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_domain_with_options_async(project, request, headers, runtime)
+        return await self.create_consumer_group_with_options_async(project, logstore, request, headers, runtime)
 
     def create_domain_with_options(
         self,
@@ -292,25 +358,109 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_index(
+    def create_domain(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateIndexRequest,
-    ) -> sls_20201230_models.CreateIndexResponse:
+        request: sls_20201230_models.CreateDomainRequest,
+    ) -> sls_20201230_models.CreateDomainResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_index_with_options(project, logstore, request, headers, runtime)
+        return self.create_domain_with_options(project, request, headers, runtime)
 
-    async def create_index_async(
+    async def create_domain_async(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateIndexRequest,
-    ) -> sls_20201230_models.CreateIndexResponse:
+        request: sls_20201230_models.CreateDomainRequest,
+    ) -> sls_20201230_models.CreateDomainResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_index_with_options_async(project, logstore, request, headers, runtime)
+        return await self.create_domain_with_options_async(project, request, headers, runtime)
+
+    def create_etljob_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateETLJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateETLJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.etl_job):
+            body['etlJob'] = request.etl_job
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateETLJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateETLJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_etljob_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateETLJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateETLJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.etl_job):
+            body['etlJob'] = request.etl_job
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateETLJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateETLJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_etljob(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateETLJobRequest,
+    ) -> sls_20201230_models.CreateETLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_etljob_with_options(project, request, headers, runtime)
+
+    async def create_etljob_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateETLJobRequest,
+    ) -> sls_20201230_models.CreateETLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_etljob_with_options_async(project, request, headers, runtime)
 
     def create_index_with_options(
         self,
@@ -406,23 +556,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_log_store(
+    def create_index(
         self,
         project: str,
-        request: sls_20201230_models.CreateLogStoreRequest,
-    ) -> sls_20201230_models.CreateLogStoreResponse:
+        logstore: str,
+        request: sls_20201230_models.CreateIndexRequest,
+    ) -> sls_20201230_models.CreateIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_log_store_with_options(project, request, headers, runtime)
+        return self.create_index_with_options(project, logstore, request, headers, runtime)
 
-    async def create_log_store_async(
+    async def create_index_async(
         self,
         project: str,
-        request: sls_20201230_models.CreateLogStoreRequest,
-    ) -> sls_20201230_models.CreateLogStoreResponse:
+        logstore: str,
+        request: sls_20201230_models.CreateIndexRequest,
+    ) -> sls_20201230_models.CreateIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_log_store_with_options_async(project, request, headers, runtime)
+        return await self.create_index_with_options_async(project, logstore, request, headers, runtime)
 
     def create_log_store_with_options(
         self,
@@ -532,23 +684,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_logging(
+    def create_log_store(
         self,
         project: str,
-        request: sls_20201230_models.CreateLoggingRequest,
-    ) -> sls_20201230_models.CreateLoggingResponse:
+        request: sls_20201230_models.CreateLogStoreRequest,
+    ) -> sls_20201230_models.CreateLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_logging_with_options(project, request, headers, runtime)
+        return self.create_log_store_with_options(project, request, headers, runtime)
 
-    async def create_logging_async(
+    async def create_log_store_async(
         self,
         project: str,
-        request: sls_20201230_models.CreateLoggingRequest,
-    ) -> sls_20201230_models.CreateLoggingResponse:
+        request: sls_20201230_models.CreateLogStoreRequest,
+    ) -> sls_20201230_models.CreateLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_logging_with_options_async(project, request, headers, runtime)
+        return await self.create_log_store_with_options_async(project, request, headers, runtime)
 
     def create_logging_with_options(
         self,
@@ -622,23 +774,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_machine_group(
+    def create_logging(
         self,
         project: str,
-        request: sls_20201230_models.CreateMachineGroupRequest,
-    ) -> sls_20201230_models.CreateMachineGroupResponse:
+        request: sls_20201230_models.CreateLoggingRequest,
+    ) -> sls_20201230_models.CreateLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_machine_group_with_options(project, request, headers, runtime)
+        return self.create_logging_with_options(project, request, headers, runtime)
 
-    async def create_machine_group_async(
+    async def create_logging_async(
         self,
         project: str,
-        request: sls_20201230_models.CreateMachineGroupRequest,
-    ) -> sls_20201230_models.CreateMachineGroupResponse:
+        request: sls_20201230_models.CreateLoggingRequest,
+    ) -> sls_20201230_models.CreateLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_machine_group_with_options_async(project, request, headers, runtime)
+        return await self.create_logging_with_options_async(project, request, headers, runtime)
 
     def create_machine_group_with_options(
         self,
@@ -724,25 +876,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_odps_shipper(
+    def create_machine_group(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateOdpsShipperRequest,
-    ) -> sls_20201230_models.CreateOdpsShipperResponse:
+        request: sls_20201230_models.CreateMachineGroupRequest,
+    ) -> sls_20201230_models.CreateMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_odps_shipper_with_options(project, logstore, request, headers, runtime)
+        return self.create_machine_group_with_options(project, request, headers, runtime)
 
-    async def create_odps_shipper_async(
+    async def create_machine_group_async(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateOdpsShipperRequest,
-    ) -> sls_20201230_models.CreateOdpsShipperResponse:
+        request: sls_20201230_models.CreateMachineGroupRequest,
+    ) -> sls_20201230_models.CreateMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_odps_shipper_with_options_async(project, logstore, request, headers, runtime)
+        return await self.create_machine_group_with_options_async(project, request, headers, runtime)
 
     def create_odps_shipper_with_options(
         self,
@@ -822,23 +972,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_oss_external_store(
+    def create_odps_shipper(
         self,
         project: str,
-        request: sls_20201230_models.CreateOssExternalStoreRequest,
-    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        logstore: str,
+        request: sls_20201230_models.CreateOdpsShipperRequest,
+    ) -> sls_20201230_models.CreateOdpsShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_oss_external_store_with_options(project, request, headers, runtime)
+        return self.create_odps_shipper_with_options(project, logstore, request, headers, runtime)
 
-    async def create_oss_external_store_async(
+    async def create_odps_shipper_async(
         self,
         project: str,
-        request: sls_20201230_models.CreateOssExternalStoreRequest,
-    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        logstore: str,
+        request: sls_20201230_models.CreateOdpsShipperRequest,
+    ) -> sls_20201230_models.CreateOdpsShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_oss_external_store_with_options_async(project, request, headers, runtime)
+        return await self.create_odps_shipper_with_options_async(project, logstore, request, headers, runtime)
 
     def create_oss_external_store_with_options(
         self,
@@ -916,25 +1068,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_oss_shipper(
+    def create_oss_external_store(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateOssShipperRequest,
-    ) -> sls_20201230_models.CreateOssShipperResponse:
+        request: sls_20201230_models.CreateOssExternalStoreRequest,
+    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_oss_shipper_with_options(project, logstore, request, headers, runtime)
+        return self.create_oss_external_store_with_options(project, request, headers, runtime)
 
-    async def create_oss_shipper_async(
+    async def create_oss_external_store_async(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.CreateOssShipperRequest,
-    ) -> sls_20201230_models.CreateOssShipperResponse:
+        request: sls_20201230_models.CreateOssExternalStoreRequest,
+    ) -> sls_20201230_models.CreateOssExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_oss_shipper_with_options_async(project, logstore, request, headers, runtime)
+        return await self.create_oss_external_store_with_options_async(project, request, headers, runtime)
 
     def create_oss_shipper_with_options(
         self,
@@ -1014,21 +1164,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_project(
+    def create_oss_shipper(
         self,
-        request: sls_20201230_models.CreateProjectRequest,
-    ) -> sls_20201230_models.CreateProjectResponse:
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOssShipperRequest,
+    ) -> sls_20201230_models.CreateOssShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_project_with_options(request, headers, runtime)
+        return self.create_oss_shipper_with_options(project, logstore, request, headers, runtime)
 
-    async def create_project_async(
+    async def create_oss_shipper_async(
         self,
-        request: sls_20201230_models.CreateProjectRequest,
-    ) -> sls_20201230_models.CreateProjectResponse:
+        project: str,
+        logstore: str,
+        request: sls_20201230_models.CreateOssShipperRequest,
+    ) -> sls_20201230_models.CreateOssShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_project_with_options_async(request, headers, runtime)
+        return await self.create_oss_shipper_with_options_async(project, logstore, request, headers, runtime)
 
     def create_project_with_options(
         self,
@@ -1042,6 +1196,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.project_name):
             body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1074,6 +1230,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.project_name):
             body['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1094,23 +1252,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_rds_external_store(
+    def create_project(
         self,
-        project: str,
-        request: sls_20201230_models.CreateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        request: sls_20201230_models.CreateProjectRequest,
+    ) -> sls_20201230_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_rds_external_store_with_options(project, request, headers, runtime)
+        return self.create_project_with_options(request, headers, runtime)
 
-    async def create_rds_external_store_async(
+    async def create_project_async(
         self,
-        project: str,
-        request: sls_20201230_models.CreateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        request: sls_20201230_models.CreateProjectRequest,
+    ) -> sls_20201230_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_rds_external_store_with_options_async(project, request, headers, runtime)
+        return await self.create_project_with_options_async(request, headers, runtime)
 
     def create_rds_external_store_with_options(
         self,
@@ -1188,23 +1344,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_saved_search(
+    def create_rds_external_store(
         self,
         project: str,
-        request: sls_20201230_models.CreateSavedSearchRequest,
-    ) -> sls_20201230_models.CreateSavedSearchResponse:
+        request: sls_20201230_models.CreateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_saved_search_with_options(project, request, headers, runtime)
+        return self.create_rds_external_store_with_options(project, request, headers, runtime)
 
-    async def create_saved_search_async(
+    async def create_rds_external_store_async(
         self,
         project: str,
-        request: sls_20201230_models.CreateSavedSearchRequest,
-    ) -> sls_20201230_models.CreateSavedSearchResponse:
+        request: sls_20201230_models.CreateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_saved_search_with_options_async(project, request, headers, runtime)
+        return await self.create_rds_external_store_with_options_async(project, request, headers, runtime)
 
     def create_saved_search_with_options(
         self,
@@ -1290,25 +1446,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_consumer_group(
+    def create_saved_search(
         self,
         project: str,
-        logstore: str,
-        consumer_group: str,
-    ) -> sls_20201230_models.DeleteConsumerGroupResponse:
+        request: sls_20201230_models.CreateSavedSearchRequest,
+    ) -> sls_20201230_models.CreateSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_consumer_group_with_options(project, logstore, consumer_group, headers, runtime)
+        return self.create_saved_search_with_options(project, request, headers, runtime)
 
-    async def delete_consumer_group_async(
+    async def create_saved_search_async(
         self,
         project: str,
-        logstore: str,
-        consumer_group: str,
-    ) -> sls_20201230_models.DeleteConsumerGroupResponse:
+        request: sls_20201230_models.CreateSavedSearchRequest,
+    ) -> sls_20201230_models.CreateSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_consumer_group_with_options_async(project, logstore, consumer_group, headers, runtime)
+        return await self.create_saved_search_with_options_async(project, request, headers, runtime)
 
     def delete_consumer_group_with_options(
         self,
@@ -1370,23 +1524,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_domain(
+    def delete_consumer_group(
         self,
         project: str,
-        domain_name: str,
-    ) -> sls_20201230_models.DeleteDomainResponse:
+        logstore: str,
+        consumer_group: str,
+    ) -> sls_20201230_models.DeleteConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_domain_with_options(project, domain_name, headers, runtime)
+        return self.delete_consumer_group_with_options(project, logstore, consumer_group, headers, runtime)
 
-    async def delete_domain_async(
+    async def delete_consumer_group_async(
         self,
         project: str,
-        domain_name: str,
-    ) -> sls_20201230_models.DeleteDomainResponse:
+        logstore: str,
+        consumer_group: str,
+    ) -> sls_20201230_models.DeleteConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_domain_with_options_async(project, domain_name, headers, runtime)
+        return await self.delete_consumer_group_with_options_async(project, logstore, consumer_group, headers, runtime)
 
     def delete_domain_with_options(
         self,
@@ -1446,23 +1602,103 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_external_store(
+    def delete_domain(
         self,
         project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        domain_name: str,
+    ) -> sls_20201230_models.DeleteDomainResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_external_store_with_options(project, external_store_name, headers, runtime)
+        return self.delete_domain_with_options(project, domain_name, headers, runtime)
 
-    async def delete_external_store_async(
+    async def delete_domain_async(
         self,
         project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        domain_name: str,
+    ) -> sls_20201230_models.DeleteDomainResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_external_store_with_options_async(project, external_store_name, headers, runtime)
+        return await self.delete_domain_with_options_async(project, domain_name, headers, runtime)
+
+    def delete_etljob_with_options(
+        self,
+        etl_job_name: str,
+        request: sls_20201230_models.DeleteETLJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteETLJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteETLJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteETLJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_etljob_with_options_async(
+        self,
+        etl_job_name: str,
+        request: sls_20201230_models.DeleteETLJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteETLJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteETLJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteETLJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_etljob(
+        self,
+        etl_job_name: str,
+        request: sls_20201230_models.DeleteETLJobRequest,
+    ) -> sls_20201230_models.DeleteETLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_etljob_with_options(etl_job_name, request, headers, runtime)
+
+    async def delete_etljob_async(
+        self,
+        etl_job_name: str,
+        request: sls_20201230_models.DeleteETLJobRequest,
+    ) -> sls_20201230_models.DeleteETLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_etljob_with_options_async(etl_job_name, request, headers, runtime)
 
     def delete_external_store_with_options(
         self,
@@ -1522,23 +1758,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_index(
+    def delete_external_store(
         self,
         project: str,
-        logstore: str,
-    ) -> sls_20201230_models.DeleteIndexResponse:
+        external_store_name: str,
+    ) -> sls_20201230_models.DeleteExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_index_with_options(project, logstore, headers, runtime)
+        return self.delete_external_store_with_options(project, external_store_name, headers, runtime)
 
-    async def delete_index_async(
+    async def delete_external_store_async(
         self,
         project: str,
-        logstore: str,
-    ) -> sls_20201230_models.DeleteIndexResponse:
+        external_store_name: str,
+    ) -> sls_20201230_models.DeleteExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_index_with_options_async(project, logstore, headers, runtime)
+        return await self.delete_external_store_with_options_async(project, external_store_name, headers, runtime)
 
     def delete_index_with_options(
         self,
@@ -1598,23 +1834,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_log_store(
+    def delete_index(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.DeleteLogStoreResponse:
+    ) -> sls_20201230_models.DeleteIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_log_store_with_options(project, logstore, headers, runtime)
+        return self.delete_index_with_options(project, logstore, headers, runtime)
 
-    async def delete_log_store_async(
+    async def delete_index_async(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.DeleteLogStoreResponse:
+    ) -> sls_20201230_models.DeleteIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_log_store_with_options_async(project, logstore, headers, runtime)
+        return await self.delete_index_with_options_async(project, logstore, headers, runtime)
 
     def delete_log_store_with_options(
         self,
@@ -1674,21 +1910,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_logging(
+    def delete_log_store(
         self,
         project: str,
-    ) -> sls_20201230_models.DeleteLoggingResponse:
+        logstore: str,
+    ) -> sls_20201230_models.DeleteLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_logging_with_options(project, headers, runtime)
+        return self.delete_log_store_with_options(project, logstore, headers, runtime)
 
-    async def delete_logging_async(
+    async def delete_log_store_async(
         self,
         project: str,
-    ) -> sls_20201230_models.DeleteLoggingResponse:
+        logstore: str,
+    ) -> sls_20201230_models.DeleteLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_logging_with_options_async(project, headers, runtime)
+        return await self.delete_log_store_with_options_async(project, logstore, headers, runtime)
 
     def delete_logging_with_options(
         self,
@@ -1746,23 +1984,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_machine_group(
+    def delete_logging(
         self,
         project: str,
-        machine_group: str,
-    ) -> sls_20201230_models.DeleteMachineGroupResponse:
+    ) -> sls_20201230_models.DeleteLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_machine_group_with_options(project, machine_group, headers, runtime)
+        return self.delete_logging_with_options(project, headers, runtime)
 
-    async def delete_machine_group_async(
+    async def delete_logging_async(
         self,
         project: str,
-        machine_group: str,
-    ) -> sls_20201230_models.DeleteMachineGroupResponse:
+    ) -> sls_20201230_models.DeleteLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_machine_group_with_options_async(project, machine_group, headers, runtime)
+        return await self.delete_logging_with_options_async(project, headers, runtime)
 
     def delete_machine_group_with_options(
         self,
@@ -1822,21 +2058,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_project(
+    def delete_machine_group(
         self,
         project: str,
-    ) -> sls_20201230_models.DeleteProjectResponse:
+        machine_group: str,
+    ) -> sls_20201230_models.DeleteMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(project, headers, runtime)
+        return self.delete_machine_group_with_options(project, machine_group, headers, runtime)
 
-    async def delete_project_async(
+    async def delete_machine_group_async(
         self,
         project: str,
-    ) -> sls_20201230_models.DeleteProjectResponse:
+        machine_group: str,
+    ) -> sls_20201230_models.DeleteMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(project, headers, runtime)
+        return await self.delete_machine_group_with_options_async(project, machine_group, headers, runtime)
 
     def delete_project_with_options(
         self,
@@ -1894,21 +2132,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_project_policy(
+    def delete_project(
         self,
         project: str,
-    ) -> sls_20201230_models.DeleteProjectPolicyResponse:
+    ) -> sls_20201230_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_policy_with_options(project, headers, runtime)
+        return self.delete_project_with_options(project, headers, runtime)
 
-    async def delete_project_policy_async(
+    async def delete_project_async(
         self,
         project: str,
-    ) -> sls_20201230_models.DeleteProjectPolicyResponse:
+    ) -> sls_20201230_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_policy_with_options_async(project, headers, runtime)
+        return await self.delete_project_with_options_async(project, headers, runtime)
 
     def delete_project_policy_with_options(
         self,
@@ -1966,23 +2204,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_saved_search(
+    def delete_project_policy(
         self,
         project: str,
-        savedsearch_name: str,
-    ) -> sls_20201230_models.DeleteSavedSearchResponse:
+    ) -> sls_20201230_models.DeleteProjectPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_saved_search_with_options(project, savedsearch_name, headers, runtime)
+        return self.delete_project_policy_with_options(project, headers, runtime)
 
-    async def delete_saved_search_async(
+    async def delete_project_policy_async(
         self,
         project: str,
-        savedsearch_name: str,
-    ) -> sls_20201230_models.DeleteSavedSearchResponse:
+    ) -> sls_20201230_models.DeleteProjectPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_saved_search_with_options_async(project, savedsearch_name, headers, runtime)
+        return await self.delete_project_policy_with_options_async(project, headers, runtime)
 
     def delete_saved_search_with_options(
         self,
@@ -2042,25 +2278,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_shipper(
+    def delete_saved_search(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-    ) -> sls_20201230_models.DeleteShipperResponse:
+        savedsearch_name: str,
+    ) -> sls_20201230_models.DeleteSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_shipper_with_options(project, logstore, shipper_name, headers, runtime)
+        return self.delete_saved_search_with_options(project, savedsearch_name, headers, runtime)
 
-    async def delete_shipper_async(
+    async def delete_saved_search_async(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-    ) -> sls_20201230_models.DeleteShipperResponse:
+        savedsearch_name: str,
+    ) -> sls_20201230_models.DeleteSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_shipper_with_options_async(project, logstore, shipper_name, headers, runtime)
+        return await self.delete_saved_search_with_options_async(project, savedsearch_name, headers, runtime)
 
     def delete_shipper_with_options(
         self,
@@ -2122,23 +2356,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_applied_configs(
+    def delete_shipper(
         self,
         project: str,
-        machine_group: str,
-    ) -> sls_20201230_models.GetAppliedConfigsResponse:
+        logstore: str,
+        shipper_name: str,
+    ) -> sls_20201230_models.DeleteShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_applied_configs_with_options(project, machine_group, headers, runtime)
+        return self.delete_shipper_with_options(project, logstore, shipper_name, headers, runtime)
 
-    async def get_applied_configs_async(
+    async def delete_shipper_async(
         self,
         project: str,
-        machine_group: str,
-    ) -> sls_20201230_models.GetAppliedConfigsResponse:
+        logstore: str,
+        shipper_name: str,
+    ) -> sls_20201230_models.DeleteShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_applied_configs_with_options_async(project, machine_group, headers, runtime)
+        return await self.delete_shipper_with_options_async(project, logstore, shipper_name, headers, runtime)
 
     def get_applied_configs_with_options(
         self,
@@ -2198,23 +2434,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_applied_machine_groups(
+    def get_applied_configs(
         self,
         project: str,
-        config_name: str,
-    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        machine_group: str,
+    ) -> sls_20201230_models.GetAppliedConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_applied_machine_groups_with_options(project, config_name, headers, runtime)
+        return self.get_applied_configs_with_options(project, machine_group, headers, runtime)
 
-    async def get_applied_machine_groups_async(
+    async def get_applied_configs_async(
         self,
         project: str,
-        config_name: str,
-    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        machine_group: str,
+    ) -> sls_20201230_models.GetAppliedConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_applied_machine_groups_with_options_async(project, config_name, headers, runtime)
+        return await self.get_applied_configs_with_options_async(project, machine_group, headers, runtime)
 
     def get_applied_machine_groups_with_options(
         self,
@@ -2274,27 +2510,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_check_point(
+    def get_applied_machine_groups(
         self,
         project: str,
-        logstore: str,
-        consumer_group: str,
-        request: sls_20201230_models.GetCheckPointRequest,
-    ) -> sls_20201230_models.GetCheckPointResponse:
+        config_name: str,
+    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_check_point_with_options(project, logstore, consumer_group, request, headers, runtime)
+        return self.get_applied_machine_groups_with_options(project, config_name, headers, runtime)
 
-    async def get_check_point_async(
+    async def get_applied_machine_groups_async(
         self,
         project: str,
-        logstore: str,
-        consumer_group: str,
-        request: sls_20201230_models.GetCheckPointRequest,
-    ) -> sls_20201230_models.GetCheckPointResponse:
+        config_name: str,
+    ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_check_point_with_options_async(project, logstore, consumer_group, request, headers, runtime)
+        return await self.get_applied_machine_groups_with_options_async(project, config_name, headers, runtime)
 
     def get_check_point_with_options(
         self,
@@ -2368,25 +2600,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_context_logs(
+    def get_check_point(
         self,
         project: str,
         logstore: str,
-        request: sls_20201230_models.GetContextLogsRequest,
-    ) -> sls_20201230_models.GetContextLogsResponse:
+        consumer_group: str,
+        request: sls_20201230_models.GetCheckPointRequest,
+    ) -> sls_20201230_models.GetCheckPointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_context_logs_with_options(project, logstore, request, headers, runtime)
+        return self.get_check_point_with_options(project, logstore, consumer_group, request, headers, runtime)
 
-    async def get_context_logs_async(
+    async def get_check_point_async(
         self,
         project: str,
         logstore: str,
-        request: sls_20201230_models.GetContextLogsRequest,
-    ) -> sls_20201230_models.GetContextLogsResponse:
+        consumer_group: str,
+        request: sls_20201230_models.GetCheckPointRequest,
+    ) -> sls_20201230_models.GetCheckPointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_context_logs_with_options_async(project, logstore, request, headers, runtime)
+        return await self.get_check_point_with_options_async(project, logstore, consumer_group, request, headers, runtime)
 
     def get_context_logs_with_options(
         self,
@@ -2474,27 +2708,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_cursor(
+    def get_context_logs(
         self,
         project: str,
         logstore: str,
-        shard_id: str,
-        request: sls_20201230_models.GetCursorRequest,
-    ) -> sls_20201230_models.GetCursorResponse:
+        request: sls_20201230_models.GetContextLogsRequest,
+    ) -> sls_20201230_models.GetContextLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_cursor_with_options(project, logstore, shard_id, request, headers, runtime)
+        return self.get_context_logs_with_options(project, logstore, request, headers, runtime)
 
-    async def get_cursor_async(
+    async def get_context_logs_async(
         self,
         project: str,
         logstore: str,
-        shard_id: str,
-        request: sls_20201230_models.GetCursorRequest,
-    ) -> sls_20201230_models.GetCursorResponse:
+        request: sls_20201230_models.GetContextLogsRequest,
+    ) -> sls_20201230_models.GetContextLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_cursor_with_options_async(project, logstore, shard_id, request, headers, runtime)
+        return await self.get_context_logs_with_options_async(project, logstore, request, headers, runtime)
 
     def get_cursor_with_options(
         self,
@@ -2568,27 +2800,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_cursor_time(
+    def get_cursor(
         self,
         project: str,
         logstore: str,
         shard_id: str,
-        request: sls_20201230_models.GetCursorTimeRequest,
-    ) -> sls_20201230_models.GetCursorTimeResponse:
+        request: sls_20201230_models.GetCursorRequest,
+    ) -> sls_20201230_models.GetCursorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_cursor_time_with_options(project, logstore, shard_id, request, headers, runtime)
+        return self.get_cursor_with_options(project, logstore, shard_id, request, headers, runtime)
 
-    async def get_cursor_time_async(
+    async def get_cursor_async(
         self,
         project: str,
         logstore: str,
         shard_id: str,
-        request: sls_20201230_models.GetCursorTimeRequest,
-    ) -> sls_20201230_models.GetCursorTimeResponse:
+        request: sls_20201230_models.GetCursorRequest,
+    ) -> sls_20201230_models.GetCursorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_cursor_time_with_options_async(project, logstore, shard_id, request, headers, runtime)
+        return await self.get_cursor_with_options_async(project, logstore, shard_id, request, headers, runtime)
 
     def get_cursor_time_with_options(
         self,
@@ -2662,23 +2894,103 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_external_store(
+    def get_cursor_time(
         self,
         project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.GetExternalStoreResponse:
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorTimeRequest,
+    ) -> sls_20201230_models.GetCursorTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_external_store_with_options(project, external_store_name, headers, runtime)
+        return self.get_cursor_time_with_options(project, logstore, shard_id, request, headers, runtime)
 
-    async def get_external_store_async(
+    async def get_cursor_time_async(
         self,
         project: str,
-        external_store_name: str,
-    ) -> sls_20201230_models.GetExternalStoreResponse:
+        logstore: str,
+        shard_id: str,
+        request: sls_20201230_models.GetCursorTimeRequest,
+    ) -> sls_20201230_models.GetCursorTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_external_store_with_options_async(project, external_store_name, headers, runtime)
+        return await self.get_cursor_time_with_options_async(project, logstore, shard_id, request, headers, runtime)
+
+    def get_etl_job_with_options(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetEtlJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_etl_job_with_options_async(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetEtlJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_etl_job(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_etl_job_with_options(project, etl_job_name, headers, runtime)
+
+    async def get_etl_job_async(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_etl_job_with_options_async(project, etl_job_name, headers, runtime)
 
     def get_external_store_with_options(
         self,
@@ -2738,25 +3050,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_histograms(
+    def get_external_store(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.GetHistogramsRequest,
-    ) -> sls_20201230_models.GetHistogramsResponse:
+        external_store_name: str,
+    ) -> sls_20201230_models.GetExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_histograms_with_options(project, logstore, request, headers, runtime)
+        return self.get_external_store_with_options(project, external_store_name, headers, runtime)
 
-    async def get_histograms_async(
+    async def get_external_store_async(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.GetHistogramsRequest,
-    ) -> sls_20201230_models.GetHistogramsResponse:
+        external_store_name: str,
+    ) -> sls_20201230_models.GetExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_histograms_with_options_async(project, logstore, request, headers, runtime)
+        return await self.get_external_store_with_options_async(project, external_store_name, headers, runtime)
 
     def get_histograms_with_options(
         self,
@@ -2840,23 +3150,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_index(
+    def get_histograms(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.GetIndexResponse:
+        request: sls_20201230_models.GetHistogramsRequest,
+    ) -> sls_20201230_models.GetHistogramsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_index_with_options(project, logstore, headers, runtime)
+        return self.get_histograms_with_options(project, logstore, request, headers, runtime)
 
-    async def get_index_async(
+    async def get_histograms_async(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.GetIndexResponse:
+        request: sls_20201230_models.GetHistogramsRequest,
+    ) -> sls_20201230_models.GetHistogramsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_index_with_options_async(project, logstore, headers, runtime)
+        return await self.get_histograms_with_options_async(project, logstore, request, headers, runtime)
 
     def get_index_with_options(
         self,
@@ -2916,23 +3228,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_log_store(
+    def get_index(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.GetLogStoreResponse:
+    ) -> sls_20201230_models.GetIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_log_store_with_options(project, logstore, headers, runtime)
+        return self.get_index_with_options(project, logstore, headers, runtime)
 
-    async def get_log_store_async(
+    async def get_index_async(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.GetLogStoreResponse:
+    ) -> sls_20201230_models.GetIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_log_store_with_options_async(project, logstore, headers, runtime)
+        return await self.get_index_with_options_async(project, logstore, headers, runtime)
 
     def get_log_store_with_options(
         self,
@@ -2992,21 +3304,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_logging(
+    def get_log_store(
         self,
         project: str,
-    ) -> sls_20201230_models.GetLoggingResponse:
+        logstore: str,
+    ) -> sls_20201230_models.GetLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_logging_with_options(project, headers, runtime)
+        return self.get_log_store_with_options(project, logstore, headers, runtime)
 
-    async def get_logging_async(
+    async def get_log_store_async(
         self,
         project: str,
-    ) -> sls_20201230_models.GetLoggingResponse:
+        logstore: str,
+    ) -> sls_20201230_models.GetLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_logging_with_options_async(project, headers, runtime)
+        return await self.get_log_store_with_options_async(project, logstore, headers, runtime)
 
     def get_logging_with_options(
         self,
@@ -3064,25 +3378,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_logs(
+    def get_logging(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.GetLogsRequest,
-    ) -> sls_20201230_models.GetLogsResponse:
+    ) -> sls_20201230_models.GetLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_logs_with_options(project, logstore, request, headers, runtime)
+        return self.get_logging_with_options(project, headers, runtime)
 
-    async def get_logs_async(
+    async def get_logging_async(
         self,
         project: str,
-        logstore: str,
-        request: sls_20201230_models.GetLogsRequest,
-    ) -> sls_20201230_models.GetLogsResponse:
+    ) -> sls_20201230_models.GetLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_logs_with_options_async(project, logstore, request, headers, runtime)
+        return await self.get_logging_with_options_async(project, headers, runtime)
 
     def get_logs_with_options(
         self,
@@ -3182,23 +3492,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_machine_group(
+    def get_logs(
         self,
         project: str,
-        machine_group: str,
-    ) -> sls_20201230_models.GetMachineGroupResponse:
+        logstore: str,
+        request: sls_20201230_models.GetLogsRequest,
+    ) -> sls_20201230_models.GetLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_machine_group_with_options(project, machine_group, headers, runtime)
+        return self.get_logs_with_options(project, logstore, request, headers, runtime)
 
-    async def get_machine_group_async(
+    async def get_logs_async(
         self,
         project: str,
-        machine_group: str,
-    ) -> sls_20201230_models.GetMachineGroupResponse:
+        logstore: str,
+        request: sls_20201230_models.GetLogsRequest,
+    ) -> sls_20201230_models.GetLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_machine_group_with_options_async(project, machine_group, headers, runtime)
+        return await self.get_logs_with_options_async(project, logstore, request, headers, runtime)
 
     def get_machine_group_with_options(
         self,
@@ -3258,21 +3570,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_project(
+    def get_machine_group(
         self,
         project: str,
-    ) -> sls_20201230_models.GetProjectResponse:
+        machine_group: str,
+    ) -> sls_20201230_models.GetMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(project, headers, runtime)
+        return self.get_machine_group_with_options(project, machine_group, headers, runtime)
 
-    async def get_project_async(
+    async def get_machine_group_async(
         self,
         project: str,
-    ) -> sls_20201230_models.GetProjectResponse:
+        machine_group: str,
+    ) -> sls_20201230_models.GetMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(project, headers, runtime)
+        return await self.get_machine_group_with_options_async(project, machine_group, headers, runtime)
 
     def get_project_with_options(
         self,
@@ -3330,23 +3644,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_project_logs(
+    def get_project(
         self,
         project: str,
-        request: sls_20201230_models.GetProjectLogsRequest,
-    ) -> sls_20201230_models.GetProjectLogsResponse:
+    ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_logs_with_options(project, request, headers, runtime)
+        return self.get_project_with_options(project, headers, runtime)
 
-    async def get_project_logs_async(
+    async def get_project_async(
         self,
         project: str,
-        request: sls_20201230_models.GetProjectLogsRequest,
-    ) -> sls_20201230_models.GetProjectLogsResponse:
+    ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_logs_with_options_async(project, request, headers, runtime)
+        return await self.get_project_with_options_async(project, headers, runtime)
 
     def get_project_logs_with_options(
         self,
@@ -3420,21 +3732,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_project_policy(
+    def get_project_logs(
         self,
         project: str,
-    ) -> sls_20201230_models.GetProjectPolicyResponse:
+        request: sls_20201230_models.GetProjectLogsRequest,
+    ) -> sls_20201230_models.GetProjectLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_policy_with_options(project, headers, runtime)
+        return self.get_project_logs_with_options(project, request, headers, runtime)
 
-    async def get_project_policy_async(
+    async def get_project_logs_async(
         self,
         project: str,
-    ) -> sls_20201230_models.GetProjectPolicyResponse:
+        request: sls_20201230_models.GetProjectLogsRequest,
+    ) -> sls_20201230_models.GetProjectLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_policy_with_options_async(project, headers, runtime)
+        return await self.get_project_logs_with_options_async(project, request, headers, runtime)
 
     def get_project_policy_with_options(
         self,
@@ -3457,7 +3771,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='string'
         )
         return TeaCore.from_map(
             sls_20201230_models.GetProjectPolicyResponse(),
@@ -3485,30 +3799,28 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='string'
         )
         return TeaCore.from_map(
             sls_20201230_models.GetProjectPolicyResponse(),
             await self.execute_async(params, req, runtime)
         )
 
-    def get_saved_search(
+    def get_project_policy(
         self,
         project: str,
-        savedsearch_name: str,
-    ) -> sls_20201230_models.GetSavedSearchResponse:
+    ) -> sls_20201230_models.GetProjectPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_saved_search_with_options(project, savedsearch_name, headers, runtime)
+        return self.get_project_policy_with_options(project, headers, runtime)
 
-    async def get_saved_search_async(
+    async def get_project_policy_async(
         self,
         project: str,
-        savedsearch_name: str,
-    ) -> sls_20201230_models.GetSavedSearchResponse:
+    ) -> sls_20201230_models.GetProjectPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_saved_search_with_options_async(project, savedsearch_name, headers, runtime)
+        return await self.get_project_policy_with_options_async(project, headers, runtime)
 
     def get_saved_search_with_options(
         self,
@@ -3568,27 +3880,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_shipper_status(
+    def get_saved_search(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.GetShipperStatusRequest,
-    ) -> sls_20201230_models.GetShipperStatusResponse:
+        savedsearch_name: str,
+    ) -> sls_20201230_models.GetSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_shipper_status_with_options(project, logstore, shipper_name, request, headers, runtime)
+        return self.get_saved_search_with_options(project, savedsearch_name, headers, runtime)
 
-    async def get_shipper_status_async(
+    async def get_saved_search_async(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.GetShipperStatusRequest,
-    ) -> sls_20201230_models.GetShipperStatusResponse:
+        savedsearch_name: str,
+    ) -> sls_20201230_models.GetSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
+        return await self.get_saved_search_with_options_async(project, savedsearch_name, headers, runtime)
 
     def get_shipper_status_with_options(
         self,
@@ -3678,23 +3986,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_consumer_group(
+    def get_shipper_status(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.ListConsumerGroupResponse:
+        shipper_name: str,
+        request: sls_20201230_models.GetShipperStatusRequest,
+    ) -> sls_20201230_models.GetShipperStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_consumer_group_with_options(project, logstore, headers, runtime)
+        return self.get_shipper_status_with_options(project, logstore, shipper_name, request, headers, runtime)
 
-    async def list_consumer_group_async(
+    async def get_shipper_status_async(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.ListConsumerGroupResponse:
+        shipper_name: str,
+        request: sls_20201230_models.GetShipperStatusRequest,
+    ) -> sls_20201230_models.GetShipperStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_consumer_group_with_options_async(project, logstore, headers, runtime)
+        return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
     def list_consumer_group_with_options(
         self,
@@ -3754,23 +4066,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_domains(
+    def list_consumer_group(
         self,
         project: str,
-        request: sls_20201230_models.ListDomainsRequest,
-    ) -> sls_20201230_models.ListDomainsResponse:
+        logstore: str,
+    ) -> sls_20201230_models.ListConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_domains_with_options(project, request, headers, runtime)
+        return self.list_consumer_group_with_options(project, logstore, headers, runtime)
 
-    async def list_domains_async(
+    async def list_consumer_group_async(
         self,
         project: str,
-        request: sls_20201230_models.ListDomainsRequest,
-    ) -> sls_20201230_models.ListDomainsResponse:
+        logstore: str,
+    ) -> sls_20201230_models.ListConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_domains_with_options_async(project, request, headers, runtime)
+        return await self.list_consumer_group_with_options_async(project, logstore, headers, runtime)
 
     def list_domains_with_options(
         self,
@@ -3848,23 +4160,95 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_external_store(
+    def list_domains(
         self,
         project: str,
-        request: sls_20201230_models.ListExternalStoreRequest,
-    ) -> sls_20201230_models.ListExternalStoreResponse:
+        request: sls_20201230_models.ListDomainsRequest,
+    ) -> sls_20201230_models.ListDomainsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_external_store_with_options(project, request, headers, runtime)
+        return self.list_domains_with_options(project, request, headers, runtime)
 
-    async def list_external_store_async(
+    async def list_domains_async(
         self,
         project: str,
-        request: sls_20201230_models.ListExternalStoreRequest,
-    ) -> sls_20201230_models.ListExternalStoreResponse:
+        request: sls_20201230_models.ListDomainsRequest,
+    ) -> sls_20201230_models.ListDomainsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_external_store_with_options_async(project, request, headers, runtime)
+        return await self.list_domains_with_options_async(project, request, headers, runtime)
+
+    def list_etljobs_with_options(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListETLJobsResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListETLJobs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListETLJobsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_etljobs_with_options_async(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListETLJobsResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListETLJobs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListETLJobsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_etljobs(
+        self,
+        project: str,
+    ) -> sls_20201230_models.ListETLJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_etljobs_with_options(project, headers, runtime)
+
+    async def list_etljobs_async(
+        self,
+        project: str,
+    ) -> sls_20201230_models.ListETLJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_etljobs_with_options_async(project, headers, runtime)
 
     def list_external_store_with_options(
         self,
@@ -3942,23 +4326,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_log_stores(
+    def list_external_store(
         self,
         project: str,
-        request: sls_20201230_models.ListLogStoresRequest,
-    ) -> sls_20201230_models.ListLogStoresResponse:
+        request: sls_20201230_models.ListExternalStoreRequest,
+    ) -> sls_20201230_models.ListExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_log_stores_with_options(project, request, headers, runtime)
+        return self.list_external_store_with_options(project, request, headers, runtime)
 
-    async def list_log_stores_async(
+    async def list_external_store_async(
         self,
         project: str,
-        request: sls_20201230_models.ListLogStoresRequest,
-    ) -> sls_20201230_models.ListLogStoresResponse:
+        request: sls_20201230_models.ListExternalStoreRequest,
+    ) -> sls_20201230_models.ListExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_log_stores_with_options_async(project, request, headers, runtime)
+        return await self.list_external_store_with_options_async(project, request, headers, runtime)
 
     def list_log_stores_with_options(
         self,
@@ -4044,23 +4428,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_machine_group(
+    def list_log_stores(
         self,
         project: str,
-        request: sls_20201230_models.ListMachineGroupRequest,
-    ) -> sls_20201230_models.ListMachineGroupResponse:
+        request: sls_20201230_models.ListLogStoresRequest,
+    ) -> sls_20201230_models.ListLogStoresResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_machine_group_with_options(project, request, headers, runtime)
+        return self.list_log_stores_with_options(project, request, headers, runtime)
 
-    async def list_machine_group_async(
+    async def list_log_stores_async(
         self,
         project: str,
-        request: sls_20201230_models.ListMachineGroupRequest,
-    ) -> sls_20201230_models.ListMachineGroupResponse:
+        request: sls_20201230_models.ListLogStoresRequest,
+    ) -> sls_20201230_models.ListLogStoresResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_machine_group_with_options_async(project, request, headers, runtime)
+        return await self.list_log_stores_with_options_async(project, request, headers, runtime)
 
     def list_machine_group_with_options(
         self,
@@ -4138,25 +4522,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_machines(
+    def list_machine_group(
         self,
         project: str,
-        machine_group: str,
-        request: sls_20201230_models.ListMachinesRequest,
-    ) -> sls_20201230_models.ListMachinesResponse:
+        request: sls_20201230_models.ListMachineGroupRequest,
+    ) -> sls_20201230_models.ListMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_machines_with_options(project, machine_group, request, headers, runtime)
+        return self.list_machine_group_with_options(project, request, headers, runtime)
 
-    async def list_machines_async(
+    async def list_machine_group_async(
         self,
         project: str,
-        machine_group: str,
-        request: sls_20201230_models.ListMachinesRequest,
-    ) -> sls_20201230_models.ListMachinesResponse:
+        request: sls_20201230_models.ListMachineGroupRequest,
+    ) -> sls_20201230_models.ListMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_machines_with_options_async(project, machine_group, request, headers, runtime)
+        return await self.list_machine_group_with_options_async(project, request, headers, runtime)
 
     def list_machines_with_options(
         self,
@@ -4232,24 +4614,29 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_project(
+    def list_machines(
         self,
-        request: sls_20201230_models.ListProjectRequest,
-    ) -> sls_20201230_models.ListProjectResponse:
+        project: str,
+        machine_group: str,
+        request: sls_20201230_models.ListMachinesRequest,
+    ) -> sls_20201230_models.ListMachinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_with_options(request, headers, runtime)
+        return self.list_machines_with_options(project, machine_group, request, headers, runtime)
 
-    async def list_project_async(
+    async def list_machines_async(
         self,
-        request: sls_20201230_models.ListProjectRequest,
-    ) -> sls_20201230_models.ListProjectResponse:
+        project: str,
+        machine_group: str,
+        request: sls_20201230_models.ListMachinesRequest,
+    ) -> sls_20201230_models.ListMachinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_with_options_async(request, headers, runtime)
+        return await self.list_machines_with_options_async(project, machine_group, request, headers, runtime)
 
     def list_project_with_options(
         self,
+        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -4284,6 +4671,7 @@ class Client(OpenApiClient):
 
     async def list_project_with_options_async(
         self,
+        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -4316,23 +4704,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_saved_search(
+    def list_project(
         self,
-        project: str,
-        request: sls_20201230_models.ListSavedSearchRequest,
-    ) -> sls_20201230_models.ListSavedSearchResponse:
+        resource_group_id: str,
+        request: sls_20201230_models.ListProjectRequest,
+    ) -> sls_20201230_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_saved_search_with_options(project, request, headers, runtime)
+        return self.list_project_with_options(resource_group_id, request, headers, runtime)
 
-    async def list_saved_search_async(
+    async def list_project_async(
         self,
-        project: str,
-        request: sls_20201230_models.ListSavedSearchRequest,
-    ) -> sls_20201230_models.ListSavedSearchResponse:
+        resource_group_id: str,
+        request: sls_20201230_models.ListProjectRequest,
+    ) -> sls_20201230_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_saved_search_with_options_async(project, request, headers, runtime)
+        return await self.list_project_with_options_async(resource_group_id, request, headers, runtime)
 
     def list_saved_search_with_options(
         self,
@@ -4406,23 +4794,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_shards(
+    def list_saved_search(
         self,
         project: str,
-        logstore: str,
-    ) -> sls_20201230_models.ListShardsResponse:
+        request: sls_20201230_models.ListSavedSearchRequest,
+    ) -> sls_20201230_models.ListSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_shards_with_options(project, logstore, headers, runtime)
+        return self.list_saved_search_with_options(project, request, headers, runtime)
 
-    async def list_shards_async(
+    async def list_saved_search_async(
         self,
         project: str,
-        logstore: str,
-    ) -> sls_20201230_models.ListShardsResponse:
+        request: sls_20201230_models.ListSavedSearchRequest,
+    ) -> sls_20201230_models.ListSavedSearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_shards_with_options_async(project, logstore, headers, runtime)
+        return await self.list_saved_search_with_options_async(project, request, headers, runtime)
 
     def list_shards_with_options(
         self,
@@ -4482,23 +4870,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_shipper(
+    def list_shards(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.ListShipperResponse:
+    ) -> sls_20201230_models.ListShardsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_shipper_with_options(project, logstore, headers, runtime)
+        return self.list_shards_with_options(project, logstore, headers, runtime)
 
-    async def list_shipper_async(
+    async def list_shards_async(
         self,
         project: str,
         logstore: str,
-    ) -> sls_20201230_models.ListShipperResponse:
+    ) -> sls_20201230_models.ListShardsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_shipper_with_options_async(project, logstore, headers, runtime)
+        return await self.list_shards_with_options_async(project, logstore, headers, runtime)
 
     def list_shipper_with_options(
         self,
@@ -4558,21 +4946,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_tag_resources(
+    def list_shipper(
         self,
-        request: sls_20201230_models.ListTagResourcesRequest,
-    ) -> sls_20201230_models.ListTagResourcesResponse:
+        project: str,
+        logstore: str,
+    ) -> sls_20201230_models.ListShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tag_resources_with_options(request, headers, runtime)
+        return self.list_shipper_with_options(project, logstore, headers, runtime)
 
-    async def list_tag_resources_async(
+    async def list_shipper_async(
         self,
-        request: sls_20201230_models.ListTagResourcesRequest,
-    ) -> sls_20201230_models.ListTagResourcesResponse:
+        project: str,
+        logstore: str,
+    ) -> sls_20201230_models.ListShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+        return await self.list_shipper_with_options_async(project, logstore, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -4654,27 +5044,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def pull_data(
+    def list_tag_resources(
         self,
-        project: str,
-        logstore: str,
-        shard: str,
-        request: sls_20201230_models.PullDataRequest,
-    ) -> sls_20201230_models.PullDataResponse:
+        request: sls_20201230_models.ListTagResourcesRequest,
+    ) -> sls_20201230_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.pull_data_with_options(project, logstore, shard, request, headers, runtime)
+        return self.list_tag_resources_with_options(request, headers, runtime)
 
-    async def pull_data_async(
+    async def list_tag_resources_async(
         self,
-        project: str,
-        logstore: str,
-        shard: str,
-        request: sls_20201230_models.PullDataRequest,
-    ) -> sls_20201230_models.PullDataResponse:
+        request: sls_20201230_models.ListTagResourcesRequest,
+    ) -> sls_20201230_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.pull_data_with_options_async(project, logstore, shard, request, headers, runtime)
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
     def pull_data_with_options(
         self,
@@ -4756,23 +5140,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_project_policy(
+    def pull_data(
         self,
         project: str,
-        request: sls_20201230_models.PutProjectPolicyRequest,
-    ) -> sls_20201230_models.PutProjectPolicyResponse:
+        logstore: str,
+        shard: str,
+        request: sls_20201230_models.PullDataRequest,
+    ) -> sls_20201230_models.PullDataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_project_policy_with_options(project, request, headers, runtime)
+        return self.pull_data_with_options(project, logstore, shard, request, headers, runtime)
 
-    async def put_project_policy_async(
+    async def pull_data_async(
         self,
         project: str,
-        request: sls_20201230_models.PutProjectPolicyRequest,
-    ) -> sls_20201230_models.PutProjectPolicyResponse:
+        logstore: str,
+        shard: str,
+        request: sls_20201230_models.PullDataRequest,
+    ) -> sls_20201230_models.PullDataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_project_policy_with_options_async(project, request, headers, runtime)
+        return await self.pull_data_with_options_async(project, logstore, shard, request, headers, runtime)
 
     def put_project_policy_with_options(
         self,
@@ -4836,25 +5224,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def put_webtracking(
+    def put_project_policy(
         self,
         project: str,
-        logstore_name: str,
-        request: sls_20201230_models.PutWebtrackingRequest,
-    ) -> sls_20201230_models.PutWebtrackingResponse:
+        request: sls_20201230_models.PutProjectPolicyRequest,
+    ) -> sls_20201230_models.PutProjectPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_webtracking_with_options(project, logstore_name, request, headers, runtime)
+        return self.put_project_policy_with_options(project, request, headers, runtime)
 
-    async def put_webtracking_async(
+    async def put_project_policy_async(
         self,
         project: str,
-        logstore_name: str,
-        request: sls_20201230_models.PutWebtrackingRequest,
-    ) -> sls_20201230_models.PutWebtrackingResponse:
+        request: sls_20201230_models.PutProjectPolicyRequest,
+    ) -> sls_20201230_models.PutProjectPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_webtracking_with_options_async(project, logstore_name, request, headers, runtime)
+        return await self.put_project_policy_with_options_async(project, request, headers, runtime)
 
     def put_webtracking_with_options(
         self,
@@ -4938,25 +5324,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def remove_config_from_machine_group(
+    def put_webtracking(
         self,
         project: str,
-        machine_group: str,
-        config_name: str,
-    ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
+        logstore_name: str,
+        request: sls_20201230_models.PutWebtrackingRequest,
+    ) -> sls_20201230_models.PutWebtrackingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_config_from_machine_group_with_options(project, machine_group, config_name, headers, runtime)
+        return self.put_webtracking_with_options(project, logstore_name, request, headers, runtime)
 
-    async def remove_config_from_machine_group_async(
+    async def put_webtracking_async(
         self,
         project: str,
-        machine_group: str,
-        config_name: str,
-    ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
+        logstore_name: str,
+        request: sls_20201230_models.PutWebtrackingRequest,
+    ) -> sls_20201230_models.PutWebtrackingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_config_from_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
+        return await self.put_webtracking_with_options_async(project, logstore_name, request, headers, runtime)
 
     def remove_config_from_machine_group_with_options(
         self,
@@ -5018,27 +5404,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def split_shard(
+    def remove_config_from_machine_group(
         self,
         project: str,
-        logstore: str,
-        shard: str,
-        request: sls_20201230_models.SplitShardRequest,
-    ) -> sls_20201230_models.SplitShardResponse:
+        machine_group: str,
+        config_name: str,
+    ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.split_shard_with_options(project, logstore, shard, request, headers, runtime)
+        return self.remove_config_from_machine_group_with_options(project, machine_group, config_name, headers, runtime)
 
-    async def split_shard_async(
+    async def remove_config_from_machine_group_async(
         self,
         project: str,
-        logstore: str,
-        shard: str,
-        request: sls_20201230_models.SplitShardRequest,
-    ) -> sls_20201230_models.SplitShardResponse:
+        machine_group: str,
+        config_name: str,
+    ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.split_shard_with_options_async(project, logstore, shard, request, headers, runtime)
+        return await self.remove_config_from_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
 
     def split_shard_with_options(
         self,
@@ -5116,21 +5500,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def tag_resources(
+    def split_shard(
         self,
-        request: sls_20201230_models.TagResourcesRequest,
-    ) -> sls_20201230_models.TagResourcesResponse:
+        project: str,
+        logstore: str,
+        shard: str,
+        request: sls_20201230_models.SplitShardRequest,
+    ) -> sls_20201230_models.SplitShardResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.tag_resources_with_options(request, headers, runtime)
+        return self.split_shard_with_options(project, logstore, shard, request, headers, runtime)
 
-    async def tag_resources_async(
+    async def split_shard_async(
         self,
-        request: sls_20201230_models.TagResourcesRequest,
-    ) -> sls_20201230_models.TagResourcesResponse:
+        project: str,
+        logstore: str,
+        shard: str,
+        request: sls_20201230_models.SplitShardRequest,
+    ) -> sls_20201230_models.SplitShardResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.tag_resources_with_options_async(request, headers, runtime)
+        return await self.split_shard_with_options_async(project, logstore, shard, request, headers, runtime)
 
     def tag_resources_with_options(
         self,
@@ -5200,21 +5590,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def untag_resources(
+    def tag_resources(
         self,
-        request: sls_20201230_models.UntagResourcesRequest,
-    ) -> sls_20201230_models.UntagResourcesResponse:
+        request: sls_20201230_models.TagResourcesRequest,
+    ) -> sls_20201230_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.untag_resources_with_options(request, headers, runtime)
+        return self.tag_resources_with_options(request, headers, runtime)
 
-    async def untag_resources_async(
+    async def tag_resources_async(
         self,
-        request: sls_20201230_models.UntagResourcesRequest,
-    ) -> sls_20201230_models.UntagResourcesResponse:
+        request: sls_20201230_models.TagResourcesRequest,
+    ) -> sls_20201230_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.untag_resources_with_options_async(request, headers, runtime)
+        return await self.tag_resources_with_options_async(request, headers, runtime)
 
     def untag_resources_with_options(
         self,
@@ -5288,27 +5678,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_consumer_group(
+    def untag_resources(
         self,
-        project: str,
-        logstore: str,
-        consumer_group: str,
-        request: sls_20201230_models.UpdateConsumerGroupRequest,
-    ) -> sls_20201230_models.UpdateConsumerGroupResponse:
+        request: sls_20201230_models.UntagResourcesRequest,
+    ) -> sls_20201230_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_consumer_group_with_options(project, logstore, consumer_group, request, headers, runtime)
+        return self.untag_resources_with_options(request, headers, runtime)
 
-    async def update_consumer_group_async(
+    async def untag_resources_async(
         self,
-        project: str,
-        logstore: str,
-        consumer_group: str,
-        request: sls_20201230_models.UpdateConsumerGroupRequest,
-    ) -> sls_20201230_models.UpdateConsumerGroupResponse:
+        request: sls_20201230_models.UntagResourcesRequest,
+    ) -> sls_20201230_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_consumer_group_with_options_async(project, logstore, consumer_group, request, headers, runtime)
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_consumer_group_with_options(
         self,
@@ -5386,25 +5770,135 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_index(
+    def update_consumer_group(
         self,
         project: str,
         logstore: str,
-        request: sls_20201230_models.UpdateIndexRequest,
-    ) -> sls_20201230_models.UpdateIndexResponse:
+        consumer_group: str,
+        request: sls_20201230_models.UpdateConsumerGroupRequest,
+    ) -> sls_20201230_models.UpdateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_index_with_options(project, logstore, request, headers, runtime)
+        return self.update_consumer_group_with_options(project, logstore, consumer_group, request, headers, runtime)
 
-    async def update_index_async(
+    async def update_consumer_group_async(
         self,
         project: str,
         logstore: str,
-        request: sls_20201230_models.UpdateIndexRequest,
-    ) -> sls_20201230_models.UpdateIndexResponse:
+        consumer_group: str,
+        request: sls_20201230_models.UpdateConsumerGroupRequest,
+    ) -> sls_20201230_models.UpdateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_index_with_options_async(project, logstore, request, headers, runtime)
+        return await self.update_consumer_group_with_options_async(project, logstore, consumer_group, request, headers, runtime)
+
+    def update_etl_job_with_options(
+        self,
+        etl_job: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.job_name):
+            body['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateEtlJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_etl_job_with_options_async(
+        self,
+        etl_job: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.job_name):
+            body['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateEtlJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_etl_job(
+        self,
+        etl_job: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_etl_job_with_options(etl_job, request, headers, runtime)
+
+    async def update_etl_job_async(
+        self,
+        etl_job: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_etl_job_with_options_async(etl_job, request, headers, runtime)
 
     def update_index_with_options(
         self,
@@ -5500,25 +5994,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_log_store(
+    def update_index(
         self,
         project: str,
         logstore: str,
-        request: sls_20201230_models.UpdateLogStoreRequest,
-    ) -> sls_20201230_models.UpdateLogStoreResponse:
+        request: sls_20201230_models.UpdateIndexRequest,
+    ) -> sls_20201230_models.UpdateIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_log_store_with_options(project, logstore, request, headers, runtime)
+        return self.update_index_with_options(project, logstore, request, headers, runtime)
 
-    async def update_log_store_async(
+    async def update_index_async(
         self,
         project: str,
         logstore: str,
-        request: sls_20201230_models.UpdateLogStoreRequest,
-    ) -> sls_20201230_models.UpdateLogStoreResponse:
+        request: sls_20201230_models.UpdateIndexRequest,
+    ) -> sls_20201230_models.UpdateIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_log_store_with_options_async(project, logstore, request, headers, runtime)
+        return await self.update_index_with_options_async(project, logstore, request, headers, runtime)
 
     def update_log_store_with_options(
         self,
@@ -5630,23 +6124,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_logging(
+    def update_log_store(
         self,
         project: str,
-        request: sls_20201230_models.UpdateLoggingRequest,
-    ) -> sls_20201230_models.UpdateLoggingResponse:
+        logstore: str,
+        request: sls_20201230_models.UpdateLogStoreRequest,
+    ) -> sls_20201230_models.UpdateLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_logging_with_options(project, request, headers, runtime)
+        return self.update_log_store_with_options(project, logstore, request, headers, runtime)
 
-    async def update_logging_async(
+    async def update_log_store_async(
         self,
         project: str,
-        request: sls_20201230_models.UpdateLoggingRequest,
-    ) -> sls_20201230_models.UpdateLoggingResponse:
+        logstore: str,
+        request: sls_20201230_models.UpdateLogStoreRequest,
+    ) -> sls_20201230_models.UpdateLogStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_logging_with_options_async(project, request, headers, runtime)
+        return await self.update_log_store_with_options_async(project, logstore, request, headers, runtime)
 
     def update_logging_with_options(
         self,
@@ -5720,25 +6216,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_machine_group(
+    def update_logging(
         self,
         project: str,
-        group_name: str,
-        request: sls_20201230_models.UpdateMachineGroupRequest,
-    ) -> sls_20201230_models.UpdateMachineGroupResponse:
+        request: sls_20201230_models.UpdateLoggingRequest,
+    ) -> sls_20201230_models.UpdateLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_machine_group_with_options(project, group_name, request, headers, runtime)
+        return self.update_logging_with_options(project, request, headers, runtime)
 
-    async def update_machine_group_async(
+    async def update_logging_async(
         self,
         project: str,
-        group_name: str,
-        request: sls_20201230_models.UpdateMachineGroupRequest,
-    ) -> sls_20201230_models.UpdateMachineGroupResponse:
+        request: sls_20201230_models.UpdateLoggingRequest,
+    ) -> sls_20201230_models.UpdateLoggingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_machine_group_with_options_async(project, group_name, request, headers, runtime)
+        return await self.update_logging_with_options_async(project, request, headers, runtime)
 
     def update_machine_group_with_options(
         self,
@@ -5826,25 +6320,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_machine_group_machine(
+    def update_machine_group(
         self,
         project: str,
-        machine_group: str,
-        request: sls_20201230_models.UpdateMachineGroupMachineRequest,
-    ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
+        group_name: str,
+        request: sls_20201230_models.UpdateMachineGroupRequest,
+    ) -> sls_20201230_models.UpdateMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_machine_group_machine_with_options(project, machine_group, request, headers, runtime)
+        return self.update_machine_group_with_options(project, group_name, request, headers, runtime)
 
-    async def update_machine_group_machine_async(
+    async def update_machine_group_async(
         self,
         project: str,
-        machine_group: str,
-        request: sls_20201230_models.UpdateMachineGroupMachineRequest,
-    ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
+        group_name: str,
+        request: sls_20201230_models.UpdateMachineGroupRequest,
+    ) -> sls_20201230_models.UpdateMachineGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_machine_group_machine_with_options_async(project, machine_group, request, headers, runtime)
+        return await self.update_machine_group_with_options_async(project, group_name, request, headers, runtime)
 
     def update_machine_group_machine_with_options(
         self,
@@ -5918,27 +6412,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_odps_shipper(
+    def update_machine_group_machine(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.UpdateOdpsShipperRequest,
-    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
+        machine_group: str,
+        request: sls_20201230_models.UpdateMachineGroupMachineRequest,
+    ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_odps_shipper_with_options(project, logstore, shipper_name, request, headers, runtime)
+        return self.update_machine_group_machine_with_options(project, machine_group, request, headers, runtime)
 
-    async def update_odps_shipper_async(
+    async def update_machine_group_machine_async(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.UpdateOdpsShipperRequest,
-    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
+        machine_group: str,
+        request: sls_20201230_models.UpdateMachineGroupMachineRequest,
+    ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_odps_shipper_with_options_async(project, logstore, shipper_name, request, headers, runtime)
+        return await self.update_machine_group_machine_with_options_async(project, machine_group, request, headers, runtime)
 
     def update_odps_shipper_with_options(
         self,
@@ -6020,25 +6512,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_oss_external_store(
+    def update_odps_shipper(
         self,
         project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateOssExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOdpsShipperRequest,
+    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_oss_external_store_with_options(project, external_store_name, request, headers, runtime)
+        return self.update_odps_shipper_with_options(project, logstore, shipper_name, request, headers, runtime)
 
-    async def update_oss_external_store_async(
+    async def update_odps_shipper_async(
         self,
         project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateOssExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOdpsShipperRequest,
+    ) -> sls_20201230_models.UpdateOdpsShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_oss_external_store_with_options_async(project, external_store_name, request, headers, runtime)
+        return await self.update_odps_shipper_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
     def update_oss_external_store_with_options(
         self,
@@ -6118,27 +6612,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_oss_shipper(
+    def update_oss_external_store(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.UpdateOssShipperRequest,
-    ) -> sls_20201230_models.UpdateOssShipperResponse:
+        external_store_name: str,
+        request: sls_20201230_models.UpdateOssExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_oss_shipper_with_options(project, logstore, shipper_name, request, headers, runtime)
+        return self.update_oss_external_store_with_options(project, external_store_name, request, headers, runtime)
 
-    async def update_oss_shipper_async(
+    async def update_oss_external_store_async(
         self,
         project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.UpdateOssShipperRequest,
-    ) -> sls_20201230_models.UpdateOssShipperResponse:
+        external_store_name: str,
+        request: sls_20201230_models.UpdateOssExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_oss_shipper_with_options_async(project, logstore, shipper_name, request, headers, runtime)
+        return await self.update_oss_external_store_with_options_async(project, external_store_name, request, headers, runtime)
 
     def update_oss_shipper_with_options(
         self,
@@ -6220,23 +6712,27 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_project(
+    def update_oss_shipper(
         self,
         project: str,
-        request: sls_20201230_models.UpdateProjectRequest,
-    ) -> sls_20201230_models.UpdateProjectResponse:
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOssShipperRequest,
+    ) -> sls_20201230_models.UpdateOssShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_project_with_options(project, request, headers, runtime)
+        return self.update_oss_shipper_with_options(project, logstore, shipper_name, request, headers, runtime)
 
-    async def update_project_async(
+    async def update_oss_shipper_async(
         self,
         project: str,
-        request: sls_20201230_models.UpdateProjectRequest,
-    ) -> sls_20201230_models.UpdateProjectResponse:
+        logstore: str,
+        shipper_name: str,
+        request: sls_20201230_models.UpdateOssShipperRequest,
+    ) -> sls_20201230_models.UpdateOssShipperResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_project_with_options_async(project, request, headers, runtime)
+        return await self.update_oss_shipper_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
     def update_project_with_options(
         self,
@@ -6306,25 +6802,23 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_rds_external_store(
+    def update_project(
         self,
         project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        request: sls_20201230_models.UpdateProjectRequest,
+    ) -> sls_20201230_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_rds_external_store_with_options(project, external_store_name, request, headers, runtime)
+        return self.update_project_with_options(project, request, headers, runtime)
 
-    async def update_rds_external_store_async(
+    async def update_project_async(
         self,
         project: str,
-        external_store_name: str,
-        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
-    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        request: sls_20201230_models.UpdateProjectRequest,
+    ) -> sls_20201230_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_rds_external_store_with_options_async(project, external_store_name, request, headers, runtime)
+        return await self.update_project_with_options_async(project, request, headers, runtime)
 
     def update_rds_external_store_with_options(
         self,
@@ -6404,25 +6898,25 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_saved_search(
+    def update_rds_external_store(
         self,
         project: str,
-        savedsearch_name: str,
-        request: sls_20201230_models.UpdateSavedSearchRequest,
-    ) -> sls_20201230_models.UpdateSavedSearchResponse:
+        external_store_name: str,
+        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_saved_search_with_options(project, savedsearch_name, request, headers, runtime)
+        return self.update_rds_external_store_with_options(project, external_store_name, request, headers, runtime)
 
-    async def update_saved_search_async(
+    async def update_rds_external_store_async(
         self,
         project: str,
-        savedsearch_name: str,
-        request: sls_20201230_models.UpdateSavedSearchRequest,
-    ) -> sls_20201230_models.UpdateSavedSearchResponse:
+        external_store_name: str,
+        request: sls_20201230_models.UpdateRdsExternalStoreRequest,
+    ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_saved_search_with_options_async(project, savedsearch_name, request, headers, runtime)
+        return await self.update_rds_external_store_with_options_async(project, external_store_name, request, headers, runtime)
 
     def update_saved_search_with_options(
         self,
@@ -6509,3 +7003,23 @@ class Client(OpenApiClient):
             sls_20201230_models.UpdateSavedSearchResponse(),
             await self.execute_async(params, req, runtime)
         )
+
+    def update_saved_search(
+        self,
+        project: str,
+        savedsearch_name: str,
+        request: sls_20201230_models.UpdateSavedSearchRequest,
+    ) -> sls_20201230_models.UpdateSavedSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_saved_search_with_options(project, savedsearch_name, request, headers, runtime)
+
+    async def update_saved_search_async(
+        self,
+        project: str,
+        savedsearch_name: str,
+        request: sls_20201230_models.UpdateSavedSearchRequest,
+    ) -> sls_20201230_models.UpdateSavedSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_saved_search_with_options_async(project, savedsearch_name, request, headers, runtime)
