@@ -1,3 +1,6 @@
+2023-02-02 Version: 2.0.23
+- Release TargetVolumeSegment.
+
 2022-12-14 Version: 2.0.22
 - Release ScreenEC.
 

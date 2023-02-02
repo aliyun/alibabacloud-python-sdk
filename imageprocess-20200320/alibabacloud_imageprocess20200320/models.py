@@ -7216,6 +7216,302 @@ class SegmentOARResponse(TeaModel):
         return self
 
 
+class TargetVolumeSegmentRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class TargetVolumeSegmentRequest(TeaModel):
+    def __init__(
+        self,
+        cancer_type: str = None,
+        data_format: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        target_volume_type: str = None,
+        urllist: List[TargetVolumeSegmentRequestURLList] = None,
+    ):
+        self.cancer_type = cancer_type
+        self.data_format = data_format
+        self.org_id = org_id
+        self.org_name = org_name
+        self.target_volume_type = target_volume_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cancer_type is not None:
+            result['CancerType'] = self.cancer_type
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.target_volume_type is not None:
+            result['TargetVolumeType'] = self.target_volume_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CancerType') is not None:
+            self.cancer_type = m.get('CancerType')
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('TargetVolumeType') is not None:
+            self.target_volume_type = m.get('TargetVolumeType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = TargetVolumeSegmentRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class TargetVolumeSegmentAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class TargetVolumeSegmentAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        cancer_type: str = None,
+        data_format: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        target_volume_type: str = None,
+        urllist: List[TargetVolumeSegmentAdvanceRequestURLList] = None,
+    ):
+        self.cancer_type = cancer_type
+        self.data_format = data_format
+        self.org_id = org_id
+        self.org_name = org_name
+        self.target_volume_type = target_volume_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cancer_type is not None:
+            result['CancerType'] = self.cancer_type
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.target_volume_type is not None:
+            result['TargetVolumeType'] = self.target_volume_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CancerType') is not None:
+            self.cancer_type = m.get('CancerType')
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('TargetVolumeType') is not None:
+            self.target_volume_type = m.get('TargetVolumeType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = TargetVolumeSegmentAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class TargetVolumeSegmentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result_url: str = None,
+    ):
+        self.result_url = result_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        return self
+
+
+class TargetVolumeSegmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: TargetVolumeSegmentResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = TargetVolumeSegmentResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TargetVolumeSegmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TargetVolumeSegmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TargetVolumeSegmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TranslateMedRequest(TeaModel):
     def __init__(
         self,
