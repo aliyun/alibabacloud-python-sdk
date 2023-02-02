@@ -258,6 +258,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
+        """
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        
+        @param request: CreateOmsMysqlDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOmsMysqlDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -306,6 +313,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
+        """
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        
+        @param request: CreateOmsMysqlDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOmsMysqlDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -353,6 +367,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
+        """
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        
+        @param request: CreateOmsMysqlDataSourceRequest
+        @return: CreateOmsMysqlDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_oms_mysql_data_source_with_options(request, runtime)
 
@@ -360,6 +380,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
+        """
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        
+        @param request: CreateOmsMysqlDataSourceRequest
+        @return: CreateOmsMysqlDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_oms_mysql_data_source_with_options_async(request, runtime)
 
@@ -940,6 +966,15 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
+        """
+        Before you call this operation, ensure that the following requirements are met:
+        - The cluster is in the Running state.
+        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        
+        @param request: DeleteInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.backup_retain_mode):
@@ -970,6 +1005,15 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
+        """
+        Before you call this operation, ensure that the following requirements are met:
+        - The cluster is in the Running state.
+        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        
+        @param request: DeleteInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.backup_retain_mode):
@@ -999,6 +1043,14 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
+        """
+        Before you call this operation, ensure that the following requirements are met:
+        - The cluster is in the Running state.
+        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        
+        @param request: DeleteInstancesRequest
+        @return: DeleteInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_instances_with_options(request, runtime)
 
@@ -1006,6 +1058,14 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
+        """
+        Before you call this operation, ensure that the following requirements are met:
+        - The cluster is in the Running state.
+        - The cluster is a primary cluster and the billing method is pay-as-you-go.
+        
+        @param request: DeleteInstancesRequest
+        @return: DeleteInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instances_with_options_async(request, runtime)
 
