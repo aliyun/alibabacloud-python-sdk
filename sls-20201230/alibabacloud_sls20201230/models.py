@@ -7472,7 +7472,6 @@ class UpdateEtlJobRequest(TeaModel):
         log_config: EtlLogConfig = None,
         source_config: EtlSourceConfig = None,
         trigger_config: EtlTriggerConfig = None,
-        project: str = None,
     ):
         self.enable = enable
         self.function_config = function_config
@@ -7480,7 +7479,6 @@ class UpdateEtlJobRequest(TeaModel):
         self.log_config = log_config
         self.source_config = source_config
         self.trigger_config = trigger_config
-        self.project = project
 
     def validate(self):
         if self.function_config:
@@ -7510,8 +7508,6 @@ class UpdateEtlJobRequest(TeaModel):
             result['sourceConfig'] = self.source_config.to_map()
         if self.trigger_config is not None:
             result['triggerConfig'] = self.trigger_config.to_map()
-        if self.project is not None:
-            result['project'] = self.project
         return result
 
     def from_map(self, m: dict = None):
@@ -7532,8 +7528,6 @@ class UpdateEtlJobRequest(TeaModel):
         if m.get('triggerConfig') is not None:
             temp_model = EtlTriggerConfig()
             self.trigger_config = temp_model.from_map(m['triggerConfig'])
-        if m.get('project') is not None:
-            self.project = m.get('project')
         return self
 
 

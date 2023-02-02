@@ -5794,15 +5794,15 @@ class Client(OpenApiClient):
 
     def update_etl_job_with_options(
         self,
+        project: str,
         etl_job: str,
         request: sls_20201230_models.UpdateEtlJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateEtlJobResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.enable):
             body['enable'] = request.enable
@@ -5817,8 +5817,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.trigger_config):
             body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -5839,15 +5839,15 @@ class Client(OpenApiClient):
 
     async def update_etl_job_with_options_async(
         self,
+        project: str,
         etl_job: str,
         request: sls_20201230_models.UpdateEtlJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateEtlJobResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.enable):
             body['enable'] = request.enable
@@ -5862,8 +5862,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.trigger_config):
             body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -5884,21 +5884,23 @@ class Client(OpenApiClient):
 
     def update_etl_job(
         self,
+        project: str,
         etl_job: str,
         request: sls_20201230_models.UpdateEtlJobRequest,
     ) -> sls_20201230_models.UpdateEtlJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_etl_job_with_options(etl_job, request, headers, runtime)
+        return self.update_etl_job_with_options(project, etl_job, request, headers, runtime)
 
     async def update_etl_job_async(
         self,
+        project: str,
         etl_job: str,
         request: sls_20201230_models.UpdateEtlJobRequest,
     ) -> sls_20201230_models.UpdateEtlJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_etl_job_with_options_async(etl_job, request, headers, runtime)
+        return await self.update_etl_job_with_options_async(project, etl_job, request, headers, runtime)
 
     def update_index_with_options(
         self,
