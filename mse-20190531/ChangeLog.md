@@ -1,3 +1,12 @@
+2023-02-02 Version: 3.0.58
+- Suport mse nologin.
+- Support mse nologin.
+- Fixed bugs timeout for ListEngineNamespaces.
+- Fixed api description.
+- Support change mseVersion.
+- Support listNamespace source type.
+- Support for checking Lua.
+
 2023-01-12 Version: 3.0.57
 - Insert ahas into mse.
 - Supported gray.

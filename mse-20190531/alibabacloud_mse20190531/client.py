@@ -12262,6 +12262,8 @@ class Client(OpenApiClient):
             query['InstanceCount'] = request.instance_count
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mse_version):
+            query['MseVersion'] = request.mse_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12305,6 +12307,8 @@ class Client(OpenApiClient):
             query['InstanceCount'] = request.instance_count
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mse_version):
+            query['MseVersion'] = request.mse_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
