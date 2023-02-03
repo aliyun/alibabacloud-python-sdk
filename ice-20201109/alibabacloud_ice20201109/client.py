@@ -322,6 +322,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_favorite_public_media_with_options_async(request, runtime)
 
+    def add_media_marks_with_options(
+        self,
+        request: ice20201109_models.AddMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.AddMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_marks):
+            query['MediaMarks'] = request.media_marks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.AddMediaMarksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_media_marks_with_options_async(
+        self,
+        request: ice20201109_models.AddMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.AddMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_marks):
+            query['MediaMarks'] = request.media_marks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.AddMediaMarksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_media_marks(
+        self,
+        request: ice20201109_models.AddMediaMarksRequest,
+    ) -> ice20201109_models.AddMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_media_marks_with_options(request, runtime)
+
+    async def add_media_marks_async(
+        self,
+        request: ice20201109_models.AddMediaMarksRequest,
+    ) -> ice20201109_models.AddMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_media_marks_with_options_async(request, runtime)
+
     def add_template_with_options(
         self,
         request: ice20201109_models.AddTemplateRequest,
@@ -2491,6 +2565,80 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteMediaInfosResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_media_infos_with_options_async(request, runtime)
+
+    def delete_media_marks_with_options(
+        self,
+        request: ice20201109_models.DeleteMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_mark_ids):
+            query['MediaMarkIds'] = request.media_mark_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteMediaMarksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_media_marks_with_options_async(
+        self,
+        request: ice20201109_models.DeleteMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DeleteMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_mark_ids):
+            query['MediaMarkIds'] = request.media_mark_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DeleteMediaMarksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_media_marks(
+        self,
+        request: ice20201109_models.DeleteMediaMarksRequest,
+    ) -> ice20201109_models.DeleteMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_media_marks_with_options(request, runtime)
+
+    async def delete_media_marks_async(
+        self,
+        request: ice20201109_models.DeleteMediaMarksRequest,
+    ) -> ice20201109_models.DeleteMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_media_marks_with_options_async(request, runtime)
 
     def delete_pipeline_with_options(
         self,
@@ -5924,6 +6072,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_media_info_job_with_options_async(request, runtime)
 
+    def get_media_marks_with_options(
+        self,
+        request: ice20201109_models.GetMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_mark_ids):
+            query['MediaMarkIds'] = request.media_mark_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaMarksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_media_marks_with_options_async(
+        self,
+        request: ice20201109_models.GetMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_mark_ids):
+            query['MediaMarkIds'] = request.media_mark_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaMarksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_media_marks(
+        self,
+        request: ice20201109_models.GetMediaMarksRequest,
+    ) -> ice20201109_models.GetMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_marks_with_options(request, runtime)
+
+    async def get_media_marks_async(
+        self,
+        request: ice20201109_models.GetMediaMarksRequest,
+    ) -> ice20201109_models.GetMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_marks_with_options_async(request, runtime)
+
     def get_media_producing_job_with_options(
         self,
         request: ice20201109_models.GetMediaProducingJobRequest,
@@ -6713,6 +6935,72 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_template_materials_with_options_async(request, runtime)
+
+    def get_template_params_with_options(
+        self,
+        request: ice20201109_models.GetTemplateParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetTemplateParamsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateParams',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetTemplateParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_template_params_with_options_async(
+        self,
+        request: ice20201109_models.GetTemplateParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetTemplateParamsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateParams',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetTemplateParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_template_params(
+        self,
+        request: ice20201109_models.GetTemplateParamsRequest,
+    ) -> ice20201109_models.GetTemplateParamsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_template_params_with_options(request, runtime)
+
+    async def get_template_params_async(
+        self,
+        request: ice20201109_models.GetTemplateParamsRequest,
+    ) -> ice20201109_models.GetTemplateParamsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_template_params_with_options_async(request, runtime)
 
     def get_transcode_job_with_options(
         self,
@@ -8158,6 +8446,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_media_info_jobs_with_options_async(request, runtime)
 
+    def list_media_marks_with_options(
+        self,
+        request: ice20201109_models.ListMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_mark_ids):
+            query['MediaMarkIds'] = request.media_mark_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaMarksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_media_marks_with_options_async(
+        self,
+        request: ice20201109_models.ListMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_mark_ids):
+            query['MediaMarkIds'] = request.media_mark_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaMarksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_media_marks(
+        self,
+        request: ice20201109_models.ListMediaMarksRequest,
+    ) -> ice20201109_models.ListMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_media_marks_with_options(request, runtime)
+
+    async def list_media_marks_async(
+        self,
+        request: ice20201109_models.ListMediaMarksRequest,
+    ) -> ice20201109_models.ListMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_media_marks_with_options_async(request, runtime)
+
     def list_package_jobs_with_options(
         self,
         request: ice20201109_models.ListPackageJobsRequest,
@@ -9573,10 +9935,10 @@ class Client(OpenApiClient):
             query['CreateSource'] = request.create_source
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.project_type):
             query['ProjectType'] = request.project_type
         if not UtilClient.is_unset(request.sort_by):
@@ -9617,10 +9979,10 @@ class Client(OpenApiClient):
             query['CreateSource'] = request.create_source
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.project_type):
             query['ProjectType'] = request.project_type
         if not UtilClient.is_unset(request.sort_by):
@@ -13051,6 +13413,80 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_media_info_with_options_async(request, runtime)
+
+    def update_media_marks_with_options(
+        self,
+        request: ice20201109_models.UpdateMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_marks):
+            query['MediaMarks'] = request.media_marks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateMediaMarksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_media_marks_with_options_async(
+        self,
+        request: ice20201109_models.UpdateMediaMarksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateMediaMarksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_marks):
+            query['MediaMarks'] = request.media_marks
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMediaMarks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateMediaMarksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_media_marks(
+        self,
+        request: ice20201109_models.UpdateMediaMarksRequest,
+    ) -> ice20201109_models.UpdateMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_media_marks_with_options(request, runtime)
+
+    async def update_media_marks_async(
+        self,
+        request: ice20201109_models.UpdateMediaMarksRequest,
+    ) -> ice20201109_models.UpdateMediaMarksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_media_marks_with_options_async(request, runtime)
 
     def update_pipeline_with_options(
         self,

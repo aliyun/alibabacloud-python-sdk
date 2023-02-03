@@ -1,3 +1,6 @@
+2023-02-03 Version: 1.3.6
+- Add GetTemplateParams API.
+
 2023-01-18 Version: 1.3.5
 - Add DNA API.
 
