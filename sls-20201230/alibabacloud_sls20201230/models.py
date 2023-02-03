@@ -1848,13 +1848,31 @@ class CreateDomainResponse(TeaModel):
 class CreateETLJobRequest(TeaModel):
     def __init__(
         self,
-        etl_job: EtlJob = None,
+        enable: bool = None,
+        function_config: EtlFunctionConfig = None,
+        function_parameter: str = None,
+        job_name: str = None,
+        log_config: EtlLogConfig = None,
+        source_config: EtlSourceConfig = None,
+        trigger_config: EtlTriggerConfig = None,
     ):
-        self.etl_job = etl_job
+        self.enable = enable
+        self.function_config = function_config
+        self.function_parameter = function_parameter
+        self.job_name = job_name
+        self.log_config = log_config
+        self.source_config = source_config
+        self.trigger_config = trigger_config
 
     def validate(self):
-        if self.etl_job:
-            self.etl_job.validate()
+        if self.function_config:
+            self.function_config.validate()
+        if self.log_config:
+            self.log_config.validate()
+        if self.source_config:
+            self.source_config.validate()
+        if self.trigger_config:
+            self.trigger_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1862,15 +1880,42 @@ class CreateETLJobRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.etl_job is not None:
-            result['etlJob'] = self.etl_job.to_map()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.function_config is not None:
+            result['functionConfig'] = self.function_config.to_map()
+        if self.function_parameter is not None:
+            result['functionParameter'] = self.function_parameter
+        if self.job_name is not None:
+            result['jobName'] = self.job_name
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.source_config is not None:
+            result['sourceConfig'] = self.source_config.to_map()
+        if self.trigger_config is not None:
+            result['triggerConfig'] = self.trigger_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('etlJob') is not None:
-            temp_model = EtlJob()
-            self.etl_job = temp_model.from_map(m['etlJob'])
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('functionConfig') is not None:
+            temp_model = EtlFunctionConfig()
+            self.function_config = temp_model.from_map(m['functionConfig'])
+        if m.get('functionParameter') is not None:
+            self.function_parameter = m.get('functionParameter')
+        if m.get('jobName') is not None:
+            self.job_name = m.get('jobName')
+        if m.get('logConfig') is not None:
+            temp_model = EtlLogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('sourceConfig') is not None:
+            temp_model = EtlSourceConfig()
+            self.source_config = temp_model.from_map(m['sourceConfig'])
+        if m.get('triggerConfig') is not None:
+            temp_model = EtlTriggerConfig()
+            self.trigger_config = temp_model.from_map(m['triggerConfig'])
         return self
 
 
@@ -3360,33 +3405,6 @@ class DeleteDomainResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
-        return self
-
-
-class DeleteETLJobRequest(TeaModel):
-    def __init__(
-        self,
-        project: str = None,
-    ):
-        self.project = project
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.project is not None:
-            result['project'] = self.project
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('project') is not None:
-            self.project = m.get('project')
         return self
 
 

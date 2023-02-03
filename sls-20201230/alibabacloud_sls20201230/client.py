@@ -387,8 +387,20 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         body = {}
-        if not UtilClient.is_unset(request.etl_job):
-            body['etlJob'] = request.etl_job
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.job_name):
+            body['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -421,8 +433,20 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         body = {}
-        if not UtilClient.is_unset(request.etl_job):
-            body['etlJob'] = request.etl_job
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.job_name):
+            body['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -1622,18 +1646,16 @@ class Client(OpenApiClient):
 
     def delete_etljob_with_options(
         self,
+        project: str,
         etl_job_name: str,
-        request: sls_20201230_models.DeleteETLJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteETLJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            host_map=host_map,
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteETLJob',
@@ -1653,18 +1675,16 @@ class Client(OpenApiClient):
 
     async def delete_etljob_with_options_async(
         self,
+        project: str,
         etl_job_name: str,
-        request: sls_20201230_models.DeleteETLJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteETLJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            host_map=host_map,
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteETLJob',
@@ -1684,21 +1704,21 @@ class Client(OpenApiClient):
 
     def delete_etljob(
         self,
+        project: str,
         etl_job_name: str,
-        request: sls_20201230_models.DeleteETLJobRequest,
     ) -> sls_20201230_models.DeleteETLJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_etljob_with_options(etl_job_name, request, headers, runtime)
+        return self.delete_etljob_with_options(project, etl_job_name, headers, runtime)
 
     async def delete_etljob_async(
         self,
+        project: str,
         etl_job_name: str,
-        request: sls_20201230_models.DeleteETLJobRequest,
     ) -> sls_20201230_models.DeleteETLJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_etljob_with_options_async(etl_job_name, request, headers, runtime)
+        return await self.delete_etljob_with_options_async(project, etl_job_name, headers, runtime)
 
     def delete_external_store_with_options(
         self,
