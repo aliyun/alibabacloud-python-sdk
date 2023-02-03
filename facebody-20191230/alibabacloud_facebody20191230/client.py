@@ -742,7 +742,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = batch_add_faces_req.faces[i_0]
+                    tmp = batch_add_faces_req.faces[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         batch_add_faces_resp = self.batch_add_faces_with_options(batch_add_faces_req, runtime)
@@ -818,7 +818,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = batch_add_faces_req.faces[i_0]
+                    tmp = batch_add_faces_req.faces[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         batch_add_faces_resp = await self.batch_add_faces_with_options_async(batch_add_faces_req, runtime)
@@ -1799,6 +1799,274 @@ class Client(OpenApiClient):
             compare_face_req.image_urlb = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         compare_face_resp = await self.compare_face_with_options_async(compare_face_req, runtime)
         return compare_face_resp
+
+    def compare_face_with_mask_with_options(
+        self,
+        request: facebody_20191230_models.CompareFaceWithMaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.CompareFaceWithMaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_urla):
+            body['ImageURLA'] = request.image_urla
+        if not UtilClient.is_unset(request.image_urlb):
+            body['ImageURLB'] = request.image_urlb
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CompareFaceWithMask',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.CompareFaceWithMaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def compare_face_with_mask_with_options_async(
+        self,
+        request: facebody_20191230_models.CompareFaceWithMaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.CompareFaceWithMaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_urla):
+            body['ImageURLA'] = request.image_urla
+        if not UtilClient.is_unset(request.image_urlb):
+            body['ImageURLB'] = request.image_urlb
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CompareFaceWithMask',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.CompareFaceWithMaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def compare_face_with_mask(
+        self,
+        request: facebody_20191230_models.CompareFaceWithMaskRequest,
+    ) -> facebody_20191230_models.CompareFaceWithMaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.compare_face_with_mask_with_options(request, runtime)
+
+    async def compare_face_with_mask_async(
+        self,
+        request: facebody_20191230_models.CompareFaceWithMaskRequest,
+    ) -> facebody_20191230_models.CompareFaceWithMaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.compare_face_with_mask_with_options_async(request, runtime)
+
+    def compare_face_with_mask_advance(
+        self,
+        request: facebody_20191230_models.CompareFaceWithMaskAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.CompareFaceWithMaskResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        compare_face_with_mask_req = facebody_20191230_models.CompareFaceWithMaskRequest()
+        OpenApiUtilClient.convert(request, compare_face_with_mask_req)
+        if not UtilClient.is_unset(request.image_urlaobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.image_urlaobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            compare_face_with_mask_req.image_urla = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        if not UtilClient.is_unset(request.image_urlbobject):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.image_urlbobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            compare_face_with_mask_req.image_urlb = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        compare_face_with_mask_resp = self.compare_face_with_mask_with_options(compare_face_with_mask_req, runtime)
+        return compare_face_with_mask_resp
+
+    async def compare_face_with_mask_advance_async(
+        self,
+        request: facebody_20191230_models.CompareFaceWithMaskAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.CompareFaceWithMaskResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        compare_face_with_mask_req = facebody_20191230_models.CompareFaceWithMaskRequest()
+        OpenApiUtilClient.convert(request, compare_face_with_mask_req)
+        if not UtilClient.is_unset(request.image_urlaobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.image_urlaobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            compare_face_with_mask_req.image_urla = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        if not UtilClient.is_unset(request.image_urlbobject):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.image_urlbobject,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            compare_face_with_mask_req.image_urlb = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        compare_face_with_mask_resp = await self.compare_face_with_mask_with_options_async(compare_face_with_mask_req, runtime)
+        return compare_face_with_mask_resp
 
     def count_crowd_with_options(
         self,
@@ -3462,6 +3730,228 @@ class Client(OpenApiClient):
         detect_ipcpedestrian_resp = await self.detect_ipcpedestrian_with_options_async(detect_ipcpedestrian_req, runtime)
         return detect_ipcpedestrian_resp
 
+    def detect_infrared_living_face_with_options(
+        self,
+        request: facebody_20191230_models.DetectInfraredLivingFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.DetectInfraredLivingFaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tasks):
+            body['Tasks'] = request.tasks
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectInfraredLivingFace',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectInfraredLivingFaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_infrared_living_face_with_options_async(
+        self,
+        request: facebody_20191230_models.DetectInfraredLivingFaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.DetectInfraredLivingFaceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tasks):
+            body['Tasks'] = request.tasks
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectInfraredLivingFace',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            facebody_20191230_models.DetectInfraredLivingFaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_infrared_living_face(
+        self,
+        request: facebody_20191230_models.DetectInfraredLivingFaceRequest,
+    ) -> facebody_20191230_models.DetectInfraredLivingFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_infrared_living_face_with_options(request, runtime)
+
+    async def detect_infrared_living_face_async(
+        self,
+        request: facebody_20191230_models.DetectInfraredLivingFaceRequest,
+    ) -> facebody_20191230_models.DetectInfraredLivingFaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_infrared_living_face_with_options_async(request, runtime)
+
+    def detect_infrared_living_face_advance(
+        self,
+        request: facebody_20191230_models.DetectInfraredLivingFaceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.DetectInfraredLivingFaceResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_infrared_living_face_req = facebody_20191230_models.DetectInfraredLivingFaceRequest()
+        OpenApiUtilClient.convert(request, detect_infrared_living_face_req)
+        if not UtilClient.is_unset(request.tasks):
+            i_0 = 0
+            for item_0 in request.tasks:
+                if not UtilClient.is_unset(item_0.image_urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.image_urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = detect_infrared_living_face_req.tasks[i0]
+                    tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        detect_infrared_living_face_resp = self.detect_infrared_living_face_with_options(detect_infrared_living_face_req, runtime)
+        return detect_infrared_living_face_resp
+
+    async def detect_infrared_living_face_advance_async(
+        self,
+        request: facebody_20191230_models.DetectInfraredLivingFaceAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20191230_models.DetectInfraredLivingFaceResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='facebody',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        detect_infrared_living_face_req = facebody_20191230_models.DetectInfraredLivingFaceRequest()
+        OpenApiUtilClient.convert(request, detect_infrared_living_face_req)
+        if not UtilClient.is_unset(request.tasks):
+            i_0 = 0
+            for item_0 in request.tasks:
+                if not UtilClient.is_unset(item_0.image_urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.image_urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = detect_infrared_living_face_req.tasks[i0]
+                    tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
+        detect_infrared_living_face_resp = await self.detect_infrared_living_face_with_options_async(detect_infrared_living_face_req, runtime)
+        return detect_infrared_living_face_resp
+
     def detect_living_face_with_options(
         self,
         request: facebody_20191230_models.DetectLivingFaceRequest,
@@ -3602,7 +4092,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_living_face_req.tasks[i_0]
+                    tmp = detect_living_face_req.tasks[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_living_face_resp = self.detect_living_face_with_options(detect_living_face_req, runtime)
@@ -3678,7 +4168,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_living_face_req.tasks[i_0]
+                    tmp = detect_living_face_req.tasks[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_living_face_resp = await self.detect_living_face_with_options_async(detect_living_face_req, runtime)
@@ -7984,7 +8474,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = recognize_action_req.urllist[i_0]
+                    tmp = recognize_action_req.urllist[i0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         if not UtilClient.is_unset(request.video_url_object):
@@ -8084,7 +8574,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = recognize_action_req.urllist[i_0]
+                    tmp = recognize_action_req.urllist[i0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         if not UtilClient.is_unset(request.video_url_object):
@@ -8934,7 +9424,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = recognize_public_face_req.task[i_0]
+                    tmp = recognize_public_face_req.task[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_public_face_resp = self.recognize_public_face_with_options(recognize_public_face_req, runtime)
@@ -9010,7 +9500,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = recognize_public_face_req.task[i_0]
+                    tmp = recognize_public_face_req.task[i0]
                     tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         recognize_public_face_resp = await self.recognize_public_face_with_options_async(recognize_public_face_req, runtime)

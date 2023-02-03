@@ -2695,6 +2695,250 @@ class CompareFaceResponse(TeaModel):
         return self
 
 
+class CompareFaceWithMaskRequest(TeaModel):
+    def __init__(
+        self,
+        image_urla: str = None,
+        image_urlb: str = None,
+        quality_score_threshold: float = None,
+    ):
+        self.image_urla = image_urla
+        self.image_urlb = image_urlb
+        self.quality_score_threshold = quality_score_threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urla is not None:
+            result['ImageURLA'] = self.image_urla
+        if self.image_urlb is not None:
+            result['ImageURLB'] = self.image_urlb
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLA') is not None:
+            self.image_urla = m.get('ImageURLA')
+        if m.get('ImageURLB') is not None:
+            self.image_urlb = m.get('ImageURLB')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
+        return self
+
+
+class CompareFaceWithMaskAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlaobject: BinaryIO = None,
+        image_urlbobject: BinaryIO = None,
+        quality_score_threshold: float = None,
+    ):
+        self.image_urlaobject = image_urlaobject
+        self.image_urlbobject = image_urlbobject
+        self.quality_score_threshold = quality_score_threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlaobject is not None:
+            result['ImageURLA'] = self.image_urlaobject
+        if self.image_urlbobject is not None:
+            result['ImageURLB'] = self.image_urlbobject
+        if self.quality_score_threshold is not None:
+            result['QualityScoreThreshold'] = self.quality_score_threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLA') is not None:
+            self.image_urlaobject = m.get('ImageURLA')
+        if m.get('ImageURLB') is not None:
+            self.image_urlbobject = m.get('ImageURLB')
+        if m.get('QualityScoreThreshold') is not None:
+            self.quality_score_threshold = m.get('QualityScoreThreshold')
+        return self
+
+
+class CompareFaceWithMaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        is_mask_a: int = None,
+        is_mask_b: int = None,
+        landmarks_alist: List[int] = None,
+        landmarks_blist: List[int] = None,
+        message_tips: str = None,
+        quality_score_a: float = None,
+        quality_score_b: float = None,
+        rect_alist: List[int] = None,
+        rect_blist: List[int] = None,
+        thresholds: List[int] = None,
+    ):
+        self.confidence = confidence
+        self.is_mask_a = is_mask_a
+        self.is_mask_b = is_mask_b
+        self.landmarks_alist = landmarks_alist
+        self.landmarks_blist = landmarks_blist
+        self.message_tips = message_tips
+        self.quality_score_a = quality_score_a
+        self.quality_score_b = quality_score_b
+        self.rect_alist = rect_alist
+        self.rect_blist = rect_blist
+        self.thresholds = thresholds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.is_mask_a is not None:
+            result['IsMaskA'] = self.is_mask_a
+        if self.is_mask_b is not None:
+            result['IsMaskB'] = self.is_mask_b
+        if self.landmarks_alist is not None:
+            result['LandmarksAList'] = self.landmarks_alist
+        if self.landmarks_blist is not None:
+            result['LandmarksBList'] = self.landmarks_blist
+        if self.message_tips is not None:
+            result['MessageTips'] = self.message_tips
+        if self.quality_score_a is not None:
+            result['QualityScoreA'] = self.quality_score_a
+        if self.quality_score_b is not None:
+            result['QualityScoreB'] = self.quality_score_b
+        if self.rect_alist is not None:
+            result['RectAList'] = self.rect_alist
+        if self.rect_blist is not None:
+            result['RectBList'] = self.rect_blist
+        if self.thresholds is not None:
+            result['Thresholds'] = self.thresholds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('IsMaskA') is not None:
+            self.is_mask_a = m.get('IsMaskA')
+        if m.get('IsMaskB') is not None:
+            self.is_mask_b = m.get('IsMaskB')
+        if m.get('LandmarksAList') is not None:
+            self.landmarks_alist = m.get('LandmarksAList')
+        if m.get('LandmarksBList') is not None:
+            self.landmarks_blist = m.get('LandmarksBList')
+        if m.get('MessageTips') is not None:
+            self.message_tips = m.get('MessageTips')
+        if m.get('QualityScoreA') is not None:
+            self.quality_score_a = m.get('QualityScoreA')
+        if m.get('QualityScoreB') is not None:
+            self.quality_score_b = m.get('QualityScoreB')
+        if m.get('RectAList') is not None:
+            self.rect_alist = m.get('RectAList')
+        if m.get('RectBList') is not None:
+            self.rect_blist = m.get('RectBList')
+        if m.get('Thresholds') is not None:
+            self.thresholds = m.get('Thresholds')
+        return self
+
+
+class CompareFaceWithMaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CompareFaceWithMaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CompareFaceWithMaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CompareFaceWithMaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CompareFaceWithMaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CompareFaceWithMaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CountCrowdRequest(TeaModel):
     def __init__(
         self,
@@ -4559,6 +4803,389 @@ class DetectIPCPedestrianResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectIPCPedestrianResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetectInfraredLivingFaceRequestTasks(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class DetectInfraredLivingFaceRequest(TeaModel):
+    def __init__(
+        self,
+        tasks: List[DetectInfraredLivingFaceRequestTasks] = None,
+    ):
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = DetectInfraredLivingFaceRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
+class DetectInfraredLivingFaceAdvanceRequestTasks(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        return self
+
+
+class DetectInfraredLivingFaceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        tasks: List[DetectInfraredLivingFaceAdvanceRequestTasks] = None,
+    ):
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = DetectInfraredLivingFaceAdvanceRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
+class DetectInfraredLivingFaceResponseBodyDataElementsResultsRect(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        left: int = None,
+        top: int = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.left = left
+        self.top = top
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class DetectInfraredLivingFaceResponseBodyDataElementsResults(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        message_tips: str = None,
+        rate: float = None,
+        rect: DetectInfraredLivingFaceResponseBodyDataElementsResultsRect = None,
+        suggestion: str = None,
+    ):
+        self.label = label
+        self.message_tips = message_tips
+        self.rate = rate
+        self.rect = rect
+        self.suggestion = suggestion
+
+    def validate(self):
+        if self.rect:
+            self.rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.message_tips is not None:
+            result['MessageTips'] = self.message_tips
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.rect is not None:
+            result['Rect'] = self.rect.to_map()
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('MessageTips') is not None:
+            self.message_tips = m.get('MessageTips')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Rect') is not None:
+            temp_model = DetectInfraredLivingFaceResponseBodyDataElementsResultsRect()
+            self.rect = temp_model.from_map(m['Rect'])
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        return self
+
+
+class DetectInfraredLivingFaceResponseBodyDataElements(TeaModel):
+    def __init__(
+        self,
+        face_number: int = None,
+        image_url: str = None,
+        results: List[DetectInfraredLivingFaceResponseBodyDataElementsResults] = None,
+    ):
+        self.face_number = face_number
+        self.image_url = image_url
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_number is not None:
+            result['FaceNumber'] = self.face_number
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceNumber') is not None:
+            self.face_number = m.get('FaceNumber')
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DetectInfraredLivingFaceResponseBodyDataElementsResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class DetectInfraredLivingFaceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        elements: List[DetectInfraredLivingFaceResponseBodyDataElements] = None,
+    ):
+        self.elements = elements
+
+    def validate(self):
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = DetectInfraredLivingFaceResponseBodyDataElements()
+                self.elements.append(temp_model.from_map(k))
+        return self
+
+
+class DetectInfraredLivingFaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DetectInfraredLivingFaceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DetectInfraredLivingFaceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetectInfraredLivingFaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetectInfraredLivingFaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetectInfraredLivingFaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
