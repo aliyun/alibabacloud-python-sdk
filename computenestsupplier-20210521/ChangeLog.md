@@ -1,3 +1,6 @@
+2023-02-06 Version: 1.1.2
+- Public ListServiceUsages  OpenApi.
+
 2021-08-31 Version: 1.1.1
 - Support ComputeNest Operation.
 
