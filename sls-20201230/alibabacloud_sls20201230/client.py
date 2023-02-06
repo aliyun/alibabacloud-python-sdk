@@ -1666,7 +1666,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='array'
+            body_type='string'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteETLJobResponse(),
@@ -1695,7 +1695,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='array'
+            body_type='string'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteETLJobResponse(),
@@ -4219,7 +4219,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='array'
+            body_type='json'
         )
         return TeaCore.from_map(
             sls_20201230_models.ListETLJobsResponse(),
@@ -4247,7 +4247,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='array'
+            body_type='json'
         )
         return TeaCore.from_map(
             sls_20201230_models.ListETLJobsResponse(),
@@ -5828,6 +5828,8 @@ class Client(OpenApiClient):
             body['enable'] = request.enable
         if not UtilClient.is_unset(request.function_config):
             body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
         if not UtilClient.is_unset(request.job_name):
             body['jobName'] = request.job_name
         if not UtilClient.is_unset(request.log_config):
@@ -5873,6 +5875,8 @@ class Client(OpenApiClient):
             body['enable'] = request.enable
         if not UtilClient.is_unset(request.function_config):
             body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
         if not UtilClient.is_unset(request.job_name):
             body['jobName'] = request.job_name
         if not UtilClient.is_unset(request.log_config):

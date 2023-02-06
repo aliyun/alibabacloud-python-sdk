@@ -3413,7 +3413,7 @@ class DeleteETLJobResponse(TeaModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: List[Dict[str, Any]] = None,
+        body: str = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -5710,12 +5710,45 @@ class ListDomainsResponse(TeaModel):
         return self
 
 
+class ListETLJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        etl_job_name_list: List[str] = None,
+        total: int = None,
+    ):
+        self.etl_job_name_list = etl_job_name_list
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.etl_job_name_list is not None:
+            result['etlJobNameList'] = self.etl_job_name_list
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('etlJobNameList') is not None:
+            self.etl_job_name_list = m.get('etlJobNameList')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
 class ListETLJobsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: List[Dict[str, Any]] = None,
+        body: ListETLJobsResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -5725,6 +5758,8 @@ class ListETLJobsResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5737,7 +5772,7 @@ class ListETLJobsResponse(TeaModel):
         if self.status_code is not None:
             result['statusCode'] = self.status_code
         if self.body is not None:
-            result['body'] = self.body
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5747,7 +5782,8 @@ class ListETLJobsResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            self.body = m.get('body')
+            temp_model = ListETLJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -7486,6 +7522,7 @@ class UpdateEtlJobRequest(TeaModel):
         self,
         enable: bool = None,
         function_config: EtlFunctionConfig = None,
+        function_parameter: str = None,
         job_name: str = None,
         log_config: EtlLogConfig = None,
         source_config: EtlSourceConfig = None,
@@ -7493,6 +7530,7 @@ class UpdateEtlJobRequest(TeaModel):
     ):
         self.enable = enable
         self.function_config = function_config
+        self.function_parameter = function_parameter
         self.job_name = job_name
         self.log_config = log_config
         self.source_config = source_config
@@ -7518,6 +7556,8 @@ class UpdateEtlJobRequest(TeaModel):
             result['enable'] = self.enable
         if self.function_config is not None:
             result['functionConfig'] = self.function_config.to_map()
+        if self.function_parameter is not None:
+            result['functionParameter'] = self.function_parameter
         if self.job_name is not None:
             result['jobName'] = self.job_name
         if self.log_config is not None:
@@ -7535,6 +7575,8 @@ class UpdateEtlJobRequest(TeaModel):
         if m.get('functionConfig') is not None:
             temp_model = EtlFunctionConfig()
             self.function_config = temp_model.from_map(m['functionConfig'])
+        if m.get('functionParameter') is not None:
+            self.function_parameter = m.get('functionParameter')
         if m.get('jobName') is not None:
             self.job_name = m.get('jobName')
         if m.get('logConfig') is not None:
