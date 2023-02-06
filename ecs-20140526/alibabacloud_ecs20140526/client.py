@@ -911,10 +911,10 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AllocatePublicIpAddressResponse:
         """
         When you call this operation, take note of the following items:
-        * The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
-        * You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
-        * After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
+        *   The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
+        *   You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
+        *   After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
         If an instance is located in a virtual private cloud (VPC), you can assign a public IP address to the instance or associate an elastic IP address (EIP) with the instance. For more information, see [AssociateEipAddress](~~36017~~).
         > After an EIP is associated with an instance located in a VPC, no public IP addresses can be assigned to the instance.
         
@@ -964,10 +964,10 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AllocatePublicIpAddressResponse:
         """
         When you call this operation, take note of the following items:
-        * The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
-        * You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
-        * After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
+        *   The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
+        *   You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
+        *   After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
         If an instance is located in a virtual private cloud (VPC), you can assign a public IP address to the instance or associate an elastic IP address (EIP) with the instance. For more information, see [AssociateEipAddress](~~36017~~).
         > After an EIP is associated with an instance located in a VPC, no public IP addresses can be assigned to the instance.
         
@@ -1016,10 +1016,10 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AllocatePublicIpAddressResponse:
         """
         When you call this operation, take note of the following items:
-        * The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
-        * You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
-        * After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
+        *   The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
+        *   You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
+        *   After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
         If an instance is located in a virtual private cloud (VPC), you can assign a public IP address to the instance or associate an elastic IP address (EIP) with the instance. For more information, see [AssociateEipAddress](~~36017~~).
         > After an EIP is associated with an instance located in a VPC, no public IP addresses can be assigned to the instance.
         
@@ -1035,10 +1035,10 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AllocatePublicIpAddressResponse:
         """
         When you call this operation, take note of the following items:
-        * The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
-        * You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
-        * After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
+        *   The instance to which to assign a public IP address must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is [locked for security reasons](~~25695~~) and cannot be assigned a public IP address.
+        *   You can assign only a single public IP address to an instance. If the instance already has a public IP address, the `AllocatedAlready` error code is returned.
+        *   After you assign a public IP address to an instance, you must restart the instance ([RebootInstance](~~25502~~)) or start the instance ([StartInstance](~~25500~~)) for the public IP address to take effect.
         If an instance is located in a virtual private cloud (VPC), you can assign a public IP address to the instance or associate an elastic IP address (EIP) with the instance. For more information, see [AssociateEipAddress](~~36017~~).
         > After an EIP is associated with an instance located in a VPC, no public IP addresses can be assigned to the instance.
         
@@ -1054,8 +1054,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        ## Description
-        *   Each disk can have only one automatic snapshot policy applied.
+        Each disk can have only one automatic snapshot policy applied.
         *   A single automatic snapshot policy can be applied to multiple disks.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -1101,8 +1100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        ## Description
-        *   Each disk can have only one automatic snapshot policy applied.
+        Each disk can have only one automatic snapshot policy applied.
         *   A single automatic snapshot policy can be applied to multiple disks.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -1147,8 +1145,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ApplyAutoSnapshotPolicyRequest,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        ## Description
-        *   Each disk can have only one automatic snapshot policy applied.
+        Each disk can have only one automatic snapshot policy applied.
         *   A single automatic snapshot policy can be applied to multiple disks.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -1162,8 +1159,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ApplyAutoSnapshotPolicyRequest,
     ) -> ecs_20140526_models.ApplyAutoSnapshotPolicyResponse:
         """
-        ## Description
-        *   Each disk can have only one automatic snapshot policy applied.
+        Each disk can have only one automatic snapshot policy applied.
         *   A single automatic snapshot policy can be applied to multiple disks.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -1178,15 +1174,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssignIpv6AddressesResponse:
         """
-        ## Description
-        You can specify IPv6 addresses within the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
+        You can specify IPv6 addresses that are in the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
         *   IPv6 must be enabled for the vSwitch with which the ENI is associated. For more information, see [Enable IPv6 for a vSwitch](~~98923~~).
         *   The ENI must be in the Available (Available) or InUse (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the Running (Running) or Stopped (Stopped) state.
+        *   If you want to assign IPv6 addresses to a primary ENI, make sure that the instance to which the ENI is attached is in the Running (Running) or Stopped (Stopped) state.
         *   The maximum number of IPv6 addresses that can be assigned to an ENI varies per instance type.
         *   If the ENI is in the Available (Available) state, it can be assigned a maximum of 10 IPv6 addresses.
-        *   If the ENI is already bound to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI is determined based on the instance type. For more information, see [Overview of instance families](~~25378~~).
-        *   After the operation is called, you can obtain the IPv6 addresses assigned to the ENI from the response.
+        *   If the ENI is already attached to an Elastic Compute Service (ECS) instance, the maximum number of IPv6 addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](~~25378~~).
+        *   After the operation is called, you can obtain the IPv6 addresses that are assigned to the ENI from the response.
         
         @param request: AssignIpv6AddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1241,15 +1236,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssignIpv6AddressesResponse:
         """
-        ## Description
-        You can specify IPv6 addresses within the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
+        You can specify IPv6 addresses that are in the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
         *   IPv6 must be enabled for the vSwitch with which the ENI is associated. For more information, see [Enable IPv6 for a vSwitch](~~98923~~).
         *   The ENI must be in the Available (Available) or InUse (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the Running (Running) or Stopped (Stopped) state.
+        *   If you want to assign IPv6 addresses to a primary ENI, make sure that the instance to which the ENI is attached is in the Running (Running) or Stopped (Stopped) state.
         *   The maximum number of IPv6 addresses that can be assigned to an ENI varies per instance type.
         *   If the ENI is in the Available (Available) state, it can be assigned a maximum of 10 IPv6 addresses.
-        *   If the ENI is already bound to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI is determined based on the instance type. For more information, see [Overview of instance families](~~25378~~).
-        *   After the operation is called, you can obtain the IPv6 addresses assigned to the ENI from the response.
+        *   If the ENI is already attached to an Elastic Compute Service (ECS) instance, the maximum number of IPv6 addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](~~25378~~).
+        *   After the operation is called, you can obtain the IPv6 addresses that are assigned to the ENI from the response.
         
         @param request: AssignIpv6AddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1303,15 +1297,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssignIpv6AddressesRequest,
     ) -> ecs_20140526_models.AssignIpv6AddressesResponse:
         """
-        ## Description
-        You can specify IPv6 addresses within the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
+        You can specify IPv6 addresses that are in the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
         *   IPv6 must be enabled for the vSwitch with which the ENI is associated. For more information, see [Enable IPv6 for a vSwitch](~~98923~~).
         *   The ENI must be in the Available (Available) or InUse (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the Running (Running) or Stopped (Stopped) state.
+        *   If you want to assign IPv6 addresses to a primary ENI, make sure that the instance to which the ENI is attached is in the Running (Running) or Stopped (Stopped) state.
         *   The maximum number of IPv6 addresses that can be assigned to an ENI varies per instance type.
         *   If the ENI is in the Available (Available) state, it can be assigned a maximum of 10 IPv6 addresses.
-        *   If the ENI is already bound to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI is determined based on the instance type. For more information, see [Overview of instance families](~~25378~~).
-        *   After the operation is called, you can obtain the IPv6 addresses assigned to the ENI from the response.
+        *   If the ENI is already attached to an Elastic Compute Service (ECS) instance, the maximum number of IPv6 addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](~~25378~~).
+        *   After the operation is called, you can obtain the IPv6 addresses that are assigned to the ENI from the response.
         
         @param request: AssignIpv6AddressesRequest
         @return: AssignIpv6AddressesResponse
@@ -1324,15 +1317,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssignIpv6AddressesRequest,
     ) -> ecs_20140526_models.AssignIpv6AddressesResponse:
         """
-        ## Description
-        You can specify IPv6 addresses within the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
+        You can specify IPv6 addresses that are in the CIDR block of the vSwitch with which the ENI is associated, or specify the number of IPv6 addresses to automatically generate for the ENI. When you call this operation, take note of the following items:
         *   IPv6 must be enabled for the vSwitch with which the ENI is associated. For more information, see [Enable IPv6 for a vSwitch](~~98923~~).
         *   The ENI must be in the Available (Available) or InUse (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the Running (Running) or Stopped (Stopped) state.
+        *   If you want to assign IPv6 addresses to a primary ENI, make sure that the instance to which the ENI is attached is in the Running (Running) or Stopped (Stopped) state.
         *   The maximum number of IPv6 addresses that can be assigned to an ENI varies per instance type.
         *   If the ENI is in the Available (Available) state, it can be assigned a maximum of 10 IPv6 addresses.
-        *   If the ENI is already bound to an ECS instance, the maximum number of IPv6 addresses that can be assigned to the ENI is determined based on the instance type. For more information, see [Overview of instance families](~~25378~~).
-        *   After the operation is called, you can obtain the IPv6 addresses assigned to the ENI from the response.
+        *   If the ENI is already attached to an Elastic Compute Service (ECS) instance, the maximum number of IPv6 addresses that can be assigned to the ENI varies based on the instance type. For more information, see [Overview of instance families](~~25378~~).
+        *   After the operation is called, you can obtain the IPv6 addresses that are assigned to the ENI from the response.
         
         @param request: AssignIpv6AddressesRequest
         @return: AssignIpv6AddressesResponse
@@ -1346,10 +1338,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssignPrivateIpAddressesResponse:
         """
-        The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state.
-        * When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state.
-        * When an ENI is in the Available state, up to 10 secondary private IP addresses can be assigned to it. When an ENI is bound to an instance, the number of private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
-        * After the operation is called, you can obtain the private IP addresses assigned to the ENI from the response.
+        ## Description
+        *   The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        *   When you assign secondary private IP addresses to a primary ENI, the instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
+        *   When an ENI is in the Available (Available) state, you can assign up to 50 secondary private IP addresses to it. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
+        *   After you call this operation for an ENI, you can obtain the secondary private IP addresses that are assigned to the ENI from the response.
         
         @param request: AssignPrivateIpAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1406,10 +1399,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssignPrivateIpAddressesResponse:
         """
-        The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state.
-        * When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state.
-        * When an ENI is in the Available state, up to 10 secondary private IP addresses can be assigned to it. When an ENI is bound to an instance, the number of private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
-        * After the operation is called, you can obtain the private IP addresses assigned to the ENI from the response.
+        ## Description
+        *   The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        *   When you assign secondary private IP addresses to a primary ENI, the instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
+        *   When an ENI is in the Available (Available) state, you can assign up to 50 secondary private IP addresses to it. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
+        *   After you call this operation for an ENI, you can obtain the secondary private IP addresses that are assigned to the ENI from the response.
         
         @param request: AssignPrivateIpAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1465,10 +1459,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssignPrivateIpAddressesRequest,
     ) -> ecs_20140526_models.AssignPrivateIpAddressesResponse:
         """
-        The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state.
-        * When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state.
-        * When an ENI is in the Available state, up to 10 secondary private IP addresses can be assigned to it. When an ENI is bound to an instance, the number of private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
-        * After the operation is called, you can obtain the private IP addresses assigned to the ENI from the response.
+        ## Description
+        *   The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        *   When you assign secondary private IP addresses to a primary ENI, the instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
+        *   When an ENI is in the Available (Available) state, you can assign up to 50 secondary private IP addresses to it. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
+        *   After you call this operation for an ENI, you can obtain the secondary private IP addresses that are assigned to the ENI from the response.
         
         @param request: AssignPrivateIpAddressesRequest
         @return: AssignPrivateIpAddressesResponse
@@ -1481,10 +1476,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssignPrivateIpAddressesRequest,
     ) -> ecs_20140526_models.AssignPrivateIpAddressesResponse:
         """
-        The ENI to which you want to assign private IP addresses must be in the Available (Available) or Bound (InUse) state.
-        * When you perform operations on the primary ENI, the instance to which the ENI is bound must be in the Running or Stopped state.
-        * When an ENI is in the Available state, up to 10 secondary private IP addresses can be assigned to it. When an ENI is bound to an instance, the number of private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
-        * After the operation is called, you can obtain the private IP addresses assigned to the ENI from the response.
+        ## Description
+        *   The ENI to which you want to assign secondary private IP addresses must be in the Available (Available) or InUse (InUse) state.
+        *   When you assign secondary private IP addresses to a primary ENI, the instance to which the ENI is attached must be in the Running (Running) or Stopped (Stopped) state.
+        *   When an ENI is in the Available (Available) state, you can assign up to 50 secondary private IP addresses to it. When an ENI is attached to an instance, the number of secondary private IP addresses that can be assigned to the ENI is subject to the instance type. For more information, see [Instance families](~~25378~~).
+        *   After you call this operation for an ENI, you can obtain the secondary private IP addresses that are assigned to the ENI from the response.
         
         @param request: AssignPrivateIpAddressesRequest
         @return: AssignPrivateIpAddressesResponse
@@ -1886,18 +1882,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AttachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The disk must be in the **Unattached** (`Available`) state.
+        When you call this operation, take note of the following points:
+        *   The disk to be attached must be in the **Unattached** (`Available`) state.
         *   When the disk is attached as a data disk, take note of the following items:
         *   The instance must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   If the disk is separately purchased, the billing method of the disk must be pay-as-you-go.
-        *   If the disk is a system disk detached from an instance, no limit applies to the billing method of the disk.
+        *   If the disk was separately purchased, the billing method of the disk must be pay-as-you-go.
+        *   If the disk is a system disk detached from an instance, no limits apply to the billing method of the disk.
         *   When the disk is attached as a system disk, take note of the following items:
-        *   The instance must be the original instance from which the system disk is detached.
+        *   The instance must be the original instance from which the system disk was detached.
         *   The instance must be in the **Stopped** (`Stopped`) state.
         *   The logon credentials must be configured.
-        *   When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        *   Disks for which the multi-attach feature is enabled can be attached only to instances that support the NVMe protocol. For more information, see [NVMe protocol](~~256487~~) and [Use the multi-attach feature](~~262105~~).
         
         @param request: AttachDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1952,18 +1948,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AttachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The disk must be in the **Unattached** (`Available`) state.
+        When you call this operation, take note of the following points:
+        *   The disk to be attached must be in the **Unattached** (`Available`) state.
         *   When the disk is attached as a data disk, take note of the following items:
         *   The instance must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   If the disk is separately purchased, the billing method of the disk must be pay-as-you-go.
-        *   If the disk is a system disk detached from an instance, no limit applies to the billing method of the disk.
+        *   If the disk was separately purchased, the billing method of the disk must be pay-as-you-go.
+        *   If the disk is a system disk detached from an instance, no limits apply to the billing method of the disk.
         *   When the disk is attached as a system disk, take note of the following items:
-        *   The instance must be the original instance from which the system disk is detached.
+        *   The instance must be the original instance from which the system disk was detached.
         *   The instance must be in the **Stopped** (`Stopped`) state.
         *   The logon credentials must be configured.
-        *   When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        *   Disks for which the multi-attach feature is enabled can be attached only to instances that support the NVMe protocol. For more information, see [NVMe protocol](~~256487~~) and [Use the multi-attach feature](~~262105~~).
         
         @param request: AttachDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2017,18 +2013,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AttachDiskRequest,
     ) -> ecs_20140526_models.AttachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The disk must be in the **Unattached** (`Available`) state.
+        When you call this operation, take note of the following points:
+        *   The disk to be attached must be in the **Unattached** (`Available`) state.
         *   When the disk is attached as a data disk, take note of the following items:
         *   The instance must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   If the disk is separately purchased, the billing method of the disk must be pay-as-you-go.
-        *   If the disk is a system disk detached from an instance, no limit applies to the billing method of the disk.
+        *   If the disk was separately purchased, the billing method of the disk must be pay-as-you-go.
+        *   If the disk is a system disk detached from an instance, no limits apply to the billing method of the disk.
         *   When the disk is attached as a system disk, take note of the following items:
-        *   The instance must be the original instance from which the system disk is detached.
+        *   The instance must be the original instance from which the system disk was detached.
         *   The instance must be in the **Stopped** (`Stopped`) state.
         *   The logon credentials must be configured.
-        *   When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        *   Disks for which the multi-attach feature is enabled can be attached only to instances that support the NVMe protocol. For more information, see [NVMe protocol](~~256487~~) and [Use the multi-attach feature](~~262105~~).
         
         @param request: AttachDiskRequest
         @return: AttachDiskResponse
@@ -2041,18 +2037,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AttachDiskRequest,
     ) -> ecs_20140526_models.AttachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   The disk must be in the **Unattached** (`Available`) state.
+        When you call this operation, take note of the following points:
+        *   The disk to be attached must be in the **Unattached** (`Available`) state.
         *   When the disk is attached as a data disk, take note of the following items:
         *   The instance must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   If the disk is separately purchased, the billing method of the disk must be pay-as-you-go.
-        *   If the disk is a system disk detached from an instance, no limit applies to the billing method of the disk.
+        *   If the disk was separately purchased, the billing method of the disk must be pay-as-you-go.
+        *   If the disk is a system disk detached from an instance, no limits apply to the billing method of the disk.
         *   When the disk is attached as a system disk, take note of the following items:
-        *   The instance must be the original instance from which the system disk is detached.
+        *   The instance must be the original instance from which the system disk was detached.
         *   The instance must be in the **Stopped** (`Stopped`) state.
         *   The logon credentials must be configured.
-        *   When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        *   Disks for which the multi-attach feature is enabled can be attached only to instances that support the NVMe protocol. For more information, see [NVMe protocol](~~256487~~) and [Use the multi-attach feature](~~262105~~).
         
         @param request: AttachDiskRequest
         @return: AttachDiskResponse
@@ -2160,13 +2156,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AttachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   SSH key pairs are not supported on Windows instances.
-        *   If an SSH key pair is attached to an instance, the username and password authentication is disabled for the instance.
-        *   If an instance is in the **Running** (Running) state, call the [RebootInstance](~~25502~~) operation to restart the instance for the SSH key pair to take effect.
-        *   If an instance is in the **Stopped** (Stopped) state, call the [StartInstance](~~25500~~) operation to start the instance for the SSH key pair to take effect.
-        *   If an instance already has an SSH key pair attached, the new SSH key pair will automatically replace the original one.
+        *   If an SSH key pair is attached to an instance, the username and password authentication method is disabled for the instance.
+        *   If you attach an SSH key pair to an instance in the **Running** state, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the key pair to take effect.
+        *   If you attach an SSH key pair to an instance in the **Stopped** state, you must call the [StartInstance](~~25500~~) operation to start the instance for the key pair to take effect.
+        *   If an instance already has an SSH key pair attached, the new SSH key pair will replace the original one.
         
         @param request: AttachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2211,13 +2206,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AttachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   SSH key pairs are not supported on Windows instances.
-        *   If an SSH key pair is attached to an instance, the username and password authentication is disabled for the instance.
-        *   If an instance is in the **Running** (Running) state, call the [RebootInstance](~~25502~~) operation to restart the instance for the SSH key pair to take effect.
-        *   If an instance is in the **Stopped** (Stopped) state, call the [StartInstance](~~25500~~) operation to start the instance for the SSH key pair to take effect.
-        *   If an instance already has an SSH key pair attached, the new SSH key pair will automatically replace the original one.
+        *   If an SSH key pair is attached to an instance, the username and password authentication method is disabled for the instance.
+        *   If you attach an SSH key pair to an instance in the **Running** state, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the key pair to take effect.
+        *   If you attach an SSH key pair to an instance in the **Stopped** state, you must call the [StartInstance](~~25500~~) operation to start the instance for the key pair to take effect.
+        *   If an instance already has an SSH key pair attached, the new SSH key pair will replace the original one.
         
         @param request: AttachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2261,13 +2255,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AttachKeyPairRequest,
     ) -> ecs_20140526_models.AttachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   SSH key pairs are not supported on Windows instances.
-        *   If an SSH key pair is attached to an instance, the username and password authentication is disabled for the instance.
-        *   If an instance is in the **Running** (Running) state, call the [RebootInstance](~~25502~~) operation to restart the instance for the SSH key pair to take effect.
-        *   If an instance is in the **Stopped** (Stopped) state, call the [StartInstance](~~25500~~) operation to start the instance for the SSH key pair to take effect.
-        *   If an instance already has an SSH key pair attached, the new SSH key pair will automatically replace the original one.
+        *   If an SSH key pair is attached to an instance, the username and password authentication method is disabled for the instance.
+        *   If you attach an SSH key pair to an instance in the **Running** state, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the key pair to take effect.
+        *   If you attach an SSH key pair to an instance in the **Stopped** state, you must call the [StartInstance](~~25500~~) operation to start the instance for the key pair to take effect.
+        *   If an instance already has an SSH key pair attached, the new SSH key pair will replace the original one.
         
         @param request: AttachKeyPairRequest
         @return: AttachKeyPairResponse
@@ -2280,13 +2273,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AttachKeyPairRequest,
     ) -> ecs_20140526_models.AttachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   SSH key pairs are not supported on Windows instances.
-        *   If an SSH key pair is attached to an instance, the username and password authentication is disabled for the instance.
-        *   If an instance is in the **Running** (Running) state, call the [RebootInstance](~~25502~~) operation to restart the instance for the SSH key pair to take effect.
-        *   If an instance is in the **Stopped** (Stopped) state, call the [StartInstance](~~25500~~) operation to start the instance for the SSH key pair to take effect.
-        *   If an instance already has an SSH key pair attached, the new SSH key pair will automatically replace the original one.
+        *   If an SSH key pair is attached to an instance, the username and password authentication method is disabled for the instance.
+        *   If you attach an SSH key pair to an instance in the **Running** state, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the key pair to take effect.
+        *   If you attach an SSH key pair to an instance in the **Stopped** state, you must call the [StartInstance](~~25500~~) operation to start the instance for the key pair to take effect.
+        *   If an instance already has an SSH key pair attached, the new SSH key pair will replace the original one.
         
         @param request: AttachKeyPairRequest
         @return: AttachKeyPairResponse
@@ -2301,11 +2293,16 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AttachNetworkInterfaceResponse:
         """
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be bound to a single instance.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you bind ENIs to instances of some instance types, the instances must be in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
-        > If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be bound to the instance.
-        *   You can bind multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
-        *   The instance must be in the same zone and the same VPC as the vSwitch to which the ENI is connected.
+        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be attached to only a single instance that resides in the same zone and the same VPC as the ENI.
+        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you attach ENIs to instances of some instance types, make sure that the instances are in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
+        > If the last start time of the instance (including the start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. If you do not call the RebootInstance operation to restart the instance, the ENI cannot be attached to the instance.
+        *   You can attach multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
+        *   The vSwitch to which the ENI is connected must be in the same zone and the same VPC as the vSwitch to which the instance is connected.
+        *   This operation is an asynchronous operation. After this operation is called to attach an ENI, you can check the status or events of the ENI to determine whether the ENI is attached.
+        - If the ENI is in the Attaching state, the ENI attachment request is sent and the ENI is being attached to the specified instance.
+        - If the ENI is in the InUse state, the ENI is attached to the specified instance.
+        - If the ENI is in the Available state, the ENI fails to be attached.
+        **For information about examples on how to call this operation, see** [Attach an ENI](~~471550~~).
         
         @param request: AttachNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2361,11 +2358,16 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AttachNetworkInterfaceResponse:
         """
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be bound to a single instance.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you bind ENIs to instances of some instance types, the instances must be in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
-        > If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be bound to the instance.
-        *   You can bind multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
-        *   The instance must be in the same zone and the same VPC as the vSwitch to which the ENI is connected.
+        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be attached to only a single instance that resides in the same zone and the same VPC as the ENI.
+        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you attach ENIs to instances of some instance types, make sure that the instances are in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
+        > If the last start time of the instance (including the start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. If you do not call the RebootInstance operation to restart the instance, the ENI cannot be attached to the instance.
+        *   You can attach multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
+        *   The vSwitch to which the ENI is connected must be in the same zone and the same VPC as the vSwitch to which the instance is connected.
+        *   This operation is an asynchronous operation. After this operation is called to attach an ENI, you can check the status or events of the ENI to determine whether the ENI is attached.
+        - If the ENI is in the Attaching state, the ENI attachment request is sent and the ENI is being attached to the specified instance.
+        - If the ENI is in the InUse state, the ENI is attached to the specified instance.
+        - If the ENI is in the Available state, the ENI fails to be attached.
+        **For information about examples on how to call this operation, see** [Attach an ENI](~~471550~~).
         
         @param request: AttachNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2420,11 +2422,16 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AttachNetworkInterfaceResponse:
         """
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be bound to a single instance.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you bind ENIs to instances of some instance types, the instances must be in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
-        > If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be bound to the instance.
-        *   You can bind multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
-        *   The instance must be in the same zone and the same VPC as the vSwitch to which the ENI is connected.
+        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be attached to only a single instance that resides in the same zone and the same VPC as the ENI.
+        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you attach ENIs to instances of some instance types, make sure that the instances are in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
+        > If the last start time of the instance (including the start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. If you do not call the RebootInstance operation to restart the instance, the ENI cannot be attached to the instance.
+        *   You can attach multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
+        *   The vSwitch to which the ENI is connected must be in the same zone and the same VPC as the vSwitch to which the instance is connected.
+        *   This operation is an asynchronous operation. After this operation is called to attach an ENI, you can check the status or events of the ENI to determine whether the ENI is attached.
+        - If the ENI is in the Attaching state, the ENI attachment request is sent and the ENI is being attached to the specified instance.
+        - If the ENI is in the InUse state, the ENI is attached to the specified instance.
+        - If the ENI is in the Available state, the ENI fails to be attached.
+        **For information about examples on how to call this operation, see** [Attach an ENI](~~471550~~).
         
         @param request: AttachNetworkInterfaceRequest
         @return: AttachNetworkInterfaceResponse
@@ -2438,11 +2445,16 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AttachNetworkInterfaceResponse:
         """
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be bound to a single instance.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you bind ENIs to instances of some instance types, the instances must be in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
-        > If the last start time of the instance (including the last start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. Otherwise, the ENI cannot be bound to the instance.
-        *   You can bind multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
-        *   The instance must be in the same zone and the same VPC as the vSwitch to which the ENI is connected.
+        *   The ENI must be in the **Available** (`Available`) state. Each ENI can be attached to only a single instance that resides in the same zone and the same VPC as the ENI.
+        *   The instance must be in the Running (Running) or Stopped (Stopped) state. When you attach ENIs to instances of some instance types, make sure that the instances are in the Stopped (Stopped) state. For more information, see the "Instance types of the ECS instances that must be in the Stopped (Stopped) state" section in [Bind an ENI](~~58503~~).
+        > If the last start time of the instance (including the start time of the instance if it is newly purchased, the last restart time of the instance, and the last reactivation time of the instance) is before April 1, 2018 and the instance stays in the Running state, you must call the RebootInstance operation to restart the instance. If you do not call the RebootInstance operation to restart the instance, the ENI cannot be attached to the instance.
+        *   You can attach multiple ENIs to a single instance. For more information, see [ENI overview](~~58496~~).
+        *   The vSwitch to which the ENI is connected must be in the same zone and the same VPC as the vSwitch to which the instance is connected.
+        *   This operation is an asynchronous operation. After this operation is called to attach an ENI, you can check the status or events of the ENI to determine whether the ENI is attached.
+        - If the ENI is in the Attaching state, the ENI attachment request is sent and the ENI is being attached to the specified instance.
+        - If the ENI is in the InUse state, the ENI is attached to the specified instance.
+        - If the ENI is in the Available state, the ENI fails to be attached.
+        **For information about examples on how to call this operation, see** [Attach an ENI](~~471550~~).
         
         @param request: AttachNetworkInterfaceRequest
         @return: AttachNetworkInterfaceResponse
@@ -3334,7 +3346,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CancelCopyImageResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged.
         *   If the image copy task is complete, the CancelCopyImage operation fails and an error is returned.
@@ -3382,7 +3393,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CancelCopyImageResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged.
         *   If the image copy task is complete, the CancelCopyImage operation fails and an error is returned.
@@ -3429,7 +3439,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CancelCopyImageRequest,
     ) -> ecs_20140526_models.CancelCopyImageResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged.
         *   If the image copy task is complete, the CancelCopyImage operation fails and an error is returned.
@@ -3445,7 +3454,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CancelCopyImageRequest,
     ) -> ecs_20140526_models.CancelCopyImageResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   After you cancel the image copy task, the image copy created in the destination region is deleted, and the source image remains unchanged.
         *   If the image copy task is complete, the CancelCopyImage operation fails and an error is returned.
@@ -4010,15 +4018,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        ## Description
-        After a public IP address is converted to an EIP, the EIP will be billed separately. Make sure that you have fully understood the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
         Before you call this operation, make sure that the following requirements are met:
         *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
-        *   The instance has no EIPs associated.
+        *   No EIPs are associated with the instance.
         *   The instance has no configuration change tasks that have not taken effect.
-        *   The public bandwidth of the instance cannot be 0 Mbit/s.
-        *   The public bandwidth of the instance is billed on a pay-by-traffic basis.
-        *   If the instance is a VPC-type subscription instance, it does not expire within 24 hours.
+        *   The public bandwidth of the instance is not 0 Mbit/s.
+        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4061,15 +4068,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        ## Description
-        After a public IP address is converted to an EIP, the EIP will be billed separately. Make sure that you have fully understood the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
         Before you call this operation, make sure that the following requirements are met:
         *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
-        *   The instance has no EIPs associated.
+        *   No EIPs are associated with the instance.
         *   The instance has no configuration change tasks that have not taken effect.
-        *   The public bandwidth of the instance cannot be 0 Mbit/s.
-        *   The public bandwidth of the instance is billed on a pay-by-traffic basis.
-        *   If the instance is a VPC-type subscription instance, it does not expire within 24 hours.
+        *   The public bandwidth of the instance is not 0 Mbit/s.
+        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4111,15 +4117,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ConvertNatPublicIpToEipRequest,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        ## Description
-        After a public IP address is converted to an EIP, the EIP will be billed separately. Make sure that you have fully understood the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
         Before you call this operation, make sure that the following requirements are met:
         *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
-        *   The instance has no EIPs associated.
+        *   No EIPs are associated with the instance.
         *   The instance has no configuration change tasks that have not taken effect.
-        *   The public bandwidth of the instance cannot be 0 Mbit/s.
-        *   The public bandwidth of the instance is billed on a pay-by-traffic basis.
-        *   If the instance is a VPC-type subscription instance, it does not expire within 24 hours.
+        *   The public bandwidth of the instance is not 0 Mbit/s.
+        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
         @return: ConvertNatPublicIpToEipResponse
@@ -4132,15 +4137,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ConvertNatPublicIpToEipRequest,
     ) -> ecs_20140526_models.ConvertNatPublicIpToEipResponse:
         """
-        ## Description
-        After a public IP address is converted to an EIP, the EIP will be billed separately. Make sure that you have fully understood the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
+        After a public IP address is converted into an EIP, the EIP is billed separately. Make sure that you understand the billing methods of EIPs. For more information, see [Billing overview](~~122035~~).
         Before you call this operation, make sure that the following requirements are met:
         *   The instance is in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
-        *   The instance has no EIPs associated.
+        *   No EIPs are associated with the instance.
         *   The instance has no configuration change tasks that have not taken effect.
-        *   The public bandwidth of the instance cannot be 0 Mbit/s.
-        *   The public bandwidth of the instance is billed on a pay-by-traffic basis.
-        *   If the instance is a VPC-type subscription instance, it does not expire within 24 hours.
+        *   The public bandwidth of the instance is not 0 Mbit/s.
+        *   The instance uses the pay-by-traffic billing method for network usage.
+        *   If the instance is a subscription instance that resides in a VPC, the instance does not expire within 24 hours.
         
         @param request: ConvertNatPublicIpToEipRequest
         @return: ConvertNatPublicIpToEipResponse
@@ -4490,20 +4494,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateActivationResponse:
         """
-        ## Description
-        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops in the managed instance.
-        If a server is not provided by Alibaba Cloud, it can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
+        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops, in the managed instance.
+        A server that is not provided by Alibaba Cloud can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
         *   Alibaba Cloud Linux 2, Alibaba Cloud Linux 3, and later
         *   CentOS 6, CentOS 7, CentOS 8, and later
         *   Debian 8, Debian 9, Debian 10, and later
         *   Ubuntu 12, Ubuntu 14, Ubuntu 16, Ubuntu 18, and later
         *   CoreOS
-        *   OpenSUSE
+        *   openSUSE
         *   Red Hat 5, Red Hat 6, Red Hat 7, and later
         *   SUSE Linux Enterprise Server (SLES) 11, SLES 12, SLES 15, and later
         *   Windows Server 2012, Windows Server 2016, Windows Server 2019, and later
-        You can create up to 100 activation codes within a single Alibaba Cloud region. For information about how to query quotas, see the "Step 1: View resource quotas" section in [View and increase resource quotas](~~184115~~).
-        >  Alternatively, you can call the [DescribeAccountAttributes](~~73772~~) operation and set `AttributeName.N` to max-cloud-assistant-activation-count to query the maximum number of activation codes that can be created within a specified region.
+        You can create up to 5,000 activation codes within a single Alibaba Cloud region. When the number of activation codes exceeds 1,000, the usage of activation codes must be greater than 50% before you can proceed to create more activation codes.
+        > You can go to the **Cloud Assistant** page of the Elastic Compute Service (ECS) console and click **View Activation Codes** on the **Managed Instances** tab to query the usage data about activation codes.
         
         @param request: CreateActivationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4531,6 +4534,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.time_to_live_in_hours):
             query['TimeToLiveInHours'] = request.time_to_live_in_hours
         req = open_api_models.OpenApiRequest(
@@ -4558,20 +4563,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateActivationResponse:
         """
-        ## Description
-        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops in the managed instance.
-        If a server is not provided by Alibaba Cloud, it can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
+        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops, in the managed instance.
+        A server that is not provided by Alibaba Cloud can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
         *   Alibaba Cloud Linux 2, Alibaba Cloud Linux 3, and later
         *   CentOS 6, CentOS 7, CentOS 8, and later
         *   Debian 8, Debian 9, Debian 10, and later
         *   Ubuntu 12, Ubuntu 14, Ubuntu 16, Ubuntu 18, and later
         *   CoreOS
-        *   OpenSUSE
+        *   openSUSE
         *   Red Hat 5, Red Hat 6, Red Hat 7, and later
         *   SUSE Linux Enterprise Server (SLES) 11, SLES 12, SLES 15, and later
         *   Windows Server 2012, Windows Server 2016, Windows Server 2019, and later
-        You can create up to 100 activation codes within a single Alibaba Cloud region. For information about how to query quotas, see the "Step 1: View resource quotas" section in [View and increase resource quotas](~~184115~~).
-        >  Alternatively, you can call the [DescribeAccountAttributes](~~73772~~) operation and set `AttributeName.N` to max-cloud-assistant-activation-count to query the maximum number of activation codes that can be created within a specified region.
+        You can create up to 5,000 activation codes within a single Alibaba Cloud region. When the number of activation codes exceeds 1,000, the usage of activation codes must be greater than 50% before you can proceed to create more activation codes.
+        > You can go to the **Cloud Assistant** page of the Elastic Compute Service (ECS) console and click **View Activation Codes** on the **Managed Instances** tab to query the usage data about activation codes.
         
         @param request: CreateActivationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4599,6 +4603,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.time_to_live_in_hours):
             query['TimeToLiveInHours'] = request.time_to_live_in_hours
         req = open_api_models.OpenApiRequest(
@@ -4625,20 +4631,19 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateActivationRequest,
     ) -> ecs_20140526_models.CreateActivationResponse:
         """
-        ## Description
-        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops in the managed instance.
-        If a server is not provided by Alibaba Cloud, it can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
+        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops, in the managed instance.
+        A server that is not provided by Alibaba Cloud can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
         *   Alibaba Cloud Linux 2, Alibaba Cloud Linux 3, and later
         *   CentOS 6, CentOS 7, CentOS 8, and later
         *   Debian 8, Debian 9, Debian 10, and later
         *   Ubuntu 12, Ubuntu 14, Ubuntu 16, Ubuntu 18, and later
         *   CoreOS
-        *   OpenSUSE
+        *   openSUSE
         *   Red Hat 5, Red Hat 6, Red Hat 7, and later
         *   SUSE Linux Enterprise Server (SLES) 11, SLES 12, SLES 15, and later
         *   Windows Server 2012, Windows Server 2016, Windows Server 2019, and later
-        You can create up to 100 activation codes within a single Alibaba Cloud region. For information about how to query quotas, see the "Step 1: View resource quotas" section in [View and increase resource quotas](~~184115~~).
-        >  Alternatively, you can call the [DescribeAccountAttributes](~~73772~~) operation and set `AttributeName.N` to max-cloud-assistant-activation-count to query the maximum number of activation codes that can be created within a specified region.
+        You can create up to 5,000 activation codes within a single Alibaba Cloud region. When the number of activation codes exceeds 1,000, the usage of activation codes must be greater than 50% before you can proceed to create more activation codes.
+        > You can go to the **Cloud Assistant** page of the Elastic Compute Service (ECS) console and click **View Activation Codes** on the **Managed Instances** tab to query the usage data about activation codes.
         
         @param request: CreateActivationRequest
         @return: CreateActivationResponse
@@ -4651,20 +4656,19 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateActivationRequest,
     ) -> ecs_20140526_models.CreateActivationResponse:
         """
-        ## Description
-        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops in the managed instance.
-        If a server is not provided by Alibaba Cloud, it can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
+        After you use an activation code to register a server that is not provided by Alibaba Cloud as an Alibaba Cloud managed instance, you can use a variety of online services provided by Alibaba Cloud, such as Cloud Assistant, Operation Orchestration Service (OOS), and Apsara Devops, in the managed instance.
+        A server that is not provided by Alibaba Cloud can be registered as an Alibaba Cloud managed instance only when the server can access the Internet and runs an operating system of one of the following versions:
         *   Alibaba Cloud Linux 2, Alibaba Cloud Linux 3, and later
         *   CentOS 6, CentOS 7, CentOS 8, and later
         *   Debian 8, Debian 9, Debian 10, and later
         *   Ubuntu 12, Ubuntu 14, Ubuntu 16, Ubuntu 18, and later
         *   CoreOS
-        *   OpenSUSE
+        *   openSUSE
         *   Red Hat 5, Red Hat 6, Red Hat 7, and later
         *   SUSE Linux Enterprise Server (SLES) 11, SLES 12, SLES 15, and later
         *   Windows Server 2012, Windows Server 2016, Windows Server 2019, and later
-        You can create up to 100 activation codes within a single Alibaba Cloud region. For information about how to query quotas, see the "Step 1: View resource quotas" section in [View and increase resource quotas](~~184115~~).
-        >  Alternatively, you can call the [DescribeAccountAttributes](~~73772~~) operation and set `AttributeName.N` to max-cloud-assistant-activation-count to query the maximum number of activation codes that can be created within a specified region.
+        You can create up to 5,000 activation codes within a single Alibaba Cloud region. When the number of activation codes exceeds 1,000, the usage of activation codes must be greater than 50% before you can proceed to create more activation codes.
+        > You can go to the **Cloud Assistant** page of the Elastic Compute Service (ECS) console and click **View Activation Codes** on the **Managed Instances** tab to query the usage data about activation codes.
         
         @param request: CreateActivationRequest
         @return: CreateActivationResponse
@@ -5254,14 +5258,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateCommandResponse:
         """
-        ## Description
-        *   You can create commands of the following types:
+        You can create commands of the following types:
         *   RunBatScript: batch commands. These commands are applicable to Windows instances.
         *   RunPowerShellScript: PowerShell commands. These commands are applicable to Windows instances.
         *   RunShellScript: shell commands. These commands are applicable to Linux instances.
-        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of the command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
+        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of a command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
         *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For scheduled tasks, take note of the following items:
+        *   For a scheduled task, take note of the following items:
         *   The timeout period takes effect on each execution of the command.
         *   When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
         *   The timeout of one execution does not affect the subsequent executions of the command.
@@ -5330,14 +5333,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateCommandResponse:
         """
-        ## Description
-        *   You can create commands of the following types:
+        You can create commands of the following types:
         *   RunBatScript: batch commands. These commands are applicable to Windows instances.
         *   RunPowerShellScript: PowerShell commands. These commands are applicable to Windows instances.
         *   RunShellScript: shell commands. These commands are applicable to Linux instances.
-        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of the command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
+        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of a command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
         *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For scheduled tasks, take note of the following items:
+        *   For a scheduled task, take note of the following items:
         *   The timeout period takes effect on each execution of the command.
         *   When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
         *   The timeout of one execution does not affect the subsequent executions of the command.
@@ -5405,14 +5407,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateCommandRequest,
     ) -> ecs_20140526_models.CreateCommandResponse:
         """
-        ## Description
-        *   You can create commands of the following types:
+        You can create commands of the following types:
         *   RunBatScript: batch commands. These commands are applicable to Windows instances.
         *   RunPowerShellScript: PowerShell commands. These commands are applicable to Windows instances.
         *   RunShellScript: shell commands. These commands are applicable to Linux instances.
-        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of the command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
+        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of a command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
         *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For scheduled tasks, take note of the following items:
+        *   For a scheduled task, take note of the following items:
         *   The timeout period takes effect on each execution of the command.
         *   When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
         *   The timeout of one execution does not affect the subsequent executions of the command.
@@ -5431,14 +5432,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateCommandRequest,
     ) -> ecs_20140526_models.CreateCommandResponse:
         """
-        ## Description
-        *   You can create commands of the following types:
+        You can create commands of the following types:
         *   RunBatScript: batch commands. These commands are applicable to Windows instances.
         *   RunPowerShellScript: PowerShell commands. These commands are applicable to Windows instances.
         *   RunShellScript: shell commands. These commands are applicable to Linux instances.
-        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of the command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
+        *   You can specify the TimeOut parameter to set the maximum timeout period for executions of a command on Elastic Compute Service (ECS) instances. If an execution times out, the Cloud Assistant client forcefully terminates the command process by canceling the process ID (PID) of the command. For more information, see [Install the Cloud Assistant client](~~64921~~).
         *   When the one-time execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
-        *   For scheduled tasks, take note of the following items:
+        *   For a scheduled task, take note of the following items:
         *   The timeout period takes effect on each execution of the command.
         *   When a scheduled execution of a command times out, the execution state ([InvokeRecordStatus](~~64845~~)) of the command becomes Failed.
         *   The timeout of one execution does not affect the subsequent executions of the command.
@@ -8724,12 +8724,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateNetworkInterfaceResponse:
         """
-        An ENI enters the Available (Available) state after it is created.
-        *   An ENI can be bound only to a single instance of the Virtual Private Cloud (VPC) type within the same zone.
-        *   An ENI can be bound only to a single instance. Before you can bind an ENI to another instance, you must unbind the ENI from the current instance.
-        *   When an ENI is bound to another instance, the attributes of the ENI remain unchanged and the data traffic is redirected to that instance.
+        ## Description
+        When you call this operation, take note of the following items:
+        *   This operation is a synchronous operation. After an ENI is created, it immediately enters the Available state and can be attached to an Elastic Compute Service (ECS) instance.
+        *   If the NetworkInterfaceId parameter is empty in the response, it indicates that no ENI is created. Call the operation again to create an ENI.
+        *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
+        *   When an ENI is attached to a different instance, the attributes of the ENI remain unchanged and the data traffic is redirected to the instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 has been enabled for the vSwitch with which to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   By default, up to 100 ENIs can be created per region per Alibaba Cloud account. To increase this quota, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view resource quotas in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see **[Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8820,12 +8823,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateNetworkInterfaceResponse:
         """
-        An ENI enters the Available (Available) state after it is created.
-        *   An ENI can be bound only to a single instance of the Virtual Private Cloud (VPC) type within the same zone.
-        *   An ENI can be bound only to a single instance. Before you can bind an ENI to another instance, you must unbind the ENI from the current instance.
-        *   When an ENI is bound to another instance, the attributes of the ENI remain unchanged and the data traffic is redirected to that instance.
+        ## Description
+        When you call this operation, take note of the following items:
+        *   This operation is a synchronous operation. After an ENI is created, it immediately enters the Available state and can be attached to an Elastic Compute Service (ECS) instance.
+        *   If the NetworkInterfaceId parameter is empty in the response, it indicates that no ENI is created. Call the operation again to create an ENI.
+        *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
+        *   When an ENI is attached to a different instance, the attributes of the ENI remain unchanged and the data traffic is redirected to the instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 has been enabled for the vSwitch with which to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   By default, up to 100 ENIs can be created per region per Alibaba Cloud account. To increase this quota, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view resource quotas in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see **[Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8915,12 +8921,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateNetworkInterfaceRequest,
     ) -> ecs_20140526_models.CreateNetworkInterfaceResponse:
         """
-        An ENI enters the Available (Available) state after it is created.
-        *   An ENI can be bound only to a single instance of the Virtual Private Cloud (VPC) type within the same zone.
-        *   An ENI can be bound only to a single instance. Before you can bind an ENI to another instance, you must unbind the ENI from the current instance.
-        *   When an ENI is bound to another instance, the attributes of the ENI remain unchanged and the data traffic is redirected to that instance.
+        ## Description
+        When you call this operation, take note of the following items:
+        *   This operation is a synchronous operation. After an ENI is created, it immediately enters the Available state and can be attached to an Elastic Compute Service (ECS) instance.
+        *   If the NetworkInterfaceId parameter is empty in the response, it indicates that no ENI is created. Call the operation again to create an ENI.
+        *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
+        *   When an ENI is attached to a different instance, the attributes of the ENI remain unchanged and the data traffic is redirected to the instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 has been enabled for the vSwitch with which to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   By default, up to 100 ENIs can be created per region per Alibaba Cloud account. To increase this quota, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view resource quotas in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see **[Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @return: CreateNetworkInterfaceResponse
@@ -8933,12 +8942,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateNetworkInterfaceRequest,
     ) -> ecs_20140526_models.CreateNetworkInterfaceResponse:
         """
-        An ENI enters the Available (Available) state after it is created.
-        *   An ENI can be bound only to a single instance of the Virtual Private Cloud (VPC) type within the same zone.
-        *   An ENI can be bound only to a single instance. Before you can bind an ENI to another instance, you must unbind the ENI from the current instance.
-        *   When an ENI is bound to another instance, the attributes of the ENI remain unchanged and the data traffic is redirected to that instance.
+        ## Description
+        When you call this operation, take note of the following items:
+        *   This operation is a synchronous operation. After an ENI is created, it immediately enters the Available state and can be attached to an Elastic Compute Service (ECS) instance.
+        *   If the NetworkInterfaceId parameter is empty in the response, it indicates that no ENI is created. Call the operation again to create an ENI.
+        *   An ENI can be attached only to a single instance that resides in a virtual private cloud (VPC).
+        *   When an ENI is attached to a different instance, the attributes of the ENI remain unchanged and the data traffic is redirected to the instance.
         *   If you want to assign IPv6 addresses when you create an ENI, make sure that IPv6 has been enabled for the vSwitch with which to associate the ENI. For more information, see [What is an IPv6 gateway?](~~98896~~)
-        *   By default, up to 100 ENIs can be created per region per Alibaba Cloud account. To increase this quota, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+        *   A quota is imposed on the number of ENIs that can be created per Alibaba Cloud region per account. You can view resource quotas in the ECS console. For more information, see [View and increase resource quotas](~~184115~~).
+        **For information about examples on how to call this operation, see **[Create an ENI](~~471552~~).
         
         @param request: CreateNetworkInterfaceRequest
         @return: CreateNetworkInterfaceResponse
@@ -8951,14 +8963,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateNetworkInterfacePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateNetworkInterfacePermissionResponse:
-        """
-        ## Description
-        Before you call this operation, submit a ticket to apply for using this operation.
-        
-        @param request: CreateNetworkInterfacePermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNetworkInterfacePermissionResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9003,14 +9007,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateNetworkInterfacePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateNetworkInterfacePermissionResponse:
-        """
-        ## Description
-        Before you call this operation, submit a ticket to apply for using this operation.
-        
-        @param request: CreateNetworkInterfacePermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateNetworkInterfacePermissionResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -9054,13 +9050,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.CreateNetworkInterfacePermissionRequest,
     ) -> ecs_20140526_models.CreateNetworkInterfacePermissionResponse:
-        """
-        ## Description
-        Before you call this operation, submit a ticket to apply for using this operation.
-        
-        @param request: CreateNetworkInterfacePermissionRequest
-        @return: CreateNetworkInterfacePermissionResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.create_network_interface_permission_with_options(request, runtime)
 
@@ -9068,13 +9057,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.CreateNetworkInterfacePermissionRequest,
     ) -> ecs_20140526_models.CreateNetworkInterfacePermissionResponse:
-        """
-        ## Description
-        Before you call this operation, submit a ticket to apply for using this operation.
-        
-        @param request: CreateNetworkInterfacePermissionRequest
-        @return: CreateNetworkInterfacePermissionResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.create_network_interface_permission_with_options_async(request, runtime)
 
@@ -9916,13 +9898,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        ## Description
-        You can use the ECS console, call the [DescribeInstanceHistoryEvents](~~63962~~) operation, or use Cloud Monitor to view the scheduled simulated system events.
+        You can use the ECS console, call the [](~~63962~~)operation, or use CloudMonitor to view the scheduled simulated system events.
         The following section describes the lifecycle of a simulated system event:
-        *   Scheduled: The status of the simulated system event is automatically changed to Scheduled after it is scheduled.
-        *   Executed: The status of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
-        *   Canceled: The status of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
-        *   Avoided: The status of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
+        *   Scheduled: The state of the simulated system event is automatically changed to Scheduled after it is scheduled.
+        *   Executed: The state of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
+        *   Canceled: The state of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
+        *   Avoided: The state of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
         
         @param request: CreateSimulatedSystemEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9973,13 +9954,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        ## Description
-        You can use the ECS console, call the [DescribeInstanceHistoryEvents](~~63962~~) operation, or use Cloud Monitor to view the scheduled simulated system events.
+        You can use the ECS console, call the [](~~63962~~)operation, or use CloudMonitor to view the scheduled simulated system events.
         The following section describes the lifecycle of a simulated system event:
-        *   Scheduled: The status of the simulated system event is automatically changed to Scheduled after it is scheduled.
-        *   Executed: The status of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
-        *   Canceled: The status of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
-        *   Avoided: The status of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
+        *   Scheduled: The state of the simulated system event is automatically changed to Scheduled after it is scheduled.
+        *   Executed: The state of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
+        *   Canceled: The state of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
+        *   Avoided: The state of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
         
         @param request: CreateSimulatedSystemEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10029,13 +10009,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSimulatedSystemEventsRequest,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        ## Description
-        You can use the ECS console, call the [DescribeInstanceHistoryEvents](~~63962~~) operation, or use Cloud Monitor to view the scheduled simulated system events.
+        You can use the ECS console, call the [](~~63962~~)operation, or use CloudMonitor to view the scheduled simulated system events.
         The following section describes the lifecycle of a simulated system event:
-        *   Scheduled: The status of the simulated system event is automatically changed to Scheduled after it is scheduled.
-        *   Executed: The status of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
-        *   Canceled: The status of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
-        *   Avoided: The status of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
+        *   Scheduled: The state of the simulated system event is automatically changed to Scheduled after it is scheduled.
+        *   Executed: The state of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
+        *   Canceled: The state of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
+        *   Avoided: The state of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
         
         @param request: CreateSimulatedSystemEventsRequest
         @return: CreateSimulatedSystemEventsResponse
@@ -10048,13 +10027,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateSimulatedSystemEventsRequest,
     ) -> ecs_20140526_models.CreateSimulatedSystemEventsResponse:
         """
-        ## Description
-        You can use the ECS console, call the [DescribeInstanceHistoryEvents](~~63962~~) operation, or use Cloud Monitor to view the scheduled simulated system events.
+        You can use the ECS console, call the [](~~63962~~)operation, or use CloudMonitor to view the scheduled simulated system events.
         The following section describes the lifecycle of a simulated system event:
-        *   Scheduled: The status of the simulated system event is automatically changed to Scheduled after it is scheduled.
-        *   Executed: The status of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
-        *   Canceled: The status of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
-        *   Avoided: The status of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
+        *   Scheduled: The state of the simulated system event is automatically changed to Scheduled after it is scheduled.
+        *   Executed: The state of the simulated system event is automatically changed to Executed at the scheduled time specified by the NotBefore parameter if no manual intervention is involved.
+        *   Canceled: The state of the simulated system event is changed to Canceled if you cancel the event by calling the [CancelSimulatedSystemEvents](~~88808~~) operation.
+        *   Avoided: The state of the simulated system event generated from maintenance-triggered instance restart can be changed to Avoided if you restart the instance before the scheduled time of the simulated system event. The maintenance-triggered instance restart is indicated by the SystemMaintenance.Reboot value. For more information, see [RebootInstance](~~25502~~).
         
         @param request: CreateSimulatedSystemEventsRequest
         @return: CreateSimulatedSystemEventsResponse
@@ -10070,19 +10048,20 @@ class Client(OpenApiClient):
         """
         ## Description
         The local snapshot feature is replaced by the instant access feature.
-        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter normally. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter as expected and must take note of the following items:
         *   The `Category` and `InstantAccess` parameters cannot be specified at the same time.
         *   If neither of the `Category` and `InstantAccess` parameters is specified, normal snapshots are created.
         *   If you have not used the local snapshot feature before December 14, 2020, you can use the `InstantAccess` parameter and cannot use the `Category` parameter.
+        For more information, see [Snapshot service upgrade and addition of a new billable item on December 14, 2020](https://help.aliyun.com/noticelist/articleid/1060755542.html).
         In the following scenarios, you cannot create snapshots for a disk:
         *   The number of manual snapshots of the disk has reached 256.
         *   A snapshot is being created for the disk.
         *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
-        *   The instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
         *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you create a snapshot, take note of the following items:
         *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
-        *   When a snapshot is being created for a disk that is attached to an instance, do not change the instance state.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
         *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives when a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating`) state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
@@ -10148,19 +10127,20 @@ class Client(OpenApiClient):
         """
         ## Description
         The local snapshot feature is replaced by the instant access feature.
-        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter normally. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter as expected and must take note of the following items:
         *   The `Category` and `InstantAccess` parameters cannot be specified at the same time.
         *   If neither of the `Category` and `InstantAccess` parameters is specified, normal snapshots are created.
         *   If you have not used the local snapshot feature before December 14, 2020, you can use the `InstantAccess` parameter and cannot use the `Category` parameter.
+        For more information, see [Snapshot service upgrade and addition of a new billable item on December 14, 2020](https://help.aliyun.com/noticelist/articleid/1060755542.html).
         In the following scenarios, you cannot create snapshots for a disk:
         *   The number of manual snapshots of the disk has reached 256.
         *   A snapshot is being created for the disk.
         *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
-        *   The instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
         *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you create a snapshot, take note of the following items:
         *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
-        *   When a snapshot is being created for a disk that is attached to an instance, do not change the instance state.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
         *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives when a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating`) state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
@@ -10225,19 +10205,20 @@ class Client(OpenApiClient):
         """
         ## Description
         The local snapshot feature is replaced by the instant access feature.
-        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter normally. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter as expected and must take note of the following items:
         *   The `Category` and `InstantAccess` parameters cannot be specified at the same time.
         *   If neither of the `Category` and `InstantAccess` parameters is specified, normal snapshots are created.
         *   If you have not used the local snapshot feature before December 14, 2020, you can use the `InstantAccess` parameter and cannot use the `Category` parameter.
+        For more information, see [Snapshot service upgrade and addition of a new billable item on December 14, 2020](https://help.aliyun.com/noticelist/articleid/1060755542.html).
         In the following scenarios, you cannot create snapshots for a disk:
         *   The number of manual snapshots of the disk has reached 256.
         *   A snapshot is being created for the disk.
         *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
-        *   The instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
         *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you create a snapshot, take note of the following items:
         *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
-        *   When a snapshot is being created for a disk that is attached to an instance, do not change the instance state.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
         *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives when a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating`) state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
@@ -10253,19 +10234,20 @@ class Client(OpenApiClient):
         """
         ## Description
         The local snapshot feature is replaced by the instant access feature.
-        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter normally. Take note of the following items:
+        *   If you have used the local snapshot feature before December 14, 2020, you can use the `Category` or `InstantAccess` parameter as expected and must take note of the following items:
         *   The `Category` and `InstantAccess` parameters cannot be specified at the same time.
         *   If neither of the `Category` and `InstantAccess` parameters is specified, normal snapshots are created.
         *   If you have not used the local snapshot feature before December 14, 2020, you can use the `InstantAccess` parameter and cannot use the `Category` parameter.
+        For more information, see [Snapshot service upgrade and addition of a new billable item on December 14, 2020](https://help.aliyun.com/noticelist/articleid/1060755542.html).
         In the following scenarios, you cannot create snapshots for a disk:
         *   The number of manual snapshots of the disk has reached 256.
         *   A snapshot is being created for the disk.
         *   The Elastic Compute Service (ECS) instance to which the disk is attached has never been started.
-        *   The instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
+        *   The ECS instance to which the disk is attached is not in the **Stopped** (`Stopped`) or **Running** (`Running`) state.
         *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you create a snapshot, take note of the following items:
         *   If a snapshot is being created, you cannot use this snapshot to create a custom image by calling the [CreateImage](~~25535~~) operation.
-        *   When a snapshot is being created for a disk that is attached to an instance, do not change the instance state.
+        *   When a snapshot is being created for a disk that is attached to an ECS instance, do not change the instance state.
         *   You can create snapshots for a disk that is in the **Expired** (`Expired`) state. If the release time scheduled for a disk arrives when a snapshot is being created for the disk, the snapshot is in the **Creating** (`Creating`) state and is deleted when the disk is released.
         
         @param request: CreateSnapshotRequest
@@ -13144,14 +13126,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteInstancesResponse:
         """
-        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered.
-        * Disks attached to the instance:
-        * The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
-        * The disks for which `DeleteWithInstance` is set to true are released along with the instance.
-        * For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots are retained.
-        * For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots are released.
-        * Manual snapshots are retained.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if `DeleteWithInstance` is set to `false` for the data disks that are attached to the instance, this parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   Disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released.
+        *   Manual snapshots of the disks are retained.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13204,14 +13186,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteInstancesResponse:
         """
-        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered.
-        * Disks attached to the instance:
-        * The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
-        * The disks for which `DeleteWithInstance` is set to true are released along with the instance.
-        * For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots are retained.
-        * For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots are released.
-        * Manual snapshots are retained.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if `DeleteWithInstance` is set to `false` for the data disks that are attached to the instance, this parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   Disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released.
+        *   Manual snapshots of the disks are retained.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13263,14 +13245,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteInstancesRequest,
     ) -> ecs_20140526_models.DeleteInstancesResponse:
         """
-        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered.
-        * Disks attached to the instance:
-        * The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
-        * The disks for which `DeleteWithInstance` is set to true are released along with the instance.
-        * For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots are retained.
-        * For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots are released.
-        * Manual snapshots are retained.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if `DeleteWithInstance` is set to `false` for the data disks that are attached to the instance, this parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   Disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released.
+        *   Manual snapshots of the disks are retained.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -13283,14 +13265,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteInstancesRequest,
     ) -> ecs_20140526_models.DeleteInstancesResponse:
         """
-        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be recovered.
-        * Disks attached to the instance:
-        * The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
-        * The disks for which `DeleteWithInstance` is set to true are released along with the instance.
-        * For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots are retained.
-        * For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots are released.
-        * Manual snapshots are retained.
-        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if `DeleteWithInstance` is set to `false` for the data disks that are attached to the instance, this parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        After an instance is released, all the physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
+        *   Disks attached to the instance:
+        *   The disks for which `DeleteWithInstance` is set to false are retained as pay-as-you-go disks.
+        *   The disks for which `DeleteWithInstance` is set to true are released along with the instance.
+        *   For disks for which `DeleteAutoSnapshot` is set to false, the automatic snapshots of the disks are retained.
+        *   For disks for which `DeleteAutoSnapshot` is set to true, the automatic snapshots of the disks are released.
+        *   Manual snapshots of the disks are retained.
+        *   If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons. Even if the `DeleteWithInstance` parameter is set to `false` for the data disks that are attached to the instance, the parameter is ignored and the data disks are released along with the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: DeleteInstancesRequest
         @return: DeleteInstancesResponse
@@ -15713,6 +15695,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15759,6 +15743,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16218,14 +16204,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        Values of the `DestinationResource` parameter have dependencies. When you select a value in the following chain for the DestinationResource parameter, the more to the right the selected value is ordered, the more parameters you must specify.
-        * Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        * Examples:
-        * If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
-        * If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
-        * If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
-        * If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        * If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        The value of the `DestinationResource` parameter determines whether you need to specify additional parameters. The following sequence provides the order by which resources are filtered. You cannot query a higher order resource by specifying a lower order resource.
+        *   Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
+        *   Examples:
+        *   If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
+        *   If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
+        *   If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
+        *   If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
+        *   If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16298,14 +16284,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        Values of the `DestinationResource` parameter have dependencies. When you select a value in the following chain for the DestinationResource parameter, the more to the right the selected value is ordered, the more parameters you must specify.
-        * Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        * Examples:
-        * If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
-        * If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
-        * If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
-        * If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        * If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        The value of the `DestinationResource` parameter determines whether you need to specify additional parameters. The following sequence provides the order by which resources are filtered. You cannot query a higher order resource by specifying a lower order resource.
+        *   Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
+        *   Examples:
+        *   If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
+        *   If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
+        *   If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
+        *   If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
+        *   If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16377,14 +16363,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAvailableResourceRequest,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        Values of the `DestinationResource` parameter have dependencies. When you select a value in the following chain for the DestinationResource parameter, the more to the right the selected value is ordered, the more parameters you must specify.
-        * Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        * Examples:
-        * If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
-        * If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
-        * If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
-        * If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        * If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        The value of the `DestinationResource` parameter determines whether you need to specify additional parameters. The following sequence provides the order by which resources are filtered. You cannot query a higher order resource by specifying a lower order resource.
+        *   Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
+        *   Examples:
+        *   If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
+        *   If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
+        *   If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
+        *   If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
+        *   If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -16397,14 +16383,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAvailableResourceRequest,
     ) -> ecs_20140526_models.DescribeAvailableResourceResponse:
         """
-        Values of the `DestinationResource` parameter have dependencies. When you select a value in the following chain for the DestinationResource parameter, the more to the right the selected value is ordered, the more parameters you must specify.
-        * Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
-        * Examples:
-        * If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
-        * If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
-        * If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
-        * If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
-        * If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set `RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large`.
+        The value of the `DestinationResource` parameter determines whether you need to specify additional parameters. The following sequence provides the order by which resources are filtered. You cannot query a higher order resource by specifying a lower order resource.
+        *   Sequence: `Zone > IoOptimized > InstanceType = Network = ddh > SystemDisk > DataDisk`
+        *   Examples:
+        *   If you set `DestinationResource` to `DataDisk`, you must specify the `InstanceType` parameter or set the `ResourceType` parameter to `disk`.
+        *   If you set `DestinationResource` to `SystemDisk`, you must specify the `InstanceType` parameter.
+        *   If you set `DestinationResource` to `InstanceType`, you must specify the `IoOptimized` and `InstanceType` parameters.
+        *   If you want to query available ecs.g5.large resources in all zones of the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to InstanceType, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
+        *   If you want to query the zones where ecs.g5.large resources are available in the China (Hangzhou) region, you must set RegionId to cn-hangzhou, DestinationResource to Zone, IoOptimized to optimized, and InstanceType to ecs.g5.large.``
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -16880,11 +16866,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   This operation applies only to instances in the classic network.
-        *   You can query a maximum of 100 classic network-type instances at a time.
-        *   At least one of `VpcId` and `InstanceId` must be specified.
+        *   This operation applies only to instances that reside in the classic network.
+        *   You can query up to 100 instances that reside in the classic network at a time.
+        *   At least one of the `VpcId` and `InstanceId` parameters must be specified.
         
         @param request: DescribeClassicLinkInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16933,11 +16918,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   This operation applies only to instances in the classic network.
-        *   You can query a maximum of 100 classic network-type instances at a time.
-        *   At least one of `VpcId` and `InstanceId` must be specified.
+        *   This operation applies only to instances that reside in the classic network.
+        *   You can query up to 100 instances that reside in the classic network at a time.
+        *   At least one of the `VpcId` and `InstanceId` parameters must be specified.
         
         @param request: DescribeClassicLinkInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16985,11 +16969,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeClassicLinkInstancesRequest,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   This operation applies only to instances in the classic network.
-        *   You can query a maximum of 100 classic network-type instances at a time.
-        *   At least one of `VpcId` and `InstanceId` must be specified.
+        *   This operation applies only to instances that reside in the classic network.
+        *   You can query up to 100 instances that reside in the classic network at a time.
+        *   At least one of the `VpcId` and `InstanceId` parameters must be specified.
         
         @param request: DescribeClassicLinkInstancesRequest
         @return: DescribeClassicLinkInstancesResponse
@@ -17002,11 +16985,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeClassicLinkInstancesRequest,
     ) -> ecs_20140526_models.DescribeClassicLinkInstancesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   This operation applies only to instances in the classic network.
-        *   You can query a maximum of 100 classic network-type instances at a time.
-        *   At least one of `VpcId` and `InstanceId` must be specified.
+        *   This operation applies only to instances that reside in the classic network.
+        *   You can query up to 100 instances that reside in the classic network at a time.
+        *   At least one of the `VpcId` and `InstanceId` parameters must be specified.
         
         @param request: DescribeClassicLinkInstancesRequest
         @return: DescribeClassicLinkInstancesResponse
@@ -18074,7 +18056,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        ## Description
         For more information about instance families, see [Instance families](~~25378~~).
         
         @param request: DescribeDeploymentSetSupportedInstanceTypeFamilyRequest
@@ -18118,7 +18099,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        ## Description
         For more information about instance families, see [Instance families](~~25378~~).
         
         @param request: DescribeDeploymentSetSupportedInstanceTypeFamilyRequest
@@ -18161,7 +18141,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyRequest,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        ## Description
         For more information about instance families, see [Instance families](~~25378~~).
         
         @param request: DescribeDeploymentSetSupportedInstanceTypeFamilyRequest
@@ -18175,7 +18154,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyRequest,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        ## Description
         For more information about instance families, see [Instance families](~~25378~~).
         
         @param request: DescribeDeploymentSetSupportedInstanceTypeFamilyRequest
@@ -18652,13 +18630,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        ## Description
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (μs), and write latency (μs) of the disk.
+        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
         When you call this operation, take note of the following items:
-        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Basic cloud disk status table](~~25689~~).
-        > Some portion of information may be missing from the monitoring data. This is because the system cannot obtain the relevant information, for example, when the disk is not in the In Use (`In_Use`) state.
-        *   A maximum of 400 entries of data can be returned at a time. That means the value of the following formula cannot be greater than 400: `(EndTime-StartTime)/Period`.
-        *   You can query only the monitoring data within the past 30 days. That means the specified `StartTime` parameter cannot be 30 days later than the current time.
+        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        > Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   You can query the monitoring data in the previous 30 days. If the value of `StartTime` is more than 30 days before the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18707,13 +18684,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        ## Description
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (μs), and write latency (μs) of the disk.
+        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
         When you call this operation, take note of the following items:
-        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Basic cloud disk status table](~~25689~~).
-        > Some portion of information may be missing from the monitoring data. This is because the system cannot obtain the relevant information, for example, when the disk is not in the In Use (`In_Use`) state.
-        *   A maximum of 400 entries of data can be returned at a time. That means the value of the following formula cannot be greater than 400: `(EndTime-StartTime)/Period`.
-        *   You can query only the monitoring data within the past 30 days. That means the specified `StartTime` parameter cannot be 30 days later than the current time.
+        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        > Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   You can query the monitoring data in the previous 30 days. If the value of `StartTime` is more than 30 days before the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18761,13 +18737,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        ## Description
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (μs), and write latency (μs) of the disk.
+        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
         When you call this operation, take note of the following items:
-        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Basic cloud disk status table](~~25689~~).
-        > Some portion of information may be missing from the monitoring data. This is because the system cannot obtain the relevant information, for example, when the disk is not in the In Use (`In_Use`) state.
-        *   A maximum of 400 entries of data can be returned at a time. That means the value of the following formula cannot be greater than 400: `(EndTime-StartTime)/Period`.
-        *   You can query only the monitoring data within the past 30 days. That means the specified `StartTime` parameter cannot be 30 days later than the current time.
+        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        > Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   You can query the monitoring data in the previous 30 days. If the value of `StartTime` is more than 30 days before the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @return: DescribeDiskMonitorDataResponse
@@ -18780,13 +18755,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        ## Description
-        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (μs), and write latency (μs) of the disk.
+        The monitoring data includes read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds) of the disk.
         When you call this operation, take note of the following items:
-        *   You can query the monitoring data only of the disks that are in the In Use (`In_Use`) state. For more information, see [Basic cloud disk status table](~~25689~~).
-        > Some portion of information may be missing from the monitoring data. This is because the system cannot obtain the relevant information, for example, when the disk is not in the In Use (`In_Use`) state.
-        *   A maximum of 400 entries of data can be returned at a time. That means the value of the following formula cannot be greater than 400: `(EndTime-StartTime)/Period`.
-        *   You can query only the monitoring data within the past 30 days. That means the specified `StartTime` parameter cannot be 30 days later than the current time.
+        *   Only the monitoring data of disks that are in the Running (`In_use`) state can be queried. For more information, see [Disk states](~~25689~~).
+        > Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_Use`) state and the system cannot obtain the relevant information.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   You can query the monitoring data in the previous 30 days. If the value of `StartTime` is more than 30 days before the current time, an error is returned.
         
         @param request: DescribeDiskMonitorDataRequest
         @return: DescribeDiskMonitorDataResponse
@@ -19056,8 +19030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
         """
-        ## Description
-        *   The full status information of an EBS device includes the lifecycle status specified by the `Status` parameter, health status specified by the `HealthStatus` parameter, and event type specified by the `EventType` parameter of the EBS device.
+        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
         *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
         
         @param request: DescribeDisksFullStatusRequest
@@ -19123,8 +19096,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
         """
-        ## Description
-        *   The full status information of an EBS device includes the lifecycle status specified by the `Status` parameter, health status specified by the `HealthStatus` parameter, and event type specified by the `EventType` parameter of the EBS device.
+        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
         *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
         
         @param request: DescribeDisksFullStatusRequest
@@ -19189,8 +19161,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDisksFullStatusRequest,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
         """
-        ## Description
-        *   The full status information of an EBS device includes the lifecycle status specified by the `Status` parameter, health status specified by the `HealthStatus` parameter, and event type specified by the `EventType` parameter of the EBS device.
+        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
         *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
         
         @param request: DescribeDisksFullStatusRequest
@@ -19204,8 +19175,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDisksFullStatusRequest,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
         """
-        ## Description
-        *   The full status information of an EBS device includes the lifecycle status specified by the `Status` parameter, health status specified by the `HealthStatus` parameter, and event type specified by the `EventType` parameter of the EBS device.
+        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
         *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
         
         @param request: DescribeDisksFullStatusRequest
@@ -19512,8 +19482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        ## Description
-        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. In this case, when you call this operation to query the expired elasticity assurance, no value is returned.
+        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. If you call this operation to query the expired elasticity assurance, no value is returned.
         
         @param request: DescribeElasticityAssuranceInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19562,8 +19531,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        ## Description
-        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. In this case, when you call this operation to query the expired elasticity assurance, no value is returned.
+        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. If you call this operation to query the expired elasticity assurance, no value is returned.
         
         @param request: DescribeElasticityAssuranceInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19611,8 +19579,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeElasticityAssuranceInstancesRequest,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        ## Description
-        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. In this case, when you call this operation to query the expired elasticity assurance, no value is returned.
+        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. If you call this operation to query the expired elasticity assurance, no value is returned.
         
         @param request: DescribeElasticityAssuranceInstancesRequest
         @return: DescribeElasticityAssuranceInstancesResponse
@@ -19625,8 +19592,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeElasticityAssuranceInstancesRequest,
     ) -> ecs_20140526_models.DescribeElasticityAssuranceInstancesResponse:
         """
-        ## Description
-        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. In this case, when you call this operation to query the expired elasticity assurance, no value is returned.
+        When an elasticity assurance expires, data about the association between instances and the private pool generated by the elasticity assurance becomes invalid. If you call this operation to query the expired elasticity assurance, no value is returned.
         
         @param request: DescribeElasticityAssuranceInstancesRequest
         @return: DescribeElasticityAssuranceInstancesResponse
@@ -21240,8 +21206,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure a private pool when you create an ECS instance, so that the instance can match the corresponding elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with the attributes of matching instances. You can configure a private pool when you create an instance, so that the instance matches the elasticity assurance or capacity reservation that is associated with the private pool.
         When a private pool expires, data about the association between instances and the private pool becomes invalid. In this case, a call to this operation returns empty values related to private pools.
         
         @param request: DescribeInstanceAttachmentAttributesRequest
@@ -21291,8 +21256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure a private pool when you create an ECS instance, so that the instance can match the corresponding elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with the attributes of matching instances. You can configure a private pool when you create an instance, so that the instance matches the elasticity assurance or capacity reservation that is associated with the private pool.
         When a private pool expires, data about the association between instances and the private pool becomes invalid. In this case, a call to this operation returns empty values related to private pools.
         
         @param request: DescribeInstanceAttachmentAttributesRequest
@@ -21341,8 +21305,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAttachmentAttributesRequest,
     ) -> ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure a private pool when you create an ECS instance, so that the instance can match the corresponding elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with the attributes of matching instances. You can configure a private pool when you create an instance, so that the instance matches the elasticity assurance or capacity reservation that is associated with the private pool.
         When a private pool expires, data about the association between instances and the private pool becomes invalid. In this case, a call to this operation returns empty values related to private pools.
         
         @param request: DescribeInstanceAttachmentAttributesRequest
@@ -21356,8 +21319,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAttachmentAttributesRequest,
     ) -> ecs_20140526_models.DescribeInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure a private pool when you create an ECS instance, so that the instance can match the corresponding elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with the attributes of matching instances. You can configure a private pool when you create an instance, so that the instance matches the elasticity assurance or capacity reservation that is associated with the private pool.
         When a private pool expires, data about the association between instances and the private pool becomes invalid. In this case, a call to this operation returns empty values related to private pools.
         
         @param request: DescribeInstanceAttachmentAttributesRequest
@@ -21488,9 +21450,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        *   Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
-        *   This operation is applicable only to subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
+        Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
+        *   This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
         
         @param request: DescribeInstanceAutoRenewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21541,9 +21502,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        *   Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
-        *   This operation is applicable only to subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
+        Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
+        *   This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
         
         @param request: DescribeInstanceAutoRenewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21593,9 +21553,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        *   Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
-        *   This operation is applicable only to subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
+        Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
+        *   This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
         
         @param request: DescribeInstanceAutoRenewAttributeRequest
         @return: DescribeInstanceAutoRenewAttributeResponse
@@ -21608,9 +21567,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.DescribeInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        *   Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
-        *   This operation is applicable only to subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
+        Before you configure auto-renewal or manual renewal for subscription instances, you can query the auto-renewal status of the instances.
+        *   This operation is applicable to only subscription instances. An error is returned if you call this operation on pay-as-you-go instances.
         
         @param request: DescribeInstanceAutoRenewAttributeRequest
         @return: DescribeInstanceAutoRenewAttributeResponse
@@ -21624,8 +21582,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        ## Description
-        *   You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
+        You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
         *   You can also specify the InstanceEventCycleStatus.N parameter to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
@@ -21701,8 +21658,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        ## Description
-        *   You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
+        You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
         *   You can also specify the InstanceEventCycleStatus.N parameter to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
@@ -21777,8 +21733,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceHistoryEventsRequest,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        ## Description
-        *   You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
+        You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
         *   You can also specify the InstanceEventCycleStatus.N parameter to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
@@ -21792,8 +21747,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceHistoryEventsRequest,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        ## Description
-        *   You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
+        You can query system events that were finished within the last 30 days. The time range for querying unfinished system events is unlimited.
         *   You can also specify the InstanceEventCycleStatus.N parameter to query the system events that are in the Scheduled, Executing, or Inquiring state.
         
         @param request: DescribeInstanceHistoryEventsRequest
@@ -21808,10 +21762,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse:
         """
-        ## Description
-        This operation is used to query the specified maintenance policy of an instance, which contains the following two major maintenance properties:
+        This operation is used to query the specified maintenance policy of an instance, which contains the following maintenance attributes:
         *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the policy that you specify in response to instance shutdown.
+        *   Maintenance action: the action that you specify in response to instance shutdown.
         
         @param request: DescribeInstanceMaintenanceAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21860,10 +21813,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse:
         """
-        ## Description
-        This operation is used to query the specified maintenance policy of an instance, which contains the following two major maintenance properties:
+        This operation is used to query the specified maintenance policy of an instance, which contains the following maintenance attributes:
         *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the policy that you specify in response to instance shutdown.
+        *   Maintenance action: the action that you specify in response to instance shutdown.
         
         @param request: DescribeInstanceMaintenanceAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21911,10 +21863,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceMaintenanceAttributesRequest,
     ) -> ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse:
         """
-        ## Description
-        This operation is used to query the specified maintenance policy of an instance, which contains the following two major maintenance properties:
+        This operation is used to query the specified maintenance policy of an instance, which contains the following maintenance attributes:
         *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the policy that you specify in response to instance shutdown.
+        *   Maintenance action: the action that you specify in response to instance shutdown.
         
         @param request: DescribeInstanceMaintenanceAttributesRequest
         @return: DescribeInstanceMaintenanceAttributesResponse
@@ -21927,10 +21878,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceMaintenanceAttributesRequest,
     ) -> ecs_20140526_models.DescribeInstanceMaintenanceAttributesResponse:
         """
-        ## Description
-        This operation is used to query the specified maintenance policy of an instance, which contains the following two major maintenance properties:
+        This operation is used to query the specified maintenance policy of an instance, which contains the following maintenance attributes:
         *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the policy that you specify in response to instance shutdown.
+        *   Maintenance action: the action that you specify in response to instance shutdown.
         
         @param request: DescribeInstanceMaintenanceAttributesRequest
         @return: DescribeInstanceMaintenanceAttributesResponse
@@ -22084,9 +22034,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime − StartTime)/Period`.
         *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
         *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
         
@@ -22137,9 +22086,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime − StartTime)/Period`.
         *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
         *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
         
@@ -22189,9 +22137,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime − StartTime)/Period`.
         *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
         *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
         
@@ -22206,9 +22153,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeInstanceMonitorDataResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime - StartTime)/Period`.
+        *   Up to 400 monitoring data entries can be returned at a time. An error is returned if the value calculated based on the following formula is greater than 400: `(EndTime − StartTime)/Period`.
         *   You can query the monitoring data of the last 30 days. If the value of the `StartTime` parameter is more than 30 days earlier than the current time, an error is returned.
         *   In some scenarios, such as when the instance is in the Stopped state, the system cannot obtain the relevant information and a portion may be missing from the returned monitoring data.
         
@@ -22224,7 +22170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceRamRoleResponse:
         """
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [CLI parameter format](~~110340~~).
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeInstanceRamRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22273,7 +22219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceRamRoleResponse:
         """
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [CLI parameter format](~~110340~~).
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeInstanceRamRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22321,7 +22267,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceRamRoleRequest,
     ) -> ecs_20140526_models.DescribeInstanceRamRoleResponse:
         """
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [CLI parameter format](~~110340~~).
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeInstanceRamRoleRequest
         @return: DescribeInstanceRamRoleResponse
@@ -22334,7 +22280,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceRamRoleRequest,
     ) -> ecs_20140526_models.DescribeInstanceRamRoleResponse:
         """
-        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [CLI parameter format](~~110340~~).
+        When you call an API operation by using Alibaba Cloud CLI, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeInstanceRamRoleRequest
         @return: DescribeInstanceRamRoleResponse
@@ -22686,11 +22632,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
+        ## Description
         Before you call this operation, take note of the following items:
-        * As of November 15, 2023, the maximum value of MaxResults is 100, instead of 1600. MaxResults specifies the maximum number of entries to return on each page. When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278).
-        * We recommend that you set the MaxResults and NextToken parameters to retrieve paginated responses. The first time you call the DescribeInstanceTypes operation, set MaxResults to specify the maximum number of entries to return in the response. If the number of entries to return exceeds the specified MaxResults value, the response is truncated and includes a NextToken value. You can set NextToken to this return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        * The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        * To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
+        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
+        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
+        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
         
         @param request: DescribeInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22805,11 +22752,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
+        ## Description
         Before you call this operation, take note of the following items:
-        * As of November 15, 2023, the maximum value of MaxResults is 100, instead of 1600. MaxResults specifies the maximum number of entries to return on each page. When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278).
-        * We recommend that you set the MaxResults and NextToken parameters to retrieve paginated responses. The first time you call the DescribeInstanceTypes operation, set MaxResults to specify the maximum number of entries to return in the response. If the number of entries to return exceeds the specified MaxResults value, the response is truncated and includes a NextToken value. You can set NextToken to this return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        * The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        * To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
+        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
+        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
+        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
         
         @param request: DescribeInstanceTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22923,11 +22871,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
+        ## Description
         Before you call this operation, take note of the following items:
-        * As of November 15, 2023, the maximum value of MaxResults is 100, instead of 1600. MaxResults specifies the maximum number of entries to return on each page. When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278).
-        * We recommend that you set the MaxResults and NextToken parameters to retrieve paginated responses. The first time you call the DescribeInstanceTypes operation, set MaxResults to specify the maximum number of entries to return in the response. If the number of entries to return exceeds the specified MaxResults value, the response is truncated and includes a NextToken value. You can set NextToken to this return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        * The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        * To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
+        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
+        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
+        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
         
         @param request: DescribeInstanceTypesRequest
         @return: DescribeInstanceTypesResponse
@@ -22940,11 +22889,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         """
+        ## Description
         Before you call this operation, take note of the following items:
-        * As of November 15, 2023, the maximum value of MaxResults is 100, instead of 1600. MaxResults specifies the maximum number of entries to return on each page. When you call this operation, if you do not set NextToken to paginate the results, only the first page of results is returned by default and includes a maximum of 100 entries. To retrieve further pages of results, set NextToken or pass filter conditions in your requests to DescribeInstanceTypes. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278).
-        * We recommend that you set the MaxResults and NextToken parameters to retrieve paginated responses. The first time you call the DescribeInstanceTypes operation, set MaxResults to specify the maximum number of entries to return in the response. If the number of entries to return exceeds the specified MaxResults value, the response is truncated and includes a NextToken value. You can set NextToken to this return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        * The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        * To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
+        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
+        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
+        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
+        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
         
         @param request: DescribeInstanceTypesRequest
         @return: DescribeInstanceTypesResponse
@@ -23550,9 +23500,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstancesFullStatusResponse:
         """
-        ## Description
-        The response includes the instance status and the instance system events in the Scheduled state.
-        If a period is specified, all the events within the period are queried.
+        The response includes instance states and instance system events in the Scheduled state.
+        If a period is specified, events are queried based on the specified period.
         
         @param request: DescribeInstancesFullStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23617,9 +23566,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstancesFullStatusResponse:
         """
-        ## Description
-        The response includes the instance status and the instance system events in the Scheduled state.
-        If a period is specified, all the events within the period are queried.
+        The response includes instance states and instance system events in the Scheduled state.
+        If a period is specified, events are queried based on the specified period.
         
         @param request: DescribeInstancesFullStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23683,9 +23631,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstancesFullStatusRequest,
     ) -> ecs_20140526_models.DescribeInstancesFullStatusResponse:
         """
-        ## Description
-        The response includes the instance status and the instance system events in the Scheduled state.
-        If a period is specified, all the events within the period are queried.
+        The response includes instance states and instance system events in the Scheduled state.
+        If a period is specified, events are queried based on the specified period.
         
         @param request: DescribeInstancesFullStatusRequest
         @return: DescribeInstancesFullStatusResponse
@@ -23698,9 +23645,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstancesFullStatusRequest,
     ) -> ecs_20140526_models.DescribeInstancesFullStatusResponse:
         """
-        ## Description
-        The response includes the instance status and the instance system events in the Scheduled state.
-        If a period is specified, all the events within the period are queried.
+        The response includes instance states and instance system events in the Scheduled state.
+        If a period is specified, events are queried based on the specified period.
         
         @param request: DescribeInstancesFullStatusRequest
         @return: DescribeInstancesFullStatusResponse
@@ -23878,9 +23824,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        ## Description
-        *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
-        *   You can query the information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
+        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
+        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23953,9 +23898,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        ## Description
-        *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
-        *   You can query the information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
+        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
+        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24027,9 +23971,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationsRequest,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        ## Description
-        *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
-        *   You can query the information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
+        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
+        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -24042,9 +23985,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationsRequest,
     ) -> ecs_20140526_models.DescribeInvocationsResponse:
         """
-        ## Description
-        *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
-        *   You can query the information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
+        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution results.
+        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -24539,6 +24481,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -24591,6 +24535,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -24970,8 +24916,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        The `DescribeNetworkInterfaces` operation supports paged query. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system uses a paged query method defined by `PageNumber` and `PageSize` to return results.
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to limit the maximum number of entries to return in this call.
+        > If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to retrieve results. If you specify neither of MaxResults and NextToken, the system returns paginated results based on the `PageNumber` and `PageSize` parameters.
         
         @param request: DescribeNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25054,8 +25000,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        The `DescribeNetworkInterfaces` operation supports paged query. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system uses a paged query method defined by `PageNumber` and `PageSize` to return results.
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to limit the maximum number of entries to return in this call.
+        > If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to retrieve results. If you specify neither of MaxResults and NextToken, the system returns paginated results based on the `PageNumber` and `PageSize` parameters.
         
         @param request: DescribeNetworkInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25137,8 +25083,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        The `DescribeNetworkInterfaces` operation supports paged query. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system uses a paged query method defined by `PageNumber` and `PageSize` to return results.
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to limit the maximum number of entries to return in this call.
+        > If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to retrieve results. If you specify neither of MaxResults and NextToken, the system returns paginated results based on the `PageNumber` and `PageSize` parameters.
         
         @param request: DescribeNetworkInterfacesRequest
         @return: DescribeNetworkInterfacesResponse
@@ -25151,8 +25097,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
         """
-        The `DescribeNetworkInterfaces` operation supports paged query. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to specify the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        >  If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to return results. Otherwise, the system uses a paged query method defined by `PageNumber` and `PageSize` to return results.
+        The `DescribeNetworkInterfaces` operation supports paged queries. During a paged query, when you call the DescribeNetworkInterfaces operation to retrieve the first page of results, set `MaxResults` to limit the maximum number of entries to return in the call. The return value of `NextToken` is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeNetworkInterfaces operation to retrieve a new page of results, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to limit the maximum number of entries to return in this call.
+        > If you specify `MaxResults` or `NextToken`, the system uses the preceding paged query method to retrieve results. If you specify neither of MaxResults and NextToken, the system returns paginated results based on the `PageNumber` and `PageSize` parameters.
         
         @param request: DescribeNetworkInterfacesRequest
         @return: DescribeNetworkInterfacesResponse
@@ -26426,6 +26372,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_renewal_price_with_options_async(request, runtime)
 
+    def describe_reserved_instance_auto_renew_attribute_with_options(
+        self,
+        request: ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_instance_id):
+            query['ReservedInstanceId'] = request.reserved_instance_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReservedInstanceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_reserved_instance_auto_renew_attribute_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_instance_id):
+            query['ReservedInstanceId'] = request.reserved_instance_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReservedInstanceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_reserved_instance_auto_renew_attribute(
+        self,
+        request: ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_reserved_instance_auto_renew_attribute_with_options(request, runtime)
+
+    async def describe_reserved_instance_auto_renew_attribute_async(
+        self,
+        request: ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.DescribeReservedInstanceAutoRenewAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_reserved_instance_auto_renew_attribute_with_options_async(request, runtime)
+
     def describe_reserved_instances_with_options(
         self,
         request: ecs_20140526_models.DescribeReservedInstancesRequest,
@@ -27157,9 +27193,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
         When you call this operation, take note of the following items:
-        * Authorization for security groups includes authorization for inbound and outbound traffic.
-        * A maximum of 100 authorization entries can be returned each time.
-        * When you fail to delete a security group ([DeleteSecurityGroup](~~25558~~)), you can call the DescribeSecurityGroupReferences operation to query whether the specified security group is referenced by other security groups. If the security group is referenced by other security groups, you must revoke the reference before the security group can be deleted.
+        *   A security group can be referenced by the inbound or outbound rules of other security groups.
+        *   Up to 100 entries can be returned each time.
+        *   If a security group cannot be deleted by calling the [DeleteSecurityGroup](~~25558~~) operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by the rules of other security groups. If the security group is referenced by the rules of other security groups, you must remove the reference before you can delete the security group.
         
         @param request: DescribeSecurityGroupReferencesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27205,9 +27241,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
         When you call this operation, take note of the following items:
-        * Authorization for security groups includes authorization for inbound and outbound traffic.
-        * A maximum of 100 authorization entries can be returned each time.
-        * When you fail to delete a security group ([DeleteSecurityGroup](~~25558~~)), you can call the DescribeSecurityGroupReferences operation to query whether the specified security group is referenced by other security groups. If the security group is referenced by other security groups, you must revoke the reference before the security group can be deleted.
+        *   A security group can be referenced by the inbound or outbound rules of other security groups.
+        *   Up to 100 entries can be returned each time.
+        *   If a security group cannot be deleted by calling the [DeleteSecurityGroup](~~25558~~) operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by the rules of other security groups. If the security group is referenced by the rules of other security groups, you must remove the reference before you can delete the security group.
         
         @param request: DescribeSecurityGroupReferencesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27252,9 +27288,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
         When you call this operation, take note of the following items:
-        * Authorization for security groups includes authorization for inbound and outbound traffic.
-        * A maximum of 100 authorization entries can be returned each time.
-        * When you fail to delete a security group ([DeleteSecurityGroup](~~25558~~)), you can call the DescribeSecurityGroupReferences operation to query whether the specified security group is referenced by other security groups. If the security group is referenced by other security groups, you must revoke the reference before the security group can be deleted.
+        *   A security group can be referenced by the inbound or outbound rules of other security groups.
+        *   Up to 100 entries can be returned each time.
+        *   If a security group cannot be deleted by calling the [DeleteSecurityGroup](~~25558~~) operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by the rules of other security groups. If the security group is referenced by the rules of other security groups, you must remove the reference before you can delete the security group.
         
         @param request: DescribeSecurityGroupReferencesRequest
         @return: DescribeSecurityGroupReferencesResponse
@@ -27268,9 +27304,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
         When you call this operation, take note of the following items:
-        * Authorization for security groups includes authorization for inbound and outbound traffic.
-        * A maximum of 100 authorization entries can be returned each time.
-        * When you fail to delete a security group ([DeleteSecurityGroup](~~25558~~)), you can call the DescribeSecurityGroupReferences operation to query whether the specified security group is referenced by other security groups. If the security group is referenced by other security groups, you must revoke the reference before the security group can be deleted.
+        *   A security group can be referenced by the inbound or outbound rules of other security groups.
+        *   Up to 100 entries can be returned each time.
+        *   If a security group cannot be deleted by calling the [DeleteSecurityGroup](~~25558~~) operation, you can call the DescribeSecurityGroupReferences operation to check whether the security group is referenced by the rules of other security groups. If the security group is referenced by the rules of other security groups, you must remove the reference before you can delete the security group.
         
         @param request: DescribeSecurityGroupReferencesRequest
         @return: DescribeSecurityGroupReferencesResponse
@@ -27285,9 +27321,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
         Before you call this operation, take note of the following items:
-        * The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
-        * We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        * When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
+        *   We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27361,9 +27397,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
         Before you call this operation, take note of the following items:
-        * The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
-        * We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        * When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
+        *   We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27436,9 +27472,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
         Before you call this operation, take note of the following items:
-        * The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
-        * We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        * When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
+        *   We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @return: DescribeSecurityGroupsResponse
@@ -27452,9 +27488,9 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeSecurityGroupsResponse:
         """
         Before you call this operation, take note of the following items:
-        * The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
-        * We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
-        * When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
+        *   The basic information of security groups includes their IDs and descriptions. In the response, security groups are displayed in descending order of their IDs.
+        *   We recommend that you use the NextToken and MaxResults parameters for a paged query. During a paged query, when you call the DescribeSecurityGroups operation to retrieve the first page of results, set MaxResults to specify the maximum number of entries to return in the call. The return value of NextToken is a pagination token, which can be used in the next call to retrieve a new page of results. When you call the DescribeSecurityGroups operation to retrieve a new page of results, set NextToken to the NextToken value returned in the previous call and set MaxResults to specify the maximum number of entries to return in this call. If the return value of NextToken is empty, the current page of results is the last page and no more results are to be returned.
+        *   When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
         @param request: DescribeSecurityGroupsRequest
         @return: DescribeSecurityGroupsResponse
@@ -27768,7 +27804,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
         *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
@@ -27824,7 +27859,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
         *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
@@ -27879,7 +27913,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
         *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
@@ -27895,7 +27928,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
         *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
@@ -27912,10 +27944,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        ## Description
-        When you call this operation, take note of the following points:
-        *   A maximum of 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is more than 400, an error is returned.
-        *   You can query monitoring data from up to the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        When you call this operation, take note of the following items:
+        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
+        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than when you call this operation, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27966,10 +27997,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        ## Description
-        When you call this operation, take note of the following points:
-        *   A maximum of 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is more than 400, an error is returned.
-        *   You can query monitoring data from up to the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        When you call this operation, take note of the following items:
+        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
+        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than when you call this operation, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28019,10 +28049,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        ## Description
-        When you call this operation, take note of the following points:
-        *   A maximum of 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is more than 400, an error is returned.
-        *   You can query monitoring data from up to the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        When you call this operation, take note of the following items:
+        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
+        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than when you call this operation, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @return: DescribeSnapshotMonitorDataResponse
@@ -28035,10 +28064,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeSnapshotMonitorDataResponse:
         """
-        ## Description
-        When you call this operation, take note of the following points:
-        *   A maximum of 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is more than 400, an error is returned.
-        *   You can query monitoring data from up to the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
+        When you call this operation, take note of the following items:
+        *   Up to 400 entries of monitoring data can be returned at a time. If the result of the `(EndTime - StartTime)/Period` formula is greater than 400, an error is returned.
+        *   Only the monitored data within the last 30 days can be queried. If the value of `StartTime` is more than 30 days earlier than when you call this operation, an error is returned.
         
         @param request: DescribeSnapshotMonitorDataRequest
         @return: DescribeSnapshotMonitorDataResponse
@@ -28146,7 +28174,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        ## Description
         You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
@@ -28231,7 +28258,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        ## Description
         You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
@@ -28315,7 +28341,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotsRequest,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        ## Description
         You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
@@ -28330,7 +28355,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotsRequest,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        ## Description
         You can specify multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](~~110340~~).
         
@@ -29110,7 +29134,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
-        ## Description
         If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
         @param request: DescribeTagsRequest
@@ -29164,7 +29187,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
-        ## Description
         If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
         @param request: DescribeTagsRequest
@@ -29217,7 +29239,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeTagsRequest,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
-        ## Description
         If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
         @param request: DescribeTagsRequest
@@ -29231,7 +29252,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeTagsRequest,
     ) -> ecs_20140526_models.DescribeTagsResponse:
         """
-        ## Description
         If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
         
         @param request: DescribeTagsRequest
@@ -30560,13 +30580,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following limits:
-        *   The disk must be attached to an ECS instance and in the In Use (`In_Use`) state.
-        *   The instance from which you want to detach the data disk must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   The instance from which you want to detach the system disk must be in the **Stopped** (`Stopped`) state.
-        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query information of an instance, the instance is locked for security reasons and all operations cannot take effect on the instance.
-        *   DetachDisk is an asynchronous operation. It takes about 1 minute for a disk to be detached from an instance after the operation is called.
+        When you call this operation, take note of the following items:
+        *   The disk you want to detach must be in the Running (`In_Use`) state.
+        *   The instance from which you want to detach a data disk must be in the `Running` or `Stopped`state.********\
+        *   The instance from which you want to detach the system disk must be in the `Stopped` state.****\
+        *   If the `OperationLocks` parameter in the response contains `"LockReason" : "security"` when you query the instance information, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   DetachDisk is an asynchronous operation. It takes about one minute for a disk to be detached from an instance after the operation is called.
         
         @param request: DetachDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30613,13 +30632,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following limits:
-        *   The disk must be attached to an ECS instance and in the In Use (`In_Use`) state.
-        *   The instance from which you want to detach the data disk must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   The instance from which you want to detach the system disk must be in the **Stopped** (`Stopped`) state.
-        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query information of an instance, the instance is locked for security reasons and all operations cannot take effect on the instance.
-        *   DetachDisk is an asynchronous operation. It takes about 1 minute for a disk to be detached from an instance after the operation is called.
+        When you call this operation, take note of the following items:
+        *   The disk you want to detach must be in the Running (`In_Use`) state.
+        *   The instance from which you want to detach a data disk must be in the `Running` or `Stopped`state.********\
+        *   The instance from which you want to detach the system disk must be in the `Stopped` state.****\
+        *   If the `OperationLocks` parameter in the response contains `"LockReason" : "security"` when you query the instance information, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   DetachDisk is an asynchronous operation. It takes about one minute for a disk to be detached from an instance after the operation is called.
         
         @param request: DetachDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30665,13 +30683,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachDiskRequest,
     ) -> ecs_20140526_models.DetachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following limits:
-        *   The disk must be attached to an ECS instance and in the In Use (`In_Use`) state.
-        *   The instance from which you want to detach the data disk must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   The instance from which you want to detach the system disk must be in the **Stopped** (`Stopped`) state.
-        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query information of an instance, the instance is locked for security reasons and all operations cannot take effect on the instance.
-        *   DetachDisk is an asynchronous operation. It takes about 1 minute for a disk to be detached from an instance after the operation is called.
+        When you call this operation, take note of the following items:
+        *   The disk you want to detach must be in the Running (`In_Use`) state.
+        *   The instance from which you want to detach a data disk must be in the `Running` or `Stopped`state.********\
+        *   The instance from which you want to detach the system disk must be in the `Stopped` state.****\
+        *   If the `OperationLocks` parameter in the response contains `"LockReason" : "security"` when you query the instance information, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   DetachDisk is an asynchronous operation. It takes about one minute for a disk to be detached from an instance after the operation is called.
         
         @param request: DetachDiskRequest
         @return: DetachDiskResponse
@@ -30684,13 +30701,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachDiskRequest,
     ) -> ecs_20140526_models.DetachDiskResponse:
         """
-        ## Description
-        When you call this operation, take note of the following limits:
-        *   The disk must be attached to an ECS instance and in the In Use (`In_Use`) state.
-        *   The instance from which you want to detach the data disk must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   The instance from which you want to detach the system disk must be in the **Stopped** (`Stopped`) state.
-        *   If `OperationLocks` in the response contains `"LockReason" : "security"` when you query information of an instance, the instance is locked for security reasons and all operations cannot take effect on the instance.
-        *   DetachDisk is an asynchronous operation. It takes about 1 minute for a disk to be detached from an instance after the operation is called.
+        When you call this operation, take note of the following items:
+        *   The disk you want to detach must be in the Running (`In_Use`) state.
+        *   The instance from which you want to detach a data disk must be in the `Running` or `Stopped`state.********\
+        *   The instance from which you want to detach the system disk must be in the `Stopped` state.****\
+        *   If the `OperationLocks` parameter in the response contains `"LockReason" : "security"` when you query the instance information, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        *   DetachDisk is an asynchronous operation. It takes about one minute for a disk to be detached from an instance after the operation is called.
         
         @param request: DetachDiskRequest
         @return: DetachDiskResponse
@@ -30794,10 +30810,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   After you unbind an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the unbind operation to take effect.
-        *   By default, the username and password authentication is used for an instance after you unbind an SSH key pair from the instance.
+        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
+        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
         
         @param request: DetachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30842,10 +30857,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   After you unbind an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the unbind operation to take effect.
-        *   By default, the username and password authentication is used for an instance after you unbind an SSH key pair from the instance.
+        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
+        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
         
         @param request: DetachKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30889,10 +30903,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachKeyPairRequest,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   After you unbind an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the unbind operation to take effect.
-        *   By default, the username and password authentication is used for an instance after you unbind an SSH key pair from the instance.
+        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
+        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
         
         @param request: DetachKeyPairRequest
         @return: DetachKeyPairResponse
@@ -30905,10 +30918,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachKeyPairRequest,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   After you unbind an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the unbind operation to take effect.
-        *   By default, the username and password authentication is used for an instance after you unbind an SSH key pair from the instance.
+        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
+        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
         
         @param request: DetachKeyPairRequest
         @return: DetachKeyPairResponse
@@ -32258,11 +32270,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
         """
-        ## Description
         ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
         *   The instance must be in the Running state.
-        *   For instances of the retired instance types, you cannot obtain the screenshot information. For more information, see [Retired instance types](~~55263~~).
-        *   If you call this operation in the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
+        *   For instances of the retired instance types, you cannot obtain screenshots. For more information, see [Retired instance types](~~55263~~).
+        *   If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
         
         @param request: GetInstanceScreenshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32311,11 +32322,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
         """
-        ## Description
         ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
         *   The instance must be in the Running state.
-        *   For instances of the retired instance types, you cannot obtain the screenshot information. For more information, see [Retired instance types](~~55263~~).
-        *   If you call this operation in the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
+        *   For instances of the retired instance types, you cannot obtain screenshots. For more information, see [Retired instance types](~~55263~~).
+        *   If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
         
         @param request: GetInstanceScreenshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32363,11 +32373,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceScreenshotRequest,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
         """
-        ## Description
         ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
         *   The instance must be in the Running state.
-        *   For instances of the retired instance types, you cannot obtain the screenshot information. For more information, see [Retired instance types](~~55263~~).
-        *   If you call this operation in the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
+        *   For instances of the retired instance types, you cannot obtain screenshots. For more information, see [Retired instance types](~~55263~~).
+        *   If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
         
         @param request: GetInstanceScreenshotRequest
         @return: GetInstanceScreenshotResponse
@@ -32380,11 +32389,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceScreenshotRequest,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
         """
-        ## Description
         ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
         *   The instance must be in the Running state.
-        *   For instances of the retired instance types, you cannot obtain the screenshot information. For more information, see [Retired instance types](~~55263~~).
-        *   If you call this operation in the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
+        *   For instances of the retired instance types, you cannot obtain screenshots. For more information, see [Retired instance types](~~55263~~).
+        *   If you call this operation on the same instance for multiple times, the call interval must be at least 10 seconds. Otherwise, the `Throttling` error code is returned.
         
         @param request: GetInstanceScreenshotRequest
         @return: GetInstanceScreenshotResponse
@@ -32774,22 +32782,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   A maximum of 500 key pairs can be created in each region.
-        *   The key pair to be imported must support one of the following encryption methods:
-        *   rsa
-        *   dsa
-        *   ssh-rsa
-        *   ssh-dss
-        *   ecdsa
-        *   ssh-rsa-cert-v00@openssh.com
-        *   ssh-dss-cert-v00@openssh.com
-        *   ssh-rsa-cert-v01@openssh.com
-        *   ssh-dss-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp256-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp384-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp521-cert-v01@openssh.com
+        * A maximum of 500 key pairs can be created in each region.
+        * The key pair that you wan to import must support one of the following encryption methods:
+        * rsa
+        * dsa
+        * ssh-rsa
+        * ssh-dss
+        * ecdsa
+        * ssh-rsa-cert-v00@openssh.com
+        * ssh-dss-cert-v00@openssh.com
+        * ssh-rsa-cert-v01@openssh.com
+        * ssh-dss-cert-v01@openssh.com
+        * ecdsa-sha2-nistp256-cert-v01@openssh.com
+        * ecdsa-sha2-nistp384-cert-v01@openssh.com
+        * ecdsa-sha2-nistp521-cert-v01@openssh.com
         
         @param request: ImportKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32838,22 +32845,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   A maximum of 500 key pairs can be created in each region.
-        *   The key pair to be imported must support one of the following encryption methods:
-        *   rsa
-        *   dsa
-        *   ssh-rsa
-        *   ssh-dss
-        *   ecdsa
-        *   ssh-rsa-cert-v00@openssh.com
-        *   ssh-dss-cert-v00@openssh.com
-        *   ssh-rsa-cert-v01@openssh.com
-        *   ssh-dss-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp256-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp384-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp521-cert-v01@openssh.com
+        * A maximum of 500 key pairs can be created in each region.
+        * The key pair that you wan to import must support one of the following encryption methods:
+        * rsa
+        * dsa
+        * ssh-rsa
+        * ssh-dss
+        * ecdsa
+        * ssh-rsa-cert-v00@openssh.com
+        * ssh-dss-cert-v00@openssh.com
+        * ssh-rsa-cert-v01@openssh.com
+        * ssh-dss-cert-v01@openssh.com
+        * ecdsa-sha2-nistp256-cert-v01@openssh.com
+        * ecdsa-sha2-nistp384-cert-v01@openssh.com
+        * ecdsa-sha2-nistp521-cert-v01@openssh.com
         
         @param request: ImportKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32901,22 +32907,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportKeyPairRequest,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   A maximum of 500 key pairs can be created in each region.
-        *   The key pair to be imported must support one of the following encryption methods:
-        *   rsa
-        *   dsa
-        *   ssh-rsa
-        *   ssh-dss
-        *   ecdsa
-        *   ssh-rsa-cert-v00@openssh.com
-        *   ssh-dss-cert-v00@openssh.com
-        *   ssh-rsa-cert-v01@openssh.com
-        *   ssh-dss-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp256-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp384-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp521-cert-v01@openssh.com
+        * A maximum of 500 key pairs can be created in each region.
+        * The key pair that you wan to import must support one of the following encryption methods:
+        * rsa
+        * dsa
+        * ssh-rsa
+        * ssh-dss
+        * ecdsa
+        * ssh-rsa-cert-v00@openssh.com
+        * ssh-dss-cert-v00@openssh.com
+        * ssh-rsa-cert-v01@openssh.com
+        * ssh-dss-cert-v01@openssh.com
+        * ecdsa-sha2-nistp256-cert-v01@openssh.com
+        * ecdsa-sha2-nistp384-cert-v01@openssh.com
+        * ecdsa-sha2-nistp521-cert-v01@openssh.com
         
         @param request: ImportKeyPairRequest
         @return: ImportKeyPairResponse
@@ -32929,22 +32934,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportKeyPairRequest,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   A maximum of 500 key pairs can be created in each region.
-        *   The key pair to be imported must support one of the following encryption methods:
-        *   rsa
-        *   dsa
-        *   ssh-rsa
-        *   ssh-dss
-        *   ecdsa
-        *   ssh-rsa-cert-v00@openssh.com
-        *   ssh-dss-cert-v00@openssh.com
-        *   ssh-rsa-cert-v01@openssh.com
-        *   ssh-dss-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp256-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp384-cert-v01@openssh.com
-        *   ecdsa-sha2-nistp521-cert-v01@openssh.com
+        * A maximum of 500 key pairs can be created in each region.
+        * The key pair that you wan to import must support one of the following encryption methods:
+        * rsa
+        * dsa
+        * ssh-rsa
+        * ssh-dss
+        * ecdsa
+        * ssh-rsa-cert-v00@openssh.com
+        * ssh-dss-cert-v00@openssh.com
+        * ssh-rsa-cert-v01@openssh.com
+        * ssh-dss-cert-v01@openssh.com
+        * ecdsa-sha2-nistp256-cert-v01@openssh.com
+        * ecdsa-sha2-nistp384-cert-v01@openssh.com
+        * ecdsa-sha2-nistp521-cert-v01@openssh.com
         
         @param request: ImportKeyPairRequest
         @return: ImportKeyPairResponse
@@ -33086,8 +33090,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
         """
-        ## Description
-        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client takes effect.
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
         
         @param request: InstallCloudAssistantRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33134,8 +33137,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
         """
-        ## Description
-        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client takes effect.
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
         
         @param request: InstallCloudAssistantRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33181,8 +33183,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.InstallCloudAssistantRequest,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
         """
-        ## Description
-        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client takes effect.
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
         
         @param request: InstallCloudAssistantRequest
         @return: InstallCloudAssistantResponse
@@ -33195,8 +33196,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.InstallCloudAssistantRequest,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
         """
-        ## Description
-        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client takes effect.
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
         
         @param request: InstallCloudAssistantRequest
         @return: InstallCloudAssistantResponse
@@ -33726,10 +33726,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        ## Description
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add or remove ECS instances to or from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add or remove ENIs to or from a security group.
+        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
         When you call this operation, take note of the following items:
-        *   Before you remove an instance from a security group, make sure that the instance is in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         *   An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails.
         *   An instance and an ENI cannot be removed from a security group at the same time. The `InstanceId` and `NetworkInterfaceId` parameters cannot be specified at the same time.
         
@@ -33780,10 +33779,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        ## Description
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add or remove ECS instances to or from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add or remove ENIs to or from a security group.
+        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
         When you call this operation, take note of the following items:
-        *   Before you remove an instance from a security group, make sure that the instance is in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         *   An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails.
         *   An instance and an ENI cannot be removed from a security group at the same time. The `InstanceId` and `NetworkInterfaceId` parameters cannot be specified at the same time.
         
@@ -33833,10 +33831,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.LeaveSecurityGroupRequest,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        ## Description
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add or remove ECS instances to or from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add or remove ENIs to or from a security group.
+        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
         When you call this operation, take note of the following items:
-        *   Before you remove an instance from a security group, make sure that the instance is in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         *   An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails.
         *   An instance and an ENI cannot be removed from a security group at the same time. The `InstanceId` and `NetworkInterfaceId` parameters cannot be specified at the same time.
         
@@ -33851,10 +33848,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.LeaveSecurityGroupRequest,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        ## Description
-        >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add or remove ECS instances to or from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add or remove ENIs to or from a security group.
+        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
         When you call this operation, take note of the following items:
-        *   Before you remove an instance from a security group, make sure that the instance is in the **Stopped** (Stopped) or **Running** (Running) state.
+        *   Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         *   An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only a single security group, the LeaveSecurityGroup request fails.
         *   An instance and an ENI cannot be removed from a security group at the same time. The `InstanceId` and `NetworkInterfaceId` parameters cannot be specified at the same time.
         
@@ -34174,7 +34170,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        ## Description
         Before you call this operation, take note of the following items:
         *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the group is modified.
         *   You cannot modify an auto provisioning group when the group is being deleted.
@@ -34240,7 +34235,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        ## Description
         Before you call this operation, take note of the following items:
         *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the group is modified.
         *   You cannot modify an auto provisioning group when the group is being deleted.
@@ -34305,7 +34299,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        ## Description
         Before you call this operation, take note of the following items:
         *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the group is modified.
         *   You cannot modify an auto provisioning group when the group is being deleted.
@@ -34321,7 +34314,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
         """
-        ## Description
         Before you call this operation, take note of the following items:
         *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the group is modified.
         *   You cannot modify an auto provisioning group when the group is being deleted.
@@ -34834,8 +34826,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyCommandResponse:
         """
-        ## Description
-        You can modify a command when it is run. After the command is modified, the new command content applies to subsequent executions.
+        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
         You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
         
         @param request: ModifyCommandRequest
@@ -34893,8 +34884,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyCommandResponse:
         """
-        ## Description
-        You can modify a command when it is run. After the command is modified, the new command content applies to subsequent executions.
+        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
         You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
         
         @param request: ModifyCommandRequest
@@ -34951,8 +34941,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyCommandRequest,
     ) -> ecs_20140526_models.ModifyCommandResponse:
         """
-        ## Description
-        You can modify a command when it is run. After the command is modified, the new command content applies to subsequent executions.
+        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
         You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
         
         @param request: ModifyCommandRequest
@@ -34966,8 +34955,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyCommandRequest,
     ) -> ecs_20140526_models.ModifyCommandResponse:
         """
-        ## Description
-        You can modify a command when it is run. After the command is modified, the new command content applies to subsequent executions.
+        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
         You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
         
         @param request: ModifyCommandRequest
@@ -35134,8 +35122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        ## Description
-        When the specified time for automatic release is reached, the pay-as-you-go dedicated host is automatically released. Make sure that you no longer use the host and have backed up all necessary application data.
+        When the specified automatic release time arrives, the pay-as-you-go dedicated host is automatically released. Make sure that the dedicated host is no longer needed and that its data is backed up as needed.
         
         @param request: ModifyDedicatedHostAutoReleaseTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35182,8 +35169,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        ## Description
-        When the specified time for automatic release is reached, the pay-as-you-go dedicated host is automatically released. Make sure that you no longer use the host and have backed up all necessary application data.
+        When the specified automatic release time arrives, the pay-as-you-go dedicated host is automatically released. Make sure that the dedicated host is no longer needed and that its data is backed up as needed.
         
         @param request: ModifyDedicatedHostAutoReleaseTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35229,8 +35215,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        ## Description
-        When the specified time for automatic release is reached, the pay-as-you-go dedicated host is automatically released. Make sure that you no longer use the host and have backed up all necessary application data.
+        When the specified automatic release time arrives, the pay-as-you-go dedicated host is automatically released. Make sure that the dedicated host is no longer needed and that its data is backed up as needed.
         
         @param request: ModifyDedicatedHostAutoReleaseTimeRequest
         @return: ModifyDedicatedHostAutoReleaseTimeResponse
@@ -35243,8 +35228,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
         """
-        ## Description
-        When the specified time for automatic release is reached, the pay-as-you-go dedicated host is automatically released. Make sure that you no longer use the host and have backed up all necessary application data.
+        When the specified automatic release time arrives, the pay-as-you-go dedicated host is automatically released. Make sure that the dedicated host is no longer needed and that its data is backed up as needed.
         
         @param request: ModifyDedicatedHostAutoReleaseTimeRequest
         @return: ModifyDedicatedHostAutoReleaseTimeResponse
@@ -35618,11 +35602,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDemandResponse:
         """
-        ## Description
-        You can call this operation to modify the instance type requirement information. Alibaba Cloud will provide the required resources based on your requirement forms.
-        Only I/O optimized instance types and VPC-type instances can be filed.
-        Only when the filing form is in the Rejected state, parameters except `DemandName` and `DemandDescription` can be modified.
-        >  This operation is under internal preview and has not been officially released. We recommend that you avoid using this operation.
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
         
         @param request: ModifyDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35689,11 +35670,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDemandResponse:
         """
-        ## Description
-        You can call this operation to modify the instance type requirement information. Alibaba Cloud will provide the required resources based on your requirement forms.
-        Only I/O optimized instance types and VPC-type instances can be filed.
-        Only when the filing form is in the Rejected state, parameters except `DemandName` and `DemandDescription` can be modified.
-        >  This operation is under internal preview and has not been officially released. We recommend that you avoid using this operation.
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
         
         @param request: ModifyDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35759,11 +35737,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDemandRequest,
     ) -> ecs_20140526_models.ModifyDemandResponse:
         """
-        ## Description
-        You can call this operation to modify the instance type requirement information. Alibaba Cloud will provide the required resources based on your requirement forms.
-        Only I/O optimized instance types and VPC-type instances can be filed.
-        Only when the filing form is in the Rejected state, parameters except `DemandName` and `DemandDescription` can be modified.
-        >  This operation is under internal preview and has not been officially released. We recommend that you avoid using this operation.
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
         
         @param request: ModifyDemandRequest
         @return: ModifyDemandResponse
@@ -35776,11 +35751,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDemandRequest,
     ) -> ecs_20140526_models.ModifyDemandResponse:
         """
-        ## Description
-        You can call this operation to modify the instance type requirement information. Alibaba Cloud will provide the required resources based on your requirement forms.
-        Only I/O optimized instance types and VPC-type instances can be filed.
-        Only when the filing form is in the Rejected state, parameters except `DemandName` and `DemandDescription` can be modified.
-        >  This operation is under internal preview and has not been officially released. We recommend that you avoid using this operation.
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
         
         @param request: ModifyDemandRequest
         @return: ModifyDemandResponse
@@ -37480,11 +37452,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure whether to use a private pool when you create an ECS instance, so that the instance can match the elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can optionally use a private pool when you create an ECS instance, so that the instance can be matched to the elasticity assurance or capacity reservation associated with the private pool.
         *   After you call this operation to modify the attributes of the private pool for an instance, you do not need to restart the instance.
-        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail because the private pool capacity is used up or because the private pool is invalid. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        *   StartInstance: Call this operation to restart a stopped instance in economical mode.
+        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail when the private pool capacity is used up or because the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
+        *   StartInstance: starts an instance that is stopped in economical mode.
         *   ReActivateInstances
         *   ModifyInstanceChargeType
         *   ModifyPrepayInstanceSpec
@@ -37535,11 +37506,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure whether to use a private pool when you create an ECS instance, so that the instance can match the elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can optionally use a private pool when you create an ECS instance, so that the instance can be matched to the elasticity assurance or capacity reservation associated with the private pool.
         *   After you call this operation to modify the attributes of the private pool for an instance, you do not need to restart the instance.
-        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail because the private pool capacity is used up or because the private pool is invalid. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        *   StartInstance: Call this operation to restart a stopped instance in economical mode.
+        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail when the private pool capacity is used up or because the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
+        *   StartInstance: starts an instance that is stopped in economical mode.
         *   ReActivateInstances
         *   ModifyInstanceChargeType
         *   ModifyPrepayInstanceSpec
@@ -37589,11 +37559,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAttachmentAttributesRequest,
     ) -> ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure whether to use a private pool when you create an ECS instance, so that the instance can match the elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can optionally use a private pool when you create an ECS instance, so that the instance can be matched to the elasticity assurance or capacity reservation associated with the private pool.
         *   After you call this operation to modify the attributes of the private pool for an instance, you do not need to restart the instance.
-        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail because the private pool capacity is used up or because the private pool is invalid. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        *   StartInstance: Call this operation to restart a stopped instance in economical mode.
+        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail when the private pool capacity is used up or because the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
+        *   StartInstance: starts an instance that is stopped in economical mode.
         *   ReActivateInstances
         *   ModifyInstanceChargeType
         *   ModifyPrepayInstanceSpec
@@ -37610,11 +37579,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAttachmentAttributesRequest,
     ) -> ecs_20140526_models.ModifyInstanceAttachmentAttributesResponse:
         """
-        ## Description
-        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can configure whether to use a private pool when you create an ECS instance, so that the instance can match the elasticity assurance or capacity reservation.
+        A private pool is generated after an elasticity assurance or a capacity reservation is created. The private pool is associated with information about instances that are created by using the private pool. You can optionally use a private pool when you create an ECS instance, so that the instance can be matched to the elasticity assurance or capacity reservation associated with the private pool.
         *   After you call this operation to modify the attributes of the private pool for an instance, you do not need to restart the instance.
-        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail because the private pool capacity is used up or because the private pool is invalid. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
-        *   StartInstance: Call this operation to restart a stopped instance in economical mode.
+        *   When you call the following operations, the system rematches the instance with private pools. If the instance already matches a specified private pool, the call to an operation may fail when the private pool capacity is used up or because the private pool expires. If the call fails, call the ModifyInstanceAttachmentAttributes operation to change the match mode of the private pool to `Open`.
+        *   StartInstance: starts an instance that is stopped in economical mode.
         *   ReActivateInstances
         *   ModifyInstanceChargeType
         *   ModifyPrepayInstanceSpec
@@ -37632,25 +37600,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
         """
-        When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you call this operation, take note of the following items:
-        * Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        * Reset the password (`Password`):
-        * The instance must not be in the **Starting** (`Starting`) state.
-        * After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        * Modify user data (`UserData`):
-        * The instance must be in the **Stopped** (`Stopped`) state.
-        * The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
-        * Change the security group (`SecurityGroupIds.N`):
-        * You can switch an instance to a security group of a different type.
-        If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
-        * Security groups of instances in the classic network cannot be changed.
-        For more information, see the description of the `SecurityGroupIds.N` parameter.
-        * Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        * The instance must be in the Stopped (`Stopped`) state.
-        * The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        * The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        * If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
+        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
+        *   Reset the password (`Password`):
+        *   The instance must not be in the **Starting** (`Starting`) state.
+        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
+        *   Modify user data (`UserData`):
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
+        *   Change the security group (`SecurityGroupIds.N`):
+        *   You can switch an instance to a security group of a different type. If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
+        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
+        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
+        *   The instance must be in the Stopped (`Stopped`) state.
+        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the specified instance type.
+        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
+        *   If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37715,25 +37681,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
         """
-        When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you call this operation, take note of the following items:
-        * Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        * Reset the password (`Password`):
-        * The instance must not be in the **Starting** (`Starting`) state.
-        * After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        * Modify user data (`UserData`):
-        * The instance must be in the **Stopped** (`Stopped`) state.
-        * The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
-        * Change the security group (`SecurityGroupIds.N`):
-        * You can switch an instance to a security group of a different type.
-        If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
-        * Security groups of instances in the classic network cannot be changed.
-        For more information, see the description of the `SecurityGroupIds.N` parameter.
-        * Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        * The instance must be in the Stopped (`Stopped`) state.
-        * The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        * The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        * If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
+        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
+        *   Reset the password (`Password`):
+        *   The instance must not be in the **Starting** (`Starting`) state.
+        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
+        *   Modify user data (`UserData`):
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
+        *   Change the security group (`SecurityGroupIds.N`):
+        *   You can switch an instance to a security group of a different type. If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
+        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
+        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
+        *   The instance must be in the Stopped (`Stopped`) state.
+        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the specified instance type.
+        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
+        *   If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37797,25 +37761,23 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
         """
-        When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you call this operation, take note of the following items:
-        * Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        * Reset the password (`Password`):
-        * The instance must not be in the **Starting** (`Starting`) state.
-        * After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        * Modify user data (`UserData`):
-        * The instance must be in the **Stopped** (`Stopped`) state.
-        * The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
-        * Change the security group (`SecurityGroupIds.N`):
-        * You can switch an instance to a security group of a different type.
-        If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
-        * Security groups of instances in the classic network cannot be changed.
-        For more information, see the description of the `SecurityGroupIds.N` parameter.
-        * Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        * The instance must be in the Stopped (`Stopped`) state.
-        * The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        * The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        * If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
+        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
+        *   Reset the password (`Password`):
+        *   The instance must not be in the **Starting** (`Starting`) state.
+        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
+        *   Modify user data (`UserData`):
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
+        *   Change the security group (`SecurityGroupIds.N`):
+        *   You can switch an instance to a security group of a different type. If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
+        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
+        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
+        *   The instance must be in the Stopped (`Stopped`) state.
+        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the specified instance type.
+        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
+        *   If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -37828,25 +37790,23 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
         """
-        When you query the instance information and the responses contain `{"OperationLocks": {"LockReason" : "security"}}`, the instance is locked for security reasons and all operations cannot take effect on the instance.
+        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
         When you call this operation, take note of the following items:
-        * Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        * Reset the password (`Password`):
-        * The instance must not be in the **Starting** (`Starting`) state.
-        * After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        * Modify user data (`UserData`):
-        * The instance must be in the **Stopped** (`Stopped`) state.
-        * The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
-        * Change the security group (`SecurityGroupIds.N`):
-        * You can switch an instance to a security group of a different type.
-        If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
-        * Security groups of instances in the classic network cannot be changed.
-        For more information, see the description of the `SecurityGroupIds.N` parameter.
-        * Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        * The instance must be in the Stopped (`Stopped`) state.
-        * The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        * The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        * If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
+        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
+        *   Reset the password (`Password`):
+        *   The instance must not be in the **Starting** (`Starting`) state.
+        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
+        *   Modify user data (`UserData`):
+        *   The instance must be in the **Stopped** (`Stopped`) state.
+        *   The instance must meet the limits on user data. For more information, see [Prepare user data](~~49121~~).
+        *   Change the security group (`SecurityGroupIds.N`):
+        *   You can switch an instance to a security group of a different type. If you want to switch an instance to a security group of a different type, you must understand the differences between the rule configurations of the two security group types to avoid impacts on the instance network.
+        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
+        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
+        *   The instance must be in the Stopped (`Stopped`) state.
+        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the specified instance type.
+        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
+        *   If you set this parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -37954,10 +37914,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        Before you call this operation, make sure that you have fully understood the billing methods and pricing schedule of [ECS](https://www.alibabacloud.com/product/ecs#pricing).
-        *   The payment for auto-renewal is first made at 08:00:00 (UTC+8) nine days before the instance expires.
-        *   If the payment fails for the first time, this process repeats itself each day until the payment is made or the instance is locked after the nine-day period ends. You must confirm that your payment account has sufficient balance or credit.
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        *   The payment for auto-renewal is first deducted automatically at 08:00:00 (UTC+8) nine days before the instance expires.
+        *   If the subscription period of a new instance is one week, the renewal payment is automatically deducted on the day the instance is created.
+        *   If the first deduction attempt fails, Alibaba Cloud attempts to deduct the payment each day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38010,10 +37970,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        Before you call this operation, make sure that you have fully understood the billing methods and pricing schedule of [ECS](https://www.alibabacloud.com/product/ecs#pricing).
-        *   The payment for auto-renewal is first made at 08:00:00 (UTC+8) nine days before the instance expires.
-        *   If the payment fails for the first time, this process repeats itself each day until the payment is made or the instance is locked after the nine-day period ends. You must confirm that your payment account has sufficient balance or credit.
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        *   The payment for auto-renewal is first deducted automatically at 08:00:00 (UTC+8) nine days before the instance expires.
+        *   If the subscription period of a new instance is one week, the renewal payment is automatically deducted on the day the instance is created.
+        *   If the first deduction attempt fails, Alibaba Cloud attempts to deduct the payment each day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38065,10 +38025,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        Before you call this operation, make sure that you have fully understood the billing methods and pricing schedule of [ECS](https://www.alibabacloud.com/product/ecs#pricing).
-        *   The payment for auto-renewal is first made at 08:00:00 (UTC+8) nine days before the instance expires.
-        *   If the payment fails for the first time, this process repeats itself each day until the payment is made or the instance is locked after the nine-day period ends. You must confirm that your payment account has sufficient balance or credit.
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        *   The payment for auto-renewal is first deducted automatically at 08:00:00 (UTC+8) nine days before the instance expires.
+        *   If the subscription period of a new instance is one week, the renewal payment is automatically deducted on the day the instance is created.
+        *   If the first deduction attempt fails, Alibaba Cloud attempts to deduct the payment each day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @return: ModifyInstanceAutoRenewAttributeResponse
@@ -38081,10 +38041,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAutoRenewAttributeResponse:
         """
-        ## Description
-        Before you call this operation, make sure that you have fully understood the billing methods and pricing schedule of [ECS](https://www.alibabacloud.com/product/ecs#pricing).
-        *   The payment for auto-renewal is first made at 08:00:00 (UTC+8) nine days before the instance expires.
-        *   If the payment fails for the first time, this process repeats itself each day until the payment is made or the instance is locked after the nine-day period ends. You must confirm that your payment account has sufficient balance or credit.
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of Elastic Compute Service (ECS). For more information, see the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        *   The payment for auto-renewal is first deducted automatically at 08:00:00 (UTC+8) nine days before the instance expires.
+        *   If the subscription period of a new instance is one week, the renewal payment is automatically deducted on the day the instance is created.
+        *   If the first deduction attempt fails, Alibaba Cloud attempts to deduct the payment each day until the payment is deducted or until the instance is locked after the nine-day period ends. Make sure that your account balance or credit balance is sufficient.
         
         @param request: ModifyInstanceAutoRenewAttributeRequest
         @return: ModifyInstanceAutoRenewAttributeResponse
@@ -38287,12 +38247,12 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
         When you call this operation for an ECS instance, take note of the following items:
-        *   The ECS instance must be in the **Stopped** state. The instance is automatically restarted after it is migrated.
-        *   The network type of the ECS instance must be Virtual Private Cloud (VPC).
-        *   The ECS instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
-        *   A pay-as-you-go ECS instance can be migrated to a subscription dedicated host. A subscription ECS instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription ECS instance cannot be later than that of the destination dedicated host.
-        *   You can migrate only pay-as-you-go ECS instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
-        *   You can redeploy an ECS instance to a specific dedicated host cluster.
+        *   The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
+        *   The network type of the instance must be Virtual Private Cloud (VPC).
+        *   The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
+        *   A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
+        *   You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
+        *   You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38358,12 +38318,12 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
         When you call this operation for an ECS instance, take note of the following items:
-        *   The ECS instance must be in the **Stopped** state. The instance is automatically restarted after it is migrated.
-        *   The network type of the ECS instance must be Virtual Private Cloud (VPC).
-        *   The ECS instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
-        *   A pay-as-you-go ECS instance can be migrated to a subscription dedicated host. A subscription ECS instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription ECS instance cannot be later than that of the destination dedicated host.
-        *   You can migrate only pay-as-you-go ECS instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
-        *   You can redeploy an ECS instance to a specific dedicated host cluster.
+        *   The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
+        *   The network type of the instance must be Virtual Private Cloud (VPC).
+        *   The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
+        *   A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
+        *   You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
+        *   You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38428,12 +38388,12 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
         When you call this operation for an ECS instance, take note of the following items:
-        *   The ECS instance must be in the **Stopped** state. The instance is automatically restarted after it is migrated.
-        *   The network type of the ECS instance must be Virtual Private Cloud (VPC).
-        *   The ECS instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
-        *   A pay-as-you-go ECS instance can be migrated to a subscription dedicated host. A subscription ECS instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription ECS instance cannot be later than that of the destination dedicated host.
-        *   You can migrate only pay-as-you-go ECS instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
-        *   You can redeploy an ECS instance to a specific dedicated host cluster.
+        *   The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
+        *   The network type of the instance must be Virtual Private Cloud (VPC).
+        *   The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
+        *   A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
+        *   You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
+        *   You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
         @return: ModifyInstanceDeploymentResponse
@@ -38447,12 +38407,12 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceDeploymentResponse:
         """
         When you call this operation for an ECS instance, take note of the following items:
-        *   The ECS instance must be in the **Stopped** state. The instance is automatically restarted after it is migrated.
-        *   The network type of the ECS instance must be Virtual Private Cloud (VPC).
-        *   The ECS instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
-        *   A pay-as-you-go ECS instance can be migrated to a subscription dedicated host. A subscription ECS instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription ECS instance cannot be later than that of the destination dedicated host.
-        *   You can migrate only pay-as-you-go ECS instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
-        *   You can redeploy an ECS instance to a specific dedicated host cluster.
+        *   The instance must be in the **Stopped** (Stopped) state. The instance is automatically restarted after it is migrated.
+        *   The network type of the instance must be Virtual Private Cloud (VPC).
+        *   The instance and the destination dedicated host to which to migrate the instance must belong to the same account and reside in the same region and zone.
+        *   A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can be migrated only between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
+        *   You can migrate only pay-as-you-go instances from a shared host to a dedicated host. You cannot migrate subscription or preemptible instances from a shared host to a dedicated host.
+        *   You can redeploy an instance to a specific dedicated host cluster.
         
         @param request: ModifyInstanceDeploymentRequest
         @return: ModifyInstanceDeploymentResponse
@@ -38889,16 +38849,17 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
         ## Description
-        For information about SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You must have no overdue payments in your account.
-        *   You can change the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
         *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   You can change only the instance type or the public bandwidth each time.
-        *   As of November 27, 2020, the maximum bandwidth available for you to create ECS instances or change the configurations of ECS instances is subject to the throttling policy in your account. To increase the maximum bandwidth, submit a ticket. The following throttling policies apply:
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   The instance type and the public bandwidth of an instance cannot be changed together.
+        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38958,16 +38919,17 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
         ## Description
-        For information about SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You must have no overdue payments in your account.
-        *   You can change the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
         *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   You can change only the instance type or the public bandwidth each time.
-        *   As of November 27, 2020, the maximum bandwidth available for you to create ECS instances or change the configurations of ECS instances is subject to the throttling policy in your account. To increase the maximum bandwidth, submit a ticket. The following throttling policies apply:
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   The instance type and the public bandwidth of an instance cannot be changed together.
+        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39026,16 +38988,17 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
         ## Description
-        For information about SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You must have no overdue payments in your account.
-        *   You can change the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
         *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   You can change only the instance type or the public bandwidth each time.
-        *   As of November 27, 2020, the maximum bandwidth available for you to create ECS instances or change the configurations of ECS instances is subject to the throttling policy in your account. To increase the maximum bandwidth, submit a ticket. The following throttling policies apply:
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   The instance type and the public bandwidth of an instance cannot be changed together.
+        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @return: ModifyInstanceSpecResponse
@@ -39049,16 +39012,17 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
         """
         ## Description
-        For information about SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
+        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
+        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
         When you call this operation, take note of the following items:
         *   You must have no overdue payments in your account.
-        *   You can change the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
+        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
         *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
         *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   You can change only the instance type or the public bandwidth each time.
-        *   As of November 27, 2020, the maximum bandwidth available for you to create ECS instances or change the configurations of ECS instances is subject to the throttling policy in your account. To increase the maximum bandwidth, submit a ticket. The following throttling policies apply:
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   In a single region, the sum of actual peak bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
+        *   The instance type and the public bandwidth of an instance cannot be changed together.
+        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
+        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
         
         @param request: ModifyInstanceSpecRequest
         @return: ModifyInstanceSpecResponse
@@ -39072,11 +39036,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        ## Description
-        *   The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        *   The new password takes effect based on the following situations:
-        *   For an I/O optimized instance, the new password takes effect immediately.
-        *   For a non-I/O optimized instance, you must restart the instance in the console or call the [RebootInstance](~~25502~~) operation for the new password to take effect. For more information, see [Restart an instance](~~25440~~).
+        The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
+        *   After you modify the VNC password of an instance, take note of the following items:
+        *   If the instance is I/O optimized, the new password takes effect immediately.
+        *   If the instance is non-I/O optimized, you must [restart the instance](~~25440~~) by using the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39123,11 +39086,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        ## Description
-        *   The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        *   The new password takes effect based on the following situations:
-        *   For an I/O optimized instance, the new password takes effect immediately.
-        *   For a non-I/O optimized instance, you must restart the instance in the console or call the [RebootInstance](~~25502~~) operation for the new password to take effect. For more information, see [Restart an instance](~~25440~~).
+        The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
+        *   After you modify the VNC password of an instance, take note of the following items:
+        *   If the instance is I/O optimized, the new password takes effect immediately.
+        *   If the instance is non-I/O optimized, you must [restart the instance](~~25440~~) by using the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39173,11 +39135,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceVncPasswdRequest,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        ## Description
-        *   The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        *   The new password takes effect based on the following situations:
-        *   For an I/O optimized instance, the new password takes effect immediately.
-        *   For a non-I/O optimized instance, you must restart the instance in the console or call the [RebootInstance](~~25502~~) operation for the new password to take effect. For more information, see [Restart an instance](~~25440~~).
+        The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
+        *   After you modify the VNC password of an instance, take note of the following items:
+        *   If the instance is I/O optimized, the new password takes effect immediately.
+        *   If the instance is non-I/O optimized, you must [restart the instance](~~25440~~) by using the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @return: ModifyInstanceVncPasswdResponse
@@ -39190,11 +39151,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceVncPasswdRequest,
     ) -> ecs_20140526_models.ModifyInstanceVncPasswdResponse:
         """
-        ## Description
-        *   The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
-        *   The new password takes effect based on the following situations:
-        *   For an I/O optimized instance, the new password takes effect immediately.
-        *   For a non-I/O optimized instance, you must restart the instance in the console or call the [RebootInstance](~~25502~~) operation for the new password to take effect. For more information, see [Restart an instance](~~25440~~).
+        The password must be six characters in length and can contain only uppercase letters, lowercase letters, and digits.
+        *   After you modify the VNC password of an instance, take note of the following items:
+        *   If the instance is I/O optimized, the new password takes effect immediately.
+        *   If the instance is non-I/O optimized, you must [restart the instance](~~25440~~) by using the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect.
         
         @param request: ModifyInstanceVncPasswdRequest
         @return: ModifyInstanceVncPasswdResponse
@@ -40396,6 +40356,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_reserved_instance_attribute_with_options_async(request, runtime)
 
+    def modify_reserved_instance_auto_renew_attribute_with_options(
+        self,
+        request: ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.reserved_instance_id):
+            query['ReservedInstanceId'] = request.reserved_instance_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyReservedInstanceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_reserved_instance_auto_renew_attribute_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.reserved_instance_id):
+            query['ReservedInstanceId'] = request.reserved_instance_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyReservedInstanceAutoRenewAttribute',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_reserved_instance_auto_renew_attribute(
+        self,
+        request: ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_reserved_instance_auto_renew_attribute_with_options(request, runtime)
+
+    async def modify_reserved_instance_auto_renew_attribute_async(
+        self,
+        request: ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeRequest,
+    ) -> ecs_20140526_models.ModifyReservedInstanceAutoRenewAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_reserved_instance_auto_renew_attribute_with_options_async(request, runtime)
+
     def modify_reserved_instances_with_options(
         self,
         request: ecs_20140526_models.ModifyReservedInstancesRequest,
@@ -40404,10 +40466,10 @@ class Client(OpenApiClient):
         """
         ## Description
         When you call this operation, take note of the following items:
-        *   For information about limits on reserved instances, see the "Limits" section in [Reserved instance overview](~~100370~~).
+        *   For information about limits on reserved instances, see the "Limits" section in [Overview](~~100370~~).
         *   If you call this operation to split a reserved instance, make sure that you fully understand the limits on splitting a reserved instance. For more information, see [Split a reserved instance](~~100375~~).
         *   If you call this operation to merge reserved instances, make sure that you fully understand the limits on merging reserved instances. For more information, see [Merge reserved instances](~~132229~~).
-        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
+        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits on and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
         
         @param request: ModifyReservedInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40456,10 +40518,10 @@ class Client(OpenApiClient):
         """
         ## Description
         When you call this operation, take note of the following items:
-        *   For information about limits on reserved instances, see the "Limits" section in [Reserved instance overview](~~100370~~).
+        *   For information about limits on reserved instances, see the "Limits" section in [Overview](~~100370~~).
         *   If you call this operation to split a reserved instance, make sure that you fully understand the limits on splitting a reserved instance. For more information, see [Split a reserved instance](~~100375~~).
         *   If you call this operation to merge reserved instances, make sure that you fully understand the limits on merging reserved instances. For more information, see [Merge reserved instances](~~132229~~).
-        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
+        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits on and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
         
         @param request: ModifyReservedInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40507,10 +40569,10 @@ class Client(OpenApiClient):
         """
         ## Description
         When you call this operation, take note of the following items:
-        *   For information about limits on reserved instances, see the "Limits" section in [Reserved instance overview](~~100370~~).
+        *   For information about limits on reserved instances, see the "Limits" section in [Overview](~~100370~~).
         *   If you call this operation to split a reserved instance, make sure that you fully understand the limits on splitting a reserved instance. For more information, see [Split a reserved instance](~~100375~~).
         *   If you call this operation to merge reserved instances, make sure that you fully understand the limits on merging reserved instances. For more information, see [Merge reserved instances](~~132229~~).
-        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
+        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits on and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
         
         @param request: ModifyReservedInstancesRequest
         @return: ModifyReservedInstancesResponse
@@ -40525,10 +40587,10 @@ class Client(OpenApiClient):
         """
         ## Description
         When you call this operation, take note of the following items:
-        *   For information about limits on reserved instances, see the "Limits" section in [Reserved instance overview](~~100370~~).
+        *   For information about limits on reserved instances, see the "Limits" section in [Overview](~~100370~~).
         *   If you call this operation to split a reserved instance, make sure that you fully understand the limits on splitting a reserved instance. For more information, see [Split a reserved instance](~~100375~~).
         *   If you call this operation to merge reserved instances, make sure that you fully understand the limits on merging reserved instances. For more information, see [Merge reserved instances](~~132229~~).
-        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
+        *   If you call this operation to modify a reserved instance, make sure that you fully understand the limits on and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](~~132230~~).
         
         @param request: ModifyReservedInstancesRequest
         @return: ModifyReservedInstancesResponse
@@ -41256,11 +41318,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
         *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access control policy of a security group.
+        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
         
         @param request: ModifySecurityGroupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41309,11 +41370,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
         *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access control policy of a security group.
+        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
         
         @param request: ModifySecurityGroupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41361,11 +41421,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifySecurityGroupPolicyRequest,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
         *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access control policy of a security group.
+        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
         
         @param request: ModifySecurityGroupPolicyRequest
         @return: ModifySecurityGroupPolicyResponse
@@ -41378,11 +41437,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifySecurityGroupPolicyRequest,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
         *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
         *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access control policy of a security group.
+        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
         
         @param request: ModifySecurityGroupPolicyRequest
         @return: ModifySecurityGroupPolicyResponse
@@ -42804,8 +42862,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        ## Usage notes
-        *   Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
+        Before you call this operation, make sure that you understand how reserved instances are billed. For more information, see [Reserved instances](~~100371~~).
         *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
         
         @param request: PurchaseReservedInstancesOfferingRequest
@@ -42879,8 +42936,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        ## Usage notes
-        *   Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
+        Before you call this operation, make sure that you understand how reserved instances are billed. For more information, see [Reserved instances](~~100371~~).
         *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
         
         @param request: PurchaseReservedInstancesOfferingRequest
@@ -42953,8 +43009,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        ## Usage notes
-        *   Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
+        Before you call this operation, make sure that you understand how reserved instances are billed. For more information, see [Reserved instances](~~100371~~).
         *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
         
         @param request: PurchaseReservedInstancesOfferingRequest
@@ -42968,8 +43023,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        ## Usage notes
-        *   Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
+        Before you call this operation, make sure that you understand how reserved instances are billed. For more information, see [Reserved instances](~~100371~~).
         *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
         
         @param request: PurchaseReservedInstancesOfferingRequest
@@ -43272,15 +43326,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReInitDiskResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The disk to be re-initialized must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
-        *   If an instance has never been started since it was created, its attached disks cannot be re-initialized.
+        *   The disk that you want to re-initialize must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
+        *   If the instance has never been started since it was created, the disks attached to it cannot be re-initialized.
         *   If a local snapshot has been created for a disk, the disk cannot be re-initialized.
+        *   Disks that have the multi-attach feature enabled cannot be re-initialized.
         *   When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the source image is deleted, the system disk cannot be re-initialized.
         *   When a separately created data disk is re-initialized, it is restored to an empty data disk.
-        *   When a data disk that is created from a snapshot is re-initialized, the disk is restored to the state of the source snapshot.
-        >  If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
+        *   When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot.
+        > If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
         
         @param request: ReInitDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43331,15 +43385,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReInitDiskResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The disk to be re-initialized must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
-        *   If an instance has never been started since it was created, its attached disks cannot be re-initialized.
+        *   The disk that you want to re-initialize must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
+        *   If the instance has never been started since it was created, the disks attached to it cannot be re-initialized.
         *   If a local snapshot has been created for a disk, the disk cannot be re-initialized.
+        *   Disks that have the multi-attach feature enabled cannot be re-initialized.
         *   When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the source image is deleted, the system disk cannot be re-initialized.
         *   When a separately created data disk is re-initialized, it is restored to an empty data disk.
-        *   When a data disk that is created from a snapshot is re-initialized, the disk is restored to the state of the source snapshot.
-        >  If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
+        *   When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot.
+        > If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
         
         @param request: ReInitDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43389,15 +43443,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReInitDiskRequest,
     ) -> ecs_20140526_models.ReInitDiskResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The disk to be re-initialized must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
-        *   If an instance has never been started since it was created, its attached disks cannot be re-initialized.
+        *   The disk that you want to re-initialize must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
+        *   If the instance has never been started since it was created, the disks attached to it cannot be re-initialized.
         *   If a local snapshot has been created for a disk, the disk cannot be re-initialized.
+        *   Disks that have the multi-attach feature enabled cannot be re-initialized.
         *   When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the source image is deleted, the system disk cannot be re-initialized.
         *   When a separately created data disk is re-initialized, it is restored to an empty data disk.
-        *   When a data disk that is created from a snapshot is re-initialized, the disk is restored to the state of the source snapshot.
-        >  If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
+        *   When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot.
+        > If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
         
         @param request: ReInitDiskRequest
         @return: ReInitDiskResponse
@@ -43410,15 +43464,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReInitDiskRequest,
     ) -> ecs_20140526_models.ReInitDiskResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The disk to be re-initialized must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
-        *   If an instance has never been started since it was created, its attached disks cannot be re-initialized.
+        *   The disk that you want to re-initialize must be in the **In Use** (In_use) state and the instance to which the disk is attached must be in the **Stopped** (Stopped) state.
+        *   If the instance has never been started since it was created, the disks attached to it cannot be re-initialized.
         *   If a local snapshot has been created for a disk, the disk cannot be re-initialized.
+        *   Disks that have the multi-attach feature enabled cannot be re-initialized.
         *   When a system disk is re-initialized, it is restored to the state of the image from which it was created. If the source image is deleted, the system disk cannot be re-initialized.
         *   When a separately created data disk is re-initialized, it is restored to an empty data disk.
-        *   When a data disk that is created from a snapshot is re-initialized, the disk is restored to the state of the source snapshot.
-        >  If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
+        *   When a data disk that was created from a snapshot is re-initialized, the disk is restored to the state of the snapshot.
+        > If the source snapshot is deleted, the disk cannot be re-initialized and an error is returned.
         
         @param request: ReInitDiskRequest
         @return: ReInitDiskResponse
@@ -43432,11 +43486,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RebootInstanceResponse:
         """
-        ## Description
-        *   Only instances that are in the **Running** (`Running`) state can be restarted.
-        *   After this operation is called, the status of the instance changes to **Starting** (`Starting`).
-        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks.
-        *   You cannot call this operation on ECS instances that are locked for security reasons. An instance is locked for security reasons if `OperationLocks` in the response contains "LockReason": "security" when you query information of the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        Only instances that are in the `Running` state can be restarted.****\
+        *   After the ECS instance is restarted, the status of the instance changes to `Starting`.****\
+        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to performing a hard restart. This operation can cause data loss if data in the instance is not written to the disk.
+        *   If you call the DescribeInstances operation to query the details of an instance and `OperationLocks` in the response contains "LockReason": "security", the instance is locked for security reasons and cannot be restarted. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: RebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43483,11 +43536,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RebootInstanceResponse:
         """
-        ## Description
-        *   Only instances that are in the **Running** (`Running`) state can be restarted.
-        *   After this operation is called, the status of the instance changes to **Starting** (`Starting`).
-        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks.
-        *   You cannot call this operation on ECS instances that are locked for security reasons. An instance is locked for security reasons if `OperationLocks` in the response contains "LockReason": "security" when you query information of the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        Only instances that are in the `Running` state can be restarted.****\
+        *   After the ECS instance is restarted, the status of the instance changes to `Starting`.****\
+        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to performing a hard restart. This operation can cause data loss if data in the instance is not written to the disk.
+        *   If you call the DescribeInstances operation to query the details of an instance and `OperationLocks` in the response contains "LockReason": "security", the instance is locked for security reasons and cannot be restarted. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: RebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43533,11 +43585,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RebootInstanceRequest,
     ) -> ecs_20140526_models.RebootInstanceResponse:
         """
-        ## Description
-        *   Only instances that are in the **Running** (`Running`) state can be restarted.
-        *   After this operation is called, the status of the instance changes to **Starting** (`Starting`).
-        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks.
-        *   You cannot call this operation on ECS instances that are locked for security reasons. An instance is locked for security reasons if `OperationLocks` in the response contains "LockReason": "security" when you query information of the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        Only instances that are in the `Running` state can be restarted.****\
+        *   After the ECS instance is restarted, the status of the instance changes to `Starting`.****\
+        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to performing a hard restart. This operation can cause data loss if data in the instance is not written to the disk.
+        *   If you call the DescribeInstances operation to query the details of an instance and `OperationLocks` in the response contains "LockReason": "security", the instance is locked for security reasons and cannot be restarted. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: RebootInstanceRequest
         @return: RebootInstanceResponse
@@ -43550,11 +43601,10 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RebootInstanceRequest,
     ) -> ecs_20140526_models.RebootInstanceResponse:
         """
-        ## Description
-        *   Only instances that are in the **Running** (`Running`) state can be restarted.
-        *   After this operation is called, the status of the instance changes to **Starting** (`Starting`).
-        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation can cause data loss if data in the instance is not written to disks.
-        *   You cannot call this operation on ECS instances that are locked for security reasons. An instance is locked for security reasons if `OperationLocks` in the response contains "LockReason": "security" when you query information of the instance. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        Only instances that are in the `Running` state can be restarted.****\
+        *   After the ECS instance is restarted, the status of the instance changes to `Starting`.****\
+        *   An instance can be forcibly restarted. A forced restart (`ForceStop`) is equivalent to performing a hard restart. This operation can cause data loss if data in the instance is not written to the disk.
+        *   If you call the DescribeInstances operation to query the details of an instance and `OperationLocks` in the response contains "LockReason": "security", the instance is locked for security reasons and cannot be restarted. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
         
         @param request: RebootInstanceRequest
         @return: RebootInstanceResponse
@@ -43956,27 +44006,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        ## Description
-        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and its original state.
+        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to its original physical server and original state.
         When you call this operation, take note of the following items:
-        - The instance must be in the Running or Stopped state. After the instance is redeployed, the status of the instance has the following changes:    - If the instance is in the Running (`Running`) state, the instance enters the Stopping `Stopping` state.
-        - If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        - Instances on dedicated hosts cannot be redeployed.
-        - If `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for the instance, the instance is locked for security reasons and cannot be redeployed.
-        - If the instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, you cannot redeploy the instance by calling the RedeployInstance operation.
-        - When you handle local disk-related system events, if the damaged local disks are isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
-        The following table lists the types and status of events to which you can respond by calling the RedeployInstance operation.
-        | System event | Status |
-        | ------------ | ------ |
-        | Instance restart due to system maintenance (SystemMaintenance.Reboot) | Inquiring and Scheduled |
-        | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy) | Inquiring and Scheduled |
-        | Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk) | Inquiring |
-        | Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring |
-        | Instance redeployment due to a system error (SystemFailure.Redeploy) | Inquiring and Scheduled |
-        | For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot) | Executing |
-        | Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk) | Inquiring |
-        | Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk) | Inquiring |
-        >  When the system redeploys instances equipped with local disks, the local disks are re-initialized and data in the local disks is cleared.
+        * The instance must be in the Running or Stopped state. After the instance is redeployed, the state of the instance has the following changes:
+        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
+        * If an instance is deployed on a dedicated host, the instance cannot be redeployed.
+        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        * If an instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, the instance cannot be redeployed.
+        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
+        The following table lists the types and states of events that you can handle by calling the RedeployInstance operation.
+        |System event|Event state|
+        |---|---|
+        |Instance restart due to system maintenance: SystemMaintenance.Reboot|Inquiring and Scheduled|
+        |Instance redeployment due to system maintenance: SystemMaintenance.Redeploy|Inquiring and Scheduled|
+        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
+        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
+        |Instance redeployment due to system errors: SystemFailure.Redeploy|Inquiring and Scheduled|
+        |For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
+        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
+        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44021,27 +44071,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        ## Description
-        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and its original state.
+        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to its original physical server and original state.
         When you call this operation, take note of the following items:
-        - The instance must be in the Running or Stopped state. After the instance is redeployed, the status of the instance has the following changes:    - If the instance is in the Running (`Running`) state, the instance enters the Stopping `Stopping` state.
-        - If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        - Instances on dedicated hosts cannot be redeployed.
-        - If `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for the instance, the instance is locked for security reasons and cannot be redeployed.
-        - If the instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, you cannot redeploy the instance by calling the RedeployInstance operation.
-        - When you handle local disk-related system events, if the damaged local disks are isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
-        The following table lists the types and status of events to which you can respond by calling the RedeployInstance operation.
-        | System event | Status |
-        | ------------ | ------ |
-        | Instance restart due to system maintenance (SystemMaintenance.Reboot) | Inquiring and Scheduled |
-        | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy) | Inquiring and Scheduled |
-        | Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk) | Inquiring |
-        | Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring |
-        | Instance redeployment due to a system error (SystemFailure.Redeploy) | Inquiring and Scheduled |
-        | For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot) | Executing |
-        | Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk) | Inquiring |
-        | Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk) | Inquiring |
-        >  When the system redeploys instances equipped with local disks, the local disks are re-initialized and data in the local disks is cleared.
+        * The instance must be in the Running or Stopped state. After the instance is redeployed, the state of the instance has the following changes:
+        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
+        * If an instance is deployed on a dedicated host, the instance cannot be redeployed.
+        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        * If an instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, the instance cannot be redeployed.
+        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
+        The following table lists the types and states of events that you can handle by calling the RedeployInstance operation.
+        |System event|Event state|
+        |---|---|
+        |Instance restart due to system maintenance: SystemMaintenance.Reboot|Inquiring and Scheduled|
+        |Instance redeployment due to system maintenance: SystemMaintenance.Redeploy|Inquiring and Scheduled|
+        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
+        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
+        |Instance redeployment due to system errors: SystemFailure.Redeploy|Inquiring and Scheduled|
+        |For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
+        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
+        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44085,27 +44135,27 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployInstanceRequest,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        ## Description
-        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and its original state.
+        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to its original physical server and original state.
         When you call this operation, take note of the following items:
-        - The instance must be in the Running or Stopped state. After the instance is redeployed, the status of the instance has the following changes:    - If the instance is in the Running (`Running`) state, the instance enters the Stopping `Stopping` state.
-        - If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        - Instances on dedicated hosts cannot be redeployed.
-        - If `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for the instance, the instance is locked for security reasons and cannot be redeployed.
-        - If the instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, you cannot redeploy the instance by calling the RedeployInstance operation.
-        - When you handle local disk-related system events, if the damaged local disks are isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
-        The following table lists the types and status of events to which you can respond by calling the RedeployInstance operation.
-        | System event | Status |
-        | ------------ | ------ |
-        | Instance restart due to system maintenance (SystemMaintenance.Reboot) | Inquiring and Scheduled |
-        | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy) | Inquiring and Scheduled |
-        | Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk) | Inquiring |
-        | Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring |
-        | Instance redeployment due to a system error (SystemFailure.Redeploy) | Inquiring and Scheduled |
-        | For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot) | Executing |
-        | Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk) | Inquiring |
-        | Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk) | Inquiring |
-        >  When the system redeploys instances equipped with local disks, the local disks are re-initialized and data in the local disks is cleared.
+        * The instance must be in the Running or Stopped state. After the instance is redeployed, the state of the instance has the following changes:
+        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
+        * If an instance is deployed on a dedicated host, the instance cannot be redeployed.
+        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        * If an instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, the instance cannot be redeployed.
+        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
+        The following table lists the types and states of events that you can handle by calling the RedeployInstance operation.
+        |System event|Event state|
+        |---|---|
+        |Instance restart due to system maintenance: SystemMaintenance.Reboot|Inquiring and Scheduled|
+        |Instance redeployment due to system maintenance: SystemMaintenance.Redeploy|Inquiring and Scheduled|
+        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
+        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
+        |Instance redeployment due to system errors: SystemFailure.Redeploy|Inquiring and Scheduled|
+        |For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
+        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
+        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @return: RedeployInstanceResponse
@@ -44118,27 +44168,27 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployInstanceRequest,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
         """
-        ## Description
-        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and its original state.
+        RedeployInstance is an asynchronous operation. It migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to its original physical server and original state.
         When you call this operation, take note of the following items:
-        - The instance must be in the Running or Stopped state. After the instance is redeployed, the status of the instance has the following changes:    - If the instance is in the Running (`Running`) state, the instance enters the Stopping `Stopping` state.
-        - If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        - Instances on dedicated hosts cannot be redeployed.
-        - If `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for the instance, the instance is locked for security reasons and cannot be redeployed.
-        - If the instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, you cannot redeploy the instance by calling the RedeployInstance operation.
-        - When you handle local disk-related system events, if the damaged local disks are isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
-        The following table lists the types and status of events to which you can respond by calling the RedeployInstance operation.
-        | System event | Status |
-        | ------------ | ------ |
-        | Instance restart due to system maintenance (SystemMaintenance.Reboot) | Inquiring and Scheduled |
-        | Instance redeployment due to system maintenance (SystemMaintenance.Redeploy) | Inquiring and Scheduled |
-        | Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk) | Inquiring |
-        | Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk) | Inquiring |
-        | Instance redeployment due to a system error (SystemFailure.Redeploy) | Inquiring and Scheduled |
-        | For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot) | Executing |
-        | Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk) | Inquiring |
-        | Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk) | Inquiring |
-        >  When the system redeploys instances equipped with local disks, the local disks are re-initialized and data in the local disks is cleared.
+        * The instance must be in the Running or Stopped state. After the instance is redeployed, the state of the instance has the following changes:
+        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
+        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
+        * If an instance is deployed on a dedicated host, the instance cannot be redeployed.
+        * If `OperationLocks` in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
+        * If an instance receives simulated events that are created by calling the CreateSimulatedSystemEvent operation, the instance cannot be redeployed.
+        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the SystemMaintenance.RebootAndReInitErrorDisk (**instance restart and re-initialization of damaged disks due to system maintenance**) event is not sent, you can still call the RedeployInstance operation to redeploy the instance. For more information, see [Overview of system events on ECS instances equipped with local disks](~~107693~~).
+        The following table lists the types and states of events that you can handle by calling the RedeployInstance operation.
+        |System event|Event state|
+        |---|---|
+        |Instance restart due to system maintenance: SystemMaintenance.Reboot|Inquiring and Scheduled|
+        |Instance redeployment due to system maintenance: SystemMaintenance.Redeploy|Inquiring and Scheduled|
+        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
+        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
+        |Instance redeployment due to system errors: SystemFailure.Redeploy|Inquiring and Scheduled|
+        |For instances equipped with local disks only: instance restart due to a system error (SystemFailure.Reboot)|Executing|
+        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
+        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
+        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
         
         @param request: RedeployInstanceRequest
         @return: RedeployInstanceResponse
@@ -44276,8 +44326,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        ## Description
-        Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
+        Before you release a pay-as-you-go dedicated host, make sure that no Elastic Compute Service (ECS) instances are deployed on the dedicated host.
         
         @param request: ReleaseDedicatedHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44322,8 +44371,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        ## Description
-        Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
+        Before you release a pay-as-you-go dedicated host, make sure that no Elastic Compute Service (ECS) instances are deployed on the dedicated host.
         
         @param request: ReleaseDedicatedHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44367,8 +44415,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseDedicatedHostRequest,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        ## Description
-        Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
+        Before you release a pay-as-you-go dedicated host, make sure that no Elastic Compute Service (ECS) instances are deployed on the dedicated host.
         
         @param request: ReleaseDedicatedHostRequest
         @return: ReleaseDedicatedHostResponse
@@ -44381,8 +44428,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseDedicatedHostRequest,
     ) -> ecs_20140526_models.ReleaseDedicatedHostResponse:
         """
-        ## Description
-        Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
+        Before you release a pay-as-you-go dedicated host, make sure that no Elastic Compute Service (ECS) instances are deployed on the dedicated host.
         
         @param request: ReleaseDedicatedHostRequest
         @return: ReleaseDedicatedHostResponse
@@ -45236,19 +45282,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReplaceSystemDiskResponse:
         """
+        ## Description
         When you call this operation, take note of the following items:
-        * You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, `DiskId` takes effect.
-        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-        * The category of the system disk cannot be changed.
-        * The billing method of the system disk cannot be changed.
-        * The instance must be in the Stopped (`Stopped`) state.
-        > This item is applicable to only instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must disable economical mode and enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
-        * The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
-        * You cannot have overdue payments for the instance.
-        * You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
+        *   You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, only `DiskId` takes effect.
+        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+        *   The category of the system disk cannot be changed.
+        *   The billing method of the system disk cannot be changed.
+        *   The instance must be in the Stopped (`Stopped`) state.
+        **\
+        **Note**This item is applicable only to instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must set the stop mode to standard mode when you stop the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
+        *   The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        *   You cannot have overdue payments for the instance.
+        *   You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
         After you call this operation, you can use one of the following methods to check whether the system disk is replaced:
-        * Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
-        * Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If the `OperationLocks` response parameter is empty, the system disk is replaced.
+        *   Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
+        *   Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If `OperationLocks` in the response is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45321,19 +45369,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReplaceSystemDiskResponse:
         """
+        ## Description
         When you call this operation, take note of the following items:
-        * You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, `DiskId` takes effect.
-        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-        * The category of the system disk cannot be changed.
-        * The billing method of the system disk cannot be changed.
-        * The instance must be in the Stopped (`Stopped`) state.
-        > This item is applicable to only instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must disable economical mode and enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
-        * The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
-        * You cannot have overdue payments for the instance.
-        * You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
+        *   You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, only `DiskId` takes effect.
+        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+        *   The category of the system disk cannot be changed.
+        *   The billing method of the system disk cannot be changed.
+        *   The instance must be in the Stopped (`Stopped`) state.
+        **\
+        **Note**This item is applicable only to instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must set the stop mode to standard mode when you stop the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
+        *   The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        *   You cannot have overdue payments for the instance.
+        *   You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
         After you call this operation, you can use one of the following methods to check whether the system disk is replaced:
-        * Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
-        * Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If the `OperationLocks` response parameter is empty, the system disk is replaced.
+        *   Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
+        *   Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If `OperationLocks` in the response is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45405,19 +45455,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReplaceSystemDiskRequest,
     ) -> ecs_20140526_models.ReplaceSystemDiskResponse:
         """
+        ## Description
         When you call this operation, take note of the following items:
-        * You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, `DiskId` takes effect.
-        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-        * The category of the system disk cannot be changed.
-        * The billing method of the system disk cannot be changed.
-        * The instance must be in the Stopped (`Stopped`) state.
-        > This item is applicable to only instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must disable economical mode and enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
-        * The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
-        * You cannot have overdue payments for the instance.
-        * You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
+        *   You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, only `DiskId` takes effect.
+        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+        *   The category of the system disk cannot be changed.
+        *   The billing method of the system disk cannot be changed.
+        *   The instance must be in the Stopped (`Stopped`) state.
+        **\
+        **Note**This item is applicable only to instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must set the stop mode to standard mode when you stop the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
+        *   The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        *   You cannot have overdue payments for the instance.
+        *   You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
         After you call this operation, you can use one of the following methods to check whether the system disk is replaced:
-        * Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
-        * Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If the `OperationLocks` response parameter is empty, the system disk is replaced.
+        *   Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
+        *   Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If `OperationLocks` in the response is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @return: ReplaceSystemDiskResponse
@@ -45430,19 +45482,21 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReplaceSystemDiskRequest,
     ) -> ecs_20140526_models.ReplaceSystemDiskResponse:
         """
+        ## Description
         When you call this operation, take note of the following items:
-        * You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, `DiskId` takes effect.
-        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/console.htm).
-        * The category of the system disk cannot be changed.
-        * The billing method of the system disk cannot be changed.
-        * The instance must be in the Stopped (`Stopped`) state.
-        > This item is applicable to only instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must disable economical mode and enable standard mode when you stop the instance. This prevents the instance from being unable to restart due to insufficient ECS resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
-        * The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
-        * You cannot have overdue payments for the instance.
-        * You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
+        *   You must specify `ImageId` or `DiskId`. If both `ImageId` and `DiskId` are specified, only `DiskId` takes effect.
+        > You can use the `DiskId` parameter to replace the operating system of an instance. This feature is in invitational preview. To use this feature, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+        *   The category of the system disk cannot be changed.
+        *   The billing method of the system disk cannot be changed.
+        *   The instance must be in the Stopped (`Stopped`) state.
+        **\
+        **Note**This item is applicable only to instances in virtual private clouds (VPCs). If the instance is a pay-as-you-go instance and economical mode is enabled by default for the instance, you must set the stop mode to standard mode when you stop the instance. This prevents instance restart failures caused by insufficient resources after the system disk is replaced. For more information, see [StopInstance](~~25501~~).
+        *   The instance must not be locked for security reasons. If the value of `OperationLocks` in the DescribeInstances response contains `"LockReason": "security"` for an instance, the instance is locked for security reasons. For more information, see [API behavior when an instance is locked for security reasons](~~25695~~).
+        *   You cannot have overdue payments for the instance.
+        *   You can configure the `SystemDisk.Size` parameter to specify the capacity of the new system disk.
         After you call this operation, you can use one of the following methods to check whether the system disk is replaced:
-        * Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
-        * Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If the `OperationLocks` response parameter is empty, the system disk is replaced.
+        *   Call the [DescribeDisks](~~25514~~) operation to query the state of the new system disk. If the new system disk is in the In_use state, the system disk is replaced.
+        *   Call the [DescribeInstances](~~25506~~) operation to query the state of the instance whose system disk is replaced. If `OperationLocks` in the response is empty, the system disk is replaced.
         
         @param request: ReplaceSystemDiskRequest
         @return: ReplaceSystemDiskResponse
@@ -48606,8 +48660,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInvocationResponse:
         """
-        - If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
-        - If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled.
+        ## Description
+        *   If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
+        *   If you stop the process of a scheduled invocation command, the executions that have started are not interrupted. However, the execution does not start in the next period.
         
         @param request: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48656,8 +48711,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInvocationResponse:
         """
-        - If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
-        - If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled.
+        ## Description
+        *   If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
+        *   If you stop the process of a scheduled invocation command, the executions that have started are not interrupted. However, the execution does not start in the next period.
         
         @param request: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48705,8 +48761,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StopInvocationRequest,
     ) -> ecs_20140526_models.StopInvocationResponse:
         """
-        - If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
-        - If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled.
+        ## Description
+        *   If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
+        *   If you stop the process of a scheduled invocation command, the executions that have started are not interrupted. However, the execution does not start in the next period.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -48719,8 +48776,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StopInvocationRequest,
     ) -> ecs_20140526_models.StopInvocationResponse:
         """
-        - If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
-        - If you stop the process of a command that runs on a recurring schedule, the executions that have started are not interrupted but subsequent executions are cancelled.
+        ## Description
+        *   If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
+        *   If you stop the process of a scheduled invocation command, the executions that have started are not interrupted. However, the execution does not start in the next period.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -48734,8 +48792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        ## Description
-        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. An error message is returned if the maximum number is reached. For more information, see the "Tag limits" section in [Limits](~~25412~~).
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](~~25412~~).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48784,8 +48841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        ## Description
-        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. An error message is returned if the maximum number is reached. For more information, see the "Tag limits" section in [Limits](~~25412~~).
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](~~25412~~).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48833,8 +48889,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TagResourcesRequest,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        ## Description
-        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. An error message is returned if the maximum number is reached. For more information, see the "Tag limits" section in [Limits](~~25412~~).
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](~~25412~~).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -48847,8 +48902,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TagResourcesRequest,
     ) -> ecs_20140526_models.TagResourcesResponse:
         """
-        ## Description
-        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. An error message is returned if the maximum number is reached. For more information, see the "Tag limits" section in [Limits](~~25412~~).
+        Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number of tags is reached, an error message is returned. For more information, see the "Tag limits" section in [Limits](~~25412~~).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -49118,10 +49172,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (Available) or **Bound** (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignIpv6AddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49172,10 +49225,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (Available) or **Bound** (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignIpv6AddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49225,10 +49277,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (Available) or **Bound** (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignIpv6AddressesRequest
         @return: UnassignIpv6AddressesResponse
@@ -49241,10 +49292,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
         """
-        ## Description
         When you call this operation, take note of the following items:
-        *   The ENI must be in the **Available** (Available) or **Bound** (InUse) state.
-        *   The Elastic Compute Service (ECS) instance to which the primary ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignIpv6AddressesRequest
         @return: UnassignIpv6AddressesResponse
@@ -49258,9 +49308,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
         """
-        ## Description
-        *   The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
-        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignPrivateIpAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49311,9 +49360,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
         """
-        ## Description
-        *   The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
-        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignPrivateIpAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49363,9 +49411,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignPrivateIpAddressesRequest,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
         """
-        ## Description
-        *   The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
-        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignPrivateIpAddressesRequest
         @return: UnassignPrivateIpAddressesResponse
@@ -49378,9 +49425,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignPrivateIpAddressesRequest,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
         """
-        ## Description
-        *   The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
-        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is bound must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
         
         @param request: UnassignPrivateIpAddressesRequest
         @return: UnassignPrivateIpAddressesResponse
