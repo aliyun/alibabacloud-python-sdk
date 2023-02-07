@@ -192,6 +192,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
 
+    def create_alert_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_alert_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_alert(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_alert_with_options(project, request, headers, runtime)
+
+    async def create_alert_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateAlertRequest,
+    ) -> sls_20201230_models.CreateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_alert_with_options_async(project, request, headers, runtime)
+
     def create_consumer_group_with_options(
         self,
         project: str,
@@ -599,6 +679,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_index_with_options_async(project, logstore, request, headers, runtime)
+
+    def create_job_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.job_name):
+            body['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_job_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.job_name):
+            body['jobName'] = request.job_name
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_job(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateJobRequest,
+    ) -> sls_20201230_models.CreateJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_job_with_options(project, request, headers, runtime)
+
+    async def create_job_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateJobRequest,
+    ) -> sls_20201230_models.CreateJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_job_with_options_async(project, request, headers, runtime)
 
     def create_log_store_with_options(
         self,
@@ -1488,6 +1678,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_saved_search_with_options_async(project, request, headers, runtime)
 
+    def delete_alert_with_options(
+        self,
+        project: str,
+        alert: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs/{alert}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_alert_with_options_async(
+        self,
+        project: str,
+        alert: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs/{alert}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_alert(
+        self,
+        project: str,
+        alert: str,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_alert_with_options(project, alert, headers, runtime)
+
+    async def delete_alert_async(
+        self,
+        project: str,
+        alert: str,
+    ) -> sls_20201230_models.DeleteAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_with_options_async(project, alert, headers, runtime)
+
     def delete_consumer_group_with_options(
         self,
         project: str,
@@ -1871,6 +2137,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_index_with_options_async(project, logstore, headers, runtime)
+
+    def delete_job_with_options(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_job_with_options_async(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_job(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.DeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_job_with_options(project, etl_job_name, headers, runtime)
+
+    async def delete_job_async(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.DeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_job_with_options_async(project, etl_job_name, headers, runtime)
 
     def delete_log_store_with_options(
         self,
@@ -2395,6 +2737,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_shipper_with_options_async(project, logstore, shipper_name, headers, runtime)
+
+    def get_alert_with_options(
+        self,
+        project: str,
+        alert: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs/{alert}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_alert_with_options_async(
+        self,
+        project: str,
+        alert: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs/{alert}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_alert(
+        self,
+        project: str,
+        alert: str,
+    ) -> sls_20201230_models.GetAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_alert_with_options(project, alert, headers, runtime)
+
+    async def get_alert_async(
+        self,
+        project: str,
+        alert: str,
+    ) -> sls_20201230_models.GetAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_alert_with_options_async(project, alert, headers, runtime)
 
     def get_applied_configs_with_options(
         self,
@@ -3266,6 +3684,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_index_with_options_async(project, logstore, headers, runtime)
 
+    def get_job_with_options(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_job_with_options_async(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_job(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.GetJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_job_with_options(project, etl_job_name, headers, runtime)
+
+    async def get_job_async(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.GetJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_job_with_options_async(project, etl_job_name, headers, runtime)
+
     def get_log_store_with_options(
         self,
         project: str,
@@ -4028,6 +4522,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
+    def list_alert_with_options(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_alert_with_options_async(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListAlertResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_alert(
+        self,
+        project: str,
+    ) -> sls_20201230_models.ListAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_alert_with_options(project, headers, runtime)
+
+    async def list_alert_async(
+        self,
+        project: str,
+    ) -> sls_20201230_models.ListAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_alert_with_options_async(project, headers, runtime)
+
     def list_consumer_group_with_options(
         self,
         project: str,
@@ -4363,6 +4929,78 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_external_store_with_options_async(project, request, headers, runtime)
+
+    def list_jobs_with_options(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListJobsResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListJobsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_jobs_with_options_async(
+        self,
+        project: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListJobsResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListJobsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_jobs(
+        self,
+        project: str,
+    ) -> sls_20201230_models.ListJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_jobs_with_options(project, headers, runtime)
+
+    async def list_jobs_async(
+        self,
+        project: str,
+    ) -> sls_20201230_models.ListJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_jobs_with_options_async(project, headers, runtime)
 
     def list_log_stores_with_options(
         self,
@@ -5714,6 +6352,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
 
+    def update_alert_with_options(
+        self,
+        project: str,
+        alert: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.alert)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs/{alert}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAlertResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_alert_with_options_async(
+        self,
+        project: str,
+        alert: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.alert)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlert',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs/{alert}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateAlertResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_alert(
+        self,
+        project: str,
+        alert: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_alert_with_options(project, alert, request, headers, runtime)
+
+    async def update_alert_async(
+        self,
+        project: str,
+        alert: str,
+        request: sls_20201230_models.UpdateAlertRequest,
+    ) -> sls_20201230_models.UpdateAlertResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_alert_with_options_async(project, alert, request, headers, runtime)
+
     def update_consumer_group_with_options(
         self,
         project: str,
@@ -6039,6 +6761,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_index_with_options_async(project, logstore, request, headers, runtime)
+
+    def update_job_with_options(
+        self,
+        project: str,
+        etl_job: str,
+        tmp_req: sls_20201230_models.UpdateJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateJobResponse:
+        UtilClient.validate_model(tmp_req)
+        host_map = {}
+        host_map['project'] = project
+        request = sls_20201230_models.UpdateJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            query['body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_job_with_options_async(
+        self,
+        project: str,
+        etl_job: str,
+        tmp_req: sls_20201230_models.UpdateJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateJobResponse:
+        UtilClient.validate_model(tmp_req)
+        host_map = {}
+        host_map['project'] = project
+        request = sls_20201230_models.UpdateJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            query['body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_job(
+        self,
+        project: str,
+        etl_job: str,
+        request: sls_20201230_models.UpdateJobRequest,
+    ) -> sls_20201230_models.UpdateJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_job_with_options(project, etl_job, request, headers, runtime)
+
+    async def update_job_async(
+        self,
+        project: str,
+        etl_job: str,
+        request: sls_20201230_models.UpdateJobRequest,
+    ) -> sls_20201230_models.UpdateJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_job_with_options_async(project, etl_job, request, headers, runtime)
 
     def update_log_store_with_options(
         self,
