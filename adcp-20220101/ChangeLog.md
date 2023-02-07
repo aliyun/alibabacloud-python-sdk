@@ -1,3 +1,7 @@
+2023-02-07 Version: 1.0.6
+- UpdateHubClusterFeature VSwitches can be configured.
+
+
 2023-01-06 Version: 1.0.5
 - CreateHubCluster SheduleMode and PriceLimit can be configured.
 
