@@ -204,7 +204,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = analyze_chest_vessel_req.urllist[i0]
+                    tmp = analyze_chest_vessel_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         analyze_chest_vessel_resp = self.analyze_chest_vessel_with_options(analyze_chest_vessel_req, runtime)
@@ -280,7 +280,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = analyze_chest_vessel_req.urllist[i0]
+                    tmp = analyze_chest_vessel_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         analyze_chest_vessel_resp = await self.analyze_chest_vessel_with_options_async(analyze_chest_vessel_req, runtime)
@@ -442,7 +442,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = calc_cacsreq.urllist[i0]
+                    tmp = calc_cacsreq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         calc_cacsresp = self.calc_cacswith_options(calc_cacsreq, runtime)
@@ -518,7 +518,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = calc_cacsreq.urllist[i0]
+                    tmp = calc_cacsreq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         calc_cacsresp = await self.calc_cacswith_options_async(calc_cacsreq, runtime)
@@ -904,7 +904,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_covid_19cad_req.urllist[i0]
+                    tmp = detect_covid_19cad_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_covid_19cad_resp = self.detect_covid_19cad_with_options(detect_covid_19cad_req, runtime)
@@ -980,7 +980,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_covid_19cad_req.urllist[i0]
+                    tmp = detect_covid_19cad_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_covid_19cad_resp = await self.detect_covid_19cad_with_options_async(detect_covid_19cad_req, runtime)
@@ -1822,7 +1822,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_lung_nodule_req.urllist[i0]
+                    tmp = detect_lung_nodule_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_lung_nodule_resp = self.detect_lung_nodule_with_options(detect_lung_nodule_req, runtime)
@@ -1898,7 +1898,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_lung_nodule_req.urllist[i0]
+                    tmp = detect_lung_nodule_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_lung_nodule_resp = await self.detect_lung_nodule_with_options_async(detect_lung_nodule_req, runtime)
@@ -2048,7 +2048,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_lymph_req.urllist[i0]
+                    tmp = detect_lymph_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_lymph_resp = self.detect_lymph_with_options(detect_lymph_req, runtime)
@@ -2124,7 +2124,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_lymph_req.urllist[i0]
+                    tmp = detect_lymph_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_lymph_resp = await self.detect_lymph_with_options_async(detect_lymph_req, runtime)
@@ -2274,7 +2274,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_panc_req.urllist[i0]
+                    tmp = detect_panc_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_panc_resp = self.detect_panc_with_options(detect_panc_req, runtime)
@@ -2350,7 +2350,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_panc_req.urllist[i0]
+                    tmp = detect_panc_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_panc_resp = await self.detect_panc_with_options_async(detect_panc_req, runtime)
@@ -2512,7 +2512,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_rib_fracture_req.urllist[i0]
+                    tmp = detect_rib_fracture_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_rib_fracture_resp = self.detect_rib_fracture_with_options(detect_rib_fracture_req, runtime)
@@ -2588,7 +2588,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_rib_fracture_req.urllist[i0]
+                    tmp = detect_rib_fracture_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_rib_fracture_resp = await self.detect_rib_fracture_with_options_async(detect_rib_fracture_req, runtime)
@@ -2966,7 +2966,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = detect_spine_mrireq.urllist[i0]
+                    tmp = detect_spine_mrireq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_spine_mriresp = self.detect_spine_mriwith_options(detect_spine_mrireq, runtime)
@@ -3042,7 +3042,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = detect_spine_mrireq.urllist[i0]
+                    tmp = detect_spine_mrireq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         detect_spine_mriresp = await self.detect_spine_mriwith_options_async(detect_spine_mrireq, runtime)
@@ -3352,7 +3352,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = run_ctregistration_req.floating_list[i0]
+                    tmp = run_ctregistration_req.floating_list[i_0]
                     tmp.floating_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         if not UtilClient.is_unset(request.reference_list):
@@ -3381,7 +3381,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = run_ctregistration_req.reference_list[i1]
+                    tmp = run_ctregistration_req.reference_list[i_1]
                     tmp.reference_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_1 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_1), NumberClient.itol(1)))
         run_ctregistration_resp = self.run_ctregistration_with_options(run_ctregistration_req, runtime)
@@ -3457,7 +3457,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = run_ctregistration_req.floating_list[i0]
+                    tmp = run_ctregistration_req.floating_list[i_0]
                     tmp.floating_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         if not UtilClient.is_unset(request.reference_list):
@@ -3486,7 +3486,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = run_ctregistration_req.reference_list[i1]
+                    tmp = run_ctregistration_req.reference_list[i_1]
                     tmp.reference_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_1 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_1), NumberClient.itol(1)))
         run_ctregistration_resp = await self.run_ctregistration_with_options_async(run_ctregistration_req, runtime)
@@ -3660,7 +3660,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = run_med_qareq.answer_image_urllist[i0]
+                    tmp = run_med_qareq.answer_image_urllist[i_0]
                     tmp.answer_image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         run_med_qaresp = self.run_med_qawith_options(run_med_qareq, runtime)
@@ -3736,7 +3736,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = run_med_qareq.answer_image_urllist[i0]
+                    tmp = run_med_qareq.answer_image_urllist[i_0]
                     tmp.answer_image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         run_med_qaresp = await self.run_med_qawith_options_async(run_med_qareq, runtime)
@@ -3902,7 +3902,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = screen_chest_ctreq.urllist[i0]
+                    tmp = screen_chest_ctreq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         screen_chest_ctresp = self.screen_chest_ctwith_options(screen_chest_ctreq, runtime)
@@ -3978,7 +3978,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = screen_chest_ctreq.urllist[i0]
+                    tmp = screen_chest_ctreq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         screen_chest_ctresp = await self.screen_chest_ctwith_options_async(screen_chest_ctreq, runtime)
@@ -4222,7 +4222,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = segment_oarreq.urllist[i0]
+                    tmp = segment_oarreq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         segment_oarresp = self.segment_oarwith_options(segment_oarreq, runtime)
@@ -4298,7 +4298,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = segment_oarreq.urllist[i0]
+                    tmp = segment_oarreq.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         segment_oarresp = await self.segment_oarwith_options_async(segment_oarreq, runtime)
@@ -4464,7 +4464,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = target_volume_segment_req.urllist[i0]
+                    tmp = target_volume_segment_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         target_volume_segment_resp = self.target_volume_segment_with_options(target_volume_segment_req, runtime)
@@ -4540,7 +4540,7 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = target_volume_segment_req.urllist[i0]
+                    tmp = target_volume_segment_req.urllist[i_0]
                     tmp.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         target_volume_segment_resp = await self.target_volume_segment_with_options_async(target_volume_segment_req, runtime)
