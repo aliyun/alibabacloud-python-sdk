@@ -6904,14 +6904,17 @@ class ListDomainsResponse(TeaModel):
 class ListETLJobsResponseBody(TeaModel):
     def __init__(
         self,
-        etl_job_name_list: List[str] = None,
+        results: List[EtlJob] = None,
         total: int = None,
     ):
-        self.etl_job_name_list = etl_job_name_list
+        self.results = results
         self.total = total
 
     def validate(self):
-        pass
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6919,16 +6922,21 @@ class ListETLJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.etl_job_name_list is not None:
-            result['etlJobNameList'] = self.etl_job_name_list
+        result['results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['results'].append(k.to_map() if k else None)
         if self.total is not None:
             result['total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('etlJobNameList') is not None:
-            self.etl_job_name_list = m.get('etlJobNameList')
+        self.results = []
+        if m.get('results') is not None:
+            for k in m.get('results'):
+                temp_model = EtlJob()
+                self.results.append(temp_model.from_map(k))
         if m.get('total') is not None:
             self.total = m.get('total')
         return self
