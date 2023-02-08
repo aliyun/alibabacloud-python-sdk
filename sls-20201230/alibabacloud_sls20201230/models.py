@@ -4392,15 +4392,9 @@ class DeleteIndexResponse(TeaModel):
 class DeleteJobResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
+        data: Any = None,
     ):
-        self.code = code
         self.data = data
-        self.message = message
-        self.request_id = request_id
 
     def validate(self):
         pass
@@ -4411,26 +4405,14 @@ class DeleteJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data
-        if self.message is not None:
-            result['message'] = self.message
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('data') is not None:
             self.data = m.get('data')
-        if m.get('message') is not None:
-            self.message = m.get('message')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -7119,17 +7101,14 @@ class ListExternalStoreResponse(TeaModel):
 class ListJobsResponseBody(TeaModel):
     def __init__(
         self,
-        results: List[EtlJob] = None,
+        results: Any = None,
         total: int = None,
     ):
         self.results = results
         self.total = total
 
     def validate(self):
-        if self.results:
-            for k in self.results:
-                if k:
-                    k.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7137,21 +7116,16 @@ class ListJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['results'] = []
         if self.results is not None:
-            for k in self.results:
-                result['results'].append(k.to_map() if k else None)
+            result['results'] = self.results
         if self.total is not None:
             result['total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.results = []
         if m.get('results') is not None:
-            for k in m.get('results'):
-                temp_model = EtlJob()
-                self.results.append(temp_model.from_map(k))
+            self.results = m.get('results')
         if m.get('total') is not None:
             self.total = m.get('total')
         return self

@@ -1,3 +1,6 @@
+2023-02-08 Version: 1.5.11
+- Add productType to logstore API.
+
 2023-02-08 Version: 1.5.10
 - Add productType to logstore API.
 
