@@ -1,3 +1,6 @@
+2023-02-08 Version: 2.1.5
+- Support more regions.
+
 2023-01-30 Version: 2.1.4
 - Add InputFile struct for IndexFileMeta and BatchIndexFileMeta.
 - Add DataIngestion related APIs.

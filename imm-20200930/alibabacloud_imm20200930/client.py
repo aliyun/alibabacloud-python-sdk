@@ -854,6 +854,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_archive_file_inspection_task_with_options_async(request, runtime)
 
+    def create_batch_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateBatchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateBatchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.actions):
+            request.actions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.actions, 'Actions', 'json')
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.actions_shrink):
+            body['Actions'] = request.actions_shrink
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.service_role):
+            body['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBatch',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_batch_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateBatchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateBatchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.actions):
+            request.actions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.actions, 'Actions', 'json')
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.actions_shrink):
+            body['Actions'] = request.actions_shrink
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.service_role):
+            body['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateBatch',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_batch(
+        self,
+        request: imm_20200930_models.CreateBatchRequest,
+    ) -> imm_20200930_models.CreateBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_batch_with_options(request, runtime)
+
+    async def create_batch_async(
+        self,
+        request: imm_20200930_models.CreateBatchRequest,
+    ) -> imm_20200930_models.CreateBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_batch_with_options_async(request, runtime)
+
     def create_binding_with_options(
         self,
         request: imm_20200930_models.CreateBindingRequest,
@@ -2872,6 +2982,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_story_with_options_async(request, runtime)
 
+    def create_trigger_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateTriggerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateTriggerResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateTriggerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.actions):
+            request.actions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.actions, 'Actions', 'json')
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.actions_shrink):
+            body['Actions'] = request.actions_shrink
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.service_role):
+            body['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTrigger',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateTriggerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_trigger_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateTriggerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateTriggerResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateTriggerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.actions):
+            request.actions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.actions, 'Actions', 'json')
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.actions_shrink):
+            body['Actions'] = request.actions_shrink
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.service_role):
+            body['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTrigger',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateTriggerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_trigger(
+        self,
+        request: imm_20200930_models.CreateTriggerRequest,
+    ) -> imm_20200930_models.CreateTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_trigger_with_options(request, runtime)
+
+    async def create_trigger_async(
+        self,
+        request: imm_20200930_models.CreateTriggerRequest,
+    ) -> imm_20200930_models.CreateTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_trigger_with_options_async(request, runtime)
+
     def create_video_label_classification_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
@@ -4706,6 +4926,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_weboffice_token_with_options_async(request, runtime)
 
+    def get_batch_with_options(
+        self,
+        request: imm_20200930_models.GetBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetBatchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBatch',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_batch_with_options_async(
+        self,
+        request: imm_20200930_models.GetBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetBatchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBatch',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_batch(
+        self,
+        request: imm_20200930_models.GetBatchRequest,
+    ) -> imm_20200930_models.GetBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_batch_with_options(request, runtime)
+
+    async def get_batch_async(
+        self,
+        request: imm_20200930_models.GetBatchRequest,
+    ) -> imm_20200930_models.GetBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_batch_with_options_async(request, runtime)
+
     def get_binding_with_options(
         self,
         request: imm_20200930_models.GetBindingRequest,
@@ -5318,6 +5612,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_task_with_options_async(request, runtime)
 
+    def get_trigger_with_options(
+        self,
+        request: imm_20200930_models.GetTriggerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetTriggerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTrigger',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetTriggerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_trigger_with_options_async(
+        self,
+        request: imm_20200930_models.GetTriggerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetTriggerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTrigger',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetTriggerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_trigger(
+        self,
+        request: imm_20200930_models.GetTriggerRequest,
+    ) -> imm_20200930_models.GetTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_trigger_with_options(request, runtime)
+
+    async def get_trigger_async(
+        self,
+        request: imm_20200930_models.GetTriggerRequest,
+    ) -> imm_20200930_models.GetTriggerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_trigger_with_options_async(request, runtime)
+
     def get_video_label_classification_result_with_options(
         self,
         request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
@@ -5485,6 +5853,100 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.IndexFileMetaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.index_file_meta_with_options_async(request, runtime)
+
+    def list_batches_with_options(
+        self,
+        request: imm_20200930_models.ListBatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ListBatchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.tag_selector):
+            query['TagSelector'] = request.tag_selector
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBatches',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ListBatchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_batches_with_options_async(
+        self,
+        request: imm_20200930_models.ListBatchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ListBatchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.tag_selector):
+            query['TagSelector'] = request.tag_selector
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBatches',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ListBatchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_batches(
+        self,
+        request: imm_20200930_models.ListBatchesRequest,
+    ) -> imm_20200930_models.ListBatchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_batches_with_options(request, runtime)
+
+    async def list_batches_async(
+        self,
+        request: imm_20200930_models.ListBatchesRequest,
+    ) -> imm_20200930_models.ListBatchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_batches_with_options_async(request, runtime)
 
     def list_bindings_with_options(
         self,
@@ -5919,6 +6381,100 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_tasks_with_options_async(request, runtime)
+
+    def list_triggers_with_options(
+        self,
+        request: imm_20200930_models.ListTriggersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ListTriggersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.tag_selector):
+            query['TagSelector'] = request.tag_selector
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTriggers',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ListTriggersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_triggers_with_options_async(
+        self,
+        request: imm_20200930_models.ListTriggersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ListTriggersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.tag_selector):
+            query['TagSelector'] = request.tag_selector
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTriggers',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ListTriggersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_triggers(
+        self,
+        request: imm_20200930_models.ListTriggersRequest,
+    ) -> imm_20200930_models.ListTriggersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_triggers_with_options(request, runtime)
+
+    async def list_triggers_async(
+        self,
+        request: imm_20200930_models.ListTriggersRequest,
+    ) -> imm_20200930_models.ListTriggersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_triggers_with_options_async(request, runtime)
 
     def query_figure_clusters_with_options(
         self,
