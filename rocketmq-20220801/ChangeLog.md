@@ -1,3 +1,7 @@
+2023-02-08 Version: 1.0.4
+- Support Dead Letter.
+- Support ResourceGroup.
+
 2023-01-11 Version: 1.0.3
 - Delete consumerGroupId from topic and group api.
 - Support for Dead Letter.
