@@ -5127,6 +5127,384 @@ class Client(OpenApiClient):
         headers = {}
         return await self.exec_job_with_options_async(request, headers, runtime)
 
+    def get_arms_top_nmetric_with_options(
+        self,
+        region_id: str,
+        order_by: str,
+        limit: str,
+        start_time: str,
+        end_time: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetArmsTopNMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getArmsTopNMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetArmsTopNMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_arms_top_nmetric_with_options_async(
+        self,
+        region_id: str,
+        order_by: str,
+        limit: str,
+        start_time: str,
+        end_time: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetArmsTopNMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getArmsTopNMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetArmsTopNMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_arms_top_nmetric(
+        self,
+        region_id: str,
+        order_by: str,
+        limit: str,
+        start_time: str,
+        end_time: str,
+    ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_arms_top_nmetric_with_options(region_id, order_by, limit, start_time, end_time, headers, runtime)
+
+    async def get_arms_top_nmetric_async(
+        self,
+        region_id: str,
+        order_by: str,
+        limit: str,
+        start_time: str,
+        end_time: str,
+    ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_arms_top_nmetric_with_options_async(region_id, order_by, limit, start_time, end_time, headers, runtime)
+
+    def get_availability_metric_with_options(
+        self,
+        region_id: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAvailabilityMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getAvailabilityMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetAvailabilityMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_availability_metric_with_options_async(
+        self,
+        region_id: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAvailabilityMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getAvailabilityMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetAvailabilityMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_availability_metric(
+        self,
+        region_id: str,
+        limit: str,
+    ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_availability_metric_with_options(region_id, limit, headers, runtime)
+
+    async def get_availability_metric_async(
+        self,
+        region_id: str,
+        limit: str,
+    ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_availability_metric_with_options_async(region_id, limit, headers, runtime)
+
+    def get_change_order_metric_with_options(
+        self,
+        region_id: str,
+        create_time: str,
+        order_by: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetChangeOrderMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getChangeOrderMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetChangeOrderMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_change_order_metric_with_options_async(
+        self,
+        region_id: str,
+        create_time: str,
+        order_by: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetChangeOrderMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getChangeOrderMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetChangeOrderMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_change_order_metric(
+        self,
+        region_id: str,
+        create_time: str,
+        order_by: str,
+        limit: str,
+    ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_change_order_metric_with_options(region_id, create_time, order_by, limit, headers, runtime)
+
+    async def get_change_order_metric_async(
+        self,
+        region_id: str,
+        create_time: str,
+        order_by: str,
+        limit: str,
+    ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_change_order_metric_with_options_async(region_id, create_time, order_by, limit, headers, runtime)
+
+    def get_scale_app_metric_with_options(
+        self,
+        region_id: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetScaleAppMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getScaleAppMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetScaleAppMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scale_app_metric_with_options_async(
+        self,
+        region_id: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetScaleAppMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getScaleAppMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetScaleAppMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scale_app_metric(
+        self,
+        region_id: str,
+        limit: str,
+    ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_scale_app_metric_with_options(region_id, limit, headers, runtime)
+
+    async def get_scale_app_metric_async(
+        self,
+        region_id: str,
+        limit: str,
+    ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_scale_app_metric_with_options_async(region_id, limit, headers, runtime)
+
+    def get_warning_event_metric_with_options(
+        self,
+        region_id: str,
+        start_time: str,
+        end_time: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetWarningEventMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getWarningEventMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetWarningEventMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_warning_event_metric_with_options_async(
+        self,
+        region_id: str,
+        start_time: str,
+        end_time: str,
+        limit: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetWarningEventMetric',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/getWarningEventMetric',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.GetWarningEventMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_warning_event_metric(
+        self,
+        region_id: str,
+        start_time: str,
+        end_time: str,
+        limit: str,
+    ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_warning_event_metric_with_options(region_id, start_time, end_time, limit, headers, runtime)
+
+    async def get_warning_event_metric_async(
+        self,
+        region_id: str,
+        start_time: str,
+        end_time: str,
+        limit: str,
+    ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_warning_event_metric_with_options_async(region_id, start_time, end_time, limit, headers, runtime)
+
     def list_app_events_with_options(
         self,
         request: sae_20190506_models.ListAppEventsRequest,
