@@ -1,3 +1,6 @@
+2023-02-08 Version: 2.1.6
+- Support SimilarImageClustering.
+
 2023-02-08 Version: 2.1.5
 - Support more regions.
 
