@@ -1,3 +1,7 @@
+2023-02-08 Version: 5.1.0
+- Add ad verify api.
+
+
 2022-11-23 Version: 5.0.7
 - 媒体上报事件接口.
 
