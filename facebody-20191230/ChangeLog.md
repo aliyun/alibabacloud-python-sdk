@@ -1,3 +1,6 @@
+2023-02-08 Version: 4.0.8
+- Generated python 2019-12-30 for facebody.
+
 2023-02-03 Version: 4.0.7
 - Release CompareFaceWithMask DetectInfraredLivingFace.
 
