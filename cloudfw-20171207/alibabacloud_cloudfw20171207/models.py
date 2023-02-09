@@ -839,6 +839,7 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         lang: str = None,
         member_uid: str = None,
         network_instance_id: str = None,
+        v_switch_id: str = None,
         vpc_firewall_name: str = None,
         vpc_region: str = None,
     ):
@@ -858,6 +859,7 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         self.member_uid = member_uid
         # The ID of the VPC for which you want to create the VPC firewall.
         self.network_instance_id = network_instance_id
+        self.v_switch_id = v_switch_id
         # The instance name of the VPC firewall.
         self.vpc_firewall_name = vpc_firewall_name
         # The ID of the region to which the VPC belongs.
@@ -884,6 +886,8 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
             result['MemberUid'] = self.member_uid
         if self.network_instance_id is not None:
             result['NetworkInstanceId'] = self.network_instance_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.vpc_firewall_name is not None:
             result['VpcFirewallName'] = self.vpc_firewall_name
         if self.vpc_region is not None:
@@ -902,6 +906,8 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
             self.member_uid = m.get('MemberUid')
         if m.get('NetworkInstanceId') is not None:
             self.network_instance_id = m.get('NetworkInstanceId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcFirewallName') is not None:
             self.vpc_firewall_name = m.get('VpcFirewallName')
         if m.get('VpcRegion') is not None:
@@ -984,6 +990,192 @@ class CreateVpcFirewallCenConfigureResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateVpcFirewallCenConfigureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVpcFirewallConfigureRequest(TeaModel):
+    def __init__(
+        self,
+        firewall_switch: str = None,
+        lang: str = None,
+        local_vpc_cidr_table_list: str = None,
+        local_vpc_id: str = None,
+        local_vpc_region: str = None,
+        member_uid: str = None,
+        peer_vpc_cidr_table_list: str = None,
+        peer_vpc_id: str = None,
+        peer_vpc_region: str = None,
+        vpc_firewall_name: str = None,
+    ):
+        # The status of the VPC firewall after you create the firewall. Valid values:
+        # 
+        # *   **open**: After you create the VPC firewall, the firewall is automatically enabled. This is the default value.
+        # *   **close**: After you create the VPC firewall, the firewall is not automatically enabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](~~342935~~) operation.
+        self.firewall_switch = firewall_switch
+        # The natural language of the request and response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
+        self.lang = lang
+        # The CIDR blocks of the local VPC. The value is a JSON string that contains the following parameters:
+        # 
+        # *   **RouteTableId**: the ID of the route table for the local VPC.
+        # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
+        self.local_vpc_cidr_table_list = local_vpc_cidr_table_list
+        # The ID of the local VPC.
+        self.local_vpc_id = local_vpc_id
+        # The region ID of the local VPC.
+        # 
+        # >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+        self.local_vpc_region = local_vpc_region
+        # The UID of the member that is managed by your Alibaba Cloud account.
+        self.member_uid = member_uid
+        # The CIDR blocks of the peer VPC. The value is a JSON string that contains the following parameters:
+        # 
+        # *   **RouteTableId**: the ID of the route table for the peer VPC.
+        # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
+        self.peer_vpc_cidr_table_list = peer_vpc_cidr_table_list
+        # The ID of the peer VPC.
+        self.peer_vpc_id = peer_vpc_id
+        # The region ID of the peer VPC.
+        # 
+        # >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+        self.peer_vpc_region = peer_vpc_region
+        # The instance name of the VPC firewall.
+        self.vpc_firewall_name = vpc_firewall_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_switch is not None:
+            result['FirewallSwitch'] = self.firewall_switch
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.local_vpc_cidr_table_list is not None:
+            result['LocalVpcCidrTableList'] = self.local_vpc_cidr_table_list
+        if self.local_vpc_id is not None:
+            result['LocalVpcId'] = self.local_vpc_id
+        if self.local_vpc_region is not None:
+            result['LocalVpcRegion'] = self.local_vpc_region
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.peer_vpc_cidr_table_list is not None:
+            result['PeerVpcCidrTableList'] = self.peer_vpc_cidr_table_list
+        if self.peer_vpc_id is not None:
+            result['PeerVpcId'] = self.peer_vpc_id
+        if self.peer_vpc_region is not None:
+            result['PeerVpcRegion'] = self.peer_vpc_region
+        if self.vpc_firewall_name is not None:
+            result['VpcFirewallName'] = self.vpc_firewall_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallSwitch') is not None:
+            self.firewall_switch = m.get('FirewallSwitch')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('LocalVpcCidrTableList') is not None:
+            self.local_vpc_cidr_table_list = m.get('LocalVpcCidrTableList')
+        if m.get('LocalVpcId') is not None:
+            self.local_vpc_id = m.get('LocalVpcId')
+        if m.get('LocalVpcRegion') is not None:
+            self.local_vpc_region = m.get('LocalVpcRegion')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('PeerVpcCidrTableList') is not None:
+            self.peer_vpc_cidr_table_list = m.get('PeerVpcCidrTableList')
+        if m.get('PeerVpcId') is not None:
+            self.peer_vpc_id = m.get('PeerVpcId')
+        if m.get('PeerVpcRegion') is not None:
+            self.peer_vpc_region = m.get('PeerVpcRegion')
+        if m.get('VpcFirewallName') is not None:
+            self.vpc_firewall_name = m.get('VpcFirewallName')
+        return self
+
+
+class CreateVpcFirewallConfigureResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vpc_firewall_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The instance ID of the VPC firewall.
+        self.vpc_firewall_id = vpc_firewall_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.vpc_firewall_id is not None:
+            result['VpcFirewallId'] = self.vpc_firewall_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VpcFirewallId') is not None:
+            self.vpc_firewall_id = m.get('VpcFirewallId')
+        return self
+
+
+class CreateVpcFirewallConfigureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVpcFirewallConfigureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVpcFirewallConfigureResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4233,28 +4425,37 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         start_time: str = None,
         tag_id_new: str = None,
     ):
-        # The type of the applications that the access control policy supports. Valid values:
+        # The application type in the access control policy. Valid values:
         # 
-        # - **FTP**\
-        # - **HTTP**\
-        # - **HTTPS**\
-        # - **MySQL**\
-        # - **SMTP**\
-        # - **SMTPS**\
-        # - **RDP**\
-        # - **VNC**\
-        # - **SSH**\
-        # - **Redis**\
-        # - **MQTT**\
-        # - **MongoDB**\
-        # - **Memcache**\
-        # - **SSL**\
-        # - **ANY**: all types of applications
+        # *   **FTP**\
+        # *   **HTTP**\
+        # *   **HTTPS**\
+        # *   **Memcache**\
+        # *   **MongoDB**\
+        # *   **MQTT**\
+        # *   **MySQL**\
+        # *   **RDP**\
+        # *   **Redis**\
+        # *   **SMTP**\
+        # *   **SMTPS**\
+        # *   **SSH**\
+        # *   **SSL_No_Cert**\
+        # *   **SSL**\
+        # *   **VNC**\
+        # 
+        # >  The value of this parameter depends on the value of Proto. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you specify both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
         self.application_name = application_name
+        # The ID of the service to which the destination IP address belongs. This parameter is left empty by default. Valid values:
+        # 
+        # *   **All**: all services
+        # *   **RiskDomain**: risky domain names
+        # *   **RiskIP**: risky IP addresses
+        # *   **AliYun**: Alibaba Cloud services
+        # *   **NotAliYun**: third-party services
         self.category_id = category_id
         # The number of the page to return.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Default value: 1.
         self.current_page = current_page
         # The destination IP address in the outbound connection that is initiated to access a domain name.
         self.dst_ip = dst_ip
@@ -4265,11 +4466,10 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
-        # The field based on which you want to sort the queried information. Valid values:
+        # The order in which you want to sort the queried information. Valid values:
         # 
-        # *   **SessionCount**: the number of requests. This is the default value.
-        # *   **InBytes**: the inbound traffic.
-        # *   **OutBytes**: the outbound traffic.
+        # *   **asc**: the ascending order.
+        # *   **desc**: the descending order. This is the default value.
         self.order = order
         # The number of entries to return on each page.
         # 
@@ -4281,13 +4481,52 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         self.private_ip = private_ip
         # The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connection.
         self.public_ip = public_ip
-        # The order in which you want to sort the queried information. Valid values:
+        # The field based on which you want to sort the queried information. Valid values:
         # 
-        # *   **asc**: the ascending order
-        # *   **desc**: the descending order
+        # *   **SessionCount**: the number of requests. This is the default value.
+        # *   **TotalBytes**: the total volume of traffic.
         self.sort = sort
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
+        # The ID of the tag. Valid values:
+        # 
+        # *   **AliYun**: Alibaba Cloud service
+        # *   **RiskDomain**: risky domain name
+        # *   **RiskIP**: risky IP address
+        # *   **TrustedDomain**: trusted website
+        # *   **AliPay**: Alipay
+        # *   **DingDing**: DingTalk
+        # *   **WeChat**: WeChat
+        # *   **QQ**: Tencent QQ
+        # *   **SecurityService**: security service
+        # *   **Microsoft**: Microsoft
+        # *   **Amazon**: Amazon Web Services (AWS)
+        # *   **Pan**: cloud disk
+        # *   **Map**: map
+        # *   **Code**: code hosting
+        # *   **SystemService**: system service
+        # *   **Taobao**: Taobao
+        # *   **Google**: Google
+        # *   **ThirdPartyService**: third-party service
+        # *   **FirstFlow**: the first time
+        # *   **Downloader**: malicious download
+        # *   **Alexa Top1M**: popular website
+        # *   **Miner**: mining pool
+        # *   **Intelligence**: threat intelligence
+        # *   **DDoS**: DDoS trojan
+        # *   **Ransomware**: ransomware
+        # *   **Spyware**: spyware
+        # *   **Rogue**: rogue software
+        # *   **Botnet**: botnet
+        # *   **Suspicious**: suspicious website
+        # *   **C\&C**: command and control (C\&C)
+        # *   **Gang**: gang
+        # *   **CVE**: Common Vulnerabilities and Exposures (CVE)
+        # *   **Backdoor**: webshell
+        # *   **Phishing**: phishing website
+        # *   **APT**: advanced persistent threat (APT) attack
+        # *   **Supply Chain Attack**: supply chain attack
+        # *   **Malicious software**: malware
         self.tag_id_new = tag_id_new
 
     def validate(self):
@@ -4368,7 +4607,9 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList(TeaMode
         address_group_name: str = None,
         address_group_uuid: str = None,
     ):
+        # The name of the address book.
         self.address_group_name = address_group_name
+        # The UUID of the address book.
         self.address_group_uuid = address_group_uuid
 
     def validate(self):
@@ -4401,7 +4642,25 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
         application_name: str = None,
         port: int = None,
     ):
-        # The type of the application.
+        # The application type in the access control policy. Valid values:
+        # 
+        # *   **FTP**\
+        # *   **HTTP**\
+        # *   **HTTPS**\
+        # *   **Memcache**\
+        # *   **MongoDB**\
+        # *   **MQTT**\
+        # *   **MySQL**\
+        # *   **RDP**\
+        # *   **Redis**\
+        # *   **SMTP**\
+        # *   **SMTPS**\
+        # *   **SSH**\
+        # *   **SSL_No_Cert**\
+        # *   **SSL**\
+        # *   **VNC**\
+        # 
+        # >  The value of this parameter depends on the value of Proto. If you set Proto to TCP, you can set ApplicationNameList to any valid value. If you specify both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
         self.application_name = application_name
         # The port of the application.
         self.port = port
@@ -4439,6 +4698,11 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListTagList(TeaModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
+        # The type of the tag. Valid values:
+        # 
+        # *   **Suspicious**\
+        # *   **Malicious**\
+        # *   **Trusted**\
         self.class_id = class_id
         # The risk level. Valid values:
         # 
@@ -4524,12 +4788,18 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         self.acl_recommend_detail = acl_recommend_detail
         # The state of the access control policy. Valid values:
         # 
-        # *   **normal**: healthy
-        # *   **abnormal**: unhealthy
+        # *   **Normal**: healthy
+        # *   **Abnormal**: unhealthy
         self.acl_status = acl_status
+        # The information about the address book.
         self.address_group_list = address_group_list
         # An array that consists of application ports.
         self.application_port_list = application_port_list
+        # The type of the tag. Valid values:
+        # 
+        # *   **Suspicious**\
+        # *   **Malicious**\
+        # *   **Trusted**\
         self.category_class_id = category_class_id
         # The ID of the service to which the destination IP address belongs. Valid values:
         # 
@@ -4545,6 +4815,10 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         self.dst_ip = dst_ip
         # The name of the group to which the access control policy belongs.
         self.group_name = group_name
+        # Indicates whether an access control policy is configured. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.has_acl = has_acl
         # Indicates whether an access control policy is recommended. Valid values:
         # 
@@ -4553,7 +4827,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         self.has_acl_recommend = has_acl_recommend
         # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
-        # Indicates whether the destination IP address is added to an allowlist. Valid values:
+        # Indicates whether the destination IP address is added to a whitelist. Valid values:
         # 
         # *   **true**: added
         # *   **false**: not added
@@ -4564,6 +4838,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         self.rule_id = rule_id
         # The name of the access control policy.
         self.rule_name = rule_name
+        # The reason why the domain name is secure.
         self.security_reason = security_reason
         # The suggestion to handle the traffic of the domain name in outbound connections. Valid values:
         # 
@@ -4573,8 +4848,9 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         self.security_suggest = security_suggest
         # The number of requests.
         self.session_count = session_count
-        # An array that consists of tags.
+        # The tags.
         self.tag_list = tag_list
+        # The total volume of traffic. Unit: bytes.
         self.total_bytes = total_bytes
 
     def validate(self):
@@ -4714,7 +4990,7 @@ class DescribeOutgoingDestinationIPResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of destination IP addresses in outbound connections.
+        # The destination IP addresses in outbound connections.
         self.dst_iplist = dst_iplist
         # The ID of the request.
         self.request_id = request_id
@@ -4855,45 +5131,45 @@ class DescribeOutgoingDomainRequest(TeaModel):
         self.sort = sort
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
-        # 情报标签ID。取值：
+        # The ID of the tag. Valid values:
         # 
-        # - **AliYun**：Alibaba cloud products.
-        # - **RiskDomain**：The risk domain.
-        # - **RiskIP**: The risk IP.
-        # - **TrustedDomain**：The trusted domain.
-        # - **AliPay**：Alipay
-        # - **DingDing**：Ding talk.
-        # - **WeChat**：Wechat.
-        # - **QQ**：Tencent QQ.
-        # - **SecurityService**：The security service.
-        # - **Microsoft**：The Microsoft.
-        # - **Amazon**：Amazon.
-        # - **Pan**：Pan.
-        # - **Map**：Map.
-        # - **Code**：Code hosting
-        # - **SystemService**：System service.
-        # - **Taobao**：Taobao.
-        # - **Google**：Google.
-        # - **ThirdPartyService**：The third party service.
-        # - **FirstFlow**：首次
-        # - **Downloader**：恶意下载
-        # - **Alexa Top1M**：热门网站
-        # - **Miner**：矿池
-        # - **Intelligence**：威胁情报
-        # - **DDoS**：DDoS木马
-        # - **Ransomware**：勒索软件
-        # - **Spyware**：间谍软件
-        # - **Rogue**：流氓软件
-        # - **Botnet**：僵尸网络
-        # - **Suspicious**：可疑网站
-        # - **C&C**：远控
-        # - **Gang**：团伙
-        # - **CVE**：漏洞CVE
-        # - **Backdoor**：木马后门
-        # - **Phishing**：钓鱼网站
-        # - **APT**：APT攻击
-        # - **Supply Chain Attack**：供应链攻击
-        # - **Malicious software**：恶意软件
+        # *   **AliYun**: Alibaba Cloud service
+        # *   **RiskDomain**: risky domain name
+        # *   **RiskIP**: risky IP address
+        # *   **TrustedDomain**: trusted website
+        # *   **AliPay**: Alipay
+        # *   **DingDing**: DingTalk
+        # *   **WeChat**: WeChat
+        # *   **QQ**: Tencent QQ
+        # *   **SecurityService**: security service
+        # *   **Microsoft**: Microsoft
+        # *   **Amazon**: Amazon Web Services (AWS)
+        # *   **Pan**: cloud disk
+        # *   **Map**: map
+        # *   **Code**: code hosting
+        # *   **SystemService**: system service
+        # *   **Taobao**: Taobao
+        # *   **Google**: Google
+        # *   **ThirdPartyService**: third-party service
+        # *   **FirstFlow**: the first time
+        # *   **Downloader**: malicious download
+        # *   **Alexa Top1M**: popular website
+        # *   **Miner**: mining pool
+        # *   **Intelligence**: threat intelligence
+        # *   **DDoS**: DDoS trojan
+        # *   **Ransomware**: ransomware
+        # *   **Spyware**: spyware
+        # *   **Rogue**: rogue software
+        # *   **Botnet**: botnet
+        # *   **Suspicious**: suspicious website
+        # *   **C&C**: command and control (C&C)
+        # *   **Gang**: gang
+        # *   **CVE**: Common Vulnerabilities and Exposures (CVE)
+        # *   **Backdoor**: webshell
+        # *   **Phishing**: phishing website
+        # *   **APT**: advanced persistent threat (APT) attack
+        # *   **Supply Chain Attack**: supply chain attack
+        # *   **Malicious software**: malware
         self.tag_id_new = tag_id_new
 
     def validate(self):
@@ -8948,10 +9224,10 @@ class DescribeVpcFirewallListRequest(TeaModel):
         vpc_firewall_name: str = None,
         vpc_id: str = None,
     ):
-        # The sub type of connection. Valid values:
+        # The sub-type of the connection. Valid values:
         # 
-        # - **vpc2vpc**: High-speed channel.
-        # - **vppeer**: Peer connection.
+        # *   **vpc2vpc**: Express Connect connection
+        # *   **vpcpeer**: peer connection
         self.connect_sub_type = connect_sub_type
         # The number of the page to return.
         # 
@@ -8961,12 +9237,12 @@ class DescribeVpcFirewallListRequest(TeaModel):
         # 
         # *   **opened**: The VPC firewall is enabled.
         # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not configured.
-        # *   **configured**: The VPC firewall is configured.
+        # *   **notconfigured**: The VPC firewall is not created.
+        # *   **configured**: The VPC firewall is created.
         # 
         # >  If you do not specify this parameter, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
-        # The natural language of the request and response. Valid values:
+        # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
@@ -8977,11 +9253,11 @@ class DescribeVpcFirewallListRequest(TeaModel):
         # 
         # Default value: **10**.**** Maximum value: **50**.
         self.page_size = page_size
-        # The cloud account UID of the peer VPC.
+        # The UID of the Alibaba Cloud account to which the peer VPC belongs.
         self.peer_uid = peer_uid
         # The region ID of the VPC.
         # 
-        # >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+        # >  For more information about the regions, see [Supported regions](~~195657~~).
         self.region_no = region_no
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
@@ -9057,20 +9333,20 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig(TeaModel):
         enable_all_patch: int = None,
         run_mode: int = None,
     ):
-        # The status of basic policies. Valid values:
+        # Indicates whether basic protection is enabled. Valid values:
         # 
-        # - **1**: enabled
-        # - **0**: disabled
+        # *   **1**: yes
+        # *   **0**: no
         self.basic_rules = basic_rules
-        # The status of virtual patches. Valid values:
+        # Indicates whether virtual patching is enabled. Valid values:
         # 
-        # - **1**: enabled
-        # - **0**: disabled
+        # *   **1**: yes
+        # *   **0**: no
         self.enable_all_patch = enable_all_patch
-        # The working mode of the IPS. Valid values:
+        # The mode of the IPS. Valid values:
         # 
-        # - **1**: blocking mode
-        # - **0**: monitoring mode
+        # *   **1**: block mode
+        # *   **0**: monitor mode
         self.run_mode = run_mode
 
     def validate(self):
@@ -9417,20 +9693,20 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
     ):
         # The bandwidth of the Express Connect circuit. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The sub type of connection. Valid values:
+        # The sub-type of the connection. Valid values:
         # 
-        # - **vpc2vpc**: High-speed channel.
-        # - **vppeer**: Peer connection.
+        # *   **vpc2vpc**: Express Connect connection
+        # *   **vpcpeer**: peer connection
         self.connect_sub_type = connect_sub_type
-        # The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates Express Connect circuits.
+        # The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates an Express Connect connection.
         self.connect_type = connect_type
         # The status of the VPC firewall. Valid values:
         # 
         # *   **opened**: The VPC firewall is enabled.
         # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not configured.
+        # *   **notconfigured**: The VPC firewall is not created.
         self.firewall_switch_status = firewall_switch_status
-        # The configuration of the intrusion prevention system (IPS).
+        # The information about the intrusion prevention system (IPS) configuration.
         self.ips_config = ips_config
         # The details about the local VPC.
         self.local_vpc = local_vpc
@@ -9438,18 +9714,16 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         self.member_uid = member_uid
         # The details about the peer VPC.
         self.peer_vpc = peer_vpc
-        # The status of the region. Valid values:
+        # Indicates whether you can create a VPC firewall in a specified region. Valid values:
         # 
-        # *   **enable**: indicates that you can create VPC firewalls in the region.
-        # *   **disable**: indicates that you cannot create VPC firewalls in the region.
+        # *   **enable**: yes
+        # *   **disable**: no
         self.region_status = region_status
         # The result code of the operation that creates the VPC firewall. Valid values:
         # 
-        # *   **Unauthorized**: Cloud Firewall is not authorized to access the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-        # *   **RegionDisable**: .VPC Firewall is not supported in the region of the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-        # *   **OpsDisable**: You are not allowed to create the VPC firewall.
-        # *   **VbrNotSupport**: The VPC firewall cannot be created for a VBR that is attached to the CEN instance.
-        # *   Empty string: You can create a VPC firewall for the network instance.
+        # *   **Unauthorized**: Cloud Firewall is not authorized to access a VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
+        # *   **RegionDisable**: VPC Firewall is not supported in the region of a VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
+        # *   **Empty string**: You can create a VPC firewall for the network instance.
         self.result_code = result_code
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
@@ -9539,7 +9813,7 @@ class DescribeVpcFirewallListResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of VPC firewalls.
         self.total_count = total_count
-        # The details about VPC firewalls.
+        # The details about the VPC firewalls.
         self.vpc_firewalls = vpc_firewalls
 
     def validate(self):
@@ -9777,59 +10051,71 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         vuln_status: str = None,
         vuln_type: str = None,
     ):
-        # The attack type of the intrusion events. Valid values:
+        # The attack type of the intrusion event. Valid values:
         # 
-        # * **1**: suspicious connection
-        # * **2**: command execution
-        # * **3**: brute-force attack
-        # * **4**: scanning
-        # * **5**: others
-        # * **6**: information leak
-        # * **7**: DoS attack
-        # * **8**: buffer overflow attack
-        # * **9**: web attack
-        # * **10**: trojan backdoor
-        # * **11**: computer worm
-        # * **12**: mining
-        # * **13**: reverse shell
+        # *   **1**: suspicious connection
+        # *   **2**: command execution
+        # *   **3**: brute-force attack
+        # *   **4**: scanning
+        # *   **5**: others
+        # *   **6**: information leakage
+        # *   **7**: DoS attack
+        # *   **8**: buffer overflow attack
+        # *   **9**: web attack
+        # *   **10**: webshell
+        # *   **11**: computer worm
+        # *   **12**: mining
+        # *   **13**: reverse shell
         # 
-        # > If you do not specify this parameter, the intrusion events of all attack types are queried.
+        # >  If you do not specify this parameter, the intrusion events of all attack types are queried.
         self.attack_type = attack_type
-        # The edition of Cloud Firewall that you purchase. Valid values:
-        # 
-        # *   **2**: Premium Edition
-        # *   **3**: Enterprise Edition
-        # *   **4**: Ultimate Edition
-        # *   **10**: pay-as-you-go edition
+        # The edition of Cloud Firewall.
         self.buy_version = buy_version
-        # The number of the page to return.
-        # 
-        # Default value: **1**.
+        # The number of the page to return. Default value: 1.
         self.current_page = current_page
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The natural language of the request and response. Valid values:
+        # The language of the content within the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
-        # The method that is used to sort the results. Valid values:
+        # The order in which you want to sort the queried information. Valid values:
         # 
-        # *   **asc**: the ascending order
+        # *   **asc**: the ascending order.
         # *   **desc**: the descending order. This is the default value.
         self.order = order
-        # The number of entries to return on each page.
+        # The number of entries to return on each page. Maximum value: 50.
         self.page_size = page_size
+        # The dimension based on which you want to sort the queried information. Set the value to **attackCnt**, which indicates the number of attacks.
         self.sort_key = sort_key
         # The source IP address of the request.
         self.source_ip = source_ip
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
+        # The type of the user. Set the value to **buy**, which indicates users of a paid edition of Cloud Firewall.
         self.user_type = user_type
+        # The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
         self.vuln_cve_name = vuln_cve_name
+        # The risk level of the vulnerability. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.vuln_level = vuln_level
+        # The number of assets that are affected by the vulnerability.
         self.vuln_resource = vuln_resource
+        # The status of vulnerability protection. Valid values:
+        # 
+        # *   **partProtected**: partially protected
+        # *   **protected**: protected
+        # *   **unProtected**: unprotected
         self.vuln_status = vuln_status
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **App**: application vulnerability
+        # *   **emg**: urgent vulnerability
+        # *   **cms**: Web-CMS vulnerability
         self.vuln_type = vuln_type
 
     def validate(self):
@@ -9924,29 +10210,31 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList(TeaMode
         resource_type: str = None,
         vuln_status: str = None,
     ):
+        # The elastic IP address (EIP) that is associated with the instance.
         self.eip = eip
+        # The public IP address of the instance.
         self.internet_ip = internet_ip
+        # The private IP address of the instance.
         self.intranet_ip = intranet_ip
-        # The ID of the region.
+        # The ID of the region in which Cloud Firewall is supported.
+        # 
+        # >  For more information about the regions, see [Supported regions](~~195657~~).
         self.region_id = region_id
-        # The ID of the service resource.
+        # The ID of the instance.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The name of the instance.
         self.resource_name = resource_name
         # The type of the asset. Valid values:
         # 
-        # *   **BastionHostEgressIP**: the egress IP address of a bastion host
-        # *   **BastionHostIngressIP**: the ingress IP address of a bastion host
-        # *   **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
-        # *   **EcsPublicIP**: the public IP address of an ECS instance
-        # *   **EIP**: the EIP
-        # *   **EniEIP**: the EIP of an elastic network interface (ENI)
-        # *   **NatEIP**: the EIP of a Network Address Translation (NAT) gateway
-        # *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
-        # *   **SlbPublicIP**: the public IP address of an SLB instance
-        # *   **NatPublicIP**: the public IP address of a NAT gateway
-        # *   **HAVIP**: the high-availability virtual IP address (HAVIP)
+        # *   **SLB**\
+        # *   **EIP**\
+        # *   **ECS**\
         self.resource_type = resource_type
+        # The status of vulnerability protection. Valid values:
+        # 
+        # *   **partProtected**: partially protected
+        # *   **protected**: protected
+        # *   **unProtected**: unprotected
         self.vuln_status = vuln_status
 
     def validate(self):
@@ -10022,45 +10310,95 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         vuln_status: str = None,
         vuln_type: str = None,
     ):
+        # The number of vulnerabilities.
         self.attack_cnt = attack_cnt
-        # The attack type of the intrusion events. Valid values:
+        # The attack type of the intrusion event. Valid values:
         # 
-        # * **1**: suspicious connection
-        # * **2**: command execution
-        # * **3**: brute-force attack
-        # * **4**: scanning
-        # * **5**: others
-        # * **6**: information leak
-        # * **7**: DoS attack
-        # * **8**: buffer overflow attack
-        # * **9**: web attack
-        # * **10**: trojan backdoor
-        # * **11**: computer worm
-        # * **12**: mining
-        # * **13**: reverse shell
+        # *   **1**: suspicious connection
+        # *   **2**: command execution
+        # *   **3**: brute-force attack
+        # *   **4**: scanning
+        # *   **5**: others
+        # *   **6**: information leakage
+        # *   **7**: DoS attack
+        # *   **8**: buffer overflow attack
+        # *   **9**: web attack
+        # *   **10**: webshell
+        # *   **11**: computer worm
+        # *   **12**: mining
+        # *   **13**: reverse shell
         # 
-        # > If you do not specify this parameter, the intrusion events of all attack types are queried.
+        # >  If no attack type is specified, the intrusion events of all attack types are queried.
         self.attack_type = attack_type
+        # The IDs of associated basic protection policies.
         self.basic_rule_ids = basic_rule_ids
-        # The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
+        # The CVE IDs.
         self.cve_id = cve_id
+        # The time when the first attack was launched.
         self.first_time = first_time
+        # Indicates whether you need to pay special attention to the vulnerability. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
         self.highlight_tag = highlight_tag
+        # The time when the last attack was launched.
         self.last_time = last_time
+        # The status of basic protection. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
+        # 
+        # >  If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
         self.need_open_basic_rule = need_open_basic_rule
+        # The UUIDs of the basic protection policies for which you want to set the Current Action parameter to Block.
         self.need_open_basic_rule_uuids = need_open_basic_rule_uuids
+        # Indicates whether the intrusion prevention feature needs to be configured when you enable protection. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.need_open_run_mode = need_open_run_mode
+        # The status of virtual patching. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
+        # 
+        # >  If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
         self.need_open_virtual_patche = need_open_virtual_patche
+        # The UUIDs of the virtual patching policies for which you want to set the Current Action parameter to Block.
         self.need_open_virtual_patche_uuids = need_open_virtual_patche_uuids
+        # The Rule Group that you want to specify. Valid values:
+        # 
+        # *   **1**: Loose (default)
+        # *   **2**: Medium
+        # *   **3**: Strict
         self.need_rule_class = need_rule_class
+        # The number of assets on which vulnerabilities are detected.
         self.resource_cnt = resource_cnt
-        # The list of the resources.
+        # An array consisting of the assets on which vulnerabilities are detected.
         self.resource_list = resource_list
+        # The IDs of associated virtual patching policies.
         self.virtual_patche_ids = virtual_patche_ids
+        # The code of the vulnerability.
         self.vuln_key = vuln_key
+        # The risk level of the vulnerability. Valid values:
+        # 
+        # *   **high**\
+        # *   **medium**\
+        # *   **low**\
         self.vuln_level = vuln_level
+        # The name of the vulnerability.
         self.vuln_name = vuln_name
+        # The status of vulnerability protection. Valid values:
+        # 
+        # *   **partProtected**: partially protected
+        # *   **protected**: protected
+        # *   **unProtected**: unprotected
         self.vuln_status = vuln_status
+        # The type of the vulnerability. Valid values:
+        # 
+        # *   **cve**: Windows vulnerability
+        # *   **cms**: Web-CMS vulnerability
+        # *   **App**: application vulnerability
         self.vuln_type = vuln_type
 
     def validate(self):
@@ -10181,9 +10519,11 @@ class DescribeVulnerabilityProtectedListResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The total number of vulnerabilities.
+        # The total number of vulnerabilities that are detected by Cloud Firewall.
         self.total_count = total_count
+        # An array that consists of the information about the vulnerabilities.
         self.vuln_list = vuln_list
+        # The number of assets on which no vulnerabilities are detected.
         self.zero_resource_count = zero_resource_count
 
     def validate(self):
