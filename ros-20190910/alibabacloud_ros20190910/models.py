@@ -9003,6 +9003,7 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         parameters_key_filter: List[str] = None,
         parameters_order: List[str] = None,
         region_id: str = None,
+        stack_id: str = None,
         template_body: str = None,
         template_id: str = None,
         template_url: str = None,
@@ -9013,6 +9014,7 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         self.parameters_key_filter = parameters_key_filter
         self.parameters_order = parameters_order
         self.region_id = region_id
+        self.stack_id = stack_id
         self.template_body = template_body
         self.template_id = template_id
         self.template_url = template_url
@@ -9042,6 +9044,8 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
             result['ParametersOrder'] = self.parameters_order
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -9067,6 +9071,8 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
             self.parameters_order = m.get('ParametersOrder')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:
@@ -9119,6 +9125,7 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         parameters_key_filter_shrink: str = None,
         parameters_order_shrink: str = None,
         region_id: str = None,
+        stack_id: str = None,
         template_body: str = None,
         template_id: str = None,
         template_url: str = None,
@@ -9129,6 +9136,7 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         self.parameters_key_filter_shrink = parameters_key_filter_shrink
         self.parameters_order_shrink = parameters_order_shrink
         self.region_id = region_id
+        self.stack_id = stack_id
         self.template_body = template_body
         self.template_id = template_id
         self.template_url = template_url
@@ -9158,6 +9166,8 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
             result['ParametersOrder'] = self.parameters_order_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -9183,6 +9193,8 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
             self.parameters_order_shrink = m.get('ParametersOrder')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:
@@ -14907,6 +14919,7 @@ class PreviewStackResponseBodyStackResources(TeaModel):
         action: str = None,
         description: str = None,
         logical_resource_id: str = None,
+        physical_resource_id: str = None,
         properties: Dict[str, Any] = None,
         replacement: str = None,
         required_by: List[str] = None,
@@ -14917,6 +14930,7 @@ class PreviewStackResponseBodyStackResources(TeaModel):
         self.action = action
         self.description = description
         self.logical_resource_id = logical_resource_id
+        self.physical_resource_id = physical_resource_id
         self.properties = properties
         self.replacement = replacement
         self.required_by = required_by
@@ -14940,6 +14954,8 @@ class PreviewStackResponseBodyStackResources(TeaModel):
             result['Description'] = self.description
         if self.logical_resource_id is not None:
             result['LogicalResourceId'] = self.logical_resource_id
+        if self.physical_resource_id is not None:
+            result['PhysicalResourceId'] = self.physical_resource_id
         if self.properties is not None:
             result['Properties'] = self.properties
         if self.replacement is not None:
@@ -14962,6 +14978,8 @@ class PreviewStackResponseBodyStackResources(TeaModel):
             self.description = m.get('Description')
         if m.get('LogicalResourceId') is not None:
             self.logical_resource_id = m.get('LogicalResourceId')
+        if m.get('PhysicalResourceId') is not None:
+            self.physical_resource_id = m.get('PhysicalResourceId')
         if m.get('Properties') is not None:
             self.properties = m.get('Properties')
         if m.get('Replacement') is not None:
