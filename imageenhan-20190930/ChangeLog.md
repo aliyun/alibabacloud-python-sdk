@@ -1,3 +1,6 @@
+2023-02-09 Version: 2.0.9
+- Release GenerateSuperResolutionImage.
+
 2023-02-08 Version: 2.0.8
 - Generated python 2019-09-30 for imageenhan.
 

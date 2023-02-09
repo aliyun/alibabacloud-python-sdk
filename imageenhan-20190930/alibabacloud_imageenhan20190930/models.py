@@ -1415,6 +1415,196 @@ class ExtendImageStyleResponse(TeaModel):
         return self
 
 
+class GenerateCartoonizedImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_type: str = None,
+        image_url: str = None,
+        index: str = None,
+    ):
+        self.image_type = image_type
+        self.image_url = image_url
+        self.index = index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.index is not None:
+            result['Index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        return self
+
+
+class GenerateCartoonizedImageAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_type: str = None,
+        image_url_object: BinaryIO = None,
+        index: str = None,
+    ):
+        self.image_type = image_type
+        self.image_url_object = image_url_object
+        self.index = index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.image_url_object is not None:
+            result['ImageUrl'] = self.image_url_object
+        if self.index is not None:
+            result['Index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        return self
+
+
+class GenerateCartoonizedImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result_url: str = None,
+    ):
+        self.result_url = result_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResultUrl') is not None:
+            self.result_url = m.get('ResultUrl')
+        return self
+
+
+class GenerateCartoonizedImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GenerateCartoonizedImageResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GenerateCartoonizedImageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateCartoonizedImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateCartoonizedImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateCartoonizedImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateDynamicImageRequest(TeaModel):
     def __init__(
         self,
