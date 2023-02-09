@@ -26826,9 +26826,11 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
         self,
         column_comment: str = None,
         column_name: str = None,
+        security_level: str = None,
     ):
         self.column_comment = column_comment
         self.column_name = column_name
+        self.security_level = security_level
 
     def validate(self):
         pass
@@ -26843,6 +26845,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
             result['ColumnComment'] = self.column_comment
         if self.column_name is not None:
             result['ColumnName'] = self.column_name
+        if self.security_level is not None:
+            result['SecurityLevel'] = self.security_level
         return result
 
     def from_map(self, m: dict = None):
@@ -26851,6 +26855,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
             self.column_comment = m.get('ColumnComment')
         if m.get('ColumnName') is not None:
             self.column_name = m.get('ColumnName')
+        if m.get('SecurityLevel') is not None:
+            self.security_level = m.get('SecurityLevel')
         return self
 
 
