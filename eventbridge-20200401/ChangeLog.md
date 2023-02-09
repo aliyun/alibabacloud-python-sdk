@@ -1,3 +1,6 @@
+2023-02-09 Version: 1.0.2
+- Mask some parameters.
+
 2023-01-12 Version: 1.0.1
 - Update EventBridge API.
 

@@ -1480,8 +1480,6 @@ class CreateEventSourceRequest(TeaModel):
         description: bytes = None,
         event_bus_name: bytes = None,
         event_source_name: bytes = None,
-        external_source_type: bytes = None,
-        linked_external_source: bool = None,
         source_http_event_parameters: CreateEventSourceRequestSourceHttpEventParameters = None,
         source_mnsparameters: CreateEventSourceRequestSourceMNSParameters = None,
         source_rabbit_mqparameters: CreateEventSourceRequestSourceRabbitMQParameters = None,
@@ -1493,8 +1491,6 @@ class CreateEventSourceRequest(TeaModel):
         self.event_bus_name = event_bus_name
         # 事件源英文Code
         self.event_source_name = event_source_name
-        self.external_source_type = external_source_type
-        self.linked_external_source = linked_external_source
         self.source_http_event_parameters = source_http_event_parameters
         self.source_mnsparameters = source_mnsparameters
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
@@ -1526,10 +1522,6 @@ class CreateEventSourceRequest(TeaModel):
             result['EventBusName'] = self.event_bus_name
         if self.event_source_name is not None:
             result['EventSourceName'] = self.event_source_name
-        if self.external_source_type is not None:
-            result['ExternalSourceType'] = self.external_source_type
-        if self.linked_external_source is not None:
-            result['LinkedExternalSource'] = self.linked_external_source
         if self.source_http_event_parameters is not None:
             result['SourceHttpEventParameters'] = self.source_http_event_parameters.to_map()
         if self.source_mnsparameters is not None:
@@ -1550,10 +1542,6 @@ class CreateEventSourceRequest(TeaModel):
             self.event_bus_name = m.get('EventBusName')
         if m.get('EventSourceName') is not None:
             self.event_source_name = m.get('EventSourceName')
-        if m.get('ExternalSourceType') is not None:
-            self.external_source_type = m.get('ExternalSourceType')
-        if m.get('LinkedExternalSource') is not None:
-            self.linked_external_source = m.get('LinkedExternalSource')
         if m.get('SourceHttpEventParameters') is not None:
             temp_model = CreateEventSourceRequestSourceHttpEventParameters()
             self.source_http_event_parameters = temp_model.from_map(m['SourceHttpEventParameters'])
@@ -1578,8 +1566,6 @@ class CreateEventSourceShrinkRequest(TeaModel):
         description: bytes = None,
         event_bus_name: bytes = None,
         event_source_name: bytes = None,
-        external_source_type: bytes = None,
-        linked_external_source: bool = None,
         source_http_event_parameters_shrink: str = None,
         source_mnsparameters_shrink: str = None,
         source_rabbit_mqparameters_shrink: str = None,
@@ -1591,8 +1577,6 @@ class CreateEventSourceShrinkRequest(TeaModel):
         self.event_bus_name = event_bus_name
         # 事件源英文Code
         self.event_source_name = event_source_name
-        self.external_source_type = external_source_type
-        self.linked_external_source = linked_external_source
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
@@ -1615,10 +1599,6 @@ class CreateEventSourceShrinkRequest(TeaModel):
             result['EventBusName'] = self.event_bus_name
         if self.event_source_name is not None:
             result['EventSourceName'] = self.event_source_name
-        if self.external_source_type is not None:
-            result['ExternalSourceType'] = self.external_source_type
-        if self.linked_external_source is not None:
-            result['LinkedExternalSource'] = self.linked_external_source
         if self.source_http_event_parameters_shrink is not None:
             result['SourceHttpEventParameters'] = self.source_http_event_parameters_shrink
         if self.source_mnsparameters_shrink is not None:
@@ -1639,10 +1619,6 @@ class CreateEventSourceShrinkRequest(TeaModel):
             self.event_bus_name = m.get('EventBusName')
         if m.get('EventSourceName') is not None:
             self.event_source_name = m.get('EventSourceName')
-        if m.get('ExternalSourceType') is not None:
-            self.external_source_type = m.get('ExternalSourceType')
-        if m.get('LinkedExternalSource') is not None:
-            self.linked_external_source = m.get('LinkedExternalSource')
         if m.get('SourceHttpEventParameters') is not None:
             self.source_http_event_parameters_shrink = m.get('SourceHttpEventParameters')
         if m.get('SourceMNSParameters') is not None:

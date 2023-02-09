@@ -328,10 +328,6 @@ class Client(OpenApiClient):
             body['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_source_name):
             body['EventSourceName'] = request.event_source_name
-        if not UtilClient.is_unset(request.external_source_type):
-            body['ExternalSourceType'] = request.external_source_type
-        if not UtilClient.is_unset(request.linked_external_source):
-            body['LinkedExternalSource'] = request.linked_external_source
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
@@ -386,10 +382,6 @@ class Client(OpenApiClient):
             body['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_source_name):
             body['EventSourceName'] = request.event_source_name
-        if not UtilClient.is_unset(request.external_source_type):
-            body['ExternalSourceType'] = request.external_source_type
-        if not UtilClient.is_unset(request.linked_external_source):
-            body['LinkedExternalSource'] = request.linked_external_source
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
