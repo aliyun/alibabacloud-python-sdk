@@ -1,3 +1,6 @@
+2023-02-09 Version: 2.0.4
+- Support NAS with TLS.
+
 2023-01-13 Version: 2.0.3
 - Fix java async sdk signature algorithem.
 
