@@ -8,7 +8,7 @@ class PredictClassifierModelRequest(TeaModel):
     def __init__(
         self,
         auto_prediction: bool = None,
-        classifier_id: str = None,
+        classifier_id: int = None,
         content: str = None,
     ):
         self.auto_prediction = auto_prediction
@@ -272,10 +272,10 @@ class PredictTemplateModelRequest(TeaModel):
     def __init__(
         self,
         content: str = None,
-        project_id: int = None,
+        task_id: int = None,
     ):
         self.content = content
-        self.project_id = project_id
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -288,16 +288,16 @@ class PredictTemplateModelRequest(TeaModel):
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
