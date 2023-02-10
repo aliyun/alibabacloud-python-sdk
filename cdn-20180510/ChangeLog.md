@@ -1,3 +1,6 @@
+2023-02-10 Version: 1.2.3
+- Add DescribeCdnIpCidr.
+
 2023-01-31 Version: 1.2.2
 - Update PushObjectCache.
 

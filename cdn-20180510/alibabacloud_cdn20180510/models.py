@@ -10,9 +10,9 @@ class AddCdnDomainRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag.
+        # The key of a tag.
         self.key = key
-        # The value of tag.
+        # The value of a tag.
         self.value = value
 
     def validate(self):
@@ -54,17 +54,17 @@ class AddCdnDomainRequest(TeaModel):
         tag: List[AddCdnDomainRequestTag] = None,
         top_level_domain: str = None,
     ):
-        # The workload type of the domain name. Valid values:
+        # The workload type of the domain name to accelerate. Valid values:
         # 
-        # *   **web**: images and small files.
-        # *   **download**: large files.
-        # *   **video**: on-demand video and audio streaming.
+        # *   **web**: images and small files
+        # *   **download**: large files
+        # *   **video**: on-demand video and audio streaming
         self.cdn_type = cdn_type
         # The URL that is used for health checks.
         self.check_url = check_url
-        # The domain names that you want to add to Alibaba Cloud CDN.
+        # The domain name that you want to add to Alibaba Cloud CDN.
         # 
-        # Wildcard domain names are supported.A wildcard domain name must start with a period (.), such as .example.com.
+        # A wildcard domain that starts with a period (.) is supported, such as .example.com.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -72,20 +72,18 @@ class AddCdnDomainRequest(TeaModel):
         # 
         # If you do not set this parameter, the system uses the ID of the default resource group.
         self.resource_group_id = resource_group_id
-        # The accelerated region. Valid values:
+        # The acceleration region. Default value: domestic. Valid values:
         # 
-        # *   **domestic**: regions in mainland China.
-        # *   **overseas**: regions outside mainland China.
-        # *   **global**: regions inside and outside mainland China.
-        # 
-        # Default value: **domestic**.
+        # *   **domestic**: Chinese mainland
+        # *   **overseas**: global (excluding the Chinese mainland)
+        # *   **global**: global
         self.scope = scope
         self.security_token = security_token
-        # The information about the origin address.
+        # The information about the addresses of origin servers.
         self.sources = sources
-        # The tags.
+        # Details about the tags. You can specify up to 20 tags.
         self.tag = tag
-        # The top-level domain name.
+        # The top-level domain.
         self.top_level_domain = top_level_domain
 
     def validate(self):
@@ -384,11 +382,11 @@ class BatchAddCdnDomainRequest(TeaModel):
         sources: str = None,
         top_level_domain: str = None,
     ):
-        # The workload type of the domain name to be accelerated. Valid values:
+        # The workload type of the domain name to accelerate. Valid values:
         # 
-        # *   **web**: images and small files.
-        # *   **download**: large files.
-        # *   **video**: on-demand video and audio streaming.
+        # *   **web**: images and small files
+        # *   **download**: large files
+        # *   **video**: on-demand video and audio streaming
         self.cdn_type = cdn_type
         # The URL that is used for health checks.
         self.check_url = check_url
@@ -396,18 +394,18 @@ class BatchAddCdnDomainRequest(TeaModel):
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group. If you do not set this parameter, the system uses the ID of the default resource group.
+        # The ID of the resource group. If you do not specify a value for this parameter, the system uses the ID of the default resource group.
         self.resource_group_id = resource_group_id
-        # The accelerated region. Valid values:
+        # The acceleration region. Default value: domestic. Valid values:
         # 
-        # *   **domestic**: mainland China only
-        # *   **overseas**: global (excluding mainland China)
+        # *   **domestic**: Chinese mainland
+        # *   **overseas**: global (excluding the Chinese mainland)
         # *   **global**: global
         self.scope = scope
         self.security_token = security_token
-        # The information about the addresses of the origin servers.
+        # The information about the addresses of origin servers.
         self.sources = sources
-        # The top-level domain name.
+        # The top-level domain.
         self.top_level_domain = top_level_domain
 
     def validate(self):
@@ -4313,11 +4311,9 @@ class DescribeCdnDeliverListRequest(TeaModel):
     def __init__(
         self,
         deliver_id: int = None,
-        owner_id: int = None,
     ):
         # The ID of the tracking task that you want to query. If you do not specify an ID, all tracking tasks are queried.
         self.deliver_id = deliver_id
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -4330,16 +4326,12 @@ class DescribeCdnDeliverListRequest(TeaModel):
         result = dict()
         if self.deliver_id is not None:
             result['DeliverId'] = self.deliver_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DeliverId') is not None:
             self.deliver_id = m.get('DeliverId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -4425,11 +4417,9 @@ class DescribeCdnDeliverListResponse(TeaModel):
 class DescribeCdnDomainByCertificateRequest(TeaModel):
     def __init__(
         self,
-        owner_id: int = None,
         sslpub: str = None,
         sslstatus: bool = None,
     ):
-        self.owner_id = owner_id
         # The public key of the SSL certificate. You must encode the public key in Base64 and then call the encodeURIComponent function to encode the public key again.
         # 
         # The public key must be in the PEM format.
@@ -4449,8 +4439,6 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.sslpub is not None:
             result['SSLPub'] = self.sslpub
         if self.sslstatus is not None:
@@ -4459,8 +4447,6 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('SSLPub') is not None:
             self.sslpub = m.get('SSLPub')
         if m.get('SSLStatus') is not None:
@@ -5031,19 +5017,20 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModelsSourceM
     ):
         # The address of the origin server.
         self.content = content
-        # The status of the origin server.
+        # The status.
         self.enabled = enabled
         # The port over which requests are redirected to the origin server. Ports 443 and 80 are supported.
         self.port = port
-        # The priority of the origin server if multiple origin servers are specified.
+        # The priority.
         self.priority = priority
         # The type of the origin server. Valid values:
         # 
-        # *   **ipaddr**: IP address
-        # *   **domain**: domain name
-        # *   **oss**: Object Storage Service (OSS) bucket endpoint
+        # *   **ipaddr:** an IP address.
+        # *   **domain:** a domain name
+        # *   **oss:** the OSS domain of an Object Storage Service (OSS) bucket
+        # *   **fc_domain:** a Function Compute domain name
         self.type = type
-        # The weight of the origin server if multiple origin servers are specified.
+        # The weight of the origin server if multiple origin servers have been specified.
         self.weight = weight
 
     def validate(self):
@@ -5139,39 +5126,39 @@ class DescribeCdnDomainDetailResponseBodyGetDomainDetailModel(TeaModel):
     ):
         # The workload type of the accelerated domain name. Valid values:
         # 
-        # *   **web**: images and small files.
-        # *   **download**: large files.
-        # *   **video**: on-demand video and audio streaming.
+        # *   **web**: images and small files
+        # *   **download**: large files
+        # *   **video**: on-demand video and audio streaming
         self.cdn_type = cdn_type
-        # The Canonical Name (CNAME) that is assigned to the accelerated domain name. You must add a CNAME record in the system of your DNS service provider to map the accelerated domain name to the CNAME.
+        # The CNAME that is assigned to the accelerated domain name. You must add the CNAME record in the system of your DNS service provider to map the accelerated domain name to the CNAME.
         self.cname = cname
-        # The remarks of the accelerated domain name.
+        # The description of the request.
         self.description = description
         # The accelerated domain name.
         self.domain_name = domain_name
         # The status of the accelerated domain name. Valid values:
         # 
-        # *   **online**: The domain name is enabled.
-        # *   **offline**: The domain is disabled.
-        # *   **configuring**: The domain is being configured.
-        # *   **configure_failed**: The domain failed to be configured.
-        # *   **checking**: The domain name is under review.
-        # *   **check_failed**: The domain name failed the review.
+        # *   **online:** enabled
+        # *   **offline:** disabled
+        # *   **configuring:** configuring
+        # *   **configure_failed:** configuration failed
+        # *   **checking:** reviewing
+        # *   **check_failed:** review failed
         self.domain_status = domain_status
-        # The time when the accelerated domain name was added to Alibaba Cloud CDN.
+        # The time when the audio or video file was created.
         self.gmt_created = gmt_created
-        # The last time when the accelerated domain name was modified.
+        # The time when the domain name was last modified.
         self.gmt_modified = gmt_modified
         # The CNAME for which HTTPS is enabled.
         self.https_cname = https_cname
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The accelerated region.
+        # The acceleration region.
         self.scope = scope
-        # Specifies whether to enable the Security Socket Layer (SSL) certificate. Valid values:
+        # Indicates whether the Security Socket Layer (SSL) certificate is enabled. Valid values:
         # 
-        # *   **on**: enables the SSL certificate.
-        # *   **off**: disables the SSL certificate.
+        # *   **on**\
+        # *   **off**\
         self.server_certificate_status = server_certificate_status
         # The information about the origin server.
         self.source_models = source_models
@@ -5248,7 +5235,7 @@ class DescribeCdnDomainDetailResponseBody(TeaModel):
         get_domain_detail_model: DescribeCdnDomainDetailResponseBodyGetDomainDetailModel = None,
         request_id: str = None,
     ):
-        # The detailed information about the accelerated domain name.
+        # The details about the accelerated domain name.
         self.get_domain_detail_model = get_domain_detail_model
         # The ID of the request.
         self.request_id = request_id
@@ -5328,7 +5315,6 @@ class DescribeCdnDomainLogsRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
         start_time: str = None,
@@ -5341,7 +5327,6 @@ class DescribeCdnDomainLogsRequest(TeaModel):
         # 
         # >  The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The number of the page to return. Pages start from page **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **300**. Maximum value: **1000**. Valid values: **1** to **1000**.
@@ -5364,8 +5349,6 @@ class DescribeCdnDomainLogsRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -5380,8 +5363,6 @@ class DescribeCdnDomainLogsRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8327,14 +8308,12 @@ class DescribeCdnUserConfigsRequest(TeaModel):
     def __init__(
         self,
         function_name: str = None,
-        owner_id: int = None,
     ):
         # The configuration item that you want to query. Valid values:
         # 
         # *   **domain\_business\_control**: Alibaba Cloud CDN configurations
         # *   **waf**: Web Application Firewall (WAF) configurations
         self.function_name = function_name
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -8347,16 +8326,12 @@ class DescribeCdnUserConfigsRequest(TeaModel):
         result = dict()
         if self.function_name is not None:
             result['FunctionName'] = self.function_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FunctionName') is not None:
             self.function_name = m.get('FunctionName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -8503,16 +8478,12 @@ class DescribeCdnUserDomainsByFuncRequest(TeaModel):
     def __init__(
         self,
         func_id: int = None,
-        owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The ID of the feature.
-        # 
-        # For example, the ID of the origin host feature (set_req_host_header) is 18.
+        # The ID of the feature. For more information about how to query feature IDs, see [Feature settings for a domain name](~~388460~~). For example, the ID of the origin host feature (set_req_host_header) is 18.
         self.func_id = func_id
-        self.owner_id = owner_id
         # The number of the page to return. Default value: **1**.
         # 
         # Valid values: **1** to **100000**.
@@ -8535,8 +8506,6 @@ class DescribeCdnUserDomainsByFuncRequest(TeaModel):
         result = dict()
         if self.func_id is not None:
             result['FuncId'] = self.func_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -8549,8 +8518,6 @@ class DescribeCdnUserDomainsByFuncRequest(TeaModel):
         m = m or dict()
         if m.get('FuncId') is not None:
             self.func_id = m.get('FuncId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8573,9 +8540,14 @@ class DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource(TeaMo
         self.content = content
         # The port of the origin server.
         self.port = port
-        # The priority of the configuration item.
+        # The priority.
         self.priority = priority
-        # The type of the origin server.
+        # The type of the origin server. Valid values:
+        # 
+        # *   **ipaddr**: an origin IP address
+        # *   **domain**: an origin domain name
+        # *   **oss**: the domain name of an Object Storage Service (OSS) bucket
+        # *   **fc_domain**: a Function Compute domain name
         self.type = type
         # The weight of the origin server if multiple origin servers have been specified.
         self.weight = weight
@@ -8665,12 +8637,12 @@ class DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData(TeaModel):
         sources: DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSources = None,
         ssl_protocol: str = None,
     ):
-        # The type of workload accelerated by Alibaba Cloud CDN. Valid values:
+        # The type of the workload accelerated by Alibaba Cloud CDN. Valid values:
         # 
-        # *   **web**: image and small file distribution
-        # *   **download**: large file distribution
-        # *   **video**: on-demand video and audio streaming
-        # *   **liveStream**: live streaming
+        # *   **web:** image and small file distribution
+        # *   **download:** large file distribution
+        # *   **video:** on-demand video and audio streaming
+        # *   **liveStream:** live streaming
         self.cdn_type = cdn_type
         # The CNAME assigned to the accelerated domain name.
         self.cname = cname
@@ -8680,27 +8652,27 @@ class DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData(TeaModel):
         self.domain_name = domain_name
         # The status of the accelerated domain name. Valid values:
         # 
-        # *   **online**: The domain name is enabled.
-        # *   **offline**: The domain is disabled.
-        # *   **configuring**: The endpoint group is being configured.
-        # *   **configure_failed**: The domain failed to be configured.
-        # *   **checking**: The domain name is under review.
-        # *   **check_failed**: The domain name failed the review.
-        # *   **stopping**: The domain name is be disabled.
-        # *   **deleting**: being deleted
+        # *   **online**: enabled
+        # *   **offline**: disabled
+        # *   **configuring**: configuring
+        # *   **configure_failed**: configuration failed
+        # *   **checking**: reviewing
+        # *   **check_failed**: failed the review
+        # *   **stopping**: being disabled
+        # *   **deleting**: deleting
         self.domain_status = domain_status
         # The time when the accelerated domain name was added to Alibaba Cloud CDN.
         self.gmt_created = gmt_created
-        # The last time when the accelerated domain was modified.
+        # The time when the accelerated domain name was modified.
         self.gmt_modified = gmt_modified
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The information about the origin server.
+        # Information about the origin server.
         self.sources = sources
         # The status of HTTPS. Valid values:
         # 
-        # - **on**: enabled
-        # - **off**: disabled
+        # *   **on**\
+        # *   **off**\
         self.ssl_protocol = ssl_protocol
 
     def validate(self):
@@ -8809,11 +8781,11 @@ class DescribeCdnUserDomainsByFuncResponseBody(TeaModel):
         self.domains = domains
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of domain names returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of domain names returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9853,7 +9825,6 @@ class DescribeDomainAverageResponseTimeRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
         time_merge: str = None,
     ):
@@ -9877,7 +9848,6 @@ class DescribeDomainAverageResponseTimeRequest(TeaModel):
         self.isp_name_en = isp_name_en
         # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # Specifies whether to automatically set the interval. If you set the value to 1, the value of the Interval parameter is automatically assigned based on the StartTime and EndTime parameters. You can set this parameter or the Interval parameter.
@@ -9904,8 +9874,6 @@ class DescribeDomainAverageResponseTimeRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.time_merge is not None:
@@ -9926,8 +9894,6 @@ class DescribeDomainAverageResponseTimeRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TimeMerge') is not None:
@@ -10122,7 +10088,6 @@ class DescribeDomainBpsDataRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.  
@@ -10145,7 +10110,6 @@ class DescribeDomainBpsDataRequest(TeaModel):
         # 
         # If you do not set this parameter, the bandwidth monitoring data of the accelerated domain names in all regions is returned.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -10168,8 +10132,6 @@ class DescribeDomainBpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -10186,8 +10148,6 @@ class DescribeDomainBpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -10430,7 +10390,6 @@ class DescribeDomainBpsDataByLayerRequest(TeaModel):
         isp_name_en: str = None,
         layer: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -10459,7 +10418,6 @@ class DescribeDomainBpsDataByLayerRequest(TeaModel):
         self.layer = layer
         # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not specify a region, data in all regions is queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -10486,8 +10444,6 @@ class DescribeDomainBpsDataByLayerRequest(TeaModel):
             result['Layer'] = self.layer
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -10506,8 +10462,6 @@ class DescribeDomainBpsDataByLayerRequest(TeaModel):
             self.layer = m.get('Layer')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -10684,7 +10638,6 @@ class DescribeDomainBpsDataByTimeStampRequest(TeaModel):
         domain_name: str = None,
         isp_names: str = None,
         location_names: str = None,
-        owner_id: int = None,
         time_point: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each query.
@@ -10697,7 +10650,6 @@ class DescribeDomainBpsDataByTimeStampRequest(TeaModel):
         # 
         # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
         self.location_names = location_names
-        self.owner_id = owner_id
         # The beginning of the time range that was queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         # 
         # The data is collected at an interval of five minutes.
@@ -10718,8 +10670,6 @@ class DescribeDomainBpsDataByTimeStampRequest(TeaModel):
             result['IspNames'] = self.isp_names
         if self.location_names is not None:
             result['LocationNames'] = self.location_names
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.time_point is not None:
             result['TimePoint'] = self.time_point
         return result
@@ -10732,8 +10682,6 @@ class DescribeDomainBpsDataByTimeStampRequest(TeaModel):
             self.isp_names = m.get('IspNames')
         if m.get('LocationNames') is not None:
             self.location_names = m.get('LocationNames')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('TimePoint') is not None:
             self.time_point = m.get('TimePoint')
         return self
@@ -11194,11 +11142,9 @@ class DescribeDomainCertificateInfoRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each query.
         self.domain_name = domain_name
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -11211,16 +11157,12 @@ class DescribeDomainCertificateInfoRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -11483,10 +11425,8 @@ class DescribeDomainCnameRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
     ):
         self.domain_name = domain_name
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -11499,16 +11439,12 @@ class DescribeDomainCnameRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -11802,7 +11738,6 @@ class DescribeDomainDetailDataByLayerRequest(TeaModel):
         isp_name_en: str = None,
         layer: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The domain name that you want to query. You can specify multiple domain names and separate them with commas (,). You can specify at most 30 domain names in each call.
@@ -11825,7 +11760,6 @@ class DescribeDomainDetailDataByLayerRequest(TeaModel):
         # 
         # If you do not specify a region, data in all regions is queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -11850,8 +11784,6 @@ class DescribeDomainDetailDataByLayerRequest(TeaModel):
             result['Layer'] = self.layer
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -11870,8 +11802,6 @@ class DescribeDomainDetailDataByLayerRequest(TeaModel):
             self.layer = m.get('Layer')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -12097,7 +12027,6 @@ class DescribeDomainHitRateDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -12114,7 +12043,6 @@ class DescribeDomainHitRateDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
         # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -12135,8 +12063,6 @@ class DescribeDomainHitRateDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -12149,8 +12075,6 @@ class DescribeDomainHitRateDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -12348,7 +12272,8 @@ class DescribeDomainHttpCodeDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
+        isp_name_en: str = None,
+        location_name_en: str = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -12365,7 +12290,8 @@ class DescribeDomainHttpCodeDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
+        self.isp_name_en = isp_name_en
+        self.location_name_en = location_name_en
         # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -12386,8 +12312,10 @@ class DescribeDomainHttpCodeDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -12400,8 +12328,10 @@ class DescribeDomainHttpCodeDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -12674,7 +12604,6 @@ class DescribeDomainHttpCodeDataByLayerRequest(TeaModel):
         isp_name_en: str = None,
         layer: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -12701,7 +12630,6 @@ class DescribeDomainHttpCodeDataByLayerRequest(TeaModel):
         # 
         # If you do not specify a region, data in all regions is queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -12726,8 +12654,6 @@ class DescribeDomainHttpCodeDataByLayerRequest(TeaModel):
             result['Layer'] = self.layer
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -12746,8 +12672,6 @@ class DescribeDomainHttpCodeDataByLayerRequest(TeaModel):
             self.layer = m.get('Layer')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -12923,7 +12847,6 @@ class DescribeDomainISPDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each call.
@@ -12934,7 +12857,6 @@ class DescribeDomainISPDataRequest(TeaModel):
         # 
         # The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -12951,8 +12873,6 @@ class DescribeDomainISPDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -12963,8 +12883,6 @@ class DescribeDomainISPDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -13225,14 +13143,12 @@ class DescribeDomainMax95BpsDataRequest(TeaModel):
         cycle: str = None,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
         time_point: str = None,
     ):
         self.cycle = cycle
         self.domain_name = domain_name
         self.end_time = end_time
-        self.owner_id = owner_id
         self.start_time = start_time
         self.time_point = time_point
 
@@ -13251,8 +13167,6 @@ class DescribeDomainMax95BpsDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.time_point is not None:
@@ -13267,8 +13181,6 @@ class DescribeDomainMax95BpsDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TimePoint') is not None:
@@ -13390,7 +13302,6 @@ class DescribeDomainMultiUsageDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain names. You can specify multiple accelerated domain names and separate domain names with commas (,).
@@ -13402,7 +13313,6 @@ class DescribeDomainMultiUsageDataRequest(TeaModel):
         # 
         # >  The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -13419,8 +13329,6 @@ class DescribeDomainMultiUsageDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -13431,8 +13339,6 @@ class DescribeDomainMultiUsageDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -13731,7 +13637,6 @@ class DescribeDomainPathDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
         path: str = None,
@@ -13743,7 +13648,6 @@ class DescribeDomainPathDataRequest(TeaModel):
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The interval between the start time and end time must be less than 30 days. Example: 2016-10-21T04:00:00Z.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The number of the page to return. Pages start from page **1**.
         self.page_number = page_number
         # The number of entries to return on each page.
@@ -13772,8 +13676,6 @@ class DescribeDomainPathDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -13790,8 +13692,6 @@ class DescribeDomainPathDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -14015,7 +13915,6 @@ class DescribeDomainPvDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
@@ -14024,7 +13923,6 @@ class DescribeDomainPvDataRequest(TeaModel):
         # 
         # The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -14041,8 +13939,6 @@ class DescribeDomainPvDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -14053,8 +13949,6 @@ class DescribeDomainPvDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -14247,7 +14141,6 @@ class DescribeDomainQpsDataRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -14266,7 +14159,6 @@ class DescribeDomainQpsDataRequest(TeaModel):
         self.isp_name_en = isp_name_en
         # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -14289,8 +14181,6 @@ class DescribeDomainQpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -14307,8 +14197,6 @@ class DescribeDomainQpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -14579,7 +14467,6 @@ class DescribeDomainQpsDataByLayerRequest(TeaModel):
         isp_name_en: str = None,
         layer: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -14604,7 +14491,6 @@ class DescribeDomainQpsDataByLayerRequest(TeaModel):
         self.layer = layer
         # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -14629,8 +14515,6 @@ class DescribeDomainQpsDataByLayerRequest(TeaModel):
             result['Layer'] = self.layer
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -14649,8 +14533,6 @@ class DescribeDomainQpsDataByLayerRequest(TeaModel):
             self.layer = m.get('Layer')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -14884,7 +14766,6 @@ class DescribeDomainRealTimeBpsDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain names. You can specify multiple accelerated domain names and separate them with commas (,).
@@ -14905,7 +14786,6 @@ class DescribeDomainRealTimeBpsDataRequest(TeaModel):
         # 
         # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -14928,8 +14808,6 @@ class DescribeDomainRealTimeBpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -14944,8 +14822,6 @@ class DescribeDomainRealTimeBpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -15107,7 +14983,6 @@ class DescribeDomainRealTimeByteHitRateDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 100 domain names in each call.
@@ -15116,7 +14991,6 @@ class DescribeDomainRealTimeByteHitRateDataRequest(TeaModel):
         # 
         # >  The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -15133,8 +15007,6 @@ class DescribeDomainRealTimeByteHitRateDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -15145,8 +15017,6 @@ class DescribeDomainRealTimeByteHitRateDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -15313,7 +15183,6 @@ class DescribeDomainRealTimeDetailDataRequest(TeaModel):
         location_name_en: str = None,
         merge: str = None,
         merge_loc_isp: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name for which you want to query data. You can specify multiple accelerated domain names and separate them with commas (,).
@@ -15348,7 +15217,6 @@ class DescribeDomainRealTimeDetailDataRequest(TeaModel):
         # 
         # Default value: **false**.
         self.merge_loc_isp = merge_loc_isp
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:33:00Z.
@@ -15377,8 +15245,6 @@ class DescribeDomainRealTimeDetailDataRequest(TeaModel):
             result['Merge'] = self.merge
         if self.merge_loc_isp is not None:
             result['MergeLocIsp'] = self.merge_loc_isp
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -15399,8 +15265,6 @@ class DescribeDomainRealTimeDetailDataRequest(TeaModel):
             self.merge = m.get('Merge')
         if m.get('MergeLocIsp') is not None:
             self.merge_loc_isp = m.get('MergeLocIsp')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -15492,7 +15356,6 @@ class DescribeDomainRealTimeHttpCodeDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain names. You can specify multiple accelerated domain names and separate them with commas (,).
@@ -15509,7 +15372,6 @@ class DescribeDomainRealTimeHttpCodeDataRequest(TeaModel):
         self.isp_name_en = isp_name_en
         # The name of the region. If you do not set this parameter, all regions are queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -15532,8 +15394,6 @@ class DescribeDomainRealTimeHttpCodeDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -15548,8 +15408,6 @@ class DescribeDomainRealTimeHttpCodeDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -15822,7 +15680,6 @@ class DescribeDomainRealTimeQpsDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain names. You can specify multiple accelerated domain names and separate them with commas (,).
@@ -15843,7 +15700,6 @@ class DescribeDomainRealTimeQpsDataRequest(TeaModel):
         # 
         # If you do not set this parameter, all regions are queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -15866,8 +15722,6 @@ class DescribeDomainRealTimeQpsDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -15882,8 +15736,6 @@ class DescribeDomainRealTimeQpsDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -16045,7 +15897,6 @@ class DescribeDomainRealTimeReqHitRateDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 100 domain names in each call.
@@ -16054,7 +15905,6 @@ class DescribeDomainRealTimeReqHitRateDataRequest(TeaModel):
         # 
         # >  The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -16071,8 +15921,6 @@ class DescribeDomainRealTimeReqHitRateDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -16083,8 +15931,6 @@ class DescribeDomainRealTimeReqHitRateDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -16246,7 +16092,6 @@ class DescribeDomainRealTimeSrcBpsDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 100 domain names in each call.
@@ -16255,7 +16100,6 @@ class DescribeDomainRealTimeSrcBpsDataRequest(TeaModel):
         # 
         # >  The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -16272,8 +16116,6 @@ class DescribeDomainRealTimeSrcBpsDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -16284,8 +16126,6 @@ class DescribeDomainRealTimeSrcBpsDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -16479,7 +16319,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 100 domain names in each call.
@@ -16492,7 +16331,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
         self.isp_name_en = isp_name_en
         # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -16513,8 +16351,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -16529,8 +16365,6 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -16799,7 +16633,6 @@ class DescribeDomainRealTimeSrcTrafficDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 100 domain names in each call.
@@ -16810,7 +16643,6 @@ class DescribeDomainRealTimeSrcTrafficDataRequest(TeaModel):
         # 
         # >  The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -16829,8 +16661,6 @@ class DescribeDomainRealTimeSrcTrafficDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -16841,8 +16671,6 @@ class DescribeDomainRealTimeSrcTrafficDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -17036,7 +16864,6 @@ class DescribeDomainRealTimeTrafficDataRequest(TeaModel):
         end_time: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 100 domain names in each call.
@@ -17055,7 +16882,6 @@ class DescribeDomainRealTimeTrafficDataRequest(TeaModel):
         # 
         # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -17078,8 +16904,6 @@ class DescribeDomainRealTimeTrafficDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -17094,8 +16918,6 @@ class DescribeDomainRealTimeTrafficDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -17418,7 +17240,6 @@ class DescribeDomainRegionDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name. Separate multiple accelerated domain names with commas (,).  
@@ -17429,7 +17250,6 @@ class DescribeDomainRegionDataRequest(TeaModel):
         # 
         # The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -17446,8 +17266,6 @@ class DescribeDomainRegionDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -17458,8 +17276,6 @@ class DescribeDomainRegionDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -17720,7 +17536,6 @@ class DescribeDomainReqHitRateDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -17737,7 +17552,6 @@ class DescribeDomainReqHitRateDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
         # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -17758,8 +17572,6 @@ class DescribeDomainReqHitRateDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -17772,8 +17584,6 @@ class DescribeDomainReqHitRateDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -17971,7 +17781,6 @@ class DescribeDomainSrcBpsDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -17988,7 +17797,6 @@ class DescribeDomainSrcBpsDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
         # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -18009,8 +17817,6 @@ class DescribeDomainSrcBpsDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -18023,8 +17829,6 @@ class DescribeDomainSrcBpsDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -18222,7 +18026,6 @@ class DescribeDomainSrcHttpCodeDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -18237,7 +18040,6 @@ class DescribeDomainSrcHttpCodeDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
         # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -18258,8 +18060,6 @@ class DescribeDomainSrcHttpCodeDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -18272,8 +18072,6 @@ class DescribeDomainSrcHttpCodeDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -18543,7 +18341,6 @@ class DescribeDomainSrcQpsDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -18558,7 +18355,6 @@ class DescribeDomainSrcQpsDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
         # The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # If you do not set this parameter, data collected within the last 24 hours is queried.
@@ -18579,8 +18375,6 @@ class DescribeDomainSrcQpsDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -18593,8 +18387,6 @@ class DescribeDomainSrcQpsDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -19431,7 +19223,6 @@ class DescribeDomainSrcTrafficDataRequest(TeaModel):
         domain_name: str = None,
         end_time: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -19448,7 +19239,6 @@ class DescribeDomainSrcTrafficDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
         # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -19469,8 +19259,6 @@ class DescribeDomainSrcTrafficDataRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -19483,8 +19271,6 @@ class DescribeDomainSrcTrafficDataRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -20131,7 +19917,6 @@ class DescribeDomainTopUrlVisitRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         sort_by: str = None,
         start_time: str = None,
     ):
@@ -20141,7 +19926,6 @@ class DescribeDomainTopUrlVisitRequest(TeaModel):
         # 
         # >  The end time must be later than the start time. The difference between the end time and the start time cannot exceed seven days.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The method that is used to sort the returned URLs.**** Valid values:
         # 
         # *   **traf**: network traffic
@@ -20165,8 +19949,6 @@ class DescribeDomainTopUrlVisitRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.start_time is not None:
@@ -20179,8 +19961,6 @@ class DescribeDomainTopUrlVisitRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('StartTime') is not None:
@@ -20786,7 +20566,6 @@ class DescribeDomainTrafficDataRequest(TeaModel):
         interval: str = None,
         isp_name_en: str = None,
         location_name_en: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
@@ -20811,7 +20590,6 @@ class DescribeDomainTrafficDataRequest(TeaModel):
         # 
         # If you do not specify a region, monitoring data in all regions is queried.
         self.location_name_en = location_name_en
-        self.owner_id = owner_id
         # The start of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -20836,8 +20614,6 @@ class DescribeDomainTrafficDataRequest(TeaModel):
             result['IspNameEn'] = self.isp_name_en
         if self.location_name_en is not None:
             result['LocationNameEn'] = self.location_name_en
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -20854,8 +20630,6 @@ class DescribeDomainTrafficDataRequest(TeaModel):
             self.isp_name_en = m.get('IspNameEn')
         if m.get('LocationNameEn') is not None:
             self.location_name_en = m.get('LocationNameEn')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -21084,7 +20858,6 @@ class DescribeDomainUsageDataRequest(TeaModel):
         end_time: str = None,
         field: str = None,
         interval: str = None,
-        owner_id: int = None,
         start_time: str = None,
         type: str = None,
     ):
@@ -21132,7 +20905,6 @@ class DescribeDomainUsageDataRequest(TeaModel):
         # 
         # The time granularity varies with the time range to query. Supported values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -21167,8 +20939,6 @@ class DescribeDomainUsageDataRequest(TeaModel):
             result['Field'] = self.field
         if self.interval is not None:
             result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.type is not None:
@@ -21189,8 +20959,6 @@ class DescribeDomainUsageDataRequest(TeaModel):
             self.field = m.get('Field')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Type') is not None:
@@ -21416,7 +21184,6 @@ class DescribeDomainUvDataRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
@@ -21425,7 +21192,6 @@ class DescribeDomainUvDataRequest(TeaModel):
         # 
         # The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
@@ -21442,8 +21208,6 @@ class DescribeDomainUvDataRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -21454,8 +21218,6 @@ class DescribeDomainUvDataRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -21992,7 +21754,6 @@ class DescribeDomainsUsageByDayRequest(TeaModel):
         self,
         domain_name: str = None,
         end_time: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
@@ -22003,7 +21764,6 @@ class DescribeDomainsUsageByDayRequest(TeaModel):
         # 
         # >  The end time must be later than the start time.
         self.end_time = end_time
-        self.owner_id = owner_id
         # The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
 
@@ -22020,8 +21780,6 @@ class DescribeDomainsUsageByDayRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -22032,8 +21790,6 @@ class DescribeDomainsUsageByDayRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -23716,7 +23472,6 @@ class DescribeRangeDataByLocateAndIspServiceRequest(TeaModel):
         end_time: str = None,
         isp_names: str = None,
         location_names: str = None,
-        owner_id: int = None,
         start_time: str = None,
     ):
         # The accelerated domain name.
@@ -23735,7 +23490,6 @@ class DescribeRangeDataByLocateAndIspServiceRequest(TeaModel):
         # 
         # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
         self.location_names = location_names
-        self.owner_id = owner_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
@@ -23758,8 +23512,6 @@ class DescribeRangeDataByLocateAndIspServiceRequest(TeaModel):
             result['IspNames'] = self.isp_names
         if self.location_names is not None:
             result['LocationNames'] = self.location_names
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -23774,8 +23526,6 @@ class DescribeRangeDataByLocateAndIspServiceRequest(TeaModel):
             self.isp_names = m.get('IspNames')
         if m.get('LocationNames') is not None:
             self.location_names = m.get('LocationNames')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -24499,20 +24249,20 @@ class DescribeRefreshTasksRequest(TeaModel):
     ):
         # The accelerated domain name. You can specify only one accelerated domain name in each call. By default, this operation queries the status of tasks for all accelerated domain names.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         self.end_time = end_time
         # The path of the object. The path is used as a condition for exact matching.
         self.object_path = object_path
         # The type of the task. Valid values:
         # 
         # *   **file**: refreshes one or more files.
-        # *   **directory**: refreshes files under the specified directories.
+        # *   **directory**: refreshes files in the specified directories.
         # *   **regex**: refreshes content based on a regular expression.
         # *   **preload**: prefetches one or more files.
         # 
-        # >  If you set the **DomainName** or **Status** parameter, you must also set the **ObjectType** parameter.
+        # > If you set the **DomainName** or **Status** parameter, you must also set the **ObjectType** parameter.
         self.object_type = object_type
         self.owner_id = owner_id
         # The number of the page to return. Valid values: **1** to **100000**.
@@ -24522,12 +24272,12 @@ class DescribeRefreshTasksRequest(TeaModel):
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.security_token = security_token
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # The status of the task. Valid values:
         # 
         # *   **Complete**: The task has completed.
-        # *   **Refreshing**: The task is running.
+        # *   **Refreshing**: The task is in progress.
         # *   **Failed**: The task failed.
         self.status = status
         # The ID of the task that you want to query.
@@ -24614,25 +24364,24 @@ class DescribeRefreshTasksResponseBodyTasksCDNTask(TeaModel):
         # 
         # *   **InternalError**: An internal error occurred.
         # *   **OriginTimeout**: The response from the origin server timed out.
-        # *   **OriginReturn StatusCode 5XX**: The origin server returned a 5XX error.
+        # *   **OriginReturnStatusCode 5XX**: The origin server returned a 5XX error.
         self.description = description
-        # The URL of the object to be refreshed.
+        # The URL of the object refreshed.
         self.object_path = object_path
         # The type of the task.
         # 
         # *   **file**: refreshes one or more files.
-        # *   **directory**: refreshes files under the specified directories.
+        # *   **directory**: refreshes files in the specified directories.
         # *   **regex**: refreshes content based on a regular expression.
         # *   **preload**: prefetches one or more files.
         self.object_type = object_type
         # The progress of the task, in percentage.
         self.process = process
-        # The status. Valid values:
+        # The status of the task. Valid values:
         # 
         # *   **Complete**: The task has completed.
-        # *   **Refreshing**: The task is running.
+        # *   **Refreshing**: The task is in progress.
         # *   **Failed**: The task failed.
-        # *   **Pending**: The task is pending.
         self.status = status
         # The ID of the task.
         self.task_id = task_id
@@ -24731,7 +24480,7 @@ class DescribeRefreshTasksResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The details about the task.
+        # Details about tasks.
         self.tasks = tasks
         # The total number of entries returned.
         self.total_count = total_count
@@ -24932,9 +24681,9 @@ class DescribeTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. Valid values of N: **1** to **20**.
+        # The key of a tag.
         self.key = key
-        # The value of the tag. Valid values of N: **1** to **20**.
+        # The value of a tag.
         self.value = value
 
     def validate(self):
@@ -24964,17 +24713,15 @@ class DescribeTagResourcesRequestTag(TeaModel):
 class DescribeTagResourcesRequest(TeaModel):
     def __init__(
         self,
-        owner_id: int = None,
         resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[DescribeTagResourcesRequestTag] = None,
     ):
-        self.owner_id = owner_id
-        # The list of resource ID.
+        # A list of resource IDs. Maximum number of elements: 50.
         self.resource_id = resource_id
-        # The resource type. Set the value to **DOMAIN**.
+        # The resource type. Set this value to **DOMAIN**.
         self.resource_type = resource_type
-        # The tags.
+        # A list of tag combinations. Maximum number of elements: 20.
         self.tag = tag
 
     def validate(self):
@@ -24989,8 +24736,6 @@ class DescribeTagResourcesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -25003,8 +24748,6 @@ class DescribeTagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -25023,9 +24766,9 @@ class DescribeTagResourcesResponseBodyTagResourcesTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The key of a tag.
         self.key = key
-        # The value of the tag.
+        # The value of a tag.
         self.value = value
 
     def validate(self):
@@ -25060,7 +24803,7 @@ class DescribeTagResourcesResponseBodyTagResources(TeaModel):
     ):
         # The ID of the resource.
         self.resource_id = resource_id
-        # The key-value pair of the tag.
+        # A list of tags.
         self.tag = tag
 
     def validate(self):
@@ -25103,7 +24846,7 @@ class DescribeTagResourcesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The tags that are attached to the specified resource.
+        # The details about the tag.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -27070,7 +26813,6 @@ class DescribeUserVipsByDomainRequest(TeaModel):
         self,
         available: str = None,
         domain_name: str = None,
-        owner_id: int = None,
     ):
         # Specifies whether to query the virtual IP addresses of only healthy CDN edge nodes. Valid values: Valid values:
         # 
@@ -27079,7 +26821,6 @@ class DescribeUserVipsByDomainRequest(TeaModel):
         self.available = available
         # The accelerated domain name. You can specify only one domain name.
         self.domain_name = domain_name
-        self.owner_id = owner_id
 
     def validate(self):
         pass
@@ -27094,8 +26835,6 @@ class DescribeUserVipsByDomainRequest(TeaModel):
             result['Available'] = self.available
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -27104,8 +26843,6 @@ class DescribeUserVipsByDomainRequest(TeaModel):
             self.available = m.get('Available')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         return self
 
 
@@ -31048,12 +30785,10 @@ class VerifyDomainOwnerRequest(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
-        owner_id: int = None,
         verify_type: str = None,
     ):
         # The domain name of which you want to verify the ownership. You can specify only one domain name.
         self.domain_name = domain_name
-        self.owner_id = owner_id
         # The verification method. Valid values:
         # 
         # *   **dnsCheck**: by DNS record
@@ -31071,8 +30806,6 @@ class VerifyDomainOwnerRequest(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.verify_type is not None:
             result['VerifyType'] = self.verify_type
         return result
@@ -31081,8 +30814,6 @@ class VerifyDomainOwnerRequest(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('VerifyType') is not None:
             self.verify_type = m.get('VerifyType')
         return self
