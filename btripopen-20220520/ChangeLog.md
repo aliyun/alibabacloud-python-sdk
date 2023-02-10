@@ -1,3 +1,6 @@
+2023-02-10 Version: 1.0.40
+- Add Other.
+
 2023-01-29 Version: 1.0.39
 - Build again.
 
