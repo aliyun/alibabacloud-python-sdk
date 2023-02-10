@@ -322,6 +322,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappBindWabaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappBindWabaResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappBindWabaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappBindWabaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.waba_id):
@@ -350,6 +357,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappBindWabaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappBindWabaResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappBindWabaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappBindWabaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.waba_id):
@@ -377,6 +391,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappBindWabaRequest,
     ) -> cams_20200606_models.ChatappBindWabaResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappBindWabaRequest
+        @return: ChatappBindWabaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.chatapp_bind_waba_with_options(request, runtime)
 
@@ -384,6 +404,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappBindWabaRequest,
     ) -> cams_20200606_models.ChatappBindWabaResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappBindWabaRequest
+        @return: ChatappBindWabaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.chatapp_bind_waba_with_options_async(request, runtime)
 
@@ -392,6 +418,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappEmbedSignUpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappEmbedSignUpResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappEmbedSignUpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappEmbedSignUpResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.input_token):
@@ -420,6 +453,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappEmbedSignUpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappEmbedSignUpResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappEmbedSignUpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappEmbedSignUpResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.input_token):
@@ -447,6 +487,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappEmbedSignUpRequest,
     ) -> cams_20200606_models.ChatappEmbedSignUpResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappEmbedSignUpRequest
+        @return: ChatappEmbedSignUpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.chatapp_embed_sign_up_with_options(request, runtime)
 
@@ -454,6 +500,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappEmbedSignUpRequest,
     ) -> cams_20200606_models.ChatappEmbedSignUpResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappEmbedSignUpRequest
+        @return: ChatappEmbedSignUpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.chatapp_embed_sign_up_with_options_async(request, runtime)
 
@@ -614,6 +666,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappPhoneNumberRegisterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappPhoneNumberRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappPhoneNumberRegisterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappPhoneNumberRegisterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -644,6 +703,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappPhoneNumberRegisterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappPhoneNumberRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappPhoneNumberRegisterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappPhoneNumberRegisterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -673,6 +739,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappPhoneNumberRegisterRequest,
     ) -> cams_20200606_models.ChatappPhoneNumberRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappPhoneNumberRegisterRequest
+        @return: ChatappPhoneNumberRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.chatapp_phone_number_register_with_options(request, runtime)
 
@@ -680,6 +752,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappPhoneNumberRegisterRequest,
     ) -> cams_20200606_models.ChatappPhoneNumberRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappPhoneNumberRegisterRequest
+        @return: ChatappPhoneNumberRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.chatapp_phone_number_register_with_options_async(request, runtime)
 
@@ -688,6 +766,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappSyncPhoneNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappSyncPhoneNumberResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappSyncPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappSyncPhoneNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -716,6 +801,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappSyncPhoneNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappSyncPhoneNumberResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappSyncPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappSyncPhoneNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -743,6 +835,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappSyncPhoneNumberRequest,
     ) -> cams_20200606_models.ChatappSyncPhoneNumberResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappSyncPhoneNumberRequest
+        @return: ChatappSyncPhoneNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.chatapp_sync_phone_number_with_options(request, runtime)
 
@@ -750,6 +848,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappSyncPhoneNumberRequest,
     ) -> cams_20200606_models.ChatappSyncPhoneNumberResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappSyncPhoneNumberRequest
+        @return: ChatappSyncPhoneNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.chatapp_sync_phone_number_with_options_async(request, runtime)
 
@@ -758,6 +862,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappVerifyAndRegisterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappVerifyAndRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappVerifyAndRegisterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappVerifyAndRegisterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -790,6 +901,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ChatappVerifyAndRegisterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ChatappVerifyAndRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappVerifyAndRegisterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatappVerifyAndRegisterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -821,6 +939,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappVerifyAndRegisterRequest,
     ) -> cams_20200606_models.ChatappVerifyAndRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappVerifyAndRegisterRequest
+        @return: ChatappVerifyAndRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.chatapp_verify_and_register_with_options(request, runtime)
 
@@ -828,6 +952,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ChatappVerifyAndRegisterRequest,
     ) -> cams_20200606_models.ChatappVerifyAndRegisterResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ChatappVerifyAndRegisterRequest
+        @return: ChatappVerifyAndRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.chatapp_verify_and_register_with_options_async(request, runtime)
 
@@ -836,6 +966,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.CreateChatappMigrationInitiateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.CreateChatappMigrationInitiateResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateChatappMigrationInitiateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatappMigrationInitiateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.country_code):
@@ -868,6 +1005,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.CreateChatappMigrationInitiateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.CreateChatappMigrationInitiateResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateChatappMigrationInitiateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChatappMigrationInitiateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.country_code):
@@ -899,6 +1043,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.CreateChatappMigrationInitiateRequest,
     ) -> cams_20200606_models.CreateChatappMigrationInitiateResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateChatappMigrationInitiateRequest
+        @return: CreateChatappMigrationInitiateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_chatapp_migration_initiate_with_options(request, runtime)
 
@@ -906,6 +1056,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.CreateChatappMigrationInitiateRequest,
     ) -> cams_20200606_models.CreateChatappMigrationInitiateResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateChatappMigrationInitiateRequest
+        @return: CreateChatappMigrationInitiateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_chatapp_migration_initiate_with_options_async(request, runtime)
 
@@ -1290,6 +1446,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetChatappVerifyCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetChatappVerifyCodeResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetChatappVerifyCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatappVerifyCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -1324,6 +1487,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetChatappVerifyCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetChatappVerifyCodeResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetChatappVerifyCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatappVerifyCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -1357,6 +1527,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.GetChatappVerifyCodeRequest,
     ) -> cams_20200606_models.GetChatappVerifyCodeResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetChatappVerifyCodeRequest
+        @return: GetChatappVerifyCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_chatapp_verify_code_with_options(request, runtime)
 
@@ -1364,6 +1540,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.GetChatappVerifyCodeRequest,
     ) -> cams_20200606_models.GetChatappVerifyCodeResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetChatappVerifyCodeRequest
+        @return: GetChatappVerifyCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_chatapp_verify_code_with_options_async(request, runtime)
 
@@ -1454,6 +1636,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetPhoneNumberVerificationStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetPhoneNumberVerificationStatusResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneNumberVerificationStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneNumberVerificationStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -1484,6 +1673,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetPhoneNumberVerificationStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetPhoneNumberVerificationStatusResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneNumberVerificationStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneNumberVerificationStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -1513,6 +1709,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.GetPhoneNumberVerificationStatusRequest,
     ) -> cams_20200606_models.GetPhoneNumberVerificationStatusResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneNumberVerificationStatusRequest
+        @return: GetPhoneNumberVerificationStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_phone_number_verification_status_with_options(request, runtime)
 
@@ -1520,6 +1722,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.GetPhoneNumberVerificationStatusRequest,
     ) -> cams_20200606_models.GetPhoneNumberVerificationStatusResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneNumberVerificationStatusRequest
+        @return: GetPhoneNumberVerificationStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_phone_number_verification_status_with_options_async(request, runtime)
 
@@ -1528,6 +1736,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.IsvGetAppIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.IsvGetAppIdResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: IsvGetAppIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsvGetAppIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.type):
@@ -1556,6 +1771,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.IsvGetAppIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.IsvGetAppIdResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: IsvGetAppIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsvGetAppIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.type):
@@ -1583,6 +1805,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.IsvGetAppIdRequest,
     ) -> cams_20200606_models.IsvGetAppIdResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: IsvGetAppIdRequest
+        @return: IsvGetAppIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.isv_get_app_id_with_options(request, runtime)
 
@@ -1590,6 +1818,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.IsvGetAppIdRequest,
     ) -> cams_20200606_models.IsvGetAppIdResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: IsvGetAppIdRequest
+        @return: IsvGetAppIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.isv_get_app_id_with_options_async(request, runtime)
 
@@ -1836,6 +2070,13 @@ class Client(OpenApiClient):
         tmp_req: cams_20200606_models.ModifyPhoneBusinessProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ModifyPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: ModifyPhoneBusinessProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPhoneBusinessProfileResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cams_20200606_models.ModifyPhoneBusinessProfileShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1882,6 +2123,13 @@ class Client(OpenApiClient):
         tmp_req: cams_20200606_models.ModifyPhoneBusinessProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ModifyPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: ModifyPhoneBusinessProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPhoneBusinessProfileResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cams_20200606_models.ModifyPhoneBusinessProfileShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1927,6 +2175,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ModifyPhoneBusinessProfileRequest,
     ) -> cams_20200606_models.ModifyPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifyPhoneBusinessProfileRequest
+        @return: ModifyPhoneBusinessProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_phone_business_profile_with_options(request, runtime)
 
@@ -1934,6 +2188,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ModifyPhoneBusinessProfileRequest,
     ) -> cams_20200606_models.ModifyPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifyPhoneBusinessProfileRequest
+        @return: ModifyPhoneBusinessProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_phone_business_profile_with_options_async(request, runtime)
 
@@ -2142,6 +2402,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.QueryPhoneBusinessProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.QueryPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneBusinessProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPhoneBusinessProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2172,6 +2439,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.QueryPhoneBusinessProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.QueryPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneBusinessProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPhoneBusinessProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2201,6 +2475,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.QueryPhoneBusinessProfileRequest,
     ) -> cams_20200606_models.QueryPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneBusinessProfileRequest
+        @return: QueryPhoneBusinessProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_phone_business_profile_with_options(request, runtime)
 
@@ -2208,6 +2488,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.QueryPhoneBusinessProfileRequest,
     ) -> cams_20200606_models.QueryPhoneBusinessProfileResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneBusinessProfileRequest
+        @return: QueryPhoneBusinessProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_phone_business_profile_with_options_async(request, runtime)
 
@@ -2216,6 +2502,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.QueryWabaBusinessInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.QueryWabaBusinessInfoResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryWabaBusinessInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWabaBusinessInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2246,6 +2539,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.QueryWabaBusinessInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.QueryWabaBusinessInfoResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryWabaBusinessInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWabaBusinessInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2275,6 +2575,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.QueryWabaBusinessInfoRequest,
     ) -> cams_20200606_models.QueryWabaBusinessInfoResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryWabaBusinessInfoRequest
+        @return: QueryWabaBusinessInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_waba_business_info_with_options(request, runtime)
 
@@ -2282,6 +2588,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.QueryWabaBusinessInfoRequest,
     ) -> cams_20200606_models.QueryWabaBusinessInfoResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryWabaBusinessInfoRequest
+        @return: QueryWabaBusinessInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_waba_business_info_with_options_async(request, runtime)
 
@@ -2291,8 +2603,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.SendChatappMassMessageResponse:
         """
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-        Can support up to 1,000 numbers per request.
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can send messages to up to 1,000 phone numbers in a single request.
         
         @param tmp_req: SendChatappMassMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2318,14 +2630,20 @@ class Client(OpenApiClient):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
             body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.label):
+            body['Label'] = request.label
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.sender_list_shrink):
             body['SenderList'] = request.sender_list_shrink
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_code):
             body['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.ttl):
+            body['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2351,8 +2669,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.SendChatappMassMessageResponse:
         """
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-        Can support up to 1,000 numbers per request.
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can send messages to up to 1,000 phone numbers in a single request.
         
         @param tmp_req: SendChatappMassMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2378,14 +2696,20 @@ class Client(OpenApiClient):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
             body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.label):
+            body['Label'] = request.label
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.sender_list_shrink):
             body['SenderList'] = request.sender_list_shrink
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_code):
             body['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.ttl):
+            body['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2410,8 +2734,8 @@ class Client(OpenApiClient):
         request: cams_20200606_models.SendChatappMassMessageRequest,
     ) -> cams_20200606_models.SendChatappMassMessageResponse:
         """
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-        Can support up to 1,000 numbers per request.
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can send messages to up to 1,000 phone numbers in a single request.
         
         @param request: SendChatappMassMessageRequest
         @return: SendChatappMassMessageResponse
@@ -2424,8 +2748,8 @@ class Client(OpenApiClient):
         request: cams_20200606_models.SendChatappMassMessageRequest,
     ) -> cams_20200606_models.SendChatappMassMessageResponse:
         """
-        You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-        Can support up to 1,000 numbers per request.
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can send messages to up to 1,000 phone numbers in a single request.
         
         @param request: SendChatappMassMessageRequest
         @return: SendChatappMassMessageResponse
@@ -2439,7 +2763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.SendChatappMessageResponse:
         """
-        You can call this operation up to 200 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param tmp_req: SendChatappMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2520,7 +2844,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.SendChatappMessageResponse:
         """
-        You can call this operation up to 200 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param tmp_req: SendChatappMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2600,7 +2924,7 @@ class Client(OpenApiClient):
         request: cams_20200606_models.SendChatappMessageRequest,
     ) -> cams_20200606_models.SendChatappMessageResponse:
         """
-        You can call this operation up to 200 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: SendChatappMessageRequest
         @return: SendChatappMessageResponse
@@ -2613,7 +2937,7 @@ class Client(OpenApiClient):
         request: cams_20200606_models.SendChatappMessageRequest,
     ) -> cams_20200606_models.SendChatappMessageResponse:
         """
-        You can call this operation up to 200 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: SendChatappMessageRequest
         @return: SendChatappMessageResponse
@@ -2708,6 +3032,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.UpdatePhoneWebhookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.UpdatePhoneWebhookResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdatePhoneWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePhoneWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2746,6 +3077,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.UpdatePhoneWebhookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.UpdatePhoneWebhookResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdatePhoneWebhookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePhoneWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2783,6 +3121,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.UpdatePhoneWebhookRequest,
     ) -> cams_20200606_models.UpdatePhoneWebhookResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdatePhoneWebhookRequest
+        @return: UpdatePhoneWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_phone_webhook_with_options(request, runtime)
 
@@ -2790,5 +3134,11 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.UpdatePhoneWebhookRequest,
     ) -> cams_20200606_models.UpdatePhoneWebhookResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdatePhoneWebhookRequest
+        @return: UpdatePhoneWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_phone_webhook_with_options_async(request, runtime)

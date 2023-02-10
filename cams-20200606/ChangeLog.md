@@ -1,3 +1,6 @@
+2023-02-10 Version: 1.0.17
+- Add viber template batch send
+
 2023-01-11 Version: 1.0.16
 - Add embed sign up
 
