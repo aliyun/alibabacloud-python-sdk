@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_eas20210701 import models as eas_20210701_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_eas20210701 import models as eas_20210701_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -58,21 +58,75 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_benchmark_task(
+    def commit_service_with_options(
         self,
-        request: eas_20210701_models.CreateBenchmarkTaskRequest,
-    ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_benchmark_task_with_options(request, headers, runtime)
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CommitServiceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CommitService',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/commit',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CommitServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
-    async def create_benchmark_task_async(
+    async def commit_service_with_options_async(
         self,
-        request: eas_20210701_models.CreateBenchmarkTaskRequest,
-    ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CommitServiceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CommitService',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/commit',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CommitServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def commit_service(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.CommitServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_benchmark_task_with_options_async(request, headers, runtime)
+        return self.commit_service_with_options(cluster_id, service_name, headers, runtime)
+
+    async def commit_service_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.CommitServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.commit_service_with_options_async(cluster_id, service_name, headers, runtime)
 
     def create_benchmark_task_with_options(
         self,
@@ -128,21 +182,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_resource(
+    def create_benchmark_task(
         self,
-        request: eas_20210701_models.CreateResourceRequest,
-    ) -> eas_20210701_models.CreateResourceResponse:
+        request: eas_20210701_models.CreateBenchmarkTaskRequest,
+    ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_resource_with_options(request, headers, runtime)
+        return self.create_benchmark_task_with_options(request, headers, runtime)
 
-    async def create_resource_async(
+    async def create_benchmark_task_async(
         self,
-        request: eas_20210701_models.CreateResourceRequest,
-    ) -> eas_20210701_models.CreateResourceResponse:
+        request: eas_20210701_models.CreateBenchmarkTaskRequest,
+    ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_resource_with_options_async(request, headers, runtime)
+        return await self.create_benchmark_task_with_options_async(request, headers, runtime)
 
     def create_resource_with_options(
         self,
@@ -216,25 +270,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_resource_instances(
+    def create_resource(
         self,
-        cluster_id: str,
-        resource_id: str,
-        request: eas_20210701_models.CreateResourceInstancesRequest,
-    ) -> eas_20210701_models.CreateResourceInstancesResponse:
+        request: eas_20210701_models.CreateResourceRequest,
+    ) -> eas_20210701_models.CreateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
+        return self.create_resource_with_options(request, headers, runtime)
 
-    async def create_resource_instances_async(
+    async def create_resource_async(
         self,
-        cluster_id: str,
-        resource_id: str,
-        request: eas_20210701_models.CreateResourceInstancesRequest,
-    ) -> eas_20210701_models.CreateResourceInstancesResponse:
+        request: eas_20210701_models.CreateResourceRequest,
+    ) -> eas_20210701_models.CreateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
+        return await self.create_resource_with_options_async(request, headers, runtime)
 
     def create_resource_instances_with_options(
         self,
@@ -316,25 +366,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_resource_log(
+    def create_resource_instances(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.CreateResourceLogRequest,
-    ) -> eas_20210701_models.CreateResourceLogResponse:
+        request: eas_20210701_models.CreateResourceInstancesRequest,
+    ) -> eas_20210701_models.CreateResourceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_resource_log_with_options(cluster_id, resource_id, request, headers, runtime)
+        return self.create_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
 
-    async def create_resource_log_async(
+    async def create_resource_instances_async(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.CreateResourceLogRequest,
-    ) -> eas_20210701_models.CreateResourceLogResponse:
+        request: eas_20210701_models.CreateResourceInstancesRequest,
+    ) -> eas_20210701_models.CreateResourceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_resource_log_with_options_async(cluster_id, resource_id, request, headers, runtime)
+        return await self.create_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def create_resource_log_with_options(
         self,
@@ -404,31 +454,45 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_service(
+    def create_resource_log(
         self,
-        request: eas_20210701_models.CreateServiceRequest,
-    ) -> eas_20210701_models.CreateServiceResponse:
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.CreateResourceLogRequest,
+    ) -> eas_20210701_models.CreateResourceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_service_with_options(request, headers, runtime)
+        return self.create_resource_log_with_options(cluster_id, resource_id, request, headers, runtime)
 
-    async def create_service_async(
+    async def create_resource_log_async(
         self,
-        request: eas_20210701_models.CreateServiceRequest,
-    ) -> eas_20210701_models.CreateServiceResponse:
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.CreateResourceLogRequest,
+    ) -> eas_20210701_models.CreateResourceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_service_with_options_async(request, headers, runtime)
+        return await self.create_resource_log_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def create_service_with_options(
         self,
-        request: eas_20210701_models.CreateServiceRequest,
+        tmp_req: eas_20210701_models.CreateServiceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CreateServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.develop):
+            query['Develop'] = request.develop
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=request.body
         )
         params = open_api_models.Params(
@@ -449,13 +513,23 @@ class Client(OpenApiClient):
 
     async def create_service_with_options_async(
         self,
-        request: eas_20210701_models.CreateServiceRequest,
+        tmp_req: eas_20210701_models.CreateServiceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CreateServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.develop):
+            query['Develop'] = request.develop
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=request.body
         )
         params = open_api_models.Params(
@@ -474,25 +548,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_service_auto_scaler(
+    def create_service(
         self,
-        cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.CreateServiceAutoScalerRequest,
-    ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
+        request: eas_20210701_models.CreateServiceRequest,
+    ) -> eas_20210701_models.CreateServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.create_service_with_options(request, headers, runtime)
 
-    async def create_service_auto_scaler_async(
+    async def create_service_async(
         self,
-        cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.CreateServiceAutoScalerRequest,
-    ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
+        request: eas_20210701_models.CreateServiceRequest,
+    ) -> eas_20210701_models.CreateServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.create_service_with_options_async(request, headers, runtime)
 
     def create_service_auto_scaler_with_options(
         self,
@@ -566,25 +636,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_service_cron_scaler(
+    def create_service_auto_scaler(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.CreateServiceCronScalerRequest,
-    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        request: eas_20210701_models.CreateServiceAutoScalerRequest,
+    ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.create_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def create_service_cron_scaler_async(
+    async def create_service_auto_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.CreateServiceCronScalerRequest,
-    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        request: eas_20210701_models.CreateServiceAutoScalerRequest,
+    ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.create_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def create_service_cron_scaler_with_options(
         self,
@@ -654,25 +724,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_service_mirror(
+    def create_service_cron_scaler(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.CreateServiceMirrorRequest,
-    ) -> eas_20210701_models.CreateServiceMirrorResponse:
+        request: eas_20210701_models.CreateServiceCronScalerRequest,
+    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.create_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def create_service_mirror_async(
+    async def create_service_cron_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.CreateServiceMirrorRequest,
-    ) -> eas_20210701_models.CreateServiceMirrorResponse:
+        request: eas_20210701_models.CreateServiceCronScalerRequest,
+    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.create_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def create_service_mirror_with_options(
         self,
@@ -742,23 +812,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_benchmark_task(
+    def create_service_mirror(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
+        service_name: str,
+        request: eas_20210701_models.CreateServiceMirrorRequest,
+    ) -> eas_20210701_models.CreateServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.create_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def delete_benchmark_task_async(
+    async def create_service_mirror_async(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
+        service_name: str,
+        request: eas_20210701_models.CreateServiceMirrorRequest,
+    ) -> eas_20210701_models.CreateServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.create_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def delete_benchmark_task_with_options(
         self,
@@ -812,23 +884,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_resource(
+    def delete_benchmark_task(
         self,
         cluster_id: str,
-        resource_id: str,
-    ) -> eas_20210701_models.DeleteResourceResponse:
+        task_name: str,
+    ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_with_options(cluster_id, resource_id, headers, runtime)
+        return self.delete_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
 
-    async def delete_resource_async(
+    async def delete_benchmark_task_async(
         self,
         cluster_id: str,
-        resource_id: str,
-    ) -> eas_20210701_models.DeleteResourceResponse:
+        task_name: str,
+    ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.delete_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
 
     def delete_resource_with_options(
         self,
@@ -882,23 +954,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_resource_dlink(
+    def delete_resource(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DeleteResourceDLinkResponse:
+    ) -> eas_20210701_models.DeleteResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
+        return self.delete_resource_with_options(cluster_id, resource_id, headers, runtime)
 
-    async def delete_resource_dlink_async(
+    async def delete_resource_async(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DeleteResourceDLinkResponse:
+    ) -> eas_20210701_models.DeleteResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.delete_resource_with_options_async(cluster_id, resource_id, headers, runtime)
 
     def delete_resource_dlink_with_options(
         self,
@@ -952,25 +1024,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_resource_instances(
+    def delete_resource_dlink(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.DeleteResourceInstancesRequest,
-    ) -> eas_20210701_models.DeleteResourceInstancesResponse:
+    ) -> eas_20210701_models.DeleteResourceDLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
+        return self.delete_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
 
-    async def delete_resource_instances_async(
+    async def delete_resource_dlink_async(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.DeleteResourceInstancesRequest,
-    ) -> eas_20210701_models.DeleteResourceInstancesResponse:
+    ) -> eas_20210701_models.DeleteResourceDLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
+        return await self.delete_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
 
     def delete_resource_instances_with_options(
         self,
@@ -1040,23 +1110,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_resource_log(
+    def delete_resource_instances(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DeleteResourceLogResponse:
+        request: eas_20210701_models.DeleteResourceInstancesRequest,
+    ) -> eas_20210701_models.DeleteResourceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_log_with_options(cluster_id, resource_id, headers, runtime)
+        return self.delete_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
 
-    async def delete_resource_log_async(
+    async def delete_resource_instances_async(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DeleteResourceLogResponse:
+        request: eas_20210701_models.DeleteResourceInstancesRequest,
+    ) -> eas_20210701_models.DeleteResourceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.delete_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def delete_resource_log_with_options(
         self,
@@ -1110,23 +1182,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_service(
+    def delete_resource_log(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.DeleteServiceResponse:
+        resource_id: str,
+    ) -> eas_20210701_models.DeleteResourceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_resource_log_with_options(cluster_id, resource_id, headers, runtime)
 
-    async def delete_service_async(
+    async def delete_resource_log_async(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.DeleteServiceResponse:
+        resource_id: str,
+    ) -> eas_20210701_models.DeleteResourceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
 
     def delete_service_with_options(
         self,
@@ -1180,23 +1252,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_service_auto_scaler(
+    def delete_service(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
+    ) -> eas_20210701_models.DeleteServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_service_with_options(cluster_id, service_name, headers, runtime)
 
-    async def delete_service_auto_scaler_async(
+    async def delete_service_async(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
+    ) -> eas_20210701_models.DeleteServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_service_with_options_async(cluster_id, service_name, headers, runtime)
 
     def delete_service_auto_scaler_with_options(
         self,
@@ -1250,23 +1322,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_service_cron_scaler(
+    def delete_service_auto_scaler(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+    ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
 
-    async def delete_service_cron_scaler_async(
+    async def delete_service_auto_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+    ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
 
     def delete_service_cron_scaler_with_options(
         self,
@@ -1320,25 +1392,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_service_instances(
+    def delete_service_cron_scaler(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.DeleteServiceInstancesRequest,
-    ) -> eas_20210701_models.DeleteServiceInstancesResponse:
+    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_service_instances_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.delete_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
 
-    async def delete_service_instances_async(
+    async def delete_service_cron_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.DeleteServiceInstancesRequest,
-    ) -> eas_20210701_models.DeleteServiceInstancesResponse:
+    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_service_instances_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.delete_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
 
     def delete_service_instances_with_options(
         self,
@@ -1404,23 +1474,117 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_service_mirror(
+    def delete_service_instances(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DeleteServiceMirrorResponse:
+        request: eas_20210701_models.DeleteServiceInstancesRequest,
+    ) -> eas_20210701_models.DeleteServiceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_service_mirror_with_options(cluster_id, service_name, headers, runtime)
+        return self.delete_service_instances_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def delete_service_mirror_async(
+    async def delete_service_instances_async(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DeleteServiceMirrorResponse:
+        request: eas_20210701_models.DeleteServiceInstancesRequest,
+    ) -> eas_20210701_models.DeleteServiceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.delete_service_instances_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def delete_service_label_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        tmp_req: eas_20210701_models.DeleteServiceLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DeleteServiceLabelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keys):
+            request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceLabel',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/label',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_label_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        tmp_req: eas_20210701_models.DeleteServiceLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DeleteServiceLabelShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keys):
+            request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceLabel',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/label',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_label(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DeleteServiceLabelRequest,
+    ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_service_label_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def delete_service_label_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DeleteServiceLabelRequest,
+    ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_service_label_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def delete_service_mirror_with_options(
         self,
@@ -1474,23 +1638,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_benchmark_task(
+    def delete_service_mirror(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
+        service_name: str,
+    ) -> eas_20210701_models.DeleteServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.delete_service_mirror_with_options(cluster_id, service_name, headers, runtime)
 
-    async def describe_benchmark_task_async(
+    async def delete_service_mirror_async(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
+        service_name: str,
+    ) -> eas_20210701_models.DeleteServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.delete_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
 
     def describe_benchmark_task_with_options(
         self,
@@ -1544,25 +1708,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_benchmark_task_report(
+    def describe_benchmark_task(
         self,
         cluster_id: str,
         task_name: str,
-        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
-    ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
+    ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_benchmark_task_report_with_options(cluster_id, task_name, request, headers, runtime)
+        return self.describe_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
 
-    async def describe_benchmark_task_report_async(
+    async def describe_benchmark_task_async(
         self,
         cluster_id: str,
         task_name: str,
-        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
-    ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
+    ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_benchmark_task_report_with_options_async(cluster_id, task_name, request, headers, runtime)
+        return await self.describe_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
 
     def describe_benchmark_task_report_with_options(
         self,
@@ -1628,23 +1790,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_group(
+    def describe_benchmark_task_report(
         self,
         cluster_id: str,
-        group_name: str,
-    ) -> eas_20210701_models.DescribeGroupResponse:
+        task_name: str,
+        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
+    ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_group_with_options(cluster_id, group_name, headers, runtime)
+        return self.describe_benchmark_task_report_with_options(cluster_id, task_name, request, headers, runtime)
 
-    async def describe_group_async(
+    async def describe_benchmark_task_report_async(
         self,
         cluster_id: str,
-        group_name: str,
-    ) -> eas_20210701_models.DescribeGroupResponse:
+        task_name: str,
+        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
+    ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_group_with_options_async(cluster_id, group_name, headers, runtime)
+        return await self.describe_benchmark_task_report_with_options_async(cluster_id, task_name, request, headers, runtime)
 
     def describe_group_with_options(
         self,
@@ -1698,23 +1862,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_resource(
+    def describe_group(
         self,
         cluster_id: str,
-        resource_id: str,
-    ) -> eas_20210701_models.DescribeResourceResponse:
+        group_name: str,
+    ) -> eas_20210701_models.DescribeGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_resource_with_options(cluster_id, resource_id, headers, runtime)
+        return self.describe_group_with_options(cluster_id, group_name, headers, runtime)
 
-    async def describe_resource_async(
+    async def describe_group_async(
         self,
         cluster_id: str,
-        resource_id: str,
-    ) -> eas_20210701_models.DescribeResourceResponse:
+        group_name: str,
+    ) -> eas_20210701_models.DescribeGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_resource_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.describe_group_with_options_async(cluster_id, group_name, headers, runtime)
 
     def describe_resource_with_options(
         self,
@@ -1768,23 +1932,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_resource_dlink(
+    def describe_resource(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DescribeResourceDLinkResponse:
+    ) -> eas_20210701_models.DescribeResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
+        return self.describe_resource_with_options(cluster_id, resource_id, headers, runtime)
 
-    async def describe_resource_dlink_async(
+    async def describe_resource_async(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DescribeResourceDLinkResponse:
+    ) -> eas_20210701_models.DescribeResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.describe_resource_with_options_async(cluster_id, resource_id, headers, runtime)
 
     def describe_resource_dlink_with_options(
         self,
@@ -1838,23 +2002,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_resource_log(
+    def describe_resource_dlink(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DescribeResourceLogResponse:
+    ) -> eas_20210701_models.DescribeResourceDLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_resource_log_with_options(cluster_id, resource_id, headers, runtime)
+        return self.describe_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
 
-    async def describe_resource_log_async(
+    async def describe_resource_dlink_async(
         self,
         cluster_id: str,
         resource_id: str,
-    ) -> eas_20210701_models.DescribeResourceLogResponse:
+    ) -> eas_20210701_models.DescribeResourceDLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
+        return await self.describe_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
 
     def describe_resource_log_with_options(
         self,
@@ -1908,23 +2072,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service(
+    def describe_resource_log(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.DescribeServiceResponse:
+        resource_id: str,
+    ) -> eas_20210701_models.DescribeResourceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_resource_log_with_options(cluster_id, resource_id, headers, runtime)
 
-    async def describe_service_async(
+    async def describe_resource_log_async(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.DescribeServiceResponse:
+        resource_id: str,
+    ) -> eas_20210701_models.DescribeResourceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
 
     def describe_service_with_options(
         self,
@@ -1978,23 +2142,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service_auto_scaler(
+    def describe_service(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
+    ) -> eas_20210701_models.DescribeServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_with_options(cluster_id, service_name, headers, runtime)
 
-    async def describe_service_auto_scaler_async(
+    async def describe_service_async(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
+    ) -> eas_20210701_models.DescribeServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_with_options_async(cluster_id, service_name, headers, runtime)
 
     def describe_service_auto_scaler_with_options(
         self,
@@ -2048,23 +2212,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service_cron_scaler(
+    def describe_service_auto_scaler(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+    ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
 
-    async def describe_service_cron_scaler_async(
+    async def describe_service_auto_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+    ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
 
     def describe_service_cron_scaler_with_options(
         self,
@@ -2118,25 +2282,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service_event(
+    def describe_service_cron_scaler(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.DescribeServiceEventRequest,
-    ) -> eas_20210701_models.DescribeServiceEventResponse:
+    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_service_event_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.describe_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
 
-    async def describe_service_event_async(
+    async def describe_service_cron_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.DescribeServiceEventRequest,
-    ) -> eas_20210701_models.DescribeServiceEventResponse:
+    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_service_event_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.describe_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
 
     def describe_service_event_with_options(
         self,
@@ -2214,25 +2376,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service_log(
+    def describe_service_event(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.DescribeServiceLogRequest,
-    ) -> eas_20210701_models.DescribeServiceLogResponse:
+        request: eas_20210701_models.DescribeServiceEventRequest,
+    ) -> eas_20210701_models.DescribeServiceEventResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_service_log_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.describe_service_event_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def describe_service_log_async(
+    async def describe_service_event_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.DescribeServiceLogRequest,
-    ) -> eas_20210701_models.DescribeServiceLogResponse:
+        request: eas_20210701_models.DescribeServiceEventRequest,
+    ) -> eas_20210701_models.DescribeServiceEventResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_service_log_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.describe_service_event_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_log_with_options(
         self,
@@ -2318,23 +2480,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service_mirror(
+    def describe_service_log(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DescribeServiceMirrorResponse:
+        request: eas_20210701_models.DescribeServiceLogRequest,
+    ) -> eas_20210701_models.DescribeServiceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_service_mirror_with_options(cluster_id, service_name, headers, runtime)
+        return self.describe_service_log_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def describe_service_mirror_async(
+    async def describe_service_log_async(
         self,
         cluster_id: str,
         service_name: str,
-    ) -> eas_20210701_models.DescribeServiceMirrorResponse:
+        request: eas_20210701_models.DescribeServiceLogRequest,
+    ) -> eas_20210701_models.DescribeServiceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.describe_service_log_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def describe_service_mirror_with_options(
         self,
@@ -2388,21 +2552,107 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_benchmark_task(
+    def describe_service_mirror(
         self,
-        request: eas_20210701_models.ListBenchmarkTaskRequest,
-    ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DescribeServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_benchmark_task_with_options(request, headers, runtime)
+        return self.describe_service_mirror_with_options(cluster_id, service_name, headers, runtime)
 
-    async def list_benchmark_task_async(
+    async def describe_service_mirror_async(
         self,
-        request: eas_20210701_models.ListBenchmarkTaskRequest,
-    ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DescribeServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_benchmark_task_with_options_async(request, headers, runtime)
+        return await self.describe_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
+
+    def develop_service_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DevelopServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DevelopServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exit):
+            query['Exit'] = request.exit
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DevelopService',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/develop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DevelopServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def develop_service_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DevelopServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DevelopServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exit):
+            query['Exit'] = request.exit
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DevelopService',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/develop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DevelopServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def develop_service(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DevelopServiceRequest,
+    ) -> eas_20210701_models.DevelopServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.develop_service_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def develop_service_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DevelopServiceRequest,
+    ) -> eas_20210701_models.DevelopServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.develop_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def list_benchmark_task_with_options(
         self,
@@ -2476,21 +2726,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_groups(
+    def list_benchmark_task(
         self,
-        request: eas_20210701_models.ListGroupsRequest,
-    ) -> eas_20210701_models.ListGroupsResponse:
+        request: eas_20210701_models.ListBenchmarkTaskRequest,
+    ) -> eas_20210701_models.ListBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_groups_with_options(request, headers, runtime)
+        return self.list_benchmark_task_with_options(request, headers, runtime)
 
-    async def list_groups_async(
+    async def list_benchmark_task_async(
         self,
-        request: eas_20210701_models.ListGroupsRequest,
-    ) -> eas_20210701_models.ListGroupsResponse:
+        request: eas_20210701_models.ListBenchmarkTaskRequest,
+    ) -> eas_20210701_models.ListBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_groups_with_options_async(request, headers, runtime)
+        return await self.list_benchmark_task_with_options_async(request, headers, runtime)
 
     def list_groups_with_options(
         self,
@@ -2560,27 +2810,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resource_instance_worker(
+    def list_groups(
         self,
-        cluster_id: str,
-        resource_id: str,
-        instance_name: str,
-        request: eas_20210701_models.ListResourceInstanceWorkerRequest,
-    ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
+        request: eas_20210701_models.ListGroupsRequest,
+    ) -> eas_20210701_models.ListGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resource_instance_worker_with_options(cluster_id, resource_id, instance_name, request, headers, runtime)
+        return self.list_groups_with_options(request, headers, runtime)
 
-    async def list_resource_instance_worker_async(
+    async def list_groups_async(
         self,
-        cluster_id: str,
-        resource_id: str,
-        instance_name: str,
-        request: eas_20210701_models.ListResourceInstanceWorkerRequest,
-    ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
+        request: eas_20210701_models.ListGroupsRequest,
+    ) -> eas_20210701_models.ListGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resource_instance_worker_with_options_async(cluster_id, resource_id, instance_name, request, headers, runtime)
+        return await self.list_groups_with_options_async(request, headers, runtime)
 
     def list_resource_instance_worker_with_options(
         self,
@@ -2652,25 +2896,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resource_instances(
+    def list_resource_instance_worker(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.ListResourceInstancesRequest,
-    ) -> eas_20210701_models.ListResourceInstancesResponse:
+        instance_name: str,
+        request: eas_20210701_models.ListResourceInstanceWorkerRequest,
+    ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
+        return self.list_resource_instance_worker_with_options(cluster_id, resource_id, instance_name, request, headers, runtime)
 
-    async def list_resource_instances_async(
+    async def list_resource_instance_worker_async(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.ListResourceInstancesRequest,
-    ) -> eas_20210701_models.ListResourceInstancesResponse:
+        instance_name: str,
+        request: eas_20210701_models.ListResourceInstanceWorkerRequest,
+    ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
+        return await self.list_resource_instance_worker_with_options_async(cluster_id, resource_id, instance_name, request, headers, runtime)
 
     def list_resource_instances_with_options(
         self,
@@ -2752,25 +2998,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resource_services(
+    def list_resource_instances(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.ListResourceServicesRequest,
-    ) -> eas_20210701_models.ListResourceServicesResponse:
+        request: eas_20210701_models.ListResourceInstancesRequest,
+    ) -> eas_20210701_models.ListResourceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resource_services_with_options(cluster_id, resource_id, request, headers, runtime)
+        return self.list_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
 
-    async def list_resource_services_async(
+    async def list_resource_instances_async(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.ListResourceServicesRequest,
-    ) -> eas_20210701_models.ListResourceServicesResponse:
+        request: eas_20210701_models.ListResourceInstancesRequest,
+    ) -> eas_20210701_models.ListResourceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resource_services_with_options_async(cluster_id, resource_id, request, headers, runtime)
+        return await self.list_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def list_resource_services_with_options(
         self,
@@ -2840,21 +3086,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resources(
+    def list_resource_services(
         self,
-        request: eas_20210701_models.ListResourcesRequest,
-    ) -> eas_20210701_models.ListResourcesResponse:
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.ListResourceServicesRequest,
+    ) -> eas_20210701_models.ListResourceServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resources_with_options(request, headers, runtime)
+        return self.list_resource_services_with_options(cluster_id, resource_id, request, headers, runtime)
 
-    async def list_resources_async(
+    async def list_resource_services_async(
         self,
-        request: eas_20210701_models.ListResourcesRequest,
-    ) -> eas_20210701_models.ListResourcesResponse:
+        cluster_id: str,
+        resource_id: str,
+        request: eas_20210701_models.ListResourceServicesRequest,
+    ) -> eas_20210701_models.ListResourceServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resources_with_options_async(request, headers, runtime)
+        return await self.list_resource_services_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def list_resources_with_options(
         self,
@@ -2928,25 +3178,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_service_instances(
+    def list_resources(
         self,
-        cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.ListServiceInstancesRequest,
-    ) -> eas_20210701_models.ListServiceInstancesResponse:
+        request: eas_20210701_models.ListResourcesRequest,
+    ) -> eas_20210701_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_service_instances_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.list_resources_with_options(request, headers, runtime)
 
-    async def list_service_instances_async(
+    async def list_resources_async(
         self,
-        cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.ListServiceInstancesRequest,
-    ) -> eas_20210701_models.ListServiceInstancesResponse:
+        request: eas_20210701_models.ListResourcesRequest,
+    ) -> eas_20210701_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_service_instances_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.list_resources_with_options_async(request, headers, runtime)
 
     def list_service_instances_with_options(
         self,
@@ -3016,25 +3262,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_service_versions(
+    def list_service_instances(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.ListServiceVersionsRequest,
-    ) -> eas_20210701_models.ListServiceVersionsResponse:
+        request: eas_20210701_models.ListServiceInstancesRequest,
+    ) -> eas_20210701_models.ListServiceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_service_versions_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.list_service_instances_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def list_service_versions_async(
+    async def list_service_instances_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.ListServiceVersionsRequest,
-    ) -> eas_20210701_models.ListServiceVersionsResponse:
+        request: eas_20210701_models.ListServiceInstancesRequest,
+    ) -> eas_20210701_models.ListServiceInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_service_versions_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.list_service_instances_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def list_service_versions_with_options(
         self,
@@ -3104,40 +3350,54 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_services(
+    def list_service_versions(
         self,
-        request: eas_20210701_models.ListServicesRequest,
-    ) -> eas_20210701_models.ListServicesResponse:
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.ListServiceVersionsRequest,
+    ) -> eas_20210701_models.ListServiceVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_services_with_options(request, headers, runtime)
+        return self.list_service_versions_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def list_services_async(
+    async def list_service_versions_async(
         self,
-        request: eas_20210701_models.ListServicesRequest,
-    ) -> eas_20210701_models.ListServicesResponse:
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.ListServiceVersionsRequest,
+    ) -> eas_20210701_models.ListServiceVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_services_with_options_async(request, headers, runtime)
+        return await self.list_service_versions_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def list_services_with_options(
         self,
-        request: eas_20210701_models.ListServicesRequest,
+        tmp_req: eas_20210701_models.ListServicesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServicesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.ListServicesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label):
+            request.label_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.label_shrink):
+            query['Label'] = request.label_shrink
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_service_uid):
+            query['ParentServiceUid'] = request.parent_service_uid
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
@@ -3162,22 +3422,32 @@ class Client(OpenApiClient):
 
     async def list_services_with_options_async(
         self,
-        request: eas_20210701_models.ListServicesRequest,
+        tmp_req: eas_20210701_models.ListServicesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServicesResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.ListServicesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label):
+            request.label_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label, 'Label', 'json')
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.label_shrink):
+            query['Label'] = request.label_shrink
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_service_uid):
+            query['ParentServiceUid'] = request.parent_service_uid
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
@@ -3200,25 +3470,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def release_service(
+    def list_services(
         self,
-        cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.ReleaseServiceRequest,
-    ) -> eas_20210701_models.ReleaseServiceResponse:
+        request: eas_20210701_models.ListServicesRequest,
+    ) -> eas_20210701_models.ListServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.release_service_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.list_services_with_options(request, headers, runtime)
 
-    async def release_service_async(
+    async def list_services_async(
         self,
-        cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.ReleaseServiceRequest,
-    ) -> eas_20210701_models.ReleaseServiceResponse:
+        request: eas_20210701_models.ListServicesRequest,
+    ) -> eas_20210701_models.ListServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.release_service_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.list_services_with_options_async(request, headers, runtime)
 
     def release_service_with_options(
         self,
@@ -3288,23 +3554,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_benchmark_task(
+    def release_service(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.StartBenchmarkTaskResponse:
+        service_name: str,
+        request: eas_20210701_models.ReleaseServiceRequest,
+    ) -> eas_20210701_models.ReleaseServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.release_service_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def start_benchmark_task_async(
+    async def release_service_async(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.StartBenchmarkTaskResponse:
+        service_name: str,
+        request: eas_20210701_models.ReleaseServiceRequest,
+    ) -> eas_20210701_models.ReleaseServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.release_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def start_benchmark_task_with_options(
         self,
@@ -3358,23 +3626,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_service(
+    def start_benchmark_task(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.StartServiceResponse:
+        task_name: str,
+    ) -> eas_20210701_models.StartBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.start_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
 
-    async def start_service_async(
+    async def start_benchmark_task_async(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.StartServiceResponse:
+        task_name: str,
+    ) -> eas_20210701_models.StartBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.start_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
 
     def start_service_with_options(
         self,
@@ -3428,23 +3696,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_benchmark_task(
+    def start_service(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.StopBenchmarkTaskResponse:
+        service_name: str,
+    ) -> eas_20210701_models.StartServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
+        return self.start_service_with_options(cluster_id, service_name, headers, runtime)
 
-    async def stop_benchmark_task_async(
+    async def start_service_async(
         self,
         cluster_id: str,
-        task_name: str,
-    ) -> eas_20210701_models.StopBenchmarkTaskResponse:
+        service_name: str,
+    ) -> eas_20210701_models.StartServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.start_service_with_options_async(cluster_id, service_name, headers, runtime)
 
     def stop_benchmark_task_with_options(
         self,
@@ -3498,23 +3766,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_service(
+    def stop_benchmark_task(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.StopServiceResponse:
+        task_name: str,
+    ) -> eas_20210701_models.StopBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_service_with_options(cluster_id, service_name, headers, runtime)
+        return self.stop_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
 
-    async def stop_service_async(
+    async def stop_benchmark_task_async(
         self,
         cluster_id: str,
-        service_name: str,
-    ) -> eas_20210701_models.StopServiceResponse:
+        task_name: str,
+    ) -> eas_20210701_models.StopBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_service_with_options_async(cluster_id, service_name, headers, runtime)
+        return await self.stop_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
 
     def stop_service_with_options(
         self,
@@ -3568,25 +3836,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_benchmark_task(
+    def stop_service(
         self,
         cluster_id: str,
-        task_name: str,
-        request: eas_20210701_models.UpdateBenchmarkTaskRequest,
-    ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
+        service_name: str,
+    ) -> eas_20210701_models.StopServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_benchmark_task_with_options(cluster_id, task_name, request, headers, runtime)
+        return self.stop_service_with_options(cluster_id, service_name, headers, runtime)
 
-    async def update_benchmark_task_async(
+    async def stop_service_async(
         self,
         cluster_id: str,
-        task_name: str,
-        request: eas_20210701_models.UpdateBenchmarkTaskRequest,
-    ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
+        service_name: str,
+    ) -> eas_20210701_models.StopServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
+        return await self.stop_service_with_options_async(cluster_id, service_name, headers, runtime)
 
     def update_benchmark_task_with_options(
         self,
@@ -3646,25 +3912,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_resource(
+    def update_benchmark_task(
         self,
         cluster_id: str,
-        resource_id: str,
-        request: eas_20210701_models.UpdateResourceRequest,
-    ) -> eas_20210701_models.UpdateResourceResponse:
+        task_name: str,
+        request: eas_20210701_models.UpdateBenchmarkTaskRequest,
+    ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_resource_with_options(cluster_id, resource_id, request, headers, runtime)
+        return self.update_benchmark_task_with_options(cluster_id, task_name, request, headers, runtime)
 
-    async def update_resource_async(
+    async def update_benchmark_task_async(
         self,
         cluster_id: str,
-        resource_id: str,
-        request: eas_20210701_models.UpdateResourceRequest,
-    ) -> eas_20210701_models.UpdateResourceResponse:
+        task_name: str,
+        request: eas_20210701_models.UpdateBenchmarkTaskRequest,
+    ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_resource_with_options_async(cluster_id, resource_id, request, headers, runtime)
+        return await self.update_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
 
     def update_resource_with_options(
         self,
@@ -3730,25 +3996,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_resource_dlink(
+    def update_resource(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.UpdateResourceDLinkRequest,
-    ) -> eas_20210701_models.UpdateResourceDLinkResponse:
+        request: eas_20210701_models.UpdateResourceRequest,
+    ) -> eas_20210701_models.UpdateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_resource_dlink_with_options(cluster_id, resource_id, request, headers, runtime)
+        return self.update_resource_with_options(cluster_id, resource_id, request, headers, runtime)
 
-    async def update_resource_dlink_async(
+    async def update_resource_async(
         self,
         cluster_id: str,
         resource_id: str,
-        request: eas_20210701_models.UpdateResourceDLinkRequest,
-    ) -> eas_20210701_models.UpdateResourceDLinkResponse:
+        request: eas_20210701_models.UpdateResourceRequest,
+    ) -> eas_20210701_models.UpdateResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_resource_dlink_with_options_async(cluster_id, resource_id, request, headers, runtime)
+        return await self.update_resource_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def update_resource_dlink_with_options(
         self,
@@ -3826,27 +4092,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_resource_instance(
+    def update_resource_dlink(
         self,
         cluster_id: str,
         resource_id: str,
-        instance_id: str,
-        request: eas_20210701_models.UpdateResourceInstanceRequest,
-    ) -> eas_20210701_models.UpdateResourceInstanceResponse:
+        request: eas_20210701_models.UpdateResourceDLinkRequest,
+    ) -> eas_20210701_models.UpdateResourceDLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_resource_instance_with_options(cluster_id, resource_id, instance_id, request, headers, runtime)
+        return self.update_resource_dlink_with_options(cluster_id, resource_id, request, headers, runtime)
 
-    async def update_resource_instance_async(
+    async def update_resource_dlink_async(
         self,
         cluster_id: str,
         resource_id: str,
-        instance_id: str,
-        request: eas_20210701_models.UpdateResourceInstanceRequest,
-    ) -> eas_20210701_models.UpdateResourceInstanceResponse:
+        request: eas_20210701_models.UpdateResourceDLinkRequest,
+    ) -> eas_20210701_models.UpdateResourceDLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_resource_instance_with_options_async(cluster_id, resource_id, instance_id, request, headers, runtime)
+        return await self.update_resource_dlink_with_options_async(cluster_id, resource_id, request, headers, runtime)
 
     def update_resource_instance_with_options(
         self,
@@ -3914,25 +4178,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_service(
+    def update_resource_instance(
         self,
         cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.UpdateServiceRequest,
-    ) -> eas_20210701_models.UpdateServiceResponse:
+        resource_id: str,
+        instance_id: str,
+        request: eas_20210701_models.UpdateResourceInstanceRequest,
+    ) -> eas_20210701_models.UpdateResourceInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_service_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.update_resource_instance_with_options(cluster_id, resource_id, instance_id, request, headers, runtime)
 
-    async def update_service_async(
+    async def update_resource_instance_async(
         self,
         cluster_id: str,
-        service_name: str,
-        request: eas_20210701_models.UpdateServiceRequest,
-    ) -> eas_20210701_models.UpdateServiceResponse:
+        resource_id: str,
+        instance_id: str,
+        request: eas_20210701_models.UpdateResourceInstanceRequest,
+    ) -> eas_20210701_models.UpdateResourceInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_service_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.update_resource_instance_with_options_async(cluster_id, resource_id, instance_id, request, headers, runtime)
 
     def update_service_with_options(
         self,
@@ -3992,25 +4258,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_service_auto_scaler(
+    def update_service(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceAutoScalerRequest,
-    ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
+        request: eas_20210701_models.UpdateServiceRequest,
+    ) -> eas_20210701_models.UpdateServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.update_service_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def update_service_auto_scaler_async(
+    async def update_service_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceAutoScalerRequest,
-    ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
+        request: eas_20210701_models.UpdateServiceRequest,
+    ) -> eas_20210701_models.UpdateServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.update_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def update_service_auto_scaler_with_options(
         self,
@@ -4084,25 +4350,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_service_cron_scaler(
+    def update_service_auto_scaler(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceCronScalerRequest,
-    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        request: eas_20210701_models.UpdateServiceAutoScalerRequest,
+    ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.update_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def update_service_cron_scaler_async(
+    async def update_service_auto_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceCronScalerRequest,
-    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        request: eas_20210701_models.UpdateServiceAutoScalerRequest,
+    ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.update_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def update_service_cron_scaler_with_options(
         self,
@@ -4172,25 +4438,109 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_service_mirror(
+    def update_service_cron_scaler(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceMirrorRequest,
-    ) -> eas_20210701_models.UpdateServiceMirrorResponse:
+        request: eas_20210701_models.UpdateServiceCronScalerRequest,
+    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.update_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def update_service_mirror_async(
+    async def update_service_cron_scaler_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceMirrorRequest,
-    ) -> eas_20210701_models.UpdateServiceMirrorResponse:
+        request: eas_20210701_models.UpdateServiceCronScalerRequest,
+    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.update_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def update_service_label_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceLabel',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/label',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_label_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceLabelRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceLabel',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/label',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_label(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceLabelRequest,
+    ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_service_label_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def update_service_label_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceLabelRequest,
+    ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_service_label_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def update_service_mirror_with_options(
         self,
@@ -4260,25 +4610,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_service_safety_lock(
+    def update_service_mirror(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceSafetyLockRequest,
-    ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
+        request: eas_20210701_models.UpdateServiceMirrorRequest,
+    ) -> eas_20210701_models.UpdateServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_service_safety_lock_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.update_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def update_service_safety_lock_async(
+    async def update_service_mirror_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceSafetyLockRequest,
-    ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
+        request: eas_20210701_models.UpdateServiceMirrorRequest,
+    ) -> eas_20210701_models.UpdateServiceMirrorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_service_safety_lock_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.update_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def update_service_safety_lock_with_options(
         self,
@@ -4344,25 +4694,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_service_version(
+    def update_service_safety_lock(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceVersionRequest,
-    ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        request: eas_20210701_models.UpdateServiceSafetyLockRequest,
+    ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_service_version_with_options(cluster_id, service_name, request, headers, runtime)
+        return self.update_service_safety_lock_with_options(cluster_id, service_name, request, headers, runtime)
 
-    async def update_service_version_async(
+    async def update_service_safety_lock_async(
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.UpdateServiceVersionRequest,
-    ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        request: eas_20210701_models.UpdateServiceSafetyLockRequest,
+    ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_service_version_with_options_async(cluster_id, service_name, request, headers, runtime)
+        return await self.update_service_safety_lock_with_options_async(cluster_id, service_name, request, headers, runtime)
 
     def update_service_version_with_options(
         self,
@@ -4427,3 +4777,23 @@ class Client(OpenApiClient):
             eas_20210701_models.UpdateServiceVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_service_version(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceVersionRequest,
+    ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_service_version_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def update_service_version_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceVersionRequest,
+    ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_service_version_with_options_async(cluster_id, service_name, request, headers, runtime)

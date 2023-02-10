@@ -1,3 +1,6 @@
+2023-02-10 Version: 2.0.3
+- Add service label api.
+
 2022-11-30 Version: 2.0.2
 - Add safety lock api.
 
