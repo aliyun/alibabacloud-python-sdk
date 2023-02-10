@@ -1,3 +1,6 @@
+2023-02-10 Version: 3.0.16
+- Support broadcast for FengTian.
+
 2023-01-13 Version: 0.3.0
 - Add ClearDeviceDesiredProperty open api.
 
