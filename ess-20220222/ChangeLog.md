@@ -1,3 +1,6 @@
+2023-02-12 Version: 1.0.4
+- CreateScalingGroup and DescribeScalingGroup support NLB server group and new open api AttachServerGroups and DetachServerGroups .
+
 2023-01-13 Version: 1.0.3
 - CreateScalingGroup and DescribeScalingGroup support resourcegroup.
 
