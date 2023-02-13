@@ -25,22 +25,73 @@ class CreateClientCertificateRequest(TeaModel):
         state: str = None,
         years: int = None,
     ):
+        # The expiration time of the client certificate. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.after_time = after_time
+        # The key algorithm of the client certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+        # 
+        # *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+        # *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+        # *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+        # 
+        # The encryption algorithm of the client certificate must be the same with the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the client certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+        # 
+        # >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
         self.algorithm = algorithm
+        # The issuance time of the client certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.before_time = before_time
+        # The name of the client certificate user. In most cases, the user of a client certificate is an individual, a company, an organization, or an application. We recommend that you enter the common name of a user. Examples: Bob, Alibaba, Alibaba Cloud password platform, and Tmall Genie.
         self.common_name = common_name
+        # The country in which the organization is located. Default value: CN.
         self.country = country
+        # The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
         self.csr = csr
+        # The validity period of the client certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+        # 
+        # *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********\
+        # *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+        # 
+        # > 
+        # 
+        # *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the client certificate is determined by the value of the **Days** parameter.
+        # 
+        # *   The validity period of the client certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
         self.days = days
+        # Specifies whether to return the certificate. Valid values:
+        # 
+        # *   **0**: does not return the certificate. This is the default value.
+        # *   **1**: returns the certificate.
+        # *   **2**: returns the certificate and the certificate chain of the certificate.
         self.immediately = immediately
+        # The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.locality = locality
+        # The validity period of the client certificate. Unit: months.
         self.months = months
+        # The name of the organization. Default value: Alibaba Inc.
         self.organization = organization
+        # The name of the department. Default value: Aliyun CDN.
         self.organization_unit = organization_unit
+        # The unique identifier of the intermediate CA certificate from which the client certificate is issued.
+        # 
+        # >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        # The type of the Subject Alternative Name (SAN) extension that is supported by the client certificate. Valid values:
+        # 
+        # *   **1**: an email address
+        # *   **6**: a Uniform Resource Identifier (URI)
         self.san_type = san_type
+        # The content of the extension. You can specify multiple SAN extensions. If you want to specify multiple SAN extensions, separate them with commas (,).
         self.san_value = san_value
+        # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        # The validity period of the client certificate. Unit: years.
         self.years = years
 
     def validate(self):
@@ -132,16 +183,18 @@ class CreateClientCertificateResponseBody(TeaModel):
         self,
         certificate_chain: str = None,
         identifier: str = None,
-        parent_x509certificate: str = None,
         request_id: str = None,
-        root_x509certificate: str = None,
+        serial_number: str = None,
         x_509certificate: str = None,
     ):
+        # The certificate chain of the client certificate.
         self.certificate_chain = certificate_chain
+        # The unique identifier of the client certificate.
         self.identifier = identifier
-        self.parent_x509certificate = parent_x509certificate
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        self.root_x509certificate = root_x509certificate
+        self.serial_number = serial_number
+        # The content of the client certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -157,12 +210,10 @@ class CreateClientCertificateResponseBody(TeaModel):
             result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
-        if self.parent_x509certificate is not None:
-            result['ParentX509Certificate'] = self.parent_x509certificate
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.root_x509certificate is not None:
-            result['RootX509Certificate'] = self.root_x509certificate
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
         return result
@@ -173,12 +224,10 @@ class CreateClientCertificateResponseBody(TeaModel):
             self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
-        if m.get('ParentX509Certificate') is not None:
-            self.parent_x509certificate = m.get('ParentX509Certificate')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('RootX509Certificate') is not None:
-            self.root_x509certificate = m.get('RootX509Certificate')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
         return self
@@ -250,23 +299,77 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
         state: str = None,
         years: int = None,
     ):
+        # The expiration time of the client certificate. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.after_time = after_time
+        # The key algorithm of the client certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+        # 
+        # *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+        # *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+        # *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+        # 
+        # The encryption algorithm of the client certificate must be the same with the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the client certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+        # 
+        # >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
         self.algorithm = algorithm
+        # The issuance time of the client certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.before_time = before_time
+        # The common name of the certificate. The value can contain letters.
+        # 
+        # >  If you specify the **CsrPemString** parameter, the value of the **CommonName** parameter is determined by the **CsrPemString** parameter.
         self.common_name = common_name
+        # The code of the country in which the organization is located, such as **CN** and **US**.
         self.country = country
+        # The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
         self.csr = csr
+        # The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
         self.csr_1 = csr_1
+        # The validity period of the client certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+        # 
+        # *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********\
+        # *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+        # 
+        # > 
+        # 
+        # *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the client certificate is determined by the value of the **Days** parameter.
+        # 
+        # *   The validity period of the client certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
         self.days = days
+        # Specifies whether to return the certificate. Valid values:
+        # 
+        # *   **0**: does not return the certificate. This is the default value.
+        # *   **1**: returns the certificate.
+        # *   **2**: returns the certificate and the certificate chain of the certificate.
         self.immediately = immediately
+        # The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.locality = locality
+        # The validity period of the client certificate. Unit: months.
         self.months = months
+        # The name of the organization. Default value: Alibaba Inc.
         self.organization = organization
+        # The name of the department. Default value: Aliyun CDN.
         self.organization_unit = organization_unit
+        # The unique identifier of the intermediate CA certificate from which the client certificate is issued.
+        # 
+        # >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        # The type of the Subject Alternative Name (SAN) extension that is supported by the client certificate. Valid values:
+        # 
+        # *   **1**: an email address
+        # *   **6**: a Uniform Resource Identifier (URI)
         self.san_type = san_type
+        # The content of the extension. You can specify multiple SAN extensions. If you want to specify multiple SAN extensions, separate them with commas (,).
         self.san_value = san_value
+        # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        # The validity period of the client certificate. Unit: years.
         self.years = years
 
     def validate(self):
@@ -362,16 +465,18 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
         self,
         certificate_chain: str = None,
         identifier: str = None,
-        parent_x509certificate: str = None,
         request_id: str = None,
-        root_x509certificate: str = None,
+        serial_number: str = None,
         x_509certificate: str = None,
     ):
+        # The certificate chain of the client certificate.
         self.certificate_chain = certificate_chain
+        # The unique identifier of the client certificate.
         self.identifier = identifier
-        self.parent_x509certificate = parent_x509certificate
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        self.root_x509certificate = root_x509certificate
+        self.serial_number = serial_number
+        # The content of the client certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -387,12 +492,10 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
             result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
-        if self.parent_x509certificate is not None:
-            result['ParentX509Certificate'] = self.parent_x509certificate
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.root_x509certificate is not None:
-            result['RootX509Certificate'] = self.root_x509certificate
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
         return result
@@ -403,12 +506,10 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
             self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
-        if m.get('ParentX509Certificate') is not None:
-            self.parent_x509certificate = m.get('ParentX509Certificate')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('RootX509Certificate') is not None:
-            self.root_x509certificate = m.get('RootX509Certificate')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
         return self
@@ -463,6 +564,9 @@ class CreateRevokeClientCertificateRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # The unique identifier of the client certificate or server certificate that you want to revoke.
+        # 
+        # >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
         self.identifier = identifier
 
     def validate(self):
@@ -490,6 +594,7 @@ class CreateRevokeClientCertificateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -568,13 +673,35 @@ class CreateRootCACertificateRequest(TeaModel):
         state: str = None,
         years: int = None,
     ):
+        # The key algorithm of the root CA certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+        # 
+        # *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+        # *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+        # *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+        # 
+        # The encryption algorithm of the root CA certificate must be consistent with the **encryption algorithm** of the private root CA instance that you purchase. For example, if the **encryption algorithm** of the private root CA instance that you purchase is **RSA**, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
         self.algorithm = algorithm
+        # The common name or abbreviation of the organization. The value can contain letters.
         self.common_name = common_name
+        # The code of the country or region in which the organization is located. You can enter an alpha-2 code. For example, you can use **CN** to indicate China and use **US** to indicate the United States.
+        # 
+        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
         self.country_code = country_code
+        # The name of the city in which the organization is located. The value can contain letters.
         self.locality = locality
+        # The name of the organization that is associated with the root CA certificate. You can enter the name of your enterprise or company. The value can contain letters.
         self.organization = organization
+        # The name of the department or branch in the organization. The value can contain letters.
         self.organization_unit = organization_unit
+        # The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
         self.state = state
+        # The validity period of the root CA certificate. Unit: years.
+        # 
+        # >  We recommend that you set this parameter to a value from 5 to 10.
         self.years = years
 
     def validate(self):
@@ -633,9 +760,13 @@ class CreateRootCACertificateResponseBody(TeaModel):
         identifier: str = None,
         request_id: str = None,
     ):
+        # The root CA certificate in the PEM format.
         self.certificate = certificate
+        # The certificate chain of the root CA certificate.
         self.certificate_chain = certificate_chain
+        # The unique identifier of the root CA certificate.
         self.identifier = identifier
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -734,21 +865,70 @@ class CreateServerCertificateRequest(TeaModel):
         state: str = None,
         years: int = None,
     ):
+        # The expiration time of the server certificate. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.after_time = after_time
+        # The key algorithm of the server certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+        # 
+        # *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+        # *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+        # *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+        # 
+        # The encryption algorithm of the server certificate must be the same as the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the server certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+        # 
+        # >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
         self.algorithm = algorithm
+        # The issuance time of the server certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.before_time = before_time
+        # The name of the certificate user. The user of a server certificate is a server. We recommend that you enter the domain name or IP address of the server.
         self.common_name = common_name
+        # The code of the country in which the organization is located, such as CN or US.
         self.country = country
+        # The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
         self.csr = csr
+        # The validity period of the server certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+        # 
+        # *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********\
+        # *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+        # 
+        # > 
+        # 
+        # *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the server certificate is determined by the value of the **Days** parameter.
+        # 
+        # *   The validity period of the server certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
         self.days = days
+        # The additional domain names and additional IP addresses of the server certificate. After you add additional domain names and additional IP addresses to a certificate, you can apply the certificate to the domain names and IP addresses.
+        # 
+        # Separate multiple domain names and multiple IP addresses with commas (,).
         self.domain = domain
+        # Specifies whether to return the certificate. Valid values:
+        # 
+        # *   **0**: does not return the certificate. This is the default value.
+        # *   **1**: returns the certificate.
+        # *   **2**: returns the certificate and the certificate chain of the certificate.
         self.immediately = immediately
+        # The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.locality = locality
+        # The validity period of the server certificate. Unit: months.
         self.months = months
+        # The name of the organization. Default value: Alibaba Inc.
         self.organization = organization
+        # The name of the department. Default value: Aliyun CDN.
         self.organization_unit = organization_unit
+        # The unique identifier of the intermediate CA certificate from which the server certificate is issued.
+        # 
+        # >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        # The validity period of the server certificate. Unit: years.
         self.years = years
 
     def validate(self):
@@ -836,16 +1016,18 @@ class CreateServerCertificateResponseBody(TeaModel):
         self,
         certificate_chain: str = None,
         identifier: str = None,
-        parent_x509certificate: str = None,
         request_id: str = None,
-        root_x509certificate: str = None,
+        serial_number: str = None,
         x_509certificate: str = None,
     ):
+        # The certificate chain of the server certificate.
         self.certificate_chain = certificate_chain
+        # The unique identifier of the server certificate.
         self.identifier = identifier
-        self.parent_x509certificate = parent_x509certificate
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        self.root_x509certificate = root_x509certificate
+        self.serial_number = serial_number
+        # The content of the server certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -861,12 +1043,10 @@ class CreateServerCertificateResponseBody(TeaModel):
             result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
-        if self.parent_x509certificate is not None:
-            result['ParentX509Certificate'] = self.parent_x509certificate
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.root_x509certificate is not None:
-            result['RootX509Certificate'] = self.root_x509certificate
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
         return result
@@ -877,12 +1057,10 @@ class CreateServerCertificateResponseBody(TeaModel):
             self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
-        if m.get('ParentX509Certificate') is not None:
-            self.parent_x509certificate = m.get('ParentX509Certificate')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('RootX509Certificate') is not None:
-            self.root_x509certificate = m.get('RootX509Certificate')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
         return self
@@ -953,22 +1131,76 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
         state: str = None,
         years: int = None,
     ):
+        # The expiration time of the server certificate. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.after_time = after_time
+        # The key algorithm of the server certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+        # 
+        # *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+        # *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_384**: The signature algorithm is Sha256WithECDSA.
+        # *   **ECC\_512**: The signature algorithm is Sha256WithECDSA.
+        # *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+        # 
+        # The encryption algorithm of the server certificate must be the same as the encryption algorithm of the intermediate CA certificate. The key length can be different. For example, if the key algorithm of the intermediate CA certificate is RSA\_2048, the key algorithm of the server certificate must be RSA\_1024, RSA\_2048, or RSA\_4096.
+        # 
+        # >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of an intermediate CA certificate.
         self.algorithm = algorithm
+        # The issuance time of the server certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
+        # 
+        # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.before_time = before_time
+        # The common name of the certificate. The value can contain letters.
+        # 
+        # >  If you specify the **CsrPemString** parameter, the value of the **CommonName** parameter is determined by the **CsrPemString** parameter.
         self.common_name = common_name
+        # The code of the country in which the organization is located, such as **CN**.
+        # 
+        # >  This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. In this case, you must specify this parameter. If this parameter is not specified, the domain name fails to be registered.
         self.country = country
+        # The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
         self.csr = csr
+        # The content of the CSR file. You can generate a CSR file by using the OpenSSL tool or Keytool. For more information, see [How do I create a CSR file?](~~42218~~) You can also create a CSR file in the Certificate Management Service console. For more information, see [Create a CSR](~~313297~~).
         self.csr_1 = csr_1
+        # The validity period of the server certificate. Unit: days. You must specify at least one of the **Days**, **BeforeTime**, and **AfterTime** parameters. The **BeforeTime** and **AfterTime** parameters must be both empty or both specified. The following list describes how to specify these parameters:
+        # 
+        # *   If you specify the **Days** parameter, you can specify both the **BeforeTime** and **AfterTime** parameters or leave them both empty.********\
+        # *   If you do not specify the **Days** parameter, you must specify both the **BeforeTime** and **AfterTime** parameters.
+        # 
+        # > 
+        # 
+        # *   If you specify the **Days**, **BeforeTime**, and **AfterTime** parameters together, the validity period of the server certificate is determined by the value of the **Days** parameter.
+        # 
+        # *   The validity period of the server certificate cannot exceed the validity period of the intermediate CA certificate. You can call the [DescribeCACertificate](~~328096~~) operation to query the validity period of an intermediate CA certificate.
         self.days = days
+        # The additional domain names or additional IP addresses of the server certificate. After you add additional domain names and additional IP addresses to a certificate, you can apply the certificate to the domain names and IP addresses.
+        # 
+        # You can specify multiple domain names and IP addresses. If you specify multiple domain names and IP addresses, separate them with commas (,).
         self.domain = domain
+        # Specifies whether to return the certificate. Valid values:
+        # 
+        # *   **0**: does not return the certificate. This is the default value.
+        # *   **1**: returns the certificate.
+        # *   **2**: returns the certificate and the certificate chain of the certificate.
         self.immediately = immediately
+        # The name of the city in which the organization is located. The value can contain letters. The default value is the name of the city in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.locality = locality
+        # The validity period of the server certificate. Unit: months.
         self.months = months
+        # The name of the organization. Default value: Alibaba Inc.
         self.organization = organization
+        # The name of the department. Default value: Aliyun CDN.
         self.organization_unit = organization_unit
+        # The unique identifier of the intermediate CA certificate from which the server certificate is issued.
+        # 
+        # >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifier of an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        # The province, municipality, or autonomous region in which the organization is located. The value can contain letters. The default value is the name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate CA certificate from which the certificate is issued.
         self.state = state
+        # The validity period of the server certificate. Unit: years.
         self.years = years
 
     def validate(self):
@@ -1060,16 +1292,18 @@ class CreateServerCertificateWithCsrResponseBody(TeaModel):
         self,
         certificate_chain: str = None,
         identifier: str = None,
-        parent_x509certificate: str = None,
         request_id: str = None,
-        root_x509certificate: str = None,
+        serial_number: str = None,
         x_509certificate: str = None,
     ):
+        # The certificate chain of the server certificate.
         self.certificate_chain = certificate_chain
+        # The unique identifier of the server certificate.
         self.identifier = identifier
-        self.parent_x509certificate = parent_x509certificate
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        self.root_x509certificate = root_x509certificate
+        self.serial_number = serial_number
+        # The content of the server certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -1085,12 +1319,10 @@ class CreateServerCertificateWithCsrResponseBody(TeaModel):
             result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
-        if self.parent_x509certificate is not None:
-            result['ParentX509Certificate'] = self.parent_x509certificate
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.root_x509certificate is not None:
-            result['RootX509Certificate'] = self.root_x509certificate
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
         return result
@@ -1101,12 +1333,10 @@ class CreateServerCertificateWithCsrResponseBody(TeaModel):
             self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
-        if m.get('ParentX509Certificate') is not None:
-            self.parent_x509certificate = m.get('ParentX509Certificate')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('RootX509Certificate') is not None:
-            self.root_x509certificate = m.get('RootX509Certificate')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')
         return self
@@ -1169,14 +1399,41 @@ class CreateSubCACertificateRequest(TeaModel):
         state: str = None,
         years: int = None,
     ):
+        # The type of the key algorithm of the intermediate CA. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+        # 
+        # *   **RSA\_1024**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_2048**: The signature algorithm is Sha256WithRSA.
+        # *   **RSA\_4096**: The signature algorithm is Sha256WithRSA.
+        # *   **ECC\_256**: The signature algorithm is Sha256WithECDSA.
+        # *   **SM2\_256**: The signature algorithm is SM3WithSM2.
+        # 
+        # The encryption algorithm of an intermediate CA certificate must be consistent with the encryption algorithm of a root CA certificate. The length of the keys can be different. For example, if the key algorithm of the root CA certificate is **RSA\_2048**, the key algorithm of the intermediate CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
+        # 
+        # >  You can call the [DescribeCACertificate](~~328096~~) operation to query the key algorithm of a root CA certificate.
         self.algorithm = algorithm
+        # The common name or abbreviation of the organization. The value can contain letters.
         self.common_name = common_name
+        # The code of the country or region in which the organization is located. You can enter an alpha-2 or alpha-3 code. For example, you can use **CN** to indicate China and use **US** to indicate the United States.
+        # 
+        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
         self.country_code = country_code
+        # The name of the city in which the organization is located. The value can contain letters.
         self.locality = locality
+        # The name of the organization that is associated with the intermediate CA certificate. You can enter the name of your enterprise or company. The value can contain letters.
         self.organization = organization
+        # The name of the department or branch in the organization. The value can contain letters.
         self.organization_unit = organization_unit
+        # The unique identifier of the root CA certificate.
+        # 
+        # >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifiers of all CA certificates.
         self.parent_identifier = parent_identifier
+        # The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
         self.state = state
+        # The validity period of the intermediate CA certificate. Unit: years.
+        # 
+        # We recommend that you set this parameter to 5 to 10.
+        # 
+        # >  The validity period of the intermediate CA certificate cannot exceed the validity period of the root CA certificate. You can call the [DescribeCACertificate](~~328095~~) operation to query the validity period of a root CA certificate.
         self.years = years
 
     def validate(self):
@@ -1239,9 +1496,13 @@ class CreateSubCACertificateResponseBody(TeaModel):
         identifier: str = None,
         request_id: str = None,
     ):
+        # The intermediate CA certificate in the PEM format.
         self.certificate = certificate
+        # The certificate chain of the intermediate CA certificate.
         self.certificate_chain = certificate_chain
+        # The unique identifier of the intermediate CA certificate.
         self.identifier = identifier
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1325,6 +1586,9 @@ class DeleteClientCertificateRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # The unique identifier of the client certificate or server certificate that you want to delete. The status of the certificate must be **REVOKE**.
+        # 
+        # >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers and status of all client certificates and server certificates.
         self.identifier = identifier
 
     def validate(self):
@@ -1352,6 +1616,7 @@ class DeleteClientCertificateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1423,6 +1688,9 @@ class DescribeCACertificateRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # The unique identifier of the CA certificate that you want to query.
+        # 
+        # >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifiers of all CA certificates.
         self.identifier = identifier
 
     def validate(self):
@@ -1472,28 +1740,72 @@ class DescribeCACertificateResponseBodyCertificate(TeaModel):
         subject_dn: str = None,
         x_509certificate: str = None,
     ):
+        # The expiration date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
+        # The encryption algorithm of the CA certificate. Valid values:
+        # 
+        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        # The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
+        # The type of the CA certificate. Valid values:
+        # 
+        # *   **ROOT**: root CA certificate
+        # *   **SUB_ROOT**: intermediate CA certificate
         self.certificate_type = certificate_type
+        # The common name or abbreviation of the organization that is associated with the CA certificate.
         self.common_name = common_name
+        # The code of the country in which the organization is located.
+        # 
+        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
         self.country_code = country_code
+        # The status of the certificate revocation list (CRL) feature.
         self.crl_status = crl_status
+        # The address of the CRL.
         self.crl_url = crl_url
+        # The unique identifier of the CA certificate.
         self.identifier = identifier
+        # The key length of the CA certificate.
         self.key_size = key_size
+        # The name of the city in which the organization is located.
         self.locality = locality
+        # The MD5 fingerprint of the CA certificate.
         self.md_5 = md_5
+        # The name of the organization that is associated with the CA certificate.
         self.organization = organization
+        # The name of the department or branch in the organization that is associated with the CA certificate.
         self.organization_unit = organization_unit
+        # The unique identifier of the root CA certificate from which the CA certificate is issued.
+        # 
+        # >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        # This parameter is deprecated.
         self.sans = sans
+        # The serial number of the CA certificate.
         self.serial_number = serial_number
+        # The SHA-256 fingerprint of the CA certificate.
         self.sha_2 = sha_2
+        # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
+        # The name of the province, municipality, or autonomous region in which the organization is located.
         self.state = state
+        # The status of the CA certificate. Valid values:
+        # 
+        # *   **ISSUE**: The CA certificate is issued.
+        # *   **REVOKE**: The CA certificate is revoked.
         self.status = status
+        # The user attribute of the CA certificate, which contains the following information:
+        # 
+        # *   **C**: the country code in which the organization is located
+        # *   **O**: the name of the organization
+        # *   **OU**: the name of the department or branch in the organization
+        # *   **L**: the name of the city in which the organization is located
+        # *   **ST**: the name of the province, municipality, or autonomous region in which the organization is located
+        # *   **CN**: the common name or abbreviation of the organization
         self.subject_dn = subject_dn
+        # The content of the CA certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -1611,8 +1923,11 @@ class DescribeCACertificateResponseBody(TeaModel):
         request_id: str = None,
         years: int = None,
     ):
+        # The details about the CA certificate.
         self.certificate = certificate
+        # The ID of the request.
         self.request_id = request_id
+        # The validity period of the CA certificate. Unit: years.
         self.years = years
 
     def validate(self):
@@ -1695,7 +2010,9 @@ class DescribeCACertificateCountResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
         self.total_count = total_count
 
     def validate(self):
@@ -1772,7 +2089,9 @@ class DescribeCACertificateListRequest(TeaModel):
         current_page: int = None,
         show_size: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of CA certificates to return on each page. Default value: **20**.
         self.show_size = show_size
 
     def validate(self):
@@ -1825,27 +2144,72 @@ class DescribeCACertificateListResponseBodyCertificateList(TeaModel):
         x_509certificate: str = None,
         years: int = None,
     ):
+        # The expiration date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
+        # The encryption algorithm of the CA certificate. Valid values:
+        # 
+        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        # The issuance date of the CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
+        # The type of the CA certificate. Valid values:
+        # 
+        # *   **ROOT**: root CA certificate
+        # *   **SUB_ROOT**: intermediate CA certificate
         self.certificate_type = certificate_type
+        # The common name or abbreviation of the organization that is associated with the CA certificate.
         self.common_name = common_name
+        # The code of the country in which the organization is located.
+        # 
+        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
         self.country_code = country_code
+        # The unique identifier of the CA certificate.
         self.identifier = identifier
+        # The key length of the CA certificate.
         self.key_size = key_size
+        # The name of the city in which the organization is located.
         self.locality = locality
+        # The MD5 fingerprint of the CA certificate.
         self.md_5 = md_5
+        # The name of the organization that is associated with the CA certificate.
         self.organization = organization
+        # The name of the department or branch in the organization that is associated with the CA certificate.
         self.organization_unit = organization_unit
+        # The unique identifier of the root CA certificate from which the CA certificate is issued.
+        # 
+        # >  This parameter is returned only if the value of the **CertificateType** parameter is **SUB_ROOT**. The value SUB_ROOT indicates an intermediate CA certificate.
         self.parent_identifier = parent_identifier
+        # This parameter is deprecated.
         self.sans = sans
+        # The serial number of the CA certificate.
         self.serial_number = serial_number
+        # The SHA-256 fingerprint of the CA certificate.
         self.sha_2 = sha_2
+        # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
+        # The name of the province, municipality, or autonomous region in which the organization is located.
         self.state = state
+        # The status of the CA certificate. Valid values:
+        # 
+        # *   **ISSUE**: The CA certificate is issued.
+        # *   **REVOKE**: The CA certificate is revoked.
         self.status = status
+        # The Distinguished Name (DN) attribute of the CA certificate, which indicates the user information of the certificate. The DN attribute contains the following information:
+        # 
+        # *   **C**: the country code in which the organization is located
+        # *   **O**: the name of the organization
+        # *   **OU**: the name of the department or branch in the organization
+        # *   **L**: the name of the city in which the organization is located
+        # 
+        # \<props="china">- **ST**: the name of the province, municipality, or autonomous region in which the organization is located \<props="intl">- **ST**: the name of the province or state in which the organization is located
+        # 
+        # *   **CN**: the common name or abbreviation of the organization
         self.subject_dn = subject_dn
+        # The content of the CA certificate.
         self.x_509certificate = x_509certificate
+        # The validity period of the CA certificate. Unit: years.
         self.years = years
 
     def validate(self):
@@ -1962,11 +2326,17 @@ class DescribeCACertificateListResponseBody(TeaModel):
         show_size: int = None,
         total_count: int = None,
     ):
+        # An array that consists of the details about the CA certificate.
         self.certificate_list = certificate_list
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of returned pages.
         self.page_count = page_count
+        # The ID of the request.
         self.request_id = request_id
+        # The number of CA certificates returned per page.
         self.show_size = show_size
+        # The total number of root CA certificates and intermediate CA certificates that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2067,7 +2437,15 @@ class DescribeCertificatePrivateKeyRequest(TeaModel):
         encrypted_code: str = None,
         identifier: str = None,
     ):
+        # The password that is used to encrypt the private key. The password can contain letters, digits, and special characters, such as `, + - _ #`. The password can be up to 32 bytes in length.
+        # 
+        # **\
+        # 
+        # **Warning** You must remember the password that you specify. The password is required to decrypt the encrypted private key. If you forget the password, the encrypted private key that is returned cannot be decrypted. You must call this operation again.
         self.encrypted_code = encrypted_code
+        # The unique identifier of the client certificate or server certificate that you want to query.
+        # 
+        # >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
         self.identifier = identifier
 
     def validate(self):
@@ -2100,7 +2478,9 @@ class DescribeCertificatePrivateKeyResponseBody(TeaModel):
         encrypted_data: str = None,
         request_id: str = None,
     ):
+        # The content of the encrypted private key.
         self.encrypted_data = encrypted_data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2176,6 +2556,9 @@ class DescribeClientCertificateRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # The unique identifier of the client certificate or the server certificate that you want to query.
+        # 
+        # >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
         self.identifier = identifier
 
     def validate(self):
@@ -2224,27 +2607,79 @@ class DescribeClientCertificateResponseBodyCertificate(TeaModel):
         subject_dn: str = None,
         x_509certificate: str = None,
     ):
+        # The expiration date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
+        # The type of the encryption algorithm of the certificate. Valid values:
+        # 
+        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        # The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
+        # The type of the certificate. Valid values:
+        # 
+        # *   **CLIENT**: client certificate
+        # *   **SERVER**: server certificate
         self.certificate_type = certificate_type
+        # The common name of the certificate.
         self.common_name = common_name
+        # The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # 
+        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
         self.country_code = country_code
+        # The validity period of the certificate. Unit: days.
         self.days = days
+        # The unique identifier of the certificate.
         self.identifier = identifier
+        # The key length of the certificate.
         self.key_size = key_size
+        # The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.locality = locality
+        # The MD5 fingerprint of the certificate.
         self.md_5 = md_5
+        # The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.organization = organization
+        # The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
         self.organization_unit = organization_unit
+        # The unique identifier of the intermediate certificate from which the client certificate is issued.
         self.parent_identifier = parent_identifier
+        # The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
+        # 
+        # The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+        # 
+        # *   **Type**: the type of the extension. Data type: integer. Valid values:
+        # 
+        #     *   **1**: an email address
+        #     *   **2**: a domain name
+        #     *   **6**: a Uniform Resource Identifier (URI)
+        #     *   **7**: an IP address
+        # 
+        # *   **Value**: the value of the extension. Data type: string.
         self.sans = sans
+        # The serial number of the certificate.
         self.serial_number = serial_number
+        # The SHA-256 fingerprint of the certificate.
         self.sha_2 = sha_2
+        # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
+        # The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.state = state
+        # The status of the certificate. Valid values:
+        # 
+        # *   **ISSUE**: issued
+        # *   **REVOKE**: revoked
         self.status = status
+        # The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+        # 
+        # *   **C**: the country
+        # *   **O**: the organization
+        # *   **OU**: the department
+        # *   **L**: the city
+        # *   **ST**: the province, municipality, or autonomous region
+        # *   **CN**: the common name
         self.subject_dn = subject_dn
+        # The content of the certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -2357,7 +2792,9 @@ class DescribeClientCertificateResponseBody(TeaModel):
         certificate: DescribeClientCertificateResponseBodyCertificate = None,
         request_id: str = None,
     ):
+        # The details about the client certificate or the server certificate.
         self.certificate = certificate
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2435,6 +2872,9 @@ class DescribeClientCertificateStatusRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # The unique identifiers of the client certificates or server certificates that you want to query. Separate multiple unique identifiers with commas (,).
+        # 
+        # >  You can call the [ListClientCertificate](~~330884~~) operation to query the unique identifiers of all client certificates and server certificates.
         self.identifier = identifier
 
     def validate(self):
@@ -2464,8 +2904,17 @@ class DescribeClientCertificateStatusResponseBodyCertificateStatus(TeaModel):
         serial_number: str = None,
         status: str = None,
     ):
+        # The date on which the certificate was revoked.
+        # 
+        # >  This parameter is returned only when the value of the **Status** parameter is **revoked**. The value revoked indicates that the certificate is revoked.
         self.revoke_time = revoke_time
+        # The serial number of the certificate.
         self.serial_number = serial_number
+        # The status of the certificate. Valid values:
+        # 
+        # *   **good**: The certificate is not revoked.
+        # *   **revoked**: The certificate is revoked.
+        # *   **unknown**: The server cannot determine the status of the certificate.
         self.status = status
 
     def validate(self):
@@ -2502,7 +2951,9 @@ class DescribeClientCertificateStatusResponseBody(TeaModel):
         certificate_status: List[DescribeClientCertificateStatusResponseBodyCertificateStatus] = None,
         request_id: str = None,
     ):
+        # An array that consists of the status information about the certificates.
         self.certificate_status = certificate_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2586,6 +3037,9 @@ class GetCAInstanceStatusRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the private CA instance.
+        # 
+        # >  After you purchase a private CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist), you can click **Details** for the private CA instance on the **Private Certificates** page to obtain the ID of the private CA instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2621,14 +3075,41 @@ class GetCAInstanceStatusResponseBodyInstanceStatusList(TeaModel):
         type: str = None,
         use_expire_time: int = None,
     ):
+        # The expiration date of the private CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # >  This parameter is returned only when the value of the **Status** parameter is **USED** or **REVOKE**. The value USED indicates that the private CA instance is enabled, and the value REVOKE indicates that the instance is revoked.
         self.after_time = after_time
+        # The issuance date of the private CA certificate. This value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # >  This parameter is returned only when the value of the **Status** parameter is **USED** or **REVOKE**. The value USED indicates that the private CA instance is enabled, and the value REVOKE indicates that the instance is revoked.
         self.before_time = before_time
+        # The number of certificates that are issued by using the private CA instance.
         self.cert_issued_count = cert_issued_count
+        # The number of certificates that can be issued by using the private CA instance.
+        # 
+        # For a private root CA instance whose **Type** is **ROOT**, this parameter indicates the number of intermediate CA certificates that can be issued. For a private intermediate CA instance whose **Type** is **SUB_ROOT**, this parameter indicates the total number of client certificates and server certificates that can be issued
         self.cert_total_count = cert_total_count
+        # The unique identifier of the private CA certificate.
+        # 
+        # >  This parameter is returned only when the value of the **Status** parameter is **USED** or **REVOKE**. The value USED indicates that the private CA instance is enabled, and the value REVOKE indicates that the instance is revoked.
         self.identifier = identifier
+        # The ID of the private CA instance.
         self.instance_id = instance_id
+        # The status of the private CA instance. Valid values:
+        # 
+        # *   **BUY**: The private CA instance is purchased but is not enabled.
+        # *   **USED**: The private CA instance is enabled.
+        # *   **REFUND**: The payment of the private CA instance is refunded.
+        # *   **REVOKE**: The private CA instance is revoked.
         self.status = status
+        # The type of the private CA instance. Valid values:
+        # 
+        # *   **ROOT**: root CA instance
+        # *   **SUB_ROOT**: intermediate CA instance
         self.type = type
+        # The expiration date of the private CA instance. This value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # >  This parameter corresponds to the duration that you select when you purchase the private CA instance. The duration indicates the subscription period of the Private Certificate Authority (PCA) service.
         self.use_expire_time = use_expire_time
 
     def validate(self):
@@ -2689,7 +3170,9 @@ class GetCAInstanceStatusResponseBody(TeaModel):
         instance_status_list: List[GetCAInstanceStatusResponseBodyInstanceStatusList] = None,
         request_id: str = None,
     ):
+        # An array that consists of the status information about the private CA instance.
         self.instance_status_list = instance_status_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2774,7 +3257,9 @@ class ListClientCertificateRequest(TeaModel):
         current_page: int = None,
         show_size: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of certificates to return on each page. Default value: **20**.
         self.show_size = show_size
 
     def validate(self):
@@ -2827,27 +3312,79 @@ class ListClientCertificateResponseBodyCertificateList(TeaModel):
         subject_dn: str = None,
         x_509certificate: str = None,
     ):
+        # The expiration date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.after_date = after_date
+        # The type of the encryption algorithm of the certificate. Valid values:
+        # 
+        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        # The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
+        # The type of the certificate. Valid values:
+        # 
+        # *   **CLIENT**: client certificate
+        # *   **SERVER**: server certificate
         self.certificate_type = certificate_type
+        # The common name of the certificate.
         self.common_name = common_name
+        # The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # 
+        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
         self.country_code = country_code
+        # The validity period of the certificate. Unit: days.
         self.days = days
+        # The unique identifier of the certificate.
         self.identifier = identifier
+        # The key length of the certificate.
         self.key_size = key_size
+        # The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.locality = locality
+        # The MD5 fingerprint of the certificate.
         self.md_5 = md_5
+        # The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.organization = organization
+        # The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
         self.organization_unit = organization_unit
+        # The unique identifier of the intermediate certificate from which the client certificate is issued.
         self.parent_identifier = parent_identifier
+        # The subject alternative name (SAN) extension of the certificate. The value indicates additional information, including the additional domain names or IP addresses that are associated with the certificate.
+        # 
+        # The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+        # 
+        # *   **Type**: the type of the extension. Data type: integer. Valid values:
+        # 
+        #     *   **1**: an email address
+        #     *   **2**: a domain name
+        #     *   **6**: a Uniform Resource Identifier (URI)
+        #     *   **7**: an IP address
+        # 
+        # *   **Value**: the value of the extension. Data type: string.
         self.sans = sans
+        # The serial number of the certificate.
         self.serial_number = serial_number
+        # The SHA-256 fingerprint of the certificate.
         self.sha_2 = sha_2
+        # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
+        # The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.state = state
+        # The status of the certificate. Valid values:
+        # 
+        # *   **ISSUE**: issued
+        # *   **REVOKE**: revoked
         self.status = status
+        # The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+        # 
+        # *   **C**: the country
+        # *   **O**: the organization
+        # *   **OU**: the department
+        # *   **L**: the city
+        # *   **ST**: the province, municipality, or autonomous region
+        # *   **CN**: the common name
         self.subject_dn = subject_dn
+        # The content of the certificate.
         self.x_509certificate = x_509certificate
 
     def validate(self):
@@ -2964,11 +3501,17 @@ class ListClientCertificateResponseBody(TeaModel):
         show_size: int = None,
         total_count: int = None,
     ):
+        # An array that consists of the details about all client certificates and server certificates.
         self.certificate_list = certificate_list
+        # The page number of the current page.
         self.current_page = current_page
+        # The total number of pages returned.
         self.page_count = page_count
+        # The ID of the request.
         self.request_id = request_id
+        # The number of certificates that are returned per page.
         self.show_size = show_size
+        # The number of client certificates and server certificates that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3069,7 +3612,9 @@ class ListRevokeCertificateRequest(TeaModel):
         current_page: int = None,
         show_size: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The number of revoked certificates to return on each page. Default value: **20**.
         self.show_size = show_size
 
     def validate(self):
@@ -3121,26 +3666,71 @@ class ListRevokeCertificateResponseBodyCertificateList(TeaModel):
         status: str = None,
         subject_dn: str = None,
     ):
+        # The expiration date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-12-31T00:00Z` indicates December 31, 2021.
         self.after_date = after_date
+        # The type of the encryption algorithm of the certificate. Valid values:
+        # 
+        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
+        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
+        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        # The issuance date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-01-01T00:00Z` indicates January 1, 2021.
         self.before_date = before_date
+        # The type of the certificate.
         self.certificate_type = certificate_type
+        # The common name of the certificate.
         self.common_name = common_name
+        # The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # 
+        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
         self.country_code = country_code
+        # The unique identifier of the certificate.
         self.identifier = identifier
+        # The key length of the certificate.
         self.key_size = key_size
+        # The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.locality = locality
+        # The MD5 fingerprint of the certificate.
         self.md_5 = md_5
+        # The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.organization = organization
+        # The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
         self.organization_unit = organization_unit
+        # The identifier of the root certificate.
         self.parent_identifier = parent_identifier
+        # The date on which the certificate was revoked. The value is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-09-01T00:00Z` indicates September 1, 2021.
         self.revoke_date = revoke_date
+        # The subject alternative name (SAN) extension of the certificate.
+        # 
+        # The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+        # 
+        # *   **Type**: the type of the extension. Data type: integer. Valid values:
+        # 
+        #     *   **1**: an email address
+        #     *   **2**: a domain name
+        #     *   **6**: a Uniform Resource Identifier (URI)
+        #     *   **7**: an IP address
+        # 
+        # *   **Value**: the value of the extension. Data type: string.
         self.sans = sans
+        # The serial number of the certificate.
         self.serial_number = serial_number
+        # The SHA-256 fingerprint of the certificate.
         self.sha_2 = sha_2
+        # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
+        # The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
         self.state = state
+        # The status.
         self.status = status
+        # The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+        # 
+        # *   **C**: the country
+        # *   **O**: the organization
+        # *   **OU**: the department
+        # *   **L**: the city
+        # *   **ST**: the province, municipality, or autonomous region
+        # *   **CN**: the common name
         self.subject_dn = subject_dn
 
     def validate(self):
@@ -3253,11 +3843,17 @@ class ListRevokeCertificateResponseBody(TeaModel):
         show_size: int = None,
         total_count: int = None,
     ):
+        # An array that consists of the details about the revoked client certificates or server certificates.
         self.certificate_list = certificate_list
+        # The page number of the current page.
         self.current_page = current_page
+        # The total number of pages returned.
         self.page_count = page_count
+        # The ID of the request.
         self.request_id = request_id
+        # The number of revoked certificates that are returned per page.
         self.show_size = show_size
+        # The total number of revoked client certificates and server certificates that are returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3358,7 +3954,13 @@ class UpdateCACertificateStatusRequest(TeaModel):
         identifier: str = None,
         status: str = None,
     ):
+        # The unique identifier of the CA certificate whose status you want to change.
+        # 
+        # >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifiers of all CA certificates.
         self.identifier = identifier
+        # The state to which you want to change the CA certificate. Set to the value to **REVOKE**. After this operation is called, the status of the CA certificate is changed to **REVOKE**.
+        # 
+        # >  You can call this operation only if the status of a CA certificate is **ISSUE**. You can call the [DescribeCACertificate](~~328096~~) operation to query the status of a CA certificate.
         self.status = status
 
     def validate(self):
@@ -3390,6 +3992,7 @@ class UpdateCACertificateStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
