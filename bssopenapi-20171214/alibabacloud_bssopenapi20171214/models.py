@@ -10143,6 +10143,7 @@ class EnableBillGenerationRequest(TeaModel):
         product_code: str = None,
     ):
         self.owner_id = owner_id
+        # The code of the product.
         self.product_code = product_code
 
     def validate(self):
@@ -10174,6 +10175,7 @@ class EnableBillGenerationResponseBodyData(TeaModel):
         self,
         boolean: bool = None,
     ):
+        # Indicates whether the feature is enabled.
         self.boolean = boolean
 
     def validate(self):
@@ -10205,10 +10207,15 @@ class EnableBillGenerationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -15802,6 +15809,7 @@ class QueryBillToOSSSubscriptionResponseBodyDataItemsItem(TeaModel):
         self,
         bucket_owner_id: int = None,
         bucket_path: str = None,
+        row_limit_per_file: int = None,
         subscribe_bucket: str = None,
         subscribe_language: str = None,
         subscribe_time: str = None,
@@ -15809,6 +15817,7 @@ class QueryBillToOSSSubscriptionResponseBodyDataItemsItem(TeaModel):
     ):
         self.bucket_owner_id = bucket_owner_id
         self.bucket_path = bucket_path
+        self.row_limit_per_file = row_limit_per_file
         self.subscribe_bucket = subscribe_bucket
         self.subscribe_language = subscribe_language
         self.subscribe_time = subscribe_time
@@ -15827,6 +15836,8 @@ class QueryBillToOSSSubscriptionResponseBodyDataItemsItem(TeaModel):
             result['BucketOwnerId'] = self.bucket_owner_id
         if self.bucket_path is not None:
             result['BucketPath'] = self.bucket_path
+        if self.row_limit_per_file is not None:
+            result['RowLimitPerFile'] = self.row_limit_per_file
         if self.subscribe_bucket is not None:
             result['SubscribeBucket'] = self.subscribe_bucket
         if self.subscribe_language is not None:
@@ -15843,6 +15854,8 @@ class QueryBillToOSSSubscriptionResponseBodyDataItemsItem(TeaModel):
             self.bucket_owner_id = m.get('BucketOwnerId')
         if m.get('BucketPath') is not None:
             self.bucket_path = m.get('BucketPath')
+        if m.get('RowLimitPerFile') is not None:
+            self.row_limit_per_file = m.get('RowLimitPerFile')
         if m.get('SubscribeBucket') is not None:
             self.subscribe_bucket = m.get('SubscribeBucket')
         if m.get('SubscribeLanguage') is not None:
@@ -27842,6 +27855,7 @@ class SubscribeBillToOSSRequest(TeaModel):
         bucket_owner_id: int = None,
         bucket_path: str = None,
         mult_account_rel_subscribe: str = None,
+        row_limit_per_file: int = None,
         subscribe_bucket: str = None,
         subscribe_type: str = None,
     ):
@@ -27849,6 +27863,7 @@ class SubscribeBillToOSSRequest(TeaModel):
         self.bucket_owner_id = bucket_owner_id
         self.bucket_path = bucket_path
         self.mult_account_rel_subscribe = mult_account_rel_subscribe
+        self.row_limit_per_file = row_limit_per_file
         self.subscribe_bucket = subscribe_bucket
         self.subscribe_type = subscribe_type
 
@@ -27869,6 +27884,8 @@ class SubscribeBillToOSSRequest(TeaModel):
             result['BucketPath'] = self.bucket_path
         if self.mult_account_rel_subscribe is not None:
             result['MultAccountRelSubscribe'] = self.mult_account_rel_subscribe
+        if self.row_limit_per_file is not None:
+            result['RowLimitPerFile'] = self.row_limit_per_file
         if self.subscribe_bucket is not None:
             result['SubscribeBucket'] = self.subscribe_bucket
         if self.subscribe_type is not None:
@@ -27885,6 +27902,8 @@ class SubscribeBillToOSSRequest(TeaModel):
             self.bucket_path = m.get('BucketPath')
         if m.get('MultAccountRelSubscribe') is not None:
             self.mult_account_rel_subscribe = m.get('MultAccountRelSubscribe')
+        if m.get('RowLimitPerFile') is not None:
+            self.row_limit_per_file = m.get('RowLimitPerFile')
         if m.get('SubscribeBucket') is not None:
             self.subscribe_bucket = m.get('SubscribeBucket')
         if m.get('SubscribeType') is not None:
