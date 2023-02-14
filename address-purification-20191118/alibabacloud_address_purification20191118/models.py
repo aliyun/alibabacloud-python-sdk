@@ -68,6 +68,7 @@ class CorrectAddressResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -98,13 +99,16 @@ class CorrectAddressResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CorrectAddressResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -117,6 +121,8 @@ class CorrectAddressResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -125,6 +131,8 @@ class CorrectAddressResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CorrectAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -195,6 +203,7 @@ class ExtractAddressResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -225,13 +234,16 @@ class ExtractAddressResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ExtractAddressResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -244,6 +256,8 @@ class ExtractAddressResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -252,6 +266,8 @@ class ExtractAddressResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExtractAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -322,6 +338,7 @@ class ExtractNameResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -352,13 +369,16 @@ class ExtractNameResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ExtractNameResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -371,6 +391,8 @@ class ExtractNameResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -379,6 +401,8 @@ class ExtractNameResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExtractNameResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -449,6 +473,7 @@ class ExtractPhoneResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -479,13 +504,16 @@ class ExtractPhoneResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ExtractPhoneResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -498,6 +526,8 @@ class ExtractPhoneResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -506,6 +536,8 @@ class ExtractPhoneResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExtractPhoneResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -576,6 +608,7 @@ class GetAddressDivisionCodeResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -606,13 +639,16 @@ class GetAddressDivisionCodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAddressDivisionCodeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -625,6 +661,8 @@ class GetAddressDivisionCodeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -633,6 +671,8 @@ class GetAddressDivisionCodeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAddressDivisionCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -703,6 +743,7 @@ class GetAddressSimilarityResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -733,13 +774,16 @@ class GetAddressSimilarityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAddressSimilarityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -752,6 +796,8 @@ class GetAddressSimilarityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -760,6 +806,8 @@ class GetAddressSimilarityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAddressSimilarityResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -830,6 +878,7 @@ class GetZipcodeResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -860,13 +909,16 @@ class GetZipcodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetZipcodeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -879,6 +931,8 @@ class GetZipcodeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -887,6 +941,8 @@ class GetZipcodeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetZipcodeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -957,6 +1013,7 @@ class StructureAddressResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # RequestId
         self.request_id = request_id
 
     def validate(self):
@@ -987,13 +1044,16 @@ class StructureAddressResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: StructureAddressResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1006,6 +1066,8 @@ class StructureAddressResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1014,6 +1076,8 @@ class StructureAddressResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StructureAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
