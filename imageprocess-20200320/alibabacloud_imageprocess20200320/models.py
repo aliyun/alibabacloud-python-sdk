@@ -1524,7 +1524,6 @@ class DetectHipKeypointXRayResponseBodyDataKeyPoints(TeaModel):
         tag: DetectHipKeypointXRayResponseBodyDataKeyPointsTag = None,
         value: float = None,
     ):
-        # 1
         self.coordinates = coordinates
         self.tag = tag
         self.value = value
@@ -2416,7 +2415,11 @@ class DetectLungNoduleResponseBodyDataSeriesElements(TeaModel):
         image_z: float = None,
         lobe: str = None,
         lung: str = None,
+        major_axis: List[float] = None,
         mean_value: float = None,
+        minor_axis: List[float] = None,
+        recist_sopinstance_uid: str = None,
+        risk: float = None,
         sopinstance_uid: str = None,
         volume: float = None,
         x: float = None,
@@ -2431,7 +2434,11 @@ class DetectLungNoduleResponseBodyDataSeriesElements(TeaModel):
         self.image_z = image_z
         self.lobe = lobe
         self.lung = lung
+        self.major_axis = major_axis
         self.mean_value = mean_value
+        self.minor_axis = minor_axis
+        self.recist_sopinstance_uid = recist_sopinstance_uid
+        self.risk = risk
         self.sopinstance_uid = sopinstance_uid
         self.volume = volume
         self.x = x
@@ -2463,8 +2470,16 @@ class DetectLungNoduleResponseBodyDataSeriesElements(TeaModel):
             result['Lobe'] = self.lobe
         if self.lung is not None:
             result['Lung'] = self.lung
+        if self.major_axis is not None:
+            result['MajorAxis'] = self.major_axis
         if self.mean_value is not None:
             result['MeanValue'] = self.mean_value
+        if self.minor_axis is not None:
+            result['MinorAxis'] = self.minor_axis
+        if self.recist_sopinstance_uid is not None:
+            result['RecistSOPInstanceUID'] = self.recist_sopinstance_uid
+        if self.risk is not None:
+            result['Risk'] = self.risk
         if self.sopinstance_uid is not None:
             result['SOPInstanceUID'] = self.sopinstance_uid
         if self.volume is not None:
@@ -2495,8 +2510,16 @@ class DetectLungNoduleResponseBodyDataSeriesElements(TeaModel):
             self.lobe = m.get('Lobe')
         if m.get('Lung') is not None:
             self.lung = m.get('Lung')
+        if m.get('MajorAxis') is not None:
+            self.major_axis = m.get('MajorAxis')
         if m.get('MeanValue') is not None:
             self.mean_value = m.get('MeanValue')
+        if m.get('MinorAxis') is not None:
+            self.minor_axis = m.get('MinorAxis')
+        if m.get('RecistSOPInstanceUID') is not None:
+            self.recist_sopinstance_uid = m.get('RecistSOPInstanceUID')
+        if m.get('Risk') is not None:
+            self.risk = m.get('Risk')
         if m.get('SOPInstanceUID') is not None:
             self.sopinstance_uid = m.get('SOPInstanceUID')
         if m.get('Volume') is not None:
@@ -5560,7 +5583,6 @@ class ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo(TeaModel):
         max_area_index: int = None,
         max_diameter: float = None,
     ):
-        # 1
         self.area = area
         self.coordinates = coordinates
         self.label_value = label_value
@@ -5619,7 +5641,6 @@ class ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo(TeaModel):
         max_diameter: float = None,
         nearest_aorta_area: float = None,
     ):
-        # 1
         self.area = area
         self.coordinates = coordinates
         self.label_value = label_value
@@ -6206,7 +6227,11 @@ class ScreenChestCTResponseBodyDataLungNoduleSeriesElements(TeaModel):
         image_z: float = None,
         lobe: str = None,
         lung: str = None,
+        major_axis: List[float] = None,
         mean_value: float = None,
+        minor_axis: List[float] = None,
+        recist_sopinstance_uid: str = None,
+        risk: float = None,
         sopinstance_uid: str = None,
         volume: float = None,
         x: float = None,
@@ -6221,7 +6246,11 @@ class ScreenChestCTResponseBodyDataLungNoduleSeriesElements(TeaModel):
         self.image_z = image_z
         self.lobe = lobe
         self.lung = lung
+        self.major_axis = major_axis
         self.mean_value = mean_value
+        self.minor_axis = minor_axis
+        self.recist_sopinstance_uid = recist_sopinstance_uid
+        self.risk = risk
         self.sopinstance_uid = sopinstance_uid
         self.volume = volume
         self.x = x
@@ -6253,8 +6282,16 @@ class ScreenChestCTResponseBodyDataLungNoduleSeriesElements(TeaModel):
             result['Lobe'] = self.lobe
         if self.lung is not None:
             result['Lung'] = self.lung
+        if self.major_axis is not None:
+            result['MajorAxis'] = self.major_axis
         if self.mean_value is not None:
             result['MeanValue'] = self.mean_value
+        if self.minor_axis is not None:
+            result['MinorAxis'] = self.minor_axis
+        if self.recist_sopinstance_uid is not None:
+            result['RecistSOPInstanceUID'] = self.recist_sopinstance_uid
+        if self.risk is not None:
+            result['Risk'] = self.risk
         if self.sopinstance_uid is not None:
             result['SOPInstanceUID'] = self.sopinstance_uid
         if self.volume is not None:
@@ -6285,8 +6322,16 @@ class ScreenChestCTResponseBodyDataLungNoduleSeriesElements(TeaModel):
             self.lobe = m.get('Lobe')
         if m.get('Lung') is not None:
             self.lung = m.get('Lung')
+        if m.get('MajorAxis') is not None:
+            self.major_axis = m.get('MajorAxis')
         if m.get('MeanValue') is not None:
             self.mean_value = m.get('MeanValue')
+        if m.get('MinorAxis') is not None:
+            self.minor_axis = m.get('MinorAxis')
+        if m.get('RecistSOPInstanceUID') is not None:
+            self.recist_sopinstance_uid = m.get('RecistSOPInstanceUID')
+        if m.get('Risk') is not None:
+            self.risk = m.get('Risk')
         if m.get('SOPInstanceUID') is not None:
             self.sopinstance_uid = m.get('SOPInstanceUID')
         if m.get('Volume') is not None:
@@ -6449,10 +6494,10 @@ class ScreenChestCTResponseBodyDataScreenEc(TeaModel):
     def __init__(
         self,
         lesion: ScreenChestCTResponseBodyDataScreenEcLesion = None,
-        series_insance_uid: str = None,
+        series_instance_uid: str = None,
     ):
         self.lesion = lesion
-        self.series_insance_uid = series_insance_uid
+        self.series_instance_uid = series_instance_uid
 
     def validate(self):
         if self.lesion:
@@ -6466,8 +6511,8 @@ class ScreenChestCTResponseBodyDataScreenEc(TeaModel):
         result = dict()
         if self.lesion is not None:
             result['Lesion'] = self.lesion.to_map()
-        if self.series_insance_uid is not None:
-            result['SeriesInsanceUid'] = self.series_insance_uid
+        if self.series_instance_uid is not None:
+            result['SeriesInstanceUid'] = self.series_instance_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -6475,8 +6520,8 @@ class ScreenChestCTResponseBodyDataScreenEc(TeaModel):
         if m.get('Lesion') is not None:
             temp_model = ScreenChestCTResponseBodyDataScreenEcLesion()
             self.lesion = temp_model.from_map(m['Lesion'])
-        if m.get('SeriesInsanceUid') is not None:
-            self.series_insance_uid = m.get('SeriesInsanceUid')
+        if m.get('SeriesInstanceUid') is not None:
+            self.series_instance_uid = m.get('SeriesInstanceUid')
         return self
 
 

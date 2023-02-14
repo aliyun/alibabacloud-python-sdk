@@ -1,3 +1,6 @@
+2023-02-14 Version: 2.0.25
+- Update ScreenChestCT and DetectLungNodule.
+
 2023-02-08 Version: 2.0.24
 - Generated python 2020-03-20 for imageprocess.
 
