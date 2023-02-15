@@ -5041,6 +5041,8 @@ class Client(OpenApiClient):
             query['JarStartArgs'] = request.jar_start_args
         if not UtilClient.is_unset(request.jar_start_options):
             query['JarStartOptions'] = request.jar_start_options
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
         if not UtilClient.is_unset(request.time):
             query['Time'] = request.time
         if not UtilClient.is_unset(request.war_start_options):
@@ -5087,6 +5089,8 @@ class Client(OpenApiClient):
             query['JarStartArgs'] = request.jar_start_args
         if not UtilClient.is_unset(request.jar_start_options):
             query['JarStartOptions'] = request.jar_start_options
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
         if not UtilClient.is_unset(request.time):
             query['Time'] = request.time
         if not UtilClient.is_unset(request.war_start_options):

@@ -14752,6 +14752,7 @@ class ExecJobRequest(TeaModel):
         event_id: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
+        replicas: str = None,
         time: str = None,
         war_start_options: str = None,
     ):
@@ -14762,6 +14763,7 @@ class ExecJobRequest(TeaModel):
         self.event_id = event_id
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
+        self.replicas = replicas
         self.time = time
         self.war_start_options = war_start_options
 
@@ -14788,6 +14790,8 @@ class ExecJobRequest(TeaModel):
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
             result['JarStartOptions'] = self.jar_start_options
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
         if self.time is not None:
             result['Time'] = self.time
         if self.war_start_options is not None:
@@ -14810,6 +14814,8 @@ class ExecJobRequest(TeaModel):
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
             self.jar_start_options = m.get('JarStartOptions')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
         if m.get('Time') is not None:
             self.time = m.get('Time')
         if m.get('WarStartOptions') is not None:
