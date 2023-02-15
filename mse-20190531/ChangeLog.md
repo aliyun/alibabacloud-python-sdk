@@ -1,3 +1,7 @@
+2023-02-15 Version: 3.0.59
+- Fixed ErrorCode for UpdateGatewayRoute.
+- Fixed ErrorCode for AddGatewayRoute.
+
 2023-02-02 Version: 3.0.58
 - Suport mse nologin.
 - Support mse nologin.
