@@ -4707,8 +4707,8 @@ class VerifyAdvertisingRequestUser(TeaModel):
 class VerifyAdvertisingRequestVerifyad(TeaModel):
     def __init__(
         self,
-        id: int = None,
-        seat: int = None,
+        id: str = None,
+        seat: str = None,
     ):
         self.id = id
         self.seat = seat
