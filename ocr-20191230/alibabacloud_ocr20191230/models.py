@@ -8062,6 +8062,33 @@ class RecognizeVideoCharacterRequest(TeaModel):
         return self
 
 
+class RecognizeVideoCharacterAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_urlobject: BinaryIO = None,
+    ):
+        self.video_urlobject = video_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_urlobject is not None:
+            result['VideoURL'] = self.video_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoURL') is not None:
+            self.video_urlobject = m.get('VideoURL')
+        return self
+
+
 class RecognizeVideoCharacterResponseBodyDataFramesElementsTextRectangles(TeaModel):
     def __init__(
         self,
