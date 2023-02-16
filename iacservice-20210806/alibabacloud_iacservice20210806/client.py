@@ -41,21 +41,97 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def associate_parameter_set(
+    def associate_group_with_options(
         self,
-        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.associate_parameter_set_with_options(request, headers, runtime)
+        group_id: str,
+        request: ia_cservice_20210806_models.AssociateGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.AssociateGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_ids):
+            body['resourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateGroup',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/associate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.AssociateGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
-    async def associate_parameter_set_async(
+    async def associate_group_with_options_async(
         self,
-        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
+        group_id: str,
+        request: ia_cservice_20210806_models.AssociateGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.AssociateGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_ids):
+            body['resourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AssociateGroup',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/associate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.AssociateGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_group(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.AssociateGroupRequest,
+    ) -> ia_cservice_20210806_models.AssociateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.associate_parameter_set_with_options_async(request, headers, runtime)
+        return self.associate_group_with_options(group_id, request, headers, runtime)
+
+    async def associate_group_async(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.AssociateGroupRequest,
+    ) -> ia_cservice_20210806_models.AssociateGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.associate_group_with_options_async(group_id, request, headers, runtime)
 
     def associate_parameter_set_with_options(
         self,
@@ -125,107 +201,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def associate_task_group(
+    def associate_parameter_set(
         self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.AssociateTaskGroupRequest,
-    ) -> ia_cservice_20210806_models.AssociateTaskGroupResponse:
+        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
+    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.associate_task_group_with_options(project_id, group_id, request, headers, runtime)
+        return self.associate_parameter_set_with_options(request, headers, runtime)
 
-    async def associate_task_group_async(
+    async def associate_parameter_set_async(
         self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.AssociateTaskGroupRequest,
-    ) -> ia_cservice_20210806_models.AssociateTaskGroupResponse:
+        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
+    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.associate_task_group_with_options_async(project_id, group_id, request, headers, runtime)
-
-    def associate_task_group_with_options(
-        self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.AssociateTaskGroupRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.AssociateTaskGroupResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_ids):
-            body['taskIds'] = request.task_ids
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AssociateTaskGroup',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/associate',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.AssociateTaskGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def associate_task_group_with_options_async(
-        self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.AssociateTaskGroupRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.AssociateTaskGroupResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_ids):
-            body['taskIds'] = request.task_ids
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AssociateTaskGroup',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/associate',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.AssociateTaskGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def attach_rabbitmq_publisher(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.attach_rabbitmq_publisher_with_options(publisher_id, request, headers, runtime)
-
-    async def attach_rabbitmq_publisher_async(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.attach_rabbitmq_publisher_with_options_async(publisher_id, request, headers, runtime)
+        return await self.associate_parameter_set_with_options_async(request, headers, runtime)
 
     def attach_rabbitmq_publisher_with_options(
         self,
@@ -289,23 +279,89 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_resource_export_task(
+    def attach_rabbitmq_publisher(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.CancelResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.CancelResourceExportTaskResponse:
+        publisher_id: str,
+        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
+    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_resource_export_task_with_options(export_task_id, request, headers, runtime)
+        return self.attach_rabbitmq_publisher_with_options(publisher_id, request, headers, runtime)
 
-    async def cancel_resource_export_task_async(
+    async def attach_rabbitmq_publisher_async(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.CancelResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.CancelResourceExportTaskResponse:
+        publisher_id: str,
+        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
+    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
+        return await self.attach_rabbitmq_publisher_with_options_async(publisher_id, request, headers, runtime)
+
+    def cancel_ram_policy_export_task_with_options(
+        self,
+        ram_policy_export_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_ram_policy_export_task_with_options_async(
+        self,
+        ram_policy_export_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_ram_policy_export_task(
+        self,
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
+
+    async def cancel_ram_policy_export_task_async(
+        self,
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
 
     def cancel_resource_export_task_with_options(
         self,
@@ -373,21 +429,207 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def clone_module(
+    def cancel_resource_export_task(
         self,
-        request: ia_cservice_20210806_models.CloneModuleRequest,
-    ) -> ia_cservice_20210806_models.CloneModuleResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.CancelResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.CancelResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.clone_module_with_options(request, headers, runtime)
+        return self.cancel_resource_export_task_with_options(export_task_id, request, headers, runtime)
 
-    async def clone_module_async(
+    async def cancel_resource_export_task_async(
         self,
-        request: ia_cservice_20210806_models.CloneModuleRequest,
-    ) -> ia_cservice_20210806_models.CloneModuleResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.CancelResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.CancelResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.clone_module_with_options_async(request, headers, runtime)
+        return await self.cancel_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
+
+    def check_resource_name_with_options(
+        self,
+        request: ia_cservice_20210806_models.CheckResourceNameRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.parent_id):
+            query['parentId'] = request.parent_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckResourceName',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/check/name',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CheckResourceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_resource_name_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.CheckResourceNameRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.parent_id):
+            query['parentId'] = request.parent_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckResourceName',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/check/name',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CheckResourceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_resource_name(
+        self,
+        request: ia_cservice_20210806_models.CheckResourceNameRequest,
+    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.check_resource_name_with_options(request, headers, runtime)
+
+    async def check_resource_name_async(
+        self,
+        request: ia_cservice_20210806_models.CheckResourceNameRequest,
+    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.check_resource_name_with_options_async(request, headers, runtime)
+
+    def clone_group_with_options(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.CloneGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CloneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_types):
+            body['resourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneGroup',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CloneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_group_with_options_async(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.CloneGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CloneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_types):
+            body['resourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneGroup',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CloneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_group(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.CloneGroupRequest,
+    ) -> ia_cservice_20210806_models.CloneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.clone_group_with_options(group_id, request, headers, runtime)
+
+    async def clone_group_async(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.CloneGroupRequest,
+    ) -> ia_cservice_20210806_models.CloneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.clone_group_with_options_async(group_id, request, headers, runtime)
 
     def clone_module_with_options(
         self,
@@ -465,21 +707,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_authorization(
+    def clone_module(
         self,
-        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
-    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
+        request: ia_cservice_20210806_models.CloneModuleRequest,
+    ) -> ia_cservice_20210806_models.CloneModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_authorization_with_options(request, headers, runtime)
+        return self.clone_module_with_options(request, headers, runtime)
 
-    async def create_authorization_async(
+    async def clone_module_async(
         self,
-        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
-    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
+        request: ia_cservice_20210806_models.CloneModuleRequest,
+    ) -> ia_cservice_20210806_models.CloneModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_authorization_with_options_async(request, headers, runtime)
+        return await self.clone_module_with_options_async(request, headers, runtime)
 
     def create_authorization_with_options(
         self,
@@ -561,21 +803,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_group(
+    def create_authorization(
         self,
-        request: ia_cservice_20210806_models.CreateGroupRequest,
-    ) -> ia_cservice_20210806_models.CreateGroupResponse:
+        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
+    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_group_with_options(request, headers, runtime)
+        return self.create_authorization_with_options(request, headers, runtime)
 
-    async def create_group_async(
+    async def create_authorization_async(
         self,
-        request: ia_cservice_20210806_models.CreateGroupRequest,
-    ) -> ia_cservice_20210806_models.CreateGroupResponse:
+        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
+    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_group_with_options_async(request, headers, runtime)
+        return await self.create_authorization_with_options_async(request, headers, runtime)
 
     def create_group_with_options(
         self,
@@ -585,14 +827,36 @@ class Client(OpenApiClient):
     ) -> ia_cservice_20210806_models.CreateGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.auto_trigger):
+            body['autoTrigger'] = request.auto_trigger
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.forced_setting):
+            body['forcedSetting'] = request.forced_setting
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            body['notifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.notify_operation_types):
+            body['notifyOperationTypes'] = request.notify_operation_types
         if not UtilClient.is_unset(request.project_id):
             body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.report_export_field):
+            body['reportExportField'] = request.report_export_field
+        if not UtilClient.is_unset(request.report_export_path):
+            body['reportExportPath'] = request.report_export_path
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        if not UtilClient.is_unset(request.trigger_resource_type):
+            body['triggerResourceType'] = request.trigger_resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -621,14 +885,36 @@ class Client(OpenApiClient):
     ) -> ia_cservice_20210806_models.CreateGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.auto_trigger):
+            body['autoTrigger'] = request.auto_trigger
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.forced_setting):
+            body['forcedSetting'] = request.forced_setting
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            body['notifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.notify_operation_types):
+            body['notifyOperationTypes'] = request.notify_operation_types
         if not UtilClient.is_unset(request.project_id):
             body['projectId'] = request.project_id
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.report_export_field):
+            body['reportExportField'] = request.report_export_field
+        if not UtilClient.is_unset(request.report_export_path):
+            body['reportExportPath'] = request.report_export_path
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        if not UtilClient.is_unset(request.trigger_resource_type):
+            body['triggerResourceType'] = request.trigger_resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -649,23 +935,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_job(
+    def create_group(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.CreateJobRequest,
-    ) -> ia_cservice_20210806_models.CreateJobResponse:
+        request: ia_cservice_20210806_models.CreateGroupRequest,
+    ) -> ia_cservice_20210806_models.CreateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_job_with_options(task_id, request, headers, runtime)
+        return self.create_group_with_options(request, headers, runtime)
 
-    async def create_job_async(
+    async def create_group_async(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.CreateJobRequest,
-    ) -> ia_cservice_20210806_models.CreateJobResponse:
+        request: ia_cservice_20210806_models.CreateGroupRequest,
+    ) -> ia_cservice_20210806_models.CreateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_job_with_options_async(task_id, request, headers, runtime)
+        return await self.create_group_with_options_async(request, headers, runtime)
 
     def create_job_with_options(
         self,
@@ -737,21 +1021,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_module(
+    def create_job(
         self,
-        request: ia_cservice_20210806_models.CreateModuleRequest,
-    ) -> ia_cservice_20210806_models.CreateModuleResponse:
+        task_id: str,
+        request: ia_cservice_20210806_models.CreateJobRequest,
+    ) -> ia_cservice_20210806_models.CreateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_module_with_options(request, headers, runtime)
+        return self.create_job_with_options(task_id, request, headers, runtime)
 
-    async def create_module_async(
+    async def create_job_async(
         self,
-        request: ia_cservice_20210806_models.CreateModuleRequest,
-    ) -> ia_cservice_20210806_models.CreateModuleResponse:
+        task_id: str,
+        request: ia_cservice_20210806_models.CreateJobRequest,
+    ) -> ia_cservice_20210806_models.CreateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_module_with_options_async(request, headers, runtime)
+        return await self.create_job_with_options_async(task_id, request, headers, runtime)
 
     def create_module_with_options(
         self,
@@ -765,6 +1051,8 @@ class Client(OpenApiClient):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.group_info):
+            body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.source):
@@ -807,6 +1095,8 @@ class Client(OpenApiClient):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.group_info):
+            body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.source):
@@ -837,21 +1127,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_module_market(
+    def create_module(
         self,
-        request: ia_cservice_20210806_models.CreateModuleMarketRequest,
-    ) -> ia_cservice_20210806_models.CreateModuleMarketResponse:
+        request: ia_cservice_20210806_models.CreateModuleRequest,
+    ) -> ia_cservice_20210806_models.CreateModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_module_market_with_options(request, headers, runtime)
+        return self.create_module_with_options(request, headers, runtime)
 
-    async def create_module_market_async(
+    async def create_module_async(
         self,
-        request: ia_cservice_20210806_models.CreateModuleMarketRequest,
-    ) -> ia_cservice_20210806_models.CreateModuleMarketResponse:
+        request: ia_cservice_20210806_models.CreateModuleRequest,
+    ) -> ia_cservice_20210806_models.CreateModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_module_market_with_options_async(request, headers, runtime)
+        return await self.create_module_with_options_async(request, headers, runtime)
 
     def create_module_market_with_options(
         self,
@@ -937,23 +1227,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_module_version(
+    def create_module_market(
         self,
-        module_id: str,
-        request: ia_cservice_20210806_models.CreateModuleVersionRequest,
-    ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
+        request: ia_cservice_20210806_models.CreateModuleMarketRequest,
+    ) -> ia_cservice_20210806_models.CreateModuleMarketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_module_version_with_options(module_id, request, headers, runtime)
+        return self.create_module_market_with_options(request, headers, runtime)
 
-    async def create_module_version_async(
+    async def create_module_market_async(
         self,
-        module_id: str,
-        request: ia_cservice_20210806_models.CreateModuleVersionRequest,
-    ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
+        request: ia_cservice_20210806_models.CreateModuleMarketRequest,
+    ) -> ia_cservice_20210806_models.CreateModuleMarketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_module_version_with_options_async(module_id, request, headers, runtime)
+        return await self.create_module_market_with_options_async(request, headers, runtime)
 
     def create_module_version_with_options(
         self,
@@ -1025,21 +1313,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_parameter_set(
+    def create_module_version(
         self,
-        request: ia_cservice_20210806_models.CreateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
+        module_id: str,
+        request: ia_cservice_20210806_models.CreateModuleVersionRequest,
+    ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_parameter_set_with_options(request, headers, runtime)
+        return self.create_module_version_with_options(module_id, request, headers, runtime)
 
-    async def create_parameter_set_async(
+    async def create_module_version_async(
         self,
-        request: ia_cservice_20210806_models.CreateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
+        module_id: str,
+        request: ia_cservice_20210806_models.CreateModuleVersionRequest,
+    ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_parameter_set_with_options_async(request, headers, runtime)
+        return await self.create_module_version_with_options_async(module_id, request, headers, runtime)
 
     def create_parameter_set_with_options(
         self,
@@ -1113,21 +1403,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_project(
+    def create_parameter_set(
         self,
-        request: ia_cservice_20210806_models.CreateProjectRequest,
-    ) -> ia_cservice_20210806_models.CreateProjectResponse:
+        request: ia_cservice_20210806_models.CreateParameterSetRequest,
+    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_project_with_options(request, headers, runtime)
+        return self.create_parameter_set_with_options(request, headers, runtime)
 
-    async def create_project_async(
+    async def create_parameter_set_async(
         self,
-        request: ia_cservice_20210806_models.CreateProjectRequest,
-    ) -> ia_cservice_20210806_models.CreateProjectResponse:
+        request: ia_cservice_20210806_models.CreateParameterSetRequest,
+    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_project_with_options_async(request, headers, runtime)
+        return await self.create_parameter_set_with_options_async(request, headers, runtime)
 
     def create_project_with_options(
         self,
@@ -1197,23 +1487,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_project_build(
+    def create_project(
         self,
-        project_id: str,
-        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
-    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
+        request: ia_cservice_20210806_models.CreateProjectRequest,
+    ) -> ia_cservice_20210806_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_project_build_with_options(project_id, request, headers, runtime)
+        return self.create_project_with_options(request, headers, runtime)
 
-    async def create_project_build_async(
+    async def create_project_async(
         self,
-        project_id: str,
-        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
-    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
+        request: ia_cservice_20210806_models.CreateProjectRequest,
+    ) -> ia_cservice_20210806_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_project_build_with_options_async(project_id, request, headers, runtime)
+        return await self.create_project_with_options_async(request, headers, runtime)
 
     def create_project_build_with_options(
         self,
@@ -1226,6 +1514,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.group_id):
+            body['groupId'] = request.group_id
         if not UtilClient.is_unset(request.project_build_action):
             body['projectBuildAction'] = request.project_build_action
         if not UtilClient.is_unset(request.task_ids):
@@ -1263,6 +1553,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.group_id):
+            body['groupId'] = request.group_id
         if not UtilClient.is_unset(request.project_build_action):
             body['projectBuildAction'] = request.project_build_action
         if not UtilClient.is_unset(request.task_ids):
@@ -1289,21 +1581,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_rabbitmq_publisher(
+    def create_project_build(
         self,
-        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
+        project_id: str,
+        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
+    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_rabbitmq_publisher_with_options(request, headers, runtime)
+        return self.create_project_build_with_options(project_id, request, headers, runtime)
 
-    async def create_rabbitmq_publisher_async(
+    async def create_project_build_async(
         self,
-        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
+        project_id: str,
+        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
+    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_rabbitmq_publisher_with_options_async(request, headers, runtime)
+        return await self.create_project_build_with_options_async(project_id, request, headers, runtime)
 
     def create_rabbitmq_publisher_with_options(
         self,
@@ -1401,21 +1695,133 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_resource_export_task(
+    def create_rabbitmq_publisher(
         self,
-        request: ia_cservice_20210806_models.CreateResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateResourceExportTaskResponse:
+        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
+    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_resource_export_task_with_options(request, headers, runtime)
+        return self.create_rabbitmq_publisher_with_options(request, headers, runtime)
 
-    async def create_resource_export_task_async(
+    async def create_rabbitmq_publisher_async(
         self,
-        request: ia_cservice_20210806_models.CreateResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateResourceExportTaskResponse:
+        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
+    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_resource_export_task_with_options_async(request, headers, runtime)
+        return await self.create_rabbitmq_publisher_with_options_async(request, headers, runtime)
+
+    def create_ram_policy_export_task_with_options(
+        self,
+        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_account_ids):
+            body['authorizationAccountIds'] = request.authorization_account_ids
+        if not UtilClient.is_unset(request.authorization_actions):
+            body['authorizationActions'] = request.authorization_actions
+        if not UtilClient.is_unset(request.authorization_region_ids):
+            body['authorizationRegionIds'] = request.authorization_region_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.module_id):
+            body['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.module_version):
+            body['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.trigger_strategy):
+            body['triggerStrategy'] = request.trigger_strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ram_policy_export_task_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_account_ids):
+            body['authorizationAccountIds'] = request.authorization_account_ids
+        if not UtilClient.is_unset(request.authorization_actions):
+            body['authorizationActions'] = request.authorization_actions
+        if not UtilClient.is_unset(request.authorization_region_ids):
+            body['authorizationRegionIds'] = request.authorization_region_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.module_id):
+            body['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.module_version):
+            body['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.trigger_strategy):
+            body['triggerStrategy'] = request.trigger_strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ram_policy_export_task(
+        self,
+        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
+    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_ram_policy_export_task_with_options(request, headers, runtime)
+
+    async def create_ram_policy_export_task_async(
+        self,
+        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
+    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_ram_policy_export_task_with_options_async(request, headers, runtime)
 
     def create_resource_export_task_with_options(
         self,
@@ -1439,6 +1845,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
@@ -1487,6 +1895,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
@@ -1513,21 +1923,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_task(
+    def create_resource_export_task(
         self,
-        request: ia_cservice_20210806_models.CreateTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateTaskResponse:
+        request: ia_cservice_20210806_models.CreateResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.CreateResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_task_with_options(request, headers, runtime)
+        return self.create_resource_export_task_with_options(request, headers, runtime)
 
-    async def create_task_async(
+    async def create_resource_export_task_async(
         self,
-        request: ia_cservice_20210806_models.CreateTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateTaskResponse:
+        request: ia_cservice_20210806_models.CreateResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.CreateResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_task_with_options_async(request, headers, runtime)
+        return await self.create_resource_export_task_with_options_async(request, headers, runtime)
 
     def create_task_with_options(
         self,
@@ -1539,8 +1949,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_apply):
             body['autoApply'] = request.auto_apply
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.module_id):
@@ -1559,6 +1973,8 @@ class Client(OpenApiClient):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.trigger_value):
+            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1589,8 +2005,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_apply):
             body['autoApply'] = request.auto_apply
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.module_id):
@@ -1609,6 +2029,8 @@ class Client(OpenApiClient):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.trigger_value):
+            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1629,21 +2051,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_authorization(
+    def create_task(
         self,
-        authorization_id: str,
-    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
+        request: ia_cservice_20210806_models.CreateTaskRequest,
+    ) -> ia_cservice_20210806_models.CreateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_authorization_with_options(authorization_id, headers, runtime)
+        return self.create_task_with_options(request, headers, runtime)
 
-    async def delete_authorization_async(
+    async def create_task_async(
         self,
-        authorization_id: str,
-    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
+        request: ia_cservice_20210806_models.CreateTaskRequest,
+    ) -> ia_cservice_20210806_models.CreateTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_authorization_with_options_async(authorization_id, headers, runtime)
+        return await self.create_task_with_options_async(request, headers, runtime)
 
     def delete_authorization_with_options(
         self,
@@ -1695,25 +2117,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_group(
+    def delete_authorization(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.DeleteGroupResponse:
+        authorization_id: str,
+    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_group_with_options(id, headers, runtime)
+        return self.delete_authorization_with_options(authorization_id, headers, runtime)
 
-    async def delete_group_async(
+    async def delete_authorization_async(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.DeleteGroupResponse:
+        authorization_id: str,
+    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_group_with_options_async(id, headers, runtime)
+        return await self.delete_authorization_with_options_async(authorization_id, headers, runtime)
 
     def delete_group_with_options(
         self,
-        id: str,
+        group_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteGroupResponse:
@@ -1724,7 +2146,7 @@ class Client(OpenApiClient):
             action='DeleteGroup',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1738,7 +2160,7 @@ class Client(OpenApiClient):
 
     async def delete_group_with_options_async(
         self,
-        id: str,
+        group_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteGroupResponse:
@@ -1749,7 +2171,7 @@ class Client(OpenApiClient):
             action='DeleteGroup',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1761,21 +2183,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_module(
+    def delete_group(
         self,
-        module_id: str,
-    ) -> ia_cservice_20210806_models.DeleteModuleResponse:
+        group_id: str,
+    ) -> ia_cservice_20210806_models.DeleteGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_module_with_options(module_id, headers, runtime)
+        return self.delete_group_with_options(group_id, headers, runtime)
 
-    async def delete_module_async(
+    async def delete_group_async(
         self,
-        module_id: str,
-    ) -> ia_cservice_20210806_models.DeleteModuleResponse:
+        group_id: str,
+    ) -> ia_cservice_20210806_models.DeleteGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_module_with_options_async(module_id, headers, runtime)
+        return await self.delete_group_with_options_async(group_id, headers, runtime)
 
     def delete_module_with_options(
         self,
@@ -1827,21 +2249,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_parameter_set(
+    def delete_module(
         self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
+        module_id: str,
+    ) -> ia_cservice_20210806_models.DeleteModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_parameter_set_with_options(parameter_set_id, headers, runtime)
+        return self.delete_module_with_options(module_id, headers, runtime)
 
-    async def delete_parameter_set_async(
+    async def delete_module_async(
         self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
+        module_id: str,
+    ) -> ia_cservice_20210806_models.DeleteModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_parameter_set_with_options_async(parameter_set_id, headers, runtime)
+        return await self.delete_module_with_options_async(module_id, headers, runtime)
 
     def delete_parameter_set_with_options(
         self,
@@ -1893,25 +2315,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_project(
+    def delete_parameter_set(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.DeleteProjectResponse:
+        parameter_set_id: str,
+    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(id, headers, runtime)
+        return self.delete_parameter_set_with_options(parameter_set_id, headers, runtime)
 
-    async def delete_project_async(
+    async def delete_parameter_set_async(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.DeleteProjectResponse:
+        parameter_set_id: str,
+    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(id, headers, runtime)
+        return await self.delete_parameter_set_with_options_async(parameter_set_id, headers, runtime)
 
     def delete_project_with_options(
         self,
-        id: str,
+        project_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteProjectResponse:
@@ -1922,7 +2344,7 @@ class Client(OpenApiClient):
             action='DeleteProject',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1936,7 +2358,7 @@ class Client(OpenApiClient):
 
     async def delete_project_with_options_async(
         self,
-        id: str,
+        project_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteProjectResponse:
@@ -1947,7 +2369,7 @@ class Client(OpenApiClient):
             action='DeleteProject',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1959,21 +2381,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_rabbitmq_publisher(
+    def delete_project(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
+        project_id: str,
+    ) -> ia_cservice_20210806_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_rabbitmq_publisher_with_options(publisher_id, headers, runtime)
+        return self.delete_project_with_options(project_id, headers, runtime)
 
-    async def delete_rabbitmq_publisher_async(
+    async def delete_project_async(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
+        project_id: str,
+    ) -> ia_cservice_20210806_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_rabbitmq_publisher_with_options_async(publisher_id, headers, runtime)
+        return await self.delete_project_with_options_async(project_id, headers, runtime)
 
     def delete_rabbitmq_publisher_with_options(
         self,
@@ -2025,21 +2447,157 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_resource_export_task(
+    def delete_rabbitmq_publisher(
         self,
-        export_task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
+        publisher_id: str,
+    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_export_task_with_options(export_task_id, headers, runtime)
+        return self.delete_rabbitmq_publisher_with_options(publisher_id, headers, runtime)
 
-    async def delete_resource_export_task_async(
+    async def delete_rabbitmq_publisher_async(
         self,
-        export_task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
+        publisher_id: str,
+    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_export_task_with_options_async(export_task_id, headers, runtime)
+        return await self.delete_rabbitmq_publisher_with_options_async(publisher_id, headers, runtime)
+
+    def delete_ram_policy_export_task_with_options(
+        self,
+        ram_policy_export_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ram_policy_export_task_with_options_async(
+        self,
+        ram_policy_export_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ram_policy_export_task(
+        self,
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
+
+    async def delete_ram_policy_export_task_async(
+        self,
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
+
+    def delete_ram_policy_export_task_version_with_options(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteRamPolicyExportTaskVersion',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ram_policy_export_task_version_with_options_async(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteRamPolicyExportTaskVersion',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ram_policy_export_task_version(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_ram_policy_export_task_version_with_options(ram_policy_export_task_id, export_version, headers, runtime)
+
+    async def delete_ram_policy_export_task_version_async(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_ram_policy_export_task_version_with_options_async(ram_policy_export_task_id, export_version, headers, runtime)
 
     def delete_resource_export_task_with_options(
         self,
@@ -2091,43 +2649,36 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_resource_link(
+    def delete_resource_export_task(
         self,
-        request: ia_cservice_20210806_models.DeleteResourceLinkRequest,
-    ) -> ia_cservice_20210806_models.DeleteResourceLinkResponse:
+        export_task_id: str,
+    ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_resource_link_with_options(request, headers, runtime)
+        return self.delete_resource_export_task_with_options(export_task_id, headers, runtime)
 
-    async def delete_resource_link_async(
+    async def delete_resource_export_task_async(
         self,
-        request: ia_cservice_20210806_models.DeleteResourceLinkRequest,
-    ) -> ia_cservice_20210806_models.DeleteResourceLinkResponse:
+        export_task_id: str,
+    ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_resource_link_with_options_async(request, headers, runtime)
+        return await self.delete_resource_export_task_with_options_async(export_task_id, headers, runtime)
 
-    def delete_resource_link_with_options(
+    def delete_scene_testing_task_with_options(
         self,
-        request: ia_cservice_20210806_models.DeleteResourceLinkRequest,
+        task_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteResourceLinkResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.product_code):
-            query['productCode'] = request.product_code
-        if not UtilClient.is_unset(request.resource_type_code):
-            query['resourceTypeCode'] = request.resource_type_code
+    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteResourceLink',
+            action='DeleteSceneTestingTask',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/resources',
+            pathname=f'/sceneTestingTask/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2135,31 +2686,24 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteResourceLinkResponse(),
+            ia_cservice_20210806_models.DeleteSceneTestingTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_resource_link_with_options_async(
+    async def delete_scene_testing_task_with_options_async(
         self,
-        request: ia_cservice_20210806_models.DeleteResourceLinkRequest,
+        task_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteResourceLinkResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.product_code):
-            query['productCode'] = request.product_code
-        if not UtilClient.is_unset(request.resource_type_code):
-            query['resourceTypeCode'] = request.resource_type_code
+    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteResourceLink',
+            action='DeleteSceneTestingTask',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/resources',
+            pathname=f'/sceneTestingTask/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2167,25 +2711,25 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteResourceLinkResponse(),
+            ia_cservice_20210806_models.DeleteSceneTestingTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_task(
+    def delete_scene_testing_task(
         self,
         task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteTaskResponse:
+    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_task_with_options(task_id, headers, runtime)
+        return self.delete_scene_testing_task_with_options(task_id, headers, runtime)
 
-    async def delete_task_async(
+    async def delete_scene_testing_task_async(
         self,
         task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteTaskResponse:
+    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_task_with_options_async(task_id, headers, runtime)
+        return await self.delete_scene_testing_task_with_options_async(task_id, headers, runtime)
 
     def delete_task_with_options(
         self,
@@ -2237,23 +2781,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def detach_rabbitmq_publisher(
+    def delete_task(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
+        task_id: str,
+    ) -> ia_cservice_20210806_models.DeleteTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.detach_rabbitmq_publisher_with_options(publisher_id, request, headers, runtime)
+        return self.delete_task_with_options(task_id, headers, runtime)
 
-    async def detach_rabbitmq_publisher_async(
+    async def delete_task_async(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
+        task_id: str,
+    ) -> ia_cservice_20210806_models.DeleteTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.detach_rabbitmq_publisher_with_options_async(publisher_id, request, headers, runtime)
+        return await self.delete_task_with_options_async(task_id, headers, runtime)
 
     def detach_rabbitmq_publisher_with_options(
         self,
@@ -2317,21 +2859,115 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def dissociate_parameter_set(
+    def detach_rabbitmq_publisher(
         self,
-        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
+        publisher_id: str,
+        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
+    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.dissociate_parameter_set_with_options(request, headers, runtime)
+        return self.detach_rabbitmq_publisher_with_options(publisher_id, request, headers, runtime)
 
-    async def dissociate_parameter_set_async(
+    async def detach_rabbitmq_publisher_async(
         self,
-        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
+        publisher_id: str,
+        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
+    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.dissociate_parameter_set_with_options_async(request, headers, runtime)
+        return await self.detach_rabbitmq_publisher_with_options_async(publisher_id, request, headers, runtime)
+
+    def dissociate_group_with_options(
+        self,
+        project_id: str,
+        group_id: str,
+        request: ia_cservice_20210806_models.DissociateGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.DissociateGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_ids):
+            body['resourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DissociateGroup',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/dissociate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.DissociateGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dissociate_group_with_options_async(
+        self,
+        project_id: str,
+        group_id: str,
+        request: ia_cservice_20210806_models.DissociateGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.DissociateGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_ids):
+            body['resourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DissociateGroup',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/dissociate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.DissociateGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dissociate_group(
+        self,
+        project_id: str,
+        group_id: str,
+        request: ia_cservice_20210806_models.DissociateGroupRequest,
+    ) -> ia_cservice_20210806_models.DissociateGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.dissociate_group_with_options(project_id, group_id, request, headers, runtime)
+
+    async def dissociate_group_async(
+        self,
+        project_id: str,
+        group_id: str,
+        request: ia_cservice_20210806_models.DissociateGroupRequest,
+    ) -> ia_cservice_20210806_models.DissociateGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.dissociate_group_with_options_async(project_id, group_id, request, headers, runtime)
 
     def dissociate_parameter_set_with_options(
         self,
@@ -2401,107 +3037,87 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def dissociate_task_group(
+    def dissociate_parameter_set(
         self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.DissociateTaskGroupRequest,
-    ) -> ia_cservice_20210806_models.DissociateTaskGroupResponse:
+        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
+    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.dissociate_task_group_with_options(project_id, group_id, request, headers, runtime)
+        return self.dissociate_parameter_set_with_options(request, headers, runtime)
 
-    async def dissociate_task_group_async(
+    async def dissociate_parameter_set_async(
         self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.DissociateTaskGroupRequest,
-    ) -> ia_cservice_20210806_models.DissociateTaskGroupResponse:
+        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
+    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.dissociate_task_group_with_options_async(project_id, group_id, request, headers, runtime)
+        return await self.dissociate_parameter_set_with_options_async(request, headers, runtime)
 
-    def dissociate_task_group_with_options(
+    def execute_ram_policy_export_task_with_options(
         self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.DissociateTaskGroupRequest,
+        ram_policy_export_task_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DissociateTaskGroupResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_ids):
-            body['taskIds'] = request.task_ids
+    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='DissociateTaskGroup',
+            action='ExecuteRamPolicyExportTask',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/dissociate',
-            method='POST',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/execute',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DissociateTaskGroupResponse(),
+            ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def dissociate_task_group_with_options_async(
+    async def execute_ram_policy_export_task_with_options_async(
         self,
-        project_id: str,
-        group_id: str,
-        request: ia_cservice_20210806_models.DissociateTaskGroupRequest,
+        ram_policy_export_task_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DissociateTaskGroupResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_ids):
-            body['taskIds'] = request.task_ids
+    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='DissociateTaskGroup',
+            action='ExecuteRamPolicyExportTask',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/dissociate',
-            method='POST',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/execute',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DissociateTaskGroupResponse(),
+            ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def execute_resource_export_task(
+    def execute_ram_policy_export_task(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.ExecuteResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.ExecuteResourceExportTaskResponse:
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.execute_resource_export_task_with_options(export_task_id, request, headers, runtime)
+        return self.execute_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
 
-    async def execute_resource_export_task_async(
+    async def execute_ram_policy_export_task_async(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.ExecuteResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.ExecuteResourceExportTaskResponse:
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.execute_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
+        return await self.execute_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
 
     def execute_resource_export_task_with_options(
         self,
@@ -2569,25 +3185,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_group(
+    def execute_resource_export_task(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.GetGroupResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.ExecuteResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.ExecuteResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_group_with_options(id, headers, runtime)
+        return self.execute_resource_export_task_with_options(export_task_id, request, headers, runtime)
 
-    async def get_group_async(
+    async def execute_resource_export_task_async(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.GetGroupResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.ExecuteResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.ExecuteResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_group_with_options_async(id, headers, runtime)
+        return await self.execute_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
 
     def get_group_with_options(
         self,
-        id: str,
+        group_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetGroupResponse:
@@ -2598,7 +3216,7 @@ class Client(OpenApiClient):
             action='GetGroup',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2612,7 +3230,7 @@ class Client(OpenApiClient):
 
     async def get_group_with_options_async(
         self,
-        id: str,
+        group_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetGroupResponse:
@@ -2623,7 +3241,7 @@ class Client(OpenApiClient):
             action='GetGroup',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2635,23 +3253,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_job(
+    def get_group(
         self,
-        task_id: str,
-        job_id: str,
-    ) -> ia_cservice_20210806_models.GetJobResponse:
+        group_id: str,
+    ) -> ia_cservice_20210806_models.GetGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_job_with_options(task_id, job_id, headers, runtime)
+        return self.get_group_with_options(group_id, headers, runtime)
 
-    async def get_job_async(
+    async def get_group_async(
         self,
-        task_id: str,
-        job_id: str,
-    ) -> ia_cservice_20210806_models.GetJobResponse:
+        group_id: str,
+    ) -> ia_cservice_20210806_models.GetGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_job_with_options_async(task_id, job_id, headers, runtime)
+        return await self.get_group_with_options_async(group_id, headers, runtime)
 
     def get_job_with_options(
         self,
@@ -2705,21 +3321,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_module(
+    def get_job(
         self,
-        module_id: str,
-    ) -> ia_cservice_20210806_models.GetModuleResponse:
+        task_id: str,
+        job_id: str,
+    ) -> ia_cservice_20210806_models.GetJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_module_with_options(module_id, headers, runtime)
+        return self.get_job_with_options(task_id, job_id, headers, runtime)
 
-    async def get_module_async(
+    async def get_job_async(
         self,
-        module_id: str,
-    ) -> ia_cservice_20210806_models.GetModuleResponse:
+        task_id: str,
+        job_id: str,
+    ) -> ia_cservice_20210806_models.GetJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_module_with_options_async(module_id, headers, runtime)
+        return await self.get_job_with_options_async(task_id, job_id, headers, runtime)
 
     def get_module_with_options(
         self,
@@ -2771,21 +3389,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_module_market(
+    def get_module(
         self,
-        module_market_id: str,
-    ) -> ia_cservice_20210806_models.GetModuleMarketResponse:
+        module_id: str,
+    ) -> ia_cservice_20210806_models.GetModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_module_market_with_options(module_market_id, headers, runtime)
+        return self.get_module_with_options(module_id, headers, runtime)
 
-    async def get_module_market_async(
+    async def get_module_async(
         self,
-        module_market_id: str,
-    ) -> ia_cservice_20210806_models.GetModuleMarketResponse:
+        module_id: str,
+    ) -> ia_cservice_20210806_models.GetModuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_module_market_with_options_async(module_market_id, headers, runtime)
+        return await self.get_module_with_options_async(module_id, headers, runtime)
 
     def get_module_market_with_options(
         self,
@@ -2837,23 +3455,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_module_version(
+    def get_module_market(
         self,
-        module_id: str,
-        module_version: str,
-    ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
+        module_market_id: str,
+    ) -> ia_cservice_20210806_models.GetModuleMarketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_module_version_with_options(module_id, module_version, headers, runtime)
+        return self.get_module_market_with_options(module_market_id, headers, runtime)
 
-    async def get_module_version_async(
+    async def get_module_market_async(
         self,
-        module_id: str,
-        module_version: str,
-    ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
+        module_market_id: str,
+    ) -> ia_cservice_20210806_models.GetModuleMarketResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_module_version_with_options_async(module_id, module_version, headers, runtime)
+        return await self.get_module_market_with_options_async(module_market_id, headers, runtime)
 
     def get_module_version_with_options(
         self,
@@ -2907,21 +3523,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_parameter_set(
+    def get_module_version(
         self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
+        module_id: str,
+        module_version: str,
+    ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_parameter_set_with_options(parameter_set_id, headers, runtime)
+        return self.get_module_version_with_options(module_id, module_version, headers, runtime)
 
-    async def get_parameter_set_async(
+    async def get_module_version_async(
         self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
+        module_id: str,
+        module_version: str,
+    ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_parameter_set_with_options_async(parameter_set_id, headers, runtime)
+        return await self.get_module_version_with_options_async(module_id, module_version, headers, runtime)
 
     def get_parameter_set_with_options(
         self,
@@ -2973,25 +3591,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_project(
+    def get_parameter_set(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.GetProjectResponse:
+        parameter_set_id: str,
+    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(id, headers, runtime)
+        return self.get_parameter_set_with_options(parameter_set_id, headers, runtime)
 
-    async def get_project_async(
+    async def get_parameter_set_async(
         self,
-        id: str,
-    ) -> ia_cservice_20210806_models.GetProjectResponse:
+        parameter_set_id: str,
+    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(id, headers, runtime)
+        return await self.get_parameter_set_with_options_async(parameter_set_id, headers, runtime)
 
     def get_project_with_options(
         self,
-        id: str,
+        project_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetProjectResponse:
@@ -3002,7 +3620,7 @@ class Client(OpenApiClient):
             action='GetProject',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3016,7 +3634,7 @@ class Client(OpenApiClient):
 
     async def get_project_with_options_async(
         self,
-        id: str,
+        project_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetProjectResponse:
@@ -3027,7 +3645,7 @@ class Client(OpenApiClient):
             action='GetProject',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3039,23 +3657,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_project_build_config(
+    def get_project(
         self,
         project_id: str,
-        request: ia_cservice_20210806_models.GetProjectBuildConfigRequest,
-    ) -> ia_cservice_20210806_models.GetProjectBuildConfigResponse:
+    ) -> ia_cservice_20210806_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_build_config_with_options(project_id, request, headers, runtime)
+        return self.get_project_with_options(project_id, headers, runtime)
 
-    async def get_project_build_config_async(
+    async def get_project_async(
         self,
         project_id: str,
-        request: ia_cservice_20210806_models.GetProjectBuildConfigRequest,
-    ) -> ia_cservice_20210806_models.GetProjectBuildConfigResponse:
+    ) -> ia_cservice_20210806_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_build_config_with_options_async(project_id, request, headers, runtime)
+        return await self.get_project_with_options_async(project_id, headers, runtime)
 
     def get_project_build_config_with_options(
         self,
@@ -3119,23 +3735,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_project_build_context(
+    def get_project_build_config(
         self,
         project_id: str,
-        project_build_id: str,
-    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
+        request: ia_cservice_20210806_models.GetProjectBuildConfigRequest,
+    ) -> ia_cservice_20210806_models.GetProjectBuildConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_build_context_with_options(project_id, project_build_id, headers, runtime)
+        return self.get_project_build_config_with_options(project_id, request, headers, runtime)
 
-    async def get_project_build_context_async(
+    async def get_project_build_config_async(
         self,
         project_id: str,
-        project_build_id: str,
-    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
+        request: ia_cservice_20210806_models.GetProjectBuildConfigRequest,
+    ) -> ia_cservice_20210806_models.GetProjectBuildConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_build_context_with_options_async(project_id, project_build_id, headers, runtime)
+        return await self.get_project_build_config_with_options_async(project_id, request, headers, runtime)
 
     def get_project_build_context_with_options(
         self,
@@ -3189,21 +3805,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_project_job_summary(
+    def get_project_build_context(
         self,
         project_id: str,
-    ) -> ia_cservice_20210806_models.GetProjectJobSummaryResponse:
+        project_build_id: str,
+    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_job_summary_with_options(project_id, headers, runtime)
+        return self.get_project_build_context_with_options(project_id, project_build_id, headers, runtime)
 
-    async def get_project_job_summary_async(
+    async def get_project_build_context_async(
         self,
         project_id: str,
-    ) -> ia_cservice_20210806_models.GetProjectJobSummaryResponse:
+        project_build_id: str,
+    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_job_summary_with_options_async(project_id, headers, runtime)
+        return await self.get_project_build_context_with_options_async(project_id, project_build_id, headers, runtime)
 
     def get_project_job_summary_with_options(
         self,
@@ -3211,6 +3829,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetProjectJobSummaryResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectJobSummaryResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3236,6 +3862,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetProjectJobSummaryResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectJobSummaryResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3255,21 +3889,33 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_project_resource_summary(
+    def get_project_job_summary(
         self,
         project_id: str,
-    ) -> ia_cservice_20210806_models.GetProjectResourceSummaryResponse:
+    ) -> ia_cservice_20210806_models.GetProjectJobSummaryResponse:
+        """
+        @deprecated
+        
+        @return: GetProjectJobSummaryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_resource_summary_with_options(project_id, headers, runtime)
+        return self.get_project_job_summary_with_options(project_id, headers, runtime)
 
-    async def get_project_resource_summary_async(
+    async def get_project_job_summary_async(
         self,
         project_id: str,
-    ) -> ia_cservice_20210806_models.GetProjectResourceSummaryResponse:
+    ) -> ia_cservice_20210806_models.GetProjectJobSummaryResponse:
+        """
+        @deprecated
+        
+        @return: GetProjectJobSummaryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_resource_summary_with_options_async(project_id, headers, runtime)
+        return await self.get_project_job_summary_with_options_async(project_id, headers, runtime)
 
     def get_project_resource_summary_with_options(
         self,
@@ -3277,6 +3923,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetProjectResourceSummaryResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResourceSummaryResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3302,6 +3956,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetProjectResourceSummaryResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResourceSummaryResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3321,21 +3983,33 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_rabbitmq_publisher(
+    def get_project_resource_summary(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
+        project_id: str,
+    ) -> ia_cservice_20210806_models.GetProjectResourceSummaryResponse:
+        """
+        @deprecated
+        
+        @return: GetProjectResourceSummaryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_rabbitmq_publisher_with_options(publisher_id, headers, runtime)
+        return self.get_project_resource_summary_with_options(project_id, headers, runtime)
 
-    async def get_rabbitmq_publisher_async(
+    async def get_project_resource_summary_async(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
+        project_id: str,
+    ) -> ia_cservice_20210806_models.GetProjectResourceSummaryResponse:
+        """
+        @deprecated
+        
+        @return: GetProjectResourceSummaryResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_rabbitmq_publisher_with_options_async(publisher_id, headers, runtime)
+        return await self.get_project_resource_summary_with_options_async(project_id, headers, runtime)
 
     def get_rabbitmq_publisher_with_options(
         self,
@@ -3387,23 +4061,157 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_resource_export_task(
+    def get_rabbitmq_publisher(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.GetResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.GetResourceExportTaskResponse:
+        publisher_id: str,
+    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_resource_export_task_with_options(export_task_id, request, headers, runtime)
+        return self.get_rabbitmq_publisher_with_options(publisher_id, headers, runtime)
 
-    async def get_resource_export_task_async(
+    async def get_rabbitmq_publisher_async(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.GetResourceExportTaskRequest,
-    ) -> ia_cservice_20210806_models.GetResourceExportTaskResponse:
+        publisher_id: str,
+    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
+        return await self.get_rabbitmq_publisher_with_options_async(publisher_id, headers, runtime)
+
+    def get_ram_policy_export_task_with_options(
+        self,
+        ram_policy_export_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetRamPolicyExportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ram_policy_export_task_with_options_async(
+        self,
+        ram_policy_export_task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRamPolicyExportTask',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetRamPolicyExportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ram_policy_export_task(
+        self,
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
+
+    async def get_ram_policy_export_task_async(
+        self,
+        ram_policy_export_task_id: str,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
+
+    def get_ram_policy_export_task_version_with_options(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRamPolicyExportTaskVersion',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ram_policy_export_task_version_with_options_async(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRamPolicyExportTaskVersion',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ram_policy_export_task_version(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_ram_policy_export_task_version_with_options(ram_policy_export_task_id, export_version, headers, runtime)
+
+    async def get_ram_policy_export_task_version_async(
+        self,
+        ram_policy_export_task_id: str,
+        export_version: str,
+    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_ram_policy_export_task_version_with_options_async(ram_policy_export_task_id, export_version, headers, runtime)
 
     def get_resource_export_task_with_options(
         self,
@@ -3467,101 +4275,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_resource_link(
+    def get_resource_export_task(
         self,
-        request: ia_cservice_20210806_models.GetResourceLinkRequest,
-    ) -> ia_cservice_20210806_models.GetResourceLinkResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.GetResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.GetResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_resource_link_with_options(request, headers, runtime)
+        return self.get_resource_export_task_with_options(export_task_id, request, headers, runtime)
 
-    async def get_resource_link_async(
+    async def get_resource_export_task_async(
         self,
-        request: ia_cservice_20210806_models.GetResourceLinkRequest,
-    ) -> ia_cservice_20210806_models.GetResourceLinkResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.GetResourceExportTaskRequest,
+    ) -> ia_cservice_20210806_models.GetResourceExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_resource_link_with_options_async(request, headers, runtime)
-
-    def get_resource_link_with_options(
-        self,
-        request: ia_cservice_20210806_models.GetResourceLinkRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetResourceLinkResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.product_code):
-            query['productCode'] = request.product_code
-        if not UtilClient.is_unset(request.resource_type_code):
-            query['resourceTypeCode'] = request.resource_type_code
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResourceLink',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/resources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetResourceLinkResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_resource_link_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.GetResourceLinkRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetResourceLinkResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.product_code):
-            query['productCode'] = request.product_code
-        if not UtilClient.is_unset(request.resource_type_code):
-            query['resourceTypeCode'] = request.resource_type_code
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetResourceLink',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/resources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetResourceLinkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_task(
-        self,
-        task_id: str,
-    ) -> ia_cservice_20210806_models.GetTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_task_with_options(task_id, headers, runtime)
-
-    async def get_task_async(
-        self,
-        task_id: str,
-    ) -> ia_cservice_20210806_models.GetTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_task_with_options_async(task_id, headers, runtime)
+        return await self.get_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
 
     def get_task_with_options(
         self,
@@ -3613,36 +4343,42 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_task_context(
+    def get_task(
         self,
         task_id: str,
-    ) -> ia_cservice_20210806_models.GetTaskContextResponse:
+    ) -> ia_cservice_20210806_models.GetTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_task_context_with_options(task_id, headers, runtime)
+        return self.get_task_with_options(task_id, headers, runtime)
 
-    async def get_task_context_async(
+    async def get_task_async(
         self,
         task_id: str,
-    ) -> ia_cservice_20210806_models.GetTaskContextResponse:
+    ) -> ia_cservice_20210806_models.GetTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_task_context_with_options_async(task_id, headers, runtime)
+        return await self.get_task_with_options_async(task_id, headers, runtime)
 
-    def get_task_context_with_options(
+    def get_task_policy_with_options(
         self,
-        task_id: str,
+        group_id: str,
+        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetTaskContextResponse:
+    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetTaskContext',
+            action='GetTaskPolicy',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/context',
+            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3650,24 +4386,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetTaskContextResponse(),
+            ia_cservice_20210806_models.GetTaskPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_task_context_with_options_async(
+    async def get_task_policy_with_options_async(
         self,
-        task_id: str,
+        group_id: str,
+        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetTaskContextResponse:
+    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetTaskContext',
+            action='GetTaskPolicy',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/context',
+            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3675,25 +4417,27 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetTaskContextResponse(),
+            ia_cservice_20210806_models.GetTaskPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_authorizations(
+    def get_task_policy(
         self,
-        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
-    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
+        group_id: str,
+        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
+    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_authorizations_with_options(request, headers, runtime)
+        return self.get_task_policy_with_options(group_id, request, headers, runtime)
 
-    async def list_authorizations_async(
+    async def get_task_policy_async(
         self,
-        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
-    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
+        group_id: str,
+        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
+    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_authorizations_with_options_async(request, headers, runtime)
+        return await self.get_task_policy_with_options_async(group_id, request, headers, runtime)
 
     def list_authorizations_with_options(
         self,
@@ -3771,21 +4515,105 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_group(
+    def list_authorizations(
         self,
-        request: ia_cservice_20210806_models.ListGroupRequest,
-    ) -> ia_cservice_20210806_models.ListGroupResponse:
+        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
+    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_group_with_options(request, headers, runtime)
+        return self.list_authorizations_with_options(request, headers, runtime)
 
-    async def list_group_async(
+    async def list_authorizations_async(
         self,
-        request: ia_cservice_20210806_models.ListGroupRequest,
-    ) -> ia_cservice_20210806_models.ListGroupResponse:
+        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
+    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_group_with_options_async(request, headers, runtime)
+        return await self.list_authorizations_with_options_async(request, headers, runtime)
+
+    def list_available_terraform_versions_with_options(
+        self,
+        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['keyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvailableTerraformVersions',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/version/terraform',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_available_terraform_versions_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['keyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvailableTerraformVersions',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/version/terraform',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_available_terraform_versions(
+        self,
+        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_available_terraform_versions_with_options(request, headers, runtime)
+
+    async def list_available_terraform_versions_async(
+        self,
+        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_available_terraform_versions_with_options_async(request, headers, runtime)
 
     def list_group_with_options(
         self,
@@ -3855,23 +4683,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_jobs(
+    def list_group(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.ListJobsRequest,
-    ) -> ia_cservice_20210806_models.ListJobsResponse:
+        request: ia_cservice_20210806_models.ListGroupRequest,
+    ) -> ia_cservice_20210806_models.ListGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_jobs_with_options(task_id, request, headers, runtime)
+        return self.list_group_with_options(request, headers, runtime)
 
-    async def list_jobs_async(
+    async def list_group_async(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.ListJobsRequest,
-    ) -> ia_cservice_20210806_models.ListJobsResponse:
+        request: ia_cservice_20210806_models.ListGroupRequest,
+    ) -> ia_cservice_20210806_models.ListGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_jobs_with_options_async(task_id, request, headers, runtime)
+        return await self.list_group_with_options_async(request, headers, runtime)
 
     def list_jobs_with_options(
         self,
@@ -3943,21 +4769,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_module_markets(
+    def list_jobs(
         self,
-        request: ia_cservice_20210806_models.ListModuleMarketsRequest,
-    ) -> ia_cservice_20210806_models.ListModuleMarketsResponse:
+        task_id: str,
+        request: ia_cservice_20210806_models.ListJobsRequest,
+    ) -> ia_cservice_20210806_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_module_markets_with_options(request, headers, runtime)
+        return self.list_jobs_with_options(task_id, request, headers, runtime)
 
-    async def list_module_markets_async(
+    async def list_jobs_async(
         self,
-        request: ia_cservice_20210806_models.ListModuleMarketsRequest,
-    ) -> ia_cservice_20210806_models.ListModuleMarketsResponse:
+        task_id: str,
+        request: ia_cservice_20210806_models.ListJobsRequest,
+    ) -> ia_cservice_20210806_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_module_markets_with_options_async(request, headers, runtime)
+        return await self.list_jobs_with_options_async(task_id, request, headers, runtime)
 
     def list_module_markets_with_options(
         self,
@@ -4035,23 +4863,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_module_version(
+    def list_module_markets(
         self,
-        module_id: str,
-        request: ia_cservice_20210806_models.ListModuleVersionRequest,
-    ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
+        request: ia_cservice_20210806_models.ListModuleMarketsRequest,
+    ) -> ia_cservice_20210806_models.ListModuleMarketsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_module_version_with_options(module_id, request, headers, runtime)
+        return self.list_module_markets_with_options(request, headers, runtime)
 
-    async def list_module_version_async(
+    async def list_module_markets_async(
         self,
-        module_id: str,
-        request: ia_cservice_20210806_models.ListModuleVersionRequest,
-    ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
+        request: ia_cservice_20210806_models.ListModuleMarketsRequest,
+    ) -> ia_cservice_20210806_models.ListModuleMarketsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_module_version_with_options_async(module_id, request, headers, runtime)
+        return await self.list_module_markets_with_options_async(request, headers, runtime)
 
     def list_module_version_with_options(
         self,
@@ -4123,21 +4949,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_modules(
+    def list_module_version(
         self,
-        request: ia_cservice_20210806_models.ListModulesRequest,
-    ) -> ia_cservice_20210806_models.ListModulesResponse:
+        module_id: str,
+        request: ia_cservice_20210806_models.ListModuleVersionRequest,
+    ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_modules_with_options(request, headers, runtime)
+        return self.list_module_version_with_options(module_id, request, headers, runtime)
 
-    async def list_modules_async(
+    async def list_module_version_async(
         self,
-        request: ia_cservice_20210806_models.ListModulesRequest,
-    ) -> ia_cservice_20210806_models.ListModulesResponse:
+        module_id: str,
+        request: ia_cservice_20210806_models.ListModuleVersionRequest,
+    ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_modules_with_options_async(request, headers, runtime)
+        return await self.list_module_version_with_options_async(module_id, request, headers, runtime)
 
     def list_modules_with_options(
         self,
@@ -4147,12 +4975,16 @@ class Client(OpenApiClient):
     ) -> ia_cservice_20210806_models.ListModulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['projectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4181,12 +5013,16 @@ class Client(OpenApiClient):
     ) -> ia_cservice_20210806_models.ListModulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['projectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4207,21 +5043,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_parameter_set_relation(
+    def list_modules(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
+        request: ia_cservice_20210806_models.ListModulesRequest,
+    ) -> ia_cservice_20210806_models.ListModulesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_parameter_set_relation_with_options(request, headers, runtime)
+        return self.list_modules_with_options(request, headers, runtime)
 
-    async def list_parameter_set_relation_async(
+    async def list_modules_async(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
+        request: ia_cservice_20210806_models.ListModulesRequest,
+    ) -> ia_cservice_20210806_models.ListModulesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_parameter_set_relation_with_options_async(request, headers, runtime)
+        return await self.list_modules_with_options_async(request, headers, runtime)
 
     def list_parameter_set_relation_with_options(
         self,
@@ -4287,21 +5123,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_parameter_sets(
+    def list_parameter_set_relation(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetsRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
+        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
+    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_parameter_sets_with_options(request, headers, runtime)
+        return self.list_parameter_set_relation_with_options(request, headers, runtime)
 
-    async def list_parameter_sets_async(
+    async def list_parameter_set_relation_async(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetsRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
+        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
+    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_parameter_sets_with_options_async(request, headers, runtime)
+        return await self.list_parameter_set_relation_with_options_async(request, headers, runtime)
 
     def list_parameter_sets_with_options(
         self,
@@ -4371,21 +5207,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_project(
+    def list_parameter_sets(
         self,
-        request: ia_cservice_20210806_models.ListProjectRequest,
-    ) -> ia_cservice_20210806_models.ListProjectResponse:
+        request: ia_cservice_20210806_models.ListParameterSetsRequest,
+    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_with_options(request, headers, runtime)
+        return self.list_parameter_sets_with_options(request, headers, runtime)
 
-    async def list_project_async(
+    async def list_parameter_sets_async(
         self,
-        request: ia_cservice_20210806_models.ListProjectRequest,
-    ) -> ia_cservice_20210806_models.ListProjectResponse:
+        request: ia_cservice_20210806_models.ListParameterSetsRequest,
+    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_with_options_async(request, headers, runtime)
+        return await self.list_parameter_sets_with_options_async(request, headers, runtime)
 
     def list_project_with_options(
         self,
@@ -4451,30 +5287,42 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_project_builds(
+    def list_project(
         self,
-        project_id: str,
-    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+        request: ia_cservice_20210806_models.ListProjectRequest,
+    ) -> ia_cservice_20210806_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_builds_with_options(project_id, headers, runtime)
+        return self.list_project_with_options(request, headers, runtime)
 
-    async def list_project_builds_async(
+    async def list_project_async(
         self,
-        project_id: str,
-    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+        request: ia_cservice_20210806_models.ListProjectRequest,
+    ) -> ia_cservice_20210806_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_builds_with_options_async(project_id, headers, runtime)
+        return await self.list_project_with_options_async(request, headers, runtime)
 
     def list_project_builds_with_options(
         self,
         project_id: str,
+        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_build_action):
+            query['projectBuildAction'] = request.project_build_action
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListProjectBuilds',
@@ -4495,11 +5343,23 @@ class Client(OpenApiClient):
     async def list_project_builds_with_options_async(
         self,
         project_id: str,
+        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_build_action):
+            query['projectBuildAction'] = request.project_build_action
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListProjectBuilds',
@@ -4517,21 +5377,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_rabbitmq_publishers(
+    def list_project_builds(
         self,
-        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
-    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
+        project_id: str,
+        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
+    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_rabbitmq_publishers_with_options(request, headers, runtime)
+        return self.list_project_builds_with_options(project_id, request, headers, runtime)
 
-    async def list_rabbitmq_publishers_async(
+    async def list_project_builds_async(
         self,
-        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
-    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
+        project_id: str,
+        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
+    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_rabbitmq_publishers_with_options_async(request, headers, runtime)
+        return await self.list_project_builds_with_options_async(project_id, request, headers, runtime)
 
     def list_rabbitmq_publishers_with_options(
         self,
@@ -4601,36 +5463,46 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_relation_modules(
+    def list_rabbitmq_publishers(
         self,
-        type: str,
-    ) -> ia_cservice_20210806_models.ListRelationModulesResponse:
+        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
+    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_relation_modules_with_options(type, headers, runtime)
+        return self.list_rabbitmq_publishers_with_options(request, headers, runtime)
 
-    async def list_relation_modules_async(
+    async def list_rabbitmq_publishers_async(
         self,
-        type: str,
-    ) -> ia_cservice_20210806_models.ListRelationModulesResponse:
+        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
+    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_relation_modules_with_options_async(type, headers, runtime)
+        return await self.list_rabbitmq_publishers_with_options_async(request, headers, runtime)
 
-    def list_relation_modules_with_options(
+    def list_ram_policy_export_task_versions_with_options(
         self,
-        type: str,
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRelationModulesResponse:
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRelationModules',
+            action='ListRamPolicyExportTaskVersions',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/modules/relation/{OpenApiUtilClient.get_encode_param(type)}',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4638,24 +5510,34 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRelationModulesResponse(),
+            ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_relation_modules_with_options_async(
+    async def list_ram_policy_export_task_versions_with_options_async(
         self,
-        type: str,
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRelationModulesResponse:
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRelationModules',
+            action='ListRamPolicyExportTaskVersions',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/modules/relation/{OpenApiUtilClient.get_encode_param(type)}',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4663,56 +5545,55 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRelationModulesResponse(),
+            ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_relation_tasks(
+    def list_ram_policy_export_task_versions(
         self,
-        type: str,
-        request: ia_cservice_20210806_models.ListRelationTasksRequest,
-    ) -> ia_cservice_20210806_models.ListRelationTasksResponse:
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_relation_tasks_with_options(type, request, headers, runtime)
+        return self.list_ram_policy_export_task_versions_with_options(ram_policy_export_task_id, request, headers, runtime)
 
-    async def list_relation_tasks_async(
+    async def list_ram_policy_export_task_versions_async(
         self,
-        type: str,
-        request: ia_cservice_20210806_models.ListRelationTasksRequest,
-    ) -> ia_cservice_20210806_models.ListRelationTasksResponse:
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_relation_tasks_with_options_async(type, request, headers, runtime)
+        return await self.list_ram_policy_export_task_versions_with_options_async(ram_policy_export_task_id, request, headers, runtime)
 
-    def list_relation_tasks_with_options(
+    def list_ram_policy_export_tasks_with_options(
         self,
-        type: str,
-        request: ia_cservice_20210806_models.ListRelationTasksRequest,
+        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRelationTasksResponse:
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.module_id):
             query['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.module_version):
+            query['moduleVersion'] = request.module_version
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            query['projectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRelationTasks',
+            action='ListRamPolicyExportTasks',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/tasks/relation/{OpenApiUtilClient.get_encode_param(type)}',
+            pathname=f'/ramPolicyExportTasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4720,38 +5601,37 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRelationTasksResponse(),
+            ia_cservice_20210806_models.ListRamPolicyExportTasksResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_relation_tasks_with_options_async(
+    async def list_ram_policy_export_tasks_with_options_async(
         self,
-        type: str,
-        request: ia_cservice_20210806_models.ListRelationTasksRequest,
+        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRelationTasksResponse:
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.module_id):
             query['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.module_version):
+            query['moduleVersion'] = request.module_version
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_id):
-            query['projectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRelationTasks',
+            action='ListRamPolicyExportTasks',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/tasks/relation/{OpenApiUtilClient.get_encode_param(type)}',
+            pathname=f'/ramPolicyExportTasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4759,27 +5639,25 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRelationTasksResponse(),
+            ia_cservice_20210806_models.ListRamPolicyExportTasksResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resource_export_task_versions(
+    def list_ram_policy_export_tasks(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.ListResourceExportTaskVersionsRequest,
-    ) -> ia_cservice_20210806_models.ListResourceExportTaskVersionsResponse:
+        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resource_export_task_versions_with_options(export_task_id, request, headers, runtime)
+        return self.list_ram_policy_export_tasks_with_options(request, headers, runtime)
 
-    async def list_resource_export_task_versions_async(
+    async def list_ram_policy_export_tasks_async(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.ListResourceExportTaskVersionsRequest,
-    ) -> ia_cservice_20210806_models.ListResourceExportTaskVersionsResponse:
+        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
+    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resource_export_task_versions_with_options_async(export_task_id, request, headers, runtime)
+        return await self.list_ram_policy_export_tasks_with_options_async(request, headers, runtime)
 
     def list_resource_export_task_versions_with_options(
         self,
@@ -4859,21 +5737,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resource_export_tasks(
+    def list_resource_export_task_versions(
         self,
-        request: ia_cservice_20210806_models.ListResourceExportTasksRequest,
-    ) -> ia_cservice_20210806_models.ListResourceExportTasksResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.ListResourceExportTaskVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListResourceExportTaskVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resource_export_tasks_with_options(request, headers, runtime)
+        return self.list_resource_export_task_versions_with_options(export_task_id, request, headers, runtime)
 
-    async def list_resource_export_tasks_async(
+    async def list_resource_export_task_versions_async(
         self,
-        request: ia_cservice_20210806_models.ListResourceExportTasksRequest,
-    ) -> ia_cservice_20210806_models.ListResourceExportTasksResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.ListResourceExportTaskVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListResourceExportTaskVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resource_export_tasks_with_options_async(request, headers, runtime)
+        return await self.list_resource_export_task_versions_with_options_async(export_task_id, request, headers, runtime)
 
     def list_resource_export_tasks_with_options(
         self,
@@ -4947,21 +5827,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resources(
+    def list_resource_export_tasks(
         self,
-        request: ia_cservice_20210806_models.ListResourcesRequest,
-    ) -> ia_cservice_20210806_models.ListResourcesResponse:
+        request: ia_cservice_20210806_models.ListResourceExportTasksRequest,
+    ) -> ia_cservice_20210806_models.ListResourceExportTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resources_with_options(request, headers, runtime)
+        return self.list_resource_export_tasks_with_options(request, headers, runtime)
 
-    async def list_resources_async(
+    async def list_resource_export_tasks_async(
         self,
-        request: ia_cservice_20210806_models.ListResourcesRequest,
-    ) -> ia_cservice_20210806_models.ListResourcesResponse:
+        request: ia_cservice_20210806_models.ListResourceExportTasksRequest,
+    ) -> ia_cservice_20210806_models.ListResourceExportTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resources_with_options_async(request, headers, runtime)
+        return await self.list_resource_export_tasks_with_options_async(request, headers, runtime)
 
     def list_resources_with_options(
         self,
@@ -5039,23 +5919,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_task_resource(
+    def list_resources(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.ListTaskResourceRequest,
-    ) -> ia_cservice_20210806_models.ListTaskResourceResponse:
+        request: ia_cservice_20210806_models.ListResourcesRequest,
+    ) -> ia_cservice_20210806_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_task_resource_with_options(task_id, request, headers, runtime)
+        return self.list_resources_with_options(request, headers, runtime)
 
-    async def list_task_resource_async(
+    async def list_resources_async(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.ListTaskResourceRequest,
-    ) -> ia_cservice_20210806_models.ListTaskResourceResponse:
+        request: ia_cservice_20210806_models.ListResourcesRequest,
+    ) -> ia_cservice_20210806_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_task_resource_with_options_async(task_id, request, headers, runtime)
+        return await self.list_resources_with_options_async(request, headers, runtime)
 
     def list_task_resource_with_options(
         self,
@@ -5123,21 +6001,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tasks(
+    def list_task_resource(
         self,
-        request: ia_cservice_20210806_models.ListTasksRequest,
-    ) -> ia_cservice_20210806_models.ListTasksResponse:
+        task_id: str,
+        request: ia_cservice_20210806_models.ListTaskResourceRequest,
+    ) -> ia_cservice_20210806_models.ListTaskResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tasks_with_options(request, headers, runtime)
+        return self.list_task_resource_with_options(task_id, request, headers, runtime)
 
-    async def list_tasks_async(
+    async def list_task_resource_async(
         self,
-        request: ia_cservice_20210806_models.ListTasksRequest,
-    ) -> ia_cservice_20210806_models.ListTasksResponse:
+        task_id: str,
+        request: ia_cservice_20210806_models.ListTaskResourceRequest,
+    ) -> ia_cservice_20210806_models.ListTaskResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tasks_with_options_async(request, headers, runtime)
+        return await self.list_task_resource_with_options_async(task_id, request, headers, runtime)
 
     def list_tasks_with_options(
         self,
@@ -5223,27 +6103,105 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def operate_job(
+    def list_tasks(
         self,
-        task_id: str,
-        job_id: str,
-        operation_type: str,
-        request: ia_cservice_20210806_models.OperateJobRequest,
-    ) -> ia_cservice_20210806_models.OperateJobResponse:
+        request: ia_cservice_20210806_models.ListTasksRequest,
+    ) -> ia_cservice_20210806_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.operate_job_with_options(task_id, job_id, operation_type, request, headers, runtime)
+        return self.list_tasks_with_options(request, headers, runtime)
 
-    async def operate_job_async(
+    async def list_tasks_async(
         self,
-        task_id: str,
-        job_id: str,
-        operation_type: str,
-        request: ia_cservice_20210806_models.OperateJobRequest,
-    ) -> ia_cservice_20210806_models.OperateJobResponse:
+        request: ia_cservice_20210806_models.ListTasksRequest,
+    ) -> ia_cservice_20210806_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.operate_job_with_options_async(task_id, job_id, operation_type, request, headers, runtime)
+        return await self.list_tasks_with_options_async(request, headers, runtime)
+
+    def list_terraform_provider_versions_with_options(
+        self,
+        request: ia_cservice_20210806_models.ListTerraformProviderVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListTerraformProviderVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['keyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTerraformProviderVersions',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/version/terraform/provider',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListTerraformProviderVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_terraform_provider_versions_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.ListTerraformProviderVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListTerraformProviderVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['keyWord'] = request.key_word
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTerraformProviderVersions',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/version/terraform/provider',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListTerraformProviderVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_terraform_provider_versions(
+        self,
+        request: ia_cservice_20210806_models.ListTerraformProviderVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListTerraformProviderVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_terraform_provider_versions_with_options(request, headers, runtime)
+
+    async def list_terraform_provider_versions_async(
+        self,
+        request: ia_cservice_20210806_models.ListTerraformProviderVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListTerraformProviderVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_terraform_provider_versions_with_options_async(request, headers, runtime)
 
     def operate_job_with_options(
         self,
@@ -5311,23 +6269,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_resource_export_task_version(
+    def operate_job(
         self,
-        export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
+        task_id: str,
+        job_id: str,
+        operation_type: str,
+        request: ia_cservice_20210806_models.OperateJobRequest,
+    ) -> ia_cservice_20210806_models.OperateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_resource_export_task_version_with_options(export_task_id, export_version, headers, runtime)
+        return self.operate_job_with_options(task_id, job_id, operation_type, request, headers, runtime)
 
-    async def remove_resource_export_task_version_async(
+    async def operate_job_async(
         self,
-        export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
+        task_id: str,
+        job_id: str,
+        operation_type: str,
+        request: ia_cservice_20210806_models.OperateJobRequest,
+    ) -> ia_cservice_20210806_models.OperateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_resource_export_task_version_with_options_async(export_task_id, export_version, headers, runtime)
+        return await self.operate_job_with_options_async(task_id, job_id, operation_type, request, headers, runtime)
 
     def remove_resource_export_task_version_with_options(
         self,
@@ -5381,23 +6343,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_authorization_attribute(
+    def remove_resource_export_task_version(
         self,
-        authorization_id: str,
-        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
+        export_task_id: str,
+        export_version: str,
+    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_authorization_attribute_with_options(authorization_id, request, headers, runtime)
+        return self.remove_resource_export_task_version_with_options(export_task_id, export_version, headers, runtime)
 
-    async def update_authorization_attribute_async(
+    async def remove_resource_export_task_version_async(
         self,
-        authorization_id: str,
-        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
+        export_task_id: str,
+        export_version: str,
+    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_authorization_attribute_with_options_async(authorization_id, request, headers, runtime)
+        return await self.remove_resource_export_task_version_with_options_async(export_task_id, export_version, headers, runtime)
 
     def update_authorization_attribute_with_options(
         self,
@@ -5465,39 +6427,61 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_group(
+    def update_authorization_attribute(
         self,
-        id: str,
-        request: ia_cservice_20210806_models.UpdateGroupRequest,
-    ) -> ia_cservice_20210806_models.UpdateGroupResponse:
+        authorization_id: str,
+        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_group_with_options(id, request, headers, runtime)
+        return self.update_authorization_attribute_with_options(authorization_id, request, headers, runtime)
 
-    async def update_group_async(
+    async def update_authorization_attribute_async(
         self,
-        id: str,
-        request: ia_cservice_20210806_models.UpdateGroupRequest,
-    ) -> ia_cservice_20210806_models.UpdateGroupResponse:
+        authorization_id: str,
+        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_group_with_options_async(id, request, headers, runtime)
+        return await self.update_authorization_attribute_with_options_async(authorization_id, request, headers, runtime)
 
     def update_group_with_options(
         self,
-        id: str,
+        group_id: str,
         request: ia_cservice_20210806_models.UpdateGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.UpdateGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.auto_trigger):
+            body['autoTrigger'] = request.auto_trigger
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.forced_setting):
+            body['forcedSetting'] = request.forced_setting
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            body['notifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.notify_operation_types):
+            body['notifyOperationTypes'] = request.notify_operation_types
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.report_export_field):
+            body['reportExportField'] = request.report_export_field
+        if not UtilClient.is_unset(request.report_export_path):
+            body['reportExportPath'] = request.report_export_path
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        if not UtilClient.is_unset(request.trigger_resource_type):
+            body['triggerResourceType'] = request.trigger_resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5506,7 +6490,7 @@ class Client(OpenApiClient):
             action='UpdateGroup',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5520,19 +6504,41 @@ class Client(OpenApiClient):
 
     async def update_group_with_options_async(
         self,
-        id: str,
+        group_id: str,
         request: ia_cservice_20210806_models.UpdateGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.UpdateGroupResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.auto_trigger):
+            body['autoTrigger'] = request.auto_trigger
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.forced_setting):
+            body['forcedSetting'] = request.forced_setting
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            body['notifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.notify_operation_types):
+            body['notifyOperationTypes'] = request.notify_operation_types
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.report_export_field):
+            body['reportExportField'] = request.report_export_field
+        if not UtilClient.is_unset(request.report_export_path):
+            body['reportExportPath'] = request.report_export_path
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        if not UtilClient.is_unset(request.trigger_resource_type):
+            body['triggerResourceType'] = request.trigger_resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5541,7 +6547,7 @@ class Client(OpenApiClient):
             action='UpdateGroup',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5553,23 +6559,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_module_attribute(
+    def update_group(
         self,
-        module_id: str,
-        request: ia_cservice_20210806_models.UpdateModuleAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
+        group_id: str,
+        request: ia_cservice_20210806_models.UpdateGroupRequest,
+    ) -> ia_cservice_20210806_models.UpdateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_module_attribute_with_options(module_id, request, headers, runtime)
+        return self.update_group_with_options(group_id, request, headers, runtime)
 
-    async def update_module_attribute_async(
+    async def update_group_async(
         self,
-        module_id: str,
-        request: ia_cservice_20210806_models.UpdateModuleAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
+        group_id: str,
+        request: ia_cservice_20210806_models.UpdateGroupRequest,
+    ) -> ia_cservice_20210806_models.UpdateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_module_attribute_with_options_async(module_id, request, headers, runtime)
+        return await self.update_group_with_options_async(group_id, request, headers, runtime)
 
     def update_module_attribute_with_options(
         self,
@@ -5582,6 +6588,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.group_info):
+            body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.source):
@@ -5623,6 +6631,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.group_info):
+            body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.source):
@@ -5653,23 +6663,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_module_market_attribute(
+    def update_module_attribute(
         self,
-        module_market_id: str,
-        request: ia_cservice_20210806_models.UpdateModuleMarketAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateModuleMarketAttributeResponse:
+        module_id: str,
+        request: ia_cservice_20210806_models.UpdateModuleAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_module_market_attribute_with_options(module_market_id, request, headers, runtime)
+        return self.update_module_attribute_with_options(module_id, request, headers, runtime)
 
-    async def update_module_market_attribute_async(
+    async def update_module_attribute_async(
         self,
-        module_market_id: str,
-        request: ia_cservice_20210806_models.UpdateModuleMarketAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateModuleMarketAttributeResponse:
+        module_id: str,
+        request: ia_cservice_20210806_models.UpdateModuleAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_module_market_attribute_with_options_async(module_market_id, request, headers, runtime)
+        return await self.update_module_attribute_with_options_async(module_id, request, headers, runtime)
 
     def update_module_market_attribute_with_options(
         self,
@@ -5741,23 +6751,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_parameter_set_attribute(
+    def update_module_market_attribute(
         self,
-        parameter_set_id: str,
-        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
+        module_market_id: str,
+        request: ia_cservice_20210806_models.UpdateModuleMarketAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateModuleMarketAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_parameter_set_attribute_with_options(parameter_set_id, request, headers, runtime)
+        return self.update_module_market_attribute_with_options(module_market_id, request, headers, runtime)
 
-    async def update_parameter_set_attribute_async(
+    async def update_module_market_attribute_async(
         self,
-        parameter_set_id: str,
-        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
+        module_market_id: str,
+        request: ia_cservice_20210806_models.UpdateModuleMarketAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateModuleMarketAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_parameter_set_attribute_with_options_async(parameter_set_id, request, headers, runtime)
+        return await self.update_module_market_attribute_with_options_async(module_market_id, request, headers, runtime)
 
     def update_parameter_set_attribute_with_options(
         self,
@@ -5829,27 +6839,27 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_project(
+    def update_parameter_set_attribute(
         self,
-        id: str,
-        request: ia_cservice_20210806_models.UpdateProjectRequest,
-    ) -> ia_cservice_20210806_models.UpdateProjectResponse:
+        parameter_set_id: str,
+        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_project_with_options(id, request, headers, runtime)
+        return self.update_parameter_set_attribute_with_options(parameter_set_id, request, headers, runtime)
 
-    async def update_project_async(
+    async def update_parameter_set_attribute_async(
         self,
-        id: str,
-        request: ia_cservice_20210806_models.UpdateProjectRequest,
-    ) -> ia_cservice_20210806_models.UpdateProjectResponse:
+        parameter_set_id: str,
+        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_project_with_options_async(id, request, headers, runtime)
+        return await self.update_parameter_set_attribute_with_options_async(parameter_set_id, request, headers, runtime)
 
     def update_project_with_options(
         self,
-        id: str,
+        project_id: str,
         request: ia_cservice_20210806_models.UpdateProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -5870,7 +6880,7 @@ class Client(OpenApiClient):
             action='UpdateProject',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5884,7 +6894,7 @@ class Client(OpenApiClient):
 
     async def update_project_with_options_async(
         self,
-        id: str,
+        project_id: str,
         request: ia_cservice_20210806_models.UpdateProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -5905,7 +6915,7 @@ class Client(OpenApiClient):
             action='UpdateProject',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(id)}',
+            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5917,23 +6927,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_rabbitmq_publisher_attribute(
+    def update_project(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
+        project_id: str,
+        request: ia_cservice_20210806_models.UpdateProjectRequest,
+    ) -> ia_cservice_20210806_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_rabbitmq_publisher_attribute_with_options(publisher_id, request, headers, runtime)
+        return self.update_project_with_options(project_id, request, headers, runtime)
 
-    async def update_rabbitmq_publisher_attribute_async(
+    async def update_project_async(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
+        project_id: str,
+        request: ia_cservice_20210806_models.UpdateProjectRequest,
+    ) -> ia_cservice_20210806_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_rabbitmq_publisher_attribute_with_options_async(publisher_id, request, headers, runtime)
+        return await self.update_project_with_options_async(project_id, request, headers, runtime)
 
     def update_rabbitmq_publisher_attribute_with_options(
         self,
@@ -6009,23 +7019,131 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_resource_export_task_attribute(
+    def update_rabbitmq_publisher_attribute(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.UpdateResourceExportTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateResourceExportTaskAttributeResponse:
+        publisher_id: str,
+        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_resource_export_task_attribute_with_options(export_task_id, request, headers, runtime)
+        return self.update_rabbitmq_publisher_attribute_with_options(publisher_id, request, headers, runtime)
 
-    async def update_resource_export_task_attribute_async(
+    async def update_rabbitmq_publisher_attribute_async(
         self,
-        export_task_id: str,
-        request: ia_cservice_20210806_models.UpdateResourceExportTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateResourceExportTaskAttributeResponse:
+        publisher_id: str,
+        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_resource_export_task_attribute_with_options_async(export_task_id, request, headers, runtime)
+        return await self.update_rabbitmq_publisher_attribute_with_options_async(publisher_id, request, headers, runtime)
+
+    def update_ram_policy_export_task_attribute_with_options(
+        self,
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_account_ids):
+            body['authorizationAccountIds'] = request.authorization_account_ids
+        if not UtilClient.is_unset(request.authorization_actions):
+            body['authorizationActions'] = request.authorization_actions
+        if not UtilClient.is_unset(request.authorization_region_ids):
+            body['authorizationRegionIds'] = request.authorization_region_ids
+        if not UtilClient.is_unset(request.module_id):
+            body['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.module_version):
+            body['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.trigger_strategy):
+            body['triggerStrategy'] = request.trigger_strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRamPolicyExportTaskAttribute',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ram_policy_export_task_attribute_with_options_async(
+        self,
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.authorization_account_ids):
+            body['authorizationAccountIds'] = request.authorization_account_ids
+        if not UtilClient.is_unset(request.authorization_actions):
+            body['authorizationActions'] = request.authorization_actions
+        if not UtilClient.is_unset(request.authorization_region_ids):
+            body['authorizationRegionIds'] = request.authorization_region_ids
+        if not UtilClient.is_unset(request.module_id):
+            body['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.module_version):
+            body['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.ram_role):
+            body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.trigger_strategy):
+            body['triggerStrategy'] = request.trigger_strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRamPolicyExportTaskAttribute',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ram_policy_export_task_attribute(
+        self,
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_ram_policy_export_task_attribute_with_options(ram_policy_export_task_id, request, headers, runtime)
+
+    async def update_ram_policy_export_task_attribute_async(
+        self,
+        ram_policy_export_task_id: str,
+        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_ram_policy_export_task_attribute_with_options_async(ram_policy_export_task_id, request, headers, runtime)
 
     def update_resource_export_task_attribute_with_options(
         self,
@@ -6050,6 +7168,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
@@ -6099,6 +7219,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            body['terraformProviderVersion'] = request.terraform_provider_version
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
@@ -6125,23 +7247,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_task_attribute(
+    def update_resource_export_task_attribute(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.UpdateTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateTaskAttributeResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.UpdateResourceExportTaskAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateResourceExportTaskAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_task_attribute_with_options(task_id, request, headers, runtime)
+        return self.update_resource_export_task_attribute_with_options(export_task_id, request, headers, runtime)
 
-    async def update_task_attribute_async(
+    async def update_resource_export_task_attribute_async(
         self,
-        task_id: str,
-        request: ia_cservice_20210806_models.UpdateTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateTaskAttributeResponse:
+        export_task_id: str,
+        request: ia_cservice_20210806_models.UpdateResourceExportTaskAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateResourceExportTaskAttributeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_task_attribute_with_options_async(task_id, request, headers, runtime)
+        return await self.update_resource_export_task_attribute_with_options_async(export_task_id, request, headers, runtime)
 
     def update_task_attribute_with_options(
         self,
@@ -6154,6 +7276,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_apply):
             body['autoApply'] = request.auto_apply
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.module_id):
@@ -6172,6 +7298,8 @@ class Client(OpenApiClient):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.trigger_value):
+            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6203,6 +7331,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.auto_apply):
             body['autoApply'] = request.auto_apply
+        if not UtilClient.is_unset(request.auto_destroy):
+            body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.module_id):
@@ -6221,6 +7353,8 @@ class Client(OpenApiClient):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.trigger_value):
+            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6240,3 +7374,105 @@ class Client(OpenApiClient):
             ia_cservice_20210806_models.UpdateTaskAttributeResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_task_attribute(
+        self,
+        task_id: str,
+        request: ia_cservice_20210806_models.UpdateTaskAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateTaskAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_task_attribute_with_options(task_id, request, headers, runtime)
+
+    async def update_task_attribute_async(
+        self,
+        task_id: str,
+        request: ia_cservice_20210806_models.UpdateTaskAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateTaskAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_task_attribute_with_options_async(task_id, request, headers, runtime)
+
+    def update_task_policy_with_options(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.task_policies):
+            body['taskPolicies'] = request.task_policies
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskPolicy',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.UpdateTaskPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_policy_with_options_async(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.task_policies):
+            body['taskPolicies'] = request.task_policies
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskPolicy',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.UpdateTaskPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_policy(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
+    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_task_policy_with_options(group_id, request, headers, runtime)
+
+    async def update_task_policy_async(
+        self,
+        group_id: str,
+        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
+    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_task_policy_with_options_async(group_id, request, headers, runtime)
