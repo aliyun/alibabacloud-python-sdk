@@ -52,6 +52,20 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDeleteJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDeleteJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -90,6 +104,20 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDeleteJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDeleteJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -127,6 +155,19 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchDeleteJobsRequest,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDeleteJobsRequest
+        @return: BatchDeleteJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_delete_jobs_with_options(request, runtime)
 
@@ -134,6 +175,19 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchDeleteJobsRequest,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDeleteJobsRequest
+        @return: BatchDeleteJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_jobs_with_options_async(request, runtime)
 
@@ -142,6 +196,20 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDisableJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDisableJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDisableJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -180,6 +248,20 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDisableJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDisableJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDisableJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -217,6 +299,19 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchDisableJobsRequest,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDisableJobsRequest
+        @return: BatchDisableJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_disable_jobs_with_options(request, runtime)
 
@@ -224,6 +319,19 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchDisableJobsRequest,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchDisableJobsRequest
+        @return: BatchDisableJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_disable_jobs_with_options_async(request, runtime)
 
@@ -232,6 +340,20 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchEnableJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchEnableJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEnableJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -270,6 +392,20 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchEnableJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchEnableJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEnableJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -307,6 +443,19 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchEnableJobsRequest,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchEnableJobsRequest
+        @return: BatchEnableJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_enable_jobs_with_options(request, runtime)
 
@@ -314,6 +463,19 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchEnableJobsRequest,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        ```xml
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.4</version>
+        </dependency>
+        ```
+        
+        @param request: BatchEnableJobsRequest
+        @return: BatchEnableJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_enable_jobs_with_options_async(request, runtime)
 
@@ -415,10 +577,10 @@ class Client(OpenApiClient):
             body['ExecuteMode'] = request.execute_mode
         if not UtilClient.is_unset(request.fail_enable):
             body['FailEnable'] = request.fail_enable
+        if not UtilClient.is_unset(request.fail_times):
+            body['FailTimes'] = request.fail_times
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.jar_url):
-            body['JarUrl'] = request.jar_url
         if not UtilClient.is_unset(request.job_type):
             body['JobType'] = request.job_type
         if not UtilClient.is_unset(request.max_attempt):
@@ -443,6 +605,8 @@ class Client(OpenApiClient):
             body['SendChannel'] = request.send_channel
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.success_notice_enable):
+            body['SuccessNoticeEnable'] = request.success_notice_enable
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
         if not UtilClient.is_unset(request.task_max_attempt):
@@ -511,10 +675,10 @@ class Client(OpenApiClient):
             body['ExecuteMode'] = request.execute_mode
         if not UtilClient.is_unset(request.fail_enable):
             body['FailEnable'] = request.fail_enable
+        if not UtilClient.is_unset(request.fail_times):
+            body['FailTimes'] = request.fail_times
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.jar_url):
-            body['JarUrl'] = request.jar_url
         if not UtilClient.is_unset(request.job_type):
             body['JobType'] = request.job_type
         if not UtilClient.is_unset(request.max_attempt):
@@ -539,6 +703,8 @@ class Client(OpenApiClient):
             body['SendChannel'] = request.send_channel
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.success_notice_enable):
+            body['SuccessNoticeEnable'] = request.success_notice_enable
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
         if not UtilClient.is_unset(request.task_max_attempt):
@@ -670,6 +836,112 @@ class Client(OpenApiClient):
     ) -> schedulerx_220190430_models.CreateNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_namespace_with_options_async(request, runtime)
+
+    def create_workflow_with_options(
+        self,
+        request: schedulerx_220190430_models.CreateWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_concurrency):
+            body['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not UtilClient.is_unset(request.time_type):
+            body['TimeType'] = request.time_type
+        if not UtilClient.is_unset(request.timezone):
+            body['Timezone'] = request.timezone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkflow',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workflow_with_options_async(
+        self,
+        request: schedulerx_220190430_models.CreateWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_concurrency):
+            body['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not UtilClient.is_unset(request.time_type):
+            body['TimeType'] = request.time_type
+        if not UtilClient.is_unset(request.timezone):
+            body['Timezone'] = request.timezone
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkflow',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workflow(
+        self,
+        request: schedulerx_220190430_models.CreateWorkflowRequest,
+    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_workflow_with_options(request, runtime)
+
+    async def create_workflow_async(
+        self,
+        request: schedulerx_220190430_models.CreateWorkflowRequest,
+    ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_workflow_with_options_async(request, runtime)
 
     def delete_job_with_options(
         self,
@@ -1188,6 +1460,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ExecuteJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
+        """
+        > : The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        
+        @param request: ExecuteJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1214,6 +1493,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ExecuteJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
+        """
+        > : The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        
+        @param request: ExecuteJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1239,6 +1525,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ExecuteJobRequest,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
+        """
+        > : The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        
+        @param request: ExecuteJobRequest
+        @return: ExecuteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_job_with_options(request, runtime)
 
@@ -1246,6 +1538,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ExecuteJobRequest,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
+        """
+        > : The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        
+        @param request: ExecuteJobRequest
+        @return: ExecuteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_job_with_options_async(request, runtime)
 
@@ -1513,6 +1811,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_job_instance_list_with_options_async(request, runtime)
 
+    def get_log_with_options(
+        self,
+        request: schedulerx_220190430_models.GetLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.GetLogResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLog',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.GetLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_log_with_options_async(
+        self,
+        request: schedulerx_220190430_models.GetLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.GetLogResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLog',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.GetLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_log(
+        self,
+        request: schedulerx_220190430_models.GetLogRequest,
+    ) -> schedulerx_220190430_models.GetLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_log_with_options(request, runtime)
+
+    async def get_log_async(
+        self,
+        request: schedulerx_220190430_models.GetLogRequest,
+    ) -> schedulerx_220190430_models.GetLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_log_with_options_async(request, runtime)
+
     def get_work_flow_with_options(
         self,
         request: schedulerx_220190430_models.GetWorkFlowRequest,
@@ -1645,6 +2009,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_worker_list_with_options_async(request, runtime)
 
+    def get_workflow_instance_with_options(
+        self,
+        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWorkflowInstance',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.GetWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_instance_with_options_async(
+        self,
+        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWorkflowInstance',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.GetWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_instance(
+        self,
+        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
+    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_workflow_instance_with_options(request, runtime)
+
+    async def get_workflow_instance_async(
+        self,
+        request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
+    ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_workflow_instance_with_options_async(request, runtime)
+
     def grant_permission_with_options(
         self,
         request: schedulerx_220190430_models.GrantPermissionRequest,
@@ -1744,6 +2174,16 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
+        """
+        >  Before you call this operation, you must add the following dependency to the pom.xml file:
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        
+        @param request: ListGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1770,6 +2210,16 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
+        """
+        >  Before you call this operation, you must add the following dependency to the pom.xml file:
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        
+        @param request: ListGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1795,6 +2245,15 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListGroupsRequest,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
+        """
+        >  Before you call this operation, you must add the following dependency to the pom.xml file:
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_groups_with_options(request, runtime)
 
@@ -1802,6 +2261,15 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListGroupsRequest,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
+        """
+        >  Before you call this operation, you must add the following dependency to the pom.xml file:
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_groups_with_options_async(request, runtime)
 
@@ -1810,6 +2278,18 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1836,6 +2316,18 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1861,6 +2353,17 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListJobsRequest,
     ) -> schedulerx_220190430_models.ListJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_jobs_with_options(request, runtime)
 
@@ -1868,6 +2371,17 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListJobsRequest,
     ) -> schedulerx_220190430_models.ListJobsResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_jobs_with_options_async(request, runtime)
 
@@ -1876,6 +2390,18 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1902,6 +2428,18 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1927,6 +2465,17 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListNamespacesRequest,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListNamespacesRequest
+        @return: ListNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_namespaces_with_options(request, runtime)
 
@@ -1934,8 +2483,273 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListNamespacesRequest,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
+        """
+        Before you call this operation, you must add the following dependency to the pom.xml file:
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+        <version>1.0.5</version>
+        </dependency>
+        
+        @param request: ListNamespacesRequest
+        @return: ListNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_namespaces_with_options_async(request, runtime)
+
+    def list_workflow_instance_with_options(
+        self,
+        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkflowInstance',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ListWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflow_instance_with_options_async(
+        self,
+        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkflowInstance',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.ListWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflow_instance(
+        self,
+        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
+    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_workflow_instance_with_options(request, runtime)
+
+    async def list_workflow_instance_async(
+        self,
+        request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
+    ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_workflow_instance_with_options_async(request, runtime)
+
+    def rerun_job_with_options(
+        self,
+        request: schedulerx_220190430_models.RerunJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.RerunJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_time):
+            body['DataTime'] = request.data_time
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RerunJob',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.RerunJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rerun_job_with_options_async(
+        self,
+        request: schedulerx_220190430_models.RerunJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.RerunJobResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_time):
+            body['DataTime'] = request.data_time
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RerunJob',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.RerunJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rerun_job(
+        self,
+        request: schedulerx_220190430_models.RerunJobRequest,
+    ) -> schedulerx_220190430_models.RerunJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.rerun_job_with_options(request, runtime)
+
+    async def rerun_job_async(
+        self,
+        request: schedulerx_220190430_models.RerunJobRequest,
+    ) -> schedulerx_220190430_models.RerunJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.rerun_job_with_options_async(request, runtime)
+
+    def retry_job_instance_with_options(
+        self,
+        request: schedulerx_220190430_models.RetryJobInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_instance_id):
+            query['JobInstanceId'] = request.job_instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryJobInstance',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.RetryJobInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_job_instance_with_options_async(
+        self,
+        request: schedulerx_220190430_models.RetryJobInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_instance_id):
+            query['JobInstanceId'] = request.job_instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryJobInstance',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.RetryJobInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_job_instance(
+        self,
+        request: schedulerx_220190430_models.RetryJobInstanceRequest,
+    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.retry_job_instance_with_options(request, runtime)
+
+    async def retry_job_instance_async(
+        self,
+        request: schedulerx_220190430_models.RetryJobInstanceRequest,
+    ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.retry_job_instance_with_options_async(request, runtime)
 
     def revoke_permission_with_options(
         self,
@@ -2022,6 +2836,186 @@ class Client(OpenApiClient):
     ) -> schedulerx_220190430_models.RevokePermissionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.revoke_permission_with_options_async(request, runtime)
+
+    def set_job_instance_success_with_options(
+        self,
+        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_instance_id):
+            query['JobInstanceId'] = request.job_instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetJobInstanceSuccess',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.SetJobInstanceSuccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_job_instance_success_with_options_async(
+        self,
+        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_instance_id):
+            query['JobInstanceId'] = request.job_instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetJobInstanceSuccess',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.SetJobInstanceSuccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_job_instance_success(
+        self,
+        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
+    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_job_instance_success_with_options(request, runtime)
+
+    async def set_job_instance_success_async(
+        self,
+        request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
+    ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_job_instance_success_with_options_async(request, runtime)
+
+    def set_wf_instance_success_with_options(
+        self,
+        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wf_instance_id):
+            query['WfInstanceId'] = request.wf_instance_id
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetWfInstanceSuccess',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.SetWfInstanceSuccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_wf_instance_success_with_options_async(
+        self,
+        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            query['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wf_instance_id):
+            query['WfInstanceId'] = request.wf_instance_id
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetWfInstanceSuccess',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.SetWfInstanceSuccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_wf_instance_success(
+        self,
+        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
+    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_wf_instance_success_with_options(request, runtime)
+
+    async def set_wf_instance_success_async(
+        self,
+        request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
+    ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_wf_instance_success_with_options_async(request, runtime)
 
     def stop_instance_with_options(
         self,
@@ -2121,10 +3115,10 @@ class Client(OpenApiClient):
             body['ExecuteMode'] = request.execute_mode
         if not UtilClient.is_unset(request.fail_enable):
             body['FailEnable'] = request.fail_enable
+        if not UtilClient.is_unset(request.fail_times):
+            body['FailTimes'] = request.fail_times
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.jar_url):
-            body['JarUrl'] = request.jar_url
         if not UtilClient.is_unset(request.job_id):
             body['JobId'] = request.job_id
         if not UtilClient.is_unset(request.max_attempt):
@@ -2147,6 +3141,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not UtilClient.is_unset(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not UtilClient.is_unset(request.success_notice_enable):
+            body['SuccessNoticeEnable'] = request.success_notice_enable
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
         if not UtilClient.is_unset(request.task_max_attempt):
@@ -2213,10 +3209,10 @@ class Client(OpenApiClient):
             body['ExecuteMode'] = request.execute_mode
         if not UtilClient.is_unset(request.fail_enable):
             body['FailEnable'] = request.fail_enable
+        if not UtilClient.is_unset(request.fail_times):
+            body['FailTimes'] = request.fail_times
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.jar_url):
-            body['JarUrl'] = request.jar_url
         if not UtilClient.is_unset(request.job_id):
             body['JobId'] = request.job_id
         if not UtilClient.is_unset(request.max_attempt):
@@ -2239,6 +3235,8 @@ class Client(OpenApiClient):
             body['QueueSize'] = request.queue_size
         if not UtilClient.is_unset(request.send_channel):
             body['SendChannel'] = request.send_channel
+        if not UtilClient.is_unset(request.success_notice_enable):
+            body['SuccessNoticeEnable'] = request.success_notice_enable
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
         if not UtilClient.is_unset(request.task_max_attempt):
@@ -2286,3 +3284,203 @@ class Client(OpenApiClient):
     ) -> schedulerx_220190430_models.UpdateJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_job_with_options_async(request, runtime)
+
+    def update_workflow_with_options(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not UtilClient.is_unset(request.time_type):
+            body['TimeType'] = request.time_type
+        if not UtilClient.is_unset(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkflow',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateWorkflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workflow_with_options_async(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.time_expression):
+            body['TimeExpression'] = request.time_expression
+        if not UtilClient.is_unset(request.time_type):
+            body['TimeType'] = request.time_type
+        if not UtilClient.is_unset(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkflow',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workflow(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowRequest,
+    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_workflow_with_options(request, runtime)
+
+    async def update_workflow_async(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowRequest,
+    ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_workflow_with_options_async(request, runtime)
+
+    def update_workflow_dag_with_options(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.dag_json):
+            body['DagJson'] = request.dag_json
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkflowDag',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateWorkflowDagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workflow_dag_with_options_async(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.dag_json):
+            body['DagJson'] = request.dag_json
+        if not UtilClient.is_unset(request.group_id):
+            body['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_source):
+            body['NamespaceSource'] = request.namespace_source
+        if not UtilClient.is_unset(request.workflow_id):
+            body['WorkflowId'] = request.workflow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkflowDag',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateWorkflowDagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workflow_dag(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
+    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_workflow_dag_with_options(request, runtime)
+
+    async def update_workflow_dag_async(
+        self,
+        request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
+    ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_workflow_dag_with_options_async(request, runtime)
