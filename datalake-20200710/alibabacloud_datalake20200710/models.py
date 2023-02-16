@@ -1724,6 +1724,9 @@ class LifecycleResourceTable(TeaModel):
 class TableProfile(TeaModel):
     def __init__(
         self,
+        access_num: int = None,
+        access_num_monthly: int = None,
+        access_num_weekly: int = None,
         create_time: str = None,
         database_name: str = None,
         file_cnt: int = None,
@@ -1735,6 +1738,9 @@ class TableProfile(TeaModel):
         record_cnt: int = None,
         table_name: str = None,
     ):
+        self.access_num = access_num
+        self.access_num_monthly = access_num_monthly
+        self.access_num_weekly = access_num_weekly
         self.create_time = create_time
         self.database_name = database_name
         self.file_cnt = file_cnt
@@ -1755,6 +1761,12 @@ class TableProfile(TeaModel):
             return _map
 
         result = dict()
+        if self.access_num is not None:
+            result['AccessNum'] = self.access_num
+        if self.access_num_monthly is not None:
+            result['AccessNumMonthly'] = self.access_num_monthly
+        if self.access_num_weekly is not None:
+            result['AccessNumWeekly'] = self.access_num_weekly
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.database_name is not None:
@@ -1779,6 +1791,12 @@ class TableProfile(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessNum') is not None:
+            self.access_num = m.get('AccessNum')
+        if m.get('AccessNumMonthly') is not None:
+            self.access_num_monthly = m.get('AccessNumMonthly')
+        if m.get('AccessNumWeekly') is not None:
+            self.access_num_weekly = m.get('AccessNumWeekly')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DatabaseName') is not None:
@@ -1806,6 +1824,7 @@ class LifecycleResource(TeaModel):
     def __init__(
         self,
         biz_id: str = None,
+        catalog_id: str = None,
         database: LifecycleResourceDatabase = None,
         database_name: str = None,
         database_profile: DatabaseProfile = None,
@@ -1817,6 +1836,7 @@ class LifecycleResource(TeaModel):
         table_profile: TableProfile = None,
     ):
         self.biz_id = biz_id
+        self.catalog_id = catalog_id
         self.database = database
         self.database_name = database_name
         self.database_profile = database_profile
@@ -1845,6 +1865,8 @@ class LifecycleResource(TeaModel):
         result = dict()
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+        if self.catalog_id is not None:
+            result['CatalogId'] = self.catalog_id
         if self.database is not None:
             result['Database'] = self.database.to_map()
         if self.database_name is not None:
@@ -1869,6 +1891,8 @@ class LifecycleResource(TeaModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+        if m.get('CatalogId') is not None:
+            self.catalog_id = m.get('CatalogId')
         if m.get('Database') is not None:
             temp_model = LifecycleResourceDatabase()
             self.database = temp_model.from_map(m['Database'])
@@ -2079,6 +2103,7 @@ class LifecycleRule(TeaModel):
         archive_days: int = None,
         bind_count: int = None,
         biz_id: str = None,
+        catalog_id: str = None,
         cold_archive_days: int = None,
         config: str = None,
         description: str = None,
@@ -2096,6 +2121,7 @@ class LifecycleRule(TeaModel):
         self.archive_days = archive_days
         self.bind_count = bind_count
         self.biz_id = biz_id
+        self.catalog_id = catalog_id
         self.cold_archive_days = cold_archive_days
         self.config = config
         self.description = description
@@ -2128,6 +2154,8 @@ class LifecycleRule(TeaModel):
             result['BindCount'] = self.bind_count
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+        if self.catalog_id is not None:
+            result['CatalogId'] = self.catalog_id
         if self.cold_archive_days is not None:
             result['ColdArchiveDays'] = self.cold_archive_days
         if self.config is not None:
@@ -2164,6 +2192,8 @@ class LifecycleRule(TeaModel):
             self.bind_count = m.get('BindCount')
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+        if m.get('CatalogId') is not None:
+            self.catalog_id = m.get('CatalogId')
         if m.get('ColdArchiveDays') is not None:
             self.cold_archive_days = m.get('ColdArchiveDays')
         if m.get('Config') is not None:
@@ -2242,6 +2272,45 @@ class LifecycleTask(TeaModel):
         if m.get('WorkflowInstance') is not None:
             temp_model = WorkflowInstance()
             self.workflow_instance = temp_model.from_map(m['WorkflowInstance'])
+        return self
+
+
+class LocationStorageRankDTO(TeaModel):
+    def __init__(
+        self,
+        file_cnt: int = None,
+        location: str = None,
+        storage: int = None,
+    ):
+        self.file_cnt = file_cnt
+        self.location = location
+        self.storage = storage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_cnt is not None:
+            result['FileCnt'] = self.file_cnt
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileCnt') is not None:
+            self.file_cnt = m.get('FileCnt')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
         return self
 
 
@@ -3188,6 +3257,63 @@ class SortCriterion(TeaModel):
         return self
 
 
+class StorageCollectTaskOperationResult(TeaModel):
+    def __init__(
+        self,
+        dlf_created: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        success: bool = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        self.dlf_created = dlf_created
+        self.err_code = err_code
+        self.err_message = err_message
+        self.success = success
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dlf_created is not None:
+            result['DlfCreated'] = self.dlf_created
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DlfCreated') is not None:
+            self.dlf_created = m.get('DlfCreated')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
 class StorageFormat(TeaModel):
     def __init__(
         self,
@@ -3448,6 +3574,87 @@ class StorageSummary(TeaModel):
             self.partition_num = m.get('PartitionNum')
         if m.get('TableNum') is not None:
             self.table_num = m.get('TableNum')
+        return self
+
+
+class StrogeCollectTask(TeaModel):
+    def __init__(
+        self,
+        destination_bucket_name: str = None,
+        destination_prefix: str = None,
+        dlf_created: bool = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: str = None,
+        inventory_id: str = None,
+        location: str = None,
+        status: str = None,
+        task_type: str = None,
+    ):
+        self.destination_bucket_name = destination_bucket_name
+        self.destination_prefix = destination_prefix
+        self.dlf_created = dlf_created
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.inventory_id = inventory_id
+        self.location = location
+        self.status = status
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_bucket_name is not None:
+            result['DestinationBucketName'] = self.destination_bucket_name
+        if self.destination_prefix is not None:
+            result['DestinationPrefix'] = self.destination_prefix
+        if self.dlf_created is not None:
+            result['DlfCreated'] = self.dlf_created
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.inventory_id is not None:
+            result['InventoryId'] = self.inventory_id
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationBucketName') is not None:
+            self.destination_bucket_name = m.get('DestinationBucketName')
+        if m.get('DestinationPrefix') is not None:
+            self.destination_prefix = m.get('DestinationPrefix')
+        if m.get('DlfCreated') is not None:
+            self.dlf_created = m.get('DlfCreated')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InventoryId') is not None:
+            self.inventory_id = m.get('InventoryId')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
         return self
 
 
@@ -4644,6 +4851,7 @@ class AbortLockRequest(TeaModel):
         self,
         lock_id: int = None,
     ):
+        # LockId
         self.lock_id = lock_id
 
     def validate(self):
@@ -4674,9 +4882,13 @@ class AbortLockResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -5427,6 +5639,7 @@ class BatchDeleteTablesRequest(TeaModel):
     ):
         self.catalog_id = catalog_id
         self.database_name = database_name
+        # IfExists
         self.if_exists = if_exists
         self.table_names = table_names
 
@@ -6109,6 +6322,7 @@ class BatchGrantPermissionsRequest(TeaModel):
         grant_revoke_entries: List[GrantRevokeEntry] = None,
         type: str = None,
     ):
+        # catalogId
         self.catalog_id = catalog_id
         self.grant_revoke_entries = grant_revoke_entries
         self.type = type
@@ -6158,10 +6372,15 @@ class BatchGrantPermissionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # result
         self.batch_grant_revoke_failure_result = batch_grant_revoke_failure_result
+        # Response Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -6259,6 +6478,7 @@ class BatchRevokePermissionsRequest(TeaModel):
         grant_revoke_entries: List[GrantRevokeEntry] = None,
         type: str = None,
     ):
+        # catalogId
         self.catalog_id = catalog_id
         self.grant_revoke_entries = grant_revoke_entries
         self.type = type
@@ -6308,10 +6528,15 @@ class BatchRevokePermissionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # result
         self.batch_grant_revoke_failure_result = batch_grant_revoke_failure_result
+        # Response Code
         self.code = code
+        # Message Code
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -6867,9 +7092,13 @@ class CheckPermissionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response Code
         self.code = code
+        # Message Code
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -6953,6 +7182,7 @@ class CreateCatalogRequest(TeaModel):
         self,
         catalog_input: CatalogInput = None,
     ):
+        # cataloginput
         self.catalog_input = catalog_input
 
     def validate(self):
@@ -6985,9 +7215,13 @@ class CreateCatalogResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response Code
         self.code = code
+        # Response Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -7325,6 +7559,7 @@ class CreateLockRequest(TeaModel):
         self,
         lock_obj_list: List[LockObj] = None,
     ):
+        # LockObjList
         self.lock_obj_list = lock_obj_list
 
     def validate(self):
@@ -7364,10 +7599,14 @@ class CreateLockResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
         self.lock_status = lock_status
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -7645,9 +7884,13 @@ class CreateRoleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # success
         self.success = success
 
     def validate(self):
@@ -7862,6 +8105,7 @@ class DeleteCatalogRequest(TeaModel):
         catalog_id: str = None,
         is_async: bool = None,
     ):
+        # CatalogId
         self.catalog_id = catalog_id
         self.is_async = is_async
 
@@ -7898,9 +8142,13 @@ class DeleteCatalogResponseBody(TeaModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # Response Code
         self.code = code
+        # Response Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Request is success or not
         self.success = success
         self.task_id = task_id
 
@@ -8606,9 +8854,13 @@ class DeleteRoleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # message
         self.message = message
+        # requestId
         self.request_id = request_id
+        # success
         self.success = success
 
     def validate(self):
@@ -9128,6 +9380,160 @@ class DeleteTableVersionResponse(TeaModel):
         return self
 
 
+class DeregisterLocationRequest(TeaModel):
+    def __init__(
+        self,
+        location_id: str = None,
+    ):
+        self.location_id = location_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location_id is not None:
+            result['LocationId'] = self.location_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocationId') is not None:
+            self.location_id = m.get('LocationId')
+        return self
+
+
+class DeregisterLocationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        location_id: str = None,
+        storage_collect_task_operation_result_list: List[StorageCollectTaskOperationResult] = None,
+    ):
+        # Location ID
+        self.location_id = location_id
+        self.storage_collect_task_operation_result_list = storage_collect_task_operation_result_list
+
+    def validate(self):
+        if self.storage_collect_task_operation_result_list:
+            for k in self.storage_collect_task_operation_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location_id is not None:
+            result['LocationId'] = self.location_id
+        result['StorageCollectTaskOperationResultList'] = []
+        if self.storage_collect_task_operation_result_list is not None:
+            for k in self.storage_collect_task_operation_result_list:
+                result['StorageCollectTaskOperationResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocationId') is not None:
+            self.location_id = m.get('LocationId')
+        self.storage_collect_task_operation_result_list = []
+        if m.get('StorageCollectTaskOperationResultList') is not None:
+            for k in m.get('StorageCollectTaskOperationResultList'):
+                temp_model = StorageCollectTaskOperationResult()
+                self.storage_collect_task_operation_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class DeregisterLocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeregisterLocationResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DeregisterLocationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeregisterLocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeregisterLocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeregisterLocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
@@ -9306,9 +9712,13 @@ class GetAsyncTaskStatusResponseBody(TeaModel):
         success: bool = None,
         task_status: TaskStatus = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
         self.task_status = task_status
 
@@ -9399,6 +9809,7 @@ class GetCatalogRequest(TeaModel):
         self,
         catalog_id: str = None,
     ):
+        # catalogId
         self.catalog_id = catalog_id
 
     def validate(self):
@@ -9431,9 +9842,13 @@ class GetCatalogResponseBody(TeaModel):
         success: bool = None,
     ):
         self.catalog = catalog
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -9555,9 +9970,13 @@ class GetCatalogSettingsResponseBody(TeaModel):
         success: bool = None,
     ):
         self.catalog_settings = catalog_settings
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -9913,6 +10332,7 @@ class GetLockRequest(TeaModel):
         self,
         lock_id: int = None,
     ):
+        # LockId
         self.lock_id = lock_id
 
     def validate(self):
@@ -9944,10 +10364,14 @@ class GetLockResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
         self.lock_status = lock_status
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -10796,6 +11220,7 @@ class GetRoleRequest(TeaModel):
         self,
         role_name: str = None,
     ):
+        # roleName
         self.role_name = role_name
 
     def validate(self):
@@ -10827,10 +11252,15 @@ class GetRoleResponseBody(TeaModel):
         role: Role = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # message
         self.message = message
+        # requestId
         self.request_id = request_id
+        # role
         self.role = role
+        # success
         self.success = success
 
     def validate(self):
@@ -11395,6 +11825,142 @@ class GetTableColumnStatisticsResponse(TeaModel):
         return self
 
 
+class GetTableProfileRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_id: str = None,
+        database_name: str = None,
+        table_name: str = None,
+    ):
+        self.catalog_id = catalog_id
+        self.database_name = database_name
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_id is not None:
+            result['CatalogId'] = self.catalog_id
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogId') is not None:
+            self.catalog_id = m.get('CatalogId')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetTableProfileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        table_profile: TableProfile = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.table_profile = table_profile
+
+    def validate(self):
+        if self.table_profile:
+            self.table_profile.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.table_profile is not None:
+            result['TableProfile'] = self.table_profile.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TableProfile') is not None:
+            temp_model = TableProfile()
+            self.table_profile = temp_model.from_map(m['TableProfile'])
+        return self
+
+
+class GetTableProfileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTableProfileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTableProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTableVersionRequest(TeaModel):
     def __init__(
         self,
@@ -11548,6 +12114,7 @@ class GrantPermissionsRequest(TeaModel):
         type: str = None,
     ):
         self.accesses = accesses
+        # CatalogId
         self.catalog_id = catalog_id
         self.delegate_accesses = delegate_accesses
         self.meta_resource = meta_resource
@@ -11607,9 +12174,13 @@ class GrantPermissionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response Code
         self.code = code
+        # Message Code
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -11694,6 +12265,7 @@ class GrantRoleToUsersRequest(TeaModel):
         role_name: str = None,
         users: List[Principal] = None,
     ):
+        # RoleName
         self.role_name = role_name
         self.users = users
 
@@ -11737,9 +12309,13 @@ class GrantRoleToUsersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -11861,9 +12437,13 @@ class GrantRolesToUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -12791,6 +13371,7 @@ class ListPartitionsResponseBody(TeaModel):
         self.code = code
         self.message = message
         self.next_page_token = next_page_token
+        # PartitionSpecs
         self.partition_specs = partition_specs
         self.partitions = partitions
         self.request_id = request_id
@@ -13012,6 +13593,7 @@ class ListPartitionsByFilterResponseBody(TeaModel):
         self.code = code
         self.message = message
         self.next_page_token = next_page_token
+        # PartitionSpecs
         self.partition_specs = partition_specs
         self.partitions = partitions
         self.request_id = request_id
@@ -13134,6 +13716,7 @@ class ListPermissionsRequest(TeaModel):
         principal: Principal = None,
         type: str = None,
     ):
+        # CatalogId
         self.catalog_id = catalog_id
         self.is_list_user_role_permissions = is_list_user_role_permissions
         self.meta_resource = meta_resource
@@ -13207,12 +13790,18 @@ class ListPermissionsResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Response Code
         self.code = code
+        # Message Code
         self.message = message
+        # NextPageToken
         self.next_page_token = next_page_token
         self.principal_resource_permissions_list = principal_resource_permissions_list
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
+        # TotalCount
         self.total_count = total_count
 
     def validate(self):
@@ -13319,9 +13908,12 @@ class ListRoleUsersRequest(TeaModel):
         role_name: str = None,
         user_name_pattern: str = None,
     ):
+        # NextPageToken
         self.next_page_token = next_page_token
+        # PageSize
         self.page_size = page_size
         self.role_name = role_name
+        # use name pattern filter
         self.user_name_pattern = user_name_pattern
 
     def validate(self):
@@ -13368,9 +13960,12 @@ class ListRoleUsersResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # NextPageToken
         self.next_page_token = next_page_token
+        # RequestId
         self.request_id = request_id
         self.success = success
+        # user roles
         self.user_roles = user_roles
 
     def validate(self):
@@ -13472,6 +14067,7 @@ class ListRolesRequest(TeaModel):
         page_size: int = None,
         role_name_pattern: str = None,
     ):
+        # Next PageToken
         self.next_page_token = next_page_token
         self.page_size = page_size
         self.role_name_pattern = role_name_pattern
@@ -13514,11 +14110,17 @@ class ListRolesResponseBody(TeaModel):
         roles: List[Role] = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # message
         self.message = message
+        # data
         self.next_page_token = next_page_token
+        # requestId
         self.request_id = request_id
+        # role list data
         self.roles = roles
+        # success
         self.success = success
 
     def validate(self):
@@ -14106,8 +14708,10 @@ class ListUserRolesRequest(TeaModel):
         role_name_pattern: str = None,
     ):
         self.next_page_token = next_page_token
+        # PageSize
         self.page_size = page_size
         self.principal_arn = principal_arn
+        # role name pattern filter
         self.role_name_pattern = role_name_pattern
 
     def validate(self):
@@ -14152,11 +14756,17 @@ class ListUserRolesResponseBody(TeaModel):
         success: bool = None,
         user_roles: List[UserRole] = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # NextPageToken
         self.next_page_token = next_page_token
+        # RequestId
         self.request_id = request_id
+        # success
         self.success = success
+        # UserRoles
         self.user_roles = user_roles
 
     def validate(self):
@@ -14256,6 +14866,7 @@ class RefreshLockRequest(TeaModel):
         self,
         lock_id: int = None,
     ):
+        # LockId
         self.lock_id = lock_id
 
     def validate(self):
@@ -14286,9 +14897,13 @@ class RefreshLockResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -14363,6 +14978,178 @@ class RefreshLockResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RefreshLockResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RegisterLocationRequest(TeaModel):
+    def __init__(
+        self,
+        inventory_collect_enabled: bool = None,
+        location: str = None,
+        oss_log_collect_enabled: bool = None,
+        role_name: str = None,
+    ):
+        self.inventory_collect_enabled = inventory_collect_enabled
+        self.location = location
+        self.oss_log_collect_enabled = oss_log_collect_enabled
+        self.role_name = role_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inventory_collect_enabled is not None:
+            result['InventoryCollectEnabled'] = self.inventory_collect_enabled
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.oss_log_collect_enabled is not None:
+            result['OssLogCollectEnabled'] = self.oss_log_collect_enabled
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InventoryCollectEnabled') is not None:
+            self.inventory_collect_enabled = m.get('InventoryCollectEnabled')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('OssLogCollectEnabled') is not None:
+            self.oss_log_collect_enabled = m.get('OssLogCollectEnabled')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        return self
+
+
+class RegisterLocationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        location_id: str = None,
+        storage_collect_task_operation_result_list: List[StorageCollectTaskOperationResult] = None,
+    ):
+        # Location ID
+        self.location_id = location_id
+        self.storage_collect_task_operation_result_list = storage_collect_task_operation_result_list
+
+    def validate(self):
+        if self.storage_collect_task_operation_result_list:
+            for k in self.storage_collect_task_operation_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location_id is not None:
+            result['LocationId'] = self.location_id
+        result['StorageCollectTaskOperationResultList'] = []
+        if self.storage_collect_task_operation_result_list is not None:
+            for k in self.storage_collect_task_operation_result_list:
+                result['StorageCollectTaskOperationResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocationId') is not None:
+            self.location_id = m.get('LocationId')
+        self.storage_collect_task_operation_result_list = []
+        if m.get('StorageCollectTaskOperationResultList') is not None:
+            for k in m.get('StorageCollectTaskOperationResultList'):
+                temp_model = StorageCollectTaskOperationResult()
+                self.storage_collect_task_operation_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class RegisterLocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: RegisterLocationResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RegisterLocationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RegisterLocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RegisterLocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RegisterLocationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14575,6 +15362,7 @@ class RenameTableResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
+        # Async task Id
         self.task_id = task_id
 
     def validate(self):
@@ -14668,6 +15456,7 @@ class RevokePermissionsRequest(TeaModel):
         type: str = None,
     ):
         self.accesses = accesses
+        # CatalogId
         self.catalog_id = catalog_id
         self.delegate_accesses = delegate_accesses
         self.meta_resource = meta_resource
@@ -14727,9 +15516,13 @@ class RevokePermissionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response Code
         self.code = code
+        # Message Code
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -14857,9 +15650,13 @@ class RevokeRoleFromUsersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -14981,9 +15778,13 @@ class RevokeRolesFromUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # success
         self.success = success
 
     def validate(self):
@@ -15182,6 +15983,7 @@ class SearchRequest(TeaModel):
         search_type: str = None,
         sort_criteria: List[SortCriterion] = None,
     ):
+        # catalogid
         self.catalog_id = catalog_id
         self.page_number = page_number
         self.page_size = page_size
@@ -16055,9 +16857,11 @@ class StopMigrationWorkflowResponse(TeaModel):
 class SubmitQueryRequest(TeaModel):
     def __init__(
         self,
+        catalog_id: str = None,
         sql: str = None,
         workspace_id: str = None,
     ):
+        self.catalog_id = catalog_id
         self.sql = sql
         self.workspace_id = workspace_id
 
@@ -16070,6 +16874,8 @@ class SubmitQueryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.catalog_id is not None:
+            result['catalogId'] = self.catalog_id
         if self.sql is not None:
             result['sql'] = self.sql
         if self.workspace_id is not None:
@@ -16078,6 +16884,8 @@ class SubmitQueryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('catalogId') is not None:
+            self.catalog_id = m.get('catalogId')
         if m.get('sql') is not None:
             self.sql = m.get('sql')
         if m.get('workspaceId') is not None:
@@ -16173,6 +16981,7 @@ class UnLockRequest(TeaModel):
         self,
         lock_id: int = None,
     ):
+        # LockId
         self.lock_id = lock_id
 
     def validate(self):
@@ -16203,9 +17012,13 @@ class UnLockResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -16289,6 +17102,7 @@ class UpdateCatalogRequest(TeaModel):
         self,
         catalog_input: CatalogInput = None,
     ):
+        # cataloginput
         self.catalog_input = catalog_input
 
     def validate(self):
@@ -16408,6 +17222,7 @@ class UpdateCatalogSettingsRequest(TeaModel):
         catalog_id: str = None,
         catalog_settings: CatalogSettings = None,
     ):
+        # CatalogId
         self.catalog_id = catalog_id
         self.catalog_settings = catalog_settings
 
@@ -16445,9 +17260,13 @@ class UpdateCatalogSettingsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Code
         self.code = code
+        # Message
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -16921,6 +17740,7 @@ class UpdatePermissionsRequest(TeaModel):
         type: str = None,
     ):
         self.accesses = accesses
+        # CatalogId
         self.catalog_id = catalog_id
         self.delegate_accesses = delegate_accesses
         self.meta_resource = meta_resource
@@ -16980,9 +17800,13 @@ class UpdatePermissionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response Code
         self.code = code
+        # Message Code
         self.message = message
+        # RequestId
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -17061,6 +17885,172 @@ class UpdatePermissionsResponse(TeaModel):
         return self
 
 
+class UpdateRegisteredLocationRequest(TeaModel):
+    def __init__(
+        self,
+        inventory_collect_enabled: bool = None,
+        location_id: str = None,
+        oss_log_collect_enabled: bool = None,
+    ):
+        self.inventory_collect_enabled = inventory_collect_enabled
+        self.location_id = location_id
+        self.oss_log_collect_enabled = oss_log_collect_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inventory_collect_enabled is not None:
+            result['InventoryCollectEnabled'] = self.inventory_collect_enabled
+        if self.location_id is not None:
+            result['LocationId'] = self.location_id
+        if self.oss_log_collect_enabled is not None:
+            result['OssLogCollectEnabled'] = self.oss_log_collect_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InventoryCollectEnabled') is not None:
+            self.inventory_collect_enabled = m.get('InventoryCollectEnabled')
+        if m.get('LocationId') is not None:
+            self.location_id = m.get('LocationId')
+        if m.get('OssLogCollectEnabled') is not None:
+            self.oss_log_collect_enabled = m.get('OssLogCollectEnabled')
+        return self
+
+
+class UpdateRegisteredLocationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        location_id: str = None,
+        storage_collect_task_operation_result_list: List[StorageCollectTaskOperationResult] = None,
+    ):
+        # Location ID
+        self.location_id = location_id
+        self.storage_collect_task_operation_result_list = storage_collect_task_operation_result_list
+
+    def validate(self):
+        if self.storage_collect_task_operation_result_list:
+            for k in self.storage_collect_task_operation_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location_id is not None:
+            result['LocationId'] = self.location_id
+        result['StorageCollectTaskOperationResultList'] = []
+        if self.storage_collect_task_operation_result_list is not None:
+            for k in self.storage_collect_task_operation_result_list:
+                result['StorageCollectTaskOperationResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocationId') is not None:
+            self.location_id = m.get('LocationId')
+        self.storage_collect_task_operation_result_list = []
+        if m.get('StorageCollectTaskOperationResultList') is not None:
+            for k in m.get('StorageCollectTaskOperationResultList'):
+                temp_model = StorageCollectTaskOperationResult()
+                self.storage_collect_task_operation_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRegisteredLocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UpdateRegisteredLocationResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = UpdateRegisteredLocationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateRegisteredLocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRegisteredLocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRegisteredLocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateRoleRequest(TeaModel):
     def __init__(
         self,
@@ -17068,6 +18058,7 @@ class UpdateRoleRequest(TeaModel):
         role_name: str = None,
     ):
         self.role_input = role_input
+        # RoleName
         self.role_name = role_name
 
     def validate(self):
@@ -17104,9 +18095,13 @@ class UpdateRoleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # message
         self.message = message
+        # requestId
         self.request_id = request_id
+        # success
         self.success = success
 
     def validate(self):
@@ -17234,9 +18229,13 @@ class UpdateRoleUsersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # code
         self.code = code
+        # message
         self.message = message
+        # requestId
         self.request_id = request_id
+        # success
         self.success = success
 
     def validate(self):
@@ -17393,6 +18392,7 @@ class UpdateTableResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
+        # Async task Id
         self.task_id = task_id
 
     def validate(self):

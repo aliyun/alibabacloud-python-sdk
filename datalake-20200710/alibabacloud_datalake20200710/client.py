@@ -100,22 +100,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def abort_lock(
-        self,
-        request: data_lake_20200710_models.AbortLockRequest,
-    ) -> data_lake_20200710_models.AbortLockResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.abort_lock_with_options(request, headers, runtime)
-
-    async def abort_lock_async(
-        self,
-        request: data_lake_20200710_models.AbortLockRequest,
-    ) -> data_lake_20200710_models.AbortLockResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.abort_lock_with_options_async(request, headers, runtime)
-
     def abort_lock_with_options(
         self,
         request: data_lake_20200710_models.AbortLockRequest,
@@ -176,21 +160,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_create_partitions(
+    def abort_lock(
         self,
-        request: data_lake_20200710_models.BatchCreatePartitionsRequest,
-    ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
+        request: data_lake_20200710_models.AbortLockRequest,
+    ) -> data_lake_20200710_models.AbortLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_create_partitions_with_options(request, headers, runtime)
+        return self.abort_lock_with_options(request, headers, runtime)
 
-    async def batch_create_partitions_async(
+    async def abort_lock_async(
         self,
-        request: data_lake_20200710_models.BatchCreatePartitionsRequest,
-    ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
+        request: data_lake_20200710_models.AbortLockRequest,
+    ) -> data_lake_20200710_models.AbortLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_create_partitions_with_options_async(request, headers, runtime)
+        return await self.abort_lock_with_options_async(request, headers, runtime)
 
     def batch_create_partitions_with_options(
         self,
@@ -272,21 +256,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_create_tables(
+    def batch_create_partitions(
         self,
-        request: data_lake_20200710_models.BatchCreateTablesRequest,
-    ) -> data_lake_20200710_models.BatchCreateTablesResponse:
+        request: data_lake_20200710_models.BatchCreatePartitionsRequest,
+    ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_create_tables_with_options(request, headers, runtime)
+        return self.batch_create_partitions_with_options(request, headers, runtime)
 
-    async def batch_create_tables_async(
+    async def batch_create_partitions_async(
         self,
-        request: data_lake_20200710_models.BatchCreateTablesRequest,
-    ) -> data_lake_20200710_models.BatchCreateTablesResponse:
+        request: data_lake_20200710_models.BatchCreatePartitionsRequest,
+    ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_create_tables_with_options_async(request, headers, runtime)
+        return await self.batch_create_partitions_with_options_async(request, headers, runtime)
 
     def batch_create_tables_with_options(
         self,
@@ -360,21 +344,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_delete_partitions(
+    def batch_create_tables(
         self,
-        request: data_lake_20200710_models.BatchDeletePartitionsRequest,
-    ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
+        request: data_lake_20200710_models.BatchCreateTablesRequest,
+    ) -> data_lake_20200710_models.BatchCreateTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_delete_partitions_with_options(request, headers, runtime)
+        return self.batch_create_tables_with_options(request, headers, runtime)
 
-    async def batch_delete_partitions_async(
+    async def batch_create_tables_async(
         self,
-        request: data_lake_20200710_models.BatchDeletePartitionsRequest,
-    ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
+        request: data_lake_20200710_models.BatchCreateTablesRequest,
+    ) -> data_lake_20200710_models.BatchCreateTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_delete_partitions_with_options_async(request, headers, runtime)
+        return await self.batch_create_tables_with_options_async(request, headers, runtime)
 
     def batch_delete_partitions_with_options(
         self,
@@ -452,21 +436,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_delete_table_versions(
+    def batch_delete_partitions(
         self,
-        request: data_lake_20200710_models.BatchDeleteTableVersionsRequest,
-    ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
+        request: data_lake_20200710_models.BatchDeletePartitionsRequest,
+    ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_delete_table_versions_with_options(request, headers, runtime)
+        return self.batch_delete_partitions_with_options(request, headers, runtime)
 
-    async def batch_delete_table_versions_async(
+    async def batch_delete_partitions_async(
         self,
-        request: data_lake_20200710_models.BatchDeleteTableVersionsRequest,
-    ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
+        request: data_lake_20200710_models.BatchDeletePartitionsRequest,
+    ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_delete_table_versions_with_options_async(request, headers, runtime)
+        return await self.batch_delete_partitions_with_options_async(request, headers, runtime)
 
     def batch_delete_table_versions_with_options(
         self,
@@ -540,21 +524,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_delete_tables(
+    def batch_delete_table_versions(
         self,
-        request: data_lake_20200710_models.BatchDeleteTablesRequest,
-    ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
+        request: data_lake_20200710_models.BatchDeleteTableVersionsRequest,
+    ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_delete_tables_with_options(request, headers, runtime)
+        return self.batch_delete_table_versions_with_options(request, headers, runtime)
 
-    async def batch_delete_tables_async(
+    async def batch_delete_table_versions_async(
         self,
-        request: data_lake_20200710_models.BatchDeleteTablesRequest,
-    ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
+        request: data_lake_20200710_models.BatchDeleteTableVersionsRequest,
+    ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_delete_tables_with_options_async(request, headers, runtime)
+        return await self.batch_delete_table_versions_with_options_async(request, headers, runtime)
 
     def batch_delete_tables_with_options(
         self,
@@ -628,21 +612,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_get_partition_column_statistics(
+    def batch_delete_tables(
         self,
-        request: data_lake_20200710_models.BatchGetPartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.BatchDeleteTablesRequest,
+    ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_get_partition_column_statistics_with_options(request, headers, runtime)
+        return self.batch_delete_tables_with_options(request, headers, runtime)
 
-    async def batch_get_partition_column_statistics_async(
+    async def batch_delete_tables_async(
         self,
-        request: data_lake_20200710_models.BatchGetPartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.BatchDeleteTablesRequest,
+    ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_get_partition_column_statistics_with_options_async(request, headers, runtime)
+        return await self.batch_delete_tables_with_options_async(request, headers, runtime)
 
     def batch_get_partition_column_statistics_with_options(
         self,
@@ -720,21 +704,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_get_partitions(
+    def batch_get_partition_column_statistics(
         self,
-        request: data_lake_20200710_models.BatchGetPartitionsRequest,
-    ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
+        request: data_lake_20200710_models.BatchGetPartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_get_partitions_with_options(request, headers, runtime)
+        return self.batch_get_partition_column_statistics_with_options(request, headers, runtime)
 
-    async def batch_get_partitions_async(
+    async def batch_get_partition_column_statistics_async(
         self,
-        request: data_lake_20200710_models.BatchGetPartitionsRequest,
-    ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
+        request: data_lake_20200710_models.BatchGetPartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_get_partitions_with_options_async(request, headers, runtime)
+        return await self.batch_get_partition_column_statistics_with_options_async(request, headers, runtime)
 
     def batch_get_partitions_with_options(
         self,
@@ -812,21 +796,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_get_tables(
+    def batch_get_partitions(
         self,
-        request: data_lake_20200710_models.BatchGetTablesRequest,
-    ) -> data_lake_20200710_models.BatchGetTablesResponse:
+        request: data_lake_20200710_models.BatchGetPartitionsRequest,
+    ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_get_tables_with_options(request, headers, runtime)
+        return self.batch_get_partitions_with_options(request, headers, runtime)
 
-    async def batch_get_tables_async(
+    async def batch_get_partitions_async(
         self,
-        request: data_lake_20200710_models.BatchGetTablesRequest,
-    ) -> data_lake_20200710_models.BatchGetTablesResponse:
+        request: data_lake_20200710_models.BatchGetPartitionsRequest,
+    ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_get_tables_with_options_async(request, headers, runtime)
+        return await self.batch_get_partitions_with_options_async(request, headers, runtime)
 
     def batch_get_tables_with_options(
         self,
@@ -896,21 +880,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_grant_permissions(
+    def batch_get_tables(
         self,
-        request: data_lake_20200710_models.BatchGrantPermissionsRequest,
-    ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
+        request: data_lake_20200710_models.BatchGetTablesRequest,
+    ) -> data_lake_20200710_models.BatchGetTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_grant_permissions_with_options(request, headers, runtime)
+        return self.batch_get_tables_with_options(request, headers, runtime)
 
-    async def batch_grant_permissions_async(
+    async def batch_get_tables_async(
         self,
-        request: data_lake_20200710_models.BatchGrantPermissionsRequest,
-    ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
+        request: data_lake_20200710_models.BatchGetTablesRequest,
+    ) -> data_lake_20200710_models.BatchGetTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_grant_permissions_with_options_async(request, headers, runtime)
+        return await self.batch_get_tables_with_options_async(request, headers, runtime)
 
     def batch_grant_permissions_with_options(
         self,
@@ -980,21 +964,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_revoke_permissions(
+    def batch_grant_permissions(
         self,
-        request: data_lake_20200710_models.BatchRevokePermissionsRequest,
-    ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
+        request: data_lake_20200710_models.BatchGrantPermissionsRequest,
+    ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_revoke_permissions_with_options(request, headers, runtime)
+        return self.batch_grant_permissions_with_options(request, headers, runtime)
 
-    async def batch_revoke_permissions_async(
+    async def batch_grant_permissions_async(
         self,
-        request: data_lake_20200710_models.BatchRevokePermissionsRequest,
-    ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
+        request: data_lake_20200710_models.BatchGrantPermissionsRequest,
+    ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_revoke_permissions_with_options_async(request, headers, runtime)
+        return await self.batch_grant_permissions_with_options_async(request, headers, runtime)
 
     def batch_revoke_permissions_with_options(
         self,
@@ -1064,21 +1048,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_update_partitions(
+    def batch_revoke_permissions(
         self,
-        request: data_lake_20200710_models.BatchUpdatePartitionsRequest,
-    ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
+        request: data_lake_20200710_models.BatchRevokePermissionsRequest,
+    ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_update_partitions_with_options(request, headers, runtime)
+        return self.batch_revoke_permissions_with_options(request, headers, runtime)
 
-    async def batch_update_partitions_async(
+    async def batch_revoke_permissions_async(
         self,
-        request: data_lake_20200710_models.BatchUpdatePartitionsRequest,
-    ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
+        request: data_lake_20200710_models.BatchRevokePermissionsRequest,
+    ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_update_partitions_with_options_async(request, headers, runtime)
+        return await self.batch_revoke_permissions_with_options_async(request, headers, runtime)
 
     def batch_update_partitions_with_options(
         self,
@@ -1152,21 +1136,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_update_tables(
+    def batch_update_partitions(
         self,
-        request: data_lake_20200710_models.BatchUpdateTablesRequest,
-    ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
+        request: data_lake_20200710_models.BatchUpdatePartitionsRequest,
+    ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_update_tables_with_options(request, headers, runtime)
+        return self.batch_update_partitions_with_options(request, headers, runtime)
 
-    async def batch_update_tables_async(
+    async def batch_update_partitions_async(
         self,
-        request: data_lake_20200710_models.BatchUpdateTablesRequest,
-    ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
+        request: data_lake_20200710_models.BatchUpdatePartitionsRequest,
+    ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_update_tables_with_options_async(request, headers, runtime)
+        return await self.batch_update_partitions_with_options_async(request, headers, runtime)
 
     def batch_update_tables_with_options(
         self,
@@ -1240,21 +1224,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_query(
+    def batch_update_tables(
         self,
-        request: data_lake_20200710_models.CancelQueryRequest,
-    ) -> data_lake_20200710_models.CancelQueryResponse:
+        request: data_lake_20200710_models.BatchUpdateTablesRequest,
+    ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_query_with_options(request, headers, runtime)
+        return self.batch_update_tables_with_options(request, headers, runtime)
 
-    async def cancel_query_async(
+    async def batch_update_tables_async(
         self,
-        request: data_lake_20200710_models.CancelQueryRequest,
-    ) -> data_lake_20200710_models.CancelQueryResponse:
+        request: data_lake_20200710_models.BatchUpdateTablesRequest,
+    ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_query_with_options_async(request, headers, runtime)
+        return await self.batch_update_tables_with_options_async(request, headers, runtime)
 
     def cancel_query_with_options(
         self,
@@ -1316,21 +1300,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def check_permissions(
+    def cancel_query(
         self,
-        request: data_lake_20200710_models.CheckPermissionsRequest,
-    ) -> data_lake_20200710_models.CheckPermissionsResponse:
+        request: data_lake_20200710_models.CancelQueryRequest,
+    ) -> data_lake_20200710_models.CancelQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.check_permissions_with_options(request, headers, runtime)
+        return self.cancel_query_with_options(request, headers, runtime)
 
-    async def check_permissions_async(
+    async def cancel_query_async(
         self,
-        request: data_lake_20200710_models.CheckPermissionsRequest,
-    ) -> data_lake_20200710_models.CheckPermissionsResponse:
+        request: data_lake_20200710_models.CancelQueryRequest,
+    ) -> data_lake_20200710_models.CancelQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.check_permissions_with_options_async(request, headers, runtime)
+        return await self.cancel_query_with_options_async(request, headers, runtime)
 
     def check_permissions_with_options(
         self,
@@ -1341,7 +1325,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CheckPermissions',
@@ -1368,7 +1352,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CheckPermissions',
@@ -1386,21 +1370,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_catalog(
+    def check_permissions(
         self,
-        request: data_lake_20200710_models.CreateCatalogRequest,
-    ) -> data_lake_20200710_models.CreateCatalogResponse:
+        request: data_lake_20200710_models.CheckPermissionsRequest,
+    ) -> data_lake_20200710_models.CheckPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_catalog_with_options(request, headers, runtime)
+        return self.check_permissions_with_options(request, headers, runtime)
 
-    async def create_catalog_async(
+    async def check_permissions_async(
         self,
-        request: data_lake_20200710_models.CreateCatalogRequest,
-    ) -> data_lake_20200710_models.CreateCatalogResponse:
+        request: data_lake_20200710_models.CheckPermissionsRequest,
+    ) -> data_lake_20200710_models.CheckPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_catalog_with_options_async(request, headers, runtime)
+        return await self.check_permissions_with_options_async(request, headers, runtime)
 
     def create_catalog_with_options(
         self,
@@ -1462,21 +1446,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_database(
+    def create_catalog(
         self,
-        request: data_lake_20200710_models.CreateDatabaseRequest,
-    ) -> data_lake_20200710_models.CreateDatabaseResponse:
+        request: data_lake_20200710_models.CreateCatalogRequest,
+    ) -> data_lake_20200710_models.CreateCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_database_with_options(request, headers, runtime)
+        return self.create_catalog_with_options(request, headers, runtime)
 
-    async def create_database_async(
+    async def create_catalog_async(
         self,
-        request: data_lake_20200710_models.CreateDatabaseRequest,
-    ) -> data_lake_20200710_models.CreateDatabaseResponse:
+        request: data_lake_20200710_models.CreateCatalogRequest,
+    ) -> data_lake_20200710_models.CreateCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_database_with_options_async(request, headers, runtime)
+        return await self.create_catalog_with_options_async(request, headers, runtime)
 
     def create_database_with_options(
         self,
@@ -1542,21 +1526,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_function(
+    def create_database(
         self,
-        request: data_lake_20200710_models.CreateFunctionRequest,
-    ) -> data_lake_20200710_models.CreateFunctionResponse:
+        request: data_lake_20200710_models.CreateDatabaseRequest,
+    ) -> data_lake_20200710_models.CreateDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_function_with_options(request, headers, runtime)
+        return self.create_database_with_options(request, headers, runtime)
 
-    async def create_function_async(
+    async def create_database_async(
         self,
-        request: data_lake_20200710_models.CreateFunctionRequest,
-    ) -> data_lake_20200710_models.CreateFunctionResponse:
+        request: data_lake_20200710_models.CreateDatabaseRequest,
+    ) -> data_lake_20200710_models.CreateDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_function_with_options_async(request, headers, runtime)
+        return await self.create_database_with_options_async(request, headers, runtime)
 
     def create_function_with_options(
         self,
@@ -1626,21 +1610,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_lock(
+    def create_function(
         self,
-        request: data_lake_20200710_models.CreateLockRequest,
-    ) -> data_lake_20200710_models.CreateLockResponse:
+        request: data_lake_20200710_models.CreateFunctionRequest,
+    ) -> data_lake_20200710_models.CreateFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_lock_with_options(request, headers, runtime)
+        return self.create_function_with_options(request, headers, runtime)
 
-    async def create_lock_async(
+    async def create_function_async(
         self,
-        request: data_lake_20200710_models.CreateLockRequest,
-    ) -> data_lake_20200710_models.CreateLockResponse:
+        request: data_lake_20200710_models.CreateFunctionRequest,
+    ) -> data_lake_20200710_models.CreateFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_lock_with_options_async(request, headers, runtime)
+        return await self.create_function_with_options_async(request, headers, runtime)
 
     def create_lock_with_options(
         self,
@@ -1702,21 +1686,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_partition(
+    def create_lock(
         self,
-        request: data_lake_20200710_models.CreatePartitionRequest,
-    ) -> data_lake_20200710_models.CreatePartitionResponse:
+        request: data_lake_20200710_models.CreateLockRequest,
+    ) -> data_lake_20200710_models.CreateLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_partition_with_options(request, headers, runtime)
+        return self.create_lock_with_options(request, headers, runtime)
 
-    async def create_partition_async(
+    async def create_lock_async(
         self,
-        request: data_lake_20200710_models.CreatePartitionRequest,
-    ) -> data_lake_20200710_models.CreatePartitionResponse:
+        request: data_lake_20200710_models.CreateLockRequest,
+    ) -> data_lake_20200710_models.CreateLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_partition_with_options_async(request, headers, runtime)
+        return await self.create_lock_with_options_async(request, headers, runtime)
 
     def create_partition_with_options(
         self,
@@ -1798,21 +1782,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_role(
+    def create_partition(
         self,
-        request: data_lake_20200710_models.CreateRoleRequest,
-    ) -> data_lake_20200710_models.CreateRoleResponse:
+        request: data_lake_20200710_models.CreatePartitionRequest,
+    ) -> data_lake_20200710_models.CreatePartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_role_with_options(request, headers, runtime)
+        return self.create_partition_with_options(request, headers, runtime)
 
-    async def create_role_async(
+    async def create_partition_async(
         self,
-        request: data_lake_20200710_models.CreateRoleRequest,
-    ) -> data_lake_20200710_models.CreateRoleResponse:
+        request: data_lake_20200710_models.CreatePartitionRequest,
+    ) -> data_lake_20200710_models.CreatePartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_role_with_options_async(request, headers, runtime)
+        return await self.create_partition_with_options_async(request, headers, runtime)
 
     def create_role_with_options(
         self,
@@ -1823,7 +1807,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateRole',
@@ -1850,7 +1834,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateRole',
@@ -1868,21 +1852,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_table(
+    def create_role(
         self,
-        request: data_lake_20200710_models.CreateTableRequest,
-    ) -> data_lake_20200710_models.CreateTableResponse:
+        request: data_lake_20200710_models.CreateRoleRequest,
+    ) -> data_lake_20200710_models.CreateRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_table_with_options(request, headers, runtime)
+        return self.create_role_with_options(request, headers, runtime)
 
-    async def create_table_async(
+    async def create_role_async(
         self,
-        request: data_lake_20200710_models.CreateTableRequest,
-    ) -> data_lake_20200710_models.CreateTableResponse:
+        request: data_lake_20200710_models.CreateRoleRequest,
+    ) -> data_lake_20200710_models.CreateRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_table_with_options_async(request, headers, runtime)
+        return await self.create_role_with_options_async(request, headers, runtime)
 
     def create_table_with_options(
         self,
@@ -1952,21 +1936,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_catalog(
+    def create_table(
         self,
-        request: data_lake_20200710_models.DeleteCatalogRequest,
-    ) -> data_lake_20200710_models.DeleteCatalogResponse:
+        request: data_lake_20200710_models.CreateTableRequest,
+    ) -> data_lake_20200710_models.CreateTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_catalog_with_options(request, headers, runtime)
+        return self.create_table_with_options(request, headers, runtime)
 
-    async def delete_catalog_async(
+    async def create_table_async(
         self,
-        request: data_lake_20200710_models.DeleteCatalogRequest,
-    ) -> data_lake_20200710_models.DeleteCatalogResponse:
+        request: data_lake_20200710_models.CreateTableRequest,
+    ) -> data_lake_20200710_models.CreateTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_catalog_with_options_async(request, headers, runtime)
+        return await self.create_table_with_options_async(request, headers, runtime)
 
     def delete_catalog_with_options(
         self,
@@ -2032,21 +2016,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_database(
+    def delete_catalog(
         self,
-        request: data_lake_20200710_models.DeleteDatabaseRequest,
-    ) -> data_lake_20200710_models.DeleteDatabaseResponse:
+        request: data_lake_20200710_models.DeleteCatalogRequest,
+    ) -> data_lake_20200710_models.DeleteCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_database_with_options(request, headers, runtime)
+        return self.delete_catalog_with_options(request, headers, runtime)
 
-    async def delete_database_async(
+    async def delete_catalog_async(
         self,
-        request: data_lake_20200710_models.DeleteDatabaseRequest,
-    ) -> data_lake_20200710_models.DeleteDatabaseResponse:
+        request: data_lake_20200710_models.DeleteCatalogRequest,
+    ) -> data_lake_20200710_models.DeleteCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_database_with_options_async(request, headers, runtime)
+        return await self.delete_catalog_with_options_async(request, headers, runtime)
 
     def delete_database_with_options(
         self,
@@ -2116,21 +2100,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_function(
+    def delete_database(
         self,
-        request: data_lake_20200710_models.DeleteFunctionRequest,
-    ) -> data_lake_20200710_models.DeleteFunctionResponse:
+        request: data_lake_20200710_models.DeleteDatabaseRequest,
+    ) -> data_lake_20200710_models.DeleteDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_function_with_options(request, headers, runtime)
+        return self.delete_database_with_options(request, headers, runtime)
 
-    async def delete_function_async(
+    async def delete_database_async(
         self,
-        request: data_lake_20200710_models.DeleteFunctionRequest,
-    ) -> data_lake_20200710_models.DeleteFunctionResponse:
+        request: data_lake_20200710_models.DeleteDatabaseRequest,
+    ) -> data_lake_20200710_models.DeleteDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_function_with_options_async(request, headers, runtime)
+        return await self.delete_database_with_options_async(request, headers, runtime)
 
     def delete_function_with_options(
         self,
@@ -2200,21 +2184,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_partition(
+    def delete_function(
         self,
-        request: data_lake_20200710_models.DeletePartitionRequest,
-    ) -> data_lake_20200710_models.DeletePartitionResponse:
+        request: data_lake_20200710_models.DeleteFunctionRequest,
+    ) -> data_lake_20200710_models.DeleteFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_partition_with_options(request, headers, runtime)
+        return self.delete_function_with_options(request, headers, runtime)
 
-    async def delete_partition_async(
+    async def delete_function_async(
         self,
-        request: data_lake_20200710_models.DeletePartitionRequest,
-    ) -> data_lake_20200710_models.DeletePartitionResponse:
+        request: data_lake_20200710_models.DeleteFunctionRequest,
+    ) -> data_lake_20200710_models.DeleteFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_partition_with_options_async(request, headers, runtime)
+        return await self.delete_function_with_options_async(request, headers, runtime)
 
     def delete_partition_with_options(
         self,
@@ -2292,21 +2276,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_partition_column_statistics(
+    def delete_partition(
         self,
-        request: data_lake_20200710_models.DeletePartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.DeletePartitionRequest,
+    ) -> data_lake_20200710_models.DeletePartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_partition_column_statistics_with_options(request, headers, runtime)
+        return self.delete_partition_with_options(request, headers, runtime)
 
-    async def delete_partition_column_statistics_async(
+    async def delete_partition_async(
         self,
-        request: data_lake_20200710_models.DeletePartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.DeletePartitionRequest,
+    ) -> data_lake_20200710_models.DeletePartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_partition_column_statistics_with_options_async(request, headers, runtime)
+        return await self.delete_partition_with_options_async(request, headers, runtime)
 
     def delete_partition_column_statistics_with_options(
         self,
@@ -2396,21 +2380,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_role(
+    def delete_partition_column_statistics(
         self,
-        request: data_lake_20200710_models.DeleteRoleRequest,
-    ) -> data_lake_20200710_models.DeleteRoleResponse:
+        request: data_lake_20200710_models.DeletePartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_role_with_options(request, headers, runtime)
+        return self.delete_partition_column_statistics_with_options(request, headers, runtime)
 
-    async def delete_role_async(
+    async def delete_partition_column_statistics_async(
         self,
-        request: data_lake_20200710_models.DeleteRoleRequest,
-    ) -> data_lake_20200710_models.DeleteRoleResponse:
+        request: data_lake_20200710_models.DeletePartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_role_with_options_async(request, headers, runtime)
+        return await self.delete_partition_column_statistics_with_options_async(request, headers, runtime)
 
     def delete_role_with_options(
         self,
@@ -2472,21 +2456,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_table(
+    def delete_role(
         self,
-        request: data_lake_20200710_models.DeleteTableRequest,
-    ) -> data_lake_20200710_models.DeleteTableResponse:
+        request: data_lake_20200710_models.DeleteRoleRequest,
+    ) -> data_lake_20200710_models.DeleteRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_table_with_options(request, headers, runtime)
+        return self.delete_role_with_options(request, headers, runtime)
 
-    async def delete_table_async(
+    async def delete_role_async(
         self,
-        request: data_lake_20200710_models.DeleteTableRequest,
-    ) -> data_lake_20200710_models.DeleteTableResponse:
+        request: data_lake_20200710_models.DeleteRoleRequest,
+    ) -> data_lake_20200710_models.DeleteRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_table_with_options_async(request, headers, runtime)
+        return await self.delete_role_with_options_async(request, headers, runtime)
 
     def delete_table_with_options(
         self,
@@ -2556,21 +2540,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_table_column_statistics(
+    def delete_table(
         self,
-        request: data_lake_20200710_models.DeleteTableColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
+        request: data_lake_20200710_models.DeleteTableRequest,
+    ) -> data_lake_20200710_models.DeleteTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_table_column_statistics_with_options(request, headers, runtime)
+        return self.delete_table_with_options(request, headers, runtime)
 
-    async def delete_table_column_statistics_async(
+    async def delete_table_async(
         self,
-        request: data_lake_20200710_models.DeleteTableColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
+        request: data_lake_20200710_models.DeleteTableRequest,
+    ) -> data_lake_20200710_models.DeleteTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_table_column_statistics_with_options_async(request, headers, runtime)
+        return await self.delete_table_with_options_async(request, headers, runtime)
 
     def delete_table_column_statistics_with_options(
         self,
@@ -2652,21 +2636,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_table_version(
+    def delete_table_column_statistics(
         self,
-        request: data_lake_20200710_models.DeleteTableVersionRequest,
-    ) -> data_lake_20200710_models.DeleteTableVersionResponse:
+        request: data_lake_20200710_models.DeleteTableColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_table_version_with_options(request, headers, runtime)
+        return self.delete_table_column_statistics_with_options(request, headers, runtime)
 
-    async def delete_table_version_async(
+    async def delete_table_column_statistics_async(
         self,
-        request: data_lake_20200710_models.DeleteTableVersionRequest,
-    ) -> data_lake_20200710_models.DeleteTableVersionResponse:
+        request: data_lake_20200710_models.DeleteTableColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_table_version_with_options_async(request, headers, runtime)
+        return await self.delete_table_column_statistics_with_options_async(request, headers, runtime)
 
     def delete_table_version_with_options(
         self,
@@ -2740,15 +2724,97 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(self) -> data_lake_20200710_models.DescribeRegionsResponse:
+    def delete_table_version(
+        self,
+        request: data_lake_20200710_models.DeleteTableVersionRequest,
+    ) -> data_lake_20200710_models.DeleteTableVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_regions_with_options(headers, runtime)
+        return self.delete_table_version_with_options(request, headers, runtime)
 
-    async def describe_regions_async(self) -> data_lake_20200710_models.DescribeRegionsResponse:
+    async def delete_table_version_async(
+        self,
+        request: data_lake_20200710_models.DeleteTableVersionRequest,
+    ) -> data_lake_20200710_models.DeleteTableVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_regions_with_options_async(headers, runtime)
+        return await self.delete_table_version_with_options_async(request, headers, runtime)
+
+    def deregister_location_with_options(
+        self,
+        request: data_lake_20200710_models.DeregisterLocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.location_id):
+            query['LocationId'] = request.location_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeregisterLocation',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/locations',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.DeregisterLocationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deregister_location_with_options_async(
+        self,
+        request: data_lake_20200710_models.DeregisterLocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.location_id):
+            query['LocationId'] = request.location_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeregisterLocation',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/locations',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.DeregisterLocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deregister_location(
+        self,
+        request: data_lake_20200710_models.DeregisterLocationRequest,
+    ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.deregister_location_with_options(request, headers, runtime)
+
+    async def deregister_location_async(
+        self,
+        request: data_lake_20200710_models.DeregisterLocationRequest,
+    ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.deregister_location_with_options_async(request, headers, runtime)
 
     def describe_regions_with_options(
         self,
@@ -2798,21 +2864,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_async_task_status(
-        self,
-        request: data_lake_20200710_models.GetAsyncTaskStatusRequest,
-    ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
+    def describe_regions(self) -> data_lake_20200710_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_async_task_status_with_options(request, headers, runtime)
+        return self.describe_regions_with_options(headers, runtime)
 
-    async def get_async_task_status_async(
-        self,
-        request: data_lake_20200710_models.GetAsyncTaskStatusRequest,
-    ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
+    async def describe_regions_async(self) -> data_lake_20200710_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_async_task_status_with_options_async(request, headers, runtime)
+        return await self.describe_regions_with_options_async(headers, runtime)
 
     def get_async_task_status_with_options(
         self,
@@ -2878,21 +2938,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_catalog(
+    def get_async_task_status(
         self,
-        request: data_lake_20200710_models.GetCatalogRequest,
-    ) -> data_lake_20200710_models.GetCatalogResponse:
+        request: data_lake_20200710_models.GetAsyncTaskStatusRequest,
+    ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_catalog_with_options(request, headers, runtime)
+        return self.get_async_task_status_with_options(request, headers, runtime)
 
-    async def get_catalog_async(
+    async def get_async_task_status_async(
         self,
-        request: data_lake_20200710_models.GetCatalogRequest,
-    ) -> data_lake_20200710_models.GetCatalogResponse:
+        request: data_lake_20200710_models.GetAsyncTaskStatusRequest,
+    ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_catalog_with_options_async(request, headers, runtime)
+        return await self.get_async_task_status_with_options_async(request, headers, runtime)
 
     def get_catalog_with_options(
         self,
@@ -2954,21 +3014,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_catalog_settings(
+    def get_catalog(
         self,
-        request: data_lake_20200710_models.GetCatalogSettingsRequest,
-    ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
+        request: data_lake_20200710_models.GetCatalogRequest,
+    ) -> data_lake_20200710_models.GetCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_catalog_settings_with_options(request, headers, runtime)
+        return self.get_catalog_with_options(request, headers, runtime)
 
-    async def get_catalog_settings_async(
+    async def get_catalog_async(
         self,
-        request: data_lake_20200710_models.GetCatalogSettingsRequest,
-    ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
+        request: data_lake_20200710_models.GetCatalogRequest,
+    ) -> data_lake_20200710_models.GetCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_catalog_settings_with_options_async(request, headers, runtime)
+        return await self.get_catalog_with_options_async(request, headers, runtime)
 
     def get_catalog_settings_with_options(
         self,
@@ -3030,21 +3090,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_database(
+    def get_catalog_settings(
         self,
-        request: data_lake_20200710_models.GetDatabaseRequest,
-    ) -> data_lake_20200710_models.GetDatabaseResponse:
+        request: data_lake_20200710_models.GetCatalogSettingsRequest,
+    ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_database_with_options(request, headers, runtime)
+        return self.get_catalog_settings_with_options(request, headers, runtime)
 
-    async def get_database_async(
+    async def get_catalog_settings_async(
         self,
-        request: data_lake_20200710_models.GetDatabaseRequest,
-    ) -> data_lake_20200710_models.GetDatabaseResponse:
+        request: data_lake_20200710_models.GetCatalogSettingsRequest,
+    ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_database_with_options_async(request, headers, runtime)
+        return await self.get_catalog_settings_with_options_async(request, headers, runtime)
 
     def get_database_with_options(
         self,
@@ -3110,21 +3170,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_function(
+    def get_database(
         self,
-        request: data_lake_20200710_models.GetFunctionRequest,
-    ) -> data_lake_20200710_models.GetFunctionResponse:
+        request: data_lake_20200710_models.GetDatabaseRequest,
+    ) -> data_lake_20200710_models.GetDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_function_with_options(request, headers, runtime)
+        return self.get_database_with_options(request, headers, runtime)
 
-    async def get_function_async(
+    async def get_database_async(
         self,
-        request: data_lake_20200710_models.GetFunctionRequest,
-    ) -> data_lake_20200710_models.GetFunctionResponse:
+        request: data_lake_20200710_models.GetDatabaseRequest,
+    ) -> data_lake_20200710_models.GetDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_function_with_options_async(request, headers, runtime)
+        return await self.get_database_with_options_async(request, headers, runtime)
 
     def get_function_with_options(
         self,
@@ -3194,21 +3254,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_lock(
+    def get_function(
         self,
-        request: data_lake_20200710_models.GetLockRequest,
-    ) -> data_lake_20200710_models.GetLockResponse:
+        request: data_lake_20200710_models.GetFunctionRequest,
+    ) -> data_lake_20200710_models.GetFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_lock_with_options(request, headers, runtime)
+        return self.get_function_with_options(request, headers, runtime)
 
-    async def get_lock_async(
+    async def get_function_async(
         self,
-        request: data_lake_20200710_models.GetLockRequest,
-    ) -> data_lake_20200710_models.GetLockResponse:
+        request: data_lake_20200710_models.GetFunctionRequest,
+    ) -> data_lake_20200710_models.GetFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_lock_with_options_async(request, headers, runtime)
+        return await self.get_function_with_options_async(request, headers, runtime)
 
     def get_lock_with_options(
         self,
@@ -3270,21 +3330,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_partition(
+    def get_lock(
         self,
-        request: data_lake_20200710_models.GetPartitionRequest,
-    ) -> data_lake_20200710_models.GetPartitionResponse:
+        request: data_lake_20200710_models.GetLockRequest,
+    ) -> data_lake_20200710_models.GetLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_partition_with_options(request, headers, runtime)
+        return self.get_lock_with_options(request, headers, runtime)
 
-    async def get_partition_async(
+    async def get_lock_async(
         self,
-        request: data_lake_20200710_models.GetPartitionRequest,
-    ) -> data_lake_20200710_models.GetPartitionResponse:
+        request: data_lake_20200710_models.GetLockRequest,
+    ) -> data_lake_20200710_models.GetLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_partition_with_options_async(request, headers, runtime)
+        return await self.get_lock_with_options_async(request, headers, runtime)
 
     def get_partition_with_options(
         self,
@@ -3358,21 +3418,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_partition_column_statistics(
+    def get_partition(
         self,
-        request: data_lake_20200710_models.GetPartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.GetPartitionRequest,
+    ) -> data_lake_20200710_models.GetPartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_partition_column_statistics_with_options(request, headers, runtime)
+        return self.get_partition_with_options(request, headers, runtime)
 
-    async def get_partition_column_statistics_async(
+    async def get_partition_async(
         self,
-        request: data_lake_20200710_models.GetPartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.GetPartitionRequest,
+    ) -> data_lake_20200710_models.GetPartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_partition_column_statistics_with_options_async(request, headers, runtime)
+        return await self.get_partition_with_options_async(request, headers, runtime)
 
     def get_partition_column_statistics_with_options(
         self,
@@ -3462,21 +3522,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_query_result(
+    def get_partition_column_statistics(
         self,
-        request: data_lake_20200710_models.GetQueryResultRequest,
-    ) -> data_lake_20200710_models.GetQueryResultResponse:
+        request: data_lake_20200710_models.GetPartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_query_result_with_options(request, headers, runtime)
+        return self.get_partition_column_statistics_with_options(request, headers, runtime)
 
-    async def get_query_result_async(
+    async def get_partition_column_statistics_async(
         self,
-        request: data_lake_20200710_models.GetQueryResultRequest,
-    ) -> data_lake_20200710_models.GetQueryResultResponse:
+        request: data_lake_20200710_models.GetPartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_query_result_with_options_async(request, headers, runtime)
+        return await self.get_partition_column_statistics_with_options_async(request, headers, runtime)
 
     def get_query_result_with_options(
         self,
@@ -3546,21 +3606,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_region_status(
+    def get_query_result(
         self,
-        request: data_lake_20200710_models.GetRegionStatusRequest,
-    ) -> data_lake_20200710_models.GetRegionStatusResponse:
+        request: data_lake_20200710_models.GetQueryResultRequest,
+    ) -> data_lake_20200710_models.GetQueryResultResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_region_status_with_options(request, headers, runtime)
+        return self.get_query_result_with_options(request, headers, runtime)
 
-    async def get_region_status_async(
+    async def get_query_result_async(
         self,
-        request: data_lake_20200710_models.GetRegionStatusRequest,
-    ) -> data_lake_20200710_models.GetRegionStatusResponse:
+        request: data_lake_20200710_models.GetQueryResultRequest,
+    ) -> data_lake_20200710_models.GetQueryResultResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_region_status_with_options_async(request, headers, runtime)
+        return await self.get_query_result_with_options_async(request, headers, runtime)
 
     def get_region_status_with_options(
         self,
@@ -3622,21 +3682,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_role(
+    def get_region_status(
         self,
-        request: data_lake_20200710_models.GetRoleRequest,
-    ) -> data_lake_20200710_models.GetRoleResponse:
+        request: data_lake_20200710_models.GetRegionStatusRequest,
+    ) -> data_lake_20200710_models.GetRegionStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_role_with_options(request, headers, runtime)
+        return self.get_region_status_with_options(request, headers, runtime)
 
-    async def get_role_async(
+    async def get_region_status_async(
         self,
-        request: data_lake_20200710_models.GetRoleRequest,
-    ) -> data_lake_20200710_models.GetRoleResponse:
+        request: data_lake_20200710_models.GetRegionStatusRequest,
+    ) -> data_lake_20200710_models.GetRegionStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_role_with_options_async(request, headers, runtime)
+        return await self.get_region_status_with_options_async(request, headers, runtime)
 
     def get_role_with_options(
         self,
@@ -3698,21 +3758,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_service_status(
+    def get_role(
         self,
-        request: data_lake_20200710_models.GetServiceStatusRequest,
-    ) -> data_lake_20200710_models.GetServiceStatusResponse:
+        request: data_lake_20200710_models.GetRoleRequest,
+    ) -> data_lake_20200710_models.GetRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_service_status_with_options(request, headers, runtime)
+        return self.get_role_with_options(request, headers, runtime)
 
-    async def get_service_status_async(
+    async def get_role_async(
         self,
-        request: data_lake_20200710_models.GetServiceStatusRequest,
-    ) -> data_lake_20200710_models.GetServiceStatusResponse:
+        request: data_lake_20200710_models.GetRoleRequest,
+    ) -> data_lake_20200710_models.GetRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_service_status_with_options_async(request, headers, runtime)
+        return await self.get_role_with_options_async(request, headers, runtime)
 
     def get_service_status_with_options(
         self,
@@ -3774,21 +3834,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_table(
+    def get_service_status(
         self,
-        request: data_lake_20200710_models.GetTableRequest,
-    ) -> data_lake_20200710_models.GetTableResponse:
+        request: data_lake_20200710_models.GetServiceStatusRequest,
+    ) -> data_lake_20200710_models.GetServiceStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_table_with_options(request, headers, runtime)
+        return self.get_service_status_with_options(request, headers, runtime)
 
-    async def get_table_async(
+    async def get_service_status_async(
         self,
-        request: data_lake_20200710_models.GetTableRequest,
-    ) -> data_lake_20200710_models.GetTableResponse:
+        request: data_lake_20200710_models.GetServiceStatusRequest,
+    ) -> data_lake_20200710_models.GetServiceStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_table_with_options_async(request, headers, runtime)
+        return await self.get_service_status_with_options_async(request, headers, runtime)
 
     def get_table_with_options(
         self,
@@ -3858,21 +3918,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_table_column_statistics(
+    def get_table(
         self,
-        request: data_lake_20200710_models.GetTableColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
+        request: data_lake_20200710_models.GetTableRequest,
+    ) -> data_lake_20200710_models.GetTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_table_column_statistics_with_options(request, headers, runtime)
+        return self.get_table_with_options(request, headers, runtime)
 
-    async def get_table_column_statistics_async(
+    async def get_table_async(
         self,
-        request: data_lake_20200710_models.GetTableColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
+        request: data_lake_20200710_models.GetTableRequest,
+    ) -> data_lake_20200710_models.GetTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_table_column_statistics_with_options_async(request, headers, runtime)
+        return await self.get_table_with_options_async(request, headers, runtime)
 
     def get_table_column_statistics_with_options(
         self,
@@ -3954,21 +4014,105 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_table_version(
+    def get_table_column_statistics(
         self,
-        request: data_lake_20200710_models.GetTableVersionRequest,
-    ) -> data_lake_20200710_models.GetTableVersionResponse:
+        request: data_lake_20200710_models.GetTableColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_table_version_with_options(request, headers, runtime)
+        return self.get_table_column_statistics_with_options(request, headers, runtime)
 
-    async def get_table_version_async(
+    async def get_table_column_statistics_async(
         self,
-        request: data_lake_20200710_models.GetTableVersionRequest,
-    ) -> data_lake_20200710_models.GetTableVersionResponse:
+        request: data_lake_20200710_models.GetTableColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_table_version_with_options_async(request, headers, runtime)
+        return await self.get_table_column_statistics_with_options_async(request, headers, runtime)
+
+    def get_table_profile_with_options(
+        self,
+        request: data_lake_20200710_models.GetTableProfileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.GetTableProfileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_id):
+            query['CatalogId'] = request.catalog_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableProfile',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/metastorehouse/catalog/database/tableprofile',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.GetTableProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_profile_with_options_async(
+        self,
+        request: data_lake_20200710_models.GetTableProfileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.GetTableProfileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_id):
+            query['CatalogId'] = request.catalog_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableProfile',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/metastorehouse/catalog/database/tableprofile',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.GetTableProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_profile(
+        self,
+        request: data_lake_20200710_models.GetTableProfileRequest,
+    ) -> data_lake_20200710_models.GetTableProfileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_table_profile_with_options(request, headers, runtime)
+
+    async def get_table_profile_async(
+        self,
+        request: data_lake_20200710_models.GetTableProfileRequest,
+    ) -> data_lake_20200710_models.GetTableProfileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_table_profile_with_options_async(request, headers, runtime)
 
     def get_table_version_with_options(
         self,
@@ -4042,21 +4186,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def grant_permissions(
+    def get_table_version(
         self,
-        request: data_lake_20200710_models.GrantPermissionsRequest,
-    ) -> data_lake_20200710_models.GrantPermissionsResponse:
+        request: data_lake_20200710_models.GetTableVersionRequest,
+    ) -> data_lake_20200710_models.GetTableVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.grant_permissions_with_options(request, headers, runtime)
+        return self.get_table_version_with_options(request, headers, runtime)
 
-    async def grant_permissions_async(
+    async def get_table_version_async(
         self,
-        request: data_lake_20200710_models.GrantPermissionsRequest,
-    ) -> data_lake_20200710_models.GrantPermissionsResponse:
+        request: data_lake_20200710_models.GetTableVersionRequest,
+    ) -> data_lake_20200710_models.GetTableVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.grant_permissions_with_options_async(request, headers, runtime)
+        return await self.get_table_version_with_options_async(request, headers, runtime)
 
     def grant_permissions_with_options(
         self,
@@ -4138,21 +4282,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def grant_role_to_users(
+    def grant_permissions(
         self,
-        request: data_lake_20200710_models.GrantRoleToUsersRequest,
-    ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
+        request: data_lake_20200710_models.GrantPermissionsRequest,
+    ) -> data_lake_20200710_models.GrantPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.grant_role_to_users_with_options(request, headers, runtime)
+        return self.grant_permissions_with_options(request, headers, runtime)
 
-    async def grant_role_to_users_async(
+    async def grant_permissions_async(
         self,
-        request: data_lake_20200710_models.GrantRoleToUsersRequest,
-    ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
+        request: data_lake_20200710_models.GrantPermissionsRequest,
+    ) -> data_lake_20200710_models.GrantPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.grant_role_to_users_with_options_async(request, headers, runtime)
+        return await self.grant_permissions_with_options_async(request, headers, runtime)
 
     def grant_role_to_users_with_options(
         self,
@@ -4218,21 +4362,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def grant_roles_to_user(
+    def grant_role_to_users(
         self,
-        request: data_lake_20200710_models.GrantRolesToUserRequest,
-    ) -> data_lake_20200710_models.GrantRolesToUserResponse:
+        request: data_lake_20200710_models.GrantRoleToUsersRequest,
+    ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.grant_roles_to_user_with_options(request, headers, runtime)
+        return self.grant_role_to_users_with_options(request, headers, runtime)
 
-    async def grant_roles_to_user_async(
+    async def grant_role_to_users_async(
         self,
-        request: data_lake_20200710_models.GrantRolesToUserRequest,
-    ) -> data_lake_20200710_models.GrantRolesToUserResponse:
+        request: data_lake_20200710_models.GrantRoleToUsersRequest,
+    ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.grant_roles_to_user_with_options_async(request, headers, runtime)
+        return await self.grant_role_to_users_with_options_async(request, headers, runtime)
 
     def grant_roles_to_user_with_options(
         self,
@@ -4298,21 +4442,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_catalogs(
+    def grant_roles_to_user(
         self,
-        request: data_lake_20200710_models.ListCatalogsRequest,
-    ) -> data_lake_20200710_models.ListCatalogsResponse:
+        request: data_lake_20200710_models.GrantRolesToUserRequest,
+    ) -> data_lake_20200710_models.GrantRolesToUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_catalogs_with_options(request, headers, runtime)
+        return self.grant_roles_to_user_with_options(request, headers, runtime)
 
-    async def list_catalogs_async(
+    async def grant_roles_to_user_async(
         self,
-        request: data_lake_20200710_models.ListCatalogsRequest,
-    ) -> data_lake_20200710_models.ListCatalogsResponse:
+        request: data_lake_20200710_models.GrantRolesToUserRequest,
+    ) -> data_lake_20200710_models.GrantRolesToUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_catalogs_with_options_async(request, headers, runtime)
+        return await self.grant_roles_to_user_with_options_async(request, headers, runtime)
 
     def list_catalogs_with_options(
         self,
@@ -4382,21 +4526,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_databases(
+    def list_catalogs(
         self,
-        request: data_lake_20200710_models.ListDatabasesRequest,
-    ) -> data_lake_20200710_models.ListDatabasesResponse:
+        request: data_lake_20200710_models.ListCatalogsRequest,
+    ) -> data_lake_20200710_models.ListCatalogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_databases_with_options(request, headers, runtime)
+        return self.list_catalogs_with_options(request, headers, runtime)
 
-    async def list_databases_async(
+    async def list_catalogs_async(
         self,
-        request: data_lake_20200710_models.ListDatabasesRequest,
-    ) -> data_lake_20200710_models.ListDatabasesResponse:
+        request: data_lake_20200710_models.ListCatalogsRequest,
+    ) -> data_lake_20200710_models.ListCatalogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_databases_with_options_async(request, headers, runtime)
+        return await self.list_catalogs_with_options_async(request, headers, runtime)
 
     def list_databases_with_options(
         self,
@@ -4470,21 +4614,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_function_names(
+    def list_databases(
         self,
-        request: data_lake_20200710_models.ListFunctionNamesRequest,
-    ) -> data_lake_20200710_models.ListFunctionNamesResponse:
+        request: data_lake_20200710_models.ListDatabasesRequest,
+    ) -> data_lake_20200710_models.ListDatabasesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_function_names_with_options(request, headers, runtime)
+        return self.list_databases_with_options(request, headers, runtime)
 
-    async def list_function_names_async(
+    async def list_databases_async(
         self,
-        request: data_lake_20200710_models.ListFunctionNamesRequest,
-    ) -> data_lake_20200710_models.ListFunctionNamesResponse:
+        request: data_lake_20200710_models.ListDatabasesRequest,
+    ) -> data_lake_20200710_models.ListDatabasesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_function_names_with_options_async(request, headers, runtime)
+        return await self.list_databases_with_options_async(request, headers, runtime)
 
     def list_function_names_with_options(
         self,
@@ -4562,21 +4706,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_functions(
+    def list_function_names(
         self,
-        request: data_lake_20200710_models.ListFunctionsRequest,
-    ) -> data_lake_20200710_models.ListFunctionsResponse:
+        request: data_lake_20200710_models.ListFunctionNamesRequest,
+    ) -> data_lake_20200710_models.ListFunctionNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_functions_with_options(request, headers, runtime)
+        return self.list_function_names_with_options(request, headers, runtime)
 
-    async def list_functions_async(
+    async def list_function_names_async(
         self,
-        request: data_lake_20200710_models.ListFunctionsRequest,
-    ) -> data_lake_20200710_models.ListFunctionsResponse:
+        request: data_lake_20200710_models.ListFunctionNamesRequest,
+    ) -> data_lake_20200710_models.ListFunctionNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_functions_with_options_async(request, headers, runtime)
+        return await self.list_function_names_with_options_async(request, headers, runtime)
 
     def list_functions_with_options(
         self,
@@ -4654,21 +4798,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_partition_names(
+    def list_functions(
         self,
-        request: data_lake_20200710_models.ListPartitionNamesRequest,
-    ) -> data_lake_20200710_models.ListPartitionNamesResponse:
+        request: data_lake_20200710_models.ListFunctionsRequest,
+    ) -> data_lake_20200710_models.ListFunctionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_partition_names_with_options(request, headers, runtime)
+        return self.list_functions_with_options(request, headers, runtime)
 
-    async def list_partition_names_async(
+    async def list_functions_async(
         self,
-        request: data_lake_20200710_models.ListPartitionNamesRequest,
-    ) -> data_lake_20200710_models.ListPartitionNamesResponse:
+        request: data_lake_20200710_models.ListFunctionsRequest,
+    ) -> data_lake_20200710_models.ListFunctionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_partition_names_with_options_async(request, headers, runtime)
+        return await self.list_functions_with_options_async(request, headers, runtime)
 
     def list_partition_names_with_options(
         self,
@@ -4750,21 +4894,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_partitions(
+    def list_partition_names(
         self,
-        request: data_lake_20200710_models.ListPartitionsRequest,
-    ) -> data_lake_20200710_models.ListPartitionsResponse:
+        request: data_lake_20200710_models.ListPartitionNamesRequest,
+    ) -> data_lake_20200710_models.ListPartitionNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_partitions_with_options(request, headers, runtime)
+        return self.list_partition_names_with_options(request, headers, runtime)
 
-    async def list_partitions_async(
+    async def list_partition_names_async(
         self,
-        request: data_lake_20200710_models.ListPartitionsRequest,
-    ) -> data_lake_20200710_models.ListPartitionsResponse:
+        request: data_lake_20200710_models.ListPartitionNamesRequest,
+    ) -> data_lake_20200710_models.ListPartitionNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_partitions_with_options_async(request, headers, runtime)
+        return await self.list_partition_names_with_options_async(request, headers, runtime)
 
     def list_partitions_with_options(
         self,
@@ -4850,15 +4994,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_partitions_by_expr(self) -> data_lake_20200710_models.ListPartitionsByExprResponse:
+    def list_partitions(
+        self,
+        request: data_lake_20200710_models.ListPartitionsRequest,
+    ) -> data_lake_20200710_models.ListPartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_partitions_by_expr_with_options(headers, runtime)
+        return self.list_partitions_with_options(request, headers, runtime)
 
-    async def list_partitions_by_expr_async(self) -> data_lake_20200710_models.ListPartitionsByExprResponse:
+    async def list_partitions_async(
+        self,
+        request: data_lake_20200710_models.ListPartitionsRequest,
+    ) -> data_lake_20200710_models.ListPartitionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_partitions_by_expr_with_options_async(headers, runtime)
+        return await self.list_partitions_with_options_async(request, headers, runtime)
 
     def list_partitions_by_expr_with_options(
         self,
@@ -4908,21 +5058,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_partitions_by_filter(
-        self,
-        request: data_lake_20200710_models.ListPartitionsByFilterRequest,
-    ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
+    def list_partitions_by_expr(self) -> data_lake_20200710_models.ListPartitionsByExprResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_partitions_by_filter_with_options(request, headers, runtime)
+        return self.list_partitions_by_expr_with_options(headers, runtime)
 
-    async def list_partitions_by_filter_async(
-        self,
-        request: data_lake_20200710_models.ListPartitionsByFilterRequest,
-    ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
+    async def list_partitions_by_expr_async(self) -> data_lake_20200710_models.ListPartitionsByExprResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_partitions_by_filter_with_options_async(request, headers, runtime)
+        return await self.list_partitions_by_expr_with_options_async(headers, runtime)
 
     def list_partitions_by_filter_with_options(
         self,
@@ -5008,21 +5152,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_permissions(
+    def list_partitions_by_filter(
         self,
-        request: data_lake_20200710_models.ListPermissionsRequest,
-    ) -> data_lake_20200710_models.ListPermissionsResponse:
+        request: data_lake_20200710_models.ListPartitionsByFilterRequest,
+    ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_permissions_with_options(request, headers, runtime)
+        return self.list_partitions_by_filter_with_options(request, headers, runtime)
 
-    async def list_permissions_async(
+    async def list_partitions_by_filter_async(
         self,
-        request: data_lake_20200710_models.ListPermissionsRequest,
-    ) -> data_lake_20200710_models.ListPermissionsResponse:
+        request: data_lake_20200710_models.ListPartitionsByFilterRequest,
+    ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_permissions_with_options_async(request, headers, runtime)
+        return await self.list_partitions_by_filter_with_options_async(request, headers, runtime)
 
     def list_permissions_with_options(
         self,
@@ -5112,21 +5256,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_role_users(
+    def list_permissions(
         self,
-        request: data_lake_20200710_models.ListRoleUsersRequest,
-    ) -> data_lake_20200710_models.ListRoleUsersResponse:
+        request: data_lake_20200710_models.ListPermissionsRequest,
+    ) -> data_lake_20200710_models.ListPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_role_users_with_options(request, headers, runtime)
+        return self.list_permissions_with_options(request, headers, runtime)
 
-    async def list_role_users_async(
+    async def list_permissions_async(
         self,
-        request: data_lake_20200710_models.ListRoleUsersRequest,
-    ) -> data_lake_20200710_models.ListRoleUsersResponse:
+        request: data_lake_20200710_models.ListPermissionsRequest,
+    ) -> data_lake_20200710_models.ListPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_role_users_with_options_async(request, headers, runtime)
+        return await self.list_permissions_with_options_async(request, headers, runtime)
 
     def list_role_users_with_options(
         self,
@@ -5200,21 +5344,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_roles(
+    def list_role_users(
         self,
-        request: data_lake_20200710_models.ListRolesRequest,
-    ) -> data_lake_20200710_models.ListRolesResponse:
+        request: data_lake_20200710_models.ListRoleUsersRequest,
+    ) -> data_lake_20200710_models.ListRoleUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_roles_with_options(request, headers, runtime)
+        return self.list_role_users_with_options(request, headers, runtime)
 
-    async def list_roles_async(
+    async def list_role_users_async(
         self,
-        request: data_lake_20200710_models.ListRolesRequest,
-    ) -> data_lake_20200710_models.ListRolesResponse:
+        request: data_lake_20200710_models.ListRoleUsersRequest,
+    ) -> data_lake_20200710_models.ListRoleUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_roles_with_options_async(request, headers, runtime)
+        return await self.list_role_users_with_options_async(request, headers, runtime)
 
     def list_roles_with_options(
         self,
@@ -5284,21 +5428,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_table_names(
+    def list_roles(
         self,
-        request: data_lake_20200710_models.ListTableNamesRequest,
-    ) -> data_lake_20200710_models.ListTableNamesResponse:
+        request: data_lake_20200710_models.ListRolesRequest,
+    ) -> data_lake_20200710_models.ListRolesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_table_names_with_options(request, headers, runtime)
+        return self.list_roles_with_options(request, headers, runtime)
 
-    async def list_table_names_async(
+    async def list_roles_async(
         self,
-        request: data_lake_20200710_models.ListTableNamesRequest,
-    ) -> data_lake_20200710_models.ListTableNamesResponse:
+        request: data_lake_20200710_models.ListRolesRequest,
+    ) -> data_lake_20200710_models.ListRolesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_table_names_with_options_async(request, headers, runtime)
+        return await self.list_roles_with_options_async(request, headers, runtime)
 
     def list_table_names_with_options(
         self,
@@ -5380,21 +5524,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_table_versions(
+    def list_table_names(
         self,
-        request: data_lake_20200710_models.ListTableVersionsRequest,
-    ) -> data_lake_20200710_models.ListTableVersionsResponse:
+        request: data_lake_20200710_models.ListTableNamesRequest,
+    ) -> data_lake_20200710_models.ListTableNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_table_versions_with_options(request, headers, runtime)
+        return self.list_table_names_with_options(request, headers, runtime)
 
-    async def list_table_versions_async(
+    async def list_table_names_async(
         self,
-        request: data_lake_20200710_models.ListTableVersionsRequest,
-    ) -> data_lake_20200710_models.ListTableVersionsResponse:
+        request: data_lake_20200710_models.ListTableNamesRequest,
+    ) -> data_lake_20200710_models.ListTableNamesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_table_versions_with_options_async(request, headers, runtime)
+        return await self.list_table_names_with_options_async(request, headers, runtime)
 
     def list_table_versions_with_options(
         self,
@@ -5472,21 +5616,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tables(
+    def list_table_versions(
         self,
-        request: data_lake_20200710_models.ListTablesRequest,
-    ) -> data_lake_20200710_models.ListTablesResponse:
+        request: data_lake_20200710_models.ListTableVersionsRequest,
+    ) -> data_lake_20200710_models.ListTableVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tables_with_options(request, headers, runtime)
+        return self.list_table_versions_with_options(request, headers, runtime)
 
-    async def list_tables_async(
+    async def list_table_versions_async(
         self,
-        request: data_lake_20200710_models.ListTablesRequest,
-    ) -> data_lake_20200710_models.ListTablesResponse:
+        request: data_lake_20200710_models.ListTableVersionsRequest,
+    ) -> data_lake_20200710_models.ListTableVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tables_with_options_async(request, headers, runtime)
+        return await self.list_table_versions_with_options_async(request, headers, runtime)
 
     def list_tables_with_options(
         self,
@@ -5568,21 +5712,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_user_roles(
+    def list_tables(
         self,
-        request: data_lake_20200710_models.ListUserRolesRequest,
-    ) -> data_lake_20200710_models.ListUserRolesResponse:
+        request: data_lake_20200710_models.ListTablesRequest,
+    ) -> data_lake_20200710_models.ListTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_user_roles_with_options(request, headers, runtime)
+        return self.list_tables_with_options(request, headers, runtime)
 
-    async def list_user_roles_async(
+    async def list_tables_async(
         self,
-        request: data_lake_20200710_models.ListUserRolesRequest,
-    ) -> data_lake_20200710_models.ListUserRolesResponse:
+        request: data_lake_20200710_models.ListTablesRequest,
+    ) -> data_lake_20200710_models.ListTablesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_user_roles_with_options_async(request, headers, runtime)
+        return await self.list_tables_with_options_async(request, headers, runtime)
 
     def list_user_roles_with_options(
         self,
@@ -5656,21 +5800,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def refresh_lock(
+    def list_user_roles(
         self,
-        request: data_lake_20200710_models.RefreshLockRequest,
-    ) -> data_lake_20200710_models.RefreshLockResponse:
+        request: data_lake_20200710_models.ListUserRolesRequest,
+    ) -> data_lake_20200710_models.ListUserRolesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.refresh_lock_with_options(request, headers, runtime)
+        return self.list_user_roles_with_options(request, headers, runtime)
 
-    async def refresh_lock_async(
+    async def list_user_roles_async(
         self,
-        request: data_lake_20200710_models.RefreshLockRequest,
-    ) -> data_lake_20200710_models.RefreshLockResponse:
+        request: data_lake_20200710_models.ListUserRolesRequest,
+    ) -> data_lake_20200710_models.ListUserRolesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.refresh_lock_with_options_async(request, headers, runtime)
+        return await self.list_user_roles_with_options_async(request, headers, runtime)
 
     def refresh_lock_with_options(
         self,
@@ -5732,21 +5876,109 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def rename_partition(
+    def refresh_lock(
         self,
-        request: data_lake_20200710_models.RenamePartitionRequest,
-    ) -> data_lake_20200710_models.RenamePartitionResponse:
+        request: data_lake_20200710_models.RefreshLockRequest,
+    ) -> data_lake_20200710_models.RefreshLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rename_partition_with_options(request, headers, runtime)
+        return self.refresh_lock_with_options(request, headers, runtime)
 
-    async def rename_partition_async(
+    async def refresh_lock_async(
         self,
-        request: data_lake_20200710_models.RenamePartitionRequest,
-    ) -> data_lake_20200710_models.RenamePartitionResponse:
+        request: data_lake_20200710_models.RefreshLockRequest,
+    ) -> data_lake_20200710_models.RefreshLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rename_partition_with_options_async(request, headers, runtime)
+        return await self.refresh_lock_with_options_async(request, headers, runtime)
+
+    def register_location_with_options(
+        self,
+        request: data_lake_20200710_models.RegisterLocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.RegisterLocationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.inventory_collect_enabled):
+            body['InventoryCollectEnabled'] = request.inventory_collect_enabled
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.oss_log_collect_enabled):
+            body['OssLogCollectEnabled'] = request.oss_log_collect_enabled
+        if not UtilClient.is_unset(request.role_name):
+            body['RoleName'] = request.role_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RegisterLocation',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/locations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.RegisterLocationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_location_with_options_async(
+        self,
+        request: data_lake_20200710_models.RegisterLocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.RegisterLocationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.inventory_collect_enabled):
+            body['InventoryCollectEnabled'] = request.inventory_collect_enabled
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.oss_log_collect_enabled):
+            body['OssLogCollectEnabled'] = request.oss_log_collect_enabled
+        if not UtilClient.is_unset(request.role_name):
+            body['RoleName'] = request.role_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RegisterLocation',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/locations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.RegisterLocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_location(
+        self,
+        request: data_lake_20200710_models.RegisterLocationRequest,
+    ) -> data_lake_20200710_models.RegisterLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.register_location_with_options(request, headers, runtime)
+
+    async def register_location_async(
+        self,
+        request: data_lake_20200710_models.RegisterLocationRequest,
+    ) -> data_lake_20200710_models.RegisterLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.register_location_with_options_async(request, headers, runtime)
 
     def rename_partition_with_options(
         self,
@@ -5824,21 +6056,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def rename_table(
+    def rename_partition(
         self,
-        request: data_lake_20200710_models.RenameTableRequest,
-    ) -> data_lake_20200710_models.RenameTableResponse:
+        request: data_lake_20200710_models.RenamePartitionRequest,
+    ) -> data_lake_20200710_models.RenamePartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rename_table_with_options(request, headers, runtime)
+        return self.rename_partition_with_options(request, headers, runtime)
 
-    async def rename_table_async(
+    async def rename_partition_async(
         self,
-        request: data_lake_20200710_models.RenameTableRequest,
-    ) -> data_lake_20200710_models.RenameTableResponse:
+        request: data_lake_20200710_models.RenamePartitionRequest,
+    ) -> data_lake_20200710_models.RenamePartitionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rename_table_with_options_async(request, headers, runtime)
+        return await self.rename_partition_with_options_async(request, headers, runtime)
 
     def rename_table_with_options(
         self,
@@ -5916,21 +6148,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def revoke_permissions(
+    def rename_table(
         self,
-        request: data_lake_20200710_models.RevokePermissionsRequest,
-    ) -> data_lake_20200710_models.RevokePermissionsResponse:
+        request: data_lake_20200710_models.RenameTableRequest,
+    ) -> data_lake_20200710_models.RenameTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.revoke_permissions_with_options(request, headers, runtime)
+        return self.rename_table_with_options(request, headers, runtime)
 
-    async def revoke_permissions_async(
+    async def rename_table_async(
         self,
-        request: data_lake_20200710_models.RevokePermissionsRequest,
-    ) -> data_lake_20200710_models.RevokePermissionsResponse:
+        request: data_lake_20200710_models.RenameTableRequest,
+    ) -> data_lake_20200710_models.RenameTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.revoke_permissions_with_options_async(request, headers, runtime)
+        return await self.rename_table_with_options_async(request, headers, runtime)
 
     def revoke_permissions_with_options(
         self,
@@ -6012,21 +6244,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def revoke_role_from_users(
+    def revoke_permissions(
         self,
-        request: data_lake_20200710_models.RevokeRoleFromUsersRequest,
-    ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
+        request: data_lake_20200710_models.RevokePermissionsRequest,
+    ) -> data_lake_20200710_models.RevokePermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.revoke_role_from_users_with_options(request, headers, runtime)
+        return self.revoke_permissions_with_options(request, headers, runtime)
 
-    async def revoke_role_from_users_async(
+    async def revoke_permissions_async(
         self,
-        request: data_lake_20200710_models.RevokeRoleFromUsersRequest,
-    ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
+        request: data_lake_20200710_models.RevokePermissionsRequest,
+    ) -> data_lake_20200710_models.RevokePermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.revoke_role_from_users_with_options_async(request, headers, runtime)
+        return await self.revoke_permissions_with_options_async(request, headers, runtime)
 
     def revoke_role_from_users_with_options(
         self,
@@ -6092,21 +6324,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def revoke_roles_from_user(
+    def revoke_role_from_users(
         self,
-        request: data_lake_20200710_models.RevokeRolesFromUserRequest,
-    ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
+        request: data_lake_20200710_models.RevokeRoleFromUsersRequest,
+    ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.revoke_roles_from_user_with_options(request, headers, runtime)
+        return self.revoke_role_from_users_with_options(request, headers, runtime)
 
-    async def revoke_roles_from_user_async(
+    async def revoke_role_from_users_async(
         self,
-        request: data_lake_20200710_models.RevokeRolesFromUserRequest,
-    ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
+        request: data_lake_20200710_models.RevokeRoleFromUsersRequest,
+    ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.revoke_roles_from_user_with_options_async(request, headers, runtime)
+        return await self.revoke_role_from_users_with_options_async(request, headers, runtime)
 
     def revoke_roles_from_user_with_options(
         self,
@@ -6172,21 +6404,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def run_migration_workflow(
+    def revoke_roles_from_user(
         self,
-        request: data_lake_20200710_models.RunMigrationWorkflowRequest,
-    ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
+        request: data_lake_20200710_models.RevokeRolesFromUserRequest,
+    ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.run_migration_workflow_with_options(request, headers, runtime)
+        return self.revoke_roles_from_user_with_options(request, headers, runtime)
 
-    async def run_migration_workflow_async(
+    async def revoke_roles_from_user_async(
         self,
-        request: data_lake_20200710_models.RunMigrationWorkflowRequest,
-    ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
+        request: data_lake_20200710_models.RevokeRolesFromUserRequest,
+    ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.run_migration_workflow_with_options_async(request, headers, runtime)
+        return await self.revoke_roles_from_user_with_options_async(request, headers, runtime)
 
     def run_migration_workflow_with_options(
         self,
@@ -6248,21 +6480,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def search(
+    def run_migration_workflow(
         self,
-        request: data_lake_20200710_models.SearchRequest,
-    ) -> data_lake_20200710_models.SearchResponse:
+        request: data_lake_20200710_models.RunMigrationWorkflowRequest,
+    ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_with_options(request, headers, runtime)
+        return self.run_migration_workflow_with_options(request, headers, runtime)
 
-    async def search_async(
+    async def run_migration_workflow_async(
         self,
-        request: data_lake_20200710_models.SearchRequest,
-    ) -> data_lake_20200710_models.SearchResponse:
+        request: data_lake_20200710_models.RunMigrationWorkflowRequest,
+    ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_with_options_async(request, headers, runtime)
+        return await self.run_migration_workflow_with_options_async(request, headers, runtime)
 
     def search_with_options(
         self,
@@ -6344,21 +6576,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def search_across_catalog(
+    def search(
         self,
-        request: data_lake_20200710_models.SearchAcrossCatalogRequest,
-    ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
+        request: data_lake_20200710_models.SearchRequest,
+    ) -> data_lake_20200710_models.SearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_across_catalog_with_options(request, headers, runtime)
+        return self.search_with_options(request, headers, runtime)
 
-    async def search_across_catalog_async(
+    async def search_async(
         self,
-        request: data_lake_20200710_models.SearchAcrossCatalogRequest,
-    ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
+        request: data_lake_20200710_models.SearchRequest,
+    ) -> data_lake_20200710_models.SearchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_across_catalog_with_options_async(request, headers, runtime)
+        return await self.search_with_options_async(request, headers, runtime)
 
     def search_across_catalog_with_options(
         self,
@@ -6440,21 +6672,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_migration_workflow(
+    def search_across_catalog(
         self,
-        request: data_lake_20200710_models.StopMigrationWorkflowRequest,
-    ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
+        request: data_lake_20200710_models.SearchAcrossCatalogRequest,
+    ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_migration_workflow_with_options(request, headers, runtime)
+        return self.search_across_catalog_with_options(request, headers, runtime)
 
-    async def stop_migration_workflow_async(
+    async def search_across_catalog_async(
         self,
-        request: data_lake_20200710_models.StopMigrationWorkflowRequest,
-    ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
+        request: data_lake_20200710_models.SearchAcrossCatalogRequest,
+    ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_migration_workflow_with_options_async(request, headers, runtime)
+        return await self.search_across_catalog_with_options_async(request, headers, runtime)
 
     def stop_migration_workflow_with_options(
         self,
@@ -6516,21 +6748,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def submit_query(
+    def stop_migration_workflow(
         self,
-        request: data_lake_20200710_models.SubmitQueryRequest,
-    ) -> data_lake_20200710_models.SubmitQueryResponse:
+        request: data_lake_20200710_models.StopMigrationWorkflowRequest,
+    ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.submit_query_with_options(request, headers, runtime)
+        return self.stop_migration_workflow_with_options(request, headers, runtime)
 
-    async def submit_query_async(
+    async def stop_migration_workflow_async(
         self,
-        request: data_lake_20200710_models.SubmitQueryRequest,
-    ) -> data_lake_20200710_models.SubmitQueryResponse:
+        request: data_lake_20200710_models.StopMigrationWorkflowRequest,
+    ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.submit_query_with_options_async(request, headers, runtime)
+        return await self.stop_migration_workflow_with_options_async(request, headers, runtime)
 
     def submit_query_with_options(
         self,
@@ -6540,6 +6772,8 @@ class Client(OpenApiClient):
     ) -> data_lake_20200710_models.SubmitQueryResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.catalog_id):
+            body['catalogId'] = request.catalog_id
         if not UtilClient.is_unset(request.sql):
             body['sql'] = request.sql
         if not UtilClient.is_unset(request.workspace_id):
@@ -6572,6 +6806,8 @@ class Client(OpenApiClient):
     ) -> data_lake_20200710_models.SubmitQueryResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.catalog_id):
+            body['catalogId'] = request.catalog_id
         if not UtilClient.is_unset(request.sql):
             body['sql'] = request.sql
         if not UtilClient.is_unset(request.workspace_id):
@@ -6596,21 +6832,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def un_lock(
+    def submit_query(
         self,
-        request: data_lake_20200710_models.UnLockRequest,
-    ) -> data_lake_20200710_models.UnLockResponse:
+        request: data_lake_20200710_models.SubmitQueryRequest,
+    ) -> data_lake_20200710_models.SubmitQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.un_lock_with_options(request, headers, runtime)
+        return self.submit_query_with_options(request, headers, runtime)
 
-    async def un_lock_async(
+    async def submit_query_async(
         self,
-        request: data_lake_20200710_models.UnLockRequest,
-    ) -> data_lake_20200710_models.UnLockResponse:
+        request: data_lake_20200710_models.SubmitQueryRequest,
+    ) -> data_lake_20200710_models.SubmitQueryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.un_lock_with_options_async(request, headers, runtime)
+        return await self.submit_query_with_options_async(request, headers, runtime)
 
     def un_lock_with_options(
         self,
@@ -6672,21 +6908,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_catalog(
+    def un_lock(
         self,
-        request: data_lake_20200710_models.UpdateCatalogRequest,
-    ) -> data_lake_20200710_models.UpdateCatalogResponse:
+        request: data_lake_20200710_models.UnLockRequest,
+    ) -> data_lake_20200710_models.UnLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_catalog_with_options(request, headers, runtime)
+        return self.un_lock_with_options(request, headers, runtime)
 
-    async def update_catalog_async(
+    async def un_lock_async(
         self,
-        request: data_lake_20200710_models.UpdateCatalogRequest,
-    ) -> data_lake_20200710_models.UpdateCatalogResponse:
+        request: data_lake_20200710_models.UnLockRequest,
+    ) -> data_lake_20200710_models.UnLockResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_catalog_with_options_async(request, headers, runtime)
+        return await self.un_lock_with_options_async(request, headers, runtime)
 
     def update_catalog_with_options(
         self,
@@ -6748,21 +6984,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_catalog_settings(
+    def update_catalog(
         self,
-        request: data_lake_20200710_models.UpdateCatalogSettingsRequest,
-    ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
+        request: data_lake_20200710_models.UpdateCatalogRequest,
+    ) -> data_lake_20200710_models.UpdateCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_catalog_settings_with_options(request, headers, runtime)
+        return self.update_catalog_with_options(request, headers, runtime)
 
-    async def update_catalog_settings_async(
+    async def update_catalog_async(
         self,
-        request: data_lake_20200710_models.UpdateCatalogSettingsRequest,
-    ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
+        request: data_lake_20200710_models.UpdateCatalogRequest,
+    ) -> data_lake_20200710_models.UpdateCatalogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_catalog_settings_with_options_async(request, headers, runtime)
+        return await self.update_catalog_with_options_async(request, headers, runtime)
 
     def update_catalog_settings_with_options(
         self,
@@ -6828,21 +7064,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_database(
+    def update_catalog_settings(
         self,
-        request: data_lake_20200710_models.UpdateDatabaseRequest,
-    ) -> data_lake_20200710_models.UpdateDatabaseResponse:
+        request: data_lake_20200710_models.UpdateCatalogSettingsRequest,
+    ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_database_with_options(request, headers, runtime)
+        return self.update_catalog_settings_with_options(request, headers, runtime)
 
-    async def update_database_async(
+    async def update_catalog_settings_async(
         self,
-        request: data_lake_20200710_models.UpdateDatabaseRequest,
-    ) -> data_lake_20200710_models.UpdateDatabaseResponse:
+        request: data_lake_20200710_models.UpdateCatalogSettingsRequest,
+    ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_database_with_options_async(request, headers, runtime)
+        return await self.update_catalog_settings_with_options_async(request, headers, runtime)
 
     def update_database_with_options(
         self,
@@ -6912,21 +7148,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_function(
+    def update_database(
         self,
-        request: data_lake_20200710_models.UpdateFunctionRequest,
-    ) -> data_lake_20200710_models.UpdateFunctionResponse:
+        request: data_lake_20200710_models.UpdateDatabaseRequest,
+    ) -> data_lake_20200710_models.UpdateDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_function_with_options(request, headers, runtime)
+        return self.update_database_with_options(request, headers, runtime)
 
-    async def update_function_async(
+    async def update_database_async(
         self,
-        request: data_lake_20200710_models.UpdateFunctionRequest,
-    ) -> data_lake_20200710_models.UpdateFunctionResponse:
+        request: data_lake_20200710_models.UpdateDatabaseRequest,
+    ) -> data_lake_20200710_models.UpdateDatabaseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_function_with_options_async(request, headers, runtime)
+        return await self.update_database_with_options_async(request, headers, runtime)
 
     def update_function_with_options(
         self,
@@ -7000,21 +7236,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_partition_column_statistics(
+    def update_function(
         self,
-        request: data_lake_20200710_models.UpdatePartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.UpdateFunctionRequest,
+    ) -> data_lake_20200710_models.UpdateFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_partition_column_statistics_with_options(request, headers, runtime)
+        return self.update_function_with_options(request, headers, runtime)
 
-    async def update_partition_column_statistics_async(
+    async def update_function_async(
         self,
-        request: data_lake_20200710_models.UpdatePartitionColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
+        request: data_lake_20200710_models.UpdateFunctionRequest,
+    ) -> data_lake_20200710_models.UpdateFunctionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_partition_column_statistics_with_options_async(request, headers, runtime)
+        return await self.update_function_with_options_async(request, headers, runtime)
 
     def update_partition_column_statistics_with_options(
         self,
@@ -7025,7 +7261,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.update_table_partition_column_statistics_request))
+            body=OpenApiUtilClient.parse_to_map(request.update_table_partition_column_statistics_request)
         )
         params = open_api_models.Params(
             action='UpdatePartitionColumnStatistics',
@@ -7052,7 +7288,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.update_table_partition_column_statistics_request))
+            body=OpenApiUtilClient.parse_to_map(request.update_table_partition_column_statistics_request)
         )
         params = open_api_models.Params(
             action='UpdatePartitionColumnStatistics',
@@ -7070,21 +7306,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_permissions(
+    def update_partition_column_statistics(
         self,
-        request: data_lake_20200710_models.UpdatePermissionsRequest,
-    ) -> data_lake_20200710_models.UpdatePermissionsResponse:
+        request: data_lake_20200710_models.UpdatePartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_permissions_with_options(request, headers, runtime)
+        return self.update_partition_column_statistics_with_options(request, headers, runtime)
 
-    async def update_permissions_async(
+    async def update_partition_column_statistics_async(
         self,
-        request: data_lake_20200710_models.UpdatePermissionsRequest,
-    ) -> data_lake_20200710_models.UpdatePermissionsResponse:
+        request: data_lake_20200710_models.UpdatePartitionColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_permissions_with_options_async(request, headers, runtime)
+        return await self.update_partition_column_statistics_with_options_async(request, headers, runtime)
 
     def update_permissions_with_options(
         self,
@@ -7166,21 +7402,105 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_role(
+    def update_permissions(
         self,
-        request: data_lake_20200710_models.UpdateRoleRequest,
-    ) -> data_lake_20200710_models.UpdateRoleResponse:
+        request: data_lake_20200710_models.UpdatePermissionsRequest,
+    ) -> data_lake_20200710_models.UpdatePermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_role_with_options(request, headers, runtime)
+        return self.update_permissions_with_options(request, headers, runtime)
 
-    async def update_role_async(
+    async def update_permissions_async(
         self,
-        request: data_lake_20200710_models.UpdateRoleRequest,
-    ) -> data_lake_20200710_models.UpdateRoleResponse:
+        request: data_lake_20200710_models.UpdatePermissionsRequest,
+    ) -> data_lake_20200710_models.UpdatePermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_role_with_options_async(request, headers, runtime)
+        return await self.update_permissions_with_options_async(request, headers, runtime)
+
+    def update_registered_location_with_options(
+        self,
+        request: data_lake_20200710_models.UpdateRegisteredLocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.inventory_collect_enabled):
+            body['InventoryCollectEnabled'] = request.inventory_collect_enabled
+        if not UtilClient.is_unset(request.location_id):
+            body['LocationId'] = request.location_id
+        if not UtilClient.is_unset(request.oss_log_collect_enabled):
+            body['OssLogCollectEnabled'] = request.oss_log_collect_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRegisteredLocation',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/locations',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.UpdateRegisteredLocationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_registered_location_with_options_async(
+        self,
+        request: data_lake_20200710_models.UpdateRegisteredLocationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.inventory_collect_enabled):
+            body['InventoryCollectEnabled'] = request.inventory_collect_enabled
+        if not UtilClient.is_unset(request.location_id):
+            body['LocationId'] = request.location_id
+        if not UtilClient.is_unset(request.oss_log_collect_enabled):
+            body['OssLogCollectEnabled'] = request.oss_log_collect_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRegisteredLocation',
+            version='2020-07-10',
+            protocol='HTTPS',
+            pathname=f'/webapi/locations',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            data_lake_20200710_models.UpdateRegisteredLocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_registered_location(
+        self,
+        request: data_lake_20200710_models.UpdateRegisteredLocationRequest,
+    ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_registered_location_with_options(request, headers, runtime)
+
+    async def update_registered_location_async(
+        self,
+        request: data_lake_20200710_models.UpdateRegisteredLocationRequest,
+    ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_registered_location_with_options_async(request, headers, runtime)
 
     def update_role_with_options(
         self,
@@ -7246,21 +7566,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_role_users(
+    def update_role(
         self,
-        request: data_lake_20200710_models.UpdateRoleUsersRequest,
-    ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
+        request: data_lake_20200710_models.UpdateRoleRequest,
+    ) -> data_lake_20200710_models.UpdateRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_role_users_with_options(request, headers, runtime)
+        return self.update_role_with_options(request, headers, runtime)
 
-    async def update_role_users_async(
+    async def update_role_async(
         self,
-        request: data_lake_20200710_models.UpdateRoleUsersRequest,
-    ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
+        request: data_lake_20200710_models.UpdateRoleRequest,
+    ) -> data_lake_20200710_models.UpdateRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_role_users_with_options_async(request, headers, runtime)
+        return await self.update_role_with_options_async(request, headers, runtime)
 
     def update_role_users_with_options(
         self,
@@ -7326,21 +7646,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_table(
+    def update_role_users(
         self,
-        request: data_lake_20200710_models.UpdateTableRequest,
-    ) -> data_lake_20200710_models.UpdateTableResponse:
+        request: data_lake_20200710_models.UpdateRoleUsersRequest,
+    ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_table_with_options(request, headers, runtime)
+        return self.update_role_users_with_options(request, headers, runtime)
 
-    async def update_table_async(
+    async def update_role_users_async(
         self,
-        request: data_lake_20200710_models.UpdateTableRequest,
-    ) -> data_lake_20200710_models.UpdateTableResponse:
+        request: data_lake_20200710_models.UpdateRoleUsersRequest,
+    ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_table_with_options_async(request, headers, runtime)
+        return await self.update_role_users_with_options_async(request, headers, runtime)
 
     def update_table_with_options(
         self,
@@ -7426,21 +7746,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_table_column_statistics(
+    def update_table(
         self,
-        request: data_lake_20200710_models.UpdateTableColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        request: data_lake_20200710_models.UpdateTableRequest,
+    ) -> data_lake_20200710_models.UpdateTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_table_column_statistics_with_options(request, headers, runtime)
+        return self.update_table_with_options(request, headers, runtime)
 
-    async def update_table_column_statistics_async(
+    async def update_table_async(
         self,
-        request: data_lake_20200710_models.UpdateTableColumnStatisticsRequest,
-    ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        request: data_lake_20200710_models.UpdateTableRequest,
+    ) -> data_lake_20200710_models.UpdateTableResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_table_column_statistics_with_options_async(request, headers, runtime)
+        return await self.update_table_with_options_async(request, headers, runtime)
 
     def update_table_column_statistics_with_options(
         self,
@@ -7451,7 +7771,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.update_table_partition_column_statistics_request))
+            body=OpenApiUtilClient.parse_to_map(request.update_table_partition_column_statistics_request)
         )
         params = open_api_models.Params(
             action='UpdateTableColumnStatistics',
@@ -7478,7 +7798,7 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.update_table_partition_column_statistics_request))
+            body=OpenApiUtilClient.parse_to_map(request.update_table_partition_column_statistics_request)
         )
         params = open_api_models.Params(
             action='UpdateTableColumnStatistics',
@@ -7495,3 +7815,19 @@ class Client(OpenApiClient):
             data_lake_20200710_models.UpdateTableColumnStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_table_column_statistics(
+        self,
+        request: data_lake_20200710_models.UpdateTableColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_table_column_statistics_with_options(request, headers, runtime)
+
+    async def update_table_column_statistics_async(
+        self,
+        request: data_lake_20200710_models.UpdateTableColumnStatisticsRequest,
+    ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_table_column_statistics_with_options_async(request, headers, runtime)
