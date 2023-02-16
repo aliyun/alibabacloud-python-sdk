@@ -629,6 +629,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_rule_with_options_async(request, runtime)
 
+    def create_service_linked_role_for_product_with_options(
+        self,
+        request: eventbridge_20200401_models.CreateServiceLinkedRoleForProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRoleForProduct',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_linked_role_for_product_with_options_async(
+        self,
+        request: eventbridge_20200401_models.CreateServiceLinkedRoleForProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRoleForProduct',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_linked_role_for_product(
+        self,
+        request: eventbridge_20200401_models.CreateServiceLinkedRoleForProductRequest,
+    ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_linked_role_for_product_with_options(request, runtime)
+
+    async def create_service_linked_role_for_product_async(
+        self,
+        request: eventbridge_20200401_models.CreateServiceLinkedRoleForProductRequest,
+    ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_linked_role_for_product_with_options_async(request, runtime)
+
     def create_targets_with_options(
         self,
         tmp_req: eventbridge_20200401_models.CreateTargetsRequest,
