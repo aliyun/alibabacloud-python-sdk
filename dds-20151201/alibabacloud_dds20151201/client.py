@@ -661,7 +661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
         
@@ -766,7 +766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
         
@@ -870,7 +870,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
         
@@ -885,7 +885,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateDBInstanceRequest,
     ) -> dds_20151201_models.CreateDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         To create sharded cluster instances, you can call the [CreateShardingDBInstance](~~61884~~) operation.
         
@@ -1221,7 +1221,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
@@ -1316,7 +1316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
@@ -1410,7 +1410,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateShardingDBInstanceRequest,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
@@ -1425,7 +1425,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.CreateShardingDBInstanceRequest,
     ) -> dds_20151201_models.CreateShardingDBInstanceResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+        Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/mongodb/detail) of ApsaraDB for MongoDB before you call this operation.
         *   For more information about the instance types of ApsaraDB for MongoDB instances, see [Instance types](~~57141~~).
         *   To create standalone and replica set instances, you can call the [CreateDBInstance](~~61763~~) operation.
         
@@ -3002,6 +3002,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.is_delete):
+            query['IsDelete'] = request.is_delete
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -3044,6 +3046,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.is_delete):
+            query['IsDelete'] = request.is_delete
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6420,7 +6424,7 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
         This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
-        >  You can call this operation a maximum of 200 times per minute.
+        > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6484,7 +6488,7 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
         This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
-        >  You can call this operation a maximum of 200 times per minute.
+        > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6547,7 +6551,7 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
         This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
-        >  You can call this operation a maximum of 200 times per minute.
+        > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
         @return: EvaluateResourceResponse
@@ -6561,7 +6565,7 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.EvaluateResourceResponse:
         """
         This operation is applicable to replica set instances and sharded cluster instances. You can call this operation to check whether resources are sufficient for creating an instance, upgrading an instance, or upgrading a single node of a sharded cluster instance.
-        >  You can call this operation a maximum of 200 times per minute.
+        > You can call this operation a maximum of 200 times per minute.
         
         @param request: EvaluateResourceRequest
         @return: EvaluateResourceResponse
