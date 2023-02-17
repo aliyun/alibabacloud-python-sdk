@@ -12037,9 +12037,11 @@ class EstimatedPriceQueryResponseBodyModule(TeaModel):
     def __init__(
         self,
         hotel_fee_detail: List[EstimatedPriceQueryResponseBodyModuleHotelFeeDetail] = None,
+        total_hotel_fee: int = None,
         traffic_fee: EstimatedPriceQueryResponseBodyModuleTrafficFee = None,
     ):
         self.hotel_fee_detail = hotel_fee_detail
+        self.total_hotel_fee = total_hotel_fee
         self.traffic_fee = traffic_fee
 
     def validate(self):
@@ -12060,6 +12062,8 @@ class EstimatedPriceQueryResponseBodyModule(TeaModel):
         if self.hotel_fee_detail is not None:
             for k in self.hotel_fee_detail:
                 result['hotel_fee_detail'].append(k.to_map() if k else None)
+        if self.total_hotel_fee is not None:
+            result['total_hotel_fee'] = self.total_hotel_fee
         if self.traffic_fee is not None:
             result['traffic_fee'] = self.traffic_fee.to_map()
         return result
@@ -12071,6 +12075,8 @@ class EstimatedPriceQueryResponseBodyModule(TeaModel):
             for k in m.get('hotel_fee_detail'):
                 temp_model = EstimatedPriceQueryResponseBodyModuleHotelFeeDetail()
                 self.hotel_fee_detail.append(temp_model.from_map(k))
+        if m.get('total_hotel_fee') is not None:
+            self.total_hotel_fee = m.get('total_hotel_fee')
         if m.get('traffic_fee') is not None:
             temp_model = EstimatedPriceQueryResponseBodyModuleTrafficFee()
             self.traffic_fee = temp_model.from_map(m['traffic_fee'])
