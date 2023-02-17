@@ -2154,6 +2154,220 @@ class GenerateImageWithTextAndImageResponse(TeaModel):
         return self
 
 
+class GenerateSuperResolutionImageRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        output_format: str = None,
+        output_quality: int = None,
+        scale: int = None,
+        user_data: str = None,
+    ):
+        self.image_url = image_url
+        self.output_format = output_format
+        self.output_quality = output_quality
+        self.scale = scale
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.output_quality is not None:
+            result['OutputQuality'] = self.output_quality
+        if self.scale is not None:
+            result['Scale'] = self.scale
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('OutputQuality') is not None:
+            self.output_quality = m.get('OutputQuality')
+        if m.get('Scale') is not None:
+            self.scale = m.get('Scale')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GenerateSuperResolutionImageAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_url_object: BinaryIO = None,
+        output_format: str = None,
+        output_quality: int = None,
+        scale: int = None,
+        user_data: str = None,
+    ):
+        self.image_url_object = image_url_object
+        self.output_format = output_format
+        self.output_quality = output_quality
+        self.scale = scale
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url_object is not None:
+            result['ImageUrl'] = self.image_url_object
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.output_quality is not None:
+            result['OutputQuality'] = self.output_quality
+        if self.scale is not None:
+            result['Scale'] = self.scale
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('OutputQuality') is not None:
+            self.output_quality = m.get('OutputQuality')
+        if m.get('Scale') is not None:
+            self.scale = m.get('Scale')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GenerateSuperResolutionImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result_url: str = None,
+    ):
+        self.result_url = result_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResultUrl') is not None:
+            self.result_url = m.get('ResultUrl')
+        return self
+
+
+class GenerateSuperResolutionImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GenerateSuperResolutionImageResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GenerateSuperResolutionImageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateSuperResolutionImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateSuperResolutionImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateSuperResolutionImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAsyncJobResultRequest(TeaModel):
     def __init__(
         self,
