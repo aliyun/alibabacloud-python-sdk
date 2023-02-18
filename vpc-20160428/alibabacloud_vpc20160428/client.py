@@ -4394,6 +4394,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4442,6 +4444,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4746,6 +4750,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -4800,6 +4806,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -5228,6 +5236,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5274,6 +5284,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5792,6 +5804,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5840,6 +5854,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6014,6 +6030,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6060,6 +6078,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7926,6 +7946,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7974,6 +7996,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8144,6 +8168,8 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8204,6 +8230,8 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -9342,6 +9370,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9406,6 +9436,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9484,6 +9516,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpn_gateway_id):
             query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
@@ -9550,6 +9584,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpn_gateway_id):
             query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
@@ -15524,6 +15560,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15566,6 +15604,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16168,6 +16208,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -16178,6 +16220,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.traffic_type):
             query['TrafficType'] = request.traffic_type
         if not UtilClient.is_unset(request.vpc_id):
@@ -16228,6 +16272,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -16238,6 +16284,8 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.traffic_type):
             query['TrafficType'] = request.traffic_type
         if not UtilClient.is_unset(request.vpc_id):
@@ -16660,10 +16708,14 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16702,10 +16754,14 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -17670,10 +17726,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -17718,10 +17778,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -18024,6 +18088,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -18076,6 +18142,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -21172,6 +21240,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpn_connection_id):
             query['VpnConnectionId'] = request.vpn_connection_id
         if not UtilClient.is_unset(request.vpn_gateway_id):
@@ -21218,6 +21288,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpn_connection_id):
             query['VpnConnectionId'] = request.vpn_connection_id
         if not UtilClient.is_unset(request.vpn_gateway_id):
@@ -25208,10 +25280,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -25256,10 +25332,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -26140,10 +26220,14 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.traffic_mirror_filter_ids):
             query['TrafficMirrorFilterIds'] = request.traffic_mirror_filter_ids
         if not UtilClient.is_unset(request.traffic_mirror_filter_name):
@@ -26184,10 +26268,14 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.traffic_mirror_filter_ids):
             query['TrafficMirrorFilterIds'] = request.traffic_mirror_filter_ids
         if not UtilClient.is_unset(request.traffic_mirror_filter_name):
@@ -26246,10 +26334,14 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.traffic_mirror_filter_id):
             query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
         if not UtilClient.is_unset(request.traffic_mirror_session_ids):
@@ -26302,10 +26394,14 @@ class Client(OpenApiClient):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.traffic_mirror_filter_id):
             query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
         if not UtilClient.is_unset(request.traffic_mirror_session_ids):

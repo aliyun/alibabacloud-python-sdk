@@ -6306,6 +6306,39 @@ class CreateCommonBandwidthPackageResponse(TeaModel):
         return self
 
 
+class CreateCustomerGatewayRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCustomerGatewayRequest(TeaModel):
     def __init__(
         self,
@@ -6320,6 +6353,7 @@ class CreateCustomerGatewayRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[CreateCustomerGatewayRequestTags] = None,
     ):
         self.asn = asn
         self.auth_key = auth_key
@@ -6332,9 +6366,13 @@ class CreateCustomerGatewayRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6364,6 +6402,10 @@ class CreateCustomerGatewayRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6390,6 +6432,11 @@ class CreateCustomerGatewayRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateCustomerGatewayRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -6875,6 +6922,7 @@ class CreateFlowLogRequest(TeaModel):
         owner_id: int = None,
         project_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -6890,6 +6938,7 @@ class CreateFlowLogRequest(TeaModel):
         self.owner_id = owner_id
         self.project_name = project_name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6922,6 +6971,8 @@ class CreateFlowLogRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_owner_account is not None:
@@ -6954,6 +7005,8 @@ class CreateFlowLogRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -6974,10 +7027,12 @@ class CreateFlowLogResponseBody(TeaModel):
         self,
         flow_log_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         success: str = None,
     ):
         self.flow_log_id = flow_log_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.success = success
 
     def validate(self):
@@ -6993,6 +7048,8 @@ class CreateFlowLogResponseBody(TeaModel):
             result['FlowLogId'] = self.flow_log_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.success is not None:
             result['Success'] = self.success
         return result
@@ -7003,6 +7060,8 @@ class CreateFlowLogResponseBody(TeaModel):
             self.flow_log_id = m.get('FlowLogId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
         return self
@@ -7608,6 +7667,7 @@ class CreateHaVipRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         v_switch_id: str = None,
@@ -7619,6 +7679,7 @@ class CreateHaVipRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.v_switch_id = v_switch_id
@@ -7646,6 +7707,8 @@ class CreateHaVipRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -7670,6 +7733,8 @@ class CreateHaVipRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -8494,6 +8559,7 @@ class CreateIpv4GatewayRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         vpc_id: str = None,
@@ -8505,6 +8571,7 @@ class CreateIpv4GatewayRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.vpc_id = vpc_id
@@ -8532,6 +8599,8 @@ class CreateIpv4GatewayRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -8556,6 +8625,8 @@ class CreateIpv4GatewayRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -8570,9 +8641,11 @@ class CreateIpv4GatewayResponseBody(TeaModel):
         self,
         ipv_4gateway_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
         self.ipv_4gateway_id = ipv_4gateway_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -8587,6 +8660,8 @@ class CreateIpv4GatewayResponseBody(TeaModel):
             result['Ipv4GatewayId'] = self.ipv_4gateway_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8595,6 +8670,8 @@ class CreateIpv4GatewayResponseBody(TeaModel):
             self.ipv_4gateway_id = m.get('Ipv4GatewayId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8815,6 +8892,7 @@ class CreateIpv6GatewayRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         vpc_id: str = None,
@@ -8825,6 +8903,7 @@ class CreateIpv6GatewayRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.vpc_id = vpc_id
@@ -8850,6 +8929,8 @@ class CreateIpv6GatewayRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -8872,6 +8953,8 @@ class CreateIpv6GatewayRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -8886,9 +8969,11 @@ class CreateIpv6GatewayResponseBody(TeaModel):
         self,
         ipv_6gateway_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
         self.ipv_6gateway_id = ipv_6gateway_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -8903,6 +8988,8 @@ class CreateIpv6GatewayResponseBody(TeaModel):
             result['Ipv6GatewayId'] = self.ipv_6gateway_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8911,6 +8998,8 @@ class CreateIpv6GatewayResponseBody(TeaModel):
             self.ipv_6gateway_id = m.get('Ipv6GatewayId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -12515,6 +12604,7 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         traffic_mirror_filter_description: str = None,
@@ -12527,6 +12617,7 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.traffic_mirror_filter_description = traffic_mirror_filter_description
@@ -12566,6 +12657,8 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -12598,6 +12691,8 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -12613,9 +12708,11 @@ class CreateTrafficMirrorFilterResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        resource_group_id: str = None,
         traffic_mirror_filter_id: str = None,
     ):
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
 
     def validate(self):
@@ -12629,6 +12726,8 @@ class CreateTrafficMirrorFilterResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.traffic_mirror_filter_id is not None:
             result['TrafficMirrorFilterId'] = self.traffic_mirror_filter_id
         return result
@@ -12637,6 +12736,8 @@ class CreateTrafficMirrorFilterResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TrafficMirrorFilterId') is not None:
             self.traffic_mirror_filter_id = m.get('TrafficMirrorFilterId')
         return self
@@ -13075,6 +13176,7 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         packet_length: int = None,
         priority: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         traffic_mirror_filter_id: str = None,
@@ -13093,6 +13195,7 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         self.packet_length = packet_length
         self.priority = priority
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
@@ -13128,6 +13231,8 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
             result['Priority'] = self.priority
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -13166,6 +13271,8 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
             self.priority = m.get('Priority')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -13191,9 +13298,11 @@ class CreateTrafficMirrorSessionResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        resource_group_id: str = None,
         traffic_mirror_session_id: str = None,
     ):
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.traffic_mirror_session_id = traffic_mirror_session_id
 
     def validate(self):
@@ -13207,6 +13316,8 @@ class CreateTrafficMirrorSessionResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.traffic_mirror_session_id is not None:
             result['TrafficMirrorSessionId'] = self.traffic_mirror_session_id
         return result
@@ -13215,6 +13326,8 @@ class CreateTrafficMirrorSessionResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TrafficMirrorSessionId') is not None:
             self.traffic_mirror_session_id = m.get('TrafficMirrorSessionId')
         return self
@@ -14937,6 +15050,39 @@ class CreateVpconnFromVbrResponse(TeaModel):
         return self
 
 
+class CreateVpnAttachmentRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateVpnAttachmentRequest(TeaModel):
     def __init__(
         self,
@@ -14959,6 +15105,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         remote_subnet: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[CreateVpnAttachmentRequestTags] = None,
     ):
         self.auto_config_route = auto_config_route
         self.bgp_config = bgp_config
@@ -14979,9 +15126,13 @@ class CreateVpnAttachmentRequest(TeaModel):
         self.remote_subnet = remote_subnet
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15027,6 +15178,10 @@ class CreateVpnAttachmentRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15069,6 +15224,11 @@ class CreateVpnAttachmentRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateVpnAttachmentRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -15179,6 +15339,39 @@ class CreateVpnAttachmentResponse(TeaModel):
         return self
 
 
+class CreateVpnConnectionRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateVpnConnectionRequest(TeaModel):
     def __init__(
         self,
@@ -15201,6 +15394,7 @@ class CreateVpnConnectionRequest(TeaModel):
         remote_subnet: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[CreateVpnConnectionRequestTags] = None,
         vpn_gateway_id: str = None,
     ):
         self.auto_config_route = auto_config_route
@@ -15222,10 +15416,14 @@ class CreateVpnConnectionRequest(TeaModel):
         self.remote_subnet = remote_subnet
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15271,6 +15469,10 @@ class CreateVpnConnectionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpn_gateway_id is not None:
             result['VpnGatewayId'] = self.vpn_gateway_id
         return result
@@ -15315,6 +15517,11 @@ class CreateVpnConnectionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateVpnConnectionRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpnGatewayId') is not None:
             self.vpn_gateway_id = m.get('VpnGatewayId')
         return self
@@ -25077,6 +25284,74 @@ class DescribeCustomerGatewayRequest(TeaModel):
         return self
 
 
+class DescribeCustomerGatewayResponseBodyTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeCustomerGatewayResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeCustomerGatewayResponseBodyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeCustomerGatewayResponseBodyTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeCustomerGatewayResponseBody(TeaModel):
     def __init__(
         self,
@@ -25088,6 +25363,7 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
         ip_address: str = None,
         name: str = None,
         request_id: str = None,
+        tags: DescribeCustomerGatewayResponseBodyTags = None,
     ):
         self.asn = asn
         self.auth_key = auth_key
@@ -25097,9 +25373,11 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
         self.ip_address = ip_address
         self.name = name
         self.request_id = request_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25123,6 +25401,8 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
             result['Name'] = self.name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -25143,6 +25423,9 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
             self.name = m.get('Name')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Tags') is not None:
+            temp_model = DescribeCustomerGatewayResponseBodyTags()
+            self.tags = temp_model.from_map(m['Tags'])
         return self
 
 
@@ -25190,6 +25473,39 @@ class DescribeCustomerGatewayResponse(TeaModel):
         return self
 
 
+class DescribeCustomerGatewaysRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeCustomerGatewaysRequest(TeaModel):
     def __init__(
         self,
@@ -25201,6 +25517,7 @@ class DescribeCustomerGatewaysRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[DescribeCustomerGatewaysRequestTag] = None,
     ):
         self.customer_gateway_id = customer_gateway_id
         self.owner_account = owner_account
@@ -25210,9 +25527,13 @@ class DescribeCustomerGatewaysRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25236,6 +25557,10 @@ class DescribeCustomerGatewaysRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -25256,6 +25581,79 @@ class DescribeCustomerGatewaysRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeCustomerGatewaysRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -25269,6 +25667,7 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
         description: str = None,
         ip_address: str = None,
         name: str = None,
+        tags: DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags = None,
     ):
         self.asn = asn
         self.auth_key = auth_key
@@ -25277,9 +25676,11 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
         self.description = description
         self.ip_address = ip_address
         self.name = name
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25301,6 +25702,8 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
             result['IpAddress'] = self.ip_address
         if self.name is not None:
             result['Name'] = self.name
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -25319,6 +25722,9 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
             self.ip_address = m.get('IpAddress')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Tags') is not None:
+            temp_model = DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags()
+            self.tags = temp_model.from_map(m['Tags'])
         return self
 
 
@@ -25510,6 +25916,7 @@ class DescribeEcGrantRelationResponseBodyEcGrantRelations(TeaModel):
         self,
         ali_uid: int = None,
         gmt_create: str = None,
+        grant_type: str = None,
         instance_id: str = None,
         instance_name: str = None,
         instance_router_id: str = None,
@@ -25521,6 +25928,7 @@ class DescribeEcGrantRelationResponseBodyEcGrantRelations(TeaModel):
     ):
         self.ali_uid = ali_uid
         self.gmt_create = gmt_create
+        self.grant_type = grant_type
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.instance_router_id = instance_router_id
@@ -25543,6 +25951,8 @@ class DescribeEcGrantRelationResponseBodyEcGrantRelations(TeaModel):
             result['AliUid'] = self.ali_uid
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
+        if self.grant_type is not None:
+            result['GrantType'] = self.grant_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -25567,6 +25977,8 @@ class DescribeEcGrantRelationResponseBodyEcGrantRelations(TeaModel):
             self.ali_uid = m.get('AliUid')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
+        if m.get('GrantType') is not None:
+            self.grant_type = m.get('GrantType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -27185,6 +27597,39 @@ class DescribeEipSegmentResponse(TeaModel):
         return self
 
 
+class DescribeFlowLogsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeFlowLogsRequest(TeaModel):
     def __init__(
         self,
@@ -27198,11 +27643,13 @@ class DescribeFlowLogsRequest(TeaModel):
         page_size: int = None,
         project_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         resource_type: str = None,
         status: str = None,
+        tags: List[DescribeFlowLogsRequestTags] = None,
         traffic_type: str = None,
         vpc_id: str = None,
     ):
@@ -27216,16 +27663,21 @@ class DescribeFlowLogsRequest(TeaModel):
         self.page_size = page_size
         self.project_name = project_name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.resource_type = resource_type
         self.status = status
+        self.tags = tags
         self.traffic_type = traffic_type
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27253,6 +27705,8 @@ class DescribeFlowLogsRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_owner_account is not None:
@@ -27263,6 +27717,10 @@ class DescribeFlowLogsRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.traffic_type is not None:
             result['TrafficType'] = self.traffic_type
         if self.vpc_id is not None:
@@ -27291,6 +27749,8 @@ class DescribeFlowLogsRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -27301,10 +27761,83 @@ class DescribeFlowLogsRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeFlowLogsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TrafficType') is not None:
             self.traffic_type = m.get('TrafficType')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeFlowLogsResponseBodyFlowLogsFlowLogTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -27347,10 +27880,12 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         log_store_name: str = None,
         project_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
         service_type: str = None,
         status: str = None,
+        tags: DescribeFlowLogsResponseBodyFlowLogsFlowLogTags = None,
         traffic_path: DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath = None,
         traffic_type: str = None,
     ):
@@ -27363,14 +27898,18 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.log_store_name = log_store_name
         self.project_name = project_name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.service_type = service_type
         self.status = status
+        self.tags = tags
         self.traffic_path = traffic_path
         self.traffic_type = traffic_type
 
     def validate(self):
+        if self.tags:
+            self.tags.validate()
         if self.traffic_path:
             self.traffic_path.validate()
 
@@ -27398,6 +27937,8 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             result['ProjectName'] = self.project_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -27406,6 +27947,8 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             result['ServiceType'] = self.service_type
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.traffic_path is not None:
             result['TrafficPath'] = self.traffic_path.to_map()
         if self.traffic_type is not None:
@@ -27432,6 +27975,8 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -27440,6 +27985,9 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
             self.service_type = m.get('ServiceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeFlowLogsResponseBodyFlowLogsFlowLogTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('TrafficPath') is not None:
             temp_model = DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath()
             self.traffic_path = temp_model.from_map(m['TrafficPath'])
@@ -28714,6 +29262,39 @@ class DescribeHaVipsRequestFilter(TeaModel):
         return self
 
 
+class DescribeHaVipsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeHaVipsRequest(TeaModel):
     def __init__(
         self,
@@ -28723,8 +29304,10 @@ class DescribeHaVipsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[DescribeHaVipsRequestTags] = None,
     ):
         self.filter = filter
         self.owner_account = owner_account
@@ -28732,12 +29315,18 @@ class DescribeHaVipsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
 
     def validate(self):
         if self.filter:
             for k in self.filter:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -28761,10 +29350,16 @@ class DescribeHaVipsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -28784,10 +29379,17 @@ class DescribeHaVipsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeHaVipsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -28845,6 +29447,74 @@ class DescribeHaVipsResponseBodyHaVipsHaVipAssociatedInstances(TeaModel):
         return self
 
 
+class DescribeHaVipsResponseBodyHaVipsHaVipTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeHaVipsResponseBodyHaVipsHaVipTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeHaVipsResponseBodyHaVipsHaVipTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeHaVipsResponseBodyHaVipsHaVipTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
     def __init__(
         self,
@@ -28859,7 +29529,9 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
         master_instance_id: str = None,
         name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
+        tags: DescribeHaVipsResponseBodyHaVipsHaVipTags = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -28874,7 +29546,9 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
         self.master_instance_id = master_instance_id
         self.name = name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.status = status
+        self.tags = tags
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
@@ -28883,6 +29557,8 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
             self.associated_eip_addresses.validate()
         if self.associated_instances:
             self.associated_instances.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -28912,8 +29588,12 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -28946,8 +29626,13 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(TeaModel):
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeHaVipsResponseBodyHaVipsHaVipTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -31250,6 +31935,74 @@ class DescribeIpv6GatewayAttributeRequest(TeaModel):
         return self
 
 
+class DescribeIpv6GatewayAttributeResponseBodyTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeIpv6GatewayAttributeResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeIpv6GatewayAttributeResponseBodyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeIpv6GatewayAttributeResponseBodyTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
     def __init__(
         self,
@@ -31262,7 +32015,9 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         name: str = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
+        tags: DescribeIpv6GatewayAttributeResponseBodyTags = None,
         vpc_id: str = None,
     ):
         self.business_status = business_status
@@ -31274,11 +32029,14 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         self.name = name
         self.region_id = region_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.status = status
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31304,8 +32062,12 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -31330,8 +32092,13 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeIpv6GatewayAttributeResponseBodyTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -31381,6 +32148,39 @@ class DescribeIpv6GatewayAttributeResponse(TeaModel):
         return self
 
 
+class DescribeIpv6GatewaysRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeIpv6GatewaysRequest(TeaModel):
     def __init__(
         self,
@@ -31391,8 +32191,10 @@ class DescribeIpv6GatewaysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[DescribeIpv6GatewaysRequestTags] = None,
         vpc_id: str = None,
     ):
         self.ipv_6gateway_id = ipv_6gateway_id
@@ -31402,12 +32204,17 @@ class DescribeIpv6GatewaysRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31429,10 +32236,16 @@ class DescribeIpv6GatewaysRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -31453,12 +32266,87 @@ class DescribeIpv6GatewaysRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeIpv6GatewaysRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -31473,7 +32361,9 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         ipv_6gateway_id: str = None,
         name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
+        tags: DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags = None,
         vpc_id: str = None,
     ):
         self.business_status = business_status
@@ -31484,11 +32374,14 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         self.name = name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.status = status
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31512,8 +32405,12 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -31536,8 +32433,13 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -32826,6 +33728,74 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeResources(TeaMo
         return self
 
 
+class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(TeaModel):
     def __init__(
         self,
@@ -32839,6 +33809,7 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(TeaModel):
         region_id: str = None,
         resources: DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeResources = None,
         status: str = None,
+        tags: DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags = None,
         vpc_id: str = None,
     ):
         self.creation_time = creation_time
@@ -32851,6 +33822,7 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(TeaModel):
         self.region_id = region_id
         self.resources = resources
         self.status = status
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -32860,6 +33832,8 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(TeaModel):
             self.ingress_acl_entries.validate()
         if self.resources:
             self.resources.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -32887,6 +33861,8 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(TeaModel):
             result['Resources'] = self.resources.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -32916,6 +33892,9 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(TeaModel):
             self.resources = temp_model.from_map(m['Resources'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -33000,6 +33979,39 @@ class DescribeNetworkAclAttributesResponse(TeaModel):
         return self
 
 
+class DescribeNetworkAclsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeNetworkAclsRequest(TeaModel):
     def __init__(
         self,
@@ -33014,6 +34026,7 @@ class DescribeNetworkAclsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         resource_type: str = None,
+        tags: List[DescribeNetworkAclsRequestTags] = None,
         vpc_id: str = None,
     ):
         self.client_token = client_token
@@ -33027,10 +34040,14 @@ class DescribeNetworkAclsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.resource_type = resource_type
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -33060,6 +34077,10 @@ class DescribeNetworkAclsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -33088,6 +34109,11 @@ class DescribeNetworkAclsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeNetworkAclsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -33363,6 +34389,74 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResources(TeaModel):
         return self
 
 
+class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
     def __init__(
         self,
@@ -33376,6 +34470,7 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
         region_id: str = None,
         resources: DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclResources = None,
         status: str = None,
+        tags: DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags = None,
         vpc_id: str = None,
     ):
         self.creation_time = creation_time
@@ -33388,6 +34483,7 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
         self.region_id = region_id
         self.resources = resources
         self.status = status
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -33397,6 +34493,8 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
             self.ingress_acl_entries.validate()
         if self.resources:
             self.resources.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -33424,6 +34522,8 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
             result['Resources'] = self.resources.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -33453,6 +34553,9 @@ class DescribeNetworkAclsResponseBodyNetworkAclsNetworkAcl(TeaModel):
             self.resources = temp_model.from_map(m['Resources'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeNetworkAclsResponseBodyNetworkAclsNetworkAclTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -39642,6 +40745,74 @@ class DescribeVSwitchAttributesResponseBodyRouteTable(TeaModel):
         return self
 
 
+class DescribeVSwitchAttributesResponseBodyTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVSwitchAttributesResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeVSwitchAttributesResponseBodyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeVSwitchAttributesResponseBodyTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeVSwitchAttributesResponseBody(TeaModel):
     def __init__(
         self,
@@ -39657,6 +40828,7 @@ class DescribeVSwitchAttributesResponseBody(TeaModel):
         resource_group_id: str = None,
         route_table: DescribeVSwitchAttributesResponseBodyRouteTable = None,
         status: str = None,
+        tags: DescribeVSwitchAttributesResponseBodyTags = None,
         v_switch_id: str = None,
         v_switch_name: str = None,
         vpc_id: str = None,
@@ -39674,6 +40846,7 @@ class DescribeVSwitchAttributesResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         self.route_table = route_table
         self.status = status
+        self.tags = tags
         self.v_switch_id = v_switch_id
         self.v_switch_name = v_switch_name
         self.vpc_id = vpc_id
@@ -39682,6 +40855,8 @@ class DescribeVSwitchAttributesResponseBody(TeaModel):
     def validate(self):
         if self.route_table:
             self.route_table.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -39713,6 +40888,8 @@ class DescribeVSwitchAttributesResponseBody(TeaModel):
             result['RouteTable'] = self.route_table.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.v_switch_name is not None:
@@ -39750,6 +40927,9 @@ class DescribeVSwitchAttributesResponseBody(TeaModel):
             self.route_table = temp_model.from_map(m['RouteTable'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeVSwitchAttributesResponseBodyTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VSwitchName') is not None:
@@ -43515,6 +44695,74 @@ class DescribeVpnConnectionResponseBodyIpsecConfig(TeaModel):
         return self
 
 
+class DescribeVpnConnectionResponseBodyTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVpnConnectionResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeVpnConnectionResponseBodyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeVpnConnectionResponseBodyTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeVpnConnectionResponseBodyVcoHealthCheck(TeaModel):
     def __init__(
         self,
@@ -43670,6 +44918,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         spec: str = None,
         state: str = None,
         status: str = None,
+        tags: DescribeVpnConnectionResponseBodyTags = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
         vco_health_check: DescribeVpnConnectionResponseBodyVcoHealthCheck = None,
@@ -43698,6 +44947,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.spec = spec
         self.state = state
         self.status = status
+        self.tags = tags
         self.transit_router_id = transit_router_id
         self.transit_router_name = transit_router_name
         self.vco_health_check = vco_health_check
@@ -43711,6 +44961,8 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             self.ike_config.validate()
         if self.ipsec_config:
             self.ipsec_config.validate()
+        if self.tags:
+            self.tags.validate()
         if self.vco_health_check:
             self.vco_health_check.validate()
         if self.vpn_bgp_config:
@@ -43762,6 +45014,8 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             result['State'] = self.state
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
         if self.transit_router_name is not None:
@@ -43822,6 +45076,9 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             self.state = m.get('State')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeVpnConnectionResponseBodyTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
         if m.get('TransitRouterName') is not None:
@@ -44102,6 +45359,39 @@ class DescribeVpnConnectionLogsResponse(TeaModel):
         return self
 
 
+class DescribeVpnConnectionsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeVpnConnectionsRequest(TeaModel):
     def __init__(
         self,
@@ -44113,6 +45403,7 @@ class DescribeVpnConnectionsRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[DescribeVpnConnectionsRequestTag] = None,
         vpn_connection_id: str = None,
         vpn_gateway_id: str = None,
     ):
@@ -44124,11 +45415,15 @@ class DescribeVpnConnectionsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.vpn_connection_id = vpn_connection_id
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -44152,6 +45447,10 @@ class DescribeVpnConnectionsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.vpn_connection_id is not None:
             result['VpnConnectionId'] = self.vpn_connection_id
         if self.vpn_gateway_id is not None:
@@ -44176,6 +45475,11 @@ class DescribeVpnConnectionsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeVpnConnectionsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VpnConnectionId') is not None:
             self.vpn_connection_id = m.get('VpnConnectionId')
         if m.get('VpnGatewayId') is not None:
@@ -44300,6 +45604,74 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig(T
             self.ipsec_lifetime = m.get('IpsecLifetime')
         if m.get('IpsecPfs') is not None:
             self.ipsec_pfs = m.get('IpsecPfs')
+        return self
+
+
+class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -44451,6 +45823,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         spec: str = None,
         state: str = None,
         status: str = None,
+        tag: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
         vco_health_check: DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthCheck = None,
@@ -44477,6 +45850,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         self.spec = spec
         self.state = state
         self.status = status
+        self.tag = tag
         self.transit_router_id = transit_router_id
         self.transit_router_name = transit_router_name
         self.vco_health_check = vco_health_check
@@ -44489,6 +45863,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             self.ike_config.validate()
         if self.ipsec_config:
             self.ipsec_config.validate()
+        if self.tag:
+            self.tag.validate()
         if self.vco_health_check:
             self.vco_health_check.validate()
         if self.vpn_bgp_config:
@@ -44538,6 +45914,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             result['State'] = self.state
         if self.status is not None:
             result['Status'] = self.status
+        if self.tag is not None:
+            result['Tag'] = self.tag.to_map()
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
         if self.transit_router_name is not None:
@@ -44594,6 +45972,9 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             self.state = m.get('State')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            temp_model = DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTag()
+            self.tag = temp_model.from_map(m['Tag'])
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
         if m.get('TransitRouterName') is not None:
@@ -49168,6 +50549,39 @@ class GetIpv4GatewayAttributeRequest(TeaModel):
         return self
 
 
+class GetIpv4GatewayAttributeResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetIpv4GatewayAttributeResponseBody(TeaModel):
     def __init__(
         self,
@@ -49178,7 +50592,9 @@ class GetIpv4GatewayAttributeResponseBody(TeaModel):
         ipv_4gateway_name: str = None,
         ipv_4gateway_route_table_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
+        tags: List[GetIpv4GatewayAttributeResponseBodyTags] = None,
         vpc_id: str = None,
     ):
         self.create_time = create_time
@@ -49188,11 +50604,16 @@ class GetIpv4GatewayAttributeResponseBody(TeaModel):
         self.ipv_4gateway_name = ipv_4gateway_name
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.status = status
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -49214,8 +50635,14 @@ class GetIpv4GatewayAttributeResponseBody(TeaModel):
             result['Ipv4GatewayRouteTableId'] = self.ipv_4gateway_route_table_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -49236,8 +50663,15 @@ class GetIpv4GatewayAttributeResponseBody(TeaModel):
             self.ipv_4gateway_route_table_id = m.get('Ipv4GatewayRouteTableId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetIpv4GatewayAttributeResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -53569,6 +55003,39 @@ class ListIpsecServersResponse(TeaModel):
         return self
 
 
+class ListIpv4GatewaysRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListIpv4GatewaysRequest(TeaModel):
     def __init__(
         self,
@@ -53579,8 +55046,10 @@ class ListIpv4GatewaysRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[ListIpv4GatewaysRequestTags] = None,
         vpc_id: str = None,
     ):
         self.ipv_4gateway_id = ipv_4gateway_id
@@ -53590,12 +55059,17 @@ class ListIpv4GatewaysRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -53617,10 +55091,16 @@ class ListIpv4GatewaysRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -53641,12 +55121,52 @@ class ListIpv4GatewaysRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListIpv4GatewaysRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -53659,7 +55179,9 @@ class ListIpv4GatewaysResponseBodyIpv4GatewayModels(TeaModel):
         ipv_4gateway_id: str = None,
         ipv_4gateway_name: str = None,
         ipv_4gateway_route_table_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
+        tags: List[ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags] = None,
         vpc_id: str = None,
     ):
         self.enabled = enabled
@@ -53668,11 +55190,16 @@ class ListIpv4GatewaysResponseBodyIpv4GatewayModels(TeaModel):
         self.ipv_4gateway_id = ipv_4gateway_id
         self.ipv_4gateway_name = ipv_4gateway_name
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
+        self.resource_group_id = resource_group_id
         self.status = status
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -53692,8 +55219,14 @@ class ListIpv4GatewaysResponseBodyIpv4GatewayModels(TeaModel):
             result['Ipv4GatewayName'] = self.ipv_4gateway_name
         if self.ipv_4gateway_route_table_id is not None:
             result['Ipv4GatewayRouteTableId'] = self.ipv_4gateway_route_table_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -53712,8 +55245,15 @@ class ListIpv4GatewaysResponseBodyIpv4GatewayModels(TeaModel):
             self.ipv_4gateway_name = m.get('Ipv4GatewayName')
         if m.get('Ipv4GatewayRouteTableId') is not None:
             self.ipv_4gateway_route_table_id = m.get('Ipv4GatewayRouteTableId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListIpv4GatewaysResponseBodyIpv4GatewayModelsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -55945,6 +57485,39 @@ class ListTagResourcesForExpressConnectResponse(TeaModel):
         return self
 
 
+class ListTrafficMirrorFiltersRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTrafficMirrorFiltersRequest(TeaModel):
     def __init__(
         self,
@@ -55953,8 +57526,10 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[ListTrafficMirrorFiltersRequestTags] = None,
         traffic_mirror_filter_ids: List[str] = None,
         traffic_mirror_filter_name: str = None,
     ):
@@ -55963,13 +57538,18 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
         self.traffic_mirror_filter_ids = traffic_mirror_filter_ids
         self.traffic_mirror_filter_name = traffic_mirror_filter_name
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -55987,10 +57567,16 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.traffic_mirror_filter_ids is not None:
             result['TrafficMirrorFilterIds'] = self.traffic_mirror_filter_ids
         if self.traffic_mirror_filter_name is not None:
@@ -56009,10 +57595,17 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTrafficMirrorFiltersRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TrafficMirrorFilterIds') is not None:
             self.traffic_mirror_filter_ids = m.get('TrafficMirrorFilterIds')
         if m.get('TrafficMirrorFilterName') is not None:
@@ -56194,11 +57787,46 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
         return self
 
 
+class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
     def __init__(
         self,
         egress_rules: List[ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules] = None,
         ingress_rules: List[ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules] = None,
+        resource_group_id: str = None,
+        tags: List[ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags] = None,
         traffic_mirror_filter_description: str = None,
         traffic_mirror_filter_id: str = None,
         traffic_mirror_filter_name: str = None,
@@ -56206,6 +57834,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
     ):
         self.egress_rules = egress_rules
         self.ingress_rules = ingress_rules
+        self.resource_group_id = resource_group_id
+        self.tags = tags
         self.traffic_mirror_filter_description = traffic_mirror_filter_description
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         self.traffic_mirror_filter_name = traffic_mirror_filter_name
@@ -56218,6 +57848,10 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
                     k.validate()
         if self.ingress_rules:
             for k in self.ingress_rules:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -56235,6 +57869,12 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
         if self.ingress_rules is not None:
             for k in self.ingress_rules:
                 result['IngressRules'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.traffic_mirror_filter_description is not None:
             result['TrafficMirrorFilterDescription'] = self.traffic_mirror_filter_description
         if self.traffic_mirror_filter_id is not None:
@@ -56257,6 +57897,13 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
             for k in m.get('IngressRules'):
                 temp_model = ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules()
                 self.ingress_rules.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TrafficMirrorFilterDescription') is not None:
             self.traffic_mirror_filter_description = m.get('TrafficMirrorFilterDescription')
         if m.get('TrafficMirrorFilterId') is not None:
@@ -56365,6 +58012,39 @@ class ListTrafficMirrorFiltersResponse(TeaModel):
         return self
 
 
+class ListTrafficMirrorSessionsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTrafficMirrorSessionsRequest(TeaModel):
     def __init__(
         self,
@@ -56375,8 +58055,10 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
         owner_id: int = None,
         priority: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[ListTrafficMirrorSessionsRequestTags] = None,
         traffic_mirror_filter_id: str = None,
         traffic_mirror_session_ids: List[str] = None,
         traffic_mirror_session_name: str = None,
@@ -56391,8 +58073,10 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
         self.owner_id = owner_id
         self.priority = priority
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         self.traffic_mirror_session_ids = traffic_mirror_session_ids
         self.traffic_mirror_session_name = traffic_mirror_session_name
@@ -56401,7 +58085,10 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
         self.virtual_network_id = virtual_network_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -56423,10 +58110,16 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
             result['Priority'] = self.priority
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.traffic_mirror_filter_id is not None:
             result['TrafficMirrorFilterId'] = self.traffic_mirror_filter_id
         if self.traffic_mirror_session_ids is not None:
@@ -56457,10 +58150,17 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
             self.priority = m.get('Priority')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTrafficMirrorSessionsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TrafficMirrorFilterId') is not None:
             self.traffic_mirror_filter_id = m.get('TrafficMirrorFilterId')
         if m.get('TrafficMirrorSessionIds') is not None:
@@ -56476,12 +58176,47 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
         return self
 
 
+class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(TeaModel):
     def __init__(
         self,
         enabled: bool = None,
         packet_length: int = None,
         priority: int = None,
+        resource_group_id: str = None,
+        tags: List[ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags] = None,
         traffic_mirror_filter_id: str = None,
         traffic_mirror_session_business_status: str = None,
         traffic_mirror_session_description: str = None,
@@ -56496,6 +58231,8 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(TeaModel):
         self.enabled = enabled
         self.packet_length = packet_length
         self.priority = priority
+        self.resource_group_id = resource_group_id
+        self.tags = tags
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         self.traffic_mirror_session_business_status = traffic_mirror_session_business_status
         self.traffic_mirror_session_description = traffic_mirror_session_description
@@ -56508,7 +58245,10 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(TeaModel):
         self.virtual_network_id = virtual_network_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -56522,6 +58262,12 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(TeaModel):
             result['PacketLength'] = self.packet_length
         if self.priority is not None:
             result['Priority'] = self.priority
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.traffic_mirror_filter_id is not None:
             result['TrafficMirrorFilterId'] = self.traffic_mirror_filter_id
         if self.traffic_mirror_session_business_status is not None:
@@ -56552,6 +58298,13 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(TeaModel):
             self.packet_length = m.get('PacketLength')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessionsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TrafficMirrorFilterId') is not None:
             self.traffic_mirror_filter_id = m.get('TrafficMirrorFilterId')
         if m.get('TrafficMirrorSessionBusinessStatus') is not None:

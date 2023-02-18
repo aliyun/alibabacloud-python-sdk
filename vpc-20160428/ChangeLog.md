@@ -1,3 +1,28 @@
+2023-02-18 Version: 2.0.21
+- Eip error code update.
+- Add CreateRouteEntry ErrorCode.
+- Support batch operate route entries to 50.
+- Fix TotalCount display error.
+- Fixed bugs for DescribePublicIpAddress.
+- Support error code.
+- Support tag for traffic mirro and tag optimizes.
+- Add new errorcode in ModifyVpnAttachmentAttribute CreateVpnAttachment, CreateVpnConnection.
+- Havip support resource group and tag.
+- FlowLog supports resource group and tag.
+- Diagnose vpn connections history api release.
+- Add error code for VpcDescribeVpcNatGatewayNetworkInterfaceQuota.
+- Support  tag and resource group for traffic mirror and tag API optimized.
+- VPN Tag.
+- Add error code.
+- Fix total field mapping.
+- Supported delete pconn.
+- Add Error Code.
+- Support tag and resource group for sub resource of vpc.
+- Supported BandwidthPackageId for DescribeEipAddresses.
+- Update error code.
+- BandwidthPackageId offline for DescribeEipAddresses.
+- Update meta info of API.
+
 2023-01-31 Version: 2.0.20
 - Supported set high definition monitor log status for eip.
 - Supported batch associate eip to cloud products.
