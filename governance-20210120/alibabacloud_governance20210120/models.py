@@ -12,13 +12,9 @@ class EnrollAccountRequestBaselineItems(TeaModel):
         skip: bool = None,
         version: str = None,
     ):
-        # 基线项配置
         self.config = config
-        # 基线项名称
         self.name = name
-        # 是否跳过基线项
         self.skip = skip
-        # 基线项版本
         self.version = version
 
     def validate(self):
@@ -58,23 +54,19 @@ class EnrollAccountRequest(TeaModel):
         self,
         account_name_prefix: str = None,
         account_uid: int = None,
+        baseline_id: str = None,
         baseline_items: List[EnrollAccountRequestBaselineItems] = None,
         display_name: str = None,
         folder_id: str = None,
         payer_account_uid: int = None,
         region_id: str = None,
     ):
-        # 账号名称前缀
         self.account_name_prefix = account_name_prefix
-        # 注册账号ID
         self.account_uid = account_uid
-        # 基线项配置数组
+        self.baseline_id = baseline_id
         self.baseline_items = baseline_items
-        # 账号显示名称
         self.display_name = display_name
-        # 父资源夹ID
         self.folder_id = folder_id
-        # 结算账号ID
         self.payer_account_uid = payer_account_uid
         # RegionId
         self.region_id = region_id
@@ -95,6 +87,8 @@ class EnrollAccountRequest(TeaModel):
             result['AccountNamePrefix'] = self.account_name_prefix
         if self.account_uid is not None:
             result['AccountUid'] = self.account_uid
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
         result['BaselineItems'] = []
         if self.baseline_items is not None:
             for k in self.baseline_items:
@@ -115,6 +109,8 @@ class EnrollAccountRequest(TeaModel):
             self.account_name_prefix = m.get('AccountNamePrefix')
         if m.get('AccountUid') is not None:
             self.account_uid = m.get('AccountUid')
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
         self.baseline_items = []
         if m.get('BaselineItems') is not None:
             for k in m.get('BaselineItems'):
@@ -137,9 +133,7 @@ class EnrollAccountResponseBody(TeaModel):
         account_uid: int = None,
         request_id: str = None,
     ):
-        # 注册账号ID
         self.account_uid = account_uid
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -216,7 +210,6 @@ class GetEnrolledAccountRequest(TeaModel):
         account_uid: int = None,
         region_id: str = None,
     ):
-        # 账号ID
         self.account_uid = account_uid
         # RegionId
         self.region_id = region_id
@@ -253,13 +246,9 @@ class GetEnrolledAccountResponseBodyErrorInfo(TeaModel):
         recommend: str = None,
         request_id: str = None,
     ):
-        # 错误码
         self.code = code
-        # 错误信息
         self.message = message
-        # 错误处理建议
         self.recommend = recommend
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -302,13 +291,9 @@ class GetEnrolledAccountResponseBodyInputsBaselineItems(TeaModel):
         skip: bool = None,
         version: str = None,
     ):
-        # 基线项配置
         self.config = config
-        # 基线项名称
         self.name = name
-        # 是否跳过基线项
         self.skip = skip
-        # 基线项版本
         self.version = version
 
     def validate(self):
@@ -353,17 +338,11 @@ class GetEnrolledAccountResponseBodyInputs(TeaModel):
         folder_id: str = None,
         payer_account_uid: int = None,
     ):
-        # 账号名称前缀
         self.account_name_prefix = account_name_prefix
-        # 账号ID
         self.account_uid = account_uid
-        # 基线项配置数组
         self.baseline_items = baseline_items
-        # 账号展示名称
         self.display_name = display_name
-        # 父资源夹ID
         self.folder_id = folder_id
-        # 结算账号ID
         self.payer_account_uid = payer_account_uid
 
     def validate(self):
@@ -420,9 +399,7 @@ class GetEnrolledAccountResponseBodyProgress(TeaModel):
         name: str = None,
         status: str = None,
     ):
-        # 基线项名称
         self.name = name
-        # 基线项实施状态
         self.status = status
 
     def validate(self):
@@ -453,6 +430,7 @@ class GetEnrolledAccountResponseBody(TeaModel):
     def __init__(
         self,
         account_uid: int = None,
+        baseline_id: str = None,
         create_time: str = None,
         display_name: str = None,
         error_info: GetEnrolledAccountResponseBodyErrorInfo = None,
@@ -466,31 +444,19 @@ class GetEnrolledAccountResponseBody(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # 账号ID
         self.account_uid = account_uid
-        # 创建时间
+        self.baseline_id = baseline_id
         self.create_time = create_time
-        # 账号显示名称
         self.display_name = display_name
-        # 错误信息
         self.error_info = error_info
-        # 父资源夹ID
         self.folder_id = folder_id
-        # 是否初始化完成
         self.initialized = initialized
-        # 注册账号时的输入参数
         self.inputs = inputs
-        # 所属的Master账号ID
         self.master_account_uid = master_account_uid
-        # 结算账号ID
         self.payer_account_uid = payer_account_uid
-        # 基线实施进度
         self.progress = progress
-        # 请求ID
         self.request_id = request_id
-        # 账号注册状态
         self.status = status
-        # 更新时间
         self.update_time = update_time
 
     def validate(self):
@@ -511,6 +477,8 @@ class GetEnrolledAccountResponseBody(TeaModel):
         result = dict()
         if self.account_uid is not None:
             result['AccountUid'] = self.account_uid
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.display_name is not None:
@@ -543,6 +511,8 @@ class GetEnrolledAccountResponseBody(TeaModel):
         m = m or dict()
         if m.get('AccountUid') is not None:
             self.account_uid = m.get('AccountUid')
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DisplayName') is not None:
@@ -626,9 +596,7 @@ class ListEnrolledAccountsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # 每页的最大数据条数
         self.max_results = max_results
-        # 查询返回结果下一页的令牌。首次调用API不需要NextToken
         self.next_token = next_token
         # RegionId
         self.region_id = region_id
@@ -665,6 +633,7 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(TeaModel):
     def __init__(
         self,
         account_uid: int = None,
+        baseline_id: str = None,
         create_time: str = None,
         display_name: str = None,
         folder_id: str = None,
@@ -672,19 +641,13 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # 账号ID
         self.account_uid = account_uid
-        # 创建时间
+        self.baseline_id = baseline_id
         self.create_time = create_time
-        # 账号显示名称
         self.display_name = display_name
-        # 父资源夹ID
         self.folder_id = folder_id
-        # 结算账号ID
         self.payer_account_uid = payer_account_uid
-        # 创建状态
         self.status = status
-        # 更新时间
         self.update_time = update_time
 
     def validate(self):
@@ -698,6 +661,8 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(TeaModel):
         result = dict()
         if self.account_uid is not None:
             result['AccountUid'] = self.account_uid
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.display_name is not None:
@@ -716,6 +681,8 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(TeaModel):
         m = m or dict()
         if m.get('AccountUid') is not None:
             self.account_uid = m.get('AccountUid')
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DisplayName') is not None:
@@ -738,11 +705,8 @@ class ListEnrolledAccountsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # 账号列表
         self.enrolled_accounts = enrolled_accounts
-        # 查询返回结果下一页的令牌
         self.next_token = next_token
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):

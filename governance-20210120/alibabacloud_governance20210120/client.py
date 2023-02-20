@@ -52,6 +52,8 @@ class Client(OpenApiClient):
             query['AccountNamePrefix'] = request.account_name_prefix
         if not UtilClient.is_unset(request.account_uid):
             query['AccountUid'] = request.account_uid
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
         if not UtilClient.is_unset(request.baseline_items):
             query['BaselineItems'] = request.baseline_items
         if not UtilClient.is_unset(request.display_name):
@@ -92,6 +94,8 @@ class Client(OpenApiClient):
             query['AccountNamePrefix'] = request.account_name_prefix
         if not UtilClient.is_unset(request.account_uid):
             query['AccountUid'] = request.account_uid
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
         if not UtilClient.is_unset(request.baseline_items):
             query['BaselineItems'] = request.baseline_items
         if not UtilClient.is_unset(request.display_name):
