@@ -466,25 +466,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.enable):
-            body['enable'] = request.enable
-        if not UtilClient.is_unset(request.function_config):
-            body['functionConfig'] = request.function_config
-        if not UtilClient.is_unset(request.function_parameter):
-            body['functionParameter'] = request.function_parameter
-        if not UtilClient.is_unset(request.job_name):
-            body['jobName'] = request.job_name
-        if not UtilClient.is_unset(request.log_config):
-            body['logConfig'] = request.log_config
-        if not UtilClient.is_unset(request.source_config):
-            body['sourceConfig'] = request.source_config
-        if not UtilClient.is_unset(request.trigger_config):
-            body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateETLJob',
@@ -512,25 +497,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.enable):
-            body['enable'] = request.enable
-        if not UtilClient.is_unset(request.function_config):
-            body['functionConfig'] = request.function_config
-        if not UtilClient.is_unset(request.function_parameter):
-            body['functionParameter'] = request.function_parameter
-        if not UtilClient.is_unset(request.job_name):
-            body['jobName'] = request.job_name
-        if not UtilClient.is_unset(request.log_config):
-            body['logConfig'] = request.log_config
-        if not UtilClient.is_unset(request.source_config):
-            body['sourceConfig'] = request.source_config
-        if not UtilClient.is_unset(request.trigger_config):
-            body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateETLJob',
@@ -789,6 +759,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_job_with_options_async(project, request, headers, runtime)
+
+    def create_job_test_with_options(
+        self,
+        request: sls_20201230_models.CreateJobTestRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateJobTestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_key_id):
+            query['accessKeyId'] = request.access_key_id
+        if not UtilClient.is_unset(request.access_key_secret):
+            query['accessKeySecret'] = request.access_key_secret
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.from_time):
+            query['fromTime'] = request.from_time
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.parameters):
+            query['parameters'] = request.parameters
+        if not UtilClient.is_unset(request.project_name):
+            query['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_name):
+            query['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.role_arn):
+            query['roleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.script):
+            query['script'] = request.script
+        if not UtilClient.is_unset(request.sinks):
+            query['sinks'] = request.sinks
+        if not UtilClient.is_unset(request.to_time):
+            query['toTime'] = request.to_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJobTest',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateJobTestResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_job_test_with_options_async(
+        self,
+        request: sls_20201230_models.CreateJobTestRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateJobTestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_key_id):
+            query['accessKeyId'] = request.access_key_id
+        if not UtilClient.is_unset(request.access_key_secret):
+            query['accessKeySecret'] = request.access_key_secret
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.from_time):
+            query['fromTime'] = request.from_time
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.parameters):
+            query['parameters'] = request.parameters
+        if not UtilClient.is_unset(request.project_name):
+            query['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_name):
+            query['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.role_arn):
+            query['roleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.script):
+            query['script'] = request.script
+        if not UtilClient.is_unset(request.sinks):
+            query['sinks'] = request.sinks
+        if not UtilClient.is_unset(request.to_time):
+            query['toTime'] = request.to_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJobTest',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateJobTestResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_job_test(
+        self,
+        request: sls_20201230_models.CreateJobTestRequest,
+    ) -> sls_20201230_models.CreateJobTestResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_job_test_with_options(request, headers, runtime)
+
+    async def create_job_test_async(
+        self,
+        request: sls_20201230_models.CreateJobTestRequest,
+    ) -> sls_20201230_models.CreateJobTestResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_job_test_with_options_async(request, headers, runtime)
 
     def create_log_store_with_options(
         self,
@@ -1932,7 +2026,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='string'
+            body_type='any'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteETLJobResponse(),
@@ -1961,7 +2055,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='string'
+            body_type='any'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteETLJobResponse(),
@@ -2160,7 +2254,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='any'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteJobResponse(),
@@ -2189,7 +2283,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='any'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteJobResponse(),
@@ -2440,15 +2534,17 @@ class Client(OpenApiClient):
 
     def delete_project_with_options(
         self,
-        project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectResponse:
-        host_map = {}
-        host_map['project'] = project
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -2468,15 +2564,17 @@ class Client(OpenApiClient):
 
     async def delete_project_with_options_async(
         self,
-        project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectResponse:
-        host_map = {}
-        host_map['project'] = project
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -2496,19 +2594,19 @@ class Client(OpenApiClient):
 
     def delete_project(
         self,
-        project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
     ) -> sls_20201230_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(project, headers, runtime)
+        return self.delete_project_with_options(request, headers, runtime)
 
     async def delete_project_async(
         self,
-        project: str,
+        request: sls_20201230_models.DeleteProjectRequest,
     ) -> sls_20201230_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(project, headers, runtime)
+        return await self.delete_project_with_options_async(request, headers, runtime)
 
     def delete_project_policy_with_options(
         self,
@@ -3706,7 +3804,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='any'
         )
         return TeaCore.from_map(
             sls_20201230_models.GetJobResponse(),
@@ -3735,7 +3833,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='any'
         )
         return TeaCore.from_map(
             sls_20201230_models.GetJobResponse(),
@@ -4104,15 +4202,17 @@ class Client(OpenApiClient):
 
     def get_project_with_options(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
-        host_map = {}
-        host_map['project'] = project
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -4132,15 +4232,17 @@ class Client(OpenApiClient):
 
     async def get_project_with_options_async(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
-        host_map = {}
-        host_map['project'] = project
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -4160,19 +4262,19 @@ class Client(OpenApiClient):
 
     def get_project(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
     ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(project, headers, runtime)
+        return self.get_project_with_options(request, headers, runtime)
 
     async def get_project_async(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
     ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(project, headers, runtime)
+        return await self.get_project_with_options_async(request, headers, runtime)
 
     def get_project_logs_with_options(
         self,
@@ -4767,14 +4869,20 @@ class Client(OpenApiClient):
     def list_etljobs_with_options(
         self,
         project: str,
+        request: sls_20201230_models.ListETLJobsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListETLJobsResponse:
+        UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListETLJobs',
@@ -4795,14 +4903,20 @@ class Client(OpenApiClient):
     async def list_etljobs_with_options_async(
         self,
         project: str,
+        request: sls_20201230_models.ListETLJobsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListETLJobsResponse:
+        UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListETLJobs',
@@ -4823,18 +4937,20 @@ class Client(OpenApiClient):
     def list_etljobs(
         self,
         project: str,
+        request: sls_20201230_models.ListETLJobsRequest,
     ) -> sls_20201230_models.ListETLJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_etljobs_with_options(project, headers, runtime)
+        return self.list_etljobs_with_options(project, request, headers, runtime)
 
     async def list_etljobs_async(
         self,
         project: str,
+        request: sls_20201230_models.ListETLJobsRequest,
     ) -> sls_20201230_models.ListETLJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_etljobs_with_options_async(project, headers, runtime)
+        return await self.list_etljobs_with_options_async(project, request, headers, runtime)
 
     def list_external_store_with_options(
         self,
@@ -5294,7 +5410,6 @@ class Client(OpenApiClient):
 
     def list_project_with_options(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -5329,7 +5444,6 @@ class Client(OpenApiClient):
 
     async def list_project_with_options_async(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
@@ -5364,21 +5478,19 @@ class Client(OpenApiClient):
 
     def list_project(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_with_options(resource_group_id, request, headers, runtime)
+        return self.list_project_with_options(request, headers, runtime)
 
     async def list_project_async(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_with_options_async(resource_group_id, request, headers, runtime)
+        return await self.list_project_with_options_async(request, headers, runtime)
 
     def list_saved_search_with_options(
         self,
@@ -6545,25 +6657,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.enable):
-            body['enable'] = request.enable
-        if not UtilClient.is_unset(request.function_config):
-            body['functionConfig'] = request.function_config
-        if not UtilClient.is_unset(request.function_parameter):
-            body['functionParameter'] = request.function_parameter
-        if not UtilClient.is_unset(request.job_name):
-            body['jobName'] = request.job_name
-        if not UtilClient.is_unset(request.log_config):
-            body['logConfig'] = request.log_config
-        if not UtilClient.is_unset(request.source_config):
-            body['sourceConfig'] = request.source_config
-        if not UtilClient.is_unset(request.trigger_config):
-            body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateEtlJob',
@@ -6592,25 +6689,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.enable):
-            body['enable'] = request.enable
-        if not UtilClient.is_unset(request.function_config):
-            body['functionConfig'] = request.function_config
-        if not UtilClient.is_unset(request.function_parameter):
-            body['functionParameter'] = request.function_parameter
-        if not UtilClient.is_unset(request.job_name):
-            body['jobName'] = request.job_name
-        if not UtilClient.is_unset(request.log_config):
-            body['logConfig'] = request.log_config
-        if not UtilClient.is_unset(request.source_config):
-            body['sourceConfig'] = request.source_config
-        if not UtilClient.is_unset(request.trigger_config):
-            body['triggerConfig'] = request.trigger_config
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateEtlJob',
@@ -7582,20 +7664,20 @@ class Client(OpenApiClient):
 
     def update_project_with_options(
         self,
-        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -7616,20 +7698,20 @@ class Client(OpenApiClient):
 
     async def update_project_with_options_async(
         self,
-        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -7650,21 +7732,19 @@ class Client(OpenApiClient):
 
     def update_project(
         self,
-        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
     ) -> sls_20201230_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_project_with_options(project, request, headers, runtime)
+        return self.update_project_with_options(request, headers, runtime)
 
     async def update_project_async(
         self,
-        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
     ) -> sls_20201230_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_project_with_options_async(project, request, headers, runtime)
+        return await self.update_project_with_options_async(request, headers, runtime)
 
     def update_rds_external_store_with_options(
         self,
