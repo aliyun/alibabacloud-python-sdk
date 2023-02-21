@@ -191,6 +191,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_jobs_with_options_async(request, runtime)
 
+    def batch_delete_route_strategy_with_options(
+        self,
+        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.job_id_list):
+            body['JobIdList'] = request.job_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteRouteStrategy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.BatchDeleteRouteStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_route_strategy_with_options_async(
+        self,
+        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.job_id_list):
+            body['JobIdList'] = request.job_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteRouteStrategy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.BatchDeleteRouteStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_route_strategy(
+        self,
+        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
+    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_delete_route_strategy_with_options(request, runtime)
+
+    async def batch_delete_route_strategy_async(
+        self,
+        request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
+    ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_delete_route_strategy_with_options_async(request, runtime)
+
     def batch_disable_jobs_with_options(
         self,
         request: schedulerx_220190430_models.BatchDisableJobsRequest,
@@ -837,6 +923,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_namespace_with_options_async(request, runtime)
 
+    def create_route_strategy_with_options(
+        self,
+        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.strategy_content):
+            query['StrategyContent'] = request.strategy_content
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteStrategy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateRouteStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_strategy_with_options_async(
+        self,
+        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.strategy_content):
+            query['StrategyContent'] = request.strategy_content
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteStrategy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateRouteStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route_strategy(
+        self,
+        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
+    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_route_strategy_with_options(request, runtime)
+
+    async def create_route_strategy_async(
+        self,
+        request: schedulerx_220190430_models.CreateRouteStrategyRequest,
+    ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_route_strategy_with_options_async(request, runtime)
+
     def create_workflow_with_options(
         self,
         request: schedulerx_220190430_models.CreateWorkflowRequest,
@@ -943,6 +1127,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_workflow_with_options_async(request, runtime)
 
+    def delete_app_group_with_options(
+        self,
+        request: schedulerx_220190430_models.DeleteAppGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_jobs):
+            query['DeleteJobs'] = request.delete_jobs
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppGroup',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteAppGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_group_with_options_async(
+        self,
+        request: schedulerx_220190430_models.DeleteAppGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_jobs):
+            query['DeleteJobs'] = request.delete_jobs
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppGroup',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteAppGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_group(
+        self,
+        request: schedulerx_220190430_models.DeleteAppGroupRequest,
+    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_group_with_options(request, runtime)
+
+    async def delete_app_group_async(
+        self,
+        request: schedulerx_220190430_models.DeleteAppGroupRequest,
+    ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_group_with_options_async(request, runtime)
+
     def delete_job_with_options(
         self,
         request: schedulerx_220190430_models.DeleteJobRequest,
@@ -1008,6 +1274,88 @@ class Client(OpenApiClient):
     ) -> schedulerx_220190430_models.DeleteJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_job_with_options_async(request, runtime)
+
+    def delete_route_strategy_with_options(
+        self,
+        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteStrategy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteRouteStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_strategy_with_options_async(
+        self,
+        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteStrategy',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.DeleteRouteStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route_strategy(
+        self,
+        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
+    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_route_strategy_with_options(request, runtime)
+
+    async def delete_route_strategy_async(
+        self,
+        request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
+    ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_route_strategy_with_options_async(request, runtime)
 
     def delete_workflow_with_options(
         self,
@@ -1612,6 +1960,84 @@ class Client(OpenApiClient):
     ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
         runtime = util_models.RuntimeOptions()
         return await self.execute_workflow_with_options_async(request, runtime)
+
+    def get_app_group_with_options(
+        self,
+        request: schedulerx_220190430_models.GetAppGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppGroup',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.GetAppGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_group_with_options_async(
+        self,
+        request: schedulerx_220190430_models.GetAppGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppGroup',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.GetAppGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_group(
+        self,
+        request: schedulerx_220190430_models.GetAppGroupRequest,
+    ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_group_with_options(request, runtime)
+
+    async def get_app_group_async(
+        self,
+        request: schedulerx_220190430_models.GetAppGroupRequest,
+    ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_group_with_options_async(request, runtime)
 
     def get_job_info_with_options(
         self,
@@ -3083,6 +3509,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
+    def update_app_group_with_options(
+        self,
+        request: schedulerx_220190430_models.UpdateAppGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_concurrency):
+            query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppGroup',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateAppGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_app_group_with_options_async(
+        self,
+        request: schedulerx_220190430_models.UpdateAppGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_concurrency):
+            query['MaxConcurrency'] = request.max_concurrency
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppGroup',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.UpdateAppGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_app_group(
+        self,
+        request: schedulerx_220190430_models.UpdateAppGroupRequest,
+    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_app_group_with_options(request, runtime)
+
+    async def update_app_group_async(
+        self,
+        request: schedulerx_220190430_models.UpdateAppGroupRequest,
+    ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_app_group_with_options_async(request, runtime)
+
     def update_job_with_options(
         self,
         request: schedulerx_220190430_models.UpdateJobRequest,
@@ -3145,6 +3657,8 @@ class Client(OpenApiClient):
             body['SuccessNoticeEnable'] = request.success_notice_enable
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
+        if not UtilClient.is_unset(request.task_dispatch_mode):
+            body['TaskDispatchMode'] = request.task_dispatch_mode
         if not UtilClient.is_unset(request.task_max_attempt):
             body['TaskMaxAttempt'] = request.task_max_attempt
         if not UtilClient.is_unset(request.time_expression):
@@ -3239,6 +3753,8 @@ class Client(OpenApiClient):
             body['SuccessNoticeEnable'] = request.success_notice_enable
         if not UtilClient.is_unset(request.task_attempt_interval):
             body['TaskAttemptInterval'] = request.task_attempt_interval
+        if not UtilClient.is_unset(request.task_dispatch_mode):
+            body['TaskDispatchMode'] = request.task_dispatch_mode
         if not UtilClient.is_unset(request.task_max_attempt):
             body['TaskMaxAttempt'] = request.task_max_attempt
         if not UtilClient.is_unset(request.time_expression):
