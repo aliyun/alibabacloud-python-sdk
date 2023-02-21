@@ -2892,17 +2892,61 @@ class GetDiagnoseResultForSingleCardRequest(TeaModel):
         return self
 
 
+class GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems(TeaModel):
+    def __init__(
+        self,
+        sub_item: str = None,
+        sub_item_info: str = None,
+        sub_item_status: str = None,
+    ):
+        self.sub_item = sub_item
+        self.sub_item_info = sub_item_info
+        self.sub_item_status = sub_item_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sub_item is not None:
+            result['SubItem'] = self.sub_item
+        if self.sub_item_info is not None:
+            result['SubItemInfo'] = self.sub_item_info
+        if self.sub_item_status is not None:
+            result['SubItemStatus'] = self.sub_item_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SubItem') is not None:
+            self.sub_item = m.get('SubItem')
+        if m.get('SubItemInfo') is not None:
+            self.sub_item_info = m.get('SubItemInfo')
+        if m.get('SubItemStatus') is not None:
+            self.sub_item_status = m.get('SubItemStatus')
+        return self
+
+
 class GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem(TeaModel):
     def __init__(
         self,
         part: str = None,
         status: str = None,
+        sub_items: List[GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems] = None,
     ):
         self.part = part
         self.status = status
+        self.sub_items = sub_items
 
     def validate(self):
-        pass
+        if self.sub_items:
+            for k in self.sub_items:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2914,6 +2958,10 @@ class GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem(TeaModel):
             result['Part'] = self.part
         if self.status is not None:
             result['Status'] = self.status
+        result['SubItems'] = []
+        if self.sub_items is not None:
+            for k in self.sub_items:
+                result['SubItems'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2922,6 +2970,11 @@ class GetDiagnoseResultForSingleCardResponseBodyDiagnoseItem(TeaModel):
             self.part = m.get('Part')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.sub_items = []
+        if m.get('SubItems') is not None:
+            for k in m.get('SubItems'):
+                temp_model = GetDiagnoseResultForSingleCardResponseBodyDiagnoseItemSubItems()
+                self.sub_items.append(temp_model.from_map(k))
         return self
 
 
@@ -2929,11 +2982,13 @@ class GetDiagnoseResultForSingleCardResponseBodyErrorResult(TeaModel):
     def __init__(
         self,
         error_desc: str = None,
+        error_item: str = None,
         error_level: str = None,
         error_part: str = None,
         error_suggestion: str = None,
     ):
         self.error_desc = error_desc
+        self.error_item = error_item
         self.error_level = error_level
         self.error_part = error_part
         self.error_suggestion = error_suggestion
@@ -2949,6 +3004,8 @@ class GetDiagnoseResultForSingleCardResponseBodyErrorResult(TeaModel):
         result = dict()
         if self.error_desc is not None:
             result['ErrorDesc'] = self.error_desc
+        if self.error_item is not None:
+            result['ErrorItem'] = self.error_item
         if self.error_level is not None:
             result['ErrorLevel'] = self.error_level
         if self.error_part is not None:
@@ -2961,6 +3018,8 @@ class GetDiagnoseResultForSingleCardResponseBodyErrorResult(TeaModel):
         m = m or dict()
         if m.get('ErrorDesc') is not None:
             self.error_desc = m.get('ErrorDesc')
+        if m.get('ErrorItem') is not None:
+            self.error_item = m.get('ErrorItem')
         if m.get('ErrorLevel') is not None:
             self.error_level = m.get('ErrorLevel')
         if m.get('ErrorPart') is not None:
@@ -3171,7 +3230,9 @@ class GetWirelessCloudConnectorResponseBodyNetLinks(TeaModel):
         self.description = description
         self.grant_ali_uid = grant_ali_uid
         self.isp = isp
+        # 代表创建时间的资源属性字段
         self.name = name
+        # 代表资源名称的资源属性字段
         self.net_link_id = net_link_id
         self.region_id = region_id
         self.status = status
@@ -3589,9 +3650,12 @@ class ListAPNsResponseBodyAPNs(TeaModel):
         name: str = None,
         zones: List[str] = None,
     ):
+        # apn
         self.apn = apn
         self.description = description
+        # 代表资源一级ID的资源属性字段
         self.isp = isp
+        # 代表创建时间的资源属性字段
         self.name = name
         self.zones = zones
 
@@ -3643,6 +3707,7 @@ class ListAPNsResponseBody(TeaModel):
         self.apns = apns
         self.max_results = max_results
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
         self.total_count = total_count
 
@@ -3850,6 +3915,7 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # 代表资源一级ID的资源属性字段
         self.authorization_rule_id = authorization_rule_id
         self.create_time = create_time
         self.description = description
@@ -3857,10 +3923,12 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(TeaModel):
         self.destination_port = destination_port
         self.destination_type = destination_type
         self.dns = dns
+        # 代表创建时间的资源属性字段
         self.name = name
         self.policy = policy
         self.protocol = protocol
         self.source_cidr = source_cidr
+        # 代表资源名称的资源属性字段
         self.status = status
         self.type = type
 
@@ -4140,6 +4208,7 @@ class ListBatchOperateCardsTasksResponseBodyBatchOperateCardsTasks(TeaModel):
         threshold: str = None,
         wireless_cloud_connectors: List[ListBatchOperateCardsTasksResponseBodyBatchOperateCardsTasksWirelessCloudConnectors] = None,
     ):
+        # 代表资源一级ID的资源属性字段
         self.batch_operate_cards_task_id = batch_operate_cards_task_id
         self.create_time = create_time
         self.description = description
@@ -4147,6 +4216,7 @@ class ListBatchOperateCardsTasksResponseBodyBatchOperateCardsTasks(TeaModel):
         self.iccids_oss_file_path = iccids_oss_file_path
         self.name = name
         self.operate_result_oss_file_path = operate_result_oss_file_path
+        # 代表创建时间的资源属性字段
         self.operate_type = operate_type
         self.status = status
         self.threshold = threshold
@@ -4323,6 +4393,164 @@ class ListBatchOperateCardsTasksResponse(TeaModel):
         return self
 
 
+class ListCardUsagesRequest(TeaModel):
+    def __init__(
+        self,
+        iccids: List[str] = None,
+        wireless_cloud_connector_id: str = None,
+    ):
+        self.iccids = iccids
+        self.wireless_cloud_connector_id = wireless_cloud_connector_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iccids is not None:
+            result['Iccids'] = self.iccids
+        if self.wireless_cloud_connector_id is not None:
+            result['WirelessCloudConnectorId'] = self.wireless_cloud_connector_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Iccids') is not None:
+            self.iccids = m.get('Iccids')
+        if m.get('WirelessCloudConnectorId') is not None:
+            self.wireless_cloud_connector_id = m.get('WirelessCloudConnectorId')
+        return self
+
+
+class ListCardUsagesResponseBodyCards(TeaModel):
+    def __init__(
+        self,
+        iccid: str = None,
+        usage_data_month: int = None,
+    ):
+        # 代表资源一级ID的资源属性字段
+        self.iccid = iccid
+        self.usage_data_month = usage_data_month
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iccid is not None:
+            result['Iccid'] = self.iccid
+        if self.usage_data_month is not None:
+            result['UsageDataMonth'] = self.usage_data_month
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Iccid') is not None:
+            self.iccid = m.get('Iccid')
+        if m.get('UsageDataMonth') is not None:
+            self.usage_data_month = m.get('UsageDataMonth')
+        return self
+
+
+class ListCardUsagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        cards: List[ListCardUsagesResponseBodyCards] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.cards = cards
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.cards:
+            for k in self.cards:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Cards'] = []
+        if self.cards is not None:
+            for k in self.cards:
+                result['Cards'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cards = []
+        if m.get('Cards') is not None:
+            for k in m.get('Cards'):
+                temp_model = ListCardUsagesResponseBodyCards()
+                self.cards.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCardUsagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCardUsagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCardUsagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListCardsRequest(TeaModel):
     def __init__(
         self,
@@ -4438,11 +4666,13 @@ class ListCardsResponseBodyCards(TeaModel):
         usage_data_month: int = None,
         usage_data_total: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.apn = apn
         self.activated_time = activated_time
         self.business_status = business_status
         self.description = description
         self.isp = isp
+        # 代表资源一级ID的资源属性字段
         self.iccid = iccid
         self.imei = imei
         self.imsi = imsi
@@ -4450,6 +4680,7 @@ class ListCardsResponseBodyCards(TeaModel):
         self.lock = lock
         self.msisdn = msisdn
         self.name = name
+        # 代表资源名称的资源属性字段
         self.net_type = net_type
         self.order_id = order_id
         self.spec = spec
@@ -4722,8 +4953,10 @@ class ListDataPackagesResponseBodyDataPackages(TeaModel):
         self.data_package_id = data_package_id
         self.expired_time = expired_time
         self.isp = isp
+        # 代表创建时间的资源属性字段
         self.name = name
         self.size = size
+        # 代表资源名称的资源属性字段
         self.status = status
 
     def validate(self):
@@ -5252,6 +5485,7 @@ class ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # 代表资源一级ID的资源属性字段
         self.authorization_rule_id = authorization_rule_id
         self.create_time = create_time
         self.description = description
@@ -5259,10 +5493,12 @@ class ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules(TeaModel):
         self.destination_port = destination_port
         self.destination_type = destination_type
         self.dns = dns
+        # 代表创建时间的资源属性字段
         self.name = name
         self.policy = policy
         self.protocol = protocol
         self.source_cidr = source_cidr
+        # 代表资源名称的资源属性字段
         self.status = status
         self.type = type
 
@@ -5485,10 +5721,15 @@ class ListIoTCloudConnectorBackhaulRouteResponseBodyRoutes(TeaModel):
         next_hop_type: str = None,
         status: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.description = description
+        # 代表资源名称的资源属性字段
         self.destination_cidr_block = destination_cidr_block
+        # 代表创建时间的资源属性字段
         self.next_hop_id = next_hop_id
+        # 代表创建时间的资源属性字段
         self.next_hop_type = next_hop_type
+        # 代表创建时间的资源属性字段
         self.status = status
 
     def validate(self):
@@ -5696,6 +5937,7 @@ class ListOrdersResponseBodyOrders(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.action = action
         self.card_count = card_count
         self.card_net_type = card_net_type
@@ -5712,6 +5954,7 @@ class ListOrdersResponseBodyOrders(TeaModel):
         self.pay_time = pay_time
         self.post_address = post_address
         self.region_id = region_id
+        # 代表资源名称的资源属性字段
         self.status = status
 
     def validate(self):
@@ -5938,11 +6181,11 @@ class ListRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
         local_name: str = None,
-        region_endpoint: str = None,
         region_id: str = None,
     ):
+        # 代表资源名称的资源属性字段
         self.local_name = local_name
-        self.region_endpoint = region_endpoint
+        # 代表资源一级ID的资源属性字段
         self.region_id = region_id
 
     def validate(self):
@@ -5956,8 +6199,6 @@ class ListRegionsResponseBodyRegions(TeaModel):
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
-        if self.region_endpoint is not None:
-            result['RegionEndpoint'] = self.region_endpoint
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -5966,8 +6207,6 @@ class ListRegionsResponseBodyRegions(TeaModel):
         m = m or dict()
         if m.get('LocalName') is not None:
             self.local_name = m.get('LocalName')
-        if m.get('RegionEndpoint') is not None:
-            self.region_endpoint = m.get('RegionEndpoint')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -6221,9 +6460,12 @@ class ListWirelessCloudConnectorGroupsResponseBodyWirelessCloudConnectorGroups(T
     ):
         self.create_time = create_time
         self.description = description
+        # 代表创建时间的资源属性字段
         self.name = name
         self.region_id = region_id
+        # 代表资源名称的资源属性字段
         self.status = status
+        # 代表资源一级ID的资源属性字段
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
         self.wireless_cloud_connectors = wireless_cloud_connectors
 
@@ -6480,12 +6722,15 @@ class ListWirelessCloudConnectorsResponseBodyWirelessCloudConnectors(TeaModel):
         self.data_package_id = data_package_id
         self.data_package_type = data_package_type
         self.description = description
+        # 代表创建时间的资源属性字段
         self.name = name
         self.region_id = region_id
         self.service_type = service_type
+        # 代表资源名称的资源属性字段
         self.status = status
         self.use_case = use_case
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
+        # 代表资源一级ID的资源属性字段
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -6692,7 +6937,9 @@ class ListZonesResponseBodyZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
+        # 代表创建时间的资源属性字段
         self.local_name = local_name
+        # 代表资源名称的资源属性字段
         self.zone_id = zone_id
 
     def validate(self):
@@ -7794,6 +8041,7 @@ class SwitchWirelessCloudConnectorToBusinessResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

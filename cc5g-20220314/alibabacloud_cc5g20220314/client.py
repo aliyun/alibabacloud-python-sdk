@@ -2279,6 +2279,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_batch_operate_cards_tasks_with_options_async(request, runtime)
 
+    def list_card_usages_with_options(
+        self,
+        request: cc5g20220314_models.ListCardUsagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListCardUsagesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCardUsages',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListCardUsagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_card_usages_with_options_async(
+        self,
+        request: cc5g20220314_models.ListCardUsagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListCardUsagesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCardUsages',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListCardUsagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_card_usages(
+        self,
+        request: cc5g20220314_models.ListCardUsagesRequest,
+    ) -> cc5g20220314_models.ListCardUsagesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_card_usages_with_options(request, runtime)
+
+    async def list_card_usages_async(
+        self,
+        request: cc5g20220314_models.ListCardUsagesRequest,
+    ) -> cc5g20220314_models.ListCardUsagesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_card_usages_with_options_async(request, runtime)
+
     def list_cards_with_options(
         self,
         request: cc5g20220314_models.ListCardsRequest,
