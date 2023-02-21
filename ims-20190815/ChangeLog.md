@@ -1,3 +1,6 @@
+2023-02-21 Version: 2.0.8
+- Add recyclebin api for user and accesskey.
+
 2023-01-09 Version: 2.0.7
 - Add verification configuration for risky logins.
 

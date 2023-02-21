@@ -3725,8 +3725,10 @@ class GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed(TeaModel):
     def __init__(
         self,
         last_used_date: str = None,
+        service_name: str = None,
     ):
         self.last_used_date = last_used_date
+        self.service_name = service_name
 
     def validate(self):
         pass
@@ -3739,12 +3741,16 @@ class GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed(TeaModel):
         result = dict()
         if self.last_used_date is not None:
             result['LastUsedDate'] = self.last_used_date
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('LastUsedDate') is not None:
             self.last_used_date = m.get('LastUsedDate')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         return self
 
 
