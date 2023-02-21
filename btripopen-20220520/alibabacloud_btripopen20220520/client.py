@@ -6295,6 +6295,96 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ProjectModifyHeaders()
         return await self.project_modify_with_options_async(request, headers, runtime)
 
+    def query_reimbursement_order_with_options(
+        self,
+        request: btrip_open_20220520_models.QueryReimbursementOrderRequest,
+        headers: btrip_open_20220520_models.QueryReimbursementOrderHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reimb_order_no):
+            query['reimb_order_no'] = request.reimb_order_no
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReimbursementOrder',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/reimbursement/v1/order',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryReimbursementOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_reimbursement_order_with_options_async(
+        self,
+        request: btrip_open_20220520_models.QueryReimbursementOrderRequest,
+        headers: btrip_open_20220520_models.QueryReimbursementOrderHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reimb_order_no):
+            query['reimb_order_no'] = request.reimb_order_no
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryReimbursementOrder',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/reimbursement/v1/order',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryReimbursementOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_reimbursement_order(
+        self,
+        request: btrip_open_20220520_models.QueryReimbursementOrderRequest,
+    ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryReimbursementOrderHeaders()
+        return self.query_reimbursement_order_with_options(request, headers, runtime)
+
+    async def query_reimbursement_order_async(
+        self,
+        request: btrip_open_20220520_models.QueryReimbursementOrderRequest,
+    ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryReimbursementOrderHeaders()
+        return await self.query_reimbursement_order_with_options_async(request, headers, runtime)
+
     def sync_single_user_with_options(
         self,
         tmp_req: btrip_open_20220520_models.SyncSingleUserRequest,

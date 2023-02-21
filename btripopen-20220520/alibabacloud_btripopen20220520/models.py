@@ -28551,6 +28551,485 @@ class ProjectModifyResponse(TeaModel):
         return self
 
 
+class QueryReimbursementOrderHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class QueryReimbursementOrderRequest(TeaModel):
+    def __init__(
+        self,
+        reimb_order_no: str = None,
+        sub_corp_id: str = None,
+    ):
+        self.reimb_order_no = reimb_order_no
+        self.sub_corp_id = sub_corp_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reimb_order_no is not None:
+            result['reimb_order_no'] = self.reimb_order_no
+        if self.sub_corp_id is not None:
+            result['sub_corp_id'] = self.sub_corp_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reimb_order_no') is not None:
+            self.reimb_order_no = m.get('reimb_order_no')
+        if m.get('sub_corp_id') is not None:
+            self.sub_corp_id = m.get('sub_corp_id')
+        return self
+
+
+class QueryReimbursementOrderResponseBodyModuleExpenses(TeaModel):
+    def __init__(
+        self,
+        amount: str = None,
+        currency: str = None,
+        expense_city: str = None,
+        expense_time: str = None,
+        expense_type: str = None,
+        expense_type_code: str = None,
+        reimb_expense_id: int = None,
+        remark: str = None,
+        settlement_type: str = None,
+    ):
+        self.amount = amount
+        self.currency = currency
+        self.expense_city = expense_city
+        self.expense_time = expense_time
+        self.expense_type = expense_type
+        self.expense_type_code = expense_type_code
+        self.reimb_expense_id = reimb_expense_id
+        self.remark = remark
+        self.settlement_type = settlement_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['amount'] = self.amount
+        if self.currency is not None:
+            result['currency'] = self.currency
+        if self.expense_city is not None:
+            result['expense_city'] = self.expense_city
+        if self.expense_time is not None:
+            result['expense_time'] = self.expense_time
+        if self.expense_type is not None:
+            result['expense_type'] = self.expense_type
+        if self.expense_type_code is not None:
+            result['expense_type_code'] = self.expense_type_code
+        if self.reimb_expense_id is not None:
+            result['reimb_expense_id'] = self.reimb_expense_id
+        if self.remark is not None:
+            result['remark'] = self.remark
+        if self.settlement_type is not None:
+            result['settlement_type'] = self.settlement_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+        if m.get('currency') is not None:
+            self.currency = m.get('currency')
+        if m.get('expense_city') is not None:
+            self.expense_city = m.get('expense_city')
+        if m.get('expense_time') is not None:
+            self.expense_time = m.get('expense_time')
+        if m.get('expense_type') is not None:
+            self.expense_type = m.get('expense_type')
+        if m.get('expense_type_code') is not None:
+            self.expense_type_code = m.get('expense_type_code')
+        if m.get('reimb_expense_id') is not None:
+            self.reimb_expense_id = m.get('reimb_expense_id')
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
+        if m.get('settlement_type') is not None:
+            self.settlement_type = m.get('settlement_type')
+        return self
+
+
+class QueryReimbursementOrderResponseBodyModuleItineraries(TeaModel):
+    def __init__(
+        self,
+        arr_city: str = None,
+        arr_date: str = None,
+        dep_city: str = None,
+        dep_date: str = None,
+        traffic_way: str = None,
+        trip_way: str = None,
+    ):
+        self.arr_city = arr_city
+        self.arr_date = arr_date
+        self.dep_city = dep_city
+        self.dep_date = dep_date
+        self.traffic_way = traffic_way
+        self.trip_way = trip_way
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arr_city is not None:
+            result['arr_city'] = self.arr_city
+        if self.arr_date is not None:
+            result['arr_date'] = self.arr_date
+        if self.dep_city is not None:
+            result['dep_city'] = self.dep_city
+        if self.dep_date is not None:
+            result['dep_date'] = self.dep_date
+        if self.traffic_way is not None:
+            result['traffic_way'] = self.traffic_way
+        if self.trip_way is not None:
+            result['trip_way'] = self.trip_way
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arr_city') is not None:
+            self.arr_city = m.get('arr_city')
+        if m.get('arr_date') is not None:
+            self.arr_date = m.get('arr_date')
+        if m.get('dep_city') is not None:
+            self.dep_city = m.get('dep_city')
+        if m.get('dep_date') is not None:
+            self.dep_date = m.get('dep_date')
+        if m.get('traffic_way') is not None:
+            self.traffic_way = m.get('traffic_way')
+        if m.get('trip_way') is not None:
+            self.trip_way = m.get('trip_way')
+        return self
+
+
+class QueryReimbursementOrderResponseBodyModulePaymentInfos(TeaModel):
+    def __init__(
+        self,
+        amount: str = None,
+        payee_user_id: str = None,
+    ):
+        self.amount = amount
+        self.payee_user_id = payee_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['amount'] = self.amount
+        if self.payee_user_id is not None:
+            result['payee_user_id'] = self.payee_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+        if m.get('payee_user_id') is not None:
+            self.payee_user_id = m.get('payee_user_id')
+        return self
+
+
+class QueryReimbursementOrderResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        company_amount: str = None,
+        company_pay_amount: str = None,
+        corp_id: str = None,
+        expenses: List[QueryReimbursementOrderResponseBodyModuleExpenses] = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        itineraries: List[QueryReimbursementOrderResponseBodyModuleItineraries] = None,
+        payment_infos: List[QueryReimbursementOrderResponseBodyModulePaymentInfos] = None,
+        personal_amount: str = None,
+        reason: str = None,
+        reimbursement_no: str = None,
+        remark: str = None,
+        status: str = None,
+        travel_third_apply_id: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.company_amount = company_amount
+        self.company_pay_amount = company_pay_amount
+        self.corp_id = corp_id
+        self.expenses = expenses
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.itineraries = itineraries
+        self.payment_infos = payment_infos
+        self.personal_amount = personal_amount
+        self.reason = reason
+        self.reimbursement_no = reimbursement_no
+        self.remark = remark
+        self.status = status
+        self.travel_third_apply_id = travel_third_apply_id
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        if self.expenses:
+            for k in self.expenses:
+                if k:
+                    k.validate()
+        if self.itineraries:
+            for k in self.itineraries:
+                if k:
+                    k.validate()
+        if self.payment_infos:
+            for k in self.payment_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.company_amount is not None:
+            result['company_amount'] = self.company_amount
+        if self.company_pay_amount is not None:
+            result['company_pay_amount'] = self.company_pay_amount
+        if self.corp_id is not None:
+            result['corp_id'] = self.corp_id
+        result['expenses'] = []
+        if self.expenses is not None:
+            for k in self.expenses:
+                result['expenses'].append(k.to_map() if k else None)
+        if self.gmt_create is not None:
+            result['gmt_create'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmt_modified'] = self.gmt_modified
+        result['itineraries'] = []
+        if self.itineraries is not None:
+            for k in self.itineraries:
+                result['itineraries'].append(k.to_map() if k else None)
+        result['payment_infos'] = []
+        if self.payment_infos is not None:
+            for k in self.payment_infos:
+                result['payment_infos'].append(k.to_map() if k else None)
+        if self.personal_amount is not None:
+            result['personal_amount'] = self.personal_amount
+        if self.reason is not None:
+            result['reason'] = self.reason
+        if self.reimbursement_no is not None:
+            result['reimbursement_no'] = self.reimbursement_no
+        if self.remark is not None:
+            result['remark'] = self.remark
+        if self.status is not None:
+            result['status'] = self.status
+        if self.travel_third_apply_id is not None:
+            result['travel_third_apply_id'] = self.travel_third_apply_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('company_amount') is not None:
+            self.company_amount = m.get('company_amount')
+        if m.get('company_pay_amount') is not None:
+            self.company_pay_amount = m.get('company_pay_amount')
+        if m.get('corp_id') is not None:
+            self.corp_id = m.get('corp_id')
+        self.expenses = []
+        if m.get('expenses') is not None:
+            for k in m.get('expenses'):
+                temp_model = QueryReimbursementOrderResponseBodyModuleExpenses()
+                self.expenses.append(temp_model.from_map(k))
+        if m.get('gmt_create') is not None:
+            self.gmt_create = m.get('gmt_create')
+        if m.get('gmt_modified') is not None:
+            self.gmt_modified = m.get('gmt_modified')
+        self.itineraries = []
+        if m.get('itineraries') is not None:
+            for k in m.get('itineraries'):
+                temp_model = QueryReimbursementOrderResponseBodyModuleItineraries()
+                self.itineraries.append(temp_model.from_map(k))
+        self.payment_infos = []
+        if m.get('payment_infos') is not None:
+            for k in m.get('payment_infos'):
+                temp_model = QueryReimbursementOrderResponseBodyModulePaymentInfos()
+                self.payment_infos.append(temp_model.from_map(k))
+        if m.get('personal_amount') is not None:
+            self.personal_amount = m.get('personal_amount')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        if m.get('reimbursement_no') is not None:
+            self.reimbursement_no = m.get('reimbursement_no')
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('travel_third_apply_id') is not None:
+            self.travel_third_apply_id = m.get('travel_third_apply_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
+        return self
+
+
+class QueryReimbursementOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: QueryReimbursementOrderResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        # requestId
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = QueryReimbursementOrderResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class QueryReimbursementOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryReimbursementOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryReimbursementOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SyncSingleUserHeaders(TeaModel):
     def __init__(
         self,
