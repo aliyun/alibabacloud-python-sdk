@@ -63,6 +63,7 @@ class DetectVideoShotResponseBodyData(TeaModel):
         self,
         shot_frame_ids: List[int] = None,
     ):
+        # 1
         self.shot_frame_ids = shot_frame_ids
 
     def validate(self):
@@ -577,11 +578,9 @@ class RecognizeVideoCastCrewListRequest(TeaModel):
     def __init__(
         self,
         params: List[RecognizeVideoCastCrewListRequestParams] = None,
-        register_url: str = None,
         video_url: str = None,
     ):
         self.params = params
-        self.register_url = register_url
         self.video_url = video_url
 
     def validate(self):
@@ -600,8 +599,6 @@ class RecognizeVideoCastCrewListRequest(TeaModel):
         if self.params is not None:
             for k in self.params:
                 result['Params'].append(k.to_map() if k else None)
-        if self.register_url is not None:
-            result['RegisterUrl'] = self.register_url
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
         return result
@@ -613,8 +610,6 @@ class RecognizeVideoCastCrewListRequest(TeaModel):
             for k in m.get('Params'):
                 temp_model = RecognizeVideoCastCrewListRequestParams()
                 self.params.append(temp_model.from_map(k))
-        if m.get('RegisterUrl') is not None:
-            self.register_url = m.get('RegisterUrl')
         if m.get('VideoUrl') is not None:
             self.video_url = m.get('VideoUrl')
         return self
@@ -651,11 +646,9 @@ class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
     def __init__(
         self,
         params: List[RecognizeVideoCastCrewListAdvanceRequestParams] = None,
-        register_url_object: BinaryIO = None,
         video_url_object: BinaryIO = None,
     ):
         self.params = params
-        self.register_url_object = register_url_object
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -674,8 +667,6 @@ class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
         if self.params is not None:
             for k in self.params:
                 result['Params'].append(k.to_map() if k else None)
-        if self.register_url_object is not None:
-            result['RegisterUrl'] = self.register_url_object
         if self.video_url_object is not None:
             result['VideoUrl'] = self.video_url_object
         return result
@@ -687,8 +678,6 @@ class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
             for k in m.get('Params'):
                 temp_model = RecognizeVideoCastCrewListAdvanceRequestParams()
                 self.params.append(temp_model.from_map(k))
-        if m.get('RegisterUrl') is not None:
-            self.register_url_object = m.get('RegisterUrl')
         if m.get('VideoUrl') is not None:
             self.video_url_object = m.get('VideoUrl')
         return self
@@ -698,11 +687,9 @@ class RecognizeVideoCastCrewListShrinkRequest(TeaModel):
     def __init__(
         self,
         params_shrink: str = None,
-        register_url: str = None,
         video_url: str = None,
     ):
         self.params_shrink = params_shrink
-        self.register_url = register_url
         self.video_url = video_url
 
     def validate(self):
@@ -716,8 +703,6 @@ class RecognizeVideoCastCrewListShrinkRequest(TeaModel):
         result = dict()
         if self.params_shrink is not None:
             result['Params'] = self.params_shrink
-        if self.register_url is not None:
-            result['RegisterUrl'] = self.register_url
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
         return result
@@ -726,8 +711,6 @@ class RecognizeVideoCastCrewListShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('Params') is not None:
             self.params_shrink = m.get('Params')
-        if m.get('RegisterUrl') is not None:
-            self.register_url = m.get('RegisterUrl')
         if m.get('VideoUrl') is not None:
             self.video_url = m.get('VideoUrl')
         return self
@@ -1311,8 +1294,10 @@ class RecognizeVideoCastCrewListResponse(TeaModel):
 class SplitVideoPartsRequest(TeaModel):
     def __init__(
         self,
+        template: str = None,
         video_url: str = None,
     ):
+        self.template = template
         self.video_url = video_url
 
     def validate(self):
@@ -1324,12 +1309,16 @@ class SplitVideoPartsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.template is not None:
+            result['Template'] = self.template
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
         if m.get('VideoUrl') is not None:
             self.video_url = m.get('VideoUrl')
         return self
@@ -1338,8 +1327,10 @@ class SplitVideoPartsRequest(TeaModel):
 class SplitVideoPartsAdvanceRequest(TeaModel):
     def __init__(
         self,
+        template: str = None,
         video_url_object: BinaryIO = None,
     ):
+        self.template = template
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -1351,12 +1342,16 @@ class SplitVideoPartsAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.template is not None:
+            result['Template'] = self.template
         if self.video_url_object is not None:
             result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
         if m.get('VideoUrl') is not None:
             self.video_url_object = m.get('VideoUrl')
         return self
@@ -1401,16 +1396,73 @@ class SplitVideoPartsResponseBodyDataElements(TeaModel):
         return self
 
 
+class SplitVideoPartsResponseBodyDataSplitVideoPartResults(TeaModel):
+    def __init__(
+        self,
+        begin_time: float = None,
+        by: str = None,
+        end_time: float = None,
+        theme: str = None,
+        type: str = None,
+    ):
+        self.begin_time = begin_time
+        self.by = by
+        self.end_time = end_time
+        self.theme = theme
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.by is not None:
+            result['By'] = self.by
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.theme is not None:
+            result['Theme'] = self.theme
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('By') is not None:
+            self.by = m.get('By')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Theme') is not None:
+            self.theme = m.get('Theme')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class SplitVideoPartsResponseBodyData(TeaModel):
     def __init__(
         self,
         elements: List[SplitVideoPartsResponseBodyDataElements] = None,
+        split_video_part_results: List[SplitVideoPartsResponseBodyDataSplitVideoPartResults] = None,
     ):
         self.elements = elements
+        self.split_video_part_results = split_video_part_results
 
     def validate(self):
         if self.elements:
             for k in self.elements:
+                if k:
+                    k.validate()
+        if self.split_video_part_results:
+            for k in self.split_video_part_results:
                 if k:
                     k.validate()
 
@@ -1424,6 +1476,10 @@ class SplitVideoPartsResponseBodyData(TeaModel):
         if self.elements is not None:
             for k in self.elements:
                 result['Elements'].append(k.to_map() if k else None)
+        result['SplitVideoPartResults'] = []
+        if self.split_video_part_results is not None:
+            for k in self.split_video_part_results:
+                result['SplitVideoPartResults'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1433,6 +1489,11 @@ class SplitVideoPartsResponseBodyData(TeaModel):
             for k in m.get('Elements'):
                 temp_model = SplitVideoPartsResponseBodyDataElements()
                 self.elements.append(temp_model.from_map(k))
+        self.split_video_part_results = []
+        if m.get('SplitVideoPartResults') is not None:
+            for k in m.get('SplitVideoPartResults'):
+                temp_model = SplitVideoPartsResponseBodyDataSplitVideoPartResults()
+                self.split_video_part_results.append(temp_model.from_map(k))
         return self
 
 

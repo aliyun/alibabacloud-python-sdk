@@ -558,8 +558,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.params_shrink):
             body['Params'] = request.params_shrink
-        if not UtilClient.is_unset(request.register_url):
-            body['RegisterUrl'] = request.register_url
         if not UtilClient.is_unset(request.video_url):
             body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -594,8 +592,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.params_shrink):
             body['Params'] = request.params_shrink
-        if not UtilClient.is_unset(request.register_url):
-            body['RegisterUrl'] = request.register_url
         if not UtilClient.is_unset(request.video_url):
             body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -675,30 +671,6 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_video_cast_crew_list_req = videorecog_20200320_models.RecognizeVideoCastCrewListRequest()
         OpenApiUtilClient.convert(request, recognize_video_cast_crew_list_req)
-        if not UtilClient.is_unset(request.register_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.register_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            recognize_video_cast_crew_list_req.register_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         if not UtilClient.is_unset(request.video_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
             oss_config.access_key_id = auth_response.body.access_key_id
@@ -770,30 +742,6 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         recognize_video_cast_crew_list_req = videorecog_20200320_models.RecognizeVideoCastCrewListRequest()
         OpenApiUtilClient.convert(request, recognize_video_cast_crew_list_req)
-        if not UtilClient.is_unset(request.register_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
-                content=request.register_url_object,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            recognize_video_cast_crew_list_req.register_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         if not UtilClient.is_unset(request.video_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
             oss_config.access_key_id = auth_response.body.access_key_id
@@ -828,6 +776,8 @@ class Client(OpenApiClient):
     ) -> videorecog_20200320_models.SplitVideoPartsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.template):
+            body['Template'] = request.template
         if not UtilClient.is_unset(request.video_url):
             body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -856,6 +806,8 @@ class Client(OpenApiClient):
     ) -> videorecog_20200320_models.SplitVideoPartsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.template):
+            body['Template'] = request.template
         if not UtilClient.is_unset(request.video_url):
             body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
