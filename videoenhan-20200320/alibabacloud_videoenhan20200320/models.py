@@ -2074,6 +2074,184 @@ class EraseVideoSubtitlesResponse(TeaModel):
         return self
 
 
+class GenerateHumanAnimeStyleVideoRequest(TeaModel):
+    def __init__(
+        self,
+        cartoon_style: str = None,
+        video_url: str = None,
+    ):
+        self.cartoon_style = cartoon_style
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cartoon_style is not None:
+            result['CartoonStyle'] = self.cartoon_style
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CartoonStyle') is not None:
+            self.cartoon_style = m.get('CartoonStyle')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class GenerateHumanAnimeStyleVideoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        cartoon_style: str = None,
+        video_url_object: BinaryIO = None,
+    ):
+        self.cartoon_style = cartoon_style
+        self.video_url_object = video_url_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cartoon_style is not None:
+            result['CartoonStyle'] = self.cartoon_style
+        if self.video_url_object is not None:
+            result['VideoUrl'] = self.video_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CartoonStyle') is not None:
+            self.cartoon_style = m.get('CartoonStyle')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
+        return self
+
+
+class GenerateHumanAnimeStyleVideoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        video_url: str = None,
+    ):
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class GenerateHumanAnimeStyleVideoResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GenerateHumanAnimeStyleVideoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GenerateHumanAnimeStyleVideoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateHumanAnimeStyleVideoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateHumanAnimeStyleVideoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateHumanAnimeStyleVideoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateVideoRequestFileList(TeaModel):
     def __init__(
         self,

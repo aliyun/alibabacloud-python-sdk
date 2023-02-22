@@ -1,3 +1,6 @@
+2023-02-22 Version: 3.0.12
+- Release GenerateHumanAnimeStyleVideo.
+
 2023-01-13 Version: 3.0.11
 - Update sdk.
 
