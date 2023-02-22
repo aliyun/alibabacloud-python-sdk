@@ -1281,6 +1281,112 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ApplyQueryHeaders()
         return await self.apply_query_with_options_async(request, headers, runtime)
 
+    def btrip_bill_info_adjust_with_options(
+        self,
+        request: btrip_open_20220520_models.BtripBillInfoAdjustRequest,
+        headers: btrip_open_20220520_models.BtripBillInfoAdjustHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.primary_id):
+            body['primary_id'] = request.primary_id
+        if not UtilClient.is_unset(request.third_part_cost_center_id):
+            body['third_part_cost_center_id'] = request.third_part_cost_center_id
+        if not UtilClient.is_unset(request.third_part_department_id):
+            body['third_part_department_id'] = request.third_part_department_id
+        if not UtilClient.is_unset(request.third_part_invoice_id):
+            body['third_part_invoice_id'] = request.third_part_invoice_id
+        if not UtilClient.is_unset(request.third_part_project_id):
+            body['third_part_project_id'] = request.third_part_project_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BtripBillInfoAdjust',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/bill/v1/info/action/adjust',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.BtripBillInfoAdjustResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def btrip_bill_info_adjust_with_options_async(
+        self,
+        request: btrip_open_20220520_models.BtripBillInfoAdjustRequest,
+        headers: btrip_open_20220520_models.BtripBillInfoAdjustHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.primary_id):
+            body['primary_id'] = request.primary_id
+        if not UtilClient.is_unset(request.third_part_cost_center_id):
+            body['third_part_cost_center_id'] = request.third_part_cost_center_id
+        if not UtilClient.is_unset(request.third_part_department_id):
+            body['third_part_department_id'] = request.third_part_department_id
+        if not UtilClient.is_unset(request.third_part_invoice_id):
+            body['third_part_invoice_id'] = request.third_part_invoice_id
+        if not UtilClient.is_unset(request.third_part_project_id):
+            body['third_part_project_id'] = request.third_part_project_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BtripBillInfoAdjust',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/bill/v1/info/action/adjust',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.BtripBillInfoAdjustResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def btrip_bill_info_adjust(
+        self,
+        request: btrip_open_20220520_models.BtripBillInfoAdjustRequest,
+    ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.BtripBillInfoAdjustHeaders()
+        return self.btrip_bill_info_adjust_with_options(request, headers, runtime)
+
+    async def btrip_bill_info_adjust_async(
+        self,
+        request: btrip_open_20220520_models.BtripBillInfoAdjustRequest,
+    ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.BtripBillInfoAdjustHeaders()
+        return await self.btrip_bill_info_adjust_with_options_async(request, headers, runtime)
+
     def car_apply_add_with_options(
         self,
         request: btrip_open_20220520_models.CarApplyAddRequest,
@@ -5918,6 +6024,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IsvUserSaveHeaders()
         return await self.isv_user_save_with_options_async(request, headers, runtime)
+
+    def month_bill_confirm_with_options(
+        self,
+        request: btrip_open_20220520_models.MonthBillConfirmRequest,
+        headers: btrip_open_20220520_models.MonthBillConfirmHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.mail_bill_date):
+            body['mail_bill_date'] = request.mail_bill_date
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MonthBillConfirm',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/bill/v1/status/action/confirm',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MonthBillConfirmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def month_bill_confirm_with_options_async(
+        self,
+        request: btrip_open_20220520_models.MonthBillConfirmRequest,
+        headers: btrip_open_20220520_models.MonthBillConfirmHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.mail_bill_date):
+            body['mail_bill_date'] = request.mail_bill_date
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MonthBillConfirm',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/bill/v1/status/action/confirm',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.MonthBillConfirmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def month_bill_confirm(
+        self,
+        request: btrip_open_20220520_models.MonthBillConfirmRequest,
+    ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MonthBillConfirmHeaders()
+        return self.month_bill_confirm_with_options(request, headers, runtime)
+
+    async def month_bill_confirm_async(
+        self,
+        request: btrip_open_20220520_models.MonthBillConfirmRequest,
+    ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.MonthBillConfirmHeaders()
+        return await self.month_bill_confirm_with_options_async(request, headers, runtime)
 
     def month_bill_get_with_options(
         self,
