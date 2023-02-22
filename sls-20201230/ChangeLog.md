@@ -1,3 +1,6 @@
+2023-02-22 Version: 1.5.13
+- Fix api pathname.
+
 2023-02-20 Version: 1.5.12
 - Fix api pathname.
 
