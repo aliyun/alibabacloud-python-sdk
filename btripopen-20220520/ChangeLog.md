@@ -1,3 +1,6 @@
+2023-02-22 Version: 1.0.49
+- Add new interface.
+
 2023-02-22 Version: 1.0.48
 - Add new interface.
 

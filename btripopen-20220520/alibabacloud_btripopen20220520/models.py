@@ -11871,6 +11871,7 @@ class EstimatedPriceQueryRequest(TeaModel):
         end_time: int = None,
         itinerary_id: str = None,
         start_time: int = None,
+        sub_corp_id: str = None,
         user_id: str = None,
     ):
         self.arr_city = arr_city
@@ -11879,6 +11880,7 @@ class EstimatedPriceQueryRequest(TeaModel):
         self.end_time = end_time
         self.itinerary_id = itinerary_id
         self.start_time = start_time
+        self.sub_corp_id = sub_corp_id
         self.user_id = user_id
 
     def validate(self):
@@ -11902,6 +11904,8 @@ class EstimatedPriceQueryRequest(TeaModel):
             result['itinerary_id'] = self.itinerary_id
         if self.start_time is not None:
             result['start_time'] = self.start_time
+        if self.sub_corp_id is not None:
+            result['sub_corp_id'] = self.sub_corp_id
         if self.user_id is not None:
             result['user_id'] = self.user_id
         return result
@@ -11920,6 +11924,8 @@ class EstimatedPriceQueryRequest(TeaModel):
             self.itinerary_id = m.get('itinerary_id')
         if m.get('start_time') is not None:
             self.start_time = m.get('start_time')
+        if m.get('sub_corp_id') is not None:
+            self.sub_corp_id = m.get('sub_corp_id')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
         return self
