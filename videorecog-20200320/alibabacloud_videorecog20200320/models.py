@@ -171,6 +171,267 @@ class DetectVideoShotResponse(TeaModel):
         return self
 
 
+class EvaluateVideoQualityRequest(TeaModel):
+    def __init__(
+        self,
+        mode: str = None,
+        video_url: str = None,
+    ):
+        self.mode = mode
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class EvaluateVideoQualityAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        mode: str = None,
+        video_url_object: BinaryIO = None,
+    ):
+        self.mode = mode
+        self.video_url_object = video_url_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.video_url_object is not None:
+            result['VideoUrl'] = self.video_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
+        return self
+
+
+class EvaluateVideoQualityResponseBodyDataVideoQualityInfo(TeaModel):
+    def __init__(
+        self,
+        blurriness: float = None,
+        color_contrast: float = None,
+        color_saturation: float = None,
+        colorfulness: float = None,
+        compressive_strength: float = None,
+        luminance: float = None,
+        mos_score: float = None,
+        noise_intensity: float = None,
+    ):
+        self.blurriness = blurriness
+        self.color_contrast = color_contrast
+        self.color_saturation = color_saturation
+        self.colorfulness = colorfulness
+        self.compressive_strength = compressive_strength
+        self.luminance = luminance
+        self.mos_score = mos_score
+        self.noise_intensity = noise_intensity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blurriness is not None:
+            result['Blurriness'] = self.blurriness
+        if self.color_contrast is not None:
+            result['ColorContrast'] = self.color_contrast
+        if self.color_saturation is not None:
+            result['ColorSaturation'] = self.color_saturation
+        if self.colorfulness is not None:
+            result['Colorfulness'] = self.colorfulness
+        if self.compressive_strength is not None:
+            result['CompressiveStrength'] = self.compressive_strength
+        if self.luminance is not None:
+            result['Luminance'] = self.luminance
+        if self.mos_score is not None:
+            result['MosScore'] = self.mos_score
+        if self.noise_intensity is not None:
+            result['NoiseIntensity'] = self.noise_intensity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Blurriness') is not None:
+            self.blurriness = m.get('Blurriness')
+        if m.get('ColorContrast') is not None:
+            self.color_contrast = m.get('ColorContrast')
+        if m.get('ColorSaturation') is not None:
+            self.color_saturation = m.get('ColorSaturation')
+        if m.get('Colorfulness') is not None:
+            self.colorfulness = m.get('Colorfulness')
+        if m.get('CompressiveStrength') is not None:
+            self.compressive_strength = m.get('CompressiveStrength')
+        if m.get('Luminance') is not None:
+            self.luminance = m.get('Luminance')
+        if m.get('MosScore') is not None:
+            self.mos_score = m.get('MosScore')
+        if m.get('NoiseIntensity') is not None:
+            self.noise_intensity = m.get('NoiseIntensity')
+        return self
+
+
+class EvaluateVideoQualityResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        json_url: str = None,
+        pdf_url: str = None,
+        video_quality_info: EvaluateVideoQualityResponseBodyDataVideoQualityInfo = None,
+    ):
+        self.json_url = json_url
+        self.pdf_url = pdf_url
+        self.video_quality_info = video_quality_info
+
+    def validate(self):
+        if self.video_quality_info:
+            self.video_quality_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.json_url is not None:
+            result['JsonUrl'] = self.json_url
+        if self.pdf_url is not None:
+            result['PdfUrl'] = self.pdf_url
+        if self.video_quality_info is not None:
+            result['VideoQualityInfo'] = self.video_quality_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JsonUrl') is not None:
+            self.json_url = m.get('JsonUrl')
+        if m.get('PdfUrl') is not None:
+            self.pdf_url = m.get('PdfUrl')
+        if m.get('VideoQualityInfo') is not None:
+            temp_model = EvaluateVideoQualityResponseBodyDataVideoQualityInfo()
+            self.video_quality_info = temp_model.from_map(m['VideoQualityInfo'])
+        return self
+
+
+class EvaluateVideoQualityResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: EvaluateVideoQualityResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = EvaluateVideoQualityResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EvaluateVideoQualityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EvaluateVideoQualityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EvaluateVideoQualityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateVideoCoverRequest(TeaModel):
     def __init__(
         self,
