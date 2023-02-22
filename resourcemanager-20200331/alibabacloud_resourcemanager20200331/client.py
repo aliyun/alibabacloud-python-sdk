@@ -374,6 +374,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_secure_mobile_phone_with_options_async(request, runtime)
 
+    def cancel_change_account_email_with_options(
+        self,
+        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelChangeAccountEmail',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_change_account_email_with_options_async(
+        self,
+        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelChangeAccountEmail',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_change_account_email(
+        self,
+        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
+    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_change_account_email_with_options(request, runtime)
+
+    async def cancel_change_account_email_async(
+        self,
+        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
+    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_change_account_email_with_options_async(request, runtime)
+
     def cancel_create_cloud_account_with_options(
         self,
         request: resource_manager_20200331_models.CancelCreateCloudAccountRequest,
@@ -583,6 +653,80 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.CancelPromoteResourceAccountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.cancel_promote_resource_account_with_options_async(request, runtime)
+
+    def change_account_email_with_options(
+        self,
+        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeAccountEmail',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ChangeAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_account_email_with_options_async(
+        self,
+        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeAccountEmail',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ChangeAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_account_email(
+        self,
+        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
+    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_account_email_with_options(request, runtime)
+
+    async def change_account_email_async(
+        self,
+        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
+    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_account_email_with_options_async(request, runtime)
 
     def check_account_delete_with_options(
         self,
@@ -1063,6 +1207,8 @@ class Client(OpenApiClient):
             query['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
+        if not UtilClient.is_unset(request.resell_account_type):
+            query['ResellAccountType'] = request.resell_account_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -1099,6 +1245,8 @@ class Client(OpenApiClient):
             query['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
+        if not UtilClient.is_unset(request.resell_account_type):
+            query['ResellAccountType'] = request.resell_account_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -5853,6 +6001,76 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.resend_promote_resource_account_email_with_options_async(request, runtime)
+
+    def retry_change_account_email_with_options(
+        self,
+        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryChangeAccountEmail',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_change_account_email_with_options_async(
+        self,
+        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryChangeAccountEmail',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_change_account_email(
+        self,
+        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
+    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.retry_change_account_email_with_options(request, runtime)
+
+    async def retry_change_account_email_async(
+        self,
+        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
+    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.retry_change_account_email_with_options_async(request, runtime)
 
     def send_verification_code_for_bind_secure_mobile_phone_with_options(
         self,

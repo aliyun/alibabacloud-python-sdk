@@ -1,3 +1,6 @@
+2023-02-22 Version: 2.1.3
+- Supported more language for resourcemanager.
+
 2022-12-01 Version: 2.1.2
 - Supported more language for resourcemanager.
 
