@@ -2506,6 +2506,7 @@ class DescribeAssetListRequest(TeaModel):
         ip_version: str = None,
         lang: str = None,
         member_uid: int = None,
+        new_resource_tag: str = None,
         page_size: str = None,
         region_no: str = None,
         resource_type: str = None,
@@ -2529,6 +2530,7 @@ class DescribeAssetListRequest(TeaModel):
         self.lang = lang
         # The UID of the member that is added in Cloud Firewall.
         self.member_uid = member_uid
+        self.new_resource_tag = new_resource_tag
         # The number of entries to return on each page.
         self.page_size = page_size
         # The ID of the region in which Cloud Firewall is supported.
@@ -2595,6 +2597,8 @@ class DescribeAssetListRequest(TeaModel):
             result['Lang'] = self.lang
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
+        if self.new_resource_tag is not None:
+            result['NewResourceTag'] = self.new_resource_tag
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.region_no is not None:
@@ -2623,6 +2627,8 @@ class DescribeAssetListRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
+        if m.get('NewResourceTag') is not None:
+            self.new_resource_tag = m.get('NewResourceTag')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RegionNo') is not None:
@@ -2648,11 +2654,13 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         ali_uid: int = None,
         bind_instance_id: str = None,
         bind_instance_name: str = None,
+        create_time_stamp: str = None,
         internet_address: str = None,
         intranet_address: str = None,
         ip_version: int = None,
         member_uid: int = None,
         name: str = None,
+        new_resource_tag: str = None,
         note: str = None,
         protect_status: str = None,
         region_id: str = None,
@@ -2673,6 +2681,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         self.bind_instance_id = bind_instance_id
         # The instance name of the asset that is bound to Cloud Firewall.
         self.bind_instance_name = bind_instance_name
+        self.create_time_stamp = create_time_stamp
         # The public IP address of the server.
         self.internet_address = internet_address
         # The internal IP address of the server.
@@ -2688,6 +2697,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         self.member_uid = member_uid
         # The instance name of the asset that is protected by Cloud Firewall.
         self.name = name
+        self.new_resource_tag = new_resource_tag
         # The remarks of the asset. Valid values:
         # 
         # *   **REGION\_NOT\_SUPPORT**: The region is not supported.
@@ -2762,6 +2772,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             result['BindInstanceId'] = self.bind_instance_id
         if self.bind_instance_name is not None:
             result['BindInstanceName'] = self.bind_instance_name
+        if self.create_time_stamp is not None:
+            result['CreateTimeStamp'] = self.create_time_stamp
         if self.internet_address is not None:
             result['InternetAddress'] = self.internet_address
         if self.intranet_address is not None:
@@ -2772,6 +2784,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             result['MemberUid'] = self.member_uid
         if self.name is not None:
             result['Name'] = self.name
+        if self.new_resource_tag is not None:
+            result['NewResourceTag'] = self.new_resource_tag
         if self.note is not None:
             result['Note'] = self.note
         if self.protect_status is not None:
@@ -2804,6 +2818,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             self.bind_instance_id = m.get('BindInstanceId')
         if m.get('BindInstanceName') is not None:
             self.bind_instance_name = m.get('BindInstanceName')
+        if m.get('CreateTimeStamp') is not None:
+            self.create_time_stamp = m.get('CreateTimeStamp')
         if m.get('InternetAddress') is not None:
             self.internet_address = m.get('InternetAddress')
         if m.get('IntranetAddress') is not None:
@@ -2814,6 +2830,8 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
             self.member_uid = m.get('MemberUid')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('NewResourceTag') is not None:
+            self.new_resource_tag = m.get('NewResourceTag')
         if m.get('Note') is not None:
             self.note = m.get('Note')
         if m.get('ProtectStatus') is not None:
@@ -5092,17 +5110,17 @@ class DescribeOutgoingDomainRequest(TeaModel):
         start_time: str = None,
         tag_id_new: str = None,
     ):
-        # The ID of the product category. Default value: empty. Valid values:
+        # The type of the service. This parameter is empty by default. Valid values:
         # 
-        # -  **All**: All categories.
-        # - **RiskDomain**: Risk domain name category.
-        # - **RiskIP**: Risk IP category.
-        # - **AliYun**: Cloud product category.
-        # - **NotAliYun**: Non-Cloud products.
+        # *   **All**: all services
+        # *   **RiskDomain**: risky domain names
+        # *   **RiskIP**: risky IP addresses
+        # *   **AliYun**: Alibaba Cloud services
+        # *   **NotAliYun**: third-party services
         self.category_id = category_id
         # The number of the page to return.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Default value: 1.
         self.current_page = current_page
         # The domain name in outbound connections.
         self.domain = domain
@@ -5113,18 +5131,18 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
-        # The order in which you want to sort the queried information. Valid values:
+        # The order in which you want to sort the query results. Valid values:
         # 
-        # *   **asc**: the ascending order
+        # *   **asc**: the ascending order.
         # *   **desc**: the descending order. This is the default value.
         self.order = order
         # The number of entries to return on each page.
         # 
         # Default value: 6. Maximum value: 100.
         self.page_size = page_size
-        # The public IP address of the Elastic Compute Service (ECS) instance that initiates the outbound connection.
+        # The public IP address of the Elastic Compute Service (ECS) instance that initiates outbound connections.
         self.public_ip = public_ip
-        # The field based on which you want to sort the queried information. Valid values:
+        # The field based on which you want to sort the query results. Valid values:
         # 
         # *   **SessionCount**: the number of requests. This is the default value.
         # *   **TotalBytes**: the total volume of traffic.
@@ -5151,7 +5169,7 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # *   **Taobao**: Taobao
         # *   **Google**: Google
         # *   **ThirdPartyService**: third-party service
-        # *   **FirstFlow**: the first time
+        # *   **FirstFlow**: the first time when an outbound connection is initiated
         # *   **Downloader**: malicious download
         # *   **Alexa Top1M**: popular website
         # *   **Miner**: mining pool
@@ -5162,7 +5180,7 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # *   **Rogue**: rogue software
         # *   **Botnet**: botnet
         # *   **Suspicious**: suspicious website
-        # *   **C&C**: command and control (C&C)
+        # *   **C\&C**: command and control (C\&C)
         # *   **Gang**: gang
         # *   **CVE**: Common Vulnerabilities and Exposures (CVE)
         # *   **Backdoor**: webshell
@@ -5326,8 +5344,8 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
     ):
         # Indicates whether an access control policy is configured. Valid values:
         # 
-        # *   **Uncovered**: No access control policies are configured.
-        # *   **FullCoverage**: An access control policy is configured.
+        # *   **Uncovered**: no
+        # *   **FullCoverage**: yes
         self.acl_coverage = acl_coverage
         # The suggestion in an access control policy.
         self.acl_recommend_detail = acl_recommend_detail
@@ -5348,7 +5366,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         # *   **Malicious**\
         # *   **Trusted**\
         self.category_class_id = category_class_id
-        # The ID of the service to which the destination IP address belongs. Valid values:
+        # The type ID of the service to which the domain name belongs. Valid values:
         # 
         # *   **Aliyun**: Alibaba Cloud services
         # *   **NotAliyun**: third-party services
@@ -5356,7 +5374,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         # The type of the service to which the domain name belongs. Valid values:
         # 
         # *   **Alibaba Cloud services**\
-        # *   **third-party services**\
+        # *   **Third-party services**\
         self.category_name = category_name
         # The domain name in outbound connections.
         self.domain = domain
@@ -5372,7 +5390,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         self.has_acl_recommend = has_acl_recommend
-        # The inbound traffic.
+        # The volume of inbound traffic.
         self.in_bytes = in_bytes
         # Indicates whether the domain name is marked as normal. Valid values:
         # 
@@ -5381,7 +5399,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         self.is_mark_normal = is_mark_normal
         # The name of the organization.
         self.organization = organization
-        # The outbound traffic.
+        # The volume of outbound traffic.
         self.out_bytes = out_bytes
         # The ID of the access control policy.
         self.rule_id = rule_id
@@ -5915,74 +5933,71 @@ class DescribeRiskEventGroupRequest(TeaModel):
         start_time: str = None,
         vul_level: str = None,
     ):
-        # The name list of the attacked application.
+        # The names of attacked applications. Set the value in the `["AttackApp1","AttackApp2"]` format.
         self.attack_app = attack_app
         # The attack type of the intrusion events. Valid values:
         # 
-        # * **1**: suspicious connection
-        # * **2**: command execution
-        # * **3**: brute-force attack
-        # * **4**: scanning
-        # * **5**: others
-        # * **6**: information leak
-        # * **7**: DoS attack
-        # * **8**: buffer overflow attack
-        # * **9**: web attack
-        # * **10**: trojan backdoor
-        # * **11**: computer worm
-        # * **12**: mining
-        # * **13**: reverse shell
+        # *   **1**: suspicious connection
+        # *   **2**: command execution
+        # *   **3**: brute-force attack
+        # *   **4**: scanning
+        # *   **5**: others
+        # *   **6**: information leak
+        # *   **7**: DoS attack
+        # *   **8**: buffer overflow attack
+        # *   **9**: web attack
+        # *   **10**: trojan backdoor
+        # *   **11**: computer worm
+        # *   **12**: mining
+        # *   **13**: reverse shell
         # 
         # > If you do not specify this parameter, the intrusion events of all attack types are queried.
         self.attack_type = attack_type
         # The edition of Cloud Firewall that you purchase. Valid values:
         # 
-        # * **2**: Premium Edition
-        # * **3**: Enterprise Edition
-        # * **4**: Ultimate Edition
-        # * **10**: pay-as-you-go edition
+        # *   **2**: Premium Edition
+        # *   **3**: Enterprise Edition
+        # *   **4**: Ultimate Edition
+        # *   **10**: Cloud Firewall that uses the pay-as-you-go billing method
         self.buy_version = buy_version
-        # The number of the page to return.
-        # 
-        # Default value: **1**.
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The type of the risk events.
-        # 
+        # The type of the risk events.\
         # Set the value to **session**, which indicates intrusion events.
         self.data_type = data_type
         # The direction of the traffic for the intrusion events. Valid values:
         # 
-        # * **in**: inbound
-        # * **out**: outbound
+        # *   **in**: inbound
+        # *   **out**: outbound
         # 
-        # >  If you do not specify this parameter, the intrusion events in both inbound and outbound directions are queried.
+        # > If you do not specify this parameter, the intrusion events in both inbound and outbound directions are queried.
         self.direction = direction
         # The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
         self.dst_ip = dst_ip
         # The ID of the destination VPC.
         # 
-        # >  You must specify this parameter when the FirewallType parameter is set to VpcFirewall.
+        # > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
         self.dst_network_instance_id = dst_network_instance_id
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
         # The type of the firewall. Valid values:
         # 
-        # * **VpcFirewall**: virtual private cloud (VPC) firewall
-        # * **InternetFirewall**: Internet firewall (default)
+        # *   **VpcFirewall**: virtual private cloud (VPC) firewall
+        # *   **InternetFirewall**: Internet firewall (default)
         self.firewall_type = firewall_type
-        # The language of the content within the request and the response. Valid values:
+        # The language of the content within the request and response. Valid values:
         # 
-        # * **zh**: Chinese (default)
-        # * **en**: English
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
         # Specifies whether to query the information about the geographical locations of IP addresses.
         # 
-        # * **true**: does not query the information about the geographical locations of IP addresses.
-        # * **false**: queries the information about the geographical locations of IP addresses. This is the default value.
+        # *   **true**: does not query the information about the geographical locations of IP addresses.
+        # *   **false**: queries the information about the geographical locations of IP addresses. This is the default value.
         self.no_location = no_location
-        # The method that is used to sort the results. Valid values:
+        # The order in which you want to sort the query results. Valid values:
         # 
-        # *   **asc**: the ascending order
+        # *   **asc**: the ascending order.
         # *   **desc**: the descending order. This is the default value.
         self.order = order
         # The number of entries to return on each page.
@@ -5991,16 +6006,16 @@ class DescribeRiskEventGroupRequest(TeaModel):
         self.page_size = page_size
         # The status of the firewall. Valid values:
         # 
-        # * **1**: alerting
-        # * **2**: blocking
+        # *   **1**: alerting
+        # *   **2**: blocking
         # 
-        # > If you do not specify this parameter, the intrusion events that are detected by all firewalls are queried.
+        # > If you do not specify this parameter, the intrusion events that are detected by firewalls in both states are queried.
         self.rule_result = rule_result
         # The module of the rule that is used to detect the intrusion events. Valid values:
         # 
-        # * **1**: basic protection
-        # * **2**: virtual patching
-        # * **4**: threat intelligence
+        # *   **1**: basic protection
+        # *   **2**: virtual patching
+        # *   **4**: threat intelligence
         # 
         # > If you do not specify this parameter, the intrusion events that are detected by using all rules are queried.
         self.rule_source = rule_source
@@ -6009,19 +6024,19 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # *   **VulLevel**: The results are sorted based on the risk level field. This is the default value.
         # *   **LastTime**: The results are sorted based on the most recent occurrence time.
         self.sort = sort
-        # The source IP address to query. If you specify this parameter, all intrusion events from the specified source IP address are queried.
+        # The source IP address to query. If you specify this parameter, all intrusion events with the specified source IP address are queried.
         self.src_ip = src_ip
         # The ID of the source VPC.
         # 
-        # >  You must specify this parameter when the FirewallType parameter is set to VpcFirewall.
+        # > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
         self.src_network_instance_id = src_network_instance_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
         # The risk level of the intrusion events. Valid values:
         # 
-        # * **1**: low
-        # * **2**: medium
-        # * **3**: high
+        # *   **1**: low
+        # *   **2**: medium
+        # *   **3**: high
         # 
         # > If you do not specify this parameter, the intrusion events that are at all risk levels are queried.
         self.vul_level = vul_level
@@ -6367,19 +6382,19 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.attack_app = attack_app
         # The attack type of the intrusion event. Valid values:
         # 
-        # * **1**: suspicious connection
-        # * **2**: command execution
-        # * **3**: brute-force attack
-        # * **4**: scanning
-        # * **5**: others
-        # * **6**: information leak
-        # * **7**: DoS attack
-        # * **8**: buffer overflow attack
-        # * **9**: web attack
-        # * **10**: trojan backdoor
-        # * **11**: computer worm
-        # * **12**: mining
-        # * **13**: reverse shell
+        # *   **1**: suspicious connection
+        # *   **2**: command execution
+        # *   **3**: brute-force attack
+        # *   **4**: scanning
+        # *   **5**: others
+        # *   **6**: information leak
+        # *   **7**: DoS attack
+        # *   **8**: buffer overflow attack
+        # *   **9**: web attack
+        # *   **10**: trojan backdoor
+        # *   **11**: computer worm
+        # *   **12**: mining
+        # *   **13**: reverse shell
         self.attack_type = attack_type
         # The description of the intrusion event.
         self.description = description
@@ -6398,11 +6413,13 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.event_name = event_name
         # The time when the intrusion event was first detected. The value is a UNIX timestamp. Unit: seconds.
         self.first_event_time = first_event_time
-        # The information about the geographical location of the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.
+        # The information about the geographical location of the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\
+        # ****************\
         self.iplocation_info = iplocation_info
         # The time when the intrusion event was last detected. The value is a UNIX timestamp. Unit: seconds.
         self.last_event_time = last_event_time
-        # The information about the private IP address of the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.
+        # The information about the private IP address of the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\
+        # ****************\
         self.resource_private_iplist = resource_private_iplist
         # The type of the public IP address in the intrusion event. Valid values:
         # 
@@ -6427,17 +6444,17 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.rule_source = rule_source
         # The source IP address that is included in the intrusion event.
         self.src_ip = src_ip
-        # The source IP tag. It is used to identify whether it is the cloud product back to the source IP.
+        # The tag added to the source IP address. The tag helps identify whether the source IP address is a back-to-origin IP address for a cloud service.
         self.src_iptag = src_iptag
         # The source private IP addresses of the intrusion event.
-        # 
-        # >  The value of this parameter is returned only when you set Direction to out.
         self.src_private_iplist = src_private_iplist
         # The tag added to the threat intelligence that is provided for major events.
         self.tag = tag
-        # The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.
+        # The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\
+        # ********************\
         self.vpc_dst_info = vpc_dst_info
-        # The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.
+        # The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\
+        # ********************\
         self.vpc_src_info = vpc_src_info
         # The risk level of the intrusion event. Valid values:
         # 
@@ -6582,7 +6599,7 @@ class DescribeRiskEventGroupResponseBody(TeaModel):
         self.data_list = data_list
         # The ID of the request.
         self.request_id = request_id
-        # The total number of risk events.
+        # The total number of intrusion events.
         self.total_count = total_count
 
     def validate(self):
@@ -10039,6 +10056,7 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         current_page: str = None,
         end_time: str = None,
         lang: str = None,
+        member_uid: str = None,
         order: str = None,
         page_size: str = None,
         sort_key: str = None,
@@ -10080,6 +10098,7 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
+        self.member_uid = member_uid
         # The order in which you want to sort the queried information. Valid values:
         # 
         # *   **asc**: the ascending order.
@@ -10137,6 +10156,8 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
         if self.order is not None:
             result['Order'] = self.order
         if self.page_size is not None:
@@ -10173,6 +10194,8 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageSize') is not None:
@@ -10295,6 +10318,7 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         first_time: int = None,
         highlight_tag: int = None,
         last_time: int = None,
+        member_uid: str = None,
         need_open_basic_rule: bool = None,
         need_open_basic_rule_uuids: str = None,
         need_open_run_mode: bool = None,
@@ -10343,6 +10367,7 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
         self.highlight_tag = highlight_tag
         # The time when the last attack was launched.
         self.last_time = last_time
+        self.member_uid = member_uid
         # The status of basic protection. Valid values:
         # 
         # *   **true**: enabled
@@ -10427,6 +10452,8 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
             result['HighlightTag'] = self.highlight_tag
         if self.last_time is not None:
             result['LastTime'] = self.last_time
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
         if self.need_open_basic_rule is not None:
             result['NeedOpenBasicRule'] = self.need_open_basic_rule
         if self.need_open_basic_rule_uuids is not None:
@@ -10475,6 +10502,8 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
             self.highlight_tag = m.get('HighlightTag')
         if m.get('LastTime') is not None:
             self.last_time = m.get('LastTime')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
         if m.get('NeedOpenBasicRule') is not None:
             self.need_open_basic_rule = m.get('NeedOpenBasicRule')
         if m.get('NeedOpenBasicRuleUuids') is not None:
@@ -11640,7 +11669,7 @@ class ModifyVpcFirewallCenSwitchStatusRequest(TeaModel):
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):

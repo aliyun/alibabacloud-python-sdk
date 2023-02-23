@@ -1,3 +1,12 @@
+2023-02-23 Version: 1.2.4
+- Add precheckStatus field for DescribeTrFirewallsV2List.
+- DescribeVpcFirewallPrecheckDetail support TR firewall.
+- CreateVpcFirewallPrecheck support TR firewall.
+
+- DescribeLocationInfo support country, province, city structured location information.
+- DescribeAssetList add NewResourceTag field.
+- Support vuln sync for rd.
+
 2023-02-09 Version: 1.2.3
 - Add api.
 - Add multi account attribute.
