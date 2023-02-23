@@ -11386,17 +11386,17 @@ class GetFileLastCommitResponseBodyResultSignature(TeaModel):
 
         result = dict()
         if self.gpg_key_id is not None:
-            result['GpgKeyId'] = self.gpg_key_id
+            result['gpgKeyId'] = self.gpg_key_id
         if self.verification_status is not None:
-            result['VerificationStatus'] = self.verification_status
+            result['verificationStatus'] = self.verification_status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GpgKeyId') is not None:
-            self.gpg_key_id = m.get('GpgKeyId')
-        if m.get('VerificationStatus') is not None:
-            self.verification_status = m.get('VerificationStatus')
+        if m.get('gpgKeyId') is not None:
+            self.gpg_key_id = m.get('gpgKeyId')
+        if m.get('verificationStatus') is not None:
+            self.verification_status = m.get('verificationStatus')
         return self
 
 
@@ -15826,6 +15826,7 @@ class GetSprintInfoResponseBodySprint(TeaModel):
         identifier: str = None,
         modifier: str = None,
         name: str = None,
+        owners: List[str] = None,
         scope: str = None,
         space_identifier: str = None,
         start_date: int = None,
@@ -15839,6 +15840,7 @@ class GetSprintInfoResponseBodySprint(TeaModel):
         self.identifier = identifier
         self.modifier = modifier
         self.name = name
+        self.owners = owners
         self.scope = scope
         self.space_identifier = space_identifier
         self.start_date = start_date
@@ -15869,6 +15871,8 @@ class GetSprintInfoResponseBodySprint(TeaModel):
             result['modifier'] = self.modifier
         if self.name is not None:
             result['name'] = self.name
+        if self.owners is not None:
+            result['owners'] = self.owners
         if self.scope is not None:
             result['scope'] = self.scope
         if self.space_identifier is not None:
@@ -15897,6 +15901,8 @@ class GetSprintInfoResponseBodySprint(TeaModel):
             self.modifier = m.get('modifier')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('owners') is not None:
+            self.owners = m.get('owners')
         if m.get('scope') is not None:
             self.scope = m.get('scope')
         if m.get('spaceIdentifier') is not None:
@@ -21868,6 +21874,7 @@ class ListProjectMembersResponseBodyMembers(TeaModel):
         organization_user_info: ListProjectMembersResponseBodyMembersOrganizationUserInfo = None,
         real_name: str = None,
         real_name_pinyin: str = None,
+        role_name: str = None,
         stamp: str = None,
         tb_role_id: str = None,
     ):
@@ -21888,6 +21895,7 @@ class ListProjectMembersResponseBodyMembers(TeaModel):
         self.organization_user_info = organization_user_info
         self.real_name = real_name
         self.real_name_pinyin = real_name_pinyin
+        self.role_name = role_name
         self.stamp = stamp
         self.tb_role_id = tb_role_id
 
@@ -21937,6 +21945,8 @@ class ListProjectMembersResponseBodyMembers(TeaModel):
             result['realName'] = self.real_name
         if self.real_name_pinyin is not None:
             result['realNamePinyin'] = self.real_name_pinyin
+        if self.role_name is not None:
+            result['roleName'] = self.role_name
         if self.stamp is not None:
             result['stamp'] = self.stamp
         if self.tb_role_id is not None:
@@ -21981,6 +21991,8 @@ class ListProjectMembersResponseBodyMembers(TeaModel):
             self.real_name = m.get('realName')
         if m.get('realNamePinyin') is not None:
             self.real_name_pinyin = m.get('realNamePinyin')
+        if m.get('roleName') is not None:
+            self.role_name = m.get('roleName')
         if m.get('stamp') is not None:
             self.stamp = m.get('stamp')
         if m.get('tbRoleId') is not None:
