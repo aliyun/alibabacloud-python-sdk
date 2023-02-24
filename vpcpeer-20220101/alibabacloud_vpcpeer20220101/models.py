@@ -460,6 +460,39 @@ class GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc(TeaModel):
         return self
 
 
+class GetVpcPeerConnectionAttributeResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetVpcPeerConnectionAttributeResponseBodyVpc(TeaModel):
     def __init__(
         self,
@@ -517,6 +550,7 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
         status: str = None,
+        tags: List[GetVpcPeerConnectionAttributeResponseBodyTags] = None,
         vpc: GetVpcPeerConnectionAttributeResponseBodyVpc = None,
     ):
         self.accepting_owner_uid = accepting_owner_uid
@@ -534,11 +568,16 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         self.region_id = region_id
         self.request_id = request_id
         self.status = status
+        self.tags = tags
         self.vpc = vpc
 
     def validate(self):
         if self.accepting_vpc:
             self.accepting_vpc.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.vpc:
             self.vpc.validate()
 
@@ -578,6 +617,10 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc is not None:
             result['Vpc'] = self.vpc.to_map()
         return result
@@ -615,6 +658,11 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetVpcPeerConnectionAttributeResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Vpc') is not None:
             temp_model = GetVpcPeerConnectionAttributeResponseBodyVpc()
             self.vpc = temp_model.from_map(m['Vpc'])
@@ -665,6 +713,39 @@ class GetVpcPeerConnectionAttributeResponse(TeaModel):
         return self
 
 
+class ListVpcPeerConnectionsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListVpcPeerConnectionsRequest(TeaModel):
     def __init__(
         self,
@@ -673,6 +754,7 @@ class ListVpcPeerConnectionsRequest(TeaModel):
         name: str = None,
         next_token: str = None,
         region_id: str = None,
+        tags: List[ListVpcPeerConnectionsRequestTags] = None,
         vpc_id: List[str] = None,
     ):
         self.instance_id = instance_id
@@ -680,10 +762,14 @@ class ListVpcPeerConnectionsRequest(TeaModel):
         self.name = name
         self.next_token = next_token
         self.region_id = region_id
+        self.tags = tags
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -701,6 +787,10 @@ class ListVpcPeerConnectionsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -717,8 +807,46 @@ class ListVpcPeerConnectionsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListVpcPeerConnectionsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListVpcPeerConnectionsShrinkRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -730,6 +858,7 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
         name: str = None,
         next_token: str = None,
         region_id: str = None,
+        tags: List[ListVpcPeerConnectionsShrinkRequestTags] = None,
         vpc_id_shrink: str = None,
     ):
         self.instance_id = instance_id
@@ -737,10 +866,14 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
         self.name = name
         self.next_token = next_token
         self.region_id = region_id
+        self.tags = tags
         self.vpc_id_shrink = vpc_id_shrink
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -758,6 +891,10 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc_id_shrink is not None:
             result['VpcId'] = self.vpc_id_shrink
         return result
@@ -774,6 +911,11 @@ class ListVpcPeerConnectionsShrinkRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListVpcPeerConnectionsShrinkRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id_shrink = m.get('VpcId')
         return self
@@ -815,6 +957,39 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnectsAcceptingVpc(TeaModel):
             self.ipv_6cidrs = m.get('Ipv6Cidrs')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -874,6 +1049,7 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         status: str = None,
+        tags: List[ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags] = None,
         vpc: ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc = None,
     ):
         self.accepting_owner_uid = accepting_owner_uid
@@ -890,11 +1066,16 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         self.owner_id = owner_id
         self.region_id = region_id
         self.status = status
+        self.tags = tags
         self.vpc = vpc
 
     def validate(self):
         if self.accepting_vpc:
             self.accepting_vpc.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.vpc:
             self.vpc.validate()
 
@@ -932,6 +1113,10 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
             result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.vpc is not None:
             result['Vpc'] = self.vpc.to_map()
         return result
@@ -967,6 +1152,11 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Vpc') is not None:
             temp_model = ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc()
             self.vpc = temp_model.from_map(m['Vpc'])

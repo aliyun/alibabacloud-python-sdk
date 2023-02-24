@@ -1,3 +1,6 @@
+2023-02-24 Version: 1.0.7
+- VpcPeer Support Tag.
+
 2022-08-09 Version: 1.0.6
 - Publish.
 

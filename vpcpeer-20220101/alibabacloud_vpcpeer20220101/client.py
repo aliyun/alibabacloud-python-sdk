@@ -391,6 +391,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.vpc_id):
             request.vpc_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
@@ -405,6 +408,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id_shrink):
             body['VpcId'] = request.vpc_id_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -433,6 +437,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.vpc_id):
             request.vpc_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpc_id, 'VpcId', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         body = {}
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
@@ -447,6 +454,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id_shrink):
             body['VpcId'] = request.vpc_id_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
