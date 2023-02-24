@@ -3170,6 +3170,7 @@ class ThreeElementsVerificationRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        route_name: str = None,
     ):
         self.auth_code = auth_code
         self.cert_code = cert_code
@@ -3179,6 +3180,7 @@ class ThreeElementsVerificationRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.route_name = route_name
 
     def validate(self):
         pass
@@ -3205,6 +3207,8 @@ class ThreeElementsVerificationRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.route_name is not None:
+            result['RouteName'] = self.route_name
         return result
 
     def from_map(self, m: dict = None):
@@ -3225,6 +3229,8 @@ class ThreeElementsVerificationRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RouteName') is not None:
+            self.route_name = m.get('RouteName')
         return self
 
 

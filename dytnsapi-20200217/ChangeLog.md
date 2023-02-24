@@ -1,3 +1,7 @@
+2023-02-24 Version: 1.0.26
+- Change backend api.
+- Change to new api.
+
 2023-02-03 Version: 1.0.25
 - Fix docs error.
 - Fix error code.
