@@ -239,6 +239,8 @@ class Client(OpenApiClient):
             query['CallRestrict'] = request.call_restrict
         if not UtilClient.is_unset(request.call_timeout):
             query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.dtmf_config):
+            query['DtmfConfig'] = request.dtmf_config
         if not UtilClient.is_unset(request.expect_city):
             query['ExpectCity'] = request.expect_city
         if not UtilClient.is_unset(request.expiration):
@@ -301,6 +303,8 @@ class Client(OpenApiClient):
             query['CallRestrict'] = request.call_restrict
         if not UtilClient.is_unset(request.call_timeout):
             query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.dtmf_config):
+            query['DtmfConfig'] = request.dtmf_config
         if not UtilClient.is_unset(request.expect_city):
             query['ExpectCity'] = request.expect_city
         if not UtilClient.is_unset(request.expiration):
@@ -962,96 +966,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_pick_up_waybill_with_options_async(request, runtime)
 
-    def confirm_send_sms_with_options(
-        self,
-        request: dyplsapi_20170525_models.ConfirmSendSmsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.ConfirmSendSmsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_id):
-            query['CallId'] = request.call_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pool_key):
-            query['PoolKey'] = request.pool_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.secret_no):
-            query['SecretNo'] = request.secret_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ConfirmSendSms',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ConfirmSendSmsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def confirm_send_sms_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.ConfirmSendSmsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.ConfirmSendSmsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_id):
-            query['CallId'] = request.call_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pool_key):
-            query['PoolKey'] = request.pool_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.secret_no):
-            query['SecretNo'] = request.secret_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ConfirmSendSms',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ConfirmSendSmsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def confirm_send_sms(
-        self,
-        request: dyplsapi_20170525_models.ConfirmSendSmsRequest,
-    ) -> dyplsapi_20170525_models.ConfirmSendSmsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.confirm_send_sms_with_options(request, runtime)
-
-    async def confirm_send_sms_async(
-        self,
-        request: dyplsapi_20170525_models.ConfirmSendSmsRequest,
-    ) -> dyplsapi_20170525_models.ConfirmSendSmsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.confirm_send_sms_with_options_async(request, runtime)
-
     def create_axg_group_with_options(
         self,
         request: dyplsapi_20170525_models.CreateAxgGroupRequest,
@@ -1155,11 +1069,11 @@ class Client(OpenApiClient):
         request = dyplsapi_20170525_models.CreatePickUpWaybillShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.consignee_address):
-            request.consignee_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.consignee_address), 'ConsigneeAddress', 'json')
+            request.consignee_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.consignee_address, 'ConsigneeAddress', 'json')
         if not UtilClient.is_unset(tmp_req.goods_infos):
             request.goods_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.goods_infos, 'GoodsInfos', 'json')
         if not UtilClient.is_unset(tmp_req.send_address):
-            request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.send_address), 'SendAddress', 'json')
+            request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.send_address, 'SendAddress', 'json')
         query = {}
         if not UtilClient.is_unset(request.appoint_got_end_time):
             query['AppointGotEndTime'] = request.appoint_got_end_time
@@ -1221,11 +1135,11 @@ class Client(OpenApiClient):
         request = dyplsapi_20170525_models.CreatePickUpWaybillShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.consignee_address):
-            request.consignee_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.consignee_address), 'ConsigneeAddress', 'json')
+            request.consignee_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.consignee_address, 'ConsigneeAddress', 'json')
         if not UtilClient.is_unset(tmp_req.goods_infos):
             request.goods_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.goods_infos, 'GoodsInfos', 'json')
         if not UtilClient.is_unset(tmp_req.send_address):
-            request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.send_address), 'SendAddress', 'json')
+            request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.send_address, 'SendAddress', 'json')
         query = {}
         if not UtilClient.is_unset(request.appoint_got_end_time):
             query['AppointGotEndTime'] = request.appoint_got_end_time
@@ -1301,9 +1215,9 @@ class Client(OpenApiClient):
         request = dyplsapi_20170525_models.CreatePickUpWaybillPreQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.consignee_info):
-            request.consignee_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.consignee_info), 'ConsigneeInfo', 'json')
+            request.consignee_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.consignee_info, 'ConsigneeInfo', 'json')
         if not UtilClient.is_unset(tmp_req.sender_info):
-            request.sender_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.sender_info), 'SenderInfo', 'json')
+            request.sender_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sender_info, 'SenderInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.consignee_info_shrink):
             query['ConsigneeInfo'] = request.consignee_info_shrink
@@ -1345,9 +1259,9 @@ class Client(OpenApiClient):
         request = dyplsapi_20170525_models.CreatePickUpWaybillPreQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.consignee_info):
-            request.consignee_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.consignee_info), 'ConsigneeInfo', 'json')
+            request.consignee_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.consignee_info, 'ConsigneeInfo', 'json')
         if not UtilClient.is_unset(tmp_req.sender_info):
-            request.sender_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.sender_info), 'SenderInfo', 'json')
+            request.sender_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sender_info, 'SenderInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.consignee_info_shrink):
             query['ConsigneeInfo'] = request.consignee_info_shrink
@@ -1557,96 +1471,6 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.GetSecretAsrDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_secret_asr_detail_with_options_async(request, runtime)
-
-    def get_subscription_detail_with_options(
-        self,
-        request: dyplsapi_20170525_models.GetSubscriptionDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.GetSubscriptionDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pool_key):
-            query['PoolKey'] = request.pool_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.secret_no):
-            query['SecretNo'] = request.secret_no
-        if not UtilClient.is_unset(request.subs_id):
-            query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSubscriptionDetail',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetSubscriptionDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_subscription_detail_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.GetSubscriptionDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.GetSubscriptionDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pool_key):
-            query['PoolKey'] = request.pool_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.secret_no):
-            query['SecretNo'] = request.secret_no
-        if not UtilClient.is_unset(request.subs_id):
-            query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSubscriptionDetail',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetSubscriptionDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_subscription_detail(
-        self,
-        request: dyplsapi_20170525_models.GetSubscriptionDetailRequest,
-    ) -> dyplsapi_20170525_models.GetSubscriptionDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_subscription_detail_with_options(request, runtime)
-
-    async def get_subscription_detail_async(
-        self,
-        request: dyplsapi_20170525_models.GetSubscriptionDetailRequest,
-    ) -> dyplsapi_20170525_models.GetSubscriptionDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_subscription_detail_with_options_async(request, runtime)
 
     def get_total_public_url_with_options(
         self,
@@ -2015,96 +1839,6 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.OperateBlackNoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.operate_black_no_with_options_async(request, runtime)
-
-    def query_call_status_with_options(
-        self,
-        request: dyplsapi_20170525_models.QueryCallStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.QueryCallStatusResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_no):
-            query['CallNo'] = request.call_no
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pool_key):
-            query['PoolKey'] = request.pool_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.subs_id):
-            query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryCallStatus',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QueryCallStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_call_status_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.QueryCallStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.QueryCallStatusResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_no):
-            query['CallNo'] = request.call_no
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pool_key):
-            query['PoolKey'] = request.pool_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.subs_id):
-            query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryCallStatus',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QueryCallStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_call_status(
-        self,
-        request: dyplsapi_20170525_models.QueryCallStatusRequest,
-    ) -> dyplsapi_20170525_models.QueryCallStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_call_status_with_options(request, runtime)
-
-    async def query_call_status_async(
-        self,
-        request: dyplsapi_20170525_models.QueryCallStatusRequest,
-    ) -> dyplsapi_20170525_models.QueryCallStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_call_status_with_options_async(request, runtime)
 
     def query_phone_no_aby_track_no_with_options(
         self,
