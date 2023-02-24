@@ -1,3 +1,6 @@
+2023-02-24 Version: 2.1.8
+- Add search api and push review api and compare api.
+
 2023-02-23 Version: 2.1.7
 - Add search api and push review api and compare api.
 
