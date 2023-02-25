@@ -1,3 +1,6 @@
+2023-02-25 Version: 1.1.3
+- Update DescribeDcdnDomainUsageData.
+
 2023-01-17 Version: 1.1.2
 - Add DeleteDcdnKv.
 
