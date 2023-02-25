@@ -4743,8 +4743,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
-        > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
-        - You can call this API operation up to three times per second per account.
+        By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+        *   You can call this operation up to three times per second per account.
         
         @param request: DescribeCdnSubListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4772,8 +4772,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
-        > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
-        - You can call this API operation up to three times per second per account.
+        By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+        *   You can call this operation up to three times per second per account.
         
         @param request: DescribeCdnSubListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4798,8 +4798,8 @@ class Client(OpenApiClient):
 
     def describe_cdn_sub_list(self) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
-        > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
-        - You can call this API operation up to three times per second per account.
+        By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+        *   You can call this operation up to three times per second per account.
         
         @return: DescribeCdnSubListResponse
         """
@@ -4808,8 +4808,8 @@ class Client(OpenApiClient):
 
     async def describe_cdn_sub_list_async(self) -> cdn_20180510_models.DescribeCdnSubListResponse:
         """
-        > - By default, this operation queries all tracking tasks. However, only one tracking task can be displayed. Therefore, only one tracking task is returned.
-        - You can call this API operation up to three times per second per account.
+        By default, this operation queries all custom operations reports. However, only one operations report can be displayed. Therefore, only one operations report is returned.
+        *   You can call this operation up to three times per second per account.
         
         @return: DescribeCdnSubListResponse
         """
@@ -9478,7 +9478,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  You can call this API operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9511,7 +9511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  You can call this API operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9543,7 +9543,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  You can call this API operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @return: DescribeDomainRealtimeLogDeliveryResponse
@@ -9556,7 +9556,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
     ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
         """
-        >  You can call this API operation up to 100 times per second per account.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeDomainRealtimeLogDeliveryRequest
         @return: DescribeDomainRealtimeLogDeliveryResponse
@@ -12064,8 +12064,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         """
-        >    This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
-        *   The maximum number of times that each user can call this operation per second is 40.
+        This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+        *   You can call this operation up to 40 times per second per account.
         
         @param request: DescribeL2VipsByDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12104,8 +12104,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         """
-        >    This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
-        *   The maximum number of times that each user can call this operation per second is 40.
+        This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+        *   You can call this operation up to 40 times per second per account.
         
         @param request: DescribeL2VipsByDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12143,8 +12143,8 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeL2VipsByDomainRequest,
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         """
-        >    This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
-        *   The maximum number of times that each user can call this operation per second is 40.
+        This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+        *   You can call this operation up to 40 times per second per account.
         
         @param request: DescribeL2VipsByDomainRequest
         @return: DescribeL2VipsByDomainResponse
@@ -12157,8 +12157,8 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeL2VipsByDomainRequest,
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         """
-        >    This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
-        *   The maximum number of times that each user can call this operation per second is 40.
+        This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply for permissions to use this operation.
+        *   You can call this operation up to 40 times per second per account.
         
         @param request: DescribeL2VipsByDomainRequest
         @return: DescribeL2VipsByDomainResponse
@@ -13119,7 +13119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeUserCertificateExpireCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13147,7 +13147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeUserCertificateExpireCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13172,7 +13172,7 @@ class Client(OpenApiClient):
 
     def describe_user_certificate_expire_count(self) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @return: DescribeUserCertificateExpireCountResponse
         """
@@ -13181,7 +13181,7 @@ class Client(OpenApiClient):
 
     async def describe_user_certificate_expire_count_async(self) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @return: DescribeUserCertificateExpireCountResponse
         """
@@ -13828,7 +13828,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         """
-        > The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeVerifyContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13863,7 +13863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         """
-        > The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeVerifyContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13897,7 +13897,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeVerifyContentRequest,
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         """
-        > The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeVerifyContentRequest
         @return: DescribeVerifyContentResponse
@@ -13910,7 +13910,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeVerifyContentRequest,
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         """
-        > The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: DescribeVerifyContentRequest
         @return: DescribeVerifyContentResponse
@@ -16840,7 +16840,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: VerifyDomainOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16877,7 +16877,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: VerifyDomainOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16913,7 +16913,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.VerifyDomainOwnerRequest,
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: VerifyDomainOwnerRequest
         @return: VerifyDomainOwnerResponse
@@ -16926,7 +16926,7 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.VerifyDomainOwnerRequest,
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         """
-        >  The maximum number of times that each user can call this operation per second is 100.
+        > You can call this operation up to 100 times per second per account.
         
         @param request: VerifyDomainOwnerRequest
         @return: VerifyDomainOwnerResponse

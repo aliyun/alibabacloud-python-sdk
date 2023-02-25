@@ -7447,7 +7447,7 @@ class DescribeCdnSubListResponseBody(TeaModel):
         content: str = None,
         request_id: str = None,
     ):
-        # The information about the tracking task.
+        # The information about the custom report.
         self.content = content
         # The ID of the request.
         self.request_id = request_id
@@ -8488,7 +8488,7 @@ class DescribeCdnUserDomainsByFuncRequest(TeaModel):
         # 
         # Valid values: **1** to **100000**.
         self.page_number = page_number
-        # The number of domain names to return on each page. Default value: **20**.
+        # The number of entries to return on each page. Default value: **20**.
         # 
         # Valid values: **1** to **50**.
         self.page_size = page_size
@@ -8545,9 +8545,9 @@ class DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource(TeaMo
         # The type of the origin server. Valid values:
         # 
         # *   **ipaddr**: an origin IP address
-        # *   **domain**: an origin domain name
-        # *   **oss**: the domain name of an Object Storage Service (OSS) bucket
-        # *   **fc_domain**: a Function Compute domain name
+        # *   **domain:** a domain name
+        # *   **oss:** the OSS domain of an Object Storage Service (OSS) bucket
+        # *   **fc_domain:** a Function Compute domain name
         self.type = type
         # The weight of the origin server if multiple origin servers have been specified.
         self.weight = weight
@@ -8639,37 +8639,37 @@ class DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData(TeaModel):
     ):
         # The type of the workload accelerated by Alibaba Cloud CDN. Valid values:
         # 
-        # *   **web:** image and small file distribution
-        # *   **download:** large file distribution
-        # *   **video:** on-demand video and audio streaming
-        # *   **liveStream:** live streaming
+        # *   **web**: image and small file distribution
+        # *   **download**: large file distribution
+        # *   **video**: on-demand video and audio streaming
+        # *   **liveStream**: live streaming
         self.cdn_type = cdn_type
         # The CNAME assigned to the accelerated domain name.
         self.cname = cname
-        # The description of the status.
+        # The description of the accelerated domain name.
         self.description = description
         # The accelerated domain name.
         self.domain_name = domain_name
         # The status of the accelerated domain name. Valid values:
         # 
-        # *   **online**: enabled
-        # *   **offline**: disabled
-        # *   **configuring**: configuring
-        # *   **configure_failed**: configuration failed
-        # *   **checking**: reviewing
+        # *   **online:** enabled
+        # *   **offline:** disabled
+        # *   **configuring:** configuring
+        # *   **configure_failed:** configuration failed
+        # *   **checking:** reviewing
         # *   **check_failed**: failed the review
         # *   **stopping**: being disabled
         # *   **deleting**: deleting
         self.domain_status = domain_status
-        # The time when the accelerated domain name was added to Alibaba Cloud CDN.
+        # The time when the accelerated domain name was added.
         self.gmt_created = gmt_created
         # The time when the accelerated domain name was modified.
         self.gmt_modified = gmt_modified
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Information about the origin server.
+        # The information about the origin server.
         self.sources = sources
-        # The status of HTTPS. Valid values:
+        # Indicates whether HTTPS is enabled. Valid values:
         # 
         # *   **on**\
         # *   **off**\
@@ -8781,7 +8781,7 @@ class DescribeCdnUserDomainsByFuncResponseBody(TeaModel):
         self.domains = domains
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of domain names returned per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
@@ -11171,9 +11171,11 @@ class DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self,
         cert_domain_name: str = None,
         cert_expire_time: str = None,
+        cert_id: str = None,
         cert_life: str = None,
         cert_name: str = None,
         cert_org: str = None,
+        cert_region: str = None,
         cert_start_time: str = None,
         cert_type: str = None,
         cert_update_time: str = None,
@@ -11187,6 +11189,7 @@ class DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self.cert_domain_name = cert_domain_name
         # The time when the SSL certificate expires.
         self.cert_expire_time = cert_expire_time
+        self.cert_id = cert_id
         # The unit of the validity period of the SSL certificate.
         # 
         # *   **months**: The validity period is measured in months.
@@ -11196,6 +11199,7 @@ class DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self.cert_name = cert_name
         # The name of the certificate authority (CA) that issued the SSL certificate.
         self.cert_org = cert_org
+        self.cert_region = cert_region
         # The time when the SSL certificate became effective.
         self.cert_start_time = cert_start_time
         # The type of the SSL certificate. Valid values:
@@ -11250,12 +11254,16 @@ class DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
             result['CertDomainName'] = self.cert_domain_name
         if self.cert_expire_time is not None:
             result['CertExpireTime'] = self.cert_expire_time
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
         if self.cert_life is not None:
             result['CertLife'] = self.cert_life
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
         if self.cert_org is not None:
             result['CertOrg'] = self.cert_org
+        if self.cert_region is not None:
+            result['CertRegion'] = self.cert_region
         if self.cert_start_time is not None:
             result['CertStartTime'] = self.cert_start_time
         if self.cert_type is not None:
@@ -11280,12 +11288,16 @@ class DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
             self.cert_domain_name = m.get('CertDomainName')
         if m.get('CertExpireTime') is not None:
             self.cert_expire_time = m.get('CertExpireTime')
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
         if m.get('CertLife') is not None:
             self.cert_life = m.get('CertLife')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
         if m.get('CertOrg') is not None:
             self.cert_org = m.get('CertOrg')
+        if m.get('CertRegion') is not None:
+            self.cert_region = m.get('CertRegion')
         if m.get('CertStartTime') is not None:
             self.cert_start_time = m.get('CertStartTime')
         if m.get('CertType') is not None:
@@ -17109,7 +17121,7 @@ class DescribeDomainRealtimeLogDeliveryRequest(TeaModel):
         self,
         domain: str = None,
     ):
-        # The accelerated domain name for which real-time log delivery is enabled. Only one domain name is supported.
+        # The accelerated domain name for which real-time log delivery is enabled. You can specify only one domain name.
         self.domain = domain
 
     def validate(self):
@@ -17149,7 +17161,7 @@ class DescribeDomainRealtimeLogDeliveryResponseBody(TeaModel):
         self.region = region
         # The ID of the request.
         self.request_id = request_id
-        # The status of the real-time log delivery feature. Valid values:
+        # The status of real-time log delivery. Valid values:
         # 
         # *   **online**\
         # *   **offline**\
@@ -23083,7 +23095,7 @@ class DescribeL2VipsByDomainRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The accelerated domain name. You can specify only one domain name.
+        # The accelerated domain name. You can specify only one domain name in each request.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -23150,11 +23162,11 @@ class DescribeL2VipsByDomainResponseBody(TeaModel):
         request_id: str = None,
         vips: DescribeL2VipsByDomainResponseBodyVips = None,
     ):
-        # The accelerated domain name.
+        # The domain name.
         self.domain_name = domain_name
         # The ID of the request.
         self.request_id = request_id
-        # A list of virtual IP addresses.
+        # The list of VIPs.
         self.vips = vips
 
     def validate(self):
@@ -24681,9 +24693,9 @@ class DescribeTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag.
+        # The key of the tag.
         self.key = key
-        # The value of a tag.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -24717,11 +24729,11 @@ class DescribeTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[DescribeTagResourcesRequestTag] = None,
     ):
-        # A list of resource IDs. Maximum number of elements: 50.
+        # The IDs of the resources. You can specify up to 50 IDs in each request.
         self.resource_id = resource_id
-        # The resource type. Set this value to **DOMAIN**.
+        # The type of the resource. Set this value to **DOMAIN**.
         self.resource_type = resource_type
-        # A list of tag combinations. Maximum number of elements: 20.
+        # The tags. You can specify up to 20 tags in each request.
         self.tag = tag
 
     def validate(self):
@@ -24766,9 +24778,9 @@ class DescribeTagResourcesResponseBodyTagResourcesTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag.
+        # The key of the tag.
         self.key = key
-        # The value of a tag.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -24803,7 +24815,7 @@ class DescribeTagResourcesResponseBodyTagResources(TeaModel):
     ):
         # The ID of the resource.
         self.resource_id = resource_id
-        # A list of tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -24846,7 +24858,7 @@ class DescribeTagResourcesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The details about the tag.
+        # Details about the tag.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -25192,7 +25204,7 @@ class DescribeUserCertificateExpireCountResponseBody(TeaModel):
         expired_count: int = None,
         request_id: str = None,
     ):
-        # The number of domain names whose SSL certificates are about to expires within 30 days.
+        # The number of domain names whose SSL certificates are about to expire within 30 days.
         self.expire_within_30days_count = expire_within_30days_count
         # The number of domain names whose SSL certificates have already expired.
         self.expired_count = expired_count
@@ -26966,7 +26978,7 @@ class DescribeVerifyContentRequest(TeaModel):
         self,
         domain_name: str = None,
     ):
-        # The domain name of which the ownership was verified. You can specify only one domain name.
+        # The domain name of which you want to verify the ownership. You can specify only one domain name.
         self.domain_name = domain_name
 
     def validate(self):
@@ -26995,7 +27007,7 @@ class DescribeVerifyContentResponseBody(TeaModel):
         content: str = None,
         request_id: str = None,
     ):
-        # The verification content.
+        # The verification result.
         self.content = content
         # The ID of the request.
         self.request_id = request_id
@@ -30827,7 +30839,7 @@ class VerifyDomainOwnerResponseBody(TeaModel):
     ):
         # The verification result.
         # 
-        # >  This parameter is returned if the operation fails. The verification result is returned if the operation succeeds.
+        # > This parameter is returned only if the operation fails.
         self.content = content
         # The ID of the request.
         self.request_id = request_id

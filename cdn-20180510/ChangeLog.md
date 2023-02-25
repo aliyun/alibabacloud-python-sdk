@@ -1,3 +1,6 @@
+2023-02-25 Version: 1.2.4
+- Add SetCdnDomainSSLCertificate.
+
 2023-02-10 Version: 1.2.3
 - Add DescribeCdnIpCidr.
 
