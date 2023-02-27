@@ -189,6 +189,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.a_dmmuwith_options_async(request, runtime)
 
+    def a_dmini_cog_with_options(
+        self,
+        request: alinlp_20200629_models.ADMiniCogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADMiniCogResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADMiniCog',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADMiniCogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_dmini_cog_with_options_async(
+        self,
+        request: alinlp_20200629_models.ADMiniCogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADMiniCogResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADMiniCog',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADMiniCogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_dmini_cog(
+        self,
+        request: alinlp_20200629_models.ADMiniCogRequest,
+    ) -> alinlp_20200629_models.ADMiniCogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.a_dmini_cog_with_options(request, runtime)
+
+    async def a_dmini_cog_async(
+        self,
+        request: alinlp_20200629_models.ADMiniCogRequest,
+    ) -> alinlp_20200629_models.ADMiniCogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.a_dmini_cog_with_options_async(request, runtime)
+
+    def a_dmini_cog_result_with_options(
+        self,
+        request: alinlp_20200629_models.ADMiniCogResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADMiniCogResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADMiniCogResult',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADMiniCogResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_dmini_cog_result_with_options_async(
+        self,
+        request: alinlp_20200629_models.ADMiniCogResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADMiniCogResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADMiniCogResult',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADMiniCogResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_dmini_cog_result(
+        self,
+        request: alinlp_20200629_models.ADMiniCogResultRequest,
+    ) -> alinlp_20200629_models.ADMiniCogResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.a_dmini_cog_result_with_options(request, runtime)
+
+    async def a_dmini_cog_result_async(
+        self,
+        request: alinlp_20200629_models.ADMiniCogResultRequest,
+    ) -> alinlp_20200629_models.ADMiniCogResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.a_dmini_cog_result_with_options_async(request, runtime)
+
     def get_brand_ch_ecom_with_options(
         self,
         request: alinlp_20200629_models.GetBrandChEcomRequest,
@@ -2107,6 +2255,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_summary_ch_ecom_with_options_async(request, runtime)
 
+    def get_table_qaservice_info_by_id_with_options(
+        self,
+        request: alinlp_20200629_models.GetTableQAServiceInfoByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetTableQAServiceInfoByIdResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTableQAServiceInfoById',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetTableQAServiceInfoByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_qaservice_info_by_id_with_options_async(
+        self,
+        request: alinlp_20200629_models.GetTableQAServiceInfoByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.GetTableQAServiceInfoByIdResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTableQAServiceInfoById',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.GetTableQAServiceInfoByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_qaservice_info_by_id(
+        self,
+        request: alinlp_20200629_models.GetTableQAServiceInfoByIdRequest,
+    ) -> alinlp_20200629_models.GetTableQAServiceInfoByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_qaservice_info_by_id_with_options(request, runtime)
+
+    async def get_table_qaservice_info_by_id_async(
+        self,
+        request: alinlp_20200629_models.GetTableQAServiceInfoByIdRequest,
+    ) -> alinlp_20200629_models.GetTableQAServiceInfoByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_qaservice_info_by_id_with_options_async(request, runtime)
+
     def get_tc_ch_ecom_with_options(
         self,
         request: alinlp_20200629_models.GetTcChEcomRequest,
@@ -3513,96 +3735,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_ws_customized_sea_general_with_options_async(request, runtime)
 
-    def insert_custom_with_options(
-        self,
-        request: alinlp_20200629_models.InsertCustomRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alinlp_20200629_models.InsertCustomResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.api_id):
-            body['ApiId'] = request.api_id
-        if not UtilClient.is_unset(request.custom_file_name):
-            body['CustomFileName'] = request.custom_file_name
-        if not UtilClient.is_unset(request.custom_url):
-            body['CustomUrl'] = request.custom_url
-        if not UtilClient.is_unset(request.reg_file_name):
-            body['RegFileName'] = request.reg_file_name
-        if not UtilClient.is_unset(request.reg_url):
-            body['RegUrl'] = request.reg_url
-        if not UtilClient.is_unset(request.service_code):
-            body['ServiceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='InsertCustom',
-            version='2020-06-29',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alinlp_20200629_models.InsertCustomResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def insert_custom_with_options_async(
-        self,
-        request: alinlp_20200629_models.InsertCustomRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> alinlp_20200629_models.InsertCustomResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.api_id):
-            body['ApiId'] = request.api_id
-        if not UtilClient.is_unset(request.custom_file_name):
-            body['CustomFileName'] = request.custom_file_name
-        if not UtilClient.is_unset(request.custom_url):
-            body['CustomUrl'] = request.custom_url
-        if not UtilClient.is_unset(request.reg_file_name):
-            body['RegFileName'] = request.reg_file_name
-        if not UtilClient.is_unset(request.reg_url):
-            body['RegUrl'] = request.reg_url
-        if not UtilClient.is_unset(request.service_code):
-            body['ServiceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='InsertCustom',
-            version='2020-06-29',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            alinlp_20200629_models.InsertCustomResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def insert_custom(
-        self,
-        request: alinlp_20200629_models.InsertCustomRequest,
-    ) -> alinlp_20200629_models.InsertCustomResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.insert_custom_with_options(request, runtime)
-
-    async def insert_custom_async(
-        self,
-        request: alinlp_20200629_models.InsertCustomRequest,
-    ) -> alinlp_20200629_models.InsertCustomResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.insert_custom_with_options_async(request, runtime)
-
     def open_alinlp_service_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -3653,30 +3785,22 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_alinlp_service_with_options_async(runtime)
 
-    def update_custom_with_options(
+    def request_table_qawith_options(
         self,
-        request: alinlp_20200629_models.UpdateCustomRequest,
+        request: alinlp_20200629_models.RequestTableQARequest,
         runtime: util_models.RuntimeOptions,
-    ) -> alinlp_20200629_models.UpdateCustomResponse:
+    ) -> alinlp_20200629_models.RequestTableQAResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.custom_file_name):
-            body['CustomFileName'] = request.custom_file_name
-        if not UtilClient.is_unset(request.custom_id):
-            body['CustomId'] = request.custom_id
-        if not UtilClient.is_unset(request.custom_url):
-            body['CustomUrl'] = request.custom_url
-        if not UtilClient.is_unset(request.reg_file_name):
-            body['RegFileName'] = request.reg_file_name
-        if not UtilClient.is_unset(request.reg_url):
-            body['RegUrl'] = request.reg_url
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateCustom',
+            action='RequestTableQA',
             version='2020-06-29',
             protocol='HTTPS',
             pathname='/',
@@ -3687,34 +3811,26 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            alinlp_20200629_models.UpdateCustomResponse(),
+            alinlp_20200629_models.RequestTableQAResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_custom_with_options_async(
+    async def request_table_qawith_options_async(
         self,
-        request: alinlp_20200629_models.UpdateCustomRequest,
+        request: alinlp_20200629_models.RequestTableQARequest,
         runtime: util_models.RuntimeOptions,
-    ) -> alinlp_20200629_models.UpdateCustomResponse:
+    ) -> alinlp_20200629_models.RequestTableQAResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.custom_file_name):
-            body['CustomFileName'] = request.custom_file_name
-        if not UtilClient.is_unset(request.custom_id):
-            body['CustomId'] = request.custom_id
-        if not UtilClient.is_unset(request.custom_url):
-            body['CustomUrl'] = request.custom_url
-        if not UtilClient.is_unset(request.reg_file_name):
-            body['RegFileName'] = request.reg_file_name
-        if not UtilClient.is_unset(request.reg_url):
-            body['RegUrl'] = request.reg_url
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateCustom',
+            action='RequestTableQA',
             version='2020-06-29',
             protocol='HTTPS',
             pathname='/',
@@ -3725,20 +3841,102 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            alinlp_20200629_models.UpdateCustomResponse(),
+            alinlp_20200629_models.RequestTableQAResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_custom(
+    def request_table_qa(
         self,
-        request: alinlp_20200629_models.UpdateCustomRequest,
-    ) -> alinlp_20200629_models.UpdateCustomResponse:
+        request: alinlp_20200629_models.RequestTableQARequest,
+    ) -> alinlp_20200629_models.RequestTableQAResponse:
         runtime = util_models.RuntimeOptions()
-        return self.update_custom_with_options(request, runtime)
+        return self.request_table_qawith_options(request, runtime)
 
-    async def update_custom_async(
+    async def request_table_qa_async(
         self,
-        request: alinlp_20200629_models.UpdateCustomRequest,
-    ) -> alinlp_20200629_models.UpdateCustomResponse:
+        request: alinlp_20200629_models.RequestTableQARequest,
+    ) -> alinlp_20200629_models.RequestTableQAResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.update_custom_with_options_async(request, runtime)
+        return await self.request_table_qawith_options_async(request, runtime)
+
+    def request_table_qaonline_with_options(
+        self,
+        request: alinlp_20200629_models.RequestTableQAOnlineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.RequestTableQAOnlineResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.bot_id):
+            body['BotId'] = request.bot_id
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.question):
+            body['Question'] = request.question
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RequestTableQAOnline',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.RequestTableQAOnlineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def request_table_qaonline_with_options_async(
+        self,
+        request: alinlp_20200629_models.RequestTableQAOnlineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.RequestTableQAOnlineResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.bot_id):
+            body['BotId'] = request.bot_id
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.question):
+            body['Question'] = request.question
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RequestTableQAOnline',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.RequestTableQAOnlineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def request_table_qaonline(
+        self,
+        request: alinlp_20200629_models.RequestTableQAOnlineRequest,
+    ) -> alinlp_20200629_models.RequestTableQAOnlineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.request_table_qaonline_with_options(request, runtime)
+
+    async def request_table_qaonline_async(
+        self,
+        request: alinlp_20200629_models.RequestTableQAOnlineRequest,
+    ) -> alinlp_20200629_models.RequestTableQAOnlineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.request_table_qaonline_with_options_async(request, runtime)
