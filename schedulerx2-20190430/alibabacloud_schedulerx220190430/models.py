@@ -938,6 +938,7 @@ class CreateJobRequest(TeaModel):
         timeout: int = None,
         timeout_enable: bool = None,
         timeout_kill_enable: bool = None,
+        timezone: str = None,
         xattrs: str = None,
     ):
         # The interval at which the system attempts to rerun a job. Default value: 30. Unit: seconds.
@@ -1049,6 +1050,7 @@ class CreateJobRequest(TeaModel):
         # *   **true**: Turn on Timeout termination.
         # *   **false**: Turn off Timeout termination.
         self.timeout_kill_enable = timeout_kill_enable
+        self.timezone = timezone
         # If the Task type parameter is set to k8s, this parameter is required. xxljob task: {"resource":"job"} shell task: {"image":"busybox","resource":"shell"}
         self.xattrs = xattrs
 
@@ -1134,6 +1136,8 @@ class CreateJobRequest(TeaModel):
             result['TimeoutEnable'] = self.timeout_enable
         if self.timeout_kill_enable is not None:
             result['TimeoutKillEnable'] = self.timeout_kill_enable
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
         if self.xattrs is not None:
             result['XAttrs'] = self.xattrs
         return result
@@ -1211,6 +1215,8 @@ class CreateJobRequest(TeaModel):
             self.timeout_enable = m.get('TimeoutEnable')
         if m.get('TimeoutKillEnable') is not None:
             self.timeout_kill_enable = m.get('TimeoutKillEnable')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
         if m.get('XAttrs') is not None:
             self.xattrs = m.get('XAttrs')
         return self
@@ -9286,6 +9292,7 @@ class UpdateJobRequest(TeaModel):
         timeout: int = None,
         timeout_enable: bool = None,
         timeout_kill_enable: bool = None,
+        timezone: str = None,
     ):
         # The interval at which the system attempts to rerun a job. Default value: 30. Unit: seconds.
         self.attempt_interval = attempt_interval
@@ -9383,6 +9390,7 @@ class UpdateJobRequest(TeaModel):
         # *   **true**: Turn on Timeout termination.
         # *   **false**: Turn off Timeout termination.
         self.timeout_kill_enable = timeout_kill_enable
+        self.timezone = timezone
 
     def validate(self):
         if self.contact_info:
@@ -9466,6 +9474,8 @@ class UpdateJobRequest(TeaModel):
             result['TimeoutEnable'] = self.timeout_enable
         if self.timeout_kill_enable is not None:
             result['TimeoutKillEnable'] = self.timeout_kill_enable
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -9541,6 +9551,8 @@ class UpdateJobRequest(TeaModel):
             self.timeout_enable = m.get('TimeoutEnable')
         if m.get('TimeoutKillEnable') is not None:
             self.timeout_kill_enable = m.get('TimeoutKillEnable')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
         return self
 
 

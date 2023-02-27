@@ -707,6 +707,8 @@ class Client(OpenApiClient):
             body['TimeoutEnable'] = request.timeout_enable
         if not UtilClient.is_unset(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
+        if not UtilClient.is_unset(request.timezone):
+            body['Timezone'] = request.timezone
         if not UtilClient.is_unset(request.xattrs):
             body['XAttrs'] = request.xattrs
         req = open_api_models.OpenApiRequest(
@@ -805,6 +807,8 @@ class Client(OpenApiClient):
             body['TimeoutEnable'] = request.timeout_enable
         if not UtilClient.is_unset(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
+        if not UtilClient.is_unset(request.timezone):
+            body['Timezone'] = request.timezone
         if not UtilClient.is_unset(request.xattrs):
             body['XAttrs'] = request.xattrs
         req = open_api_models.OpenApiRequest(
@@ -3671,6 +3675,8 @@ class Client(OpenApiClient):
             body['TimeoutEnable'] = request.timeout_enable
         if not UtilClient.is_unset(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
+        if not UtilClient.is_unset(request.timezone):
+            body['Timezone'] = request.timezone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3767,6 +3773,8 @@ class Client(OpenApiClient):
             body['TimeoutEnable'] = request.timeout_enable
         if not UtilClient.is_unset(request.timeout_kill_enable):
             body['TimeoutKillEnable'] = request.timeout_kill_enable
+        if not UtilClient.is_unset(request.timezone):
+            body['Timezone'] = request.timezone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
