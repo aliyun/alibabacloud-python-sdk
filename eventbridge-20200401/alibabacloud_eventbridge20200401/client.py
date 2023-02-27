@@ -2377,6 +2377,330 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pause_event_streaming_with_options_async(request, runtime)
 
+    def query_event_with_options(
+        self,
+        request: eventbridge_20200401_models.QueryEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryEventResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEvent',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_event_with_options_async(
+        self,
+        request: eventbridge_20200401_models.QueryEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryEventResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEvent',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_event(
+        self,
+        request: eventbridge_20200401_models.QueryEventRequest,
+    ) -> eventbridge_20200401_models.QueryEventResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_event_with_options(request, runtime)
+
+    async def query_event_async(
+        self,
+        request: eventbridge_20200401_models.QueryEventRequest,
+    ) -> eventbridge_20200401_models.QueryEventResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_event_with_options_async(request, runtime)
+
+    def query_event_traces_with_options(
+        self,
+        request: eventbridge_20200401_models.QueryEventTracesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryEventTracesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEventTraces',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventTracesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_event_traces_with_options_async(
+        self,
+        request: eventbridge_20200401_models.QueryEventTracesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryEventTracesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEventTraces',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryEventTracesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_event_traces(
+        self,
+        request: eventbridge_20200401_models.QueryEventTracesRequest,
+    ) -> eventbridge_20200401_models.QueryEventTracesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_event_traces_with_options(request, runtime)
+
+    async def query_event_traces_async(
+        self,
+        request: eventbridge_20200401_models.QueryEventTracesRequest,
+    ) -> eventbridge_20200401_models.QueryEventTracesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_event_traces_with_options_async(request, runtime)
+
+    def query_traced_event_by_event_id_with_options(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventByEventIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTracedEventByEventId',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_traced_event_by_event_id_with_options_async(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventByEventIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTracedEventByEventId',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventByEventIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_traced_event_by_event_id(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventByEventIdRequest,
+    ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_traced_event_by_event_id_with_options(request, runtime)
+
+    async def query_traced_event_by_event_id_async(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventByEventIdRequest,
+    ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_traced_event_by_event_id_with_options_async(request, runtime)
+
+    def query_traced_events_with_options(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.matched_rule):
+            query['MatchedRule'] = request.matched_rule
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTracedEvents',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_traced_events_with_options_async(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.matched_rule):
+            query['MatchedRule'] = request.matched_rule
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTracedEvents',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.QueryTracedEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_traced_events(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventsRequest,
+    ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_traced_events_with_options(request, runtime)
+
+    async def query_traced_events_async(
+        self,
+        request: eventbridge_20200401_models.QueryTracedEventsRequest,
+    ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_traced_events_with_options_async(request, runtime)
+
     def start_event_streaming_with_options(
         self,
         request: eventbridge_20200401_models.StartEventStreamingRequest,

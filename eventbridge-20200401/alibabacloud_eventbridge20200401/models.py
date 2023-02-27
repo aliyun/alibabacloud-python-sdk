@@ -16575,6 +16575,867 @@ class PauseEventStreamingResponse(TeaModel):
         return self
 
 
+class QueryEventRequest(TeaModel):
+    def __init__(
+        self,
+        event_bus_name: str = None,
+        event_id: str = None,
+    ):
+        self.event_bus_name = event_bus_name
+        self.event_id = event_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_bus_name is not None:
+            result['EventBusName'] = self.event_bus_name
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventBusName') is not None:
+            self.event_bus_name = m.get('EventBusName')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        return self
+
+
+class QueryEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryEventResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryEventTracesRequest(TeaModel):
+    def __init__(
+        self,
+        event_bus_name: str = None,
+        event_id: str = None,
+    ):
+        self.event_bus_name = event_bus_name
+        self.event_id = event_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_bus_name is not None:
+            result['EventBusName'] = self.event_bus_name
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventBusName') is not None:
+            self.event_bus_name = m.get('EventBusName')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        return self
+
+
+class QueryEventTracesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        action_time: int = None,
+        endpoint: str = None,
+        event_bus_name: str = None,
+        event_id: str = None,
+        event_source: str = None,
+        notify_latency: str = None,
+        notify_status: str = None,
+        notify_time: int = None,
+        received_time: int = None,
+        rule_matching_time: str = None,
+        rule_name: str = None,
+    ):
+        self.action = action
+        self.action_time = action_time
+        self.endpoint = endpoint
+        self.event_bus_name = event_bus_name
+        self.event_id = event_id
+        self.event_source = event_source
+        self.notify_latency = notify_latency
+        self.notify_status = notify_status
+        self.notify_time = notify_time
+        self.received_time = received_time
+        self.rule_matching_time = rule_matching_time
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.action_time is not None:
+            result['ActionTime'] = self.action_time
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.event_bus_name is not None:
+            result['EventBusName'] = self.event_bus_name
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_source is not None:
+            result['EventSource'] = self.event_source
+        if self.notify_latency is not None:
+            result['NotifyLatency'] = self.notify_latency
+        if self.notify_status is not None:
+            result['NotifyStatus'] = self.notify_status
+        if self.notify_time is not None:
+            result['NotifyTime'] = self.notify_time
+        if self.received_time is not None:
+            result['ReceivedTime'] = self.received_time
+        if self.rule_matching_time is not None:
+            result['RuleMatchingTime'] = self.rule_matching_time
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('ActionTime') is not None:
+            self.action_time = m.get('ActionTime')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('EventBusName') is not None:
+            self.event_bus_name = m.get('EventBusName')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventSource') is not None:
+            self.event_source = m.get('EventSource')
+        if m.get('NotifyLatency') is not None:
+            self.notify_latency = m.get('NotifyLatency')
+        if m.get('NotifyStatus') is not None:
+            self.notify_status = m.get('NotifyStatus')
+        if m.get('NotifyTime') is not None:
+            self.notify_time = m.get('NotifyTime')
+        if m.get('ReceivedTime') is not None:
+            self.received_time = m.get('ReceivedTime')
+        if m.get('RuleMatchingTime') is not None:
+            self.rule_matching_time = m.get('RuleMatchingTime')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class QueryEventTracesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[QueryEventTracesResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryEventTracesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryEventTracesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryEventTracesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryEventTracesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryTracedEventByEventIdRequest(TeaModel):
+    def __init__(
+        self,
+        event_bus_name: str = None,
+        event_id: str = None,
+        event_source: str = None,
+    ):
+        self.event_bus_name = event_bus_name
+        self.event_id = event_id
+        self.event_source = event_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_bus_name is not None:
+            result['EventBusName'] = self.event_bus_name
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_source is not None:
+            result['EventSource'] = self.event_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventBusName') is not None:
+            self.event_bus_name = m.get('EventBusName')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventSource') is not None:
+            self.event_source = m.get('EventSource')
+        return self
+
+
+class QueryTracedEventByEventIdResponseBodyDataEvents(TeaModel):
+    def __init__(
+        self,
+        event_bus_name: str = None,
+        event_id: str = None,
+        event_received_time: int = None,
+        event_source: str = None,
+        event_type: str = None,
+    ):
+        self.event_bus_name = event_bus_name
+        self.event_id = event_id
+        self.event_received_time = event_received_time
+        self.event_source = event_source
+        self.event_type = event_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_bus_name is not None:
+            result['EventBusName'] = self.event_bus_name
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_received_time is not None:
+            result['EventReceivedTime'] = self.event_received_time
+        if self.event_source is not None:
+            result['EventSource'] = self.event_source
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventBusName') is not None:
+            self.event_bus_name = m.get('EventBusName')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventReceivedTime') is not None:
+            self.event_received_time = m.get('EventReceivedTime')
+        if m.get('EventSource') is not None:
+            self.event_source = m.get('EventSource')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        return self
+
+
+class QueryTracedEventByEventIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        events: List[QueryTracedEventByEventIdResponseBodyDataEvents] = None,
+        next_token: str = None,
+        total: int = None,
+    ):
+        self.events = events
+        self.next_token = next_token
+        self.total = total
+
+    def validate(self):
+        if self.events:
+            for k in self.events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Events'] = []
+        if self.events is not None:
+            for k in self.events:
+                result['Events'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.events = []
+        if m.get('Events') is not None:
+            for k in m.get('Events'):
+                temp_model = QueryTracedEventByEventIdResponseBodyDataEvents()
+                self.events.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryTracedEventByEventIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[QueryTracedEventByEventIdResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryTracedEventByEventIdResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryTracedEventByEventIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryTracedEventByEventIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryTracedEventByEventIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryTracedEventsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        event_bus_name: str = None,
+        event_source: str = None,
+        event_type: str = None,
+        limit: int = None,
+        matched_rule: str = None,
+        next_token: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.event_bus_name = event_bus_name
+        self.event_source = event_source
+        self.event_type = event_type
+        self.limit = limit
+        self.matched_rule = matched_rule
+        self.next_token = next_token
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_bus_name is not None:
+            result['EventBusName'] = self.event_bus_name
+        if self.event_source is not None:
+            result['EventSource'] = self.event_source
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.matched_rule is not None:
+            result['MatchedRule'] = self.matched_rule
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventBusName') is not None:
+            self.event_bus_name = m.get('EventBusName')
+        if m.get('EventSource') is not None:
+            self.event_source = m.get('EventSource')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('MatchedRule') is not None:
+            self.matched_rule = m.get('MatchedRule')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QueryTracedEventsResponseBodyDataEvents(TeaModel):
+    def __init__(
+        self,
+        event_bus_name: str = None,
+        event_id: str = None,
+        event_received_time: int = None,
+        event_source: str = None,
+        event_type: str = None,
+    ):
+        self.event_bus_name = event_bus_name
+        self.event_id = event_id
+        self.event_received_time = event_received_time
+        self.event_source = event_source
+        self.event_type = event_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_bus_name is not None:
+            result['EventBusName'] = self.event_bus_name
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.event_received_time is not None:
+            result['EventReceivedTime'] = self.event_received_time
+        if self.event_source is not None:
+            result['EventSource'] = self.event_source
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventBusName') is not None:
+            self.event_bus_name = m.get('EventBusName')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('EventReceivedTime') is not None:
+            self.event_received_time = m.get('EventReceivedTime')
+        if m.get('EventSource') is not None:
+            self.event_source = m.get('EventSource')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        return self
+
+
+class QueryTracedEventsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        events: List[QueryTracedEventsResponseBodyDataEvents] = None,
+        next_token: str = None,
+        total: int = None,
+    ):
+        self.events = events
+        self.next_token = next_token
+        self.total = total
+
+    def validate(self):
+        if self.events:
+            for k in self.events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Events'] = []
+        if self.events is not None:
+            for k in self.events:
+                result['Events'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.events = []
+        if m.get('Events') is not None:
+            for k in m.get('Events'):
+                temp_model = QueryTracedEventsResponseBodyDataEvents()
+                self.events.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryTracedEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryTracedEventsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryTracedEventsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryTracedEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryTracedEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryTracedEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartEventStreamingRequest(TeaModel):
     def __init__(
         self,
