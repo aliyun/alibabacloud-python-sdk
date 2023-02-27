@@ -13,6 +13,7 @@ class ActivateMediaWorkflowRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media workflow. You can obtain the ID from the response of the [AddMediaWorkflow](~~44437~~) operation.
         self.media_workflow_id = media_workflow_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -64,10 +65,15 @@ class ActivateMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         state: str = None,
         topology: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The status of the media workflow. The value is **Active**.
         self.state = state
+        # The topology of the media workflow.
         self.topology = topology
 
     def validate(self):
@@ -112,7 +118,9 @@ class ActivateMediaWorkflowResponseBody(TeaModel):
         media_workflow: ActivateMediaWorkflowResponseBodyMediaWorkflow = None,
         request_id: str = None,
     ):
+        # The details of the media workflow.
         self.media_workflow = media_workflow
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -203,19 +211,56 @@ class AddMediaRequest(TeaModel):
         tags: str = None,
         title: str = None,
     ):
+        # The ID of the category to which the media file belongs. The value cannot be negative.
         self.cate_id = cate_id
+        # The storage location of the thumbnail that you want to specify for the media file. To obtain the URL, you can log on to the **MPS console** and choose **Workflows** > **Media Buckets**. Alternatively, you can log on to the **OSS console** and click **My OSS Paths**.
+        # 
+        # *   The value can be up to 3,200 bytes in length.
+        # *   The URL complies with RFC 2396 and is encoded in UTF-8, with reserved characters being percent-encoded.
         self.cover_url = cover_url
+        # The description of the media file.
+        # 
+        # *   The description can be up to 1,024 bytes in length.
+        # *   The value is encoded in UTF-8.
         self.description = description
+        # The path of the input file. You can query the path of the input file in the MPS or OSS console. For more information, see the **Triggering and matching rule for a workflow** section of this topic.
+        # 
+        # *   The value can be up to 3,200 bytes in length.
+        # *   The URL complies with RFC 2396 and is encoded in UTF-8, with reserved characters being percent-encoded.
         self.file_url = file_url
+        # Specifies whether to check if the media workflow supports the specified input path. We recommend that you set this parameter to true to avoid errors that may result from invalid paths. Valid values:
+        # 
+        # *   **true**: checks whether the workflow supports the specified input path.
+        # *   **false**: does not check whether the workflow supports the specified input path.
         self.input_unbind = input_unbind
+        # The ID of the media workflow that you want to run for the media file. To query the ID of a media workflow, you can log on to the MPS console or call the [AddMediaWorkflow](~~44437~~) operation.
         self.media_workflow_id = media_workflow_id
+        # The custom data of the media workflow.
+        # 
+        # *   The value can be up to 1,024 bytes in length.
+        # *   The value is encoded in UTF-8.
         self.media_workflow_user_data = media_workflow_user_data
+        # The subtitle settings that are used to overwrite the original settings.
+        # 
+        # *   Example 1: Use `{"WebVTTSubtitleOverrides",[{"RefActivityName":"subtitleNode","WebVTTSubtitleURL":"http://test.oss-cn-hangzhou.aliyuncs.com/example1.vtt"}]}` to overwrite the original subtitle settings during HTTP Live Streaming (HLS) packaging.
+        # *   Example 2: Use `{"subtitleTransNodeName":{"InputConfig":{"Format":"stl","InputFile":{"URL":"http://subtitleBucket.oss-cn-hangzhou.aliyuncs.com/package/example/CENG.stl"}}}}` to overwrite the original subtitle settings during Dynamic Adaptive Streaming over HTTP (DASH) packaging.
         self.override_params = override_params
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags that you want to add for the media file.
+        # 
+        # >  In MPS, each tag that is specified for a media file is independent. You can search for all the media files that have the same tags in the Media Library.
+        # 
+        # *   Separate multiple tags with commas (,). You can specify up to 16 tags for a media file.
+        # *   Each tag can be up to 32 bytes in length.
+        # *   The value is encoded in UTF-8.
         self.tags = tags
+        # The title of the media file.
+        # 
+        # *   The title can be up to 128 bytes in length.
+        # *   The value is encoded in UTF-8.
         self.title = title
 
     def validate(self):
@@ -296,7 +341,9 @@ class AddMediaResponseBodyMediaFile(TeaModel):
         state: str = None,
         url: str = None,
     ):
+        # The status of the input file. The default value is **Normal**.
         self.state = state
+        # The URL of the input file.
         self.url = url
 
     def validate(self):
@@ -399,23 +446,48 @@ class AddMediaResponseBodyMedia(TeaModel):
         title: str = None,
         width: str = None,
     ):
+        # The bitrate of the media file.
         self.bitrate = bitrate
+        # The ID of the category to which the media file belongs.
         self.cate_id = cate_id
+        # The review status of the video. Valid values:
+        # 
+        # *   **Initiated**: The media file is uploaded but not reviewed.
+        # *   **Pass**: The media file is uploaded and passes the review.
         self.censor_state = censor_state
+        # The storage location of the media thumbnail.
         self.cover_url = cover_url
+        # The time when the media file was created.
         self.creation_time = creation_time
+        # The description of the media file. The value is no longer than 1,024 bytes.
         self.description = description
+        # The duration of the media file.
         self.duration = duration
+        # The information about the input file.
         self.file = file
+        # The format of the media file. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format = format
+        # The frame rate of the media file.
         self.fps = fps
+        # The height of the media file.
         self.height = height
+        # The ID of the media file.
         self.media_id = media_id
+        # The publishing status of the media file. Valid values:
+        # 
+        # *   **Initiated**: The media file is in the initial state.
+        # *   **UnPublish**: The media file has not been published, and the playback permission on the OSS object is Private.
+        # *   **Published**: The media file has been published, and the playback permission on the OSS object is Default.
         self.publish_state = publish_state
+        # The IDs of the executed workflow execution instances. The IDs are separated by commas (,).
         self.run_id_list = run_id_list
+        # The size of the media file.
         self.size = size
+        # The tags of the media file.
         self.tags = tags
+        # The title of the media file. The title is no longer than 128 bytes.
         self.title = title
+        # The width of the media file.
         self.width = width
 
     def validate(self):
@@ -520,7 +592,9 @@ class AddMediaResponseBody(TeaModel):
         media: AddMediaResponseBodyMedia = None,
         request_id: str = None,
     ):
+        # The detailed information about the media file.
         self.media = media
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -732,12 +806,23 @@ class AddMediaWorkflowRequest(TeaModel):
         topology: str = None,
         trigger_mode: str = None,
     ):
+        # The name of the media workflow.
+        # 
+        # *   The value cannot be empty.
+        # *   The name cannot be the same as that of an existing media workflow within the current Alibaba Cloud account.
+        # *   The name can be up to 64 characters in length.
+        # *   The name can contain only UTF-8 characters.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The topology of the media workflow. The value must be a JSON object that contains the activity list and activity dependencies. For more information, see the **Sample topology** section of this topic.
         self.topology = topology
+        # The trigger mode of the media workflow. Valid values:
+        # 
+        # *   **OssAutoTrigger**: The media workflow is automatically triggered.
+        # *   **NotInAuto**: The media workflow is not automatically triggered.
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -794,11 +879,20 @@ class AddMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         topology: str = None,
         trigger_mode: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow. We recommend that you keep this ID for later operations on this workflow.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The status of the media workflow. By default, the created workflow is in the **Active** state.
         self.state = state
+        # The topology of the media workflow. The value is a JSON object that contains the activity list and activity dependencies.
         self.topology = topology
+        # The trigger mode of the media workflow. Valid values:
+        # 
+        # *   **OssAutoTrigger**: The media workflow is automatically triggered.
+        # *   **NotInAuto**: The media workflow is not automatically triggered.
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -847,7 +941,9 @@ class AddMediaWorkflowResponseBody(TeaModel):
         media_workflow: AddMediaWorkflowResponseBodyMediaWorkflow = None,
         request_id: str = None,
     ):
+        # The information about the media workflow.
         self.media_workflow = media_workflow
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -923,6 +1019,7 @@ class AddMediaWorkflowResponse(TeaModel):
 class AddPipelineRequest(TeaModel):
     def __init__(
         self,
+        extend_config: str = None,
         name: str = None,
         notify_config: str = None,
         owner_account: str = None,
@@ -933,6 +1030,7 @@ class AddPipelineRequest(TeaModel):
         speed: str = None,
         speed_level: int = None,
     ):
+        self.extend_config = extend_config
         self.name = name
         self.notify_config = notify_config
         self.owner_account = owner_account
@@ -952,6 +1050,8 @@ class AddPipelineRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config
         if self.name is not None:
             result['Name'] = self.name
         if self.notify_config is not None:
@@ -974,6 +1074,8 @@ class AddPipelineRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendConfig') is not None:
+            self.extend_config = m.get('ExtendConfig')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NotifyConfig') is not None:
@@ -992,6 +1094,45 @@ class AddPipelineRequest(TeaModel):
             self.speed = m.get('Speed')
         if m.get('SpeedLevel') is not None:
             self.speed_level = m.get('SpeedLevel')
+        return self
+
+
+class AddPipelineResponseBodyPipelineExtendConfig(TeaModel):
+    def __init__(
+        self,
+        is_boost_new: bool = None,
+        max_multi_speed: int = None,
+        multi_speed_downgrade_policy: str = None,
+    ):
+        self.is_boost_new = is_boost_new
+        self.max_multi_speed = max_multi_speed
+        self.multi_speed_downgrade_policy = multi_speed_downgrade_policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_boost_new is not None:
+            result['IsBoostNew'] = self.is_boost_new
+        if self.max_multi_speed is not None:
+            result['MaxMultiSpeed'] = self.max_multi_speed
+        if self.multi_speed_downgrade_policy is not None:
+            result['MultiSpeedDowngradePolicy'] = self.multi_speed_downgrade_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsBoostNew') is not None:
+            self.is_boost_new = m.get('IsBoostNew')
+        if m.get('MaxMultiSpeed') is not None:
+            self.max_multi_speed = m.get('MaxMultiSpeed')
+        if m.get('MultiSpeedDowngradePolicy') is not None:
+            self.multi_speed_downgrade_policy = m.get('MultiSpeedDowngradePolicy')
         return self
 
 
@@ -1043,6 +1184,7 @@ class AddPipelineResponseBodyPipelineNotifyConfig(TeaModel):
 class AddPipelineResponseBodyPipeline(TeaModel):
     def __init__(
         self,
+        extend_config: AddPipelineResponseBodyPipelineExtendConfig = None,
         id: str = None,
         name: str = None,
         notify_config: AddPipelineResponseBodyPipelineNotifyConfig = None,
@@ -1052,6 +1194,7 @@ class AddPipelineResponseBodyPipeline(TeaModel):
         speed_level: int = None,
         state: str = None,
     ):
+        self.extend_config = extend_config
         self.id = id
         self.name = name
         self.notify_config = notify_config
@@ -1062,6 +1205,8 @@ class AddPipelineResponseBodyPipeline(TeaModel):
         self.state = state
 
     def validate(self):
+        if self.extend_config:
+            self.extend_config.validate()
         if self.notify_config:
             self.notify_config.validate()
 
@@ -1071,6 +1216,8 @@ class AddPipelineResponseBodyPipeline(TeaModel):
             return _map
 
         result = dict()
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config.to_map()
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
@@ -1091,6 +1238,9 @@ class AddPipelineResponseBodyPipeline(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendConfig') is not None:
+            temp_model = AddPipelineResponseBodyPipelineExtendConfig()
+            self.extend_config = temp_model.from_map(m['ExtendConfig'])
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
@@ -1202,6 +1352,8 @@ class AddSmarttagTemplateRequest(TeaModel):
         knowledge_config: str = None,
         label_type: str = None,
         label_version: str = None,
+        landmark_group_ids: str = None,
+        object_group_ids: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -1218,6 +1370,8 @@ class AddSmarttagTemplateRequest(TeaModel):
         self.knowledge_config = knowledge_config
         self.label_type = label_type
         self.label_version = label_version
+        self.landmark_group_ids = landmark_group_ids
+        self.object_group_ids = object_group_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1252,6 +1406,10 @@ class AddSmarttagTemplateRequest(TeaModel):
             result['LabelType'] = self.label_type
         if self.label_version is not None:
             result['LabelVersion'] = self.label_version
+        if self.landmark_group_ids is not None:
+            result['LandmarkGroupIds'] = self.landmark_group_ids
+        if self.object_group_ids is not None:
+            result['ObjectGroupIds'] = self.object_group_ids
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -1286,6 +1444,10 @@ class AddSmarttagTemplateRequest(TeaModel):
             self.label_type = m.get('LabelType')
         if m.get('LabelVersion') is not None:
             self.label_version = m.get('LabelVersion')
+        if m.get('LandmarkGroupIds') is not None:
+            self.landmark_group_ids = m.get('LandmarkGroupIds')
+        if m.get('ObjectGroupIds') is not None:
+            self.object_group_ids = m.get('ObjectGroupIds')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -1392,15 +1554,37 @@ class AddTemplateRequest(TeaModel):
         trans_config: str = None,
         video: str = None,
     ):
+        # The audio stream configuration. The value must be a JSON object. For more information, see the [Parameters nested under the Audio parameter](~~29253~~) section of this topic.
+        # 
+        # >  If you do not set this parameter, output files do not contain audio streams. If you need to retain the audio streams, this parameter is required.
         self.audio = audio
+        # The container configuration. The value must be a JSON object and contains the Format parameter. If you do not configure the container, the transcoded media file is in MP4 format by default. If you want to use the transcoding template to generate media files in other formats, this parameter is required. For more information, see the [Parameter nested under the Container parameter](~~29253~~) section of this topic.
+        # 
+        # *   Default value of the Format parameter: mp4.
+        # *   Video formats include FLV, MP4, HLS (M3U8 + TS), and MPEG-DASH (MPD + fMP4)
+        # 
+        # >  If the container format is FLV, the video codec cannot be set to H.265.
+        # 
+        # *   Audio formats include MP3, MP4, Ogg, FLAC, and M4A
+        # 
+        # *   Image formats include GIF and WebP.
+        # 
+        # >*   If the container format is GIF, the video codec must be set to GIF.
+        #   *   If the container format is WebP, the video codec must be set to WebP.
         self.container = container
+        # The segment configuration. The value must be a JSON object. For more information, see the [Parameters nested under the MuxConfig parameter](~~29253~~) section of this topic. If you do not set this parameter, media segment files are not generated. If you want to generate media segment files, this parameter is required.
         self.mux_config = mux_config
+        # The name of the template. The name can be up to 128 bytes in length.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The general transcoding configuration. The value must be a JSON object. For more information, see the [Parameters nested under the TransConfig parameter](~~29253~~) section of this topic. If you do not set this parameter, the default settings of this parameter are used. If the default settings cannot meet your transcoding needs, set the parameters nested under the TransConfig parameter as required.
         self.trans_config = trans_config
+        # The video stream configuration. The value must be a JSON object. For more information, see the [Parameters nested under the Video parameter](~~29253~~) section of this topic.
+        # 
+        # >  If you do not set this parameter, output files do not contain video streams. If you need to retain the video streams, this parameter is required.
         self.video = video
 
     def validate(self):
@@ -1465,7 +1649,16 @@ class AddTemplateResponseBodyTemplateAudioVolume(TeaModel):
         level: str = None,
         method: str = None,
     ):
+        # The volume adjustment range.
+        # 
+        # *   Default value: **-20**.
+        # *   Unit: dB.
         self.level = level
+        # The volume adjustment method. Valid values:
+        # 
+        # *   **auto**: The volume is automatically adjusted.
+        # *   **dynamic**: The volume is dynamically adjusted.
+        # *   **linear**: The volume is linearly adjusted.
         self.method = method
 
     def validate(self):
@@ -1504,13 +1697,42 @@ class AddTemplateResponseBodyTemplateAudio(TeaModel):
         samplerate: str = None,
         volume: AddTemplateResponseBodyTemplateAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: **2**.
         self.channels = channels
+        # The audio codec. Default audio codec: **AAC**. Valid audio codecs:
+        # 
+        # *   **AAC**\
+        # *   **MP3**\
+        # *   **VORBIS**\
+        # *   **FLAC**\
         self.codec = codec
+        # The codec profile of the audio. Valid values when the audio codec is set to **AAC**:****\
+        # 
+        # *   **aac_low**\
+        # *   **aac_he**\
+        # *   **aac_he_v2**\
+        # *   **aac_ld**\
+        # *   **aac_eld**\
         self.profile = profile
+        # The level of the independent denoising algorithm.
         self.qscale = qscale
+        # Indicates whether to delete the audio stream.
+        # 
+        # *   **true**: The audio stream is deleted.
+        # *   **false**: The audio stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Unit: Hz.
+        # *   Default value: **44100**.
         self.samplerate = samplerate
+        # The details of the volume.
         self.volume = volume
 
     def validate(self):
@@ -1568,6 +1790,7 @@ class AddTemplateResponseBodyTemplateContainer(TeaModel):
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -1598,9 +1821,13 @@ class AddTemplateResponseBodyTemplateMuxConfigGif(TeaModel):
         is_custom_palette: str = None,
         loop: str = None,
     ):
+        # The color dithering algorithm of the palette. Valid values: sierra and bayer.
         self.dither_mode = dither_mode
+        # The duration for which the final frame is paused. Unit: centiseconds.
         self.final_delay = final_delay
+        # Indicates whether the custom palette is used.
         self.is_custom_palette = is_custom_palette
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -1640,6 +1867,7 @@ class AddTemplateResponseBodyTemplateMuxConfigSegment(TeaModel):
         self,
         duration: str = None,
     ):
+        # The length of the segment. Unit: seconds.
         self.duration = duration
 
     def validate(self):
@@ -1667,6 +1895,7 @@ class AddTemplateResponseBodyTemplateMuxConfigWebp(TeaModel):
         self,
         loop: str = None,
     ):
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -1696,8 +1925,11 @@ class AddTemplateResponseBodyTemplateMuxConfig(TeaModel):
         segment: AddTemplateResponseBodyTemplateMuxConfigSegment = None,
         webp: AddTemplateResponseBodyTemplateMuxConfigWebp = None,
     ):
+        # The transmuxing configuration for GIF.
         self.gif = gif
+        # The segment configuration.
         self.segment = segment
+        # The transmuxing configuration for WebP.
         self.webp = webp
 
     def validate(self):
@@ -1748,13 +1980,62 @@ class AddTemplateResponseBodyTemplateTransConfig(TeaModel):
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method of resolution adjustment. Default value: **none** Valid values:
+        # 
+        # *   **rescale**: The input video is rescaled.
+        # *   **crop**: The input video is cropped.
+        # *   **none**: No change is made.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether to check the audio bitrate.
+        # 
+        # If this feature is enabled and the system detects that the audio bitrate of the output file is greater than that of the input file, the audio bitrate of the input file is retained after transcoding.
+        # 
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether to check the audio bitrate. If the bitrate of the output audio is greater than that of the input audio, this parameter has a higher priority than the **IsCheckAudioBitrate** parameter.
+        # 
+        # *   **true**: The audio bitrate is checked. If the bitrate of the output audio is greater than that of the input audio, the input file is not transcoded.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether to check the resolution.
+        # 
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
+        # 
+        # >  If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, the resolution of the input file is retained after transcoding.
         self.is_check_reso = is_check_reso
+        # Indicates whether to check the resolution.
+        # 
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
+        # 
+        # >  If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, an error that indicates a transcoding failure is returned.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether to check the video bitrate.
+        # 
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
+        # 
+        # >  If this feature is enabled and the system detects that the video bitrate of the output file is greater than that of the input file, the video bitrate of the input file is retained after transcoding.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # If the video bitrate of the output file is found to be greater than that of the input file, this parameter has a higher priority than the IsCheckVideoBitrate parameter. Valid values:
+        # 
+        # *   **true**: The video bitrate is checked. If the video bitrate of the output file is higher than that of the input file, the input file is not transcoded.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The transcoding mode. Valid values:
+        # 
+        # *   **onepass**\
+        # *   **twopass**\
+        # *   **CBR**\
+        # *   Default value: **onepass**.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -1811,7 +2092,9 @@ class AddTemplateResponseBodyTemplateVideoBitrateBnd(TeaModel):
         max: str = None,
         min: str = None,
     ):
+        # The maximum bitrate.
         self.max = max
+        # The minimum bitrate.
         self.min = min
 
     def validate(self):
@@ -1864,27 +2147,92 @@ class AddTemplateResponseBodyTemplateVideo(TeaModel):
         scan_mode: str = None,
         width: str = None,
     ):
+        # The bitrate of the output video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Default value: **6000**.
+        # *   Unit: KB.
         self.bufsize = bufsize
+        # The video codec. Valid video codecs: H.264, H.265, GIF, and WebP. Default video codec: **H.264**.
         self.codec = codec
+        # The constant rate factor. Default value when the video codec is set to H.264: **23**. Default value when the video codec is set to H.265: **26**.
+        # 
+        # >  If this parameter is specified, the setting of the Bitrate parameter becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   **border**: automatically detects and removes borders.
+        # *   Value in the format of **width:height:left:top**: crops the video image based on the custom setting. Example: 1280:800:0:140.
         self.crop = crop
+        # The level of quality control on the video.
         self.degrain = degrain
+        # The frame rate of the video. Default value: the frame rate of the input file. The value is 60 if the frame rate of the input file exceeds 60. Unit: frames per second.
         self.fps = fps
+        # The GOP size. The GOP size can be the maximum interval of keyframes or the maximum number of frames in a frame group. If you specified the maximum interval, the value contains the unit (s). If you specified the maximum number of frames, the value does not contain a unit. Default value: **10s**.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Indicates whether to enable the auto-rotate screen feature. Default value: **false**. Valid values:
+        # 
+        # *   **true**: The auto-rotate screen feature is enabled.
+        # *   **false**: The auto-rotate screen feature is disabled.
+        # 
+        # >  If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode.
         self.long_short_mode = long_short_mode
+        # The maximum frame rate.
         self.max_fps = max_fps
+        # The maximum bitrate of the output video. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black borders to be added to the video. Format: width:height:left:top.
         self.pad = pad
+        # The pixel format for video color encoding. Standard pixel formats such as yuv420p and yuvj420p are supported. The default pixel format can be yuv420p or the original color format.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Default value: **medium**. Valid values:
+        # 
+        # *   **veryfast**\
+        # *   **fast**\
+        # *   **medium**\
+        # *   **slow**\
+        # *   **slower**\
+        # 
+        # >  This parameter is valid only when the video codec is set to H.264.
         self.preset = preset
+        # The codec profile. Valid values:
+        # 
+        # *   **baseline**: suitable for mobile devices
+        # *   **main**: suitable for standard-definition devices
+        # *   **high**: suitable for high-definition devices
+        # *   Default value: **high**.
+        # 
+        # If multiple definitions exist, we recommend that you set this parameter to baseline for the lowest definition to ensure normal playback on low-end devices. Set this parameter to main or high for other definitions.
+        # 
+        # >  This parameter is valid only when the video codec is set to H.264.
         self.profile = profile
+        # The level of the independent denoising algorithm.
         self.qscale = qscale
+        # Indicates whether to delete the video stream.
+        # 
+        # *   **true**: The video stream is deleted.
+        # *   **false**: The video stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The policy of resolution adjustment.
         self.reso_priority = reso_priority
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**\
+        # *   **progressive**\
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Default value: the width of the input video.****\
+        # *   Unit: pixel.
         self.width = width
 
     def validate(self):
@@ -2005,13 +2353,24 @@ class AddTemplateResponseBodyTemplate(TeaModel):
         trans_config: AddTemplateResponseBodyTemplateTransConfig = None,
         video: AddTemplateResponseBodyTemplateVideo = None,
     ):
+        # The audio codec configuration.
         self.audio = audio
+        # The container configuration.
         self.container = container
+        # The ID of the transcoding template. We recommend that you keep this ID for subsequent operation calls.
         self.id = id
+        # The transmuxing configuration.
         self.mux_config = mux_config
+        # The name of the template.
         self.name = name
+        # The status of the template.
+        # 
+        # *   **Normal**: The template is normal.
+        # *   **Deleted**: The template is deleted.
         self.state = state
+        # The general transcoding configuration.
         self.trans_config = trans_config
+        # The video codec configuration.
         self.video = video
 
     def validate(self):
@@ -2082,7 +2441,9 @@ class AddTemplateResponseBody(TeaModel):
         request_id: str = None,
         template: AddTemplateResponseBodyTemplate = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the transcoding template.
         self.template = template
 
     def validate(self):
@@ -2165,7 +2526,11 @@ class AddWaterMarkTemplateRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The configuration of the watermark template. The value is a JSON object. For more information, see [Watermark templates](~~29253~~).
+        # 
+        # >  If you do not require a positive correlation between the size of text in the watermark and the resolution, you can enable adaptation for the watermark. To do so, add `[\"adaptive\"]=true` to the text parameter of the watermark.
         self.config = config
+        # The name of the watermark template. The value can contain letters and digits and can be up to 128 bytes in size.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2220,9 +2585,27 @@ class AddWaterMarkTemplateResponseBodyWaterMarkTemplateRatioRefer(TeaModel):
         height: str = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset.
+        # 
+        # The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the horizontal offset to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dx = dx
+        # The vertical offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the vertical offset to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dy = dy
+        # The height of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the height of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the height of the watermark image to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.height = height
+        # The width of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the width of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the width of the watermark image to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.width = width
 
     def validate(self):
@@ -2263,7 +2646,12 @@ class AddWaterMarkTemplateResponseBodyWaterMarkTemplateTimeline(TeaModel):
         duration: str = None,
         start: str = None,
     ):
+        # The display duration of the watermark. Default value: **ToEND**. The default value indicates that the watermark is displayed until the video ends.
         self.duration = duration
+        # The beginning of the time range during which the watermark is displayed.
+        # 
+        # *   Unit: seconds.
+        # *   Default value: **0**.
         self.start = start
 
     def validate(self):
@@ -2305,16 +2693,43 @@ class AddWaterMarkTemplateResponseBodyWaterMarkTemplate(TeaModel):
         type: str = None,
         width: str = None,
     ):
+        # The horizontal offset. Unit: pixel.
         self.dx = dx
+        # The vertical offset. Unit: pixel.
         self.dy = dy
+        # The height of the watermark image. Unit: pixel.
         self.height = height
+        # The ID of the watermark template. We recommend that you keep this ID for subsequent operation calls.
         self.id = id
+        # The name of the watermark template.
         self.name = name
+        # The values of the Height, Width, Dx, and Dy parameters relative to the reference edges. If the values of the Height, Width, Dx, and Dy parameters are decimals between 0 and 1, the values are calculated by referring to the following edges in sequence:
+        # 
+        # *   **Width**: the width edge.
+        # *   **Height**: the height edge.
+        # *   **Long**: the long edge.
+        # *   **Short**: the short edge.
         self.ratio_refer = ratio_refer
+        # The position of the watermark. Valid values:
+        # 
+        # *   **TopRight**: the upper-right corner.
+        # *   **TopLeft**: the upper-left corner.
+        # *   **BottomRight**: the lower-right corner.
+        # *   **BottomLeft**: the lower-left corner.
         self.refer_pos = refer_pos
+        # The status of the watermark template. Valid values:
+        # 
+        # *   **Normal**: The watermark template is normal.
+        # *   **Deleted**: The watermark template is deleted.
         self.state = state
+        # The timeline of the watermark.
         self.timeline = timeline
+        # The type of the watermark. Valid values:
+        # 
+        # *   Image: an image watermark.
+        # *   Text: a text watermark.
         self.type = type
+        # The width of the watermark image. Unit: pixel.
         self.width = width
 
     def validate(self):
@@ -2388,7 +2803,9 @@ class AddWaterMarkTemplateResponseBody(TeaModel):
         request_id: str = None,
         water_mark_template: AddWaterMarkTemplateResponseBodyWaterMarkTemplate = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the watermark template.
         self.water_mark_template = water_mark_template
 
     def validate(self):
@@ -2470,15 +2887,17 @@ class BindInputBucketRequest(TeaModel):
         referer: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        role_arn: str = None,
     ):
+        # The name of the input media bucket to be bound. The name can be up to 64 bytes in size. To obtain the media bucket name, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Media Buckets** in the left-side navigation pane.
+        # 
+        # >  The bucket name can contain lowercase letters, digits, and hyphens (-), and cannot start or end with a hyphen (-).
         self.bucket = bucket
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The settings of Object Storage Service (OSS) hotlink protection. For more information, see [Hotlink protection](~~31869~~).
         self.referer = referer
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.role_arn = role_arn
 
     def validate(self):
         pass
@@ -2501,8 +2920,6 @@ class BindInputBucketRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.role_arn is not None:
-            result['RoleArn'] = self.role_arn
         return result
 
     def from_map(self, m: dict = None):
@@ -2519,8 +2936,6 @@ class BindInputBucketRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('RoleArn') is not None:
-            self.role_arn = m.get('RoleArn')
         return self
 
 
@@ -2529,6 +2944,7 @@ class BindInputBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2603,14 +3019,13 @@ class BindOutputBucketRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        role_arn: str = None,
     ):
+        # The name of the Object Storage Service (OSS) bucket that you want to bind. The name can be up to 64 bytes in size and can contain letters, digits, and hyphens (-). The name cannot start with a special character.
         self.bucket = bucket
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.role_arn = role_arn
 
     def validate(self):
         pass
@@ -2631,8 +3046,6 @@ class BindOutputBucketRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.role_arn is not None:
-            result['RoleArn'] = self.role_arn
         return result
 
     def from_map(self, m: dict = None):
@@ -2647,8 +3060,6 @@ class BindOutputBucketRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('RoleArn') is not None:
-            self.role_arn = m.get('RoleArn')
         return self
 
 
@@ -2657,6 +3068,7 @@ class BindOutputBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2851,6 +3263,292 @@ class CancelJobResponse(TeaModel):
         return self
 
 
+class CreateCustomEntityRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_entity_info: str = None,
+        custom_entity_name: str = None,
+        custom_group_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_entity_info = custom_entity_info
+        self.custom_entity_name = custom_entity_name
+        self.custom_group_id = custom_group_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_entity_info is not None:
+            result['CustomEntityInfo'] = self.custom_entity_info
+        if self.custom_entity_name is not None:
+            result['CustomEntityName'] = self.custom_entity_name
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomEntityInfo') is not None:
+            self.custom_entity_info = m.get('CustomEntityInfo')
+        if m.get('CustomEntityName') is not None:
+            self.custom_entity_name = m.get('CustomEntityName')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateCustomEntityResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_entity_id: str = None,
+        request_id: str = None,
+    ):
+        self.custom_entity_id = custom_entity_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_entity_id is not None:
+            result['CustomEntityId'] = self.custom_entity_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomEntityId') is not None:
+            self.custom_entity_id = m.get('CustomEntityId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCustomEntityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCustomEntityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCustomEntityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCustomGroupRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_group_description: str = None,
+        custom_group_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_group_description = custom_group_description
+        self.custom_group_name = custom_group_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_group_description is not None:
+            result['CustomGroupDescription'] = self.custom_group_description
+        if self.custom_group_name is not None:
+            result['CustomGroupName'] = self.custom_group_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomGroupDescription') is not None:
+            self.custom_group_description = m.get('CustomGroupDescription')
+        if m.get('CustomGroupName') is not None:
+            self.custom_group_name = m.get('CustomGroupName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateCustomGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_group_id: str = None,
+        request_id: str = None,
+    ):
+        self.custom_group_id = custom_group_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCustomGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCustomGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCustomGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFpShotDBRequest(TeaModel):
     def __init__(
         self,
@@ -2863,9 +3561,13 @@ class CreateFpShotDBRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The configurations of the media fingerprint library. By default, this parameter is empty. You can customize the configurations based on your business requirements. The value is a string in the JSON format.
         self.config = config
+        # The description of the media fingerprint library.
         self.description = description
+        # The model ID of the media fingerprint library. To create a text fingerprint library, set the parameter to **11**. To create a video fingerprint library, set the parameter to **12**. To create an audio fingerprint library, set the parameter to **13**. A value of **14** indicates that the library is an image fingerprint library.
         self.model_id = model_id
+        # The name of the media fingerprint library to be created.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2930,11 +3632,17 @@ class CreateFpShotDBResponseBodyFpShotDB(TeaModel):
         name: str = None,
         state: str = None,
     ):
+        # The configurations of the media fingerprint library.
         self.config = config
+        # The description of the media fingerprint library.
         self.description = description
+        # The ID of the media fingerprint library. We recommend that you keep this ID for subsequent operation calls.
         self.fp_dbid = fp_dbid
+        # The model ID of the media fingerprint library.
         self.model_id = model_id
+        # The name of the media fingerprint library.
         self.name = name
+        # The status of the media fingerprint library. After the media fingerprint library is created, it enters the **offline** state. After the media fingerprint library is processed at the backend, it enters the **active** state.
         self.state = state
 
     def validate(self):
@@ -2983,7 +3691,9 @@ class CreateFpShotDBResponseBody(TeaModel):
         fp_shot_db: CreateFpShotDBResponseBodyFpShotDB = None,
         request_id: str = None,
     ):
+        # The details of the media fingerprint library.
         self.fp_shot_db = fp_shot_db
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3065,6 +3775,7 @@ class DeactivateMediaWorkflowRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media workflow that you want to deactivate. To obtain the ID of the media workflow, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Workflow Settings** in the left-side navigation pane.
         self.media_workflow_id = media_workflow_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3116,10 +3827,15 @@ class DeactivateMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         state: str = None,
         topology: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow that is deactivated.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow that is deactivated.
         self.name = name
+        # The status of the media workflow. The value is **Inactive**.
         self.state = state
+        # The topology of the media workflow.
         self.topology = topology
 
     def validate(self):
@@ -3164,7 +3880,9 @@ class DeactivateMediaWorkflowResponseBody(TeaModel):
         media_workflow: DeactivateMediaWorkflowResponseBodyMediaWorkflow = None,
         request_id: str = None,
     ):
+        # The details of the media workflow.
         self.media_workflow = media_workflow
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3233,6 +3951,408 @@ class DeactivateMediaWorkflowResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeactivateMediaWorkflowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomEntityRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_entity_id: str = None,
+        custom_group_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_entity_id = custom_entity_id
+        self.custom_group_id = custom_group_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_entity_id is not None:
+            result['CustomEntityId'] = self.custom_entity_id
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomEntityId') is not None:
+            self.custom_entity_id = m.get('CustomEntityId')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteCustomEntityResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCustomEntityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomEntityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomEntityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomGroupRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_group_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_group_id = custom_group_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteCustomGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCustomGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomViewRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_entity_id: str = None,
+        custom_group_id: str = None,
+        custom_view_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_entity_id = custom_entity_id
+        self.custom_group_id = custom_group_id
+        self.custom_view_id = custom_view_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_entity_id is not None:
+            result['CustomEntityId'] = self.custom_entity_id
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.custom_view_id is not None:
+            result['CustomViewId'] = self.custom_view_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomEntityId') is not None:
+            self.custom_entity_id = m.get('CustomEntityId')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('CustomViewId') is not None:
+            self.custom_view_id = m.get('CustomViewId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteCustomViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCustomViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomViewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3369,11 +4489,15 @@ class DeleteMediaTagRequest(TeaModel):
         resource_owner_id: int = None,
         tag: str = None,
     ):
+        # The ID of the media file for which you want to remove a tag. To obtain the ID of a media file, you can call the [AddMedia](~~44458~~) operation. Alternatively, perform the following operations in the ApsaraVideo Media Processing (MPS) console: In the left-side navigation pane, choose **Media Management** > **Media List**. Find the required video and click **Manage**. The ID of the video is displayed on the Basics tab.
         self.media_id = media_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The media tag that you want to remove. The value is encoded in UTF-8 and can be up to 32 bytes in length.
+        # 
+        # >  You can remove only one tag at a time.
         self.tag = tag
 
     def validate(self):
@@ -3421,6 +4545,7 @@ class DeleteMediaTagResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3496,6 +4621,7 @@ class DeleteMediaWorkflowRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media workflow that you want to delete. To obtain the ID of the media workflow, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Workflow Settings** in the left-side navigation pane.
         self.media_workflow_id = media_workflow_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3547,10 +4673,15 @@ class DeleteMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         state: str = None,
         topology: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow that is deleted.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow that is deleted.
         self.name = name
+        # The status of the media workflow. The value is **Deleted**.
         self.state = state
+        # The topology of the media workflow.
         self.topology = topology
 
     def validate(self):
@@ -3595,7 +4726,9 @@ class DeleteMediaWorkflowResponseBody(TeaModel):
         media_workflow: DeleteMediaWorkflowResponseBodyMediaWorkflow = None,
         request_id: str = None,
     ):
+        # The details of the media workflow.
         self.media_workflow = media_workflow
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3679,6 +4812,7 @@ class DeletePipelineRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue that you want to delete. To obtain the ID of the MPS queue, you can log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3725,7 +4859,9 @@ class DeletePipelineResponseBody(TeaModel):
         pipeline_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the MPS queue that is deleted.
         self.pipeline_id = pipeline_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3931,6 +5067,7 @@ class DeleteTemplateRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the custom transcoding template that you want to delete. To obtain the ID of the custom transcoding template, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Global Settings** > **Encoding Templates** in the left-side navigation pane.
         self.template_id = template_id
 
     def validate(self):
@@ -3975,7 +5112,9 @@ class DeleteTemplateResponseBody(TeaModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the custom transcoding template that is deleted.
         self.template_id = template_id
 
     def validate(self):
@@ -4237,6 +5376,317 @@ class ImAuditRequest(TeaModel):
         return self
 
 
+class ImAuditResponseBodyImageResultsResultResultsFrames(TeaModel):
+    def __init__(
+        self,
+        rate: float = None,
+        url: str = None,
+    ):
+        self.rate = rate
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rate is not None:
+            result['rate'] = self.rate
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('rate') is not None:
+            self.rate = m.get('rate')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ImAuditResponseBodyImageResultsResultResultsHintWordsInfo(TeaModel):
+    def __init__(
+        self,
+        context: str = None,
+    ):
+        self.context = context
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['context'] = self.context
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            self.context = m.get('context')
+        return self
+
+
+class ImAuditResponseBodyImageResultsResultResultsLogoData(TeaModel):
+    def __init__(
+        self,
+        h: float = None,
+        name: str = None,
+        type: str = None,
+        w: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.h = h
+        self.name = name
+        self.type = type
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['h'] = self.h
+        if self.name is not None:
+            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
+        if self.w is not None:
+            result['w'] = self.w
+        if self.x is not None:
+            result['x'] = self.x
+        if self.y is not None:
+            result['y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('h') is not None:
+            self.h = m.get('h')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('w') is not None:
+            self.w = m.get('w')
+        if m.get('x') is not None:
+            self.x = m.get('x')
+        if m.get('y') is not None:
+            self.y = m.get('y')
+        return self
+
+
+class ImAuditResponseBodyImageResultsResultResultsProgramCodeData(TeaModel):
+    def __init__(
+        self,
+        h: float = None,
+        w: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['h'] = self.h
+        if self.w is not None:
+            result['w'] = self.w
+        if self.x is not None:
+            result['x'] = self.x
+        if self.y is not None:
+            result['y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('h') is not None:
+            self.h = m.get('h')
+        if m.get('w') is not None:
+            self.w = m.get('w')
+        if m.get('x') is not None:
+            self.x = m.get('x')
+        if m.get('y') is not None:
+            self.y = m.get('y')
+        return self
+
+
+class ImAuditResponseBodyImageResultsResultResultsQrcodeLocations(TeaModel):
+    def __init__(
+        self,
+        h: float = None,
+        qrcode: str = None,
+        w: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.h = h
+        self.qrcode = qrcode
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['h'] = self.h
+        if self.qrcode is not None:
+            result['qrcode'] = self.qrcode
+        if self.w is not None:
+            result['w'] = self.w
+        if self.x is not None:
+            result['x'] = self.x
+        if self.y is not None:
+            result['y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('h') is not None:
+            self.h = m.get('h')
+        if m.get('qrcode') is not None:
+            self.qrcode = m.get('qrcode')
+        if m.get('w') is not None:
+            self.w = m.get('w')
+        if m.get('x') is not None:
+            self.x = m.get('x')
+        if m.get('y') is not None:
+            self.y = m.get('y')
+        return self
+
+
+class ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces(TeaModel):
+    def __init__(
+        self,
+        idid: str = None,
+        name: str = None,
+        re: float = None,
+    ):
+        self.idid = idid
+        self.name = name
+        self.re = re
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.idid is not None:
+            result['idid'] = self.idid
+        if self.name is not None:
+            result['name'] = self.name
+        if self.re is not None:
+            result['re'] = self.re
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('idid') is not None:
+            self.idid = m.get('idid')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('re') is not None:
+            self.re = m.get('re')
+        return self
+
+
+class ImAuditResponseBodyImageResultsResultResultsSfaceData(TeaModel):
+    def __init__(
+        self,
+        faces: List[ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces] = None,
+        h: float = None,
+        w: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.faces = faces
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        if self.faces:
+            for k in self.faces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['faces'] = []
+        if self.faces is not None:
+            for k in self.faces:
+                result['faces'].append(k.to_map() if k else None)
+        if self.h is not None:
+            result['h'] = self.h
+        if self.w is not None:
+            result['w'] = self.w
+        if self.x is not None:
+            result['x'] = self.x
+        if self.y is not None:
+            result['y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.faces = []
+        if m.get('faces') is not None:
+            for k in m.get('faces'):
+                temp_model = ImAuditResponseBodyImageResultsResultResultsSfaceDataFaces()
+                self.faces.append(temp_model.from_map(k))
+        if m.get('h') is not None:
+            self.h = m.get('h')
+        if m.get('w') is not None:
+            self.w = m.get('w')
+        if m.get('x') is not None:
+            self.x = m.get('x')
+        if m.get('y') is not None:
+            self.y = m.get('y')
+        return self
+
+
 class ImAuditResponseBodyImageResultsResultResults(TeaModel):
     def __init__(
         self,
@@ -4244,14 +5694,53 @@ class ImAuditResponseBodyImageResultsResultResults(TeaModel):
         rate: float = None,
         scene: str = None,
         suggestion: str = None,
+        frames: List[ImAuditResponseBodyImageResultsResultResultsFrames] = None,
+        hint_words_info: List[ImAuditResponseBodyImageResultsResultResultsHintWordsInfo] = None,
+        logo_data: List[ImAuditResponseBodyImageResultsResultResultsLogoData] = None,
+        ocr_data: List[str] = None,
+        program_code_data: List[ImAuditResponseBodyImageResultsResultResultsProgramCodeData] = None,
+        qrcode_data: List[str] = None,
+        qrcode_locations: List[ImAuditResponseBodyImageResultsResultResultsQrcodeLocations] = None,
+        sface_data: List[ImAuditResponseBodyImageResultsResultResultsSfaceData] = None,
     ):
         self.label = label
         self.rate = rate
         self.scene = scene
         self.suggestion = suggestion
+        self.frames = frames
+        self.hint_words_info = hint_words_info
+        self.logo_data = logo_data
+        self.ocr_data = ocr_data
+        self.program_code_data = program_code_data
+        self.qrcode_data = qrcode_data
+        self.qrcode_locations = qrcode_locations
+        self.sface_data = sface_data
 
     def validate(self):
-        pass
+        if self.frames:
+            for k in self.frames:
+                if k:
+                    k.validate()
+        if self.hint_words_info:
+            for k in self.hint_words_info:
+                if k:
+                    k.validate()
+        if self.logo_data:
+            for k in self.logo_data:
+                if k:
+                    k.validate()
+        if self.program_code_data:
+            for k in self.program_code_data:
+                if k:
+                    k.validate()
+        if self.qrcode_locations:
+            for k in self.qrcode_locations:
+                if k:
+                    k.validate()
+        if self.sface_data:
+            for k in self.sface_data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4267,6 +5756,34 @@ class ImAuditResponseBodyImageResultsResultResults(TeaModel):
             result['Scene'] = self.scene
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
+        result['frames'] = []
+        if self.frames is not None:
+            for k in self.frames:
+                result['frames'].append(k.to_map() if k else None)
+        result['hintWordsInfo'] = []
+        if self.hint_words_info is not None:
+            for k in self.hint_words_info:
+                result['hintWordsInfo'].append(k.to_map() if k else None)
+        result['logoData'] = []
+        if self.logo_data is not None:
+            for k in self.logo_data:
+                result['logoData'].append(k.to_map() if k else None)
+        if self.ocr_data is not None:
+            result['ocrData'] = self.ocr_data
+        result['programCodeData'] = []
+        if self.program_code_data is not None:
+            for k in self.program_code_data:
+                result['programCodeData'].append(k.to_map() if k else None)
+        if self.qrcode_data is not None:
+            result['qrcodeData'] = self.qrcode_data
+        result['qrcodeLocations'] = []
+        if self.qrcode_locations is not None:
+            for k in self.qrcode_locations:
+                result['qrcodeLocations'].append(k.to_map() if k else None)
+        result['sfaceData'] = []
+        if self.sface_data is not None:
+            for k in self.sface_data:
+                result['sfaceData'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4279,6 +5796,40 @@ class ImAuditResponseBodyImageResultsResultResults(TeaModel):
             self.scene = m.get('Scene')
         if m.get('Suggestion') is not None:
             self.suggestion = m.get('Suggestion')
+        self.frames = []
+        if m.get('frames') is not None:
+            for k in m.get('frames'):
+                temp_model = ImAuditResponseBodyImageResultsResultResultsFrames()
+                self.frames.append(temp_model.from_map(k))
+        self.hint_words_info = []
+        if m.get('hintWordsInfo') is not None:
+            for k in m.get('hintWordsInfo'):
+                temp_model = ImAuditResponseBodyImageResultsResultResultsHintWordsInfo()
+                self.hint_words_info.append(temp_model.from_map(k))
+        self.logo_data = []
+        if m.get('logoData') is not None:
+            for k in m.get('logoData'):
+                temp_model = ImAuditResponseBodyImageResultsResultResultsLogoData()
+                self.logo_data.append(temp_model.from_map(k))
+        if m.get('ocrData') is not None:
+            self.ocr_data = m.get('ocrData')
+        self.program_code_data = []
+        if m.get('programCodeData') is not None:
+            for k in m.get('programCodeData'):
+                temp_model = ImAuditResponseBodyImageResultsResultResultsProgramCodeData()
+                self.program_code_data.append(temp_model.from_map(k))
+        if m.get('qrcodeData') is not None:
+            self.qrcode_data = m.get('qrcodeData')
+        self.qrcode_locations = []
+        if m.get('qrcodeLocations') is not None:
+            for k in m.get('qrcodeLocations'):
+                temp_model = ImAuditResponseBodyImageResultsResultResultsQrcodeLocations()
+                self.qrcode_locations.append(temp_model.from_map(k))
+        self.sface_data = []
+        if m.get('sfaceData') is not None:
+            for k in m.get('sfaceData'):
+                temp_model = ImAuditResponseBodyImageResultsResultResultsSfaceData()
+                self.sface_data.append(temp_model.from_map(k))
         return self
 
 
@@ -4388,12 +5939,20 @@ class ImAuditResponseBodyImageResults(TeaModel):
         return self
 
 
-class ImAuditResponseBodyTextResultsResultResultsDetails(TeaModel):
+class ImAuditResponseBodyTextResultsResultResultsDetailsContexts(TeaModel):
     def __init__(
         self,
-        label: str = None,
+        context: str = None,
+        lib_code: str = None,
+        lib_name: str = None,
+        positions: List[str] = None,
+        rule_type: str = None,
     ):
-        self.label = label
+        self.context = context
+        self.lib_code = lib_code
+        self.lib_name = lib_name
+        self.positions = positions
+        self.rule_type = rule_type
 
     def validate(self):
         pass
@@ -4404,14 +5963,71 @@ class ImAuditResponseBodyTextResultsResultResultsDetails(TeaModel):
             return _map
 
         result = dict()
+        if self.context is not None:
+            result['context'] = self.context
+        if self.lib_code is not None:
+            result['libCode'] = self.lib_code
+        if self.lib_name is not None:
+            result['libName'] = self.lib_name
+        if self.positions is not None:
+            result['positions'] = self.positions
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            self.context = m.get('context')
+        if m.get('libCode') is not None:
+            self.lib_code = m.get('libCode')
+        if m.get('libName') is not None:
+            self.lib_name = m.get('libName')
+        if m.get('positions') is not None:
+            self.positions = m.get('positions')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
+        return self
+
+
+class ImAuditResponseBodyTextResultsResultResultsDetails(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        contexts: List[ImAuditResponseBodyTextResultsResultResultsDetailsContexts] = None,
+    ):
+        self.label = label
+        self.contexts = contexts
+
+    def validate(self):
+        if self.contexts:
+            for k in self.contexts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.label is not None:
             result['Label'] = self.label
+        result['contexts'] = []
+        if self.contexts is not None:
+            for k in self.contexts:
+                result['contexts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Label') is not None:
             self.label = m.get('Label')
+        self.contexts = []
+        if m.get('contexts') is not None:
+            for k in m.get('contexts'):
+                temp_model = ImAuditResponseBodyTextResultsResultResultsDetailsContexts()
+                self.contexts.append(temp_model.from_map(k))
         return self
 
 
@@ -4756,7 +6372,6 @@ class ImportFpShotJobResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.job_id = job_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4837,7 +6452,9 @@ class ListAllMediaBucketRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The maximum number of media buckets to return. Valid values: 1 to 100. Default value: 50.
         self.maximum_page_size = maximum_page_size
+        # The token that is used to retrieve the next page of the query results. You do not need to specify this parameter in the first request. The response to the first request contains this parameter, which is added to the next request.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4891,8 +6508,14 @@ class ListAllMediaBucketResponseBodyMediaBucketListMediaBucket(TeaModel):
         referer: str = None,
         type: str = None,
     ):
+        # The name of the media bucket.
         self.bucket = bucket
+        # The settings of Object Storage Service (OSS) hotlink protection. For more information, see [Hotlink protection](~~31869~~).
         self.referer = referer
+        # The type of the media bucket. Valid values:
+        # 
+        # *   Input: input media bucket
+        # *   Output: output media bucket
         self.type = type
 
     def validate(self):
@@ -4965,8 +6588,11 @@ class ListAllMediaBucketResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The list of returned media buckets.
         self.media_bucket_list = media_bucket_list
+        # The identifier of the next page.
         self.next_page_token = next_page_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5039,6 +6665,480 @@ class ListAllMediaBucketResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAllMediaBucketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCustomEntitiesRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_group_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_group_id = custom_group_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity(TeaModel):
+    def __init__(
+        self,
+        custom_entity_id: str = None,
+        custom_entity_info: str = None,
+        custom_entity_name: str = None,
+    ):
+        self.custom_entity_id = custom_entity_id
+        self.custom_entity_info = custom_entity_info
+        self.custom_entity_name = custom_entity_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_entity_id is not None:
+            result['CustomEntityId'] = self.custom_entity_id
+        if self.custom_entity_info is not None:
+            result['CustomEntityInfo'] = self.custom_entity_info
+        if self.custom_entity_name is not None:
+            result['CustomEntityName'] = self.custom_entity_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomEntityId') is not None:
+            self.custom_entity_id = m.get('CustomEntityId')
+        if m.get('CustomEntityInfo') is not None:
+            self.custom_entity_info = m.get('CustomEntityInfo')
+        if m.get('CustomEntityName') is not None:
+            self.custom_entity_name = m.get('CustomEntityName')
+        return self
+
+
+class ListCustomEntitiesResponseBodyCustomEntities(TeaModel):
+    def __init__(
+        self,
+        custom_entity: List[ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity] = None,
+    ):
+        self.custom_entity = custom_entity
+
+    def validate(self):
+        if self.custom_entity:
+            for k in self.custom_entity:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomEntity'] = []
+        if self.custom_entity is not None:
+            for k in self.custom_entity:
+                result['CustomEntity'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_entity = []
+        if m.get('CustomEntity') is not None:
+            for k in m.get('CustomEntity'):
+                temp_model = ListCustomEntitiesResponseBodyCustomEntitiesCustomEntity()
+                self.custom_entity.append(temp_model.from_map(k))
+        return self
+
+
+class ListCustomEntitiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_entities: ListCustomEntitiesResponseBodyCustomEntities = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.custom_entities = custom_entities
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.custom_entities:
+            self.custom_entities.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_entities is not None:
+            result['CustomEntities'] = self.custom_entities.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomEntities') is not None:
+            temp_model = ListCustomEntitiesResponseBodyCustomEntities()
+            self.custom_entities = temp_model.from_map(m['CustomEntities'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomEntitiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomEntitiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomEntitiesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCustomGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListCustomGroupsResponseBodyCustomGroupsCustomGroup(TeaModel):
+    def __init__(
+        self,
+        custom_group_description: str = None,
+        custom_group_id: str = None,
+        custom_group_name: str = None,
+    ):
+        self.custom_group_description = custom_group_description
+        self.custom_group_id = custom_group_id
+        self.custom_group_name = custom_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_group_description is not None:
+            result['CustomGroupDescription'] = self.custom_group_description
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.custom_group_name is not None:
+            result['CustomGroupName'] = self.custom_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomGroupDescription') is not None:
+            self.custom_group_description = m.get('CustomGroupDescription')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('CustomGroupName') is not None:
+            self.custom_group_name = m.get('CustomGroupName')
+        return self
+
+
+class ListCustomGroupsResponseBodyCustomGroups(TeaModel):
+    def __init__(
+        self,
+        custom_group: List[ListCustomGroupsResponseBodyCustomGroupsCustomGroup] = None,
+    ):
+        self.custom_group = custom_group
+
+    def validate(self):
+        if self.custom_group:
+            for k in self.custom_group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomGroup'] = []
+        if self.custom_group is not None:
+            for k in self.custom_group:
+                result['CustomGroup'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_group = []
+        if m.get('CustomGroup') is not None:
+            for k in m.get('CustomGroup'):
+                temp_model = ListCustomGroupsResponseBodyCustomGroupsCustomGroup()
+                self.custom_group.append(temp_model.from_map(k))
+        return self
+
+
+class ListCustomGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_groups: ListCustomGroupsResponseBodyCustomGroups = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.custom_groups = custom_groups
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.custom_groups:
+            self.custom_groups.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_groups is not None:
+            result['CustomGroups'] = self.custom_groups.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomGroups') is not None:
+            temp_model = ListCustomGroupsResponseBodyCustomGroups()
+            self.custom_groups = temp_model.from_map(m['CustomGroups'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5411,6 +7511,246 @@ class ListCustomPersonsResponse(TeaModel):
         return self
 
 
+class ListCustomViewsRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_entity_id: str = None,
+        custom_group_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_entity_id = custom_entity_id
+        self.custom_group_id = custom_group_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_entity_id is not None:
+            result['CustomEntityId'] = self.custom_entity_id
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomEntityId') is not None:
+            self.custom_entity_id = m.get('CustomEntityId')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListCustomViewsResponseBodyCustomViewsCustomView(TeaModel):
+    def __init__(
+        self,
+        custom_view_id: str = None,
+        image_url: str = None,
+    ):
+        self.custom_view_id = custom_view_id
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_view_id is not None:
+            result['CustomViewId'] = self.custom_view_id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomViewId') is not None:
+            self.custom_view_id = m.get('CustomViewId')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        return self
+
+
+class ListCustomViewsResponseBodyCustomViews(TeaModel):
+    def __init__(
+        self,
+        custom_view: List[ListCustomViewsResponseBodyCustomViewsCustomView] = None,
+    ):
+        self.custom_view = custom_view
+
+    def validate(self):
+        if self.custom_view:
+            for k in self.custom_view:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomView'] = []
+        if self.custom_view is not None:
+            for k in self.custom_view:
+                result['CustomView'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_view = []
+        if m.get('CustomView') is not None:
+            for k in m.get('CustomView'):
+                temp_model = ListCustomViewsResponseBodyCustomViewsCustomView()
+                self.custom_view.append(temp_model.from_map(k))
+        return self
+
+
+class ListCustomViewsResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_views: ListCustomViewsResponseBodyCustomViews = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.custom_views = custom_views
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.custom_views:
+            self.custom_views.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_views is not None:
+            result['CustomViews'] = self.custom_views.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomViews') is not None:
+            temp_model = ListCustomViewsResponseBodyCustomViews()
+            self.custom_views = temp_model.from_map(m['CustomViews'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomViewsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomViewsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomViewsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFpShotDBRequest(TeaModel):
     def __init__(
         self,
@@ -5420,6 +7760,7 @@ class ListFpShotDBRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the media fingerprint libraries. You can obtain the library IDs from the response parameters of the [CreateFpShotDB](~~170149~~) operation. You can query up to 10 libraries at a time. Separate multiple library IDs with commas (,).
         self.fp_dbids = fp_dbids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5471,10 +7812,20 @@ class ListFpShotDBResponseBodyFpShotDBListFpShotDB(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The description of the media fingerprint library.
         self.description = description
+        # The ID of the media fingerprint library.
         self.fp_dbid = fp_dbid
+        # The model ID of the media fingerprint library. A value of **11** indicates that the library is a text fingerprint library. A value of **12** indicates that the library is a video fingerprint library. A value of **13** indicates that the library is an audio fingerprint library. A value of **14** indicates that the library is an image fingerprint library.
         self.model_id = model_id
+        # The name of the media fingerprint library.
         self.name = name
+        # The status of the media fingerprint library. Default value: **offline**. ****Valid values:
+        # 
+        # *   **offline**: The media fingerprint library is offline.
+        # *   **active**: The media fingerprint library is online.
+        # *   **paused**: The media fingerprint library is paused.
+        # *   **deleted**: The media fingerprint library is deleted.
         self.status = status
 
     def validate(self):
@@ -5582,8 +7933,11 @@ class ListFpShotDBResponseBody(TeaModel):
         non_exist_ids: ListFpShotDBResponseBodyNonExistIds = None,
         request_id: str = None,
     ):
+        # The array of media fingerprint libraries.
         self.fp_shot_dblist = fp_shot_dblist
+        # The IDs of the media fingerprint libraries that do not exist. If all the queried libraries exist, the response does not contain this parameter.
         self.non_exist_ids = non_exist_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5666,6 +8020,7 @@ class ListFpShotDBResponse(TeaModel):
 class ListFpShotFilesRequest(TeaModel):
     def __init__(
         self,
+        end_time: str = None,
         fp_dbid: str = None,
         next_page_token: str = None,
         owner_account: str = None,
@@ -5673,14 +8028,20 @@ class ListFpShotFilesRequest(TeaModel):
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        start_time: str = None,
     ):
+        self.end_time = end_time
+        # The ID of the media fingerprint library whose files you want to query. You can obtain the library ID from the response parameters of the [CreateFpShotDB](~~170149~~) operation.
         self.fp_dbid = fp_dbid
+        # The token of the next page. This parameter is specified if you require paged queries. When you request the first page of query results, leave the NextPageToken parameter empty. When you request more query results, specify the value of the NextPageToken parameter returned in the query results on the previous page.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -5691,6 +8052,8 @@ class ListFpShotFilesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.fp_dbid is not None:
             result['FpDBId'] = self.fp_dbid
         if self.next_page_token is not None:
@@ -5705,10 +8068,14 @@ class ListFpShotFilesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('FpDBId') is not None:
             self.fp_dbid = m.get('FpDBId')
         if m.get('NextPageToken') is not None:
@@ -5723,6 +8090,8 @@ class ListFpShotFilesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -5733,8 +8102,11 @@ class ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the input file resides.
         self.location = location
+        # The name of the Object Storage Service (OSS) object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -5771,10 +8143,15 @@ class ListFpShotFilesResponseBodyFpShotFileListFpShotFile(TeaModel):
         file_id: str = None,
         input_file: ListFpShotFilesResponseBodyFpShotFileListFpShotFileInputFile = None,
         primary_key: str = None,
+        store_time: str = None,
     ):
+        # The ID of the video file.
         self.file_id = file_id
+        # The information about the job input.
         self.input_file = input_file
+        # The unique primary key of the video.
         self.primary_key = primary_key
+        self.store_time = store_time
 
     def validate(self):
         if self.input_file:
@@ -5792,6 +8169,8 @@ class ListFpShotFilesResponseBodyFpShotFileListFpShotFile(TeaModel):
             result['InputFile'] = self.input_file.to_map()
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
+        if self.store_time is not None:
+            result['StoreTime'] = self.store_time
         return result
 
     def from_map(self, m: dict = None):
@@ -5803,6 +8182,8 @@ class ListFpShotFilesResponseBodyFpShotFileListFpShotFile(TeaModel):
             self.input_file = temp_model.from_map(m['InputFile'])
         if m.get('PrimaryKey') is not None:
             self.primary_key = m.get('PrimaryKey')
+        if m.get('StoreTime') is not None:
+            self.store_time = m.get('StoreTime')
         return self
 
 
@@ -5848,8 +8229,11 @@ class ListFpShotFilesResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The media fingerprint files. For more information, see the "FpShotFile" section of the [Data types](~~29251~~) topic.
         self.fp_shot_file_list = fp_shot_file_list
+        # The token of the next page.
         self.next_page_token = next_page_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6079,7 +8463,6 @@ class ListFpShotImportJobResponseBody(TeaModel):
     ):
         self.fp_shot_import_job_list = fp_shot_import_job_list
         self.non_exist_ids = non_exist_ids
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -6176,15 +8559,31 @@ class ListJobRequest(TeaModel):
         start_of_job_created_time_range: str = None,
         state: str = None,
     ):
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.end_of_job_created_time_range = end_of_job_created_time_range
+        # The maximum number of media workflow execution instances to return on each page.
+        # 
+        # *   Default value: **10**.
+        # *   Valid values: **1 to 100**.
         self.maximum_page_size = maximum_page_size
+        # The token that is used to retrieve the next page of the query results. You do not need to specify this parameter in the first request. The response to the first request contains this parameter, which you add to the next request.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue. To view the ID of the MPS queue, log on to the [MPS console](https://mps.console.aliyun.com/overview) and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.start_of_job_created_time_range = start_of_job_created_time_range
+        # The status of the transcoding job. Default value: **All**. Valid values:
+        # 
+        # *   **All**: All statuses.
+        # *   **Submitted**: The job is submitted.
+        # *   **Transcoding**: The job is being transcoded.
+        # *   **TranscodeSuccess**: Transcoding is successful.
+        # *   **TranscodeFail**: Transcoding failed.
+        # *   **TranscodeCancelled**: Transcoding is canceled.
         self.state = state
 
     def validate(self):
@@ -6250,8 +8649,11 @@ class ListJobResponseBodyJobListJobInput(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket in which the job input is stored.
         self.bucket = bucket
+        # The OSS region where the job input resides.
         self.location = location
+        # The name of the OSS object of the job input.
         self.object = object
 
     def validate(self):
@@ -6289,8 +8691,11 @@ class ListJobResponseBodyJobListJobMNSMessageResult(TeaModel):
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code that is returned when the job fails. This parameter is not returned if the job is created.
         self.error_code = error_code
+        # The error message that is returned when the job fails. This parameter is not returned if the job is created.
         self.error_message = error_message
+        # The ID of the success message.
         self.message_id = message_id
 
     def validate(self):
@@ -6327,7 +8732,16 @@ class ListJobResponseBodyJobListJobOutputAudioVolume(TeaModel):
         level: str = None,
         method: str = None,
     ):
+        # The volume adjustment range.
+        # 
+        # *   Unit: dB.
+        # *   Default: **-20db**.
         self.level = level
+        # The volume adjustment method. Valid values:
+        # 
+        # *   **auto**: The volume is automatically adjusted.
+        # *   **dynamic**: The volume is dynamically adjusted.
+        # *   **linear**: The volume is linearly adjusted.
         self.method = method
 
     def validate(self):
@@ -6365,12 +8779,34 @@ class ListJobResponseBodyJobListJobOutputAudio(TeaModel):
         samplerate: str = None,
         volume: ListJobResponseBodyJobListJobOutputAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels.
+        # 
+        # *   If the Codec parameter is set to mp3, this parameter can be set only to 1 or 2.
+        # *   If the Codec parameter is set to aac, this parameter can be set only to 1, 2, 4, 5, 6, or 8.
+        # *   Default value: 2.
         self.channels = channels
+        # The audio codec.
+        # 
+        # *   Valid values: aac, mp3, vorbis, and flac.
+        # *   Default value: **aac**.
         self.codec = codec
+        # The codec profile of the audio. Valid values when the Codec parameter is set to aac: aaclow, aache, aachev2, aacld, and aaceld.
         self.profile = profile
+        # The level of quality control on the audio.
         self.qscale = qscale
+        # The sampling rate.
+        # 
+        # *   Valid values: 22050, 32000, 44100, 48000, and 96000.
+        # *   Unit: Hz.
+        # *   Default value: 44100.
+        # *   If the video container format is FLV and the audio codec is MP3, you cannot set this parameter to 32000, 48000, or 96000. If the audio codec is MP3, you cannot set this parameter to 96000.
         self.samplerate = samplerate
+        # The volume configuration.
         self.volume = volume
 
     def validate(self):
@@ -6425,7 +8861,17 @@ class ListJobResponseBodyJobListJobOutputClipTimeSpan(TeaModel):
         duration: str = None,
         seek: str = None,
     ):
+        # The duration of the clip.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+        # *   Examples: 01:00:59.999 and 32000.23.
         self.duration = duration
+        # The time when the clip starts.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+        # *   Examples: 01:59:59.999 and 32000.23.
         self.seek = seek
 
     def validate(self):
@@ -6457,6 +8903,7 @@ class ListJobResponseBodyJobListJobOutputClip(TeaModel):
         self,
         time_span: ListJobResponseBodyJobListJobOutputClipTimeSpan = None,
     ):
+        # The time span of the clip.
         self.time_span = time_span
 
     def validate(self):
@@ -6486,6 +8933,15 @@ class ListJobResponseBodyJobListJobOutputContainer(TeaModel):
         self,
         format: str = None,
     ):
+        # The format of the container.
+        # 
+        # *   Default value: mp4.
+        # *   Video formats include FLV, MP4, HLS (M3U8 + TS), and MPEG-DASH (MPD + fMP4)
+        # *   Audio formats include MP3, MP4, Ogg, FLAC, and M4A.
+        # *   Image formats include GIF and WebP.
+        # *   If the container format is GIF, the video codec must be set to GIF.
+        # *   If the container format is WebP, the video codec must be set to WebP.
+        # *   If the container format is FLV, the video codec cannot be set to H.265.
         self.format = format
 
     def validate(self):
@@ -6518,11 +8974,19 @@ class ListJobResponseBodyJobListJobOutputEncryption(TeaModel):
         skip_cnt: str = None,
         type: str = None,
     ):
+        # The encryption ID.
         self.id = id
+        # The key that is used to encrypt the video.
         self.key = key
+        # The key encryption method. Valid values: Base64 and KMS.
+        # 
+        # >  For example, if the key is `"encryptionkey128”`, you can encrypt the key in the Base64 format or use Key Management Service (KMS) to encrypt the key.````
         self.key_type = key_type
+        # The URL that is used to request the key. The URL is Base64-encoded.
         self.key_uri = key_uri
+        # The number of unencrypted frames at the beginning of the video. Leaving these frames unencrypted enables video playback to start quickly.
         self.skip_cnt = skip_cnt
+        # The encryption type. Valid value: hls-aes-128.
         self.type = type
 
     def validate(self):
@@ -6571,7 +9035,15 @@ class ListJobResponseBodyJobListJobOutputM3U8NonStandardSupportTS(TeaModel):
         md_5support: bool = None,
         size_support: bool = None,
     ):
+        # Indicates whether to support the output of the md5 value of the TS file in the M3U8 video. Valid values:
+        # 
+        # *   **true**: supported.
+        # *   **false**: not supported.
         self.md_5support = md_5support
+        # Indicates whether to support the output of the size of the TS file in the M3U8 video.
+        # 
+        # *   **true**: supported.
+        # *   **false**: not supported.
         self.size_support = size_support
 
     def validate(self):
@@ -6603,6 +9075,7 @@ class ListJobResponseBodyJobListJobOutputM3U8NonStandardSupport(TeaModel):
         self,
         ts: ListJobResponseBodyJobListJobOutputM3U8NonStandardSupportTS = None,
     ):
+        # The non-standard support configuration for TS files. The value must be a JSON object. For more information, see [Parameter details](~~29253~~).
         self.ts = ts
 
     def validate(self):
@@ -6635,9 +9108,22 @@ class ListJobResponseBodyJobListJobOutputMergeListMerge(TeaModel):
         role_arn: str = None,
         start: str = None,
     ):
+        # The start point in time of the clip.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Example values: 01:59:59.999 and 32000.23.
         self.duration = duration
+        # The OSS URL of the clip.
+        # 
+        # *   Example: `http://example-bucket-****.oss-cn-hangzhou.aliyuncs.com/example-object.flv`.
+        # *   The object must be URL-encoded by using the UTF-8 standard.
         self.merge_url = merge_url
+        # The Alibaba Cloud Resource Name (ARN) of the role used for proxy authorization.
         self.role_arn = role_arn
+        # The start point in time of the clip.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Example values: 01:59:59.999 and 32000.23.
         self.start = start
 
     def validate(self):
@@ -6715,9 +9201,16 @@ class ListJobResponseBodyJobListJobOutputMuxConfigGif(TeaModel):
         is_custom_palette: str = None,
         loop: str = None,
     ):
+        # The color dithering algorithm of the palette. Valid values: **sierra** and **bayer**.
         self.dither_mode = dither_mode
+        # The duration for which the final frame is paused. Unit: centiseconds.
         self.final_delay = final_delay
+        # Indicates whether the custom palette was used. Valid values:
+        # 
+        # - **true**: custom.
+        # - **false**: non-custom.
         self.is_custom_palette = is_custom_palette
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -6757,6 +9250,10 @@ class ListJobResponseBodyJobListJobOutputMuxConfigSegment(TeaModel):
         self,
         duration: str = None,
     ):
+        # The length of the segment. The value must be an integer. Unit: seconds. 
+        # 
+        # - Valid values: [1,10].
+        # - Default value: 10.
         self.duration = duration
 
     def validate(self):
@@ -6784,6 +9281,7 @@ class ListJobResponseBodyJobListJobOutputMuxConfigWebp(TeaModel):
         self,
         loop: str = None,
     ):
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -6813,8 +9311,11 @@ class ListJobResponseBodyJobListJobOutputMuxConfig(TeaModel):
         segment: ListJobResponseBodyJobListJobOutputMuxConfigSegment = None,
         webp: ListJobResponseBodyJobListJobOutputMuxConfigWebp = None,
     ):
+        # The transmuxing configuration for GIF.
         self.gif = gif
+        # The segment configuration. The value is a JSON object.
         self.segment = segment
+        # The transmuxing configuration for WebP.
         self.webp = webp
 
     def validate(self):
@@ -6861,9 +9362,24 @@ class ListJobResponseBodyJobListJobOutputOpeningListOpening(TeaModel):
         width: str = None,
         open_url: str = None,
     ):
+        # The height of the opening part. Valid values: values in the range of (0, 4096), -1, and full.
+        # 
+        # *   Default value: **-1**.
+        # *   A value of -1 indicates that the height of the source of the opening part is retained.
+        # *   A value of full indicates that the height of the main part is used for the opening part.
         self.height = height
+        # The amount of time after which the opening part is played. The value starts from 0.
+        # 
+        # *   Unit: seconds.
+        # *   Default value: **0**.
         self.start = start
+        # The width of the opening part. Valid values: values in the range of (0, 4096), -1, and full.
+        # 
+        # *   Default value: **-1**.
+        # *   A value of -1 indicates that the width of the source of the opening part is retained.
+        # *   A value of full indicates that the width of the main part is used for the opening part.
         self.width = width
+        # The OSS URL of the opening part of the video.
         self.open_url = open_url
 
     def validate(self):
@@ -6941,9 +9457,13 @@ class ListJobResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubtitleFi
         object: str = None,
         role_arn: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The OSS region where the output file resides.
         self.location = location
+        # The name of the OSS object of the output file.
         self.object = object
+        # The ARN of the role used for proxy authorization.
         self.role_arn = role_arn
 
     def validate(self):
@@ -6986,9 +9506,16 @@ class ListJobResponseBodyJobListJobOutputOutSubtitleListOutSubtitle(TeaModel):
         out_subtitle_file: ListJobResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubtitleFile = None,
         success: bool = None,
     ):
+        # The video track. Format: 0:{stream}:{stream sequence number}, that is, 0:v:{video_index}. The value of stream is v, which indicates an audio stream of a video. The sequence number is the index of the audio stream in the list and starts from 0.
         self.map = map
+        # The error message that is returned when the job fails to be created. This parameter is not returned if the job is created.
         self.message = message
+        # The details of the output file.
         self.out_subtitle_file = out_subtitle_file
+        # Indicates whether the job was successful. Valid values:
+        # 
+        # *   **true**: The job was successful.
+        # *   **fasle**: The job failed.
         self.success = success
 
     def validate(self):
@@ -7068,9 +9595,13 @@ class ListJobResponseBodyJobListJobOutputOutputFile(TeaModel):
         object: str = None,
         role_arn: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The OSS region where the output file resides.
         self.location = location
+        # The name of the OSS object of the output file.
         self.object = object
+        # The ARN of the role used for proxy authorization.
         self.role_arn = role_arn
 
     def validate(self):
@@ -7117,13 +9648,21 @@ class ListJobResponseBodyJobListJobOutputPropertiesFormat(TeaModel):
         size: str = None,
         start_time: str = None,
     ):
+        # The total bitrate.
         self.bitrate = bitrate
+        # The total duration.
         self.duration = duration
+        # The full name of the container format.
         self.format_long_name = format_long_name
+        # The short name of the container format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format_name = format_name
+        # The total number of program streams.
         self.num_programs = num_programs
+        # The total number of media streams.
         self.num_streams = num_streams
+        # The size of the file.
         self.size = size
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -7194,21 +9733,37 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsAudioStreamListAudioSt
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The output layout of the sound channels.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
+        # The language. For more information, see [FFmeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO-639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate.
         self.samplerate = samplerate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -7332,7 +9887,11 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamListSubt
         index: str = None,
         lang: str = None,
     ):
+        # The sequence number of the subtitle stream. 
+        # 
+        # The value specifies the position of the subtitle stream in all subtitle streams.
         self.index = index
+        # The language.
         self.lang = lang
 
     def validate(self):
@@ -7401,8 +9960,11 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoSt
         cost_bandwidth: str = None,
         preload_time: str = None,
     ):
+        # The average bitrate.
         self.avg_bitrate = avg_bitrate
+        # The maximum bandwidth that was consumed.
         self.cost_bandwidth = cost_bandwidth
+        # The amount of preload time.
         self.preload_time = preload_time
 
     def validate(self):
@@ -7460,28 +10022,51 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVideoSt
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR).
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames).
         self.has_bframes = has_bframes
+        # The height of the video in pixels.
         self.height = height
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
         self.index = index
+        # The language. For more information, see [FFmeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO-639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The network bandwidth consumption.
         self.network_cost = network_cost
+        # The total frame rate.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The sample aspect ratio (SAR) of the video stream.
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The width of the video in pixels.
         self.width = width
 
     def validate(self):
@@ -7636,8 +10221,11 @@ class ListJobResponseBodyJobListJobOutputPropertiesStreams(TeaModel):
         subtitle_stream_list: ListJobResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamList = None,
         video_stream_list: ListJobResponseBodyJobListJobOutputPropertiesStreamsVideoStreamList = None,
     ):
+        # The list of audio streams.
         self.audio_stream_list = audio_stream_list
+        # The list of subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
+        # The list of video streams.
         self.video_stream_list = video_stream_list
 
     def validate(self):
@@ -7689,14 +10277,23 @@ class ListJobResponseBodyJobListJobOutputProperties(TeaModel):
         streams: ListJobResponseBodyJobListJobOutputPropertiesStreams = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # The format of the video file.
         self.file_format = file_format
+        # The size of the file.
         self.file_size = file_size
+        # The format information.
         self.format = format
+        # The frame rate.
         self.fps = fps
+        # The length of the video.
         self.height = height
+        # The stream information.
         self.streams = streams
+        # The width of the video.
         self.width = width
 
     def validate(self):
@@ -7763,8 +10360,11 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitl
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The OSS region where the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -7802,8 +10402,19 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitl
         font_name: str = None,
         input: ListJobResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitleInput = None,
     ):
+        # The character set used by the external subtitle. 
+        # 
+        # - Valid values: UTF-8, GBK, BIG5, and auto.
+        # - Default value: **auto**.
+        # 
+        # >  If you set this parameter to auto, the detected character set may not be the actual character set. We recommend that you set this parameter to another value.
         self.char_enc = char_enc
+        # The font of the hard subtitles converted from external subtitles.
         self.font_name = font_name
+        # The input subtitle file. 
+        # 
+        # - Files in the SRT or ASS format are supported. For more information, see [Parameter details](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/parameter-details).
+        # - Example: `{“Bucket”:”example-bucket”,“Location”:”oss-cn-hangzhou”,“Object”:”example.srt”}`.
         self.input = input
 
     def validate(self):
@@ -7876,6 +10487,7 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfigSubtitleListSubtitle(TeaM
         self,
         map: str = None,
     ):
+        # The sequence number of the video stream. The sequence number is the index of the video stream in the list and starts from 0. If you do not set the corresponding parameter in the request, the default video stream is selected.
         self.map = map
 
     def validate(self):
@@ -7939,7 +10551,9 @@ class ListJobResponseBodyJobListJobOutputSubtitleConfig(TeaModel):
         ext_subtitle_list: ListJobResponseBodyJobListJobOutputSubtitleConfigExtSubtitleList = None,
         subtitle_list: ListJobResponseBodyJobListJobOutputSubtitleConfigSubtitleList = None,
     ):
+        # The list of external subtitles. The value is a JSON array.
         self.ext_subtitle_list = ext_subtitle_list
+        # The list of subtitles.
         self.subtitle_list = subtitle_list
 
     def validate(self):
@@ -7976,6 +10590,10 @@ class ListJobResponseBodyJobListJobOutputSuperReso(TeaModel):
         self,
         is_half_sample: str = None,
     ):
+        # Indicates whether to obtain parameters related to the sampling rate. Valid values:
+        # 
+        # - **true**: The parameters are obtained.
+        # - **false**: The parameters are not obtained.
         self.is_half_sample = is_half_sample
 
     def validate(self):
@@ -8009,12 +10627,29 @@ class ListJobResponseBodyJobListJobOutputTailSlateListTailSlate(TeaModel):
         tail_url: str = None,
         width: str = None,
     ):
+        # The color of the bars that are added to the ending part if the size of the ending part is smaller than that of the main part. Default value: **White**. For more information, see [Background colors](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/29253/cn_zh/1502784952344/color.txt?spm=a2c4g.11186623.2.63.1df840f74IH4Eq&file=color.txt).
         self.bg_color = bg_color
+        # The amount of time between the end of the main part and the beginning of the ending part. During the transition, the last frame of the main part fades out, and the first frame of the ending part fades in. Unit: seconds. Default value: 0.
         self.blend_duration = blend_duration
+        # The height of the ending part. Valid values: values in the range of (0, 4096), -1, and full. 
+        # 
+        # - A value of -1 indicates that the height of the source of the ending part is retained.
+        # - A value of full indicates that the height of the main part is used for the ending part.
+        # - Default value: **-1**.
         self.height = height
+        # Indicates whether to merge the audio content of the ending part. Valid values:
+        # 
+        # - **true**: The audio content of the ending part is merged.
+        # - **false**: The audio content of the ending part is not merged.
         self.is_merge_audio = is_merge_audio
+        # The start time.
         self.start = start
+        # The OSS URL of the ending part.
         self.tail_url = tail_url
+        # The width of the ending part. Valid values: values in the range of (0, 4096), -1, and full.  
+        # 
+        # - A value of -1 indicates that the width of the source of the ending part is retained. A value of full indicates that the width of the main part is used for the ending part.
+        # - Default value: **-1**.
         self.width = width
 
     def validate(self):
@@ -8108,13 +10743,47 @@ class ListJobResponseBodyJobListJobOutputTransConfig(TeaModel):
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method of resolution adjustment. Default value: **none**. Valid values: rescale, crop, pad, and none.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether the audio bitrate is checked. If the output audio bitrate is higher than the input audio bitrate, the system considers that the output bitrate equals the input bitrate.
+        # 
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether the audio bitrate is checked. If the output audio bitrate is higher than the audio bitrate of the media source, a transcoding failure is returned without transcoding the media. This parameter takes precedence over the IsCheckAudioBitrate parameter.
+        # 
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, the system considers that the output resolution equals the input resolution.
+        # 
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso = is_check_reso
+        # Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, a transcoding failure is returned.
+        # 
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether the video bitrate is checked. If the output video bitrate is higher than the input video bitrate, the system considers that the output bitrate equals the input bitrate.
+        # 
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether the video bitrate is checked. If the bitrate of the output video is higher than that of the input video, a transcoding failure is returned without transcoding the video. This parameter takes precedence over the IsCheckVideoBitrate parameter.
+        # 
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: false.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The transcoding mode.
+        # 
+        # *   Valid values: onepass, twopass, and CBR.
+        # *   Default value: onepass.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -8171,7 +10840,9 @@ class ListJobResponseBodyJobListJobOutputVideoBitrateBnd(TeaModel):
         max: str = None,
         min: str = None,
     ):
+        # The maximum bitrate. Unit: Kbit/s.
         self.max = max
+        # The minimum bitrate. Unit: Kbit/s.
         self.min = min
 
     def validate(self):
@@ -8222,25 +10893,75 @@ class ListJobResponseBodyJobListJobOutputVideo(TeaModel):
         scan_mode: str = None,
         width: str = None,
     ):
+        # The average bitrate of the video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
         self.bufsize = bufsize
+        # The codec. Valid values: **H.264**, **H.265**, **GIF**, and **WEBP**.
         self.codec = codec
+        # The constant rate factor. If this parameter is specified, the setting of the Bitrate parameter becomes invalid. Default value: **26**.
         self.crf = crf
+        # The video cropping mode. The following modes are supported:
+        # 
+        # *   **border**: automatically detects and removes borders.
+        # *   Custom cropping. Specify a value in the format of width:height:left:top to crop the video based on the custom settings. Example: 1280:800:0:140.
         self.crop = crop
+        # The level of the independent denoising algorithm.
         self.degrain = degrain
+        # The frame rate.
+        # 
+        # *   The value is 60 if the frame rate of the input file exceeds 60.
+        # *   Default value: the frame rate of the input file.
         self.fps = fps
+        # The maximum number of frames between two keyframes. Default value: 250.
         self.gop = gop
+        # The height.
+        # 
+        # *   Unit: pixels.
+        # *   Default value: the original height of the video.
         self.height = height
+        # The maximum frame rate.
         self.max_fps = max_fps
+        # The maximum bitrate of the video. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black borders to be added to the video. Unit: pixels.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Example: 1280:800:0:140.
         self.pad = pad
+        # The video color format. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Default value: medium. Valid values:
+        # 
+        # *   **veryfast**\
+        # *   **fast**\
+        # *   **medium**\
+        # *   **slow**\
+        # *   **slower**\
         self.preset = preset
+        # The codec profile. Valid values:
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
+        # *   Default value: **high**.
         self.profile = profile
+        # The level of quality control on the video.
         self.qscale = qscale
+        # The priority of the resource.
         self.reso_priority = reso_priority
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**: An interlaced scan was performed.
+        # *   **progressive**: A progressive scan was performed.
+        # *   **auto**: A scan was performed based on the video source.
         self.scan_mode = scan_mode
+        # The width.
+        # 
+        # *   Unit: pixels.
+        # *   Default value: the original width of the video.
         self.width = width
 
     def validate(self):
@@ -8348,8 +11069,11 @@ class ListJobResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile(TeaMode
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The OSS region where the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -8392,13 +11116,69 @@ class ListJobResponseBodyJobListJobOutputWaterMarkListWaterMark(TeaModel):
         water_mark_template_id: str = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video. If this parameter was specified in the request, the value overwrites the corresponding parameter in the watermark template. Default value: 0. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: \[8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the horizontal offset to the width in the output video resolution.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.dx = dx
+        # The vertical offset of the watermark image relative to the output video. If this parameter was specified in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the vertical offset.
+        # 
+        #     *   Valid values: \[8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the vertical offset to the height in the output video resolution.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.dy = dy
+        # The height of the watermark. If this parameter was specified in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the watermark height.
+        # 
+        #     *   Valid values: \[8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the watermark height to the height in the output video resolution.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.height = height
+        # The watermark input file.
         self.input_file = input_file
+        # The position of the watermark.
+        # 
+        # *   **TopRight**: the upper-right corner.
+        # *   **TopLeft**: the upper-left corner.
+        # *   **BottomRight**: the lower-right corner.
+        # *   **BottomLeft**: the lower-left corner.
         self.refer_pos = refer_pos
+        # The type of the watermark. If this parameter was specified in the request, the value overwrites the corresponding parameter in the watermark template. For more information, see [Parameter details](~~29253~~). Valid values:
+        # 
+        # *   **Image**: an image watermark.
+        # *   **Text**: a text watermark.
         self.type = type
+        # The ID of the watermark template.
         self.water_mark_template_id = water_mark_template_id
+        # The width of the watermark. If this parameter was specified in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the watermark width.
+        # 
+        #     *   Valid values: \[8,4096].
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the watermark width to the width in the output video resolution.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.width = width
 
     def validate(self):
@@ -8516,31 +11296,72 @@ class ListJobResponseBodyJobListJobOutput(TeaModel):
         water_mark_config_url: str = None,
         water_mark_list: ListJobResponseBodyJobListJobOutputWaterMarkList = None,
     ):
+        # The audio configuration.
         self.audio = audio
+        # The sequence number of the audio stream.
+        # 
+        # *   Format: `0:a:{sequence number}`.
+        # *   The sequence number is the index of the audio stream in the list and starts from 0. If you do not set the corresponding parameter in the request, the default audio stream is selected.
         self.audio_stream_map = audio_stream_map
+        # The information about the clip.
         self.clip = clip
+        # The information about the container.
         self.container = container
+        # The configuration of watermark blurring. The value must be a JSON object. For more information, see [Parameter details](~~29253~~).
         self.de_watermark = de_watermark
+        # The encryption configuration. Only outputs in the M3U8 format are supported.
         self.encryption = encryption
+        # The non-standard support configuration for M3U8. The value must be a JSON object. For more information, see [Parameter details](~~29253~~).
         self.m_3u8non_standard_support = m_3u8non_standard_support
+        # The URL of the merging configuration file. You can specify either the MergeList or MergeConfigUrl parameter.  
+        # 
+        # - The configuration file that you specify by using the MergeConfigUrl parameter can contain up to 50 merged clips.
+        # - The MergeConfigUrl parameter specifies the URL of the configuration file for clip merging.
+        # - Make sure that the configuration file is stored as an object in OSS and that MPS can access the OSS object. For information about the file content, see the details about merging parameters.
+        # - Example of the content of mergeConfigfile: `{"MergeList":[{"MergeURL":"http://exampleBucket****.oss-cn-hangzhou.aliyuncs.com/video_01.mp4"}]}`.
         self.merge_config_url = merge_config_url
+        # The clip merging configuration.
         self.merge_list = merge_list
+        # The transmuxing configuration.
         self.mux_config = mux_config
+        # The list of opening parts.
         self.opening_list = opening_list
+        # The output subtitle list.
         self.out_subtitle_list = out_subtitle_list
+        # The information about the output file.
         self.output_file = output_file
+        # The priority of the job in the MPS queue to which the job is added. 
+        # 
+        # - A value of 10 indicates the highest priority.
+        # - Default value: **6**.
         self.priority = priority
+        # The media properties.
         self.properties = properties
+        # The video rotation angle.
         self.rotate = rotate
+        # The subtitle configuration.
         self.subtitle_config = subtitle_config
+        # Indicates that the resolution of the source video is used.
         self.super_reso = super_reso
+        # The list of ending parts.
         self.tail_slate_list = tail_slate_list
+        # The ID of the template.
         self.template_id = template_id
+        # The general transcoding configuration. If this parameter was specified in the request, the value overwrites the corresponding parameter in the specified transcoding template.
         self.trans_config = trans_config
+        # The custom data.
         self.user_data = user_data
+        # The video configuration.
         self.video = video
+        # The sequence number of the video stream. 
+        # 
+        # - Format: 0:a:{Sequence number}. Example value: 0:a:0.
+        # - The sequence number is the index of the video stream in the list and starts from 0.
+        # - If you do not set the corresponding parameter in the request, the default video stream is selected.
         self.video_stream_map = video_stream_map
+        # The URL of the watermark configuration file.
         self.water_mark_config_url = water_mark_config_url
+        # The list of watermarks.
         self.water_mark_list = water_mark_list
 
     def validate(self):
@@ -8728,16 +11549,33 @@ class ListJobResponseBodyJobListJob(TeaModel):
         pipeline_id: str = None,
         state: str = None,
     ):
+        # The error code that is returned when the job fails. This parameter is not returned if the job is successful.
         self.code = code
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The time when the transcoding job was complete.
         self.finish_time = finish_time
+        # The information about the job input.
         self.input = input
+        # The ID of the job.
         self.job_id = job_id
+        # The message sent by Message Service (MNS) to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The message that is returned when the job fails. This parameter is not returned if the job is successful.
         self.message = message
+        # The output of the job.
         self.output = output
+        # The transcoding progress.
         self.percent = percent
+        # The ID of the MPS queue.
         self.pipeline_id = pipeline_id
+        # The status of the job. Valid values:
+        # 
+        # *   **Submitted**: The job is submitted.
+        # *   **Transcoding**: The job is being transcoded.
+        # *   **TranscodeSuccess**: Transcoding is successful.
+        # *   **TranscodeFail**: Transcoding failed.
+        # *   **TranscodeCancelled**: Transcoding is canceled.
         self.state = state
 
     def validate(self):
@@ -8850,8 +11688,11 @@ class ListJobResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The list of transcoding jobs.
         self.job_list = job_list
+        # The token that is used to retrieve the next page of the query results. You must record the token and specify it in the next request.
         self.next_page_token = next_page_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8941,10 +11782,15 @@ class ListMediaWorkflowExecutionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The Object Storage Service (OSS) URL of the input file of the media workflow. The URL complies with RFC 3986 and is encoded in UTF-8, with reserved characters being percent-encoded.
         self.input_file_url = input_file_url
+        # The maximum number of media workflow execution instances to return. Valid values: `[1,100]`. Default value: **10**.
         self.maximum_page_size = maximum_page_size
+        # The ID of the media workflow whose execution instances you want to query. To obtain the workflow ID, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Workflow Settings**.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow. To obtain the workflow name, you can log on to the **MPS console** and choose **Workflows** > **Workflow Settings**.
         self.media_workflow_name = media_workflow_name
+        # The token that is used to retrieve the next page of the query results. The value is a 32-bit UUID. When you request the first page of query results, leave the NextPageToken parameter empty. When you request more query results, specify the value of the NextPageToken parameter returned in the query results on the previous page.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9010,8 +11856,11 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned when the job fails. If the job is successful, this parameter is not returned.
         self.error_code = error_code
+        # The error message returned when the job fails. If the job is successful, this parameter is not returned.
         self.error_message = error_message
+        # The ID of the success message. If the job fails, this parameter is not returned.
         self.message_id = message_id
 
     def validate(self):
@@ -9055,14 +11904,38 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
         state: str = None,
         type: str = None,
     ):
+        # The error code returned.
+        # 
+        # *   The specific error code appears if the activity status is **Fail**.
+        # *   This parameter is not returned if the activity status is **Success**.
         self.code = code
+        # The end time of the activity.
         self.end_time = end_time
+        # The ID of the job generated when the activity is executed. We recommend that you save this ID for subsequent calls of other operations.
         self.job_id = job_id
+        # The message sent by Message Service (MNS) to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned.
+        # 
+        # *   The detailed error message appears if the activity status is **Fail**.
+        # *   This parameter is not returned if the activity status is **Success**.
         self.message = message
+        # The name of the media workflow activity. 
+        # 
+        # >  The name of an activity in a media workflow is unique.
         self.name = name
+        # The start time of the activity.
         self.start_time = start_time
+        # The status of the activity. Valid values:
+        # 
+        # *   **Running**: The activity is being executed.
+        # *   **Fail**: The activity failed to be executed.
+        # *   **Skipped**: The activity was skipped.
+        # *   **Success**: The activity was successfully executed.
+        # 
+        # >  For example, the high-definition and standard-definition transcoding activities are to be run after the analysis activity is complete. The system determines the activity to run based on the analysis result. If the definition of the input video content is insufficient, the high-definition transcoding activity may be skipped.
         self.state = state
+        # The type of the media workflow activity. Valid values: Start, Snapshot, Transcode, Analysis, and Report. For more information, see [Media workflow activities](~~68494~~).
         self.type = type
 
     def validate(self):
@@ -9161,8 +12034,11 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The ID of the OSS region where the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -9199,7 +12075,9 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
         input_file: ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInputInputFile = None,
         user_data: str = None,
     ):
+        # The information about the storage location of the input file of the media workflow in OSS.
         self.input_file = input_file
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -9240,13 +12118,29 @@ class ListMediaWorkflowExecutionsResponseBodyMediaWorkflowExecutionListMediaWork
         run_id: str = None,
         state: str = None,
     ):
+        # The list of activities that are executed in the media workflow.
         self.activity_list = activity_list
+        # The time when the execution instance was created.
         self.creation_time = creation_time
+        # The custom data of the media workflow.
         self.input = input
+        # The ID of the media file. This media file ID is associated with all information generated by the media workflow.
         self.media_id = media_id
+        # The ID of the media workflow.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The ID of the execution instance.
         self.run_id = run_id
+        # The status of the execution instance. Valid values:
+        # 
+        # *   **running**: The execution instance is in progress.
+        # *   **Completed**: The execution instance is complete.
+        # 
+        # >  A value of Completed indicates that the execution instance is complete. For the information about whether each activity, such as Transcode or Snapshot, is successful, check the status of the activity.
+        # 
+        # *   **Fail**: The execution instance failed.
+        # *   **Success**: The execution instance was successful.
         self.state = state
 
     def validate(self):
@@ -9344,8 +12238,11 @@ class ListMediaWorkflowExecutionsResponseBody(TeaModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
+        # The list of media workflow execution instances.
         self.media_workflow_execution_list = media_workflow_execution_list
+        # The token that is used to retrieve the next page of the query results.
         self.next_page_token = next_page_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9431,6 +12328,10 @@ class QueryAnalysisJobListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the template analysis jobs.
+        # 
+        # *   You can query up to 10 jobs at a time.
+        # *   Separate multiple IDs with commas (,).
         self.analysis_job_ids = analysis_job_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9482,10 +12383,28 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigPr
         top: str = None,
         width: str = None,
     ):
+        # The height of the video after the margins were cropped out.
+        # 
+        # >  This parameter is invalid if the Mode parameter is set to Auto or None.
         self.height = height
+        # The left margin that was cropped out.
+        # 
+        # >  This parameter is invalid if the Mode parameter is set to Auto or None.
         self.left = left
+        # The cropping mode. Valid values: Valid values:
+        # 
+        # *   **Auto**: Cropping was automatically run.
+        # *   **Force**: Cropping was forced to run.
+        # *   **None**: Cropping was forced not to run.
+        # *   This parameter is required if the value of the Crop parameter is not an empty JSON object.
         self.mode = mode
+        # The top margin that was cropped out.
+        # 
+        # >  This parameter is invalid if the Mode parameter is set to Auto or None.
         self.top = top
+        # The width of the video after the margins were cropped out.
+        # 
+        # >  This parameter is invalid if the Mode parameter is set to Auto or None.
         self.width = width
 
     def validate(self):
@@ -9530,7 +12449,13 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigPr
         crop: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigPropertiesControlCrop = None,
         deinterlace: str = None,
     ):
+        # The cropping configuration of video images.
         self.crop = crop
+        # Indicates whether deinterlacing was forced to run. Valid values:
+        # 
+        # *   **Auto**: Deinterlacing was automatically run.
+        # *   **Force**: Deinterlacing was forced to run.
+        # *   **None**: Deinterlacing was forced not to run.
         self.deinterlace = deinterlace
 
     def validate(self):
@@ -9565,7 +12490,13 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigQu
         method_streaming: str = None,
         rate_quality: str = None,
     ):
+        # The playback mode. Valid values:
+        # 
+        # *   **network**: online playback
+        # *   **local**: playback on on-premises devices
+        # *   Default value: **network**.
         self.method_streaming = method_streaming
+        # The quality level of the job output. Default value: **25**.
         self.rate_quality = rate_quality
 
     def validate(self):
@@ -9598,7 +12529,9 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfig(T
         properties_control: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigPropertiesControl = None,
         quality_control: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobAnalysisConfigQualityControl = None,
     ):
+        # The control on the attributes of the job output.
         self.properties_control = properties_control
+        # The quality control on the job output.
         self.quality_control = quality_control
 
     def validate(self):
@@ -9637,8 +12570,11 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobInputFile(TeaMod
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket to which the input file is uploaded.
         self.bucket = bucket
+        # The ID of the OSS region.
         self.location = location
+        # The name of the input file uploaded to the Object Storage Service (OSS) bucket.
         self.object = object
 
     def validate(self):
@@ -9676,8 +12612,11 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobMNSMessageResult
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.error_code = error_code
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.error_message = error_message
+        # The ID of the success message. This parameter is not returned if the job fails.
         self.message_id = message_id
 
     def validate(self):
@@ -9718,11 +12657,35 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         qscale: str = None,
         samplerate: str = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: **8 to 1000**.
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: **2**.
         self.channels = channels
+        # The audio codec format. Default value: **aac**. Valid values:
+        # 
+        # *   **aac**\
+        # *   **mp3**\
+        # *   **vorbis**\
+        # *   **flac**\
         self.codec = codec
+        # The codec profile of the audio file. Valid values when the **Codec** parameter is set to **aac**:
+        # 
+        # *   **aac_low**\
+        # *   **aac_he**\
+        # *   **aac_he_v2**\
+        # *   **aac_ld**\
+        # *   **aac_eld**\
         self.profile = profile
+        # The level of quality control on the audio.
         self.qscale = qscale
+        # The sampling rate.
+        # 
+        # *   Unit: Hz.
+        # *   Default value: **44100**.
         self.samplerate = samplerate
 
     def validate(self):
@@ -9770,6 +12733,7 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -9798,7 +12762,9 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         final_delay: str = None,
         loop: str = None,
     ):
+        # The interval between two consecutive loops for the GIF format. Unit: 0.01s. For example, a value of 500 indicates 5 seconds.
         self.final_delay = final_delay
+        # The number of loops for the GIF or WebP format. Default value: 0.
         self.loop = loop
 
     def validate(self):
@@ -9830,6 +12796,7 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         self,
         duration: str = None,
     ):
+        # The length of the segment. Unit: seconds.
         self.duration = duration
 
     def validate(self):
@@ -9858,7 +12825,9 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         gif: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemplateMuxConfigGif = None,
         segment: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemplateMuxConfigSegment = None,
     ):
+        # The GIF format.
         self.gif = gif
+        # The segment configuration.
         self.segment = segment
 
     def validate(self):
@@ -9895,6 +12864,11 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         self,
         trans_mode: str = None,
     ):
+        # The transcoding mode. Default value: **onepass**. Valid values:
+        # 
+        # *   **onepass**\
+        # *   **twopass**\
+        # *   **CBR**\
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -9923,7 +12897,9 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         max: str = None,
         min: str = None,
     ):
+        # The upper limit of the total bitrate. Unit: Kbit/s.
         self.max = max
+        # The lower limit of the total bitrate. Unit: Kbit/s.
         self.min = min
 
     def validate(self):
@@ -9970,21 +12946,63 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         scan_mode: str = None,
         width: str = None,
     ):
+        # The average bitrate of the video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The average bit rate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Unit: KB.
+        # *   Default value: **6000**.
         self.bufsize = bufsize
+        # The video codec format. Valid values: H.264 and H.265. Default value: **H.264**.
         self.codec = codec
+        # The constant rate factor, which is the default quality control setting.
+        # 
+        # *   Default value when the Codec parameter is set to H.264: **23**. Default value when the Codec parameter is set to H.265: **26**.
+        # *   If this parameter is returned, the setting of the Bitrate parameter is invalid.
         self.crf = crf
+        # The level of the independent denoising algorithm.
         self.degrain = degrain
+        # The frame rate.
+        # 
+        # *   The value is 60 if the frame rate of the input file exceeds 60.
+        # *   Default value: **the frame rate of the input file**.
         self.fps = fps
+        # The maximum number of frames between two keyframes. Default value: **250**.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: **the original height of the video**.
         self.height = height
+        # The maximum video bitrate.
+        # 
+        # *   Valid values: **10 to 50000**.
+        # *   Unit: Kbit/s.
         self.maxrate = maxrate
+        # The pixel format for video color encoding. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Valid values: veryfast, fast, medium, slow, and slower. Default value: **medium**.
         self.preset = preset
+        # The codec profile. Valid values:
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
+        # *   Default value: **high**.
         self.profile = profile
+        # The level of quality control on the video.
         self.qscale = qscale
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**: An interlaced scan was performed.
+        # *   **progressive**: A progressive scan was performed.
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: **the original width of the video**.
         self.width = width
 
     def validate(self):
@@ -10081,13 +13099,24 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemp
         trans_config: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemplateTransConfig = None,
         video: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateListTemplateVideo = None,
     ):
+        # The audio codec configuration.
         self.audio = audio
+        # The container configuration.
         self.container = container
+        # The ID of the transcoding template.
         self.id = id
+        # The transmuxing configuration.
         self.mux_config = mux_config
+        # The name of the template.
         self.name = name
+        # The status of the template. Valid values:
+        # 
+        # *   **Normal**: The template is in the normal state.
+        # *   **Deleted**: The template is deleted.
         self.state = state
+        # The general transcoding configuration.
         self.trans_config = trans_config
+        # The video codec configuration.
         self.video = video
 
     def validate(self):
@@ -10204,18 +13233,39 @@ class QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJob(TeaModel):
         template_list: QueryAnalysisJobListResponseBodyAnalysisJobListAnalysisJobTemplateList = None,
         user_data: str = None,
     ):
+        # The job configuration.
         self.analysis_config = analysis_config
+        # The error code returned when the job fails.
         self.code = code
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The ID of the template analysis job.
         self.id = id
+        # The information about the job input.
         self.input_file = input_file
+        # The message sent by Message Service (MNS) to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned when the job fails.
         self.message = message
+        # The transcoding progress.
         self.percent = percent
+        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the job is added.
         self.pipeline_id = pipeline_id
+        # The priority of the job in the MPS queue to which the job is added. 
+        # 
+        # - Valid values: **1 to 10**. A value of 10 indicates the highest priority.
+        # - Default value: **10**.
         self.priority = priority
+        # The status of the job. Valid values:
+        # 
+        # *   **Submitted**: The job has been submitted.
+        # *   **Analyzing**: The job is being run.
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job fails.
         self.state = state
+        # The list of matched preset templates.
         self.template_list = template_list
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -10366,8 +13416,11 @@ class QueryAnalysisJobListResponseBody(TeaModel):
         non_exist_analysis_job_ids: QueryAnalysisJobListResponseBodyNonExistAnalysisJobIds = None,
         request_id: str = None,
     ):
+        # The IDs of the template analysis jobs.
         self.analysis_job_list = analysis_job_list
+        # The IDs of the template analysis jobs that do not exist. If all queried job IDs exist, the response does not contain this parameter.
         self.non_exist_analysis_job_ids = non_exist_analysis_job_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10447,3236 +13500,6 @@ class QueryAnalysisJobListResponse(TeaModel):
         return self
 
 
-class QueryEditingJobListRequest(TeaModel):
-    def __init__(
-        self,
-        job_ids: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.job_ids = job_ids
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_ids is not None:
-            result['JobIds'] = self.job_ids
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobIds') is not None:
-            self.job_ids = m.get('JobIds')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigAudioVolume(TeaModel):
-    def __init__(
-        self,
-        level: str = None,
-        method: str = None,
-    ):
-        self.level = level
-        self.method = method
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.method is not None:
-            result['Method'] = self.method
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('Method') is not None:
-            self.method = m.get('Method')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigAudio(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        channels: str = None,
-        codec: str = None,
-        profile: str = None,
-        qscale: str = None,
-        samplerate: str = None,
-        volume: QueryEditingJobListResponseBodyJobListJobEditingConfigAudioVolume = None,
-    ):
-        self.bitrate = bitrate
-        self.channels = channels
-        self.codec = codec
-        self.profile = profile
-        self.qscale = qscale
-        self.samplerate = samplerate
-        self.volume = volume
-
-    def validate(self):
-        if self.volume:
-            self.volume.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.channels is not None:
-            result['Channels'] = self.channels
-        if self.codec is not None:
-            result['Codec'] = self.codec
-        if self.profile is not None:
-            result['Profile'] = self.profile
-        if self.qscale is not None:
-            result['Qscale'] = self.qscale
-        if self.samplerate is not None:
-            result['Samplerate'] = self.samplerate
-        if self.volume is not None:
-            result['Volume'] = self.volume.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('Channels') is not None:
-            self.channels = m.get('Channels')
-        if m.get('Codec') is not None:
-            self.codec = m.get('Codec')
-        if m.get('Profile') is not None:
-            self.profile = m.get('Profile')
-        if m.get('Qscale') is not None:
-            self.qscale = m.get('Qscale')
-        if m.get('Samplerate') is not None:
-            self.samplerate = m.get('Samplerate')
-        if m.get('Volume') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigAudioVolume()
-            self.volume = temp_model.from_map(m['Volume'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigClipTimeSpan(TeaModel):
-    def __init__(
-        self,
-        duration: str = None,
-        seek: str = None,
-    ):
-        self.duration = duration
-        self.seek = seek
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.seek is not None:
-            result['Seek'] = self.seek
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Seek') is not None:
-            self.seek = m.get('Seek')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigClip(TeaModel):
-    def __init__(
-        self,
-        time_span: QueryEditingJobListResponseBodyJobListJobEditingConfigClipTimeSpan = None,
-    ):
-        self.time_span = time_span
-
-    def validate(self):
-        if self.time_span:
-            self.time_span.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.time_span is not None:
-            result['TimeSpan'] = self.time_span.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TimeSpan') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigClipTimeSpan()
-            self.time_span = temp_model.from_map(m['TimeSpan'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigContainer(TeaModel):
-    def __init__(
-        self,
-        format: str = None,
-    ):
-        self.format = format
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.format is not None:
-            result['Format'] = self.format
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Format') is not None:
-            self.format = m.get('Format')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMarkInputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMark(TeaModel):
-    def __init__(
-        self,
-        alpha: str = None,
-        input_file: QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMarkInputFile = None,
-        type: str = None,
-    ):
-        self.alpha = alpha
-        self.input_file = input_file
-        self.type = type
-
-    def validate(self):
-        if self.input_file:
-            self.input_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.alpha is not None:
-            result['Alpha'] = self.alpha
-        if self.input_file is not None:
-            result['InputFile'] = self.input_file.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Alpha') is not None:
-            self.alpha = m.get('Alpha')
-        if m.get('InputFile') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMarkInputFile()
-            self.input_file = temp_model.from_map(m['InputFile'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipEffectsEffect(TeaModel):
-    def __init__(
-        self,
-        effect: str = None,
-        effect_config: str = None,
-    ):
-        self.effect = effect
-        self.effect_config = effect_config
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.effect is not None:
-            result['Effect'] = self.effect
-        if self.effect_config is not None:
-            result['EffectConfig'] = self.effect_config
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Effect') is not None:
-            self.effect = m.get('Effect')
-        if m.get('EffectConfig') is not None:
-            self.effect_config = m.get('EffectConfig')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipEffects(TeaModel):
-    def __init__(
-        self,
-        effect: List[QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipEffectsEffect] = None,
-    ):
-        self.effect = effect
-
-    def validate(self):
-        if self.effect:
-            for k in self.effect:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Effect'] = []
-        if self.effect is not None:
-            for k in self.effect:
-                result['Effect'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.effect = []
-        if m.get('Effect') is not None:
-            for k in m.get('Effect'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipEffectsEffect()
-                self.effect.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClip(TeaModel):
-    def __init__(
-        self,
-        effects: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipEffects = None,
-        id: str = None,
-        in_: str = None,
-        out: str = None,
-        source_id: str = None,
-        source_strm_map: str = None,
-        source_type: str = None,
-        type: str = None,
-    ):
-        self.effects = effects
-        self.id = id
-        self.in_ = in_
-        self.out = out
-        self.source_id = source_id
-        self.source_strm_map = source_strm_map
-        self.source_type = source_type
-        self.type = type
-
-    def validate(self):
-        if self.effects:
-            self.effects.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.effects is not None:
-            result['Effects'] = self.effects.to_map()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.in_ is not None:
-            result['In'] = self.in_
-        if self.out is not None:
-            result['Out'] = self.out
-        if self.source_id is not None:
-            result['SourceID'] = self.source_id
-        if self.source_strm_map is not None:
-            result['SourceStrmMap'] = self.source_strm_map
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Effects') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClipEffects()
-            self.effects = temp_model.from_map(m['Effects'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('In') is not None:
-            self.in_ = m.get('In')
-        if m.get('Out') is not None:
-            self.out = m.get('Out')
-        if m.get('SourceID') is not None:
-            self.source_id = m.get('SourceID')
-        if m.get('SourceStrmMap') is not None:
-            self.source_strm_map = m.get('SourceStrmMap')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipList(TeaModel):
-    def __init__(
-        self,
-        clip: List[QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClip] = None,
-    ):
-        self.clip = clip
-
-    def validate(self):
-        if self.clip:
-            for k in self.clip:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Clip'] = []
-        if self.clip is not None:
-            for k in self.clip:
-                result['Clip'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.clip = []
-        if m.get('Clip') is not None:
-            for k in m.get('Clip'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipListClip()
-                self.clip.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio(TeaModel):
-    def __init__(
-        self,
-        channel_layout: str = None,
-        channels: str = None,
-        samplerate: str = None,
-    ):
-        self.channel_layout = channel_layout
-        self.channels = channels
-        self.samplerate = samplerate
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_layout is not None:
-            result['ChannelLayout'] = self.channel_layout
-        if self.channels is not None:
-            result['Channels'] = self.channels
-        if self.samplerate is not None:
-            result['Samplerate'] = self.samplerate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelLayout') is not None:
-            self.channel_layout = m.get('ChannelLayout')
-        if m.get('Channels') is not None:
-            self.channels = m.get('Channels')
-        if m.get('Samplerate') is not None:
-            self.samplerate = m.get('Samplerate')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo(TeaModel):
-    def __init__(
-        self,
-        bg_color: str = None,
-        fps: str = None,
-        height: str = None,
-        is_gpu_data: str = None,
-        is_one_track_data: str = None,
-        reclose_prec: str = None,
-        render_ratio: str = None,
-        width: str = None,
-    ):
-        self.bg_color = bg_color
-        self.fps = fps
-        self.height = height
-        self.is_gpu_data = is_gpu_data
-        self.is_one_track_data = is_one_track_data
-        self.reclose_prec = reclose_prec
-        self.render_ratio = render_ratio
-        self.width = width
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bg_color is not None:
-            result['BgColor'] = self.bg_color
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.is_gpu_data is not None:
-            result['IsGpuData'] = self.is_gpu_data
-        if self.is_one_track_data is not None:
-            result['IsOneTrackData'] = self.is_one_track_data
-        if self.reclose_prec is not None:
-            result['ReclosePrec'] = self.reclose_prec
-        if self.render_ratio is not None:
-            result['RenderRatio'] = self.render_ratio
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BgColor') is not None:
-            self.bg_color = m.get('BgColor')
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('IsGpuData') is not None:
-            self.is_gpu_data = m.get('IsGpuData')
-        if m.get('IsOneTrackData') is not None:
-            self.is_one_track_data = m.get('IsOneTrackData')
-        if m.get('ReclosePrec') is not None:
-            self.reclose_prec = m.get('ReclosePrec')
-        if m.get('RenderRatio') is not None:
-            self.render_ratio = m.get('RenderRatio')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfig(TeaModel):
-    def __init__(
-        self,
-        timeline_config_audio: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio = None,
-        timeline_config_video: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo = None,
-    ):
-        self.timeline_config_audio = timeline_config_audio
-        self.timeline_config_video = timeline_config_video
-
-    def validate(self):
-        if self.timeline_config_audio:
-            self.timeline_config_audio.validate()
-        if self.timeline_config_video:
-            self.timeline_config_video.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.timeline_config_audio is not None:
-            result['TimelineConfigAudio'] = self.timeline_config_audio.to_map()
-        if self.timeline_config_video is not None:
-            result['TimelineConfigVideo'] = self.timeline_config_video.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TimelineConfigAudio') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio()
-            self.timeline_config_audio = temp_model.from_map(m['TimelineConfigAudio'])
-        if m.get('TimelineConfigVideo') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo()
-            self.timeline_config_video = temp_model.from_map(m['TimelineConfigVideo'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo(TeaModel):
-    def __init__(
-        self,
-        l: str = None,
-        t: str = None,
-    ):
-        self.l = l
-        self.t = t
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.l is not None:
-            result['L'] = self.l
-        if self.t is not None:
-            result['T'] = self.t
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('L') is not None:
-            self.l = m.get('L')
-        if m.get('T') is not None:
-            self.t = m.get('T')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig(TeaModel):
-    def __init__(
-        self,
-        clips_config_video: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo = None,
-    ):
-        self.clips_config_video = clips_config_video
-
-    def validate(self):
-        if self.clips_config_video:
-            self.clips_config_video.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clips_config_video is not None:
-            result['ClipsConfigVideo'] = self.clips_config_video.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClipsConfigVideo') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo()
-            self.clips_config_video = temp_model.from_map(m['ClipsConfigVideo'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClip(TeaModel):
-    def __init__(
-        self,
-        clips_config: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig = None,
-        in_: str = None,
-        out: str = None,
-        clip_id: str = None,
-    ):
-        self.clips_config = clips_config
-        self.in_ = in_
-        self.out = out
-        self.clip_id = clip_id
-
-    def validate(self):
-        if self.clips_config:
-            self.clips_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clips_config is not None:
-            result['ClipsConfig'] = self.clips_config.to_map()
-        if self.in_ is not None:
-            result['In'] = self.in_
-        if self.out is not None:
-            result['Out'] = self.out
-        if self.clip_id is not None:
-            result['clipID'] = self.clip_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClipsConfig') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig()
-            self.clips_config = temp_model.from_map(m['ClipsConfig'])
-        if m.get('In') is not None:
-            self.in_ = m.get('In')
-        if m.get('Out') is not None:
-            self.out = m.get('Out')
-        if m.get('clipID') is not None:
-            self.clip_id = m.get('clipID')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClips(TeaModel):
-    def __init__(
-        self,
-        clip: List[QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClip] = None,
-    ):
-        self.clip = clip
-
-    def validate(self):
-        if self.clip:
-            for k in self.clip:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Clip'] = []
-        if self.clip is not None:
-            for k in self.clip:
-                result['Clip'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.clip = []
-        if m.get('Clip') is not None:
-            for k in m.get('Clip'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClipsClip()
-                self.clip.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrack(TeaModel):
-    def __init__(
-        self,
-        clips: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClips = None,
-        id: str = None,
-        order: str = None,
-        type: str = None,
-    ):
-        self.clips = clips
-        self.id = id
-        self.order = order
-        self.type = type
-
-    def validate(self):
-        if self.clips:
-            self.clips.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clips is not None:
-            result['Clips'] = self.clips.to_map()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.order is not None:
-            result['Order'] = self.order
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Clips') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrackClips()
-            self.clips = temp_model.from_map(m['Clips'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackList(TeaModel):
-    def __init__(
-        self,
-        track: List[QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrack] = None,
-    ):
-        self.track = track
-
-    def validate(self):
-        if self.track:
-            for k in self.track:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Track'] = []
-        if self.track is not None:
-            for k in self.track:
-                result['Track'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.track = []
-        if m.get('Track') is not None:
-            for k in m.get('Track'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackListTrack()
-                self.track.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimeline(TeaModel):
-    def __init__(
-        self,
-        timeline_config: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfig = None,
-        track_list: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackList = None,
-    ):
-        self.timeline_config = timeline_config
-        self.track_list = track_list
-
-    def validate(self):
-        if self.timeline_config:
-            self.timeline_config.validate()
-        if self.track_list:
-            self.track_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.timeline_config is not None:
-            result['TimelineConfig'] = self.timeline_config.to_map()
-        if self.track_list is not None:
-            result['TrackList'] = self.track_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TimelineConfig') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTimelineConfig()
-            self.timeline_config = temp_model.from_map(m['TimelineConfig'])
-        if m.get('TrackList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimelineTrackList()
-            self.track_list = temp_model.from_map(m['TrackList'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEditing(TeaModel):
-    def __init__(
-        self,
-        clip_list: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipList = None,
-        timeline: QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimeline = None,
-    ):
-        self.clip_list = clip_list
-        self.timeline = timeline
-
-    def validate(self):
-        if self.clip_list:
-            self.clip_list.validate()
-        if self.timeline:
-            self.timeline.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clip_list is not None:
-            result['ClipList'] = self.clip_list.to_map()
-        if self.timeline is not None:
-            result['Timeline'] = self.timeline.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClipList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingClipList()
-            self.clip_list = temp_model.from_map(m['ClipList'])
-        if m.get('Timeline') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditingTimeline()
-            self.timeline = temp_model.from_map(m['Timeline'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigEncryption(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        key: str = None,
-        key_type: str = None,
-        key_uri: str = None,
-        skip_cnt: str = None,
-        type: str = None,
-    ):
-        self.id = id
-        self.key = key
-        self.key_type = key_type
-        self.key_uri = key_uri
-        self.skip_cnt = skip_cnt
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.key_type is not None:
-            result['KeyType'] = self.key_type
-        if self.key_uri is not None:
-            result['KeyUri'] = self.key_uri
-        if self.skip_cnt is not None:
-            result['SkipCnt'] = self.skip_cnt
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('KeyType') is not None:
-            self.key_type = m.get('KeyType')
-        if m.get('KeyUri') is not None:
-            self.key_uri = m.get('KeyUri')
-        if m.get('SkipCnt') is not None:
-            self.skip_cnt = m.get('SkipCnt')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSupportTS(TeaModel):
-    def __init__(
-        self,
-        md_5support: bool = None,
-        size_support: bool = None,
-    ):
-        self.md_5support = md_5support
-        self.size_support = size_support
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.md_5support is not None:
-            result['Md5Support'] = self.md_5support
-        if self.size_support is not None:
-            result['SizeSupport'] = self.size_support
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Md5Support') is not None:
-            self.md_5support = m.get('Md5Support')
-        if m.get('SizeSupport') is not None:
-            self.size_support = m.get('SizeSupport')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSupport(TeaModel):
-    def __init__(
-        self,
-        ts: QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSupportTS = None,
-    ):
-        self.ts = ts
-
-    def validate(self):
-        if self.ts:
-            self.ts.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ts is not None:
-            result['TS'] = self.ts.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TS') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSupportTS()
-            self.ts = temp_model.from_map(m['TS'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigMergeListMerge(TeaModel):
-    def __init__(
-        self,
-        duration: str = None,
-        merge_url: str = None,
-        role_arn: str = None,
-        start: str = None,
-    ):
-        self.duration = duration
-        self.merge_url = merge_url
-        self.role_arn = role_arn
-        self.start = start
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.merge_url is not None:
-            result['MergeURL'] = self.merge_url
-        if self.role_arn is not None:
-            result['RoleArn'] = self.role_arn
-        if self.start is not None:
-            result['Start'] = self.start
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('MergeURL') is not None:
-            self.merge_url = m.get('MergeURL')
-        if m.get('RoleArn') is not None:
-            self.role_arn = m.get('RoleArn')
-        if m.get('Start') is not None:
-            self.start = m.get('Start')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigMergeList(TeaModel):
-    def __init__(
-        self,
-        merge: List[QueryEditingJobListResponseBodyJobListJobEditingConfigMergeListMerge] = None,
-    ):
-        self.merge = merge
-
-    def validate(self):
-        if self.merge:
-            for k in self.merge:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Merge'] = []
-        if self.merge is not None:
-            for k in self.merge:
-                result['Merge'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.merge = []
-        if m.get('Merge') is not None:
-            for k in m.get('Merge'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigMergeListMerge()
-                self.merge.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigGif(TeaModel):
-    def __init__(
-        self,
-        dither_mode: str = None,
-        final_delay: str = None,
-        is_custom_palette: str = None,
-        loop: str = None,
-    ):
-        self.dither_mode = dither_mode
-        self.final_delay = final_delay
-        self.is_custom_palette = is_custom_palette
-        self.loop = loop
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dither_mode is not None:
-            result['DitherMode'] = self.dither_mode
-        if self.final_delay is not None:
-            result['FinalDelay'] = self.final_delay
-        if self.is_custom_palette is not None:
-            result['IsCustomPalette'] = self.is_custom_palette
-        if self.loop is not None:
-            result['Loop'] = self.loop
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DitherMode') is not None:
-            self.dither_mode = m.get('DitherMode')
-        if m.get('FinalDelay') is not None:
-            self.final_delay = m.get('FinalDelay')
-        if m.get('IsCustomPalette') is not None:
-            self.is_custom_palette = m.get('IsCustomPalette')
-        if m.get('Loop') is not None:
-            self.loop = m.get('Loop')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigSegment(TeaModel):
-    def __init__(
-        self,
-        duration: str = None,
-    ):
-        self.duration = duration
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfig(TeaModel):
-    def __init__(
-        self,
-        gif: QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigGif = None,
-        segment: QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigSegment = None,
-    ):
-        self.gif = gif
-        self.segment = segment
-
-    def validate(self):
-        if self.gif:
-            self.gif.validate()
-        if self.segment:
-            self.segment.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.gif is not None:
-            result['Gif'] = self.gif.to_map()
-        if self.segment is not None:
-            result['Segment'] = self.segment.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Gif') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigGif()
-            self.gif = temp_model.from_map(m['Gif'])
-        if m.get('Segment') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfigSegment()
-            self.segment = temp_model.from_map(m['Segment'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigOutputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-        role_arn: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-        self.role_arn = role_arn
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.role_arn is not None:
-            result['RoleArn'] = self.role_arn
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('RoleArn') is not None:
-            self.role_arn = m.get('RoleArn')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesFormat(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        duration: str = None,
-        format_long_name: str = None,
-        format_name: str = None,
-        num_programs: str = None,
-        num_streams: str = None,
-        size: str = None,
-        start_time: str = None,
-    ):
-        self.bitrate = bitrate
-        self.duration = duration
-        self.format_long_name = format_long_name
-        self.format_name = format_name
-        self.num_programs = num_programs
-        self.num_streams = num_streams
-        self.size = size
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.format_long_name is not None:
-            result['FormatLongName'] = self.format_long_name
-        if self.format_name is not None:
-            result['FormatName'] = self.format_name
-        if self.num_programs is not None:
-            result['NumPrograms'] = self.num_programs
-        if self.num_streams is not None:
-            result['NumStreams'] = self.num_streams
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('FormatLongName') is not None:
-            self.format_long_name = m.get('FormatLongName')
-        if m.get('FormatName') is not None:
-            self.format_name = m.get('FormatName')
-        if m.get('NumPrograms') is not None:
-            self.num_programs = m.get('NumPrograms')
-        if m.get('NumStreams') is not None:
-            self.num_streams = m.get('NumStreams')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAudioStreamListAudioStream(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        channel_layout: str = None,
-        channels: str = None,
-        codec_long_name: str = None,
-        codec_name: str = None,
-        codec_tag: str = None,
-        codec_tag_string: str = None,
-        codec_time_base: str = None,
-        duration: str = None,
-        index: str = None,
-        lang: str = None,
-        num_frames: str = None,
-        sample_fmt: str = None,
-        samplerate: str = None,
-        start_time: str = None,
-        timebase: str = None,
-    ):
-        self.bitrate = bitrate
-        self.channel_layout = channel_layout
-        self.channels = channels
-        self.codec_long_name = codec_long_name
-        self.codec_name = codec_name
-        self.codec_tag = codec_tag
-        self.codec_tag_string = codec_tag_string
-        self.codec_time_base = codec_time_base
-        self.duration = duration
-        self.index = index
-        self.lang = lang
-        self.num_frames = num_frames
-        self.sample_fmt = sample_fmt
-        self.samplerate = samplerate
-        self.start_time = start_time
-        self.timebase = timebase
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.channel_layout is not None:
-            result['ChannelLayout'] = self.channel_layout
-        if self.channels is not None:
-            result['Channels'] = self.channels
-        if self.codec_long_name is not None:
-            result['CodecLongName'] = self.codec_long_name
-        if self.codec_name is not None:
-            result['CodecName'] = self.codec_name
-        if self.codec_tag is not None:
-            result['CodecTag'] = self.codec_tag
-        if self.codec_tag_string is not None:
-            result['CodecTagString'] = self.codec_tag_string
-        if self.codec_time_base is not None:
-            result['CodecTimeBase'] = self.codec_time_base
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.index is not None:
-            result['Index'] = self.index
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.num_frames is not None:
-            result['NumFrames'] = self.num_frames
-        if self.sample_fmt is not None:
-            result['SampleFmt'] = self.sample_fmt
-        if self.samplerate is not None:
-            result['Samplerate'] = self.samplerate
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.timebase is not None:
-            result['Timebase'] = self.timebase
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('ChannelLayout') is not None:
-            self.channel_layout = m.get('ChannelLayout')
-        if m.get('Channels') is not None:
-            self.channels = m.get('Channels')
-        if m.get('CodecLongName') is not None:
-            self.codec_long_name = m.get('CodecLongName')
-        if m.get('CodecName') is not None:
-            self.codec_name = m.get('CodecName')
-        if m.get('CodecTag') is not None:
-            self.codec_tag = m.get('CodecTag')
-        if m.get('CodecTagString') is not None:
-            self.codec_tag_string = m.get('CodecTagString')
-        if m.get('CodecTimeBase') is not None:
-            self.codec_time_base = m.get('CodecTimeBase')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Index') is not None:
-            self.index = m.get('Index')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('NumFrames') is not None:
-            self.num_frames = m.get('NumFrames')
-        if m.get('SampleFmt') is not None:
-            self.sample_fmt = m.get('SampleFmt')
-        if m.get('Samplerate') is not None:
-            self.samplerate = m.get('Samplerate')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Timebase') is not None:
-            self.timebase = m.get('Timebase')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAudioStreamList(TeaModel):
-    def __init__(
-        self,
-        audio_stream: List[QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAudioStreamListAudioStream] = None,
-    ):
-        self.audio_stream = audio_stream
-
-    def validate(self):
-        if self.audio_stream:
-            for k in self.audio_stream:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AudioStream'] = []
-        if self.audio_stream is not None:
-            for k in self.audio_stream:
-                result['AudioStream'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.audio_stream = []
-        if m.get('AudioStream') is not None:
-            for k in m.get('AudioStream'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAudioStreamListAudioStream()
-                self.audio_stream.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSubtitleStreamListSubtitleStream(TeaModel):
-    def __init__(
-        self,
-        index: str = None,
-        lang: str = None,
-    ):
-        self.index = index
-        self.lang = lang
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.index is not None:
-            result['Index'] = self.index
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Index') is not None:
-            self.index = m.get('Index')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSubtitleStreamList(TeaModel):
-    def __init__(
-        self,
-        subtitle_stream: List[QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSubtitleStreamListSubtitleStream] = None,
-    ):
-        self.subtitle_stream = subtitle_stream
-
-    def validate(self):
-        if self.subtitle_stream:
-            for k in self.subtitle_stream:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['SubtitleStream'] = []
-        if self.subtitle_stream is not None:
-            for k in self.subtitle_stream:
-                result['SubtitleStream'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.subtitle_stream = []
-        if m.get('SubtitleStream') is not None:
-            for k in m.get('SubtitleStream'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSubtitleStreamListSubtitleStream()
-                self.subtitle_stream.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost(TeaModel):
-    def __init__(
-        self,
-        avg_bitrate: str = None,
-        cost_bandwidth: str = None,
-        preload_time: str = None,
-    ):
-        self.avg_bitrate = avg_bitrate
-        self.cost_bandwidth = cost_bandwidth
-        self.preload_time = preload_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.avg_bitrate is not None:
-            result['AvgBitrate'] = self.avg_bitrate
-        if self.cost_bandwidth is not None:
-            result['CostBandwidth'] = self.cost_bandwidth
-        if self.preload_time is not None:
-            result['PreloadTime'] = self.preload_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AvgBitrate') is not None:
-            self.avg_bitrate = m.get('AvgBitrate')
-        if m.get('CostBandwidth') is not None:
-            self.cost_bandwidth = m.get('CostBandwidth')
-        if m.get('PreloadTime') is not None:
-            self.preload_time = m.get('PreloadTime')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamListVideoStream(TeaModel):
-    def __init__(
-        self,
-        avg_fps: str = None,
-        bitrate: str = None,
-        codec_long_name: str = None,
-        codec_name: str = None,
-        codec_tag: str = None,
-        codec_tag_string: str = None,
-        codec_time_base: str = None,
-        dar: str = None,
-        duration: str = None,
-        fps: str = None,
-        has_bframes: str = None,
-        height: str = None,
-        index: str = None,
-        lang: str = None,
-        level: str = None,
-        network_cost: QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost = None,
-        num_frames: str = None,
-        pix_fmt: str = None,
-        profile: str = None,
-        sar: str = None,
-        start_time: str = None,
-        timebase: str = None,
-        width: str = None,
-    ):
-        self.avg_fps = avg_fps
-        self.bitrate = bitrate
-        self.codec_long_name = codec_long_name
-        self.codec_name = codec_name
-        self.codec_tag = codec_tag
-        self.codec_tag_string = codec_tag_string
-        self.codec_time_base = codec_time_base
-        self.dar = dar
-        self.duration = duration
-        self.fps = fps
-        self.has_bframes = has_bframes
-        self.height = height
-        self.index = index
-        self.lang = lang
-        self.level = level
-        self.network_cost = network_cost
-        self.num_frames = num_frames
-        self.pix_fmt = pix_fmt
-        self.profile = profile
-        self.sar = sar
-        self.start_time = start_time
-        self.timebase = timebase
-        self.width = width
-
-    def validate(self):
-        if self.network_cost:
-            self.network_cost.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.avg_fps is not None:
-            result['AvgFPS'] = self.avg_fps
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.codec_long_name is not None:
-            result['CodecLongName'] = self.codec_long_name
-        if self.codec_name is not None:
-            result['CodecName'] = self.codec_name
-        if self.codec_tag is not None:
-            result['CodecTag'] = self.codec_tag
-        if self.codec_tag_string is not None:
-            result['CodecTagString'] = self.codec_tag_string
-        if self.codec_time_base is not None:
-            result['CodecTimeBase'] = self.codec_time_base
-        if self.dar is not None:
-            result['Dar'] = self.dar
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.has_bframes is not None:
-            result['HasBFrames'] = self.has_bframes
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.index is not None:
-            result['Index'] = self.index
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.network_cost is not None:
-            result['NetworkCost'] = self.network_cost.to_map()
-        if self.num_frames is not None:
-            result['NumFrames'] = self.num_frames
-        if self.pix_fmt is not None:
-            result['PixFmt'] = self.pix_fmt
-        if self.profile is not None:
-            result['Profile'] = self.profile
-        if self.sar is not None:
-            result['Sar'] = self.sar
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.timebase is not None:
-            result['Timebase'] = self.timebase
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AvgFPS') is not None:
-            self.avg_fps = m.get('AvgFPS')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('CodecLongName') is not None:
-            self.codec_long_name = m.get('CodecLongName')
-        if m.get('CodecName') is not None:
-            self.codec_name = m.get('CodecName')
-        if m.get('CodecTag') is not None:
-            self.codec_tag = m.get('CodecTag')
-        if m.get('CodecTagString') is not None:
-            self.codec_tag_string = m.get('CodecTagString')
-        if m.get('CodecTimeBase') is not None:
-            self.codec_time_base = m.get('CodecTimeBase')
-        if m.get('Dar') is not None:
-            self.dar = m.get('Dar')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('HasBFrames') is not None:
-            self.has_bframes = m.get('HasBFrames')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Index') is not None:
-            self.index = m.get('Index')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('NetworkCost') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost()
-            self.network_cost = temp_model.from_map(m['NetworkCost'])
-        if m.get('NumFrames') is not None:
-            self.num_frames = m.get('NumFrames')
-        if m.get('PixFmt') is not None:
-            self.pix_fmt = m.get('PixFmt')
-        if m.get('Profile') is not None:
-            self.profile = m.get('Profile')
-        if m.get('Sar') is not None:
-            self.sar = m.get('Sar')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Timebase') is not None:
-            self.timebase = m.get('Timebase')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamList(TeaModel):
-    def __init__(
-        self,
-        video_stream: List[QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamListVideoStream] = None,
-    ):
-        self.video_stream = video_stream
-
-    def validate(self):
-        if self.video_stream:
-            for k in self.video_stream:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['VideoStream'] = []
-        if self.video_stream is not None:
-            for k in self.video_stream:
-                result['VideoStream'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.video_stream = []
-        if m.get('VideoStream') is not None:
-            for k in m.get('VideoStream'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamListVideoStream()
-                self.video_stream.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreams(TeaModel):
-    def __init__(
-        self,
-        audio_stream_list: QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAudioStreamList = None,
-        subtitle_stream_list: QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSubtitleStreamList = None,
-        video_stream_list: QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamList = None,
-    ):
-        self.audio_stream_list = audio_stream_list
-        self.subtitle_stream_list = subtitle_stream_list
-        self.video_stream_list = video_stream_list
-
-    def validate(self):
-        if self.audio_stream_list:
-            self.audio_stream_list.validate()
-        if self.subtitle_stream_list:
-            self.subtitle_stream_list.validate()
-        if self.video_stream_list:
-            self.video_stream_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.audio_stream_list is not None:
-            result['AudioStreamList'] = self.audio_stream_list.to_map()
-        if self.subtitle_stream_list is not None:
-            result['SubtitleStreamList'] = self.subtitle_stream_list.to_map()
-        if self.video_stream_list is not None:
-            result['VideoStreamList'] = self.video_stream_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AudioStreamList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsAudioStreamList()
-            self.audio_stream_list = temp_model.from_map(m['AudioStreamList'])
-        if m.get('SubtitleStreamList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsSubtitleStreamList()
-            self.subtitle_stream_list = temp_model.from_map(m['SubtitleStreamList'])
-        if m.get('VideoStreamList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreamsVideoStreamList()
-            self.video_stream_list = temp_model.from_map(m['VideoStreamList'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigProperties(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        duration: str = None,
-        file_format: str = None,
-        file_size: str = None,
-        format: QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesFormat = None,
-        fps: str = None,
-        height: str = None,
-        streams: QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreams = None,
-        width: str = None,
-    ):
-        self.bitrate = bitrate
-        self.duration = duration
-        self.file_format = file_format
-        self.file_size = file_size
-        self.format = format
-        self.fps = fps
-        self.height = height
-        self.streams = streams
-        self.width = width
-
-    def validate(self):
-        if self.format:
-            self.format.validate()
-        if self.streams:
-            self.streams.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.file_format is not None:
-            result['FileFormat'] = self.file_format
-        if self.file_size is not None:
-            result['FileSize'] = self.file_size
-        if self.format is not None:
-            result['Format'] = self.format.to_map()
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.streams is not None:
-            result['Streams'] = self.streams.to_map()
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('FileFormat') is not None:
-            self.file_format = m.get('FileFormat')
-        if m.get('FileSize') is not None:
-            self.file_size = m.get('FileSize')
-        if m.get('Format') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesFormat()
-            self.format = temp_model.from_map(m['Format'])
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Streams') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigPropertiesStreams()
-            self.streams = temp_model.from_map(m['Streams'])
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle(TeaModel):
-    def __init__(
-        self,
-        char_enc: str = None,
-        font_name: str = None,
-        input: QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput = None,
-    ):
-        self.char_enc = char_enc
-        self.font_name = font_name
-        self.input = input
-
-    def validate(self):
-        if self.input:
-            self.input.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.char_enc is not None:
-            result['CharEnc'] = self.char_enc
-        if self.font_name is not None:
-            result['FontName'] = self.font_name
-        if self.input is not None:
-            result['Input'] = self.input.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CharEnc') is not None:
-            self.char_enc = m.get('CharEnc')
-        if m.get('FontName') is not None:
-            self.font_name = m.get('FontName')
-        if m.get('Input') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput()
-            self.input = temp_model.from_map(m['Input'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleList(TeaModel):
-    def __init__(
-        self,
-        ext_subtitle: List[QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle] = None,
-    ):
-        self.ext_subtitle = ext_subtitle
-
-    def validate(self):
-        if self.ext_subtitle:
-            for k in self.ext_subtitle:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ExtSubtitle'] = []
-        if self.ext_subtitle is not None:
-            for k in self.ext_subtitle:
-                result['ExtSubtitle'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.ext_subtitle = []
-        if m.get('ExtSubtitle') is not None:
-            for k in m.get('ExtSubtitle'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle()
-                self.ext_subtitle.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtitleListSubtitle(TeaModel):
-    def __init__(
-        self,
-        map: str = None,
-    ):
-        self.map = map
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.map is not None:
-            result['Map'] = self.map
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Map') is not None:
-            self.map = m.get('Map')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtitleList(TeaModel):
-    def __init__(
-        self,
-        subtitle: List[QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtitleListSubtitle] = None,
-    ):
-        self.subtitle = subtitle
-
-    def validate(self):
-        if self.subtitle:
-            for k in self.subtitle:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Subtitle'] = []
-        if self.subtitle is not None:
-            for k in self.subtitle:
-                result['Subtitle'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.subtitle = []
-        if m.get('Subtitle') is not None:
-            for k in m.get('Subtitle'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtitleListSubtitle()
-                self.subtitle.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfig(TeaModel):
-    def __init__(
-        self,
-        ext_subtitle_list: QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleList = None,
-        subtitle_list: QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtitleList = None,
-    ):
-        self.ext_subtitle_list = ext_subtitle_list
-        self.subtitle_list = subtitle_list
-
-    def validate(self):
-        if self.ext_subtitle_list:
-            self.ext_subtitle_list.validate()
-        if self.subtitle_list:
-            self.subtitle_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ext_subtitle_list is not None:
-            result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
-        if self.subtitle_list is not None:
-            result['SubtitleList'] = self.subtitle_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ExtSubtitleList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigExtSubtitleList()
-            self.ext_subtitle_list = temp_model.from_map(m['ExtSubtitleList'])
-        if m.get('SubtitleList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfigSubtitleList()
-            self.subtitle_list = temp_model.from_map(m['SubtitleList'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigSuperReso(TeaModel):
-    def __init__(
-        self,
-        is_half_sample: str = None,
-    ):
-        self.is_half_sample = is_half_sample
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.is_half_sample is not None:
-            result['IsHalfSample'] = self.is_half_sample
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IsHalfSample') is not None:
-            self.is_half_sample = m.get('IsHalfSample')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigTransConfig(TeaModel):
-    def __init__(
-        self,
-        adj_dar_method: str = None,
-        duration: str = None,
-        is_check_audio_bitrate: str = None,
-        is_check_audio_bitrate_fail: str = None,
-        is_check_reso: str = None,
-        is_check_reso_fail: str = None,
-        is_check_video_bitrate: str = None,
-        is_check_video_bitrate_fail: str = None,
-        trans_mode: str = None,
-    ):
-        self.adj_dar_method = adj_dar_method
-        self.duration = duration
-        self.is_check_audio_bitrate = is_check_audio_bitrate
-        self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
-        self.is_check_reso = is_check_reso
-        self.is_check_reso_fail = is_check_reso_fail
-        self.is_check_video_bitrate = is_check_video_bitrate
-        self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
-        self.trans_mode = trans_mode
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.adj_dar_method is not None:
-            result['AdjDarMethod'] = self.adj_dar_method
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.is_check_audio_bitrate is not None:
-            result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
-        if self.is_check_audio_bitrate_fail is not None:
-            result['IsCheckAudioBitrateFail'] = self.is_check_audio_bitrate_fail
-        if self.is_check_reso is not None:
-            result['IsCheckReso'] = self.is_check_reso
-        if self.is_check_reso_fail is not None:
-            result['IsCheckResoFail'] = self.is_check_reso_fail
-        if self.is_check_video_bitrate is not None:
-            result['IsCheckVideoBitrate'] = self.is_check_video_bitrate
-        if self.is_check_video_bitrate_fail is not None:
-            result['IsCheckVideoBitrateFail'] = self.is_check_video_bitrate_fail
-        if self.trans_mode is not None:
-            result['TransMode'] = self.trans_mode
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AdjDarMethod') is not None:
-            self.adj_dar_method = m.get('AdjDarMethod')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('IsCheckAudioBitrate') is not None:
-            self.is_check_audio_bitrate = m.get('IsCheckAudioBitrate')
-        if m.get('IsCheckAudioBitrateFail') is not None:
-            self.is_check_audio_bitrate_fail = m.get('IsCheckAudioBitrateFail')
-        if m.get('IsCheckReso') is not None:
-            self.is_check_reso = m.get('IsCheckReso')
-        if m.get('IsCheckResoFail') is not None:
-            self.is_check_reso_fail = m.get('IsCheckResoFail')
-        if m.get('IsCheckVideoBitrate') is not None:
-            self.is_check_video_bitrate = m.get('IsCheckVideoBitrate')
-        if m.get('IsCheckVideoBitrateFail') is not None:
-            self.is_check_video_bitrate_fail = m.get('IsCheckVideoBitrateFail')
-        if m.get('TransMode') is not None:
-            self.trans_mode = m.get('TransMode')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigVideoBitrateBnd(TeaModel):
-    def __init__(
-        self,
-        max: str = None,
-        min: str = None,
-    ):
-        self.max = max
-        self.min = min
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max is not None:
-            result['Max'] = self.max
-        if self.min is not None:
-            result['Min'] = self.min
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Max') is not None:
-            self.max = m.get('Max')
-        if m.get('Min') is not None:
-            self.min = m.get('Min')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigVideo(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        bitrate_bnd: QueryEditingJobListResponseBodyJobListJobEditingConfigVideoBitrateBnd = None,
-        bufsize: str = None,
-        codec: str = None,
-        crf: str = None,
-        crop: str = None,
-        degrain: str = None,
-        fps: str = None,
-        gop: str = None,
-        height: str = None,
-        max_fps: str = None,
-        maxrate: str = None,
-        pad: str = None,
-        pix_fmt: str = None,
-        preset: str = None,
-        profile: str = None,
-        qscale: str = None,
-        scan_mode: str = None,
-        width: str = None,
-    ):
-        self.bitrate = bitrate
-        self.bitrate_bnd = bitrate_bnd
-        self.bufsize = bufsize
-        self.codec = codec
-        self.crf = crf
-        self.crop = crop
-        self.degrain = degrain
-        self.fps = fps
-        self.gop = gop
-        self.height = height
-        self.max_fps = max_fps
-        self.maxrate = maxrate
-        self.pad = pad
-        self.pix_fmt = pix_fmt
-        self.preset = preset
-        self.profile = profile
-        self.qscale = qscale
-        self.scan_mode = scan_mode
-        self.width = width
-
-    def validate(self):
-        if self.bitrate_bnd:
-            self.bitrate_bnd.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.bitrate_bnd is not None:
-            result['BitrateBnd'] = self.bitrate_bnd.to_map()
-        if self.bufsize is not None:
-            result['Bufsize'] = self.bufsize
-        if self.codec is not None:
-            result['Codec'] = self.codec
-        if self.crf is not None:
-            result['Crf'] = self.crf
-        if self.crop is not None:
-            result['Crop'] = self.crop
-        if self.degrain is not None:
-            result['Degrain'] = self.degrain
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.gop is not None:
-            result['Gop'] = self.gop
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.max_fps is not None:
-            result['MaxFps'] = self.max_fps
-        if self.maxrate is not None:
-            result['Maxrate'] = self.maxrate
-        if self.pad is not None:
-            result['Pad'] = self.pad
-        if self.pix_fmt is not None:
-            result['PixFmt'] = self.pix_fmt
-        if self.preset is not None:
-            result['Preset'] = self.preset
-        if self.profile is not None:
-            result['Profile'] = self.profile
-        if self.qscale is not None:
-            result['Qscale'] = self.qscale
-        if self.scan_mode is not None:
-            result['ScanMode'] = self.scan_mode
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('BitrateBnd') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigVideoBitrateBnd()
-            self.bitrate_bnd = temp_model.from_map(m['BitrateBnd'])
-        if m.get('Bufsize') is not None:
-            self.bufsize = m.get('Bufsize')
-        if m.get('Codec') is not None:
-            self.codec = m.get('Codec')
-        if m.get('Crf') is not None:
-            self.crf = m.get('Crf')
-        if m.get('Crop') is not None:
-            self.crop = m.get('Crop')
-        if m.get('Degrain') is not None:
-            self.degrain = m.get('Degrain')
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('Gop') is not None:
-            self.gop = m.get('Gop')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('MaxFps') is not None:
-            self.max_fps = m.get('MaxFps')
-        if m.get('Maxrate') is not None:
-            self.maxrate = m.get('Maxrate')
-        if m.get('Pad') is not None:
-            self.pad = m.get('Pad')
-        if m.get('PixFmt') is not None:
-            self.pix_fmt = m.get('PixFmt')
-        if m.get('Preset') is not None:
-            self.preset = m.get('Preset')
-        if m.get('Profile') is not None:
-            self.profile = m.get('Profile')
-        if m.get('Qscale') is not None:
-            self.qscale = m.get('Qscale')
-        if m.get('ScanMode') is not None:
-            self.scan_mode = m.get('ScanMode')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMarkInputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMark(TeaModel):
-    def __init__(
-        self,
-        dx: str = None,
-        dy: str = None,
-        height: str = None,
-        input_file: QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMarkInputFile = None,
-        refer_pos: str = None,
-        type: str = None,
-        water_mark_template_id: str = None,
-        width: str = None,
-    ):
-        self.dx = dx
-        self.dy = dy
-        self.height = height
-        self.input_file = input_file
-        self.refer_pos = refer_pos
-        self.type = type
-        self.water_mark_template_id = water_mark_template_id
-        self.width = width
-
-    def validate(self):
-        if self.input_file:
-            self.input_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dx is not None:
-            result['Dx'] = self.dx
-        if self.dy is not None:
-            result['Dy'] = self.dy
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.input_file is not None:
-            result['InputFile'] = self.input_file.to_map()
-        if self.refer_pos is not None:
-            result['ReferPos'] = self.refer_pos
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.water_mark_template_id is not None:
-            result['WaterMarkTemplateId'] = self.water_mark_template_id
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Dx') is not None:
-            self.dx = m.get('Dx')
-        if m.get('Dy') is not None:
-            self.dy = m.get('Dy')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('InputFile') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMarkInputFile()
-            self.input_file = temp_model.from_map(m['InputFile'])
-        if m.get('ReferPos') is not None:
-            self.refer_pos = m.get('ReferPos')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('WaterMarkTemplateId') is not None:
-            self.water_mark_template_id = m.get('WaterMarkTemplateId')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkList(TeaModel):
-    def __init__(
-        self,
-        water_mark: List[QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMark] = None,
-    ):
-        self.water_mark = water_mark
-
-    def validate(self):
-        if self.water_mark:
-            for k in self.water_mark:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['WaterMark'] = []
-        if self.water_mark is not None:
-            for k in self.water_mark:
-                result['WaterMark'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.water_mark = []
-        if m.get('WaterMark') is not None:
-            for k in m.get('WaterMark'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkListWaterMark()
-                self.water_mark.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingConfig(TeaModel):
-    def __init__(
-        self,
-        audio: QueryEditingJobListResponseBodyJobListJobEditingConfigAudio = None,
-        audio_stream_map: str = None,
-        clip: QueryEditingJobListResponseBodyJobListJobEditingConfigClip = None,
-        container: QueryEditingJobListResponseBodyJobListJobEditingConfigContainer = None,
-        de_watermark: str = None,
-        digi_water_mark: QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMark = None,
-        editing: QueryEditingJobListResponseBodyJobListJobEditingConfigEditing = None,
-        encryption: QueryEditingJobListResponseBodyJobListJobEditingConfigEncryption = None,
-        m_3u8non_standard_support: QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSupport = None,
-        merge_config_url: str = None,
-        merge_list: QueryEditingJobListResponseBodyJobListJobEditingConfigMergeList = None,
-        mux_config: QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfig = None,
-        output_file: QueryEditingJobListResponseBodyJobListJobEditingConfigOutputFile = None,
-        priority: str = None,
-        properties: QueryEditingJobListResponseBodyJobListJobEditingConfigProperties = None,
-        rotate: str = None,
-        subtitle_config: QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfig = None,
-        super_reso: QueryEditingJobListResponseBodyJobListJobEditingConfigSuperReso = None,
-        template_id: str = None,
-        trans_config: QueryEditingJobListResponseBodyJobListJobEditingConfigTransConfig = None,
-        user_data: str = None,
-        video: QueryEditingJobListResponseBodyJobListJobEditingConfigVideo = None,
-        video_stream_map: str = None,
-        water_mark_config_url: str = None,
-        water_mark_list: QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkList = None,
-    ):
-        self.audio = audio
-        self.audio_stream_map = audio_stream_map
-        self.clip = clip
-        self.container = container
-        self.de_watermark = de_watermark
-        self.digi_water_mark = digi_water_mark
-        self.editing = editing
-        self.encryption = encryption
-        self.m_3u8non_standard_support = m_3u8non_standard_support
-        self.merge_config_url = merge_config_url
-        self.merge_list = merge_list
-        self.mux_config = mux_config
-        self.output_file = output_file
-        self.priority = priority
-        self.properties = properties
-        self.rotate = rotate
-        self.subtitle_config = subtitle_config
-        self.super_reso = super_reso
-        self.template_id = template_id
-        self.trans_config = trans_config
-        self.user_data = user_data
-        self.video = video
-        self.video_stream_map = video_stream_map
-        self.water_mark_config_url = water_mark_config_url
-        self.water_mark_list = water_mark_list
-
-    def validate(self):
-        if self.audio:
-            self.audio.validate()
-        if self.clip:
-            self.clip.validate()
-        if self.container:
-            self.container.validate()
-        if self.digi_water_mark:
-            self.digi_water_mark.validate()
-        if self.editing:
-            self.editing.validate()
-        if self.encryption:
-            self.encryption.validate()
-        if self.m_3u8non_standard_support:
-            self.m_3u8non_standard_support.validate()
-        if self.merge_list:
-            self.merge_list.validate()
-        if self.mux_config:
-            self.mux_config.validate()
-        if self.output_file:
-            self.output_file.validate()
-        if self.properties:
-            self.properties.validate()
-        if self.subtitle_config:
-            self.subtitle_config.validate()
-        if self.super_reso:
-            self.super_reso.validate()
-        if self.trans_config:
-            self.trans_config.validate()
-        if self.video:
-            self.video.validate()
-        if self.water_mark_list:
-            self.water_mark_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.audio is not None:
-            result['Audio'] = self.audio.to_map()
-        if self.audio_stream_map is not None:
-            result['AudioStreamMap'] = self.audio_stream_map
-        if self.clip is not None:
-            result['Clip'] = self.clip.to_map()
-        if self.container is not None:
-            result['Container'] = self.container.to_map()
-        if self.de_watermark is not None:
-            result['DeWatermark'] = self.de_watermark
-        if self.digi_water_mark is not None:
-            result['DigiWaterMark'] = self.digi_water_mark.to_map()
-        if self.editing is not None:
-            result['Editing'] = self.editing.to_map()
-        if self.encryption is not None:
-            result['Encryption'] = self.encryption.to_map()
-        if self.m_3u8non_standard_support is not None:
-            result['M3U8NonStandardSupport'] = self.m_3u8non_standard_support.to_map()
-        if self.merge_config_url is not None:
-            result['MergeConfigUrl'] = self.merge_config_url
-        if self.merge_list is not None:
-            result['MergeList'] = self.merge_list.to_map()
-        if self.mux_config is not None:
-            result['MuxConfig'] = self.mux_config.to_map()
-        if self.output_file is not None:
-            result['OutputFile'] = self.output_file.to_map()
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        if self.properties is not None:
-            result['Properties'] = self.properties.to_map()
-        if self.rotate is not None:
-            result['Rotate'] = self.rotate
-        if self.subtitle_config is not None:
-            result['SubtitleConfig'] = self.subtitle_config.to_map()
-        if self.super_reso is not None:
-            result['SuperReso'] = self.super_reso.to_map()
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
-        if self.trans_config is not None:
-            result['TransConfig'] = self.trans_config.to_map()
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        if self.video is not None:
-            result['Video'] = self.video.to_map()
-        if self.video_stream_map is not None:
-            result['VideoStreamMap'] = self.video_stream_map
-        if self.water_mark_config_url is not None:
-            result['WaterMarkConfigUrl'] = self.water_mark_config_url
-        if self.water_mark_list is not None:
-            result['WaterMarkList'] = self.water_mark_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Audio') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigAudio()
-            self.audio = temp_model.from_map(m['Audio'])
-        if m.get('AudioStreamMap') is not None:
-            self.audio_stream_map = m.get('AudioStreamMap')
-        if m.get('Clip') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigClip()
-            self.clip = temp_model.from_map(m['Clip'])
-        if m.get('Container') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigContainer()
-            self.container = temp_model.from_map(m['Container'])
-        if m.get('DeWatermark') is not None:
-            self.de_watermark = m.get('DeWatermark')
-        if m.get('DigiWaterMark') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigDigiWaterMark()
-            self.digi_water_mark = temp_model.from_map(m['DigiWaterMark'])
-        if m.get('Editing') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEditing()
-            self.editing = temp_model.from_map(m['Editing'])
-        if m.get('Encryption') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigEncryption()
-            self.encryption = temp_model.from_map(m['Encryption'])
-        if m.get('M3U8NonStandardSupport') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigM3U8NonStandardSupport()
-            self.m_3u8non_standard_support = temp_model.from_map(m['M3U8NonStandardSupport'])
-        if m.get('MergeConfigUrl') is not None:
-            self.merge_config_url = m.get('MergeConfigUrl')
-        if m.get('MergeList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigMergeList()
-            self.merge_list = temp_model.from_map(m['MergeList'])
-        if m.get('MuxConfig') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigMuxConfig()
-            self.mux_config = temp_model.from_map(m['MuxConfig'])
-        if m.get('OutputFile') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigOutputFile()
-            self.output_file = temp_model.from_map(m['OutputFile'])
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
-        if m.get('Properties') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigProperties()
-            self.properties = temp_model.from_map(m['Properties'])
-        if m.get('Rotate') is not None:
-            self.rotate = m.get('Rotate')
-        if m.get('SubtitleConfig') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigSubtitleConfig()
-            self.subtitle_config = temp_model.from_map(m['SubtitleConfig'])
-        if m.get('SuperReso') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigSuperReso()
-            self.super_reso = temp_model.from_map(m['SuperReso'])
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
-        if m.get('TransConfig') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigTransConfig()
-            self.trans_config = temp_model.from_map(m['TransConfig'])
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
-        if m.get('Video') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigVideo()
-            self.video = temp_model.from_map(m['Video'])
-        if m.get('VideoStreamMap') is not None:
-            self.video_stream_map = m.get('VideoStreamMap')
-        if m.get('WaterMarkConfigUrl') is not None:
-            self.water_mark_config_url = m.get('WaterMarkConfigUrl')
-        if m.get('WaterMarkList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfigWaterMarkList()
-            self.water_mark_list = temp_model.from_map(m['WaterMarkList'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputConfig(TeaModel):
-    def __init__(
-        self,
-        deinterlace_method: str = None,
-        is_normal_sar: str = None,
-    ):
-        self.deinterlace_method = deinterlace_method
-        self.is_normal_sar = is_normal_sar
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.deinterlace_method is not None:
-            result['DeinterlaceMethod'] = self.deinterlace_method
-        if self.is_normal_sar is not None:
-            result['IsNormalSar'] = self.is_normal_sar
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeinterlaceMethod') is not None:
-            self.deinterlace_method = m.get('DeinterlaceMethod')
-        if m.get('IsNormalSar') is not None:
-            self.is_normal_sar = m.get('IsNormalSar')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInput(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        input_config: QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputConfig = None,
-        input_file: QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputFile = None,
-    ):
-        self.id = id
-        self.input_config = input_config
-        self.input_file = input_file
-
-    def validate(self):
-        if self.input_config:
-            self.input_config.validate()
-        if self.input_file:
-            self.input_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.input_config is not None:
-            result['InputConfig'] = self.input_config.to_map()
-        if self.input_file is not None:
-            result['InputFile'] = self.input_file.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('InputConfig') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputConfig()
-            self.input_config = temp_model.from_map(m['InputConfig'])
-        if m.get('InputFile') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInputInputFile()
-            self.input_file = temp_model.from_map(m['InputFile'])
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobEditingInputs(TeaModel):
-    def __init__(
-        self,
-        editing_input: List[QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInput] = None,
-    ):
-        self.editing_input = editing_input
-
-    def validate(self):
-        if self.editing_input:
-            for k in self.editing_input:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['EditingInput'] = []
-        if self.editing_input is not None:
-            for k in self.editing_input:
-                result['EditingInput'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.editing_input = []
-        if m.get('EditingInput') is not None:
-            for k in m.get('EditingInput'):
-                temp_model = QueryEditingJobListResponseBodyJobListJobEditingInputsEditingInput()
-                self.editing_input.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJobMNSMessageResult(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        message_id: str = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message_id = message_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.message_id is not None:
-            result['MessageId'] = self.message_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('MessageId') is not None:
-            self.message_id = m.get('MessageId')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobListJob(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        creation_time: str = None,
-        editing_config: QueryEditingJobListResponseBodyJobListJobEditingConfig = None,
-        editing_inputs: QueryEditingJobListResponseBodyJobListJobEditingInputs = None,
-        finish_time: str = None,
-        job_id: str = None,
-        mnsmessage_result: QueryEditingJobListResponseBodyJobListJobMNSMessageResult = None,
-        message: str = None,
-        percent: int = None,
-        pipeline_id: str = None,
-        state: str = None,
-    ):
-        self.code = code
-        self.creation_time = creation_time
-        self.editing_config = editing_config
-        self.editing_inputs = editing_inputs
-        self.finish_time = finish_time
-        self.job_id = job_id
-        self.mnsmessage_result = mnsmessage_result
-        self.message = message
-        self.percent = percent
-        self.pipeline_id = pipeline_id
-        self.state = state
-
-    def validate(self):
-        if self.editing_config:
-            self.editing_config.validate()
-        if self.editing_inputs:
-            self.editing_inputs.validate()
-        if self.mnsmessage_result:
-            self.mnsmessage_result.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.creation_time is not None:
-            result['CreationTime'] = self.creation_time
-        if self.editing_config is not None:
-            result['EditingConfig'] = self.editing_config.to_map()
-        if self.editing_inputs is not None:
-            result['EditingInputs'] = self.editing_inputs.to_map()
-        if self.finish_time is not None:
-            result['FinishTime'] = self.finish_time
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.mnsmessage_result is not None:
-            result['MNSMessageResult'] = self.mnsmessage_result.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.percent is not None:
-            result['Percent'] = self.percent
-        if self.pipeline_id is not None:
-            result['PipelineId'] = self.pipeline_id
-        if self.state is not None:
-            result['State'] = self.state
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('CreationTime') is not None:
-            self.creation_time = m.get('CreationTime')
-        if m.get('EditingConfig') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingConfig()
-            self.editing_config = temp_model.from_map(m['EditingConfig'])
-        if m.get('EditingInputs') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobEditingInputs()
-            self.editing_inputs = temp_model.from_map(m['EditingInputs'])
-        if m.get('FinishTime') is not None:
-            self.finish_time = m.get('FinishTime')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('MNSMessageResult') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobListJobMNSMessageResult()
-            self.mnsmessage_result = temp_model.from_map(m['MNSMessageResult'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Percent') is not None:
-            self.percent = m.get('Percent')
-        if m.get('PipelineId') is not None:
-            self.pipeline_id = m.get('PipelineId')
-        if m.get('State') is not None:
-            self.state = m.get('State')
-        return self
-
-
-class QueryEditingJobListResponseBodyJobList(TeaModel):
-    def __init__(
-        self,
-        job: List[QueryEditingJobListResponseBodyJobListJob] = None,
-    ):
-        self.job = job
-
-    def validate(self):
-        if self.job:
-            for k in self.job:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Job'] = []
-        if self.job is not None:
-            for k in self.job:
-                result['Job'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.job = []
-        if m.get('Job') is not None:
-            for k in m.get('Job'):
-                temp_model = QueryEditingJobListResponseBodyJobListJob()
-                self.job.append(temp_model.from_map(k))
-        return self
-
-
-class QueryEditingJobListResponseBodyNonExistJobIds(TeaModel):
-    def __init__(
-        self,
-        string: List[str] = None,
-    ):
-        self.string = string
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.string is not None:
-            result['String'] = self.string
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('String') is not None:
-            self.string = m.get('String')
-        return self
-
-
-class QueryEditingJobListResponseBody(TeaModel):
-    def __init__(
-        self,
-        job_list: QueryEditingJobListResponseBodyJobList = None,
-        non_exist_job_ids: QueryEditingJobListResponseBodyNonExistJobIds = None,
-        request_id: str = None,
-    ):
-        self.job_list = job_list
-        self.non_exist_job_ids = non_exist_job_ids
-        self.request_id = request_id
-
-    def validate(self):
-        if self.job_list:
-            self.job_list.validate()
-        if self.non_exist_job_ids:
-            self.non_exist_job_ids.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_list is not None:
-            result['JobList'] = self.job_list.to_map()
-        if self.non_exist_job_ids is not None:
-            result['NonExistJobIds'] = self.non_exist_job_ids.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobList') is not None:
-            temp_model = QueryEditingJobListResponseBodyJobList()
-            self.job_list = temp_model.from_map(m['JobList'])
-        if m.get('NonExistJobIds') is not None:
-            temp_model = QueryEditingJobListResponseBodyNonExistJobIds()
-            self.non_exist_job_ids = temp_model.from_map(m['NonExistJobIds'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class QueryEditingJobListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: QueryEditingJobListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = QueryEditingJobListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class QueryFpDBDeleteJobListRequest(TeaModel):
     def __init__(
         self,
@@ -13686,6 +13509,7 @@ class QueryFpDBDeleteJobListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the jobs of clearing or deleting a media fingerprint library. You can obtain the job IDs from the response parameters of the [SubmitFpDBDeleteJob](~~209341~~) operation. Separate multiple job IDs with commas (,). If you leave this parameter empty, the system returns the latest 20 jobs that are submitted.
         self.job_ids = job_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13742,15 +13566,30 @@ class QueryFpDBDeleteJobListResponseBodyFpDBDeleteJobListFpDBDeleteJob(TeaModel)
         status: str = None,
         user_data: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.code = code
+        # The point in time when the job was created.
         self.creation_time = creation_time
+        # The operation type.
         self.del_type = del_type
+        # The point in time when the job was complete.
         self.finish_time = finish_time
+        # The ID of the media fingerprint library.
         self.fp_dbid = fp_dbid
+        # The ID of the job.
         self.id = id
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.message = message
+        # The ID of the ApsaraVideo Media Processing (MPS) queue.
         self.pipeline_id = pipeline_id
+        # The status of the job. Valid values:
+        # 
+        # *   **Queuing**: The job is waiting in the queue.
+        # *   **Analysing**: The job is in progress.
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job fails.
         self.status = status
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -13878,8 +13717,11 @@ class QueryFpDBDeleteJobListResponseBody(TeaModel):
         non_exist_ids: QueryFpDBDeleteJobListResponseBodyNonExistIds = None,
         request_id: str = None,
     ):
+        # The jobs of deleting a media fingerprint library. For more information, see the "FpDBDeleteJob" section of the [Data types](https://icms.alibaba-inc.com/content/mps/cc2a58?l=1\&m=16051\&n=23657) topic.
         self.fp_dbdelete_job_list = fp_dbdelete_job_list
+        # The IDs of the jobs that do not exist. This parameter is not returned if all specified jobs are found.
         self.non_exist_ids = non_exist_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13968,6 +13810,7 @@ class QueryFpFileDeleteJobListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the jobs of deleting media files from a media fingerprint library. You can obtain the job IDs from the response parameters of the [SubmitFpFileDeleteJob](~~209274~~) operation. Separate multiple job IDs with commas (,). If you leave this parameter empty, the system returns the latest 20 jobs that are submitted.
         self.job_ids = job_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14024,15 +13867,30 @@ class QueryFpFileDeleteJobListResponseBodyFpFileDeleteJobListFpFileDeleteJob(Tea
         status: str = None,
         user_data: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.code = code
+        # The point in time when the job was created.
         self.creation_time = creation_time
+        # The IDs of the files.
         self.file_ids = file_ids
+        # The point in time when the job was complete.
         self.finish_time = finish_time
+        # The ID of the media fingerprint library.
         self.fp_dbid = fp_dbid
+        # The ID of the job.
         self.id = id
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.message = message
+        # The ID of the ApsaraVideo Media Processing (MPS) queue.
         self.pipeline_id = pipeline_id
+        # The status of the job. Valid values:
+        # 
+        # *   **Queuing**: The job is waiting in the queue.
+        # *   **Analysing**: The job is in progress.
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job fails.
         self.status = status
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -14160,8 +14018,11 @@ class QueryFpFileDeleteJobListResponseBody(TeaModel):
         non_exist_ids: QueryFpFileDeleteJobListResponseBodyNonExistIds = None,
         request_id: str = None,
     ):
+        # The jobs of deleting media files from a media fingerprint library. For more information, see the "FpFileDeleteJob" section of the [Data types](https://icms.alibaba-inc.com/content/mps/cc2a58?l=1\&m=16051\&n=23657) topic.
         self.fp_file_delete_job_list = fp_file_delete_job_list
+        # The IDs of the jobs that do not exist.
         self.non_exist_ids = non_exist_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14244,17 +14105,30 @@ class QueryFpFileDeleteJobListResponse(TeaModel):
 class QueryFpShotJobListRequest(TeaModel):
     def __init__(
         self,
+        end_of_job_created_time_range: str = None,
         job_ids: str = None,
+        maximum_page_size: int = None,
+        next_page_token: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        pipeline_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        start_of_job_created_time_range: str = None,
+        state: str = None,
     ):
+        self.end_of_job_created_time_range = end_of_job_created_time_range
+        # The IDs of the media fingerprint analysis jobs that you want to query. To view the job IDs, log on to the **MPS console (https://mps.console.aliyun.com/overview)**, click **Tasks** in the left-side navigation pane, and then click the **Video DNA** tab on the Tasks page. You can query up to 10 media fingerprint analysis jobs at a time. Separate multiple job IDs with commas (,).
         self.job_ids = job_ids
+        self.maximum_page_size = maximum_page_size
+        self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.start_of_job_created_time_range = start_of_job_created_time_range
+        self.state = state
 
     def validate(self):
         pass
@@ -14265,30 +14139,54 @@ class QueryFpShotJobListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_of_job_created_time_range is not None:
+            result['EndOfJobCreatedTimeRange'] = self.end_of_job_created_time_range
         if self.job_ids is not None:
             result['JobIds'] = self.job_ids
+        if self.maximum_page_size is not None:
+            result['MaximumPageSize'] = self.maximum_page_size
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_of_job_created_time_range is not None:
+            result['StartOfJobCreatedTimeRange'] = self.start_of_job_created_time_range
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndOfJobCreatedTimeRange') is not None:
+            self.end_of_job_created_time_range = m.get('EndOfJobCreatedTimeRange')
         if m.get('JobIds') is not None:
             self.job_ids = m.get('JobIds')
+        if m.get('MaximumPageSize') is not None:
+            self.maximum_page_size = m.get('MaximumPageSize')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartOfJobCreatedTimeRange') is not None:
+            self.start_of_job_created_time_range = m.get('StartOfJobCreatedTimeRange')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
@@ -14299,8 +14197,15 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotConfig(TeaModel)
         primary_key: str = None,
         save_type: str = None,
     ):
+        # The ID of the media fingerprint library.
         self.fp_dbid = fp_dbid
+        # The unique primary key of the input video.
         self.primary_key = primary_key
+        # The storage type. Valid values:
+        # 
+        # - **nosave**: The fingerprints of the job input are not saved to the media fingerprint library.
+        # - **save**: The fingerprints of the job input are saved to the media fingerprint library only if the job input is not duplicated with media content in the media fingerprint library.
+        # - **forcesave**: The fingerprints of the job input are forcibly saved to the media fingerprint library.
         self.save_type = save_type
 
     def validate(self):
@@ -14337,7 +14242,9 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
         duration: str = None,
         start: str = None,
     ):
+        # The length.
         self.duration = duration
+        # The start point in time.
         self.start = start
 
     def validate(self):
@@ -14370,7 +14277,9 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
         duration: str = None,
         start: str = None,
     ):
+        # The length.
         self.duration = duration
+        # The start point in time.
         self.start = start
 
     def validate(self):
@@ -14404,8 +14313,11 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
         input: QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpShotsFpShotFpShotSlicesFpShotSliceInput = None,
         similarity: str = None,
     ):
+        # The start point in time and length of the similar audio clip in the audio file that has similar fingerprints to the input audio in the audio fingerprint library.
         self.duplication = duplication
+        # The start point in time and length of the similar audio clip in the input audio.
         self.input = input
+        # The overall similarity of the input audio against audio files that have similar fingerprints to the input audio in the audio fingerprint library.
         self.similarity = similarity
 
     def validate(self):
@@ -14483,8 +14395,11 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultAudioFpSho
         primary_key: str = None,
         similarity: str = None,
     ):
+        # The array of audio files that have similar fingerprints to the input audio in the audio fingerprint library.
         self.fp_shot_slices = fp_shot_slices
+        # The unique primary key of the input video.
         self.primary_key = primary_key
+        # The overall similarity of the input audio against audio files that have similar fingerprints to the input audio in the audio fingerprint library.
         self.similarity = similarity
 
     def validate(self):
@@ -14558,7 +14473,9 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
         duration: str = None,
         start: str = None,
     ):
+        # The length.
         self.duration = duration
+        # The start point in time.
         self.start = start
 
     def validate(self):
@@ -14591,7 +14508,9 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
         duration: str = None,
         start: str = None,
     ):
+        # The length.
         self.duration = duration
+        # The start point in time.
         self.start = start
 
     def validate(self):
@@ -14625,8 +14544,11 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
         input: QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpShotFpShotSlicesFpShotSliceInput = None,
         similarity: str = None,
     ):
+        # The start point in time and length of the similar video clip in the video that has similar fingerprints to the input video in the video fingerprint library.
         self.duplication = duplication
+        # The start point in time and length of the similar video clip in the input video.
         self.input = input
+        # The similarity of the input video clip against the video that has similar fingerprints to the input video in the video fingerprint library.
         self.similarity = similarity
 
     def validate(self):
@@ -14704,8 +14626,11 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShotsFpS
         primary_key: str = None,
         similarity: str = None,
     ):
+        # The array of videos that have similar fingerprints to the input video in the video fingerprint library.
         self.fp_shot_slices = fp_shot_slices
+        # The unique primary key of the input video.
         self.primary_key = primary_key
+        # The overall similarity of the input video against videos that have similar fingerprints to the input video in the video fingerprint library. The overall similarity is the average value of the similarities of the input video against all similar video clips. If multiple similar video clips exist in the video fingerprint library, the similarities of the input video against multiple similar video clips are returned.
         self.similarity = similarity
 
     def validate(self):
@@ -14779,7 +14704,9 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShot
         duration: str = None,
         start: str = None,
     ):
+        # The length.
         self.duration = duration
+        # The start point in time.
         self.start = start
 
     def validate(self):
@@ -14814,9 +14741,13 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShot
         input_text: str = None,
         similarity: str = None,
     ):
+        # The text snippet that has similar fingerprints to the input text in the text fingerprint library.
         self.duplication_text = duplication_text
+        # The start point in time and length of the similar text snippet in the input text.
         self.input_fragment = input_fragment
+        # The input text for text fingerprint analysis.
         self.input_text = input_text
+        # The similarity of the input text against the text snippet that has similar fingerprints to the input text in the text fingerprint library.
         self.similarity = similarity
 
     def validate(self):
@@ -14895,8 +14826,11 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShot
         similarity: str = None,
         text_fp_shot_slices: QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShotsTextFpShotTextFpShotSlices = None,
     ):
+        # The unique primary key of the input text.
         self.primary_key = primary_key
+        # The similarity of the input text against text snippets that have similar fingerprints to the input text in the text fingerprint library.
         self.similarity = similarity
+        # The array of text snippets that have similar fingerprints to the input text in the text fingerprint library.
         self.text_fp_shot_slices = text_fp_shot_slices
 
     def validate(self):
@@ -14971,8 +14905,11 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResult(TeaModel)
         fp_shots: QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultFpShots = None,
         text_fp_shots: QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotResultTextFpShots = None,
     ):
+        # The audio fingerprint analysis results.
         self.audio_fp_shots = audio_fp_shots
+        # The video fingerprint analysis results.
         self.fp_shots = fp_shots
+        # The text fingerprint analysis results.
         self.text_fp_shots = text_fp_shots
 
     def validate(self):
@@ -15018,8 +14955,11 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJobInputFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket in which the job input resides.
         self.bucket = bucket
+        # The OSS region in which the job input resides.
         self.location = location
+        # The Object Storage Service (OSS) object that is used as the job input.
         self.object = object
 
     def validate(self):
@@ -15055,6 +14995,7 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJob(TeaModel):
         self,
         code: str = None,
         creation_time: str = None,
+        duration: int = None,
         file_id: str = None,
         finish_time: str = None,
         fp_shot_config: QueryFpShotJobListResponseBodyFpShotJobListFpShotJobFpShotConfig = None,
@@ -15067,18 +15008,37 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJob(TeaModel):
         state: str = None,
         user_data: str = None,
     ):
+        # The error code returned when the job fails.
         self.code = code
+        # The point in time when the job was created.
         self.creation_time = creation_time
+        self.duration = duration
+        # The ID of the matched file in the media fingerprint library.
         self.file_id = file_id
+        # The point in time when the job was complete.
         self.finish_time = finish_time
+        # The configurations of the job.
         self.fp_shot_config = fp_shot_config
+        # The results of the media fingerprint analysis job.
         self.fp_shot_result = fp_shot_result
+        # The ID of the job.
         self.id = id
+        # The information about the job input.
         self.input = input
+        # The information about the job input.
         self.input_file = input_file
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.message = message
+        # The ID of the ApsaraVideo Media Processing (MPS) queue.
         self.pipeline_id = pipeline_id
+        # The status of the job. Valid values:
+        # 
+        # - **Queuing**: The job is waiting in the queue.
+        # - **Analysing**: The job is in progress.
+        # - **Success**: The job is successful.
+        # - **Fail**: The job fails.
         self.state = state
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -15099,6 +15059,8 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJob(TeaModel):
             result['Code'] = self.code
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.file_id is not None:
             result['FileId'] = self.file_id
         if self.finish_time is not None:
@@ -15129,6 +15091,8 @@ class QueryFpShotJobListResponseBodyFpShotJobListFpShotJob(TeaModel):
             self.code = m.get('Code')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
         if m.get('FinishTime') is not None:
@@ -15223,11 +15187,16 @@ class QueryFpShotJobListResponseBody(TeaModel):
     def __init__(
         self,
         fp_shot_job_list: QueryFpShotJobListResponseBodyFpShotJobList = None,
+        next_page_token: str = None,
         non_exist_ids: QueryFpShotJobListResponseBodyNonExistIds = None,
         request_id: str = None,
     ):
+        # The array of media fingerprint analysis jobs.
         self.fp_shot_job_list = fp_shot_job_list
+        self.next_page_token = next_page_token
+        # The job IDs that do not exist. This parameter is not returned if all specified jobs are found.
         self.non_exist_ids = non_exist_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15244,6 +15213,8 @@ class QueryFpShotJobListResponseBody(TeaModel):
         result = dict()
         if self.fp_shot_job_list is not None:
             result['FpShotJobList'] = self.fp_shot_job_list.to_map()
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
         if self.non_exist_ids is not None:
             result['NonExistIds'] = self.non_exist_ids.to_map()
         if self.request_id is not None:
@@ -15255,6 +15226,8 @@ class QueryFpShotJobListResponseBody(TeaModel):
         if m.get('FpShotJobList') is not None:
             temp_model = QueryFpShotJobListResponseBodyFpShotJobList()
             self.fp_shot_job_list = temp_model.from_map(m['FpShotJobList'])
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
         if m.get('NonExistIds') is not None:
             temp_model = QueryFpShotJobListResponseBodyNonExistIds()
             self.non_exist_ids = temp_model.from_map(m['NonExistIds'])
@@ -15486,12 +15459,17 @@ class QueryIProductionJobResponse(TeaModel):
 class QueryJobListRequest(TeaModel):
     def __init__(
         self,
+        include_pipeline_info: bool = None,
         job_ids: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.include_pipeline_info = include_pipeline_info
+        # The IDs of transcoding jobs. Separate multiple IDs with commas (,). You can query a maximum of 10 transcoding jobs at a time. You can log on to the [ApsaraVideo Media Processing (MPS) console](https://mps.console.aliyun.com/overview) and click **Tasks** in the left-side navigation pane to obtain job IDs. Alternatively, you can obtain job IDs from the response to the [SubmitJobs](~~29226~~) operation.
+        # 
+        # >  If you do not set the JobIds parameter, the `InvalidParameter` error code is returned.
         self.job_ids = job_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -15507,6 +15485,8 @@ class QueryJobListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.include_pipeline_info is not None:
+            result['IncludePipelineInfo'] = self.include_pipeline_info
         if self.job_ids is not None:
             result['JobIds'] = self.job_ids
         if self.owner_account is not None:
@@ -15521,6 +15501,8 @@ class QueryJobListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IncludePipelineInfo') is not None:
+            self.include_pipeline_info = m.get('IncludePipelineInfo')
         if m.get('JobIds') is not None:
             self.job_ids = m.get('JobIds')
         if m.get('OwnerAccount') is not None:
@@ -15541,8 +15523,11 @@ class QueryJobListResponseBodyJobListJobInput(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -15580,8 +15565,11 @@ class QueryJobListResponseBodyJobListJobMNSMessageResult(TeaModel):
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned if the job fails. This parameter is not returned if the job is successful.
         self.error_code = error_code
+        # The error message that is returned if the job fails. This parameter is not returned if the job is successful.
         self.error_message = error_message
+        # The ID of the success message.
         self.message_id = message_id
 
     def validate(self):
@@ -15618,7 +15606,13 @@ class QueryJobListResponseBodyJobListJobOutputAudioVolume(TeaModel):
         level: str = None,
         method: str = None,
     ):
+        # The volume adjustment range. Default value: **-20db**.
         self.level = level
+        # The volume adjustment method. Valid values:
+        # 
+        # *   **auto**: The volume is automatically adjusted.
+        # *   **dynamic**: The volume is dynamically adjusted.
+        # *   **linear**: The volume is linearly adjusted.
         self.method = method
 
     def validate(self):
@@ -15656,12 +15650,34 @@ class QueryJobListResponseBodyJobListJobOutputAudio(TeaModel):
         samplerate: str = None,
         volume: QueryJobListResponseBodyJobListJobOutputAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels.
+        # 
+        # *   Valid values: 1, 2, 3, 4, 5, 6, 7, and 8.
+        # *   Default value: **2**.
         self.channels = channels
+        # The audio encoding and decoding format.
+        # 
+        # *   Valid values: aac, mp3, vorbis, and flac.
+        # *   Default value: **aac**.
         self.codec = codec
+        # The codec profile of the audio. Valid values when the Codec parameter is set to aac: aaclow, aache, aachev2, aacld, and aaceld.
         self.profile = profile
+        # The level of quality control on the audio.
         self.qscale = qscale
+        # The sampling rate.
+        # 
+        # *   Valid values: 22050, 32000, 44100, 48000, and 96000.
+        # *   Unit: Hz
+        # *   Default value: 44100.
+        # 
+        # >  If the video container format is FLV and the audio codec is MP3, you cannot set this parameter to 32000, 48000, or 96000. If the audio codec is MP3, you cannot set this parameter to 96000.
         self.samplerate = samplerate
+        # The volume configuration.
         self.volume = volume
 
     def validate(self):
@@ -15716,7 +15732,25 @@ class QueryJobListResponseBodyJobListJobOutputClipTimeSpan(TeaModel):
         duration: str = None,
         seek: str = None,
     ):
+        # The duration of the clip.
+        # 
+        # *   Format: hh:mm:ss\[.SSS].
+        # *   Example: 01:00:59.999.
+        # 
+        # Or
+        # 
+        # *   Format: sssss\[.SSS].
+        # *   Example: 32000.23.
         self.duration = duration
+        # The time when the clip starts.
+        # 
+        # *   Format: hh:mm:ss\[.SSS].
+        # *   Example: 01:59:59.999.
+        # 
+        # Or
+        # 
+        # *   Format: sssss\[.SSS].
+        # *   Example: 32000.23.
         self.seek = seek
 
     def validate(self):
@@ -15748,6 +15782,7 @@ class QueryJobListResponseBodyJobListJobOutputClip(TeaModel):
         self,
         time_span: QueryJobListResponseBodyJobListJobOutputClipTimeSpan = None,
     ):
+        # The time span of the clip.
         self.time_span = time_span
 
     def validate(self):
@@ -15777,6 +15812,14 @@ class QueryJobListResponseBodyJobListJobOutputContainer(TeaModel):
         self,
         format: str = None,
     ):
+        # The container format.
+        # 
+        # *   Default value: mp4.
+        # *   Video formats include FLV, MP4, HLS (M3U8 + TS), and MPEG-DASH (MPD + fMP4)
+        # *   Audio formats include MP3, MP4, Ogg, FLAC, and M4A.
+        # *   Image formats include GIF and WebP. If the container format is GIF, the video codec must be set to GIF.
+        # *   If the container format is WebP, the video codec must be set to WebP.
+        # *   If the container format is FLV, the video codec cannot be set to H.265.
         self.format = format
 
     def validate(self):
@@ -15809,11 +15852,19 @@ class QueryJobListResponseBodyJobListJobOutputEncryption(TeaModel):
         skip_cnt: str = None,
         type: str = None,
     ):
+        # The encryption ID.
         self.id = id
+        # The key that is used to encrypt the video.
         self.key = key
+        # The key encryption method. Valid values: Base64 and KMS.
+        # 
+        # >  For example, if the key is `encryptionkey128`, the value can be `Base64("encryptionkey128")` or `KMS(Base64("encryptionkey128")`, depending on the encryption method used.
         self.key_type = key_type
+        # The URL that is used to request the key. The URL is Base64-encoded.
         self.key_uri = key_uri
+        # The number of unencrypted frames at the beginning of the video. Leaving these frames unencrypted enables video playback to quickly start.
         self.skip_cnt = skip_cnt
+        # The encryption type. Valid value: **hls-aes-128**.
         self.type = type
 
     def validate(self):
@@ -15862,7 +15913,15 @@ class QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupportTS(TeaModel)
         md_5support: bool = None,
         size_support: bool = None,
     ):
+        # Indicates whether to support the output of the md5 value of the TS file in the M3U8 file. Valid values:
+        # 
+        # *   **true**: supported.
+        # *   **false**: not supported.
         self.md_5support = md_5support
+        # Indicates whether to support the output of the size of the TS file in the M3U8 file. Valid values:
+        # 
+        # *   **true**: supported.
+        # *   **false**: not supported.
         self.size_support = size_support
 
     def validate(self):
@@ -15894,6 +15953,7 @@ class QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupport(TeaModel):
         self,
         ts: QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupportTS = None,
     ):
+        # The non-standard support configuration for M3U8 about TS files. The value must be a JSON object. For more information, see [Parameter details](~~29253~~).
         self.ts = ts
 
     def validate(self):
@@ -15926,9 +15986,22 @@ class QueryJobListResponseBodyJobListJobOutputMergeListMerge(TeaModel):
         role_arn: str = None,
         start: str = None,
     ):
+        # The duration of the clip.
+        # 
+        # *   Valid formats: hh:mm:ss\[.SSS] and sssss\[.SSS].
+        # *   Examples: 01:59:59.999 and 32000.23.
         self.duration = duration
+        # The OSS URL of the clip.
+        # 
+        # *   Example: `http://example-bucket-.oss-cn-hangzhou.aliyuncs.com/example-object.flv`.
+        # *   The object must be URL-encoded by using the UTF-8 standard. For more information, see [URL encoding](~~423796~~).
         self.merge_url = merge_url
+        # The Alibaba Cloud Resource Name (ARN) of the role used for proxy authorization.
         self.role_arn = role_arn
+        # The start point in time of the clip.
+        # 
+        # *   Valid formats: hh:mm:ss\[.SSS] and sssss\[.SSS].
+        # *   Examples: 01:59:59.999 and 32000.23.
         self.start = start
 
     def validate(self):
@@ -15998,6 +16071,75 @@ class QueryJobListResponseBodyJobListJobOutputMergeList(TeaModel):
         return self
 
 
+class QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        downgrade_policy: str = None,
+        duration: float = None,
+        enable: str = None,
+        message: str = None,
+        real_speed: float = None,
+        setting_speed: int = None,
+        time_cost: float = None,
+    ):
+        self.code = code
+        self.downgrade_policy = downgrade_policy
+        self.duration = duration
+        self.enable = enable
+        self.message = message
+        self.real_speed = real_speed
+        self.setting_speed = setting_speed
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.downgrade_policy is not None:
+            result['DowngradePolicy'] = self.downgrade_policy
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.real_speed is not None:
+            result['RealSpeed'] = self.real_speed
+        if self.setting_speed is not None:
+            result['SettingSpeed'] = self.setting_speed
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DowngradePolicy') is not None:
+            self.downgrade_policy = m.get('DowngradePolicy')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RealSpeed') is not None:
+            self.real_speed = m.get('RealSpeed')
+        if m.get('SettingSpeed') is not None:
+            self.setting_speed = m.get('SettingSpeed')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
 class QueryJobListResponseBodyJobListJobOutputMuxConfigGif(TeaModel):
     def __init__(
         self,
@@ -16006,9 +16148,16 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfigGif(TeaModel):
         is_custom_palette: str = None,
         loop: str = None,
     ):
+        # The color dithering algorithm of the palette. Valid values: sierra and bayer.
         self.dither_mode = dither_mode
+        # The duration for which the final frame is paused. Unit: centiseconds.
         self.final_delay = final_delay
+        # Indicates whether the custom palette was used. Valid values:
+        # 
+        # - **true**: custom.
+        # - **false**: non-custom.
         self.is_custom_palette = is_custom_palette
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -16048,6 +16197,7 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfigSegment(TeaModel):
         self,
         duration: str = None,
     ):
+        # The length of the segment. Unit: seconds.
         self.duration = duration
 
     def validate(self):
@@ -16075,6 +16225,7 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfigWebp(TeaModel):
         self,
         loop: str = None,
     ):
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -16104,8 +16255,11 @@ class QueryJobListResponseBodyJobListJobOutputMuxConfig(TeaModel):
         segment: QueryJobListResponseBodyJobListJobOutputMuxConfigSegment = None,
         webp: QueryJobListResponseBodyJobListJobOutputMuxConfigWebp = None,
     ):
+        # The transmuxing configuration for GIF.
         self.gif = gif
+        # The segment configurations. The value is a JSON object.
         self.segment = segment
+        # The transmuxing configuration for WebP.
         self.webp = webp
 
     def validate(self):
@@ -16152,9 +16306,27 @@ class QueryJobListResponseBodyJobListJobOutputOpeningListOpening(TeaModel):
         width: str = None,
         open_url: str = None,
     ):
+        # The height of the opening part.
+        # 
+        # *   Valid values: values in the range of (0, 4096), -1, and full.
+        # *   A value of -1 indicates that the height of the source of the opening part is retained.
+        # *   A value of full indicates that the height of the main part is used for the opening part.
+        # *   Default value: **-1**.
         self.height = height
+        # The amount of time after which the opening part is played.
+        # 
+        # *   The amount of time after which the opening part is played. The value starts from 0.
+        # *   Unit: seconds.
+        # *   Default value: **0**.
         self.start = start
+        # The width of the opening part.
+        # 
+        # *   Valid values: values in the range of (0, 4096), -1, and full.
+        # *   A value of -1 indicates that the width of the source of the opening part is retained.
+        # *   A value of full indicates that the width of the main part is used for the opening part.
+        # *   Default value: **-1**.
         self.width = width
+        # The OSS URL of the opening part of the video.
         self.open_url = open_url
 
     def validate(self):
@@ -16232,9 +16404,13 @@ class QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubti
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket in which the output file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the output file resides.
         self.location = location
+        # The name of the OSS object of the output file.
         self.object = object
+        # The ARN of the role used for proxy authorization.
         self.role_arn = role_arn
 
     def validate(self):
@@ -16277,9 +16453,16 @@ class QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitle(TeaMode
         out_subtitle_file: QueryJobListResponseBodyJobListJobOutputOutSubtitleListOutSubtitleOutSubtitleFile = None,
         success: bool = None,
     ):
+        # The video track. Format: `0:{stream}:{stream sequence number}`, that is, `0:v:{video_index}`. The value of stream is v, which indicates an audio stream of a video. The sequence number is the index of the audio stream in the list and starts from 0.
         self.map = map
+        # The error message returned if the job fails to be created. This parameter is not returned if the job is created.
         self.message = message
+        # The details of the output file.
         self.out_subtitle_file = out_subtitle_file
+        # Indicates whether the job succeeded. Valid values:
+        # 
+        # *   **true**: succeeded.
+        # *   **fasle**: failed.
         self.success = success
 
     def validate(self):
@@ -16359,9 +16542,13 @@ class QueryJobListResponseBodyJobListJobOutputOutputFile(TeaModel):
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket in which the output file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the output file resides.
         self.location = location
+        # The name of the OSS object of the output file.
         self.object = object
+        # The ARN of the role used for proxy authorization.
         self.role_arn = role_arn
 
     def validate(self):
@@ -16408,13 +16595,21 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesFormat(TeaModel):
         size: str = None,
         start_time: str = None,
     ):
+        # The total bitrate.
         self.bitrate = bitrate
+        # The total duration.
         self.duration = duration
+        # The full name of the container format.
         self.format_long_name = format_long_name
+        # The short name of the container format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format_name = format_name
+        # The total number of program streams.
         self.num_programs = num_programs
+        # The total number of media streams.
         self.num_streams = num_streams
+        # The size of the file.
         self.size = size
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -16470,6 +16665,7 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesSourceLogosSourceLogo(Te
         self,
         source: str = None,
     ):
+        # The keywords.
         self.source = source
 
     def validate(self):
@@ -16547,21 +16743,37 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsAudioStreamListAu
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The output layout of the sound channels.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
+        # The language. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate.
         self.samplerate = samplerate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -16685,7 +16897,11 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamLis
         index: str = None,
         lang: str = None,
     ):
+        # The sequence number of the subtitle stream. 
+        # 
+        # This parameter indicates the position of the subtitle stream in all subtitle streams.
         self.index = index
+        # The language. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
 
     def validate(self):
@@ -16754,8 +16970,11 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
         cost_bandwidth: str = None,
         preload_time: str = None,
     ):
+        # The average bitrate.
         self.avg_bitrate = avg_bitrate
+        # The maximum bandwidth that was consumed.
         self.cost_bandwidth = cost_bandwidth
+        # The amount of preload time.
         self.preload_time = preload_time
 
     def validate(self):
@@ -16816,31 +17035,57 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
         color_primaries: str = None,
         color_transfer: str = None,
     ):
+        # The average frame rate of the video stream.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR).
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames).
         self.has_bframes = has_bframes
+        # The latter number in the video resolution. The number indicates the video height.
         self.height = height
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
         self.index = index
+        # The language. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The network bandwidth consumption.
         self.network_cost = network_cost
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format of the video stream.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The sample aspect ratio (SAR) of the video stream.
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base of the video stream.
         self.timebase = timebase
+        # The former number in the video resolution. The number indicates the video width.
         self.width = width
+        # The number of binary bits used by each sample or pixel.
         self.bits_per_raw_sample = bits_per_raw_sample
+        # The primary colors.
         self.color_primaries = color_primaries
+        # The color transfer configuration.
         self.color_transfer = color_transfer
 
     def validate(self):
@@ -17007,8 +17252,11 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreams(TeaModel):
         subtitle_stream_list: QueryJobListResponseBodyJobListJobOutputPropertiesStreamsSubtitleStreamList = None,
         video_stream_list: QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamList = None,
     ):
+        # The list of audio streams.
         self.audio_stream_list = audio_stream_list
+        # The list of subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
+        # The list of video streams.
         self.video_stream_list = video_stream_list
 
     def validate(self):
@@ -17061,15 +17309,25 @@ class QueryJobListResponseBodyJobListJobOutputProperties(TeaModel):
         streams: QueryJobListResponseBodyJobListJobOutputPropertiesStreams = None,
         width: str = None,
     ):
+        # The bitrate of the video.
         self.bitrate = bitrate
+        # The duration of the video.
         self.duration = duration
+        # The format of the video.
         self.file_format = file_format
+        # The size of the file.
         self.file_size = file_size
+        # The format information.
         self.format = format
+        # The frame rate of the video.
         self.fps = fps
+        # The length of the video.
         self.height = height
+        # The non-engine layer keywords.
         self.source_logos = source_logos
+        # The stream information.
         self.streams = streams
+        # The width of the video.
         self.width = width
 
     def validate(self):
@@ -17143,8 +17401,11 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSu
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -17182,8 +17443,19 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSu
         font_name: str = None,
         input: QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleListExtSubtitleInput = None,
     ):
+        # The character set used by the external subtitle. 
+        # 
+        # - Valid values: UTF-8, GBK, BIG5, and auto.
+        # - Default value: **auto**.
+        # 
+        # >  If you set this parameter to auto, the detected character set may not be the actual character set. We recommend that you set this parameter to another value.
         self.char_enc = char_enc
+        # The font of the hard subtitles converted from external subtitles. Default value: SimSum. For more information, see [Fonts](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/font-name).
         self.font_name = font_name
+        # The input subtitle file. 
+        # 
+        # - Files in the SRT or ASS format are supported. For more information, see the part about input parameters in [Parameter details](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/parameter-details).
+        # - Example: `{“Bucket”:”example-bucket”,“Location”:”oss-cn-hangzhou”,“Object”:”example.srt”}`.
         self.input = input
 
     def validate(self):
@@ -17256,6 +17528,7 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleListSubtitle
         self,
         map: str = None,
     ):
+        # The audio track. Format: `0:{stream}:{stream sequence number}`, that is, `0:a:{audio_index}`. The value of stream is a, which indicates an audio stream. The sequence number is the index of the audio stream in the list and starts from 0.
         self.map = map
 
     def validate(self):
@@ -17319,7 +17592,9 @@ class QueryJobListResponseBodyJobListJobOutputSubtitleConfig(TeaModel):
         ext_subtitle_list: QueryJobListResponseBodyJobListJobOutputSubtitleConfigExtSubtitleList = None,
         subtitle_list: QueryJobListResponseBodyJobListJobOutputSubtitleConfigSubtitleList = None,
     ):
+        # The list of external subtitles.
         self.ext_subtitle_list = ext_subtitle_list
+        # The list of subtitles.
         self.subtitle_list = subtitle_list
 
     def validate(self):
@@ -17356,6 +17631,10 @@ class QueryJobListResponseBodyJobListJobOutputSuperReso(TeaModel):
         self,
         is_half_sample: str = None,
     ):
+        # Indicates whether to obtain parameters related to the sampling rate. Valid values:
+        # 
+        # - **true**: The parameters are obtained.
+        # - **false**: The parameters are not obtained.
         self.is_half_sample = is_half_sample
 
     def validate(self):
@@ -17389,12 +17668,31 @@ class QueryJobListResponseBodyJobListJobOutputTailSlateListTailSlate(TeaModel):
         tail_url: str = None,
         width: str = None,
     ):
+        # The color of the bars that are added to the ending part if the size of the ending part is smaller than that of the main part. Default value: White. For more information, see [Background colors](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/parameter-details).
         self.bg_color = bg_color
+        # The amount of time between the end of the main part and the beginning of the ending part. During the video part transition, the last frame of the main part fades out, and the first frame of the ending part fades in. Unit: seconds. Default value: 0.
         self.blend_duration = blend_duration
+        # The height of the ending part. 
+        # 
+        # - Valid values: values in the range of (0, 4096), -1, and full.
+        # - A value of -1 indicates that the height of the source of the ending part is retained.
+        # - A value of full indicates that the height of the main part is used for the ending part.
+        # - Default value: **-1**.
         self.height = height
+        # Indicates whether to merge the audio content of the ending part. Valid values:
+        # 
+        # - **true**: yes.
+        # - **false**: no.
         self.is_merge_audio = is_merge_audio
+        # The time at which the ending part is played.
         self.start = start
+        # The OSS URL of the ending part.
         self.tail_url = tail_url
+        # The width of the ending part. Valid values: values in the range of (0, 4096), -1, and full.  
+        # 
+        # - A value of -1 indicates that the width of the source of the ending part is retained.
+        # - A value of full indicates that the width of the main part is used for the ending part.
+        # - Default value: **-1**.
         self.width = width
 
     def validate(self):
@@ -17488,13 +17786,52 @@ class QueryJobListResponseBodyJobListJobOutputTransConfig(TeaModel):
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method of resolution adjustment. Default value: **none**. Valid values: rescale, crop, pad, and none.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether the audio bitrate is checked.
+        # 
+        # *   If the output audio bitrate is higher than the input audio bitrate, the system considers that the output bitrate equals the input bitrate.
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether the audio bitrate is checked. If the output audio bitrate is higher than the audio bitrate of the media source, a transcoding failure is returned without transcoding the media. This value has a higher priority than IsCheckAudioBitrate.
+        # 
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether the resolution is checked.
+        # 
+        # *   If the output resolution is higher than the input resolution based on the width or height, the system considers that the output resolution equals the input resolution.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso = is_check_reso
+        # Indicates whether the resolution is checked.
+        # 
+        # *   If the output resolution is higher than the input resolution based on the width or height, a transcoding failure is returned.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether the video bitrate is checked.
+        # 
+        # *   If the output bitrate is higher than the input bitrate, the system considers that the output bitrate equals the input bitrate.
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether the video bitrate is checked. If the bitrate of the output video is higher than that of the input video, a transcoding failure is returned without transcoding the video. This parameter takes precedence over the IsCheckVideoBitrate parameter.
+        # 
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The transcoding mode.
+        # 
+        # *   Valid values: onepass, twopass, and CBR.
+        # *   Default value: **onepass**.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -17551,7 +17888,9 @@ class QueryJobListResponseBodyJobListJobOutputVideoBitrateBnd(TeaModel):
         max: str = None,
         min: str = None,
     ):
+        # The maximum bitrate.
         self.max = max
+        # The minimum bitrate.
         self.min = min
 
     def validate(self):
@@ -17602,25 +17941,90 @@ class QueryJobListResponseBodyJobListJobOutputVideo(TeaModel):
         scan_mode: str = None,
         width: str = None,
     ):
+        # The average bitrate of the video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The average bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Unit: KB.
+        # *   Default value: **6000**.
         self.bufsize = bufsize
+        # The codec.
+        # 
+        # *   Valid values: H.264 and H.265.
+        # *   Default value: H.264.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Default value when the Codec parameter is set to H.264: **23**. Default value when the Codec parameter is set to H.265: **26**.
+        # *   If this parameter is returned, the setting of the Bitrate parameter is invalid.
         self.crf = crf
+        # The crop mode. The following two modes are supported:
+        # 
+        # *   **border**: automatically detects and removes black bars.
+        # *   A value in the format of width:height:left:top: crops the video image based on the custom setting.
         self.crop = crop
+        # The level of the independent denoising algorithm.
         self.degrain = degrain
+        # The frame rate.
+        # 
+        # *   Unit: frames per second.
+        # *   The value is 60 if the frame rate of the input file exceeds 60.
+        # *   By default, the frame rate of the input file is used.
         self.fps = fps
+        # The maximum interval between keyframes or the maximum number of frames in a frame group. Unit: seconds.
+        # 
+        # *   Default value: **250**.
+        # *   If you specified the maximum number of frames, the value does not contain a unit.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixels.
+        # *   By default, the original video height is used.
         self.height = height
+        # The maximum frame rate.
         self.max_fps = max_fps
+        # The maximum bitrate of the video. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black bars to be added to the video.
+        # 
+        # *   Unit: pixels.
+        # *   Format: width:height:left:top.
         self.pad = pad
+        # The pixel format. Standard pixel formats such as yuv420p and yuvj420p are supported.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Default value: **medium**. Valid values:
+        # 
+        # *   **veryfast**\
+        # *   **fast**\
+        # *   **medium**\
+        # *   **slow**\
+        # *   **slower**\
         self.preset = preset
+        # The codec profile. Valid values: baseline, main, and high.
+        # 
+        # >  If multiple definitions exist, we recommend that you set this parameter to baseline for the lowest definition to ensure normal playback on low-end devices. Set this parameter to main or high for other definitions.
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
+        # *   Default value: **high**.
         self.profile = profile
+        # The level of quality control on the video.
         self.qscale = qscale
+        # The priority of the resource.
         self.reso_priority = reso_priority
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**: An interlaced scan is performed.
+        # *   **progressive**: A progressive scan is performed.
+        # *   **auto**: A scan is performed based on the video source.
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Unit: pixels.
+        # *   By default, the original width of the video is used.
         self.width = width
 
     def validate(self):
@@ -17728,8 +18132,11 @@ class QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMarkInputFile(Te
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket to which the input file is uploaded.
         self.bucket = bucket
+        # The ID of the OSS region in which the input file resides.
         self.location = location
+        # The name of the Object Storage Service (OSS) object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -17772,13 +18179,69 @@ class QueryJobListResponseBodyJobListJobOutputWaterMarkListWaterMark(TeaModel):
         water_mark_template_id: str = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark image relative to the output video. If this parameter is set in the request, the value overwrites the corresponding parameter in the watermark template. Default value: 0. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the horizontal offset to the width in the output video resolution.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.dx = dx
+        # The vertical offset of the watermark image relative to the output video. If this parameter is set in the request, the value overwrites the vertical offset of the watermark image relative to the output video. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the vertical offset.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the pixel value to the height in the output video resolution in pixels.
+        # 
+        #     *   Valid values: **(0,1)**.
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.dy = dy
+        # The height of the watermark image. If this parameter is set in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the watermark height.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the watermark height to the height in the output video resolution.
+        # 
+        #     *   Valid values: **(0,1)**.
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.height = height
+        # The watermark input file. You can use an image in the PNG format or a file in the MOV format as the watermark input.
         self.input_file = input_file
+        # The position of the watermark. If this parameter is set in the request, the value overwrites the corresponding parameter in the watermark template. Valid values:
+        # 
+        # *   TopRight: the upper-right corner.
+        # *   TopLeft: the upper-left corner.
+        # *   BottomRight: the lower-right corner.
+        # *   BottomLeft: the lower-left corner.
         self.refer_pos = refer_pos
+        # The type of the watermark. If this parameter is set in the request, the value overwrites the corresponding parameter in the watermark template. For more information, see [Parameter details](~~29253~~). Valid values:
+        # 
+        # *   Image: an image watermark.
+        # *   Text: a text watermark.
         self.type = type
+        # The ID of the watermark template.
         self.water_mark_template_id = water_mark_template_id
+        # The width of the watermark image. If this parameter is set in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the watermark width.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixels.
+        # 
+        # *   A decimal indicates the ratio of the watermark width to the width in the output video resolution.
+        # 
+        #     *   Valid values: **(0,1)**.
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.width = width
 
     def validate(self):
@@ -17879,6 +18342,7 @@ class QueryJobListResponseBodyJobListJobOutput(TeaModel):
         m_3u8non_standard_support: QueryJobListResponseBodyJobListJobOutputM3U8NonStandardSupport = None,
         merge_config_url: str = None,
         merge_list: QueryJobListResponseBodyJobListJobOutputMergeList = None,
+        multi_speed_info: QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo = None,
         mux_config: QueryJobListResponseBodyJobListJobOutputMuxConfig = None,
         opening_list: QueryJobListResponseBodyJobListJobOutputOpeningList = None,
         out_subtitle_list: QueryJobListResponseBodyJobListJobOutputOutSubtitleList = None,
@@ -17897,33 +18361,75 @@ class QueryJobListResponseBodyJobListJobOutput(TeaModel):
         water_mark_config_url: str = None,
         water_mark_list: QueryJobListResponseBodyJobListJobOutputWaterMarkList = None,
     ):
+        # The audio configurations.
+        # 
+        # >  If this value was set in the request parameter, the corresponding parameters in the specified transcoding template are overwritten.
         self.audio = audio
+        # The sequence number of the audio stream.
+        # 
+        # *   Format: 0:a:{sequence number}. Example: 0:a:0.
+        # *   The sequence number is the index of the audio stream in the list and starts from 0.
+        # *   If you do not specify a sequence number, the default audio stream is used.
         self.audio_stream_map = audio_stream_map
+        # The information about the media clip.
         self.clip = clip
+        # Information about the container.
         self.container = container
+        # The configuration of watermark blurring. The value must be a JSON object. For more information, see [Parameter details](~~29253~~).
         self.de_watermark = de_watermark
+        # The encryption configuration. Only outputs in the M3U8 format are supported.
         self.encryption = encryption
-        # 扩展字段
+        # The custom fields.
         self.extend_data = extend_data
+        # The non-standard support configuration for M3U8. The value must be a JSON object. For more information, see [Parameter details](~~29253~~).
         self.m_3u8non_standard_support = m_3u8non_standard_support
+        # The URL of the merging configuration file. You can specify only either the MergeList or MergeConfigUrl parameter.  
+        # 
+        # - The file that you specify for the MergeConfigUrl parameter can contain up to 50 merged clips.
+        # - The MergeConfigUrl parameter specifies the URL of the configuration file for merging clips. Make sure that the configuration file is stored as an object in OSS and that MPS can access the OSS object. For information about the file content, see the details about merging parameters.
+        # - Example of the content of mergeConfigfile: `{"MergeList":[{"MergeURL":"http://exampleBucket****.oss-cn-hangzhou.aliyuncs.com/video_01.mp4"}]}`.
         self.merge_config_url = merge_config_url
+        # The merging configuration. A maximum of four URLs can be merged.
         self.merge_list = merge_list
+        self.multi_speed_info = multi_speed_info
+        # The transmuxing configurations. If this value was set in the request parameter, the corresponding parameters in the specified transcoding template are overwritten.
         self.mux_config = mux_config
+        # The list of opening parts. The value must be a JSON object.
         self.opening_list = opening_list
+        # The output subtitle list.
         self.out_subtitle_list = out_subtitle_list
+        # The information about the output file.
         self.output_file = output_file
+        # The priority of the job in the MPS queue to which the job is added. 
+        # 
+        # - A value of 10 indicates the highest priority.
+        # - Default value: **6**.
         self.priority = priority
+        # The media properties.
         self.properties = properties
+        # The video rotation angle.
         self.rotate = rotate
+        # The subtitle configuration.
         self.subtitle_config = subtitle_config
+        # Indicates that the resolution of the source video is used.
         self.super_reso = super_reso
+        # The list of ending parts.
         self.tail_slate_list = tail_slate_list
+        # The ID of the template.
         self.template_id = template_id
+        # The general transcoding configurations.
+        # 
+        # >  If this value was set in the request parameter, the corresponding parameters in the specified transcoding template are overwritten.
         self.trans_config = trans_config
+        # The custom data.
         self.user_data = user_data
+        # The video configuration.
         self.video = video
+        # The sequence number of the video stream. The sequence number is the index of the video stream in the list and starts from 0. If you do not set the corresponding parameter in the request, the default video stream is selected.
         self.video_stream_map = video_stream_map
+        # The URL of the watermark configuration file.
         self.water_mark_config_url = water_mark_config_url
+        # The list of watermarks.
         self.water_mark_list = water_mark_list
 
     def validate(self):
@@ -17939,6 +18445,8 @@ class QueryJobListResponseBodyJobListJobOutput(TeaModel):
             self.m_3u8non_standard_support.validate()
         if self.merge_list:
             self.merge_list.validate()
+        if self.multi_speed_info:
+            self.multi_speed_info.validate()
         if self.mux_config:
             self.mux_config.validate()
         if self.opening_list:
@@ -17988,6 +18496,8 @@ class QueryJobListResponseBodyJobListJobOutput(TeaModel):
             result['MergeConfigUrl'] = self.merge_config_url
         if self.merge_list is not None:
             result['MergeList'] = self.merge_list.to_map()
+        if self.multi_speed_info is not None:
+            result['MultiSpeedInfo'] = self.multi_speed_info.to_map()
         if self.mux_config is not None:
             result['MuxConfig'] = self.mux_config.to_map()
         if self.opening_list is not None:
@@ -18052,6 +18562,9 @@ class QueryJobListResponseBodyJobListJobOutput(TeaModel):
         if m.get('MergeList') is not None:
             temp_model = QueryJobListResponseBodyJobListJobOutputMergeList()
             self.merge_list = temp_model.from_map(m['MergeList'])
+        if m.get('MultiSpeedInfo') is not None:
+            temp_model = QueryJobListResponseBodyJobListJobOutputMultiSpeedInfo()
+            self.multi_speed_info = temp_model.from_map(m['MultiSpeedInfo'])
         if m.get('MuxConfig') is not None:
             temp_model = QueryJobListResponseBodyJobListJobOutputMuxConfig()
             self.mux_config = temp_model.from_map(m['MuxConfig'])
@@ -18100,6 +18613,98 @@ class QueryJobListResponseBodyJobListJobOutput(TeaModel):
         return self
 
 
+class QueryJobListResponseBodyJobListJobPipelineExtendConfig(TeaModel):
+    def __init__(
+        self,
+        is_boost_new: bool = None,
+        max_multi_speed: int = None,
+        multi_speed_downgrade_policy: str = None,
+    ):
+        self.is_boost_new = is_boost_new
+        self.max_multi_speed = max_multi_speed
+        self.multi_speed_downgrade_policy = multi_speed_downgrade_policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_boost_new is not None:
+            result['IsBoostNew'] = self.is_boost_new
+        if self.max_multi_speed is not None:
+            result['MaxMultiSpeed'] = self.max_multi_speed
+        if self.multi_speed_downgrade_policy is not None:
+            result['MultiSpeedDowngradePolicy'] = self.multi_speed_downgrade_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsBoostNew') is not None:
+            self.is_boost_new = m.get('IsBoostNew')
+        if m.get('MaxMultiSpeed') is not None:
+            self.max_multi_speed = m.get('MaxMultiSpeed')
+        if m.get('MultiSpeedDowngradePolicy') is not None:
+            self.multi_speed_downgrade_policy = m.get('MultiSpeedDowngradePolicy')
+        return self
+
+
+class QueryJobListResponseBodyJobListJobPipeline(TeaModel):
+    def __init__(
+        self,
+        extend_config: QueryJobListResponseBodyJobListJobPipelineExtendConfig = None,
+        id: str = None,
+        name: str = None,
+        speed: str = None,
+        state: str = None,
+    ):
+        self.extend_config = extend_config
+        self.id = id
+        self.name = name
+        self.speed = speed
+        self.state = state
+
+    def validate(self):
+        if self.extend_config:
+            self.extend_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtendConfig') is not None:
+            temp_model = QueryJobListResponseBodyJobListJobPipelineExtendConfig()
+            self.extend_config = temp_model.from_map(m['ExtendConfig'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
 class QueryJobListResponseBodyJobListJob(TeaModel):
     def __init__(
         self,
@@ -18112,19 +18717,38 @@ class QueryJobListResponseBodyJobListJob(TeaModel):
         message: str = None,
         output: QueryJobListResponseBodyJobListJobOutput = None,
         percent: int = None,
+        pipeline: QueryJobListResponseBodyJobListJobPipeline = None,
         pipeline_id: str = None,
         state: str = None,
     ):
+        # The error code that is returned if the transcoding job fails. This parameter is not returned if the job succeeds.
         self.code = code
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The information about the job input.
         self.input = input
+        # The ID of the job.
         self.job_id = job_id
+        # The message sent by Message Service (MNS) to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The message that is returned if the job fails. This parameter is not returned if the job succeeds.
         self.message = message
+        # The output of the job.
         self.output = output
+        # The transcoding progress.
         self.percent = percent
+        self.pipeline = pipeline
+        # The ID of the MPS queue.
         self.pipeline_id = pipeline_id
+        # The status of the job. Valid values:
+        # 
+        # *   **Submitted**: The job has been submitted.
+        # *   **Transcoding**: The job is being processed.
+        # *   **TranscodeSuccess**: The job succeeded.
+        # *   **TranscodeFail**: Transcoding failed.
+        # *   **TranscodeCancelled**: The job has been canceled.
         self.state = state
 
     def validate(self):
@@ -18134,6 +18758,8 @@ class QueryJobListResponseBodyJobListJob(TeaModel):
             self.mnsmessage_result.validate()
         if self.output:
             self.output.validate()
+        if self.pipeline:
+            self.pipeline.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18159,6 +18785,8 @@ class QueryJobListResponseBodyJobListJob(TeaModel):
             result['Output'] = self.output.to_map()
         if self.percent is not None:
             result['Percent'] = self.percent
+        if self.pipeline is not None:
+            result['Pipeline'] = self.pipeline.to_map()
         if self.pipeline_id is not None:
             result['PipelineId'] = self.pipeline_id
         if self.state is not None:
@@ -18188,6 +18816,9 @@ class QueryJobListResponseBodyJobListJob(TeaModel):
             self.output = temp_model.from_map(m['Output'])
         if m.get('Percent') is not None:
             self.percent = m.get('Percent')
+        if m.get('Pipeline') is not None:
+            temp_model = QueryJobListResponseBodyJobListJobPipeline()
+            self.pipeline = temp_model.from_map(m['Pipeline'])
         if m.get('PipelineId') is not None:
             self.pipeline_id = m.get('PipelineId')
         if m.get('State') is not None:
@@ -18264,8 +18895,11 @@ class QueryJobListResponseBody(TeaModel):
         non_exist_job_ids: QueryJobListResponseBodyNonExistJobIds = None,
         request_id: str = None,
     ):
+        # The list of transcoding jobs.
         self.job_list = job_list
+        # The list of nonexistent job IDs. If all queried job IDs exist, the response does not contain this parameter.
         self.non_exist_job_ids = non_exist_job_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18356,8 +18990,14 @@ class QueryMediaCensorJobDetailRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the content moderation job. You can obtain the job ID from the response parameters of the [SubmitMediaCensorJob](~~91774~~) operation.
         self.job_id = job_id
+        # The maximum number of entries to return on each page.
+        # 
+        # *   Default value: **30**.
+        # *   Valid values: **1 to 300**.
         self.maximum_page_size = maximum_page_size
+        # The token that is used to retrieve the next page of the query results. You can leave this parameter empty when you call this operation to query the results of a content moderation job for the first time. The token of the next page is returned after you call this operation to query the results of a content moderation job for the first time.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18416,9 +19056,25 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailBarrageCensorResu
         scene: str = None,
         suggestion: str = None,
     ):
+        # The labels of the moderation result. Multiple labels are separated with commas (,). Valid values:
+        # 
+        # *   **spam**: spam
+        # *   **ad**: ads
+        # *   **abuse**: abuse
+        # *   **flood**: excessive junk content
+        # *   **contraband**: prohibited content
+        # *   **meaningless**: meaningless content
+        # *   **normal**: normal content
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed again.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -18461,9 +19117,74 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
         scene: str = None,
         suggestion: str = None,
     ):
+        # The labels of the moderation result. Multiple labels are separated with commas (,).
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **sexy**: sexy content
+        #     *   **porn**: pornographic content
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **bloody**: bloody content
+        #     *   **explosion**: explosion and smoke
+        #     *   **outfit**: special costume
+        #     *   **logo**: special logo
+        #     *   **weapon**: weapon
+        #     *   **politics**: political content
+        #     *   **violence**: violence
+        #     *   **crowd**: crowd
+        #     *   **parade**: parade
+        #     *   **carcrash**: car accident
+        #     *   **flag**: flag
+        #     *   **location**: landmark
+        #     *   **others**: other content
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **ad**: other ads
+        #     *   **politics**: political content in text
+        #     *   **porn**: pornographic content in text
+        #     *   **abuse**: abuse in text
+        #     *   **terrorism**: terrorist content in text
+        #     *   **contraband**: prohibited content in text
+        #     *   **spam**: spam in text
+        #     *   **npx**: illegal ads
+        #     *   **qrcode**: QR code
+        #     *   **programCode**: mini program code
+        # 
+        # *   Valid values in the live moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **meaningless**: meaningless content, such as a black or white screen
+        #     *   **PIP**: picture-in-picture
+        #     *   **smoking**: smoking
+        #     *   **drivelive**: live broadcasting in a running vehicle
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **TV**: controlled TV station logo
+        #     *   **trademark**: trademark
         self.label = label
+        # The score. Valid values: **0 to 100**.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation
+        # *   **terrorism**: terrorist content moderation
+        # *   **ad**: ad violation moderation
+        # *   **live**: undesirable scene moderation
+        # *   **logo**: logo moderation
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed again.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -18541,9 +19262,13 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorR
         object: str = None,
         results: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailCoverImageCensorResultsCoverImageCensorResultResults = None,
     ):
+        # The OSS bucket that stores the video thumbnail.
         self.bucket = bucket
+        # The OSS region in which the video thumbnail resides.
         self.location = location
+        # The Object Storage Service (OSS) object that is used as the video thumbnail.
         self.object = object
+        # The moderation results.
         self.results = results
 
     def validate(self):
@@ -18623,9 +19348,25 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailDescCensorResult(
         scene: str = None,
         suggestion: str = None,
     ):
+        # The labels of the moderation result. Valid values:
+        # 
+        # *   **spam**: spam
+        # *   **ad**: ads
+        # *   **abuse**: abuse
+        # *   **flood**: excessive junk content
+        # *   **contraband**: prohibited content
+        # *   **meaningless**: meaningless content
+        # *   **normal**: normal content
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed again.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -18667,8 +19408,11 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailInput(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket that stores the input file.
         self.bucket = bucket
+        # The OSS region in which the input file resides.
         self.location = location
+        # The OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -18707,9 +19451,25 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailTitleCensorResult
         scene: str = None,
         suggestion: str = None,
     ):
+        # The labels of the moderation result. Valid values: 
+        # 
+        # - **normal**: normal content
+        # - **spam**: spam
+        # - **ad**: ads
+        # - **abuse**: abuse
+        # - **flood**: excessive junk content
+        # - **contraband**: prohibited content
+        # - **meaningless**: meaningless content
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. The value is **antispam**.
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # - **pass**: The content passes the moderation.
+        # - **review**: The content needs to be manually reviewed again.
+        # - **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -18752,9 +19512,60 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         scene: str = None,
         suggestion: str = None,
     ):
+        # The labels of the moderation result. Multiple labels are separated with commas (,). 
+        # 
+        # - Valid values in the pornographic content moderation scenario:   - **porn**: pornographic content
+        #   - **sexy**: sexy content
+        #   - **normal**: normal content
+        # - Valid values in the terrorist content moderation scenario:   - **normal**: normal content
+        #   - **bloody**: bloody content
+        #   - **explosion**: explosion and smoke
+        #   - **outfit**: special costume
+        #   - **logo**: special logo
+        #   - **weapon**: weapon
+        #   - **politics**: political content
+        #   - **violence**: violence
+        #   - **crowd**: crowd
+        #   - **parade**: parade
+        #   - **carcrash**: car accident
+        #   - **flag**: flag
+        #   - **location**: landmark
+        #   - **others**: other content
+        # - Valid values in the ad moderation scenario:   - **normal**: normal content
+        #   - **ad**: other ads
+        #   - **politics**: political content in text
+        #   - **porn**: pornographic content in text
+        #   - **abuse**: abuse in text
+        #   - **terrorism**: terrorist content in text
+        #   - **contraband**: prohibited content in text
+        #   - **spam**: spam in text
+        #   - **npx**: illegal ads
+        #   - **qrcode**: QR code
+        #   - **programCode**: mini program code
+        # - Valid values in the live moderation scenario:   - **normal**: normal content
+        #   - **meaningless**: meaningless content, such as a black or white screen
+        #   - **PIP**: picture-in-picture
+        #   - **smoking**: smoking
+        #   - **drivelive**: live broadcasting in a running vehicle
+        # - Valid values in the logo moderation scenario:   - **normal**: normal content
+        #   - **TV**: controlled TV station logo
+        #   - **trademark**: trademark
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. Valid values: 
+        # 
+        # - **porn**: pornographic content moderation
+        # - **terrorism**: terrorist content moderation
+        # - **ad**: ad violation moderation
+        # - **live**: undesirable scene moderation
+        # - **logo**: logo moderation
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # - **pass**: The content passes the moderation.
+        # - **review**: The content needs to be manually reviewed again.
+        # - **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -18832,9 +19643,74 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         scene: str = None,
         suggestion: str = None,
     ):
+        # The labels of the moderation result. Multiple labels are separated with commas (,).
+        # 
+        # *   Valid values in the pornographic content moderation scenario:
+        # 
+        #     *   **porn**: pornographic content
+        #     *   **sexy**: sexy content
+        #     *   **normal**: normal content
+        # 
+        # *   Valid values in the terrorist content moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **bloody**: bloody content
+        #     *   **explosion**: explosion and smoke
+        #     *   **outfit**: special costume
+        #     *   **logo**: special logo
+        #     *   **weapon**: weapon
+        #     *   **politics**: political content
+        #     *   **violence**: violence
+        #     *   **crowd**: crowd
+        #     *   **parade**: parade
+        #     *   **carcrash**: car accident
+        #     *   **flag**: flag
+        #     *   **location**: landmark
+        #     *   **others**: other content
+        # 
+        # *   Valid values in the ad moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **ad**: other ads
+        #     *   **politics**: political content in text
+        #     *   **porn**: pornographic content in text
+        #     *   **abuse**: abuse in text
+        #     *   **terrorism**: terrorist content in text
+        #     *   **contraband**: prohibited content in text
+        #     *   **spam**: spam in text
+        #     *   **npx**: illegal ads
+        #     *   **qrcode**: QR code
+        #     *   **programCode**: mini program code
+        # 
+        # *   Valid values in the live moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **meaningless**: meaningless content, such as a black or white screen
+        #     *   **PIP**: picture-in-picture
+        #     *   **smoking**: smoking
+        #     *   **drivelive**: live broadcasting in a running vehicle
+        # 
+        # *   Valid values in the logo moderation scenario:
+        # 
+        #     *   **normal**: normal content
+        #     *   **TV**: controlled TV station logo
+        #     *   **trademark**: trademark
         self.label = label
+        # The score.
         self.rate = rate
+        # The moderation scenario. Valid values:
+        # 
+        # *   **porn**: pornographic content moderation
+        # *   **terrorism**: terrorist content moderation
+        # *   **ad**: ad violation moderation
+        # *   **live**: undesirable scene moderation
+        # *   **logo**: logo moderation
         self.scene = scene
+        # The recommended subsequent operation. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed again.
+        # *   **block**: The content needs to be blocked.
         self.suggestion = suggestion
 
     def validate(self):
@@ -18911,8 +19787,15 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         object: str = None,
         timestamp: str = None,
     ):
+        # A collection of the moderation results. The information includes the summary about various scenarios such as pornographic content and terrorist content.
         self.censor_results = censor_results
+        # The one or more OSS objects that are generated as the output snapshots.
+        # 
+        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
         self.object = object
+        # The position in the video.
+        # 
+        # Format: `hh:mm:ss[.SSS]`.
         self.timestamp = timestamp
 
     def validate(self):
@@ -18987,8 +19870,11 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResul
         next_page_token: str = None,
         video_timelines: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResultVideoTimelines = None,
     ):
+        # A collection of the moderation results. The information includes the summary about various scenarios such as pornographic content and terrorist content.
         self.censor_results = censor_results
+        # The token that is used to retrieve the next page of the query results.
         self.next_page_token = next_page_token
+        # The moderation results that are sorted in ascending order by time.
         self.video_timelines = video_timelines
 
     def validate(self):
@@ -19031,8 +19917,13 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig
         location: str = None,
         object: str = None,
     ):
+        # The OSS bucket that stores the output snapshot.
         self.bucket = bucket
+        # The OSS region in which the OSS bucket for storing the output snapshot resides.
         self.location = location
+        # The one or more OSS objects that are generated as the output snapshots.
+        # 
+        # >  In the example, {Count} is a placeholder. The OSS objects that are generated as output snapshots are named `output00001-****.jpg`, `output00002-****.jpg`, and so on.
         self.object = object
 
     def validate(self):
@@ -19070,8 +19961,14 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig
         output_file: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfigOutputFile = None,
         video_censor: str = None,
     ):
+        # The custom business type. Default value: common.
         self.biz_type = biz_type
+        # The information about output snapshots.
         self.output_file = output_file
+        # Indicates whether the video content needs to be moderated. Default value: **true**. Valid values:
+        # 
+        # *   **true**: The video content needs to be moderated.
+        # *   **false**: The video content does not need to be moderated.
         self.video_censor = video_censor
 
     def validate(self):
@@ -19124,21 +20021,43 @@ class QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail(TeaModel):
         vensor_censor_result: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVensorCensorResult = None,
         video_censor_config: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetailVideoCensorConfig = None,
     ):
+        # The moderation result of live comments.
         self.barrage_censor_result = barrage_censor_result
+        # The error code returned if the job fails. This parameter is not returned if the job is successful.
         self.code = code
+        # The moderation results of thumbnails.
         self.cover_image_censor_results = cover_image_censor_results
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The moderation result of the description.
         self.desc_censor_result = desc_censor_result
+        # The time when the job was completed.
         self.finish_time = finish_time
+        # The information about the job input.
         self.input = input
+        # The ID of the content moderation job.
         self.job_id = job_id
+        # The error message returned if the job fails. This parameter is not returned if the job is successful.
         self.message = message
+        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
         self.pipeline_id = pipeline_id
+        # The status of the job.
         self.state = state
+        # The overall result of the job. Valid values:
+        # 
+        # *   **pass**: The content passes the moderation.
+        # *   **review**: The content needs to be manually reviewed again.
+        # *   **block**: The content needs to be blocked.
+        # 
+        # If the moderation result of one type of the moderated content is review, the overall result is review. If the moderation result of one type of the moderated content is block, the overall result is block.
         self.suggestion = suggestion
+        # The moderation result of the title.
         self.title_censor_result = title_censor_result
+        # The custom data.
         self.user_data = user_data
+        # The results of video review.
         self.vensor_censor_result = vensor_censor_result
+        # The video moderation configurations.
         self.video_censor_config = video_censor_config
 
     def validate(self):
@@ -19247,7 +20166,9 @@ class QueryMediaCensorJobDetailResponseBody(TeaModel):
         media_censor_job_detail: QueryMediaCensorJobDetailResponseBodyMediaCensorJobDetail = None,
         request_id: str = None,
     ):
+        # The results of the content moderation job.
         self.media_censor_job_detail = media_censor_job_detail
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19324,7 +20245,7 @@ class QueryMediaCensorJobListRequest(TeaModel):
     def __init__(
         self,
         end_of_job_created_time_range: str = None,
-        job_id: str = None,
+        job_ids: str = None,
         maximum_page_size: int = None,
         next_page_token: str = None,
         owner_account: str = None,
@@ -19336,7 +20257,7 @@ class QueryMediaCensorJobListRequest(TeaModel):
         state: str = None,
     ):
         self.end_of_job_created_time_range = end_of_job_created_time_range
-        self.job_id = job_id
+        self.job_ids = job_ids
         self.maximum_page_size = maximum_page_size
         self.next_page_token = next_page_token
         self.owner_account = owner_account
@@ -19358,8 +20279,8 @@ class QueryMediaCensorJobListRequest(TeaModel):
         result = dict()
         if self.end_of_job_created_time_range is not None:
             result['EndOfJobCreatedTimeRange'] = self.end_of_job_created_time_range
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.job_ids is not None:
+            result['JobIds'] = self.job_ids
         if self.maximum_page_size is not None:
             result['MaximumPageSize'] = self.maximum_page_size
         if self.next_page_token is not None:
@@ -19384,8 +20305,8 @@ class QueryMediaCensorJobListRequest(TeaModel):
         m = m or dict()
         if m.get('EndOfJobCreatedTimeRange') is not None:
             self.end_of_job_created_time_range = m.get('EndOfJobCreatedTimeRange')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('JobIds') is not None:
+            self.job_ids = m.get('JobIds')
         if m.get('MaximumPageSize') is not None:
             self.maximum_page_size = m.get('MaximumPageSize')
         if m.get('NextPageToken') is not None:
@@ -20405,6 +21326,7 @@ class QueryMediaInfoJobListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the media information analysis jobs. Separate multiple jobs with commas (,). You can query up to 10 jobs at a time.
         self.media_info_job_ids = media_info_job_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20454,8 +21376,11 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobInput(TeaMode
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket that stores the object.
         self.bucket = bucket
+        # The ID of the OSS region.
         self.location = location
+        # The name of the Object Storage Service (OSS) object used as the input file.
         self.object = object
 
     def validate(self):
@@ -20493,8 +21418,11 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobMNSMessageRes
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.error_code = error_code
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.error_message = error_message
+        # The ID of the success message returned when the job is successful. This parameter is not returned if the job fails.
         self.message_id = message_id
 
     def validate(self):
@@ -20537,13 +21465,21 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesFor
         size: str = None,
         start_time: str = None,
     ):
+        # The total bitrate.
         self.bitrate = bitrate
+        # The total duration.
         self.duration = duration
+        # The full name of the container format.
         self.format_long_name = format_long_name
+        # The short name of the container format.
         self.format_name = format_name
+        # The total number of program streams.
         self.num_programs = num_programs
+        # The total number of media streams.
         self.num_streams = num_streams
+        # The size of the file.
         self.size = size
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -20614,21 +21550,43 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The number of sound channels.
         self.channel_layout = channel_layout
+        # The output layout of the sound channels.
         self.channels = channels
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values:
+        # 
+        # - **acc**\
+        # - **mp3**\
+        # - **mp4**\
+        # - **ogg**\
+        # - **flac**\
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
+        # The language. For more information, see [21.20.1 Metadata](https://www.ffmpeg.org/ffmpeg-all.html?spm=a2c4g.11186623.2.66.243851cd2SntfN#Metadata) in FFmpeg documentation.
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate.
         self.samplerate = samplerate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -20760,15 +21718,28 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         start_time: str = None,
         timebase: str = None,
     ):
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values:
+        # 
+        # - **srt**\
+        # - **ass**\
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration. Unit: seconds.
         self.duration = duration
+        # The sequence number of the subtitle stream. The value indicates the position of the subtitle stream in all subtitle streams.
         self.index = index
+        # The language.
         self.lang = lang
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -20869,8 +21840,11 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         cost_bandwidth: str = None,
         preload_time: str = None,
     ):
+        # The average bitrate.
         self.avg_bitrate = avg_bitrate
+        # The maximum bandwidth consumption.
         self.cost_bandwidth = cost_bandwidth
+        # The amount of preload time.
         self.preload_time = preload_time
 
     def validate(self):
@@ -20932,32 +21906,64 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values:
+        # 
+        # *   **h264**\
+        # *   **h265**\
+        # *   **gif**\
+        # *   **webp**\
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The level of color reconstruction.
         self.color_primaries = color_primaries
+        # The color range.
         self.color_range = color_range
+        # The color channel.
         self.color_transfer = color_transfer
+        # The display aspect ratio (DAR).
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). A value of 1 indicates that the video stream contains B-frames. A value of 0 indicates that the video stream does not contain B-frames.
         self.has_bframes = has_bframes
+        # The latter number in the video resolution. The number indicates the video height.
         self.height = height
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
         self.index = index
+        # The language.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The network bandwidth consumption.
         self.network_cost = network_cost
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The video rotation angle.
         self.rotate = rotate
+        # The sample aspect ratio (SAR).
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The former number in the video resolution. The number indicates the video width.
         self.width = width
 
     def validate(self):
@@ -21128,8 +22134,11 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStr
         subtitle_stream_list: QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsSubtitleStreamList = None,
         video_stream_list: QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreamsVideoStreamList = None,
     ):
+        # The information about each audio stream.
         self.audio_stream_list = audio_stream_list
+        # The information about each subtitle stream.
         self.subtitle_stream_list = subtitle_stream_list
+        # The information about each video stream.
         self.video_stream_list = video_stream_list
 
     def validate(self):
@@ -21181,14 +22190,23 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobProperties(Te
         streams: QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJobPropertiesStreams = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # The file format.
         self.file_format = file_format
+        # The size of the file.
         self.file_size = file_size
+        # The format information.
         self.format = format
+        # The frame rate.
         self.fps = fps
+        # The height of the video. Unit: pixel.
         self.height = height
+        # The stream information.
         self.streams = streams
+        # The width of the video. Unit: pixel.
         self.width = width
 
     def validate(self):
@@ -21263,16 +22281,31 @@ class QueryMediaInfoJobListResponseBodyMediaInfoJobListMediaInfoJob(TeaModel):
         state: str = None,
         user_data: str = None,
     ):
+        # Indicates whether the job is in asynchronous mode.
         self.async_ = async_
+        # The error code returned when the job fails.
         self.code = code
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The information about the job input.
         self.input = input
+        # The ID of the job.
         self.job_id = job_id
+        # The message sent by Message Service (MNS) to notify users of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned when the job fails.
         self.message = message
+        # The ID of the MPS queue to which the job is added.
         self.pipeline_id = pipeline_id
+        # The information about the input file. For more information, see [AliyunProperties](~~29251~~).
         self.properties = properties
+        # The status of the job. Valid values:
+        # 
+        # *   **Analyzing**: The job is being run.
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job fails.
         self.state = state
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -21412,8 +22445,11 @@ class QueryMediaInfoJobListResponseBody(TeaModel):
         non_exist_media_info_job_ids: QueryMediaInfoJobListResponseBodyNonExistMediaInfoJobIds = None,
         request_id: str = None,
     ):
+        # The details of each returned media information analysis job.
         self.media_info_job_list = media_info_job_list
+        # The IDs of the media information analysis jobs that do not exist. If all specified jobs exist, the response does not contain this parameter.
         self.non_exist_media_info_job_ids = non_exist_media_info_job_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21506,10 +22542,27 @@ class QueryMediaListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Specifies whether to include media information in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # *   Default value: **false**.
         self.include_media_info = include_media_info
+        # Specifies whether to include playback information in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # *   Default value: **false**.
         self.include_play_list = include_play_list
+        # Specifies whether to include snapshot information in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # *   Default value: **false**.
         self.include_snapshot_list = include_snapshot_list
+        # Specifies whether to include summaries in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # *   Default value: **false**.
         self.include_summary_list = include_summary_list
+        # The IDs of the media files. To obtain the ID of a media file, you can perform the following operations in the ApsaraVideo Media Processing (MPS) console: In the left-side navigation pane, choose **Media Management** > **Media List**. Find the required video and click Manage. The ID of the video is displayed on the Basics tab. Separate multiple IDs with commas (,). You can query up to 10 media files at a time.
         self.media_ids = media_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21574,7 +22627,12 @@ class QueryMediaListResponseBodyMediaListMediaFile(TeaModel):
         state: str = None,
         url: str = None,
     ):
+        # The status of the input file. Valid values:
+        # 
+        # *   **Normal**: normal
+        # *   **Deleted**: deleted
         self.state = state
+        # The OSS URL of the input file.
         self.url = url
 
     def validate(self):
@@ -21613,13 +22671,21 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoFormat(TeaModel):
         size: str = None,
         start_time: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The total duration.
         self.duration = duration
+        # The full name of the container format.
         self.format_long_name = format_long_name
+        # The short name of the container format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format_name = format_name
+        # The total number of program streams.
         self.num_programs = num_programs
+        # The total number of media streams.
         self.num_streams = num_streams
+        # The size of the file.
         self.size = size
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -21690,21 +22756,37 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsAudioStreamListAud
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The output layout of the sound channels.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values: H264, mov, aac, avc, and mpeg.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
+        # The language. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate.
         self.samplerate = samplerate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -21828,7 +22910,9 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamList
         index: str = None,
         lang: str = None,
     ):
+        # The sequence number of the subtitle stream. The value indicates the position of the subtitle stream in all subtitle streams.
         self.index = index
+        # The language. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
         self.lang = lang
 
     def validate(self):
@@ -21897,8 +22981,11 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVid
         cost_bandwidth: str = None,
         preload_time: str = None,
     ):
+        # The average bitrate.
         self.avg_bitrate = avg_bitrate
+        # The maximum bandwidth that was consumed.
         self.cost_bandwidth = cost_bandwidth
+        # The amount of preload time.
         self.preload_time = preload_time
 
     def validate(self):
@@ -21957,29 +23044,53 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsVideoStreamListVid
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR).
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). A value of **1** indicates that the video stream contains B-frames. A value of **2** indicates that the video stream does not contain B-frames.
         self.has_bframes = has_bframes
+        # The latter number in the video resolution. The number indicates the video height.
         self.height = height
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
         self.index = index
+        # The language. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The network bandwidth consumption.
         self.network_cost = network_cost
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The video rotation angle.
         self.rotate = rotate
+        # The sample aspect ratio (SAR).
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The former number in the video resolution. The number indicates the video width.
         self.width = width
 
     def validate(self):
@@ -22138,8 +23249,11 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfoStreams(TeaModel):
         subtitle_stream_list: QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamList = None,
         video_stream_list: QueryMediaListResponseBodyMediaListMediaMediaInfoStreamsVideoStreamList = None,
     ):
+        # The list of audio streams.
         self.audio_stream_list = audio_stream_list
+        # The list of subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
+        # The list of video streams.
         self.video_stream_list = video_stream_list
 
     def validate(self):
@@ -22184,7 +23298,9 @@ class QueryMediaListResponseBodyMediaListMediaMediaInfo(TeaModel):
         format: QueryMediaListResponseBodyMediaListMediaMediaInfoFormat = None,
         streams: QueryMediaListResponseBodyMediaListMediaMediaInfoStreams = None,
     ):
+        # The format information.
         self.format = format
+        # The stream information.
         self.streams = streams
 
     def validate(self):
@@ -22222,7 +23338,12 @@ class QueryMediaListResponseBodyMediaListMediaPlayListPlayFile(TeaModel):
         state: str = None,
         url: str = None,
     ):
+        # The status of the file. Valid values:
+        # 
+        # *   **Normal**: normal
+        # *   **Deleted**: deleted
         self.state = state
+        # The Object Storage Service (OSS) URL of the output file.
         self.url = url
 
     def validate(self):
@@ -22265,17 +23386,32 @@ class QueryMediaListResponseBodyMediaListMediaPlayListPlay(TeaModel):
         size: str = None,
         width: str = None,
     ):
+        # The name of the workflow activity.
         self.activity_name = activity_name
+        # The bitrate of the media file.
         self.bitrate = bitrate
+        # The duration of the media file.
         self.duration = duration
+        # Indicates whether the media file is encrypted. Valid values:
+        # 
+        # *   **0**: The media file is not encrypted.
+        # *   **1**: The media file is encrypted.
         self.encryption = encryption
+        # The playback file.
         self.file = file
+        # The encoding format of the media file. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format = format
+        # The frame rate of the media file.
         self.fps = fps
+        # The height.
         self.height = height
+        # The ID of the workflow that generates the playback file.
         self.media_workflow_id = media_workflow_id
+        # The name of the workflow that generates the playback file.
         self.media_workflow_name = media_workflow_name
+        # The size of the media file.
         self.size = size
+        # The width of the media file.
         self.width = width
 
     def validate(self):
@@ -22412,7 +23548,12 @@ class QueryMediaListResponseBodyMediaListMediaSnapshotListSnapshotFile(TeaModel)
         state: str = None,
         url: str = None,
     ):
+        # The status of the file. Valid values:
+        # 
+        # - **Normal**: normal
+        # - **Deleted**: deleted
         self.state = state
+        # The OSS URL of the snapshot.
         self.url = url
 
     def validate(self):
@@ -22449,11 +23590,20 @@ class QueryMediaListResponseBodyMediaListMediaSnapshotListSnapshot(TeaModel):
         media_workflow_name: str = None,
         type: str = None,
     ):
+        # The name of the workflow activity that generates the snapshot.
         self.activity_name = activity_name
+        # The number of snapshots. This parameter is valid only when the value of the **Type** parameter is **Sequence**.
         self.count = count
+        # The snapshot.
         self.file = file
+        # The ID of the workflow that generates the snapshot.
         self.media_workflow_id = media_workflow_id
+        # The name of the workflow that generates the snapshot.
         self.media_workflow_name = media_workflow_name
+        # The type of the snapshot. Valid values:
+        # 
+        # - **Single**\
+        # - **Sequence**\
         self.type = type
 
     def validate(self):
@@ -22539,7 +23689,12 @@ class QueryMediaListResponseBodyMediaListMediaSummaryListSummaryFile(TeaModel):
         state: str = None,
         url: str = None,
     ):
+        # The status of the file. Valid values:
+        # 
+        # *   **Normal**: normal
+        # *   **Deleted**: deleted
         self.state = state
+        # The OSS URL of the input file.
         self.url = url
 
     def validate(self):
@@ -22575,10 +23730,18 @@ class QueryMediaListResponseBodyMediaListMediaSummaryListSummary(TeaModel):
         media_workflow_name: str = None,
         type: str = None,
     ):
+        # The name of the workflow activity.
         self.activity_name = activity_name
+        # The information about the input file.
         self.file = file
+        # The ID of the workflow that generates the summary.
         self.media_workflow_id = media_workflow_id
+        # The name of the workflow that generates the summary.
         self.media_workflow_name = media_workflow_name
+        # The type of the summary. Valid values:
+        # 
+        # *   **Video**: video
+        # *   **Gif**: dynamic image
         self.type = type
 
     def validate(self):
@@ -22707,27 +23870,57 @@ class QueryMediaListResponseBodyMediaListMedia(TeaModel):
         title: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The ID of the category to which the media file belongs.
         self.cate_id = cate_id
+        # The review status of the media file. Valid values:
+        # 
+        # *   **Initiated**: The media file is uploaded but not reviewed.
+        # *   **Pass**: The media file is uploaded and passes the review.
         self.censor_state = censor_state
+        # The OSS URL of the thumbnail.
         self.cover_url = cover_url
+        # The time when the media file was created.
         self.creation_time = creation_time
+        # The description.
         self.description = description
+        # The duration.
         self.duration = duration
+        # The details of the input file.
         self.file = file
+        # The encoding format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format = format
+        # The frame rate.
         self.fps = fps
+        # The height of the media file.
         self.height = height
+        # The ID of the media file.
         self.media_id = media_id
+        # The media information.
         self.media_info = media_info
+        # The playlist.
         self.play_list = play_list
+        # The publishing status of the media file. Valid values:
+        # 
+        # - **Initiated**: The media file is in the initial state.
+        # - **UnPublish**: The media file has not been published, and the playback permission on the OSS object is Private.
+        # - **Published**: The media file has been published, and the playback permission on the OSS object is Default.
+        # - **Deleted**: The media file has been deleted.
         self.publish_state = publish_state
+        # The ID of the instance.
         self.run_id_list = run_id_list
+        # The size of the file.
         self.size = size
+        # The list of snapshots.
         self.snapshot_list = snapshot_list
+        # The list of video summaries.
         self.summary_list = summary_list
+        # The tags of the media file.
         self.tags = tags
+        # The title.
         self.title = title
+        # The width.
         self.width = width
 
     def validate(self):
@@ -22923,8 +24116,11 @@ class QueryMediaListResponseBody(TeaModel):
         non_exist_media_ids: QueryMediaListResponseBodyNonExistMediaIds = None,
         request_id: str = None,
     ):
+        # The list of media files.
         self.media_list = media_list
+        # The IDs of the media files that do not exist. This parameter is not returned when all specified media files exist.
         self.non_exist_media_ids = non_exist_media_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23017,10 +24213,33 @@ class QueryMediaListByURLRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The OSS URLs of the media files. To obtain the OSS URL of a media file, you can perform the following operations in the ApsaraVideo Media Processing (MPS) console: In the left-side navigation pane, choose **Media Management** > **Media List**. Find the media file whose OSS URL you want to view and click **Manage** in the **Actions** column. The OSS URL of the media file is displayed on the **Obtain Encoding URL** tab. Separate multiple URLs with commas (,). You can query up to 10 media files at a time.
+        # 
+        # *   The URL complies with RFC 3986 and is encoded in UTF-8, with reserved characters being percent-encoded. The value can be up to 3,200 bytes in size. For more information, see [URL encoding](~~423796~~).
+        # *   Only OSS HTTP URLs are supported. Alibaba Cloud CDN URLs and HTTPS URLs are not supported.
         self.file_urls = file_urls
+        # Specifies whether to include media information in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # 
+        # *   Default value: **false**.
+        # 
+        # > To obtain detailed information about the media files, set this parameter to true.
         self.include_media_info = include_media_info
+        # Specifies whether to include playback information in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # *   Default value: **false**.
         self.include_play_list = include_play_list
+        # Specifies whether to include snapshot information in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # *   Default value: **false**.
         self.include_snapshot_list = include_snapshot_list
+        # Specifies whether to include summaries in the returned result.
+        # 
+        # *   Valid values: true and false.
+        # *   Default value: **false**.
         self.include_summary_list = include_summary_list
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23085,7 +24304,12 @@ class QueryMediaListByURLResponseBodyMediaListMediaFile(TeaModel):
         state: str = None,
         url: str = None,
     ):
+        # The status of the media file. Valid values:
+        # 
+        # *   **Normal**: The file is normal.
+        # *   **Deleted**: The file is deleted.
         self.state = state
+        # The OSS URL of the input file.
         self.url = url
 
     def validate(self):
@@ -23124,13 +24348,21 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat(TeaModel):
         size: str = None,
         start_time: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # The full name of the encoding format.
         self.format_long_name = format_long_name
+        # The short name of the container format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format_name = format_name
+        # The total number of program streams.
         self.num_programs = num_programs
+        # The total number of media streams.
         self.num_streams = num_streams
+        # The size.
         self.size = size
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -23201,21 +24433,37 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsAudioStreamLi
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The output layout of the sound channels.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values: H264, mov, aac, avc, and mpeg.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration of the media file.
         self.duration = duration
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
+        # The language. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate.
         self.samplerate = samplerate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -23339,7 +24587,9 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleStrea
         index: str = None,
         lang: str = None,
     ):
+        # The sequence number of the subtitle stream. The value indicates the position of the subtitle stream in all subtitle streams.
         self.index = index
+        # The language. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
         self.lang = lang
 
     def validate(self):
@@ -23408,8 +24658,11 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamLi
         cost_bandwidth: str = None,
         preload_time: str = None,
     ):
+        # The average bitrate of the video stream.
         self.avg_bitrate = avg_bitrate
+        # The maximum bandwidth that was consumed.
         self.cost_bandwidth = cost_bandwidth
+        # The amount of preload time.
         self.preload_time = preload_time
 
     def validate(self):
@@ -23468,29 +24721,53 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamLi
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values: H264, mov, aac, avc, and mpeg.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR) of the video stream.
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). A value of **1** indicates that the video stream contains B-frames. A value of **2** indicates that the video stream does not contain B-frames.
         self.has_bframes = has_bframes
+        # The latter number in the video resolution. The number indicates the video height.
         self.height = height
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
         self.index = index
+        # The language. For more information, see [FFmpeg documentation](https://www.ffmpeg.org/ffmpeg-all.html#Metadata).
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The network bandwidth consumption.
         self.network_cost = network_cost
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format of the video stream.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The rotation angle of the video.
         self.rotate = rotate
+        # The sample aspect ratio (SAR).
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The former number in the video resolution. The number indicates the video width and cannot be negative.
         self.width = width
 
     def validate(self):
@@ -23649,8 +24926,11 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreams(TeaModel):
         subtitle_stream_list: QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsSubtitleStreamList = None,
         video_stream_list: QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreamsVideoStreamList = None,
     ):
+        # The list of audio streams.
         self.audio_stream_list = audio_stream_list
+        # The list of subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
+        # The list of video streams.
         self.video_stream_list = video_stream_list
 
     def validate(self):
@@ -23695,7 +24975,9 @@ class QueryMediaListByURLResponseBodyMediaListMediaMediaInfo(TeaModel):
         format: QueryMediaListByURLResponseBodyMediaListMediaMediaInfoFormat = None,
         streams: QueryMediaListByURLResponseBodyMediaListMediaMediaInfoStreams = None,
     ):
+        # The format information.
         self.format = format
+        # The stream information.
         self.streams = streams
 
     def validate(self):
@@ -23733,7 +25015,12 @@ class QueryMediaListByURLResponseBodyMediaListMediaPlayListPlayFile(TeaModel):
         state: str = None,
         url: str = None,
     ):
+        # The status of the media file. Valid values:
+        # 
+        # *   **Normal**: The file is normal.
+        # *   **Deleted**: The file is deleted.
         self.state = state
+        # The OSS URL of the playback file.
         self.url = url
 
     def validate(self):
@@ -23776,17 +25063,32 @@ class QueryMediaListByURLResponseBodyMediaListMediaPlayListPlay(TeaModel):
         size: str = None,
         width: str = None,
     ):
+        # The name of the workflow activity.
         self.activity_name = activity_name
+        # The bitrate of the media file.
         self.bitrate = bitrate
+        # The duration.
         self.duration = duration
+        # Indicates whether the media file is encrypted. Valid values:
+        # 
+        # *   **0**: The media file is not encrypted.
+        # *   **1**: The media file is encrypted.
         self.encryption = encryption
+        # The playback file.
         self.file = file
+        # The encoding format of the media file. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format = format
+        # The frame rate.
         self.fps = fps
+        # The height of the media file.
         self.height = height
+        # The ID of the workflow that generates the playback file.
         self.media_workflow_id = media_workflow_id
+        # The name of the workflow that generates the playback file.
         self.media_workflow_name = media_workflow_name
+        # The size.
         self.size = size
+        # The width.
         self.width = width
 
     def validate(self):
@@ -23923,7 +25225,12 @@ class QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshotFile(TeaM
         state: str = None,
         url: str = None,
     ):
+        # The status of the file. Valid values:
+        # 
+        # - **Normal**: The file is normal.
+        # - **Deleted**: The file is deleted.
         self.state = state
+        # The OSS URL of the snapshot.
         self.url = url
 
     def validate(self):
@@ -23960,11 +25267,20 @@ class QueryMediaListByURLResponseBodyMediaListMediaSnapshotListSnapshot(TeaModel
         media_workflow_name: str = None,
         type: str = None,
     ):
+        # The name of the workflow activity that generates the snapshot.
         self.activity_name = activity_name
+        # The number of snapshots. This parameter is valid only when the value of the **Type** parameter is **Sequence**.
         self.count = count
+        # The snapshot.
         self.file = file
+        # The ID of the workflow that generates the snapshot.
         self.media_workflow_id = media_workflow_id
+        # The name of the workflow that generates the snapshot.
         self.media_workflow_name = media_workflow_name
+        # The type of the snapshot. Valid values:
+        # 
+        # - **Single**: a single snapshot
+        # - **Sequence**: snapshots in sequence
         self.type = type
 
     def validate(self):
@@ -24050,7 +25366,12 @@ class QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummaryFile(TeaMod
         state: str = None,
         url: str = None,
     ):
+        # The status of the media file. Valid values:
+        # 
+        # *   **Normal**: The file is normal.
+        # *   **Deleted**: The file is deleted.
         self.state = state
+        # The OSS URL of the input file.
         self.url = url
 
     def validate(self):
@@ -24086,10 +25407,18 @@ class QueryMediaListByURLResponseBodyMediaListMediaSummaryListSummary(TeaModel):
         media_workflow_name: str = None,
         type: str = None,
     ):
+        # The name of the workflow activity.
         self.activity_name = activity_name
+        # The information about the input file.
         self.file = file
+        # The ID of the workflow that generates the summary.
         self.media_workflow_id = media_workflow_id
+        # The name of the workflow that generates the summary.
         self.media_workflow_name = media_workflow_name
+        # The type of the summary. Valid values:
+        # 
+        # *   **Video**: video
+        # *   **Gif**: dynamic image
         self.type = type
 
     def validate(self):
@@ -24218,27 +25547,57 @@ class QueryMediaListByURLResponseBodyMediaListMedia(TeaModel):
         title: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The ID of the category to which the media file belongs.
         self.cate_id = cate_id
+        # The review status of the media file. Valid values:
+        # 
+        # *   **Initiated**: The media file is uploaded but not reviewed.
+        # *   **Pass**: The media file is uploaded and passes the review.
         self.censor_state = censor_state
+        # The OSS URL of the thumbnail.
         self.cover_url = cover_url
+        # The time when the media file was created.
         self.creation_time = creation_time
+        # The description.
         self.description = description
+        # The duration.
         self.duration = duration
+        # The details of the input file.
         self.file = file
+        # The encoding format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format = format
+        # The frame rate.
         self.fps = fps
+        # The height of the queried media file.
         self.height = height
+        # The ID of the media file.
         self.media_id = media_id
+        # The media information.
         self.media_info = media_info
+        # The playlist.
         self.play_list = play_list
+        # The publishing status of the media file. Valid values:
+        # 
+        # - **Initiated**: The media file is in the initial state.
+        # - **UnPublish**: The media file has not been published, and the playback permission on the OSS object is Private.
+        # - **Published**: The media file has been published, and the playback permission on the OSS object is Default.
+        # - **Deleted**: The file is deleted.
         self.publish_state = publish_state
+        # The IDs of the media workflow execution instances.
         self.run_id_list = run_id_list
+        # The size of the file.
         self.size = size
+        # The list of snapshots.
         self.snapshot_list = snapshot_list
+        # The list of video summaries.
         self.summary_list = summary_list
+        # The tags of the media file.
         self.tags = tags
+        # The title.
         self.title = title
+        # The width.
         self.width = width
 
     def validate(self):
@@ -24434,8 +25793,11 @@ class QueryMediaListByURLResponseBody(TeaModel):
         non_exist_file_urls: QueryMediaListByURLResponseBodyNonExistFileURLs = None,
         request_id: str = None,
     ):
+        # The list of media files.
         self.media_list = media_list
+        # The IDs of the media files that do not exist. This parameter is not returned if all specified media files exist.
         self.non_exist_file_urls = non_exist_file_urls
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24528,6 +25890,7 @@ class QueryMediaWorkflowExecutionListRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The IDs of the media workflow execution instances. To obtain the instance ID, log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Execution Instances** in the left-side navigation pane. Separate multiple IDs with commas (,). You can query a maximum of 10 media workflow execution instances at a time.
         self.run_ids = run_ids
 
     def validate(self):
@@ -24573,8 +25936,11 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned when the MNS message fails to be sent. This parameter is not returned if the MNS message is sent.
         self.error_code = error_code
+        # The error message returned when the MNS message fails to be sent. This parameter is not returned if the MNS message is sent.
         self.error_message = error_message
+        # The ID of the message that indicates the MNS message is sent. This parameter is not returned if the MNS message fails to be sent.
         self.message_id = message_id
 
     def validate(self):
@@ -24618,14 +25984,38 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
         state: str = None,
         type: str = None,
     ):
+        # The error code returned when the method fails to be called.
+        # 
+        # *   This parameter is returned only when **Fail** is returned for the State parameter.
+        # *   ****\
         self.code = code
+        # The time when the method ends.
         self.end_time = end_time
+        # The IDs of the jobs that are generated when the methods are called. For example, job IDs for the analysis, transcode, and snapshot methods.
         self.job_id = job_id
+        # The message sent by Message Service (MNS) to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned when the method fails to be called.
+        # 
+        # *   This parameter is returned only when **Fail** is returned for the State parameter.
+        # *   ****\
         self.message = message
+        # The name of the method. 
+        # 
+        # >  The name of each method in a media workflow is unique.
         self.name = name
+        # The time when the method is called.
         self.start_time = start_time
+        # The status of the method. Valid values:
+        # 
+        # *   Running: The method is being called.
+        # *   Success: The method is called.
+        # *   Fail: The method failed to be called.
+        # *   Skipped: The method is skipped.
+        # 
+        # >  For example, after the analysis is complete, the transcode method is called and high-definition and standard-definition transcoding jobs are created. The system determines whether to run the jobs based on the analysis result. If the resolution of the input video is low, the high-definition transcoding job may be skipped.
         self.state = state
+        # The methods that are supported in the media workflow. Valid values: Start, Snapshot, Transcode, Analysis, and Report. For more information, see [Methods supported for media workflows](~~68494~~).
         self.type = type
 
     def validate(self):
@@ -24724,8 +26114,11 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The ID of the region in which the input file resides.
         self.location = location
+        # The name of the Object Storage Service (OSS) object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -24762,7 +26155,9 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
         input_file: QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMediaWorkflowExecutionInputInputFile = None,
         user_data: str = None,
     ):
+        # The input file of the media workflow.
         self.input_file = input_file
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -24803,13 +26198,28 @@ class QueryMediaWorkflowExecutionListResponseBodyMediaWorkflowExecutionListMedia
         run_id: str = None,
         state: str = None,
     ):
+        # The methods that are called in the media workflow.
         self.activity_list = activity_list
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The input data of the media workflow.
         self.input = input
+        # The ID of the media file. A media file contains all the information about a media workflow.
         self.media_id = media_id
+        # The ID of the media workflow.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The ID of the execution instance.
         self.run_id = run_id
+        # The status of the media workflow. Valid values:
+        # 
+        # *   Running: The media workflow is running.
+        # *   Completed: The media workflow is complete.
+        # 
+        # >  Completed only indicates that the media workflow is complete. View the status of each method in the workflow, such as the transcode and snapshot methods, to check whether the method is called.
+        # 
+        # *   Fail: The media workflow fails.
         self.state = state
 
     def validate(self):
@@ -24934,8 +26344,11 @@ class QueryMediaWorkflowExecutionListResponseBody(TeaModel):
         non_exist_run_ids: QueryMediaWorkflowExecutionListResponseBodyNonExistRunIds = None,
         request_id: str = None,
     ):
+        # The details of the media workflows.
         self.media_workflow_execution_list = media_workflow_execution_list
+        # The IDs of the execution instances that do not exist. null is returned if all specified execution instances exist.
         self.non_exist_run_ids = non_exist_run_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25024,6 +26437,7 @@ class QueryMediaWorkflowListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the media workflows that you want to query. To obtain the IDs of the media workflows, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Workflow Settings** in the left-side navigation pane. You can query up to 10 media workflows at a time. Separate multiple IDs of media workflows with commas (,).
         self.media_workflow_ids = media_workflow_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25076,11 +26490,24 @@ class QueryMediaWorkflowListResponseBodyMediaWorkflowListMediaWorkflow(TeaModel)
         topology: str = None,
         trigger_mode: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The status of the media workflow. Valid values:
+        # 
+        # *   **Inactive**: The media workflow is deactivated.
+        # *   **Active**: The media workflow is activated.
+        # *   **Deleted**: The media workflow is deleted.
         self.state = state
+        # The topology of the media workflow.
         self.topology = topology
+        # The trigger mode of the media workflow. Valid values:
+        # 
+        # *   **OssAutoTrigger**: The media workflow is automatically triggered.
+        # *   **NotInAuto**: The media workflow is not automatically triggered.
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -25192,8 +26619,11 @@ class QueryMediaWorkflowListResponseBody(TeaModel):
         non_exist_media_workflow_ids: QueryMediaWorkflowListResponseBodyNonExistMediaWorkflowIds = None,
         request_id: str = None,
     ):
+        # The details of the media workflows.
         self.media_workflow_list = media_workflow_list
+        # The media workflow IDs that do not exist. This parameter is not returned if all specified media workflows are found.
         self.non_exist_media_workflow_ids = non_exist_media_workflow_ids
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25284,6 +26714,7 @@ class QueryPipelineListRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The IDs of the MPS queues that you want to query. To view the IDs, you can log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane. You can query up to 10 MPS queues at a time. Separate multiple IDs of MPS queues with commas (,).
         self.pipeline_ids = pipeline_ids
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25351,6 +26782,45 @@ class QueryPipelineListResponseBodyNonExistPids(TeaModel):
         return self
 
 
+class QueryPipelineListResponseBodyPipelineListPipelineExtendConfig(TeaModel):
+    def __init__(
+        self,
+        is_boost_new: bool = None,
+        max_multi_speed: int = None,
+        multi_speed_downgrade_policy: str = None,
+    ):
+        self.is_boost_new = is_boost_new
+        self.max_multi_speed = max_multi_speed
+        self.multi_speed_downgrade_policy = multi_speed_downgrade_policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_boost_new is not None:
+            result['IsBoostNew'] = self.is_boost_new
+        if self.max_multi_speed is not None:
+            result['MaxMultiSpeed'] = self.max_multi_speed
+        if self.multi_speed_downgrade_policy is not None:
+            result['MultiSpeedDowngradePolicy'] = self.multi_speed_downgrade_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsBoostNew') is not None:
+            self.is_boost_new = m.get('IsBoostNew')
+        if m.get('MaxMultiSpeed') is not None:
+            self.max_multi_speed = m.get('MaxMultiSpeed')
+        if m.get('MultiSpeedDowngradePolicy') is not None:
+            self.multi_speed_downgrade_policy = m.get('MultiSpeedDowngradePolicy')
+        return self
+
+
 class QueryPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
     def __init__(
         self,
@@ -25359,9 +26829,13 @@ class QueryPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
         queue_name: str = None,
         topic: str = None,
     ):
+        # The tags of the messages.
         self.mq_tag = mq_tag
+        # The queue of messages that are received.
         self.mq_topic = mq_topic
+        # The name of the queue that is created in MNS.
         self.queue_name = queue_name
+        # The name of the topic that is created in MNS.
         self.topic = topic
 
     def validate(self):
@@ -25399,6 +26873,7 @@ class QueryPipelineListResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
 class QueryPipelineListResponseBodyPipelineListPipeline(TeaModel):
     def __init__(
         self,
+        extend_config: QueryPipelineListResponseBodyPipelineListPipelineExtendConfig = None,
         id: str = None,
         name: str = None,
         notify_config: QueryPipelineListResponseBodyPipelineListPipelineNotifyConfig = None,
@@ -25408,16 +26883,42 @@ class QueryPipelineListResponseBodyPipelineListPipeline(TeaModel):
         speed_level: int = None,
         state: str = None,
     ):
+        self.extend_config = extend_config
+        # The ID of the MPS queue.
         self.id = id
+        # The name of the MPS queue.
         self.name = name
+        # The Message Service (MNS) configuration.
         self.notify_config = notify_config
+        # The quota that is allocated to the MPS queue.
         self.quota_allocate = quota_allocate
+        # The role that is assigned to the current RAM user.
         self.role = role
+        # The type of the MPS queue. Default value: **Standard**. Valid values:
+        # 
+        # *   **Boost**: MPS queue with transcoding speed boosted
+        # *   **Standard**: standard MPS queue
+        # *   **NarrowBandHDV2**: MPS queue that supports Narrowband HD 2.0
+        # *   **AIVideoCover**: MPS queue for intelligent snapshot capture
+        # *   **AIVideoFPShot**: MPS queue for media fingerprinting
+        # *   **AIVideoCensor**: MPS queue for automated review
+        # *   **AIVideoMCU**: MPS queue for smart tagging
+        # *   **AIVideoSummary**: MPS queue for video synopsis
+        # *   **AIVideoPorn**: MPS queue for pornography detection in videos
+        # *   **AIAudioKWS**: MPS queue for keyword recognition in audio
+        # *   **AIAudioASR**: MPS queue for speech-to-text conversion
         self.speed = speed
+        # The level of the MPS queue.
         self.speed_level = speed_level
+        # The state of the MPS queue. Valid values:
+        # 
+        # *   **Active**: The MPS queue is active.
+        # *   **Paused**: The MPS queue is paused.
         self.state = state
 
     def validate(self):
+        if self.extend_config:
+            self.extend_config.validate()
         if self.notify_config:
             self.notify_config.validate()
 
@@ -25427,6 +26928,8 @@ class QueryPipelineListResponseBodyPipelineListPipeline(TeaModel):
             return _map
 
         result = dict()
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config.to_map()
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
@@ -25447,6 +26950,9 @@ class QueryPipelineListResponseBodyPipelineListPipeline(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendConfig') is not None:
+            temp_model = QueryPipelineListResponseBodyPipelineListPipelineExtendConfig()
+            self.extend_config = temp_model.from_map(m['ExtendConfig'])
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
@@ -25509,8 +27015,13 @@ class QueryPipelineListResponseBody(TeaModel):
         pipeline_list: QueryPipelineListResponseBodyPipelineList = None,
         request_id: str = None,
     ):
+        # The MPS queue IDs that do not exist. This parameter is not returned if all specified MPS queues are found.  
+        # 
+        # >  This parameter is returned if the specified MPS queue IDs that do not exist are valid. Check whether the user ID (UID) that is used to submit the request is the same as the UID to which the queues belong.
         self.non_exist_pids = non_exist_pids
+        # The details of the MPS queues.
         self.pipeline_list = pipeline_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25869,6 +27380,8 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
         knowledge_config: str = None,
         label_type: str = None,
         label_version: str = None,
+        landmark_group_ids: str = None,
+        object_group_ids: str = None,
         scene: str = None,
         template_id: str = None,
         template_name: str = None,
@@ -25882,6 +27395,8 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
         self.knowledge_config = knowledge_config
         self.label_type = label_type
         self.label_version = label_version
+        self.landmark_group_ids = landmark_group_ids
+        self.object_group_ids = object_group_ids
         self.scene = scene
         self.template_id = template_id
         self.template_name = template_name
@@ -25913,6 +27428,10 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
             result['LabelType'] = self.label_type
         if self.label_version is not None:
             result['LabelVersion'] = self.label_version
+        if self.landmark_group_ids is not None:
+            result['LandmarkGroupIds'] = self.landmark_group_ids
+        if self.object_group_ids is not None:
+            result['ObjectGroupIds'] = self.object_group_ids
         if self.scene is not None:
             result['Scene'] = self.scene
         if self.template_id is not None:
@@ -25941,6 +27460,10 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
             self.label_type = m.get('LabelType')
         if m.get('LabelVersion') is not None:
             self.label_version = m.get('LabelVersion')
+        if m.get('LandmarkGroupIds') is not None:
+            self.landmark_group_ids = m.get('LandmarkGroupIds')
+        if m.get('ObjectGroupIds') is not None:
+            self.object_group_ids = m.get('ObjectGroupIds')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         if m.get('TemplateId') is not None:
@@ -26079,16 +27602,37 @@ class QuerySnapshotJobListRequest(TeaModel):
         start_of_job_created_time_range: str = None,
         state: str = None,
     ):
+        # The end of the time range within which the creation time of snapshot jobs to be queried is.
+        # 
+        # *   Specify the time in the ISO 8601 standard in the
+        # *   YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.end_of_job_created_time_range = end_of_job_created_time_range
+        # The maximum number of entries to return on each page.
+        # 
+        # *   Default value: **30**.
+        # *   Valid values: **\[1,300]**.
         self.maximum_page_size = maximum_page_size
+        # The token that is used to retrieve the next page of the query results. The value is a 32-bit UUID. If the returned query results cannot be displayed within one page, this parameter is returned. The value of this parameter is updated for each query.
         self.next_page_token = next_page_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue to which the snapshot jobs that you want to query are submitted. To obtain the ID, you can log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The IDs of the snapshot jobs that you want to query. To obtain the IDs, you can log on to the **ApsaraVideo Media Processing (MPS) console**, click **Tasks** in the left-side navigation pane, and then view the IDs on the **Snapshot** tab. You can query up to **10** snapshot jobs at a time. Separate the IDs with commas (,).
         self.snapshot_job_ids = snapshot_job_ids
+        # The beginning of the time range within which the creation time of snapshot jobs to be queried is.
+        # 
+        # *   Specify the time in the ISO 8601 standard in the
+        # *   YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.start_of_job_created_time_range = start_of_job_created_time_range
+        # The status of the snapshot jobs that you want to query.
+        # 
+        # *   **Submitted**: The job was submitted.
+        # *   **Snapshoting**: The job is being processed.
+        # *   **Success**: The job was successfully processed.
+        # *   **Fail**: The job failed.
         self.state = state
 
     def validate(self):
@@ -26186,9 +27730,13 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobInput(TeaModel):
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket that stores the input file.
         self.bucket = bucket
+        # The ID of the region in which the input OSS bucket is located.
         self.location = location
+        # The OSS object that is used as the input file.
         self.object = object
+        # The ARN of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
 
     def validate(self):
@@ -26230,8 +27778,11 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobMNSMessageResult
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successfully processed.
         self.error_code = error_code
+        # The error message returned when the job fails. This parameter is not returned if the job is successfully processed.
         self.error_message = error_message
+        # The ID of the message. This parameter is not returned if the job fails.
         self.message_id = message_id
 
     def validate(self):
@@ -26270,9 +27821,13 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigOu
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket that stores the output file.
         self.bucket = bucket
+        # The ID of the region in which the output OSS bucket is located.
         self.location = location
+        # The OSS object that is generated as the output file of the snapshot job.
         self.object = object
+        # The Alibaba Cloud Resource Name (ARN) of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
 
     def validate(self):
@@ -26320,14 +27875,34 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTi
         margin: str = None,
         padding: str = None,
     ):
+        # The height of a single image. The default value is the height of the output snapshot.
         self.cell_height = cell_height
+        # The stride of a single image.
         self.cell_sel_step = cell_sel_step
+        # The width of a single image. The default value is the width of the output snapshot.
         self.cell_width = cell_width
+        # The background color.
+        # 
+        # *   Default value: **black**.
+        # *   You can set the Color parameter to a **color keyword** or **random** in the request.
+        # 
+        # >  If you want to set the background color to black, you can specify the color keyword in one of the following three formats: Black, black, and #000000.
         self.color = color
+        # The number of columns that the tiled image can contain. Default value: **10**.
         self.columns = columns
+        # Indicates whether the single images are retained. Default value: **true**.
         self.is_keep_cell_pic = is_keep_cell_pic
+        # The number of rows that the tiled image can contain. Default value: **10**.
         self.lines = lines
+        # The margin width of the tiled image.
+        # 
+        # *   Default value: **0**.
+        # *   Unit: pixel.
         self.margin = margin
+        # The distance between images.
+        # 
+        # *   Default value: **0**.
+        # *   Unit: pixel.
         self.padding = padding
 
     def validate(self):
@@ -26390,9 +27965,13 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfigTi
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket that stores the output file.
         self.bucket = bucket
+        # The ID of the region in which the output OSS bucket is located.
         self.location = location
+        # The OSS object that is generated as the output file of the tiling job.
         self.object = object
+        # The ARN of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
 
     def validate(self):
@@ -26440,14 +28019,31 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJobSnapshotConfig(T
         time: str = None,
         width: str = None,
     ):
+        # The type of the snapshot. Valid values:
+        # 
+        # *   **normal**: normal frames.
+        # *   **intra**: I-frames.
+        # *   Default value: **intra**.
         self.frame_type = frame_type
+        # The height of the output snapshot.
         self.height = height
+        # The interval for taking snapshots.
+        # 
+        # *   If this Interval parameter is specified in the request, snapshots are taken at intervals. The value must be greater than 0.
+        # *   Unit: seconds.
+        # *   Default value: **10**.
         self.interval = interval
+        # The number of snapshots to take. If the Num parameter is set in the request, snapshots are taken at intervals.
         self.num = num
+        # The Object Storage Service (OSS) output file of the snapshot job.
         self.output_file = output_file
+        # The tiling configuration.
         self.tile_out = tile_out
+        # The OSS output file of the tiling job.
         self.tile_output_file = tile_output_file
+        # The start time for taking snapshots. Unit: milliseconds.
         self.time = time
+        # The width of the output snapshot.
         self.width = width
 
     def validate(self):
@@ -26526,17 +28122,34 @@ class QuerySnapshotJobListResponseBodySnapshotJobListSnapshotJob(TeaModel):
         tile_count: str = None,
         user_data: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successfully processed.
         self.code = code
+        # The number of snapshots that were taken.
         self.count = count
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The ID of the snapshot job.
         self.id = id
+        # The information about the job input.
         self.input = input
+        # The message sent by MNS to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned when the job fails. This parameter is not returned if the job is successfully processed.
         self.message = message
+        # The ID of the MPS queue to which the snapshot job was submitted.
         self.pipeline_id = pipeline_id
+        # The snapshot configuration.
         self.snapshot_config = snapshot_config
+        # The status of the snapshot job. 
+        # 
+        # - **Submitted**: The job was submitted.
+        # - **Snapshoting**: The job is being processed.
+        # - **Success**: The job was successfully processed.
+        # - **Fail**: The job failed.
         self.state = state
+        # The number of snapshots that are contained in the tiled image.
         self.tile_count = tile_count
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -26654,9 +28267,13 @@ class QuerySnapshotJobListResponseBody(TeaModel):
         request_id: str = None,
         snapshot_job_list: QuerySnapshotJobListResponseBodySnapshotJobList = None,
     ):
+        # The token that is used to retrieve the next page of the query results. The value is a 32-bit UUID. If the returned query results cannot be displayed within one page, this parameter is returned. The value of this parameter is updated for each query.
         self.next_page_token = next_page_token
+        # The snapshot job IDs that do not exist. This parameter is not returned if all specified snapshot jobs are found.
         self.non_exist_snapshot_job_ids = non_exist_snapshot_job_ids
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the snapshot jobs.
         self.snapshot_job_list = snapshot_job_list
 
     def validate(self):
@@ -26740,6 +28357,623 @@ class QuerySnapshotJobListResponse(TeaModel):
         return self
 
 
+class QuerySnapshotJobListV2Request(TeaModel):
+    def __init__(
+        self,
+        end_of_job_created_time_range: str = None,
+        maximum_page_size: str = None,
+        next_page_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        pipeline_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        snapshot_job_ids: str = None,
+        start_of_job_created_time_range: str = None,
+        state: str = None,
+    ):
+        self.end_of_job_created_time_range = end_of_job_created_time_range
+        self.maximum_page_size = maximum_page_size
+        self.next_page_token = next_page_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.pipeline_id = pipeline_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.snapshot_job_ids = snapshot_job_ids
+        self.start_of_job_created_time_range = start_of_job_created_time_range
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_of_job_created_time_range is not None:
+            result['EndOfJobCreatedTimeRange'] = self.end_of_job_created_time_range
+        if self.maximum_page_size is not None:
+            result['MaximumPageSize'] = self.maximum_page_size
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.snapshot_job_ids is not None:
+            result['SnapshotJobIds'] = self.snapshot_job_ids
+        if self.start_of_job_created_time_range is not None:
+            result['StartOfJobCreatedTimeRange'] = self.start_of_job_created_time_range
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndOfJobCreatedTimeRange') is not None:
+            self.end_of_job_created_time_range = m.get('EndOfJobCreatedTimeRange')
+        if m.get('MaximumPageSize') is not None:
+            self.maximum_page_size = m.get('MaximumPageSize')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SnapshotJobIds') is not None:
+            self.snapshot_job_ids = m.get('SnapshotJobIds')
+        if m.get('StartOfJobCreatedTimeRange') is not None:
+            self.start_of_job_created_time_range = m.get('StartOfJobCreatedTimeRange')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBodySnapshotJobListInput(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        location: str = None,
+        object: str = None,
+        role_arn: str = None,
+    ):
+        self.bucket = bucket
+        self.location = location
+        self.object = object
+        self.role_arn = role_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBodySnapshotJobListMNSMessageResult(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        message_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.message_id = message_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigOutputFile(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        location: str = None,
+        object: str = None,
+        role_arn: str = None,
+    ):
+        self.bucket = bucket
+        self.location = location
+        self.object = object
+        self.role_arn = role_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigTileOut(TeaModel):
+    def __init__(
+        self,
+        cell_height: str = None,
+        cell_sel_step: str = None,
+        cell_width: str = None,
+        color: str = None,
+        columns: str = None,
+        is_keep_cell_pic: str = None,
+        lines: str = None,
+        margin: str = None,
+        padding: str = None,
+    ):
+        self.cell_height = cell_height
+        self.cell_sel_step = cell_sel_step
+        self.cell_width = cell_width
+        self.color = color
+        self.columns = columns
+        self.is_keep_cell_pic = is_keep_cell_pic
+        self.lines = lines
+        self.margin = margin
+        self.padding = padding
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cell_height is not None:
+            result['CellHeight'] = self.cell_height
+        if self.cell_sel_step is not None:
+            result['CellSelStep'] = self.cell_sel_step
+        if self.cell_width is not None:
+            result['CellWidth'] = self.cell_width
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.columns is not None:
+            result['Columns'] = self.columns
+        if self.is_keep_cell_pic is not None:
+            result['IsKeepCellPic'] = self.is_keep_cell_pic
+        if self.lines is not None:
+            result['Lines'] = self.lines
+        if self.margin is not None:
+            result['Margin'] = self.margin
+        if self.padding is not None:
+            result['Padding'] = self.padding
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CellHeight') is not None:
+            self.cell_height = m.get('CellHeight')
+        if m.get('CellSelStep') is not None:
+            self.cell_sel_step = m.get('CellSelStep')
+        if m.get('CellWidth') is not None:
+            self.cell_width = m.get('CellWidth')
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
+        if m.get('IsKeepCellPic') is not None:
+            self.is_keep_cell_pic = m.get('IsKeepCellPic')
+        if m.get('Lines') is not None:
+            self.lines = m.get('Lines')
+        if m.get('Margin') is not None:
+            self.margin = m.get('Margin')
+        if m.get('Padding') is not None:
+            self.padding = m.get('Padding')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigTileOutputFile(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        location: str = None,
+        object: str = None,
+        role_arn: str = None,
+    ):
+        self.bucket = bucket
+        self.location = location
+        self.object = object
+        self.role_arn = role_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.object is not None:
+            result['Object'] = self.object
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Object') is not None:
+            self.object = m.get('Object')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfig(TeaModel):
+    def __init__(
+        self,
+        frame_type: str = None,
+        height: str = None,
+        interval: str = None,
+        num: str = None,
+        output_file: QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigOutputFile = None,
+        tile_out: QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigTileOut = None,
+        tile_output_file: QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigTileOutputFile = None,
+        time: str = None,
+        width: str = None,
+    ):
+        self.frame_type = frame_type
+        self.height = height
+        self.interval = interval
+        self.num = num
+        self.output_file = output_file
+        self.tile_out = tile_out
+        self.tile_output_file = tile_output_file
+        self.time = time
+        self.width = width
+
+    def validate(self):
+        if self.output_file:
+            self.output_file.validate()
+        if self.tile_out:
+            self.tile_out.validate()
+        if self.tile_output_file:
+            self.tile_output_file.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.frame_type is not None:
+            result['FrameType'] = self.frame_type
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.output_file is not None:
+            result['OutputFile'] = self.output_file.to_map()
+        if self.tile_out is not None:
+            result['TileOut'] = self.tile_out.to_map()
+        if self.tile_output_file is not None:
+            result['TileOutputFile'] = self.tile_output_file.to_map()
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FrameType') is not None:
+            self.frame_type = m.get('FrameType')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('OutputFile') is not None:
+            temp_model = QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigOutputFile()
+            self.output_file = temp_model.from_map(m['OutputFile'])
+        if m.get('TileOut') is not None:
+            temp_model = QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigTileOut()
+            self.tile_out = temp_model.from_map(m['TileOut'])
+        if m.get('TileOutputFile') is not None:
+            temp_model = QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfigTileOutputFile()
+            self.tile_output_file = temp_model.from_map(m['TileOutputFile'])
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBodySnapshotJobList(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: str = None,
+        creation_time: str = None,
+        id: str = None,
+        input: QuerySnapshotJobListV2ResponseBodySnapshotJobListInput = None,
+        mnsmessage_result: QuerySnapshotJobListV2ResponseBodySnapshotJobListMNSMessageResult = None,
+        message: str = None,
+        pipeline_id: str = None,
+        snapshot_config: QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfig = None,
+        state: str = None,
+        tile_count: str = None,
+        user_data: str = None,
+    ):
+        self.code = code
+        self.count = count
+        self.creation_time = creation_time
+        self.id = id
+        self.input = input
+        self.mnsmessage_result = mnsmessage_result
+        self.message = message
+        self.pipeline_id = pipeline_id
+        self.snapshot_config = snapshot_config
+        self.state = state
+        self.tile_count = tile_count
+        self.user_data = user_data
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+        if self.mnsmessage_result:
+            self.mnsmessage_result.validate()
+        if self.snapshot_config:
+            self.snapshot_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        if self.mnsmessage_result is not None:
+            result['MNSMessageResult'] = self.mnsmessage_result.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.snapshot_config is not None:
+            result['SnapshotConfig'] = self.snapshot_config.to_map()
+        if self.state is not None:
+            result['State'] = self.state
+        if self.tile_count is not None:
+            result['TileCount'] = self.tile_count
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Input') is not None:
+            temp_model = QuerySnapshotJobListV2ResponseBodySnapshotJobListInput()
+            self.input = temp_model.from_map(m['Input'])
+        if m.get('MNSMessageResult') is not None:
+            temp_model = QuerySnapshotJobListV2ResponseBodySnapshotJobListMNSMessageResult()
+            self.mnsmessage_result = temp_model.from_map(m['MNSMessageResult'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('SnapshotConfig') is not None:
+            temp_model = QuerySnapshotJobListV2ResponseBodySnapshotJobListSnapshotConfig()
+            self.snapshot_config = temp_model.from_map(m['SnapshotConfig'])
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TileCount') is not None:
+            self.tile_count = m.get('TileCount')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class QuerySnapshotJobListV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_page_token: str = None,
+        non_exist_snapshot_job_ids: List[str] = None,
+        request_id: str = None,
+        snapshot_job_list: List[QuerySnapshotJobListV2ResponseBodySnapshotJobList] = None,
+    ):
+        self.next_page_token = next_page_token
+        self.non_exist_snapshot_job_ids = non_exist_snapshot_job_ids
+        self.request_id = request_id
+        self.snapshot_job_list = snapshot_job_list
+
+    def validate(self):
+        if self.snapshot_job_list:
+            for k in self.snapshot_job_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.non_exist_snapshot_job_ids is not None:
+            result['NonExistSnapshotJobIds'] = self.non_exist_snapshot_job_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SnapshotJobList'] = []
+        if self.snapshot_job_list is not None:
+            for k in self.snapshot_job_list:
+                result['SnapshotJobList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('NonExistSnapshotJobIds') is not None:
+            self.non_exist_snapshot_job_ids = m.get('NonExistSnapshotJobIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.snapshot_job_list = []
+        if m.get('SnapshotJobList') is not None:
+            for k in m.get('SnapshotJobList'):
+                temp_model = QuerySnapshotJobListV2ResponseBodySnapshotJobList()
+                self.snapshot_job_list.append(temp_model.from_map(k))
+        return self
+
+
+class QuerySnapshotJobListV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySnapshotJobListV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySnapshotJobListV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryTemplateListRequest(TeaModel):
     def __init__(
         self,
@@ -26753,6 +28987,7 @@ class QueryTemplateListRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The IDs of the custom transcoding templates that you want to query. You can query up to 10 custom transcoding templates at a time. Separate multiple IDs of custom transcoding templates with commas (,).
         self.template_ids = template_ids
 
     def validate(self):
@@ -26829,12 +29064,41 @@ class QueryTemplateListResponseBodyTemplateListTemplateAudio(TeaModel):
         remove: str = None,
         samplerate: str = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: **\[8, 1000]**.
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: **2**.
         self.channels = channels
+        # The audio codec. Default value: **aac**. Valid values:
+        # 
+        # *   **aac**\
+        # *   **mp3**\
+        # *   **vorbis**\
+        # *   **flac**\
         self.codec = codec
+        # The codec profile of the audio. Valid values when the Codec parameter is set to aac:
+        # 
+        # *   **aac_low**\
+        # *   **aac_he**\
+        # *   **aac_he_v2**\
+        # *   **aac_ld**\
+        # *   **aac_eld**\
         self.profile = profile
+        # The strength of the independent noise reduction algorithm.
         self.qscale = qscale
+        # Indicates whether to delete the audio stream.
+        # 
+        # *   **true**: The audio stream is deleted.
+        # *   **false**: The audio stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Unit: Hz.
+        # *   Default value: **44100**.
         self.samplerate = samplerate
 
     def validate(self):
@@ -26886,6 +29150,7 @@ class QueryTemplateListResponseBodyTemplateListTemplateContainer(TeaModel):
         self,
         format: str = None,
     ):
+        # The container format. Valid values: flv, mp4, ts, m3u8, gif, mp3, ogg, and flac.
         self.format = format
 
     def validate(self):
@@ -26916,9 +29181,13 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfigGif(TeaModel):
         is_custom_palette: str = None,
         loop: str = None,
     ):
+        # The color dithering algorithm of the palette. Valid values: sierra and bayer.
         self.dither_mode = dither_mode
+        # The duration for which the final frame is paused.
         self.final_delay = final_delay
+        # Indicates whether the custom palette is used.
         self.is_custom_palette = is_custom_palette
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -26958,6 +29227,7 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfigSegment(TeaModel
         self,
         duration: str = None,
     ):
+        # The length of the segment. Unit: seconds.
         self.duration = duration
 
     def validate(self):
@@ -26985,6 +29255,7 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfigWebp(TeaModel):
         self,
         loop: str = None,
     ):
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -27014,8 +29285,11 @@ class QueryTemplateListResponseBodyTemplateListTemplateMuxConfig(TeaModel):
         segment: QueryTemplateListResponseBodyTemplateListTemplateMuxConfigSegment = None,
         webp: QueryTemplateListResponseBodyTemplateListTemplateMuxConfigWebp = None,
     ):
+        # The transmuxing configuration for GIF.
         self.gif = gif
+        # The segment configuration.
         self.segment = segment
+        # The transmuxing configuration for WebP.
         self.webp = webp
 
     def validate(self):
@@ -27066,13 +29340,59 @@ class QueryTemplateListResponseBodyTemplateListTemplateTransConfig(TeaModel):
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method of resolution adjustment. Default value: **none**. Valid values:
+        # 
+        # *   rescale: The input video is rescaled.
+        # *   crop: The input video is cropped.
+        # *   none: No change is made.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether to check the audio bitrate.
+        # 
+        # *   If this feature is enabled and the system detects that the audio bitrate of the output file is greater than that of the input file, the audio bitrate of the input file is retained after transcoding.
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether to allow audio bitrate check errors.
+        # 
+        # *   **true**: If the audio bitrate check fails, the input file is not transcoded.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
+        # *   This parameter takes precedence over the IsCheckAudioBitrate parameter.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether to check the resolution.
+        # 
+        # *   If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, the resolution of the input file is retained after transcoding.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso = is_check_reso
+        # Indicates whether to check the resolution.
+        # 
+        # *   If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, an error that indicates a transcoding failure is returned.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether to check the video bitrate.
+        # 
+        # *   If this feature is enabled and the system detects that the video bitrate of the output file is greater than that of the input file, the video bitrate of the input file is retained after transcoding.
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether to allow video bitrate check errors.
+        # 
+        # *   **true**: If the video bitrate check fails, the input file is not transcoded.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
+        # *   This parameter takes precedence over the IsCheckVideoBitrate parameter.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The transcoding mode. Default value: **onepass**. Valid values:
+        # 
+        # *   **onepass**\
+        # *   **twopass**\
+        # *   **CBR**\
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -27129,7 +29449,9 @@ class QueryTemplateListResponseBodyTemplateListTemplateVideoBitrateBnd(TeaModel)
         max: str = None,
         min: str = None,
     ):
+        # The upper limit of the total bitrate. Unit: Kbit/s.
         self.max = max
+        # The lower limit of the total bitrate. Unit: Kbit/s.
         self.min = min
 
     def validate(self):
@@ -27182,27 +29504,84 @@ class QueryTemplateListResponseBodyTemplateListTemplateVideo(TeaModel):
         scan_mode: str = None,
         width: str = None,
     ):
+        # The average bitrate of the video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The average bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Unit: KB.
+        # *   Default value: **6000**.
         self.bufsize = bufsize
+        # The video codec. Default value: **H.264**.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Default value when the Codec parameter is set to H.264: **23**. Default value when the Codec parameter is set to H.265: **26**.
+        # *   If this parameter is specified, the setting of the Bitrate parameter is invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   **border**: automatically detects and removes borders.
+        # *   **Other values**: the custom cropping modes. Format: width:height:left:top. Example: 1280:800:0:140.
         self.crop = crop
+        # The level of video quality control.
         self.degrain = degrain
+        # The frame rate of the video.
+        # 
+        # *   The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes. Default value: **250**.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Indicates whether to enable the auto-rotate screen feature.
+        # 
+        # *   If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode.
+        # *   **true**: The auto-rotate screen feature is enabled.
+        # *   **false**: The auto-rotate screen feature is disabled.
+        # *   Default value: **false**.
         self.long_short_mode = long_short_mode
+        # The maximum frame rate.
         self.max_fps = max_fps
+        # The maximum video bitrate. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black borders to be added to the video. Format: width:height:left:top. Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format for video color encoding. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Valid values: veryfast, fast, medium, slow, and slower. Default value: **medium**.
         self.preset = preset
+        # The codec profile.
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
+        # *   Default value: **high**.
         self.profile = profile
+        # The strength of the independent noise reduction algorithm.
         self.qscale = qscale
+        # Indicates whether to delete the video stream.
+        # 
+        # *   **true**: The video stream is deleted.
+        # *   **false**: The video stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The policy of resolution adjustment. Valid values: CropFirst, widthFirst, and heightFirst.
         self.reso_priority = reso_priority
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**\
+        # *   **progressive**\
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -27323,13 +29702,24 @@ class QueryTemplateListResponseBodyTemplateListTemplate(TeaModel):
         trans_config: QueryTemplateListResponseBodyTemplateListTemplateTransConfig = None,
         video: QueryTemplateListResponseBodyTemplateListTemplateVideo = None,
     ):
+        # The audio codec configuration.
         self.audio = audio
+        # The container configuration.
         self.container = container
+        # The ID of the transcoding template.
         self.id = id
+        # The transmuxing configuration.
         self.mux_config = mux_config
+        # The name of the template.
         self.name = name
+        # The status of the template.
+        # 
+        # *   **Normal**: The template is normal.
+        # *   **Deleted**: The template is deleted.
         self.state = state
+        # The general transcoding configuration.
         self.trans_config = trans_config
+        # The video codec configuration.
         self.video = video
 
     def validate(self):
@@ -27436,8 +29826,11 @@ class QueryTemplateListResponseBody(TeaModel):
         request_id: str = None,
         template_list: QueryTemplateListResponseBodyTemplateList = None,
     ):
+        # The template IDs that do not exist. This parameter is not returned if all specified custom transcoding templates are found.
         self.non_exist_tids = non_exist_tids
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the custom transcoding templates.
         self.template_list = template_list
 
     def validate(self):
@@ -27711,6 +30104,7 @@ class QueryWaterMarkTemplateListRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The IDs of the watermark templates that you want to query. To obtain the IDs of the watermark templates, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Global Settings** > **Watermark Templates** in the left-side navigation pane. You can query up to 10 watermark templates at a time. Separate multiple IDs of watermark templates with commas (,).
         self.water_mark_template_ids = water_mark_template_ids
 
     def validate(self):
@@ -27784,9 +30178,25 @@ class QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTempla
         height: str = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the horizontal offset to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dx = dx
+        # The vertical offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the vertical offset to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dy = dy
+        # The height of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the height of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the height of the watermark image to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.height = height
+        # The width of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the width of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the width of the watermark image to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.width = width
 
     def validate(self):
@@ -27827,7 +30237,12 @@ class QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTempla
         duration: str = None,
         start: str = None,
     ):
+        # The display duration of the watermark. Default value: **ToEND**. The default value indicates that the watermark is displayed until the video ends.
         self.duration = duration
+        # The beginning of the time range during which the watermark is displayed.
+        # 
+        # *   Unit: seconds.
+        # *   Default value: **0**.
         self.start = start
 
     def validate(self):
@@ -27869,16 +30284,45 @@ class QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateListWaterMarkTempla
         type: str = None,
         width: str = None,
     ):
+        # The horizontal offset. Unit: pixel.
         self.dx = dx
+        # The vertical offset. Unit: pixel.
         self.dy = dy
+        # The height of the watermark image. Unit: pixel.
         self.height = height
+        # The ID of the watermark template.
         self.id = id
+        # The name of the watermark template.
         self.name = name
+        # The values of the Height, Width, Dx, and Dy parameters relative to the reference edges. If the values of the Height, Width, Dx, and Dy parameters are decimals between 0 and 1, the values are calculated by referring to the following edges in sequence:
+        # 
+        # *   **Width**: the width edge.
+        # *   **Height**: the height edge.
+        # *   **Long**: the long edge.
+        # *   **Short**: the short edge.
         self.ratio_refer = ratio_refer
+        # The position of the watermark. Valid values:
+        # 
+        # *   **TopRight**: the upper-right corner.
+        # *   **TopLeft**: the upper-left corner.
+        # *   **BottomRight**: the lower-right corner.
+        # *   **BottomLeft**: the lower-left corner.
         self.refer_pos = refer_pos
+        # The status of the watermark template. Valid values: Valid values:
+        # 
+        # *   **Normal**: The watermark template is normal.
+        # *   **Deleted**: The watermark template is deleted.
         self.state = state
+        # The timeline of the watermark.
         self.timeline = timeline
+        # The type of the watermark. Valid values:
+        # 
+        # *   Image, and
+        # *   Text.
+        # 
+        # >  Only watermarks of the **Image** type are supported.
         self.type = type
+        # The width of the watermark image. Unit: pixel.
         self.width = width
 
     def validate(self):
@@ -27988,8 +30432,11 @@ class QueryWaterMarkTemplateListResponseBody(TeaModel):
         request_id: str = None,
         water_mark_template_list: QueryWaterMarkTemplateListResponseBodyWaterMarkTemplateList = None,
     ):
+        # The watermark template IDs that do not exist. This parameter is not returned if all specified watermark templates are found.
         self.non_exist_wids = non_exist_wids
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the watermark templates.
         self.water_mark_template_list = water_mark_template_list
 
     def validate(self):
@@ -28209,6 +30656,152 @@ class RegisterCustomFaceResponse(TeaModel):
         return self
 
 
+class RegisterCustomViewRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        custom_entity_id: str = None,
+        custom_group_id: str = None,
+        image_url: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.algorithm = algorithm
+        self.custom_entity_id = custom_entity_id
+        self.custom_group_id = custom_group_id
+        self.image_url = image_url
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.custom_entity_id is not None:
+            result['CustomEntityId'] = self.custom_entity_id
+        if self.custom_group_id is not None:
+            result['CustomGroupId'] = self.custom_group_id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CustomEntityId') is not None:
+            self.custom_entity_id = m.get('CustomEntityId')
+        if m.get('CustomGroupId') is not None:
+            self.custom_group_id = m.get('CustomGroupId')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class RegisterCustomViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_view_id: str = None,
+        request_id: str = None,
+    ):
+        self.custom_view_id = custom_view_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_view_id is not None:
+            result['CustomViewId'] = self.custom_view_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomViewId') is not None:
+            self.custom_view_id = m.get('CustomViewId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RegisterCustomViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RegisterCustomViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RegisterCustomViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReportFpShotJobResultRequest(TeaModel):
     def __init__(
         self,
@@ -28220,12 +30813,15 @@ class ReportFpShotJobResultRequest(TeaModel):
         resource_owner_id: int = None,
         result: str = None,
     ):
+        # The details of the job results. You can obtain the details from the response parameters of the [QueryFpShotJobList](~~93557~~) operation.
         self.details = details
+        # The ID of the media fingerprint analysis job on which you want to provide feedback. To view the job ID, log on to the **MPS console**, click **Tasks** in the left-side navigation pane, and then click the **Video DNA** tab on the Tasks page.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The results of the media fingerprint analysis job. You can obtain the results of the media fingerprint analysis job from the response parameters of the [QueryFpShotJobList](~~93557~~) operation.
         self.result = result
 
     def validate(self):
@@ -28278,7 +30874,9 @@ class ReportFpShotJobResultResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the media fingerprint analysis job on which you provide feedback. We recommend that you keep this ID for subsequent operation calls.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28362,10 +30960,20 @@ class SearchMediaWorkflowRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # *   A maximum of **100** entries can be returned on each page.
+        # *   Default value: **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the media workflows that you want to query. You can specify multiple states. Separate multiple states with commas (,). Default value: **Inactive,Active,Deleted**. Valid values:
+        # 
+        # *   **Inactive**: Deactivated media workflows are queried.
+        # *   **Active**: Activated media workflows are queried.
+        # *   **Deleted**: Deleted media workflows are queried.
         self.state_list = state_list
 
     def validate(self):
@@ -28422,11 +31030,24 @@ class SearchMediaWorkflowResponseBodyMediaWorkflowListMediaWorkflow(TeaModel):
         topology: str = None,
         trigger_mode: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The status of the media workflow. Valid values:
+        # 
+        # *   **Inactive**: The media workflow is deactivated.
+        # *   **Active**: The media workflow is activated.
+        # *   **Deleted**: The media workflow is deleted.
         self.state = state
+        # The topology of the media workflow.
         self.topology = topology
+        # The trigger mode of the media workflow. Valid values:
+        # 
+        # *   **OssAutoTrigger**: The media workflow is automatically triggered.
+        # *   **NotInAuto**: The media workflow is not automatically triggered.
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -28513,10 +31134,15 @@ class SearchMediaWorkflowResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The details of the media workflows.
         self.media_workflow_list = media_workflow_list
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -28614,10 +31240,21 @@ class SearchPipelineRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # *   A maximum of **100** entries can be returned on each page.
+        # *   Default value: **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the MPS queues that you want to query. If you leave this parameter empty, all MPS queues are queried.
+        # 
+        # *   **All**: All MPS queues are queried.
+        # *   **Active**: Active MPS queues are queried.
+        # *   **Paused**: Paused MPS queues are queried.
+        # *   Default value: **All**.
         self.state = state
 
     def validate(self):
@@ -28664,6 +31301,45 @@ class SearchPipelineRequest(TeaModel):
         return self
 
 
+class SearchPipelineResponseBodyPipelineListPipelineExtendConfig(TeaModel):
+    def __init__(
+        self,
+        is_boost_new: bool = None,
+        max_multi_speed: int = None,
+        multi_speed_downgrade_policy: str = None,
+    ):
+        self.is_boost_new = is_boost_new
+        self.max_multi_speed = max_multi_speed
+        self.multi_speed_downgrade_policy = multi_speed_downgrade_policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_boost_new is not None:
+            result['IsBoostNew'] = self.is_boost_new
+        if self.max_multi_speed is not None:
+            result['MaxMultiSpeed'] = self.max_multi_speed
+        if self.multi_speed_downgrade_policy is not None:
+            result['MultiSpeedDowngradePolicy'] = self.multi_speed_downgrade_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsBoostNew') is not None:
+            self.is_boost_new = m.get('IsBoostNew')
+        if m.get('MaxMultiSpeed') is not None:
+            self.max_multi_speed = m.get('MaxMultiSpeed')
+        if m.get('MultiSpeedDowngradePolicy') is not None:
+            self.multi_speed_downgrade_policy = m.get('MultiSpeedDowngradePolicy')
+        return self
+
+
 class SearchPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
     def __init__(
         self,
@@ -28674,7 +31350,9 @@ class SearchPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
     ):
         self.mq_tag = mq_tag
         self.mq_topic = mq_topic
+        # The name of the queue that is created in MNS.
         self.queue_name = queue_name
+        # The name of the topic that is created in MNS.
         self.topic = topic
 
     def validate(self):
@@ -28712,6 +31390,7 @@ class SearchPipelineResponseBodyPipelineListPipelineNotifyConfig(TeaModel):
 class SearchPipelineResponseBodyPipelineListPipeline(TeaModel):
     def __init__(
         self,
+        extend_config: SearchPipelineResponseBodyPipelineListPipelineExtendConfig = None,
         id: str = None,
         name: str = None,
         notify_config: SearchPipelineResponseBodyPipelineListPipelineNotifyConfig = None,
@@ -28721,16 +31400,40 @@ class SearchPipelineResponseBodyPipelineListPipeline(TeaModel):
         speed_level: int = None,
         state: str = None,
     ):
+        self.extend_config = extend_config
+        # The ID of the MPS queue.
         self.id = id
+        # The name of the MPS queue.
         self.name = name
+        # The MNS notification configuration.
         self.notify_config = notify_config
         self.quota_allocate = quota_allocate
+        # The role that is assigned to the current RAM user.
         self.role = role
+        # The type of the MPS queue. Default value: **Standard**. Valid values:
+        # 
+        # *   **Boost**: MPS queue with transcoding speed boosted.
+        # *   **Standard**: standard MPS queue.
+        # *   **NarrowBandHDV2**: MPS queue that supports Narrowband HD™ 2.0.
+        # *   **AIVideoCover**: MPS queue for intelligent snapshot capture.
+        # *   **AIVideoFPShot**: MPS queue for media fingerprinting.
+        # *   **AIVideoCensor**: MPS queue for automated review.
+        # *   **AIVideoMCU**: MPS queue for smart tagging.
+        # *   **AIVideoSummary**: MPS queue for video synopsis.
+        # *   **AIVideoPorn**: MPS queue for pornography detection in videos.
+        # *   **AIAudioKWS**: MPS queue for keyword recognition in audio.
+        # *   **AIAudioASR**: MPS queue for speech-to-text conversion.
         self.speed = speed
         self.speed_level = speed_level
+        # The status of the pipeline. Valid values:
+        # 
+        # *   **Active**: The MPS queue is active.
+        # *   **Paused**: The MPS queue is paused.
         self.state = state
 
     def validate(self):
+        if self.extend_config:
+            self.extend_config.validate()
         if self.notify_config:
             self.notify_config.validate()
 
@@ -28740,6 +31443,8 @@ class SearchPipelineResponseBodyPipelineListPipeline(TeaModel):
             return _map
 
         result = dict()
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config.to_map()
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
@@ -28760,6 +31465,9 @@ class SearchPipelineResponseBodyPipelineListPipeline(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendConfig') is not None:
+            temp_model = SearchPipelineResponseBodyPipelineListPipelineExtendConfig()
+            self.extend_config = temp_model.from_map(m['ExtendConfig'])
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
@@ -28824,10 +31532,15 @@ class SearchPipelineResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The details of the MPS queues.
         self.pipeline_list = pipeline_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -28925,10 +31638,21 @@ class SearchTemplateRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # *   A maximum of **100** entries can be returned on each page.
+        # *   Default value: **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the custom transcoding templates that you want to query.
+        # 
+        # *   **All**: All custom transcoding templates are queried.
+        # *   **normal**: Normal custom transcoding templates are queried.
+        # *   **Deleted**: Deleted custom transcoding templates are queried.
+        # *   Default value: **All**.
         self.state = state
 
     def validate(self):
@@ -28986,12 +31710,40 @@ class SearchTemplateResponseBodyTemplateListTemplateAudio(TeaModel):
         remove: str = None,
         samplerate: str = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: **2**.
         self.channels = channels
+        # The audio codec. Default value: **aac**. Valid values:
+        # 
+        # *   **aac**\
+        # *   **mp3**\
+        # *   **vorbis**\
+        # *   **flac**\
         self.codec = codec
+        # The codec profile of the audio. Valid values when the Codec parameter is set to aac:
+        # 
+        # *   **aac_low**\
+        # *   **aac_he**\
+        # *   **aac_he_v2**\
+        # *   **aac_ld**\
+        # *   **aac_eld**\
         self.profile = profile
+        # The strength of the independent noise reduction algorithm. Valid values: **\[1, 9]**.
         self.qscale = qscale
+        # Indicates whether to delete the audio stream.
+        # 
+        # *   **true**: The audio stream is deleted.
+        # *   **false**: The audio stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Unit: Hz.
+        # *   Default value: **44100**.
         self.samplerate = samplerate
 
     def validate(self):
@@ -29043,6 +31795,16 @@ class SearchTemplateResponseBodyTemplateListTemplateContainer(TeaModel):
         self,
         format: str = None,
     ):
+        # The container format. Valid values:
+        # 
+        # *   **flv**\
+        # *   **mp4**\
+        # *   **ts**\
+        # *   **m3u8**\
+        # *   **gif**\
+        # *   **mp3**\
+        # *   **ogg**\
+        # *   **flac**\
         self.format = format
 
     def validate(self):
@@ -29073,9 +31835,13 @@ class SearchTemplateResponseBodyTemplateListTemplateMuxConfigGif(TeaModel):
         is_custom_palette: str = None,
         loop: str = None,
     ):
+        # The color dithering algorithm of the palette. Valid values: sierra and bayer.
         self.dither_mode = dither_mode
+        # The duration for which the final frame is paused. Unit: centiseconds.
         self.final_delay = final_delay
+        # Indicates whether the custom palette is used.
         self.is_custom_palette = is_custom_palette
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -29115,6 +31881,7 @@ class SearchTemplateResponseBodyTemplateListTemplateMuxConfigSegment(TeaModel):
         self,
         duration: str = None,
     ):
+        # The length of the segment. Unit: seconds.
         self.duration = duration
 
     def validate(self):
@@ -29143,7 +31910,9 @@ class SearchTemplateResponseBodyTemplateListTemplateMuxConfig(TeaModel):
         gif: SearchTemplateResponseBodyTemplateListTemplateMuxConfigGif = None,
         segment: SearchTemplateResponseBodyTemplateListTemplateMuxConfigSegment = None,
     ):
+        # The transmuxing configuration for GIF.
         self.gif = gif
+        # The segment configuration.
         self.segment = segment
 
     def validate(self):
@@ -29187,13 +31956,59 @@ class SearchTemplateResponseBodyTemplateListTemplateTransConfig(TeaModel):
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method of resolution adjustment. Default value: **none**. Valid values:
+        # 
+        # *   rescale: The input video is rescaled.
+        # *   crop: The input video is cropped.
+        # *   none: No change is made.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether to check the audio bitrate.
+        # 
+        # *   If this feature is enabled and the system detects that the audio bitrate of the output file is greater than that of the input file, the audio bitrate of the input file is retained after transcoding.
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether to allow audio bitrate check errors.
+        # 
+        # *   **true**: If the audio bitrate check fails, the input file is not transcoded.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
+        # *   This parameter takes precedence over the IsCheckAudioBitrate parameter.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether to check the resolution.
+        # 
+        # *   If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, the resolution of the input file is retained after transcoding.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso = is_check_reso
+        # Indicates whether to check the resolution.
+        # 
+        # *   If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, an error that indicates a transcoding failure is returned.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether to check the video bitrate.
+        # 
+        # *   If this feature is enabled and the system detects that the video bitrate of the output file is greater than that of the input file, the video bitrate of the input file is retained after transcoding.
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether to allow video bitrate check errors.
+        # 
+        # *   **true**: If the video bitrate check fails, the input file is not transcoded.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
+        # *   This parameter takes precedence over the IsCheckVideoBitrate parameter.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The transcoding mode. Default value: **onepass**. Valid values:
+        # 
+        # *   **onepass**\
+        # *   **twopass**\
+        # *   **CBR**\
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -29250,7 +32065,9 @@ class SearchTemplateResponseBodyTemplateListTemplateVideoBitrateBnd(TeaModel):
         max: str = None,
         min: str = None,
     ):
+        # The upper limit of the total bitrate. Unit: Kbit/s.
         self.max = max
+        # The lower limit of the total bitrate. Unit: Kbit/s.
         self.min = min
 
     def validate(self):
@@ -29302,26 +32119,98 @@ class SearchTemplateResponseBodyTemplateListTemplateVideo(TeaModel):
         scan_mode: str = None,
         width: str = None,
     ):
+        # The average bitrate of the video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The average bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Unit: KB.
+        # *   Default value: **6000**.
         self.bufsize = bufsize
+        # The video codec.
+        # 
+        # *   Valid values: H.264 and H.265.
+        # *   Default value: **H.264**.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Default value when the Codec parameter is set to H.264: **23**. Default value when the Codec parameter is set to H.265: **26**.
+        # *   If this parameter is specified, the setting of Bitrate becomes invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   **border**: automatically detects and removes borders.
+        # *   **Other values**: the custom cropping modes. Format: width:height:left:top. Example: 1280:800:0:140.
         self.crop = crop
+        # The level of video quality control.
         self.degrain = degrain
+        # The frame rate of the video.
+        # 
+        # *   The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes. Default value: **250**.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Indicates whether to enable the auto-rotate screen feature.
+        # 
+        # *   If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode.
+        # *   **true**: The auto-rotate screen feature is enabled.
+        # *   **false**: The auto-rotate screen feature is disabled.
+        # *   Default value: **false**.
         self.long_short_mode = long_short_mode
+        # The maximum frame rate.
         self.max_fps = max_fps
+        # The maximum video bitrate. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black borders to be added to the video.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format for video color encoding. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Default value: **medium**. Valid values:
+        # 
+        # *   **veryfast**\
+        # *   **fast**\
+        # *   **medium**\
+        # *   **slow**\
+        # *   **slower**\
         self.preset = preset
+        # The codec profile.
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
+        # *   Default value: **high**.
         self.profile = profile
+        # The strength of the independent noise reduction algorithm.
         self.qscale = qscale
+        # Indicates whether to delete the video stream.
+        # 
+        # *   **true**: The video stream is deleted.
+        # *   **false**: The video stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**\
+        # *   **progressive**\
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Valid values: **\[128, 4096]**.
+        # 
+        # <!---->
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -29438,13 +32327,24 @@ class SearchTemplateResponseBodyTemplateListTemplate(TeaModel):
         trans_config: SearchTemplateResponseBodyTemplateListTemplateTransConfig = None,
         video: SearchTemplateResponseBodyTemplateListTemplateVideo = None,
     ):
+        # The audio codec configuration.
         self.audio = audio
+        # The container configuration.
         self.container = container
+        # The ID of the transcoding template.
         self.id = id
+        # The transmuxing configuration.
         self.mux_config = mux_config
+        # The name of the template.
         self.name = name
+        # The status of the template.
+        # 
+        # *   **Normal**: The template is normal.
+        # *   **Deleted**: The template is deleted.
         self.state = state
+        # The general transcoding configuration.
         self.trans_config = trans_config
+        # The video codec configuration.
         self.video = video
 
     def validate(self):
@@ -29553,10 +32453,15 @@ class SearchTemplateResponseBody(TeaModel):
         template_list: SearchTemplateResponseBodyTemplateList = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the custom transcoding templates.
         self.template_list = template_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -29654,10 +32559,20 @@ class SearchWaterMarkTemplateRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # *   A maximum of **100** entries can be returned on each page.
+        # *   Default value: **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the watermark templates that you want to query. Valid values:
+        # 
+        # *   **All**: All watermark templates are queried. This is the default value.
+        # *   **normal**: Normal watermark templates are queried.
+        # *   **Deleted**: Deleted watermark templates are queried.
         self.state = state
 
     def validate(self):
@@ -29712,9 +32627,27 @@ class SearchWaterMarkTemplateResponseBodyWaterMarkTemplateListWaterMarkTemplateR
         height: str = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset.
+        # 
+        # The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the horizontal offset to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dx = dx
+        # The vertical offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the vertical offset to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dy = dy
+        # The height of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the height of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the height of the watermark image to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.height = height
+        # The width of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the width of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the width of the watermark image to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.width = width
 
     def validate(self):
@@ -29755,7 +32688,12 @@ class SearchWaterMarkTemplateResponseBodyWaterMarkTemplateListWaterMarkTemplateT
         duration: str = None,
         start: str = None,
     ):
+        # The display duration of the watermark. Default value: **ToEND**. The default value indicates that the watermark is displayed until the video ends.
         self.duration = duration
+        # The beginning of the time range during which the watermark is displayed.
+        # 
+        # *   Unit: seconds.
+        # *   Default value: **0**.
         self.start = start
 
     def validate(self):
@@ -29797,16 +32735,45 @@ class SearchWaterMarkTemplateResponseBodyWaterMarkTemplateListWaterMarkTemplate(
         type: str = None,
         width: str = None,
     ):
+        # The horizontal offset. Unit: pixel.
         self.dx = dx
+        # The vertical offset. Unit: pixel.
         self.dy = dy
+        # The height of the watermark image. Unit: pixel.
         self.height = height
+        # The ID of the watermark template.
         self.id = id
+        # The name of the watermark template.
         self.name = name
+        # The values of the Height, Width, Dx, and Dy parameters relative to the reference edges. If the values of the Height, Width, Dx, and Dy parameters are decimals between 0 and 1, the values are calculated by referring to the following edges in sequence:
+        # 
+        # *   **Width**: the width edge.
+        # *   **Height**: the height edge.
+        # *   **Long**: the long edge.
+        # *   **Short**: the short edge.
         self.ratio_refer = ratio_refer
+        # The position of the watermark. Valid values:
+        # 
+        # *   TopRight: the upper-right corner.
+        # *   TopLeft: the upper-left corner.
+        # *   BottomRight: the lower-right corner.
+        # *   BottomLeft: the lower-left corner.
         self.refer_pos = refer_pos
+        # The status of the watermark template. Valid values: Valid values:
+        # 
+        # *   **Normal**: The watermark template is normal.
+        # *   **Deleted**: The watermark template is deleted.
         self.state = state
+        # The timeline of the watermark.
         self.timeline = timeline
+        # The type of the watermark. Valid values:
+        # 
+        # *   Image: an image watermark.
+        # *   Text: a text watermark.
+        # 
+        # >  Only watermarks of the **Image** types are supported.
         self.type = type
+        # The width of the watermark image. Unit: pixel.
         self.width = width
 
     def validate(self):
@@ -29918,10 +32885,15 @@ class SearchWaterMarkTemplateResponseBody(TeaModel):
         total_count: int = None,
         water_mark_template_list: SearchWaterMarkTemplateResponseBodyWaterMarkTemplateList = None,
     ):
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
+        # The details of the watermark templates.
         self.water_mark_template_list = water_mark_template_list
 
     def validate(self):
@@ -30019,14 +32991,22 @@ class SubmitAnalysisJobRequest(TeaModel):
         resource_owner_id: int = None,
         user_data: str = None,
     ):
+        # The job configuration. Set this parameter as required. [~~29253~~](~~29253~~)
         self.analysis_config = analysis_config
+        # The input information about the preset template analysis job to be submitted. The value is a JSON object. You must log on to the Object Storage Service (OSS) console to grant the read permissions on the specified OSS bucket to MPS. [~~29253~~](~~29253~~)
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue to which the job is added. To view the MPS queue ID, log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane. If you want to enable asynchronous notifications, make sure that the queue is bound to a Message Service (MNS) topic.
         self.pipeline_id = pipeline_id
+        # The priority of the job in the MPS queue to which the job is added.
+        # 
+        # *   Valid values: **1 to 10**. A value of 10 indicates the highest priority.
+        # *   Default value: **6**.
         self.priority = priority
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The custom data. The custom data can contain letters, digits, and hyphens (-), and can be up to 1,024 bytes in length. It cannot start with a special character.
         self.user_data = user_data
 
     def validate(self):
@@ -30090,10 +33070,27 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigPropertiesControlCro
         top: str = None,
         width: str = None,
     ):
+        # The height of the video after the margins were cropped out.
+        # 
+        # >  This parameter is invalid if the **Mode** parameter is set to Auto or None.
         self.height = height
+        # The left margin that was cropped out.
+        # 
+        # >  This parameter is invalid if the **Mode** parameter is set to Auto or None.
         self.left = left
+        # The cropping mode. Valid values: Valid values:
+        # 
+        # *   **Auto**: Cropping was automatically run. This is the default value.
+        # *   **Force**: Cropping was forced to run.
+        # *   **None**: Cropping was forced not to run.
         self.mode = mode
+        # The top margin that was cropped out.
+        # 
+        # >  This parameter is invalid if the **Mode** parameter is set to Auto or None.
         self.top = top
+        # The width of the video after the margins were cropped out.
+        # 
+        # >  This parameter is invalid if the **Mode** parameter is set to Auto or None.
         self.width = width
 
     def validate(self):
@@ -30138,7 +33135,13 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigPropertiesControl(Te
         crop: SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigPropertiesControlCrop = None,
         deinterlace: str = None,
     ):
+        # The cropping configuration of video images.
         self.crop = crop
+        # Indicates whether deinterlacing was forced to run. Valid values:
+        # 
+        # *   **Auto**: Deinterlacing was automatically run.
+        # *   **Force**: Deinterlacing was forced to run.
+        # *   **None**: Deinterlacing was forced not to run.
         self.deinterlace = deinterlace
 
     def validate(self):
@@ -30173,7 +33176,13 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigQualityControl(TeaMo
         method_streaming: str = None,
         rate_quality: str = None,
     ):
+        # The playback mode. Valid values:
+        # 
+        # *   **network**: online playback
+        # *   **local**: playback on on-premises devices
+        # *   Default value: **network**.
         self.method_streaming = method_streaming
+        # The quality level of the job output.
         self.rate_quality = rate_quality
 
     def validate(self):
@@ -30206,7 +33215,9 @@ class SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfig(TeaModel):
         properties_control: SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigPropertiesControl = None,
         quality_control: SubmitAnalysisJobResponseBodyAnalysisJobAnalysisConfigQualityControl = None,
     ):
+        # The control on the attributes of the job output.
         self.properties_control = properties_control
+        # The quality control on the job output.
         self.quality_control = quality_control
 
     def validate(self):
@@ -30245,8 +33256,11 @@ class SubmitAnalysisJobResponseBodyAnalysisJobInputFile(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket to which the input file is uploaded.
         self.bucket = bucket
+        # The ID of the OSS region.
         self.location = location
+        # The name of the input file uploaded to the OSS bucket.
         self.object = object
 
     def validate(self):
@@ -30284,8 +33298,11 @@ class SubmitAnalysisJobResponseBodyAnalysisJobMNSMessageResult(TeaModel):
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.error_code = error_code
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.error_message = error_message
+        # The ID of the success message. This parameter is not returned if the job fails.
         self.message_id = message_id
 
     def validate(self):
@@ -30326,11 +33343,23 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateAudio(TeaModel
         qscale: str = None,
         samplerate: str = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: **2**.
         self.channels = channels
+        # The audio codec format. Default value: **aac**.
         self.codec = codec
+        # The codec profile of the audio file. Valid values when the **Codec** parameter is set to **aac**: aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
+        # The level of quality control on the audio.
         self.qscale = qscale
+        # The sampling rate.
+        # 
+        # *   Unit: Hz.
+        # *   Default value: **44100**.
         self.samplerate = samplerate
 
     def validate(self):
@@ -30378,6 +33407,7 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateContainer(TeaM
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -30406,7 +33436,9 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGif(T
         final_delay: str = None,
         loop: str = None,
     ):
+        # The interval between two consecutive loops for the GIF format. Unit: 0.01s. For example, a value of 500 indicates 5 seconds.
         self.final_delay = final_delay
+        # The number of loops for the GIF or WebP format. Default value: 0.
         self.loop = loop
 
     def validate(self):
@@ -30438,6 +33470,7 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigSegme
         self,
         duration: str = None,
     ):
+        # The length of the segment. Unit: seconds.
         self.duration = duration
 
     def validate(self):
@@ -30466,7 +33499,9 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfig(TeaM
         gif: SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigGif = None,
         segment: SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateMuxConfigSegment = None,
     ):
+        # The GIF format.
         self.gif = gif
+        # The segment configuration.
         self.segment = segment
 
     def validate(self):
@@ -30503,6 +33538,7 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateTransConfig(Te
         self,
         trans_mode: str = None,
     ):
+        # The transcoding mode. Valid values: onepass, twopass, and CBR. Default value: **onepass**.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -30531,7 +33567,9 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideoBitrateBn
         max: str = None,
         min: str = None,
     ):
+        # The upper limit of the total bitrate. Unit: Kbit/s.
         self.max = max
+        # The lower limit of the total bitrate. Unit: Kbit/s.
         self.min = min
 
     def validate(self):
@@ -30578,21 +33616,60 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo(TeaModel
         scan_mode: str = None,
         width: str = None,
     ):
+        # The average bitrate of the video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The average bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Unit: KB.
+        # *   Default value: **6000**.
         self.bufsize = bufsize
+        # The video codec format. Default value: **H.264**.
         self.codec = codec
+        # The constant rate factor, which is the default quality control setting.
+        # 
+        # *   Default value when the Codec parameter is set to H.264: **23**. Default value when the Codec parameter is set to H.265: **26**.
+        # *   If this parameter is returned, the setting of the Bitrate parameter is invalid.
         self.crf = crf
+        # The level of the independent denoising algorithm.
         self.degrain = degrain
+        # The frame rate.
+        # 
+        # *   The value is 60 if the frame rate of the input file exceeds 60.
+        # *   Default value: **the frame rate of the input file**.
         self.fps = fps
+        # The maximum number of frames between two keyframes. Default value: **250**.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: **the original height of the video**.
         self.height = height
+        # The maximum video bitrate. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The pixel format for video color encoding. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Valid values: veryfast, fast, medium, slow, and slower. Default value: **medium**.
         self.preset = preset
+        # The codec profile. Valid values:
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
+        # *   Default value: **high**.
         self.profile = profile
+        # The level of quality control on the video.
         self.qscale = qscale
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**: An interlaced scan was performed.
+        # *   **progressive**: A progressive scan was performed.
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: **the original width of the video**.
         self.width = width
 
     def validate(self):
@@ -30689,13 +33766,24 @@ class SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplate(TeaModel):
         trans_config: SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateTransConfig = None,
         video: SubmitAnalysisJobResponseBodyAnalysisJobTemplateListTemplateVideo = None,
     ):
+        # The audio codec configuration.
         self.audio = audio
+        # The container configuration.
         self.container = container
+        # The ID of the transcoding template.
         self.id = id
+        # The transmuxing configuration.
         self.mux_config = mux_config
+        # The name of the template.
         self.name = name
+        # The status of the template. Valid values:
+        # 
+        # *   **Normal**: The template is in the normal state.
+        # *   **Deleted**: The template is deleted.
         self.state = state
+        # The general transcoding configuration.
         self.trans_config = trans_config
+        # The video codec configuration.
         self.video = video
 
     def validate(self):
@@ -30812,18 +33900,39 @@ class SubmitAnalysisJobResponseBodyAnalysisJob(TeaModel):
         template_list: SubmitAnalysisJobResponseBodyAnalysisJobTemplateList = None,
         user_data: str = None,
     ):
+        # The job configuration.
         self.analysis_config = analysis_config
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.code = code
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The ID of the template analysis job.
         self.id = id
+        # The information about the job input.
         self.input_file = input_file
+        # The message sent by MNS to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned when the job fails.
         self.message = message
+        # The transcoding progress.
         self.percent = percent
+        # The ID of the MPS queue to which the job is added.
         self.pipeline_id = pipeline_id
+        # The priority of the job in the MPS queue to which the job is added. 
+        # 
+        # - Valid values: **1 to 10**. A value of 10 indicates the highest priority.
+        # - Default value: **10**.
         self.priority = priority
+        # The status of the job. Valid values:
+        # 
+        # *   **Submitted**: The job has been submitted.
+        # *   **Analyzing**: The job is being run.
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job fails.
         self.state = state
+        # The list of matched preset templates.
         self.template_list = template_list
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -30911,7 +34020,9 @@ class SubmitAnalysisJobResponseBody(TeaModel):
         analysis_job: SubmitAnalysisJobResponseBodyAnalysisJob = None,
         request_id: str = None,
     ):
+        # The information about the preset template analysis job that was submitted.
         self.analysis_job = analysis_job
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -30984,3289 +34095,6 @@ class SubmitAnalysisJobResponse(TeaModel):
         return self
 
 
-class SubmitEditingJobsRequest(TeaModel):
-    def __init__(
-        self,
-        editing_inputs: str = None,
-        editing_job_oss_file_role_arn: str = None,
-        editing_job_oss_file_uid: int = None,
-        editing_job_outputs: str = None,
-        editing_job_url: str = None,
-        output_bucket: str = None,
-        output_location: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        pipeline_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.editing_inputs = editing_inputs
-        self.editing_job_oss_file_role_arn = editing_job_oss_file_role_arn
-        self.editing_job_oss_file_uid = editing_job_oss_file_uid
-        self.editing_job_outputs = editing_job_outputs
-        self.editing_job_url = editing_job_url
-        self.output_bucket = output_bucket
-        self.output_location = output_location
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.pipeline_id = pipeline_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.editing_inputs is not None:
-            result['EditingInputs'] = self.editing_inputs
-        if self.editing_job_oss_file_role_arn is not None:
-            result['EditingJobOssFileRoleArn'] = self.editing_job_oss_file_role_arn
-        if self.editing_job_oss_file_uid is not None:
-            result['EditingJobOssFileUid'] = self.editing_job_oss_file_uid
-        if self.editing_job_outputs is not None:
-            result['EditingJobOutputs'] = self.editing_job_outputs
-        if self.editing_job_url is not None:
-            result['EditingJobURL'] = self.editing_job_url
-        if self.output_bucket is not None:
-            result['OutputBucket'] = self.output_bucket
-        if self.output_location is not None:
-            result['OutputLocation'] = self.output_location
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.pipeline_id is not None:
-            result['PipelineId'] = self.pipeline_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EditingInputs') is not None:
-            self.editing_inputs = m.get('EditingInputs')
-        if m.get('EditingJobOssFileRoleArn') is not None:
-            self.editing_job_oss_file_role_arn = m.get('EditingJobOssFileRoleArn')
-        if m.get('EditingJobOssFileUid') is not None:
-            self.editing_job_oss_file_uid = m.get('EditingJobOssFileUid')
-        if m.get('EditingJobOutputs') is not None:
-            self.editing_job_outputs = m.get('EditingJobOutputs')
-        if m.get('EditingJobURL') is not None:
-            self.editing_job_url = m.get('EditingJobURL')
-        if m.get('OutputBucket') is not None:
-            self.output_bucket = m.get('OutputBucket')
-        if m.get('OutputLocation') is not None:
-            self.output_location = m.get('OutputLocation')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PipelineId') is not None:
-            self.pipeline_id = m.get('PipelineId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume(TeaModel):
-    def __init__(
-        self,
-        level: str = None,
-        method: str = None,
-    ):
-        self.level = level
-        self.method = method
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.method is not None:
-            result['Method'] = self.method
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('Method') is not None:
-            self.method = m.get('Method')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        channels: str = None,
-        codec: str = None,
-        profile: str = None,
-        qscale: str = None,
-        samplerate: str = None,
-        volume: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume = None,
-    ):
-        self.bitrate = bitrate
-        self.channels = channels
-        self.codec = codec
-        self.profile = profile
-        self.qscale = qscale
-        self.samplerate = samplerate
-        self.volume = volume
-
-    def validate(self):
-        if self.volume:
-            self.volume.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.channels is not None:
-            result['Channels'] = self.channels
-        if self.codec is not None:
-            result['Codec'] = self.codec
-        if self.profile is not None:
-            result['Profile'] = self.profile
-        if self.qscale is not None:
-            result['Qscale'] = self.qscale
-        if self.samplerate is not None:
-            result['Samplerate'] = self.samplerate
-        if self.volume is not None:
-            result['Volume'] = self.volume.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('Channels') is not None:
-            self.channels = m.get('Channels')
-        if m.get('Codec') is not None:
-            self.codec = m.get('Codec')
-        if m.get('Profile') is not None:
-            self.profile = m.get('Profile')
-        if m.get('Qscale') is not None:
-            self.qscale = m.get('Qscale')
-        if m.get('Samplerate') is not None:
-            self.samplerate = m.get('Samplerate')
-        if m.get('Volume') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudioVolume()
-            self.volume = temp_model.from_map(m['Volume'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan(TeaModel):
-    def __init__(
-        self,
-        duration: str = None,
-        seek: str = None,
-    ):
-        self.duration = duration
-        self.seek = seek
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.seek is not None:
-            result['Seek'] = self.seek
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Seek') is not None:
-            self.seek = m.get('Seek')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip(TeaModel):
-    def __init__(
-        self,
-        time_span: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan = None,
-    ):
-        self.time_span = time_span
-
-    def validate(self):
-        if self.time_span:
-            self.time_span.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.time_span is not None:
-            result['TimeSpan'] = self.time_span.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TimeSpan') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClipTimeSpan()
-            self.time_span = temp_model.from_map(m['TimeSpan'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer(TeaModel):
-    def __init__(
-        self,
-        format: str = None,
-    ):
-        self.format = format
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.format is not None:
-            result['Format'] = self.format
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Format') is not None:
-            self.format = m.get('Format')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMark(TeaModel):
-    def __init__(
-        self,
-        alpha: str = None,
-        input_file: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile = None,
-        type: str = None,
-    ):
-        self.alpha = alpha
-        self.input_file = input_file
-        self.type = type
-
-    def validate(self):
-        if self.input_file:
-            self.input_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.alpha is not None:
-            result['Alpha'] = self.alpha
-        if self.input_file is not None:
-            result['InputFile'] = self.input_file.to_map()
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Alpha') is not None:
-            self.alpha = m.get('Alpha')
-        if m.get('InputFile') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMarkInputFile()
-            self.input_file = temp_model.from_map(m['InputFile'])
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect(TeaModel):
-    def __init__(
-        self,
-        effect: str = None,
-        effect_config: str = None,
-    ):
-        self.effect = effect
-        self.effect_config = effect_config
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.effect is not None:
-            result['Effect'] = self.effect
-        if self.effect_config is not None:
-            result['EffectConfig'] = self.effect_config
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Effect') is not None:
-            self.effect = m.get('Effect')
-        if m.get('EffectConfig') is not None:
-            self.effect_config = m.get('EffectConfig')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects(TeaModel):
-    def __init__(
-        self,
-        effect: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect] = None,
-    ):
-        self.effect = effect
-
-    def validate(self):
-        if self.effect:
-            for k in self.effect:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Effect'] = []
-        if self.effect is not None:
-            for k in self.effect:
-                result['Effect'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.effect = []
-        if m.get('Effect') is not None:
-            for k in m.get('Effect'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffectsEffect()
-                self.effect.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip(TeaModel):
-    def __init__(
-        self,
-        effects: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects = None,
-        id: str = None,
-        in_: str = None,
-        out: str = None,
-        source_id: str = None,
-        source_strm_map: str = None,
-        source_type: str = None,
-        type: str = None,
-    ):
-        self.effects = effects
-        self.id = id
-        self.in_ = in_
-        self.out = out
-        self.source_id = source_id
-        self.source_strm_map = source_strm_map
-        self.source_type = source_type
-        self.type = type
-
-    def validate(self):
-        if self.effects:
-            self.effects.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.effects is not None:
-            result['Effects'] = self.effects.to_map()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.in_ is not None:
-            result['In'] = self.in_
-        if self.out is not None:
-            result['Out'] = self.out
-        if self.source_id is not None:
-            result['SourceID'] = self.source_id
-        if self.source_strm_map is not None:
-            result['SourceStrmMap'] = self.source_strm_map
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Effects') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClipEffects()
-            self.effects = temp_model.from_map(m['Effects'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('In') is not None:
-            self.in_ = m.get('In')
-        if m.get('Out') is not None:
-            self.out = m.get('Out')
-        if m.get('SourceID') is not None:
-            self.source_id = m.get('SourceID')
-        if m.get('SourceStrmMap') is not None:
-            self.source_strm_map = m.get('SourceStrmMap')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList(TeaModel):
-    def __init__(
-        self,
-        clip: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip] = None,
-    ):
-        self.clip = clip
-
-    def validate(self):
-        if self.clip:
-            for k in self.clip:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Clip'] = []
-        if self.clip is not None:
-            for k in self.clip:
-                result['Clip'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.clip = []
-        if m.get('Clip') is not None:
-            for k in m.get('Clip'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipListClip()
-                self.clip.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio(TeaModel):
-    def __init__(
-        self,
-        channel_layout: str = None,
-        channels: str = None,
-        samplerate: str = None,
-    ):
-        self.channel_layout = channel_layout
-        self.channels = channels
-        self.samplerate = samplerate
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_layout is not None:
-            result['ChannelLayout'] = self.channel_layout
-        if self.channels is not None:
-            result['Channels'] = self.channels
-        if self.samplerate is not None:
-            result['Samplerate'] = self.samplerate
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelLayout') is not None:
-            self.channel_layout = m.get('ChannelLayout')
-        if m.get('Channels') is not None:
-            self.channels = m.get('Channels')
-        if m.get('Samplerate') is not None:
-            self.samplerate = m.get('Samplerate')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo(TeaModel):
-    def __init__(
-        self,
-        bg_color: str = None,
-        fps: str = None,
-        height: str = None,
-        is_gpu_data: str = None,
-        is_one_track_data: str = None,
-        reclose_prec: str = None,
-        render_ratio: str = None,
-        width: str = None,
-    ):
-        self.bg_color = bg_color
-        self.fps = fps
-        self.height = height
-        self.is_gpu_data = is_gpu_data
-        self.is_one_track_data = is_one_track_data
-        self.reclose_prec = reclose_prec
-        self.render_ratio = render_ratio
-        self.width = width
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bg_color is not None:
-            result['BgColor'] = self.bg_color
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.is_gpu_data is not None:
-            result['IsGpuData'] = self.is_gpu_data
-        if self.is_one_track_data is not None:
-            result['IsOneTrackData'] = self.is_one_track_data
-        if self.reclose_prec is not None:
-            result['ReclosePrec'] = self.reclose_prec
-        if self.render_ratio is not None:
-            result['RenderRatio'] = self.render_ratio
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BgColor') is not None:
-            self.bg_color = m.get('BgColor')
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('IsGpuData') is not None:
-            self.is_gpu_data = m.get('IsGpuData')
-        if m.get('IsOneTrackData') is not None:
-            self.is_one_track_data = m.get('IsOneTrackData')
-        if m.get('ReclosePrec') is not None:
-            self.reclose_prec = m.get('ReclosePrec')
-        if m.get('RenderRatio') is not None:
-            self.render_ratio = m.get('RenderRatio')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig(TeaModel):
-    def __init__(
-        self,
-        timeline_config_audio: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio = None,
-        timeline_config_video: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo = None,
-    ):
-        self.timeline_config_audio = timeline_config_audio
-        self.timeline_config_video = timeline_config_video
-
-    def validate(self):
-        if self.timeline_config_audio:
-            self.timeline_config_audio.validate()
-        if self.timeline_config_video:
-            self.timeline_config_video.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.timeline_config_audio is not None:
-            result['TimelineConfigAudio'] = self.timeline_config_audio.to_map()
-        if self.timeline_config_video is not None:
-            result['TimelineConfigVideo'] = self.timeline_config_video.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TimelineConfigAudio') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigAudio()
-            self.timeline_config_audio = temp_model.from_map(m['TimelineConfigAudio'])
-        if m.get('TimelineConfigVideo') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfigTimelineConfigVideo()
-            self.timeline_config_video = temp_model.from_map(m['TimelineConfigVideo'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo(TeaModel):
-    def __init__(
-        self,
-        l: str = None,
-        t: str = None,
-    ):
-        self.l = l
-        self.t = t
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.l is not None:
-            result['L'] = self.l
-        if self.t is not None:
-            result['T'] = self.t
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('L') is not None:
-            self.l = m.get('L')
-        if m.get('T') is not None:
-            self.t = m.get('T')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig(TeaModel):
-    def __init__(
-        self,
-        clips_config_video: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo = None,
-    ):
-        self.clips_config_video = clips_config_video
-
-    def validate(self):
-        if self.clips_config_video:
-            self.clips_config_video.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clips_config_video is not None:
-            result['ClipsConfigVideo'] = self.clips_config_video.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClipsConfigVideo') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfigClipsConfigVideo()
-            self.clips_config_video = temp_model.from_map(m['ClipsConfigVideo'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip(TeaModel):
-    def __init__(
-        self,
-        clips_config: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig = None,
-        in_: str = None,
-        out: str = None,
-        clip_id: str = None,
-    ):
-        self.clips_config = clips_config
-        self.in_ = in_
-        self.out = out
-        self.clip_id = clip_id
-
-    def validate(self):
-        if self.clips_config:
-            self.clips_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clips_config is not None:
-            result['ClipsConfig'] = self.clips_config.to_map()
-        if self.in_ is not None:
-            result['In'] = self.in_
-        if self.out is not None:
-            result['Out'] = self.out
-        if self.clip_id is not None:
-            result['clipID'] = self.clip_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClipsConfig') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClipClipsConfig()
-            self.clips_config = temp_model.from_map(m['ClipsConfig'])
-        if m.get('In') is not None:
-            self.in_ = m.get('In')
-        if m.get('Out') is not None:
-            self.out = m.get('Out')
-        if m.get('clipID') is not None:
-            self.clip_id = m.get('clipID')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips(TeaModel):
-    def __init__(
-        self,
-        clip: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip] = None,
-    ):
-        self.clip = clip
-
-    def validate(self):
-        if self.clip:
-            for k in self.clip:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Clip'] = []
-        if self.clip is not None:
-            for k in self.clip:
-                result['Clip'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.clip = []
-        if m.get('Clip') is not None:
-            for k in m.get('Clip'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClipsClip()
-                self.clip.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack(TeaModel):
-    def __init__(
-        self,
-        clips: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips = None,
-        id: str = None,
-        order: str = None,
-        type: str = None,
-    ):
-        self.clips = clips
-        self.id = id
-        self.order = order
-        self.type = type
-
-    def validate(self):
-        if self.clips:
-            self.clips.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clips is not None:
-            result['Clips'] = self.clips.to_map()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.order is not None:
-            result['Order'] = self.order
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Clips') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrackClips()
-            self.clips = temp_model.from_map(m['Clips'])
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList(TeaModel):
-    def __init__(
-        self,
-        track: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack] = None,
-    ):
-        self.track = track
-
-    def validate(self):
-        if self.track:
-            for k in self.track:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Track'] = []
-        if self.track is not None:
-            for k in self.track:
-                result['Track'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.track = []
-        if m.get('Track') is not None:
-            for k in m.get('Track'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackListTrack()
-                self.track.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline(TeaModel):
-    def __init__(
-        self,
-        timeline_config: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig = None,
-        track_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList = None,
-    ):
-        self.timeline_config = timeline_config
-        self.track_list = track_list
-
-    def validate(self):
-        if self.timeline_config:
-            self.timeline_config.validate()
-        if self.track_list:
-            self.track_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.timeline_config is not None:
-            result['TimelineConfig'] = self.timeline_config.to_map()
-        if self.track_list is not None:
-            result['TrackList'] = self.track_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TimelineConfig') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTimelineConfig()
-            self.timeline_config = temp_model.from_map(m['TimelineConfig'])
-        if m.get('TrackList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimelineTrackList()
-            self.track_list = temp_model.from_map(m['TrackList'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing(TeaModel):
-    def __init__(
-        self,
-        clip_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList = None,
-        timeline: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline = None,
-    ):
-        self.clip_list = clip_list
-        self.timeline = timeline
-
-    def validate(self):
-        if self.clip_list:
-            self.clip_list.validate()
-        if self.timeline:
-            self.timeline.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.clip_list is not None:
-            result['ClipList'] = self.clip_list.to_map()
-        if self.timeline is not None:
-            result['Timeline'] = self.timeline.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClipList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingClipList()
-            self.clip_list = temp_model.from_map(m['ClipList'])
-        if m.get('Timeline') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditingTimeline()
-            self.timeline = temp_model.from_map(m['Timeline'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        key: str = None,
-        key_type: str = None,
-        key_uri: str = None,
-        skip_cnt: str = None,
-        type: str = None,
-    ):
-        self.id = id
-        self.key = key
-        self.key_type = key_type
-        self.key_uri = key_uri
-        self.skip_cnt = skip_cnt
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.key_type is not None:
-            result['KeyType'] = self.key_type
-        if self.key_uri is not None:
-            result['KeyUri'] = self.key_uri
-        if self.skip_cnt is not None:
-            result['SkipCnt'] = self.skip_cnt
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('KeyType') is not None:
-            self.key_type = m.get('KeyType')
-        if m.get('KeyUri') is not None:
-            self.key_uri = m.get('KeyUri')
-        if m.get('SkipCnt') is not None:
-            self.skip_cnt = m.get('SkipCnt')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS(TeaModel):
-    def __init__(
-        self,
-        md_5support: bool = None,
-        size_support: bool = None,
-    ):
-        self.md_5support = md_5support
-        self.size_support = size_support
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.md_5support is not None:
-            result['Md5Support'] = self.md_5support
-        if self.size_support is not None:
-            result['SizeSupport'] = self.size_support
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Md5Support') is not None:
-            self.md_5support = m.get('Md5Support')
-        if m.get('SizeSupport') is not None:
-            self.size_support = m.get('SizeSupport')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport(TeaModel):
-    def __init__(
-        self,
-        ts: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS = None,
-    ):
-        self.ts = ts
-
-    def validate(self):
-        if self.ts:
-            self.ts.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ts is not None:
-            result['TS'] = self.ts.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TS') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupportTS()
-            self.ts = temp_model.from_map(m['TS'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge(TeaModel):
-    def __init__(
-        self,
-        duration: str = None,
-        merge_url: str = None,
-        role_arn: str = None,
-        start: str = None,
-    ):
-        self.duration = duration
-        self.merge_url = merge_url
-        self.role_arn = role_arn
-        self.start = start
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.merge_url is not None:
-            result['MergeURL'] = self.merge_url
-        if self.role_arn is not None:
-            result['RoleArn'] = self.role_arn
-        if self.start is not None:
-            result['Start'] = self.start
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('MergeURL') is not None:
-            self.merge_url = m.get('MergeURL')
-        if m.get('RoleArn') is not None:
-            self.role_arn = m.get('RoleArn')
-        if m.get('Start') is not None:
-            self.start = m.get('Start')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeList(TeaModel):
-    def __init__(
-        self,
-        merge: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge] = None,
-    ):
-        self.merge = merge
-
-    def validate(self):
-        if self.merge:
-            for k in self.merge:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Merge'] = []
-        if self.merge is not None:
-            for k in self.merge:
-                result['Merge'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.merge = []
-        if m.get('Merge') is not None:
-            for k in m.get('Merge'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeListMerge()
-                self.merge.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif(TeaModel):
-    def __init__(
-        self,
-        dither_mode: str = None,
-        final_delay: str = None,
-        is_custom_palette: str = None,
-        loop: str = None,
-    ):
-        self.dither_mode = dither_mode
-        self.final_delay = final_delay
-        self.is_custom_palette = is_custom_palette
-        self.loop = loop
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dither_mode is not None:
-            result['DitherMode'] = self.dither_mode
-        if self.final_delay is not None:
-            result['FinalDelay'] = self.final_delay
-        if self.is_custom_palette is not None:
-            result['IsCustomPalette'] = self.is_custom_palette
-        if self.loop is not None:
-            result['Loop'] = self.loop
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DitherMode') is not None:
-            self.dither_mode = m.get('DitherMode')
-        if m.get('FinalDelay') is not None:
-            self.final_delay = m.get('FinalDelay')
-        if m.get('IsCustomPalette') is not None:
-            self.is_custom_palette = m.get('IsCustomPalette')
-        if m.get('Loop') is not None:
-            self.loop = m.get('Loop')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment(TeaModel):
-    def __init__(
-        self,
-        duration: str = None,
-    ):
-        self.duration = duration
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig(TeaModel):
-    def __init__(
-        self,
-        gif: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif = None,
-        segment: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment = None,
-    ):
-        self.gif = gif
-        self.segment = segment
-
-    def validate(self):
-        if self.gif:
-            self.gif.validate()
-        if self.segment:
-            self.segment.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.gif is not None:
-            result['Gif'] = self.gif.to_map()
-        if self.segment is not None:
-            result['Segment'] = self.segment.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Gif') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigGif()
-            self.gif = temp_model.from_map(m['Gif'])
-        if m.get('Segment') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfigSegment()
-            self.segment = temp_model.from_map(m['Segment'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-        role_arn: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-        self.role_arn = role_arn
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        if self.role_arn is not None:
-            result['RoleArn'] = self.role_arn
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        if m.get('RoleArn') is not None:
-            self.role_arn = m.get('RoleArn')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        duration: str = None,
-        format_long_name: str = None,
-        format_name: str = None,
-        num_programs: str = None,
-        num_streams: str = None,
-        size: str = None,
-        start_time: str = None,
-    ):
-        self.bitrate = bitrate
-        self.duration = duration
-        self.format_long_name = format_long_name
-        self.format_name = format_name
-        self.num_programs = num_programs
-        self.num_streams = num_streams
-        self.size = size
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.format_long_name is not None:
-            result['FormatLongName'] = self.format_long_name
-        if self.format_name is not None:
-            result['FormatName'] = self.format_name
-        if self.num_programs is not None:
-            result['NumPrograms'] = self.num_programs
-        if self.num_streams is not None:
-            result['NumStreams'] = self.num_streams
-        if self.size is not None:
-            result['Size'] = self.size
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('FormatLongName') is not None:
-            self.format_long_name = m.get('FormatLongName')
-        if m.get('FormatName') is not None:
-            self.format_name = m.get('FormatName')
-        if m.get('NumPrograms') is not None:
-            self.num_programs = m.get('NumPrograms')
-        if m.get('NumStreams') is not None:
-            self.num_streams = m.get('NumStreams')
-        if m.get('Size') is not None:
-            self.size = m.get('Size')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        channel_layout: str = None,
-        channels: str = None,
-        codec_long_name: str = None,
-        codec_name: str = None,
-        codec_tag: str = None,
-        codec_tag_string: str = None,
-        codec_time_base: str = None,
-        duration: str = None,
-        index: str = None,
-        lang: str = None,
-        num_frames: str = None,
-        sample_fmt: str = None,
-        samplerate: str = None,
-        start_time: str = None,
-        timebase: str = None,
-    ):
-        self.bitrate = bitrate
-        self.channel_layout = channel_layout
-        self.channels = channels
-        self.codec_long_name = codec_long_name
-        self.codec_name = codec_name
-        self.codec_tag = codec_tag
-        self.codec_tag_string = codec_tag_string
-        self.codec_time_base = codec_time_base
-        self.duration = duration
-        self.index = index
-        self.lang = lang
-        self.num_frames = num_frames
-        self.sample_fmt = sample_fmt
-        self.samplerate = samplerate
-        self.start_time = start_time
-        self.timebase = timebase
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.channel_layout is not None:
-            result['ChannelLayout'] = self.channel_layout
-        if self.channels is not None:
-            result['Channels'] = self.channels
-        if self.codec_long_name is not None:
-            result['CodecLongName'] = self.codec_long_name
-        if self.codec_name is not None:
-            result['CodecName'] = self.codec_name
-        if self.codec_tag is not None:
-            result['CodecTag'] = self.codec_tag
-        if self.codec_tag_string is not None:
-            result['CodecTagString'] = self.codec_tag_string
-        if self.codec_time_base is not None:
-            result['CodecTimeBase'] = self.codec_time_base
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.index is not None:
-            result['Index'] = self.index
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.num_frames is not None:
-            result['NumFrames'] = self.num_frames
-        if self.sample_fmt is not None:
-            result['SampleFmt'] = self.sample_fmt
-        if self.samplerate is not None:
-            result['Samplerate'] = self.samplerate
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.timebase is not None:
-            result['Timebase'] = self.timebase
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('ChannelLayout') is not None:
-            self.channel_layout = m.get('ChannelLayout')
-        if m.get('Channels') is not None:
-            self.channels = m.get('Channels')
-        if m.get('CodecLongName') is not None:
-            self.codec_long_name = m.get('CodecLongName')
-        if m.get('CodecName') is not None:
-            self.codec_name = m.get('CodecName')
-        if m.get('CodecTag') is not None:
-            self.codec_tag = m.get('CodecTag')
-        if m.get('CodecTagString') is not None:
-            self.codec_tag_string = m.get('CodecTagString')
-        if m.get('CodecTimeBase') is not None:
-            self.codec_time_base = m.get('CodecTimeBase')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Index') is not None:
-            self.index = m.get('Index')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('NumFrames') is not None:
-            self.num_frames = m.get('NumFrames')
-        if m.get('SampleFmt') is not None:
-            self.sample_fmt = m.get('SampleFmt')
-        if m.get('Samplerate') is not None:
-            self.samplerate = m.get('Samplerate')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Timebase') is not None:
-            self.timebase = m.get('Timebase')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamList(TeaModel):
-    def __init__(
-        self,
-        audio_stream: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream] = None,
-    ):
-        self.audio_stream = audio_stream
-
-    def validate(self):
-        if self.audio_stream:
-            for k in self.audio_stream:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AudioStream'] = []
-        if self.audio_stream is not None:
-            for k in self.audio_stream:
-                result['AudioStream'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.audio_stream = []
-        if m.get('AudioStream') is not None:
-            for k in m.get('AudioStream'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamListAudioStream()
-                self.audio_stream.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsSubtitleStreamListSubtitleStream(TeaModel):
-    def __init__(
-        self,
-        index: str = None,
-        lang: str = None,
-    ):
-        self.index = index
-        self.lang = lang
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.index is not None:
-            result['Index'] = self.index
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Index') is not None:
-            self.index = m.get('Index')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsSubtitleStreamList(TeaModel):
-    def __init__(
-        self,
-        subtitle_stream: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsSubtitleStreamListSubtitleStream] = None,
-    ):
-        self.subtitle_stream = subtitle_stream
-
-    def validate(self):
-        if self.subtitle_stream:
-            for k in self.subtitle_stream:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['SubtitleStream'] = []
-        if self.subtitle_stream is not None:
-            for k in self.subtitle_stream:
-                result['SubtitleStream'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.subtitle_stream = []
-        if m.get('SubtitleStream') is not None:
-            for k in m.get('SubtitleStream'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsSubtitleStreamListSubtitleStream()
-                self.subtitle_stream.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost(TeaModel):
-    def __init__(
-        self,
-        avg_bitrate: str = None,
-        cost_bandwidth: str = None,
-        preload_time: str = None,
-    ):
-        self.avg_bitrate = avg_bitrate
-        self.cost_bandwidth = cost_bandwidth
-        self.preload_time = preload_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.avg_bitrate is not None:
-            result['AvgBitrate'] = self.avg_bitrate
-        if self.cost_bandwidth is not None:
-            result['CostBandwidth'] = self.cost_bandwidth
-        if self.preload_time is not None:
-            result['PreloadTime'] = self.preload_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AvgBitrate') is not None:
-            self.avg_bitrate = m.get('AvgBitrate')
-        if m.get('CostBandwidth') is not None:
-            self.cost_bandwidth = m.get('CostBandwidth')
-        if m.get('PreloadTime') is not None:
-            self.preload_time = m.get('PreloadTime')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream(TeaModel):
-    def __init__(
-        self,
-        avg_fps: str = None,
-        bitrate: str = None,
-        codec_long_name: str = None,
-        codec_name: str = None,
-        codec_tag: str = None,
-        codec_tag_string: str = None,
-        codec_time_base: str = None,
-        dar: str = None,
-        duration: str = None,
-        fps: str = None,
-        has_bframes: str = None,
-        height: str = None,
-        index: str = None,
-        lang: str = None,
-        level: str = None,
-        network_cost: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost = None,
-        num_frames: str = None,
-        pix_fmt: str = None,
-        profile: str = None,
-        sar: str = None,
-        start_time: str = None,
-        timebase: str = None,
-        width: str = None,
-    ):
-        self.avg_fps = avg_fps
-        self.bitrate = bitrate
-        self.codec_long_name = codec_long_name
-        self.codec_name = codec_name
-        self.codec_tag = codec_tag
-        self.codec_tag_string = codec_tag_string
-        self.codec_time_base = codec_time_base
-        self.dar = dar
-        self.duration = duration
-        self.fps = fps
-        self.has_bframes = has_bframes
-        self.height = height
-        self.index = index
-        self.lang = lang
-        self.level = level
-        self.network_cost = network_cost
-        self.num_frames = num_frames
-        self.pix_fmt = pix_fmt
-        self.profile = profile
-        self.sar = sar
-        self.start_time = start_time
-        self.timebase = timebase
-        self.width = width
-
-    def validate(self):
-        if self.network_cost:
-            self.network_cost.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.avg_fps is not None:
-            result['AvgFPS'] = self.avg_fps
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.codec_long_name is not None:
-            result['CodecLongName'] = self.codec_long_name
-        if self.codec_name is not None:
-            result['CodecName'] = self.codec_name
-        if self.codec_tag is not None:
-            result['CodecTag'] = self.codec_tag
-        if self.codec_tag_string is not None:
-            result['CodecTagString'] = self.codec_tag_string
-        if self.codec_time_base is not None:
-            result['CodecTimeBase'] = self.codec_time_base
-        if self.dar is not None:
-            result['Dar'] = self.dar
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.has_bframes is not None:
-            result['HasBFrames'] = self.has_bframes
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.index is not None:
-            result['Index'] = self.index
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.network_cost is not None:
-            result['NetworkCost'] = self.network_cost.to_map()
-        if self.num_frames is not None:
-            result['NumFrames'] = self.num_frames
-        if self.pix_fmt is not None:
-            result['PixFmt'] = self.pix_fmt
-        if self.profile is not None:
-            result['Profile'] = self.profile
-        if self.sar is not None:
-            result['Sar'] = self.sar
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.timebase is not None:
-            result['Timebase'] = self.timebase
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AvgFPS') is not None:
-            self.avg_fps = m.get('AvgFPS')
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('CodecLongName') is not None:
-            self.codec_long_name = m.get('CodecLongName')
-        if m.get('CodecName') is not None:
-            self.codec_name = m.get('CodecName')
-        if m.get('CodecTag') is not None:
-            self.codec_tag = m.get('CodecTag')
-        if m.get('CodecTagString') is not None:
-            self.codec_tag_string = m.get('CodecTagString')
-        if m.get('CodecTimeBase') is not None:
-            self.codec_time_base = m.get('CodecTimeBase')
-        if m.get('Dar') is not None:
-            self.dar = m.get('Dar')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('HasBFrames') is not None:
-            self.has_bframes = m.get('HasBFrames')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Index') is not None:
-            self.index = m.get('Index')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('NetworkCost') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStreamNetworkCost()
-            self.network_cost = temp_model.from_map(m['NetworkCost'])
-        if m.get('NumFrames') is not None:
-            self.num_frames = m.get('NumFrames')
-        if m.get('PixFmt') is not None:
-            self.pix_fmt = m.get('PixFmt')
-        if m.get('Profile') is not None:
-            self.profile = m.get('Profile')
-        if m.get('Sar') is not None:
-            self.sar = m.get('Sar')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Timebase') is not None:
-            self.timebase = m.get('Timebase')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamList(TeaModel):
-    def __init__(
-        self,
-        video_stream: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream] = None,
-    ):
-        self.video_stream = video_stream
-
-    def validate(self):
-        if self.video_stream:
-            for k in self.video_stream:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['VideoStream'] = []
-        if self.video_stream is not None:
-            for k in self.video_stream:
-                result['VideoStream'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.video_stream = []
-        if m.get('VideoStream') is not None:
-            for k in m.get('VideoStream'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamListVideoStream()
-                self.video_stream.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreams(TeaModel):
-    def __init__(
-        self,
-        audio_stream_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamList = None,
-        subtitle_stream_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsSubtitleStreamList = None,
-        video_stream_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamList = None,
-    ):
-        self.audio_stream_list = audio_stream_list
-        self.subtitle_stream_list = subtitle_stream_list
-        self.video_stream_list = video_stream_list
-
-    def validate(self):
-        if self.audio_stream_list:
-            self.audio_stream_list.validate()
-        if self.subtitle_stream_list:
-            self.subtitle_stream_list.validate()
-        if self.video_stream_list:
-            self.video_stream_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.audio_stream_list is not None:
-            result['AudioStreamList'] = self.audio_stream_list.to_map()
-        if self.subtitle_stream_list is not None:
-            result['SubtitleStreamList'] = self.subtitle_stream_list.to_map()
-        if self.video_stream_list is not None:
-            result['VideoStreamList'] = self.video_stream_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AudioStreamList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsAudioStreamList()
-            self.audio_stream_list = temp_model.from_map(m['AudioStreamList'])
-        if m.get('SubtitleStreamList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsSubtitleStreamList()
-            self.subtitle_stream_list = temp_model.from_map(m['SubtitleStreamList'])
-        if m.get('VideoStreamList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreamsVideoStreamList()
-            self.video_stream_list = temp_model.from_map(m['VideoStreamList'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        duration: str = None,
-        file_format: str = None,
-        file_size: str = None,
-        format: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat = None,
-        fps: str = None,
-        height: str = None,
-        streams: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreams = None,
-        width: str = None,
-    ):
-        self.bitrate = bitrate
-        self.duration = duration
-        self.file_format = file_format
-        self.file_size = file_size
-        self.format = format
-        self.fps = fps
-        self.height = height
-        self.streams = streams
-        self.width = width
-
-    def validate(self):
-        if self.format:
-            self.format.validate()
-        if self.streams:
-            self.streams.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.file_format is not None:
-            result['FileFormat'] = self.file_format
-        if self.file_size is not None:
-            result['FileSize'] = self.file_size
-        if self.format is not None:
-            result['Format'] = self.format.to_map()
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.streams is not None:
-            result['Streams'] = self.streams.to_map()
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('FileFormat') is not None:
-            self.file_format = m.get('FileFormat')
-        if m.get('FileSize') is not None:
-            self.file_size = m.get('FileSize')
-        if m.get('Format') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesFormat()
-            self.format = temp_model.from_map(m['Format'])
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('Streams') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigPropertiesStreams()
-            self.streams = temp_model.from_map(m['Streams'])
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle(TeaModel):
-    def __init__(
-        self,
-        char_enc: str = None,
-        font_name: str = None,
-        input: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput = None,
-    ):
-        self.char_enc = char_enc
-        self.font_name = font_name
-        self.input = input
-
-    def validate(self):
-        if self.input:
-            self.input.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.char_enc is not None:
-            result['CharEnc'] = self.char_enc
-        if self.font_name is not None:
-            result['FontName'] = self.font_name
-        if self.input is not None:
-            result['Input'] = self.input.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CharEnc') is not None:
-            self.char_enc = m.get('CharEnc')
-        if m.get('FontName') is not None:
-            self.font_name = m.get('FontName')
-        if m.get('Input') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitleInput()
-            self.input = temp_model.from_map(m['Input'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList(TeaModel):
-    def __init__(
-        self,
-        ext_subtitle: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle] = None,
-    ):
-        self.ext_subtitle = ext_subtitle
-
-    def validate(self):
-        if self.ext_subtitle:
-            for k in self.ext_subtitle:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ExtSubtitle'] = []
-        if self.ext_subtitle is not None:
-            for k in self.ext_subtitle:
-                result['ExtSubtitle'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.ext_subtitle = []
-        if m.get('ExtSubtitle') is not None:
-            for k in m.get('ExtSubtitle'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleListExtSubtitle()
-                self.ext_subtitle.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle(TeaModel):
-    def __init__(
-        self,
-        map: str = None,
-    ):
-        self.map = map
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.map is not None:
-            result['Map'] = self.map
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Map') is not None:
-            self.map = m.get('Map')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList(TeaModel):
-    def __init__(
-        self,
-        subtitle: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle] = None,
-    ):
-        self.subtitle = subtitle
-
-    def validate(self):
-        if self.subtitle:
-            for k in self.subtitle:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Subtitle'] = []
-        if self.subtitle is not None:
-            for k in self.subtitle:
-                result['Subtitle'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.subtitle = []
-        if m.get('Subtitle') is not None:
-            for k in m.get('Subtitle'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleListSubtitle()
-                self.subtitle.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig(TeaModel):
-    def __init__(
-        self,
-        ext_subtitle_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList = None,
-        subtitle_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList = None,
-    ):
-        self.ext_subtitle_list = ext_subtitle_list
-        self.subtitle_list = subtitle_list
-
-    def validate(self):
-        if self.ext_subtitle_list:
-            self.ext_subtitle_list.validate()
-        if self.subtitle_list:
-            self.subtitle_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ext_subtitle_list is not None:
-            result['ExtSubtitleList'] = self.ext_subtitle_list.to_map()
-        if self.subtitle_list is not None:
-            result['SubtitleList'] = self.subtitle_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ExtSubtitleList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigExtSubtitleList()
-            self.ext_subtitle_list = temp_model.from_map(m['ExtSubtitleList'])
-        if m.get('SubtitleList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfigSubtitleList()
-            self.subtitle_list = temp_model.from_map(m['SubtitleList'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso(TeaModel):
-    def __init__(
-        self,
-        is_half_sample: str = None,
-    ):
-        self.is_half_sample = is_half_sample
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.is_half_sample is not None:
-            result['IsHalfSample'] = self.is_half_sample
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IsHalfSample') is not None:
-            self.is_half_sample = m.get('IsHalfSample')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig(TeaModel):
-    def __init__(
-        self,
-        adj_dar_method: str = None,
-        duration: str = None,
-        is_check_audio_bitrate: str = None,
-        is_check_audio_bitrate_fail: str = None,
-        is_check_reso: str = None,
-        is_check_reso_fail: str = None,
-        is_check_video_bitrate: str = None,
-        is_check_video_bitrate_fail: str = None,
-        trans_mode: str = None,
-    ):
-        self.adj_dar_method = adj_dar_method
-        self.duration = duration
-        self.is_check_audio_bitrate = is_check_audio_bitrate
-        self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
-        self.is_check_reso = is_check_reso
-        self.is_check_reso_fail = is_check_reso_fail
-        self.is_check_video_bitrate = is_check_video_bitrate
-        self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
-        self.trans_mode = trans_mode
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.adj_dar_method is not None:
-            result['AdjDarMethod'] = self.adj_dar_method
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        if self.is_check_audio_bitrate is not None:
-            result['IsCheckAudioBitrate'] = self.is_check_audio_bitrate
-        if self.is_check_audio_bitrate_fail is not None:
-            result['IsCheckAudioBitrateFail'] = self.is_check_audio_bitrate_fail
-        if self.is_check_reso is not None:
-            result['IsCheckReso'] = self.is_check_reso
-        if self.is_check_reso_fail is not None:
-            result['IsCheckResoFail'] = self.is_check_reso_fail
-        if self.is_check_video_bitrate is not None:
-            result['IsCheckVideoBitrate'] = self.is_check_video_bitrate
-        if self.is_check_video_bitrate_fail is not None:
-            result['IsCheckVideoBitrateFail'] = self.is_check_video_bitrate_fail
-        if self.trans_mode is not None:
-            result['TransMode'] = self.trans_mode
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AdjDarMethod') is not None:
-            self.adj_dar_method = m.get('AdjDarMethod')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        if m.get('IsCheckAudioBitrate') is not None:
-            self.is_check_audio_bitrate = m.get('IsCheckAudioBitrate')
-        if m.get('IsCheckAudioBitrateFail') is not None:
-            self.is_check_audio_bitrate_fail = m.get('IsCheckAudioBitrateFail')
-        if m.get('IsCheckReso') is not None:
-            self.is_check_reso = m.get('IsCheckReso')
-        if m.get('IsCheckResoFail') is not None:
-            self.is_check_reso_fail = m.get('IsCheckResoFail')
-        if m.get('IsCheckVideoBitrate') is not None:
-            self.is_check_video_bitrate = m.get('IsCheckVideoBitrate')
-        if m.get('IsCheckVideoBitrateFail') is not None:
-            self.is_check_video_bitrate_fail = m.get('IsCheckVideoBitrateFail')
-        if m.get('TransMode') is not None:
-            self.trans_mode = m.get('TransMode')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd(TeaModel):
-    def __init__(
-        self,
-        max: str = None,
-        min: str = None,
-    ):
-        self.max = max
-        self.min = min
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max is not None:
-            result['Max'] = self.max
-        if self.min is not None:
-            result['Min'] = self.min
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Max') is not None:
-            self.max = m.get('Max')
-        if m.get('Min') is not None:
-            self.min = m.get('Min')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo(TeaModel):
-    def __init__(
-        self,
-        bitrate: str = None,
-        bitrate_bnd: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd = None,
-        bufsize: str = None,
-        codec: str = None,
-        crf: str = None,
-        crop: str = None,
-        degrain: str = None,
-        fps: str = None,
-        gop: str = None,
-        height: str = None,
-        max_fps: str = None,
-        maxrate: str = None,
-        pad: str = None,
-        pix_fmt: str = None,
-        preset: str = None,
-        profile: str = None,
-        qscale: str = None,
-        scan_mode: str = None,
-        width: str = None,
-    ):
-        self.bitrate = bitrate
-        self.bitrate_bnd = bitrate_bnd
-        self.bufsize = bufsize
-        self.codec = codec
-        self.crf = crf
-        self.crop = crop
-        self.degrain = degrain
-        self.fps = fps
-        self.gop = gop
-        self.height = height
-        self.max_fps = max_fps
-        self.maxrate = maxrate
-        self.pad = pad
-        self.pix_fmt = pix_fmt
-        self.preset = preset
-        self.profile = profile
-        self.qscale = qscale
-        self.scan_mode = scan_mode
-        self.width = width
-
-    def validate(self):
-        if self.bitrate_bnd:
-            self.bitrate_bnd.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bitrate is not None:
-            result['Bitrate'] = self.bitrate
-        if self.bitrate_bnd is not None:
-            result['BitrateBnd'] = self.bitrate_bnd.to_map()
-        if self.bufsize is not None:
-            result['Bufsize'] = self.bufsize
-        if self.codec is not None:
-            result['Codec'] = self.codec
-        if self.crf is not None:
-            result['Crf'] = self.crf
-        if self.crop is not None:
-            result['Crop'] = self.crop
-        if self.degrain is not None:
-            result['Degrain'] = self.degrain
-        if self.fps is not None:
-            result['Fps'] = self.fps
-        if self.gop is not None:
-            result['Gop'] = self.gop
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.max_fps is not None:
-            result['MaxFps'] = self.max_fps
-        if self.maxrate is not None:
-            result['Maxrate'] = self.maxrate
-        if self.pad is not None:
-            result['Pad'] = self.pad
-        if self.pix_fmt is not None:
-            result['PixFmt'] = self.pix_fmt
-        if self.preset is not None:
-            result['Preset'] = self.preset
-        if self.profile is not None:
-            result['Profile'] = self.profile
-        if self.qscale is not None:
-            result['Qscale'] = self.qscale
-        if self.scan_mode is not None:
-            result['ScanMode'] = self.scan_mode
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bitrate') is not None:
-            self.bitrate = m.get('Bitrate')
-        if m.get('BitrateBnd') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideoBitrateBnd()
-            self.bitrate_bnd = temp_model.from_map(m['BitrateBnd'])
-        if m.get('Bufsize') is not None:
-            self.bufsize = m.get('Bufsize')
-        if m.get('Codec') is not None:
-            self.codec = m.get('Codec')
-        if m.get('Crf') is not None:
-            self.crf = m.get('Crf')
-        if m.get('Crop') is not None:
-            self.crop = m.get('Crop')
-        if m.get('Degrain') is not None:
-            self.degrain = m.get('Degrain')
-        if m.get('Fps') is not None:
-            self.fps = m.get('Fps')
-        if m.get('Gop') is not None:
-            self.gop = m.get('Gop')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('MaxFps') is not None:
-            self.max_fps = m.get('MaxFps')
-        if m.get('Maxrate') is not None:
-            self.maxrate = m.get('Maxrate')
-        if m.get('Pad') is not None:
-            self.pad = m.get('Pad')
-        if m.get('PixFmt') is not None:
-            self.pix_fmt = m.get('PixFmt')
-        if m.get('Preset') is not None:
-            self.preset = m.get('Preset')
-        if m.get('Profile') is not None:
-            self.profile = m.get('Profile')
-        if m.get('Qscale') is not None:
-            self.qscale = m.get('Qscale')
-        if m.get('ScanMode') is not None:
-            self.scan_mode = m.get('ScanMode')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark(TeaModel):
-    def __init__(
-        self,
-        dx: str = None,
-        dy: str = None,
-        height: str = None,
-        input_file: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile = None,
-        refer_pos: str = None,
-        type: str = None,
-        water_mark_template_id: str = None,
-        width: str = None,
-    ):
-        self.dx = dx
-        self.dy = dy
-        self.height = height
-        self.input_file = input_file
-        self.refer_pos = refer_pos
-        self.type = type
-        self.water_mark_template_id = water_mark_template_id
-        self.width = width
-
-    def validate(self):
-        if self.input_file:
-            self.input_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dx is not None:
-            result['Dx'] = self.dx
-        if self.dy is not None:
-            result['Dy'] = self.dy
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.input_file is not None:
-            result['InputFile'] = self.input_file.to_map()
-        if self.refer_pos is not None:
-            result['ReferPos'] = self.refer_pos
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.water_mark_template_id is not None:
-            result['WaterMarkTemplateId'] = self.water_mark_template_id
-        if self.width is not None:
-            result['Width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Dx') is not None:
-            self.dx = m.get('Dx')
-        if m.get('Dy') is not None:
-            self.dy = m.get('Dy')
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('InputFile') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMarkInputFile()
-            self.input_file = temp_model.from_map(m['InputFile'])
-        if m.get('ReferPos') is not None:
-            self.refer_pos = m.get('ReferPos')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('WaterMarkTemplateId') is not None:
-            self.water_mark_template_id = m.get('WaterMarkTemplateId')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkList(TeaModel):
-    def __init__(
-        self,
-        water_mark: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark] = None,
-    ):
-        self.water_mark = water_mark
-
-    def validate(self):
-        if self.water_mark:
-            for k in self.water_mark:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['WaterMark'] = []
-        if self.water_mark is not None:
-            for k in self.water_mark:
-                result['WaterMark'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.water_mark = []
-        if m.get('WaterMark') is not None:
-            for k in m.get('WaterMark'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkListWaterMark()
-                self.water_mark.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig(TeaModel):
-    def __init__(
-        self,
-        audio: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio = None,
-        audio_stream_map: str = None,
-        clip: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip = None,
-        container: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer = None,
-        de_watermark: str = None,
-        digi_water_mark: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMark = None,
-        editing: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing = None,
-        encryption: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption = None,
-        m_3u8non_standard_support: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport = None,
-        merge_config_url: str = None,
-        merge_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeList = None,
-        mux_config: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig = None,
-        output_file: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile = None,
-        priority: str = None,
-        properties: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties = None,
-        rotate: str = None,
-        subtitle_config: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig = None,
-        super_reso: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso = None,
-        template_id: str = None,
-        trans_config: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig = None,
-        user_data: str = None,
-        video: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo = None,
-        video_stream_map: str = None,
-        water_mark_config_url: str = None,
-        water_mark_list: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkList = None,
-    ):
-        self.audio = audio
-        self.audio_stream_map = audio_stream_map
-        self.clip = clip
-        self.container = container
-        self.de_watermark = de_watermark
-        self.digi_water_mark = digi_water_mark
-        self.editing = editing
-        self.encryption = encryption
-        self.m_3u8non_standard_support = m_3u8non_standard_support
-        self.merge_config_url = merge_config_url
-        self.merge_list = merge_list
-        self.mux_config = mux_config
-        self.output_file = output_file
-        self.priority = priority
-        self.properties = properties
-        self.rotate = rotate
-        self.subtitle_config = subtitle_config
-        self.super_reso = super_reso
-        self.template_id = template_id
-        self.trans_config = trans_config
-        self.user_data = user_data
-        self.video = video
-        self.video_stream_map = video_stream_map
-        self.water_mark_config_url = water_mark_config_url
-        self.water_mark_list = water_mark_list
-
-    def validate(self):
-        if self.audio:
-            self.audio.validate()
-        if self.clip:
-            self.clip.validate()
-        if self.container:
-            self.container.validate()
-        if self.digi_water_mark:
-            self.digi_water_mark.validate()
-        if self.editing:
-            self.editing.validate()
-        if self.encryption:
-            self.encryption.validate()
-        if self.m_3u8non_standard_support:
-            self.m_3u8non_standard_support.validate()
-        if self.merge_list:
-            self.merge_list.validate()
-        if self.mux_config:
-            self.mux_config.validate()
-        if self.output_file:
-            self.output_file.validate()
-        if self.properties:
-            self.properties.validate()
-        if self.subtitle_config:
-            self.subtitle_config.validate()
-        if self.super_reso:
-            self.super_reso.validate()
-        if self.trans_config:
-            self.trans_config.validate()
-        if self.video:
-            self.video.validate()
-        if self.water_mark_list:
-            self.water_mark_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.audio is not None:
-            result['Audio'] = self.audio.to_map()
-        if self.audio_stream_map is not None:
-            result['AudioStreamMap'] = self.audio_stream_map
-        if self.clip is not None:
-            result['Clip'] = self.clip.to_map()
-        if self.container is not None:
-            result['Container'] = self.container.to_map()
-        if self.de_watermark is not None:
-            result['DeWatermark'] = self.de_watermark
-        if self.digi_water_mark is not None:
-            result['DigiWaterMark'] = self.digi_water_mark.to_map()
-        if self.editing is not None:
-            result['Editing'] = self.editing.to_map()
-        if self.encryption is not None:
-            result['Encryption'] = self.encryption.to_map()
-        if self.m_3u8non_standard_support is not None:
-            result['M3U8NonStandardSupport'] = self.m_3u8non_standard_support.to_map()
-        if self.merge_config_url is not None:
-            result['MergeConfigUrl'] = self.merge_config_url
-        if self.merge_list is not None:
-            result['MergeList'] = self.merge_list.to_map()
-        if self.mux_config is not None:
-            result['MuxConfig'] = self.mux_config.to_map()
-        if self.output_file is not None:
-            result['OutputFile'] = self.output_file.to_map()
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        if self.properties is not None:
-            result['Properties'] = self.properties.to_map()
-        if self.rotate is not None:
-            result['Rotate'] = self.rotate
-        if self.subtitle_config is not None:
-            result['SubtitleConfig'] = self.subtitle_config.to_map()
-        if self.super_reso is not None:
-            result['SuperReso'] = self.super_reso.to_map()
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
-        if self.trans_config is not None:
-            result['TransConfig'] = self.trans_config.to_map()
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        if self.video is not None:
-            result['Video'] = self.video.to_map()
-        if self.video_stream_map is not None:
-            result['VideoStreamMap'] = self.video_stream_map
-        if self.water_mark_config_url is not None:
-            result['WaterMarkConfigUrl'] = self.water_mark_config_url
-        if self.water_mark_list is not None:
-            result['WaterMarkList'] = self.water_mark_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Audio') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigAudio()
-            self.audio = temp_model.from_map(m['Audio'])
-        if m.get('AudioStreamMap') is not None:
-            self.audio_stream_map = m.get('AudioStreamMap')
-        if m.get('Clip') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigClip()
-            self.clip = temp_model.from_map(m['Clip'])
-        if m.get('Container') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigContainer()
-            self.container = temp_model.from_map(m['Container'])
-        if m.get('DeWatermark') is not None:
-            self.de_watermark = m.get('DeWatermark')
-        if m.get('DigiWaterMark') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigDigiWaterMark()
-            self.digi_water_mark = temp_model.from_map(m['DigiWaterMark'])
-        if m.get('Editing') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEditing()
-            self.editing = temp_model.from_map(m['Editing'])
-        if m.get('Encryption') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigEncryption()
-            self.encryption = temp_model.from_map(m['Encryption'])
-        if m.get('M3U8NonStandardSupport') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigM3U8NonStandardSupport()
-            self.m_3u8non_standard_support = temp_model.from_map(m['M3U8NonStandardSupport'])
-        if m.get('MergeConfigUrl') is not None:
-            self.merge_config_url = m.get('MergeConfigUrl')
-        if m.get('MergeList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMergeList()
-            self.merge_list = temp_model.from_map(m['MergeList'])
-        if m.get('MuxConfig') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigMuxConfig()
-            self.mux_config = temp_model.from_map(m['MuxConfig'])
-        if m.get('OutputFile') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigOutputFile()
-            self.output_file = temp_model.from_map(m['OutputFile'])
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
-        if m.get('Properties') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigProperties()
-            self.properties = temp_model.from_map(m['Properties'])
-        if m.get('Rotate') is not None:
-            self.rotate = m.get('Rotate')
-        if m.get('SubtitleConfig') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSubtitleConfig()
-            self.subtitle_config = temp_model.from_map(m['SubtitleConfig'])
-        if m.get('SuperReso') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigSuperReso()
-            self.super_reso = temp_model.from_map(m['SuperReso'])
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
-        if m.get('TransConfig') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigTransConfig()
-            self.trans_config = temp_model.from_map(m['TransConfig'])
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
-        if m.get('Video') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigVideo()
-            self.video = temp_model.from_map(m['Video'])
-        if m.get('VideoStreamMap') is not None:
-            self.video_stream_map = m.get('VideoStreamMap')
-        if m.get('WaterMarkConfigUrl') is not None:
-            self.water_mark_config_url = m.get('WaterMarkConfigUrl')
-        if m.get('WaterMarkList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfigWaterMarkList()
-            self.water_mark_list = temp_model.from_map(m['WaterMarkList'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig(TeaModel):
-    def __init__(
-        self,
-        deinterlace_method: str = None,
-        is_normal_sar: str = None,
-    ):
-        self.deinterlace_method = deinterlace_method
-        self.is_normal_sar = is_normal_sar
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.deinterlace_method is not None:
-            result['DeinterlaceMethod'] = self.deinterlace_method
-        if self.is_normal_sar is not None:
-            result['IsNormalSar'] = self.is_normal_sar
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeinterlaceMethod') is not None:
-            self.deinterlace_method = m.get('DeinterlaceMethod')
-        if m.get('IsNormalSar') is not None:
-            self.is_normal_sar = m.get('IsNormalSar')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        location: str = None,
-        object: str = None,
-    ):
-        self.bucket = bucket
-        self.location = location
-        self.object = object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['Bucket'] = self.bucket
-        if self.location is not None:
-            result['Location'] = self.location
-        if self.object is not None:
-            result['Object'] = self.object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bucket') is not None:
-            self.bucket = m.get('Bucket')
-        if m.get('Location') is not None:
-            self.location = m.get('Location')
-        if m.get('Object') is not None:
-            self.object = m.get('Object')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        input_config: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig = None,
-        input_file: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile = None,
-    ):
-        self.id = id
-        self.input_config = input_config
-        self.input_file = input_file
-
-    def validate(self):
-        if self.input_config:
-            self.input_config.validate()
-        if self.input_file:
-            self.input_file.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.input_config is not None:
-            result['InputConfig'] = self.input_config.to_map()
-        if self.input_file is not None:
-            result['InputFile'] = self.input_file.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('InputConfig') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputConfig()
-            self.input_config = temp_model.from_map(m['InputConfig'])
-        if m.get('InputFile') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInputInputFile()
-            self.input_file = temp_model.from_map(m['InputFile'])
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs(TeaModel):
-    def __init__(
-        self,
-        editing_input: List[SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput] = None,
-    ):
-        self.editing_input = editing_input
-
-    def validate(self):
-        if self.editing_input:
-            for k in self.editing_input:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['EditingInput'] = []
-        if self.editing_input is not None:
-            for k in self.editing_input:
-                result['EditingInput'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.editing_input = []
-        if m.get('EditingInput') is not None:
-            for k in m.get('EditingInput'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputsEditingInput()
-                self.editing_input.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJobMNSMessageResult(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        message_id: str = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message_id = message_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.message_id is not None:
-            result['MessageId'] = self.message_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('MessageId') is not None:
-            self.message_id = m.get('MessageId')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResultJob(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        creation_time: str = None,
-        editing_config: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig = None,
-        editing_inputs: SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs = None,
-        finish_time: str = None,
-        job_id: str = None,
-        mnsmessage_result: SubmitEditingJobsResponseBodyJobResultListJobResultJobMNSMessageResult = None,
-        message: str = None,
-        percent: int = None,
-        pipeline_id: str = None,
-        state: str = None,
-    ):
-        self.code = code
-        self.creation_time = creation_time
-        self.editing_config = editing_config
-        self.editing_inputs = editing_inputs
-        self.finish_time = finish_time
-        self.job_id = job_id
-        self.mnsmessage_result = mnsmessage_result
-        self.message = message
-        self.percent = percent
-        self.pipeline_id = pipeline_id
-        self.state = state
-
-    def validate(self):
-        if self.editing_config:
-            self.editing_config.validate()
-        if self.editing_inputs:
-            self.editing_inputs.validate()
-        if self.mnsmessage_result:
-            self.mnsmessage_result.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.creation_time is not None:
-            result['CreationTime'] = self.creation_time
-        if self.editing_config is not None:
-            result['EditingConfig'] = self.editing_config.to_map()
-        if self.editing_inputs is not None:
-            result['EditingInputs'] = self.editing_inputs.to_map()
-        if self.finish_time is not None:
-            result['FinishTime'] = self.finish_time
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.mnsmessage_result is not None:
-            result['MNSMessageResult'] = self.mnsmessage_result.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.percent is not None:
-            result['Percent'] = self.percent
-        if self.pipeline_id is not None:
-            result['PipelineId'] = self.pipeline_id
-        if self.state is not None:
-            result['State'] = self.state
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('CreationTime') is not None:
-            self.creation_time = m.get('CreationTime')
-        if m.get('EditingConfig') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingConfig()
-            self.editing_config = temp_model.from_map(m['EditingConfig'])
-        if m.get('EditingInputs') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobEditingInputs()
-            self.editing_inputs = temp_model.from_map(m['EditingInputs'])
-        if m.get('FinishTime') is not None:
-            self.finish_time = m.get('FinishTime')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('MNSMessageResult') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJobMNSMessageResult()
-            self.mnsmessage_result = temp_model.from_map(m['MNSMessageResult'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Percent') is not None:
-            self.percent = m.get('Percent')
-        if m.get('PipelineId') is not None:
-            self.pipeline_id = m.get('PipelineId')
-        if m.get('State') is not None:
-            self.state = m.get('State')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultListJobResult(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        job: SubmitEditingJobsResponseBodyJobResultListJobResultJob = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.job = job
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        if self.job:
-            self.job.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.job is not None:
-            result['Job'] = self.job.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Job') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultListJobResultJob()
-            self.job = temp_model.from_map(m['Job'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class SubmitEditingJobsResponseBodyJobResultList(TeaModel):
-    def __init__(
-        self,
-        job_result: List[SubmitEditingJobsResponseBodyJobResultListJobResult] = None,
-    ):
-        self.job_result = job_result
-
-    def validate(self):
-        if self.job_result:
-            for k in self.job_result:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['JobResult'] = []
-        if self.job_result is not None:
-            for k in self.job_result:
-                result['JobResult'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.job_result = []
-        if m.get('JobResult') is not None:
-            for k in m.get('JobResult'):
-                temp_model = SubmitEditingJobsResponseBodyJobResultListJobResult()
-                self.job_result.append(temp_model.from_map(k))
-        return self
-
-
-class SubmitEditingJobsResponseBody(TeaModel):
-    def __init__(
-        self,
-        job_result_list: SubmitEditingJobsResponseBodyJobResultList = None,
-        request_id: str = None,
-    ):
-        self.job_result_list = job_result_list
-        self.request_id = request_id
-
-    def validate(self):
-        if self.job_result_list:
-            self.job_result_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_result_list is not None:
-            result['JobResultList'] = self.job_result_list.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobResultList') is not None:
-            temp_model = SubmitEditingJobsResponseBodyJobResultList()
-            self.job_result_list = temp_model.from_map(m['JobResultList'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SubmitEditingJobsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SubmitEditingJobsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SubmitEditingJobsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SubmitFpDBDeleteJobRequest(TeaModel):
     def __init__(
         self,
@@ -34279,13 +34107,21 @@ class SubmitFpDBDeleteJobRequest(TeaModel):
         resource_owner_id: int = None,
         user_data: str = None,
     ):
+        # The operation type. Valid values:
+        # 
+        # *   **Purge**: clears the media fingerprint library. If you set the DelType parameter to Purge, the content in the library is deleted, but the library is not deleted.
+        # *   **Delete**: deletes the media fingerprint library. If you set the DelType parameter to Delete, both the library and the content in the library are deleted.
+        # *   Default value: **Purge**.
         self.del_type = del_type
+        # The ID of the media fingerprint library. You can obtain the library ID from the response parameters of the [CreateFpShotDB](~~170149~~) operation.
         self.fp_dbid = fp_dbid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the ApsaraVideo Media Processing (MPS) queue. This ID can be used to associate the job with a notification method. To view the MPS queue ID, log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The custom data. The value can contain letters and digits and can be up to 128 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -34342,7 +34178,9 @@ class SubmitFpDBDeleteJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the job. We recommend that you keep this ID for subsequent operation calls.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -34421,17 +34259,23 @@ class SubmitFpFileDeleteJobRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         pipeline_id: str = None,
+        primary_keys: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         user_data: str = None,
     ):
+        # The IDs of the media files that you want to delete. Separate multiple file IDs with commas (,). You can delete up to 200 media files at a time. You can obtain the file IDs from the response parameters of the [ListFpShotFiles](~~209266~~) operation.
         self.file_ids = file_ids
+        # The ID of the media fingerprint library. You can obtain the library ID from the response parameters of the [CreateFpShotDB](~~170149~~) operation.
         self.fp_dbid = fp_dbid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the ApsaraVideo Media Processing (MPS) queue. This ID can be used to associate the job with a notification method. To view the MPS queue ID, log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
+        self.primary_keys = primary_keys
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The custom data. The value can contain letters and digits and can be up to 128 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -34453,6 +34297,8 @@ class SubmitFpFileDeleteJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.pipeline_id is not None:
             result['PipelineId'] = self.pipeline_id
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -34473,6 +34319,8 @@ class SubmitFpFileDeleteJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PipelineId') is not None:
             self.pipeline_id = m.get('PipelineId')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -34488,7 +34336,9 @@ class SubmitFpFileDeleteJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the deleted media file.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -34571,13 +34421,19 @@ class SubmitFpShotJobRequest(TeaModel):
         resource_owner_id: int = None,
         user_data: str = None,
     ):
+        # The configurations of the media fingerprint analysis job. The value is a JSON object. For more information, see the "FpShotConfig" section of the [Parameter details](~~93568~~) topic.
         self.fp_shot_config = fp_shot_config
+        # The object Storage Service (OSS) URL of the job input. The value is a JSON object. You can query the OSS URL in the OSS or ApsaraVideo Media Processing (MPS) console. For more information, see the "InputFile" section of the [Parameter details](~~93568~~) topic.
+        # 
+        # >  The OSS bucket must reside in the same region as the specified MPS region.
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue. This ID can be used to associate the job with a notification method. To view the MPS queue ID, log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The custom data. The value can be up to 128 bytes in length and cannot start with a special character.
         self.user_data = user_data
 
     def validate(self):
@@ -34634,7 +34490,9 @@ class SubmitFpShotJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the media fingerprint analysis job. We recommend that you keep this ID for subsequent operation calls.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -34900,12 +34758,28 @@ class SubmitJobsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The input of the jobs. Specify the value in a JSON object. Referer is an optional parameter. If you need to set a referer whitelist in a transcoding job, you must set the Referer parameter in the input. For more information about the fields in the Input parameter, see [Input](~~29253~~).
+        # 
+        # >  You can specify the `{ObjectPrefix}`, `{FileName}`, and `{ExtName}` variables in an OSS URL. MPS can dynamically replace the variables with the actual values. For example, if you specify `a/b/c/test.flv` as the object to be used as the input file and `{ObjectPrefix}{FileName}-cn.srt` as the object to be used as the external subtitle file, MPS replaces the variables to obtain the OSS URL a/b/c/test-cn.srt of the external subtitle file. The OSS URL that you specify must be URL-encoded. Therefore, you must specify the OSS URL of the external subtitle file as `%7bObjectPrefix%7d%7bFileName%7d-cn.srt`. Therefore, you must specify the OSS URL of the external subtitle file as `a/b/c/test-cn.srt`.
         self.input = input
+        # The name of the output bucket. To obtain the name of an output bucket, you can log on to the [MPS console](https://mps.console.aliyun.com/overview) and choose **Workflows** > **Media Buckets** in the left-side navigation pane.
         self.output_bucket = output_bucket
+        # The region in which the output bucket resides.
         self.output_location = output_location
+        # The outputs of the jobs.
+        # 
+        # *   Specify the value in a JSON array of Output objects. You can specify up to 30 Output objects.
+        # *   For more information about job outputs, see [Terms](~~29212~~).
+        # *   For more information about the fields in each Output object, see [Output](~~29253~~).
+        # 
+        # >  If you need to merge images in a transcoding job, set the width and height of each image to be processed to even numbers. Otherwise, the job may fail.
         self.outputs = outputs
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue. To obtain the ID of an MPS queue, you can log on to the [MPS console](https://mps.console.aliyun.com/overview) and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
+        # 
+        # *   For more information about MPS queues, see [Terms](~~29212~~).
+        # *   If you want to use asynchronous notifications, make sure that an MNS topic is bound to the MPS queue to be used. For more information about how to bind an MNS topic to an MPS queue, see [Enable the feature for sending notifications on transcoding jobs](~~51469~~).
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -34969,8 +34843,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobInput(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the job input is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the job input resides.
         self.location = location
+        # The name of the OSS object that is used as the job input.
         self.object = object
 
     def validate(self):
@@ -35008,8 +34885,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobMNSMessageResult(TeaModel):
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned if the job failed. This parameter is not returned if the job is successful.
         self.error_code = error_code
+        # The error message returned if the job failed. This parameter is not returned if the job is successful.
         self.error_message = error_message
+        # The ID of the error message returned if the job failed. This parameter is not returned if the job is successful.
         self.message_id = message_id
 
     def validate(self):
@@ -35049,10 +34929,22 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputAmixListAmix(TeaModel
         mix_dur_mode: str = None,
         start: str = None,
     ):
+        # The URL of the audio track to be mixed as the background music. 
+        # 
+        # - The URL can be an OSS URL or the value of the `Input` parameter in the form of a string.
+        # - If you want to mix two audio tracks in a video, set this parameter to the value of the Input parameter in the form of a string.
         self.amix_url = amix_url
+        # The duration of the audio track. The value is in the number or time format.
         self.duration = duration
+        # The audio track to be mixed. Format: 0:a:{audio_index}. Example: 0:a:0.
         self.map = map
+        # The mode to specify the mixing duration. Valid values: **first** and **long**.  
+        # 
+        # - **first**: The length of the output media equals the length of the input media.
+        # - **long**: The length of the output media equals the length of the output media or the length of the input media, whichever is longer.
+        # - Default value: **long**.
         self.mix_dur_mode = mix_dur_mode
+        # The start point in time of the audio track. The value is in the number or time format. Examples: 1:25:36.240 and 32000.23.
         self.start = start
 
     def validate(self):
@@ -35132,7 +35024,16 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputAudioVolume(TeaModel)
         level: str = None,
         method: str = None,
     ):
+        # The volume adjustment range.
+        # 
+        # *   Unit: dB.
+        # *   Default value: **-20db**.
         self.level = level
+        # The volume adjustment method. Valid values:
+        # 
+        # *   **auto**: The volume is automatically adjusted.
+        # *   **dynamic**: The volume is dynamically adjusted.
+        # *   **linear**: The volume is linearly adjusted.
         self.method = method
 
     def validate(self):
@@ -35170,12 +35071,37 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputAudio(TeaModel):
         samplerate: str = None,
         volume: SubmitJobsResponseBodyJobResultListJobResultJobOutputAudioVolume = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels.
+        # 
+        # *   If the value of the Codec parameter is mp3, the value of this parameter can only be **1** or **2**.
+        # *   If the value of the Codec parameter is aac, the value of this parameter can only be **1**, **2**, **4**, **5**, **6**, or **8**.
+        # *   Default value: **2**.
         self.channels = channels
+        # The audio codec.
+        # 
+        # *   Valid values: **aac**, **mp3**, **vorbis**, and **flac**.
+        # *   Default value: **aac**.
         self.codec = codec
+        # The codec profile of the audio.
+        # 
+        # >  Valid values when the value of the **Codec** parameter is **aac**: **aac_low**, **aac_he**, **aac_he_v2**, **aac_ld**, and **aac_eld**.
         self.profile = profile
+        # The level of quality control on the audio.
         self.qscale = qscale
+        # The sampling rate.
+        # 
+        # *   Valid values: **22050**, **32000**, **44100**, **48000**, and **96000**.
+        # *   Unit: Hz.
+        # *   Default value: **44100**.
+        # 
+        # >  If the video container format is FLV and the audio codec is MP3, the sampling rate cannot be 32000, 48000, or 96000. If the audio codec is MP3, the sampling rate cannot be 96000.
         self.samplerate = samplerate
+        # The volume configurations.
         self.volume = volume
 
     def validate(self):
@@ -35230,7 +35156,15 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputClipTimeSpan(TeaModel
         duration: str = None,
         seek: str = None,
     ):
+        # The duration of the clip. 
+        # 
+        # - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # - Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
         self.duration = duration
+        # The time when the clip starts. 
+        # 
+        # - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # - Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
         self.seek = seek
 
     def validate(self):
@@ -35262,6 +35196,7 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputClip(TeaModel):
         self,
         time_span: SubmitJobsResponseBodyJobResultListJobResultJobOutputClipTimeSpan = None,
     ):
+        # The time span of the clip.
         self.time_span = time_span
 
     def validate(self):
@@ -35291,6 +35226,15 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputContainer(TeaModel):
         self,
         format: str = None,
     ):
+        # The container format. 
+        # 
+        # - Default value: **mp4**.
+        # - Video formats include FLV, MP4, HLS (M3U8 + TS), and MPEG-DASH (MPD + fMP4).
+        # - Audio formats include MP3, MP4, Ogg, FLAC, and M4A.
+        # - Image formats include GIF and WebP.
+        # - If the container format is GIF, the video codec must be GIF.
+        # - If the container format is WebP, the video codec must be WebP.
+        # - If the container format is FLV, the video codec cannot be H.265.
         self.format = format
 
     def validate(self):
@@ -35320,8 +35264,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputDigiWaterMarkInputFil
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the output file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -35359,8 +35306,17 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputDigiWaterMark(TeaMode
         input_file: SubmitJobsResponseBodyJobResultListJobResultJobOutputDigiWaterMarkInputFile = None,
         type: str = None,
     ):
+        # The transparency of the text or image. 
+        # 
+        # - Value values: **(0,1]**.
+        # - Default value: **1.0**.
         self.alpha = alpha
+        # The input file.
         self.input_file = input_file
+        # The type of the watermark. If this parameter is specified in the request, this value overwrites the corresponding parameter in the watermark template. Valid values: 
+        # 
+        # - **Image**: an image watermark. This is the default value.
+        # - **Text**: a text watermark.
         self.type = type
 
     def validate(self):
@@ -35403,11 +35359,17 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputEncryption(TeaModel):
         skip_cnt: str = None,
         type: str = None,
     ):
+        # The encryption ID.
         self.id = id
+        # The key that is used to encrypt the video.
         self.key = key
+        # The key encryption method. Keys cannot be transmitted to MPS in plaintext. Keys must be encrypted by using Base64 or Key Management Service (KMS). For example, if the key is encryptionkey128, you can encrypt the key by using the following method: Base64("encryptionkey128") or KMS(Base64("encryptionkey128").
         self.key_type = key_type
+        # The URL that is used to request the key. The URL is Base64-encoded.
         self.key_uri = key_uri
+        # The number of unencrypted frames at the beginning of the video. Leaving these frames unencrypted enables video playback to quickly start.
         self.skip_cnt = skip_cnt
+        # The encryption type. The value is **hls-aes-128**.
         self.type = type
 
     def validate(self):
@@ -35456,7 +35418,15 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputM3U8NonStandardSuppor
         md_5support: bool = None,
         size_support: bool = None,
     ):
+        # Indicates whether to support the output of the MD5 value of the TS file in the M3U8 video. Valid values:
+        # 
+        # *   **true**: supported.
+        # *   **false**: not supported.
         self.md_5support = md_5support
+        # Indicates whether to support the output of the size of the TS file in the M3U8 video. Valid values:
+        # 
+        # *   **true**: supported.
+        # *   **false**: not supported.
         self.size_support = size_support
 
     def validate(self):
@@ -35488,6 +35458,7 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputM3U8NonStandardSuppor
         self,
         ts: SubmitJobsResponseBodyJobResultListJobResultJobOutputM3U8NonStandardSupportTS = None,
     ):
+        # The non-standard support configuration for TS files. The value is a JSON object. For more information, see **TS** in [Parameter details](~~29253~~).
         self.ts = ts
 
     def validate(self):
@@ -35520,9 +35491,22 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMergeListMerge(TeaMod
         role_arn: str = None,
         start: str = None,
     ):
+        # The duration of the clip.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Examples: 01:59:59.999 and 32000.23.
         self.duration = duration
+        # The OSS URL of the clip.
+        # 
+        # *   Example: `http://example-bucket-****.oss-cn-hangzhou.aliyuncs.com/example-object-****.flv`.
+        # *   The object must be URL-encoded by using the UTF-8 standard.
         self.merge_url = merge_url
+        # The Alibaba Cloud Resource Name (ARN) of the role used for delegated authorization.
         self.role_arn = role_arn
+        # The start point in time of the clip.
+        # 
+        # *   Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # *   Examples: 01:59:59.999 and 32000.23.
         self.start = start
 
     def validate(self):
@@ -35600,9 +35584,16 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigGif(TeaModel
         is_custom_palette: str = None,
         loop: str = None,
     ):
+        # The color dithering algorithm of the palette. Valid values: **sierra** and **bayer**.
         self.dither_mode = dither_mode
+        # The duration for which the final frame is paused. Unit: centiseconds.
         self.final_delay = final_delay
+        # Indicates whether the custom palette is used. Valid values:
+        # 
+        # - **true**: The custom palette is used.
+        # - **false**: The custom palette is not used.
         self.is_custom_palette = is_custom_palette
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -35642,6 +35633,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigSegment(TeaM
         self,
         duration: str = None,
     ):
+        # The length of the segment. The value is an integer. Unit: seconds. 
+        # 
+        # - Valid values: **[1,10]**.
+        # - Default value: **10**.
         self.duration = duration
 
     def validate(self):
@@ -35669,6 +35664,7 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigWebp(TeaMode
         self,
         loop: str = None,
     ):
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -35698,8 +35694,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfig(TeaModel):
         segment: SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigSegment = None,
         webp: SubmitJobsResponseBodyJobResultListJobResultJobOutputMuxConfigWebp = None,
     ):
+        # The transmuxing configuration for GIF.
         self.gif = gif
+        # The segment configurations. The value is a JSON object.
         self.segment = segment
+        # The transmuxing configuration for WebP.
         self.webp = webp
 
     def validate(self):
@@ -35746,9 +35745,26 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOpeningListOpening(Te
         width: str = None,
         open_url: str = None,
     ):
+        # The height of the opening part. 
+        # 
+        # - Valid values: **0 to 4096**, **-1**, and **full**.
+        # - Default value: **-1**.
+        # - A value of **-1** indicates that the height of the source of the opening part is retained.
+        # - A value of **full** indicates that the height of the main part is used for the opening part.
         self.height = height
+        # The amount of time after which the opening part is played. The value starts from 0. 
+        # 
+        # - Unit: seconds.
+        # - Default value: **0**.
         self.start = start
+        # The width of the opening part. 
+        # 
+        # - Valid values: **0 to 4096**, **-1**, and **full**.
+        # - Default value: **-1**.
+        # - A value of **-1** indicates that the height of the source of the opening part is retained.
+        # - A value of **full** indicates that the height of the main part is used for the opening part.
         self.width = width
+        # The OSS URL of the opening part of the video.
         self.open_url = open_url
 
     def validate(self):
@@ -35826,9 +35842,13 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOutSubtitleListOutSub
         object: str = None,
         role_arn: str = None,
     ):
+        # The name of the OSS bucket in which the output file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the output file resides.
         self.location = location
+        # The name of the OSS object that is used as the output file.
         self.object = object
+        # The ARN of the role used for delegated authorization.
         self.role_arn = role_arn
 
     def validate(self):
@@ -35871,9 +35891,16 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOutSubtitleListOutSub
         out_subtitle_file: SubmitJobsResponseBodyJobResultListJobResultJobOutputOutSubtitleListOutSubtitleOutSubtitleFile = None,
         success: bool = None,
     ):
+        # The video stream. Format: `0:{Stream}:{Stream sequence number}`, which is `0:v:{video_index}`. The value of Stream is v, which indicates a video stream. The sequence number is the index of the video stream in the list and starts from 0.
         self.map = map
+        # The error message returned if the job fails to be created. This parameter is not returned if the job is created.
         self.message = message
+        # The details of the output file.
         self.out_subtitle_file = out_subtitle_file
+        # Indicates whether the job is created. Valid values:
+        # 
+        # *   **true**: The job is created.
+        # *   **false**: The job fails to be created.
         self.success = success
 
     def validate(self):
@@ -35953,9 +35980,13 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputOutputFile(TeaModel):
         object: str = None,
         role_arn: str = None,
     ):
+        # The name of the OSS bucket in which the output file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the output file resides.
         self.location = location
+        # The name of the OSS object that is used as the output file.
         self.object = object
+        # The ARN of the role used for delegated authorization.
         self.role_arn = role_arn
 
     def validate(self):
@@ -36002,13 +36033,21 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesFormat(TeaM
         size: str = None,
         start_time: str = None,
     ):
+        # The total bitrate.
         self.bitrate = bitrate
+        # The total duration.
         self.duration = duration
+        # The full name of the container format.
         self.format_long_name = format_long_name
+        # The short name of the container format. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format_name = format_name
+        # The total number of program streams.
         self.num_programs = num_programs
+        # The total number of media streams.
         self.num_streams = num_streams
+        # The size of the file.
         self.size = size
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -36079,21 +36118,37 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsAudi
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate of the audio stream.
         self.bitrate = bitrate
+        # The output layout of the sound channels.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration of the audio stream.
         self.duration = duration
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
+        # The language of the audio stream. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The sampling format of the audio stream.
         self.sample_fmt = sample_fmt
+        # The sampling rate of the audio stream.
         self.samplerate = samplerate
+        # The start point in time of the audio stream.
         self.start_time = start_time
+        # The time base of the audio stream.
         self.timebase = timebase
 
     def validate(self):
@@ -36217,7 +36272,9 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsSubt
         index: str = None,
         lang: str = None,
     ):
+        # The sequence number of the subtitle stream. The value indicates the position of the subtitle stream in all subtitle streams.
         self.index = index
+        # The language of the subtitle stream. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
 
     def validate(self):
@@ -36286,8 +36343,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsVide
         cost_bandwidth: str = None,
         preload_time: str = None,
     ):
+        # The average bitrate of the video stream.
         self.avg_bitrate = avg_bitrate
+        # The maximum bandwidth that is consumed.
         self.cost_bandwidth = cost_bandwidth
+        # The amount of preload time.
         self.preload_time = preload_time
 
     def validate(self):
@@ -36345,28 +36405,51 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsVide
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate of the video stream.
         self.avg_fps = avg_fps
+        # The bitrate of the video stream.
         self.bitrate = bitrate
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format.
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR) of the video stream.
         self.dar = dar
+        # The duration of the video stream.
         self.duration = duration
+        # The frame rate of the video stream.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames).
         self.has_bframes = has_bframes
+        # The height of the video stream in pixels.
         self.height = height
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
         self.index = index
+        # The language of the video stream. For more information, see [FFmpeg language definition](https://www.ffmpeg.org/ffmpeg-all.html#Metadata) and [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The network bandwidth consumption.
         self.network_cost = network_cost
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format of the video stream.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The sample aspect ratio (SAR) of the video stream.
         self.sar = sar
+        # The start point in time of the video stream.
         self.start_time = start_time
+        # The time base of the video stream.
         self.timebase = timebase
+        # The width of the video stream in pixels.
         self.width = width
 
     def validate(self):
@@ -36521,8 +36604,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreams(Tea
         subtitle_stream_list: SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsSubtitleStreamList = None,
         video_stream_list: SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreamsVideoStreamList = None,
     ):
+        # The list of audio streams.
         self.audio_stream_list = audio_stream_list
+        # The list of subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
+        # The list of video streams.
         self.video_stream_list = video_stream_list
 
     def validate(self):
@@ -36574,14 +36660,23 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputProperties(TeaModel):
         streams: SubmitJobsResponseBodyJobResultListJobResultJobOutputPropertiesStreams = None,
         width: str = None,
     ):
+        # The bitrate of the video.
         self.bitrate = bitrate
+        # The duration of the video.
         self.duration = duration
+        # The format of the video.
         self.file_format = file_format
+        # The size of the file.
         self.file_size = file_size
+        # The format information.
         self.format = format
+        # The frame rate of the video. The value is a number.
         self.fps = fps
+        # The length of the video.
         self.height = height
+        # The stream information.
         self.streams = streams
+        # The width of the video.
         self.width = width
 
     def validate(self):
@@ -36648,8 +36743,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigExtSubt
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -36687,8 +36785,16 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigExtSubt
         font_name: str = None,
         input: SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigExtSubtitleListExtSubtitleInput = None,
     ):
+        # The character set used by the external subtitle. 
+        # 
+        # - Valid values: **UTF-8**, **GBK**, **BIG5**, and **auto**.
+        # - Default value: **auto**.
+        # 
+        # >  If you set this parameter to **auto**, the detected character set may not be the actual character set. We recommend that you set this parameter to another value.
         self.char_enc = char_enc
+        # The font of the hard subtitles converted from external subtitles. Default value: **SimSun**. For more information, see [Fonts](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/font-name).
         self.font_name = font_name
+        # The OSS object that is used as the external subtitle. The value is a JSON object. Files in the **SRT** or **ASS** format are supported.
         self.input = input
 
     def validate(self):
@@ -36761,6 +36867,7 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigSubtitl
         self,
         map: str = None,
     ):
+        # The audio track. Format: `0:{Stream}:{Stream sequence number}`, which is `0:a:{audio_index}`. The value of Stream is a, which indicates an audio stream. The sequence number is the index of the audio stream in the list and starts from 0.
         self.map = map
 
     def validate(self):
@@ -36824,7 +36931,9 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfig(TeaMod
         ext_subtitle_list: SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigExtSubtitleList = None,
         subtitle_list: SubmitJobsResponseBodyJobResultListJobResultJobOutputSubtitleConfigSubtitleList = None,
     ):
+        # The list of external subtitles. The value is a JSON array that contains up to **four** objects.
         self.ext_subtitle_list = ext_subtitle_list
+        # The list of subtitles.
         self.subtitle_list = subtitle_list
 
     def validate(self):
@@ -36861,6 +36970,10 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputSuperReso(TeaModel):
         self,
         is_half_sample: str = None,
     ):
+        # Indicates whether to obtain parameters related to the sampling rate. Valid values:
+        # 
+        # - **true**: The parameters are obtained.
+        # - **false**: The parameters are not obtained.
         self.is_half_sample = is_half_sample
 
     def validate(self):
@@ -36894,12 +37007,30 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputTailSlateListTailSlat
         tail_url: str = None,
         width: str = None,
     ):
+        # The color of the bars that are added to the ending part if the size of the ending part is smaller than that of the main part. Default value: **White**. For more information, see [Background colors](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/29253/cn_zh/1502784952344/color.txt?spm=a2c4g.11186623.2.63.241240f77qp3Yy&file=color.txt).
         self.bg_color = bg_color
+        # The amount of time between the end of the main part and the beginning of the ending part. During the transition, the last frame of the main part fades out, and the first frame of the ending part fades in. Unit: seconds. Default value: **0**.
         self.blend_duration = blend_duration
+        # The height of the ending part. 
+        # 
+        # - Valid values: **0 to 4096**, **-1**, and **full**.
+        # - A value of **-1** indicates that the height of the source of the ending part is retained. A value of **full** indicates that the height of the main part is used for the ending part.
+        # - Default value: **-1**.
         self.height = height
+        # Indicates whether to merge the audio content of the ending part. Valid values:
+        # 
+        # - **true**: The audio content of the ending part is merged.
+        # - **false**: The audio content of the ending part is not merged.
         self.is_merge_audio = is_merge_audio
+        # The start time.
         self.start = start
+        # The OSS URL of the ending part.
         self.tail_url = tail_url
+        # The width of the ending part. 
+        # 
+        # - Valid values: **0 to 4096**, **-1**, and **full**.
+        # - A value of **-1** indicates that the height of the source of the ending part is retained. A value of **full** indicates that the height of the main part is used for the ending part.
+        # - Default value: **-1**.
         self.width = width
 
     def validate(self):
@@ -36993,13 +37124,55 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputTransConfig(TeaModel)
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method of resolution adjustment. Default value: **none**. Valid values:
+        # 
+        # *   rescale: resizes the video image.
+        # *   crop:crops the video image.
+        # *   pad: scales out the video image to fill the view.
+        # *   none: no adjustment.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether the audio bitrate is checked. If the output audio bitrate is higher than the input audio bitrate, the system considers that the output bitrate equals the input bitrate.
+        # 
+        # >  If the same audio encoder is used before and after transcoding and the audio bitrate after transcoding is greater than the audio bitrate before transcoding, the audio bitrate is reset, and the specified audio bitrate does not take effect.
+        # 
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether the audio bitrate is checked. If the output audio bitrate is higher than the input audio bitrate, a transcoding failure is returned without video transcoding. This parameter takes precedence over the **IsCheckAudioBitrate** parameter.
+        # 
+        # *   **false**: The audio bitrate is checked.
+        # *   **true**: The audio bitrate is not checked.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, the system considers that the output resolution equals the input resolution.
+        # 
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso = is_check_reso
+        # Indicates whether the resolution is checked. If the output resolution is higher than the input resolution based on the width or height, a transcoding failure is returned without video transcoding. This parameter takes precedence over the IsCheckReso parameter.
+        # 
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether the video bitrate is checked. If the bitrate of the output video is higher than that of the input video, the system considers that the output bitrate equals the input bitrate.
+        # 
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether the video bitrate is checked. If the bitrate of the output video is higher than that of the input video, a transcoding failure is returned without video transcoding. This parameter takes precedence over the **IsCheckVideoBitrate** parameter.
+        # 
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The transcoding mode. Valid values:
+        # 
+        # *   **onepass**: transcoding based on one-pass algorithms, which has higher accuracy.
+        # *   **twopass**: transcoding based on two-pass algorithms, which has lower accuracy.
+        # *   **CBR**: transcoding based on a fixed bitrate.
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -37056,7 +37229,9 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputVideoBitrateBnd(TeaMo
         max: str = None,
         min: str = None,
     ):
+        # The upper limit of the total bitrate. Unit: Kbit/s.
         self.max = max
+        # The lower limit of the total bitrate. Unit: Kbit/s.
         self.min = min
 
     def validate(self):
@@ -37107,25 +37282,95 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputVideo(TeaModel):
         scan_mode: str = None,
         width: str = None,
     ):
+        # The bitrate of the output video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The average bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Unit: KB.
+        # *   Default value: **6000**.
         self.bufsize = bufsize
+        # The video codec.
+        # 
+        # *   Valid values: **H.264**, **H.265**, **GIF**, and **WEBP**.
+        # *   Default value: **H.264**.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   If the **Crf** parameter is specified, the setting of the **Bitrate** parameter becomes invalid.
+        # *   Default value when the value of the Codec parameter is H.264: **23**. Default value when the value of the Codec parameter is H.265: **26**.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   **border**: automatically detects and removes borders.
+        # *   A value in the format of width:height:left:top: crops the video based on the custom settings.
         self.crop = crop
+        # The level of the independent denoising algorithm.
         self.degrain = degrain
+        # The frame rate of the video.
+        # 
+        # *   Unit: frames per second.
+        # *   Valid values: 0 to 60. The value is 60 if the frame rate of the input file exceeds 60.
+        # *   Default value: the frame rate of the input file.
         self.fps = fps
+        # The Group of Pictures (GOP) size. The GOP size can be the maximum interval of keyframes or the maximum number of frames in a frame group. Unit: seconds.
+        # 
+        # *   Default value: 10s.
+        # *   If the value specifies the maximum number of frames, the value does not contain a unit.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the original video height.
         self.height = height
+        # The maximum frame rate.
         self.max_fps = max_fps
+        # The maximum bitrate of the video. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black borders to be added to the video.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Unit: pixel.
         self.pad = pad
+        # The pixel format for video color encoding.
+        # 
+        # *   Valid values: standard pixel formats such as **yuv420p** and **yuvj420p**.
+        # 
+        #     **\
+        # 
+        #     **Note** If a non-standard pixel format such as yuvj420p(pc, bt470bg/bt470bg/smpte170m) is used, compatibility with the pixel format must be configured. Otherwise, the transcoding fails. Default value: yuv420p or the original pixel format. )
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Default value: **medium**. Valid values:
+        # 
+        # *   **veryfast**\
+        # *   **fast**\
+        # *   **medium**\
+        # *   **slow**\
+        # *   **slower**\
         self.preset = preset
+        # The encoding profile. This parameter is returned only for the H.264 codec. Default value: **high**. Valid values:
+        # 
+        # >  If multiple definitions exist, we recommend that you set this parameter to baseline for the lowest definition to ensure normal playback on low-end devices. Set this parameter to main or high for other definitions.
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
         self.profile = profile
+        # The level of quality control on the video.
         self.qscale = qscale
+        # The priority of the resource.
         self.reso_priority = reso_priority
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**: An interlaced scan is performed.
+        # *   **progressive**: A progressive scan is performed.
+        # *   **auto**: A scan is performed based on the video source.
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: **the original video width**.
         self.width = width
 
     def validate(self):
@@ -37233,8 +37478,11 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputWaterMarkListWaterMar
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input file is stored.
         self.bucket = bucket
+        # The ID of the OSS region in which the input file resides.
         self.location = location
+        # The name of the OSS object that is used as the input file.
         self.object = object
 
     def validate(self):
@@ -37277,13 +37525,69 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutputWaterMarkListWaterMar
         water_mark_template_id: str = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video. If this parameter is specified in the request, the value overwrites the corresponding parameter in the watermark template. Default value: 0. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the horizontal offset.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixel.
+        # 
+        # *   A decimal indicates the ratio of the horizontal offset to the width in the output video resolution.
+        # 
+        #     *   Valid values: (0,1).
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.dx = dx
+        # The vertical offset of the watermark image relative to the output video. If this parameter is specified in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the vertical offset.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixel.
+        # 
+        # *   A decimal indicates the ratio of the vertical offset to the height in the output video resolution.
+        # 
+        #     *   Valid values: **(0,1)**.
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.dy = dy
+        # The height of the watermark image. If this parameter is specified in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the watermark height.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixel.
+        # 
+        # *   A decimal indicates the ratio of the watermark height to the height in the output video resolution.
+        # 
+        #     *   Valid values: **(0,1)**.
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.height = height
+        # The watermark input file. You can use an image in the PNG format or a file in the MOV format as the watermark input.
         self.input_file = input_file
+        # The position of the watermark. If this parameter is specified in the request, the value overwrites the corresponding parameter in the watermark template. Valid values:
+        # 
+        # *   **TopRight**: the upper-right corner.
+        # *   **TopLeft**: the upper-left corner.
+        # *   **BottomRight**: the lower-right corner.
+        # *   **BottomLeft**: the lower-left corner.
         self.refer_pos = refer_pos
+        # The type of the watermark. If this parameter is specified in the request, the value overwrites the corresponding parameter in the watermark template. For more information, see [Parameter details](~~29253~~). Valid values:
+        # 
+        # *   **Image**: an image watermark.
+        # *   **Text**: a text watermark.
         self.type = type
+        # The ID of the watermark template.
         self.water_mark_template_id = water_mark_template_id
+        # The width of the watermark image. If this parameter is specified in the request, the value overwrites the corresponding parameter in the watermark template. The value can be an integer or a decimal.
+        # 
+        # *   An integer indicates the pixel value of the watermark width.
+        # 
+        #     *   Valid values: **\[8,4096]**.
+        #     *   Unit: pixel.
+        # 
+        # *   A decimal indicates the ratio of the watermark width to the width in the output video resolution.
+        # 
+        #     *   Valid values: **(0,1)**.
+        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically deleted.
         self.width = width
 
     def validate(self):
@@ -37403,33 +37707,85 @@ class SubmitJobsResponseBodyJobResultListJobResultJobOutput(TeaModel):
         water_mark_config_url: str = None,
         water_mark_list: SubmitJobsResponseBodyJobResultListJobResultJobOutputWaterMarkList = None,
     ):
+        # The list of audio tracks to be mixed.
         self.amix_list = amix_list
+        # The audio configurations.
+        # 
+        # >  If this parameter is specified in the request, the value overwrites the corresponding parameter in the specified transcoding template.
         self.audio = audio
+        # The sequence number of the audio stream.
+        # 
+        # *   Format: 0:a:{Sequence number}. Example: 0:a:0.
+        # *   The sequence number is the index of the audio stream in the list and starts from 0.
+        # *   If you do not specify a sequence number, the default audio stream is used.
         self.audio_stream_map = audio_stream_map
+        # The information about the clip.
         self.clip = clip
+        # The container configurations.
         self.container = container
+        # The configurations of watermark blurring. The value is a JSON object. For more information, see **DeWatermark** in [Parameter details](~~29253~~).
         self.de_watermark = de_watermark
+        # The digital watermarks.
         self.digi_water_mark = digi_water_mark
+        # The encryption configuration. Only outputs in the M3U8 format are supported.
         self.encryption = encryption
+        # The non-standard support configuration for M3U8. The value is a JSON object. For more information, see **M3U8NonStandardSupport** in [Parameter details](~~29253~~).
         self.m_3u8non_standard_support = m_3u8non_standard_support
+        # You can specify either the **MergeList** or **MergeConfigUrl** parameter.  
+        # 
+        # - The configuration file that you specify by using the MergeConfigUrl parameter can contain up to 50 merged clips.
+        # - The MergeConfigUrl parameter specifies the URL of the configuration file for merging clips.
+        # - Make sure that the configuration file is stored as an object in OSS and that MPS can access the OSS object. For information about the file content, see the details about merging parameters.
+        # - Example of the content of mergeConfigfile: `{"MergeList":[{"MergeURL":"http://exampleBucket****.oss-cn-hangzhou.aliyuncs.com/video_01.mp4"}]}`.
         self.merge_config_url = merge_config_url
+        # The configurations for merging clips.
         self.merge_list = merge_list
+        # The transmuxing configurations. If this parameter is specified in the request, the value overwrites the corresponding parameter in the specified transcoding template.
         self.mux_config = mux_config
+        # The list of opening parts. The value is a JSON object.
         self.opening_list = opening_list
+        # The output subtitle list.
         self.out_subtitle_list = out_subtitle_list
+        # The details of the output file.
         self.output_file = output_file
+        # The priority of the job in the MPS queue to which the job is added. 
+        # 
+        # - A value of **10** indicates the highest priority.
+        # - Default value: **6**.
         self.priority = priority
+        # The media properties.
         self.properties = properties
+        # The rotation angle of the video, in the clockwise direction.
         self.rotate = rotate
+        # The subtitle configurations.
         self.subtitle_config = subtitle_config
+        # The configurations for using the resolution of the source video.
         self.super_reso = super_reso
+        # The list of ending parts. The value is a JSON object.
         self.tail_slate_list = tail_slate_list
+        # The ID of the transcoding template.
         self.template_id = template_id
+        # The general transcoding configurations.
+        # 
+        # >  If this parameter is specified in the request, the value overwrites the corresponding parameter in the specified transcoding template.
         self.trans_config = trans_config
+        # The custom data.
         self.user_data = user_data
+        # The video configurations.
+        # 
+        # >  If this parameter is specified in the request, the setting of the **AliyunVideoCodec** parameter in the template specified by the **TemplateId** parameter is overwritten by the setting of this parameter.
         self.video = video
+        # The sequence number of the video stream. 
+        # 
+        # - Format: 0:a:{Sequence number}. Example: 0:a:0.
+        # - The sequence number is the index of the video stream in the list and starts from 0.
+        # - If you do not specify a sequence number, the default video stream is used.
         self.video_stream_map = video_stream_map
+        # The URL of the watermark configuration file.
         self.water_mark_config_url = water_mark_config_url
+        # The list of watermarks.
+        # 
+        # >  If watermarks are truncated or fail to be added to the video, check whether the text watermarks that you add contain special characters. If the text watermarks contain special characters, you must escape the special characters. Alternatively, \<prop="china">[submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket?product=mts)\</prop>\<prop="intl">[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12246746.top-nav.dticket.68797bbcm8H408#/ticket/add/?productId=1232)\</prop> to contact Alibaba Cloud customer service for compatibility processing.
         self.water_mark_list = water_mark_list
 
     def validate(self):
@@ -37631,16 +37987,30 @@ class SubmitJobsResponseBodyJobResultListJobResultJob(TeaModel):
         pipeline_id: str = None,
         state: str = None,
     ):
+        # The error code returned if the job failed. This parameter is not returned if the job is successful.
         self.code = code
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The time when the job was complete.
         self.finish_time = finish_time
+        # The information about the job input.
         self.input = input
+        # The ID of the job.
         self.job_id = job_id
+        # The message sent by MNS to notify users of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned if the job failed. This parameter is not returned if the job is successful.
         self.message = message
+        # The outputs of the jobs.
         self.output = output
+        # The transcoding progress.
         self.percent = percent
+        # The ID of the MPS queue.
         self.pipeline_id = pipeline_id
+        # The state of the job. Valid values:
+        # 
+        # *   **Submitted**: The job is submitted.
+        # *   **TranscodeFail**: The job is failed.
         self.state = state
 
     def validate(self):
@@ -37719,9 +38089,16 @@ class SubmitJobsResponseBodyJobResultListJobResult(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The error code returned if the job fails to be created. This parameter is not returned if the job is created.
         self.code = code
+        # The details of the job. If the job fails to be submitted, no job ID is generated.
         self.job = job
+        # The error message returned if the job fails to be created. This parameter is not returned if the job is created.
         self.message = message
+        # Indicates whether the job is created. Valid values:
+        # 
+        # - **true**: The job is created.
+        # - **false**: The job fails to be created.
         self.success = success
 
     def validate(self):
@@ -37799,7 +38176,9 @@ class SubmitJobsResponseBody(TeaModel):
         job_result_list: SubmitJobsResponseBodyJobResultList = None,
         request_id: str = None,
     ):
+        # The transcoding jobs that are generated.
         self.job_result_list = job_result_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -37889,18 +38268,69 @@ class SubmitMediaCensorJobRequest(TeaModel):
         user_data: str = None,
         video_censor_config: str = None,
     ):
+        # The live comments.
         self.barrages = barrages
+        # The OSS URL of the image file that is used as the thumbnail. To view the OSS URL of the image file, you can log on to the **MPS console** and choose **Media Management** > **Media List** in the left-side navigation pane. You can specify up to five thumbnails in a JSON array.
+        # 
+        # *   Bucket: the name of the OSS bucket that stores the input file.
+        # *   Location: the OSS region. The OSS region must be the same as the region in which the MPS service is activated.
+        # *   Object: the OSS object to be moderated.
         self.cover_images = cover_images
+        # The description of the video. The value can be up to 128 bytes in size.
         self.description = description
+        # The URL of the video.
         self.external_url = external_url
+        # The Object Storage Service (OSS) URL of the video or audio file to be moderated. To view the OSS URL of the video or audio file, you can log on to the **MPS console** and choose **Media Management** > **Media List** in the left-side navigation pane. To moderate an image file, use the `CoverImage` parameter to specify the OSS URL of the image file.
+        # 
+        # The value is a JSON object. For more information, see [Input](~~29253~~).
+        # 
+        # *   Bucket: the name of the OSS bucket that stores the input file.
+        # *   Location: the OSS region. The OSS region must be the same as the region in which the MPS service is activated.
+        # *   Object: the OSS object to be moderated.
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue. This ID can be used to associate the job with a notification method. To view the ID of the MPS queue, you can log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane. An empty string ("") indicates that the default MPS queue is used to run the job. By default, an MPS queue can process a maximum of 10 concurrent content moderation jobs. To increase the limit, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12246746.top-nav.dticket.68797bbcm8H408#/ticket/add/?productId=1232).
+        # 
+        # >  MPS queues are automatically created by the system. For more information about how to query and update MPS queues, see [UpdatePipeline](~~188374~~).
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The title of the video. The value can be up to 64 bytes in size.
         self.title = title
+        # The custom data. The value can be up to 128 bytes in size.
         self.user_data = user_data
+        # The video moderation configurations and the OSS URLs of the output snapshots. To view the OSS URLs of the output snapshots, you can log on to the **MPS console** and choose **Media Management** > **Media List** in the left-side navigation pane.
+        # 
+        # The value is a JSON object.
+        # 
+        # *   OutputFile:
+        # 
+        #     *   Bucket: the name of the OSS bucket that stores the output snapshots.
+        #     *   Location: the OSS region. The OSS region must be the same as the region in which the MPS service is activated.
+        #     *   Object: the OSS object to be generated. In the value, {Count} indicates the sequence number of the frame snapshot.
+        # 
+        # *   StoreVideoTimeline: specifies whether to generate the `{jobId}.video_timeline` file. The file is stored in OSS. A value of true indicates that the file is generated. A value of false indicates that the file is not generated. If you do not specify this parameter, the file is not generated by default. For more information about the format of the file, see the sample {jobId}.video_timeline file in [QueryMediaCensorJobDetail](~~91779~~).
+        # 
+        # *   SaveType: the output mode. A value of abnormal indicates that snapshots are generated only for illegal frames. A value of all indicates that snapshots are generated for all frames.
+        # 
+        # *   Biztype: the moderation template. If you do not specify this parameter or set the value to common, the default template is used. You can submit a ticket to create a custom moderation template. Then, set this parameter to your user ID to use the custom moderation template.
+        # 
+        # *   Scenes: the moderation scenarios. You can specify the moderation scenarios that you want to use. If you do not specify this parameter, the terrorism and porn moderation scenarios are used by default. Valid values:
+        # 
+        #     *   porn: pornographic content detection
+        # 
+        #     *   terrorism: terrorist content detection
+        # 
+        #     *   ad: ad violation detection
+        # 
+        #     *   live: undesirable scene detection
+        # 
+        #     *   logo: special logo detection
+        # 
+        #     *   audio: audio anti-spam
+        # 
+        # > If the input file contains audio tracks and the audio moderation scenario is specified, the audio tracks are moderated. If the input file does not contain audio tracks, you do not need to specify the audio moderation scenario.
         self.video_censor_config = video_censor_config
 
     def validate(self):
@@ -37977,7 +38407,9 @@ class SubmitMediaCensorJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the content moderation job. We recommend that you keep this ID for subsequent operation calls.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -38060,13 +38492,22 @@ class SubmitMediaInfoJobRequest(TeaModel):
         resource_owner_id: int = None,
         user_data: str = None,
     ):
+        # Specifies whether to enable the asynchronous mode for the job. We recommend that you set this parameter to true. Valid values:
+        # 
+        # *   **true**: enables the asynchronous mode.
+        # *   **false**: does not enable the asynchronous mode.
         self.async_ = async_
+        # The information about the input media file. The value is a JSON string. You must perform the following operations to grant MPS the permissions to access the OSS bucket in which the input media file is stored: Log on to the **MPS console**, choose **Workflows** > **Media Buckets** in the left-side navigation pane, and then click **Add Bucket**. Then, you must URL-encode the object. For example, `{"Bucket":"example-bucket","Location":"example-location","Object":"example%2Fexample.flv"}` indicates the `example-bucket.example-location.aliyuncs.com/example/example.flv` file.
+        # 
+        # >  The OSS bucket must reside in the region in which you use MPS.
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue to which the analysis job is submitted. To view the ID of the MPS queue, log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The custom data. The custom data can contain letters, digits, and hyphens (-), and can be up to 1,024 bytes in length. It cannot start with a hyphen (-).
         self.user_data = user_data
 
     def validate(self):
@@ -38124,8 +38565,11 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobInput(TeaModel):
         location: str = None,
         object: str = None,
     ):
+        # The name of the OSS bucket in which the input media file is stored.
         self.bucket = bucket
+        # The region of the OSS bucket in which the input media file is stored.
         self.location = location
+        # The name of the OSS object that is used as the input media file.
         self.object = object
 
     def validate(self):
@@ -38163,8 +38607,11 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMNSMessageResult(TeaModel):
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code that is returned if the job fails. This parameter is not returned if the job is successful.
         self.error_code = error_code
+        # The error message that is returned if the job fails. This parameter is not returned if the job is successful.
         self.error_message = error_message
+        # The ID of the message that is returned if the job is successful. This parameter is not returned if the job fails.
         self.message_id = message_id
 
     def validate(self):
@@ -38207,13 +38654,21 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesFormat(TeaModel):
         size: str = None,
         start_time: str = None,
     ):
+        # The total bitrate. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The total duration of the input media file. Unit: seconds.
         self.duration = duration
+        # The full name of the container format.
         self.format_long_name = format_long_name
+        # The short name of the container format. For more information about the parameters, see [Parameter details](https://www.alibabacloud.com/help/en/apsaravideo-for-media-processing/latest/parameter-details).
         self.format_name = format_name
+        # The total number of program streams.
         self.num_programs = num_programs
+        # The total number of media streams.
         self.num_streams = num_streams
+        # The size of the file. Unit: bytes.
         self.size = size
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -38284,21 +38739,43 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsAudioStreamList
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The output layout of the sound channels.
         self.channel_layout = channel_layout
+        # The number of sound channels.
         self.channels = channels
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Default value: acc. Valid values:
+        # 
+        # - **acc**\
+        # - **mp3**\
+        # - **mp4**\
+        # - **ogg**\
+        # - **flac**\
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration. Unit: seconds.
         self.duration = duration
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
+        # The language.
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The sampling format.
         self.sample_fmt = sample_fmt
+        # The sampling rate. Unit: Hz.
         self.samplerate = samplerate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -38430,15 +38907,28 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsSubtitleStreamL
         start_time: str = None,
         timebase: str = None,
     ):
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values:
+        # 
+        # - **srt**\
+        # - **ass**\
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration. Unit: seconds.
         self.duration = duration
+        # The sequence number of the subtitle stream. The value indicates the position of the subtitle stream in all subtitle streams.
         self.index = index
+        # The language.
         self.lang = lang
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -38539,8 +39029,11 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
         cost_bandwidth: str = None,
         preload_time: str = None,
     ):
+        # The average bitrate. Unit: Kbit/s.
         self.avg_bitrate = avg_bitrate
+        # The maximum bandwidth that was consumed.
         self.cost_bandwidth = cost_bandwidth
+        # The time consumed to preload the video.
         self.preload_time = preload_time
 
     def validate(self):
@@ -38602,32 +39095,64 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
+        # The short name of the encoding format. Valid values:
+        # 
+        # *   **h264**\
+        # *   **h265**\
+        # *   **gif**\
+        # *   **webp**\
         self.codec_name = codec_name
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The level of color reconstruction.
         self.color_primaries = color_primaries
+        # The color range.
         self.color_range = color_range
+        # The color channel.
         self.color_transfer = color_transfer
+        # The display aspect ratio (DAR). DAR is the proportional relationship between the width and the height of a video. The value is used to determine whether the video is in portrait mode or landscape mode.
         self.dar = dar
+        # The duration. Unit: seconds.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains bidirectional frames (B-frames). A value of 1 indicates that the video stream contains B-frames. A value of 0 indicates that the video stream does not contain B-frames.
         self.has_bframes = has_bframes
+        # The height of the video. Unit: pixels.
         self.height = height
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams. The sequence number of the first video stream to be played can be specified in some players. Default value: 1.
         self.index = index
+        # The language.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The network bandwidth that was consumed.
         self.network_cost = network_cost
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The rotation angle of the video.
         self.rotate = rotate
+        # The sample aspect ratio (SAR).
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The width of the video. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -38798,8 +39323,11 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreams(TeaModel):
         subtitle_stream_list: SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsSubtitleStreamList = None,
         video_stream_list: SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreamsVideoStreamList = None,
     ):
+        # The audio streams. A media file can contain up to four audio streams.
         self.audio_stream_list = audio_stream_list
+        # The subtitle streams. A media file can contain up to four subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
+        # The video streams. A media file can contain up to four video streams.
         self.video_stream_list = video_stream_list
 
     def validate(self):
@@ -38851,14 +39379,23 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobProperties(TeaModel):
         streams: SubmitMediaInfoJobResponseBodyMediaInfoJobPropertiesStreams = None,
         width: str = None,
     ):
+        # The bitrate. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The total duration of the input media file. Unit: seconds.
         self.duration = duration
+        # The format of the input media file.
         self.file_format = file_format
+        # The size of the file. Unit: bytes.
         self.file_size = file_size
+        # The format information.
         self.format = format
+        # The frame rate.
         self.fps = fps
+        # The height of the video. Unit: pixels.
         self.height = height
+        # The media streams contained in the input media file.
         self.streams = streams
+        # The width of the video. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -38933,16 +39470,31 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJob(TeaModel):
         state: str = None,
         user_data: str = None,
     ):
+        # Indicates whether the job is run in asynchronous mode.
         self.async_ = async_
+        # The error code returned if the job fails.
         self.code = code
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The information about the input media file.
         self.input = input
+        # The ID of the job.
         self.job_id = job_id
+        # The details of the message that is sent to Message Service (MNS) to notify users of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned if the job fails.
         self.message = message
+        # The ID of the MPS queue to which the analysis job is submitted.
         self.pipeline_id = pipeline_id
+        # The properties of the input media file.
         self.properties = properties
+        # The status of the job. Valid values:
+        # 
+        # *   **Success**: The job is successful.
+        # *   **Fail**: The job fails.
+        # *   **Analyzing**: The job is being run.
         self.state = state
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -39019,7 +39571,11 @@ class SubmitMediaInfoJobResponseBody(TeaModel):
         media_info_job: SubmitMediaInfoJobResponseBodyMediaInfoJob = None,
         request_id: str = None,
     ):
+        # The details of the media information analysis job.
         self.media_info_job = media_info_job
+        # The ID of the request. 
+        # 
+        # >  If a request error occurs, check whether the input media file is valid. If the input media file is valid but the issue persists, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12246746.top-nav.ditem-sub.35da7bbcitpQnr#/ticket/createIndex) to contact Alibaba Cloud customer service.
         self.request_id = request_id
 
     def validate(self):
@@ -39286,13 +39842,23 @@ class SubmitSnapshotJobRequest(TeaModel):
         snapshot_config: str = None,
         user_data: str = None,
     ):
+        # The information about the job input. The value must be a JSON object. You must grant MPS-related permissions to the Object Storage Service (OSS) bucket that stores the OSS object to be used as the job input. To grant the permissions, you can log on to the MPS console, choose Workflows > Media Buckets in the left-side navigation pane, and then click Add Bucket. Then, you must perform URL encoding for the OSS object. Example: `{"Bucket":"example-bucket","Location":"example-location","Object":"example%2Ftest.flv"}`. This example indicates the `"example-bucket.example-location.aliyuncs.com/example/test.flv"` object.
+        # 
+        # >  The OSS bucket must reside in the same region as your MPS service.
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue to which you want to submit the snapshot job. To obtain the ID, you can log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
+        # 
+        # >  Make sure that an available Message Service (MNS) topic is bound to the specified MPS queue. Otherwise, the relevant messages may fail to be sent as expected.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The snapshot capturing configuration. For more information, see the "AliyunSnapshotConfig" section in the [Data types](~~29253~~) topic.
+        # 
+        # >  If you set the Interval parameter that is nested under SnapshotConfig, snapshots are captured at the specified intervals. The default value of the Interval parameter is 10, in seconds. If an input video is short but you specify large values for both the Num and Interval parameters, the actual number of snapshots captured may be smaller than the specified number. For example, if you set the Num parameter to 5 and the Interval parameter to 3 for a video of 10 seconds, the number of snapshots captured cannot reach 5.
         self.snapshot_config = snapshot_config
+        # The custom data. The custom data can contain letters, digits, and hyphens (-) and be up to 1,024 bytes in size. The custom data cannot start with a special character.
         self.user_data = user_data
 
     def validate(self):
@@ -39351,9 +39917,13 @@ class SubmitSnapshotJobResponseBodySnapshotJobInput(TeaModel):
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket that stores the object.
         self.bucket = bucket
+        # The ID of the region in which the OSS bucket that stores the object is located.
         self.location = location
+        # The OSS object that is used as the input file.
         self.object = object
+        # The ARN of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
 
     def validate(self):
@@ -39395,8 +39965,11 @@ class SubmitSnapshotJobResponseBodySnapshotJobMNSMessageResult(TeaModel):
         error_message: str = None,
         message_id: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.error_code = error_code
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.error_message = error_message
+        # The ID of the message. This parameter is not returned if the job fails.
         self.message_id = message_id
 
     def validate(self):
@@ -39435,9 +40008,13 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfigOutputFile(TeaModel)
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket that stores the object.
         self.bucket = bucket
+        # The ID of the region in which the OSS bucket that stores the object is located.
         self.location = location
+        # The OSS object that is generated as the output file of the snapshot job.
         self.object = object
+        # The Alibaba Cloud Resource Name (ARN) of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
 
     def validate(self):
@@ -39485,14 +40062,38 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfigTileOut(TeaModel):
         margin: str = None,
         padding: str = None,
     ):
+        # The height of a single image. The default value is the height of a captured snapshot.
         self.cell_height = cell_height
+        # The stride of a single image.
         self.cell_sel_step = cell_sel_step
+        # The width of a single image. The default value is the width of a captured snapshot.
         self.cell_width = cell_width
+        # The background color.
+        # 
+        # *   Default value: **black**.
+        # *   You can set the Color parameter to a **color keyword** or **random** in the request.
+        # 
+        # >  If you want to set the background color to black, you can specify the color keyword in one of the following three formats: Black, black, and #000000.
         self.color = color
+        # The number of columns that the tiled image contains. Default value: **10**.
         self.columns = columns
+        # Indicates whether the single images are retained. Valid values:
+        # 
+        # *   **true**: The single images are retained.
+        # *   **false**: The single images are not retained.
+        # *   Default value: **true**.
         self.is_keep_cell_pic = is_keep_cell_pic
+        # The number of rows that the tiled image contains. Default value: **10**.
         self.lines = lines
+        # The margin width of the tiled image.
+        # 
+        # *   Default value: **0**.
+        # *   Unit: pixel.
         self.margin = margin
+        # The distance between two consecutive single images in the tiled image.
+        # 
+        # *   Default value: **0**.
+        # *   Unit: pixel.
         self.padding = padding
 
     def validate(self):
@@ -39555,9 +40156,13 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfigTileOutputFile(TeaMo
         object: str = None,
         role_arn: str = None,
     ):
+        # The OSS bucket that stores the object.
         self.bucket = bucket
+        # The ID of the region in which the OSS bucket that stores the object is located.
         self.location = location
+        # The OSS object that is generated as the output file of the tiling job.
         self.object = object
+        # The ARN of the specified RAM role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
 
     def validate(self):
@@ -39605,14 +40210,32 @@ class SubmitSnapshotJobResponseBodySnapshotJobSnapshotConfig(TeaModel):
         time: str = None,
         width: str = None,
     ):
+        # The snapshot type. Default value: **normal**. Valid values:
+        # 
+        # *   **normal**: normal frames.
+        # *   **intra**: I-frames (keyframes).
+        # 
+        # >  If the FrameType parameter is set to intra in the request, only keyframes are captured. If no keyframe is found at a specified time point, the keyframe closest to the specified time point is captured. Keyframes are captured faster than normal frames if the same snapshot rules are applied.
         self.frame_type = frame_type
+        # The height of a captured snapshot.
         self.height = height
+        # The interval for capturing snapshots.
+        # 
+        # *   If this parameter is specified in the request, snapshots are captured at intervals. The value must be greater than 0 in the request.
+        # *   Unit: seconds.
+        # *   Default value: **10**.
         self.interval = interval
+        # The number of snapshots. If the Num parameter is set in the request, snapshots are captured at intervals.
         self.num = num
+        # The information about the output file of the snapshot job.
         self.output_file = output_file
+        # The tiling configuration.
         self.tile_out = tile_out
+        # The information about the output file of the tiling job.
         self.tile_output_file = tile_output_file
+        # The start time for capturing snapshots. Unit: milliseconds.
         self.time = time
+        # The width of a captured snapshot.
         self.width = width
 
     def validate(self):
@@ -39691,17 +40314,34 @@ class SubmitSnapshotJobResponseBodySnapshotJob(TeaModel):
         tile_count: str = None,
         user_data: str = None,
     ):
+        # The error code returned when the job fails. This parameter is not returned if the job is successful.
         self.code = code
+        # The number of snapshots that are captured.
         self.count = count
+        # The time when the job was created.
         self.creation_time = creation_time
+        # The ID of the snapshot job.
         self.id = id
+        # The information about the job input.
         self.input = input
+        # The message sent by MNS to notify the user of the job result.
         self.mnsmessage_result = mnsmessage_result
+        # The error message returned when the job fails. This parameter is not returned if the job is successful.
         self.message = message
+        # The ID of the MPS queue to which the snapshot job is submitted.
         self.pipeline_id = pipeline_id
+        # The snapshot capturing configuration.
         self.snapshot_config = snapshot_config
+        # The status of the snapshot job. Valid values:
+        # 
+        # - **Submitted**: The job is submitted.
+        # - **Snapshoting**: The job is being processed.
+        # - **Success**: The job is successful.
+        # - **Fail**: The job fails.
         self.state = state
+        # The number of single images that are contained in the tiled image.
         self.tile_count = tile_count
+        # The custom data.
         self.user_data = user_data
 
     def validate(self):
@@ -39782,7 +40422,9 @@ class SubmitSnapshotJobResponseBody(TeaModel):
         request_id: str = None,
         snapshot_job: SubmitSnapshotJobResponseBodySnapshotJob = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the snapshot job.
         self.snapshot_job = snapshot_job
 
     def validate(self):
@@ -40187,11 +40829,22 @@ class UnbindInputBucketRequest(TeaModel):
         resource_owner_id: int = None,
         role_arn: str = None,
     ):
+        # The name of the input media bucket to be unbound. To obtain the media bucket name, you can log on to the **ApsaraVideo Media Processing (MPS)** console and choose **Workflows** > **Media Buckets** in the left-side navigation pane. Alternatively, you can log on to the **Object Storage Service (OSS) console** and click **My OSS Paths**.
         self.bucket = bucket
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # 
+        # The trusted entity of the RAM role is an Alibaba Cloud account. For more information, see [Create a RAM role for a trusted Alibaba Cloud account](~~93691~~) or [CreateRole](~~28710~~).
+        # 
+        # Format: `acs:ram::<account_id>:role/<role_name>`.
+        # 
+        # You can view the ARN in the RAM console or by calling operations.
+        # 
+        # *   For more information about how to view the ARN in the RAM console, see [How do I find the ARN of the RAM role?](~~39744~~)
+        # *   For more information about how to view the ARN by calling operations, see [ListRoles](~~28713~~) or [GetRole](~~28711~~).
         self.role_arn = role_arn
 
     def validate(self):
@@ -40239,6 +40892,7 @@ class UnbindInputBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -40314,6 +40968,7 @@ class UnbindOutputBucketRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the output media bucket to be unbound. To obtain the media bucket name, you can log on to the **ApsaraVideo Media Processing (MPS)** console and choose **Workflows** > **Media Buckets** in the left-side navigation pane. Alternatively, you can log on to the **Object Storage Service (OSS) console** and click **My OSS Paths**.
         self.bucket = bucket
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -40361,6 +41016,7 @@ class UnbindOutputBucketResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -40575,15 +41231,37 @@ class UpdateMediaRequest(TeaModel):
         tags: str = None,
         title: str = None,
     ):
+        # The ID of the category to which the media file belongs. The value must be an integer.
+        # 
+        # *   If you do not specify this parameter, the value is NULL.
+        # *   The value cannot be negative.
         self.cate_id = cate_id
+        # The storage location of the thumbnail that you want to specify for the media file. To obtain the URL, you can log on to the **MPS console** and choose **Workflows** > **Media Buckets**. Alternatively, you can log on to the **Object Storage Service (OSS) console** and click **My OSS Paths**.
+        # 
+        # *   The value can be up to 3,200 bytes in length.
+        # *   The URL complies with RFC 2396 and is encoded in UTF-8, with reserved characters being percent-encoded.
         self.cover_url = cover_url
+        # The description of the media file. Multiple character types, such as letters and digits, are supported.
+        # 
+        # *   If you do not specify this parameter, the value is NULL.
+        # *   The value is encoded in UTF-8 and can be up to 1,024 bytes in length.
         self.description = description
+        # The ID of the media file whose basic information you want to update. To obtain the ID of the media file, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Media Management** > **Media List** in the left-side navigation pane.
         self.media_id = media_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags that you want to add for the media file.
+        # 
+        # *   Separate multiple tags with commas (,). You can specify up to 16 tags for a media file.
+        # *   Each tag can be up to 32 bytes in length.
+        # *   The value is encoded in UTF-8.
         self.tags = tags
+        # The title of the media file. Multiple character types, such as letters and digits, are supported.
+        # 
+        # *   If you do not specify this parameter, the value is NULL.
+        # *   The value is encoded in UTF-8 and can be up to 128 bytes in length.
         self.title = title
 
     def validate(self):
@@ -40648,7 +41326,12 @@ class UpdateMediaResponseBodyMediaFile(TeaModel):
         state: str = None,
         url: str = None,
     ):
+        # The status of the input file. Valid values:
+        # 
+        # *   **Normal**: The input file is normal.
+        # *   **Deleted**: The input file is deleted.
         self.state = state
+        # The URL of the input file.
         self.url = url
 
     def validate(self):
@@ -40751,23 +41434,49 @@ class UpdateMediaResponseBodyMedia(TeaModel):
         title: str = None,
         width: str = None,
     ):
+        # The bitrate of the media file.
         self.bitrate = bitrate
+        # The ID of the category to which the media file belongs.
         self.cate_id = cate_id
+        # The review status of the video. Valid values:
+        # 
+        # *   **Initiated**: The media file is uploaded but not reviewed.
+        # *   **Pass**: The media file is uploaded and passes the review.
         self.censor_state = censor_state
+        # The storage location of the media thumbnail.
         self.cover_url = cover_url
+        # The time when the media file was created.
         self.creation_time = creation_time
+        # The description of the media file.
         self.description = description
+        # The duration of the media file.
         self.duration = duration
+        # The information about the input file.
         self.file = file
+        # The format of the media file. Valid values: mov, mp4, m4a, 3gp, 3g2, and mj2.
         self.format = format
+        # The frame rate of the media file.
         self.fps = fps
+        # The height of the media file.
         self.height = height
+        # The ID of the media file.
         self.media_id = media_id
+        # The publishing status of the media file. Valid values:
+        # 
+        # *   **Initiated**: The media file is in the initial state.
+        # *   **UnPublish**: The media file has not been published, and the playback permission on the OSS object is Private.
+        # *   **Published**: The media file has been published, and the playback permission on the OSS object is Default.
+        # *   **Deleted**: The media file is deleted.
         self.publish_state = publish_state
+        # The IDs of the media workflow execution instances.
         self.run_id_list = run_id_list
+        # The size of the media file.
         self.size = size
+        # The tags of the media file.
         self.tags = tags
+        # The title of the media file.
         self.title = title
+        # The width of the media file.
         self.width = width
 
     def validate(self):
@@ -40872,7 +41581,9 @@ class UpdateMediaResponseBody(TeaModel):
         media: UpdateMediaResponseBodyMedia = None,
         request_id: str = None,
     ):
+        # The detailed information about the media file.
         self.media = media
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -40955,7 +41666,11 @@ class UpdateMediaCategoryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the category. The value cannot be negative.
         self.cate_id = cate_id
+        # The ID of the media file whose category you want to update.
+        # 
+        # >  To obtain the ID of a media file, you can call the [AddMedia](~~44458~~) operation. Alternatively, perform the following operations in the ApsaraVideo Media Processing (MPS) console: In the left-side navigation pane, choose **Media Management > Media List**. Find the required video and click **Manage**. The ID of the video is displayed on the Basics tab.
         self.media_id = media_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -41007,6 +41722,7 @@ class UpdateMediaCategoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41083,7 +41799,11 @@ class UpdateMediaCoverRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The URL of the thumbnail that you want to specify for the media file. The URL complies with RFC 2396 and is encoded in UTF-8. The URL can be up to 3,200 bytes in length.
+        # 
+        # >  To obtain the thumbnail URL, you can find the image in the Object Storage Service (OSS) bucket and click the image to view details. In the View Details panel, copy the part before the question mark (?) from the URL field. You can enter only an HTTP URL.
         self.cover_url = cover_url
+        # The ID of the media file whose thumbnail you want to update. To obtain the ID of a media file, you can call the [AddMedia](~~44458~~) operation. Alternatively, perform the following operations in the ApsaraVideo Media Processing (MPS) console: In the left-side navigation pane, choose **Media Management** > **Media List**. Find the required video and click **Manage**. The ID of the video is displayed on the Basics tab.
         self.media_id = media_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -41135,6 +41855,7 @@ class UpdateMediaCoverResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41211,9 +41932,14 @@ class UpdateMediaPublishStateRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the media file whose publishing status you want update. To obtain the ID of a media file, you can call the [AddMedia](~~44458~~) operation. Alternatively, perform the following operations in the ApsaraVideo Media Processing (MPS) console: In the left-side navigation pane, choose **Media Management** > **Media List**. Find the required video and click **Manage**. The ID of the video is displayed on the Basics tab.
         self.media_id = media_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The publishing status. Default value: **Initialed**. Valid values:
+        # 
+        # *   **true**: published
+        # *   **false**: unpublished
         self.publish = publish
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -41263,6 +41989,7 @@ class UpdateMediaPublishStateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41339,11 +42066,13 @@ class UpdateMediaWorkflowRequest(TeaModel):
         resource_owner_id: int = None,
         topology: str = None,
     ):
+        # The ID of the media workflow that you want to update. To obtain the ID of the media workflow, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Workflow Settings** in the left-side navigation pane.
         self.media_workflow_id = media_workflow_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The new topology of the media workflow. The value is a JSON object that contains the activity list and activity dependencies.
         self.topology = topology
 
     def validate(self):
@@ -41396,11 +42125,23 @@ class UpdateMediaWorkflowResponseBodyMediaWorkflow(TeaModel):
         topology: str = None,
         trigger_mode: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow that is updated.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The status of the media workflow. Valid values:
+        # 
+        # *   **Inactive**: The media workflow is deactivated.
+        # *   **Active**: The media workflow is activated.
         self.state = state
+        # The topology of the media workflow.
         self.topology = topology
+        # The trigger mode of the media workflow. Valid values:
+        # 
+        # *   **OssAutoTrigger**: The media workflow is automatically triggered.
+        # *   **NotInAuto**: The media workflow is not automatically triggered.
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -41449,7 +42190,9 @@ class UpdateMediaWorkflowResponseBody(TeaModel):
         media_workflow: UpdateMediaWorkflowResponseBodyMediaWorkflow = None,
         request_id: str = None,
     ):
+        # The details of the media workflow.
         self.media_workflow = media_workflow
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41532,11 +42275,16 @@ class UpdateMediaWorkflowTriggerModeRequest(TeaModel):
         resource_owner_id: int = None,
         trigger_mode: str = None,
     ):
+        # The ID of the media workflow to be updated. To obtain the workflow ID, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Workflows** > **Workflow Settings**.
         self.media_workflow_id = media_workflow_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The trigger mode of the media workflow. Valid values:
+        # 
+        # *   **OssAutoTrigger**: automatically triggers the media workflow.
+        # *   **NotInAuto**: does not automatically trigger the media workflow.
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -41589,11 +42337,23 @@ class UpdateMediaWorkflowTriggerModeResponseBodyMediaWorkflow(TeaModel):
         topology: str = None,
         trigger_mode: str = None,
     ):
+        # The time when the media workflow was created.
         self.creation_time = creation_time
+        # The ID of the media workflow.
         self.media_workflow_id = media_workflow_id
+        # The name of the media workflow.
         self.name = name
+        # The status of the media workflow. Valid values:
+        # 
+        # *   **Inactive**: disabled
+        # *   **Active**: enabled
         self.state = state
+        # The topology of the media workflow.
         self.topology = topology
+        # The trigger mode of the media workflow. Valid values:
+        # 
+        # *   **OssAutoTrigger**: The media workflow is automatically triggered.
+        # *   **NotInAuto**: The media workflow is not automatically triggered.
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -41642,7 +42402,9 @@ class UpdateMediaWorkflowTriggerModeResponseBody(TeaModel):
         media_workflow: UpdateMediaWorkflowTriggerModeResponseBodyMediaWorkflow = None,
         request_id: str = None,
     ):
+        # The details of the media workflow.
         self.media_workflow = media_workflow
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41718,6 +42480,7 @@ class UpdateMediaWorkflowTriggerModeResponse(TeaModel):
 class UpdatePipelineRequest(TeaModel):
     def __init__(
         self,
+        extend_config: str = None,
         name: str = None,
         notify_config: str = None,
         owner_account: str = None,
@@ -41728,14 +42491,23 @@ class UpdatePipelineRequest(TeaModel):
         role: str = None,
         state: str = None,
     ):
+        self.extend_config = extend_config
+        # The new name of the MPS queue. The value can contain letters, digits, and special characters such as hyphens (-) and can be up to 128 bytes in size. The value cannot start with a special character.
         self.name = name
+        # The Message Service (MNS) configuration, such as the information about the MNS queue or topic. For more information, see [NotifyConfig](~~29253~~).
         self.notify_config = notify_config
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the MPS queue that you want to update. To obtain the ID of the MPS queue, you can log on to the **MPS console** and choose **Global Settings** > **Pipelines** in the left-side navigation pane.
         self.pipeline_id = pipeline_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The role that is assigned to the current RAM user. To obtain the role, you can log on to the **RAM console** and choose **Identities** > **Roles** in the left-side navigation pane.
         self.role = role
+        # The new state of the MPS queue.
+        # 
+        # *   **Active**: The MPS queue is active. Jobs in the MPS queue can be scheduled and run by MPS.
+        # *   **Paused**: The MPS queue is paused. Jobs in the MPS queue cannot be scheduled or run by MPS, and all jobs remain in the Submitted state. Jobs that are running will not be affected.
         self.state = state
 
     def validate(self):
@@ -41747,6 +42519,8 @@ class UpdatePipelineRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config
         if self.name is not None:
             result['Name'] = self.name
         if self.notify_config is not None:
@@ -41769,6 +42543,8 @@ class UpdatePipelineRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendConfig') is not None:
+            self.extend_config = m.get('ExtendConfig')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NotifyConfig') is not None:
@@ -41790,6 +42566,45 @@ class UpdatePipelineRequest(TeaModel):
         return self
 
 
+class UpdatePipelineResponseBodyPipelineExtendConfig(TeaModel):
+    def __init__(
+        self,
+        is_boost_new: bool = None,
+        max_multi_speed: int = None,
+        multi_speed_downgrade_policy: str = None,
+    ):
+        self.is_boost_new = is_boost_new
+        self.max_multi_speed = max_multi_speed
+        self.multi_speed_downgrade_policy = multi_speed_downgrade_policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_boost_new is not None:
+            result['IsBoostNew'] = self.is_boost_new
+        if self.max_multi_speed is not None:
+            result['MaxMultiSpeed'] = self.max_multi_speed
+        if self.multi_speed_downgrade_policy is not None:
+            result['MultiSpeedDowngradePolicy'] = self.multi_speed_downgrade_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsBoostNew') is not None:
+            self.is_boost_new = m.get('IsBoostNew')
+        if m.get('MaxMultiSpeed') is not None:
+            self.max_multi_speed = m.get('MaxMultiSpeed')
+        if m.get('MultiSpeedDowngradePolicy') is not None:
+            self.multi_speed_downgrade_policy = m.get('MultiSpeedDowngradePolicy')
+        return self
+
+
 class UpdatePipelineResponseBodyPipelineNotifyConfig(TeaModel):
     def __init__(
         self,
@@ -41798,9 +42613,13 @@ class UpdatePipelineResponseBodyPipelineNotifyConfig(TeaModel):
         queue_name: str = None,
         topic: str = None,
     ):
+        # The tags of the messages.
         self.mq_tag = mq_tag
+        # The queue of messages that are received.
         self.mq_topic = mq_topic
+        # The queue that is created in MNS.
         self.queue_name = queue_name
+        # The topic that is created in MNS.
         self.topic = topic
 
     def validate(self):
@@ -41838,6 +42657,7 @@ class UpdatePipelineResponseBodyPipelineNotifyConfig(TeaModel):
 class UpdatePipelineResponseBodyPipeline(TeaModel):
     def __init__(
         self,
+        extend_config: UpdatePipelineResponseBodyPipelineExtendConfig = None,
         id: str = None,
         name: str = None,
         notify_config: UpdatePipelineResponseBodyPipelineNotifyConfig = None,
@@ -41846,15 +42666,40 @@ class UpdatePipelineResponseBodyPipeline(TeaModel):
         speed: str = None,
         state: str = None,
     ):
+        self.extend_config = extend_config
+        # The ID of the MPS queue.
         self.id = id
+        # The new name of the MPS queue.
         self.name = name
+        # The MNS configuration.
         self.notify_config = notify_config
+        # The quota that is allocated to the MPS queue.
         self.quota_allocate = quota_allocate
+        # The role that is assigned to the current RAM user.
         self.role = role
+        # The type of the MPS queue. Default value: **Standard**. Valid values:
+        # 
+        # *   **Boost**: MPS queue with transcoding speed boosted.
+        # *   **Standard**: standard MPS queue.
+        # *   **NarrowBandHDV2**: MPS queue that supports Narrowband HD™ 2.0.
+        # *   **AIVideoCover**: MPS queue for intelligent snapshot capture.
+        # *   **AIVideoFPShot**: MPS queue for media fingerprinting.
+        # *   **AIVideoCensor**: MPS queue for automated review.
+        # *   **AIVideoMCU**: MPS queue for smart tagging.
+        # *   **AIVideoSummary**: MPS queue for video synopsis.
+        # *   **AIVideoPorn**: MPS queue for pornography detection in videos.
+        # *   **AIAudioKWS**: MPS queue for keyword recognition in audio.
+        # *   **AIAudioASR**: MPS queue for speech-to-text conversion.
         self.speed = speed
+        # The status of the pipeline. Valid values:
+        # 
+        # *   **Active**: The MPS queue is active.
+        # *   **Paused**: The MPS queue is paused.
         self.state = state
 
     def validate(self):
+        if self.extend_config:
+            self.extend_config.validate()
         if self.notify_config:
             self.notify_config.validate()
 
@@ -41864,6 +42709,8 @@ class UpdatePipelineResponseBodyPipeline(TeaModel):
             return _map
 
         result = dict()
+        if self.extend_config is not None:
+            result['ExtendConfig'] = self.extend_config.to_map()
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
@@ -41882,6 +42729,9 @@ class UpdatePipelineResponseBodyPipeline(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendConfig') is not None:
+            temp_model = UpdatePipelineResponseBodyPipelineExtendConfig()
+            self.extend_config = temp_model.from_map(m['ExtendConfig'])
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
@@ -41906,7 +42756,9 @@ class UpdatePipelineResponseBody(TeaModel):
         pipeline: UpdatePipelineResponseBodyPipeline = None,
         request_id: str = None,
     ):
+        # The details of the MPS queue.
         self.pipeline = pipeline
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -41991,6 +42843,8 @@ class UpdateSmarttagTemplateRequest(TeaModel):
         knowledge_config: str = None,
         label_type: str = None,
         label_version: str = None,
+        landmark_group_ids: str = None,
+        object_group_ids: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -42008,6 +42862,8 @@ class UpdateSmarttagTemplateRequest(TeaModel):
         self.knowledge_config = knowledge_config
         self.label_type = label_type
         self.label_version = label_version
+        self.landmark_group_ids = landmark_group_ids
+        self.object_group_ids = object_group_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -42043,6 +42899,10 @@ class UpdateSmarttagTemplateRequest(TeaModel):
             result['LabelType'] = self.label_type
         if self.label_version is not None:
             result['LabelVersion'] = self.label_version
+        if self.landmark_group_ids is not None:
+            result['LandmarkGroupIds'] = self.landmark_group_ids
+        if self.object_group_ids is not None:
+            result['ObjectGroupIds'] = self.object_group_ids
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -42079,6 +42939,10 @@ class UpdateSmarttagTemplateRequest(TeaModel):
             self.label_type = m.get('LabelType')
         if m.get('LabelVersion') is not None:
             self.label_version = m.get('LabelVersion')
+        if m.get('LandmarkGroupIds') is not None:
+            self.landmark_group_ids = m.get('LandmarkGroupIds')
+        if m.get('ObjectGroupIds') is not None:
+            self.object_group_ids = m.get('ObjectGroupIds')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -42182,16 +43046,29 @@ class UpdateTemplateRequest(TeaModel):
         trans_config: str = None,
         video: str = None,
     ):
+        # The configuration of the audio stream. The value is a JSON object. For more information, see [Audio](~~29253~~).
         self.audio = audio
+        # The container format. The value is a JSON object. Default format: **MP4**.
+        # 
+        # *   Video formats: FLV, MP4, HLS (m3u8 + TS), and MPEG-DASH (MPD + fMP4)
+        # *   Audio formats: MP3, MP4, Ogg, FLAC, and M4A
+        # *   Images formats: GIF and WebP
+        # 
+        # For more information, see [Container](~~29253~~).
         self.container = container
+        # The transmuxing configuration. The value is a JSON object. For more information, see [MuxConfig](~~29253~~).
         self.mux_config = mux_config
+        # The name of the template. The value can be up to 128 bytes in size.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the template. You can obtain the template ID from the response of the [AddTemplate](~~213306~~) operation.
         self.template_id = template_id
+        # The general transcoding configuration. The value is a JSON object. For more information, see [TransConfig](~~29253~~).
         self.trans_config = trans_config
+        # The configuration of the video stream. The value is a JSON object. For more information, see [Video](~~29253~~).
         self.video = video
 
     def validate(self):
@@ -42265,12 +43142,41 @@ class UpdateTemplateResponseBodyTemplateAudio(TeaModel):
         remove: str = None,
         samplerate: str = None,
     ):
+        # The audio bitrate of the output file.
+        # 
+        # *   Valid values: **\[8, 1000]**.
+        # *   Unit: Kbit/s.
+        # *   Default value: **128**.
         self.bitrate = bitrate
+        # The number of sound channels. Default value: **2**.
         self.channels = channels
+        # The audio codec. Default value: **aac**. Valid values:
+        # 
+        # *   **aac**\
+        # *   **mp3**\
+        # *   **vorbis**\
+        # *   **flac**\
         self.codec = codec
+        # The codec profile of the audio. Valid values when the **Codec** parameter is set to **aac**:
+        # 
+        # *   **aac_low**\
+        # *   **aac_he**\
+        # *   **aac_he_v2**\
+        # *   **aac_ld**\
+        # *   **aac_eld**\
         self.profile = profile
+        # The strength of the independent noise reduction algorithm.
         self.qscale = qscale
+        # Indicates whether to delete the audio stream.
+        # 
+        # *   **true**: The audio stream is deleted.
+        # *   **false**: The audio stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The sampling rate.
+        # 
+        # *   Unit: Hz.
+        # *   Default value: **44100**.
         self.samplerate = samplerate
 
     def validate(self):
@@ -42322,6 +43228,7 @@ class UpdateTemplateResponseBodyTemplateContainer(TeaModel):
         self,
         format: str = None,
     ):
+        # The container format.
         self.format = format
 
     def validate(self):
@@ -42352,9 +43259,13 @@ class UpdateTemplateResponseBodyTemplateMuxConfigGif(TeaModel):
         is_custom_palette: str = None,
         loop: str = None,
     ):
+        # The color dithering algorithm of the palette. Valid values: sierra and bayer.
         self.dither_mode = dither_mode
+        # The duration for which the final frame is paused. Unit: milliseconds.
         self.final_delay = final_delay
+        # Indicates whether the custom palette is used.
         self.is_custom_palette = is_custom_palette
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -42394,6 +43305,7 @@ class UpdateTemplateResponseBodyTemplateMuxConfigSegment(TeaModel):
         self,
         duration: str = None,
     ):
+        # The length of the segment. Unit: seconds.
         self.duration = duration
 
     def validate(self):
@@ -42421,6 +43333,7 @@ class UpdateTemplateResponseBodyTemplateMuxConfigWebp(TeaModel):
         self,
         loop: str = None,
     ):
+        # The loop count.
         self.loop = loop
 
     def validate(self):
@@ -42450,8 +43363,11 @@ class UpdateTemplateResponseBodyTemplateMuxConfig(TeaModel):
         segment: UpdateTemplateResponseBodyTemplateMuxConfigSegment = None,
         webp: UpdateTemplateResponseBodyTemplateMuxConfigWebp = None,
     ):
+        # The transmuxing configuration for GIF.
         self.gif = gif
+        # The segment configuration.
         self.segment = segment
+        # The transmuxing configuration for WebP.
         self.webp = webp
 
     def validate(self):
@@ -42502,13 +43418,59 @@ class UpdateTemplateResponseBodyTemplateTransConfig(TeaModel):
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
+        # The method of resolution adjustment. Default value: **none**. Valid values:
+        # 
+        # *   rescale: The input video is rescaled.
+        # *   crop: The input video is cropped.
+        # *   none: No change is made.
         self.adj_dar_method = adj_dar_method
+        # Indicates whether to check the audio bitrate.
+        # 
+        # *   If this feature is enabled and the system detects that the audio bitrate of the output file is greater than that of the input file, the audio bitrate of the input file is retained after transcoding.
+        # *   **true**: The audio bitrate is checked.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Indicates whether to allow audio bitrate check errors.
+        # 
+        # *   **true**. If the audio bitrate check fails, the input file is not transcoded.
+        # *   **false**: The audio bitrate is not checked.
+        # *   Default value: **false**.
+        # *   This parameter takes precedence over the IsCheckAudioBitrate parameter.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
+        # Indicates whether to check the resolution.
+        # 
+        # *   If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, the resolution of the input file is retained after transcoding.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso = is_check_reso
+        # Indicates whether to check the resolution.
+        # 
+        # *   If this feature is enabled and the system detects that the resolution of the output file is higher than that of the input file based on the width or height, an error that indicates a transcoding failure is returned.
+        # *   **true**: The resolution is checked.
+        # *   **false**: The resolution is not checked.
+        # *   Default value: **false**.
         self.is_check_reso_fail = is_check_reso_fail
+        # Indicates whether to check the video bitrate.
+        # 
+        # *   If this feature is enabled and the system detects that the video bitrate of the output file is greater than that of the input file, the video bitrate of the input file is retained after transcoding.
+        # *   **true**: The video bitrate is checked.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
         self.is_check_video_bitrate = is_check_video_bitrate
+        # Indicates whether to allow video bitrate check errors.
+        # 
+        # *   **true**. If the video bitrate check fails, the input file is not transcoded.
+        # *   **false**: The video bitrate is not checked.
+        # *   Default value: **false**.
+        # *   This parameter takes precedence over the IsCheckVideoBitrate parameter.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
+        # The transcoding mode. Default value: **onepass**. Valid values:
+        # 
+        # *   **onepass**\
+        # *   **twopass**\
+        # *   **CBR**\
         self.trans_mode = trans_mode
 
     def validate(self):
@@ -42565,7 +43527,9 @@ class UpdateTemplateResponseBodyTemplateVideoBitrateBnd(TeaModel):
         max: str = None,
         min: str = None,
     ):
+        # The upper limit of the total bitrate. Unit: Kbit/s.
         self.max = max
+        # The lower limit of the total bitrate. Unit: Kbit/s.
         self.min = min
 
     def validate(self):
@@ -42618,27 +43582,93 @@ class UpdateTemplateResponseBodyTemplateVideo(TeaModel):
         scan_mode: str = None,
         width: str = None,
     ):
+        # The average bitrate of the video. Unit: Kbit/s.
         self.bitrate = bitrate
+        # The average bitrate range of the video.
         self.bitrate_bnd = bitrate_bnd
+        # The size of the buffer.
+        # 
+        # *   Unit: KB.
+        # *   Default value: **6000**.
         self.bufsize = bufsize
+        # The video codec. Default value: **H.264**.
         self.codec = codec
+        # The constant rate factor.
+        # 
+        # *   Default value when the Codec parameter is set to H.264: **23**. Default value when the Codec parameter is set to H.265: **26**.
+        # *   If this parameter is specified, the setting of the Bitrate parameter is invalid.
         self.crf = crf
+        # The method of video cropping. Valid values:
+        # 
+        # *   **border**: automatically detects and removes borders.
+        # *   **Other values**: the custom cropping modes. Format: width:height:left:top. Example: 1280:800:0:140.
         self.crop = crop
+        # The level of video quality control.
         self.degrain = degrain
+        # The frame rate of the video.
+        # 
+        # *   The value is 60 if the frame rate of the input video exceeds 60.
+        # *   Default value: the frame rate of the input video.
         self.fps = fps
+        # The maximum number of frames between two keyframes. Default value: **250**.
         self.gop = gop
+        # The height of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the height of the input video.
         self.height = height
+        # Indicates whether to enable the auto-rotate screen feature.
+        # 
+        # *   If this feature is enabled, the width of the output video corresponds to the long side of the input video, which is the height of the input video in portrait mode. The height of the output video corresponds to the short side of the input video, which is the width of the input video in portrait mode.
+        # *   **true**: The auto-rotate screen feature is enabled.
+        # *   **false**: The auto-rotate screen feature is disabled.
+        # *   Default value: **false**.
         self.long_short_mode = long_short_mode
+        # The maximum frame rate.
         self.max_fps = max_fps
+        # The maximum video bitrate. Unit: Kbit/s.
         self.maxrate = maxrate
+        # The black borders to be added to the video.
+        # 
+        # *   Format: width:height:left:top.
+        # *   Example: 1280:800:0:140.
         self.pad = pad
+        # The pixel format for video color encoding. Valid values: standard pixel formats such as yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
+        # The preset video algorithm. Default value: **medium**. Valid values:
+        # 
+        # *   **veryfast**\
+        # *   **fast**\
+        # *   **medium**\
+        # *   **slow**\
+        # *   **slower**\
         self.preset = preset
+        # The codec profile.
+        # 
+        # *   **baseline**: applicable to mobile devices.
+        # *   **main**: applicable to standard-definition devices.
+        # *   **high**: applicable to high-definition devices.
+        # *   Default value: **high**.
         self.profile = profile
+        # The strength of the independent noise reduction algorithm.
         self.qscale = qscale
+        # Indicates whether to delete the video stream.
+        # 
+        # *   **true**: The video stream is deleted.
+        # *   **false**: The video stream is retained.
+        # *   Default value: **false**.
         self.remove = remove
+        # The policy of resolution adjustment.
         self.reso_priority = reso_priority
+        # The scan mode. Valid values:
+        # 
+        # *   **interlaced**\
+        # *   **progressive**\
         self.scan_mode = scan_mode
+        # The width of the video.
+        # 
+        # *   Unit: pixel.
+        # *   Default value: the width of the input video.
         self.width = width
 
     def validate(self):
@@ -42759,13 +43789,24 @@ class UpdateTemplateResponseBodyTemplate(TeaModel):
         trans_config: UpdateTemplateResponseBodyTemplateTransConfig = None,
         video: UpdateTemplateResponseBodyTemplateVideo = None,
     ):
+        # The audio codec configuration.
         self.audio = audio
+        # The container configuration.
         self.container = container
+        # The ID of the transcoding template.
         self.id = id
+        # The transmuxing configuration.
         self.mux_config = mux_config
+        # The name of the template.
         self.name = name
+        # The status of the template.
+        # 
+        # *   **Normal**: The template is normal.
+        # *   **Deleted**: The template is deleted.
         self.state = state
+        # The general transcoding configuration.
         self.trans_config = trans_config
+        # The video codec configuration.
         self.video = video
 
     def validate(self):
@@ -42836,7 +43877,9 @@ class UpdateTemplateResponseBody(TeaModel):
         request_id: str = None,
         template: UpdateTemplateResponseBodyTemplate = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The type of the transcoding template.
         self.template = template
 
     def validate(self):
@@ -42920,12 +43963,15 @@ class UpdateWaterMarkTemplateRequest(TeaModel):
         resource_owner_id: int = None,
         water_mark_template_id: str = None,
     ):
+        # The updated configuration of the watermark template. The value is a JSON object. For more information, see [Watermark template configuration](~~29253~~).
         self.config = config
+        # The new name of the watermark template. The value can contain letters and digits and can be up to 128 bytes in size.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the watermark template that you want to update. To obtain the ID of the watermark template, you can log on to the **ApsaraVideo Media Processing (MPS) console** and choose **Global Settings** > **Watermark Templates** in the left-side navigation pane.
         self.water_mark_template_id = water_mark_template_id
 
     def validate(self):
@@ -42980,9 +44026,25 @@ class UpdateWaterMarkTemplateResponseBodyWaterMarkTemplateRatioRefer(TeaModel):
         height: str = None,
         width: str = None,
     ):
+        # The horizontal offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the horizontal offset to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dx = dx
+        # The vertical offset of the watermark relative to the output video image. Default value: **0**. The default value indicates no offset. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the vertical offset. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the vertical offset to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.dy = dy
+        # The height of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the height of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the height of the watermark image to the height of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.height = height
+        # The width of the watermark image in the output video. The value can be an integer or a decimal.
+        # 
+        # *   **Integer**: the width of the watermark image. This indicates the absolute position. Unit: pixel.
+        # *   **Decimal**: the ratio of the width of the watermark image to the width of the output video. The ratio varies based on the size of the video. Four decimal places are supported, such as 0.9999. More decimal places are discarded.
         self.width = width
 
     def validate(self):
@@ -43023,7 +44085,12 @@ class UpdateWaterMarkTemplateResponseBodyWaterMarkTemplateTimeline(TeaModel):
         duration: str = None,
         start: str = None,
     ):
+        # The display duration of the watermark. Default value: **ToEND**. The default value indicates that the watermark is displayed until the video ends.
         self.duration = duration
+        # The beginning of the time range during which the watermark is displayed.
+        # 
+        # *   Unit: seconds.
+        # *   Default value: **0**.
         self.start = start
 
     def validate(self):
@@ -43065,16 +44132,42 @@ class UpdateWaterMarkTemplateResponseBodyWaterMarkTemplate(TeaModel):
         type: str = None,
         width: str = None,
     ):
+        # The horizontal offset. Unit: pixel.
         self.dx = dx
+        # The vertical offset. Unit: pixel.
         self.dy = dy
+        # The height of the watermark image. Unit: pixel.
         self.height = height
+        # The ID of the watermark template. We recommend that you keep this ID for subsequent operation calls.
         self.id = id
+        # The name of the watermark template.
         self.name = name
+        # The values of the Height, Width, Dx, and Dy parameters relative to the reference edges. If the values of the Height, Width, Dx, and Dy parameters are decimals between 0 and 1, the values are calculated by referring to the following edges in sequence:
+        # 
+        # *   **Width**: the width edge.
+        # *   **Height**: the height edge.
+        # *   **Long**: the long edge.
+        # *   **Short**: the short edge.
         self.ratio_refer = ratio_refer
+        # The position of the watermark. Valid values:
+        # 
+        # *   **TopRight**: the upper-right corner.
+        # *   **TopLeft**: the upper-left corner.
+        # *   **BottomRight**: the lower-right corner.
+        # *   **BottomLeft**: the lower-left corner.
         self.refer_pos = refer_pos
+        # The status of the watermark template. Default value: **Normal**.
         self.state = state
+        # The timeline of the watermark.
         self.timeline = timeline
+        # The type of the watermark. Valid values:
+        # 
+        # *   Image: an image watermark.
+        # *   Text: a text watermark.
+        # 
+        # >  Only watermarks of the Image type are supported.
         self.type = type
+        # The width of the watermark image. Unit: pixel.
         self.width = width
 
     def validate(self):
@@ -43148,7 +44241,9 @@ class UpdateWaterMarkTemplateResponseBody(TeaModel):
         request_id: str = None,
         water_mark_template: UpdateWaterMarkTemplateResponseBodyWaterMarkTemplate = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the watermark template.
         self.water_mark_template = water_mark_template
 
     def validate(self):

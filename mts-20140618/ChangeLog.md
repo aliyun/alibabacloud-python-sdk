@@ -1,3 +1,6 @@
+2023-02-27 Version: 3.3.42
+- Add CreateCustomGroup api sdk.
+
 2022-07-14 Version: 3.3.41
 - AMP version.
 
