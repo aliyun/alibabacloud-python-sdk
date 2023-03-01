@@ -17779,6 +17779,39 @@ class GetSmartHandleJobRequest(TeaModel):
         return self
 
 
+class GetSmartHandleJobResponseBodyJobResult(TeaModel):
+    def __init__(
+        self,
+        ai_result: str = None,
+        media_id: str = None,
+    ):
+        self.ai_result = ai_result
+        self.media_id = media_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_result is not None:
+            result['AiResult'] = self.ai_result
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiResult') is not None:
+            self.ai_result = m.get('AiResult')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        return self
+
+
 class GetSmartHandleJobResponseBodySmartJobInfoInputConfig(TeaModel):
     def __init__(
         self,
@@ -17920,6 +17953,7 @@ class GetSmartHandleJobResponseBody(TeaModel):
     def __init__(
         self,
         job_id: str = None,
+        job_result: GetSmartHandleJobResponseBodyJobResult = None,
         output: str = None,
         request_id: str = None,
         smart_job_info: GetSmartHandleJobResponseBodySmartJobInfo = None,
@@ -17927,6 +17961,7 @@ class GetSmartHandleJobResponseBody(TeaModel):
         user_data: str = None,
     ):
         self.job_id = job_id
+        self.job_result = job_result
         self.output = output
         self.request_id = request_id
         self.smart_job_info = smart_job_info
@@ -17934,6 +17969,8 @@ class GetSmartHandleJobResponseBody(TeaModel):
         self.user_data = user_data
 
     def validate(self):
+        if self.job_result:
+            self.job_result.validate()
         if self.smart_job_info:
             self.smart_job_info.validate()
 
@@ -17945,6 +17982,8 @@ class GetSmartHandleJobResponseBody(TeaModel):
         result = dict()
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.job_result is not None:
+            result['JobResult'] = self.job_result.to_map()
         if self.output is not None:
             result['Output'] = self.output
         if self.request_id is not None:
@@ -17961,6 +18000,9 @@ class GetSmartHandleJobResponseBody(TeaModel):
         m = m or dict()
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('JobResult') is not None:
+            temp_model = GetSmartHandleJobResponseBodyJobResult()
+            self.job_result = temp_model.from_map(m['JobResult'])
         if m.get('Output') is not None:
             self.output = m.get('Output')
         if m.get('RequestId') is not None:
@@ -22598,18 +22640,22 @@ class GetWorkflowTaskResponseBodyWorkflowTaskWorkflow(TeaModel):
 class GetWorkflowTaskResponseBodyWorkflowTask(TeaModel):
     def __init__(
         self,
+        activity_results: str = None,
         create_time: str = None,
         finish_time: str = None,
         status: str = None,
         task_id: str = None,
         task_input: str = None,
+        user_data: str = None,
         workflow: GetWorkflowTaskResponseBodyWorkflowTaskWorkflow = None,
     ):
+        self.activity_results = activity_results
         self.create_time = create_time
         self.finish_time = finish_time
         self.status = status
         self.task_id = task_id
         self.task_input = task_input
+        self.user_data = user_data
         self.workflow = workflow
 
     def validate(self):
@@ -22622,6 +22668,8 @@ class GetWorkflowTaskResponseBodyWorkflowTask(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_results is not None:
+            result['ActivityResults'] = self.activity_results
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.finish_time is not None:
@@ -22632,12 +22680,16 @@ class GetWorkflowTaskResponseBodyWorkflowTask(TeaModel):
             result['TaskId'] = self.task_id
         if self.task_input is not None:
             result['TaskInput'] = self.task_input
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         if self.workflow is not None:
             result['Workflow'] = self.workflow.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityResults') is not None:
+            self.activity_results = m.get('ActivityResults')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('FinishTime') is not None:
@@ -22648,6 +22700,8 @@ class GetWorkflowTaskResponseBodyWorkflowTask(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TaskInput') is not None:
             self.task_input = m.get('TaskInput')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         if m.get('Workflow') is not None:
             temp_model = GetWorkflowTaskResponseBodyWorkflowTaskWorkflow()
             self.workflow = temp_model.from_map(m['Workflow'])
