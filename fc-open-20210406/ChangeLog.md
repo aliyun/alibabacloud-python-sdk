@@ -1,3 +1,6 @@
+2023-03-01 Version: 2.0.5
+- Support NAS with TLS.
+
 2023-02-09 Version: 2.0.4
 - Support NAS with TLS.
 

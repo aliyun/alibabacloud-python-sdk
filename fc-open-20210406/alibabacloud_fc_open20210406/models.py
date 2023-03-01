@@ -1471,9 +1471,11 @@ class MnsTopicTriggerConfig(TeaModel):
 class NASConfigMountPoints(TeaModel):
     def __init__(
         self,
+        enable_tls: bool = None,
         mount_dir: str = None,
         server_addr: str = None,
     ):
+        self.enable_tls = enable_tls
         self.mount_dir = mount_dir
         self.server_addr = server_addr
 
@@ -1486,6 +1488,8 @@ class NASConfigMountPoints(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_tls is not None:
+            result['enableTLS'] = self.enable_tls
         if self.mount_dir is not None:
             result['mountDir'] = self.mount_dir
         if self.server_addr is not None:
@@ -1494,6 +1498,8 @@ class NASConfigMountPoints(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enableTLS') is not None:
+            self.enable_tls = m.get('enableTLS')
         if m.get('mountDir') is not None:
             self.mount_dir = m.get('mountDir')
         if m.get('serverAddr') is not None:
@@ -3461,6 +3467,7 @@ class CreateCustomDomainRequest(TeaModel):
         # The configurations of the HTTPS certificate.
         self.cert_config = cert_config
         # The domain name.
+        # Enter a custom domain name that has obtained an ICP filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
         self.domain_name = domain_name
         # The protocol types supported by the domain name. Valid values:
         # 
@@ -3780,6 +3787,7 @@ class CreateFunctionRequest(TeaModel):
         self.environment_variables = environment_variables
         # The name of the function. The name can contain letters, digits, underscores (\_), and hyphens (-) only. The name cannot start with a digit or a hyphen (-). The name must be 1 to 64 characters in length.
         self.function_name = function_name
+        # GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
         self.handler = handler
@@ -3995,6 +4003,7 @@ class CreateFunctionResponseBody(TeaModel):
         self.function_id = function_id
         # The name of the function.
         self.function_name = function_name
+        # GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function.
         self.handler = handler
@@ -9094,11 +9103,11 @@ class ListCustomDomainsRequest(TeaModel):
     ):
         # The maximum number of resources to return. Valid values: \[0,100]. Default value: 20. The number of returned results is less than or equal to the specified number.
         self.limit = limit
-        # The token that is required for pagination. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+        # The pagination token to use to request the next page of results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
         self.next_token = next_token
         # The prefix that the returned domain names must contain.
         self.prefix = prefix
-        # The starting position of the result list. The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
+        # The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
         self.start_key = start_key
 
     def validate(self):
@@ -9816,7 +9825,7 @@ class ListFunctionsHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
+        # The time when the function is invoked. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
         # The custom request ID.
         self.x_fc_trace_id = x_fc_trace_id
@@ -9864,7 +9873,7 @@ class ListFunctionsRequest(TeaModel):
     ):
         # The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
         self.limit = limit
-        # The token required to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+        # The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
         self.next_token = next_token
         # The prefix that the names of returned resources must contain.
         self.prefix = prefix
@@ -9956,12 +9965,13 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.description = description
         # The disk size of the function. Unit: MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
-        # The environment variables that you configured for the function. You can obtain the values of the environment variables from the function.
+        # The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
         self.environment_variables = environment_variables
-        # The unique ID generated by the system for the function.
+        # The unique ID that is generated by the system for the function.
         self.function_id = function_id
         # The name of the function.
         self.function_name = function_name
+        # GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function.
         self.handler = handler
@@ -9986,11 +9996,12 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.last_modified_time = last_modified_time
         # An array that consists of the information of layers.
         # 
-        # >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+        # 
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
         self.layers = layers
-        # The memory size for the function. Unit: MB.
+        # The memory size that is configured for the function. Unit: MB.
         self.memory_size = memory_size
-        # The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+        # The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
         self.runtime = runtime
         # The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
         self.timeout = timeout
@@ -14811,7 +14822,7 @@ class UpdateCustomDomainRequest(TeaModel):
         # 
         # *   **HTTP**: Only HTTP is supported.
         # *   **HTTPS**: Only HTTPS is supported.
-        # *   **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
+        # *   **HTTP,HTTPS**: HTTP and HTTPS are supported.
         self.protocol = protocol
         # The route table that maps the paths to functions when the functions are invoked by using the custom domain name.
         self.route_config = route_config
