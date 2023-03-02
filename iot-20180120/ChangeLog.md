@@ -1,3 +1,6 @@
+2023-03-02 Version: 3.1.0
+- Add a API QueryDeviceProvisioning to support query provisioning info for device.
+
 2023-02-10 Version: 3.0.16
 - Support broadcast for FengTian.
 
