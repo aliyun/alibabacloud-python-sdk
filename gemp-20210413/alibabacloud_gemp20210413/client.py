@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('gemp', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1503,6 +1504,10 @@ class Client(OpenApiClient):
             body['childRuleRelation'] = request.child_rule_relation
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.convergence_fields):
+            body['convergenceFields'] = request.convergence_fields
+        if not UtilClient.is_unset(request.convergence_type):
+            body['convergenceType'] = request.convergence_type
         if not UtilClient.is_unset(request.coverage_problem_levels):
             body['coverageProblemLevels'] = request.coverage_problem_levels
         if not UtilClient.is_unset(request.effection):
@@ -1567,6 +1572,10 @@ class Client(OpenApiClient):
             body['childRuleRelation'] = request.child_rule_relation
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.convergence_fields):
+            body['convergenceFields'] = request.convergence_fields
+        if not UtilClient.is_unset(request.convergence_type):
+            body['convergenceType'] = request.convergence_type
         if not UtilClient.is_unset(request.coverage_problem_levels):
             body['coverageProblemLevels'] = request.coverage_problem_levels
         if not UtilClient.is_unset(request.effection):
@@ -5012,6 +5021,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_incident_with_options_async(request, headers, runtime)
+
+    def get_incident_list_by_id_list_with_options(
+        self,
+        request: gemp20210413_models.GetIncidentListByIdListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> gemp20210413_models.GetIncidentListByIdListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.incident_id_list):
+            body['incidentIdList'] = request.incident_id_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIncidentListByIdList',
+            version='2021-04-13',
+            protocol='HTTPS',
+            pathname=f'/incident/getIncidentListByIdList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gemp20210413_models.GetIncidentListByIdListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_incident_list_by_id_list_with_options_async(
+        self,
+        request: gemp20210413_models.GetIncidentListByIdListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> gemp20210413_models.GetIncidentListByIdListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.incident_id_list):
+            body['incidentIdList'] = request.incident_id_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetIncidentListByIdList',
+            version='2021-04-13',
+            protocol='HTTPS',
+            pathname=f'/incident/getIncidentListByIdList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gemp20210413_models.GetIncidentListByIdListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_incident_list_by_id_list(
+        self,
+        request: gemp20210413_models.GetIncidentListByIdListRequest,
+    ) -> gemp20210413_models.GetIncidentListByIdListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_incident_list_by_id_list_with_options(request, headers, runtime)
+
+    async def get_incident_list_by_id_list_async(
+        self,
+        request: gemp20210413_models.GetIncidentListByIdListRequest,
+    ) -> gemp20210413_models.GetIncidentListByIdListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_incident_list_by_id_list_with_options_async(request, headers, runtime)
 
     def get_incident_statistics_with_options(
         self,
@@ -10149,6 +10238,80 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_users_with_options_async(request, headers, runtime)
 
+    def push_monitor_with_options(
+        self,
+        api_key: str,
+        request: gemp20210413_models.PushMonitorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> gemp20210413_models.PushMonitorResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='PushMonitor',
+            version='2021-04-13',
+            protocol='HTTPS',
+            pathname=f'/api/monitor/push/{OpenApiUtilClient.get_encode_param(api_key)}',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gemp20210413_models.PushMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_monitor_with_options_async(
+        self,
+        api_key: str,
+        request: gemp20210413_models.PushMonitorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> gemp20210413_models.PushMonitorResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='PushMonitor',
+            version='2021-04-13',
+            protocol='HTTPS',
+            pathname=f'/api/monitor/push/{OpenApiUtilClient.get_encode_param(api_key)}',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gemp20210413_models.PushMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_monitor(
+        self,
+        api_key: str,
+        request: gemp20210413_models.PushMonitorRequest,
+    ) -> gemp20210413_models.PushMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.push_monitor_with_options(api_key, request, headers, runtime)
+
+    async def push_monitor_async(
+        self,
+        api_key: str,
+        request: gemp20210413_models.PushMonitorRequest,
+    ) -> gemp20210413_models.PushMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.push_monitor_with_options_async(api_key, request, headers, runtime)
+
     def recover_problem_with_options(
         self,
         request: gemp20210413_models.RecoverProblemRequest,
@@ -11803,6 +11966,10 @@ class Client(OpenApiClient):
             body['childRuleRelation'] = request.child_rule_relation
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.convergence_fields):
+            body['convergenceFields'] = request.convergence_fields
+        if not UtilClient.is_unset(request.convergence_type):
+            body['convergenceType'] = request.convergence_type
         if not UtilClient.is_unset(request.coverage_problem_levels):
             body['coverageProblemLevels'] = request.coverage_problem_levels
         if not UtilClient.is_unset(request.effection):
@@ -11867,6 +12034,10 @@ class Client(OpenApiClient):
             body['childRuleRelation'] = request.child_rule_relation
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.convergence_fields):
+            body['convergenceFields'] = request.convergence_fields
+        if not UtilClient.is_unset(request.convergence_type):
+            body['convergenceType'] = request.convergence_type
         if not UtilClient.is_unset(request.coverage_problem_levels):
             body['coverageProblemLevels'] = request.coverage_problem_levels
         if not UtilClient.is_unset(request.effection):

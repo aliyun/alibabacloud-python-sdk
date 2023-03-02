@@ -2983,6 +2983,8 @@ class CreateRouteRuleRequest(TeaModel):
         assign_object_type: str = None,
         child_rule_relation: str = None,
         client_token: str = None,
+        convergence_fields: List[str] = None,
+        convergence_type: int = None,
         coverage_problem_levels: List[str] = None,
         effection: str = None,
         enable_status: str = None,
@@ -3002,6 +3004,8 @@ class CreateRouteRuleRequest(TeaModel):
         self.assign_object_type = assign_object_type
         self.child_rule_relation = child_rule_relation
         self.client_token = client_token
+        self.convergence_fields = convergence_fields
+        self.convergence_type = convergence_type
         self.coverage_problem_levels = coverage_problem_levels
         self.effection = effection
         self.enable_status = enable_status
@@ -3041,6 +3045,10 @@ class CreateRouteRuleRequest(TeaModel):
             result['childRuleRelation'] = self.child_rule_relation
         if self.client_token is not None:
             result['clientToken'] = self.client_token
+        if self.convergence_fields is not None:
+            result['convergenceFields'] = self.convergence_fields
+        if self.convergence_type is not None:
+            result['convergenceType'] = self.convergence_type
         if self.coverage_problem_levels is not None:
             result['coverageProblemLevels'] = self.coverage_problem_levels
         if self.effection is not None:
@@ -3085,6 +3093,10 @@ class CreateRouteRuleRequest(TeaModel):
             self.child_rule_relation = m.get('childRuleRelation')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
+        if m.get('convergenceFields') is not None:
+            self.convergence_fields = m.get('convergenceFields')
+        if m.get('convergenceType') is not None:
+            self.convergence_type = m.get('convergenceType')
         if m.get('coverageProblemLevels') is not None:
             self.coverage_problem_levels = m.get('coverageProblemLevels')
         if m.get('effection') is not None:
@@ -3607,11 +3619,15 @@ class CreateServiceGroupResponse(TeaModel):
 class CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers(TeaModel):
     def __init__(
         self,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
     ):
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
 
     def validate(self):
         pass
@@ -3622,18 +3638,26 @@ class CreateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers(TeaModel)
             return _map
 
         result = dict()
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         return self
 
 
@@ -3695,17 +3719,21 @@ class CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts(TeaM
         self,
         cycle_order: int = None,
         scheduling_end_time: str = None,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_start_time: str = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
         shift_name: str = None,
         skip_one_day: bool = None,
     ):
         self.cycle_order = cycle_order
         self.scheduling_end_time = scheduling_end_time
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_start_time = scheduling_start_time
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
         self.shift_name = shift_name
         self.skip_one_day = skip_one_day
 
@@ -3722,12 +3750,16 @@ class CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts(TeaM
             result['cycleOrder'] = self.cycle_order
         if self.scheduling_end_time is not None:
             result['schedulingEndTime'] = self.scheduling_end_time
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_start_time is not None:
             result['schedulingStartTime'] = self.scheduling_start_time
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         if self.shift_name is not None:
             result['shiftName'] = self.shift_name
         if self.skip_one_day is not None:
@@ -3740,12 +3772,16 @@ class CreateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts(TeaM
             self.cycle_order = m.get('cycleOrder')
         if m.get('schedulingEndTime') is not None:
             self.scheduling_end_time = m.get('schedulingEndTime')
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingStartTime') is not None:
             self.scheduling_start_time = m.get('schedulingStartTime')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         if m.get('shiftName') is not None:
             self.shift_name = m.get('shiftName')
         if m.get('skipOneDay') is not None:
@@ -3757,16 +3793,20 @@ class CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShi
     def __init__(
         self,
         scheduling_end_time: str = None,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_start_time: str = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
         scheduling_user_name: str = None,
         skip_one_day: bool = None,
     ):
         self.scheduling_end_time = scheduling_end_time
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_start_time = scheduling_start_time
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
         self.scheduling_user_name = scheduling_user_name
         self.skip_one_day = skip_one_day
 
@@ -3781,12 +3821,16 @@ class CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShi
         result = dict()
         if self.scheduling_end_time is not None:
             result['schedulingEndTime'] = self.scheduling_end_time
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_start_time is not None:
             result['schedulingStartTime'] = self.scheduling_start_time
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         if self.scheduling_user_name is not None:
             result['schedulingUserName'] = self.scheduling_user_name
         if self.skip_one_day is not None:
@@ -3797,12 +3841,16 @@ class CreateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShi
         m = m or dict()
         if m.get('schedulingEndTime') is not None:
             self.scheduling_end_time = m.get('schedulingEndTime')
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingStartTime') is not None:
             self.scheduling_start_time = m.get('schedulingStartTime')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         if m.get('schedulingUserName') is not None:
             self.scheduling_user_name = m.get('schedulingUserName')
         if m.get('skipOneDay') is not None:
@@ -9552,6 +9600,333 @@ class GetIncidentResponse(TeaModel):
         return self
 
 
+class GetIncidentListByIdListRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        incident_id_list: List[int] = None,
+    ):
+        self.client_token = client_token
+        self.incident_id_list = incident_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+        if self.incident_id_list is not None:
+            result['incidentIdList'] = self.incident_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
+        if m.get('incidentIdList') is not None:
+            self.incident_id_list = m.get('incidentIdList')
+        return self
+
+
+class GetIncidentListByIdListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        assign_to_who_is_valid: int = None,
+        assign_user_id: int = None,
+        assign_user_name: str = None,
+        assign_user_phone: str = None,
+        create_time: str = None,
+        default_assign_to_who: int = None,
+        default_assign_to_who_is_valid: int = None,
+        default_assign_to_who_name: str = None,
+        duration_time: str = None,
+        effect: str = None,
+        incident_description: str = None,
+        incident_id: int = None,
+        incident_level: str = None,
+        incident_number: str = None,
+        incident_status: str = None,
+        incident_title: str = None,
+        is_manual: bool = None,
+        is_upgrade: bool = None,
+        notify_channels: List[str] = None,
+        problem_id: int = None,
+        problem_number: str = None,
+        rel_route_rule_delete_type: int = None,
+        rel_service_delete_type: int = None,
+        rel_service_group_is_valid: int = None,
+        related_service_description: str = None,
+        related_service_group_id: int = None,
+        related_service_group_name: str = None,
+        related_service_id: int = None,
+        related_service_name: str = None,
+        route_rule_id: int = None,
+        route_rule_name: str = None,
+    ):
+        self.assign_to_who_is_valid = assign_to_who_is_valid
+        self.assign_user_id = assign_user_id
+        self.assign_user_name = assign_user_name
+        self.assign_user_phone = assign_user_phone
+        self.create_time = create_time
+        self.default_assign_to_who = default_assign_to_who
+        self.default_assign_to_who_is_valid = default_assign_to_who_is_valid
+        self.default_assign_to_who_name = default_assign_to_who_name
+        self.duration_time = duration_time
+        self.effect = effect
+        self.incident_description = incident_description
+        self.incident_id = incident_id
+        self.incident_level = incident_level
+        self.incident_number = incident_number
+        self.incident_status = incident_status
+        self.incident_title = incident_title
+        self.is_manual = is_manual
+        self.is_upgrade = is_upgrade
+        self.notify_channels = notify_channels
+        self.problem_id = problem_id
+        self.problem_number = problem_number
+        self.rel_route_rule_delete_type = rel_route_rule_delete_type
+        self.rel_service_delete_type = rel_service_delete_type
+        self.rel_service_group_is_valid = rel_service_group_is_valid
+        self.related_service_description = related_service_description
+        self.related_service_group_id = related_service_group_id
+        self.related_service_group_name = related_service_group_name
+        self.related_service_id = related_service_id
+        self.related_service_name = related_service_name
+        self.route_rule_id = route_rule_id
+        self.route_rule_name = route_rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assign_to_who_is_valid is not None:
+            result['assignToWhoIsValid'] = self.assign_to_who_is_valid
+        if self.assign_user_id is not None:
+            result['assignUserId'] = self.assign_user_id
+        if self.assign_user_name is not None:
+            result['assignUserName'] = self.assign_user_name
+        if self.assign_user_phone is not None:
+            result['assignUserPhone'] = self.assign_user_phone
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.default_assign_to_who is not None:
+            result['defaultAssignToWho'] = self.default_assign_to_who
+        if self.default_assign_to_who_is_valid is not None:
+            result['defaultAssignToWhoIsValid'] = self.default_assign_to_who_is_valid
+        if self.default_assign_to_who_name is not None:
+            result['defaultAssignToWhoName'] = self.default_assign_to_who_name
+        if self.duration_time is not None:
+            result['durationTime'] = self.duration_time
+        if self.effect is not None:
+            result['effect'] = self.effect
+        if self.incident_description is not None:
+            result['incidentDescription'] = self.incident_description
+        if self.incident_id is not None:
+            result['incidentId'] = self.incident_id
+        if self.incident_level is not None:
+            result['incidentLevel'] = self.incident_level
+        if self.incident_number is not None:
+            result['incidentNumber'] = self.incident_number
+        if self.incident_status is not None:
+            result['incidentStatus'] = self.incident_status
+        if self.incident_title is not None:
+            result['incidentTitle'] = self.incident_title
+        if self.is_manual is not None:
+            result['isManual'] = self.is_manual
+        if self.is_upgrade is not None:
+            result['isUpgrade'] = self.is_upgrade
+        if self.notify_channels is not None:
+            result['notifyChannels'] = self.notify_channels
+        if self.problem_id is not None:
+            result['problemId'] = self.problem_id
+        if self.problem_number is not None:
+            result['problemNumber'] = self.problem_number
+        if self.rel_route_rule_delete_type is not None:
+            result['relRouteRuleDeleteType'] = self.rel_route_rule_delete_type
+        if self.rel_service_delete_type is not None:
+            result['relServiceDeleteType'] = self.rel_service_delete_type
+        if self.rel_service_group_is_valid is not None:
+            result['relServiceGroupIsValid'] = self.rel_service_group_is_valid
+        if self.related_service_description is not None:
+            result['relatedServiceDescription'] = self.related_service_description
+        if self.related_service_group_id is not None:
+            result['relatedServiceGroupId'] = self.related_service_group_id
+        if self.related_service_group_name is not None:
+            result['relatedServiceGroupName'] = self.related_service_group_name
+        if self.related_service_id is not None:
+            result['relatedServiceId'] = self.related_service_id
+        if self.related_service_name is not None:
+            result['relatedServiceName'] = self.related_service_name
+        if self.route_rule_id is not None:
+            result['routeRuleId'] = self.route_rule_id
+        if self.route_rule_name is not None:
+            result['routeRuleName'] = self.route_rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assignToWhoIsValid') is not None:
+            self.assign_to_who_is_valid = m.get('assignToWhoIsValid')
+        if m.get('assignUserId') is not None:
+            self.assign_user_id = m.get('assignUserId')
+        if m.get('assignUserName') is not None:
+            self.assign_user_name = m.get('assignUserName')
+        if m.get('assignUserPhone') is not None:
+            self.assign_user_phone = m.get('assignUserPhone')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('defaultAssignToWho') is not None:
+            self.default_assign_to_who = m.get('defaultAssignToWho')
+        if m.get('defaultAssignToWhoIsValid') is not None:
+            self.default_assign_to_who_is_valid = m.get('defaultAssignToWhoIsValid')
+        if m.get('defaultAssignToWhoName') is not None:
+            self.default_assign_to_who_name = m.get('defaultAssignToWhoName')
+        if m.get('durationTime') is not None:
+            self.duration_time = m.get('durationTime')
+        if m.get('effect') is not None:
+            self.effect = m.get('effect')
+        if m.get('incidentDescription') is not None:
+            self.incident_description = m.get('incidentDescription')
+        if m.get('incidentId') is not None:
+            self.incident_id = m.get('incidentId')
+        if m.get('incidentLevel') is not None:
+            self.incident_level = m.get('incidentLevel')
+        if m.get('incidentNumber') is not None:
+            self.incident_number = m.get('incidentNumber')
+        if m.get('incidentStatus') is not None:
+            self.incident_status = m.get('incidentStatus')
+        if m.get('incidentTitle') is not None:
+            self.incident_title = m.get('incidentTitle')
+        if m.get('isManual') is not None:
+            self.is_manual = m.get('isManual')
+        if m.get('isUpgrade') is not None:
+            self.is_upgrade = m.get('isUpgrade')
+        if m.get('notifyChannels') is not None:
+            self.notify_channels = m.get('notifyChannels')
+        if m.get('problemId') is not None:
+            self.problem_id = m.get('problemId')
+        if m.get('problemNumber') is not None:
+            self.problem_number = m.get('problemNumber')
+        if m.get('relRouteRuleDeleteType') is not None:
+            self.rel_route_rule_delete_type = m.get('relRouteRuleDeleteType')
+        if m.get('relServiceDeleteType') is not None:
+            self.rel_service_delete_type = m.get('relServiceDeleteType')
+        if m.get('relServiceGroupIsValid') is not None:
+            self.rel_service_group_is_valid = m.get('relServiceGroupIsValid')
+        if m.get('relatedServiceDescription') is not None:
+            self.related_service_description = m.get('relatedServiceDescription')
+        if m.get('relatedServiceGroupId') is not None:
+            self.related_service_group_id = m.get('relatedServiceGroupId')
+        if m.get('relatedServiceGroupName') is not None:
+            self.related_service_group_name = m.get('relatedServiceGroupName')
+        if m.get('relatedServiceId') is not None:
+            self.related_service_id = m.get('relatedServiceId')
+        if m.get('relatedServiceName') is not None:
+            self.related_service_name = m.get('relatedServiceName')
+        if m.get('routeRuleId') is not None:
+            self.route_rule_id = m.get('routeRuleId')
+        if m.get('routeRuleName') is not None:
+            self.route_rule_name = m.get('routeRuleName')
+        return self
+
+
+class GetIncidentListByIdListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[GetIncidentListByIdListResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        # data
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = GetIncidentListByIdListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetIncidentListByIdListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIncidentListByIdListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIncidentListByIdListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetIncidentStatisticsRequest(TeaModel):
     def __init__(
         self,
@@ -10444,6 +10819,7 @@ class GetProblemResponseBodyData(TeaModel):
         handing_problem_operate_logs: List[GetProblemResponseBodyDataHandingProblemOperateLogs] = None,
         incident_id: int = None,
         incident_number: str = None,
+        is_rule_trigger: bool = None,
         main_handler: int = None,
         main_handler_id: int = None,
         main_handler_is_valid: int = None,
@@ -10477,6 +10853,7 @@ class GetProblemResponseBodyData(TeaModel):
         self.handing_problem_operate_logs = handing_problem_operate_logs
         self.incident_id = incident_id
         self.incident_number = incident_number
+        self.is_rule_trigger = is_rule_trigger
         self.main_handler = main_handler
         self.main_handler_id = main_handler_id
         self.main_handler_is_valid = main_handler_is_valid
@@ -10572,6 +10949,8 @@ class GetProblemResponseBodyData(TeaModel):
             result['incidentId'] = self.incident_id
         if self.incident_number is not None:
             result['incidentNumber'] = self.incident_number
+        if self.is_rule_trigger is not None:
+            result['isRuleTrigger'] = self.is_rule_trigger
         if self.main_handler is not None:
             result['mainHandler'] = self.main_handler
         if self.main_handler_id is not None:
@@ -10660,6 +11039,8 @@ class GetProblemResponseBodyData(TeaModel):
             self.incident_id = m.get('incidentId')
         if m.get('incidentNumber') is not None:
             self.incident_number = m.get('incidentNumber')
+        if m.get('isRuleTrigger') is not None:
+            self.is_rule_trigger = m.get('isRuleTrigger')
         if m.get('mainHandler') is not None:
             self.main_handler = m.get('mainHandler')
         if m.get('mainHandlerId') is not None:
@@ -12575,6 +12956,8 @@ class GetRouteRuleResponseBodyData(TeaModel):
         assign_object_name: str = None,
         assign_object_type: str = None,
         child_rule_relation: str = None,
+        convergence_fields: List[str] = None,
+        convergence_type: int = None,
         coverage_problem_levels: List[str] = None,
         create_time: str = None,
         effection: str = None,
@@ -12599,6 +12982,8 @@ class GetRouteRuleResponseBodyData(TeaModel):
         self.assign_object_name = assign_object_name
         self.assign_object_type = assign_object_type
         self.child_rule_relation = child_rule_relation
+        self.convergence_fields = convergence_fields
+        self.convergence_type = convergence_type
         self.coverage_problem_levels = coverage_problem_levels
         self.create_time = create_time
         self.effection = effection
@@ -12643,6 +13028,10 @@ class GetRouteRuleResponseBodyData(TeaModel):
             result['assignObjectType'] = self.assign_object_type
         if self.child_rule_relation is not None:
             result['childRuleRelation'] = self.child_rule_relation
+        if self.convergence_fields is not None:
+            result['convergenceFields'] = self.convergence_fields
+        if self.convergence_type is not None:
+            result['convergenceType'] = self.convergence_type
         if self.coverage_problem_levels is not None:
             result['coverageProblemLevels'] = self.coverage_problem_levels
         if self.create_time is not None:
@@ -12697,6 +13086,10 @@ class GetRouteRuleResponseBodyData(TeaModel):
             self.assign_object_type = m.get('assignObjectType')
         if m.get('childRuleRelation') is not None:
             self.child_rule_relation = m.get('childRuleRelation')
+        if m.get('convergenceFields') is not None:
+            self.convergence_fields = m.get('convergenceFields')
+        if m.get('convergenceType') is not None:
+            self.convergence_type = m.get('convergenceType')
         if m.get('coverageProblemLevels') is not None:
             self.coverage_problem_levels = m.get('coverageProblemLevels')
         if m.get('createTime') is not None:
@@ -13386,12 +13779,16 @@ class GetServiceGroupSchedulingRequest(TeaModel):
 class GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers(TeaModel):
     def __init__(
         self,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
         scheduling_user_name: str = None,
     ):
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
         self.scheduling_user_name = scheduling_user_name
 
     def validate(self):
@@ -13403,20 +13800,28 @@ class GetServiceGroupSchedulingResponseBodyDataFastSchedulingSchedulingUsers(Tea
             return _map
 
         result = dict()
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         if self.scheduling_user_name is not None:
             result['schedulingUserName'] = self.scheduling_user_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         if m.get('schedulingUserName') is not None:
             self.scheduling_user_name = m.get('schedulingUserName')
         return self
@@ -13486,18 +13891,22 @@ class GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShift
         self,
         cycle_order: int = None,
         scheduling_end_time: str = None,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_start_time: str = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
         scheduling_user_name: str = None,
         shift_name: str = None,
         skip_one_day: bool = None,
     ):
         self.cycle_order = cycle_order
         self.scheduling_end_time = scheduling_end_time
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_start_time = scheduling_start_time
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
         self.scheduling_user_name = scheduling_user_name
         self.shift_name = shift_name
         self.skip_one_day = skip_one_day
@@ -13515,12 +13924,16 @@ class GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShift
             result['cycleOrder'] = self.cycle_order
         if self.scheduling_end_time is not None:
             result['schedulingEndTime'] = self.scheduling_end_time
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_start_time is not None:
             result['schedulingStartTime'] = self.scheduling_start_time
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         if self.scheduling_user_name is not None:
             result['schedulingUserName'] = self.scheduling_user_name
         if self.shift_name is not None:
@@ -13535,12 +13948,16 @@ class GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingFineShift
             self.cycle_order = m.get('cycleOrder')
         if m.get('schedulingEndTime') is not None:
             self.scheduling_end_time = m.get('schedulingEndTime')
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingStartTime') is not None:
             self.scheduling_start_time = m.get('schedulingStartTime')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         if m.get('schedulingUserName') is not None:
             self.scheduling_user_name = m.get('schedulingUserName')
         if m.get('shiftName') is not None:
@@ -13554,17 +13971,21 @@ class GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateF
     def __init__(
         self,
         scheduling_end_time: str = None,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_start_time: str = None,
         scheduling_user_id: str = None,
+        scheduling_user_id_list: List[int] = None,
         scheduling_user_name: str = None,
         shift_name: str = None,
         skip_one_day: bool = None,
     ):
         self.scheduling_end_time = scheduling_end_time
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_start_time = scheduling_start_time
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
         self.scheduling_user_name = scheduling_user_name
         self.shift_name = shift_name
         self.skip_one_day = skip_one_day
@@ -13580,12 +14001,16 @@ class GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateF
         result = dict()
         if self.scheduling_end_time is not None:
             result['schedulingEndTime'] = self.scheduling_end_time
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_start_time is not None:
             result['schedulingStartTime'] = self.scheduling_start_time
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         if self.scheduling_user_name is not None:
             result['schedulingUserName'] = self.scheduling_user_name
         if self.shift_name is not None:
@@ -13598,12 +14023,16 @@ class GetServiceGroupSchedulingResponseBodyDataFineSchedulingSchedulingTemplateF
         m = m or dict()
         if m.get('schedulingEndTime') is not None:
             self.scheduling_end_time = m.get('schedulingEndTime')
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingStartTime') is not None:
             self.scheduling_start_time = m.get('schedulingStartTime')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         if m.get('schedulingUserName') is not None:
             self.scheduling_user_name = m.get('schedulingUserName')
         if m.get('shiftName') is not None:
@@ -24602,6 +25031,110 @@ class ListUsersResponse(TeaModel):
         return self
 
 
+class PushMonitorRequest(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class PushMonitorResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class PushMonitorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PushMonitorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PushMonitorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecoverProblemRequest(TeaModel):
     def __init__(
         self,
@@ -27214,6 +27747,8 @@ class UpdateRouteRuleRequest(TeaModel):
         assign_object_type: str = None,
         child_rule_relation: str = None,
         client_token: str = None,
+        convergence_fields: List[str] = None,
+        convergence_type: int = None,
         coverage_problem_levels: List[str] = None,
         effection: str = None,
         incident_level: str = None,
@@ -27233,6 +27768,8 @@ class UpdateRouteRuleRequest(TeaModel):
         self.assign_object_type = assign_object_type
         self.child_rule_relation = child_rule_relation
         self.client_token = client_token
+        self.convergence_fields = convergence_fields
+        self.convergence_type = convergence_type
         self.coverage_problem_levels = coverage_problem_levels
         self.effection = effection
         self.incident_level = incident_level
@@ -27272,6 +27809,10 @@ class UpdateRouteRuleRequest(TeaModel):
             result['childRuleRelation'] = self.child_rule_relation
         if self.client_token is not None:
             result['clientToken'] = self.client_token
+        if self.convergence_fields is not None:
+            result['convergenceFields'] = self.convergence_fields
+        if self.convergence_type is not None:
+            result['convergenceType'] = self.convergence_type
         if self.coverage_problem_levels is not None:
             result['coverageProblemLevels'] = self.coverage_problem_levels
         if self.effection is not None:
@@ -27316,6 +27857,10 @@ class UpdateRouteRuleRequest(TeaModel):
             self.child_rule_relation = m.get('childRuleRelation')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
+        if m.get('convergenceFields') is not None:
+            self.convergence_fields = m.get('convergenceFields')
+        if m.get('convergenceType') is not None:
+            self.convergence_type = m.get('convergenceType')
         if m.get('coverageProblemLevels') is not None:
             self.coverage_problem_levels = m.get('coverageProblemLevels')
         if m.get('effection') is not None:
@@ -27756,11 +28301,15 @@ class UpdateServiceGroupResponse(TeaModel):
 class UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers(TeaModel):
     def __init__(
         self,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
     ):
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
 
     def validate(self):
         pass
@@ -27771,18 +28320,26 @@ class UpdateServiceGroupSchedulingRequestFastSchedulingSchedulingUsers(TeaModel)
             return _map
 
         result = dict()
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         return self
 
 
@@ -27850,17 +28407,21 @@ class UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts(TeaM
         self,
         cycle_order: int = None,
         scheduling_end_time: str = None,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_start_time: str = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
         shift_name: str = None,
         skip_one_day: bool = None,
     ):
         self.cycle_order = cycle_order
         self.scheduling_end_time = scheduling_end_time
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_start_time = scheduling_start_time
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
         self.shift_name = shift_name
         self.skip_one_day = skip_one_day
 
@@ -27877,12 +28438,16 @@ class UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts(TeaM
             result['cycleOrder'] = self.cycle_order
         if self.scheduling_end_time is not None:
             result['schedulingEndTime'] = self.scheduling_end_time
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_start_time is not None:
             result['schedulingStartTime'] = self.scheduling_start_time
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         if self.shift_name is not None:
             result['shiftName'] = self.shift_name
         if self.skip_one_day is not None:
@@ -27895,12 +28460,16 @@ class UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingFineShifts(TeaM
             self.cycle_order = m.get('cycleOrder')
         if m.get('schedulingEndTime') is not None:
             self.scheduling_end_time = m.get('schedulingEndTime')
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingStartTime') is not None:
             self.scheduling_start_time = m.get('schedulingStartTime')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         if m.get('shiftName') is not None:
             self.shift_name = m.get('shiftName')
         if m.get('skipOneDay') is not None:
@@ -27912,16 +28481,20 @@ class UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShi
     def __init__(
         self,
         scheduling_end_time: str = None,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_start_time: str = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
         shift_name: str = None,
         skip_one_day: bool = None,
     ):
         self.scheduling_end_time = scheduling_end_time
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_start_time = scheduling_start_time
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
         self.shift_name = shift_name
         self.skip_one_day = skip_one_day
 
@@ -27936,12 +28509,16 @@ class UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShi
         result = dict()
         if self.scheduling_end_time is not None:
             result['schedulingEndTime'] = self.scheduling_end_time
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_start_time is not None:
             result['schedulingStartTime'] = self.scheduling_start_time
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         if self.shift_name is not None:
             result['shiftName'] = self.shift_name
         if self.skip_one_day is not None:
@@ -27952,12 +28529,16 @@ class UpdateServiceGroupSchedulingRequestFineSchedulingSchedulingTemplateFineShi
         m = m or dict()
         if m.get('schedulingEndTime') is not None:
             self.scheduling_end_time = m.get('schedulingEndTime')
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingStartTime') is not None:
             self.scheduling_start_time = m.get('schedulingStartTime')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         if m.get('shiftName') is not None:
             self.shift_name = m.get('shiftName')
         if m.get('skipOneDay') is not None:
@@ -28171,14 +28752,18 @@ class UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays(TeaMode
     def __init__(
         self,
         scheduling_end_time: str = None,
+        scheduling_object_type: str = None,
         scheduling_order: int = None,
         scheduling_start_time: str = None,
         scheduling_user_id: int = None,
+        scheduling_user_id_list: List[int] = None,
     ):
         self.scheduling_end_time = scheduling_end_time
+        self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
         self.scheduling_start_time = scheduling_start_time
         self.scheduling_user_id = scheduling_user_id
+        self.scheduling_user_id_list = scheduling_user_id_list
 
     def validate(self):
         pass
@@ -28191,24 +28776,32 @@ class UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays(TeaMode
         result = dict()
         if self.scheduling_end_time is not None:
             result['schedulingEndTime'] = self.scheduling_end_time
+        if self.scheduling_object_type is not None:
+            result['schedulingObjectType'] = self.scheduling_object_type
         if self.scheduling_order is not None:
             result['schedulingOrder'] = self.scheduling_order
         if self.scheduling_start_time is not None:
             result['schedulingStartTime'] = self.scheduling_start_time
         if self.scheduling_user_id is not None:
             result['schedulingUserId'] = self.scheduling_user_id
+        if self.scheduling_user_id_list is not None:
+            result['schedulingUserIdList'] = self.scheduling_user_id_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('schedulingEndTime') is not None:
             self.scheduling_end_time = m.get('schedulingEndTime')
+        if m.get('schedulingObjectType') is not None:
+            self.scheduling_object_type = m.get('schedulingObjectType')
         if m.get('schedulingOrder') is not None:
             self.scheduling_order = m.get('schedulingOrder')
         if m.get('schedulingStartTime') is not None:
             self.scheduling_start_time = m.get('schedulingStartTime')
         if m.get('schedulingUserId') is not None:
             self.scheduling_user_id = m.get('schedulingUserId')
+        if m.get('schedulingUserIdList') is not None:
+            self.scheduling_user_id_list = m.get('schedulingUserIdList')
         return self
 
 
