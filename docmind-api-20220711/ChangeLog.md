@@ -1,3 +1,6 @@
+2023-03-02 Version: 1.0.2
+- Document covert support excel sheet merge.
+
 2022-12-08 Version: 1.0.1
 - Fix problems when using CSharp SDK.
 

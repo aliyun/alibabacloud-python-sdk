@@ -468,6 +468,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.image_urls):
             request.image_urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not UtilClient.is_unset(request.force_merge_excel):
+            query['ForceMergeExcel'] = request.force_merge_excel
         if not UtilClient.is_unset(request.image_name_extension):
             query['ImageNameExtension'] = request.image_name_extension
         if not UtilClient.is_unset(request.image_names_shrink):
@@ -506,6 +508,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.image_urls):
             request.image_urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_urls, 'ImageUrls', 'simple')
         query = {}
+        if not UtilClient.is_unset(request.force_merge_excel):
+            query['ForceMergeExcel'] = request.force_merge_excel
         if not UtilClient.is_unset(request.image_name_extension):
             query['ImageNameExtension'] = request.image_name_extension
         if not UtilClient.is_unset(request.image_names_shrink):
@@ -736,6 +740,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.force_merge_excel):
+            query['ForceMergeExcel'] = request.force_merge_excel
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -766,6 +772,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.force_merge_excel):
+            query['ForceMergeExcel'] = request.force_merge_excel
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
