@@ -1528,10 +1528,14 @@ class Client(OpenApiClient):
             body['RegistrationDetails'] = request.registration_details
         if not UtilClient.is_unset(request.request_method):
             body['RequestMethod'] = request.request_method
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.response_content_type):
             body['ResponseContentType'] = request.response_content_type
         if not UtilClient.is_unset(request.script_details):
             body['ScriptDetails'] = request.script_details
+        if not UtilClient.is_unset(request.sql_mode):
+            body['SqlMode'] = request.sql_mode
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.timeout):
@@ -1586,10 +1590,14 @@ class Client(OpenApiClient):
             body['RegistrationDetails'] = request.registration_details
         if not UtilClient.is_unset(request.request_method):
             body['RequestMethod'] = request.request_method
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.response_content_type):
             body['ResponseContentType'] = request.response_content_type
         if not UtilClient.is_unset(request.script_details):
             body['ScriptDetails'] = request.script_details
+        if not UtilClient.is_unset(request.sql_mode):
+            body['SqlMode'] = request.sql_mode
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.timeout):
@@ -20644,6 +20652,8 @@ class Client(OpenApiClient):
             body['RegistrationDetails'] = request.registration_details
         if not UtilClient.is_unset(request.request_method):
             body['RequestMethod'] = request.request_method
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.response_content_type):
             body['ResponseContentType'] = request.response_content_type
         if not UtilClient.is_unset(request.script_details):
@@ -20696,6 +20706,8 @@ class Client(OpenApiClient):
             body['RegistrationDetails'] = request.registration_details
         if not UtilClient.is_unset(request.request_method):
             body['RequestMethod'] = request.request_method
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.response_content_type):
             body['ResponseContentType'] = request.response_content_type
         if not UtilClient.is_unset(request.script_details):
