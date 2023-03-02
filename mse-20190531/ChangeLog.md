@@ -1,3 +1,15 @@
+2023-03-02 Version: 3.0.60
+- Fixed errorCode for Gateway API.
+- Fixed errorCode for Gateway apis.
+- Support no login.
+- Fix bug for action segment.
+- Supported for route type.
+- Supported for gateway config version controller.
+- Fixed configLevel.
+- Delete isdelete segment.
+- Fixed UpgradeGateway resource group.
+- Support Eureka item on-off buttom.
+
 2023-02-15 Version: 3.0.59
 - Fixed ErrorCode for UpdateGatewayRoute.
 - Fixed ErrorCode for AddGatewayRoute.
