@@ -1616,7 +1616,7 @@ class AddGatewayRouteRequestFallbackServices(TeaModel):
         source_type: str = None,
         version: str = None,
     ):
-        # The type of the protocol. Valid values:
+        # The type of the protocol.
         self.agreement_type = agreement_type
         # The name of the group to which the service belongs.
         self.group_name = group_name
@@ -1736,7 +1736,7 @@ class AddGatewayRouteRequestPredicatesPathPredicates(TeaModel):
         path: str = None,
         type: str = None,
     ):
-        # Specifies whether to perform case-insensitive matching.
+        # Specifies whether to ignore case sensitivity.
         self.ignore_case = ignore_case
         # The path.
         self.path = path
@@ -1893,7 +1893,7 @@ class AddGatewayRouteRequestRedirectJSON(TeaModel):
         host: str = None,
         path: str = None,
     ):
-        # The HTTP status code.
+        # The status code returned.
         self.code = code
         # The hostname to be redirected to.
         self.host = host
@@ -2077,7 +2077,7 @@ class AddGatewayRouteRequestServicesHttpDubboTranscoder(TeaModel):
         dubbo_service_version: str = None,
         mothed_map_list: List[AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList] = None,
     ):
-        # The service group.
+        # The name of the service group.
         self.dubbo_service_group = dubbo_service_group
         # The name of the Dubbo service.
         self.dubbo_service_name = dubbo_service_name
@@ -2140,7 +2140,7 @@ class AddGatewayRouteRequestServices(TeaModel):
         source_type: str = None,
         version: str = None,
     ):
-        # The type of the protocol. Valid values:
+        # The type of the protocol.
         self.agreement_type = agreement_type
         # The name of the group to which the service belongs.
         self.group_name = group_name
@@ -2233,9 +2233,11 @@ class AddGatewayRouteRequest(TeaModel):
         gateway_id: int = None,
         gateway_unique_id: str = None,
         name: str = None,
+        policies: str = None,
         predicates: AddGatewayRouteRequestPredicates = None,
         redirect_json: AddGatewayRouteRequestRedirectJSON = None,
         route_order: int = None,
+        route_type: str = None,
         services: List[AddGatewayRouteRequestServices] = None,
     ):
         # The language of the response. Valid values:
@@ -2249,9 +2251,9 @@ class AddGatewayRouteRequest(TeaModel):
         self.direct_response_json = direct_response_json
         # The domain ID.
         self.domain_id = domain_id
-        # The list of domain names.
+        # The IDs of domains.
         self.domain_id_list_json = domain_id_list_json
-        # Specifies whether to enable Web Application Firewall (WAF).
+        # Specifies whether to activate Web Application Firewall (WAF).
         self.enable_waf = enable_waf
         # Specifies whether to enable the Fallback service.
         self.fallback = fallback
@@ -2263,12 +2265,14 @@ class AddGatewayRouteRequest(TeaModel):
         self.gateway_unique_id = gateway_unique_id
         # The name of the route.
         self.name = name
+        self.policies = policies
         # The matching rule.
         self.predicates = predicates
         # The configuration of the redirection.
         self.redirect_json = redirect_json
         # The sequence number of the route. (A small value indicates a high priority.)
         self.route_order = route_order
+        self.route_type = route_type
         # The information about services.
         self.services = services
 
@@ -2318,12 +2322,16 @@ class AddGatewayRouteRequest(TeaModel):
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.policies is not None:
+            result['Policies'] = self.policies
         if self.predicates is not None:
             result['Predicates'] = self.predicates.to_map()
         if self.redirect_json is not None:
             result['RedirectJSON'] = self.redirect_json.to_map()
         if self.route_order is not None:
             result['RouteOrder'] = self.route_order
+        if self.route_type is not None:
+            result['RouteType'] = self.route_type
         result['Services'] = []
         if self.services is not None:
             for k in self.services:
@@ -2358,6 +2366,8 @@ class AddGatewayRouteRequest(TeaModel):
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Policies') is not None:
+            self.policies = m.get('Policies')
         if m.get('Predicates') is not None:
             temp_model = AddGatewayRouteRequestPredicates()
             self.predicates = temp_model.from_map(m['Predicates'])
@@ -2366,6 +2376,8 @@ class AddGatewayRouteRequest(TeaModel):
             self.redirect_json = temp_model.from_map(m['RedirectJSON'])
         if m.get('RouteOrder') is not None:
             self.route_order = m.get('RouteOrder')
+        if m.get('RouteType') is not None:
+            self.route_type = m.get('RouteType')
         self.services = []
         if m.get('Services') is not None:
             for k in m.get('Services'):
@@ -2388,9 +2400,11 @@ class AddGatewayRouteShrinkRequest(TeaModel):
         gateway_id: int = None,
         gateway_unique_id: str = None,
         name: str = None,
+        policies: str = None,
         predicates_shrink: str = None,
         redirect_jsonshrink: str = None,
         route_order: int = None,
+        route_type: str = None,
         services_shrink: str = None,
     ):
         # The language of the response. Valid values:
@@ -2404,9 +2418,9 @@ class AddGatewayRouteShrinkRequest(TeaModel):
         self.direct_response_jsonshrink = direct_response_jsonshrink
         # The domain ID.
         self.domain_id = domain_id
-        # The list of domain names.
+        # The IDs of domains.
         self.domain_id_list_json = domain_id_list_json
-        # Specifies whether to enable Web Application Firewall (WAF).
+        # Specifies whether to activate Web Application Firewall (WAF).
         self.enable_waf = enable_waf
         # Specifies whether to enable the Fallback service.
         self.fallback = fallback
@@ -2418,12 +2432,14 @@ class AddGatewayRouteShrinkRequest(TeaModel):
         self.gateway_unique_id = gateway_unique_id
         # The name of the route.
         self.name = name
+        self.policies = policies
         # The matching rule.
         self.predicates_shrink = predicates_shrink
         # The configuration of the redirection.
         self.redirect_jsonshrink = redirect_jsonshrink
         # The sequence number of the route. (A small value indicates a high priority.)
         self.route_order = route_order
+        self.route_type = route_type
         # The information about services.
         self.services_shrink = services_shrink
 
@@ -2458,12 +2474,16 @@ class AddGatewayRouteShrinkRequest(TeaModel):
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.policies is not None:
+            result['Policies'] = self.policies
         if self.predicates_shrink is not None:
             result['Predicates'] = self.predicates_shrink
         if self.redirect_jsonshrink is not None:
             result['RedirectJSON'] = self.redirect_jsonshrink
         if self.route_order is not None:
             result['RouteOrder'] = self.route_order
+        if self.route_type is not None:
+            result['RouteType'] = self.route_type
         if self.services_shrink is not None:
             result['Services'] = self.services_shrink
         return result
@@ -2492,12 +2512,16 @@ class AddGatewayRouteShrinkRequest(TeaModel):
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Policies') is not None:
+            self.policies = m.get('Policies')
         if m.get('Predicates') is not None:
             self.predicates_shrink = m.get('Predicates')
         if m.get('RedirectJSON') is not None:
             self.redirect_jsonshrink = m.get('RedirectJSON')
         if m.get('RouteOrder') is not None:
             self.route_order = m.get('RouteOrder')
+        if m.get('RouteType') is not None:
+            self.route_type = m.get('RouteType')
         if m.get('Services') is not None:
             self.services_shrink = m.get('Services')
         return self
@@ -12593,13 +12617,25 @@ class FetchLosslessRuleListRequest(TeaModel):
         region_id: str = None,
         source: str = None,
     ):
+        # The language of the response. In compliance with [RFC 7231](https://tools.ietf.org/html/rfc7231), the backend service must return a response based on the language used by the user.
+        # 
+        # *   By default, this parameter is left empty.
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The namespace.
         self.namespace = namespace
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
+        # The service source that the application accesses.
         self.source = source
 
     def validate(self):
@@ -12666,17 +12702,32 @@ class FetchLosslessRuleListResponseBodyDataResults(TeaModel):
         shutdown_wait_seconds: int = None,
         warmup_time: int = None,
     ):
+        # Indicates whether delayed registration is enabled.
         self.aligned = aligned
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The number of instances.
         self.count = count
+        # The registration latency.
         self.delay_time = delay_time
+        # The status. Valid values:
+        # 
+        # *   `true`: enabled.
+        # *   `false`: disabled.
         self.enable = enable
+        # The slope of the prefetching curve.
         self.func_type = func_type
+        # Indicates whether the graceful start and shutdown feature is enabled.
         self.loss_less_detail = loss_less_detail
+        # Indicates whether notification is enabled.
         self.notice = notice
+        # Indicates whether service prefetching is associated.
         self.related = related
+        # The wait time for application shutdown.
         self.shutdown_wait_seconds = shutdown_wait_seconds
+        # The prefetching duration.
         self.warmup_time = warmup_time
 
     def validate(self):
@@ -12751,9 +12802,13 @@ class FetchLosslessRuleListResponseBodyData(TeaModel):
         results: List[FetchLosslessRuleListResponseBodyDataResults] = None,
         total_size: int = None,
     ):
+        # The number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The data returned.
         self.results = results
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -12806,11 +12861,20 @@ class FetchLosslessRuleListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code returned.
         self.code = code
+        # The response.
         self.data = data
+        # The HTTP status code returned.
         self.http_code = http_code
+        # The message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`: The request was successful.
+        # *   `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -16229,6 +16293,7 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
         header_op: GetGatewayRouteDetailResponseBodyDataHeaderOp = None,
         id: int = None,
         name: str = None,
+        policies: str = None,
         predicates: str = None,
         redirect: GetGatewayRouteDetailResponseBodyDataRedirect = None,
         retry: GetGatewayRouteDetailResponseBodyDataRetry = None,
@@ -16281,6 +16346,7 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
         self.id = id
         # The name.
         self.name = name
+        self.policies = policies
         # The matching conditions.
         self.predicates = predicates
         # The configuration of the redirection.
@@ -16383,6 +16449,8 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
             result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.policies is not None:
+            result['Policies'] = self.policies
         if self.predicates is not None:
             result['Predicates'] = self.predicates
         if self.redirect is not None:
@@ -16456,6 +16524,8 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Policies') is not None:
+            self.policies = m.get('Policies')
         if m.get('Predicates') is not None:
             self.predicates = m.get('Predicates')
         if m.get('Redirect') is not None:
@@ -18996,9 +19066,9 @@ class GetOverviewRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
-        # The subscription period of the instance. Unit: months. Valid values: 1, 2, 3, 6, and 12.
+        # The time range for the query. Unit: days. For example, if you set this parameter to 30, the governance rules within the last 30 days are queried.
         self.period = period
-        # The region ID.
+        # The ID of the region.
         self.region = region
 
     def validate(self):
@@ -19039,7 +19109,7 @@ class GetOverviewResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code returned.
+        # The response code returned.
         self.code = code
         # The details of the data.
         self.data = data
@@ -32423,7 +32493,7 @@ class ListSecurityGroupResponseBodyData(TeaModel):
         # The type of the security group. Valid values:
         # 
         # *   normal: basic security group
-        # *   enterprise: advanced security group. For more information, see [Advanced security groups](~~120621~~).
+        # *   enterprise: advanced security group For more information, see [Advanced security groups](~~120621~~).
         self.security_group_type = security_group_type
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
@@ -32474,9 +32544,9 @@ class ListSecurityGroupResponseBody(TeaModel):
         self.code = code
         # The data structure.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
@@ -37427,6 +37497,7 @@ class QueryConfigResponseBodyData(TeaModel):
         config_content_limit: int = None,
         config_secret_enabled: bool = None,
         config_secret_supported: bool = None,
+        eureka_supported: bool = None,
         extended_types_enable: bool = None,
         init_limit: str = None,
         jute_maxbuffer: str = None,
@@ -37476,6 +37547,7 @@ class QueryConfigResponseBodyData(TeaModel):
         # *   `true`: supported
         # *   `false`: not supported
         self.config_secret_supported = config_secret_supported
+        self.eureka_supported = eureka_supported
         # Indicates whether the time to live (TTL) configuration is enabled. This parameter is valid for ZooKeeper instances.
         self.extended_types_enable = extended_types_enable
         # The maximum connection duration of the instance. Unit: seconds. This parameter is valid for ZooKeeper instances.
@@ -37565,6 +37637,8 @@ class QueryConfigResponseBodyData(TeaModel):
             result['ConfigSecretEnabled'] = self.config_secret_enabled
         if self.config_secret_supported is not None:
             result['ConfigSecretSupported'] = self.config_secret_supported
+        if self.eureka_supported is not None:
+            result['EurekaSupported'] = self.eureka_supported
         if self.extended_types_enable is not None:
             result['ExtendedTypesEnable'] = self.extended_types_enable
         if self.init_limit is not None:
@@ -37625,6 +37699,8 @@ class QueryConfigResponseBodyData(TeaModel):
             self.config_secret_enabled = m.get('ConfigSecretEnabled')
         if m.get('ConfigSecretSupported') is not None:
             self.config_secret_supported = m.get('ConfigSecretSupported')
+        if m.get('EurekaSupported') is not None:
+            self.eureka_supported = m.get('EurekaSupported')
         if m.get('ExtendedTypesEnable') is not None:
             self.extended_types_enable = m.get('ExtendedTypesEnable')
         if m.get('InitLimit') is not None:

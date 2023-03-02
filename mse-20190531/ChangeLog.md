@@ -1,3 +1,7 @@
+2023-03-02 Version: 3.0.61
+- Update QueryConfig.
+- Supporte for Edas gray.
+
 2023-03-02 Version: 3.0.60
 - Fixed errorCode for Gateway API.
 - Fixed errorCode for Gateway apis.
