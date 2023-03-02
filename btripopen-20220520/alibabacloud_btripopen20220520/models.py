@@ -255,12 +255,14 @@ class AddressGetRequest(TeaModel):
         action_type: int = None,
         itinerary_id: str = None,
         phone: str = None,
+        sub_corp_id: str = None,
         type: int = None,
         user_id: str = None,
     ):
         self.action_type = action_type
         self.itinerary_id = itinerary_id
         self.phone = phone
+        self.sub_corp_id = sub_corp_id
         self.type = type
         self.user_id = user_id
 
@@ -279,6 +281,8 @@ class AddressGetRequest(TeaModel):
             result['itinerary_id'] = self.itinerary_id
         if self.phone is not None:
             result['phone'] = self.phone
+        if self.sub_corp_id is not None:
+            result['sub_corp_id'] = self.sub_corp_id
         if self.type is not None:
             result['type'] = self.type
         if self.user_id is not None:
@@ -293,6 +297,8 @@ class AddressGetRequest(TeaModel):
             self.itinerary_id = m.get('itinerary_id')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
+        if m.get('sub_corp_id') is not None:
+            self.sub_corp_id = m.get('sub_corp_id')
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('user_id') is not None:

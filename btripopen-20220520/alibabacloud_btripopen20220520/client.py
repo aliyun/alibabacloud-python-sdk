@@ -135,6 +135,8 @@ class Client(OpenApiClient):
             query['itinerary_id'] = request.itinerary_id
         if not UtilClient.is_unset(request.phone):
             query['phone'] = request.phone
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         if not UtilClient.is_unset(request.user_id):
@@ -178,6 +180,8 @@ class Client(OpenApiClient):
             query['itinerary_id'] = request.itinerary_id
         if not UtilClient.is_unset(request.phone):
             query['phone'] = request.phone
+        if not UtilClient.is_unset(request.sub_corp_id):
+            query['sub_corp_id'] = request.sub_corp_id
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         if not UtilClient.is_unset(request.user_id):
