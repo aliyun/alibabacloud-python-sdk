@@ -1,3 +1,6 @@
+2023-03-02 Version: 1.17.1
+- Fix list environments.
+
 2022-09-15 Version: 1.15.0
 - Public new version.
 

@@ -41,24 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_environment_nodes(
-        self,
-        uid: str,
-        request: adp_20210720_models.AddEnvironmentNodesRequest,
-    ) -> adp_20210720_models.AddEnvironmentNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.add_environment_nodes_with_options(uid, request, headers, runtime)
-
-    async def add_environment_nodes_async(
-        self,
-        uid: str,
-        request: adp_20210720_models.AddEnvironmentNodesRequest,
-    ) -> adp_20210720_models.AddEnvironmentNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.add_environment_nodes_with_options_async(uid, request, headers, runtime)
-
     def add_environment_nodes_with_options(
         self,
         uid: str,
@@ -177,23 +159,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_environment_product_versions(
+    def add_environment_nodes(
         self,
         uid: str,
-        request: adp_20210720_models.AddEnvironmentProductVersionsRequest,
-    ) -> adp_20210720_models.AddEnvironmentProductVersionsResponse:
+        request: adp_20210720_models.AddEnvironmentNodesRequest,
+    ) -> adp_20210720_models.AddEnvironmentNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_environment_product_versions_with_options(uid, request, headers, runtime)
+        return self.add_environment_nodes_with_options(uid, request, headers, runtime)
 
-    async def add_environment_product_versions_async(
+    async def add_environment_nodes_async(
         self,
         uid: str,
-        request: adp_20210720_models.AddEnvironmentProductVersionsRequest,
-    ) -> adp_20210720_models.AddEnvironmentProductVersionsResponse:
+        request: adp_20210720_models.AddEnvironmentNodesRequest,
+    ) -> adp_20210720_models.AddEnvironmentNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_environment_product_versions_with_options_async(uid, request, headers, runtime)
+        return await self.add_environment_nodes_with_options_async(uid, request, headers, runtime)
 
     def add_environment_product_versions_with_options(
         self,
@@ -261,25 +243,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_product_component_version(
+    def add_environment_product_versions(
         self,
         uid: str,
-        component_version_uid: str,
-        request: adp_20210720_models.AddProductComponentVersionRequest,
-    ) -> adp_20210720_models.AddProductComponentVersionResponse:
+        request: adp_20210720_models.AddEnvironmentProductVersionsRequest,
+    ) -> adp_20210720_models.AddEnvironmentProductVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_product_component_version_with_options(uid, component_version_uid, request, headers, runtime)
+        return self.add_environment_product_versions_with_options(uid, request, headers, runtime)
 
-    async def add_product_component_version_async(
+    async def add_environment_product_versions_async(
         self,
         uid: str,
-        component_version_uid: str,
-        request: adp_20210720_models.AddProductComponentVersionRequest,
-    ) -> adp_20210720_models.AddProductComponentVersionResponse:
+        request: adp_20210720_models.AddEnvironmentProductVersionsRequest,
+    ) -> adp_20210720_models.AddEnvironmentProductVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_product_component_version_with_options_async(uid, component_version_uid, request, headers, runtime)
+        return await self.add_environment_product_versions_with_options_async(uid, request, headers, runtime)
 
     def add_product_component_version_with_options(
         self,
@@ -291,6 +271,10 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.AddProductComponentVersionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.component_version_spec_uid):
+            body['componentVersionSpecUID'] = request.component_version_spec_uid
+        if not UtilClient.is_unset(request.component_version_spec_values):
+            body['componentVersionSpecValues'] = request.component_version_spec_values
         if not UtilClient.is_unset(request.release_name):
             body['releaseName'] = request.release_name
         req = open_api_models.OpenApiRequest(
@@ -323,6 +307,10 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.AddProductComponentVersionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.component_version_spec_uid):
+            body['componentVersionSpecUID'] = request.component_version_spec_uid
+        if not UtilClient.is_unset(request.component_version_spec_values):
+            body['componentVersionSpecValues'] = request.component_version_spec_values
         if not UtilClient.is_unset(request.release_name):
             body['releaseName'] = request.release_name
         req = open_api_models.OpenApiRequest(
@@ -345,23 +333,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_product_version_config(
+    def add_product_component_version(
         self,
         uid: str,
-        request: adp_20210720_models.AddProductVersionConfigRequest,
-    ) -> adp_20210720_models.AddProductVersionConfigResponse:
+        component_version_uid: str,
+        request: adp_20210720_models.AddProductComponentVersionRequest,
+    ) -> adp_20210720_models.AddProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_product_version_config_with_options(uid, request, headers, runtime)
+        return self.add_product_component_version_with_options(uid, component_version_uid, request, headers, runtime)
 
-    async def add_product_version_config_async(
+    async def add_product_component_version_async(
         self,
         uid: str,
-        request: adp_20210720_models.AddProductVersionConfigRequest,
-    ) -> adp_20210720_models.AddProductVersionConfigResponse:
+        component_version_uid: str,
+        request: adp_20210720_models.AddProductComponentVersionRequest,
+    ) -> adp_20210720_models.AddProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_product_version_config_with_options_async(uid, request, headers, runtime)
+        return await self.add_product_component_version_with_options_async(uid, component_version_uid, request, headers, runtime)
 
     def add_product_version_config_with_options(
         self,
@@ -457,21 +447,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_resource_snapshot(
+    def add_product_version_config(
         self,
-        request: adp_20210720_models.AddResourceSnapshotRequest,
-    ) -> adp_20210720_models.AddResourceSnapshotResponse:
+        uid: str,
+        request: adp_20210720_models.AddProductVersionConfigRequest,
+    ) -> adp_20210720_models.AddProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_resource_snapshot_with_options(request, headers, runtime)
+        return self.add_product_version_config_with_options(uid, request, headers, runtime)
 
-    async def add_resource_snapshot_async(
+    async def add_product_version_config_async(
         self,
-        request: adp_20210720_models.AddResourceSnapshotRequest,
-    ) -> adp_20210720_models.AddResourceSnapshotResponse:
+        uid: str,
+        request: adp_20210720_models.AddProductVersionConfigRequest,
+    ) -> adp_20210720_models.AddProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_resource_snapshot_with_options_async(request, headers, runtime)
+        return await self.add_product_version_config_with_options_async(uid, request, headers, runtime)
 
     def add_resource_snapshot_with_options(
         self,
@@ -545,23 +537,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_add_environment_nodes(
+    def add_resource_snapshot(
         self,
-        uid: str,
-        request: adp_20210720_models.BatchAddEnvironmentNodesRequest,
-    ) -> adp_20210720_models.BatchAddEnvironmentNodesResponse:
+        request: adp_20210720_models.AddResourceSnapshotRequest,
+    ) -> adp_20210720_models.AddResourceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_add_environment_nodes_with_options(uid, request, headers, runtime)
+        return self.add_resource_snapshot_with_options(request, headers, runtime)
 
-    async def batch_add_environment_nodes_async(
+    async def add_resource_snapshot_async(
         self,
-        uid: str,
-        request: adp_20210720_models.BatchAddEnvironmentNodesRequest,
-    ) -> adp_20210720_models.BatchAddEnvironmentNodesResponse:
+        request: adp_20210720_models.AddResourceSnapshotRequest,
+    ) -> adp_20210720_models.AddResourceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_add_environment_nodes_with_options_async(uid, request, headers, runtime)
+        return await self.add_resource_snapshot_with_options_async(request, headers, runtime)
 
     def batch_add_environment_nodes_with_options(
         self,
@@ -629,23 +619,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_add_product_version_config(
+    def batch_add_environment_nodes(
         self,
         uid: str,
-        request: adp_20210720_models.BatchAddProductVersionConfigRequest,
-    ) -> adp_20210720_models.BatchAddProductVersionConfigResponse:
+        request: adp_20210720_models.BatchAddEnvironmentNodesRequest,
+    ) -> adp_20210720_models.BatchAddEnvironmentNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_add_product_version_config_with_options(uid, request, headers, runtime)
+        return self.batch_add_environment_nodes_with_options(uid, request, headers, runtime)
 
-    async def batch_add_product_version_config_async(
+    async def batch_add_environment_nodes_async(
         self,
         uid: str,
-        request: adp_20210720_models.BatchAddProductVersionConfigRequest,
-    ) -> adp_20210720_models.BatchAddProductVersionConfigResponse:
+        request: adp_20210720_models.BatchAddEnvironmentNodesRequest,
+    ) -> adp_20210720_models.BatchAddEnvironmentNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_add_product_version_config_with_options_async(uid, request, headers, runtime)
+        return await self.batch_add_environment_nodes_with_options_async(uid, request, headers, runtime)
 
     def batch_add_product_version_config_with_options(
         self,
@@ -709,21 +699,287 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_environment(
+    def batch_add_product_version_config(
         self,
-        request: adp_20210720_models.CreateEnvironmentRequest,
-    ) -> adp_20210720_models.CreateEnvironmentResponse:
+        uid: str,
+        request: adp_20210720_models.BatchAddProductVersionConfigRequest,
+    ) -> adp_20210720_models.BatchAddProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = adp_20210720_models.CreateEnvironmentHeaders()
-        return self.create_environment_with_options(request, headers, runtime)
+        headers = {}
+        return self.batch_add_product_version_config_with_options(uid, request, headers, runtime)
 
-    async def create_environment_async(
+    async def batch_add_product_version_config_async(
         self,
-        request: adp_20210720_models.CreateEnvironmentRequest,
-    ) -> adp_20210720_models.CreateEnvironmentResponse:
+        uid: str,
+        request: adp_20210720_models.BatchAddProductVersionConfigRequest,
+    ) -> adp_20210720_models.BatchAddProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
-        headers = adp_20210720_models.CreateEnvironmentHeaders()
-        return await self.create_environment_with_options_async(request, headers, runtime)
+        headers = {}
+        return await self.batch_add_product_version_config_with_options_async(uid, request, headers, runtime)
+
+    def create_deliverable_with_options(
+        self,
+        request: adp_20210720_models.CreateDeliverableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.CreateDeliverableResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.foundation):
+            body['foundation'] = request.foundation
+        if not UtilClient.is_unset(request.products):
+            body['products'] = request.products
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliverable',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/deliverables',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.CreateDeliverableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_deliverable_with_options_async(
+        self,
+        request: adp_20210720_models.CreateDeliverableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.CreateDeliverableResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.foundation):
+            body['foundation'] = request.foundation
+        if not UtilClient.is_unset(request.products):
+            body['products'] = request.products
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliverable',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/deliverables',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.CreateDeliverableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_deliverable(
+        self,
+        request: adp_20210720_models.CreateDeliverableRequest,
+    ) -> adp_20210720_models.CreateDeliverableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_deliverable_with_options(request, headers, runtime)
+
+    async def create_deliverable_async(
+        self,
+        request: adp_20210720_models.CreateDeliverableRequest,
+    ) -> adp_20210720_models.CreateDeliverableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_deliverable_with_options_async(request, headers, runtime)
+
+    def create_delivery_instance_with_options(
+        self,
+        request: adp_20210720_models.CreateDeliveryInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.CreateDeliveryInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_uid):
+            body['clusterUID'] = request.cluster_uid
+        if not UtilClient.is_unset(request.deliverable_config_uid):
+            body['deliverableConfigUID'] = request.deliverable_config_uid
+        if not UtilClient.is_unset(request.deliverable_uid):
+            body['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.env_uid):
+            body['envUID'] = request.env_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliveryInstance',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.CreateDeliveryInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_delivery_instance_with_options_async(
+        self,
+        request: adp_20210720_models.CreateDeliveryInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.CreateDeliveryInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_uid):
+            body['clusterUID'] = request.cluster_uid
+        if not UtilClient.is_unset(request.deliverable_config_uid):
+            body['deliverableConfigUID'] = request.deliverable_config_uid
+        if not UtilClient.is_unset(request.deliverable_uid):
+            body['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.env_uid):
+            body['envUID'] = request.env_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliveryInstance',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.CreateDeliveryInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_delivery_instance(
+        self,
+        request: adp_20210720_models.CreateDeliveryInstanceRequest,
+    ) -> adp_20210720_models.CreateDeliveryInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_delivery_instance_with_options(request, headers, runtime)
+
+    async def create_delivery_instance_async(
+        self,
+        request: adp_20210720_models.CreateDeliveryInstanceRequest,
+    ) -> adp_20210720_models.CreateDeliveryInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_delivery_instance_with_options_async(request, headers, runtime)
+
+    def create_delivery_package_with_options(
+        self,
+        request: adp_20210720_models.CreateDeliveryPackageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.CreateDeliveryPackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deliverable_uid):
+            body['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.delivery_instance_uid):
+            body['deliveryInstanceUID'] = request.delivery_instance_uid
+        if not UtilClient.is_unset(request.origin_deliverable_uid):
+            body['originDeliverableUID'] = request.origin_deliverable_uid
+        if not UtilClient.is_unset(request.package_content_type):
+            body['packageContentType'] = request.package_content_type
+        if not UtilClient.is_unset(request.package_type):
+            body['packageType'] = request.package_type
+        if not UtilClient.is_unset(request.platform):
+            body['platform'] = request.platform
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliveryPackage',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-packages',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.CreateDeliveryPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_delivery_package_with_options_async(
+        self,
+        request: adp_20210720_models.CreateDeliveryPackageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.CreateDeliveryPackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deliverable_uid):
+            body['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.delivery_instance_uid):
+            body['deliveryInstanceUID'] = request.delivery_instance_uid
+        if not UtilClient.is_unset(request.origin_deliverable_uid):
+            body['originDeliverableUID'] = request.origin_deliverable_uid
+        if not UtilClient.is_unset(request.package_content_type):
+            body['packageContentType'] = request.package_content_type
+        if not UtilClient.is_unset(request.package_type):
+            body['packageType'] = request.package_type
+        if not UtilClient.is_unset(request.platform):
+            body['platform'] = request.platform
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeliveryPackage',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-packages',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.CreateDeliveryPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_delivery_package(
+        self,
+        request: adp_20210720_models.CreateDeliveryPackageRequest,
+    ) -> adp_20210720_models.CreateDeliveryPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_delivery_package_with_options(request, headers, runtime)
+
+    async def create_delivery_package_async(
+        self,
+        request: adp_20210720_models.CreateDeliveryPackageRequest,
+    ) -> adp_20210720_models.CreateDeliveryPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_delivery_package_with_options_async(request, headers, runtime)
 
     def create_environment_with_options(
         self,
@@ -733,6 +989,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.CreateEnvironmentResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.annotations):
+            body['annotations'] = request.annotations
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.location):
@@ -784,6 +1042,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.CreateEnvironmentResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.annotations):
+            body['annotations'] = request.annotations
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.location):
@@ -827,23 +1087,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_environment_license(
+    def create_environment(
         self,
-        uid: str,
-        request: adp_20210720_models.CreateEnvironmentLicenseRequest,
-    ) -> adp_20210720_models.CreateEnvironmentLicenseResponse:
+        request: adp_20210720_models.CreateEnvironmentRequest,
+    ) -> adp_20210720_models.CreateEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_environment_license_with_options(uid, request, headers, runtime)
+        headers = adp_20210720_models.CreateEnvironmentHeaders()
+        return self.create_environment_with_options(request, headers, runtime)
 
-    async def create_environment_license_async(
+    async def create_environment_async(
         self,
-        uid: str,
-        request: adp_20210720_models.CreateEnvironmentLicenseRequest,
-    ) -> adp_20210720_models.CreateEnvironmentLicenseResponse:
+        request: adp_20210720_models.CreateEnvironmentRequest,
+    ) -> adp_20210720_models.CreateEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_environment_license_with_options_async(uid, request, headers, runtime)
+        headers = adp_20210720_models.CreateEnvironmentHeaders()
+        return await self.create_environment_with_options_async(request, headers, runtime)
 
     def create_environment_license_with_options(
         self,
@@ -860,6 +1118,8 @@ class Client(OpenApiClient):
             body['contact'] = request.contact
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.expire_time):
+            body['expireTime'] = request.expire_time
         if not UtilClient.is_unset(request.license_quota):
             body['licenseQuota'] = request.license_quota
         if not UtilClient.is_unset(request.machine_fingerprint):
@@ -909,6 +1169,8 @@ class Client(OpenApiClient):
             body['contact'] = request.contact
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.expire_time):
+            body['expireTime'] = request.expire_time
         if not UtilClient.is_unset(request.license_quota):
             body['licenseQuota'] = request.license_quota
         if not UtilClient.is_unset(request.machine_fingerprint):
@@ -943,21 +1205,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_foundation_reference(
+    def create_environment_license(
         self,
-        request: adp_20210720_models.CreateFoundationReferenceRequest,
-    ) -> adp_20210720_models.CreateFoundationReferenceResponse:
+        uid: str,
+        request: adp_20210720_models.CreateEnvironmentLicenseRequest,
+    ) -> adp_20210720_models.CreateEnvironmentLicenseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_foundation_reference_with_options(request, headers, runtime)
+        return self.create_environment_license_with_options(uid, request, headers, runtime)
 
-    async def create_foundation_reference_async(
+    async def create_environment_license_async(
         self,
-        request: adp_20210720_models.CreateFoundationReferenceRequest,
-    ) -> adp_20210720_models.CreateFoundationReferenceResponse:
+        uid: str,
+        request: adp_20210720_models.CreateEnvironmentLicenseRequest,
+    ) -> adp_20210720_models.CreateEnvironmentLicenseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_foundation_reference_with_options_async(request, headers, runtime)
+        return await self.create_environment_license_with_options_async(uid, request, headers, runtime)
 
     def create_foundation_reference_with_options(
         self,
@@ -969,8 +1233,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_config):
             body['clusterConfig'] = request.cluster_config
+        if not UtilClient.is_unset(request.component_configs):
+            body['componentConfigs'] = request.component_configs
+        if not UtilClient.is_unset(request.foundation_reference_configs):
+            body['foundationReferenceConfigs'] = request.foundation_reference_configs
         if not UtilClient.is_unset(request.foundation_version_uid):
             body['foundationVersionUID'] = request.foundation_version_uid
+        if not UtilClient.is_unset(request.origin_foundation_reference_uid):
+            body['originFoundationReferenceUID'] = request.origin_foundation_reference_uid
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1001,8 +1271,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_config):
             body['clusterConfig'] = request.cluster_config
+        if not UtilClient.is_unset(request.component_configs):
+            body['componentConfigs'] = request.component_configs
+        if not UtilClient.is_unset(request.foundation_reference_configs):
+            body['foundationReferenceConfigs'] = request.foundation_reference_configs
         if not UtilClient.is_unset(request.foundation_version_uid):
             body['foundationVersionUID'] = request.foundation_version_uid
+        if not UtilClient.is_unset(request.origin_foundation_reference_uid):
+            body['originFoundationReferenceUID'] = request.origin_foundation_reference_uid
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1023,21 +1299,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_product(
+    def create_foundation_reference(
         self,
-        request: adp_20210720_models.CreateProductRequest,
-    ) -> adp_20210720_models.CreateProductResponse:
+        request: adp_20210720_models.CreateFoundationReferenceRequest,
+    ) -> adp_20210720_models.CreateFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = adp_20210720_models.CreateProductHeaders()
-        return self.create_product_with_options(request, headers, runtime)
+        headers = {}
+        return self.create_foundation_reference_with_options(request, headers, runtime)
 
-    async def create_product_async(
+    async def create_foundation_reference_async(
         self,
-        request: adp_20210720_models.CreateProductRequest,
-    ) -> adp_20210720_models.CreateProductResponse:
+        request: adp_20210720_models.CreateFoundationReferenceRequest,
+    ) -> adp_20210720_models.CreateFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
-        headers = adp_20210720_models.CreateProductHeaders()
-        return await self.create_product_with_options_async(request, headers, runtime)
+        headers = {}
+        return await self.create_foundation_reference_with_options_async(request, headers, runtime)
 
     def create_product_with_options(
         self,
@@ -1059,6 +1335,8 @@ class Client(OpenApiClient):
             body['productName'] = request.product_name
         if not UtilClient.is_unset(request.vendor):
             body['vendor'] = request.vendor
+        if not UtilClient.is_unset(request.without_product_version):
+            body['withoutProductVersion'] = request.without_product_version
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1104,6 +1382,8 @@ class Client(OpenApiClient):
             body['productName'] = request.product_name
         if not UtilClient.is_unset(request.vendor):
             body['vendor'] = request.vendor
+        if not UtilClient.is_unset(request.without_product_version):
+            body['withoutProductVersion'] = request.without_product_version
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1129,21 +1409,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_product_deployment(
+    def create_product(
         self,
-        request: adp_20210720_models.CreateProductDeploymentRequest,
-    ) -> adp_20210720_models.CreateProductDeploymentResponse:
+        request: adp_20210720_models.CreateProductRequest,
+    ) -> adp_20210720_models.CreateProductResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_product_deployment_with_options(request, headers, runtime)
+        headers = adp_20210720_models.CreateProductHeaders()
+        return self.create_product_with_options(request, headers, runtime)
 
-    async def create_product_deployment_async(
+    async def create_product_async(
         self,
-        request: adp_20210720_models.CreateProductDeploymentRequest,
-    ) -> adp_20210720_models.CreateProductDeploymentResponse:
+        request: adp_20210720_models.CreateProductRequest,
+    ) -> adp_20210720_models.CreateProductResponse:
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_product_deployment_with_options_async(request, headers, runtime)
+        headers = adp_20210720_models.CreateProductHeaders()
+        return await self.create_product_with_options_async(request, headers, runtime)
 
     def create_product_deployment_with_options(
         self,
@@ -1165,6 +1445,8 @@ class Client(OpenApiClient):
             body['packageUID'] = request.package_uid
         if not UtilClient.is_unset(request.product_version_uid):
             body['productVersionUID'] = request.product_version_uid
+        if not UtilClient.is_unset(request.timeout):
+            body['timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1205,6 +1487,8 @@ class Client(OpenApiClient):
             body['packageUID'] = request.package_uid
         if not UtilClient.is_unset(request.product_version_uid):
             body['productVersionUID'] = request.product_version_uid
+        if not UtilClient.is_unset(request.timeout):
+            body['timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1225,23 +1509,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_product_version(
+    def create_product_deployment(
         self,
-        uid: str,
-        request: adp_20210720_models.CreateProductVersionRequest,
-    ) -> adp_20210720_models.CreateProductVersionResponse:
+        request: adp_20210720_models.CreateProductDeploymentRequest,
+    ) -> adp_20210720_models.CreateProductDeploymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_product_version_with_options(uid, request, headers, runtime)
+        return self.create_product_deployment_with_options(request, headers, runtime)
 
-    async def create_product_version_async(
+    async def create_product_deployment_async(
         self,
-        uid: str,
-        request: adp_20210720_models.CreateProductVersionRequest,
-    ) -> adp_20210720_models.CreateProductVersionResponse:
+        request: adp_20210720_models.CreateProductDeploymentRequest,
+    ) -> adp_20210720_models.CreateProductDeploymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_product_version_with_options_async(uid, request, headers, runtime)
+        return await self.create_product_deployment_with_options_async(request, headers, runtime)
 
     def create_product_version_with_options(
         self,
@@ -1254,9 +1536,13 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.base_product_version_uid):
             query['baseProductVersionUID'] = request.base_product_version_uid
+        body = {}
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateProductVersion',
@@ -1285,9 +1571,13 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.base_product_version_uid):
             query['baseProductVersionUID'] = request.base_product_version_uid
+        body = {}
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateProductVersion',
@@ -1305,23 +1595,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_product_version_package(
+    def create_product_version(
         self,
         uid: str,
-        request: adp_20210720_models.CreateProductVersionPackageRequest,
-    ) -> adp_20210720_models.CreateProductVersionPackageResponse:
+        request: adp_20210720_models.CreateProductVersionRequest,
+    ) -> adp_20210720_models.CreateProductVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = adp_20210720_models.CreateProductVersionPackageHeaders()
-        return self.create_product_version_package_with_options(uid, request, headers, runtime)
+        headers = {}
+        return self.create_product_version_with_options(uid, request, headers, runtime)
 
-    async def create_product_version_package_async(
+    async def create_product_version_async(
         self,
         uid: str,
-        request: adp_20210720_models.CreateProductVersionPackageRequest,
-    ) -> adp_20210720_models.CreateProductVersionPackageResponse:
+        request: adp_20210720_models.CreateProductVersionRequest,
+    ) -> adp_20210720_models.CreateProductVersionResponse:
         runtime = util_models.RuntimeOptions()
-        headers = adp_20210720_models.CreateProductVersionPackageHeaders()
-        return await self.create_product_version_package_with_options_async(uid, request, headers, runtime)
+        headers = {}
+        return await self.create_product_version_with_options_async(uid, request, headers, runtime)
 
     def create_product_version_package_with_options(
         self,
@@ -1330,6 +1620,15 @@ class Client(OpenApiClient):
         headers: adp_20210720_models.CreateProductVersionPackageHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.CreateProductVersionPackageResponse:
+        """
+        @deprecated
+        
+        @param request: CreateProductVersionPackageRequest
+        @param headers: CreateProductVersionPackageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductVersionPackageResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_engine_type):
@@ -1380,6 +1679,15 @@ class Client(OpenApiClient):
         headers: adp_20210720_models.CreateProductVersionPackageHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.CreateProductVersionPackageResponse:
+        """
+        @deprecated
+        
+        @param request: CreateProductVersionPackageRequest
+        @param headers: CreateProductVersionPackageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProductVersionPackageResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_engine_type):
@@ -1423,21 +1731,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_environment(
+    def create_product_version_package(
         self,
         uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentResponse:
+        request: adp_20210720_models.CreateProductVersionPackageRequest,
+    ) -> adp_20210720_models.CreateProductVersionPackageResponse:
+        """
+        @deprecated
+        
+        @param request: CreateProductVersionPackageRequest
+        @return: CreateProductVersionPackageResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_environment_with_options(uid, headers, runtime)
+        headers = adp_20210720_models.CreateProductVersionPackageHeaders()
+        return self.create_product_version_package_with_options(uid, request, headers, runtime)
 
-    async def delete_environment_async(
+    async def create_product_version_package_async(
         self,
         uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentResponse:
+        request: adp_20210720_models.CreateProductVersionPackageRequest,
+    ) -> adp_20210720_models.CreateProductVersionPackageResponse:
+        """
+        @deprecated
+        
+        @param request: CreateProductVersionPackageRequest
+        @return: CreateProductVersionPackageResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_environment_with_options_async(uid, headers, runtime)
+        headers = adp_20210720_models.CreateProductVersionPackageHeaders()
+        return await self.create_product_version_package_with_options_async(uid, request, headers, runtime)
 
     def delete_environment_with_options(
         self,
@@ -1489,23 +1813,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_environment_license(
+    def delete_environment(
         self,
         uid: str,
-        license_uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentLicenseResponse:
+    ) -> adp_20210720_models.DeleteEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_environment_license_with_options(uid, license_uid, headers, runtime)
+        return self.delete_environment_with_options(uid, headers, runtime)
 
-    async def delete_environment_license_async(
+    async def delete_environment_async(
         self,
         uid: str,
-        license_uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentLicenseResponse:
+    ) -> adp_20210720_models.DeleteEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_environment_license_with_options_async(uid, license_uid, headers, runtime)
+        return await self.delete_environment_with_options_async(uid, headers, runtime)
 
     def delete_environment_license_with_options(
         self,
@@ -1559,23 +1881,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_environment_node(
+    def delete_environment_license(
         self,
         uid: str,
-        node_uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentNodeResponse:
+        license_uid: str,
+    ) -> adp_20210720_models.DeleteEnvironmentLicenseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_environment_node_with_options(uid, node_uid, headers, runtime)
+        return self.delete_environment_license_with_options(uid, license_uid, headers, runtime)
 
-    async def delete_environment_node_async(
+    async def delete_environment_license_async(
         self,
         uid: str,
-        node_uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentNodeResponse:
+        license_uid: str,
+    ) -> adp_20210720_models.DeleteEnvironmentLicenseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_environment_node_with_options_async(uid, node_uid, headers, runtime)
+        return await self.delete_environment_license_with_options_async(uid, license_uid, headers, runtime)
 
     def delete_environment_node_with_options(
         self,
@@ -1629,23 +1951,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_environment_product_version(
+    def delete_environment_node(
         self,
         uid: str,
-        product_version_uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentProductVersionResponse:
+        node_uid: str,
+    ) -> adp_20210720_models.DeleteEnvironmentNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_environment_product_version_with_options(uid, product_version_uid, headers, runtime)
+        return self.delete_environment_node_with_options(uid, node_uid, headers, runtime)
 
-    async def delete_environment_product_version_async(
+    async def delete_environment_node_async(
         self,
         uid: str,
-        product_version_uid: str,
-    ) -> adp_20210720_models.DeleteEnvironmentProductVersionResponse:
+        node_uid: str,
+    ) -> adp_20210720_models.DeleteEnvironmentNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_environment_product_version_with_options_async(uid, product_version_uid, headers, runtime)
+        return await self.delete_environment_node_with_options_async(uid, node_uid, headers, runtime)
 
     def delete_environment_product_version_with_options(
         self,
@@ -1699,21 +2021,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_product(
+    def delete_environment_product_version(
         self,
         uid: str,
-    ) -> adp_20210720_models.DeleteProductResponse:
+        product_version_uid: str,
+    ) -> adp_20210720_models.DeleteEnvironmentProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_product_with_options(uid, headers, runtime)
+        return self.delete_environment_product_version_with_options(uid, product_version_uid, headers, runtime)
 
-    async def delete_product_async(
+    async def delete_environment_product_version_async(
         self,
         uid: str,
-    ) -> adp_20210720_models.DeleteProductResponse:
+        product_version_uid: str,
+    ) -> adp_20210720_models.DeleteEnvironmentProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_product_with_options_async(uid, headers, runtime)
+        return await self.delete_environment_product_version_with_options_async(uid, product_version_uid, headers, runtime)
 
     def delete_product_with_options(
         self,
@@ -1765,23 +2089,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_product_component_version(
+    def delete_product(
         self,
         uid: str,
-        relation_uid: str,
-    ) -> adp_20210720_models.DeleteProductComponentVersionResponse:
+    ) -> adp_20210720_models.DeleteProductResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_product_component_version_with_options(uid, relation_uid, headers, runtime)
+        return self.delete_product_with_options(uid, headers, runtime)
 
-    async def delete_product_component_version_async(
+    async def delete_product_async(
         self,
         uid: str,
-        relation_uid: str,
-    ) -> adp_20210720_models.DeleteProductComponentVersionResponse:
+    ) -> adp_20210720_models.DeleteProductResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_product_component_version_with_options_async(uid, relation_uid, headers, runtime)
+        return await self.delete_product_with_options_async(uid, headers, runtime)
 
     def delete_product_component_version_with_options(
         self,
@@ -1835,23 +2157,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_product_instance_config(
+    def delete_product_component_version(
         self,
-        config_uid: str,
-        request: adp_20210720_models.DeleteProductInstanceConfigRequest,
-    ) -> adp_20210720_models.DeleteProductInstanceConfigResponse:
+        uid: str,
+        relation_uid: str,
+    ) -> adp_20210720_models.DeleteProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_product_instance_config_with_options(config_uid, request, headers, runtime)
+        return self.delete_product_component_version_with_options(uid, relation_uid, headers, runtime)
 
-    async def delete_product_instance_config_async(
+    async def delete_product_component_version_async(
         self,
-        config_uid: str,
-        request: adp_20210720_models.DeleteProductInstanceConfigRequest,
-    ) -> adp_20210720_models.DeleteProductInstanceConfigResponse:
+        uid: str,
+        relation_uid: str,
+    ) -> adp_20210720_models.DeleteProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_product_instance_config_with_options_async(config_uid, request, headers, runtime)
+        return await self.delete_product_component_version_with_options_async(uid, relation_uid, headers, runtime)
 
     def delete_product_instance_config_with_options(
         self,
@@ -1919,21 +2241,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_product_version(
+    def delete_product_instance_config(
         self,
-        uid: str,
-    ) -> adp_20210720_models.DeleteProductVersionResponse:
+        config_uid: str,
+        request: adp_20210720_models.DeleteProductInstanceConfigRequest,
+    ) -> adp_20210720_models.DeleteProductInstanceConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_product_version_with_options(uid, headers, runtime)
+        return self.delete_product_instance_config_with_options(config_uid, request, headers, runtime)
 
-    async def delete_product_version_async(
+    async def delete_product_instance_config_async(
         self,
-        uid: str,
-    ) -> adp_20210720_models.DeleteProductVersionResponse:
+        config_uid: str,
+        request: adp_20210720_models.DeleteProductInstanceConfigRequest,
+    ) -> adp_20210720_models.DeleteProductInstanceConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_product_version_with_options_async(uid, headers, runtime)
+        return await self.delete_product_instance_config_with_options_async(config_uid, request, headers, runtime)
 
     def delete_product_version_with_options(
         self,
@@ -1985,23 +2309,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_product_version_config(
+    def delete_product_version(
         self,
         uid: str,
-        config_uid: str,
-    ) -> adp_20210720_models.DeleteProductVersionConfigResponse:
+    ) -> adp_20210720_models.DeleteProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_product_version_config_with_options(uid, config_uid, headers, runtime)
+        return self.delete_product_version_with_options(uid, headers, runtime)
 
-    async def delete_product_version_config_async(
+    async def delete_product_version_async(
         self,
         uid: str,
-        config_uid: str,
-    ) -> adp_20210720_models.DeleteProductVersionConfigResponse:
+    ) -> adp_20210720_models.DeleteProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_product_version_config_with_options_async(uid, config_uid, headers, runtime)
+        return await self.delete_product_version_with_options_async(uid, headers, runtime)
 
     def delete_product_version_config_with_options(
         self,
@@ -2055,21 +2377,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def generate_product_instance_deployment_config(
+    def delete_product_version_config(
         self,
-        request: adp_20210720_models.GenerateProductInstanceDeploymentConfigRequest,
-    ) -> adp_20210720_models.GenerateProductInstanceDeploymentConfigResponse:
+        uid: str,
+        config_uid: str,
+    ) -> adp_20210720_models.DeleteProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.generate_product_instance_deployment_config_with_options(request, headers, runtime)
+        return self.delete_product_version_config_with_options(uid, config_uid, headers, runtime)
 
-    async def generate_product_instance_deployment_config_async(
+    async def delete_product_version_config_async(
         self,
-        request: adp_20210720_models.GenerateProductInstanceDeploymentConfigRequest,
-    ) -> adp_20210720_models.GenerateProductInstanceDeploymentConfigResponse:
+        uid: str,
+        config_uid: str,
+    ) -> adp_20210720_models.DeleteProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.generate_product_instance_deployment_config_with_options_async(request, headers, runtime)
+        return await self.delete_product_version_config_with_options_async(uid, config_uid, headers, runtime)
 
     def generate_product_instance_deployment_config_with_options(
         self,
@@ -2081,6 +2405,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.environment_uid):
             body['environmentUID'] = request.environment_uid
+        if not UtilClient.is_unset(request.package_content_type):
+            body['packageContentType'] = request.package_content_type
         if not UtilClient.is_unset(request.package_uid):
             body['packageUID'] = request.package_uid
         if not UtilClient.is_unset(request.product_version_uid):
@@ -2117,6 +2443,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.environment_uid):
             body['environmentUID'] = request.environment_uid
+        if not UtilClient.is_unset(request.package_content_type):
+            body['packageContentType'] = request.package_content_type
         if not UtilClient.is_unset(request.package_uid):
             body['packageUID'] = request.package_uid
         if not UtilClient.is_unset(request.product_version_uid):
@@ -2143,21 +2471,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_component(
+    def generate_product_instance_deployment_config(
         self,
-        uid: str,
-    ) -> adp_20210720_models.GetComponentResponse:
+        request: adp_20210720_models.GenerateProductInstanceDeploymentConfigRequest,
+    ) -> adp_20210720_models.GenerateProductInstanceDeploymentConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_component_with_options(uid, headers, runtime)
+        return self.generate_product_instance_deployment_config_with_options(request, headers, runtime)
 
-    async def get_component_async(
+    async def generate_product_instance_deployment_config_async(
         self,
-        uid: str,
-    ) -> adp_20210720_models.GetComponentResponse:
+        request: adp_20210720_models.GenerateProductInstanceDeploymentConfigRequest,
+    ) -> adp_20210720_models.GenerateProductInstanceDeploymentConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_component_with_options_async(uid, headers, runtime)
+        return await self.generate_product_instance_deployment_config_with_options_async(request, headers, runtime)
 
     def get_component_with_options(
         self,
@@ -2209,25 +2537,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_component_version(
+    def get_component(
         self,
         uid: str,
-        version_uid: str,
-        request: adp_20210720_models.GetComponentVersionRequest,
-    ) -> adp_20210720_models.GetComponentVersionResponse:
+    ) -> adp_20210720_models.GetComponentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_component_version_with_options(uid, version_uid, request, headers, runtime)
+        return self.get_component_with_options(uid, headers, runtime)
 
-    async def get_component_version_async(
+    async def get_component_async(
         self,
         uid: str,
-        version_uid: str,
-        request: adp_20210720_models.GetComponentVersionRequest,
-    ) -> adp_20210720_models.GetComponentVersionResponse:
+    ) -> adp_20210720_models.GetComponentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_component_version_with_options_async(uid, version_uid, request, headers, runtime)
+        return await self.get_component_with_options_async(uid, headers, runtime)
 
     def get_component_version_with_options(
         self,
@@ -2293,23 +2617,157 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_environment(
+    def get_component_version(
         self,
         uid: str,
-        request: adp_20210720_models.GetEnvironmentRequest,
-    ) -> adp_20210720_models.GetEnvironmentResponse:
+        version_uid: str,
+        request: adp_20210720_models.GetComponentVersionRequest,
+    ) -> adp_20210720_models.GetComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_environment_with_options(uid, request, headers, runtime)
+        return self.get_component_version_with_options(uid, version_uid, request, headers, runtime)
 
-    async def get_environment_async(
+    async def get_component_version_async(
         self,
         uid: str,
-        request: adp_20210720_models.GetEnvironmentRequest,
-    ) -> adp_20210720_models.GetEnvironmentResponse:
+        version_uid: str,
+        request: adp_20210720_models.GetComponentVersionRequest,
+    ) -> adp_20210720_models.GetComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_environment_with_options_async(uid, request, headers, runtime)
+        return await self.get_component_version_with_options_async(uid, version_uid, request, headers, runtime)
+
+    def get_deliverable_with_options(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.GetDeliverableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDeliverable',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/deliverables/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.GetDeliverableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deliverable_with_options_async(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.GetDeliverableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDeliverable',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/deliverables/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.GetDeliverableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deliverable(
+        self,
+        uid: str,
+    ) -> adp_20210720_models.GetDeliverableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_deliverable_with_options(uid, headers, runtime)
+
+    async def get_deliverable_async(
+        self,
+        uid: str,
+    ) -> adp_20210720_models.GetDeliverableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_deliverable_with_options_async(uid, headers, runtime)
+
+    def get_delivery_package_with_options(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.GetDeliveryPackageResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDeliveryPackage',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-packages/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.GetDeliveryPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_delivery_package_with_options_async(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.GetDeliveryPackageResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDeliveryPackage',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-packages/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.GetDeliveryPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_delivery_package(
+        self,
+        uid: str,
+    ) -> adp_20210720_models.GetDeliveryPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_delivery_package_with_options(uid, headers, runtime)
+
+    async def get_delivery_package_async(
+        self,
+        uid: str,
+    ) -> adp_20210720_models.GetDeliveryPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_delivery_package_with_options_async(uid, headers, runtime)
 
     def get_environment_with_options(
         self,
@@ -2322,7 +2780,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.GetEnvironmentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         query = {}
         if not UtilClient.is_unset(request.options_shrink):
             query['options'] = request.options_shrink
@@ -2357,7 +2815,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.GetEnvironmentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         query = {}
         if not UtilClient.is_unset(request.options_shrink):
             query['options'] = request.options_shrink
@@ -2381,25 +2839,103 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_environment_license(
+    def get_environment(
         self,
         uid: str,
-        license_uid: str,
-        request: adp_20210720_models.GetEnvironmentLicenseRequest,
-    ) -> adp_20210720_models.GetEnvironmentLicenseResponse:
+        request: adp_20210720_models.GetEnvironmentRequest,
+    ) -> adp_20210720_models.GetEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_environment_license_with_options(uid, license_uid, request, headers, runtime)
+        return self.get_environment_with_options(uid, request, headers, runtime)
 
-    async def get_environment_license_async(
+    async def get_environment_async(
         self,
         uid: str,
-        license_uid: str,
-        request: adp_20210720_models.GetEnvironmentLicenseRequest,
-    ) -> adp_20210720_models.GetEnvironmentLicenseResponse:
+        request: adp_20210720_models.GetEnvironmentRequest,
+    ) -> adp_20210720_models.GetEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_environment_license_with_options_async(uid, license_uid, request, headers, runtime)
+        return await self.get_environment_with_options_async(uid, request, headers, runtime)
+
+    def get_environment_delivery_instance_with_options(
+        self,
+        request: adp_20210720_models.GetEnvironmentDeliveryInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.GetEnvironmentDeliveryInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_uid):
+            query['clusterUID'] = request.cluster_uid
+        if not UtilClient.is_unset(request.env_uid):
+            query['envUID'] = request.env_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEnvironmentDeliveryInstance',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.GetEnvironmentDeliveryInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_environment_delivery_instance_with_options_async(
+        self,
+        request: adp_20210720_models.GetEnvironmentDeliveryInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.GetEnvironmentDeliveryInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_uid):
+            query['clusterUID'] = request.cluster_uid
+        if not UtilClient.is_unset(request.env_uid):
+            query['envUID'] = request.env_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEnvironmentDeliveryInstance',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.GetEnvironmentDeliveryInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_environment_delivery_instance(
+        self,
+        request: adp_20210720_models.GetEnvironmentDeliveryInstanceRequest,
+    ) -> adp_20210720_models.GetEnvironmentDeliveryInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_environment_delivery_instance_with_options(request, headers, runtime)
+
+    async def get_environment_delivery_instance_async(
+        self,
+        request: adp_20210720_models.GetEnvironmentDeliveryInstanceRequest,
+    ) -> adp_20210720_models.GetEnvironmentDeliveryInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_environment_delivery_instance_with_options_async(request, headers, runtime)
 
     def get_environment_license_with_options(
         self,
@@ -2413,7 +2949,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.GetEnvironmentLicenseShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         query = {}
         if not UtilClient.is_unset(request.options_shrink):
             query['options'] = request.options_shrink
@@ -2449,7 +2985,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.GetEnvironmentLicenseShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         query = {}
         if not UtilClient.is_unset(request.options_shrink):
             query['options'] = request.options_shrink
@@ -2473,23 +3009,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_environment_node(
+    def get_environment_license(
         self,
         uid: str,
-        node_uid: str,
-    ) -> adp_20210720_models.GetEnvironmentNodeResponse:
+        license_uid: str,
+        request: adp_20210720_models.GetEnvironmentLicenseRequest,
+    ) -> adp_20210720_models.GetEnvironmentLicenseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_environment_node_with_options(uid, node_uid, headers, runtime)
+        return self.get_environment_license_with_options(uid, license_uid, request, headers, runtime)
 
-    async def get_environment_node_async(
+    async def get_environment_license_async(
         self,
         uid: str,
-        node_uid: str,
-    ) -> adp_20210720_models.GetEnvironmentNodeResponse:
+        license_uid: str,
+        request: adp_20210720_models.GetEnvironmentLicenseRequest,
+    ) -> adp_20210720_models.GetEnvironmentLicenseResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_environment_node_with_options_async(uid, node_uid, headers, runtime)
+        return await self.get_environment_license_with_options_async(uid, license_uid, request, headers, runtime)
 
     def get_environment_node_with_options(
         self,
@@ -2543,23 +3081,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_foundation_component_reference(
+    def get_environment_node(
         self,
-        component_reference_uid: str,
         uid: str,
-    ) -> adp_20210720_models.GetFoundationComponentReferenceResponse:
+        node_uid: str,
+    ) -> adp_20210720_models.GetEnvironmentNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_foundation_component_reference_with_options(component_reference_uid, uid, headers, runtime)
+        return self.get_environment_node_with_options(uid, node_uid, headers, runtime)
 
-    async def get_foundation_component_reference_async(
+    async def get_environment_node_async(
         self,
-        component_reference_uid: str,
         uid: str,
-    ) -> adp_20210720_models.GetFoundationComponentReferenceResponse:
+        node_uid: str,
+    ) -> adp_20210720_models.GetEnvironmentNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_foundation_component_reference_with_options_async(component_reference_uid, uid, headers, runtime)
+        return await self.get_environment_node_with_options_async(uid, node_uid, headers, runtime)
 
     def get_foundation_component_reference_with_options(
         self,
@@ -2613,21 +3151,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_foundation_reference(
+    def get_foundation_component_reference(
         self,
+        component_reference_uid: str,
         uid: str,
-    ) -> adp_20210720_models.GetFoundationReferenceResponse:
+    ) -> adp_20210720_models.GetFoundationComponentReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_foundation_reference_with_options(uid, headers, runtime)
+        return self.get_foundation_component_reference_with_options(component_reference_uid, uid, headers, runtime)
 
-    async def get_foundation_reference_async(
+    async def get_foundation_component_reference_async(
         self,
+        component_reference_uid: str,
         uid: str,
-    ) -> adp_20210720_models.GetFoundationReferenceResponse:
+    ) -> adp_20210720_models.GetFoundationComponentReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_foundation_reference_with_options_async(uid, headers, runtime)
+        return await self.get_foundation_component_reference_with_options_async(component_reference_uid, uid, headers, runtime)
 
     def get_foundation_reference_with_options(
         self,
@@ -2679,21 +3219,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_foundation_version(
+    def get_foundation_reference(
         self,
         uid: str,
-    ) -> adp_20210720_models.GetFoundationVersionResponse:
+    ) -> adp_20210720_models.GetFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_foundation_version_with_options(uid, headers, runtime)
+        return self.get_foundation_reference_with_options(uid, headers, runtime)
 
-    async def get_foundation_version_async(
+    async def get_foundation_reference_async(
         self,
         uid: str,
-    ) -> adp_20210720_models.GetFoundationVersionResponse:
+    ) -> adp_20210720_models.GetFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_foundation_version_with_options_async(uid, headers, runtime)
+        return await self.get_foundation_reference_with_options_async(uid, headers, runtime)
 
     def get_foundation_version_with_options(
         self,
@@ -2745,23 +3285,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_product(
+    def get_foundation_version(
         self,
         uid: str,
-        request: adp_20210720_models.GetProductRequest,
-    ) -> adp_20210720_models.GetProductResponse:
+    ) -> adp_20210720_models.GetFoundationVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_product_with_options(uid, request, headers, runtime)
+        return self.get_foundation_version_with_options(uid, headers, runtime)
 
-    async def get_product_async(
+    async def get_foundation_version_async(
         self,
         uid: str,
-        request: adp_20210720_models.GetProductRequest,
-    ) -> adp_20210720_models.GetProductResponse:
+    ) -> adp_20210720_models.GetFoundationVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_product_with_options_async(uid, request, headers, runtime)
+        return await self.get_foundation_version_with_options_async(uid, headers, runtime)
 
     def get_product_with_options(
         self,
@@ -2825,23 +3363,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_product_component_version(
+    def get_product(
         self,
-        relation_uid: str,
         uid: str,
-    ) -> adp_20210720_models.GetProductComponentVersionResponse:
+        request: adp_20210720_models.GetProductRequest,
+    ) -> adp_20210720_models.GetProductResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_product_component_version_with_options(relation_uid, uid, headers, runtime)
+        return self.get_product_with_options(uid, request, headers, runtime)
 
-    async def get_product_component_version_async(
+    async def get_product_async(
         self,
-        relation_uid: str,
         uid: str,
-    ) -> adp_20210720_models.GetProductComponentVersionResponse:
+        request: adp_20210720_models.GetProductRequest,
+    ) -> adp_20210720_models.GetProductResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_product_component_version_with_options_async(relation_uid, uid, headers, runtime)
+        return await self.get_product_with_options_async(uid, request, headers, runtime)
 
     def get_product_component_version_with_options(
         self,
@@ -2895,23 +3433,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_product_deployment(
+    def get_product_component_version(
         self,
-        deployment_uid: str,
-        request: adp_20210720_models.GetProductDeploymentRequest,
-    ) -> adp_20210720_models.GetProductDeploymentResponse:
+        relation_uid: str,
+        uid: str,
+    ) -> adp_20210720_models.GetProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_product_deployment_with_options(deployment_uid, request, headers, runtime)
+        return self.get_product_component_version_with_options(relation_uid, uid, headers, runtime)
 
-    async def get_product_deployment_async(
+    async def get_product_component_version_async(
         self,
-        deployment_uid: str,
-        request: adp_20210720_models.GetProductDeploymentRequest,
-    ) -> adp_20210720_models.GetProductDeploymentResponse:
+        relation_uid: str,
+        uid: str,
+    ) -> adp_20210720_models.GetProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_product_deployment_with_options_async(deployment_uid, request, headers, runtime)
+        return await self.get_product_component_version_with_options_async(relation_uid, uid, headers, runtime)
 
     def get_product_deployment_with_options(
         self,
@@ -2983,23 +3521,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_product_version(
+    def get_product_deployment(
         self,
-        uid: str,
-        request: adp_20210720_models.GetProductVersionRequest,
-    ) -> adp_20210720_models.GetProductVersionResponse:
+        deployment_uid: str,
+        request: adp_20210720_models.GetProductDeploymentRequest,
+    ) -> adp_20210720_models.GetProductDeploymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_product_version_with_options(uid, request, headers, runtime)
+        return self.get_product_deployment_with_options(deployment_uid, request, headers, runtime)
 
-    async def get_product_version_async(
+    async def get_product_deployment_async(
         self,
-        uid: str,
-        request: adp_20210720_models.GetProductVersionRequest,
-    ) -> adp_20210720_models.GetProductVersionResponse:
+        deployment_uid: str,
+        request: adp_20210720_models.GetProductDeploymentRequest,
+    ) -> adp_20210720_models.GetProductDeploymentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_product_version_with_options_async(uid, request, headers, runtime)
+        return await self.get_product_deployment_with_options_async(deployment_uid, request, headers, runtime)
 
     def get_product_version_with_options(
         self,
@@ -3067,25 +3605,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_product_version_differences(
+    def get_product_version(
         self,
         uid: str,
-        version_uid: str,
-        request: adp_20210720_models.GetProductVersionDifferencesRequest,
-    ) -> adp_20210720_models.GetProductVersionDifferencesResponse:
+        request: adp_20210720_models.GetProductVersionRequest,
+    ) -> adp_20210720_models.GetProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_product_version_differences_with_options(uid, version_uid, request, headers, runtime)
+        return self.get_product_version_with_options(uid, request, headers, runtime)
 
-    async def get_product_version_differences_async(
+    async def get_product_version_async(
         self,
         uid: str,
-        version_uid: str,
-        request: adp_20210720_models.GetProductVersionDifferencesRequest,
-    ) -> adp_20210720_models.GetProductVersionDifferencesResponse:
+        request: adp_20210720_models.GetProductVersionRequest,
+    ) -> adp_20210720_models.GetProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_product_version_differences_with_options_async(uid, version_uid, request, headers, runtime)
+        return await self.get_product_version_with_options_async(uid, request, headers, runtime)
 
     def get_product_version_differences_with_options(
         self,
@@ -3151,23 +3687,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_product_version_package(
+    def get_product_version_differences(
         self,
         uid: str,
-        request: adp_20210720_models.GetProductVersionPackageRequest,
-    ) -> adp_20210720_models.GetProductVersionPackageResponse:
+        version_uid: str,
+        request: adp_20210720_models.GetProductVersionDifferencesRequest,
+    ) -> adp_20210720_models.GetProductVersionDifferencesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_product_version_package_with_options(uid, request, headers, runtime)
+        return self.get_product_version_differences_with_options(uid, version_uid, request, headers, runtime)
 
-    async def get_product_version_package_async(
+    async def get_product_version_differences_async(
         self,
         uid: str,
-        request: adp_20210720_models.GetProductVersionPackageRequest,
-    ) -> adp_20210720_models.GetProductVersionPackageResponse:
+        version_uid: str,
+        request: adp_20210720_models.GetProductVersionDifferencesRequest,
+    ) -> adp_20210720_models.GetProductVersionDifferencesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_product_version_package_with_options_async(uid, request, headers, runtime)
+        return await self.get_product_version_differences_with_options_async(uid, version_uid, request, headers, runtime)
 
     def get_product_version_package_with_options(
         self,
@@ -3259,21 +3797,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_resource_snapshot(
+    def get_product_version_package(
         self,
-        request: adp_20210720_models.GetResourceSnapshotRequest,
-    ) -> adp_20210720_models.GetResourceSnapshotResponse:
+        uid: str,
+        request: adp_20210720_models.GetProductVersionPackageRequest,
+    ) -> adp_20210720_models.GetProductVersionPackageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_resource_snapshot_with_options(request, headers, runtime)
+        return self.get_product_version_package_with_options(uid, request, headers, runtime)
 
-    async def get_resource_snapshot_async(
+    async def get_product_version_package_async(
         self,
-        request: adp_20210720_models.GetResourceSnapshotRequest,
-    ) -> adp_20210720_models.GetResourceSnapshotResponse:
+        uid: str,
+        request: adp_20210720_models.GetProductVersionPackageRequest,
+    ) -> adp_20210720_models.GetProductVersionPackageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_resource_snapshot_with_options_async(request, headers, runtime)
+        return await self.get_product_version_package_with_options_async(uid, request, headers, runtime)
 
     def get_resource_snapshot_with_options(
         self,
@@ -3339,21 +3879,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_workflow_status(
+    def get_resource_snapshot(
         self,
-        request: adp_20210720_models.GetWorkflowStatusRequest,
-    ) -> adp_20210720_models.GetWorkflowStatusResponse:
+        request: adp_20210720_models.GetResourceSnapshotRequest,
+    ) -> adp_20210720_models.GetResourceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_workflow_status_with_options(request, headers, runtime)
+        return self.get_resource_snapshot_with_options(request, headers, runtime)
 
-    async def get_workflow_status_async(
+    async def get_resource_snapshot_async(
         self,
-        request: adp_20210720_models.GetWorkflowStatusRequest,
-    ) -> adp_20210720_models.GetWorkflowStatusResponse:
+        request: adp_20210720_models.GetResourceSnapshotRequest,
+    ) -> adp_20210720_models.GetResourceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_workflow_status_with_options_async(request, headers, runtime)
+        return await self.get_resource_snapshot_with_options_async(request, headers, runtime)
 
     def get_workflow_status_with_options(
         self,
@@ -3419,23 +3959,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def init_environment_resource(
+    def get_workflow_status(
         self,
-        uid: str,
-        request: adp_20210720_models.InitEnvironmentResourceRequest,
-    ) -> adp_20210720_models.InitEnvironmentResourceResponse:
+        request: adp_20210720_models.GetWorkflowStatusRequest,
+    ) -> adp_20210720_models.GetWorkflowStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.init_environment_resource_with_options(uid, request, headers, runtime)
+        return self.get_workflow_status_with_options(request, headers, runtime)
 
-    async def init_environment_resource_async(
+    async def get_workflow_status_async(
         self,
-        uid: str,
-        request: adp_20210720_models.InitEnvironmentResourceRequest,
-    ) -> adp_20210720_models.InitEnvironmentResourceResponse:
+        request: adp_20210720_models.GetWorkflowStatusRequest,
+    ) -> adp_20210720_models.GetWorkflowStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.init_environment_resource_with_options_async(uid, request, headers, runtime)
+        return await self.get_workflow_status_with_options_async(request, headers, runtime)
 
     def init_environment_resource_with_options(
         self,
@@ -3507,23 +4045,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_component_versions(
+    def init_environment_resource(
         self,
         uid: str,
-        request: adp_20210720_models.ListComponentVersionsRequest,
-    ) -> adp_20210720_models.ListComponentVersionsResponse:
+        request: adp_20210720_models.InitEnvironmentResourceRequest,
+    ) -> adp_20210720_models.InitEnvironmentResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_component_versions_with_options(uid, request, headers, runtime)
+        return self.init_environment_resource_with_options(uid, request, headers, runtime)
 
-    async def list_component_versions_async(
+    async def init_environment_resource_async(
         self,
         uid: str,
-        request: adp_20210720_models.ListComponentVersionsRequest,
-    ) -> adp_20210720_models.ListComponentVersionsResponse:
+        request: adp_20210720_models.InitEnvironmentResourceRequest,
+    ) -> adp_20210720_models.InitEnvironmentResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_component_versions_with_options_async(uid, request, headers, runtime)
+        return await self.init_environment_resource_with_options_async(uid, request, headers, runtime)
 
     def list_component_versions_with_options(
         self,
@@ -3544,6 +4082,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.platforms_shrink):
             query['platforms'] = request.platforms_shrink
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3583,6 +4123,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.platforms_shrink):
             query['platforms'] = request.platforms_shrink
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3603,21 +4145,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_components(
+    def list_component_versions(
         self,
-        request: adp_20210720_models.ListComponentsRequest,
-    ) -> adp_20210720_models.ListComponentsResponse:
+        uid: str,
+        request: adp_20210720_models.ListComponentVersionsRequest,
+    ) -> adp_20210720_models.ListComponentVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_components_with_options(request, headers, runtime)
+        return self.list_component_versions_with_options(uid, request, headers, runtime)
 
-    async def list_components_async(
+    async def list_component_versions_async(
         self,
-        request: adp_20210720_models.ListComponentsRequest,
-    ) -> adp_20210720_models.ListComponentsResponse:
+        uid: str,
+        request: adp_20210720_models.ListComponentVersionsRequest,
+    ) -> adp_20210720_models.ListComponentVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_components_with_options_async(request, headers, runtime)
+        return await self.list_component_versions_with_options_async(uid, request, headers, runtime)
 
     def list_components_with_options(
         self,
@@ -3699,23 +4243,163 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_environment_licenses(
+    def list_components(
         self,
-        uid: str,
-        request: adp_20210720_models.ListEnvironmentLicensesRequest,
-    ) -> adp_20210720_models.ListEnvironmentLicensesResponse:
+        request: adp_20210720_models.ListComponentsRequest,
+    ) -> adp_20210720_models.ListComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_environment_licenses_with_options(uid, request, headers, runtime)
+        return self.list_components_with_options(request, headers, runtime)
 
-    async def list_environment_licenses_async(
+    async def list_components_async(
         self,
-        uid: str,
-        request: adp_20210720_models.ListEnvironmentLicensesRequest,
-    ) -> adp_20210720_models.ListEnvironmentLicensesResponse:
+        request: adp_20210720_models.ListComponentsRequest,
+    ) -> adp_20210720_models.ListComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_environment_licenses_with_options_async(uid, request, headers, runtime)
+        return await self.list_components_with_options_async(request, headers, runtime)
+
+    def list_delivery_instance_change_records_with_options(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.ListDeliveryInstanceChangeRecordsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListDeliveryInstanceChangeRecords',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances/{OpenApiUtilClient.get_encode_param(uid)}/delivery-records',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.ListDeliveryInstanceChangeRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_delivery_instance_change_records_with_options_async(
+        self,
+        uid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.ListDeliveryInstanceChangeRecordsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListDeliveryInstanceChangeRecords',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances/{OpenApiUtilClient.get_encode_param(uid)}/delivery-records',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.ListDeliveryInstanceChangeRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_delivery_instance_change_records(
+        self,
+        uid: str,
+    ) -> adp_20210720_models.ListDeliveryInstanceChangeRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_delivery_instance_change_records_with_options(uid, headers, runtime)
+
+    async def list_delivery_instance_change_records_async(
+        self,
+        uid: str,
+    ) -> adp_20210720_models.ListDeliveryInstanceChangeRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_delivery_instance_change_records_with_options_async(uid, headers, runtime)
+
+    def list_delivery_package_with_options(
+        self,
+        request: adp_20210720_models.ListDeliveryPackageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.ListDeliveryPackageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deliverable_uid):
+            query['deliverableUID'] = request.deliverable_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeliveryPackage',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-packages',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.ListDeliveryPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_delivery_package_with_options_async(
+        self,
+        request: adp_20210720_models.ListDeliveryPackageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.ListDeliveryPackageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deliverable_uid):
+            query['deliverableUID'] = request.deliverable_uid
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDeliveryPackage',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-packages',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.ListDeliveryPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_delivery_package(
+        self,
+        request: adp_20210720_models.ListDeliveryPackageRequest,
+    ) -> adp_20210720_models.ListDeliveryPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_delivery_package_with_options(request, headers, runtime)
+
+    async def list_delivery_package_async(
+        self,
+        request: adp_20210720_models.ListDeliveryPackageRequest,
+    ) -> adp_20210720_models.ListDeliveryPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_delivery_package_with_options_async(request, headers, runtime)
 
     def list_environment_licenses_with_options(
         self,
@@ -3791,23 +4475,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_environment_nodes(
+    def list_environment_licenses(
         self,
         uid: str,
-        request: adp_20210720_models.ListEnvironmentNodesRequest,
-    ) -> adp_20210720_models.ListEnvironmentNodesResponse:
+        request: adp_20210720_models.ListEnvironmentLicensesRequest,
+    ) -> adp_20210720_models.ListEnvironmentLicensesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_environment_nodes_with_options(uid, request, headers, runtime)
+        return self.list_environment_licenses_with_options(uid, request, headers, runtime)
 
-    async def list_environment_nodes_async(
+    async def list_environment_licenses_async(
         self,
         uid: str,
-        request: adp_20210720_models.ListEnvironmentNodesRequest,
-    ) -> adp_20210720_models.ListEnvironmentNodesResponse:
+        request: adp_20210720_models.ListEnvironmentLicensesRequest,
+    ) -> adp_20210720_models.ListEnvironmentLicensesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_environment_nodes_with_options_async(uid, request, headers, runtime)
+        return await self.list_environment_licenses_with_options_async(uid, request, headers, runtime)
 
     def list_environment_nodes_with_options(
         self,
@@ -3875,21 +4559,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_environment_tunnels(
+    def list_environment_nodes(
         self,
         uid: str,
-    ) -> adp_20210720_models.ListEnvironmentTunnelsResponse:
+        request: adp_20210720_models.ListEnvironmentNodesRequest,
+    ) -> adp_20210720_models.ListEnvironmentNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_environment_tunnels_with_options(uid, headers, runtime)
+        return self.list_environment_nodes_with_options(uid, request, headers, runtime)
 
-    async def list_environment_tunnels_async(
+    async def list_environment_nodes_async(
         self,
         uid: str,
-    ) -> adp_20210720_models.ListEnvironmentTunnelsResponse:
+        request: adp_20210720_models.ListEnvironmentNodesRequest,
+    ) -> adp_20210720_models.ListEnvironmentNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_environment_tunnels_with_options_async(uid, headers, runtime)
+        return await self.list_environment_nodes_with_options_async(uid, request, headers, runtime)
 
     def list_environment_tunnels_with_options(
         self,
@@ -3941,21 +4627,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_environments(
+    def list_environment_tunnels(
         self,
-        request: adp_20210720_models.ListEnvironmentsRequest,
-    ) -> adp_20210720_models.ListEnvironmentsResponse:
+        uid: str,
+    ) -> adp_20210720_models.ListEnvironmentTunnelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_environments_with_options(request, headers, runtime)
+        return self.list_environment_tunnels_with_options(uid, headers, runtime)
 
-    async def list_environments_async(
+    async def list_environment_tunnels_async(
         self,
-        request: adp_20210720_models.ListEnvironmentsRequest,
-    ) -> adp_20210720_models.ListEnvironmentsResponse:
+        uid: str,
+    ) -> adp_20210720_models.ListEnvironmentTunnelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_environments_with_options_async(request, headers, runtime)
+        return await self.list_environment_tunnels_with_options_async(uid, headers, runtime)
 
     def list_environments_with_options(
         self,
@@ -4049,30 +4735,36 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_foundation_component_versions(
+    def list_environments(
         self,
-        uid: str,
-    ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
+        request: adp_20210720_models.ListEnvironmentsRequest,
+    ) -> adp_20210720_models.ListEnvironmentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_foundation_component_versions_with_options(uid, headers, runtime)
+        return self.list_environments_with_options(request, headers, runtime)
 
-    async def list_foundation_component_versions_async(
+    async def list_environments_async(
         self,
-        uid: str,
-    ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
+        request: adp_20210720_models.ListEnvironmentsRequest,
+    ) -> adp_20210720_models.ListEnvironmentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_foundation_component_versions_with_options_async(uid, headers, runtime)
+        return await self.list_environments_with_options_async(request, headers, runtime)
 
     def list_foundation_component_versions_with_options(
         self,
         uid: str,
+        request: adp_20210720_models.ListFoundationComponentVersionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.parent_component_relation_uid):
+            query['parentComponentRelationUID'] = request.parent_component_relation_uid
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFoundationComponentVersions',
@@ -4093,11 +4785,17 @@ class Client(OpenApiClient):
     async def list_foundation_component_versions_with_options_async(
         self,
         uid: str,
+        request: adp_20210720_models.ListFoundationComponentVersionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.parent_component_relation_uid):
+            query['parentComponentRelationUID'] = request.parent_component_relation_uid
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFoundationComponentVersions',
@@ -4115,21 +4813,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_foundation_reference_components(
+    def list_foundation_component_versions(
         self,
-        request: adp_20210720_models.ListFoundationReferenceComponentsRequest,
-    ) -> adp_20210720_models.ListFoundationReferenceComponentsResponse:
+        uid: str,
+        request: adp_20210720_models.ListFoundationComponentVersionsRequest,
+    ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_foundation_reference_components_with_options(request, headers, runtime)
+        return self.list_foundation_component_versions_with_options(uid, request, headers, runtime)
 
-    async def list_foundation_reference_components_async(
+    async def list_foundation_component_versions_async(
         self,
-        request: adp_20210720_models.ListFoundationReferenceComponentsRequest,
-    ) -> adp_20210720_models.ListFoundationReferenceComponentsResponse:
+        uid: str,
+        request: adp_20210720_models.ListFoundationComponentVersionsRequest,
+    ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_foundation_reference_components_with_options_async(request, headers, runtime)
+        return await self.list_foundation_component_versions_with_options_async(uid, request, headers, runtime)
 
     def list_foundation_reference_components_with_options(
         self,
@@ -4145,6 +4845,8 @@ class Client(OpenApiClient):
             query['foundationVersionUID'] = request.foundation_version_uid
         if not UtilClient.is_unset(request.only_enabled):
             query['onlyEnabled'] = request.only_enabled
+        if not UtilClient.is_unset(request.parent_component_reference_uid):
+            query['parentComponentReferenceUID'] = request.parent_component_reference_uid
         if not UtilClient.is_unset(request.product_version_uid):
             query['productVersionUID'] = request.product_version_uid
         req = open_api_models.OpenApiRequest(
@@ -4181,6 +4883,8 @@ class Client(OpenApiClient):
             query['foundationVersionUID'] = request.foundation_version_uid
         if not UtilClient.is_unset(request.only_enabled):
             query['onlyEnabled'] = request.only_enabled
+        if not UtilClient.is_unset(request.parent_component_reference_uid):
+            query['parentComponentReferenceUID'] = request.parent_component_reference_uid
         if not UtilClient.is_unset(request.product_version_uid):
             query['productVersionUID'] = request.product_version_uid
         req = open_api_models.OpenApiRequest(
@@ -4203,21 +4907,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_foundation_versions(
+    def list_foundation_reference_components(
         self,
-        request: adp_20210720_models.ListFoundationVersionsRequest,
-    ) -> adp_20210720_models.ListFoundationVersionsResponse:
+        request: adp_20210720_models.ListFoundationReferenceComponentsRequest,
+    ) -> adp_20210720_models.ListFoundationReferenceComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_foundation_versions_with_options(request, headers, runtime)
+        return self.list_foundation_reference_components_with_options(request, headers, runtime)
 
-    async def list_foundation_versions_async(
+    async def list_foundation_reference_components_async(
         self,
-        request: adp_20210720_models.ListFoundationVersionsRequest,
-    ) -> adp_20210720_models.ListFoundationVersionsResponse:
+        request: adp_20210720_models.ListFoundationReferenceComponentsRequest,
+    ) -> adp_20210720_models.ListFoundationReferenceComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_foundation_versions_with_options_async(request, headers, runtime)
+        return await self.list_foundation_reference_components_with_options_async(request, headers, runtime)
 
     def list_foundation_versions_with_options(
         self,
@@ -4227,12 +4931,18 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListFoundationVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_direct):
             query['sortDirect'] = request.sort_direct
         if not UtilClient.is_unset(request.sort_key):
             query['sortKey'] = request.sort_key
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4261,12 +4971,18 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListFoundationVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_direct):
             query['sortDirect'] = request.sort_direct
         if not UtilClient.is_unset(request.sort_key):
             query['sortKey'] = request.sort_key
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4287,23 +5003,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_component_versions(
+    def list_foundation_versions(
         self,
-        uid: str,
-        request: adp_20210720_models.ListProductComponentVersionsRequest,
-    ) -> adp_20210720_models.ListProductComponentVersionsResponse:
+        request: adp_20210720_models.ListFoundationVersionsRequest,
+    ) -> adp_20210720_models.ListFoundationVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_component_versions_with_options(uid, request, headers, runtime)
+        return self.list_foundation_versions_with_options(request, headers, runtime)
 
-    async def list_product_component_versions_async(
+    async def list_foundation_versions_async(
         self,
-        uid: str,
-        request: adp_20210720_models.ListProductComponentVersionsRequest,
-    ) -> adp_20210720_models.ListProductComponentVersionsResponse:
+        request: adp_20210720_models.ListFoundationVersionsRequest,
+    ) -> adp_20210720_models.ListFoundationVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_component_versions_with_options_async(uid, request, headers, runtime)
+        return await self.list_foundation_versions_with_options_async(request, headers, runtime)
 
     def list_product_component_versions_with_options(
         self,
@@ -4320,6 +5034,8 @@ class Client(OpenApiClient):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.release_name):
+            query['releaseName'] = request.release_name
         if not UtilClient.is_unset(request.sort_direct):
             query['sortDirect'] = request.sort_direct
         if not UtilClient.is_unset(request.sort_key):
@@ -4359,6 +5075,8 @@ class Client(OpenApiClient):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.release_name):
+            query['releaseName'] = request.release_name
         if not UtilClient.is_unset(request.sort_direct):
             query['sortDirect'] = request.sort_direct
         if not UtilClient.is_unset(request.sort_key):
@@ -4383,21 +5101,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_deployments(
+    def list_product_component_versions(
         self,
-        request: adp_20210720_models.ListProductDeploymentsRequest,
-    ) -> adp_20210720_models.ListProductDeploymentsResponse:
+        uid: str,
+        request: adp_20210720_models.ListProductComponentVersionsRequest,
+    ) -> adp_20210720_models.ListProductComponentVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_deployments_with_options(request, headers, runtime)
+        return self.list_product_component_versions_with_options(uid, request, headers, runtime)
 
-    async def list_product_deployments_async(
+    async def list_product_component_versions_async(
         self,
-        request: adp_20210720_models.ListProductDeploymentsRequest,
-    ) -> adp_20210720_models.ListProductDeploymentsResponse:
+        uid: str,
+        request: adp_20210720_models.ListProductComponentVersionsRequest,
+    ) -> adp_20210720_models.ListProductComponentVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_deployments_with_options_async(request, headers, runtime)
+        return await self.list_product_component_versions_with_options_async(uid, request, headers, runtime)
 
     def list_product_deployments_with_options(
         self,
@@ -4471,23 +5191,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_environments(
+    def list_product_deployments(
         self,
-        uid: str,
-        request: adp_20210720_models.ListProductEnvironmentsRequest,
-    ) -> adp_20210720_models.ListProductEnvironmentsResponse:
+        request: adp_20210720_models.ListProductDeploymentsRequest,
+    ) -> adp_20210720_models.ListProductDeploymentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_environments_with_options(uid, request, headers, runtime)
+        return self.list_product_deployments_with_options(request, headers, runtime)
 
-    async def list_product_environments_async(
+    async def list_product_deployments_async(
         self,
-        uid: str,
-        request: adp_20210720_models.ListProductEnvironmentsRequest,
-    ) -> adp_20210720_models.ListProductEnvironmentsResponse:
+        request: adp_20210720_models.ListProductDeploymentsRequest,
+    ) -> adp_20210720_models.ListProductDeploymentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_environments_with_options_async(uid, request, headers, runtime)
+        return await self.list_product_deployments_with_options_async(request, headers, runtime)
 
     def list_product_environments_with_options(
         self,
@@ -4500,7 +5218,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.ListProductEnvironmentsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         if not UtilClient.is_unset(tmp_req.platforms):
             request.platforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.platforms, 'platforms', 'json')
         query = {}
@@ -4547,7 +5265,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.ListProductEnvironmentsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         if not UtilClient.is_unset(tmp_req.platforms):
             request.platforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.platforms, 'platforms', 'json')
         query = {}
@@ -4583,21 +5301,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_foundation_references(
+    def list_product_environments(
         self,
         uid: str,
-    ) -> adp_20210720_models.ListProductFoundationReferencesResponse:
+        request: adp_20210720_models.ListProductEnvironmentsRequest,
+    ) -> adp_20210720_models.ListProductEnvironmentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_foundation_references_with_options(uid, headers, runtime)
+        return self.list_product_environments_with_options(uid, request, headers, runtime)
 
-    async def list_product_foundation_references_async(
+    async def list_product_environments_async(
         self,
         uid: str,
-    ) -> adp_20210720_models.ListProductFoundationReferencesResponse:
+        request: adp_20210720_models.ListProductEnvironmentsRequest,
+    ) -> adp_20210720_models.ListProductEnvironmentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_foundation_references_with_options_async(uid, headers, runtime)
+        return await self.list_product_environments_with_options_async(uid, request, headers, runtime)
 
     def list_product_foundation_references_with_options(
         self,
@@ -4605,6 +5325,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.ListProductFoundationReferencesResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductFoundationReferencesResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4630,6 +5358,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.ListProductFoundationReferencesResponse:
+        """
+        @deprecated
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductFoundationReferencesResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4649,21 +5385,33 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_instance_configs(
+    def list_product_foundation_references(
         self,
-        request: adp_20210720_models.ListProductInstanceConfigsRequest,
-    ) -> adp_20210720_models.ListProductInstanceConfigsResponse:
+        uid: str,
+    ) -> adp_20210720_models.ListProductFoundationReferencesResponse:
+        """
+        @deprecated
+        
+        @return: ListProductFoundationReferencesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_instance_configs_with_options(request, headers, runtime)
+        return self.list_product_foundation_references_with_options(uid, headers, runtime)
 
-    async def list_product_instance_configs_async(
+    async def list_product_foundation_references_async(
         self,
-        request: adp_20210720_models.ListProductInstanceConfigsRequest,
-    ) -> adp_20210720_models.ListProductInstanceConfigsResponse:
+        uid: str,
+    ) -> adp_20210720_models.ListProductFoundationReferencesResponse:
+        """
+        @deprecated
+        
+        @return: ListProductFoundationReferencesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_instance_configs_with_options_async(request, headers, runtime)
+        return await self.list_product_foundation_references_with_options_async(uid, headers, runtime)
 
     def list_product_instance_configs_with_options(
         self,
@@ -4741,21 +5489,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_instances(
+    def list_product_instance_configs(
         self,
-        request: adp_20210720_models.ListProductInstancesRequest,
-    ) -> adp_20210720_models.ListProductInstancesResponse:
+        request: adp_20210720_models.ListProductInstanceConfigsRequest,
+    ) -> adp_20210720_models.ListProductInstanceConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_instances_with_options(request, headers, runtime)
+        return self.list_product_instance_configs_with_options(request, headers, runtime)
 
-    async def list_product_instances_async(
+    async def list_product_instance_configs_async(
         self,
-        request: adp_20210720_models.ListProductInstancesRequest,
-    ) -> adp_20210720_models.ListProductInstancesResponse:
+        request: adp_20210720_models.ListProductInstanceConfigsRequest,
+    ) -> adp_20210720_models.ListProductInstanceConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_instances_with_options_async(request, headers, runtime)
+        return await self.list_product_instance_configs_with_options_async(request, headers, runtime)
 
     def list_product_instances_with_options(
         self,
@@ -4767,7 +5515,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.ListProductInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         query = {}
         if not UtilClient.is_unset(request.env_uid):
             query['envUID'] = request.env_uid
@@ -4809,7 +5557,7 @@ class Client(OpenApiClient):
         request = adp_20210720_models.ListProductInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.options):
-            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.options), 'options', 'json')
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'options', 'json')
         query = {}
         if not UtilClient.is_unset(request.env_uid):
             query['envUID'] = request.env_uid
@@ -4841,23 +5589,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_version_configs(
+    def list_product_instances(
         self,
-        uid: str,
-        request: adp_20210720_models.ListProductVersionConfigsRequest,
-    ) -> adp_20210720_models.ListProductVersionConfigsResponse:
+        request: adp_20210720_models.ListProductInstancesRequest,
+    ) -> adp_20210720_models.ListProductInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_version_configs_with_options(uid, request, headers, runtime)
+        return self.list_product_instances_with_options(request, headers, runtime)
 
-    async def list_product_version_configs_async(
+    async def list_product_instances_async(
         self,
-        uid: str,
-        request: adp_20210720_models.ListProductVersionConfigsRequest,
-    ) -> adp_20210720_models.ListProductVersionConfigsResponse:
+        request: adp_20210720_models.ListProductInstancesRequest,
+    ) -> adp_20210720_models.ListProductInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_version_configs_with_options_async(uid, request, headers, runtime)
+        return await self.list_product_instances_with_options_async(request, headers, runtime)
 
     def list_product_version_configs_with_options(
         self,
@@ -4937,21 +5683,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_product_versions(
+    def list_product_version_configs(
         self,
-        request: adp_20210720_models.ListProductVersionsRequest,
-    ) -> adp_20210720_models.ListProductVersionsResponse:
+        uid: str,
+        request: adp_20210720_models.ListProductVersionConfigsRequest,
+    ) -> adp_20210720_models.ListProductVersionConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_product_versions_with_options(request, headers, runtime)
+        return self.list_product_version_configs_with_options(uid, request, headers, runtime)
 
-    async def list_product_versions_async(
+    async def list_product_version_configs_async(
         self,
-        request: adp_20210720_models.ListProductVersionsRequest,
-    ) -> adp_20210720_models.ListProductVersionsResponse:
+        uid: str,
+        request: adp_20210720_models.ListProductVersionConfigsRequest,
+    ) -> adp_20210720_models.ListProductVersionConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_product_versions_with_options_async(request, headers, runtime)
+        return await self.list_product_version_configs_with_options_async(uid, request, headers, runtime)
 
     def list_product_versions_with_options(
         self,
@@ -5053,21 +5801,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_products(
+    def list_product_versions(
         self,
-        request: adp_20210720_models.ListProductsRequest,
-    ) -> adp_20210720_models.ListProductsResponse:
+        request: adp_20210720_models.ListProductVersionsRequest,
+    ) -> adp_20210720_models.ListProductVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_products_with_options(request, headers, runtime)
+        return self.list_product_versions_with_options(request, headers, runtime)
 
-    async def list_products_async(
+    async def list_product_versions_async(
         self,
-        request: adp_20210720_models.ListProductsRequest,
-    ) -> adp_20210720_models.ListProductsResponse:
+        request: adp_20210720_models.ListProductVersionsRequest,
+    ) -> adp_20210720_models.ListProductVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_products_with_options_async(request, headers, runtime)
+        return await self.list_product_versions_with_options_async(request, headers, runtime)
 
     def list_products_with_options(
         self,
@@ -5077,6 +5825,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListProductsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
         if not UtilClient.is_unset(request.fuzzy):
             query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.name):
@@ -5113,6 +5863,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListProductsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
         if not UtilClient.is_unset(request.fuzzy):
             query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.name):
@@ -5141,25 +5893,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_workflow_task_logs(
+    def list_products(
         self,
-        step_name: str,
-        task_name: str,
-        request: adp_20210720_models.ListWorkflowTaskLogsRequest,
-    ) -> adp_20210720_models.ListWorkflowTaskLogsResponse:
+        request: adp_20210720_models.ListProductsRequest,
+    ) -> adp_20210720_models.ListProductsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_workflow_task_logs_with_options(step_name, task_name, request, headers, runtime)
+        return self.list_products_with_options(request, headers, runtime)
 
-    async def list_workflow_task_logs_async(
+    async def list_products_async(
         self,
-        step_name: str,
-        task_name: str,
-        request: adp_20210720_models.ListWorkflowTaskLogsRequest,
-    ) -> adp_20210720_models.ListWorkflowTaskLogsResponse:
+        request: adp_20210720_models.ListProductsRequest,
+    ) -> adp_20210720_models.ListProductsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_workflow_task_logs_with_options_async(step_name, task_name, request, headers, runtime)
+        return await self.list_products_with_options_async(request, headers, runtime)
 
     def list_workflow_task_logs_with_options(
         self,
@@ -5253,23 +6001,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_environment_tunnel(
+    def list_workflow_task_logs(
         self,
-        uid: str,
-        request: adp_20210720_models.PutEnvironmentTunnelRequest,
-    ) -> adp_20210720_models.PutEnvironmentTunnelResponse:
+        step_name: str,
+        task_name: str,
+        request: adp_20210720_models.ListWorkflowTaskLogsRequest,
+    ) -> adp_20210720_models.ListWorkflowTaskLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_environment_tunnel_with_options(uid, request, headers, runtime)
+        return self.list_workflow_task_logs_with_options(step_name, task_name, request, headers, runtime)
 
-    async def put_environment_tunnel_async(
+    async def list_workflow_task_logs_async(
         self,
-        uid: str,
-        request: adp_20210720_models.PutEnvironmentTunnelRequest,
-    ) -> adp_20210720_models.PutEnvironmentTunnelResponse:
+        step_name: str,
+        task_name: str,
+        request: adp_20210720_models.ListWorkflowTaskLogsRequest,
+    ) -> adp_20210720_models.ListWorkflowTaskLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_environment_tunnel_with_options_async(uid, request, headers, runtime)
+        return await self.list_workflow_task_logs_with_options_async(step_name, task_name, request, headers, runtime)
 
     def put_environment_tunnel_with_options(
         self,
@@ -5337,21 +6087,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_product_instance_config(
+    def put_environment_tunnel(
         self,
-        request: adp_20210720_models.PutProductInstanceConfigRequest,
-    ) -> adp_20210720_models.PutProductInstanceConfigResponse:
+        uid: str,
+        request: adp_20210720_models.PutEnvironmentTunnelRequest,
+    ) -> adp_20210720_models.PutEnvironmentTunnelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.put_product_instance_config_with_options(request, headers, runtime)
+        return self.put_environment_tunnel_with_options(uid, request, headers, runtime)
 
-    async def put_product_instance_config_async(
+    async def put_environment_tunnel_async(
         self,
-        request: adp_20210720_models.PutProductInstanceConfigRequest,
-    ) -> adp_20210720_models.PutProductInstanceConfigResponse:
+        uid: str,
+        request: adp_20210720_models.PutEnvironmentTunnelRequest,
+    ) -> adp_20210720_models.PutEnvironmentTunnelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.put_product_instance_config_with_options_async(request, headers, runtime)
+        return await self.put_environment_tunnel_with_options_async(uid, request, headers, runtime)
 
     def put_product_instance_config_with_options(
         self,
@@ -5461,23 +6213,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def set_environment_foundation_reference(
+    def put_product_instance_config(
         self,
-        uid: str,
-        foundation_reference_uid: str,
-    ) -> adp_20210720_models.SetEnvironmentFoundationReferenceResponse:
+        request: adp_20210720_models.PutProductInstanceConfigRequest,
+    ) -> adp_20210720_models.PutProductInstanceConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.set_environment_foundation_reference_with_options(uid, foundation_reference_uid, headers, runtime)
+        return self.put_product_instance_config_with_options(request, headers, runtime)
 
-    async def set_environment_foundation_reference_async(
+    async def put_product_instance_config_async(
         self,
-        uid: str,
-        foundation_reference_uid: str,
-    ) -> adp_20210720_models.SetEnvironmentFoundationReferenceResponse:
+        request: adp_20210720_models.PutProductInstanceConfigRequest,
+    ) -> adp_20210720_models.PutProductInstanceConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.set_environment_foundation_reference_with_options_async(uid, foundation_reference_uid, headers, runtime)
+        return await self.put_product_instance_config_with_options_async(request, headers, runtime)
 
     def set_environment_foundation_reference_with_options(
         self,
@@ -5531,23 +6281,199 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_environment(
+    def set_environment_foundation_reference(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateEnvironmentRequest,
-    ) -> adp_20210720_models.UpdateEnvironmentResponse:
+        foundation_reference_uid: str,
+    ) -> adp_20210720_models.SetEnvironmentFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_environment_with_options(uid, request, headers, runtime)
+        return self.set_environment_foundation_reference_with_options(uid, foundation_reference_uid, headers, runtime)
 
-    async def update_environment_async(
+    async def set_environment_foundation_reference_async(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateEnvironmentRequest,
-    ) -> adp_20210720_models.UpdateEnvironmentResponse:
+        foundation_reference_uid: str,
+    ) -> adp_20210720_models.SetEnvironmentFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_environment_with_options_async(uid, request, headers, runtime)
+        return await self.set_environment_foundation_reference_with_options_async(uid, foundation_reference_uid, headers, runtime)
+
+    def update_deliverable_with_options(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliverableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.UpdateDeliverableResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.foundation):
+            body['foundation'] = request.foundation
+        if not UtilClient.is_unset(request.products):
+            body['products'] = request.products
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeliverable',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/deliverables/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.UpdateDeliverableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_deliverable_with_options_async(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliverableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.UpdateDeliverableResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.foundation):
+            body['foundation'] = request.foundation
+        if not UtilClient.is_unset(request.products):
+            body['products'] = request.products
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeliverable',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/deliverables/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.UpdateDeliverableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_deliverable(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliverableRequest,
+    ) -> adp_20210720_models.UpdateDeliverableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_deliverable_with_options(uid, request, headers, runtime)
+
+    async def update_deliverable_async(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliverableRequest,
+    ) -> adp_20210720_models.UpdateDeliverableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_deliverable_with_options_async(uid, request, headers, runtime)
+
+    def update_delivery_instance_with_options(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliveryInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.UpdateDeliveryInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deliverable_config_uid):
+            body['deliverableConfigUID'] = request.deliverable_config_uid
+        if not UtilClient.is_unset(request.deliverable_uid):
+            body['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.desc):
+            body['desc'] = request.desc
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeliveryInstance',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.UpdateDeliveryInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_delivery_instance_with_options_async(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliveryInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> adp_20210720_models.UpdateDeliveryInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deliverable_config_uid):
+            body['deliverableConfigUID'] = request.deliverable_config_uid
+        if not UtilClient.is_unset(request.deliverable_uid):
+            body['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.desc):
+            body['desc'] = request.desc
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeliveryInstance',
+            version='2021-07-20',
+            protocol='HTTPS',
+            pathname=f'/api/v2/delivery/delivery-instances/{OpenApiUtilClient.get_encode_param(uid)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adp_20210720_models.UpdateDeliveryInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_delivery_instance(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliveryInstanceRequest,
+    ) -> adp_20210720_models.UpdateDeliveryInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_delivery_instance_with_options(uid, request, headers, runtime)
+
+    async def update_delivery_instance_async(
+        self,
+        uid: str,
+        request: adp_20210720_models.UpdateDeliveryInstanceRequest,
+    ) -> adp_20210720_models.UpdateDeliveryInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_delivery_instance_with_options_async(uid, request, headers, runtime)
 
     def update_environment_with_options(
         self,
@@ -5623,25 +6549,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_environment_node(
+    def update_environment(
         self,
         uid: str,
-        node_uid: str,
-        request: adp_20210720_models.UpdateEnvironmentNodeRequest,
-    ) -> adp_20210720_models.UpdateEnvironmentNodeResponse:
+        request: adp_20210720_models.UpdateEnvironmentRequest,
+    ) -> adp_20210720_models.UpdateEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_environment_node_with_options(uid, node_uid, request, headers, runtime)
+        return self.update_environment_with_options(uid, request, headers, runtime)
 
-    async def update_environment_node_async(
+    async def update_environment_async(
         self,
         uid: str,
-        node_uid: str,
-        request: adp_20210720_models.UpdateEnvironmentNodeRequest,
-    ) -> adp_20210720_models.UpdateEnvironmentNodeResponse:
+        request: adp_20210720_models.UpdateEnvironmentRequest,
+    ) -> adp_20210720_models.UpdateEnvironmentResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_environment_node_with_options_async(uid, node_uid, request, headers, runtime)
+        return await self.update_environment_with_options_async(uid, request, headers, runtime)
 
     def update_environment_node_with_options(
         self,
@@ -5731,23 +6655,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_environment_product_version(
+    def update_environment_node(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateEnvironmentProductVersionRequest,
-    ) -> adp_20210720_models.UpdateEnvironmentProductVersionResponse:
+        node_uid: str,
+        request: adp_20210720_models.UpdateEnvironmentNodeRequest,
+    ) -> adp_20210720_models.UpdateEnvironmentNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_environment_product_version_with_options(uid, request, headers, runtime)
+        return self.update_environment_node_with_options(uid, node_uid, request, headers, runtime)
 
-    async def update_environment_product_version_async(
+    async def update_environment_node_async(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateEnvironmentProductVersionRequest,
-    ) -> adp_20210720_models.UpdateEnvironmentProductVersionResponse:
+        node_uid: str,
+        request: adp_20210720_models.UpdateEnvironmentNodeRequest,
+    ) -> adp_20210720_models.UpdateEnvironmentNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_environment_product_version_with_options_async(uid, request, headers, runtime)
+        return await self.update_environment_node_with_options_async(uid, node_uid, request, headers, runtime)
 
     def update_environment_product_version_with_options(
         self,
@@ -5823,25 +6749,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_foundation_component_reference(
+    def update_environment_product_version(
         self,
         uid: str,
-        component_reference_uid: str,
-        request: adp_20210720_models.UpdateFoundationComponentReferenceRequest,
-    ) -> adp_20210720_models.UpdateFoundationComponentReferenceResponse:
+        request: adp_20210720_models.UpdateEnvironmentProductVersionRequest,
+    ) -> adp_20210720_models.UpdateEnvironmentProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_foundation_component_reference_with_options(uid, component_reference_uid, request, headers, runtime)
+        return self.update_environment_product_version_with_options(uid, request, headers, runtime)
 
-    async def update_foundation_component_reference_async(
+    async def update_environment_product_version_async(
         self,
         uid: str,
-        component_reference_uid: str,
-        request: adp_20210720_models.UpdateFoundationComponentReferenceRequest,
-    ) -> adp_20210720_models.UpdateFoundationComponentReferenceResponse:
+        request: adp_20210720_models.UpdateEnvironmentProductVersionRequest,
+    ) -> adp_20210720_models.UpdateEnvironmentProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_foundation_component_reference_with_options_async(uid, component_reference_uid, request, headers, runtime)
+        return await self.update_environment_product_version_with_options_async(uid, request, headers, runtime)
 
     def update_foundation_component_reference_with_options(
         self,
@@ -5911,23 +6835,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_foundation_reference(
+    def update_foundation_component_reference(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateFoundationReferenceRequest,
-    ) -> adp_20210720_models.UpdateFoundationReferenceResponse:
+        component_reference_uid: str,
+        request: adp_20210720_models.UpdateFoundationComponentReferenceRequest,
+    ) -> adp_20210720_models.UpdateFoundationComponentReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_foundation_reference_with_options(uid, request, headers, runtime)
+        return self.update_foundation_component_reference_with_options(uid, component_reference_uid, request, headers, runtime)
 
-    async def update_foundation_reference_async(
+    async def update_foundation_component_reference_async(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateFoundationReferenceRequest,
-    ) -> adp_20210720_models.UpdateFoundationReferenceResponse:
+        component_reference_uid: str,
+        request: adp_20210720_models.UpdateFoundationComponentReferenceRequest,
+    ) -> adp_20210720_models.UpdateFoundationComponentReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_foundation_reference_with_options_async(uid, request, headers, runtime)
+        return await self.update_foundation_component_reference_with_options_async(uid, component_reference_uid, request, headers, runtime)
 
     def update_foundation_reference_with_options(
         self,
@@ -5991,23 +6917,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_product(
+    def update_foundation_reference(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateProductRequest,
-    ) -> adp_20210720_models.UpdateProductResponse:
+        request: adp_20210720_models.UpdateFoundationReferenceRequest,
+    ) -> adp_20210720_models.UpdateFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_product_with_options(uid, request, headers, runtime)
+        return self.update_foundation_reference_with_options(uid, request, headers, runtime)
 
-    async def update_product_async(
+    async def update_foundation_reference_async(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateProductRequest,
-    ) -> adp_20210720_models.UpdateProductResponse:
+        request: adp_20210720_models.UpdateFoundationReferenceRequest,
+    ) -> adp_20210720_models.UpdateFoundationReferenceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_product_with_options_async(uid, request, headers, runtime)
+        return await self.update_foundation_reference_with_options_async(uid, request, headers, runtime)
 
     def update_product_with_options(
         self,
@@ -6083,25 +7009,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_product_component_version(
+    def update_product(
         self,
         uid: str,
-        relation_uid: str,
-        request: adp_20210720_models.UpdateProductComponentVersionRequest,
-    ) -> adp_20210720_models.UpdateProductComponentVersionResponse:
+        request: adp_20210720_models.UpdateProductRequest,
+    ) -> adp_20210720_models.UpdateProductResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_product_component_version_with_options(uid, relation_uid, request, headers, runtime)
+        return self.update_product_with_options(uid, request, headers, runtime)
 
-    async def update_product_component_version_async(
+    async def update_product_async(
         self,
         uid: str,
-        relation_uid: str,
-        request: adp_20210720_models.UpdateProductComponentVersionRequest,
-    ) -> adp_20210720_models.UpdateProductComponentVersionResponse:
+        request: adp_20210720_models.UpdateProductRequest,
+    ) -> adp_20210720_models.UpdateProductResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_product_component_version_with_options_async(uid, relation_uid, request, headers, runtime)
+        return await self.update_product_with_options_async(uid, request, headers, runtime)
 
     def update_product_component_version_with_options(
         self,
@@ -6115,6 +7039,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.component_orchestration_values):
             body['componentOrchestrationValues'] = request.component_orchestration_values
+        if not UtilClient.is_unset(request.component_specification_uid):
+            body['componentSpecificationUid'] = request.component_specification_uid
+        if not UtilClient.is_unset(request.component_specification_values):
+            body['componentSpecificationValues'] = request.component_specification_values
         if not UtilClient.is_unset(request.enable):
             body['enable'] = request.enable
         if not UtilClient.is_unset(request.new_component_version_uid):
@@ -6123,6 +7051,8 @@ class Client(OpenApiClient):
             body['policy'] = request.policy
         if not UtilClient.is_unset(request.release_name):
             body['releaseName'] = request.release_name
+        if not UtilClient.is_unset(request.unset_component_version_spec):
+            body['unsetComponentVersionSpec'] = request.unset_component_version_spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6155,6 +7085,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.component_orchestration_values):
             body['componentOrchestrationValues'] = request.component_orchestration_values
+        if not UtilClient.is_unset(request.component_specification_uid):
+            body['componentSpecificationUid'] = request.component_specification_uid
+        if not UtilClient.is_unset(request.component_specification_values):
+            body['componentSpecificationValues'] = request.component_specification_values
         if not UtilClient.is_unset(request.enable):
             body['enable'] = request.enable
         if not UtilClient.is_unset(request.new_component_version_uid):
@@ -6163,6 +7097,8 @@ class Client(OpenApiClient):
             body['policy'] = request.policy
         if not UtilClient.is_unset(request.release_name):
             body['releaseName'] = request.release_name
+        if not UtilClient.is_unset(request.unset_component_version_spec):
+            body['unsetComponentVersionSpec'] = request.unset_component_version_spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6183,23 +7119,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_product_foundation_version(
+    def update_product_component_version(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateProductFoundationVersionRequest,
-    ) -> adp_20210720_models.UpdateProductFoundationVersionResponse:
+        relation_uid: str,
+        request: adp_20210720_models.UpdateProductComponentVersionRequest,
+    ) -> adp_20210720_models.UpdateProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_product_foundation_version_with_options(uid, request, headers, runtime)
+        return self.update_product_component_version_with_options(uid, relation_uid, request, headers, runtime)
 
-    async def update_product_foundation_version_async(
+    async def update_product_component_version_async(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateProductFoundationVersionRequest,
-    ) -> adp_20210720_models.UpdateProductFoundationVersionResponse:
+        relation_uid: str,
+        request: adp_20210720_models.UpdateProductComponentVersionRequest,
+    ) -> adp_20210720_models.UpdateProductComponentVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_product_foundation_version_with_options_async(uid, request, headers, runtime)
+        return await self.update_product_component_version_with_options_async(uid, relation_uid, request, headers, runtime)
 
     def update_product_foundation_version_with_options(
         self,
@@ -6208,6 +7146,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.UpdateProductFoundationVersionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateProductFoundationVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductFoundationVersionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.foundation_version_uid):
@@ -6239,6 +7186,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.UpdateProductFoundationVersionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateProductFoundationVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProductFoundationVersionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.foundation_version_uid):
@@ -6263,23 +7219,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_product_version(
+    def update_product_foundation_version(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateProductVersionRequest,
-    ) -> adp_20210720_models.UpdateProductVersionResponse:
+        request: adp_20210720_models.UpdateProductFoundationVersionRequest,
+    ) -> adp_20210720_models.UpdateProductFoundationVersionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateProductFoundationVersionRequest
+        @return: UpdateProductFoundationVersionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_product_version_with_options(uid, request, headers, runtime)
+        return self.update_product_foundation_version_with_options(uid, request, headers, runtime)
 
-    async def update_product_version_async(
+    async def update_product_foundation_version_async(
         self,
         uid: str,
-        request: adp_20210720_models.UpdateProductVersionRequest,
-    ) -> adp_20210720_models.UpdateProductVersionResponse:
+        request: adp_20210720_models.UpdateProductFoundationVersionRequest,
+    ) -> adp_20210720_models.UpdateProductFoundationVersionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateProductFoundationVersionRequest
+        @return: UpdateProductFoundationVersionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_product_version_with_options_async(uid, request, headers, runtime)
+        return await self.update_product_foundation_version_with_options_async(uid, request, headers, runtime)
 
     def update_product_version_with_options(
         self,
@@ -6289,15 +7259,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.UpdateProductVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
         body = {}
         if not UtilClient.is_unset(request.continuous_integration):
             body['continuousIntegration'] = request.continuous_integration
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.entry):
+            body['entry'] = request.entry
+        if not UtilClient.is_unset(request.timeout):
+            body['timeout'] = request.timeout
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6324,15 +7302,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adp_20210720_models.UpdateProductVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action):
+            query['action'] = request.action
         body = {}
         if not UtilClient.is_unset(request.continuous_integration):
             body['continuousIntegration'] = request.continuous_integration
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.entry):
+            body['entry'] = request.entry
+        if not UtilClient.is_unset(request.timeout):
+            body['timeout'] = request.timeout
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6351,25 +7337,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_product_version_config(
+    def update_product_version(
         self,
         uid: str,
-        config_uid: str,
-        request: adp_20210720_models.UpdateProductVersionConfigRequest,
-    ) -> adp_20210720_models.UpdateProductVersionConfigResponse:
+        request: adp_20210720_models.UpdateProductVersionRequest,
+    ) -> adp_20210720_models.UpdateProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_product_version_config_with_options(uid, config_uid, request, headers, runtime)
+        return self.update_product_version_with_options(uid, request, headers, runtime)
 
-    async def update_product_version_config_async(
+    async def update_product_version_async(
         self,
         uid: str,
-        config_uid: str,
-        request: adp_20210720_models.UpdateProductVersionConfigRequest,
-    ) -> adp_20210720_models.UpdateProductVersionConfigResponse:
+        request: adp_20210720_models.UpdateProductVersionRequest,
+    ) -> adp_20210720_models.UpdateProductVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_product_version_config_with_options_async(uid, config_uid, request, headers, runtime)
+        return await self.update_product_version_with_options_async(uid, request, headers, runtime)
 
     def update_product_version_config_with_options(
         self,
@@ -6455,23 +7439,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def validate_environment_tunnel(
+    def update_product_version_config(
         self,
         uid: str,
-        request: adp_20210720_models.ValidateEnvironmentTunnelRequest,
-    ) -> adp_20210720_models.ValidateEnvironmentTunnelResponse:
+        config_uid: str,
+        request: adp_20210720_models.UpdateProductVersionConfigRequest,
+    ) -> adp_20210720_models.UpdateProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.validate_environment_tunnel_with_options(uid, request, headers, runtime)
+        return self.update_product_version_config_with_options(uid, config_uid, request, headers, runtime)
 
-    async def validate_environment_tunnel_async(
+    async def update_product_version_config_async(
         self,
         uid: str,
-        request: adp_20210720_models.ValidateEnvironmentTunnelRequest,
-    ) -> adp_20210720_models.ValidateEnvironmentTunnelResponse:
+        config_uid: str,
+        request: adp_20210720_models.UpdateProductVersionConfigRequest,
+    ) -> adp_20210720_models.UpdateProductVersionConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.validate_environment_tunnel_with_options_async(uid, request, headers, runtime)
+        return await self.update_product_version_config_with_options_async(uid, config_uid, request, headers, runtime)
 
     def validate_environment_tunnel_with_options(
         self,
@@ -6538,3 +7524,21 @@ class Client(OpenApiClient):
             adp_20210720_models.ValidateEnvironmentTunnelResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def validate_environment_tunnel(
+        self,
+        uid: str,
+        request: adp_20210720_models.ValidateEnvironmentTunnelRequest,
+    ) -> adp_20210720_models.ValidateEnvironmentTunnelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.validate_environment_tunnel_with_options(uid, request, headers, runtime)
+
+    async def validate_environment_tunnel_async(
+        self,
+        uid: str,
+        request: adp_20210720_models.ValidateEnvironmentTunnelRequest,
+    ) -> adp_20210720_models.ValidateEnvironmentTunnelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.validate_environment_tunnel_with_options_async(uid, request, headers, runtime)
