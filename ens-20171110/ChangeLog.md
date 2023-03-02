@@ -1,3 +1,6 @@
+2023-03-02 Version: 3.0.12
+- Support Snapshot API.
+
 2022-12-27 Version: 3.0.11
 - Support Snapshot API.
 
