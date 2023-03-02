@@ -606,6 +606,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_diagnostic_report_with_options_async(request, runtime)
 
+    def create_kill_instance_session_task_with_options(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_user):
+            query['DbUser'] = request.db_user
+        if not UtilClient.is_unset(request.db_user_password):
+            query['DbUserPassword'] = request.db_user_password
+        if not UtilClient.is_unset(request.ignored_users):
+            query['IgnoredUsers'] = request.ignored_users
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.kill_all_sessions):
+            query['KillAllSessions'] = request.kill_all_sessions
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.session_ids):
+            query['SessionIds'] = request.session_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateKillInstanceSessionTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateKillInstanceSessionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_kill_instance_session_task_with_options_async(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_user):
+            query['DbUser'] = request.db_user
+        if not UtilClient.is_unset(request.db_user_password):
+            query['DbUserPassword'] = request.db_user_password
+        if not UtilClient.is_unset(request.ignored_users):
+            query['IgnoredUsers'] = request.ignored_users
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.kill_all_sessions):
+            query['KillAllSessions'] = request.kill_all_sessions
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.session_ids):
+            query['SessionIds'] = request.session_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateKillInstanceSessionTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateKillInstanceSessionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_kill_instance_session_task(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskRequest,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_kill_instance_session_task_with_options(request, runtime)
+
+    async def create_kill_instance_session_task_async(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskRequest,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_kill_instance_session_task_with_options_async(request, runtime)
+
     def create_request_diagnosis_with_options(
         self,
         request: das20200116_models.CreateRequestDiagnosisRequest,
@@ -4028,6 +4122,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_sql_optimize_statistic_with_options_async(request, runtime)
 
+    def get_kill_instance_session_task_result_with_options(
+        self,
+        request: das20200116_models.GetKillInstanceSessionTaskResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetKillInstanceSessionTaskResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKillInstanceSessionTaskResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetKillInstanceSessionTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kill_instance_session_task_result_with_options_async(
+        self,
+        request: das20200116_models.GetKillInstanceSessionTaskResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetKillInstanceSessionTaskResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKillInstanceSessionTaskResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetKillInstanceSessionTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kill_instance_session_task_result(
+        self,
+        request: das20200116_models.GetKillInstanceSessionTaskResultRequest,
+    ) -> das20200116_models.GetKillInstanceSessionTaskResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_kill_instance_session_task_result_with_options(request, runtime)
+
+    async def get_kill_instance_session_task_result_async(
+        self,
+        request: das20200116_models.GetKillInstanceSessionTaskResultRequest,
+    ) -> das20200116_models.GetKillInstanceSessionTaskResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_kill_instance_session_task_result_with_options_async(request, runtime)
+
     def get_partitions_heatmap_with_options(
         self,
         request: das20200116_models.GetPartitionsHeatmapRequest,
@@ -4749,6 +4921,10 @@ class Client(OpenApiClient):
             query['MessageId'] = request.message_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4781,6 +4957,10 @@ class Client(OpenApiClient):
             query['MessageId'] = request.message_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5391,6 +5571,8 @@ class Client(OpenApiClient):
             query['ContactGroupName'] = request.contact_group_name
         if not UtilClient.is_unset(request.contact_name):
             query['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.dispatch_rule):
+            query['DispatchRule'] = request.dispatch_rule
         if not UtilClient.is_unset(request.event_context):
             query['EventContext'] = request.event_context
         if not UtilClient.is_unset(request.instance_id):
@@ -5401,6 +5583,8 @@ class Client(OpenApiClient):
             query['Level'] = request.level
         if not UtilClient.is_unset(request.min_interval):
             query['MinInterval'] = request.min_interval
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5435,6 +5619,8 @@ class Client(OpenApiClient):
             query['ContactGroupName'] = request.contact_group_name
         if not UtilClient.is_unset(request.contact_name):
             query['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.dispatch_rule):
+            query['DispatchRule'] = request.dispatch_rule
         if not UtilClient.is_unset(request.event_context):
             query['EventContext'] = request.event_context
         if not UtilClient.is_unset(request.instance_id):
@@ -5445,6 +5631,8 @@ class Client(OpenApiClient):
             query['Level'] = request.level
         if not UtilClient.is_unset(request.min_interval):
             query['MinInterval'] = request.min_interval
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
