@@ -84,10 +84,28 @@ class Client(OpenApiClient):
         request: sts_20150401_models.AssumeRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleResponse:
+        """
+        ### Prerequisites
+        You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
+        If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
+        `You are not authorized to do this action. You should be authorized by RAM.`
+        You can refer to the following information to troubleshoot the error:
+        *   Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](~~39744~~) and [Grant permissions to a RAM user](~~116146~~).
+        *   Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](~~116819~~).
+        ### Best practices
+        An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](~~39744~~) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
+        When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](~~31952~~) and [Obtain signature information from the server and upload data to OSS](~~31926~~).
+        
+        @param request: AssumeRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssumeRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration_seconds):
             query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.external_id):
+            query['ExternalId'] = request.external_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.role_arn):
@@ -118,10 +136,28 @@ class Client(OpenApiClient):
         request: sts_20150401_models.AssumeRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleResponse:
+        """
+        ### Prerequisites
+        You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
+        If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
+        `You are not authorized to do this action. You should be authorized by RAM.`
+        You can refer to the following information to troubleshoot the error:
+        *   Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](~~39744~~) and [Grant permissions to a RAM user](~~116146~~).
+        *   Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](~~116819~~).
+        ### Best practices
+        An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](~~39744~~) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
+        When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](~~31952~~) and [Obtain signature information from the server and upload data to OSS](~~31926~~).
+        
+        @param request: AssumeRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssumeRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration_seconds):
             query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.external_id):
+            query['ExternalId'] = request.external_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.role_arn):
@@ -151,6 +187,21 @@ class Client(OpenApiClient):
         self,
         request: sts_20150401_models.AssumeRoleRequest,
     ) -> sts_20150401_models.AssumeRoleResponse:
+        """
+        ### Prerequisites
+        You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
+        If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
+        `You are not authorized to do this action. You should be authorized by RAM.`
+        You can refer to the following information to troubleshoot the error:
+        *   Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](~~39744~~) and [Grant permissions to a RAM user](~~116146~~).
+        *   Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](~~116819~~).
+        ### Best practices
+        An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](~~39744~~) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
+        When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](~~31952~~) and [Obtain signature information from the server and upload data to OSS](~~31926~~).
+        
+        @param request: AssumeRoleRequest
+        @return: AssumeRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.assume_role_with_options(request, runtime)
 
@@ -158,6 +209,21 @@ class Client(OpenApiClient):
         self,
         request: sts_20150401_models.AssumeRoleRequest,
     ) -> sts_20150401_models.AssumeRoleResponse:
+        """
+        ### Prerequisites
+        You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
+        If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
+        `You are not authorized to do this action. You should be authorized by RAM.`
+        You can refer to the following information to troubleshoot the error:
+        *   Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](~~39744~~) and [Grant permissions to a RAM user](~~116146~~).
+        *   Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](~~116819~~).
+        ### Best practices
+        An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](~~39744~~) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
+        When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](~~31952~~) and [Obtain signature information from the server and upload data to OSS](~~31926~~).
+        
+        @param request: AssumeRoleRequest
+        @return: AssumeRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.assume_role_with_options_async(request, runtime)
 
@@ -166,6 +232,16 @@ class Client(OpenApiClient):
         request: sts_20150401_models.AssumeRoleWithOIDCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        """
+        ### Prerequisites
+        - An OIDC token is obtained from an external identity provider (IdP).
+        - An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](~~327123~~) or [CreateOIDCProvider](~~327135~~).
+        - A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithOIDCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssumeRoleWithOIDCResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration_seconds):
@@ -204,6 +280,16 @@ class Client(OpenApiClient):
         request: sts_20150401_models.AssumeRoleWithOIDCRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        """
+        ### Prerequisites
+        - An OIDC token is obtained from an external identity provider (IdP).
+        - An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](~~327123~~) or [CreateOIDCProvider](~~327135~~).
+        - A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithOIDCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssumeRoleWithOIDCResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration_seconds):
@@ -241,6 +327,15 @@ class Client(OpenApiClient):
         self,
         request: sts_20150401_models.AssumeRoleWithOIDCRequest,
     ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        """
+        ### Prerequisites
+        - An OIDC token is obtained from an external identity provider (IdP).
+        - An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](~~327123~~) or [CreateOIDCProvider](~~327135~~).
+        - A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithOIDCRequest
+        @return: AssumeRoleWithOIDCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.assume_role_with_oidcwith_options(request, runtime)
 
@@ -248,6 +343,15 @@ class Client(OpenApiClient):
         self,
         request: sts_20150401_models.AssumeRoleWithOIDCRequest,
     ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
+        """
+        ### Prerequisites
+        - An OIDC token is obtained from an external identity provider (IdP).
+        - An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](~~327123~~) or [CreateOIDCProvider](~~327135~~).
+        - A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithOIDCRequest
+        @return: AssumeRoleWithOIDCResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.assume_role_with_oidcwith_options_async(request, runtime)
 
@@ -256,6 +360,16 @@ class Client(OpenApiClient):
         request: sts_20150401_models.AssumeRoleWithSAMLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithSAMLResponse:
+        """
+        ### Prerequisites
+        - A SAML response is obtained from an external identity provider (IdP).
+        - A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](~~116083~~) or [CreateSAMLProvider](~~186846~~).
+        - A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithSAMLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssumeRoleWithSAMLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration_seconds):
@@ -292,6 +406,16 @@ class Client(OpenApiClient):
         request: sts_20150401_models.AssumeRoleWithSAMLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithSAMLResponse:
+        """
+        ### Prerequisites
+        - A SAML response is obtained from an external identity provider (IdP).
+        - A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](~~116083~~) or [CreateSAMLProvider](~~186846~~).
+        - A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithSAMLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssumeRoleWithSAMLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration_seconds):
@@ -327,6 +451,15 @@ class Client(OpenApiClient):
         self,
         request: sts_20150401_models.AssumeRoleWithSAMLRequest,
     ) -> sts_20150401_models.AssumeRoleWithSAMLResponse:
+        """
+        ### Prerequisites
+        - A SAML response is obtained from an external identity provider (IdP).
+        - A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](~~116083~~) or [CreateSAMLProvider](~~186846~~).
+        - A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithSAMLRequest
+        @return: AssumeRoleWithSAMLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.assume_role_with_samlwith_options(request, runtime)
 
@@ -334,6 +467,15 @@ class Client(OpenApiClient):
         self,
         request: sts_20150401_models.AssumeRoleWithSAMLRequest,
     ) -> sts_20150401_models.AssumeRoleWithSAMLResponse:
+        """
+        ### Prerequisites
+        - A SAML response is obtained from an external identity provider (IdP).
+        - A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](~~116083~~) or [CreateSAMLProvider](~~186846~~).
+        - A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+        
+        @param request: AssumeRoleWithSAMLRequest
+        @return: AssumeRoleWithSAMLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.assume_role_with_samlwith_options_async(request, runtime)
 
