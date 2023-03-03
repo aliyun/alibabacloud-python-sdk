@@ -1983,6 +1983,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_creatable_zone_with_options_async(request, runtime)
 
+    def describe_instance_security_configs_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSecurityConfigs',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_security_configs_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSecurityConfigs',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_security_configs(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_security_configs_with_options(request, runtime)
+
+    async def describe_instance_security_configs_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_security_configs_with_options_async(request, runtime)
+
     def describe_instance_tags_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
@@ -3600,6 +3670,80 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeTenantMetricsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_metrics_with_options_async(request, runtime)
+
+    def describe_tenant_security_configs_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantSecurityConfigs',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tenant_security_configs_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantSecurityConfigs',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tenant_security_configs(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tenant_security_configs_with_options(request, runtime)
+
+    async def describe_tenant_security_configs_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tenant_security_configs_with_options_async(request, runtime)
 
     def describe_tenant_tags_with_options(
         self,
