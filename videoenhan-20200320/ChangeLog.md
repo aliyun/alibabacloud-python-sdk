@@ -1,3 +1,6 @@
+2023-03-03 Version: 3.0.13
+- Release GenerateHumanAnimeStyleVideo.
+
 2023-02-22 Version: 3.0.12
 - Release GenerateHumanAnimeStyleVideo.
 
