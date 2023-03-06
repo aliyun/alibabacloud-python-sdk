@@ -1,3 +1,6 @@
+2023-03-06 Version: 1.1.5
+- Improve API parameters.
+
 2022-12-28 Version: 1.1.4
 - Improve API parameters for API`DeleteDeprecatedTemplate` `CreateIndexTemplate` `CreateCollector`.
 
