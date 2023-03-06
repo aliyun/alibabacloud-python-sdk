@@ -422,6 +422,8 @@ class Client(OpenApiClient):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
             body['depart_name'] = request.depart_name
+        if not UtilClient.is_unset(request.extend_field):
+            body['extend_field'] = request.extend_field
         if not UtilClient.is_unset(request.external_traveler_list_shrink):
             body['external_traveler_list'] = request.external_traveler_list_shrink
         if not UtilClient.is_unset(request.external_traveler_standard_shrink):
@@ -535,6 +537,8 @@ class Client(OpenApiClient):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
             body['depart_name'] = request.depart_name
+        if not UtilClient.is_unset(request.extend_field):
+            body['extend_field'] = request.extend_field
         if not UtilClient.is_unset(request.external_traveler_list_shrink):
             body['external_traveler_list'] = request.external_traveler_list_shrink
         if not UtilClient.is_unset(request.external_traveler_standard_shrink):
@@ -991,6 +995,8 @@ class Client(OpenApiClient):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
             body['depart_name'] = request.depart_name
+        if not UtilClient.is_unset(request.extend_field):
+            body['extend_field'] = request.extend_field
         if not UtilClient.is_unset(request.external_traveler_list_shrink):
             body['external_traveler_list'] = request.external_traveler_list_shrink
         if not UtilClient.is_unset(request.external_traveler_standard_shrink):
@@ -1098,6 +1104,8 @@ class Client(OpenApiClient):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
             body['depart_name'] = request.depart_name
+        if not UtilClient.is_unset(request.extend_field):
+            body['extend_field'] = request.extend_field
         if not UtilClient.is_unset(request.external_traveler_list_shrink):
             body['external_traveler_list'] = request.external_traveler_list_shrink
         if not UtilClient.is_unset(request.external_traveler_standard_shrink):
@@ -4043,6 +4051,108 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.FlightItineraryScanQueryHeaders()
         return await self.flight_itinerary_scan_query_with_options_async(request, headers, runtime)
 
+    def flight_listing_search_with_options(
+        self,
+        request: btrip_open_20220520_models.FlightListingSearchRequest,
+        headers: btrip_open_20220520_models.FlightListingSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.airline_code):
+            query['airline_code'] = request.airline_code
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.cabin_class):
+            query['cabin_class'] = request.cabin_class
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightListingSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v1/flight/action/listing-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightListingSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_listing_search_with_options_async(
+        self,
+        request: btrip_open_20220520_models.FlightListingSearchRequest,
+        headers: btrip_open_20220520_models.FlightListingSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.airline_code):
+            query['airline_code'] = request.airline_code
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.cabin_class):
+            query['cabin_class'] = request.cabin_class
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightListingSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v1/flight/action/listing-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightListingSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_listing_search(
+        self,
+        request: btrip_open_20220520_models.FlightListingSearchRequest,
+    ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightListingSearchHeaders()
+        return self.flight_listing_search_with_options(request, headers, runtime)
+
+    async def flight_listing_search_async(
+        self,
+        request: btrip_open_20220520_models.FlightListingSearchRequest,
+    ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightListingSearchHeaders()
+        return await self.flight_listing_search_with_options_async(request, headers, runtime)
+
     def flight_order_detail_info_with_options(
         self,
         request: btrip_open_20220520_models.FlightOrderDetailInfoRequest,
@@ -4344,6 +4454,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderQueryHeaders()
         return await self.flight_order_query_with_options_async(request, headers, runtime)
+
+    def flight_ota_search_with_options(
+        self,
+        request: btrip_open_20220520_models.FlightOtaSearchRequest,
+        headers: btrip_open_20220520_models.FlightOtaSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.airline_code):
+            query['airline_code'] = request.airline_code
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.cabin_class):
+            query['cabin_class'] = request.cabin_class
+        if not UtilClient.is_unset(request.carrier_flight_no):
+            query['carrier_flight_no'] = request.carrier_flight_no
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.flight_no):
+            query['flight_no'] = request.flight_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightOtaSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v1/flight/action/ota-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightOtaSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def flight_ota_search_with_options_async(
+        self,
+        request: btrip_open_20220520_models.FlightOtaSearchRequest,
+        headers: btrip_open_20220520_models.FlightOtaSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.airline_code):
+            query['airline_code'] = request.airline_code
+        if not UtilClient.is_unset(request.arr_city_code):
+            query['arr_city_code'] = request.arr_city_code
+        if not UtilClient.is_unset(request.cabin_class):
+            query['cabin_class'] = request.cabin_class
+        if not UtilClient.is_unset(request.carrier_flight_no):
+            query['carrier_flight_no'] = request.carrier_flight_no
+        if not UtilClient.is_unset(request.dep_city_code):
+            query['dep_city_code'] = request.dep_city_code
+        if not UtilClient.is_unset(request.dep_date):
+            query['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.flight_no):
+            query['flight_no'] = request.flight_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FlightOtaSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-flight/v1/flight/action/ota-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FlightOtaSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def flight_ota_search(
+        self,
+        request: btrip_open_20220520_models.FlightOtaSearchRequest,
+    ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightOtaSearchHeaders()
+        return self.flight_ota_search_with_options(request, headers, runtime)
+
+    async def flight_ota_search_async(
+        self,
+        request: btrip_open_20220520_models.FlightOtaSearchRequest,
+    ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FlightOtaSearchHeaders()
+        return await self.flight_ota_search_with_options_async(request, headers, runtime)
 
     def flight_pay_order_with_options(
         self,
@@ -5938,6 +6158,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceSearchHeaders()
         return await self.invoice_search_with_options_async(request, headers, runtime)
+
+    def isv_rule_save_with_options(
+        self,
+        request: btrip_open_20220520_models.IsvRuleSaveRequest,
+        headers: btrip_open_20220520_models.IsvRuleSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.book_type):
+            body['book_type'] = request.book_type
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IsvRuleSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/rule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IsvRuleSaveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def isv_rule_save_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IsvRuleSaveRequest,
+        headers: btrip_open_20220520_models.IsvRuleSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.book_type):
+            body['book_type'] = request.book_type
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IsvRuleSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/rule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IsvRuleSaveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def isv_rule_save(
+        self,
+        request: btrip_open_20220520_models.IsvRuleSaveRequest,
+    ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IsvRuleSaveHeaders()
+        return self.isv_rule_save_with_options(request, headers, runtime)
+
+    async def isv_rule_save_async(
+        self,
+        request: btrip_open_20220520_models.IsvRuleSaveRequest,
+    ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IsvRuleSaveHeaders()
+        return await self.isv_rule_save_with_options_async(request, headers, runtime)
 
     def isv_user_save_with_options(
         self,
