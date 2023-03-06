@@ -1,3 +1,8 @@
+2023-03-06 Version: 1.0.18
+- Add viber template create
+- Add viber template modify
+- Add isv terms upload
+
 2023-02-10 Version: 1.0.17
 - Add viber template batch send
 
