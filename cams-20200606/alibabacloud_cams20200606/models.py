@@ -3041,6 +3041,442 @@ class DeleteChatappTemplateResponse(TeaModel):
         return self
 
 
+class GetChatappTemplateDetailRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        cust_waba_id: str = None,
+        isv_code: str = None,
+        language: str = None,
+        template_code: str = None,
+        template_type: str = None,
+    ):
+        self.cust_space_id = cust_space_id
+        # The unique identifier of the WhatsApp account that you register.
+        self.cust_waba_id = cust_waba_id
+        # Assigned by ISV for RAM user authentication and authorization.
+        self.isv_code = isv_code
+        # The language that is used in the message template.
+        self.language = language
+        # The code of the message template.
+        self.template_code = template_code
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
+    def __init__(
+        self,
+        phone_number: str = None,
+        text: str = None,
+        type: str = None,
+        url: str = None,
+        url_type: str = None,
+    ):
+        # The mobile phone number. This parameter is valid only if the Type parameter is set to **PHONE_NUMBER**.
+        self.phone_number = phone_number
+        # The display name of the button.
+        self.text = text
+        # The type of the button. Valid values:
+        # 
+        # *   **PHONE_NUMBER**: a phone call button
+        # *   **URL**: a URL button
+        # *   **QUICK_REPLY**: a quick reply button
+        # 
+        # **\
+        # 
+        # **Note**\
+        # 
+        # *   A quick reply button cannot coexist with a phone call button or a URL button in a message template.
+        # 
+        # *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a message template.
+        self.type = type
+        # The URL to be accessed when you click the URL button.
+        self.url = url
+        # The type of the URL. Valid values:
+        # 
+        # *   **static**: a static URL
+        # *   **dynamic**: a dynamic URL
+        self.url_type = url_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.url_type is not None:
+            result['UrlType'] = self.url_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('UrlType') is not None:
+            self.url_type = m.get('UrlType')
+        return self
+
+
+class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
+    def __init__(
+        self,
+        buttons: List[GetChatappTemplateDetailResponseBodyDataComponentsButtons] = None,
+        caption: str = None,
+        duration: int = None,
+        file_name: str = None,
+        file_type: str = None,
+        format: str = None,
+        text: str = None,
+        thumb_url: str = None,
+        type: str = None,
+        url: str = None,
+    ):
+        # This parameter applies only to components of the **BUTTONS** type. This parameter is passed in by converting its original JSON structure into a string.
+        self.buttons = buttons
+        # The description of the file.
+        self.caption = caption
+        self.duration = duration
+        # The name of the file.
+        self.file_name = file_name
+        self.file_type = file_type
+        # The format.
+        self.format = format
+        # The text of the message to be sent.
+        self.text = text
+        self.thumb_url = thumb_url
+        # The type of the component. Valid values:
+        # 
+        # *   **BODY**\
+        # *   **HEADER**\
+        # *   **FOOTER**\
+        # *   **BUTTONS**\
+        # 
+        # **\
+        # 
+        # **Note** A component of the **BODY** type cannot exceed 1,024 characters in length. A component of the **HEADER** or **FOOTER** type cannot exceed 60 characters in length.
+        self.type = type
+        # The URL of the material.
+        self.url = url
+
+    def validate(self):
+        if self.buttons:
+            for k in self.buttons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Buttons'] = []
+        if self.buttons is not None:
+            for k in self.buttons:
+                result['Buttons'].append(k.to_map() if k else None)
+        if self.caption is not None:
+            result['Caption'] = self.caption
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.thumb_url is not None:
+            result['ThumbUrl'] = self.thumb_url
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.buttons = []
+        if m.get('Buttons') is not None:
+            for k in m.get('Buttons'):
+                temp_model = GetChatappTemplateDetailResponseBodyDataComponentsButtons()
+                self.buttons.append(temp_model.from_map(k))
+        if m.get('Caption') is not None:
+            self.caption = m.get('Caption')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('ThumbUrl') is not None:
+            self.thumb_url = m.get('ThumbUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetChatappTemplateDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        category: str = None,
+        components: List[GetChatappTemplateDetailResponseBodyDataComponents] = None,
+        example: Dict[str, str] = None,
+        language: str = None,
+        name: str = None,
+        template_code: str = None,
+        template_type: str = None,
+    ):
+        # The review status of the message template. Valid values:
+        # 
+        # *   **pass**: The message template is approved.
+        # *   **fail**: The message template is rejected.
+        # *   **auditing**: The message template is being reviewed.
+        # *   **unaudit**: The review is suspended.
+        self.audit_status = audit_status
+        # The category of the message template. Valid values:
+        # 
+        # *   **ACCOUNT_UPDATE**: account update
+        # *   **PAYMENT_UPDATE**: payment update
+        # *   **PERSONAL_FINANCE\_UPDATE**: personal finance update
+        # *   **SHIPPING_UPDATE**: traffic update
+        # *   **RESERVATION_UPDATE**: reservation update
+        # *   **ISSUE_RESOLUTION**: issue resolution
+        # *   **APPOINTMENT_UPDATE**: appointment update
+        # *   **TRANSPORTATION_UPDATE**: logistics information update
+        # *   **TICKET_UPDATE**: ticket update
+        # *   **ALERT_UPDATE**: alert update
+        # *   **AUTO_REPLY**: auto reply
+        self.category = category
+        # The components of the message template.
+        self.components = components
+        # The examples of variables.
+        self.example = example
+        # The language that is used in the message template.
+        self.language = language
+        # The name of the message template.
+        self.name = name
+        # The code of the message template.
+        self.template_code = template_code
+        self.template_type = template_type
+
+    def validate(self):
+        if self.components:
+            for k in self.components:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.category is not None:
+            result['Category'] = self.category
+        result['Components'] = []
+        if self.components is not None:
+            for k in self.components:
+                result['Components'].append(k.to_map() if k else None)
+        if self.example is not None:
+            result['Example'] = self.example
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        self.components = []
+        if m.get('Components') is not None:
+            for k in m.get('Components'):
+                temp_model = GetChatappTemplateDetailResponseBodyDataComponents()
+                self.components.append(temp_model.from_map(k))
+        if m.get('Example') is not None:
+            self.example = m.get('Example')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class GetChatappTemplateDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetChatappTemplateDetailResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The HTTP status code returned.
+        # 
+        # *   A code of OK indicates that the call is successful.
+        # *   Other codes indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        self.code = code
+        # The data returned.
+        self.data = data
+        # The error message returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetChatappTemplateDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetChatappTemplateDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChatappTemplateDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChatappTemplateDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetChatappUploadAuthorizationRequest(TeaModel):
     def __init__(
         self,
@@ -3837,6 +4273,386 @@ class IsvGetAppIdResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IsvGetAppIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChatappTemplateRequestPage(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        size: int = None,
+    ):
+        # The number of the page to return. Default value: 1.
+        self.index = index
+        # The number of message templates to return on each page. Default value: 10.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ListChatappTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        cust_space_id: str = None,
+        cust_waba_id: str = None,
+        isv_code: str = None,
+        language: str = None,
+        name: str = None,
+        page: ListChatappTemplateRequestPage = None,
+        template_type: str = None,
+    ):
+        # The review status of the message template. Valid values:
+        # 
+        # *   **pass**: The message template is approved.
+        # *   **fail**: The message template is rejected.
+        # *   **auditing**: The message template is being reviewed.
+        # *   **unaudit**: The review is suspended.
+        self.audit_status = audit_status
+        self.cust_space_id = cust_space_id
+        # The unique identifier of the WhatsApp account that you register.
+        self.cust_waba_id = cust_waba_id
+        # Assigned by ISV for RAM user authentication and authorization.
+        self.isv_code = isv_code
+        # The language that is used in the message template.
+        self.language = language
+        # The name of the message template.
+        self.name = name
+        # The paging settings.
+        self.page = page
+        self.template_type = template_type
+
+    def validate(self):
+        if self.page:
+            self.page.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page is not None:
+            result['Page'] = self.page.to_map()
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Page') is not None:
+            temp_model = ListChatappTemplateRequestPage()
+            self.page = temp_model.from_map(m['Page'])
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class ListChatappTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        cust_space_id: str = None,
+        cust_waba_id: str = None,
+        isv_code: str = None,
+        language: str = None,
+        name: str = None,
+        page_shrink: str = None,
+        template_type: str = None,
+    ):
+        # The review status of the message template. Valid values:
+        # 
+        # *   **pass**: The message template is approved.
+        # *   **fail**: The message template is rejected.
+        # *   **auditing**: The message template is being reviewed.
+        # *   **unaudit**: The review is suspended.
+        self.audit_status = audit_status
+        self.cust_space_id = cust_space_id
+        # The unique identifier of the WhatsApp account that you register.
+        self.cust_waba_id = cust_waba_id
+        # Assigned by ISV for RAM user authentication and authorization.
+        self.isv_code = isv_code
+        # The language that is used in the message template.
+        self.language = language
+        # The name of the message template.
+        self.name = name
+        # The paging settings.
+        self.page_shrink = page_shrink
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_shrink is not None:
+            result['Page'] = self.page_shrink
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Page') is not None:
+            self.page_shrink = m.get('Page')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class ListChatappTemplateResponseBodyListTemplate(TeaModel):
+    def __init__(
+        self,
+        audit_status: str = None,
+        category: str = None,
+        language: str = None,
+        template_code: str = None,
+        template_name: str = None,
+        template_type: str = None,
+    ):
+        # The review status of the message template. Valid values:
+        # 
+        # *   **pass**: The message template is approved.
+        # *   **fail**: The message template is rejected.
+        # *   **auditing**: The message template is being reviewed.
+        # *   **unaudit**: The review is suspended.
+        self.audit_status = audit_status
+        # The category of the message template. Valid values:
+        # 
+        # *   **ACCOUNT_UPDATE**: account update
+        # *   **PAYMENT_UPDATE**: payment update
+        # *   **PERSONAL_FINANCE\_UPDATE**: personal finance update
+        # *   **SHIPPING_UPDATE**: traffic update
+        # *   **RESERVATION_UPDATE**: reservation update
+        # *   **ISSUE_RESOLUTION**: issue resolution
+        # *   **APPOINTMENT_UPDATE**: appointment update
+        # *   **TRANSPORTATION_UPDATE**: logistics information update
+        # *   **TICKET_UPDATE**: ticket update
+        # *   **ALERT_UPDATE**: alert update
+        # *   **AUTO_REPLY**: auto reply
+        self.category = category
+        # The language that is used in the message template.
+        self.language = language
+        # The code of the message template.
+        self.template_code = template_code
+        # The name of the message template.
+        self.template_name = template_name
+        self.template_type = template_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
+        return self
+
+
+class ListChatappTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        list_template: List[ListChatappTemplateResponseBodyListTemplate] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The HTTP status code returned.
+        # 
+        # *   A code of OK indicates that the call is successful.
+        # *   Other codes indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        self.code = code
+        # The message templates.
+        self.list_template = list_template
+        # The error message returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.list_template:
+            for k in self.list_template:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['ListTemplate'] = []
+        if self.list_template is not None:
+            for k in self.list_template:
+                result['ListTemplate'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.list_template = []
+        if m.get('ListTemplate') is not None:
+            for k in m.get('ListTemplate'):
+                temp_model = ListChatappTemplateResponseBodyListTemplate()
+                self.list_template.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListChatappTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChatappTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChatappTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

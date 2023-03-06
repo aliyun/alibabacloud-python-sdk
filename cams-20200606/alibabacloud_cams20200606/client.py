@@ -1377,6 +1377,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_chatapp_template_with_options_async(request, runtime)
 
+    def get_chatapp_template_detail_with_options(
+        self,
+        request: cams_20200606_models.GetChatappTemplateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetChatappTemplateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatappTemplateDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatappTemplateDetail',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatappTemplateDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chatapp_template_detail_with_options_async(
+        self,
+        request: cams_20200606_models.GetChatappTemplateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetChatappTemplateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatappTemplateDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatappTemplateDetail',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetChatappTemplateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chatapp_template_detail(
+        self,
+        request: cams_20200606_models.GetChatappTemplateDetailRequest,
+    ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetChatappTemplateDetailRequest
+        @return: GetChatappTemplateDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_chatapp_template_detail_with_options(request, runtime)
+
+    async def get_chatapp_template_detail_async(
+        self,
+        request: cams_20200606_models.GetChatappTemplateDetailRequest,
+    ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: GetChatappTemplateDetailRequest
+        @return: GetChatappTemplateDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chatapp_template_detail_with_options_async(request, runtime)
+
     def get_chatapp_upload_authorization_with_options(
         self,
         request: cams_20200606_models.GetChatappUploadAuthorizationRequest,
@@ -1858,6 +1978,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.isv_get_app_id_with_options_async(request, runtime)
+
+    def list_chatapp_template_with_options(
+        self,
+        tmp_req: cams_20200606_models.ListChatappTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatappTemplateResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: ListChatappTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatappTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.audit_status):
+            query['AuditStatus'] = request.audit_status
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatappTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatappTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chatapp_template_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ListChatappTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListChatappTemplateResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param tmp_req: ListChatappTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatappTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.audit_status):
+            query['AuditStatus'] = request.audit_status
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChatappTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListChatappTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chatapp_template(
+        self,
+        request: cams_20200606_models.ListChatappTemplateRequest,
+    ) -> cams_20200606_models.ListChatappTemplateResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListChatappTemplateRequest
+        @return: ListChatappTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_chatapp_template_with_options(request, runtime)
+
+    async def list_chatapp_template_async(
+        self,
+        request: cams_20200606_models.ListChatappTemplateRequest,
+    ) -> cams_20200606_models.ListChatappTemplateResponse:
+        """
+        ### QPS limit
+        You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+        
+        @param request: ListChatappTemplateRequest
+        @return: ListChatappTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chatapp_template_with_options_async(request, runtime)
 
     def modify_chatapp_template_with_options(
         self,
