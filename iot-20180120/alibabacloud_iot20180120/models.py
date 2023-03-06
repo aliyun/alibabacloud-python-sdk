@@ -186,11 +186,17 @@ class AddShareTaskDeviceRequest(TeaModel):
 class AddShareTaskDeviceResponseBodyData(TeaModel):
     def __init__(
         self,
+        fail_sum: int = None,
+        failed_result_csv_file: str = None,
         progress: int = None,
         progress_id: str = None,
+        success_sum: int = None,
     ):
+        self.fail_sum = fail_sum
+        self.failed_result_csv_file = failed_result_csv_file
         self.progress = progress
         self.progress_id = progress_id
+        self.success_sum = success_sum
 
     def validate(self):
         pass
@@ -201,18 +207,30 @@ class AddShareTaskDeviceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.fail_sum is not None:
+            result['FailSum'] = self.fail_sum
+        if self.failed_result_csv_file is not None:
+            result['FailedResultCsvFile'] = self.failed_result_csv_file
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.progress_id is not None:
             result['ProgressId'] = self.progress_id
+        if self.success_sum is not None:
+            result['SuccessSum'] = self.success_sum
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FailSum') is not None:
+            self.fail_sum = m.get('FailSum')
+        if m.get('FailedResultCsvFile') is not None:
+            self.failed_result_csv_file = m.get('FailedResultCsvFile')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('ProgressId') is not None:
             self.progress_id = m.get('ProgressId')
+        if m.get('SuccessSum') is not None:
+            self.success_sum = m.get('SuccessSum')
         return self
 
 
@@ -29141,6 +29159,169 @@ class GetSceneRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSceneRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetShareSpeechModelAudioRequest(TeaModel):
+    def __init__(
+        self,
+        iot_instance_id: str = None,
+        share_task_id: str = None,
+        speech_model_code_list: List[str] = None,
+    ):
+        self.iot_instance_id = iot_instance_id
+        self.share_task_id = share_task_id
+        self.speech_model_code_list = speech_model_code_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.share_task_id is not None:
+            result['ShareTaskId'] = self.share_task_id
+        if self.speech_model_code_list is not None:
+            result['SpeechModelCodeList'] = self.speech_model_code_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('ShareTaskId') is not None:
+            self.share_task_id = m.get('ShareTaskId')
+        if m.get('SpeechModelCodeList') is not None:
+            self.speech_model_code_list = m.get('SpeechModelCodeList')
+        return self
+
+
+class GetShareSpeechModelAudioResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data: List[str] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        return self
+
+
+class GetShareSpeechModelAudioResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetShareSpeechModelAudioResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetShareSpeechModelAudioResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetShareSpeechModelAudioResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetShareSpeechModelAudioResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetShareSpeechModelAudioResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -62393,6 +62574,128 @@ class QuerySpeechDeviceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QuerySpeechDeviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySpeechLicenseAvailableQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        iot_instance_id: str = None,
+    ):
+        self.iot_instance_id = iot_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        return self
+
+
+class QuerySpeechLicenseAvailableQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySpeechLicenseAvailableQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QuerySpeechLicenseAvailableQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QuerySpeechLicenseAvailableQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -14090,6 +14090,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_scene_rule_with_options_async(request, runtime)
 
+    def get_share_speech_model_audio_with_options(
+        self,
+        request: iot_20180120_models.GetShareSpeechModelAudioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetShareSpeechModelAudioResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        if not UtilClient.is_unset(request.speech_model_code_list):
+            body['SpeechModelCodeList'] = request.speech_model_code_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetShareSpeechModelAudio',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetShareSpeechModelAudioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_share_speech_model_audio_with_options_async(
+        self,
+        request: iot_20180120_models.GetShareSpeechModelAudioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetShareSpeechModelAudioResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        if not UtilClient.is_unset(request.speech_model_code_list):
+            body['SpeechModelCodeList'] = request.speech_model_code_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetShareSpeechModelAudio',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetShareSpeechModelAudioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_share_speech_model_audio(
+        self,
+        request: iot_20180120_models.GetShareSpeechModelAudioRequest,
+    ) -> iot_20180120_models.GetShareSpeechModelAudioResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_share_speech_model_audio_with_options(request, runtime)
+
+    async def get_share_speech_model_audio_async(
+        self,
+        request: iot_20180120_models.GetShareSpeechModelAudioRequest,
+    ) -> iot_20180120_models.GetShareSpeechModelAudioResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_share_speech_model_audio_with_options_async(request, runtime)
+
     def get_share_task_by_device_open_with_options(
         self,
         request: iot_20180120_models.GetShareTaskByDeviceOpenRequest,
@@ -25383,6 +25461,76 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechDeviceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_speech_device_with_options_async(request, runtime)
+
+    def query_speech_license_available_quota_with_options(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseAvailableQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySpeechLicenseAvailableQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechLicenseAvailableQuota',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySpeechLicenseAvailableQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_speech_license_available_quota_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseAvailableQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySpeechLicenseAvailableQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechLicenseAvailableQuota',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySpeechLicenseAvailableQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_speech_license_available_quota(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseAvailableQuotaRequest,
+    ) -> iot_20180120_models.QuerySpeechLicenseAvailableQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_speech_license_available_quota_with_options(request, runtime)
+
+    async def query_speech_license_available_quota_async(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseAvailableQuotaRequest,
+    ) -> iot_20180120_models.QuerySpeechLicenseAvailableQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_speech_license_available_quota_with_options_async(request, runtime)
 
     def query_speech_license_device_list_with_options(
         self,
