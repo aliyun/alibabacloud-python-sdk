@@ -1275,7 +1275,7 @@ class CreateKillInstanceSessionTaskRequest(TeaModel):
         db_user_password: str = None,
         ignored_users: str = None,
         instance_id: str = None,
-        kill_all_sessions: str = None,
+        kill_all_sessions: bool = None,
         node_id: str = None,
         session_ids: str = None,
     ):
