@@ -1,3 +1,6 @@
+2023-03-07 Version: 1.14.22
+- Support JobRetry parameters in SubmitJob API.
+
 2023-02-02 Version: 1.14.21
 - Support Async parameter in DescribeJob API.
 
