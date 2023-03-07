@@ -2701,6 +2701,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.record_canary_detail):
+            query['RecordCanaryDetail'] = request.record_canary_detail
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.source):
@@ -2761,6 +2763,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.record_canary_detail):
+            query['RecordCanaryDetail'] = request.record_canary_detail
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.source):
@@ -4381,6 +4385,12 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4411,6 +4421,12 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

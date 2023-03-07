@@ -1,3 +1,11 @@
+2023-03-07 Version: 3.0.62
+- Supported for route debug.
+- API optimization for SwimmingLane.
+- Support circuit breaker rule.
+- Improve swimming lane.
+- Change GetServiceMethodPageWithMetrics and GetDubboServicePageWithMetrics parameters.
+- Change parameters of GetServiceMethodPageWithMetrics and GetDubboServicePageWithMetrics.
+
 2023-03-02 Version: 3.0.61
 - Update QueryConfig.
 - Supporte for Edas gray.
