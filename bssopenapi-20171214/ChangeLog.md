@@ -1,3 +1,7 @@
+2023-03-07 Version: 2.0.9
+- QuerySavingsPlansInstance api add status query param. 
+
+
 2023-02-13 Version: 2.0.8
 - SubscribeBillToOSS add param: RowLimitPerFile. 
 
