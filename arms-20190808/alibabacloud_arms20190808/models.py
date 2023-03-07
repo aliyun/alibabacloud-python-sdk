@@ -155,9 +155,13 @@ class AddAliClusterIdsToPrometheusGlobalViewRequest(TeaModel):
         group_name: str = None,
         region_id: str = None,
     ):
+        # The IDs of clusters. Separate multiple IDs with commas (,).
         self.cluster_ids = cluster_ids
+        # The ID of the global aggregation instance.
         self.global_view_cluster_id = global_view_cluster_id
+        # The name of the global aggregation instance.
         self.group_name = group_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -199,8 +203,14 @@ class AddAliClusterIdsToPrometheusGlobalViewResponseBodyData(TeaModel):
         msg: str = None,
         success: bool = None,
     ):
+        # The Info-level information.
         self.info = info
+        # The additional information.
         self.msg = msg
+        # Indicates whether the request was successful.
+        # 
+        # *   `true`: The request was successful.
+        # *   `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -237,7 +247,9 @@ class AddAliClusterIdsToPrometheusGlobalViewResponseBody(TeaModel):
         data: AddAliClusterIdsToPrometheusGlobalViewResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -317,8 +329,11 @@ class AddGrafanaRequest(TeaModel):
         integration: str = None,
         region_id: str = None,
     ):
+        # The ID of the Container Service for Kubernetes (ACK) cluster.
         self.cluster_id = cluster_id
+        # The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
         self.integration = integration
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -355,7 +370,9 @@ class AddGrafanaResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the call was successful.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -433,8 +450,11 @@ class AddIntegrationRequest(TeaModel):
         integration: str = None,
         region_id: str = None,
     ):
+        # The ID of an Alibaba Cloud Container Service for Kubernetes cluster.
         self.cluster_id = cluster_id
+        # The software abbreviation that is supported by ARMS. Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
         self.integration = integration
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -471,7 +491,9 @@ class AddIntegrationResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the integration was successful.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -542,19 +564,59 @@ class AddIntegrationResponse(TeaModel):
         return self
 
 
+class AddPrometheusGlobalViewRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class AddPrometheusGlobalViewRequest(TeaModel):
     def __init__(
         self,
         clusters: str = None,
         group_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        tag: List[AddPrometheusGlobalViewRequestTag] = None,
     ):
         self.clusters = clusters
         self.group_name = group_name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -568,6 +630,12 @@ class AddPrometheusGlobalViewRequest(TeaModel):
             result['GroupName'] = self.group_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -578,19 +646,26 @@ class AddPrometheusGlobalViewRequest(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = AddPrometheusGlobalViewRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
-class AddPrometheusGlobalViewResponseBodyData(TeaModel):
+class AddPrometheusGlobalViewResponseBodyDataInfo(TeaModel):
     def __init__(
         self,
-        info: str = None,
-        msg: str = None,
-        success: bool = None,
+        failed_instances: str = None,
+        global_view_cluster_id: str = None,
+        region_id: str = None,
     ):
-        self.info = info
-        self.msg = msg
-        self.success = success
+        self.failed_instances = failed_instances
+        self.global_view_cluster_id = global_view_cluster_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -601,8 +676,48 @@ class AddPrometheusGlobalViewResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.failed_instances is not None:
+            result['FailedInstances'] = self.failed_instances
+        if self.global_view_cluster_id is not None:
+            result['GlobalViewClusterId'] = self.global_view_cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedInstances') is not None:
+            self.failed_instances = m.get('FailedInstances')
+        if m.get('GlobalViewClusterId') is not None:
+            self.global_view_cluster_id = m.get('GlobalViewClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AddPrometheusGlobalViewResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        info: AddPrometheusGlobalViewResponseBodyDataInfo = None,
+        msg: str = None,
+        success: bool = None,
+    ):
+        self.info = info
+        self.msg = msg
+        self.success = success
+
+    def validate(self):
+        if self.info:
+            self.info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.info is not None:
-            result['Info'] = self.info
+            result['Info'] = self.info.to_map()
         if self.msg is not None:
             result['Msg'] = self.msg
         if self.success is not None:
@@ -612,7 +727,8 @@ class AddPrometheusGlobalViewResponseBodyData(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Info') is not None:
-            self.info = m.get('Info')
+            temp_model = AddPrometheusGlobalViewResponseBodyDataInfo()
+            self.info = temp_model.from_map(m['Info'])
         if m.get('Msg') is not None:
             self.msg = m.get('Msg')
         if m.get('Success') is not None:
@@ -707,9 +823,13 @@ class AddPrometheusGlobalViewByAliClusterIdsRequest(TeaModel):
         product_code: str = None,
         region_id: str = None,
     ):
+        # The IDs of clusters. Separate multiple IDs with commas (,).
         self.cluster_ids = cluster_ids
+        # The name of the global aggregation instance.
         self.group_name = group_name
+        # The identifier to identify the service if custom dashboards are created for the specified clusters.
         self.product_code = product_code
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -751,8 +871,14 @@ class AddPrometheusGlobalViewByAliClusterIdsResponseBodyData(TeaModel):
         msg: str = None,
         success: bool = None,
     ):
+        # The Info-level information.
         self.info = info
+        # The additional information.
         self.msg = msg
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.success = success
 
     def validate(self):
@@ -789,7 +915,9 @@ class AddPrometheusGlobalViewByAliClusterIdsResponseBody(TeaModel):
         data: AddPrometheusGlobalViewByAliClusterIdsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -869,8 +997,11 @@ class AddPrometheusInstanceRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The name of the Prometheus instance for Remote Write.
         self.name = name
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
+        # The type of the Prometheus instance. Only Prometheus instances for Remote Write is supported. Set the value to RW.
         self.type = type
 
     def validate(self):
@@ -907,7 +1038,9 @@ class AddPrometheusInstanceResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The struct returned. { "RequestId": the ID of the request. "Data": "{ "clusterType": the type of the cluster. "remoteWriteUrl": the public URL for remote write. "internetGrafanaUrl": the internal URL for Grafana. "authToken": specifies whether to enable the token. "internetPushGatewayUrl": the internal URL for Pushgateway. "ClusterId": the ID of the cluster. "internetRemoteReadUrl": the internal URL for remote read. "remoteReadUrl": the internal URL for remote read. "grafanaUrl": the public URL for Grafana. "pushGatewayUrl": the public URL for Pushgateway. "internetRemoteWriteUrl": the internal network for remote write." }
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -978,6 +1111,321 @@ class AddPrometheusInstanceResponse(TeaModel):
         return self
 
 
+class AddPrometheusIntegrationRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        integration_type: str = None,
+        param: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.integration_type = integration_type
+        self.param = param
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AddPrometheusIntegrationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        instance_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        return self
+
+
+class AddPrometheusIntegrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: AddPrometheusIntegrationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AddPrometheusIntegrationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddPrometheusIntegrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddPrometheusIntegrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddPrometheusIntegrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddPrometheusRemoteWriteRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        remote_write_yaml: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The ID of the region.
+        self.region_id = region_id
+        # The details of the Remote Write configuration item. Specify the value in the YAML format.
+        self.remote_write_yaml = remote_write_yaml
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remote_write_yaml is not None:
+            result['RemoteWriteYaml'] = self.remote_write_yaml
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemoteWriteYaml') is not None:
+            self.remote_write_yaml = m.get('RemoteWriteYaml')
+        return self
+
+
+class AddPrometheusRemoteWriteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code that is returned. The HTTP 200 status code indicates that the call is successful. If a different HTTP status code is returned, the call fails.
+        self.code = code
+        # If the call is successful, the name of the Remote Write configuration item that is added is returned. If the call fails, an error message is returned.
+        self.data = data
+        # The message that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddPrometheusRemoteWriteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddPrometheusRemoteWriteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddPrometheusRemoteWriteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddRecordingRuleRequest(TeaModel):
     def __init__(
         self,
@@ -985,8 +1433,11 @@ class AddRecordingRuleRequest(TeaModel):
         region_id: str = None,
         rule_yaml: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the region.
         self.region_id = region_id
+        # The custom recording rule. The value is in the YAML format.
         self.rule_yaml = rule_yaml
 
     def validate(self):
@@ -1023,7 +1474,9 @@ class AddRecordingRuleResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The status of the response.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1272,16 +1725,47 @@ class ApplyScenarioRequest(TeaModel):
         sn_transfer: bool = None,
         update_option: bool = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The configuration of the business monitoring job. The value is a JSON string. For more information about this parameter, see the following additional information about the **Config** parameter.
         self.config = config
+        # The name of the business monitoring job.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
+        # The scenario where you want to use the business monitoring job. Valid values:
+        # 
+        # *   `USER-DEFINED`: user-defined. This is the default value.
+        # *   `EDAS-ROLLOUT`: application release in Enterprise Distributed Application Service (EDAS)
+        # *   `OAM-ROLLOUT`: application release based on Open Application Model (OAM)
+        # *   `MSC-CANARY`: canary release based on Microservice Engine (MSE)
         self.scenario = scenario
+        # The code of the business monitoring job. This parameter is not required when you create a business monitoring job. However, this parameter is required when you update a business monitoring job.
         self.sign = sign
+        # Specifies whether to record business parameters to the trace marked with the coloring sign.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_dump = sn_dump
+        # Specifies whether traffic in the trace marked with the coloring sign is all collected.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_force = sn_force
+        # Specifies whether to count traffic based on the coloring sign.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_stat = sn_stat
+        # Specifies whether the coloring sign is transparently passed down to downstream application nodes in the trace.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_transfer = sn_transfer
+        # Specifies whether the operation is an update operation.
+        # 
+        # *   `true`: update
+        # *   `false`: insert
         self.update_option = update_option
 
     def validate(self):
@@ -1359,16 +1843,47 @@ class ApplyScenarioShrinkRequest(TeaModel):
         sn_transfer: bool = None,
         update_option: bool = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The configuration of the business monitoring job. The value is a JSON string. For more information about this parameter, see the following additional information about the **Config** parameter.
         self.config_shrink = config_shrink
+        # The name of the business monitoring job.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
+        # The scenario where you want to use the business monitoring job. Valid values:
+        # 
+        # *   `USER-DEFINED`: user-defined. This is the default value.
+        # *   `EDAS-ROLLOUT`: application release in Enterprise Distributed Application Service (EDAS)
+        # *   `OAM-ROLLOUT`: application release based on Open Application Model (OAM)
+        # *   `MSC-CANARY`: canary release based on Microservice Engine (MSE)
         self.scenario = scenario
+        # The code of the business monitoring job. This parameter is not required when you create a business monitoring job. However, this parameter is required when you update a business monitoring job.
         self.sign = sign
+        # Specifies whether to record business parameters to the trace marked with the coloring sign.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_dump = sn_dump
+        # Specifies whether traffic in the trace marked with the coloring sign is all collected.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_force = sn_force
+        # Specifies whether to count traffic based on the coloring sign.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_stat = sn_stat
+        # Specifies whether the coloring sign is transparently passed down to downstream application nodes in the trace.
+        # 
+        # *   `true`
+        # *   `false`: This is the default value.
         self.sn_transfer = sn_transfer
+        # Specifies whether the operation is an update operation.
+        # 
+        # *   `true`: update
+        # *   `false`: insert
         self.update_option = update_option
 
     def validate(self):
@@ -1437,7 +1952,9 @@ class ApplyScenarioResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The code of the business monitoring job, which is the coloring sign.
         self.result = result
 
     def validate(self):
@@ -1508,13 +2025,336 @@ class ApplyScenarioResponse(TeaModel):
         return self
 
 
+class BindPrometheusGrafanaInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        grafana_instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The ID of the Grafana workspace.
+        self.grafana_instance_id = grafana_instance_id
+        # The ID of the region.
+        self.region_id = region_id
+        # Prometheus实例的资源组ID。
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.grafana_instance_id is not None:
+            result['GrafanaInstanceId'] = self.grafana_instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('GrafanaInstanceId') is not None:
+            self.grafana_instance_id = m.get('GrafanaInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class BindPrometheusGrafanaInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The status code returned. 200 indicates that the Prometheus agent was installed. Otherwise, the Prometheus agent fails to be installed.
+        self.code = code
+        # Indicates whether the request was successful.
+        self.data = data
+        # The message returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BindPrometheusGrafanaInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindPrometheusGrafanaInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindPrometheusGrafanaInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        # The ID of the new resource group. You can view the available resource groups in the Resource Management console.
+        self.new_resource_group_id = new_resource_group_id
+        # The ID of the region in which the resource is deployed.
+        self.region_id = region_id
+        # The ID of the Application Real-Time Monitoring Service (ARMS) resource that you want to move to a specific resource group.
+        self.resource_id = resource_id
+        # The type of the ARMS resource that you want to move to a specific resource group.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_id: str = None,
+    ):
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The ID of the resource.
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ChangeResourceGroupResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Interface status or pop error code.
+        self.code = code
+        # The returned struct.
+        self.data = data
+        # The returned message.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ChangeResourceGroupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckServiceStatusRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         svc_code: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
+        # The service code of an Alibaba Cloud service. The service code of Prometheus Service is prometheus.
         self.svc_code = svc_code
 
     def validate(self):
@@ -1547,7 +2387,12 @@ class CheckServiceStatusResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful.
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.data = data
+        # The ID of the request. You can query logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1624,10 +2469,19 @@ class ConfigAppRequest(TeaModel):
         app_ids: str = None,
         enable: str = None,
         region_id: str = None,
+        type: str = None,
     ):
+        # The process identifier (PID) of the application. Separate multiple PIDs with commas (,).
         self.app_ids = app_ids
+        # Specifies whether to turn on or turn off the main switch of the ARMS agent. The monitoring stops after the switch is turned off. If you do not specify this parameter, the main switch status of the ARMS agent is queried.
+        # 
+        # *   `true`: turns on the switch
+        # *   `false`: turns off the switch
         self.enable = enable
+        # The ID of the region.
         self.region_id = region_id
+        # The type of the application. Set the value to **TRACE**.
+        self.type = type
 
     def validate(self):
         pass
@@ -1644,6 +2498,8 @@ class ConfigAppRequest(TeaModel):
             result['Enable'] = self.enable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -1654,6 +2510,8 @@ class ConfigAppRequest(TeaModel):
             self.enable = m.get('Enable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -1663,7 +2521,9 @@ class ConfigAppResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The result of turning on or turning off the main switch of the ARMS agent or the main switch status of the ARMS agent.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1742,13 +2602,27 @@ class CreateAlertContactRequest(TeaModel):
         email: str = None,
         phone_num: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         system_noc: bool = None,
     ):
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see [Configure a DingTalk chatbot to send alert notifications](https://www.alibabacloud.com/help/zh/doc-detail/106247.htm). You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        # 
+        # >  Enter `alert` in the custom keyword field of DingTalk chatbot security settings.
         self.ding_robot_webhook_url = ding_robot_webhook_url
+        # The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         self.email = email
+        # The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         self.phone_num = phone_num
+        # The ID of the region. Set the value to `cn-hangzhou`.
         self.region_id = region_id
+        # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
+        self.resource_group_id = resource_group_id
+        # Specifies whether the alert contact receives system notifications. Valid values:
+        # 
+        # *   `true`: The alert contact receives system notifications.
+        # *   `false`: The alert contact does not receive system notifications.
         self.system_noc = system_noc
 
     def validate(self):
@@ -1770,6 +2644,8 @@ class CreateAlertContactRequest(TeaModel):
             result['PhoneNum'] = self.phone_num
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.system_noc is not None:
             result['SystemNoc'] = self.system_noc
         return result
@@ -1786,6 +2662,8 @@ class CreateAlertContactRequest(TeaModel):
             self.phone_num = m.get('PhoneNum')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SystemNoc') is not None:
             self.system_noc = m.get('SystemNoc')
         return self
@@ -1797,7 +2675,9 @@ class CreateAlertContactResponseBody(TeaModel):
         contact_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the alert contact.
         self.contact_id = contact_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1875,8 +2755,11 @@ class CreateAlertContactGroupRequest(TeaModel):
         contact_ids: str = None,
         region_id: str = None,
     ):
+        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
+        # The IDs of contacts in the contact group. Separate multiple contact IDs with spaces. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](~~130703~~).
         self.contact_ids = contact_ids
+        # The ID of the region. Default value: `cn-hangzhou`.
         self.region_id = region_id
 
     def validate(self):
@@ -1913,7 +2796,9 @@ class CreateAlertContactGroupResponseBody(TeaModel):
         contact_group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the alert contact group.
         self.contact_group_id = contact_group_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1990,7 +2875,9 @@ class CreateDispatchRuleRequest(TeaModel):
         dispatch_rule: str = None,
         region_id: str = None,
     ):
+        # The dispatch rule configuration. The value is a JSON string. For more information about this parameter, see the following **additional information about the DispatchRule parameter**.
         self.dispatch_rule = dispatch_rule
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -2023,7 +2910,9 @@ class CreateDispatchRuleResponseBody(TeaModel):
         dispatch_rule_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the dispatch policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2103,10 +2992,21 @@ class CreateIntegrationRequest(TeaModel):
         integration_product_type: str = None,
         recover_time: int = None,
     ):
+        # Specifies whether to automatically clear alert events. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.auto_recover = auto_recover
+        # The description of the alert integration.
         self.description = description
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # The time when alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
 
     def validate(self):
@@ -2155,11 +3055,23 @@ class CreateIntegrationResponseBodyIntegration(TeaModel):
         integration_product_type: str = None,
         recover_time: int = None,
     ):
+        # Indicates whether alert events are automatically cleared. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.auto_recover = auto_recover
+        # The description of the alert integration.
         self.description = description
+        # The ID of the alert integration.
         self.integration_id = integration_id
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # The time when alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
 
     def validate(self):
@@ -2208,7 +3120,9 @@ class CreateIntegrationResponseBody(TeaModel):
         integration: CreateIntegrationResponseBodyIntegration = None,
         request_id: str = None,
     ):
+        # The returned information about the alert integration.
         self.integration = integration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2306,26 +3220,102 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         prom_ql: str = None,
         region_id: str = None,
     ):
+        # The alert check type of the Prometheus alert rule.
+        # 
+        # *   STATIC: a static threshold value. If you set the parameter to STATIC, you must specify the **MetricsKey** parameter. For more information, see the **Correspondence between AlertGroup and MetricsKey for Prometheus Service** table.
+        # *   CUSTOM: a custom PromQL statement. If you set the parameter to CUSTOM, you must specify the **PromQL**, **Duration**, and **Message** parameters to create a Prometheus alert rule.
         self.alert_check_type = alert_check_type
+        # The alert contact group ID of the Prometheus alert rule.
+        # 
+        # *   \-1: custom PromQL
+        # *   1: Kubernetes load
+        # *   15: Kubernetes node
         self.alert_group = alert_group
+        # The ID of the alert rule.
+        # 
+        # *   If you do not specify this parameter, a new alert rule is created.
+        # *   If you specify this parameter, the specified alert rule is modified.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The content of the Application Monitoring or Browser Monitoring alert rule. The following code provides an example of the **AlertRuleContent** parameter. For more information about the meaning of each field, see the supplementary description.
+        # 
+        # `{ "Condition": "OR", "AlertRuleItems": [ { "Operator": "CURRENT_LTE", "MetricKey": "appstat.jvm.threadcount", "Value": 1000, "Aggregate": "AVG", "N": 1 } ] }`
+        # 
+        # >  The conditional fields vary depending on the values of the **MetricsType** and **AlertRuleItems.MetricKey** parameters. For more information about the types of metrics supported by Application Monitoring and Browser Monitoring and the alert rule fields corresponding to each metric, see the supplementary description.
         self.alert_rule_content = alert_rule_content
+        # The status of the alert rule.
+        # 
+        # *   RUNNING (default)
+        # *   STOPPED
         self.alert_status = alert_status
+        # The type of the alert rule. Valid values:
+        # 
+        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
         self.alert_type = alert_type
+        # The annotations of the Prometheus alert rule.
         self.annotations = annotations
+        # Specifies whether to apply the alert rule to new applications that are created in Application Monitoring or Browser Monitoring.
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.auto_add_new_application = auto_add_new_application
+        # The cluster ID of the Prometheus alert rule.
         self.cluster_id = cluster_id
+        # The duration of the Prometheus alert rule. Unit: minutes.
         self.duration = duration
+        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
+        # 
+        # Format:
+        # 
+        # ```
+        # 
+        # "DimFilters": [ 
+        # { 
+        #  "FilterOpt": "ALL",
+        #  "FilterValues": [],         //The value of the filter condition. 
+        #  "FilterKey": "rootIp"     //The Key of the filter condition. 
+        # }
+        # ]
+        #                                 
+        # ```
+        # 
+        # Valid values of **FilterOpt**:
+        # 
+        # *   STATIC: matches the value of the specified dimension.
+        # *   ALL: matches the values of all dimensions.
+        # *   DISABLE: aggregates the values of all dimensions.
         self.filters = filters
+        # The tags of the Prometheus alert rule.
         self.labels = labels
+        # The level of the Prometheus alert rule.
+        # 
+        # *   P1: Alert notifications are sent for major issues that affect the availability of core business, have huge impact, and may lead to serious consequences.
+        # *   P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
+        # *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
+        # *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
+        # *   Default: Alert notifications are sent without distinguishing between alert levels.
         self.level = level
+        # The alert message of the Prometheus alert rule.
         self.message = message
+        # The alert metrics. If you set the **AlertCheckType** parameter to **STATIC** when you create a Prometheus alert rule, you must specify the **MetricsKey** parameter.
+        # 
+        # >  Alert metrics vary depending on the value of the **AlertGroup** parameter. For more information about the correspondence between **AlertGroup** and **MetricsKey**, see the supplementary description.
         self.metrics_key = metrics_key
+        # The metric type of the Application Monitoring or Browser Monitoring alert rule. For more information, see the following tables.
         self.metrics_type = metrics_type
+        # The notification policy.
+        # 
+        # *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify an alert rule name as the match condition. When the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
+        # *   To specify a notification policy, set this parameter to the ID of the notification policy. Application Real-Time Monitoring Service (ARMS) automatically adds a match rule to the notification policy and specifies the ID of the alert rule as the match condition. The name of the alert rule is also displayed. This way, the alert events that are generated based on the alert rule can be matched by the specified notification policy.
         self.notify_strategy = notify_strategy
+        # The process ID (PID) that is associated with the Application Monitoring or Browser Monitoring alert rule.
         self.pids = pids
+        # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -2437,10 +3427,29 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems
         operator: str = None,
         value: str = None,
     ):
+        # The aggregation method of the alert condition.
+        # 
+        # *   AVG: calculates the average value
+        # *   SUM: calculates the total value
+        # *   MAX: selects the maximum value
+        # *   MIN: selects the minimum value
         self.aggregate = aggregate
+        # The metric of the alert condition.
         self.metric_key = metric_key
+        # Indicates the last N minutes.
         self.n = n
+        # The comparison operator that is used to compare the metric value with the threshold.
+        # 
+        # *   CURRENT_GTE: greater than or equal to
+        # *   CURRENT_LTE: less than or equal to
+        # *   PREVIOUS_UP: the minute-to-minute increase percentage
+        # *   PREVIOUS_DOWN: the minute-to-minute decrease percentage
+        # *   HOH_UP: the increase percentage compared with the previous hour
+        # *   HOH_DOWN: the decrease percentage compared with the previous hour
+        # *   DOD_UP: the increase percentage compared with the last day
+        # *   DOD_DOWN: the decrease percentage compared with the last day
         self.operator = operator
+        # The threshold of the alert condition.
         self.value = value
 
     def validate(self):
@@ -2485,7 +3494,12 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent(TeaModel):
         alert_rule_items: List[CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems] = None,
         condition: str = None,
     ):
+        # The trigger conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.alert_rule_items = alert_rule_items
+        # The relationship between multiple alert conditions specified for the Application Monitoring or Browser Monitoring alert rule.
+        # 
+        # *   OR: meets any of the specified conditions.
+        # *   AND: meets all the specified conditions.
         self.condition = condition
 
     def validate(self):
@@ -2526,7 +3540,9 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The key of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -2562,10 +3578,18 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersCustomSLSFilters(TeaMod
         t: str = None,
         value: str = None,
     ):
+        # The key of the filter condition.
         self.key = key
+        # The logical operator of the filter condition. 
+        # 
+        # - =: equal to
+        # - not: not equal to
         self.opt = opt
+        # Indicates whether this filter condition is displayed on the frontend.
         self.show = show
+        # This field is used only to distinguish the type of Browser Monitoring logs. Other filter conditions do not include this field.
         self.t = t
+        # The value of the filter condition.
         self.value = value
 
     def validate(self):
@@ -2611,8 +3635,11 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters(TeaModel):
         filter_opt: str = None,
         filter_values: List[str] = None,
     ):
+        # The key of the filter condition.
         self.filter_key = filter_key
+        # The logical operator of the filter condition.
         self.filter_opt = filter_opt
+        # The value of the filter condition.
         self.filter_values = filter_values
 
     def validate(self):
@@ -2651,9 +3678,13 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters(TeaModel):
         custom_slswheres: List[str] = None,
         dim_filters: List[CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters] = None,
     ):
+        # The custom filter condition of the Browser Monitoring alert rule.
         self.custom_slsfilters = custom_slsfilters
+        # The value of the aggregation dimension.
         self.custom_slsgroup_by_dimensions = custom_slsgroup_by_dimensions
+        # The value of the custom filter condition.
         self.custom_slswheres = custom_slswheres
+        # The information about each filter condition of the Application Monitoring or Browser Monitoring alert rule.
         self.dim_filters = dim_filters
 
     def validate(self):
@@ -2711,7 +3742,9 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.name = name
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -2766,29 +3799,79 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRule(TeaModel):
         updated_time: int = None,
         user_id: str = None,
     ):
+        # The alert check type of the Prometheus alert rule. 
+        # 
+        # - STATIC: a static threshold value.
+        # - CUSTOM: a custom PromQL statement.
         self.alert_check_type = alert_check_type
+        # The alert contact group ID of the Prometheus alert rule. 
+        # 
+        # - -1: custom PromQL
+        # - 1: Kubernetes load
+        # - 15: Kubernetes node
         self.alert_group = alert_group
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The content of the Application Monitoring or Browser Monitoring alert rule.
         self.alert_rule_content = alert_rule_content
+        # The status of the alert rule.
+        # 
+        # *   RUNNING
+        # *   STOPPED
+        # *   PAUSED
+        # 
+        # >  The **PAUSED** status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
         self.alert_status = alert_status
+        # The type of the alert rule. Valid values:
+        # 
+        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
         self.alert_type = alert_type
+        # The annotations of the Prometheus alert rule.
         self.annotations = annotations
+        # Indicates whether the alert rule is applied to new applications that are created in Application Monitoring or Browser Monitoring.
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.auto_add_new_application = auto_add_new_application
+        # The cluster ID of the Prometheus alert rule.
         self.cluster_id = cluster_id
+        # The time when the alert rule was created.
         self.created_time = created_time
+        # The duration of the Prometheus alert rule. Unit: minutes.
         self.duration = duration
+        # The extended field.
         self.extend = extend
+        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.filters = filters
+        # The tags of the Prometheus alert rule.
         self.labels = labels
+        # The level of the Prometheus alert rule. 
+        # 
+        # - P1: Alert notifications are sent for major issues that affect the availability of core business, have huge impact, and may lead to serious consequences.
+        # - P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
+        # - P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
+        # - P4: Alert notifications are sent for low-priority issues that do not affect your business.
+        # - Default: Alert notifications are sent without distinguishing between alert levels.
         self.level = level
+        # The alert message of the Prometheus alert rule.
         self.message = message
+        # The metric type of the Application Monitoring or Browser Monitoring alert rule.
         self.metrics_type = metrics_type
+        # The name of the notification policy.
         self.notify_strategy = notify_strategy
+        # The PID of the application.
         self.pids = pids
+        # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
+        # The ID of the region.
         self.region_id = region_id
+        # The time when the alert rule was updated.
         self.updated_time = updated_time
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
 
     def validate(self):
@@ -2932,7 +4015,9 @@ class CreateOrUpdateAlertRuleResponseBody(TeaModel):
         alert_rule: CreateOrUpdateAlertRuleResponseBodyAlertRule = None,
         request_id: str = None,
     ):
+        # The object of the alert rule.
         self.alert_rule = alert_rule
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3010,15 +4095,41 @@ class CreateOrUpdateContactRequest(TeaModel):
         self,
         contact_id: int = None,
         contact_name: str = None,
+        ding_robot_url: str = None,
         email: str = None,
+        is_email_verify: bool = None,
         phone: str = None,
         reissue_send_notice: int = None,
+        resource_group_id: str = None,
     ):
+        # The ID of the alert contact.
+        # 
+        # *   If you do not specify this parameter, a new alert contact is created.
+        # *   If you specify this parameter, the specified alert contact is modified.
         self.contact_id = contact_id
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The webhook URL of the DingTalk chatbot.
+        self.ding_robot_url = ding_robot_url
+        # The email address of the alert contact.
+        # 
+        # > You must specify at least one of the **Phone** and **Email** parameters. Each mobile number or email address can be used for only one alert contact.
         self.email = email
+        # Specifies whether the email address is verified.
+        self.is_email_verify = is_email_verify
+        # The mobile number of the alert contact.
+        # 
+        # > You must specify at least one of the **Phone** and **Email** parameters. Each mobile number or email address can be used for only one alert contact.
         self.phone = phone
+        # The operation that you want to perform if phone calls fail to be answered. Valid values:
+        # 
+        # *   0: No operation is performed.
+        # *   1: A phone call is made again.
+        # *   2: A text message is sent.
+        # *   3 (default value): The global default value is used.
         self.reissue_send_notice = reissue_send_notice
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3033,12 +4144,18 @@ class CreateOrUpdateContactRequest(TeaModel):
             result['ContactId'] = self.contact_id
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
+        if self.ding_robot_url is not None:
+            result['DingRobotUrl'] = self.ding_robot_url
         if self.email is not None:
             result['Email'] = self.email
+        if self.is_email_verify is not None:
+            result['IsEmailVerify'] = self.is_email_verify
         if self.phone is not None:
             result['Phone'] = self.phone
         if self.reissue_send_notice is not None:
             result['ReissueSendNotice'] = self.reissue_send_notice
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3047,12 +4164,18 @@ class CreateOrUpdateContactRequest(TeaModel):
             self.contact_id = m.get('ContactId')
         if m.get('ContactName') is not None:
             self.contact_name = m.get('ContactName')
+        if m.get('DingRobotUrl') is not None:
+            self.ding_robot_url = m.get('DingRobotUrl')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('IsEmailVerify') is not None:
+            self.is_email_verify = m.get('IsEmailVerify')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
         if m.get('ReissueSendNotice') is not None:
             self.reissue_send_notice = m.get('ReissueSendNotice')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3061,17 +4184,34 @@ class CreateOrUpdateContactResponseBodyAlertContact(TeaModel):
         self,
         contact_id: float = None,
         contact_name: str = None,
+        ding_robot_url: str = None,
         email: str = None,
         is_verify: bool = None,
         phone: str = None,
         reissue_send_notice: int = None,
+        is_email_verify: bool = None,
     ):
+        # The ID of the alert contact.
         self.contact_id = contact_id
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The webhook URL of the DingTalk chatbot.
+        self.ding_robot_url = ding_robot_url
+        # The email address of the alert contact.
         self.email = email
+        # Indicates whether the mobile number was verified. Valid values:
+        # 
+        # *   `false` (default value): No
+        # *   `true`: Yes
+        # 
+        # You can call the **SendTTSVerifyLink** operation to verify the mobile number of an alert contact. Only verified mobile numbers can be specified in a notification policy to receive phone calls.
         self.is_verify = is_verify
+        # The mobile number of the alert contact.
         self.phone = phone
+        # The operation that you want to perform if phone calls fail to be answered. Valid values: 0: No operation is performed. 1: A phone call is made again. 2: A text message is sent. 3 (default value): The global default value is used.
         self.reissue_send_notice = reissue_send_notice
+        # Indicates whether the email address was verified.
+        self.is_email_verify = is_email_verify
 
     def validate(self):
         pass
@@ -3086,6 +4226,8 @@ class CreateOrUpdateContactResponseBodyAlertContact(TeaModel):
             result['ContactId'] = self.contact_id
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
+        if self.ding_robot_url is not None:
+            result['DingRobotUrl'] = self.ding_robot_url
         if self.email is not None:
             result['Email'] = self.email
         if self.is_verify is not None:
@@ -3094,6 +4236,8 @@ class CreateOrUpdateContactResponseBodyAlertContact(TeaModel):
             result['Phone'] = self.phone
         if self.reissue_send_notice is not None:
             result['ReissueSendNotice'] = self.reissue_send_notice
+        if self.is_email_verify is not None:
+            result['isEmailVerify'] = self.is_email_verify
         return result
 
     def from_map(self, m: dict = None):
@@ -3102,6 +4246,8 @@ class CreateOrUpdateContactResponseBodyAlertContact(TeaModel):
             self.contact_id = m.get('ContactId')
         if m.get('ContactName') is not None:
             self.contact_name = m.get('ContactName')
+        if m.get('DingRobotUrl') is not None:
+            self.ding_robot_url = m.get('DingRobotUrl')
         if m.get('Email') is not None:
             self.email = m.get('Email')
         if m.get('IsVerify') is not None:
@@ -3110,6 +4256,8 @@ class CreateOrUpdateContactResponseBodyAlertContact(TeaModel):
             self.phone = m.get('Phone')
         if m.get('ReissueSendNotice') is not None:
             self.reissue_send_notice = m.get('ReissueSendNotice')
+        if m.get('isEmailVerify') is not None:
+            self.is_email_verify = m.get('isEmailVerify')
         return self
 
 
@@ -3119,7 +4267,9 @@ class CreateOrUpdateContactResponseBody(TeaModel):
         alert_contact: CreateOrUpdateContactResponseBodyAlertContact = None,
         request_id: str = None,
     ):
+        # The object of the alert contact.
         self.alert_contact = alert_contact
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3199,8 +4349,14 @@ class CreateOrUpdateContactGroupRequest(TeaModel):
         contact_group_name: str = None,
         contact_ids: str = None,
     ):
+        # The ID of the alert contact group.
+        # 
+        # *   If you do not specify this parameter, an alert contact group is created.
+        # *   If you specify this parameter, the specified alert contact group is modified.
         self.contact_group_id = contact_group_id
+        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
+        # The ID of the contact that you want to add to the contact group. Separate multiple IDs with commas (,).
         self.contact_ids = contact_ids
 
     def validate(self):
@@ -3238,8 +4394,11 @@ class CreateOrUpdateContactGroupResponseBodyAlertContactGroup(TeaModel):
         contact_group_name: str = None,
         contact_ids: str = None,
     ):
+        # The ID of the alert contact group.
         self.contact_group_id = contact_group_id
+        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
+        # The IDs of the contacts that are included in the alert contact group.
         self.contact_ids = contact_ids
 
     def validate(self):
@@ -3276,7 +4435,9 @@ class CreateOrUpdateContactGroupResponseBody(TeaModel):
         alert_contact_group: CreateOrUpdateContactGroupResponseBodyAlertContactGroup = None,
         request_id: str = None,
     ):
+        # The object.
         self.alert_contact_group = alert_contact_group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3362,14 +4523,26 @@ class CreateOrUpdateEventBridgeIntegrationRequest(TeaModel):
         name: str = None,
         source: str = None,
     ):
+        # The AccessKey ID that is used to connect to EventBridge.
         self.access_key = access_key
+        # The AccessKey secret that is used to connect to EventBridge.
         self.access_secret = access_secret
+        # The description of the EventBridge integration.
         self.description = description
+        # The public endpoint of EventBridge.
         self.endpoint = endpoint
+        # The name of the event bus.
         self.event_bus_name = event_bus_name
+        # The region ID of the event bus.
         self.event_bus_region_id = event_bus_region_id
+        # The ID of the EventBridge integration.
+        # 
+        # *   If you do not specify this parameter, an EventBridge integration is created.
+        # *   If you specify this parameter, the specified EventBridge integration is modified.
         self.id = id
+        # The name of the EventBridge integration.
         self.name = name
+        # The event source.
         self.source = source
 
     def validate(self):
@@ -3437,14 +4610,23 @@ class CreateOrUpdateEventBridgeIntegrationResponseBodyEventBridgeIntegration(Tea
         name: str = None,
         source: str = None,
     ):
+        # The AccessKey ID that is used to connect to EventBridge.
         self.access_key = access_key
+        # The AccessKey secret that is used to connect to EventBridge.
         self.access_secret = access_secret
+        # The description of the EventBridge integration.
         self.description = description
+        # The public endpoint of EventBridge.
         self.endpoint = endpoint
+        # The name of the event bus.
         self.event_bus_name = event_bus_name
+        # The region ID of the event bus.
         self.event_bus_region_id = event_bus_region_id
+        # The ID of the EventBridge integration.
         self.id = id
+        # The name of the EventBridge integration.
         self.name = name
+        # The event source.
         self.source = source
 
     def validate(self):
@@ -3505,7 +4687,9 @@ class CreateOrUpdateEventBridgeIntegrationResponseBody(TeaModel):
         event_bridge_integration: CreateOrUpdateEventBridgeIntegrationResponseBodyEventBridgeIntegration = None,
         request_id: str = None,
     ):
+        # The information about the EventBridge integration.
         self.event_bridge_integration = event_bridge_integration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3584,6 +4768,7 @@ class CreateOrUpdateIMRobotRequest(TeaModel):
         card_template: str = None,
         daily_noc: bool = None,
         daily_noc_time: str = None,
+        ding_sign_key: str = None,
         enable_outgoing: bool = None,
         robot_address: str = None,
         robot_id: int = None,
@@ -3591,14 +4776,34 @@ class CreateOrUpdateIMRobotRequest(TeaModel):
         token: str = None,
         type: str = None,
     ):
+        # The configurations of the alert card template.
         self.card_template = card_template
+        # Specifies whether to send daily statistics.
+        # 
+        # *   `false` (default): does not send statistics.
+        # *   `true`: sends statistics. After you select `true`, **DailyNocTime** parameters are required.
         self.daily_noc = daily_noc
+        # The time point at which the daily statistics are sent. Separate multiple sending time points with commas (,). The time point is in the HH:SS format. ARMS Alert Management sends the total number of alerts generated today, the number of resolved alerts, and the number of pending alerts at the specified time point.
         self.daily_noc_time = daily_noc_time
+        # The signature key of DingTalk. If you specify a signature key, DingTalk authentication is performed with the key. Otherwise, a whitelist is used for authentication by default. The keyword of the whitelist is** Alert**.
+        self.ding_sign_key = ding_sign_key
+        # Specifies whether to enable the Outgoing feature.
         self.enable_outgoing = enable_outgoing
+        # The webhook address of the IM bot.
         self.robot_address = robot_address
+        # The ID of the IM bot.
+        # 
+        # *   If you do not specify this parameter, a new IM bot is created.
+        # *   Enter information that represents modifying the specified IM bot.
         self.robot_id = robot_id
+        # The name of the IM robot.
         self.robot_name = robot_name
+        # The token required to enable the Outgoing feature.
         self.token = token
+        # IM Robot Type:
+        # 
+        # *   `dingding`: DingTalk robot.
+        # *   `wechat`: Enterprise WeChat Robot.
         self.type = type
 
     def validate(self):
@@ -3616,6 +4821,8 @@ class CreateOrUpdateIMRobotRequest(TeaModel):
             result['DailyNoc'] = self.daily_noc
         if self.daily_noc_time is not None:
             result['DailyNocTime'] = self.daily_noc_time
+        if self.ding_sign_key is not None:
+            result['DingSignKey'] = self.ding_sign_key
         if self.enable_outgoing is not None:
             result['EnableOutgoing'] = self.enable_outgoing
         if self.robot_address is not None:
@@ -3638,6 +4845,8 @@ class CreateOrUpdateIMRobotRequest(TeaModel):
             self.daily_noc = m.get('DailyNoc')
         if m.get('DailyNocTime') is not None:
             self.daily_noc_time = m.get('DailyNocTime')
+        if m.get('DingSignKey') is not None:
+            self.ding_sign_key = m.get('DingSignKey')
         if m.get('EnableOutgoing') is not None:
             self.enable_outgoing = m.get('EnableOutgoing')
         if m.get('RobotAddress') is not None:
@@ -3666,14 +4875,29 @@ class CreateOrUpdateIMRobotResponseBodyAlertRobot(TeaModel):
         token: str = None,
         type: str = None,
     ):
+        # The configurations of the alert card template.
         self.card_template = card_template
+        # Specifies whether to send daily statistics.
+        # 
+        # *   `false` (default): does not send statistics.
+        # *   `true`: sends statistics.
         self.daily_noc = daily_noc
+        # The time when the daily statistics are sent. ARMS Alert Management sends the total number of alerts generated today, the number of resolved alerts, and the number of pending alerts at the specified time point.
         self.daily_noc_time = daily_noc_time
+        # Indicates whether the Outgoing feature is enabled.
         self.enable_outgoing = enable_outgoing
+        # The webhook address of the IM bot.
         self.robot_address = robot_address
+        # The ID of the IM bot.
         self.robot_id = robot_id
+        # The name of the IM robot.
         self.robot_name = robot_name
+        # The token required to enable the Outgoing feature.
         self.token = token
+        # IM Robot Type:
+        # 
+        # *   `dingding`: DingTalk robot.
+        # *   `wechat`: Enterprise WeChat Robot.
         self.type = type
 
     def validate(self):
@@ -3734,7 +4958,9 @@ class CreateOrUpdateIMRobotResponseBody(TeaModel):
         alert_robot: CreateOrUpdateIMRobotResponseBodyAlertRobot = None,
         request_id: str = None,
     ):
+        # Returns an AlertRobot object.
         self.alert_robot = alert_robot
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3823,17 +5049,81 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         repeat_interval: int = None,
         send_recover_message: bool = None,
     ):
+        # The ID of the escalation policy.
         self.escalation_policy_id = escalation_policy_id
+        # An array of alert event group objects.
+        # 
+        # *   If you do not specify the groupingFields field, all alerts will be sent to contacts based on `alertname`.
+        # 
+        # *   If you specify the groupingFields field, alerts with the same field will be sent to contacts in one notification.
+        # 
+        #     Sample statement:
+        # 
+        # ```
+        # 
+        # { 
+        # "groupWait":5,    // The waiting time for grouping. 
+        # "groupInterval":30,     // The time interval of grouping. 
+        # "groupingFields":["alertname"]       // The field that is used to group alert events. 
+        # }
+        # ```
         self.group_rule = group_rule
+        # The ID of the notification policy.
+        # 
+        # *   If you do not specify this parameter, a new notification policy is created.
+        # *   If you specify this parameter, the specified notification policy is modified.
         self.id = id
+        # The integration ID of the ticket system to which alerts are pushed.
         self.integration_id = integration_id
+        # The matching rules. Sample statement:
+        # 
+        # ```
+        # 
+        # [
+        #  {
+        #  "matchingConditions": [
+        #  { 
+        #  "value": "test",    // The value of the matching condition. 
+        #  "key": "alertname",     // The key of the matching condition. 
+        #  "operator": "eq"   // The logical operator of the matching condition, including eq (equal to), neq (not equal to), in (contains), nin (does not contain), re (regular expression match), and nre (regular expression mismatch).   
+        #  }
+        #  ]
+        #  } 
+        #  ]
+        # ```
         self.matching_rules = matching_rules
+        # The name of the notification policy.
         self.name = name
+        # An array of notification rule objects. Sample statement:
+        # 
+        # ```
+        # 
+        # { 
+        #  "notifyStartTime":"00:00",      // The start time of the notification window. 
+        #  "notifyEndTime":"23:59",       // The end time of the notification window. 
+        #  "notifyChannels":["dingTalk", "email", "sms", "tts", "webhook"],       // The notification methods. Valid values: dingTalk, email, sms, tts, and webhook. 
+        #  "notifyObjects":[{       // An array of notification contact objects. 
+        #  "notifyObjectType":"CONTACT",       // The type of the notification contact. Valid values: CONTACT (individual contacts), CONTACT_GROUP (contact groups), DING_ROBOT (the instant message robot), and CONTACT_SCHEDULE (the person on duty based on an established schedule). 
+        #  "notifyObjectId":123,       // The ID of the notification contact. 
+        #  "notifyObjectName":"test"       // The name of the notification contact. 
+        #  }]
+        # ```
         self.notify_rule = notify_rule
+        # The notification template. The default notification template is provided below the table.
         self.notify_template = notify_template
+        # The ID of the region.
         self.region_id = region_id
+        # Specifies whether to resend a notification for a long-lasting unresolved alert. Default value: true. Valid values:
+        # 
+        # *   `true`: If you set this parameter to `true`, you must set **RepeatInterval**.
+        # *   `false`: If you set this parameter to `false`, you must set **EscalationPolicyId**.
         self.repeat = repeat
+        # The time interval at which a notification is resent for a long-lasting unresolved alert. Unit: seconds.
         self.repeat_interval = repeat_interval
+        # Indicates whether the system sends a notification to the contacts when the status of an alert changes to Resolved. Default value: true. Valid values:
+        # 
+        # *   `true`: The system sends a notification.
+        # *   `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
 
     def validate(self):
@@ -3907,8 +5197,11 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule(Te
         group_wait: int = None,
         grouping_fields: List[str] = None,
     ):
+        # The time interval of grouping. Unit: seconds. Default value: 30.
         self.group_interval = group_interval
+        # The waiting time for grouping. Unit: seconds. Default value: 5.
         self.group_wait = group_wait
+        # The field that is used for grouping.
         self.grouping_fields = grouping_fields
 
     def validate(self):
@@ -3946,8 +5239,18 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRule
         operator: str = None,
         value: str = None,
     ):
+        # The key of the matching condition.
         self.key = key
+        # The logical operator of the matching condition. Valid values:
+        # 
+        # *   `eq`: equal to
+        # *   `neq`: not equal to
+        # *   `in`: contains
+        # *   `nin`: does not contain
+        # *   `re`: regular expression match
+        # *   `nre`: regular expression mismatch
         self.operator = operator
+        # The value of the matching condition.
         self.value = value
 
     def validate(self):
@@ -3983,6 +5286,7 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRule
         self,
         matching_conditions: List[CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRulesMatchingConditions] = None,
     ):
+        # An array of alert event matching condition objects.
         self.matching_conditions = matching_conditions
 
     def validate(self):
@@ -4020,8 +5324,16 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNo
         notify_object_name: str = None,
         notify_object_type: str = None,
     ):
+        # The ID of the notification contact.
         self.notify_object_id = notify_object_id
+        # The name of the notification contact.
         self.notify_object_name = notify_object_name
+        # The type of the notification contact. Valid values: 
+        # 
+        # - CONTACT: an individual contact
+        # - CONTACT_GROUP: a contact group
+        # - DING_ROBOT: an instant messaging (IM) robot
+        # - CONTACT_SCHEDULE: a person on duty based on an established schedule
         self.notify_object_type = notify_object_type
 
     def validate(self):
@@ -4060,9 +5372,19 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule(T
         notify_objects: List[CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects] = None,
         notify_start_time: str = None,
     ):
+        # The notification methods. Valid values: 
+        # 
+        # - `dingTalk`: DingTalk
+        # - `email`: email
+        # - `sms`: text message
+        # - `tts`: phone call
+        # - `webhook`: webhook
         self.notify_channels = notify_channels
+        # The end time of the notification window.
         self.notify_end_time = notify_end_time
+        # An array of notification contact objects.
         self.notify_objects = notify_objects
+        # The start time of the notification window.
         self.notify_start_time = notify_start_time
 
     def validate(self):
@@ -4118,14 +5440,23 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyTempla
         tts_content: str = None,
         tts_recover_content: str = None,
     ):
+        # The content of the alert notification sent through email.
         self.email_content = email_content
+        # The content of the alert resolution notification sent through email.
         self.email_recover_content = email_recover_content
+        # The title of the alert resolution notification sent through email.
         self.email_recover_title = email_recover_title
+        # The title of the alert notification sent through email.
         self.email_title = email_title
+        # The content of the alert notification sent by the IM robot.
         self.robot_content = robot_content
+        # The content of the alert notification sent through text message.
         self.sms_content = sms_content
+        # The content of the alert resolution notification sent through text message.
         self.sms_recover_content = sms_recover_content
+        # The content of the alert notification by phone.
         self.tts_content = tts_content
+        # The content of the alert resolution notification by phone.
         self.tts_recover_content = tts_recover_content
 
     def validate(self):
@@ -4195,16 +5526,33 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
         repeat_interval: int = None,
         send_recover_message: bool = None,
     ):
+        # The ID of the escalation policy.
         self.escalation_policy_id = escalation_policy_id
+        # An array of alert event group objects.
         self.group_rule = group_rule
+        # The ID of the notification policy.
         self.id = id
+        # The integration ID of the ticket system to which alerts are pushed.
         self.integration_id = integration_id
+        # An array of alert event matching rule objects.
         self.matching_rules = matching_rules
+        # The name of the notification policy.
         self.name = name
+        # An array of notification rule objects.
         self.notify_rule = notify_rule
+        # An array of notification template objects.
         self.notify_template = notify_template
+        # Indicates whether a notification is resent for a long-lasting unresolved alert. Default value: true. Valid values:  
+        # 
+        # - `true`: The system resends a notification for a long-lasting unresolved alert at a specified time interval.
+        # - `false`: The system sends a notification for a long-lasting unresolved alert based on an escalation policy.
         self.repeat = repeat
+        # The time interval at which a notification is resent for a long-lasting unresolved alert. Unit: seconds.
         self.repeat_interval = repeat_interval
+        # Indicates whether the system sends a notification to the contacts when the status of an alert changes to Resolved. Default value: true. Valid values:   
+        # 
+        # - `true`: The system sends a notification.
+        # - `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
 
     def validate(self):
@@ -4290,7 +5638,9 @@ class CreateOrUpdateNotificationPolicyResponseBody(TeaModel):
         notification_policy: CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy = None,
         request_id: str = None,
     ):
+        # An array of notification policy objects.
         self.notification_policy = notification_policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4371,9 +5721,31 @@ class CreateOrUpdateSilencePolicyRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
+        # The ID of the silence policy.
+        # 
+        # *   If you do not specify this parameter, a new silence policy is created.
+        # *   If you specify this parameter, the specified silence policy is modified.
         self.id = id
+        # The matching rules. Sample statement:
+        # 
+        # ```
+        # 
+        # [
+        #      {
+        # 	 "matchingConditions": [
+        # 	 {
+        # 	 "value": "test", // The value of the matching condition. 
+        # 	 "key": "altertname", // The key of the matching condition. 
+        # 	 "operator": "eq" // The logical operator of the matching condition, including eq (equal to), neq (not equal to), in (contains), nin (does not contain), re (regular expression match), and nre (regular expression mismatch).   
+        # 	 }
+        # 	 ]
+        #      }
+        # 	 ]
+        # ```
         self.matching_rules = matching_rules
+        # The name of the silence policy.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -4415,8 +5787,18 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingC
         operator: str = None,
         value: str = None,
     ):
+        # The key of the matching condition.
         self.key = key
+        # The logical operator of the matching condition. Valid values:
+        # 
+        # *   `eq`: equal to.
+        # *   `neq`: not equal to.
+        # *   `in`: contains.
+        # *   `nin`: does not contain.
+        # *   `re`: regular expression match.
+        # *   `nre`: regular expression mismatch.
         self.operator = operator
+        # The value of the matching condition.
         self.value = value
 
     def validate(self):
@@ -4452,6 +5834,7 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules(TeaModel
         self,
         matching_conditions: List[CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingConditions] = None,
     ):
+        # An array of matching condition objects.
         self.matching_conditions = matching_conditions
 
     def validate(self):
@@ -4489,8 +5872,11 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicy(TeaModel):
         matching_rules: List[CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules] = None,
         name: str = None,
     ):
+        # The ID of the silence policy.
         self.id = id
+        # An array of matching rule objects.
         self.matching_rules = matching_rules
+        # The name of the silence policy.
         self.name = name
 
     def validate(self):
@@ -4535,7 +5921,9 @@ class CreateOrUpdateSilencePolicyResponseBody(TeaModel):
         request_id: str = None,
         silence_policy: CreateOrUpdateSilencePolicyResponseBodySilencePolicy = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # An array of silence policy objects.
         self.silence_policy = silence_policy
 
     def validate(self):
@@ -4620,13 +6008,27 @@ class CreateOrUpdateWebhookContactRequest(TeaModel):
         webhook_id: int = None,
         webhook_name: str = None,
     ):
+        # The header of the HTTP request.
         self.biz_headers = biz_headers
+        # The parameters in the HTTP request.
         self.biz_params = biz_params
+        # The notification template that is sent when an alert is triggered. This parameter is required when the **Method** is set to **Post**. You can use `$content` placeholders to output the notification content. The notification content cannot exceed 500 characters in length. For more information, see [Notification template variables](~~251834~~).
         self.body = body
+        # The HTTP request method. Valid values:
+        # 
+        # *   Post
+        # *   Get
         self.method = method
+        # The notification template that is sent when the alert resumes. This parameter is required when the **Method** is set to **Post**. You can use `$content` placeholders to output the notification content. The notification content cannot exceed 500 characters in length. For more information, see [Notification template variables](~~251834~~).
         self.recover_body = recover_body
+        # The URL of the request method.
         self.url = url
+        # The ID of the contact for webhook alerts.
+        # 
+        # *   If you do not specify this parameter, a new webhook alert contact is created.
+        # *   Enter information that represents modifying the contact information of the specified Webhook alert.
         self.webhook_id = webhook_id
+        # The name of the webhook alert contact.
         self.webhook_name = webhook_name
 
     def validate(self):
@@ -4687,11 +6089,20 @@ class CreateOrUpdateWebhookContactResponseBodyWebhookContactWebhook(TeaModel):
         recover_body: str = None,
         url: str = None,
     ):
+        # The header of the HTTP request.
         self.biz_headers = biz_headers
+        # The parameters in the HTTP request.
         self.biz_params = biz_params
+        # The alert notification template.
         self.body = body
+        # The HTTP request method. Valid values:
+        # 
+        # *   Post
+        # *   Get
         self.method = method
+        # The alert recovery template.
         self.recover_body = recover_body
+        # The URL of the request method.
         self.url = url
 
     def validate(self):
@@ -4741,8 +6152,11 @@ class CreateOrUpdateWebhookContactResponseBodyWebhookContact(TeaModel):
         webhook_id: float = None,
         webhook_name: str = None,
     ):
+        # The returned Webhook object.
         self.webhook = webhook
+        # The ID of the contact for webhook alerts.
         self.webhook_id = webhook_id
+        # The name of the webhook alert contact.
         self.webhook_name = webhook_name
 
     def validate(self):
@@ -4781,7 +6195,9 @@ class CreateOrUpdateWebhookContactResponseBody(TeaModel):
         request_id: str = None,
         webhook_contact: CreateOrUpdateWebhookContactResponseBodyWebhookContact = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned WebhookContact object.
         self.webhook_contact = webhook_contact
 
     def validate(self):
@@ -4869,16 +6285,33 @@ class CreatePrometheusAlertRuleRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations that are described in a JSON string. You must specify the name and value of each annotation.
         self.annotations = annotations
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the notification policy. This parameter is required if the **NotifyType** parameter is set to `DISPATCH_RULE`.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule. The expression must follow the PromQL syntax.
         self.expression = expression
+        # The tags that are described in a JSON string. You must specify the name and value of each tag.
         self.labels = labels
+        # The content of the alert notification. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center. This is the default value.
+        # *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # The ID of the region.
         self.region_id = region_id
+        # The type of the alert rule. Valid values:
+        # 
+        # *   99: custom alert
+        # *   101: Prometheus Service alert
         self.type = type
 
     def validate(self):
@@ -4947,7 +6380,9 @@ class CreatePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations(TeaMod
         name: str = None,
         value: str = None,
     ):
+        # The name of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -4980,7 +6415,9 @@ class CreatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -5023,17 +6460,35 @@ class CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule(TeaModel):
         status: int = None,
         type: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the notification policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule.
         self.expression = expression
+        # The tags of the alert rule.
         self.labels = labels
+        # The content of the alert notification. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+        # *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # Indicates whether the alert rule is enabled. Valid values:
+        # 
+        # *   `1`: The alert rule is enabled.
+        # *   `0`: The alert rule is disabled.
         self.status = status
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -5123,7 +6578,9 @@ class CreatePrometheusAlertRuleResponseBody(TeaModel):
         prometheus_alert_rule: CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.prometheus_alert_rule = prometheus_alert_rule
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5196,16 +6653,14 @@ class CreatePrometheusAlertRuleResponse(TeaModel):
         return self
 
 
-class CreateRetcodeAppRequest(TeaModel):
+class CreatePrometheusInstanceRequestTags(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
-        retcode_app_name: str = None,
-        retcode_app_type: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.region_id = region_id
-        self.retcode_app_name = retcode_app_name
-        self.retcode_app_type = retcode_app_type
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -5216,22 +6671,398 @@ class CreateRetcodeAppRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreatePrometheusInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+        grafana_instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        sub_clusters_json: str = None,
+        tags: List[CreatePrometheusInstanceRequestTags] = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        # The ID of the Kubernetes cluster. This parameter is required if you set the ClusterType parameter to aliyun-cs��.
+        self.cluster_id = cluster_id
+        # The name of the created cluster. This parameter is required if you set the ClusterType parameter to remote-write or ecs.
+        self.cluster_name = cluster_name
+        # The type of the Prometheus instance. The following types are provided: remote-write (Prometheus instance for Remote Write) ecs (Prometheus instance for ECS) cloud-monitor� (Prometheus instance for cloud services in China) cloud-product (Prometheus instance for Alibaba Cloud services outside China) global-view (Prometheus instance for GlobalView) aliyun-cs�� (Prometheus instances for Container Service)
+        self.cluster_type = cluster_type
+        # The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
+        self.grafana_instance_id = grafana_instance_id
+        # The ID of the region. If you create a Prometheus instance for Cloud service in China, set the value to cn-shanghai.
+        self.region_id = region_id
+        # The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
+        self.resource_group_id = resource_group_id
+        # The security group. This parameter is required if you set the ClusterType parameter to ecs.
+        self.security_group_id = security_group_id
+        # globalView实例的子实例json串。
+        self.sub_clusters_json = sub_clusters_json
+        # The tags of the instance. You can configure this parameter to manage tags for the instance.
+        self.tags = tags
+        # The vSwitch. This parameter is required if you set the ClusterType parameter to ecs.
+        self.v_switch_id = v_switch_id
+        # The virtual private cloud (VPC). This parameter is required if you set the ClusterType parameter to ecs.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.grafana_instance_id is not None:
+            result['GrafanaInstanceId'] = self.grafana_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.sub_clusters_json is not None:
+            result['SubClustersJson'] = self.sub_clusters_json
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('GrafanaInstanceId') is not None:
+            self.grafana_instance_id = m.get('GrafanaInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SubClustersJson') is not None:
+            self.sub_clusters_json = m.get('SubClustersJson')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreatePrometheusInstanceRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreatePrometheusInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # 接口状态码：
+        # 
+        # - `2XX`：成功
+        # - `3XX`：重定向
+        # - `4XX`：请求错误
+        # - `5XX`：服务器错误
+        self.code = code
+        # The ID of the Prometheus instance.
+        self.data = data
+        # 调用失败时返回的信息。
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePrometheusInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePrometheusInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePrometheusInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRetcodeAppRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateRetcodeAppRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        retcode_app_name: str = None,
+        retcode_app_type: str = None,
+        tags: List[CreateRetcodeAppRequestTags] = None,
+    ):
+        # The ID of the region.
+        self.region_id = region_id
+        # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
+        self.resource_group_id = resource_group_id
+        # The name of the application.
+        self.retcode_app_name = retcode_app_name
+        # The type of the application. Valid values:
+        # 
+        # *   `web`: web application
+        # *   `weex`: Weex mobile app
+        # *   `mini_dd`: DingTalk mini program
+        # *   `mini_alipay`: Alipay mini program
+        # *   `mini_wx`: WeChat mini program
+        # *   `mini_common`: mini program on other platforms
+        self.retcode_app_type = retcode_app_type
+        # The list of tags.
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.retcode_app_name is not None:
             result['RetcodeAppName'] = self.retcode_app_name
         if self.retcode_app_type is not None:
             result['RetcodeAppType'] = self.retcode_app_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetcodeAppName') is not None:
             self.retcode_app_name = m.get('RetcodeAppName')
         if m.get('RetcodeAppType') is not None:
             self.retcode_app_type = m.get('RetcodeAppType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateRetcodeAppRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRetcodeAppResponseBodyRetcodeAppDataBeanTagsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags(TeaModel):
+    def __init__(
+        self,
+        tags: List[CreateRetcodeAppResponseBodyRetcodeAppDataBeanTagsTags] = None,
+    ):
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateRetcodeAppResponseBodyRetcodeAppDataBeanTagsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -5240,12 +7071,21 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBean(TeaModel):
         self,
         app_id: int = None,
         pid: str = None,
+        resource_group_id: str = None,
+        tags: CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The process identifier (PID) of the application.
         self.pid = pid
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The list of tags.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5257,6 +7097,10 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBean(TeaModel):
             result['AppId'] = self.app_id
         if self.pid is not None:
             result['Pid'] = self.pid
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5265,6 +7109,11 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBean(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tags') is not None:
+            temp_model = CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags()
+            self.tags = temp_model.from_map(m['Tags'])
         return self
 
 
@@ -5274,7 +7123,9 @@ class CreateRetcodeAppResponseBody(TeaModel):
         request_id: str = None,
         retcode_app_data_bean: CreateRetcodeAppResponseBodyRetcodeAppDataBean = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the browser monitoring task.
         self.retcode_app_data_bean = retcode_app_data_bean
 
     def validate(self):
@@ -5354,8 +7205,20 @@ class CreateSyntheticTaskRequestCommonParamAlertList(TeaModel):
         name: str = None,
         symbols: int = None,
     ):
+        # Specifies whether the condition must be met.
         self.is_critical = is_critical
+        # The name of the alert rule.
+        # 
+        # For network synthetic monitoring, use the following names:
+        # 
+        # *   Latency: PING_SET
+        # *   Packet loss rate: PING_LOST_RATE
+        # *   Hijacking: HIJACKPER
         self.name = name
+        # Specifies how the condition is evaluated. Valid values:
+        # 
+        # *   1: greater than
+        # *   0: less than
         self.symbols = symbols
 
     def validate(self):
@@ -5396,11 +7259,23 @@ class CreateSyntheticTaskRequestCommonParam(TeaModel):
         monitor_samples: int = None,
         start_execution_time: int = None,
     ):
+        # Specifies whether to create an alert rule.
+        # 
+        # *   1: creates an alert.
+        # *   0: does not create an alert.
         self.alarm_flag = alarm_flag
+        # The alert parameters.
         self.alert_list = alert_list
+        # The ID of the alert recipient. Separate multiple recipients with commas (,).
         self.alert_notifier_id = alert_notifier_id
+        # The ID of the notification policy.
         self.alert_policy_id = alert_policy_id
+        # Specifies whether to evenly distribute monitoring samples. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.monitor_samples = monitor_samples
+        # The time when execution starts.
         self.start_execution_time = start_execution_time
 
     def validate(self):
@@ -5468,18 +7343,45 @@ class CreateSyntheticTaskRequestDownload(TeaModel):
         verify_way: int = None,
         white_list: str = None,
     ):
+        # The connection timeout period.
         self.connection_timeout = connection_timeout
+        # The items to be ignored in a certificate error. Pass the values of the check boxes that are separated with vertical bars (|).
         self.download_custom_header_content = download_custom_header_content
+        # The custom host mode.
+        # 
+        # *   1: round robin
+        # *   0: random
         self.download_custom_host = download_custom_host
+        # The custom host IP address. You can enter multiple IP addresses. Separate the IP addresses with commas (,).
         self.download_custom_host_ip = download_custom_host_ip
+        # The items to be ignored in a certificate error. Pass the values of the check boxes that are separated with vertical bars (|).
         self.download_ignore_certificate_error = download_ignore_certificate_error
+        # The kernel type.
+        # 
+        # *   1: curl
+        # *   0: WinInet
         self.download_kernel = download_kernel
+        # Specifies whether to support redirection.
         self.download_redirection = download_redirection
+        # The size of the download file. Unit: KB.
         self.download_transmission_size = download_transmission_size
+        # The monitoring duration.
         self.monitor_timeout = monitor_timeout
+        # The QUIC protocol type.
+        # 
+        # *   1: http1
+        # *   2: http2
+        # *   3: http3
         self.quick_protocol = quick_protocol
+        # The keyword that is used in verification.
         self.validate_keywords = validate_keywords
+        # The verification method.
+        # 
+        # *   0: no verification
+        # *   1: string verification
+        # *   2: MD5 verification
         self.verify_way = verify_way
+        # The whitelist for DNS hijacking.
         self.white_list = white_list
 
     def validate(self):
@@ -5561,12 +7463,19 @@ class CreateSyntheticTaskRequestExtendInterval(TeaModel):
         start_minute: int = None,
         start_time: str = None,
     ):
+        # The day on which synthetic monitoring is performed.
         self.days = days
+        # The hour at which synthetic monitoring ends.
         self.end_hour = end_hour
+        # The minute at which synthetic monitoring ends.
         self.end_minute = end_minute
+        # The time when synthetic monitoring ends. The format is `yyyy-MM-dd HH`.
         self.end_time = end_time
+        # The hour at which synthetic monitoring starts.
         self.start_hour = start_hour
+        # The minute at which synthetic monitoring starts.
         self.start_minute = start_minute
+        # The time when synthetic monitoring starts. The format is `yyyy-MM-dd HH`.
         self.start_time = start_time
 
     def validate(self):
@@ -5620,8 +7529,14 @@ class CreateSyntheticTaskRequestMonitorList(TeaModel):
         monitor_type: int = None,
         net_service_id: int = None,
     ):
+        # The ID of the city to which the monitoring point belongs.
         self.city_code = city_code
+        # The carrier type:
+        # 
+        # *   IDC
+        # *   LastMilie
         self.monitor_type = monitor_type
+        # The ID of the carrier.
         self.net_service_id = net_service_id
 
     def validate(self):
@@ -5685,34 +7600,124 @@ class CreateSyntheticTaskRequestNavigation(TeaModel):
         verify_string_white_list: str = None,
         wait_completion_time: float = None,
     ):
+        # The whitelist for DNS hijacking.
         self.dnshijack_white_list = dnshijack_white_list
+        # The element blacklist.
         self.element_blacklist = element_blacklist
+        # Specifies whether to execute ActiveX.
+        # 
+        # *   3: yes
+        # *   0: no
+        # 
+        # >  This parameter is supported only by IE Full Elements.
         self.execute_active_x = execute_active_x
+        # Specifies whether to run applets.
+        # 
+        # *   1: yes
+        # *   0: no
+        # 
+        # >  This parameter is supported only by IE Full Elements.
         self.execute_application = execute_application
+        # Specifies whether to execute scripts.
+        # 
+        # *   1: yes
+        # *   0: no
+        # 
+        # >  This parameter is supported only by IE Full Elements.
         self.execute_script = execute_script
+        # Specifies whether to filter invalid IP addresses.
+        # 
+        # *   1: no
+        # *   0: yes
         self.filter_invalid_ip = filter_invalid_ip
+        # The element that is used in DNS hijacking.
         self.flow_hijack_jump_times = flow_hijack_jump_times
+        # The tag that is used in DNS hijacking.
         self.flow_hijack_logo = flow_hijack_logo
+        # The timeout period of monitoring. Unit: seconds.
         self.monitor_timeout = monitor_timeout
+        # Specifies whether to automatically scroll up and down the screen to load a page.
+        # 
+        # *   1: yes
+        # *   0: no
         self.nav_automatic_scrolling = nav_automatic_scrolling
+        # The method that is used to customize the header. Valid values:
+        # 
+        # *   0: disables the customer header.
+        # *   1: modifies the first package.
+        # *   2: modifies all packages.
         self.nav_custom_header = nav_custom_header
+        # The format of the custom header. You can specify multiple fields. Separate the fields with vertical bars (|).
         self.nav_custom_header_content = nav_custom_header_content
+        # The custom host mode.
+        # 
+        # *   1: round robin
+        # *   0: random
         self.nav_custom_host = nav_custom_host
+        # The custom host IP address. You can enter multiple IP addresses. Separate the IP addresses with commas (,).
         self.nav_custom_host_ip = nav_custom_host_ip
+        # Specifies whether to disable caching.
+        # 
+        # *   1: disable
+        # *   0: enable
         self.nav_disable_cache = nav_disable_cache
+        # Specifies whether to enable the feature of using the Accept-Encoding field to determine whether to accept compressed files.
+        # 
+        # *   1: disable
+        # *   0: enable
         self.nav_disable_compression = nav_disable_compression
+        # Specifies whether to ignore certificate errors during certificate verification in the SSL handshake and continue browsing.
+        # 
+        # *   1: ignore
+        # *   0: does not ignore
         self.nav_ignore_certificate_error = nav_ignore_certificate_error
+        # Specifies whether to continue browsing after a redirection occurs.
+        # 
+        # *   1: yes
+        # *   0: no
         self.nav_redirection = nav_redirection
+        # Specifies whether to return the elements on the page.
+        # 
+        # *   1: no. Returns the basic document data.
+        # *   2: yes. Returns all document data.
         self.nav_return_element = nav_return_element
+        # The web page defacement.
         self.page_tamper = page_tamper
+        # The process ID.
         self.process_name = process_name
+        # The domain name of the QUIC request element.
+        # 
+        # >  This parameter is supported by all elements of only Chrome
         self.quicdomain = quicdomain
+        # The Quick UDP Internet Connections (QUIC) protocol version. Default value: 0. Valid values:
+        # 
+        # *\
+        # *   35
+        # *   39
+        # *   43
+        # *   44
+        # 
+        # >  This parameter is supported by all elements of only Chrome
         self.quicversion = quicversion
+        # Specifies whether to return the request header.
+        # 
+        # *   0: does not return the response header.
+        # *   1: returns the basic document header.
+        # *   2: returns all headers.
         self.request_header = request_header
+        # The method that is used to return the response header. Valid values:
+        # 
+        # *   0: does not return the response header.
+        # *   1: returns the basic document header.
+        # *   2: returns all headers.
         self.response_header = response_header
+        # The time threshold that is used to define a slow element. Unit: seconds.
         self.slow_element_threshold = slow_element_threshold
+        # The blacklist for string verification.
         self.verify_string_blacklist = verify_string_blacklist
+        # The whitelist for string verification.
         self.verify_string_white_list = verify_string_white_list
+        # The timeout period of waiting for the monitoring to complete.
         self.wait_completion_time = wait_completion_time
 
     def validate(self):
@@ -5868,22 +7873,66 @@ class CreateSyntheticTaskRequestNet(TeaModel):
         net_trace_route_timeout: int = None,
         white_list: str = None,
     ):
+        # The DNS server.
         self.net_dnsns = net_dnsns
+        # The DNS query method. Valid values:
+        # 
+        # *   1: recursion
+        # *   2: iteration
         self.net_dnsquery_method = net_dnsquery_method
+        # The IP address type of the DNS server.
+        # 
+        # *   0: IPv4
+        # *   1: IPv6
+        # *   2: an automatic IP address
         self.net_dnsserver = net_dnsserver
+        # Specifies whether to enable domain name system (DNS) monitoring.
+        # 
+        # *   0: Off.
+        # *   1: On. You must set DNS parameters if you want to enable DNS monitoring.
         self.net_dnsswitch = net_dnsswitch
+        # The timeout period of DNS monitoring. Default value: 5 seconds. Valid values: 0 to 45 seconds.
         self.net_dnstimeout = net_dnstimeout
+        # Specifies whether to display the data in the DIG format. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.net_dig_switch = net_dig_switch
+        # The protocol type. Valid values:
+        # 
+        # *   0: ICMP
+        # *   1: TCP
         self.net_icmpactive = net_icmpactive
+        # Specifies whether to split packages.
+        # 
+        # *   0: no
+        # *   1: yes
         self.net_icmpdata_cut = net_icmpdata_cut
+        # The interval at which the network synthetic monitoring task is executed. Unit: seconds.
         self.net_icmpinterval = net_icmpinterval
+        # The number of packages.
         self.net_icmpnum = net_icmpnum
+        # The package size.
         self.net_icmpsize = net_icmpsize
+        # Specifies whether to enable ping monitoring.
+        # 
+        # *   0: Off.
+        # *   1: On. You must set Internet control message protocol (ICMP) parameters if you want to enable ping monitoring.
         self.net_icmpswitch = net_icmpswitch
+        # The timeout period of Ping monitoring.
         self.net_icmptimeout = net_icmptimeout
+        # The maximum number of active monitoring points.
         self.net_trace_route_num = net_trace_route_num
+        # Specifies whether to enable tracert monitoring.
+        # 
+        # *   0: Off.
+        # *   1: On. You must set the tracert parameters if you want to enable tracert monitoring.
         self.net_trace_route_switch = net_trace_route_switch
+        # The timeout period of tracert monitoring. Valid values: 0 to 300 seconds.
         self.net_trace_route_timeout = net_trace_route_timeout
+        # The whitelist for DNS hijacking. The format is `Domain name: Matching rule`.
+        # 
+        # >  Wireless application protocol (WAP) networks do not support DNS hijacking.
         self.white_list = white_list
 
     def validate(self):
@@ -5976,7 +8025,9 @@ class CreateSyntheticTaskRequestProtocolRequestContentBodyFormData(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of **form-data**.
         self.key = key
+        # The value of **form-data**.
         self.value = value
 
     def validate(self):
@@ -6009,7 +8060,9 @@ class CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of **x-www-form-urlencoded**.
         self.key = key
+        # The value of **x-www-form-urlencoded**.
         self.value = value
 
     def validate(self):
@@ -6045,10 +8098,25 @@ class CreateSyntheticTaskRequestProtocolRequestContentBody(TeaModel):
         raw: str = None,
         url_encoding: List[CreateSyntheticTaskRequestProtocolRequestContentBodyUrlEncoding] = None,
     ):
+        # The data that is passed when the **Mode** parameter is set to **form-data**.
         self.form_data = form_data
+        # The language that is selected when the Mode parameter is set to raw.
+        # 
+        # *   json
+        # *   xml
+        # *   javascript
+        # *   html
+        # *   text
         self.language = language
+        # The data type of the content.
+        # 
+        # *   form-data
+        # *   x-www-form-urlencoded
+        # *   raw
         self.mode = mode
+        # The data that is passed when the **Mode** parameter is set to **raw**.
         self.raw = raw
+        # The data that is passed when the **Mode** parameter is set to **x-www-form-urlencoded**.
         self.url_encoding = url_encoding
 
     def validate(self):
@@ -6110,7 +8178,9 @@ class CreateSyntheticTaskRequestProtocolRequestContentHeader(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the request header.
         self.key = key
+        # The value of the request header.
         self.value = value
 
     def validate(self):
@@ -6144,8 +8214,14 @@ class CreateSyntheticTaskRequestProtocolRequestContent(TeaModel):
         header: List[CreateSyntheticTaskRequestProtocolRequestContentHeader] = None,
         method: str = None,
     ):
+        # The custom body of a request to initiate an API performance synthetic monitoring task.
         self.body = body
+        # The custom header of a request to initiate an API performance synthetic monitoring task.
         self.header = header
+        # The request method.
+        # 
+        # *   POST
+        # *   GET
         self.method = method
 
     def validate(self):
@@ -6200,14 +8276,36 @@ class CreateSyntheticTaskRequestProtocol(TeaModel):
         verify_content: str = None,
         verify_way: int = None,
     ):
+        # The encoding format.
+        # 
+        # *   0: UTF-8
+        # *   1: GBK
+        # *   2: GB2312
+        # *   3: Unicode
         self.character_encoding = character_encoding
+        # The custom host mode.
+        # 
+        # *   1: round robin
+        # *   0: random
         self.custom_host = custom_host
+        # The custom host IP address. You can enter multiple IP addresses. Separate the IP addresses with commas (,).
         self.custom_host_ip = custom_host_ip
+        # The connection timeout period of the protocol. Unit: seconds.
         self.protocol_connection_time = protocol_connection_time
+        # The timeout period of API performance synthetic monitoring. Unit: seconds.
         self.protocol_monitor_timeout = protocol_monitor_timeout
+        # The size of the received data. This parameter is required when you set the value of the VerifyWay parameter to 2.
         self.received_data_size = received_data_size
+        # The request content, including the request header and request body.
         self.request_content = request_content
+        # The verification string.
         self.verify_content = verify_content
+        # The method that is used to verify the response content.
+        # 
+        # *   0: no verification.
+        # *   1: exact match with the verification string.
+        # *   2: partial match with the verification string.
+        # *   3: MD5 verification.
         self.verify_way = verify_way
 
     def validate(self):
@@ -6283,20 +8381,66 @@ class CreateSyntheticTaskRequest(TeaModel):
         update_task: bool = None,
         url: str = None,
     ):
+        # The common parameters.
         self.common_param = common_param
+        # The file download task.
         self.download = download
+        # The frequency.
         self.extend_interval = extend_interval
+        # The interval at which synthetic monitoring is performed. Unit: minutes. Valid values:
+        # 
+        # *   1
+        # *   5
+        # *   10
+        # *   15
+        # *   20
+        # *   30
+        # *   60
+        # *   120
+        # *   180
+        # *   240
+        # *   360
+        # *   480
+        # *   720
+        # *   1440
         self.interval_time = interval_time
+        # The interval type.
+        # 
+        # *   0: daily
+        # *   1: custom frequency
         self.interval_type = interval_type
+        # The IP address type:
+        # 
+        # *   0: an automatic IP address
+        # *   1: IPv4
+        # *   2: IPv6
         self.ip_type = ip_type
+        # The list of monitoring points.
         self.monitor_list = monitor_list
+        # The monitoring items that are associated with the browse tasks.
         self.navigation = navigation
+        # The network synthetic monitoring task.
         self.net = net
+        # The API performance synthetic monitoring task.
         self.protocol = protocol
+        # The ID of the region in which the application is located.
         self.region_id = region_id
+        # The name of the task. To update a synthetic monitoring task, enter the task name and set the **UpdateTask** parameter to **true**.
         self.task_name = task_name
+        # The type of the monitoring task. Valid values:
+        # 
+        # 1.  3: web page performance - IE
+        # 2.  34: web Page Performance - Chrome
+        # 3.  0: network quality
+        # 4.  40: file download
+        # 5.  7:API performance
         self.task_type = task_type
+        # Specifies whether to update existing synthetic monitoring tasks.
+        # 
+        # *   true: updates existing synthetic monitoring tasks.
+        # *   false: creates new synthetic monitoring tasks.
         self.update_task = update_task
+        # The URL for synthetic monitoring.
         self.url = url
 
     def validate(self):
@@ -6420,20 +8564,66 @@ class CreateSyntheticTaskShrinkRequest(TeaModel):
         update_task: bool = None,
         url: str = None,
     ):
+        # The common parameters.
         self.common_param_shrink = common_param_shrink
+        # The file download task.
         self.download_shrink = download_shrink
+        # The frequency.
         self.extend_interval_shrink = extend_interval_shrink
+        # The interval at which synthetic monitoring is performed. Unit: minutes. Valid values:
+        # 
+        # *   1
+        # *   5
+        # *   10
+        # *   15
+        # *   20
+        # *   30
+        # *   60
+        # *   120
+        # *   180
+        # *   240
+        # *   360
+        # *   480
+        # *   720
+        # *   1440
         self.interval_time = interval_time
+        # The interval type.
+        # 
+        # *   0: daily
+        # *   1: custom frequency
         self.interval_type = interval_type
+        # The IP address type:
+        # 
+        # *   0: an automatic IP address
+        # *   1: IPv4
+        # *   2: IPv6
         self.ip_type = ip_type
+        # The list of monitoring points.
         self.monitor_list_shrink = monitor_list_shrink
+        # The monitoring items that are associated with the browse tasks.
         self.navigation_shrink = navigation_shrink
+        # The network synthetic monitoring task.
         self.net_shrink = net_shrink
+        # The API performance synthetic monitoring task.
         self.protocol_shrink = protocol_shrink
+        # The ID of the region in which the application is located.
         self.region_id = region_id
+        # The name of the task. To update a synthetic monitoring task, enter the task name and set the **UpdateTask** parameter to **true**.
         self.task_name = task_name
+        # The type of the monitoring task. Valid values:
+        # 
+        # 1.  3: web page performance - IE
+        # 2.  34: web Page Performance - Chrome
+        # 3.  0: network quality
+        # 4.  40: file download
+        # 5.  7:API performance
         self.task_type = task_type
+        # Specifies whether to update existing synthetic monitoring tasks.
+        # 
+        # *   true: updates existing synthetic monitoring tasks.
+        # *   false: creates new synthetic monitoring tasks.
         self.update_task = update_task
+        # The URL for synthetic monitoring.
         self.url = url
 
     def validate(self):
@@ -6517,6 +8707,7 @@ class CreateSyntheticTaskResponseBodyData(TeaModel):
         self,
         task_id: int = None,
     ):
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
 
     def validate(self):
@@ -6547,9 +8738,20 @@ class CreateSyntheticTaskResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
+        # 
+        # *   1001: The request was successful.
+        # *   1002: The request failed.
+        # *   1003: Parameter errors occurred.
+        # *   1004: Authentication failed.
+        # *   1006: The task does not exist.
+        # *   1099: Internal errors occurred.
         self.code = code
+        # The information about the synthetic monitoring task.
         self.data = data
+        # The message that is returned when the task failed to be created.
         self.msg = msg
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6642,13 +8844,24 @@ class CreateWebhookRequest(TeaModel):
         region_id: str = None,
         url: str = None,
     ):
+        # The notification template that is sent when an alert is triggered. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
         self.body = body
+        # The name of the contact.
         self.contact_name = contact_name
+        # The HTTP request header.
         self.http_headers = http_headers
+        # The parameters in the HTTP request.
         self.http_params = http_params
+        # The HTTP request method.
+        # 
+        # *   `Get`
+        # *   `Post`
         self.method = method
+        # The notification template that is sent when an alert is resolved. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
         self.recover_body = recover_body
+        # The region ID.
         self.region_id = region_id
+        # The URL of the request **method**.
         self.url = url
 
     def validate(self):
@@ -6705,7 +8918,9 @@ class CreateWebhookResponseBody(TeaModel):
         contact_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the contact for webhook alerts.
         self.contact_id = contact_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6782,7 +8997,9 @@ class DelAuthTokenRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -6815,7 +9032,9 @@ class DelAuthTokenResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7111,6 +9330,7 @@ class DeleteAlertRuleRequest(TeaModel):
         self,
         alert_id: int = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
 
     def validate(self):
@@ -7139,7 +9359,12 @@ class DeleteAlertRuleResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert rule was successfully deleted.
+        # 
+        # *   `true`: The specified data is deleted.
+        # *   `false`: The specified data fails to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7216,7 +9441,9 @@ class DeleteAlertRulesRequest(TeaModel):
         alert_ids: str = None,
         region_id: str = None,
     ):
+        # The IDs of the alert rules that you want to delete. The value is a JSON array, for example, `[123, 234]`. You can call the SearchAlertRules operation and view the `Id` parameter in the response to obtain the alert rule ID. For more information, see [SearchAlertRules](~~175825~~).
         self.alert_ids = alert_ids
+        # The region ID. Default value: `cn-hangzhou`.
         self.region_id = region_id
 
     def validate(self):
@@ -7249,7 +9476,12 @@ class DeleteAlertRulesResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert rule was deleted.
+        # 
+        # *   `true`: The alert rule was deleted.
+        # *   `false`: The alert rule failed to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7326,7 +9558,9 @@ class DeleteCmsExporterRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -7360,6 +9594,7 @@ class DeleteCmsExporterResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7435,6 +9670,7 @@ class DeleteContactRequest(TeaModel):
         self,
         contact_id: int = None,
     ):
+        # The ID of the alert contact.
         self.contact_id = contact_id
 
     def validate(self):
@@ -7463,7 +9699,12 @@ class DeleteContactResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert contact was successfully deleted.
+        # 
+        # *   `true`: The specified data is deleted.
+        # *   `false`: The specified data fails to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7539,6 +9780,7 @@ class DeleteContactGroupRequest(TeaModel):
         self,
         contact_group_id: int = None,
     ):
+        # The ID of the alert contact group.
         self.contact_group_id = contact_group_id
 
     def validate(self):
@@ -7567,7 +9809,12 @@ class DeleteContactGroupResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert contact group was deleted.
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7644,7 +9891,9 @@ class DeleteDispatchRuleRequest(TeaModel):
         id: str = None,
         region_id: str = None,
     ):
+        # The ID of the dispatch policy.
         self.id = id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -7677,7 +9926,12 @@ class DeleteDispatchRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # *   `true`: successful
+        # *   `false`: failed
         self.success = success
 
     def validate(self):
@@ -7753,6 +10007,7 @@ class DeleteEventBridgeIntegrationRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the EventBridge integration.
         self.id = id
 
     def validate(self):
@@ -7781,7 +10036,12 @@ class DeleteEventBridgeIntegrationResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the EventBridge integration is deleted.
+        # 
+        # *   `true`: The EventBridge integration is deleted.
+        # *   `false`: The EventBridge integration fails to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7859,8 +10119,11 @@ class DeleteGrafanaResourceRequest(TeaModel):
         cluster_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -7897,7 +10160,9 @@ class DeleteGrafanaResourceResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -7973,6 +10238,7 @@ class DeleteIMRobotRequest(TeaModel):
         self,
         robot_id: int = None,
     ):
+        # The ID of the IM bot.
         self.robot_id = robot_id
 
     def validate(self):
@@ -8001,7 +10267,12 @@ class DeleteIMRobotResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the IM bot was successfully deleted.
+        # 
+        # *   `true`: The specified data is deleted.
+        # *   `false`: The specified data fails to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8079,8 +10350,11 @@ class DeleteIntegrationRequest(TeaModel):
         integration: str = None,
         region_id: str = None,
     ):
+        # The ID of the Container Service for Kubernetes cluster.
         self.cluster_id = cluster_id
+        # The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
         self.integration = integration
+        # The region ID of the ARMS instance.
         self.region_id = region_id
 
     def validate(self):
@@ -8117,7 +10391,9 @@ class DeleteIntegrationResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the call was successful.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8193,6 +10469,7 @@ class DeleteIntegrationsRequest(TeaModel):
         self,
         integration_id: int = None,
     ):
+        # The ID of the alert integration.
         self.integration_id = integration_id
 
     def validate(self):
@@ -8221,7 +10498,12 @@ class DeleteIntegrationsResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert integration was deleted. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8297,6 +10579,7 @@ class DeleteNotificationPolicyRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the notification policy.
         self.id = id
 
     def validate(self):
@@ -8325,7 +10608,12 @@ class DeleteNotificationPolicyResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the notification policy was deleted successfully. Valid values:
+        # 
+        # *   `true`: The notification policy was deleted successfully.
+        # *   `false`: The notification policy failed to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8401,6 +10689,7 @@ class DeletePrometheusAlertRuleRequest(TeaModel):
         self,
         alert_id: int = None,
     ):
+        # The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
         self.alert_id = alert_id
 
     def validate(self):
@@ -8429,7 +10718,12 @@ class DeletePrometheusAlertRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the alert rule was deleted. Valid values:
+        # 
+        # *   `true`: The alert rule was deleted.
+        # *   `false`: The alert rule failed to be deleted.
         self.success = success
 
     def validate(self):
@@ -8506,7 +10800,9 @@ class DeletePrometheusGlobalViewRequest(TeaModel):
         global_view_cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the aggregation instance.
         self.global_view_cluster_id = global_view_cluster_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -8539,7 +10835,9 @@ class DeletePrometheusGlobalViewResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The response parameters in the JSON format.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -8610,13 +10908,298 @@ class DeletePrometheusGlobalViewResponse(TeaModel):
         return self
 
 
+class DeletePrometheusIntegrationRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        instance_id: int = None,
+        integration_type: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.instance_id = instance_id
+        self.integration_type = integration_type
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeletePrometheusIntegrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeletePrometheusIntegrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePrometheusIntegrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePrometheusIntegrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePrometheusRemoteWriteRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        remote_write_names: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The ID of the region.
+        self.region_id = region_id
+        # The names of the Remote Write configuration items that you want to delete. Separate configuration items with commas (,).
+        self.remote_write_names = remote_write_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remote_write_names is not None:
+            result['RemoteWriteNames'] = self.remote_write_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemoteWriteNames') is not None:
+            self.remote_write_names = m.get('RemoteWriteNames')
+        return self
+
+
+class DeletePrometheusRemoteWriteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The status code or the error code that is returned from OpenAPI Explorer.
+        self.code = code
+        # If the call is successful, the number of Remote Write configuration items that are deleted is returned. If the call fails, an error message is returned.
+        self.data = data
+        # The message that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values: true and false.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeletePrometheusRemoteWriteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePrometheusRemoteWriteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePrometheusRemoteWriteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteRetcodeAppRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        app_name: str = None,
+        pid: str = None,
         region_id: str = None,
     ):
+        # The ID of the primary key.
         self.app_id = app_id
+        # The name of the application that is monitored by Browser Monitoring.
+        self.app_name = app_name
+        # The process identifier (PID) of the application.
+        self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -8630,6 +11213,10 @@ class DeleteRetcodeAppRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.pid is not None:
+            result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -8638,6 +11225,10 @@ class DeleteRetcodeAppRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -8649,7 +11240,12 @@ class DeleteRetcodeAppResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the browser monitoring task was deleted. Valid values:
+        # 
+        # *   `true`: The browser monitoring task was deleted.
+        # *   `false`: The browser monitoring task failed to be deleted.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8726,7 +11322,9 @@ class DeleteScenarioRequest(TeaModel):
         region_id: str = None,
         scenario_id: int = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the business monitoring job. You can obtain the ID by calling the ListScenario operation.
         self.scenario_id = scenario_id
 
     def validate(self):
@@ -8759,7 +11357,12 @@ class DeleteScenarioResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # *   `true`: successful
+        # *   `false`: failed
         self.result = result
 
     def validate(self):
@@ -8835,6 +11438,7 @@ class DeleteSilencePolicyRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the silence policy.
         self.id = id
 
     def validate(self):
@@ -8863,7 +11467,12 @@ class DeleteSilencePolicyResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the silence policy was deleted successfully. Valid values:
+        # 
+        # *   `true`: The silence policy was deleted successfully.
+        # *   `false`: The silence policy failed to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8941,8 +11550,11 @@ class DeleteSourceMapRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # The IDs of the SourceMap files.
         self.fid_list = fid_list
+        # The process identifier (PID) of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -8980,8 +11592,11 @@ class DeleteSourceMapShrinkRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # The IDs of the SourceMap files.
         self.fid_list_shrink = fid_list_shrink
+        # The process identifier (PID) of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -9018,7 +11633,12 @@ class DeleteSourceMapResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the SourceMap files are deleted. Valid values:
+        # 
+        # *   success: The SourceMap files are deleted.
+        # *   false: The SourceMap files fail to be deleted.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9128,6 +11748,7 @@ class DeleteSyntheticTaskResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
         self.result = result
 
@@ -9207,9 +11828,16 @@ class DeleteTraceAppRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
         self.app_id = app_id
+        # The PID of the application that you want to delete. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
+        # 
+        # *   `TRACE`: application monitoring
+        # *   `RETCODE`: frontend monitoring
         self.type = type
 
     def validate(self):
@@ -9250,7 +11878,9 @@ class DeleteTraceAppResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The response in JSON format, including the HTTP status code, error code, response message, and trace ID.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9326,6 +11956,7 @@ class DeleteWebhookContactRequest(TeaModel):
         self,
         webhook_id: int = None,
     ):
+        # The ID of the contact for webhook alerts.
         self.webhook_id = webhook_id
 
     def validate(self):
@@ -9354,7 +11985,12 @@ class DeleteWebhookContactResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the webhook alert contact was successfully deleted.
+        # 
+        # *   `true`: The specified data is deleted.
+        # *   `false`: The specified data fails to be deleted.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9429,13 +12065,23 @@ class DescribeContactGroupsRequest(TeaModel):
     def __init__(
         self,
         contact_group_name: str = None,
+        group_ids: str = None,
         is_detail: bool = None,
         page: int = None,
         size: int = None,
     ):
+        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
+        # The ID of the alert contact group.
+        self.group_ids = group_ids
+        # Specifies whether to return all the alert contacts in the queried alert contact group. Valid values:
+        # 
+        # *   `false`: does not return all alert contacts.
+        # *   `true`: returns all alert contacts.
         self.is_detail = is_detail
+        # The number of the page to return.
         self.page = page
+        # The number of contact groups displayed on each page.
         self.size = size
 
     def validate(self):
@@ -9449,6 +12095,8 @@ class DescribeContactGroupsRequest(TeaModel):
         result = dict()
         if self.contact_group_name is not None:
             result['ContactGroupName'] = self.contact_group_name
+        if self.group_ids is not None:
+            result['GroupIds'] = self.group_ids
         if self.is_detail is not None:
             result['IsDetail'] = self.is_detail
         if self.page is not None:
@@ -9461,6 +12109,8 @@ class DescribeContactGroupsRequest(TeaModel):
         m = m or dict()
         if m.get('ContactGroupName') is not None:
             self.contact_group_name = m.get('ContactGroupName')
+        if m.get('GroupIds') is not None:
+            self.group_ids = m.get('GroupIds')
         if m.get('IsDetail') is not None:
             self.is_detail = m.get('IsDetail')
         if m.get('Page') is not None:
@@ -9473,14 +12123,21 @@ class DescribeContactGroupsRequest(TeaModel):
 class DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts(TeaModel):
     def __init__(
         self,
+        arms_contact_id: int = None,
         contact_id: float = None,
         contact_name: str = None,
         email: str = None,
         phone: str = None,
     ):
+        # The ID of the alert contact.
+        self.arms_contact_id = arms_contact_id
+        # The ID of the alert contact.
         self.contact_id = contact_id
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The email address of the alert contact.
         self.email = email
+        # The mobile number of the alert contact.
         self.phone = phone
 
     def validate(self):
@@ -9492,6 +12149,8 @@ class DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts(TeaMod
             return _map
 
         result = dict()
+        if self.arms_contact_id is not None:
+            result['ArmsContactId'] = self.arms_contact_id
         if self.contact_id is not None:
             result['ContactId'] = self.contact_id
         if self.contact_name is not None:
@@ -9504,6 +12163,8 @@ class DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts(TeaMod
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArmsContactId') is not None:
+            self.arms_contact_id = m.get('ArmsContactId')
         if m.get('ContactId') is not None:
             self.contact_id = m.get('ContactId')
         if m.get('ContactName') is not None:
@@ -9518,12 +12179,18 @@ class DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts(TeaMod
 class DescribeContactGroupsResponseBodyPageBeanAlertContactGroups(TeaModel):
     def __init__(
         self,
+        arms_contact_group_id: int = None,
         contact_group_id: float = None,
         contact_group_name: str = None,
         contacts: List[DescribeContactGroupsResponseBodyPageBeanAlertContactGroupsContacts] = None,
     ):
+        # The ID of the alert contact group.
+        self.arms_contact_group_id = arms_contact_group_id
+        # The ID of the alert contact group.
         self.contact_group_id = contact_group_id
+        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
+        # The contact information. Contact information is not displayed if the **IsDetail** parameter is set to `false`.
         self.contacts = contacts
 
     def validate(self):
@@ -9538,6 +12205,8 @@ class DescribeContactGroupsResponseBodyPageBeanAlertContactGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.arms_contact_group_id is not None:
+            result['ArmsContactGroupId'] = self.arms_contact_group_id
         if self.contact_group_id is not None:
             result['ContactGroupId'] = self.contact_group_id
         if self.contact_group_name is not None:
@@ -9550,6 +12219,8 @@ class DescribeContactGroupsResponseBodyPageBeanAlertContactGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArmsContactGroupId') is not None:
+            self.arms_contact_group_id = m.get('ArmsContactGroupId')
         if m.get('ContactGroupId') is not None:
             self.contact_group_id = m.get('ContactGroupId')
         if m.get('ContactGroupName') is not None:
@@ -9570,9 +12241,13 @@ class DescribeContactGroupsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The list of alert contact groups.
         self.alert_contact_groups = alert_contact_groups
+        # The number of pages returned.
         self.page = page
+        # The number of alert contact groups per page.
         self.size = size
+        # The number of alert contact groups returned.
         self.total = total
 
     def validate(self):
@@ -9621,7 +12296,9 @@ class DescribeContactGroupsResponseBody(TeaModel):
         page_bean: DescribeContactGroupsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The pages returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9697,17 +12374,28 @@ class DescribeContactGroupsResponse(TeaModel):
 class DescribeContactsRequest(TeaModel):
     def __init__(
         self,
+        contact_ids: str = None,
         contact_name: str = None,
         email: str = None,
         page: int = None,
         phone: str = None,
         size: int = None,
+        verbose: str = None,
     ):
+        # The ID of the alert contact that you want to query. Separate multiple contact IDs with spaces.
+        self.contact_ids = contact_ids
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The email address of the alert contact.
         self.email = email
+        # The number of the page to return.
         self.page = page
+        # The mobile number of the alert contact.
         self.phone = phone
+        # The number of alert contacts to return on each page.
         self.size = size
+        # Specifies whether to return redundant information.
+        self.verbose = verbose
 
     def validate(self):
         pass
@@ -9718,6 +12406,8 @@ class DescribeContactsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.contact_ids is not None:
+            result['ContactIds'] = self.contact_ids
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
         if self.email is not None:
@@ -9728,10 +12418,14 @@ class DescribeContactsRequest(TeaModel):
             result['Phone'] = self.phone
         if self.size is not None:
             result['Size'] = self.size
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContactIds') is not None:
+            self.contact_ids = m.get('ContactIds')
         if m.get('ContactName') is not None:
             self.contact_name = m.get('ContactName')
         if m.get('Email') is not None:
@@ -9742,24 +12436,46 @@ class DescribeContactsRequest(TeaModel):
             self.phone = m.get('Phone')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
         return self
 
 
 class DescribeContactsResponseBodyPageBeanAlertContacts(TeaModel):
     def __init__(
         self,
+        arms_contact_id: int = None,
         contact_id: float = None,
         contact_name: str = None,
         email: str = None,
+        is_email_verify: bool = None,
         is_verify: bool = None,
         phone: str = None,
         reissue_send_notice: int = None,
     ):
+        # The ID of the alert contact.
+        self.arms_contact_id = arms_contact_id
+        # The ID of the alert contact.
         self.contact_id = contact_id
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The email address of the alert contact.
         self.email = email
+        # Indicates whether the email address was verified.
+        self.is_email_verify = is_email_verify
+        # Indicates whether the mobile number was verified. Valid values:
+        # 
+        # *   `false`: no
+        # *   `true`: yes
         self.is_verify = is_verify
+        # The mobile number of the alert contact.
         self.phone = phone
+        # The method to resend notifications if phone notifications fail. Valid values:
+        # 
+        # *   0: do not resend notifications
+        # *   1: make a phone call again
+        # *   2: send a text message
+        # *   3 (default value): use the global default value
         self.reissue_send_notice = reissue_send_notice
 
     def validate(self):
@@ -9771,12 +12487,16 @@ class DescribeContactsResponseBodyPageBeanAlertContacts(TeaModel):
             return _map
 
         result = dict()
+        if self.arms_contact_id is not None:
+            result['ArmsContactId'] = self.arms_contact_id
         if self.contact_id is not None:
             result['ContactId'] = self.contact_id
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
         if self.email is not None:
             result['Email'] = self.email
+        if self.is_email_verify is not None:
+            result['IsEmailVerify'] = self.is_email_verify
         if self.is_verify is not None:
             result['IsVerify'] = self.is_verify
         if self.phone is not None:
@@ -9787,12 +12507,16 @@ class DescribeContactsResponseBodyPageBeanAlertContacts(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArmsContactId') is not None:
+            self.arms_contact_id = m.get('ArmsContactId')
         if m.get('ContactId') is not None:
             self.contact_id = m.get('ContactId')
         if m.get('ContactName') is not None:
             self.contact_name = m.get('ContactName')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('IsEmailVerify') is not None:
+            self.is_email_verify = m.get('IsEmailVerify')
         if m.get('IsVerify') is not None:
             self.is_verify = m.get('IsVerify')
         if m.get('Phone') is not None:
@@ -9810,9 +12534,13 @@ class DescribeContactsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The alert contacts.
         self.alert_contacts = alert_contacts
+        # The page number of the returned page.
         self.page = page
+        # The number of alert contacts returned per page.
         self.size = size
+        # The total number of alert contacts.
         self.total = total
 
     def validate(self):
@@ -9861,7 +12589,9 @@ class DescribeContactsResponseBody(TeaModel):
         page_bean: DescribeContactsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The objects that were returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9940,7 +12670,9 @@ class DescribeDispatchRuleRequest(TeaModel):
         id: str = None,
         region_id: str = None,
     ):
+        # The ID of the dispatch policy.
         self.id = id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -9976,9 +12708,13 @@ class DescribeDispatchRuleResponseBodyDispatchRuleGroupRules(TeaModel):
         grouping_fields: List[str] = None,
         repeat_interval: int = None,
     ):
+        # The ID of the group.
         self.group_id = group_id
+        # The grouping interval.
         self.group_interval = group_interval
+        # The waiting time for grouping.
         self.group_wait_time = group_wait_time
+        # The grouping fields.
         self.grouping_fields = grouping_fields
         self.repeat_interval = repeat_interval
 
@@ -10025,8 +12761,23 @@ class DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLabelM
         operator: str = None,
         value: str = None,
     ):
+        # The key of the tag of the dispatch rule. Valid values:
+        # 
+        # *   `_aliyun_arms_userid`: user ID
+        # *   `_aliyun_arms_involvedObject_kind`: type of the associated object
+        # *   `_aliyun_arms_involvedObject_id`: ID of the associated object
+        # *   `_aliyun_arms_involvedObject_name`: name of the associated object
+        # *   `_aliyun_arms_alert_name`: alert name
+        # *   `_aliyun_arms_alert_rule_id`: alert rule ID
+        # *   `_aliyun_arms_alert_type`: alert type
+        # *   `_aliyun_arms_alert_level`: alert severity
         self.key = key
+        # The operator used in the dispatch rule. Valid values:
+        # 
+        # *   `eq`: equals to.
+        # *   `re`: matches a regular expression.
         self.operator = operator
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -10062,6 +12813,7 @@ class DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLabelM
         self,
         label_match_expressions: List[DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupsLabelMatchExpressions] = None,
     ):
+        # The collection of conditions of the dispatch rule.
         self.label_match_expressions = label_match_expressions
 
     def validate(self):
@@ -10097,6 +12849,7 @@ class DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGrid(TeaMo
         self,
         label_match_expression_groups: List[DescribeDispatchRuleResponseBodyDispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroups] = None,
     ):
+        # The collection of dispatch rules.
         self.label_match_expression_groups = label_match_expression_groups
 
     def validate(self):
@@ -10134,8 +12887,14 @@ class DescribeDispatchRuleResponseBodyDispatchRuleNotifyRulesNotifyObjects(TeaMo
         notify_object_id: str = None,
         notify_type: str = None,
     ):
+        # The name of the contact or contact group.
         self.name = name
+        # The ID of the contact or contact group.
         self.notify_object_id = notify_object_id
+        # The type of the alert contact. Valid values:
+        # 
+        # - `CONTACT`: contact
+        # - `CONTACT_GROUP`: contact group
         self.notify_type = notify_type
 
     def validate(self):
@@ -10172,7 +12931,15 @@ class DescribeDispatchRuleResponseBodyDispatchRuleNotifyRules(TeaModel):
         notify_channels: List[str] = None,
         notify_objects: List[DescribeDispatchRuleResponseBodyDispatchRuleNotifyRulesNotifyObjects] = None,
     ):
+        # The notification method. Valid values:
+        # 
+        # - `dingTalk`
+        # - `sms`
+        # - `webhook`
+        # - `email`
+        # - `wechat`
         self.notify_channels = notify_channels
+        # The collection of alert contacts.
         self.notify_objects = notify_objects
 
     def validate(self):
@@ -10220,12 +12987,21 @@ class DescribeDispatchRuleResponseBodyDispatchRule(TeaModel):
         state: str = None,
     ):
         self.dispatch_type = dispatch_type
+        # The information about groups.
         self.group_rules = group_rules
         self.is_recover = is_recover
+        # The information about the dispatch rule.
         self.label_match_expression_grid = label_match_expression_grid
+        # The name of the dispatch policy.
         self.name = name
+        # The collection of notification methods.
         self.notify_rules = notify_rules
+        # The ID of the dispatch rule.
         self.rule_id = rule_id
+        # Indicates whether the dispatch policy is enabled. Valid values: 
+        # 
+        # - `true`: enabled
+        # - `false`: disabled
         self.state = state
 
     def validate(self):
@@ -10302,7 +13078,9 @@ class DescribeDispatchRuleResponseBody(TeaModel):
         dispatch_rule: DescribeDispatchRuleResponseBodyDispatchRule = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.dispatch_rule = dispatch_rule
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10379,11 +13157,17 @@ class DescribeIMRobotsRequest(TeaModel):
     def __init__(
         self,
         page: int = None,
+        robot_ids: str = None,
         robot_name: str = None,
         size: int = None,
     ):
+        # The number of pages to query.
         self.page = page
+        # The ID of the IM bot.
+        self.robot_ids = robot_ids
+        # The name of the IM robot.
         self.robot_name = robot_name
+        # The number of IM robots displayed on each page.
         self.size = size
 
     def validate(self):
@@ -10397,6 +13181,8 @@ class DescribeIMRobotsRequest(TeaModel):
         result = dict()
         if self.page is not None:
             result['Page'] = self.page
+        if self.robot_ids is not None:
+            result['RobotIds'] = self.robot_ids
         if self.robot_name is not None:
             result['RobotName'] = self.robot_name
         if self.size is not None:
@@ -10407,6 +13193,8 @@ class DescribeIMRobotsRequest(TeaModel):
         m = m or dict()
         if m.get('Page') is not None:
             self.page = m.get('Page')
+        if m.get('RobotIds') is not None:
+            self.robot_ids = m.get('RobotIds')
         if m.get('RobotName') is not None:
             self.robot_name = m.get('RobotName')
         if m.get('Size') is not None:
@@ -10414,22 +13202,14 @@ class DescribeIMRobotsRequest(TeaModel):
         return self
 
 
-class DescribeIMRobotsResponseBodyPageBeanAlertIMRobots(TeaModel):
+class DescribeIMRobotsResponseBodyPageBeanAlertIMRobotsDispatchRules(TeaModel):
     def __init__(
         self,
-        daily_noc: bool = None,
-        daily_noc_time: str = None,
-        robot_addr: str = None,
-        robot_id: float = None,
-        robot_name: str = None,
-        type: str = None,
+        id: int = None,
+        name: str = None,
     ):
-        self.daily_noc = daily_noc
-        self.daily_noc_time = daily_noc_time
-        self.robot_addr = robot_addr
-        self.robot_id = robot_id
-        self.robot_name = robot_name
-        self.type = type
+        self.id = id
+        self.name = name
 
     def validate(self):
         pass
@@ -10440,10 +13220,81 @@ class DescribeIMRobotsResponseBodyPageBeanAlertIMRobots(TeaModel):
             return _map
 
         result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class DescribeIMRobotsResponseBodyPageBeanAlertIMRobots(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        daily_noc: bool = None,
+        daily_noc_time: str = None,
+        ding_sign_key: str = None,
+        dispatch_rules: List[DescribeIMRobotsResponseBodyPageBeanAlertIMRobotsDispatchRules] = None,
+        robot_addr: str = None,
+        robot_id: float = None,
+        robot_name: str = None,
+        type: str = None,
+    ):
+        self.create_time = create_time
+        # Specifies whether to send daily statistics.
+        # 
+        # *   `false` (default): does not send statistics.
+        # *   `true`: sends statistics.
+        self.daily_noc = daily_noc
+        # The time when the daily statistics are sent. ARMS Alert Management sends the total number of alerts generated today, the number of resolved alerts, and the number of pending alerts at the specified time point.
+        self.daily_noc_time = daily_noc_time
+        # The signature key of DingTalk. If you specify a signature key, DingTalk authentication is performed with the key. Otherwise, a whitelist is used for authentication by default. The keyword of the whitelist is **Alert**.
+        self.ding_sign_key = ding_sign_key
+        self.dispatch_rules = dispatch_rules
+        # The webhook address of the IM bot.
+        self.robot_addr = robot_addr
+        # The ID of the IM bot.
+        self.robot_id = robot_id
+        # The name of the IM robot.
+        self.robot_name = robot_name
+        # IM Robot Type:
+        # 
+        # *   `dingding`: DingTalk robot.
+        # *   `wechat`: Enterprise WeChat Robot.
+        self.type = type
+
+    def validate(self):
+        if self.dispatch_rules:
+            for k in self.dispatch_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.daily_noc is not None:
             result['DailyNoc'] = self.daily_noc
         if self.daily_noc_time is not None:
             result['DailyNocTime'] = self.daily_noc_time
+        if self.ding_sign_key is not None:
+            result['DingSignKey'] = self.ding_sign_key
+        result['DispatchRules'] = []
+        if self.dispatch_rules is not None:
+            for k in self.dispatch_rules:
+                result['DispatchRules'].append(k.to_map() if k else None)
         if self.robot_addr is not None:
             result['RobotAddr'] = self.robot_addr
         if self.robot_id is not None:
@@ -10456,10 +13307,19 @@ class DescribeIMRobotsResponseBodyPageBeanAlertIMRobots(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('DailyNoc') is not None:
             self.daily_noc = m.get('DailyNoc')
         if m.get('DailyNocTime') is not None:
             self.daily_noc_time = m.get('DailyNocTime')
+        if m.get('DingSignKey') is not None:
+            self.ding_sign_key = m.get('DingSignKey')
+        self.dispatch_rules = []
+        if m.get('DispatchRules') is not None:
+            for k in m.get('DispatchRules'):
+                temp_model = DescribeIMRobotsResponseBodyPageBeanAlertIMRobotsDispatchRules()
+                self.dispatch_rules.append(temp_model.from_map(k))
         if m.get('RobotAddr') is not None:
             self.robot_addr = m.get('RobotAddr')
         if m.get('RobotId') is not None:
@@ -10479,9 +13339,13 @@ class DescribeIMRobotsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The details of the IM robot.
         self.alert_imrobots = alert_imrobots
+        # The number of pages to query.
         self.page = page
+        # Number of IM robots per page.
         self.size = size
+        # The total number of IM robots queried.
         self.total = total
 
     def validate(self):
@@ -10530,7 +13394,9 @@ class DescribeIMRobotsResponseBody(TeaModel):
         page_bean: DescribeIMRobotsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # Paging object.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10608,6 +13474,7 @@ class DescribePrometheusAlertRuleRequest(TeaModel):
         self,
         alert_id: int = None,
     ):
+        # The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
         self.alert_id = alert_id
 
     def validate(self):
@@ -10636,7 +13503,9 @@ class DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations(TeaM
         name: str = None,
         value: str = None,
     ):
+        # The name of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -10669,7 +13538,9 @@ class DescribePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels(TeaModel)
         name: str = None,
         value: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -10712,17 +13583,35 @@ class DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule(TeaModel):
         status: int = None,
         type: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the notification policy. This parameter is returned if the **NotifyType** parameter is set to `DISPATCH_RULE`.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule.
         self.expression = expression
+        # The tags of the alert rule.
         self.labels = labels
+        # The alert message. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method of that is used to send alert notifications. Valid values:
+        # 
+        # *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+        # *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # Indicates whether the alert rule is enabled. Valid values:
+        # 
+        # *   `1`: The alert rule is enabled.
+        # *   `0`: The alert rule is disabled.
         self.status = status
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -10812,7 +13701,9 @@ class DescribePrometheusAlertRuleResponseBody(TeaModel):
         prometheus_alert_rule: DescribePrometheusAlertRuleResponseBodyPrometheusAlertRule = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.prometheus_alert_rule = prometheus_alert_rule
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10890,6 +13781,7 @@ class DescribeTraceLicenseKeyRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -10918,7 +13810,9 @@ class DescribeTraceLicenseKeyResponseBody(TeaModel):
         license_key: str = None,
         request_id: str = None,
     ):
+        # The license key for the application.
         self.license_key = license_key
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10992,12 +13886,18 @@ class DescribeTraceLicenseKeyResponse(TeaModel):
 class DescribeWebhookContactsRequest(TeaModel):
     def __init__(
         self,
+        contact_ids: str = None,
         page: int = None,
         size: int = None,
         webhook_name: str = None,
     ):
+        # The ID of the contact for webhook alerts.
+        self.contact_ids = contact_ids
+        # The number of pages to query.
         self.page = page
+        # The number of webhook alert contacts displayed on each page.
         self.size = size
+        # The name of the webhook alert contact.
         self.webhook_name = webhook_name
 
     def validate(self):
@@ -11009,6 +13909,8 @@ class DescribeWebhookContactsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.contact_ids is not None:
+            result['ContactIds'] = self.contact_ids
         if self.page is not None:
             result['Page'] = self.page
         if self.size is not None:
@@ -11019,6 +13921,8 @@ class DescribeWebhookContactsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContactIds') is not None:
+            self.contact_ids = m.get('ContactIds')
         if m.get('Page') is not None:
             self.page = m.get('Page')
         if m.get('Size') is not None:
@@ -11038,11 +13942,20 @@ class DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook(TeaModel
         recover_body: str = None,
         url: str = None,
     ):
+        # The header of the HTTP request.
         self.biz_headers = biz_headers
+        # The parameters in the HTTP request.
         self.biz_params = biz_params
+        # The alert notification template.
         self.body = body
+        # The HTTP request method. Valid values:
+        # 
+        # *   Get
+        # *   Post
         self.method = method
+        # The alert recovery template.
         self.recover_body = recover_body
+        # The URL of the request method.
         self.url = url
 
     def validate(self):
@@ -11092,8 +14005,11 @@ class DescribeWebhookContactsResponseBodyPageBeanWebhookContacts(TeaModel):
         webhook_id: float = None,
         webhook_name: str = None,
     ):
+        # Webhook alert contact details.
         self.webhook = webhook
+        # The ID of the contact for webhook alerts.
         self.webhook_id = webhook_id
+        # The name of the webhook alert contact.
         self.webhook_name = webhook_name
 
     def validate(self):
@@ -11134,9 +14050,13 @@ class DescribeWebhookContactsResponseBodyPageBean(TeaModel):
         total: int = None,
         webhook_contacts: List[DescribeWebhookContactsResponseBodyPageBeanWebhookContacts] = None,
     ):
+        # The number of pages to query.
         self.page = page
+        # The number of webhook alert contacts on each page.
         self.size = size
+        # The total number of webhook alert contacts that were queried.
         self.total = total
+        # Webhook alert contacts.
         self.webhook_contacts = webhook_contacts
 
     def validate(self):
@@ -11185,7 +14105,9 @@ class DescribeWebhookContactsResponseBody(TeaModel):
         page_bean: DescribeWebhookContactsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # Paging object.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11263,6 +14185,7 @@ class GetAgentDownloadUrlRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -11291,7 +14214,9 @@ class GetAgentDownloadUrlResponseBody(TeaModel):
         arms_agent_download_url: str = None,
         request_id: str = None,
     ):
+        # The download URL of the ARMS agent.
         self.arms_agent_download_url = arms_agent_download_url
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11371,16 +14296,45 @@ class GetAlertRulesRequest(TeaModel):
         alert_type: str = None,
         cluster_id: str = None,
         page: int = None,
+        product_code: str = None,
         region_id: str = None,
         size: int = None,
     ):
+        # The unique identifiers (IDs) of alert rules.
+        # 
+        # *   If you do not specify this parameter, the API operation does not filter alert rules based on their IDs.
+        # *   If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
+        # 
+        # > When you call the GetAlertRules operation, you can specify other request parameters to obtain the AlertIds parameter from the response. Then, you can specify the AlertIds parameter to query the specified alert rules.
         self.alert_ids = alert_ids
+        # The names of alert rules. When you create alert rules of the new version, you cannot specify duplicate names. However, existing alert rules may have duplicate names. Therefore, the **AlertName** parameter does not uniquely identify an alert rule.
+        # 
+        # *   If you do not specify this parameter, the API operation does not filter alert rules based on their names.
+        # *   If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
         self.alert_names = alert_names
+        # The status of the alert rule. Valid values:
+        # 
+        # *   RUNNING
+        # *   STOPPED
+        # *   PAUSED
+        # 
+        # > The **PAUSED** status indicates that the alert rule was abnormal and was paused by the system. The alert rule might be paused because it was not unique or the associated cluster was deleted.
         self.alert_status = alert_status
+        # The type of the alert rule. Valid values:
+        # 
+        # *   APPLICATION_MONITORING_ALERT_RULE: an alert rule of Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: an alert rule of Browser Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: an alert rule of Prometheus Service
         self.alert_type = alert_type
+        # The cluster ID of the Prometheus alert rule.
         self.cluster_id = cluster_id
+        # The number of the page to return.
         self.page = page
+        # You do not need to configure this parameter.
+        self.product_code = product_code
+        # The region ID.
         self.region_id = region_id
+        # The number of alert rules to return on each page.
         self.size = size
 
     def validate(self):
@@ -11404,6 +14358,8 @@ class GetAlertRulesRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.page is not None:
             result['Page'] = self.page
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.size is not None:
@@ -11424,6 +14380,8 @@ class GetAlertRulesRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('Page') is not None:
             self.page = m.get('Page')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Size') is not None:
@@ -11440,10 +14398,29 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems(
         operator: str = None,
         value: str = None,
     ):
+        # The aggregation method of the alert condition. Valid values:
+        # 
+        # *   AVG: calculates the average value
+        # *   SUM: calculates the total value
+        # *   MAX: selects the maximum value
+        # *   MIN: selects the minimum value
         self.aggregate = aggregate
+        # The metric of the alert condition.
         self.metric_key = metric_key
+        # Indicates the last N minutes.
         self.n = n
+        # The comparison operator that was used to compare the metric value with the threshold. Valid values:
+        # 
+        # *   CURRENT_GTE: greater than or equal to
+        # *   CURRENT_LTE: less than or equal to
+        # *   PREVIOUS_UP: the increase percentage compared with the previous period
+        # *   PREVIOUS_DOWN: the decrease percentage compared with the previous period
+        # *   HOH_UP: the increase percentage compared with the previous hour
+        # *   HOH_DOWN: the decrease percentage compared with the previous hour
+        # *   DOD_UP: the increase percentage compared with the last day
+        # *   DOD_DOWN: the decrease percentage compared with the last day
         self.operator = operator
+        # The threshold of the alert condition.
         self.value = value
 
     def validate(self):
@@ -11488,7 +14465,12 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent(TeaModel):
         alert_rule_items: List[GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems] = None,
         condition: str = None,
     ):
+        # The trigger conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.alert_rule_items = alert_rule_items
+        # The relationship between multiple alert conditions that were specified for the Application Monitoring or Browser Monitoring alert rule. Valid values:
+        # 
+        # *   OR: meets any of the specified conditions.
+        # *   AND: meets all the specified conditions.
         self.condition = condition
 
     def validate(self):
@@ -11529,7 +14511,9 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAnnotations(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The key of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -11565,10 +14549,18 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters(TeaMode
         t: str = None,
         value: str = None,
     ):
+        # The key of the filter condition.
         self.key = key
+        # The logical operator of the filter condition. Valid values:
+        # 
+        # *   \=: equal to
+        # *   not: not equal to
         self.opt = opt
+        # Indicates whether this filter condition was displayed on the frontend.
         self.show = show
+        # The log type of Browser Monitoring. This field was not included in other filter conditions.
         self.t = t
+        # The value of the filter condition.
         self.value = value
 
     def validate(self):
@@ -11614,8 +14606,11 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters(TeaModel):
         filter_opt: str = None,
         filter_values: List[str] = None,
     ):
+        # The key of the filter condition.
         self.filter_key = filter_key
+        # The logical operator of the filter condition.
         self.filter_opt = filter_opt
+        # The details of the filter condition.
         self.filter_values = filter_values
 
     def validate(self):
@@ -11654,9 +14649,13 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFilters(TeaModel):
         custom_slswheres: List[str] = None,
         dim_filters: List[GetAlertRulesResponseBodyPageBeanAlertRulesFiltersDimFilters] = None,
     ):
+        # The custom filter condition of the Browser Monitoring alert rule.
         self.custom_slsfilters = custom_slsfilters
+        # The information of the aggregation dimension.
         self.custom_slsgroup_by_dimensions = custom_slsgroup_by_dimensions
+        # The details of the custom filter condition.
         self.custom_slswheres = custom_slswheres
+        # The information about each filter condition of the Application Monitoring or Browser Monitoring alert rule.
         self.dim_filters = dim_filters
 
     def validate(self):
@@ -11714,7 +14713,9 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.name = name
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -11769,29 +14770,81 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         updated_time: int = None,
         user_id: str = None,
     ):
+        # The alert check type of the Prometheus alert rule. Valid values:
+        # 
+        # *   STATIC: a static threshold value.
+        # *   CUSTOM: a custom PromQL statement.
         self.alert_check_type = alert_check_type
+        # The alert contact group ID of the Prometheus alert rule. Valid values:
+        # 
+        # *   \-1: custom PromQL
+        # *   1: Kubernetes load
+        # *   15: Kubernetes node
         self.alert_group = alert_group
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The content of the Application Monitoring or Browser Monitoring alert rule.
         self.alert_rule_content = alert_rule_content
+        # The status of the alert rule. Valid values:
+        # 
+        # *   RUNNING
+        # *   STOPPED
+        # *   PAUSED
+        # 
+        # > The **PAUSED** status indicates that the alert rule was abnormal and was paused by the system. The alert rule might be paused because it was not unique or the associated cluster was deleted.
         self.alert_status = alert_status
+        # The type of the alert rule.
+        # 
+        # *   APPLICATION_MONITORING_ALERT_RULE: an alert rule of Application Monitoring
+        # *   BROWSER_MONITORING_ALERT_RULE: an alert rule of Browser Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: an alert rule of Prometheus Service
         self.alert_type = alert_type
+        # The annotations of the Prometheus alert rule.
         self.annotations = annotations
+        # Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.auto_add_new_application = auto_add_new_application
+        # The cluster ID of the Prometheus alert rule.
         self.cluster_id = cluster_id
+        # The time when the alert rule was created. The value is a timestamp. Unit: milliseconds.
         self.created_time = created_time
+        # The duration of the Prometheus alert rule.
         self.duration = duration
+        # The extended fields.
+        # 
+        # > For existing Application Monitoring alert rules, the fields contain information such as contacts, alert template, and notification content.
         self.extend = extend
+        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.filters = filters
+        # The tags of the Prometheus alert rule.
         self.labels = labels
+        # The severity level of the Prometheus alert rule.
+        # 
+        # *   P1: Alert notifications are sent for major issues that affect the availability of core business, have a huge impact, and may lead to serious consequences.
+        # *   P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
+        # *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
+        # *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
+        # *   Default: Alert notifications are sent regardless of alert levels.
         self.level = level
+        # The alert message of the Prometheus alert rule.
         self.message = message
+        # The metric type of the Application Monitoring or Browser Monitoring alert rule.
         self.metrics_type = metrics_type
+        # The name of the notification policy.
         self.notify_strategy = notify_strategy
+        # The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
         self.pids = pids
+        # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
+        # The region ID.
         self.region_id = region_id
+        # The time when the alert rule was updated. The value is a timestamp. Unit: milliseconds.
         self.updated_time = updated_time
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
 
     def validate(self):
@@ -11937,9 +14990,13 @@ class GetAlertRulesResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The list of alert rules.
         self.alert_rules = alert_rules
+        # The page number of the returned page.
         self.page = page
+        # The number of alert rules returned per page.
         self.size = size
+        # The total number of queried alert rules.
         self.total = total
 
     def validate(self):
@@ -11988,7 +15045,9 @@ class GetAlertRulesResponseBody(TeaModel):
         page_bean: GetAlertRulesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The objects that were returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12072,12 +15131,19 @@ class GetAppApiByPageRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The time interval between the data shards to be queried. Unit: milliseconds. Minimum value: 60000.
         self.interval_mills = interval_mills
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -12132,9 +15198,13 @@ class GetAppApiByPageResponseBodyData(TeaModel):
         page_size: int = None,
         total: str = None,
     ):
+        # The information about the API operation.
         self.items = items
+        # The page number of the returned page.
         self.page = page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -12178,10 +15248,23 @@ class GetAppApiByPageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   2XX: The request is successful.
+        # *   3XX: A redirection message is returned.
+        # *   4XX: The request is invalid.
+        # *   5XX: A server error occurs.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # *   `true`: The call is successful.
+        # *   `false`: The call fails.
         self.success = success
 
     def validate(self):
@@ -12272,7 +15355,9 @@ class GetAuthTokenRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the ACK cluster.
         self.cluster_id = cluster_id
+        # The region ID of the cluster.
         self.region_id = region_id
 
     def validate(self):
@@ -12305,7 +15390,9 @@ class GetAuthTokenResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned authentication token.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12376,7 +15463,7 @@ class GetAuthTokenResponse(TeaModel):
         return self
 
 
-class GetClusterAllUrlRequest(TeaModel):
+class GetCloudClusterAllUrlRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
@@ -12409,13 +15496,258 @@ class GetClusterAllUrlRequest(TeaModel):
         return self
 
 
+class GetCloudClusterAllUrlResponseBodyDataRemoteUrl(TeaModel):
+    def __init__(
+        self,
+        auth_token: bool = None,
+        grafana_url: str = None,
+        internet_grafana_url: str = None,
+        internet_push_gateway_url: str = None,
+        internet_remote_read_url: str = None,
+        internet_remote_write_url: str = None,
+        push_gateway_url: str = None,
+        remote_read_url: str = None,
+        remote_write_url: str = None,
+        token: str = None,
+    ):
+        self.auth_token = auth_token
+        self.grafana_url = grafana_url
+        self.internet_grafana_url = internet_grafana_url
+        self.internet_push_gateway_url = internet_push_gateway_url
+        self.internet_remote_read_url = internet_remote_read_url
+        self.internet_remote_write_url = internet_remote_write_url
+        self.push_gateway_url = push_gateway_url
+        self.remote_read_url = remote_read_url
+        self.remote_write_url = remote_write_url
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_token is not None:
+            result['AuthToken'] = self.auth_token
+        if self.grafana_url is not None:
+            result['GrafanaUrl'] = self.grafana_url
+        if self.internet_grafana_url is not None:
+            result['InternetGrafanaUrl'] = self.internet_grafana_url
+        if self.internet_push_gateway_url is not None:
+            result['InternetPushGatewayUrl'] = self.internet_push_gateway_url
+        if self.internet_remote_read_url is not None:
+            result['InternetRemoteReadUrl'] = self.internet_remote_read_url
+        if self.internet_remote_write_url is not None:
+            result['InternetRemoteWriteUrl'] = self.internet_remote_write_url
+        if self.push_gateway_url is not None:
+            result['PushGatewayUrl'] = self.push_gateway_url
+        if self.remote_read_url is not None:
+            result['RemoteReadUrl'] = self.remote_read_url
+        if self.remote_write_url is not None:
+            result['RemoteWriteUrl'] = self.remote_write_url
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthToken') is not None:
+            self.auth_token = m.get('AuthToken')
+        if m.get('GrafanaUrl') is not None:
+            self.grafana_url = m.get('GrafanaUrl')
+        if m.get('InternetGrafanaUrl') is not None:
+            self.internet_grafana_url = m.get('InternetGrafanaUrl')
+        if m.get('InternetPushGatewayUrl') is not None:
+            self.internet_push_gateway_url = m.get('InternetPushGatewayUrl')
+        if m.get('InternetRemoteReadUrl') is not None:
+            self.internet_remote_read_url = m.get('InternetRemoteReadUrl')
+        if m.get('InternetRemoteWriteUrl') is not None:
+            self.internet_remote_write_url = m.get('InternetRemoteWriteUrl')
+        if m.get('PushGatewayUrl') is not None:
+            self.push_gateway_url = m.get('PushGatewayUrl')
+        if m.get('RemoteReadUrl') is not None:
+            self.remote_read_url = m.get('RemoteReadUrl')
+        if m.get('RemoteWriteUrl') is not None:
+            self.remote_write_url = m.get('RemoteWriteUrl')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class GetCloudClusterAllUrlResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        product_code: str = None,
+        region: str = None,
+        remote_url: GetCloudClusterAllUrlResponseBodyDataRemoteUrl = None,
+    ):
+        self.product_code = product_code
+        self.region = region
+        self.remote_url = remote_url
+
+    def validate(self):
+        if self.remote_url:
+            self.remote_url.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.remote_url is not None:
+            result['RemoteUrl'] = self.remote_url.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RemoteUrl') is not None:
+            temp_model = GetCloudClusterAllUrlResponseBodyDataRemoteUrl()
+            self.remote_url = temp_model.from_map(m['RemoteUrl'])
+        return self
+
+
+class GetCloudClusterAllUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[GetCloudClusterAllUrlResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetCloudClusterAllUrlResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetCloudClusterAllUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCloudClusterAllUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCloudClusterAllUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetClusterAllUrlRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the cluster.
+        self.cluster_id = cluster_id
+        # The ID of the region. Default value: cn-hangzhou.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class GetClusterAllUrlResponseBody(TeaModel):
     def __init__(
         self,
         data: str = None,
         request_id: str = None,
     ):
+        # The response parameters in the JSON format.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12494,9 +15826,13 @@ class GetExploreUrlRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The query language corresponding to the data source.
         self.expression = expression
+        # The ID of the region.
         self.region_id = region_id
+        # The type of the Grafana data source.
         self.type = type
 
     def validate(self):
@@ -12537,7 +15873,9 @@ class GetExploreUrlResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Response parameters
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -12615,8 +15953,14 @@ class GetIntegrationStateRequest(TeaModel):
         integration: str = None,
         region_id: str = None,
     ):
+        # The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
         self.cluster_id = cluster_id
+        # The integration state of Prometheus dashboards and collection rules. Valid values:
+        # 
+        # *   `true`: Prometheus dashboards and collection rules are integrated.
+        # *   `false`: Prometheus dashboards and collection rules are not integrated.
         self.integration = integration
+        # The ID of the request.
         self.region_id = region_id
 
     def validate(self):
@@ -12653,7 +15997,9 @@ class GetIntegrationStateResponseBody(TeaModel):
         request_id: str = None,
         state: bool = None,
     ):
+        # auditing
         self.request_id = request_id
+        # Queries the integration state of Prometheus dashboards and collection rules for a Container Service for Kubernetes (ACK) cluster.
         self.state = state
 
     def validate(self):
@@ -12730,10 +16076,18 @@ class GetManagedPrometheusStatusRequest(TeaModel):
         cluster_id: str = None,
         cluster_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        vpc_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The type of the cluster. Set the value to ask.
         self.cluster_type = cluster_type
+        # The ID of the region.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # ClusterType为“ecs”时，必填。
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -12750,6 +16104,10 @@ class GetManagedPrometheusStatusRequest(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12760,6 +16118,10 @@ class GetManagedPrometheusStatusRequest(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -12772,10 +16134,18 @@ class GetManagedPrometheusStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The status of the Prometheus instance. Installing: The Prometheus agent is installed and no registration information is available. Success: The Prometheus agent is installed and registered. Failure: The Prometheus agent failed to be installed or registered. Unknow: The status of the Prometheus agent is unknown.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the query was successful.
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -12861,10 +16231,18 @@ class GetManagedPrometheusStatusResponse(TeaModel):
 class GetMultipleTraceRequest(TeaModel):
     def __init__(
         self,
+        end_time: int = None,
         region_id: str = None,
+        start_time: int = None,
         trace_ids: List[str] = None,
     ):
+        # The end time of the trace. The value is a timestamp. Unit: milliseconds.
+        self.end_time = end_time
+        # The ID of the region.
         self.region_id = region_id
+        # The start time of the trace. The value is a timestamp. Unit: milliseconds.
+        self.start_time = start_time
+        # The lists of trace IDs.
         self.trace_ids = trace_ids
 
     def validate(self):
@@ -12876,16 +16254,24 @@ class GetMultipleTraceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.trace_ids is not None:
             result['TraceIDs'] = self.trace_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('TraceIDs') is not None:
             self.trace_ids = m.get('TraceIDs')
         return self
@@ -12897,7 +16283,9 @@ class GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventListTagEntryLi
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -12930,7 +16318,9 @@ class GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventList(TeaModel)
         tag_entry_list: List[GetMultipleTraceResponseBodyMultiCallChainInfosSpansLogEventListTagEntryList] = None,
         timestamp: int = None,
     ):
+        # The tags of the trace.
         self.tag_entry_list = tag_entry_list
+        # The time when the log was generated. The value is a timestamp.
         self.timestamp = timestamp
 
     def validate(self):
@@ -12971,7 +16361,9 @@ class GetMultipleTraceResponseBodyMultiCallChainInfosSpansTagEntryList(TeaModel)
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -13016,19 +16408,59 @@ class GetMultipleTraceResponseBodyMultiCallChainInfosSpans(TeaModel):
         timestamp: int = None,
         trace_id: str = None,
     ):
+        # The amount of time consumed by the trace. Unit: milliseconds.
         self.duration = duration
+        # Indicates whether a method stack was provided.
+        # 
+        # *   `true`: A method stack was provided.
+        # *   `false`: No method stack was provided.
         self.have_stack = have_stack
+        # The log events in the trace.
         self.log_event_list = log_event_list
+        # The name of the traced span.
         self.operation_name = operation_name
+        # The ID of the parent span.
         self.parent_span_id = parent_span_id
+        # The status code returned.
         self.result_code = result_code
+        # The ID of the RPC mode.
         self.rpc_id = rpc_id
+        # The type of the remote procedure call (RPC) mode.
+        # 
+        # *   0: HTTP entry
+        # *   25: HTTP call
+        # *   1: High-speed Service Framework (HSF) call
+        # *   2: HSF provision
+        # *   40: on-premises API call
+        # *   60: MySQL call
+        # *   62: Oracle call
+        # *   63: PostgreSQL call
+        # *   70: Redis call
+        # *   4: Taobao Distributed Data Layer (TDDL) call
+        # *   5: Tair call
+        # *   13: MetaQ message sending
+        # *   252: MetaQ message receiving
+        # *   3: notification sending
+        # *   254: notification receiving
+        # *   7: Apache Dubbo call
+        # *   8: Apache Dubbo provision
+        # *   19: SOFARPC call
+        # *   18: SOFARPC provision
+        # *   11: Distributed Service Framework (DSF) call
+        # *   12: DSF provision
+        # *   \-1: unknown call
         self.rpc_type = rpc_type
+        # The IP address of the host where the application resides.
         self.service_ip = service_ip
+        # The name of the application.
         self.service_name = service_name
+        # The ID of the span.
         self.span_id = span_id
+        # The tags of the trace.
         self.tag_entry_list = tag_entry_list
+        # The timestamp.
         self.timestamp = timestamp
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -13126,7 +16558,9 @@ class GetMultipleTraceResponseBodyMultiCallChainInfos(TeaModel):
         spans: List[GetMultipleTraceResponseBodyMultiCallChainInfosSpans] = None,
         trace_id: str = None,
     ):
+        # The details of the trace.
         self.spans = spans
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -13167,7 +16601,9 @@ class GetMultipleTraceResponseBody(TeaModel):
         multi_call_chain_infos: List[GetMultipleTraceResponseBodyMultiCallChainInfos] = None,
         request_id: str = None,
     ):
+        # The details of traces.
         self.multi_call_chain_infos = multi_call_chain_infos
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13253,8 +16689,11 @@ class GetOnCallSchedulesDetailRequest(TeaModel):
         id: int = None,
         start_time: str = None,
     ):
+        # The date on which the shift ends. Format: `yyyy-MM-dd`.
         self.end_time = end_time
+        # The ID of the scheduling policy.
         self.id = id
+        # The date from which the shift starts. Format: `yyyy-MM-dd`.
         self.start_time = start_time
 
     def validate(self):
@@ -13291,7 +16730,9 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact
         id: int = None,
         name: str = None,
     ):
+        # The ID of the user on duty.
         self.id = id
+        # The name of the user on duty.
         self.name = name
 
     def validate(self):
@@ -13325,8 +16766,11 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries(TeaModel):
         simple_contact: GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact = None,
         start: str = None,
     ):
+        # The date on which the user completed shift work.
         self.end = end
+        # The information about the user on duty.
         self.simple_contact = simple_contact
+        # The date from which the user started shift work.
         self.start = start
 
     def validate(self):
@@ -13365,7 +16809,9 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact(
         id: int = None,
         name: str = None,
     ):
+        # The ID of the scheduled user.
         self.id = id
+        # The name of the scheduled user.
         self.name = name
 
     def validate(self):
@@ -13399,8 +16845,11 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries(TeaModel):
         end: str = None,
         simple_contact: GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact = None,
     ):
+        # The date from which the scheduled user was supposed to start shift work.
         self.start = start
+        # The date on which the scheduled user was supposed to complete shift work.
         self.end = end
+        # The information about the scheduled user.
         self.simple_contact = simple_contact
 
     def validate(self):
@@ -13439,7 +16888,9 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleCon
         id: int = None,
         name: str = None,
     ):
+        # The ID of the substitute.
         self.id = id
+        # The name of the substitute.
         self.name = name
 
     def validate(self):
@@ -13473,8 +16924,11 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries(TeaModel
         simple_contact: GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact = None,
         start: str = None,
     ):
+        # The date on which the substitute was supposed to complete shift work.
         self.end = end
+        # The information about the substitute.
         self.simple_contact = simple_contact
+        # The date from which the substitute was supposed to start shift work.
         self.start = start
 
     def validate(self):
@@ -13514,8 +16968,14 @@ class GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions(TeaMode
         restriction_type: str = None,
         start_time_of_day: str = None,
     ):
+        # The end time of the shift per day.
         self.end_time_of_day = end_time_of_day
+        # The type of the limit. Valid values:
+        # 
+        # *   daily_restriction
+        # *   weekly_restriction
         self.restriction_type = restriction_type
+        # The start time of the shift per day.
         self.start_time_of_day = start_time_of_day
 
     def validate(self):
@@ -13555,10 +17015,19 @@ class GetOnCallSchedulesDetailResponseBodyDataScheduleLayers(TeaModel):
         shift_length: int = None,
         start_time: str = None,
     ):
+        # The ID list of users on duty.
         self.contact_ids = contact_ids
+        # The limit on the time of the shift.
         self.restrictions = restrictions
+        # The type of the shift. Valid values:
+        # 
+        # *   DAY
+        # *   WEEK
+        # *   CUSTOM
         self.rotation_type = rotation_type
+        # The shift cycle. Unit: hours.
         self.shift_length = shift_length
+        # The date on which the shift change took effect.
         self.start_time = start_time
 
     def validate(self):
@@ -13617,13 +17086,21 @@ class GetOnCallSchedulesDetailResponseBodyData(TeaModel):
         rendered_substitude_entries: List[GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries] = None,
         schedule_layers: List[GetOnCallSchedulesDetailResponseBodyDataScheduleLayers] = None,
     ):
+        # The URL of the DingTalk chatbot, which is used to receive notifications about shift changes.
         self.alert_robot_id = alert_robot_id
+        # The description of the scheduling policy.
         self.description = description
+        # The ID of the scheduling policy.
         self.id = id
+        # The name of the scheduling policy.
         self.name = name
+        # The information about the final user on duty.
         self.rendered_finnal_entries = rendered_finnal_entries
+        # The scheduled users on duty within a time range.
         self.rendered_layer_entries = rendered_layer_entries
+        # The information about the substitutes within a time range.
         self.rendered_substitude_entries = rendered_substitude_entries
+        # The information about the shift.
         self.schedule_layers = schedule_layers
 
     def validate(self):
@@ -13722,7 +17199,9 @@ class GetOnCallSchedulesDetailResponseBody(TeaModel):
         data: GetOnCallSchedulesDetailResponseBodyData = None,
         request_id: str = None,
     ):
+        # The information about the scheduling policy.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13800,6 +17279,7 @@ class GetPrometheusApiTokenRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -13828,7 +17308,9 @@ class GetPrometheusApiTokenResponseBody(TeaModel):
         request_id: str = None,
         token: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The token required for integrating Prometheus Service.
         self.token = token
 
     def validate(self):
@@ -14009,7 +17491,7 @@ class GetPrometheusGlobalViewResponse(TeaModel):
         return self
 
 
-class GetRecordingRuleRequest(TeaModel):
+class GetPrometheusInstanceRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
@@ -14042,13 +17524,737 @@ class GetRecordingRuleRequest(TeaModel):
         return self
 
 
+class GetPrometheusInstanceResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class GetPrometheusInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+        grafana_instance_id: str = None,
+        payment_type: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        security_group_id: str = None,
+        sub_clusters_json: str = None,
+        tags: List[GetPrometheusInstanceResponseBodyDataTags] = None,
+        user_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cluster_type = cluster_type
+        self.grafana_instance_id = grafana_instance_id
+        self.payment_type = payment_type
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.security_group_id = security_group_id
+        self.sub_clusters_json = sub_clusters_json
+        self.tags = tags
+        self.user_id = user_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.grafana_instance_id is not None:
+            result['GrafanaInstanceId'] = self.grafana_instance_id
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.sub_clusters_json is not None:
+            result['SubClustersJson'] = self.sub_clusters_json
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('GrafanaInstanceId') is not None:
+            self.grafana_instance_id = m.get('GrafanaInstanceId')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SubClustersJson') is not None:
+            self.sub_clusters_json = m.get('SubClustersJson')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetPrometheusInstanceResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetPrometheusInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetPrometheusInstanceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPrometheusInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPrometheusInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPrometheusInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPrometheusInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPrometheusIntegrationRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        instance_id: int = None,
+        integration_type: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.instance_id = instance_id
+        self.integration_type = integration_type
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetPrometheusIntegrationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        can_delete: bool = None,
+        can_editor: bool = None,
+        cluster_id: str = None,
+        container_name: str = None,
+        describe: str = None,
+        exporter_type: str = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        integration_type: str = None,
+        namespace: str = None,
+        need_upgrade: bool = None,
+        param: str = None,
+        show_describe: bool = None,
+        show_log: str = None,
+        status: str = None,
+        target: str = None,
+        version: str = None,
+    ):
+        self.can_delete = can_delete
+        self.can_editor = can_editor
+        self.cluster_id = cluster_id
+        self.container_name = container_name
+        self.describe = describe
+        self.exporter_type = exporter_type
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.integration_type = integration_type
+        self.namespace = namespace
+        self.need_upgrade = need_upgrade
+        self.param = param
+        self.show_describe = show_describe
+        self.show_log = show_log
+        self.status = status
+        self.target = target
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_delete is not None:
+            result['CanDelete'] = self.can_delete
+        if self.can_editor is not None:
+            result['CanEditor'] = self.can_editor
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.container_name is not None:
+            result['ContainerName'] = self.container_name
+        if self.describe is not None:
+            result['Describe'] = self.describe
+        if self.exporter_type is not None:
+            result['ExporterType'] = self.exporter_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.need_upgrade is not None:
+            result['NeedUpgrade'] = self.need_upgrade
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.show_describe is not None:
+            result['ShowDescribe'] = self.show_describe
+        if self.show_log is not None:
+            result['ShowLog'] = self.show_log
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanDelete') is not None:
+            self.can_delete = m.get('CanDelete')
+        if m.get('CanEditor') is not None:
+            self.can_editor = m.get('CanEditor')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ContainerName') is not None:
+            self.container_name = m.get('ContainerName')
+        if m.get('Describe') is not None:
+            self.describe = m.get('Describe')
+        if m.get('ExporterType') is not None:
+            self.exporter_type = m.get('ExporterType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NeedUpgrade') is not None:
+            self.need_upgrade = m.get('NeedUpgrade')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('ShowDescribe') is not None:
+            self.show_describe = m.get('ShowDescribe')
+        if m.get('ShowLog') is not None:
+            self.show_log = m.get('ShowLog')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetPrometheusIntegrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetPrometheusIntegrationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPrometheusIntegrationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPrometheusIntegrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPrometheusIntegrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPrometheusIntegrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPrometheusRemoteWriteRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        remote_write_name: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The ID of the region.
+        self.region_id = region_id
+        # The name of the Remote Write configuration item.
+        self.remote_write_name = remote_write_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remote_write_name is not None:
+            result['RemoteWriteName'] = self.remote_write_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemoteWriteName') is not None:
+            self.remote_write_name = m.get('RemoteWriteName')
+        return self
+
+
+class GetPrometheusRemoteWriteResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        remote_write_name: str = None,
+        remote_write_yaml: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The name of the Remote Write configuration item.
+        self.remote_write_name = remote_write_name
+        # The details of the Remote Write configuration item. The value is in the YAML format.
+        self.remote_write_yaml = remote_write_yaml
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.remote_write_name is not None:
+            result['RemoteWriteName'] = self.remote_write_name
+        if self.remote_write_yaml is not None:
+            result['RemoteWriteYaml'] = self.remote_write_yaml
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RemoteWriteName') is not None:
+            self.remote_write_name = m.get('RemoteWriteName')
+        if m.get('RemoteWriteYaml') is not None:
+            self.remote_write_yaml = m.get('RemoteWriteYaml')
+        return self
+
+
+class GetPrometheusRemoteWriteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetPrometheusRemoteWriteResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code that is returned. The HTTP 200 status code indicates that the call is successful.
+        self.code = code
+        # The details of the Remote Write configuration item.
+        self.data = data
+        # The message that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPrometheusRemoteWriteResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPrometheusRemoteWriteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPrometheusRemoteWriteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPrometheusRemoteWriteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRecordingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the cluster.
+        self.cluster_id = cluster_id
+        # The ID of the region.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class GetRecordingRuleResponseBody(TeaModel):
     def __init__(
         self,
         data: str = None,
         request_id: str = None,
     ):
+        # The recording rule.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14119,11 +18325,609 @@ class GetRecordingRuleResponse(TeaModel):
         return self
 
 
+class GetRetcodeAppByPidRequest(TeaModel):
+    def __init__(
+        self,
+        pid: str = None,
+        region_id: str = None,
+    ):
+        # The PID of the application. To obtain the PID of an application, perform the following steps: Log on to the Application Real-Time Monitoring Service (ARMS) console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the PID of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with the at sign (@). The actual PID is xxx@74xxx.
+        self.pid = pid
+        # The ID of the region.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetRetcodeAppByPidResponseBodyRetcodeAppTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetRetcodeAppByPidResponseBodyRetcodeApp(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        pid: str = None,
+        resource_group_id: str = None,
+        retcode_app_type: str = None,
+        tags: List[GetRetcodeAppByPidResponseBodyRetcodeAppTags] = None,
+    ):
+        # The ID of the application. The parameter is an auto-increment parameter.
+        self.app_id = app_id
+        # The name of the application that you want to monitor by using Browser Monitoring.
+        self.app_name = app_name
+        # The ID of the application.
+        self.pid = pid
+        # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
+        self.resource_group_id = resource_group_id
+        # The type of the application. Valid values:
+        # 
+        # *   `web`: web application
+        # *   `weex`: Weex mobile app
+        # *   `mini_dd`: DingTalk mini program
+        # *   `mini_alipay`: Alipay mini program
+        # *   `mini_wx`: WeChat mini program
+        # *   `mini_common`: mini program on other platforms
+        self.retcode_app_type = retcode_app_type
+        # The tags.
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.retcode_app_type is not None:
+            result['RetcodeAppType'] = self.retcode_app_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RetcodeAppType') is not None:
+            self.retcode_app_type = m.get('RetcodeAppType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetRetcodeAppByPidResponseBodyRetcodeAppTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class GetRetcodeAppByPidResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        retcode_app: GetRetcodeAppByPidResponseBodyRetcodeApp = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The returned application data.
+        self.retcode_app = retcode_app
+
+    def validate(self):
+        if self.retcode_app:
+            self.retcode_app.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.retcode_app is not None:
+            result['RetcodeApp'] = self.retcode_app.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetcodeApp') is not None:
+            temp_model = GetRetcodeAppByPidResponseBodyRetcodeApp()
+            self.retcode_app = temp_model.from_map(m['RetcodeApp'])
+        return self
+
+
+class GetRetcodeAppByPidResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRetcodeAppByPidResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRetcodeAppByPidResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRetcodeDataByQueryRequest(TeaModel):
+    def __init__(
+        self,
+        from_: int = None,
+        pid: str = None,
+        query: str = None,
+        region_id: str = None,
+        to: int = None,
+    ):
+        # The time when the query starts. This value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        self.from_ = from_
+        # The ID of the application.
+        # 
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        self.pid = pid
+        # The query statement that conforms to the query syntax of the Log Service Logstore.
+        self.query = query
+        # The ID of the region in which the application is located.
+        self.region_id = region_id
+        # The time when the query ends. This value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class GetRetcodeDataByQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   2XX: The request was successful.
+        # *   3XX: A redirection message was returned.
+        # *   4XX: The request was invalid.
+        # *   5XX: A server error occurred.
+        self.code = code
+        # The browser monitoring data returned for a successful call.
+        self.data = data
+        # The error message returned if the call fails.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   true: The call was successful.
+        # *   false: The call failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRetcodeDataByQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRetcodeDataByQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRetcodeDataByQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRetcodeLogstoreRequest(TeaModel):
+    def __init__(
+        self,
+        pid: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the application. Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with the at sign (@) to obtain xxx@74xxx.
+        self.pid = pid
+        # The ID of the region where Log Service resides.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        project: str = None,
+        region_id: str = None,
+    ):
+        # The Log Service Logstore.
+        self.logstore = logstore
+        # The Log Service project.
+        self.project = project
+        # The ID of the region where Log Service resides.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['Logstore'] = self.logstore
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Logstore') is not None:
+            self.logstore = m.get('Logstore')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetRetcodeLogstoreResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        retcode_slsconfig: GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig = None,
+        status: str = None,
+    ):
+        # The content of the log.
+        self.message = message
+        # The information about Log Service.
+        self.retcode_slsconfig = retcode_slsconfig
+        # Indicates the status of the request.
+        self.status = status
+
+    def validate(self):
+        if self.retcode_slsconfig:
+            self.retcode_slsconfig.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.retcode_slsconfig is not None:
+            result['RetcodeSLSConfig'] = self.retcode_slsconfig.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RetcodeSLSConfig') is not None:
+            temp_model = GetRetcodeLogstoreResponseBodyDataRetcodeSLSConfig()
+            self.retcode_slsconfig = temp_model.from_map(m['RetcodeSLSConfig'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetRetcodeLogstoreResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetRetcodeLogstoreResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned struct.
+        self.data = data
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetRetcodeLogstoreResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetRetcodeLogstoreResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRetcodeLogstoreResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRetcodeLogstoreResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRetcodeShareUrlRequest(TeaModel):
     def __init__(
         self,
         pid: str = None,
     ):
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](~~186100~~#title-imy-7gj-qhr).
         self.pid = pid
 
     def validate(self):
@@ -14152,7 +18956,9 @@ class GetRetcodeShareUrlResponseBody(TeaModel):
         request_id: str = None,
         url: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The logon-free URL of the application.
         self.url = url
 
     def validate(self):
@@ -14233,11 +19039,23 @@ class GetSourceMapInfoRequest(TeaModel):
         order_field: str = None,
         region_id: str = None,
     ):
+        # The order in which the files are sorted. Valid values:
+        # 
+        # *   true: ascending order
+        # *   false: descending order
         self.ascending_sequence = ascending_sequence
+        # The version of the SourceMap file.
         self.edition = edition
+        # The IDs of the SourceMap files.
         self.id = id
+        # The keyword in the file name. The files are searched by keyword.
         self.keyword = keyword
+        # The criterion by which the files are sorted. Valid values:
+        # 
+        # *   version: The files are sorted by version.
+        # *   uploadTime: The files are sorted by upload time.
         self.order_field = order_field
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -14289,10 +19107,15 @@ class GetSourceMapInfoResponseBodySourceMapList(TeaModel):
         upload_time: str = None,
         version: str = None,
     ):
+        # The ID of the SourceMap file.
         self.fid = fid
+        # The name of the SourceMap file.
         self.file_name = file_name
+        # The size of the file. Unit: KB.
         self.size = size
+        # The timestamp when the file was uploaded.
         self.upload_time = upload_time
+        # The version of the file.
         self.version = version
 
     def validate(self):
@@ -14337,7 +19160,9 @@ class GetSourceMapInfoResponseBody(TeaModel):
         request_id: str = None,
         source_map_list: List[GetSourceMapInfoResponseBodySourceMapList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the SourceMap files.
         self.source_map_list = source_map_list
 
     def validate(self):
@@ -14426,11 +19251,17 @@ class GetStackRequest(TeaModel):
         start_time: int = None,
         trace_id: str = None,
     ):
+        # The end time of the call method.
         self.end_time = end_time
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://help.aliyun.com/document_detail/186100.html?spm=a2c4g.11186623.6.792.1b50654cqcDPyk#title-imy-7gj-qhr).
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the remote procedure call (RPC) mode. You can obtain the ID by calling the **GetTrace** operation.
         self.rpc_id = rpc_id
+        # The start time of the call method.
         self.start_time = start_time
+        # The ID of the trace. You can log on to the Application Real-Time Monitoring Service (ARMS) console and obtain the trace ID on the **Trace Query** page.
         self.trace_id = trace_id
 
     def validate(self):
@@ -14479,7 +19310,9 @@ class GetStackResponseBodyStackInfoExtInfo(TeaModel):
         info: str = None,
         type: str = None,
     ):
+        # The content of the custom parameter.
         self.info = info
+        # The type of the custom parameter.
         self.type = type
 
     def validate(self):
@@ -14518,13 +19351,21 @@ class GetStackResponseBodyStackInfo(TeaModel):
         service_name: str = None,
         start_time: int = None,
     ):
+        # The name of the operation.
         self.api = api
+        # The duration. Unit: milliseconds.
         self.duration = duration
+        # The error message.
         self.exception = exception
+        # The extended information.
         self.ext_info = ext_info
+        # The number of rows in the method stack information.
         self.line = line
+        # RPC ID。
         self.rpc_id = rpc_id
+        # The name of the service.
         self.service_name = service_name
+        # The start time of the call method.
         self.start_time = start_time
 
     def validate(self):
@@ -14583,7 +19424,9 @@ class GetStackResponseBody(TeaModel):
         request_id: str = None,
         stack_info: List[GetStackResponseBodyStackInfo] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the method stack.
         self.stack_info = stack_info
 
     def validate(self):
@@ -14692,6 +19535,122 @@ class GetSyntheticTaskDetailRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        return self
+
+
+class GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList(TeaModel):
+    def __init__(
+        self,
+        general_alert: str = None,
+        is_critical: str = None,
+        name: str = None,
+        serious_alert: str = None,
+        symbols: str = None,
+    ):
+        self.general_alert = general_alert
+        self.is_critical = is_critical
+        self.name = name
+        self.serious_alert = serious_alert
+        self.symbols = symbols
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.general_alert is not None:
+            result['GeneralAlert'] = self.general_alert
+        if self.is_critical is not None:
+            result['IsCritical'] = self.is_critical
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.serious_alert is not None:
+            result['SeriousAlert'] = self.serious_alert
+        if self.symbols is not None:
+            result['Symbols'] = self.symbols
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GeneralAlert') is not None:
+            self.general_alert = m.get('GeneralAlert')
+        if m.get('IsCritical') is not None:
+            self.is_critical = m.get('IsCritical')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SeriousAlert') is not None:
+            self.serious_alert = m.get('SeriousAlert')
+        if m.get('Symbols') is not None:
+            self.symbols = m.get('Symbols')
+        return self
+
+
+class GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam(TeaModel):
+    def __init__(
+        self,
+        alarm_flag: int = None,
+        alert_list: List[GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList] = None,
+        alert_notifier_id: str = None,
+        alert_policy_id: str = None,
+        monitor_samples: str = None,
+        start_execution_time: str = None,
+    ):
+        self.alarm_flag = alarm_flag
+        self.alert_list = alert_list
+        self.alert_notifier_id = alert_notifier_id
+        self.alert_policy_id = alert_policy_id
+        self.monitor_samples = monitor_samples
+        self.start_execution_time = start_execution_time
+
+    def validate(self):
+        if self.alert_list:
+            for k in self.alert_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_flag is not None:
+            result['AlarmFlag'] = self.alarm_flag
+        result['AlertList'] = []
+        if self.alert_list is not None:
+            for k in self.alert_list:
+                result['AlertList'].append(k.to_map() if k else None)
+        if self.alert_notifier_id is not None:
+            result['AlertNotifierId'] = self.alert_notifier_id
+        if self.alert_policy_id is not None:
+            result['AlertPolicyId'] = self.alert_policy_id
+        if self.monitor_samples is not None:
+            result['MonitorSamples'] = self.monitor_samples
+        if self.start_execution_time is not None:
+            result['StartExecutionTime'] = self.start_execution_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmFlag') is not None:
+            self.alarm_flag = m.get('AlarmFlag')
+        self.alert_list = []
+        if m.get('AlertList') is not None:
+            for k in m.get('AlertList'):
+                temp_model = GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList()
+                self.alert_list.append(temp_model.from_map(k))
+        if m.get('AlertNotifierId') is not None:
+            self.alert_notifier_id = m.get('AlertNotifierId')
+        if m.get('AlertPolicyId') is not None:
+            self.alert_policy_id = m.get('AlertPolicyId')
+        if m.get('MonitorSamples') is not None:
+            self.monitor_samples = m.get('MonitorSamples')
+        if m.get('StartExecutionTime') is not None:
+            self.start_execution_time = m.get('StartExecutionTime')
         return self
 
 
@@ -14851,7 +19810,7 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval(TeaModel):
         return self
 
 
-class GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList(TeaModel):
+class GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList(TeaModel):
     def __init__(
         self,
         city_code: int = None,
@@ -15093,6 +20052,7 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailNet(TeaModel):
         net_dns_query_method: str = None,
         net_dns_server: int = None,
         net_dns_switch: int = None,
+        net_dns_timeout: str = None,
         net_icmp_active: int = None,
         net_icmp_data_cut: int = None,
         net_icmp_interval: int = None,
@@ -15110,6 +20070,7 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailNet(TeaModel):
         self.net_dns_query_method = net_dns_query_method
         self.net_dns_server = net_dns_server
         self.net_dns_switch = net_dns_switch
+        self.net_dns_timeout = net_dns_timeout
         self.net_icmp_active = net_icmp_active
         self.net_icmp_data_cut = net_icmp_data_cut
         self.net_icmp_interval = net_icmp_interval
@@ -15141,6 +20102,8 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailNet(TeaModel):
             result['NetDnsServer'] = self.net_dns_server
         if self.net_dns_switch is not None:
             result['NetDnsSwitch'] = self.net_dns_switch
+        if self.net_dns_timeout is not None:
+            result['NetDnsTimeout'] = self.net_dns_timeout
         if self.net_icmp_active is not None:
             result['NetIcmpActive'] = self.net_icmp_active
         if self.net_icmp_data_cut is not None:
@@ -15177,6 +20140,8 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailNet(TeaModel):
             self.net_dns_server = m.get('NetDnsServer')
         if m.get('NetDnsSwitch') is not None:
             self.net_dns_switch = m.get('NetDnsSwitch')
+        if m.get('NetDnsTimeout') is not None:
+            self.net_dns_timeout = m.get('NetDnsTimeout')
         if m.get('NetIcmpActive') is not None:
             self.net_icmp_active = m.get('NetIcmpActive')
         if m.get('NetIcmpDataCut') is not None:
@@ -15487,12 +20452,14 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailProtocol(TeaModel):
 class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
     def __init__(
         self,
+        common_param: GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam = None,
         download: GetSyntheticTaskDetailResponseBodyTaskDetailDownload = None,
         extend_interval: GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval = None,
         interval_time: int = None,
         interval_type: int = None,
         ip_type: int = None,
-        minotor_list: List[GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList] = None,
+        monitor_list: List[GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList] = None,
+        monitor_list_string: str = None,
         nav: GetSyntheticTaskDetailResponseBodyTaskDetailNav = None,
         net: GetSyntheticTaskDetailResponseBodyTaskDetailNet = None,
         protocol: GetSyntheticTaskDetailResponseBodyTaskDetailProtocol = None,
@@ -15501,12 +20468,14 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
         task_type: int = None,
         url: str = None,
     ):
+        self.common_param = common_param
         self.download = download
         self.extend_interval = extend_interval
         self.interval_time = interval_time
         self.interval_type = interval_type
         self.ip_type = ip_type
-        self.minotor_list = minotor_list
+        self.monitor_list = monitor_list
+        self.monitor_list_string = monitor_list_string
         self.nav = nav
         self.net = net
         self.protocol = protocol
@@ -15516,12 +20485,14 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
         self.url = url
 
     def validate(self):
+        if self.common_param:
+            self.common_param.validate()
         if self.download:
             self.download.validate()
         if self.extend_interval:
             self.extend_interval.validate()
-        if self.minotor_list:
-            for k in self.minotor_list:
+        if self.monitor_list:
+            for k in self.monitor_list:
                 if k:
                     k.validate()
         if self.nav:
@@ -15537,6 +20508,8 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.common_param is not None:
+            result['CommonParam'] = self.common_param.to_map()
         if self.download is not None:
             result['Download'] = self.download.to_map()
         if self.extend_interval is not None:
@@ -15547,10 +20520,12 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
             result['IntervalType'] = self.interval_type
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
-        result['MinotorList'] = []
-        if self.minotor_list is not None:
-            for k in self.minotor_list:
-                result['MinotorList'].append(k.to_map() if k else None)
+        result['MonitorList'] = []
+        if self.monitor_list is not None:
+            for k in self.monitor_list:
+                result['MonitorList'].append(k.to_map() if k else None)
+        if self.monitor_list_string is not None:
+            result['MonitorListString'] = self.monitor_list_string
         if self.nav is not None:
             result['Nav'] = self.nav.to_map()
         if self.net is not None:
@@ -15569,6 +20544,9 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommonParam') is not None:
+            temp_model = GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam()
+            self.common_param = temp_model.from_map(m['CommonParam'])
         if m.get('Download') is not None:
             temp_model = GetSyntheticTaskDetailResponseBodyTaskDetailDownload()
             self.download = temp_model.from_map(m['Download'])
@@ -15581,11 +20559,13 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
             self.interval_type = m.get('IntervalType')
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
-        self.minotor_list = []
-        if m.get('MinotorList') is not None:
-            for k in m.get('MinotorList'):
-                temp_model = GetSyntheticTaskDetailResponseBodyTaskDetailMinotorList()
-                self.minotor_list.append(temp_model.from_map(k))
+        self.monitor_list = []
+        if m.get('MonitorList') is not None:
+            for k in m.get('MonitorList'):
+                temp_model = GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList()
+                self.monitor_list.append(temp_model.from_map(k))
+        if m.get('MonitorListString') is not None:
+            self.monitor_list_string = m.get('MonitorListString')
         if m.get('Nav') is not None:
             temp_model = GetSyntheticTaskDetailResponseBodyTaskDetailNav()
             self.nav = temp_model.from_map(m['Nav'])
@@ -16026,6 +21006,7 @@ class GetSyntheticTaskMonitorsRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region in which the application is located.
         self.region_id = region_id
 
     def validate(self):
@@ -16059,12 +21040,25 @@ class GetSyntheticTaskMonitorsResponseBodyData(TeaModel):
         net_service_id: int = None,
         net_service_name: str = None,
     ):
+        # The task status.
+        # 
+        # *   0: active
+        # *   1: busy
         self.busy = busy
+        # The name of the city to which the monitoring point belongs.
         self.city = city
+        # The ID of the city to which the monitoring point belongs.
         self.city_code = city_code
+        # The client type:
+        # 
+        # *   1: IDC
+        # *   2: Last mile
         self.client_type = client_type
+        # The region to which the monitoring point belongs.
         self.district = district
+        # The ID of the carrier.
         self.net_service_id = net_service_id
+        # The name of the carrier.
         self.net_service_name = net_service_name
 
     def validate(self):
@@ -16119,9 +21113,20 @@ class GetSyntheticTaskMonitorsResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
+        # 
+        # *   1001: The request was successful.
+        # *   1002: The request failed.
+        # *   1003: Parameter errors occurred.
+        # *   1004: Authentication failed.
+        # *   1006: The task does not exist.
+        # *   1099: Internal errors occurred.
         self.code = code
+        # The details of the monitoring point.
         self.data = data
+        # The message that is returned when the request failed.
         self.msg = msg
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16216,9 +21221,17 @@ class GetTraceRequest(TeaModel):
         start_time: int = None,
         trace_id: str = None,
     ):
+        # The end of the time range to query. Unit: milliseconds.
+        # 
+        # > If the ID of the trace is 30 characters in length, this parameter is optional. Otherwise, this parameter is required.
         self.end_time = end_time
+        # The ID of the region.
         self.region_id = region_id
+        # The beginning of the time range to query. Unit: milliseconds.
+        # 
+        # > If the ID of the trace is 30 characters in length, this parameter is optional. Otherwise, this parameter is required.
         self.start_time = start_time
+        # The ID of the trace. You can log on to the ARMS console and obtain the trace ID on the **Trace Query** page or **Interface Snapshot** tab.
         self.trace_id = trace_id
 
     def validate(self):
@@ -16259,7 +21272,9 @@ class GetTraceResponseBodySpansLogEventListTagEntryList(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -16292,7 +21307,9 @@ class GetTraceResponseBodySpansLogEventList(TeaModel):
         tag_entry_list: List[GetTraceResponseBodySpansLogEventListTagEntryList] = None,
         timestamp: int = None,
     ):
+        # The tags of the trace.
         self.tag_entry_list = tag_entry_list
+        # The timestamp when the log event was generated.
         self.timestamp = timestamp
 
     def validate(self):
@@ -16333,7 +21350,9 @@ class GetTraceResponseBodySpansTagEntryList(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -16379,20 +21398,38 @@ class GetTraceResponseBodySpans(TeaModel):
         timestamp: int = None,
         trace_id: str = None,
     ):
+        # The child spans of the current span.
         self.children = children
+        # The amount of time consumed by the trace. Unit: milliseconds.
         self.duration = duration
+        # Indicates whether a method stack was provided.
+        # 
+        # - `true`: A method stack was provided.
+        # - `false` : No method stack was provided.
         self.have_stack = have_stack
+        # The log events in the trace.
         self.log_event_list = log_event_list
+        # The name of the traced span.
         self.operation_name = operation_name
+        # The ID of the parent span.
         self.parent_span_id = parent_span_id
+        # The returned code.
         self.result_code = result_code
+        # The ID of the remote procedure call (RPC) mode.
         self.rpc_id = rpc_id
+        # The type of the remote procedure call (RPC) mode.
         self.rpc_type = rpc_type
+        # The IP address of the host where the application resides.
         self.service_ip = service_ip
+        # The name of the application.
         self.service_name = service_name
+        # Span ID。
         self.span_id = span_id
+        # The tags of the trace.
         self.tag_entry_list = tag_entry_list
+        # The timestamp when the span was generated.
         self.timestamp = timestamp
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -16494,7 +21531,9 @@ class GetTraceResponseBody(TeaModel):
         request_id: str = None,
         spans: List[GetTraceResponseBodySpans] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the trace.
         self.spans = spans
 
     def validate(self):
@@ -16579,7 +21618,9 @@ class GetTraceAppRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://help.aliyun.com/document_detail/186100.html?spm=a2c4g.11186623.6.792.1b50654cqcDPyk#title-imy-7gj-qhr).
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -16606,6 +21647,41 @@ class GetTraceAppRequest(TeaModel):
         return self
 
 
+class GetTraceAppResponseBodyTraceAppTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetTraceAppResponseBodyTraceApp(TeaModel):
     def __init__(
         self,
@@ -16615,24 +21691,52 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
         labels: List[str] = None,
         pid: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         show: bool = None,
+        source: str = None,
+        tags: List[GetTraceAppResponseBodyTraceAppTags] = None,
         type: str = None,
         update_time: int = None,
         user_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The timestamp generated when the monitoring task was created.
         self.create_time = create_time
+        # The aliases of the application.
         self.labels = labels
+        # The PID of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the application was displayed in the Application Real-Time Monitoring Service (ARMS) console. Valid values:
+        # 
+        # *   `true`: The application was displayed in the ARMS console.
+        # *   `false`: The application was not displayed in the ARMS console.
         self.show = show
+        # The source of the application.
+        self.source = source
+        # The list of tags.
+        self.tags = tags
+        # The type of the monitoring task. Valid values:
+        # 
+        # *   `TRACE`: Application Monitoring
+        # *   `RETCODE`: Browser Monitoring
         self.type = type
+        # The timestamp generated when the monitoring task was updated.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16652,8 +21756,16 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.show is not None:
             result['Show'] = self.show
+        if self.source is not None:
+            result['Source'] = self.source
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.update_time is not None:
@@ -16676,8 +21788,17 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Show') is not None:
             self.show = m.get('Show')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetTraceAppResponseBodyTraceAppTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UpdateTime') is not None:
@@ -16693,7 +21814,9 @@ class GetTraceAppResponseBody(TeaModel):
         request_id: str = None,
         trace_app: GetTraceAppResponseBodyTraceApp = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned struct.
         self.trace_app = trace_app
 
     def validate(self):
@@ -16776,11 +21899,20 @@ class ImportAppAlertRulesRequest(TeaModel):
         templage_alert_config: str = None,
         template_alert_id: str = None,
     ):
+        # The IDs of the alert contact groups. The value must be a JSON array.
         self.contact_group_ids = contact_group_ids
+        # Specifies whether to enable the alert rule after it is created. Default value: `false`.
+        # 
+        # *   `true`: enables the alert rule.
+        # *   `false`: disables the alert rule.
         self.is_auto_start = is_auto_start
+        # The process identifiers (PIDs) of the applications associated with the alert rule. The value must be a JSON array. For more information about how to obtain the PID, see [Obtain the PID of an application](~~186100#section-bkl-3j6-ezg~~).
         self.pids = pids
+        # The ID of the region where the associated applications reside.
         self.region_id = region_id
+        # The configurations of the alert template based on which you want to create an alert rule. The value must be a JSON string. You must set at least one of the **TemplateAlertId** and **TemplageAlertConfig** parameters. If you set both parameters, the **TemplateAlertId** parameter prevails. For more information about the TemplageAlertConfig parameter, see the following **additional information about the TemplageAlertConfig parameter**.
         self.templage_alert_config = templage_alert_config
+        # The ID of the alert template. You must set at least one of the **TemplateAlertId** and **TemplageAlertConfig** parameters. If you set both parameters, the **TemplateAlertId** parameter prevails.
         self.template_alert_id = template_alert_id
 
     def validate(self):
@@ -16829,7 +21961,9 @@ class ImportAppAlertRulesResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The ID of the alert rule.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16909,10 +22043,15 @@ class InstallCmsExporterRequest(TeaModel):
         enable_tag: bool = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The cloud services that you want to monitor. The CmsArgs parameter is the startup parameter of the cms-exporter collector. Separate multiple cloud services with number signs (`#`).
         self.cms_args = cms_args
+        # The recently monitored cloud services. Separate multiple cloud services with number signs (`#`).
         self.direct_args = direct_args
+        # Specifies whether to collect the aliyun tags attached to each cloud service. Default value: false.
         self.enable_tag = enable_tag
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -16957,7 +22096,9 @@ class InstallCmsExporterResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful.
         self.data = data
+        # The ID of the request. You can query logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17032,19 +22173,34 @@ class InstallManagedPrometheusRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        cluster_name: str = None,
         cluster_type: str = None,
+        grafana_instance_id: str = None,
         kube_config: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the ASK cluster.
         self.cluster_id = cluster_id
+        # 集群名称。ClusterType为ecs时，必填。
+        self.cluster_name = cluster_name
+        # The type of the cluster. Only ASK clusters are supported.
         self.cluster_type = cluster_type
+        # 集群绑定的托管版Grafana工作区Id。为空或"free"时，绑定到共享版Grafana。
+        self.grafana_instance_id = grafana_instance_id
+        # The parameter is not supported.
         self.kube_config = kube_config
+        # The region ID.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # The security group to which the ASK cluster belongs.
         self.security_group_id = security_group_id
+        # The vSwitch of the ASK cluster.
         self.v_switch_id = v_switch_id
+        # The VPC of the ASK cluster.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -17058,12 +22214,18 @@ class InstallManagedPrometheusRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.grafana_instance_id is not None:
+            result['GrafanaInstanceId'] = self.grafana_instance_id
         if self.kube_config is not None:
             result['KubeConfig'] = self.kube_config
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -17076,12 +22238,18 @@ class InstallManagedPrometheusRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('GrafanaInstanceId') is not None:
+            self.grafana_instance_id = m.get('GrafanaInstanceId')
         if m.get('KubeConfig') is not None:
             self.kube_config = m.get('KubeConfig')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -17100,10 +22268,15 @@ class InstallManagedPrometheusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. 200 indicates that the Prometheus agent was installed. Otherwise, the Prometheus agent fails to be installed.
         self.code = code
+        # The content of the response. The installation status of the Prometheus agent was returned.
         self.data = data
+        # The error message returned if the Prometheus agent fails to be installed.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the Prometheus agent was installed.
         self.success = success
 
     def validate(self):
@@ -17194,9 +22367,13 @@ class ListActivatedAlertsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The number of the page to return. Default value: `1`.
         self.current_page = current_page
+        # The filter condition in the `{"key":"value"}`format. You must specify the `key` and `value` of the filter condition.
         self.filter = filter
+        # The number of entries to return on each page. Default value: `10`.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -17237,7 +22414,9 @@ class ListActivatedAlertsResponseBodyPageAlertsDispatchRules(TeaModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # The ID of the notification policy.
         self.rule_id = rule_id
+        # The name of the notification policy.
         self.rule_name = rule_name
 
     def validate(self):
@@ -17284,21 +22463,51 @@ class ListActivatedAlertsResponseBodyPageAlerts(TeaModel):
         starts_at: int = None,
         status: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The type of the alert.
         self.alert_type = alert_type
+        # The number of times that the alert event was received.
         self.count = count
+        # The timestamp when the alert rule was created.
         self.create_time = create_time
+        # The notification policies.
         self.dispatch_rules = dispatch_rules
+        # The timestamp when the alert was ended.
         self.ends_at = ends_at
+        # The extended fields that indicate the following tags:
+        # 
+        # *   The tags that are carried in the metrics of the alert rule expression.
+        # *   The tags that are created based on the alert rule.
+        # *   The default tags of Application Real-Time Monitoring Service (ARMS).
         self.expand_fields = expand_fields
+        # The name of the object that is associated with the alert.
         self.integration_name = integration_name
+        # The type of the service integration that generated the alert.
         self.integration_type = integration_type
+        # The type of the object that is associated with the alert.
         self.involved_object_kind = involved_object_kind
+        # The name of the service integration that generated the alert.
         self.involved_object_name = involved_object_name
+        # The description of the alert.
         self.message = message
+        # The level of the alert. Valid values:
+        # 
+        # *   `critical`
+        # *   `error`
+        # *   `warn`
+        # *   `page`
         self.severity = severity
+        # The timestamp when the alert was generated.
         self.starts_at = starts_at
+        # The status of the alert. Valid values:
+        # 
+        # *   `Active`
+        # *   `Inhibited`
+        # *   `Silenced`
+        # *   `Resolved`
         self.status = status
 
     def validate(self):
@@ -17397,9 +22606,13 @@ class ListActivatedAlertsResponseBodyPage(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The alerts that have been triggered.
         self.alerts = alerts
+        # The page number of the returned page.
         self.page = page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -17448,7 +22661,9 @@ class ListActivatedAlertsResponseBody(TeaModel):
         page: ListActivatedAlertsResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.page = page
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17532,12 +22747,23 @@ class ListAlertEventsRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The name of the alert.
         self.alert_name = alert_name
+        # The end time of the alert events that you want to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
+        # The list of matching conditions.
         self.matching_conditions = matching_conditions
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
+        # The start time of the alert events that you want to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
+        # The status of the alert events. Valid values:
+        # 
+        # *   Active
+        # *   Silenced
+        # *   Resolved
         self.status = status
 
     def validate(self):
@@ -17592,9 +22818,17 @@ class ListAlertEventsResponseBodyPageBeanEventsAlarms(TeaModel):
         create_time: str = None,
         state: int = None,
     ):
+        # The ID of the alert.
         self.alarm_id = alarm_id
+        # The name of the alert.
         self.alarm_name = alarm_name
+        # The time when the alert was created.
         self.create_time = create_time
+        # The status of the alert. Valid values:
+        # 
+        # *   0: The alert is pending.
+        # *   1: The alert is being handled.
+        # *   2: The alert is cleared.
         self.state = state
 
     def validate(self):
@@ -17638,6 +22872,7 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         description: str = None,
         end_time: str = None,
         generator_url: str = None,
+        handler_name: str = None,
         integration_name: str = None,
         integration_type: str = None,
         labels: str = None,
@@ -17646,18 +22881,43 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The list of associated alerts.
         self.alarms = alarms
+        # The name of the alert.
         self.alert_name = alert_name
+        # The list of annotations.
         self.annotations = annotations
+        # The description of the alert event.
         self.description = description
+        # The end time of the alert event.
         self.end_time = end_time
+        # The URL of the alert event.
         self.generator_url = generator_url
+        # The user who handled the alert.
+        self.handler_name = handler_name
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The type of the alert integration.
         self.integration_type = integration_type
+        # The list of tags.
         self.labels = labels
+        # The time when the alert event was received.
         self.receive_time = receive_time
+        # The severity level of the alert. Valid value:
+        # 
+        # *   critical: P1
+        # *   error: P2
+        # *   warning: P3
+        # *   page: P4
+        # *   default: P6
         self.severity = severity
+        # The start time of the alert event.
         self.start_time = start_time
+        # The status of the alert event. Valid values:
+        # 
+        # *   Active
+        # *   Silenced
+        # *   Resolved
         self.status = status
 
     def validate(self):
@@ -17686,6 +22946,8 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
             result['EndTime'] = self.end_time
         if self.generator_url is not None:
             result['GeneratorURL'] = self.generator_url
+        if self.handler_name is not None:
+            result['HandlerName'] = self.handler_name
         if self.integration_name is not None:
             result['IntegrationName'] = self.integration_name
         if self.integration_type is not None:
@@ -17719,6 +22981,8 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('GeneratorURL') is not None:
             self.generator_url = m.get('GeneratorURL')
+        if m.get('HandlerName') is not None:
+            self.handler_name = m.get('HandlerName')
         if m.get('IntegrationName') is not None:
             self.integration_name = m.get('IntegrationName')
         if m.get('IntegrationType') is not None:
@@ -17744,9 +23008,13 @@ class ListAlertEventsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The list of information about historical alert events.
         self.events = events
+        # The number of the page returned.
         self.page = page
+        # The number of entries returned per page.
         self.size = size
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):
@@ -17795,7 +23063,9 @@ class ListAlertEventsResponseBody(TeaModel):
         page_bean: ListAlertEventsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17883,16 +23153,57 @@ class ListAlertsRequest(TeaModel):
         start_time: str = None,
         state: int = None,
     ):
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The ID of the notification policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The end time of the alert sending history that you want to query. Specify the time in the `YYYY-MM-DD HH:mm:ss` format.
         self.end_time = end_time
+        # The type of the integration. Valid values:
+        # 
+        # *   ARMS
+        # *   CLOUD_MONITOR
+        # *   MSE
+        # *   ARMS_CLOUD_DIALTEST
+        # *   PROMETHEUS
+        # *   LOG_SERVICE
+        # *   CUSTOM
+        # *   ARMS_PROMETHEUS
+        # *   ARMS_APP_MON
+        # *   ARMS_FRONT_MON
+        # *   ARMS_CUSTOM
+        # *   XTRACE
+        # *   GRAFANA
+        # *   ZABBIX
+        # *   SKYWALKING
+        # *   EVENT_BRIDGE
+        # *   NAGIOS
+        # *   OPENFALCON
+        # *   ARMS_INSIGHTS
         self.integration_type = integration_type
+        # The number of the page to return.
         self.page = page
+        # The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
         self.severity = severity
+        # Specifies whether to query the activities that correspond to alerts. Valid values:
+        # 
+        # *   `false` (default value): The activities are not queried.
+        # *   `true`: The activities in the last three days are queried.
         self.show_activities = show_activities
+        # Specifies whether to query the events that correspond to alerts. Valid values:
+        # 
+        # *   `false` (default value): The events are not queried.
+        # *   `true`: The events are queried.
         self.show_events = show_events
+        # The number of alerts to return on each page.
         self.size = size
+        # The start time of the alert sending history that you want to query. Specify the time in the `YYYY-MM-DD HH:mm:ss` format.
         self.start_time = start_time
+        # The status of the alert. Valid values:
+        # 
+        # *   0: The alert is waiting to be handled.
+        # *   1: The alert is being handled.
+        # *   2: The alert is handled.
         self.state = state
 
     def validate(self):
@@ -17964,10 +23275,21 @@ class ListAlertsResponseBodyPageBeanListAlertsActivities(TeaModel):
         time: str = None,
         type: int = None,
     ):
+        # The content of the alert notification.
         self.content = content
+        # The description of the activity.
         self.description = description
+        # The name of the handler.
         self.handler_name = handler_name
+        # The operation time of the activity.
         self.time = time
+        # The type of the activity. Valid values:
+        # 
+        # *   1: The alert is claimed.
+        # *   2: The alert is disclaimed.
+        # *   3: A comment is added for the alert.
+        # *   4: The alert is disabled.
+        # *   5: An alert notification is sent.
         self.type = type
 
     def validate(self):
@@ -18022,17 +23344,58 @@ class ListAlertsResponseBodyPageBeanListAlertsAlertEvents(TeaModel):
         start_time: str = None,
         state: str = None,
     ):
+        # The name of the event.
         self.alert_name = alert_name
+        # The list of annotations.
         self.annotations = annotations
+        # The description of the event.
         self.description = description
+        # The time when the event ended.
         self.end_time = end_time
+        # The URL of the event.
         self.generator_url = generator_url
+        # The name of the integration that corresponds to the alert event.
         self.integration_name = integration_name
+        # The type of the integration that corresponds to the alert event. Valid values:
+        # 
+        # *   ARMS
+        # *   CLOUD_MONITOR
+        # *   MSE
+        # *   ARMS_CLOUD_DIALTEST
+        # *   PROMETHEUS
+        # *   LOG_SERVICE
+        # *   CUSTOM
+        # *   ARMS_PROMETHEUS
+        # *   ARMS_APP_MON
+        # *   ARMS_FRONT_MON
+        # *   ARMS_CUSTOM
+        # *   XTRACE
+        # *   GRAFANA
+        # *   ZABBIX
+        # *   SKYWALKING
+        # *   EVENT_BRIDGE
+        # *   NAGIOS
+        # *   OPENFALCON
+        # *   ARMS_INSIGHTS
         self.integration_type = integration_type
+        # The list of tags.
         self.labels = labels
+        # The time when the event was created.
         self.receive_time = receive_time
+        # The severity level of the event. Valid values:
+        # 
+        # *   critical
+        # *   error
+        # *   warning
+        # *   info
         self.severity = severity
+        # The time when the event started.
         self.start_time = start_time
+        # The status of the event. Valid values:
+        # 
+        # *   Active: The event is not cleared.
+        # *   Silenced: The event is silenced.
+        # *   Resolved: The event is cleared.
         self.state = state
 
     def validate(self):
@@ -18112,14 +23475,27 @@ class ListAlertsResponseBodyPageBeanListAlerts(TeaModel):
         severity: str = None,
         state: int = None,
     ):
+        # The list of activities.
         self.activities = activities
+        # The list of events.
         self.alert_events = alert_events
+        # The ID of the alert.
         self.alert_id = alert_id
+        # The name of the alert.
         self.alert_name = alert_name
+        # The time when the alert was created.
         self.create_time = create_time
+        # The ID of the notification policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The name of the notification policy.
         self.dispatch_rule_name = dispatch_rule_name
+        # The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
         self.severity = severity
+        # The status of the alert. Valid values:
+        # 
+        # *   0: The alert is waiting to be handled.
+        # *   1: The alert is being handled.
+        # *   2: The alert is handled.
         self.state = state
 
     def validate(self):
@@ -18199,9 +23575,13 @@ class ListAlertsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The alerts for which the alert sending history is queried.
         self.list_alerts = list_alerts
+        # The page number of the returned page.
         self.page = page
+        # The number of alerts returned per page.
         self.size = size
+        # The total number of queried alerts.
         self.total = total
 
     def validate(self):
@@ -18250,7 +23630,9 @@ class ListAlertsResponseBody(TeaModel):
         page_bean: ListAlertsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18328,6 +23710,7 @@ class ListClusterFromGrafanaRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -18372,23 +23755,44 @@ class ListClusterFromGrafanaResponseBodyPromClusterList(TeaModel):
         update_time: int = None,
         user_id: str = None,
     ):
+        # The status of the Prometheus agent on the cluster.
         self.agent_status = agent_status
+        # The ID of cluster.
         self.cluster_id = cluster_id
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The type of the instance.
         self.cluster_type = cluster_type
+        # The ID of the controller.
         self.controller_id = controller_id
+        # The time when the dashboard was created.
         self.create_time = create_time
+        # The extended fields. This parameter is a JSON string.
         self.extra = extra
+        # The ID of a database in the cluster.
         self.id = id
+        # The timestamp when the Prometheus agent was installed.
         self.install_time = install_time
+        # Indicates whether the Prometheus agent was installed. Valid values:
+        # 
+        # *   true: The Prometheus agent was installed.
+        # *   false: The Prometheus agent was not installed.
         self.is_controller_installed = is_controller_installed
+        # The time when the last heartbeat was reported.
         self.last_heart_beat_time = last_heart_beat_time
+        # The number of nodes.
         self.node_num = node_num
+        # The custom parameters.
         self.options = options
+        # The list of nodejsonar logs.
         self.plugins_json_array = plugins_json_array
+        # The ID of the region.
         self.region_id = region_id
+        # The information about applications deployed in the cluster.
         self.state_json = state_json
+        # The time when the dashboard was updated.
         self.update_time = update_time
+        # The ID of the Alibaba Cloud account to which the cluster belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -18485,7 +23889,9 @@ class ListClusterFromGrafanaResponseBody(TeaModel):
         prom_cluster_list: List[ListClusterFromGrafanaResponseBodyPromClusterList] = None,
         request_id: str = None,
     ):
+        # The cluster information.
         self.prom_cluster_list = prom_cluster_list
+        # The ID of the request. You can query logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18571,8 +23977,11 @@ class ListCmsInstancesRequest(TeaModel):
         region_id: str = None,
         type_filter: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the region.
         self.region_id = region_id
+        # The filter condition. Format: \[unk]{"key":"value"}\[unk]. You must set the \[unk]key\[unk] and \[unk]value\[unk] fields.
         self.type_filter = type_filter
 
     def validate(self):
@@ -18617,15 +24026,28 @@ class ListCmsInstancesResponseBodyDataProducts(TeaModel):
         type: str = None,
         url: str = None,
     ):
+        # The description of the cloud service.
         self.descr = descr
+        # The ID of the instance.
         self.id = id
+        # The name of the instance.
         self.instance = instance
+        # The name of the cloud service.
         self.name = name
+        # The code of the cloud service.
         self.prod = prod
+        # The event source.
         self.source = source
+        # The status of the integration. Valid values:
+        # 
+        # *   `true`: The integration was enabled.
+        # *   `false`: The integration was disabled.
         self.state = state
+        # The timestamp when the Grafana dashboard was created.
         self.time = time
+        # The type of the cloud service.
         self.type = type
+        # The complete URL of the Grafana dashboard.
         self.url = url
 
     def validate(self):
@@ -18690,7 +24112,9 @@ class ListCmsInstancesResponseBodyData(TeaModel):
         enable_tag: bool = None,
         products: List[ListCmsInstancesResponseBodyDataProducts] = None,
     ):
+        # Indicates whether to collect the aliyun tags attached to each cloud service.
         self.enable_tag = enable_tag
+        # The struct returned.
         self.products = products
 
     def validate(self):
@@ -18731,7 +24155,9 @@ class ListCmsInstancesResponseBody(TeaModel):
         data: ListCmsInstancesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18816,13 +24242,26 @@ class ListDashboardsRequest(TeaModel):
         region_id: str = None,
         title: str = None,
     ):
+        # The ID of the Container Service for Kubernetes cluster.
         self.cluster_id = cluster_id
+        # The type of the cluster. Valid values: ACK, ASK, cloud-product-prometheus, and Node. You can query the dashboards of a virtual cluster by specifying the cluster type. For InfluxDB, set this parameter to `cloud-product-prometheus`.
         self.cluster_type = cluster_type
+        # The unique names of the dashboards. You can query dashboards by specifying their names. The **dashboard title** can be changed whereas the **dashboard name** cannot. You can specify multiple names and separate them with commas (,), for example, `k8s-event,k8s-overview`. A dashboard may have multiple versions. If you want to specify a version, you can add version information after the name, for example, `k8s-event:v1,k8s-overview:latest`.
         self.dashboard_name = dashboard_name
+        # The language of the Grafana dashboards.
         self.language = language
+        # The product code. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. Valid values:
+        # 
+        # *   InfluxDB
+        # *   MongoDB
+        # *   DLA
+        # *   SAE
         self.product = product
+        # Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
         self.recreate_switch = recreate_switch
+        # The ID of the region.
         self.region_id = region_id
+        # The dashboard title. The dashboard title can be changed. We recommend that you specify the **DashboardName** parameter.
         self.title = title
 
     def validate(self):
@@ -18894,22 +24333,62 @@ class ListDashboardsResponseBodyDashboardVosI18nChild(TeaModel):
         url: str = None,
         version: str = None,
     ):
+        # The type of the Grafana dashboard. This parameter has the same effect as the Exporter parameter whereas provides clearer implication.
         self.dashboard_type = dashboard_type
+        # The type of the exporter access source. Valid values:
+        # 
+        # *   Prometheus
+        # *   Node
+        # *   GPU
+        # *   Redis
+        # *   MySQL
+        # *   Kafka
+        # *   NGINX V2
+        # *   Nginx
+        # *   ZooKeeper
+        # *   MongoDB
+        # *   RabbitMQ
+        # *   PostgreSQL
+        # *   Kubernetes
+        # *   Client Library
+        # *   Elasticsearch
+        # *   RocketMQ
         self.exporter = exporter
+        # The URL of the Grafana dashboard.
         self.http_url = http_url
+        # The URL of the Grafana dashboard.
         self.https_url = https_url
+        # The ID of the Grafana dashboard. The value is unique only when you install the Grafana dashboard.
         self.id = id
+        # Indicates whether the exporter was provided by ARMS. Valid values:
+        # 
+        # *   `true`: The exporter is provided by ARMS.
+        # *   `false`: The exporter is not provided by ARMS.
         self.is_arms_exporter = is_arms_exporter
+        # The category of the Grafana dashboard. Valid values: BASIC, THIRD, LIMIT, and CUSTOM.
         self.kind = kind
+        # The language of the Grafana dashboard.
         self.language = language
+        # The name of the Grafana dashboard. This parameter is different from the **Title** parameter as this parameter cannot be changed.
         self.name = name
+        # Indicates whether the Grafana dashboard had a new version that was available for upgrade.
         self.need_update = need_update
+        # The tags of the Grafana dashboard.
         self.tags = tags
+        # The timestamp when the Grafana dashboard was created.
         self.time = time
+        # The title of the Grafana dashboard.
         self.title = title
+        # The type of the Grafana dashboard. Valid values:
+        # 
+        # *   `dash-db`: a dashboard
+        # *   `dash-folder`: a folder that can include a dashboard
         self.type = type
+        # The unique identifier of a dashboard when multiple Grafana dashboards were installed. It is a unique business ID displayed on the page.
         self.uid = uid
+        # The complete URL of the Grafana dashboard.
         self.url = url
+        # The version of the Grafana dashboard. The combination of version and name uniquely identifies a dashboard.
         self.version = version
 
     def validate(self):
@@ -19018,23 +24497,64 @@ class ListDashboardsResponseBodyDashboardVos(TeaModel):
         url: str = None,
         version: str = None,
     ):
+        # The type of the Grafana dashboard. This parameter has the same effect as the Exporter parameter whereas provides clearer implication.
         self.dashboard_type = dashboard_type
+        # The type of the exporter access source. Valid values:
+        # 
+        # *   Prometheus
+        # *   Node
+        # *   GPU
+        # *   Redis
+        # *   MySQL
+        # *   Kafka
+        # *   NGINX V2
+        # *   Nginx
+        # *   ZooKeeper
+        # *   MongoDB
+        # *   RabbitMQ
+        # *   PostgreSQL
+        # *   Kubernetes
+        # *   Client Library
+        # *   Elasticsearch
+        # *   RocketMQ
         self.exporter = exporter
+        # The URL of the Grafana dashboard.
         self.http_url = http_url
+        # The URL of the Grafana dashboard.
         self.https_url = https_url
+        # The information about the Grafana dashboard.
         self.i_18n_child = i_18n_child
+        # The ID of the Grafana dashboard. The value is unique only when you install the Grafana dashboard.
         self.id = id
+        # Indicates whether the exporter was provided by ARMS. Valid values:
+        # 
+        # *   `true`: The exporter is provided by ARMS.
+        # *   `false`: The exporter is not provided by ARMS.
         self.is_arms_exporter = is_arms_exporter
+        # The type of the dashboard. Valid values: BASIC, THIRD, LIMIT, and CUSTOM. BASIC indicates a basic dashboard. THIRD indicates a third-party dashboard. LIMIT indicates a time-limited free dashboard. CUSTOM indicates a custom dashboard.
         self.kind = kind
+        # The language of the Grafana dashboard.
         self.language = language
+        # The name of the Grafana dashboard. This parameter is different from the **Title** parameter as this parameter cannot be changed.
         self.name = name
+        # Indicates whether the Grafana dashboard had a new version that was available for upgrade.
         self.need_update = need_update
+        # The tags of the Grafana dashboard.
         self.tags = tags
+        # The timestamp when the Grafana dashboard was created.
         self.time = time
+        # The title of the Grafana dashboard.
         self.title = title
+        # The type of the Grafana dashboard. Valid values:
+        # 
+        # *   `dash-db`: a dashboard
+        # *   `dash-folder`: a folder that can include a dashboard
         self.type = type
+        # The unique identifier of a dashboard when multiple Grafana dashboards were installed. It is a unique business ID displayed on the page.
         self.uid = uid
+        # The complete URL of the Grafana dashboard.
         self.url = url
+        # The version of the Grafana dashboard. The combination of version and name uniquely identifies a dashboard.
         self.version = version
 
     def validate(self):
@@ -19133,7 +24653,9 @@ class ListDashboardsResponseBody(TeaModel):
         dashboard_vos: List[ListDashboardsResponseBodyDashboardVos] = None,
         request_id: str = None,
     ):
+        # The information about the Grafana dashboards.
         self.dashboard_vos = dashboard_vos
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19225,14 +24747,23 @@ class ListDashboardsByNameRequest(TeaModel):
         product_code: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The type of the cluster.
         self.cluster_type = cluster_type
+        # The name of the dashboard.
         self.dash_board_name = dash_board_name
+        # The version of the dashboard.
         self.dash_board_version = dash_board_version
+        # The type of the data source.
         self.data_source_type = data_source_type
+        # The name of the dashboard group.
         self.group_name = group_name
+        # Specifies whether to display the Grafana dashboard only in the Application Real-Time Monitoring Service (ARMS) console.
         self.only_query = only_query
+        # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -19293,7 +24824,9 @@ class ListDashboardsByNameResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.data = data
+        # The ID of the request. You can query logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19371,8 +24904,15 @@ class ListDispatchRuleRequest(TeaModel):
         region_id: str = None,
         system: bool = None,
     ):
+        # The name of the notification policy to be queried. Fuzzy match is supported.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
+        # *   The type of notification policies to be queried. Valid values: `false`: notification policies created in Application Real-Time Monitoring Service (ARMS). This is the default value.
+        # 
+        # *   `true`: notification policies created in an external system.
+        # 
+        # > You cannot use the ARMS console to modify the dispatch rules of a notification policy that is created in an external system.
         self.system = system
 
     def validate(self):
@@ -19410,8 +24950,14 @@ class ListDispatchRuleResponseBodyDispatchRules(TeaModel):
         rule_id: int = None,
         state: str = None,
     ):
+        # The name of the notification policy.
         self.name = name
+        # The ID of the notification policy.
         self.rule_id = rule_id
+        # Indicates whether the notification policy is enabled.
+        # 
+        # *   `true`: The notification policy is enabled.
+        # *   `false`: The notification policy is disabled.
         self.state = state
 
     def validate(self):
@@ -19448,7 +24994,9 @@ class ListDispatchRuleResponseBody(TeaModel):
         dispatch_rules: List[ListDispatchRuleResponseBodyDispatchRules] = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.dispatch_rules = dispatch_rules
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19534,8 +25082,11 @@ class ListEscalationPoliciesRequest(TeaModel):
         page: int = None,
         size: int = None,
     ):
+        # The name of the escalation policy.
         self.name = name
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
 
     def validate(self):
@@ -19572,7 +25123,9 @@ class ListEscalationPoliciesResponseBodyPageBeanEscalationPolicies(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The ID of the escalation policy.
         self.id = id
+        # The name of the escalation policy.
         self.name = name
 
     def validate(self):
@@ -19607,9 +25160,13 @@ class ListEscalationPoliciesResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The list of escalation policies.
         self.escalation_policies = escalation_policies
+        # The page number of the returned page.
         self.page = page
+        # The number of entries returned per page.
         self.size = size
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):
@@ -19658,7 +25215,9 @@ class ListEscalationPoliciesResponseBody(TeaModel):
         page_bean: ListEscalationPoliciesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The objects that were returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19738,8 +25297,11 @@ class ListEventBridgeIntegrationsRequest(TeaModel):
         page: int = None,
         size: int = None,
     ):
+        # The name of the EventBridge integration.
         self.name = name
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
 
     def validate(self):
@@ -19777,8 +25339,11 @@ class ListEventBridgeIntegrationsResponseBodyPageBeanEventBridgeIntegrations(Tea
         id: int = None,
         name: str = None,
     ):
+        # The description of the EventBridge integration.
         self.description = description
+        # The ID of the EventBridge integration.
         self.id = id
+        # The name of the EventBridge integration.
         self.name = name
 
     def validate(self):
@@ -19817,9 +25382,13 @@ class ListEventBridgeIntegrationsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The EventBridge integrations.
         self.event_bridge_integrations = event_bridge_integrations
+        # The number of the page returned.
         self.page = page
+        # The number of entries that are returned on each page.
         self.size = size
+        # The total number of EventBridge integrations that are returned.
         self.total = total
 
     def validate(self):
@@ -19868,7 +25437,9 @@ class ListEventBridgeIntegrationsResponseBody(TeaModel):
         page_bean: ListEventBridgeIntegrationsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The information about EventBridge integrations on each page.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -19950,10 +25521,20 @@ class ListInsightsEventsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the request.
         self.end_time = end_time
+        # The details of the event.
         self.insights_types = insights_types
+        # The end of the time range to query. The value is a timestamp.
         self.pid = pid
+        # The ID of the application.
         self.region_id = region_id
+        # The types of the events that you want to query. Separate multiple event types with commas (,). If you do not specify this parameter, all events are queried.
+        # 
+        # *   errorIncrease: API error-rate spike events. Examples: HTTP API error-rate spike events and Dubbo API error-rate spike events.
+        # *   topErrorIncrease: the top five API error-rate spike events with the highest traffic.
+        # *   topRtIncrease: API response-time spike events. Examples: HTTP API response-time spike events and Dubbo API response-time spike events.
+        # *   rtIncrease: the top five API response-time spike events with the highest traffic.
         self.start_time = start_time
 
     def validate(self):
@@ -20002,11 +25583,17 @@ class ListInsightsEventsResponseBodyInsightsEvents(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # The time at which the event occurred. The value is a timestamp.
         self.date = date
+        # The ID of the application associated with the event.
         self.desc = desc
+        # Queries the abnormal Insights events within a specified period of time.
         self.level = level
+        # auditing
         self.pid = pid
+        # The overall response time of the \[HTTP] service of the application \[sd] spikes at \[2022-07-27 10:57:00]
         self.title = title
+        # The time at which the event occurred. The value is a timestamp.
         self.type = type
 
     def validate(self):
@@ -20055,7 +25642,9 @@ class ListInsightsEventsResponseBody(TeaModel):
         insights_events: List[ListInsightsEventsResponseBodyInsightsEvents] = None,
         request_id: str = None,
     ):
+        # The description of the event.
         self.insights_events = insights_events
+        # The title of the event.
         self.request_id = request_id
 
     def validate(self):
@@ -20143,10 +25732,21 @@ class ListIntegrationRequest(TeaModel):
         page: int = None,
         size: int = None,
     ):
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # Specifies whether to display the details of each alert integration:
+        # 
+        # *   true
+        # *   false
         self.is_detail = is_detail
+        # The number of the page to return.
         self.page = page
+        # The number of alert integrations to return on each page.
         self.size = size
 
     def validate(self):
@@ -20198,14 +25798,30 @@ class ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail(TeaModel)
         recover_time: int = None,
         stat: List[int] = None,
     ):
+        # Indicates whether alert events are automatically cleared. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.auto_recover = auto_recover
+        # The description of the alert integration.
         self.description = description
+        # The fields whose values are deduplicated.
         self.duplicate_key = duplicate_key
+        # The extended mapped fields of the alert source.
         self.extended_field_redefine_rules = extended_field_redefine_rules
+        # The predefined mapped fields of the alert source.
         self.field_redefine_rules = field_redefine_rules
+        # The field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+        # 
+        # > Only the Log Service alert integration supports the parameter.
         self.initiative_recover_field = initiative_recover_field
+        # The value of the field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+        # 
+        # > Only the Log Service alert integration supports the parameter.
         self.initiative_recover_value = initiative_recover_value
+        # The time when alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
+        # The total number of alert events and the number of abnormal alert events in the last hour.
         self.stat = stat
 
     def validate(self):
@@ -20273,14 +25889,29 @@ class ListIntegrationResponseBodyPageInfoIntegrations(TeaModel):
         short_token: str = None,
         state: bool = None,
     ):
+        # The endpoint of the alert integration.
         self.api_endpoint = api_endpoint
+        # The time when the alert integration was created.
         self.create_time = create_time
+        # The information about the alert events.
         self.integration_detail = integration_detail
+        # The ID of the alert integration.
         self.integration_id = integration_id
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # The activity of the alert integration
         self.liveness = liveness
+        # The authentication token of the alert integration.
         self.short_token = short_token
+        # Indicates whether the alert integration was enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.state = state
 
     def validate(self):
@@ -20345,9 +25976,13 @@ class ListIntegrationResponseBodyPageInfo(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The information about each alert integration.
         self.integrations = integrations
+        # The page number of the returned page.
         self.page = page
+        # The number of alert integrations returned per page.
         self.size = size
+        # The total number of alert integrations.
         self.total = total
 
     def validate(self):
@@ -20396,7 +26031,9 @@ class ListIntegrationResponseBody(TeaModel):
         page_info: ListIntegrationResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20472,16 +26109,27 @@ class ListIntegrationResponse(TeaModel):
 class ListNotificationPoliciesRequest(TeaModel):
     def __init__(
         self,
+        ids: str = None,
         is_detail: bool = None,
         name: str = None,
         page: int = None,
         region_id: str = None,
         size: int = None,
     ):
+        # The ID of the notification policy.
+        self.ids = ids
+        # Specifies whether to query the details about notification policies. Valid values:
+        # 
+        # *   `true`: Details about notification policies are queried.
+        # *   `false`: Details about notification policies are not queried.
         self.is_detail = is_detail
+        # The name of the notification policy.
         self.name = name
+        # The number of the page to return.
         self.page = page
+        # The ID of the region.
         self.region_id = region_id
+        # The number of entries to return on each page.
         self.size = size
 
     def validate(self):
@@ -20493,6 +26141,8 @@ class ListNotificationPoliciesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
         if self.is_detail is not None:
             result['IsDetail'] = self.is_detail
         if self.name is not None:
@@ -20507,6 +26157,8 @@ class ListNotificationPoliciesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
         if m.get('IsDetail') is not None:
             self.is_detail = m.get('IsDetail')
         if m.get('Name') is not None:
@@ -20527,8 +26179,11 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule(
         group_wait: int = None,
         grouping_fields: List[str] = None,
     ):
+        # The time interval for grouping. Unit: seconds. Default value: 30.
         self.group_interval = group_interval
+        # The waiting time for grouping. Unit: seconds. Default value: 5.
         self.group_wait = group_wait
+        # The fields that are used to group events.
         self.grouping_fields = grouping_fields
 
     def validate(self):
@@ -20566,8 +26221,18 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRu
         operator: str = None,
         value: str = None,
     ):
+        # The key of the matching condition.
         self.key = key
+        # The logical operator of the matching condition. Valid values:
+        # 
+        # *   `eq`: equal to.
+        # *   `neq`: not equal to.
+        # *   `in`: contains.
+        # *   `nin`: does not contain.
+        # *   `re`: regular expression match.
+        # *   `nre`: regular expression mismatch.
         self.operator = operator
+        # The value of the matching condition.
         self.value = value
 
     def validate(self):
@@ -20603,6 +26268,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRu
         self,
         matching_conditions: List[ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesMatchingRulesMatchingConditions] = None,
     ):
+        # The alert event matching conditions.
         self.matching_conditions = matching_conditions
 
     def validate(self):
@@ -20640,8 +26306,16 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule
         notify_object_name: str = None,
         notify_object_type: str = None,
     ):
+        # The ID of the contact.
         self.notify_object_id = notify_object_id
+        # The name of the contact.
         self.notify_object_name = notify_object_name
+        # The type of the contact. Valid values: 
+        # 
+        # - CONTACT: an individual contact
+        # - CONTACT_GROUP: a contact group
+        # - DING_ROBOT: an instant messaging (IM) robot
+        # - CONTACT_SCHEDULE: a person on duty based on an established schedule
         self.notify_object_type = notify_object_type
 
     def validate(self):
@@ -20680,9 +26354,13 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule
         notify_objects: List[ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects] = None,
         notify_start_time: str = None,
     ):
+        # The notification method.
         self.notify_channels = notify_channels
+        # The end time of the notification window.
         self.notify_end_time = notify_end_time
+        # The contacts.
         self.notify_objects = notify_objects
+        # The start time of the notification window.
         self.notify_start_time = notify_start_time
 
     def validate(self):
@@ -20738,14 +26416,23 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTemp
         tts_content: str = None,
         tts_recover_content: str = None,
     ):
+        # The content of the alert notification sent by email.
         self.email_content = email_content
+        # The content of the alert resolution notification sent by email.
         self.email_recover_content = email_recover_content
+        # The title of the alert resolution notification sent by email.
         self.email_recover_title = email_recover_title
+        # The title of the alert notification sent by email.
         self.email_title = email_title
+        # The content of the alert notification sent by an IM robot.
         self.robot_content = robot_content
+        # The content of the alert notification sent by text message.
         self.sms_content = sms_content
+        # The content of the alert resolution notification sent by text message.
         self.sms_recover_content = sms_recover_content
+        # The content of the alert notification sent by phone.
         self.tts_content = tts_content
+        # The content of the alert resolution notification sent by phone.
         self.tts_recover_content = tts_recover_content
 
     def validate(self):
@@ -20815,16 +26502,33 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
         repeat_interval: int = None,
         send_recover_message: bool = None,
     ):
+        # The ID of the escalation rule.
         self.escalation_policy_id = escalation_policy_id
+        # The grouping rule for alert events.
         self.group_rule = group_rule
+        # The ID of the notification policy.
         self.id = id
+        # The integration ID of the ticket system to which alerts are pushed.
         self.integration_id = integration_id
+        # The alert event matching rules.
         self.matching_rules = matching_rules
+        # The name of the notification policy.
         self.name = name
+        # The notification rules.
         self.notify_rule = notify_rule
+        # The notification templates.
         self.notify_template = notify_template
+        # Indicates whether the system repeatedly sends notifications for a long-lasting unresolved alert. Default value: true. Valid values:  
+        # 
+        # - `true`: The system repeatedly sends notifications for a long-lasting unresolved alert at a specified time interval.
+        # - `false`: The system sends a notification for a long-lasting unresolved alert based on an escalation policy.
         self.repeat = repeat
+        # The time interval at which notifications are sent for a long-lasting unresolved alert. Unit: seconds.
         self.repeat_interval = repeat_interval
+        # Specifies whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. The system notifies contacts when the alert status changes to Resolved.  
+        # 
+        # - `true`: The system sends a notification. This is the default value.
+        # - `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
 
     def validate(self):
@@ -20912,9 +26616,13 @@ class ListNotificationPoliciesResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The information about the notification policies.
         self.notification_policies = notification_policies
+        # The number of the page returned.
         self.page = page
+        # The number of entries that are returned on each page.
         self.size = size
+        # The number of notification policies that are returned.
         self.total = total
 
     def validate(self):
@@ -20963,7 +26671,9 @@ class ListNotificationPoliciesResponseBody(TeaModel):
         page_bean: ListNotificationPoliciesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The pages that are returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21043,8 +26753,11 @@ class ListOnCallSchedulesRequest(TeaModel):
         page: int = None,
         size: int = None,
     ):
+        # The name of the scheduling policy.
         self.name = name
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
 
     def validate(self):
@@ -21082,8 +26795,11 @@ class ListOnCallSchedulesResponseBodyPageBeanOnCallSchedules(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The description of the scheduling policy.
         self.description = description
+        # The ID of the scheduling policy.
         self.id = id
+        # The name of the scheduling policy.
         self.name = name
 
     def validate(self):
@@ -21122,9 +26838,13 @@ class ListOnCallSchedulesResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The information about the scheduling policy.
         self.on_call_schedules = on_call_schedules
+        # The page number of the returned page.
         self.page = page
+        # The number of entries returned per page.
         self.size = size
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):
@@ -21173,7 +26893,9 @@ class ListOnCallSchedulesResponseBody(TeaModel):
         page_bean: ListOnCallSchedulesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The objects that were returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21256,11 +26978,20 @@ class ListPrometheusAlertRulesRequest(TeaModel):
         status: int = None,
         type: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The tag match conditions that are described in a JSON string. For more information about this parameter, see the **Additional description of the MatchExpressions parameter** section.
         self.match_expressions = match_expressions
+        # The name of the alert rule.
         self.name = name
+        # The region ID of the instance.
         self.region_id = region_id
+        # Specifies whether the alert rule is enabled. Valid values:
+        # 
+        # *   `1`: enables the alert rule.
+        # *   `0`: disables the alert rule.
         self.status = status
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -21309,7 +27040,9 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesAnnotations(TeaMod
         name: str = None,
         value: str = None,
     ):
+        # The name of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -21342,7 +27075,9 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # The value of the tag associated with the instance.
         self.value = value
 
     def validate(self):
@@ -21385,17 +27120,35 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRules(TeaModel):
         status: int = None,
         type: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the notification policy. This parameter is returned if the **NotifyType** parameter is set to `DISPATCH_RULE`.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule.
         self.expression = expression
+        # The tags of the alert rule.
         self.labels = labels
+        # The alert message. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+        # *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # Indicates whether the alert rule is enabled. Valid values:
+        # 
+        # *   `1`: The alert rule is enabled.
+        # *   `0`: The alert rule is disabled.
         self.status = status
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -21485,7 +27238,9 @@ class ListPrometheusAlertRulesResponseBody(TeaModel):
         prometheus_alert_rules: List[ListPrometheusAlertRulesResponseBodyPrometheusAlertRules] = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.prometheus_alert_rules = prometheus_alert_rules
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21570,7 +27325,9 @@ class ListPrometheusAlertTemplatesRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -21603,7 +27360,9 @@ class ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesAnnotation
         name: str = None,
         value: str = None,
     ):
+        # The name of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -21636,7 +27395,9 @@ class ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesLabels(Tea
         name: str = None,
         value: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -21675,13 +27436,21 @@ class ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates(TeaModel)
         type: str = None,
         version: str = None,
     ):
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # The content of the alert notification. Tags can be referenced in the {{$labels.xxx}} format.
         self.description = description
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule.
         self.expression = expression
+        # The tags of the alert rule.
         self.labels = labels
+        # The type of the alert rule.
         self.type = type
+        # The version of the alert rule.
         self.version = version
 
     def validate(self):
@@ -21755,7 +27524,9 @@ class ListPrometheusAlertTemplatesResponseBody(TeaModel):
         prometheus_alert_templates: List[ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates] = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.prometheus_alert_templates = prometheus_alert_templates
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21938,13 +27709,366 @@ class ListPrometheusGlobalViewResponse(TeaModel):
         return self
 
 
+class ListPrometheusInstanceByTagAndResourceGroupIdRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListPrometheusInstanceByTagAndResourceGroupIdRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tag: List[ListPrometheusInstanceByTagAndResourceGroupIdRequestTag] = None,
+    ):
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListPrometheusInstanceByTagAndResourceGroupIdRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+        grafana_instance_id: str = None,
+        payment_type: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        sub_clusters_json: str = None,
+        tags: List[ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags] = None,
+        user_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cluster_type = cluster_type
+        self.grafana_instance_id = grafana_instance_id
+        self.payment_type = payment_type
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
+        self.sub_clusters_json = sub_clusters_json
+        self.tags = tags
+        self.user_id = user_id
+        self.v_switch_id = v_switch_id
+        # VPC ID。
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.grafana_instance_id is not None:
+            result['GrafanaInstanceId'] = self.grafana_instance_id
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.sub_clusters_json is not None:
+            result['SubClustersJson'] = self.sub_clusters_json
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('GrafanaInstanceId') is not None:
+            self.grafana_instance_id = m.get('GrafanaInstanceId')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SubClustersJson') is not None:
+            self.sub_clusters_json = m.get('SubClustersJson')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        prometheus_instances: List[ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances] = None,
+    ):
+        self.prometheus_instances = prometheus_instances
+
+    def validate(self):
+        if self.prometheus_instances:
+            for k in self.prometheus_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PrometheusInstances'] = []
+        if self.prometheus_instances is not None:
+            for k in self.prometheus_instances:
+                result['PrometheusInstances'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.prometheus_instances = []
+        if m.get('PrometheusInstances') is not None:
+            for k in m.get('PrometheusInstances'):
+                temp_model = ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances()
+                self.prometheus_instances.append(temp_model.from_map(k))
+        return self
+
+
+class ListPrometheusInstanceByTagAndResourceGroupIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPrometheusInstanceByTagAndResourceGroupIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrometheusInstanceByTagAndResourceGroupIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrometheusInstanceByTagAndResourceGroupIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPrometheusInstancesRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         show_global_view: bool = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
+        # Specifies whether to obtain global aggregation instances. Valid values:
+        # 
+        # *   true
+        # *   false
         self.show_global_view = show_global_view
 
     def validate(self):
@@ -21977,7 +28101,9 @@ class ListPrometheusInstancesResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The Prometheus instances in the region in the JSON format.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -22048,14 +28174,16 @@ class ListPrometheusInstancesResponse(TeaModel):
         return self
 
 
-class ListRetcodeAppsRequest(TeaModel):
+class ListPrometheusIntegrationRequest(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
+        integration_type: str = None,
         region_id: str = None,
-        security_token: str = None,
     ):
+        self.cluster_id = cluster_id
+        self.integration_type = integration_type
         self.region_id = region_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22066,18 +28194,554 @@ class ListRetcodeAppsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListPrometheusIntegrationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        can_delete: bool = None,
+        can_editor: bool = None,
+        cluster_id: str = None,
+        container_name: str = None,
+        describe: str = None,
+        exporter_type: str = None,
+        instance_id: int = None,
+        instance_name: str = None,
+        integration_type: str = None,
+        namespace: str = None,
+        need_upgrade: bool = None,
+        param: str = None,
+        pod_name: str = None,
+        show_describe: bool = None,
+        show_log: bool = None,
+        status: str = None,
+        target: str = None,
+        version: str = None,
+    ):
+        self.can_delete = can_delete
+        self.can_editor = can_editor
+        self.cluster_id = cluster_id
+        self.container_name = container_name
+        self.describe = describe
+        self.exporter_type = exporter_type
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.integration_type = integration_type
+        self.namespace = namespace
+        self.need_upgrade = need_upgrade
+        self.param = param
+        self.pod_name = pod_name
+        self.show_describe = show_describe
+        self.show_log = show_log
+        self.status = status
+        self.target = target
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_delete is not None:
+            result['CanDelete'] = self.can_delete
+        if self.can_editor is not None:
+            result['CanEditor'] = self.can_editor
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.container_name is not None:
+            result['ContainerName'] = self.container_name
+        if self.describe is not None:
+            result['Describe'] = self.describe
+        if self.exporter_type is not None:
+            result['ExporterType'] = self.exporter_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.need_upgrade is not None:
+            result['NeedUpgrade'] = self.need_upgrade
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.pod_name is not None:
+            result['PodName'] = self.pod_name
+        if self.show_describe is not None:
+            result['ShowDescribe'] = self.show_describe
+        if self.show_log is not None:
+            result['ShowLog'] = self.show_log
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanDelete') is not None:
+            self.can_delete = m.get('CanDelete')
+        if m.get('CanEditor') is not None:
+            self.can_editor = m.get('CanEditor')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ContainerName') is not None:
+            self.container_name = m.get('ContainerName')
+        if m.get('Describe') is not None:
+            self.describe = m.get('Describe')
+        if m.get('ExporterType') is not None:
+            self.exporter_type = m.get('ExporterType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NeedUpgrade') is not None:
+            self.need_upgrade = m.get('NeedUpgrade')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('PodName') is not None:
+            self.pod_name = m.get('PodName')
+        if m.get('ShowDescribe') is not None:
+            self.show_describe = m.get('ShowDescribe')
+        if m.get('ShowLog') is not None:
+            self.show_log = m.get('ShowLog')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListPrometheusIntegrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[ListPrometheusIntegrationResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListPrometheusIntegrationResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPrometheusIntegrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrometheusIntegrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrometheusIntegrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrometheusRemoteWritesRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The ID of the region.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListPrometheusRemoteWritesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        remote_write_name: str = None,
+        remote_write_yaml: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The name of the Remote Write configuration item.
+        self.remote_write_name = remote_write_name
+        # The details of the Remote Write configuration item. The value is in the YAML format.
+        self.remote_write_yaml = remote_write_yaml
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.remote_write_name is not None:
+            result['RemoteWriteName'] = self.remote_write_name
+        if self.remote_write_yaml is not None:
+            result['RemoteWriteYaml'] = self.remote_write_yaml
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RemoteWriteName') is not None:
+            self.remote_write_name = m.get('RemoteWriteName')
+        if m.get('RemoteWriteYaml') is not None:
+            self.remote_write_yaml = m.get('RemoteWriteYaml')
+        return self
+
+
+class ListPrometheusRemoteWritesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[ListPrometheusRemoteWritesResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code that is returned. The HTTP 200 status code indicates that the call is successful. If a different HTTP status code is returned, the call fails.
+        self.code = code
+        # The list of Remote Write configuration items.
+        self.data = data
+        # The message that is returned.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values: true and false.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListPrometheusRemoteWritesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListPrometheusRemoteWritesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrometheusRemoteWritesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrometheusRemoteWritesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRetcodeAppsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListRetcodeAppsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[ListRetcodeAppsRequestTags] = None,
+    ):
+        # The ID of the region.
+        self.region_id = region_id
+        # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
+        self.resource_group_id = resource_group_id
+        # The list of tags.
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListRetcodeAppsRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListRetcodeAppsResponseBodyRetcodeAppsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -22086,16 +28750,39 @@ class ListRetcodeAppsResponseBodyRetcodeApps(TeaModel):
         self,
         app_id: int = None,
         app_name: str = None,
+        nick_name: str = None,
         pid: str = None,
+        resource_group_id: str = None,
         retcode_app_type: str = None,
+        tags: List[ListRetcodeAppsResponseBodyRetcodeAppsTags] = None,
     ):
+        # The ID of the application. The parameter is an auto-increment parameter.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The alias of the application.
+        self.nick_name = nick_name
+        # The PID of the application.
         self.pid = pid
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The type of the application. Valid values:
+        # 
+        # *   `web`: web application
+        # *   `weex`: Weex mobile app
+        # *   `mini_dd`: DingTalk mini program
+        # *   `mini_alipay`: Alipay mini program
+        # *   `mini_wx`: WeChat mini program
+        # *   `mini_common`: mini program on other platforms
         self.retcode_app_type = retcode_app_type
+        # The list of tags.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22107,10 +28794,18 @@ class ListRetcodeAppsResponseBodyRetcodeApps(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
         if self.pid is not None:
             result['Pid'] = self.pid
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.retcode_app_type is not None:
             result['RetcodeAppType'] = self.retcode_app_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -22119,10 +28814,19 @@ class ListRetcodeAppsResponseBodyRetcodeApps(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetcodeAppType') is not None:
             self.retcode_app_type = m.get('RetcodeAppType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListRetcodeAppsResponseBodyRetcodeAppsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -22132,7 +28836,9 @@ class ListRetcodeAppsResponseBody(TeaModel):
         request_id: str = None,
         retcode_apps: List[ListRetcodeAppsResponseBodyRetcodeApps] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about monitored applications.
         self.retcode_apps = retcode_apps
 
     def validate(self):
@@ -22220,10 +28926,20 @@ class ListScenarioRequest(TeaModel):
         scenario: str = None,
         sign: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the business monitoring job.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
+        # The scenario where the business monitoring job is used. Valid values:
+        # 
+        # *   `USER-DEFINED`: user-defined. This is the default value.
+        # *   `EDAS-ROLLOUT`: application release in Enterprise Distributed Application Service (EDAS)
+        # *   `OAM-ROLLOUT`: application release based on Open Application Model (OAM)
+        # *   `MSC-CANARY`: canary release based on Microservice Engine (MSE)
         self.scenario = scenario
+        # The code of the business monitoring job. Set this parameter when you know the code of the business monitoring job you want to query.
         self.sign = sign
 
     def validate(self):
@@ -22275,14 +28991,23 @@ class ListScenarioResponseBodyArmsScenarios(TeaModel):
         update_time: str = None,
         user_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The time when the business monitoring job was created.
         self.create_time = create_time
+        # The extended information. The value is a JSON string.
         self.extensions = extensions
+        # The ID of the business monitoring job.
         self.id = id
+        # The name of the business monitoring job.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
+        # The code of the business monitoring job.
         self.sign = sign
+        # The time when the business monitoring job was updated.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -22343,7 +29068,9 @@ class ListScenarioResponseBody(TeaModel):
         arms_scenarios: List[ListScenarioResponseBodyArmsScenarios] = None,
         request_id: str = None,
     ):
+        # The detailed information of the business monitoring job.
         self.arms_scenarios = arms_scenarios
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22431,10 +29158,17 @@ class ListSilencePoliciesRequest(TeaModel):
         region_id: str = None,
         size: int = None,
     ):
+        # Specifies whether to query the details of a silence policy. Valid values:
+        # 
+        # *   `true`: Details of the silence policy are queried.
+        # *   `false`: Details of the silence policy are not queried.
         self.is_detail = is_detail
+        # The name of the silence policy.
         self.name = name
+        # The number of pages to return.
         self.page = page
         self.region_id = region_id
+        # The number of entries to return on each page.
         self.size = size
 
     def validate(self):
@@ -22480,8 +29214,18 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchin
         operator: str = None,
         value: str = None,
     ):
+        # The key of the matching condition.
         self.key = key
+        # The logical operator of the matching condition. Valid values:
+        # 
+        # *   `eq`: equal to.
+        # *   `neq`: not equal to.
+        # *   `in`: contains.
+        # *   `nin`: does not contain.
+        # *   `re`: regular expression match.
+        # *   `nre`: regular expression mismatch.
         self.operator = operator
+        # The value of the matching condition.
         self.value = value
 
     def validate(self):
@@ -22517,6 +29261,7 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules(TeaMod
         self,
         matching_conditions: List[ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions] = None,
     ):
+        # An array of matching condition objects.
         self.matching_conditions = matching_conditions
 
     def validate(self):
@@ -22554,8 +29299,11 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePolicies(TeaModel):
         matching_rules: List[ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules] = None,
         name: str = None,
     ):
+        # The ID of the silence policy.
         self.id = id
+        # An array of matching rule objects.
         self.matching_rules = matching_rules
+        # The name of the silence policy.
         self.name = name
 
     def validate(self):
@@ -22602,9 +29350,13 @@ class ListSilencePoliciesResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The number of pages that were returned.
         self.page = page
+        # An array of silence policy objects.
         self.silence_policies = silence_policies
+        # The number of entries that were returned on each page.
         self.size = size
+        # The number of silence policies that were returned.
         self.total = total
 
     def validate(self):
@@ -22653,7 +29405,9 @@ class ListSilencePoliciesResponseBody(TeaModel):
         page_bean: ListSilencePoliciesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # An array of returned objects.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -22726,12 +29480,16 @@ class ListSilencePoliciesResponse(TeaModel):
         return self
 
 
-class ListTraceAppsRequest(TeaModel):
+class ListTraceAppsRequestTags(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.region_id = region_id
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
 
     def validate(self):
         pass
@@ -22742,14 +29500,103 @@ class ListTraceAppsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTraceAppsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[ListTraceAppsRequestTags] = None,
+    ):
+        # The ID of the region.
+        self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The list of tags.
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTraceAppsRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class ListTraceAppsResponseBodyTraceAppsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -22762,24 +29609,52 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
         labels: List[str] = None,
         pid: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         show: bool = None,
+        source: str = None,
+        tags: List[ListTraceAppsResponseBodyTraceAppsTags] = None,
         type: str = None,
         update_time: int = None,
         user_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The time when the monitoring task was created. The value is a timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # The tags of the application.
         self.labels = labels
+        # The PID of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the application was displayed in the Application Real-Time Monitoring Service (ARMS) console. Valid values:
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.show = show
+        # The application source.
+        self.source = source
+        # The list of tags.
+        self.tags = tags
+        # The type of the monitoring task. Valid values:
+        # 
+        # *   `TRACE`: Application Monitoring
+        # *   `RETCODE`: Browser Monitoring
         self.type = type
+        # The time when the monitoring task was updated. The value is a timestamp. Unit: milliseconds.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22799,8 +29674,16 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.show is not None:
             result['Show'] = self.show
+        if self.source is not None:
+            result['Source'] = self.source
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.update_time is not None:
@@ -22823,8 +29706,17 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Show') is not None:
             self.show = m.get('Show')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTraceAppsResponseBodyTraceAppsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UpdateTime') is not None:
@@ -22843,10 +29735,23 @@ class ListTraceAppsResponseBody(TeaModel):
         success: bool = None,
         trace_apps: List[ListTraceAppsResponseBodyTraceApps] = None,
     ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   `2XX: The request is successful.`
+        # *   `3XX: A redirection message is returned.`
+        # *   `4XX: The request is invalid.`
+        # *   `5XX: A server error occurs.`
         self.code = code
+        # The error message returned if the request parameters are invalid.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.success = success
+        # The list of application monitoring tasks.
         self.trace_apps = trace_apps
 
     def validate(self):
@@ -22944,8 +29849,11 @@ class ManageGetRecordingRuleRequest(TeaModel):
         query_user_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the user.
         self.query_user_id = query_user_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -22982,7 +29890,9 @@ class ManageGetRecordingRuleResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -23061,9 +29971,13 @@ class ManageRecordingRuleRequest(TeaModel):
         region_id: str = None,
         rule_yaml: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the user.
         self.query_user_id = query_user_id
+        # The ID of the region.
         self.region_id = region_id
+        # The recording rule.
         self.rule_yaml = rule_yaml
 
     def validate(self):
@@ -23104,7 +30018,9 @@ class ManageRecordingRuleResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The result of the operation.
         self.data = data
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -23180,6 +30096,7 @@ class OpenArmsDefaultSLRRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -23208,7 +30125,12 @@ class OpenArmsDefaultSLRResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`: The request was successful.
+        # *   `false`: The request failed.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23285,7 +30207,15 @@ class OpenArmsServiceSecondVersionRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
+        # The type of the service. Valid values:
+        # 
+        # *   `arms`: ARMS
+        # *   `arms_app`: Application Monitoring
+        # *   `arms_web`: Browser Monitoring
+        # *   `prometheus_monitor`: Prometheus Service
+        # *   `synthetic_post`: Synthetic Monitoring
         self.type = type
 
     def validate(self):
@@ -23318,7 +30248,9 @@ class OpenArmsServiceSecondVersionResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The service ID returned if the service is activated.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23398,10 +30330,15 @@ class OpenVClusterRequest(TeaModel):
         recreate_switch: bool = None,
         region_id: str = None,
     ):
+        # The type of the cluster. For cloud services, set this parameter to `cloud-product-prometheus`.
         self.cluster_type = cluster_type
+        # The length of the cluster ID. Default value: 10.
         self.length = length
+        # The name of the cloud service. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. Valid values: influxdb, mongodb, and DLA.
         self.product = product
+        # Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
         self.recreate_switch = recreate_switch
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -23446,7 +30383,9 @@ class OpenVClusterResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The response parameters in the JSON format.
         self.data = data
+        # The ID of the request. You can query logs and troubleshoot issues based on the ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23522,6 +30461,7 @@ class OpenXtraceDefaultSLRRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -23550,7 +30490,12 @@ class OpenXtraceDefaultSLRResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`: The request was successful.
+        # *   `false`: The request failed.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23627,7 +30572,9 @@ class QueryMetricByPageRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the filter condition. You must set the key to `pid` or `regionId`.
         self.key = key
+        # The value of the filter condition. You must set the value of the `pid` or `regionId` condition. For information about how to obtain the `pid`, see the "Obtain the PID of an application" section.
         self.value = value
 
     def validate(self):
@@ -23670,17 +30617,34 @@ class QueryMetricByPageRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The number of the page to return. Default value: `1`.
         self.current_page = current_page
+        # Custom filter conditions.
         self.custom_filters = custom_filters
+        # The dimensions of the metric that you want to query.
         self.dimensions = dimensions
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The filter conditions.
         self.filters = filters
+        # The time interval at which data entries are aggregated. Unit: milliseconds. Minimum value: 60000.
         self.interval_in_sec = interval_in_sec
+        # The measures of the metric that you want to query.
         self.measures = measures
+        # The metric that you want to query. You cannot specify a custom metric. For more information, see the "Application monitoring metrics that can be queried" section.
         self.metric = metric
+        # The order in which measures are sorted. Valid values:
+        # 
+        # *   `ASC`: ascending order
+        # *   `DESC`: descending order
+        # 
+        # > If you do not specify the parameter, data is not sorted.
         self.order = order
+        # The dimension from which metrics are sorted. You can set this parameter to a supported dimension.
         self.order_by = order_by
+        # The number of entries to return on each page. This parameter is no longer supported. The number of entries to return on each page.
         self.page_size = page_size
+        # The start of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -23763,9 +30727,13 @@ class QueryMetricByPageResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The data entries returned.
         self.items = items
+        # The page number of the returned page.
         self.page = page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -23809,10 +30777,23 @@ class QueryMetricByPageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   2XX: The request was successful.
+        # *   3XX: A redirection message was returned.
+        # *   4XX: The request was invalid.
+        # *   5XX: A server error occurred.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The error message returned if the call fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.success = success
 
     def validate(self):
@@ -23903,7 +30884,9 @@ class QueryPromInstallStatusRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -23935,6 +30918,9 @@ class QueryPromInstallStatusResponseBodyData(TeaModel):
         self,
         is_controller_installed: bool = None,
     ):
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # true: The call was successful. false: The call failed.
         self.is_controller_installed = is_controller_installed
 
     def validate(self):
@@ -23963,7 +30949,9 @@ class QueryPromInstallStatusResponseBody(TeaModel):
         data: QueryPromInstallStatusResponseBodyData = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24048,13 +31036,21 @@ class QueryReleaseMetricRequest(TeaModel):
         release_start_time: int = None,
         service: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
+        # The time when the change order was created.
         self.create_time = create_time
+        # The type of the metric that you want to query.
         self.metric_type = metric_type
+        # The ID of the Enterprise Distributed Application Service (EDAS) or Kubernetes application.
         self.pid = pid
+        # This parameter is not in use.
         self.proxy_user_id = proxy_user_id
+        # The end time of the version release.
         self.release_end_time = release_end_time
+        # The start time of the version release.
         self.release_start_time = release_start_time
+        # The service that you want to query.
         self.service = service
 
     def validate(self):
@@ -24111,7 +31107,9 @@ class QueryReleaseMetricResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned metric data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24190,9 +31188,13 @@ class RemoveAliClusterIdsFromPrometheusGlobalViewRequest(TeaModel):
         group_name: str = None,
         region_id: str = None,
     ):
+        # The IDs of clusters. Separate multiple IDs with commas (,).
         self.cluster_ids = cluster_ids
+        # The ID of the aggregation instance.
         self.global_view_cluster_id = global_view_cluster_id
+        # The name of the aggregation instance.
         self.group_name = group_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -24234,8 +31236,14 @@ class RemoveAliClusterIdsFromPrometheusGlobalViewResponseBodyData(TeaModel):
         msg: str = None,
         success: bool = None,
     ):
+        # The Info-level information.
         self.info = info
+        # The additional information.
         self.msg = msg
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.success = success
 
     def validate(self):
@@ -24272,7 +31280,9 @@ class RemoveAliClusterIdsFromPrometheusGlobalViewResponseBody(TeaModel):
         data: RemoveAliClusterIdsFromPrometheusGlobalViewResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -24353,9 +31363,13 @@ class RemoveSourcesFromPrometheusGlobalViewRequest(TeaModel):
         region_id: str = None,
         source_names: str = None,
     ):
+        # The ID of the global aggregation instance.
         self.global_view_cluster_id = global_view_cluster_id
+        # The name of the global aggregation instance.
         self.group_name = group_name
+        # The ID of the region.
         self.region_id = region_id
+        # The list of custom data sources. You can specify multiple data sources and separate them with commas (,).
         self.source_names = source_names
 
     def validate(self):
@@ -24397,8 +31411,14 @@ class RemoveSourcesFromPrometheusGlobalViewResponseBodyData(TeaModel):
         msg: str = None,
         success: bool = None,
     ):
+        # The Info-level information.
         self.info = info
+        # The additional information.
         self.msg = msg
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.success = success
 
     def validate(self):
@@ -24435,7 +31455,9 @@ class RemoveSourcesFromPrometheusGlobalViewResponseBody(TeaModel):
         data: RemoveSourcesFromPrometheusGlobalViewResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -24514,7 +31536,29 @@ class SaveTraceAppConfigRequestSettings(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The value of the settings that you want to modify. For more information about the supported settings, see the following sections.
+        # 
+        # *   Trace sampling settings
+        # *   Main switch settings
+        # *   Threshold settings
+        # *   Advanced Settings
+        # *   Thread settings
+        # *   Memory snapshot settings
+        # *   URL convergence settings
+        # *   Business log association settings
+        # *   Business monitoring settings
         self.key = key
+        # The value of the settings that you want to modify. For more information about the supported settings, see the following sections.
+        # 
+        # *   Trace sampling settings
+        # *   Main switch settings
+        # *   Threshold settings
+        # *   Advanced Settings
+        # *   Thread settings
+        # *   Memory snapshot settings
+        # *   URL convergence settings
+        # *   Business log association settings
+        # *   Business monitoring settings
         self.value = value
 
     def validate(self):
@@ -24547,7 +31591,9 @@ class SaveTraceAppConfigRequest(TeaModel):
         pid: str = None,
         settings: List[SaveTraceAppConfigRequestSettings] = None,
     ):
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
+        # The settings of Application Monitoring.
         self.settings = settings
 
     def validate(self):
@@ -24588,7 +31634,9 @@ class SaveTraceAppConfigResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the call was successful.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24670,12 +31718,19 @@ class SearchAlertContactRequest(TeaModel):
         phone: str = None,
         region_id: str = None,
     ):
+        # The ID of the alert contact.
         self.contact_ids = contact_ids
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The number of the page to return.
         self.current_page = current_page
+        # The email address of the alert contact.
         self.email = email
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The mobile number of the alert contact.
         self.phone = phone
+        # The ID of the region. Set the value to `cn-hangzhou`.
         self.region_id = region_id
 
     def validate(self):
@@ -24732,21 +31787,38 @@ class SearchAlertContactResponseBodyPageBeanContacts(TeaModel):
         ding_robot: str = None,
         email: str = None,
         phone: str = None,
+        resource_group_id: str = None,
         system_noc: bool = None,
         update_time: int = None,
         user_id: str = None,
         webhook: str = None,
     ):
+        # The ID of the alert contact.
         self.contact_id = contact_id
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The contact group to which the contact belongs. If your contacts are added to multiple contact groups, the contact groups are separated by vertical bars (|).
         self.content = content
+        # The timestamp generated when the alert contact was created.
         self.create_time = create_time
+        # The webhook URL of the DingTalk chatbot.
         self.ding_robot = ding_robot
+        # The email address of the alert contact.
         self.email = email
+        # The mobile number of the alert contact.
         self.phone = phone
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the alert contact receives system notifications. Valid values:
+        # 
+        # *   `true`: The alert contact receives system notifications.
+        # *   `false`: The alert contact does not receive system notifications.
         self.system_noc = system_noc
+        # The timestamp generated when the alert contact was updated.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
+        # The information about the webhook.
         self.webhook = webhook
 
     def validate(self):
@@ -24772,6 +31844,8 @@ class SearchAlertContactResponseBodyPageBeanContacts(TeaModel):
             result['Email'] = self.email
         if self.phone is not None:
             result['Phone'] = self.phone
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.system_noc is not None:
             result['SystemNoc'] = self.system_noc
         if self.update_time is not None:
@@ -24798,6 +31872,8 @@ class SearchAlertContactResponseBodyPageBeanContacts(TeaModel):
             self.email = m.get('Email')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SystemNoc') is not None:
             self.system_noc = m.get('SystemNoc')
         if m.get('UpdateTime') is not None:
@@ -24817,9 +31893,13 @@ class SearchAlertContactResponseBodyPageBean(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The information about the alert contacts.
         self.contacts = contacts
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -24868,7 +31948,9 @@ class SearchAlertContactResponseBody(TeaModel):
         page_bean: SearchAlertContactResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -24951,11 +32033,17 @@ class SearchAlertContactGroupRequest(TeaModel):
         is_detail: bool = None,
         region_id: str = None,
     ):
+        # The ID of the alert contact group. You can query multiple alert contact groups at a time. Separate multiple group IDs with commas (,).
         self.contact_group_ids = contact_group_ids
+        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
+        # The ID of the alert contact. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](~~130703~~).
         self.contact_id = contact_id
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # Specifies whether to return all alert contacts in the queried alert contact group. By default, not all alert contacts are returned.
         self.is_detail = is_detail
+        # The ID of the region. Default value: `cn-hangzhou`.
         self.region_id = region_id
 
     def validate(self):
@@ -25011,14 +32099,26 @@ class SearchAlertContactGroupResponseBodyContactGroupsContacts(TeaModel):
         update_time: int = None,
         user_id: str = None,
     ):
+        # The ID of the alert contact.
         self.contact_id = contact_id
+        # The name of the alert contact.
         self.contact_name = contact_name
+        # The time when the alert contact group list was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The webhook URL of the DingTalk chatbot.
         self.ding_robot = ding_robot
+        # The email address of the alert contact.
         self.email = email
+        # The mobile number of the alert contact.
         self.phone = phone
+        # Indicates whether the alert contact receives system notifications. Valid values:
+        # 
+        # *   true: receives system notifications.
+        # *   false: does not receive system notifications.
         self.system_noc = system_noc
+        # The time when the alert contact group was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -25083,11 +32183,17 @@ class SearchAlertContactGroupResponseBodyContactGroups(TeaModel):
         update_time: int = None,
         user_id: str = None,
     ):
+        # The ID of the alert contact group.
         self.contact_group_id = contact_group_id
+        # The name of the alert contact group.
         self.contact_group_name = contact_group_name
+        # The alert contact list.
         self.contacts = contacts
+        # The time when the alert contact group list was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The time when the alert contact group was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -25144,7 +32250,9 @@ class SearchAlertContactGroupResponseBody(TeaModel):
         contact_groups: List[SearchAlertContactGroupResponseBodyContactGroups] = None,
         request_id: str = None,
     ):
+        # The information about the alert contact groups.
         self.contact_groups = contact_groups
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25234,12 +32342,28 @@ class SearchAlertHistoriesRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](~~175825~~).
         self.alert_id = alert_id
+        # The type of the alert rule. Valid values:
+        # 
+        # *   `1`: custom alert rules to monitor drill-down data sets
+        # *   `3`: custom alert rules to monitor tiled data sets
+        # *   `4`: alert rules to monitor the frontend, including the default frontend alert rules
+        # *   `5`: alert rules to monitor applications, including the default application alert rules
+        # *   `6`: the default frontend alert rules
+        # *   `7`: the default application alert rules
+        # *   `8`: Tracing Analysis alert rules
+        # *   `101`: Prometheus alert rules
         self.alert_type = alert_type
+        # The number of the page to return. Default value: `1`.
         self.current_page = current_page
+        # The end of the time range to query. Specify a UNIX timestamp of the LONG data type, in milliseconds. The default value is the current time.
         self.end_time = end_time
+        # The number of entries to return on each page. Default value: `10`.
         self.page_size = page_size
+        # The ID of the region. Default value: `cn-hangzhou`.
         self.region_id = region_id
+        # The beginning of the time range to query. Specify a UNIX timestamp of the LONG data type, in milliseconds. The default value is 10 minutes before the current time.
         self.start_time = start_time
 
     def validate(self):
@@ -25301,16 +32425,36 @@ class SearchAlertHistoriesResponseBodyPageBeanAlarmHistories(TeaModel):
         target: str = None,
         user_id: str = None,
     ):
+        # The content of the alert notification.
         self.alarm_content = alarm_content
+        # The response code returned after the alert notification was sent.
         self.alarm_response_code = alarm_response_code
+        # The webhook URL used for the alert contact, such as that of a DingTalk chatbot.
         self.alarm_sources = alarm_sources
+        # The time when the alert notification was sent.
         self.alarm_time = alarm_time
+        # The type of the alert rule. Default value: 4. Valid values:
+        # 
+        # *   `1`: custom alert rules to monitor drill-down data sets
+        # *   `3`: custom alert rules to monitor tiled data sets
+        # *   `4`: alert rules to monitor the frontend, including the default frontend alert rules
+        # *   `5`: alert rules to monitor applications, including the default application alert rules
+        # *   `6`: the default frontend alert rules
+        # *   `7`: the default application alert rules
+        # *   `8`: Tracing Analysis alert rules
+        # *   `101`: Prometheus alert rules
         self.alarm_type = alarm_type
+        # The email address of the alert contact.
         self.emails = emails
+        # The ID of the alert notification.
         self.id = id
+        # The mobile number of the alert contact.
         self.phones = phones
+        # An internal parameter.
         self.strategy_id = strategy_id
+        # An internal parameter.
         self.target = target
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -25381,9 +32525,13 @@ class SearchAlertHistoriesResponseBodyPageBean(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The information about alert records.
         self.alarm_histories = alarm_histories
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -25432,7 +32580,9 @@ class SearchAlertHistoriesResponseBody(TeaModel):
         page_bean: SearchAlertHistoriesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25508,22 +32658,46 @@ class SearchAlertHistoriesResponse(TeaModel):
 class SearchAlertRulesRequest(TeaModel):
     def __init__(
         self,
+        alert_rule_id: str = None,
         app_type: str = None,
         current_page: int = None,
         page_size: int = None,
         pid: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         system_region_id: str = None,
         title: str = None,
         type: str = None,
     ):
+        self.alert_rule_id = alert_rule_id
+        # The type of the application that is associated with the alert rule. Valid values:
+        # 
+        # *   `TRACE`: application
+        # *   `RETCODE`: browser
         self.app_type = app_type
+        # The page number of the page to return. Default value: `1`.
         self.current_page = current_page
+        # The number of entries to return per page. Default value: `10`.
         self.page_size = page_size
+        # The process identifier (PID) of the application that is associated with the alert rule. For more information about how to obtain the PID, see [Obtain the PID of an application](https://help.aliyun.com/document_detail/186100.html?spm=a2c4g.11186623.6.792.1b50654cqcDPyk#title-imy-7gj-qhr).
         self.pid = pid
+        # The region ID of the alert data. For more information about the mappings between **RegionId** and **SystemRegionId**, see the detailed description below the table.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # The region ID of the alert rule. For more information about the mappings between **RegionId** and **SystemRegionId**, see the detailed description below the table.
         self.system_region_id = system_region_id
+        # The alert rule name.
         self.title = title
+        # The alert rule type. Valid values:
+        # 
+        # *   `1`: custom alert rules that are used to monitor drill-down data sets
+        # *   `3`: custom alert rules that are used to monitor tiled data sets
+        # *   `4`: alert rules that are used to monitor the browser, including the default frontend alert rules
+        # *   `5`: alert rules that are used to monitor applications, including the default application alert rules
+        # *   `6`: the default browser alert rules
+        # *   `7`: the default application alert rules
+        # *   `8`: Tracing Analysis alert rules
+        # *   `101`: Prometheus alert rules
         self.type = type
 
     def validate(self):
@@ -25535,6 +32709,8 @@ class SearchAlertRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.alert_rule_id is not None:
+            result['AlertRuleId'] = self.alert_rule_id
         if self.app_type is not None:
             result['AppType'] = self.app_type
         if self.current_page is not None:
@@ -25545,6 +32721,8 @@ class SearchAlertRulesRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.system_region_id is not None:
             result['SystemRegionId'] = self.system_region_id
         if self.title is not None:
@@ -25555,6 +32733,8 @@ class SearchAlertRulesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlertRuleId') is not None:
+            self.alert_rule_id = m.get('AlertRuleId')
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
         if m.get('CurrentPage') is not None:
@@ -25565,6 +32745,8 @@ class SearchAlertRulesRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SystemRegionId') is not None:
             self.system_region_id = m.get('SystemRegionId')
         if m.get('Title') is not None:
@@ -25582,9 +32764,13 @@ class SearchAlertRulesResponseBodyPageBeanAlertRulesAlarmContext(TeaModel):
         content: str = None,
         sub_title: str = None,
     ):
+        # The sub-title of the alert notification content.
         self.alarm_content_sub_title = alarm_content_sub_title
+        # The template of the alert notification.
         self.alarm_content_template = alarm_content_template
+        # The content of the alert notification.
         self.content = content
+        # The sub-title of the alert notification.
         self.sub_title = sub_title
 
     def validate(self):
@@ -25629,11 +32815,31 @@ class SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules(TeaModel):
         operator: str = None,
         value: float = None,
     ):
+        # The aggregation logic of the metric data of the alert rule. Valid values:
+        # 
+        # *   `AVG`: calculates the average value for each minute
+        # *   `SUM`: calculates the total value for each minute
+        # *   `MAX`: calculates the maximum value for each minute
+        # *   `MIN`: calculates the minimum value for each minute
         self.aggregates = aggregates
+        # The displayed description of the alert metric.
         self.alias = alias
+        # The metric based on which alerts are triggered. For more information, see the "[Alert metrics](https://help.aliyun.com/document_detail/175825.html#h2-url-4)" section in this topic.
         self.measure = measure
+        # The time range when data is requested. Unit: minutes. For example, a value of 5 indicates that the alert rule applies to the data in the last 5 minutes.
         self.nvalue = nvalue
+        # The operation logic of the condition. Valid values:
+        # 
+        # *   CURRENT_GTE: greater than or equal to
+        # *   CURRENT_LTE: less than or equal to
+        # *   PREVIOUS_UP: the increase percentage compared with the last period
+        # *   PREVIOUS_DOWN: the decrease percentage compared with the last period
+        # *   HOH_UP: the increase percentage compared with the last hour
+        # *   HOH_DOWN: the decrease percentage compared with the last hour
+        # *   DOD_UP: the increase percentage compared with the last day
+        # *   DOD_DOWN: the decrease percentage compared with the last day
         self.operator = operator
+        # The threshold of the condition.
         self.value = value
 
     def validate(self):
@@ -25682,7 +32888,9 @@ class SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRule(TeaModel):
         operator: str = None,
         rules: List[SearchAlertRulesResponseBodyPageBeanAlertRulesAlertRuleRules] = None,
     ):
+        # The logical operator between conditions. Valid values: `&`: AND. `|`: OR.
         self.operator = operator
+        # The condition of the alert rule.
         self.rules = rules
 
     def validate(self):
@@ -25724,8 +32932,20 @@ class SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParamDimensions(TeaMod
         type: str = None,
         value: str = None,
     ):
+        # The key of the dimension. Valid values:
+        # 
+        # *   `rpc`: the name of the API
+        # *   `rpcType`: the type of the API call, such as HTTP or DUBBO
+        # *   `endpoint`: the name of the database
+        # *   `rootIp`: the IP address of the host
         self.key = key
+        # The type of the dimension. Valid values:
+        # 
+        # *   `STATIC`: checks only the value of this dimension. In this case, you must set the **dimensions.value** parameter.
+        # *   `ALL`: checks the values of all dimensions. The metrics of all API calls are checked. If an API call triggers an alert, the name of the API is displayed in the alert notification. In this case, you do not need to set the **dimensions.value** parameter.
+        # *   `DISABLE`: aggregates the values of all dimensions. In this case, you do not need to set the **dimensions.value** parameter.
         self.type = type
+        # The value of the dimension.
         self.value = value
 
     def validate(self):
@@ -25765,10 +32985,22 @@ class SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam(TeaModel):
         pid: str = None,
         type: str = None,
     ):
+        # The ID of the application group that is associated with the alert rule. This parameter is applicable to Enterprise Distributed Application Service (EDAS) applications.
         self.app_group_id = app_group_id
+        # The auto-increment ID of the ARMS application. You can ignore this ID.
         self.app_id = app_id
+        # The dimensions in the condition.
         self.dimensions = dimensions
+        # The PID of the application that is associated with the alert rule.
         self.pid = pid
+        # The type of the metric. Valid values:
+        # 
+        # *   `txn`: the number of API calls during application monitoring
+        # *   `txn_type`: the types of API calls during application monitoring
+        # *   `db`: database metrics
+        # *   `jvm`: Java virtual machine (JVM) metrics
+        # *   `host`: host metrics
+        # *   `exception`: API call errors
         self.type = type
 
     def validate(self):
@@ -25823,9 +33055,13 @@ class SearchAlertRulesResponseBodyPageBeanAlertRulesNotice(TeaModel):
         notice_start_time: int = None,
         start_time: int = None,
     ):
+        # The end of the time range when the alert rule takes effect within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
         self.end_time = end_time
+        # The end of the time range when alert notifications are sent based on the alert rule within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
         self.notice_end_time = notice_end_time
+        # The beginning of the time range when alert notifications are sent based on the alert rule within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
         self.notice_start_time = notice_start_time
+        # The beginning of the time range when the alert rule takes effect within 24 hours per day. This value is a UNIX timestamp. The year, month, and day that are indicated by the timestamp are not displayed in this value. Only the hour, minute, and second are displayed.
         self.start_time = start_time
 
     def validate(self):
@@ -25879,6 +33115,7 @@ class SearchAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         metric_param: SearchAlertRulesResponseBodyPageBeanAlertRulesMetricParam = None,
         notice: SearchAlertRulesResponseBodyPageBeanAlertRulesNotice = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
         task_id: int = None,
         task_status: str = None,
@@ -25886,27 +33123,72 @@ class SearchAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         update_time: int = None,
         user_id: str = None,
     ):
+        # The format of the alert notification.
         self.alarm_context = alarm_context
+        # The severity of the alerts. Only the value `WARN` is supported.
         self.alert_level = alert_level
+        # The conditions of the alert rule. Multiple conditions are separated by the AND or OR logical operators.
         self.alert_rule = alert_rule
+        # The name of the alert rule.
         self.alert_title = alert_title
+        # The type of the alert rule. Valid values:
+        # 
+        # *   `1`: custom alert rules that are used to monitor drill-down data sets
+        # *   `3`: custom alert rules that are used to monitor tiled data sets
+        # *   `4`: alert rules that are used to monitor the browser, including the default frontend alert rules
+        # *   `5`: alert rules that are used to monitor applications, including the default application alert rules
+        # *   `6`: the default browser alert rules
+        # *   `7`: the default application alert rules
+        # *   `8`: Tracing Analysis alert rules
+        # *   `101`: Prometheus alert rules
         self.alert_type = alert_type
+        # The version of the alert rule. Default value: `1`.
         self.alert_version = alert_version
         self.alert_ways = alert_ways
+        # The configuration items of the alert rule. The value is a JSON string.
+        # 
+        # The configuration item **continuous** indicates whether alert notifications are continuously sent. Valid values:
+        # 
+        # *   `true`: Alert notifications are sent every minute.
+        # *   `false`: The alert silence feature is enabled.
+        # 
+        # The configuration item **dataRevision** indicates the data revision policy that is used if no data is obtained or the data is null. Default value: 2. Valid values:
+        # 
+        # *   `0`: overwrites the data by using the value 0
+        # *   `1`: overwrites the data by using the value 1
+        # *   `2`: overwrites the data by using the value null. This value indicates that no alert is triggered if no data exists
         self.config = config
+        # The ID of the contact group. Multiple IDs are separated by commas (,).
         self.contact_group_id_list = contact_group_id_list
+        # The IDs of the alert contact groups. The value is a JSON array.
         self.contact_group_ids = contact_group_ids
+        # The timestamp that shows when the alert rule was created.
         self.create_time = create_time
+        # Indicates whether the alert is sent through the alert center. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.host_by_alert_manager = host_by_alert_manager
+        # The ID of the alert rule.
         self.id = id
+        # The information about the application that is associated with the alert rule.
         self.metric_param = metric_param
+        # The time ranges when the alert rule takes effect and when alert notifications are sent.
         self.notice = notice
+        # The ID of the region to which the alert rule belongs.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # The status of the alert rule. `RUNNING`: The alert rule is enabled. `STOPPED`: The alert rule is disabled.
         self.status = status
+        # The ID of the Application Real-Time Monitoring Service (ARMS) task that is associated with the alert rule.
         self.task_id = task_id
+        # The status of the task. This parameter is hidden from users.
         self.task_status = task_status
+        # The name of the alert.
         self.title = title
+        # The timestamp that shows when the alert rule was updated.
         self.update_time = update_time
+        # The ID of the user to which the alert rule belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -25957,6 +33239,8 @@ class SearchAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
             result['Notice'] = self.notice.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.task_id is not None:
@@ -26009,6 +33293,8 @@ class SearchAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
             self.notice = temp_model.from_map(m['Notice'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TaskId') is not None:
@@ -26032,9 +33318,13 @@ class SearchAlertRulesResponseBodyPageBean(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The details of the alert rules.
         self.alert_rules = alert_rules
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -26083,7 +33373,9 @@ class SearchAlertRulesResponseBody(TeaModel):
         page_bean: SearchAlertRulesResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -26170,15 +33462,40 @@ class SearchEventsRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](~~175825~~).
         self.alert_id = alert_id
+        # The type of the alert rule. Valid values:
+        # 
+        # *   `1`: custom alert rules to monitor drill-down data sets
+        # *   `3`: custom alert rules to monitor tiled data sets
+        # *   `4`: alert rules to monitor the frontend, including the default frontend alert rules
+        # *   `5`: alert rules to monitor applications, including the default application alert rules
+        # *   `6`: the default frontend alert rules
+        # *   `7`: the default application alert rules
+        # *   `8`: Tracing Analysis alert rules
+        # *   `101`: Prometheus alert rules
         self.alert_type = alert_type
+        # The type of the application that is associated with the alert rule. Valid values:
+        # 
+        # *   `TRACE`: application monitoring
+        # *   `RETCODE`: frontend monitoring
         self.app_type = app_type
+        # The number of the page to return. Default value: `1`.
         self.current_page = current_page
+        # The end of the time range to query. Specify a UNIX timestamp of the LONG data type, in milliseconds. The default value is the current time.
         self.end_time = end_time
+        # Specifies whether the alert event is triggered. If you do not set this parameter, all alert events are queried. Valid values:
+        # 
+        # *   `1`: The event is triggered.
+        # *   `0`: The event is not triggered.
         self.is_trigger = is_trigger
+        # The number of entries to return on each page. Default value: `10`.
         self.page_size = page_size
+        # The process identifier (PID) of the application that is associated with the alert rule.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The beginning of the time range to query. Specify a UNIX timestamp of the LONG data type, in milliseconds. The default value is 10 minutes before the current time.
         self.start_time = start_time
 
     def validate(self):
@@ -26250,14 +33567,32 @@ class SearchEventsResponseBodyPageBeanEvent(TeaModel):
         links: List[str] = None,
         message: str = None,
     ):
+        # The ID of the alert rule that is associated with the event.
         self.alert_id = alert_id
+        # The name of the alert rule that is associated with the event.
         self.alert_name = alert_name
+        # The condition of the alert rule.
         self.alert_rule = alert_rule
+        # The type of the alert rule. This parameter is not returned. Valid values:
+        # 
+        # *   `1`: custom alert rules to monitor drill-down data sets
+        # *   `3`: custom alert rules to monitor tiled data sets
+        # *   `4`: alert rules to monitor the frontend, including the default frontend alert rules
+        # *   `5`: alert rules to monitor applications, including the default application alert rules
+        # *   `6`: the default frontend alert rules
+        # *   `7`: the default application alert rules
+        # *   `8`: Tracing Analysis alert rules
+        # *   `101`: Prometheus alert rules
         self.alert_type = alert_type
+        # The severity of the event.
         self.event_level = event_level
+        # The timestamp when the event occurred.
         self.event_time = event_time
+        # The ID of the event record.
         self.id = id
+        # The list of event URLs.
         self.links = links
+        # The event content. The parameter value is a JSON string. Each key indicates a dimension and each value indicates the alert content in the dimension.
         self.message = message
 
     def validate(self):
@@ -26320,9 +33655,13 @@ class SearchEventsResponseBodyPageBean(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The information about the alert events.
         self.event = event
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -26372,8 +33711,14 @@ class SearchEventsResponseBody(TeaModel):
         page_bean: SearchEventsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # Specifies whether the alert event is triggered. If you do not set this parameter, all alert events are queried. Valid values:
+        # 
+        # *   `1`: The event is triggered.
+        # *   `0`: The event is not triggered.
         self.is_trigger = is_trigger
+        # The struct returned.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -26450,21 +33795,74 @@ class SearchEventsResponse(TeaModel):
         return self
 
 
+class SearchRetcodeAppByPageRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class SearchRetcodeAppByPageRequest(TeaModel):
     def __init__(
         self,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        retcode_app_id: str = None,
         retcode_app_name: str = None,
+        tags: List[SearchRetcodeAppByPageRequestTags] = None,
     ):
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
+        self.resource_group_id = resource_group_id
+        # The ID of the application.
+        # 
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the browser address bar contains the pid of this application in the format of `pid=xxx`. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is `xxx%4074xxx`, you must replace **%40** with the at sign (@). The actual PID is `xxx@74xxx`.
+        self.retcode_app_id = retcode_app_id
+        # The name of the application that is monitored by Browser Monitoring.
         self.retcode_app_name = retcode_app_name
+        # The tags.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26478,8 +33876,16 @@ class SearchRetcodeAppByPageRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.retcode_app_id is not None:
+            result['RetcodeAppId'] = self.retcode_app_id
         if self.retcode_app_name is not None:
             result['RetcodeAppName'] = self.retcode_app_name
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -26490,8 +33896,52 @@ class SearchRetcodeAppByPageRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RetcodeAppId') is not None:
+            self.retcode_app_id = m.get('RetcodeAppId')
         if m.get('RetcodeAppName') is not None:
             self.retcode_app_name = m.get('RetcodeAppName')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = SearchRetcodeAppByPageRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class SearchRetcodeAppByPageResponseBodyPageBeanRetcodeAppsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -26501,25 +33951,56 @@ class SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps(TeaModel):
         app_id: int = None,
         app_name: str = None,
         create_time: int = None,
+        nick_name: str = None,
         pid: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         retcode_app_type: str = None,
+        tags: List[SearchRetcodeAppByPageResponseBodyPageBeanRetcodeAppsTags] = None,
         type: str = None,
         update_time: int = None,
         user_id: str = None,
     ):
+        # The ID of the application. The parameter is an auto-increment parameter.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The time when the task was created.
         self.create_time = create_time
+        # The alias of the application.
+        self.nick_name = nick_name
+        # The PID of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The type of the application. Valid values:
+        # 
+        # *   `web`: web application
+        # *   `weex`: Weex mobile app
+        # *   `mini_dd`: DingTalk mini program
+        # *   `mini_alipay`: Alipay mini program
+        # *   `mini_wx`: WeChat mini program
+        # *   `mini_common`: mini program on other platforms
         self.retcode_app_type = retcode_app_type
+        # The tags.
+        self.tags = tags
+        # The type of the monitoring task. Valid values:
+        # 
+        # *   `TRACE`: Application Monitoring
+        # *   `RETCODE`: Browser Monitoring
         self.type = type
+        # The time when the task was updated.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26533,12 +34014,20 @@ class SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps(TeaModel):
             result['AppName'] = self.app_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
         if self.pid is not None:
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.retcode_app_type is not None:
             result['RetcodeAppType'] = self.retcode_app_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.update_time is not None:
@@ -26555,12 +34044,21 @@ class SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetcodeAppType') is not None:
             self.retcode_app_type = m.get('RetcodeAppType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = SearchRetcodeAppByPageResponseBodyPageBeanRetcodeAppsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UpdateTime') is not None:
@@ -26578,9 +34076,13 @@ class SearchRetcodeAppByPageResponseBodyPageBean(TeaModel):
         retcode_apps: List[SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The Browser Monitoring tasks that are returned.
         self.retcode_apps = retcode_apps
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -26629,7 +34131,9 @@ class SearchRetcodeAppByPageResponseBody(TeaModel):
         page_bean: SearchRetcodeAppByPageResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The returned page information.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -26708,7 +34212,13 @@ class SearchTraceAppByNameRequest(TeaModel):
         region_id: str = None,
         trace_app_name: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
+        # The name of the application.
+        # 
+        # **\
+        # 
+        # **Description**If you do not specify this parameter, all application tasks in the specified region are queried.
         self.trace_app_name = trace_app_name
 
     def validate(self):
@@ -26735,6 +34245,41 @@ class SearchTraceAppByNameRequest(TeaModel):
         return self
 
 
+class SearchTraceAppByNameResponseBodyTraceAppsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class SearchTraceAppByNameResponseBodyTraceApps(TeaModel):
     def __init__(
         self,
@@ -26744,24 +34289,49 @@ class SearchTraceAppByNameResponseBodyTraceApps(TeaModel):
         labels: List[str] = None,
         pid: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         show: bool = None,
+        tags: List[SearchTraceAppByNameResponseBodyTraceAppsTags] = None,
         type: str = None,
         update_time: int = None,
         user_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The timestamp generated when the monitoring task was created.
         self.create_time = create_time
+        # The list of application aliases.
         self.labels = labels
+        # The PID of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the application is displayed in the Application Real-Time Monitoring Service (ARMS) console. Valid values:
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.show = show
+        # The list of tags.
+        self.tags = tags
+        # The type of the monitoring task. Valid values:
+        # 
+        # *   `TRACE`: Application Monitoring
+        # *   `RETCODE`: Browser Monitoring
         self.type = type
+        # The timestamp generated when the monitoring task was updated.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26781,8 +34351,14 @@ class SearchTraceAppByNameResponseBodyTraceApps(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.show is not None:
             result['Show'] = self.show
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.update_time is not None:
@@ -26805,8 +34381,15 @@ class SearchTraceAppByNameResponseBodyTraceApps(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Show') is not None:
             self.show = m.get('Show')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = SearchTraceAppByNameResponseBodyTraceAppsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UpdateTime') is not None:
@@ -26822,7 +34405,9 @@ class SearchTraceAppByNameResponseBody(TeaModel):
         request_id: str = None,
         trace_apps: List[SearchTraceAppByNameResponseBodyTraceApps] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the application monitoring task.
         self.trace_apps = trace_apps
 
     def validate(self):
@@ -26901,21 +34486,69 @@ class SearchTraceAppByNameResponse(TeaModel):
         return self
 
 
+class SearchTraceAppByPageRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag.
+        self.key = key
+        # The value of the tag.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class SearchTraceAppByPageRequest(TeaModel):
     def __init__(
         self,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[SearchTraceAppByPageRequestTags] = None,
         trace_app_name: str = None,
     ):
+        # The number of the page to return. Default value: `1`.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: `10`.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The tags.
+        self.tags = tags
+        # The name of the application.
         self.trace_app_name = trace_app_name
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26929,6 +34562,12 @@ class SearchTraceAppByPageRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.trace_app_name is not None:
             result['TraceAppName'] = self.trace_app_name
         return result
@@ -26941,8 +34580,50 @@ class SearchTraceAppByPageRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = SearchTraceAppByPageRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TraceAppName') is not None:
             self.trace_app_name = m.get('TraceAppName')
+        return self
+
+
+class SearchTraceAppByPageResponseBodyPageBeanTraceAppsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag.
+        self.key = key
+        # The value of the tag.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -26955,24 +34636,49 @@ class SearchTraceAppByPageResponseBodyPageBeanTraceApps(TeaModel):
         labels: List[str] = None,
         pid: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         show: bool = None,
+        tags: List[SearchTraceAppByPageResponseBodyPageBeanTraceAppsTags] = None,
         type: str = None,
         update_time: int = None,
         user_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The timestamp generated when the monitoring task was created.
         self.create_time = create_time
+        # The list of application aliases.
         self.labels = labels
+        # The process identifier (PID) of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the application is displayed in the Application Real-Time Monitoring Service (ARMS) console. Valid values:
+        # 
+        # *   `true`: The application is displayed in the ARMS console.
+        # *   `false`: The application is not displayed in the ARMS console.
         self.show = show
+        # The tags.
+        self.tags = tags
+        # The type of the monitoring task. Valid values:
+        # 
+        # *   `TRACE`: application monitoring
+        # *   `RETCODE`: browser monitoring
         self.type = type
+        # The timestamp generated when the monitoring task was updated.
         self.update_time = update_time
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26992,8 +34698,14 @@ class SearchTraceAppByPageResponseBodyPageBeanTraceApps(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.show is not None:
             result['Show'] = self.show
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.update_time is not None:
@@ -27016,8 +34728,15 @@ class SearchTraceAppByPageResponseBodyPageBeanTraceApps(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Show') is not None:
             self.show = m.get('Show')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = SearchTraceAppByPageResponseBodyPageBeanTraceAppsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UpdateTime') is not None:
@@ -27035,9 +34754,13 @@ class SearchTraceAppByPageResponseBodyPageBean(TeaModel):
         total_count: int = None,
         trace_apps: List[SearchTraceAppByPageResponseBodyPageBeanTraceApps] = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_count = total_count
+        # The information about the task that monitors the application.
         self.trace_apps = trace_apps
 
     def validate(self):
@@ -27086,7 +34809,9 @@ class SearchTraceAppByPageResponseBody(TeaModel):
         page_bean: SearchTraceAppByPageResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The returned page information.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -27165,7 +34890,9 @@ class SearchTracesRequestExclusionFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key that is used to filter the query results.
         self.key = key
+        # The value of the key that is used to filter the query results.
         self.value = value
 
     def validate(self):
@@ -27198,7 +34925,19 @@ class SearchTracesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. The following system preset fields are provided:
+        # 
+        # *   serverApp: the name of the server application.
+        # *   clientApp: the name of the client application.
+        # *   service: the name of the operation.
+        # *   rpc: the type of the call.
+        # *   msOfSpan: the duration exceeds a specific value.
+        # *   clientIp: the IP address of the client.
+        # *   serverIp: the IP address of the server.
+        # *   isError: specifies whether the call is abnormal.
+        # *   hasTprof: contains only thread profiling.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -27240,16 +34979,30 @@ class SearchTracesRequest(TeaModel):
         start_time: int = None,
         tag: List[SearchTracesRequestTag] = None,
     ):
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The filter conditions.
         self.exclusion_filters = exclusion_filters
+        # The minimum amount of time consumed by traces. Unit: milliseconds.
         self.min_duration = min_duration
+        # The name of the traced span.
         self.operation_name = operation_name
+        # The ID of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # Specifies whether to sort the query results in chronological order or reverse chronological order. Default value: `false`.
+        # 
+        # *   `true`: sorts the query results in reverse chronological order.
+        # *   `false`: sorts the query results in chronological order.
         self.reverse = reverse
+        # The IP address of the host where the application resides.
         self.service_ip = service_ip
+        # The name of the application.
         self.service_name = service_name
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -27339,11 +35092,17 @@ class SearchTracesResponseBodyTraceInfos(TeaModel):
         timestamp: int = None,
         trace_id: str = None,
     ):
+        # The amount of time consumed by the trace. Unit: milliseconds.
         self.duration = duration
+        # The name of the traced span.
         self.operation_name = operation_name
+        # The IP address of the host where the application resides.
         self.service_ip = service_ip
+        # The name of the application.
         self.service_name = service_name
+        # The timestamp.
         self.timestamp = timestamp
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -27392,7 +35151,9 @@ class SearchTracesResponseBody(TeaModel):
         request_id: str = None,
         trace_infos: List[SearchTracesResponseBodyTraceInfos] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the returned traces.
         self.trace_infos = trace_infos
 
     def validate(self):
@@ -27477,7 +35238,9 @@ class SearchTracesByPageRequestExclusionFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key that is used to filter the query results.
         self.key = key
+        # The value of the key that is used to filter the query results.
         self.value = value
 
     def validate(self):
@@ -27510,7 +35273,20 @@ class SearchTracesByPageRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. The following system preset fields are provided:
+        # 
+        # *   traceId: the ID of the trace.
+        # *   serverApp: the name of the server application.
+        # *   clientApp: the name of the client application.
+        # *   service: the name of the operation.
+        # *   rpc: the type of the call.
+        # *   msOfSpan: the duration exceeds a specific value.
+        # *   clientIp: the IP address of the client.
+        # *   serverIp: the IP address of the server.
+        # *   isError: specifies whether the call is abnormal.
+        # *   hasTprof: contains only thread profiling.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -27554,18 +35330,34 @@ class SearchTracesByPageRequest(TeaModel):
         start_time: int = None,
         tags: List[SearchTracesByPageRequestTags] = None,
     ):
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The filter conditions.
         self.exclusion_filters = exclusion_filters
+        # The minimum amount of time consumed by traces. Unit: milliseconds.
         self.min_duration = min_duration
+        # The name of the traced span.
         self.operation_name = operation_name
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: 100.
         self.page_size = page_size
+        # The ID of the application.
         self.pid = pid
+        # The ID of the region.
         self.region_id = region_id
+        # Specifies whether to sort the query results in chronological order or reverse chronological order. Default value: `false`.
+        # 
+        # *   `true`: sorts the query results in reverse chronological order.
+        # *   `false`: sorts the query results in chronological order.
         self.reverse = reverse
+        # The IP address of the host where the application resides.
         self.service_ip = service_ip
+        # The name of the application.
         self.service_name = service_name
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -27663,11 +35455,17 @@ class SearchTracesByPageResponseBodyPageBeanTraceInfos(TeaModel):
         timestamp: int = None,
         trace_id: str = None,
     ):
+        # The amount of time consumed by the trace. Unit: milliseconds.
         self.duration = duration
+        # The name of the traced span.
         self.operation_name = operation_name
+        # The IP address of the host where the application resides.
         self.service_ip = service_ip
+        # The name of the application.
         self.service_name = service_name
+        # The timestamp.
         self.timestamp = timestamp
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -27718,9 +35516,13 @@ class SearchTracesByPageResponseBodyPageBean(TeaModel):
         total: int = None,
         trace_infos: List[SearchTracesByPageResponseBodyPageBeanTraceInfos] = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total = total
+        # The details of the returned traces.
         self.trace_infos = trace_infos
 
     def validate(self):
@@ -27769,7 +35571,9 @@ class SearchTracesByPageResponseBody(TeaModel):
         page_bean: SearchTracesByPageResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.page_bean = page_bean
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -27848,7 +35652,9 @@ class SendTTSVerifyLinkRequest(TeaModel):
         contact_id: int = None,
         phone: str = None,
     ):
+        # The ID of the alert contact.
         self.contact_id = contact_id
+        # The mobile number of the alert contact.
         self.phone = phone
 
     def validate(self):
@@ -27881,7 +35687,12 @@ class SendTTSVerifyLinkResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the mobile phone number verification text message was successfully sent.
+        # 
+        # *   `true`: Sent successfully
+        # *   `false`: Failed to send
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -27955,10 +35766,18 @@ class SendTTSVerifyLinkResponse(TeaModel):
 class SetRetcodeShareStatusRequest(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         pid: str = None,
         status: bool = None,
     ):
+        # The name of the application that is monitored by Browser Monitoring.
+        self.app_name = app_name
+        # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://help.aliyun.com/document_detail/186100.html?spm=a2c4g.11186623.6.792.1b50654cqcDPyk#title-imy-7gj-qhr).
         self.pid = pid
+        # Specifies whether to turn on or turn off Logon-free Sharing. Valid values:
+        # 
+        # *   `true`: turns on Logon-free Sharing
+        # *   `false`: turns off Logon-free Sharing
         self.status = status
 
     def validate(self):
@@ -27970,6 +35789,8 @@ class SetRetcodeShareStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.pid is not None:
             result['Pid'] = self.pid
         if self.status is not None:
@@ -27978,6 +35799,8 @@ class SetRetcodeShareStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
         if m.get('Status') is not None:
@@ -27991,7 +35814,12 @@ class SetRetcodeShareStatusResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28068,7 +35896,9 @@ class StartAlertRequest(TeaModel):
         alert_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](~~175825~~).
         self.alert_id = alert_id
+        # The ID of the region. Set the value to `cn-hangzhou`.
         self.region_id = region_id
 
     def validate(self):
@@ -28101,7 +35931,12 @@ class StartAlertResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the call was successful.
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28399,8 +36234,11 @@ class SyncRecordingRulesRequest(TeaModel):
         region_id: str = None,
         target_clusters: str = None,
     ):
+        # The ID of the cluster whose aggregation rule you want to synchronize.
         self.cluster_id = cluster_id
+        # The ID of the region. The destination region can be the same as the source region.
         self.region_id = region_id
+        # The IDs of clusters to which you want to synchronize the aggregation rule.
         self.target_clusters = target_clusters
 
     def validate(self):
@@ -28437,7 +36275,9 @@ class SyncRecordingRulesResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The struct returned.
         self.data = data
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -28508,16 +36348,14 @@ class SyncRecordingRulesResponse(TeaModel):
         return self
 
 
-class TurnOnSecondSwitchRequest(TeaModel):
+class TagResourcesRequestTag(TeaModel):
     def __init__(
         self,
-        pid: str = None,
-        proxy_user_id: str = None,
-        release_start_time: int = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.pid = pid
-        self.proxy_user_id = proxy_user_id
-        self.release_start_time = release_start_time
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -28528,32 +36366,80 @@ class TurnOnSecondSwitchRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.pid is not None:
-            result['Pid'] = self.pid
-        if self.proxy_user_id is not None:
-            result['ProxyUserId'] = self.proxy_user_id
-        if self.release_start_time is not None:
-            result['ReleaseStartTime'] = self.release_start_time
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Pid') is not None:
-            self.pid = m.get('Pid')
-        if m.get('ProxyUserId') is not None:
-            self.proxy_user_id = m.get('ProxyUserId')
-        if m.get('ReleaseStartTime') is not None:
-            self.release_start_time = m.get('ReleaseStartTime')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
-class TurnOnSecondSwitchResponseBody(TeaModel):
+class TagResourcesRequest(TeaModel):
     def __init__(
         self,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
         data: str = None,
+        message: str = None,
         request_id: str = None,
     ):
+        self.code = code
         self.data = data
+        self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -28565,27 +36451,35 @@ class TurnOnSecondSwitchResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
 
 
-class TurnOnSecondSwitchResponse(TeaModel):
+class TagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: TurnOnSecondSwitchResponseBody = None,
+        body: TagResourcesResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -28619,7 +36513,7 @@ class TurnOnSecondSwitchResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = TurnOnSecondSwitchResponseBody()
+            temp_model = TagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28630,11 +36524,17 @@ class UninstallManagedPrometheusRequest(TeaModel):
         cluster_id: str = None,
         cluster_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the ASK cluster.
         self.cluster_id = cluster_id
+        # The type of the cluster. You can query the dashboards of a virtual cluster by specifying the cluster type.
         self.cluster_type = cluster_type
+        # The ID of the region.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # The VPC of the ASK cluster.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -28652,6 +36552,8 @@ class UninstallManagedPrometheusRequest(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -28664,6 +36566,8 @@ class UninstallManagedPrometheusRequest(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -28678,10 +36582,15 @@ class UninstallManagedPrometheusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned. 200 indicates that the Prometheus agent was uninstalled. Otherwise, the Prometheus agent fails to be uninstalled.
         self.code = code
+        # The content of the response. The installation status of the Prometheus agent was returned.
         self.data = data
+        # The error message returned if the Prometheus agent fails to be uninstalled.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the Prometheus agent was uninstalled.
         self.success = success
 
     def validate(self):
@@ -28770,7 +36679,9 @@ class UninstallPromClusterRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the region. default value: cn-hangzhou.
         self.region_id = region_id
 
     def validate(self):
@@ -28800,10 +36711,18 @@ class UninstallPromClusterRequest(TeaModel):
 class UninstallPromClusterResponseBody(TeaModel):
     def __init__(
         self,
+        code: int = None,
         data: bool = None,
+        message: str = None,
         request_id: str = None,
     ):
+        # The status code returned. A value of 200 indicates that the request is successful.
+        self.code = code
+        # Indicates whether the request was successful.
         self.data = data
+        # The message returned.
+        self.message = message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -28815,16 +36734,24 @@ class UninstallPromClusterResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -28874,6 +36801,141 @@ class UninstallPromClusterResponse(TeaModel):
         return self
 
 
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAlertContactRequest(TeaModel):
     def __init__(
         self,
@@ -28885,12 +36947,28 @@ class UpdateAlertContactRequest(TeaModel):
         region_id: str = None,
         system_noc: bool = None,
     ):
+        # The ID of the alert contact to be updated. You can call the SearchAlertContact operation to query the contact ID. For more information, see [SearchAlertContact](~~130703~~).
         self.contact_id = contact_id
+        # The new name of the alert contact.
         self.contact_name = contact_name
+        # The new webhook URL of the DingTalk chatbot. For more information, see [Configure a DingTalk chatbot to send alert notifications](~~106247~~). You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        # 
+        # >  If you do not specify this parameter, the original parameter value is deleted. If you specify this parameter, the original parameter value is updated.
         self.ding_robot_webhook_url = ding_robot_webhook_url
+        # The new email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        # 
+        # >  If you do not specify this parameter, the original parameter value is deleted. If you specify this parameter, the original parameter value is updated.
         self.email = email
+        # The new mobile phone number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        # 
+        # >  If you do not specify this parameter, the original parameter value is deleted. If you specify this parameter, the original parameter value is updated.
         self.phone_num = phone_num
+        # The ID of the region. Set the value to `cn-hangzhou`.
         self.region_id = region_id
+        # Specifies whether the alert contact receives system notifications. Valid values:
+        # 
+        # *   `true`: The alert contact receives system notifications.
+        # *   `false`: The alert contact does not receive system notifications.
         self.system_noc = system_noc
 
     def validate(self):
@@ -28943,7 +37021,12 @@ class UpdateAlertContactResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert contact was updated. Valid values:
+        # 
+        # *   true: The alert contact was updated.
+        # *   false: The alert contact failed to be updated.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29276,7 +37359,9 @@ class UpdateDispatchRuleRequest(TeaModel):
         dispatch_rule: str = None,
         region_id: str = None,
     ):
+        # The dispatch rule configuration. The value is a JSON string. For more information about this parameter, see the following **additional information about the DispatchRule parameter**.
         self.dispatch_rule = dispatch_rule
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -29309,7 +37394,12 @@ class UpdateDispatchRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   `true`: The request was successful.
+        # *   `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -29400,21 +37490,50 @@ class UpdateIntegrationRequest(TeaModel):
         stat: str = None,
         state: bool = None,
     ):
+        # The endpoint of the alert integration.
         self.api_endpoint = api_endpoint
+        # Specifies whether to automatically clear alert events. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.auto_recover = auto_recover
+        # The description of the alert integration.
         self.description = description
+        # The fields whose values are deduplicated.
         self.duplicate_key = duplicate_key
+        # The extended mapped fields are mapped to the fields of ARMS alerts. For more information, see the description of the ExtendedFieldRedefineRules parameter.
         self.extended_field_redefine_rules = extended_field_redefine_rules
+        # The predefined mapped fields are mapped to the fields of ARMS alerts. The predefined mapped fields were generated when the alert integration was created. For more information, see the description of the FieldRedefineRules parameter.
         self.field_redefine_rules = field_redefine_rules
+        # The field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+        # 
+        # > Only the Log Service alert integration supports the parameter.
         self.initiative_recover_field = initiative_recover_field
+        # The value of the field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+        # 
+        # > Only the Log Service alert integration supports the parameter.
         self.initiative_recover_value = initiative_recover_value
+        # The ID of the alert integration.
         self.integration_id = integration_id
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # The activity of the alert integration
         self.liveness = liveness
+        # The period of time within which alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
+        # The authentication token of the alert integration.
         self.short_token = short_token
+        # The total number of alert events and the number of abnormal alert events in the last hour.
         self.stat = stat
+        # Indicates whether the alert integration was enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.state = state
 
     def validate(self):
@@ -29517,21 +37636,50 @@ class UpdateIntegrationResponseBodyIntegration(TeaModel):
         stat: List[int] = None,
         state: bool = None,
     ):
+        # The endpoint of the alert integration.
         self.api_endpoint = api_endpoint
+        # Indicates whether alert events are automatically cleared. Valid values:
+        # 
+        # *   true (default)
+        # *   false
         self.auto_recover = auto_recover
+        # The description of the alert integration.
         self.description = description
+        # The fields whose values are deduplicated.
         self.duplicate_key = duplicate_key
+        # The extended mapped fields of the alert source.
         self.extended_field_redefine_rules = extended_field_redefine_rules
+        # The predefined mapped fields of the alert source.
         self.field_redefine_rules = field_redefine_rules
+        # The field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+        # 
+        # > Only Log Service supports this parameter.
         self.initiative_recover_field = initiative_recover_field
+        # The value of the field for clearing alert events. The system queries alert events based on the field of alert clearing events and clears the alert events.
+        # 
+        # > Only Log Service supports this parameter.
         self.initiative_recover_value = initiative_recover_value
+        # The ID of the alert integration.
         self.integration_id = integration_id
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # The activity of the alert integration
         self.liveness = liveness
+        # The period of time within which alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
+        # The authentication token of the alert integration.
         self.short_token = short_token
+        # The total number of alert events and the number of abnormal alert events in the last hour.
         self.stat = stat
+        # Indicates whether the alert integration is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.state = state
 
     def validate(self):
@@ -29620,7 +37768,9 @@ class UpdateIntegrationResponseBody(TeaModel):
         integration: UpdateIntegrationResponseBodyIntegration = None,
         request_id: str = None,
     ):
+        # The Information about the alert integration.
         self.integration = integration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29709,17 +37859,32 @@ class UpdatePrometheusAlertRuleRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations that are described in a JSON string. You must specify the name and value of each annotation.
         self.annotations = annotations
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The ID of the notification policy. This parameter is required if the **NotifyType** parameter is set to `DISPATCH_RULE`.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule. The expression must follow the PromQL syntax.
         self.expression = expression
+        # The tags that are described in a JSON string. You must specify the name and value of each tag.
         self.labels = labels
+        # The alert message. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+        # *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # The region ID.
         self.region_id = region_id
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -29792,7 +37957,9 @@ class UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations(TeaMod
         name: str = None,
         value: str = None,
     ):
+        # The name of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -29825,7 +37992,9 @@ class UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -29868,17 +38037,35 @@ class UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule(TeaModel):
         status: int = None,
         type: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The ID of the notification policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule.
         self.expression = expression
+        # The tags of the alert rule.
         self.labels = labels
+        # The alert message. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+        # *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # Indicates whether the alert rule is enabled. Valid values:
+        # 
+        # *   `1`: The alert rule is enabled.
+        # *   `0`: The alert rule is disabled.
         self.status = status
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -29968,7 +38155,9 @@ class UpdatePrometheusAlertRuleResponseBody(TeaModel):
         prometheus_alert_rule: UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.prometheus_alert_rule = prometheus_alert_rule
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -30041,6 +38230,556 @@ class UpdatePrometheusAlertRuleResponse(TeaModel):
         return self
 
 
+class UpdatePrometheusGlobalViewRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        sub_clusters_json: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.sub_clusters_json = sub_clusters_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.sub_clusters_json is not None:
+            result['SubClustersJson'] = self.sub_clusters_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SubClustersJson') is not None:
+            self.sub_clusters_json = m.get('SubClustersJson')
+        return self
+
+
+class UpdatePrometheusGlobalViewResponseBodyDataFailedInstances(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        source_name: str = None,
+        source_type: str = None,
+        user_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.source_name = source_name
+        self.source_type = source_type
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class UpdatePrometheusGlobalViewResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        failed_instances: List[UpdatePrometheusGlobalViewResponseBodyDataFailedInstances] = None,
+        success: bool = None,
+    ):
+        self.failed_instances = failed_instances
+        self.success = success
+
+    def validate(self):
+        if self.failed_instances:
+            for k in self.failed_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailedInstances'] = []
+        if self.failed_instances is not None:
+            for k in self.failed_instances:
+                result['FailedInstances'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failed_instances = []
+        if m.get('FailedInstances') is not None:
+            for k in m.get('FailedInstances'):
+                temp_model = UpdatePrometheusGlobalViewResponseBodyDataFailedInstances()
+                self.failed_instances.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdatePrometheusGlobalViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: UpdatePrometheusGlobalViewResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdatePrometheusGlobalViewResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdatePrometheusGlobalViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePrometheusGlobalViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePrometheusGlobalViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePrometheusIntegrationRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        instance_id: int = None,
+        integration_type: str = None,
+        param: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.instance_id = instance_id
+        self.integration_type = integration_type
+        self.param = param
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
+        if self.param is not None:
+            result['Param'] = self.param
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+        if m.get('Param') is not None:
+            self.param = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdatePrometheusIntegrationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        instance_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        return self
+
+
+class UpdatePrometheusIntegrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: UpdatePrometheusIntegrationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdatePrometheusIntegrationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdatePrometheusIntegrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePrometheusIntegrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePrometheusIntegrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePrometheusRemoteWriteRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        region_id: str = None,
+        remote_write_name: str = None,
+        remote_write_yaml: str = None,
+    ):
+        # The ID of the Prometheus instance.
+        self.cluster_id = cluster_id
+        # The ID of the region.
+        self.region_id = region_id
+        # The name of the Remote Write configuration item.
+        self.remote_write_name = remote_write_name
+        # The details of the Remote Write configuration item. Specify the value in the YAML format.
+        self.remote_write_yaml = remote_write_yaml
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remote_write_name is not None:
+            result['RemoteWriteName'] = self.remote_write_name
+        if self.remote_write_yaml is not None:
+            result['RemoteWriteYaml'] = self.remote_write_yaml
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemoteWriteName') is not None:
+            self.remote_write_name = m.get('RemoteWriteName')
+        if m.get('RemoteWriteYaml') is not None:
+            self.remote_write_yaml = m.get('RemoteWriteYaml')
+        return self
+
+
+class UpdatePrometheusRemoteWriteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code that is returned. The HTTP 200 status code indicates that the call is successful.
+        self.code = code
+        # If the call is successful, the name of the Remote Write configuration item that is modified is returned. If the call fails, an error message is returned.
+        self.data = data
+        # The message that is returned.
+        self.message = message
+        # The ID of the request
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdatePrometheusRemoteWriteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePrometheusRemoteWriteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePrometheusRemoteWriteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateWebhookRequest(TeaModel):
     def __init__(
         self,
@@ -30054,14 +38793,26 @@ class UpdateWebhookRequest(TeaModel):
         region_id: str = None,
         url: str = None,
     ):
+        # The notification template that is sent when an alert is triggered. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
         self.body = body
+        # The ID of the webhook alert contact. You can call the **SearchAlertContact** operation to obtain the ID.
         self.contact_id = contact_id
+        # The name of the webhook alert contact.
         self.contact_name = contact_name
+        # The HTTP request headers.
         self.http_headers = http_headers
+        # The parameters in the HTTP request.
         self.http_params = http_params
+        # The HTTP request method. Valid values:
+        # 
+        # *   `Get`
+        # *   `Post`
         self.method = method
+        # The notification template that is sent when an alert is resolved. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
         self.recover_body = recover_body
+        # The ID of the region.
         self.region_id = region_id
+        # The URL of the HTTP request method.
         self.url = url
 
     def validate(self):
@@ -30122,7 +38873,12 @@ class UpdateWebhookResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # The result returned. Valid values:
+        # 
+        # *   `true`: The modification is successful.
+        # *   `false`: The modification fails.
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -30203,11 +38959,19 @@ class UploadRequest(TeaModel):
         region_id: str = None,
         version: str = None,
     ):
+        # The version of the SourceMap file.
         self.edition = edition
+        # The content of the SourceMap file.
         self.file = file
+        # The name of the SourceMap file.
         self.file_name = file_name
+        # The ID of the application.
+        # 
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with @ to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
         self.pid = pid
+        # The ID of the region to which the SourceMap file is uploaded.
         self.region_id = region_id
+        # We recommend that you do not specify this parameter.
         self.version = version
 
     def validate(self):
@@ -30257,8 +39021,11 @@ class UploadResponseBodyUploadResult(TeaModel):
         file_name: str = None,
         upload_time: str = None,
     ):
+        # The ID of the SourceMap file.
         self.fid = fid
+        # The name of the SourceMap file.
         self.file_name = file_name
+        # The time when the file was uploaded.
         self.upload_time = upload_time
 
     def validate(self):
@@ -30295,7 +39062,9 @@ class UploadResponseBody(TeaModel):
         request_id: str = None,
         upload_result: UploadResponseBodyUploadResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned data.
         self.upload_result = upload_result
 
     def validate(self):
