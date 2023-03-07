@@ -1,3 +1,19 @@
+2023-03-07 Version: 2.0.22
+- Add UnassociateNetworkAcl api error code.
+- Add ram error code.
+- Error code update.
+- Add AdminQueryVpcInfo  control policy.
+- OpenFlowLogService add errorcode.
+- CreateNatIp add error code.
+- Modify errorCode for OpenFlowLogService.
+- Add  error code.
+- Add errorCode for OpenFlowLogService.
+- Delete access control policy.
+- Add ControlPolicy for DescribeNatgates.
+- Supported ControlPolicy For Natgw API.
+- Fix TrafficPath Name.
+- Add ForceDeleteVpc Param.
+
 2023-02-18 Version: 2.0.21
 - Eip error code update.
 - Add CreateRouteEntry ErrorCode.

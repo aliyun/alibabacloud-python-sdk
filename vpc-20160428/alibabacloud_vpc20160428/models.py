@@ -22174,6 +22174,8 @@ class DeleteVirtualBorderRouterResponse(TeaModel):
 class DeleteVpcRequest(TeaModel):
     def __init__(
         self,
+        dry_run: bool = None,
+        force_delete: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -22181,6 +22183,8 @@ class DeleteVpcRequest(TeaModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
+        self.dry_run = dry_run
+        self.force_delete = force_delete
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
@@ -22197,6 +22201,10 @@ class DeleteVpcRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.force_delete is not None:
+            result['ForceDelete'] = self.force_delete
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -22213,6 +22221,10 @@ class DeleteVpcRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('ForceDelete') is not None:
+            self.force_delete = m.get('ForceDelete')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -27858,13 +27870,13 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath(TeaModel):
 
         result = dict()
         if self.traffic_path_list is not None:
-            result['trafficPathList'] = self.traffic_path_list
+            result['TrafficPathList'] = self.traffic_path_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('trafficPathList') is not None:
-            self.traffic_path_list = m.get('trafficPathList')
+        if m.get('TrafficPathList') is not None:
+            self.traffic_path_list = m.get('TrafficPathList')
         return self
 
 

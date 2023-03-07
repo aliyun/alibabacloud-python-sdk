@@ -14038,6 +14038,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DeleteVpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force_delete):
+            query['ForceDelete'] = request.force_delete
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -14076,6 +14080,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DeleteVpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force_delete):
+            query['ForceDelete'] = request.force_delete
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
