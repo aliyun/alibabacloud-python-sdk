@@ -1,3 +1,6 @@
+2023-03-07 Version: 1.2.5
+- Auto release new SDK.
+
 2023-02-23 Version: 1.2.4
 - Add precheckStatus field for DescribeTrFirewallsV2List.
 - DescribeVpcFirewallPrecheckDetail support TR firewall.

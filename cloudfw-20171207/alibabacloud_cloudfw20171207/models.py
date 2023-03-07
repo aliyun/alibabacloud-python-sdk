@@ -864,7 +864,7 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         self.vpc_firewall_name = vpc_firewall_name
         # The ID of the region to which the VPC belongs.
         # 
-        # >  For more information about the regions, see [Supported regions](~~195657~~).
+        # > For more information about the regions, see [Supported regions](~~195657~~).
         self.vpc_region = vpc_region
 
     def validate(self):
@@ -1817,7 +1817,7 @@ class DeleteVpcFirewallCenConfigureRequest(TeaModel):
         self.lang = lang
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
-        # The list of VPC firewall IDs.
+        # The instance IDs of VPC firewalls.
         self.vpc_firewall_id_list = vpc_firewall_id_list
 
     def validate(self):
@@ -1927,14 +1927,14 @@ class DeleteVpcFirewallConfigureRequest(TeaModel):
         member_uid: str = None,
         vpc_firewall_id_list: List[str] = None,
     ):
-        # The natural language of the request and response. Valid values:
+        # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
-        # The list of the VPC firewall IDs.
+        # The instance IDs of VPC firewalls.
         self.vpc_firewall_id_list = vpc_firewall_id_list
 
     def validate(self):
@@ -5970,7 +5970,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # *   **in**: inbound
         # *   **out**: outbound
         # 
-        # > If you do not specify this parameter, the intrusion events in both inbound and outbound directions are queried.
+        # > If you do not specify this parameter, the intrusion events that are recorded for both inbound and outbound traffic are queried.
         self.direction = direction
         # The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
         self.dst_ip = dst_ip
@@ -5995,7 +5995,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # *   **true**: does not query the information about the geographical locations of IP addresses.
         # *   **false**: queries the information about the geographical locations of IP addresses. This is the default value.
         self.no_location = no_location
-        # The order in which you want to sort the query results. Valid values:
+        # The order in which you want to sort the results. Valid values:
         # 
         # *   **asc**: the ascending order.
         # *   **desc**: the descending order. This is the default value.
@@ -6009,7 +6009,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # *   **1**: alerting
         # *   **2**: blocking
         # 
-        # > If you do not specify this parameter, the intrusion events that are detected by firewalls in both states are queried.
+        # > If you do not specify this parameter, all intrusion events that are detected by the firewall are queried, regardless of the firewall status.
         self.rule_result = rule_result
         # The module of the rule that is used to detect the intrusion events. Valid values:
         # 
@@ -6017,9 +6017,9 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # *   **2**: virtual patching
         # *   **4**: threat intelligence
         # 
-        # > If you do not specify this parameter, the intrusion events that are detected by using all rules are queried.
+        # > If you do not specify this parameter, the intrusion events that are detected by all rules are queried.
         self.rule_source = rule_source
-        # The field based on which the results are sorted. Valid values:
+        # The field based on which you want to sort the results. Valid values:
         # 
         # *   **VulLevel**: The results are sorted based on the risk level field. This is the default value.
         # *   **LastTime**: The results are sorted based on the most recent occurrence time.
@@ -6398,7 +6398,7 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.attack_type = attack_type
         # The description of the intrusion event.
         self.description = description
-        # The direction of the traffic for the intrusion events. Valid values:
+        # The direction of the traffic for the intrusion event. Valid values:
         # 
         # *   **in**: inbound
         # *   **out**: outbound
@@ -6413,12 +6413,12 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.event_name = event_name
         # The time when the intrusion event was first detected. The value is a UNIX timestamp. Unit: seconds.
         self.first_event_time = first_event_time
-        # The information about the geographical location of the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\
+        # The geographical information about the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\
         # ****************\
         self.iplocation_info = iplocation_info
         # The time when the intrusion event was last detected. The value is a UNIX timestamp. Unit: seconds.
         self.last_event_time = last_event_time
-        # The information about the private IP address of the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\
+        # The information about the private IP address in the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\
         # ****************\
         self.resource_private_iplist = resource_private_iplist
         # The type of the public IP address in the intrusion event. Valid values:
@@ -6446,7 +6446,7 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.src_ip = src_ip
         # The tag added to the source IP address. The tag helps identify whether the source IP address is a back-to-origin IP address for a cloud service.
         self.src_iptag = src_iptag
-        # The source private IP addresses of the intrusion event.
+        # An array that consists of the source private IP addresses in the intrusion event.
         self.src_private_iplist = src_private_iplist
         # The tag added to the threat intelligence that is provided for major events.
         self.tag = tag
@@ -6599,7 +6599,7 @@ class DescribeRiskEventGroupResponseBody(TeaModel):
         self.data_list = data_list
         # The ID of the request.
         self.request_id = request_id
-        # The total number of intrusion events.
+        # The total number of risk events.
         self.total_count = total_count
 
     def validate(self):
@@ -6863,24 +6863,20 @@ class DescribeVpcFirewallAclGroupListRequest(TeaModel):
         lang: str = None,
         page_size: str = None,
     ):
-        # The number of the page to return. 
-        # 
-        # Default value: 1.
+        # The number of the page to return. Default value: 1.
         self.current_page = current_page
-        # Specifies whether VPC firewalls are configured. Valid values: 
+        # Specifies whether VPC firewalls are configured. Valid values:
         # 
-        # - **notconfigured**: VPC firewalls are not configured.
-        # - **configured**: VPC firewalls are configured.
-        # - If this parameter is left empty, all policy groups of access control policies are queried.
+        # *   **notconfigured**: VPC firewalls are not configured.
+        # *   **configured**: VPC firewalls are configured.
+        # *   If this parameter is left empty, all policy groups of access control policies are queried.
         self.firewall_configure_status = firewall_configure_status
-        # The language of the content within the response. Valid values: 
+        # The language of the content within the response. Valid values:
         # 
-        # - **zh**: Chinese (default)
-        # - **en**: English
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
-        # The number of entries to return on each page. 
-        # 
-        # Maximum value: 50.
+        # The number of entries to return on each page. Maximum value: 50.
         self.page_size = page_size
 
     def validate(self):
@@ -6922,21 +6918,22 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         acl_group_name: str = None,
         member_uid: str = None,
     ):
-        # The ID of the policy group. 
+        # The ID of the policy group.
         # 
         # Valid values:
         # 
-        # - If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.  
+        # *   If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.
         # 
-        # Example: cen-ervw0g12b5jbw****\
-        # - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.  
+        #     Example: cen-ervw0g12b5jbw\*\*\*\*\
         # 
-        # Example: vfw-a42bbb7b887148c9****\
+        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.
+        # 
+        #     Example: vfw-a42bbb7b887148c9\*\*\*\*\
         self.acl_group_id = acl_group_id
-        # The name of the policy group. Valid values: 
+        # The name of the policy group. Valid values:
         # 
-        # - If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
-        # - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
+        # *   If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
+        # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
         self.acl_group_name = acl_group_name
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
@@ -7079,7 +7076,7 @@ class DescribeVpcFirewallCenDetailRequest(TeaModel):
         self.network_instance_id = network_instance_id
         # The instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -7186,9 +7183,9 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableList(TeaModel)
         route_entry_list: List[DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # The route entries of the VPC.
+        # An array that consists of the route entries for the VPC.
         self.route_entry_list = route_entry_list
-        # The ID of the route table for the VPC.
+        # The route table ID of the VPC.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -7248,11 +7245,11 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpc(TeaModel):
         self.attachment_id = attachment_id
         # The name of the connection between two network instances.
         self.attachment_name = attachment_name
-        # The CIDR blocks that are protected by the VPC firewall.
+        # An array consisting of the CIDR blocks that are protected by the VPC firewall.
         self.defend_cidr_list = defend_cidr_list
-        # The Elastic Network Interfaces (ENIs).
+        # An array that consists of the elastic network interfaces (ENIs).
         self.eni_list = eni_list
-        # The ID of the vSwitch. The value of this parameter is returned only when the RouteMode parameter is set to manual.
+        # The ID of the specified vSwitch when the routing mode is manual.
         self.manual_vswitch_id = manual_vswitch_id
         # The ID of the VPC for which the VPC firewall is created.
         self.network_instance_id = network_instance_id
@@ -7266,10 +7263,10 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpc(TeaModel):
         self.region_no = region_no
         # The routing mode. Valid values:
         # 
-        # *   auto
-        # *   manual
+        # *   auto: automatic mode
+        # *   manual: manual mode
         self.route_mode = route_mode
-        # Indicates whether the routing mode can be set to manual. Valid values:
+        # Indicates whether the manual routing mode is supported. Valid values:
         # 
         # *   **1**: yes
         # *   **0**: no
@@ -7281,7 +7278,7 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpc(TeaModel):
         # *   **Basic**: Basic Edition
         # *   **Enterprise**: Enterprise Edition
         self.transit_router_type = transit_router_type
-        # The CIDR blocks of the VPC.
+        # An array that consists of the CIDR blocks of the VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
         # The ID of the VPC.
         self.vpc_id = vpc_id
@@ -7529,17 +7526,17 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
         # 
         # *   **opened**: The VPC firewall is enabled.
         # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not created.
-        # *   **configured**: The VPC firewall is created but is not enabled.
+        # *   **notconfigured**: The VPC firewall is not configured.
+        # *   **configured**: The VPC firewall is configured but is not enabled.
         # 
-        # >  If you do not specify this parameter, VPC firewalls in all states are queried.
+        # > If you do not specify this parameter, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
         # The language of the content within the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
-        # The UID of the member that is manged by your Alibaba Cloud account. The member is also an Alibaba Cloud account.
+        # The UID of the member that is managed by your Alibaba Cloud account. The member is also an Alibaba Cloud account.
         self.member_uid = member_uid
         # The ID of the network instance.
         self.network_instance_id = network_instance_id
@@ -7550,14 +7547,14 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the VPC.
         # 
-        # >  For more information about the regions, see [Supported regions](~~195657~~).
+        # > For more information about the regions, see [Supported regions](~~195657~~).
         self.region_no = region_no
         # The routing mode of the VPC firewall. Valid values:
         # 
         # *   **auto**: automatic mode
         # *   **manual**: manual mode
         # 
-        # >  If you do not specify this parameter, VPC firewalls in all routing modes are queried.
+        # > If you do not specify this parameter, VPC firewalls in all routing modes are queried.
         self.route_mode = route_mode
         # The type of the transit router. Valid values:
         # 
@@ -7646,18 +7643,18 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig(TeaModel):
     ):
         # Indicates whether basic protection is enabled. Valid values:
         # 
-        # - **1**: yes
-        # - **0**: no
+        # *   **1**: yes
+        # *   **0**: no
         self.basic_rules = basic_rules
         # Indicates whether virtual patching is enabled. Valid values:
         # 
-        # - **1**: yes
-        # - **0**: no
+        # *   **1**: yes
+        # *   **0**: no
         self.enable_all_patch = enable_all_patch
         # The mode of the IPS. Valid values:
         # 
-        # - **1**: block mode
-        # - **0**: monitor mode
+        # *   **1**: block mode
+        # *   **0**: monitor mode
         self.run_mode = run_mode
 
     def validate(self):
@@ -7696,7 +7693,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList
     ):
         # The destination CIDR block of the VPC.
         self.destination_cidr = destination_cidr
-        # The instance ID for the next hop of the VPC.
+        # The instance ID of the next hop for the VPC.
         self.next_hop_instance_id = next_hop_instance_id
 
     def validate(self):
@@ -7729,7 +7726,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList
         route_entry_list: List[DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # The route entries for the VPC.
+        # An array that consists of the route entries for the VPC.
         self.route_entry_list = route_entry_list
         # The route table ID of the VPC.
         self.route_table_id = route_table_id
@@ -7786,7 +7783,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc(TeaModel):
     ):
         # Indicates whether the VPC is granted the required permissions. The value is fixed as **authorized**, which indicates that the VPC is granted the required permissions.
         self.authorization_status = authorization_status
-        # The CIDR blocks that are protected by the VPC firewall.
+        # An array consisting of the CIDR blocks that are protected by the VPC firewall.
         self.defend_cidr_list = defend_cidr_list
         # The ID of the specified vSwitch when the routing mode is manual.
         self.manual_vswitch_id = manual_vswitch_id
@@ -7814,12 +7811,12 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.support_manual_mode = support_manual_mode
-        # The type of the CEN transit router. Valid values:
+        # The edition of the CEN transit router. Valid values:
         # 
         # *   **Basic**: Basic Edition transit router
         # *   **Enterprise**: Enterprise Edition transit router
         self.transit_router_type = transit_router_type
-        # The CIDR block of the VPC.
+        # An array that consists of the CIDR blocks of the VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
         # The ID of the VPC.
         self.vpc_id = vpc_id
@@ -7932,7 +7929,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
         # 
         # *   **opened**: The VPC firewall is enabled.
         # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not created.
+        # *   **notconfigured**: The VPC firewall is not configured.
         self.firewall_switch_status = firewall_switch_status
         # The information about the intrusion prevention system (IPS) configuration.
         self.ips_config = ips_config
@@ -7940,13 +7937,13 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
         self.local_vpc = local_vpc
         # The UID of the member that is manged by your Alibaba Cloud account. The member is also an Alibaba Cloud account.
         self.member_uid = member_uid
-        # Indicates whether the VPC firewall can be automatically enabled to protect VPC traffic based on route learning. Valid values: 
+        # Indicates whether the VPC firewall can be automatically enabled to protect VPC traffic based on route learning. Valid values:
         # 
-        # - **passed**: The VPC firewall can be automatically enabled.
-        # - **failed**: The VPC firewall cannot be automatically enabled.
-        # - **unknown**: The VPC firewall is in an unknown state.
+        # *   **passed**: The VPC firewall can be automatically enabled.
+        # *   **failed**: The VPC firewall cannot be automatically enabled.
+        # *   **unknown**: The VPC firewall is in an unknown state.
         self.precheck_status = precheck_status
-        # Indicates whether you can create a VPC firewall in a region. Valid values:
+        # Indicates whether you can create a VPC firewall in a specified region. Valid values:
         # 
         # *   **enable**: yes
         # *   **disable**: no
@@ -7954,7 +7951,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
         # The result code of the operation that creates the VPC firewall. Valid values:
         # 
         # *   **Unauthorized**: Cloud Firewall is not authorized to access the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-        # *   **RegionDisable**: .VPC Firewall is not supported in the region of the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
+        # *   **RegionDisable**: VPC Firewall is not supported in the region of the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
         # *   **OpsDisable**: You are not allowed to create the VPC firewall.
         # *   **VbrNotSupport**: The VPC firewall cannot be created for a VBR that is attached to the CEN instance.
         # *   Empty string: You can create a VPC firewall for the network instance.
@@ -8044,7 +8041,7 @@ class DescribeVpcFirewallCenListResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of VPC firewalls.
         self.total_count = total_count
-        # The details about the VPC firewall.
+        # An array that consists of the details about the VPC firewall.
         self.vpc_firewalls = vpc_firewalls
 
     def validate(self):
@@ -9254,10 +9251,10 @@ class DescribeVpcFirewallListRequest(TeaModel):
         # 
         # *   **opened**: The VPC firewall is enabled.
         # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not created.
-        # *   **configured**: The VPC firewall is created.
+        # *   **notconfigured**: The VPC firewall is not configured.
+        # *   **configured**: The VPC firewall is configured.
         # 
-        # >  If you do not specify this parameter, VPC firewalls in all states are queried.
+        # > If you do not specify this parameter, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
         # The language of the content within the request and response. Valid values:
         # 
@@ -9274,7 +9271,7 @@ class DescribeVpcFirewallListRequest(TeaModel):
         self.peer_uid = peer_uid
         # The region ID of the VPC.
         # 
-        # >  For more information about the regions, see [Supported regions](~~195657~~).
+        # > For more information about the regions, see [Supported regions](~~195657~~).
         self.region_no = region_no
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
@@ -9435,7 +9432,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList(Te
         route_entry_list: List[DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # The route entries of the local VPC.
+        # An array that consists of the route entries of the local VPC.
         self.route_entry_list = route_entry_list
         # The ID of the route table for the local VPC.
         self.route_table_id = route_table_id
@@ -9488,7 +9485,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc(TeaModel):
         self.owner_id = owner_id
         # The region ID of the local VPC.
         self.region_no = region_no
-        # The CIDR blocks of the local VPC.
+        # An array that consists of the CIDR blocks of the local VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
         # The ID of the local VPC.
         self.vpc_id = vpc_id
@@ -9584,7 +9581,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList(Tea
         route_entry_list: List[DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # The route entries of the peer VPC.
+        # An array that consists of the route entries of the peer VPC.
         self.route_entry_list = route_entry_list
         # The ID of the route table for the peer VPC.
         self.route_table_id = route_table_id
@@ -9637,7 +9634,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc(TeaModel):
         self.owner_id = owner_id
         # The region ID of the peer VPC.
         self.region_no = region_no
-        # The CIDR blocks of the peer VPC.
+        # An array that consists of the CIDR blocks of the peer VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
         # The ID of the peer VPC.
         self.vpc_id = vpc_id
@@ -9721,7 +9718,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         # 
         # *   **opened**: The VPC firewall is enabled.
         # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not created.
+        # *   **notconfigured**: The VPC firewall is not configured.
         self.firewall_switch_status = firewall_switch_status
         # The information about the intrusion prevention system (IPS) configuration.
         self.ips_config = ips_config
@@ -9830,7 +9827,7 @@ class DescribeVpcFirewallListResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of VPC firewalls.
         self.total_count = total_count
-        # The details about the VPC firewalls.
+        # An array that consists of the details about the VPC firewalls.
         self.vpc_firewalls = vpc_firewalls
 
     def validate(self):
@@ -11538,7 +11535,7 @@ class ModifyVpcFirewallCenConfigureRequest(TeaModel):
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
         self.vpc_firewall_id = vpc_firewall_id
         # The instance name of the VPC firewall.
         self.vpc_firewall_name = vpc_firewall_name
@@ -11786,7 +11783,7 @@ class ModifyVpcFirewallConfigureRequest(TeaModel):
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
-        # The natural language of the request and response. Valid values:
+        # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
@@ -11796,7 +11793,7 @@ class ModifyVpcFirewallConfigureRequest(TeaModel):
         # *   **RouteTableId**: the ID of the route table for the local VPC.
         # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
         # 
-        # >  You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of local VPCs for VPC firewalls.
+        # > You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of local VPCs for VPC firewalls.
         self.local_vpc_cidr_table_list = local_vpc_cidr_table_list
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
@@ -11805,11 +11802,11 @@ class ModifyVpcFirewallConfigureRequest(TeaModel):
         # *   **RouteTableId**: the ID of the route table for the peer VPC.
         # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
         # 
-        # >  You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of peer VPCs for VPC firewalls.
+        # > You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of peer VPCs for VPC firewalls.
         self.peer_vpc_cidr_table_list = peer_vpc_cidr_table_list
         # The instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
         self.vpc_firewall_id = vpc_firewall_id
         # The instance name of the VPC firewall.
         self.vpc_firewall_name = vpc_firewall_name
@@ -12507,10 +12504,10 @@ class ModifyVpcFirewallSwitchStatusRequest(TeaModel):
     ):
         # Specifies whether to enable the VPC firewall. Valid values:
         # 
-        # *   **open**: enables the VPC firewall.
-        # *   **close**: disables the VPC firewall.
+        # *   **open**: yes
+        # *   **close**: no
         self.firewall_switch = firewall_switch
-        # The natural language of the request and response. Valid values:
+        # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
@@ -12519,7 +12516,7 @@ class ModifyVpcFirewallSwitchStatusRequest(TeaModel):
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -13006,22 +13003,36 @@ class PutEnableFwSwitchRequest(TeaModel):
         resource_type_list: List[str] = None,
         source_ip: str = None,
     ):
-        # The list of IP addresses.
+        # The IP addresses.
         # 
-        # >  You must specify at least one of the IpaddrList, RegionList, ResourceTypeList parameters.
+        # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
         self.ipaddr_list = ipaddr_list
-        # The language of the content within the request and response.
+        # The language of the content within the response.
         # 
         # *   **zh**: Chinese
         # *   **en**: English
         self.lang = lang
-        # The list of regions.
+        # The regions.
         # 
-        # >  You must specify at least one of the IpaddrList, RegionList, ResourceTypeList parameters.
+        # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
         self.region_list = region_list
-        # The list of asset types.
+        # The types of the assets.
         # 
-        # >  You must specify at least one of the IpaddrList, RegionList, ResourceTypeList parameters.
+        # Valid values:
+        # 
+        # *   BastionHostIP: the egress IP address of a bastion host
+        # *   BastionHostIngressIP: the ingress IP address of a bastion host
+        # *   EcsEIP: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
+        # *   EcsPublicIP: the public IP address of an ECS instance
+        # *   EIP: the EIP
+        # *   EniEIP: the EIP of an elastic network interface (ENI)
+        # *   NatEIP: the EIP of a NAT gateway
+        # *   SlbEIP: the EIP of a Server Load Balancer (SLB) instance
+        # *   SlbPublicIP: the public IP address of an SLB instance
+        # *   NatPublicIP: the public IP address of a NAT gateway
+        # *   HAVIP: the high-availability virtual IP address (HAVIP)
+        # 
+        # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
         self.resource_type_list = resource_type_list
         # The source IP address of the request.
         self.source_ip = source_ip
