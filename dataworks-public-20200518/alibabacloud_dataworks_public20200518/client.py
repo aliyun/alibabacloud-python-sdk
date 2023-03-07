@@ -19469,6 +19469,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
+    def submit_data_service_api_with_options(
+        self,
+        request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_id):
+            body['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDataServiceApi',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.SubmitDataServiceApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_data_service_api_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_id):
+            body['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDataServiceApi',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.SubmitDataServiceApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_data_service_api(
+        self,
+        request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
+    ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_data_service_api_with_options(request, runtime)
+
+    async def submit_data_service_api_async(
+        self,
+        request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
+    ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_data_service_api_with_options_async(request, runtime)
+
     def submit_file_with_options(
         self,
         request: dataworks_public_20200518_models.SubmitFileRequest,

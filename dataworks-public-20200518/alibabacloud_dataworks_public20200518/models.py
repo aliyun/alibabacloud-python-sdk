@@ -9934,6 +9934,7 @@ class DeleteRemindRequest(TeaModel):
         self,
         remind_id: int = None,
     ):
+        # The ID of the custom alert rule.
         self.remind_id = remind_id
 
     def validate(self):
@@ -9966,11 +9967,17 @@ class DeleteRemindResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the custom alert rule is deleted. Valid values: true and false. The value true indicates that the custom alert rule is deleted. The value false indicates that the custom alert rule fails to be deleted.
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -57014,6 +57021,140 @@ class StopInstanceResponse(TeaModel):
         return self
 
 
+class SubmitDataServiceApiRequest(TeaModel):
+    def __init__(
+        self,
+        api_id: int = None,
+        project_id: int = None,
+        tenant_id: int = None,
+    ):
+        self.api_id = api_id
+        self.project_id = project_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class SubmitDataServiceApiResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitDataServiceApiResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDataServiceApiResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDataServiceApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitFileRequest(TeaModel):
     def __init__(
         self,
@@ -58238,6 +58379,7 @@ class TopTenErrorTimesInstanceRequest(TeaModel):
         self,
         project_id: int = None,
     ):
+        # The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the ID.
         self.project_id = project_id
 
     def validate(self):
@@ -58270,11 +58412,21 @@ class TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank(TeaModel):
         program_type: int = None,
         project_id: int = None,
     ):
+        # The number of errors that occur on the node.
         self.count = count
+        # The ID of the node.
         self.node_id = node_id
+        # The name of the node.
         self.node_name = node_name
+        # The user identifier (UID) of the Alibaba Cloud account used by the owner of the node.
         self.owner = owner
+        # The type of the node.
+        # 
+        # Valid values:
+        # 
+        # 6 (Shell node), 10 (ODPS SQL node), 11 (ODPS MR node), 23 (Data Integration node), 24 (ODPS Script node), 99 (zero load node), 221 (PyODPS 2 node), 225 (ODPS Spark node), 227 (EMR Hive node), 228 (EMR Spark node), 229 (EMR Spark SQL node), 230 (EMR MR node), 239 (OSS object inspection node), 257 (EMR Shell node), 258 (EMR Spark Shell node), 259 (EMR Presto node), 260 (EMR Impala node), 900 (real-time data synchronization node), 1089 (cross-tenant collaboration node), 1091 (Hologres development node), 1093 (Hologres SQL node), 1100 (assignment node), and 1221 (PyODPS 3 node).
         self.program_type = program_type
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
 
     def validate(self):
@@ -58323,7 +58475,9 @@ class TopTenErrorTimesInstanceResponseBodyInstanceErrorRank(TeaModel):
         error_rank: List[TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank] = None,
         update_time: int = None,
     ):
+        # The ranking of nodes on which errors occur within the last month.
         self.error_rank = error_rank
+        # The time when the ranking was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -58364,7 +58518,9 @@ class TopTenErrorTimesInstanceResponseBody(TeaModel):
         instance_error_rank: TopTenErrorTimesInstanceResponseBodyInstanceErrorRank = None,
         request_id: str = None,
     ):
+        # The ranking of nodes on which errors occur.
         self.instance_error_rank = instance_error_rank
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61628,8 +61784,11 @@ class UpdateNodeOwnerRequest(TeaModel):
         project_env: str = None,
         user_id: str = None,
     ):
+        # The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the ID.
         self.node_id = node_id
+        # The environment where the node runs. Valid values: DEV and PROD. The value DEV indicates the development environment. The value PROD indicates the production environment.
         self.project_env = project_env
+        # The Alibaba Cloud account ID of the node owner. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to view the ID.
         self.user_id = user_id
 
     def validate(self):
@@ -61666,7 +61825,12 @@ class UpdateNodeOwnerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request. You can use the ID to obtain logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: indicates that the request is successful.
+        # *   false: indicates that the request fails.
         self.success = success
 
     def validate(self):
@@ -62044,25 +62208,65 @@ class UpdateQualityRuleRequest(TeaModel):
         warning_threshold: str = None,
         where_condition: str = None,
     ):
+        # The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
+        # 
+        # *   1: indicates that the monitoring rule is a strong rule.
+        # 
+        # *   0: indicates that the monitoring rule is a weak rule.
+        # 
+        #     You can specify whether a monitoring rule is a strong rule based on your business requirements. If a strong rule is used and a critical alert is triggered, nodes are blocked.
         self.block_type = block_type
+        # The ID of the checker. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the checker.
         self.checker = checker
+        # The description of the monitoring rule.
         self.comment = comment
+        # The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and an error alert is triggered, nodes are blocked.
         self.critical_threshold = critical_threshold
+        # The ID of the partition filter expression. You can call the [GetQualityEntity](~~173995~~) operation to obtain the ID of the partition filter expression.
         self.entity_id = entity_id
+        # The expected value of the monitoring result.
         self.expect_value = expect_value
+        # The ID of the monitoring rule. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the monitoring rule.
         self.id = id
+        # The method that is used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
         self.method_name = method_name
+        # Specifies whether to enable the monitoring rule in the production environment.
+        # 
+        # *   true: The monitoring rule is triggered when the associated auto triggered node that generates the output data starts to run.
+        # *   false: The monitoring rule is not triggered when the associated auto triggered node that generates the output data starts to run.
         self.open_switch = open_switch
+        # The comparison operator, such as >, >=, =, ≠, <, or <=.
         self.operator = operator
+        # Specifies whether the threshold is a dynamic threshold. Valid values:
+        # 
+        # *   0: indicates that the threshold is not a dynamic threshold.
+        # *   2: indicates that the threshold is a dynamic threshold.
         self.predict_type = predict_type
+        # The name of the compute engine instance or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the name.
         self.project_name = project_name
+        # The name of the field to be monitored.
         self.property = property
+        # The data type of the field.
         self.property_type = property_type
+        # The name of the monitoring rule.
         self.rule_name = rule_name
+        # The type of the monitoring rule. Valid values:
+        # 
+        # *   0: The monitoring rule is created by the system.
+        # *   1: The monitoring rule is created by a user.
+        # *   2: The monitoring rule is a workspace-level rule.
         self.rule_type = rule_type
+        # The ID of the monitoring template. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the monitoring template that is used to create the monitoring rule.
         self.template_id = template_id
+        # The trend of the monitoring result. Valid values:
+        # 
+        # *   up: increasing
+        # *   down: decreasing
+        # *   abs: absolute value
         self.trend = trend
+        # The threshold for a warning alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements.
         self.warning_threshold = warning_threshold
+        # The filter condition or custom SQL statement that is used for monitoring.
         self.where_condition = where_condition
 
     def validate(self):
@@ -62171,11 +62375,17 @@ class UpdateQualityRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the monitoring rule is updated.
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The ID of the request. You can troubleshoot issues based on the ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -62284,23 +62494,94 @@ class UpdateRemindRequest(TeaModel):
         use_flag: bool = None,
         webhooks: str = None,
     ):
+        # The intervals at which alert notifications are sent. Unit: seconds. Minimum value: 1200. Default value: 1800.
         self.alert_interval = alert_interval
+        # The notification method. Valid values:
+        # 
+        # *   MAIL: Alert notifications are sent by emails.
+        # *   SMS: Alert notifications are sent by text messages.
+        # *   PHONE: Alert notifications are sent by phone calls. You can use this notification method only in DataWorks Professional Edition or more advanced editions.
+        # *   DINGROBOTS: Alert notifications are sent by DingTalk messages. You can use this notification method only if the RobotUrls parameter is configured.
+        # *   WEBHOOKS (WeCom or Lark chatbot): Alert notifications are sent by WeCom or Lark messages. If you want to use this notification method, you must configure the Webhooks parameter.
+        # 
+        # You can specify multiple notification methods. Separate the specified notification methods with commas (,).
         self.alert_methods = alert_methods
+        # The value format required by this parameter varies based on the value that you specify for the AlertUnit parameter. Take note of the following items:
+        # 
+        # *   If the AlertUnit parameter is set to OWNER, leave this parameter empty.
+        # *   If the AlertUnit parameter is set to OTHER, set this parameter to the unique ID (UID) of the specified user. You can specify multiple IDs. Separate them with commas (,). You can specify a maximum of 10 IDs.
         self.alert_targets = alert_targets
+        # The recipient to whom alert notifications are sent. Valid values: OWNER and OTHER. The value OWNER indicates that alert notifications are sent to the object owner. The value OTHER indicates that alert notifications are sent to a specified user.
         self.alert_unit = alert_unit
+        # The ID of the baseline to which the custom alert rule is applied.. An alert rule can monitor a maximum of five baselines. Separate multiple IDs with commas (,).
+        # 
+        # This parameter takes effect when you set the RemindUnit parameter to BASELINE.
         self.baseline_ids = baseline_ids
+        # The ID of the workflow to which the custom alert rule is applied.. An alert rule can monitor a maximum of five workflows. Separate multiple IDs with commas (,).
+        # 
+        # This parameter takes effect when you set the RemindUnit parameter to BIZPROCESS.
         self.biz_process_ids = biz_process_ids
+        # The details of the conditions that trigger an alert.
+        # 
+        # *   If the RemindType parameter is set to FINISHED, leave this parameter empty.
+        # 
+        # *   If the RemindType parameter is set to UNFINISHED, set this parameter to key-value pairs. Example: {"hour":23,"minu":59}. Valid values of hour: 0 to 47. Valid values of minu: 0 to 59.
+        # 
+        # *   If the RemindType parameter is set to ERROR, leave this parameter empty.
+        # 
+        # *   If the RemindType parameter is set to CYCLE_UNFINISHED, set this parameter to key-value pairs in the JSON format. Example: {"1":"05:50","2":"06:50","3":"07:50","4":"08:50","5":"09:50","6":"10:50","7":"11:50","8":"12:50","9":"13:50","10":"14:50","11":"15:50","12":"16:50","13":"17:50","14":"18:50","15":"19:50","16":"20:50","17":"21:50","18":"22:50","19":"23:50","20":"24:50","21":"25:50"}.
+        # 
+        #     A key in the JSON string indicates the sequence number of a cycle. Valid values of keys: 1 to 288. A value in the JSON string indicates the time in point when a monitored instance times out in the relevant cycle. Values must be in the format of hh:mm. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
+        # 
+        # *   If the RemindType parameter is set to TIMEOUT, set this parameter to the timeout period. Unit: seconds. Example: 1800. This indicates that an alert notification is sent if the duration of a monitored instance exceeds 30 minutes.
         self.detail = detail
+        # The end of the period during which no alert notifications are sent. Specify the time in the hh:mm format. Valid values of hh: 0 to 23. Valid values of mm: 0 to 59.
         self.dnd_end = dnd_end
+        # The maximum number of alerts. Valid values: 1 to 10. Default value: 3.
         self.max_alert_times = max_alert_times
+        # The ID of the node to which the custom alert rule is applied.. An alert rule can monitor a maximum of 50 nodes. Separate multiple IDs with commas (,).
+        # 
+        # This parameter takes effect when you set the RemindUnit parameter to NODE.
         self.node_ids = node_ids
+        # The ID of the workspace to which the custom alert rule is applied.. Only one workspace can be specified for a custom alert rule.
+        # 
+        # This parameter takes effect when you set the RemindUnit parameter to PROJECT.
         self.project_id = project_id
+        # The ID of the custom alert rule.
         self.remind_id = remind_id
+        # The name of the custom alert rule. The name must be 1 to 128 characters in length.
         self.remind_name = remind_name
+        # The condition that triggers the alert rule. Valid values:
+        # 
+        # *   FINISHED: The system monitors an instance when it starts to run and sends an alert notification after the running of the instance is complete.
+        # *   UNFINISHED: The system monitors an instance when it starts to run and sends an alert notification if the instance is still running at the specified point in time.
+        # *   ERROR: The system monitors an instance when it starts to run and sends an alert notification if an error occurs.
+        # *   CYCLE_UNFINISHED: The system sends an alert notification if a monitored instance is still running at the end of the specified cycle. In most cases, you can configure this trigger condition for node instances that are scheduled to run by hour.
+        # *   TIMEOUT: The system monitors an instance when it starts to run and sends an alert notification if the instance is still running after the specified period ends. In most cases, you can configure this trigger condition to monitor the duration of node instances.
+        # 
+        # For more information, see [Manage custom alert rules](~~138172~~).
         self.remind_type = remind_type
+        # The type of the object to which the custom alert rule is applied.. Valid values:
+        # 
+        # *   NODE: node
+        # *   BASELINE: baseline
+        # *   PROJECT: workspace
+        # *   BIZPROCESS: workflow
         self.remind_unit = remind_unit
+        # The webhook URL of the DingTalk chatbot. You can specify multiple webhook URLs. Separate them with commas (,).
+        # 
+        # If this parameter is set to undefined, the specified webhook URLs are cleared.
         self.robot_urls = robot_urls
+        # Specifies whether to enable the alert rule. Valid values:
+        # 
+        # *   true: enables the alert rule.
+        # *   false: disables the alert rule.
         self.use_flag = use_flag
+        # The webhook URL of the WeCom or Lark chatbot. You can specify multiple webhook URLs. Separate the specified webhook URLs with commas (,). The WEBHOOKS notification method must be specified for alertMethods. If this parameter is set to undefined, the specified webhook URLs are cleared.
+        # 
+        # Only DataWorks Enterprise Edition supports this parameter.
+        # 
+        # The webhook URL-based alerting feature is supported in the following regions: China (Shanghai), China (Chengdu), China (Zhangjiakou), China (Beijing), China (Hangzhou), China (Shenzhen), China (Hong Kong), Germany (Frankfurt), and Singapore.
         self.webhooks = webhooks
 
     def validate(self):
@@ -62401,11 +62682,20 @@ class UpdateRemindResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the modification to the custom alert rule succeeds.
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
