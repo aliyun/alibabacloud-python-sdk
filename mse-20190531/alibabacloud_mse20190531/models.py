@@ -21596,6 +21596,8 @@ class ImportServicesRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        fc_service_name: str = None,
+        fc_version: str = None,
         gateway_unique_id: str = None,
         service_list: List[ImportServicesRequestServiceList] = None,
         source_type: str = None,
@@ -21606,6 +21608,8 @@ class ImportServicesRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        self.fc_service_name = fc_service_name
+        self.fc_version = fc_version
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
         # The information about services.
@@ -21640,6 +21644,10 @@ class ImportServicesRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.fc_service_name is not None:
+            result['FcServiceName'] = self.fc_service_name
+        if self.fc_version is not None:
+            result['FcVersion'] = self.fc_version
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
         result['ServiceList'] = []
@@ -21656,6 +21664,10 @@ class ImportServicesRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('FcServiceName') is not None:
+            self.fc_service_name = m.get('FcServiceName')
+        if m.get('FcVersion') is not None:
+            self.fc_version = m.get('FcVersion')
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
         self.service_list = []
@@ -21674,6 +21686,8 @@ class ImportServicesShrinkRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        fc_service_name: str = None,
+        fc_version: str = None,
         gateway_unique_id: str = None,
         service_list_shrink: str = None,
         source_type: str = None,
@@ -21684,6 +21698,8 @@ class ImportServicesShrinkRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        self.fc_service_name = fc_service_name
+        self.fc_version = fc_version
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
         # The information about services.
@@ -21715,6 +21731,10 @@ class ImportServicesShrinkRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.fc_service_name is not None:
+            result['FcServiceName'] = self.fc_service_name
+        if self.fc_version is not None:
+            result['FcVersion'] = self.fc_version
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.service_list_shrink is not None:
@@ -21729,6 +21749,10 @@ class ImportServicesShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('FcServiceName') is not None:
+            self.fc_service_name = m.get('FcServiceName')
+        if m.get('FcVersion') is not None:
+            self.fc_version = m.get('FcVersion')
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('ServiceList') is not None:

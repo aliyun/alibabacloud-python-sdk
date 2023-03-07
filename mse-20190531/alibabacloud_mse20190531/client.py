@@ -7173,6 +7173,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.fc_service_name):
+            query['FcServiceName'] = request.fc_service_name
+        if not UtilClient.is_unset(request.fc_version):
+            query['FcVersion'] = request.fc_version
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.service_list_shrink):
@@ -7213,6 +7217,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.fc_service_name):
+            query['FcServiceName'] = request.fc_service_name
+        if not UtilClient.is_unset(request.fc_version):
+            query['FcVersion'] = request.fc_version
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.service_list_shrink):
