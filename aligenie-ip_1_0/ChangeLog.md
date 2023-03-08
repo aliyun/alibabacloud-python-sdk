@@ -1,3 +1,6 @@
+2023-03-08 Version: 1.0.19
+- Add get union id api.
+
 2023-03-03 Version: 1.0.18
 - Add get union id api.
 

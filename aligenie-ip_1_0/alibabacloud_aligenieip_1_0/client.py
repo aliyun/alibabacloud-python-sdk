@@ -2481,6 +2481,112 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.GetCartoonHeaders()
         return await self.get_cartoon_with_options_async(request, headers, runtime)
 
+    def get_hotel_contact_by_genie_device_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.GetHotelContactByGenieDeviceRequest,
+        headers: ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.GetHotelContactByGenieDeviceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            query['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHotelContactByGenieDevice',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/getHotelContactByGenieDevice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_hotel_contact_by_genie_device_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.GetHotelContactByGenieDeviceRequest,
+        headers: ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.GetHotelContactByGenieDeviceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.device_info, 'DeviceInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            query['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHotelContactByGenieDevice',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/getHotelContactByGenieDevice',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_hotel_contact_by_genie_device(
+        self,
+        request: ali_genieip__1__0_models.GetHotelContactByGenieDeviceRequest,
+    ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders()
+        return self.get_hotel_contact_by_genie_device_with_options(request, headers, runtime)
+
+    async def get_hotel_contact_by_genie_device_async(
+        self,
+        request: ali_genieip__1__0_models.GetHotelContactByGenieDeviceRequest,
+    ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders()
+        return await self.get_hotel_contact_by_genie_device_with_options_async(request, headers, runtime)
+
     def get_hotel_contact_by_number_with_options(
         self,
         tmp_req: ali_genieip__1__0_models.GetHotelContactByNumberRequest,
@@ -3716,6 +3822,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetRelationProductListHeaders()
         return await self.get_relation_product_list_with_options_async(headers, runtime)
+
+    def get_union_id_with_options(
+        self,
+        request: ali_genieip__1__0_models.GetUnionIdRequest,
+        headers: ali_genieip__1__0_models.GetUnionIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encode_key):
+            body['EncodeKey'] = request.encode_key
+        if not UtilClient.is_unset(request.encode_type):
+            body['EncodeType'] = request.encode_type
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.id_type):
+            body['IdType'] = request.id_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUnionId',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/getUnionId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.GetUnionIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_union_id_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.GetUnionIdRequest,
+        headers: ali_genieip__1__0_models.GetUnionIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encode_key):
+            body['EncodeKey'] = request.encode_key
+        if not UtilClient.is_unset(request.encode_type):
+            body['EncodeType'] = request.encode_type
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.id_type):
+            body['IdType'] = request.id_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUnionId',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/getUnionId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.GetUnionIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_union_id(
+        self,
+        request: ali_genieip__1__0_models.GetUnionIdRequest,
+    ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.GetUnionIdHeaders()
+        return self.get_union_id_with_options(request, headers, runtime)
+
+    async def get_union_id_async(
+        self,
+        request: ali_genieip__1__0_models.GetUnionIdRequest,
+    ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.GetUnionIdHeaders()
+        return await self.get_union_id_with_options_async(request, headers, runtime)
 
     def get_welcome_text_and_music_with_options(
         self,
