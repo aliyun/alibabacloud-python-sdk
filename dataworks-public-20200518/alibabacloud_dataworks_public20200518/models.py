@@ -5387,6 +5387,7 @@ class CreateQualityEntityRequest(TeaModel):
         entity_level: int = None,
         env_type: str = None,
         match_expression: str = None,
+        project_id: int = None,
         project_name: str = None,
         table_name: str = None,
     ):
@@ -5396,6 +5397,7 @@ class CreateQualityEntityRequest(TeaModel):
         self.env_type = env_type
         # The partition expression.
         self.match_expression = match_expression
+        self.project_id = project_id
         # The name of the maxcompute project or data source.
         self.project_name = project_name
         # The name of the table.
@@ -5416,6 +5418,8 @@ class CreateQualityEntityRequest(TeaModel):
             result['EnvType'] = self.env_type
         if self.match_expression is not None:
             result['MatchExpression'] = self.match_expression
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.table_name is not None:
@@ -5430,6 +5434,8 @@ class CreateQualityEntityRequest(TeaModel):
             self.env_type = m.get('EnvType')
         if m.get('MatchExpression') is not None:
             self.match_expression = m.get('MatchExpression')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('TableName') is not None:
@@ -5550,6 +5556,7 @@ class CreateQualityFollowerRequest(TeaModel):
         alarm_mode: int = None,
         entity_id: int = None,
         follower: str = None,
+        project_id: int = None,
         project_name: str = None,
     ):
         # The notification method. Valid values: 1, 2, 4, and 5. 1 indicates that the notification is sent by email. 2 indicates that the notification is sent by email and text message. 4 indicates that the notification is sent by a DingTalk chatbot. 5 indicates that the notification is sent by a DingTalk chatbot to all members in a DingTalk group.
@@ -5558,6 +5565,7 @@ class CreateQualityFollowerRequest(TeaModel):
         self.entity_id = entity_id
         # The user ID of the subscriber.
         self.follower = follower
+        self.project_id = project_id
         # The name of the computing engine instance or data source.
         self.project_name = project_name
 
@@ -5576,6 +5584,8 @@ class CreateQualityFollowerRequest(TeaModel):
             result['EntityId'] = self.entity_id
         if self.follower is not None:
             result['Follower'] = self.follower
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -5588,6 +5598,8 @@ class CreateQualityFollowerRequest(TeaModel):
             self.entity_id = m.get('EntityId')
         if m.get('Follower') is not None:
             self.follower = m.get('Follower')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -5896,6 +5908,7 @@ class CreateQualityRuleRequest(TeaModel):
         method_name: str = None,
         operator: str = None,
         predict_type: int = None,
+        project_id: int = None,
         project_name: str = None,
         property: str = None,
         property_type: str = None,
@@ -5924,6 +5937,7 @@ class CreateQualityRuleRequest(TeaModel):
         self.operator = operator
         # Specifies whether the monitoring rule is a dynamic threshold rule. Valid values: 0 and 2. 0 indicates that the monitoring rule is not a dynamic threshold rule. 2 indicates that the monitoring rule is a dynamic threshold rule.
         self.predict_type = predict_type
+        self.project_id = project_id
         # The name of the compute engine instance or data source.
         self.project_name = project_name
         # The fields that you want to monitor. If you want to monitor all fields in a table and check the table rows, set this parameter to table_count. If you want to monitor all fields in a table and check the table size, set this parameter to table_size.
@@ -5974,6 +5988,8 @@ class CreateQualityRuleRequest(TeaModel):
             result['Operator'] = self.operator
         if self.predict_type is not None:
             result['PredictType'] = self.predict_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.property is not None:
@@ -6014,6 +6030,8 @@ class CreateQualityRuleRequest(TeaModel):
             self.operator = m.get('Operator')
         if m.get('PredictType') is not None:
             self.predict_type = m.get('PredictType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Property') is not None:
@@ -9311,12 +9329,14 @@ class DeleteQualityEntityRequest(TeaModel):
         self,
         entity_id: int = None,
         env_type: str = None,
+        project_id: int = None,
         project_name: str = None,
     ):
         # The ID of the partition filter expression.
         self.entity_id = entity_id
         # The type of the compute engine instance or data source. Valid values: EMR, Hologres, AnalyticDB for PostgreSQL, CDH, MaxCompute, Kafka and DataHub.
         self.env_type = env_type
+        self.project_id = project_id
         # The name of the compute engine instance or data source.
         self.project_name = project_name
 
@@ -9333,6 +9353,8 @@ class DeleteQualityEntityRequest(TeaModel):
             result['EntityId'] = self.entity_id
         if self.env_type is not None:
             result['EnvType'] = self.env_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -9343,6 +9365,8 @@ class DeleteQualityEntityRequest(TeaModel):
             self.entity_id = m.get('EntityId')
         if m.get('EnvType') is not None:
             self.env_type = m.get('EnvType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -9459,10 +9483,12 @@ class DeleteQualityFollowerRequest(TeaModel):
     def __init__(
         self,
         follower_id: int = None,
+        project_id: int = None,
         project_name: str = None,
     ):
         # The ID of the subscription relationship between the partition filter expression and the subscriber. You can call the [GetQualityFollower](~~174000~~) operation to obtain the ID of the subscription relationship.
         self.follower_id = follower_id
+        self.project_id = project_id
         # The name of the compute engine or data source for which the partition filter expression is configured. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Monitoring Rules page of Data Quality to obtain the name.
         self.project_name = project_name
 
@@ -9477,6 +9503,8 @@ class DeleteQualityFollowerRequest(TeaModel):
         result = dict()
         if self.follower_id is not None:
             result['FollowerId'] = self.follower_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -9485,6 +9513,8 @@ class DeleteQualityFollowerRequest(TeaModel):
         m = m or dict()
         if m.get('FollowerId') is not None:
             self.follower_id = m.get('FollowerId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -9790,9 +9820,11 @@ class DeleteQualityRelativeNodeResponse(TeaModel):
 class DeleteQualityRuleRequest(TeaModel):
     def __init__(
         self,
+        project_id: int = None,
         project_name: str = None,
         rule_id: int = None,
     ):
+        self.project_id = project_id
         # The name of the database engine or data source.
         self.project_name = project_name
         # The ID of the rule.
@@ -9807,6 +9839,8 @@ class DeleteQualityRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.rule_id is not None:
@@ -9815,6 +9849,8 @@ class DeleteQualityRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('RuleId') is not None:
@@ -30688,6 +30724,7 @@ class GetQualityEntityRequest(TeaModel):
         self,
         env_type: str = None,
         match_expression: str = None,
+        project_id: int = None,
         project_name: str = None,
         table_name: str = None,
     ):
@@ -30695,6 +30732,7 @@ class GetQualityEntityRequest(TeaModel):
         self.env_type = env_type
         # The partition filter expression.
         self.match_expression = match_expression
+        self.project_id = project_id
         # The name of the compute engine instance or data source. You can obtain the name from data source configurations.
         self.project_name = project_name
         # The name of the partitioned table. You can call the [GetMetaTablePartition](~~173923~~) operation to obtain the name.
@@ -30713,6 +30751,8 @@ class GetQualityEntityRequest(TeaModel):
             result['EnvType'] = self.env_type
         if self.match_expression is not None:
             result['MatchExpression'] = self.match_expression
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.table_name is not None:
@@ -30725,6 +30765,8 @@ class GetQualityEntityRequest(TeaModel):
             self.env_type = m.get('EnvType')
         if m.get('MatchExpression') is not None:
             self.match_expression = m.get('MatchExpression')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('TableName') is not None:
@@ -30993,9 +31035,11 @@ class GetQualityFollowerRequest(TeaModel):
     def __init__(
         self,
         entity_id: int = None,
+        project_id: int = None,
         project_name: str = None,
     ):
         self.entity_id = entity_id
+        self.project_id = project_id
         self.project_name = project_name
 
     def validate(self):
@@ -31009,6 +31053,8 @@ class GetQualityFollowerRequest(TeaModel):
         result = dict()
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -31017,6 +31063,8 @@ class GetQualityFollowerRequest(TeaModel):
         m = m or dict()
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -31209,9 +31257,11 @@ class GetQualityFollowerResponse(TeaModel):
 class GetQualityRuleRequest(TeaModel):
     def __init__(
         self,
+        project_id: int = None,
         project_name: str = None,
         rule_id: int = None,
     ):
+        self.project_id = project_id
         # The name of the compute engine instance or data source.
         self.project_name = project_name
         # The ID of the monitoring rule. You can call the [ListQualityRules](~~173995~~) operation to query the ID.
@@ -31226,6 +31276,8 @@ class GetQualityRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.rule_id is not None:
@@ -31234,6 +31286,8 @@ class GetQualityRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('RuleId') is not None:
@@ -48783,6 +48837,7 @@ class ListQualityResultsByEntityRequest(TeaModel):
         entity_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        project_id: int = None,
         project_name: str = None,
         start_date: str = None,
     ):
@@ -48794,6 +48849,7 @@ class ListQualityResultsByEntityRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        self.project_id = project_id
         # The name of the compute engine instance or data source. You can obtain the name from data source configurations.
         self.project_name = project_name
         # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
@@ -48816,6 +48872,8 @@ class ListQualityResultsByEntityRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.start_date is not None:
@@ -48832,6 +48890,8 @@ class ListQualityResultsByEntityRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('StartDate') is not None:
@@ -49460,6 +49520,7 @@ class ListQualityResultsByRuleRequest(TeaModel):
         end_date: str = None,
         page_number: int = None,
         page_size: int = None,
+        project_id: int = None,
         project_name: str = None,
         rule_id: int = None,
         start_date: str = None,
@@ -49472,6 +49533,7 @@ class ListQualityResultsByRuleRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        self.project_id = project_id
         # The name of the compute engine instance or data source for which data quality is monitored.
         self.project_name = project_name
         # The ID of the monitoring rule. You can use the ID and information such as a partition filter expression to perform a joint query.
@@ -49496,6 +49558,8 @@ class ListQualityResultsByRuleRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.rule_id is not None:
@@ -49512,6 +49576,8 @@ class ListQualityResultsByRuleRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('RuleId') is not None:
@@ -50137,6 +50203,7 @@ class ListQualityRulesRequest(TeaModel):
         entity_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        project_id: int = None,
         project_name: str = None,
     ):
         # The ID of the partition filter expression. You can call the [GetQualityEntity](~~174003~~) operation to query the ID of the partition filter expression.
@@ -50145,6 +50212,7 @@ class ListQualityRulesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 10. Maximum value: 20.
         self.page_size = page_size
+        self.project_id = project_id
         # The name of the compute engine instance or data source. You can obtain the name from data source configurations.
         self.project_name = project_name
 
@@ -50163,6 +50231,8 @@ class ListQualityRulesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -50175,6 +50245,8 @@ class ListQualityRulesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -58115,16 +58187,9 @@ class TestNetworkConnectionRequest(TeaModel):
         project_id: int = None,
         resource_group: str = None,
     ):
-        # The name of the data source.
         self.datasource_name = datasource_name
-        # The environment to which the data source belongs. Valid values:
-        # 
-        # *   0: development environment
-        # *   1: production environment
         self.env_type = env_type
-        # The ID of the DataWorks workspace to which the data source belongs. You can call the [ListProjects](~~178393~~) operation to query the ID of the workspace.
         self.project_id = project_id
-        # The identifier of the resource group. You can call the [ListResourceGroups](~~173913~~) operation to query the identifier of the resource group.
         self.resource_group = resource_group
 
     def validate(self):
@@ -58165,12 +58230,7 @@ class TestNetworkConnectionResponseBodyTaskList(TeaModel):
         connect_message: str = None,
         connect_status: bool = None,
     ):
-        # The reason why the data source and resource group failed the connectivity test. If data source and the resource group passed the connectivity test, this parameter is left empty.
         self.connect_message = connect_message
-        # The result of the connectivity test. Valid values:
-        # 
-        # *   true: The data source and the resource group passed the connectivity test.
-        # *   false: The data source and the resource group failed the connectivity test. You can troubleshoot issues based on the ConnectMessage parameter.
         self.connect_status = connect_status
 
     def validate(self):
@@ -58204,14 +58264,8 @@ class TestNetworkConnectionResponseBody(TeaModel):
         success: bool = None,
         task_list: TestNetworkConnectionResponseBodyTaskList = None,
     ):
-        # The ID of the request. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
         self.success = success
-        # The information about the connectivity test.
         self.task_list = task_list
 
     def validate(self):
@@ -59704,39 +59758,9 @@ class UpdateDIProjectConfigRequest(TeaModel):
         project_id: int = None,
         source_type: str = None,
     ):
-        # The type of the destinations of the synchronization solutions. This parameter cannot be left empty.
-        # 
-        # Valid values: analyticdb_for_mysql, odps, elasticsearch, holo, mysql, and polardb.
         self.destination_type = destination_type
-        # The new default global configuration of synchronization solutions. The value indicates the processing rules of different types of DDL messages. The value must be in the JSON format. Example:
-        # 
-        # {"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"WARNING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE":"WARNING"}
-        # 
-        # Field description:
-        # 
-        # *   RENAMECOLUMN: renames a column.
-        # *   DROPTABLE: deletes a table.
-        # *   CREATETABLE: creates a table.
-        # *   MODIFYCOLUMN: changes the data type of a column.
-        # *   TRUNCATETABLE: clears a table.
-        # *   DROPCOLUMN: deletes a column.
-        # *   ADDCOLUMN: creates a column.
-        # *   RENAMETABLE: renames a table.
-        # 
-        # DataWorks processes a DDL message of a specific type based on the following rules:
-        # 
-        # *   WARNING: ignores the message and records an alert in real-time synchronization logs. The alert contains information about the situation that the message is ignored because of an execution error.
-        # *   IGNORE: discards the message and does not send it to the destination.
-        # *   CRITICAL: terminates the real-time synchronization node and sets the node status to Failed.
-        # *   NORMAL: sends the message to the destination to process the message. Each destination processes DDL messages based on its own business logic. If DataWorks adopts the NORMAL policy, DataWorks only forwards DDL messages.
         self.project_config = project_config
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
         self.project_id = project_id
-        # The type of the sources of the synchronization solutions.
-        # 
-        # Valid values: oracle, mysql, polardb, datahub, drds, and analyticdb_for_mysql.
-        # 
-        # If you do not configure this parameter, DataWorks applies the default global configuration to all sources.
         self.source_type = source_type
 
     def validate(self):
@@ -59776,10 +59800,6 @@ class UpdateDIProjectConfigResponseBodyData(TeaModel):
         self,
         status: str = None,
     ):
-        # Indicates whether the default global configuration of synchronization solutions was modified. Valid values:
-        # 
-        # *   success: The default global configuration of synchronization solutions was modified.
-        # *   fail: The default global configuration of synchronization solutions failed to be modified.
         self.status = status
 
     def validate(self):
@@ -59809,14 +59829,8 @@ class UpdateDIProjectConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the modification.
         self.data = data
-        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -62174,15 +62188,13 @@ class UpdateQualityFollowerRequest(TeaModel):
         alarm_mode: int = None,
         follower: str = None,
         follower_id: int = None,
+        project_id: int = None,
         project_name: str = None,
     ):
-        # The notification method. Valid values: 1, 2, 4, and 5. 1 indicates that the notification is sent by email. 2 indicates that the notification is sent by email and text message. 4 indicates that the notification is sent by a DingTalk chatbot. 5 indicates that the notification is sent by a DingTalk chatbot to all members in a DingTalk group.
         self.alarm_mode = alarm_mode
-        # The name of the subscriber.
         self.follower = follower
-        # The ID of the subscription relationship.
         self.follower_id = follower_id
-        # The name of the computing engine instance or data source.
+        self.project_id = project_id
         self.project_name = project_name
 
     def validate(self):
@@ -62200,6 +62212,8 @@ class UpdateQualityFollowerRequest(TeaModel):
             result['Follower'] = self.follower
         if self.follower_id is not None:
             result['FollowerId'] = self.follower_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -62212,6 +62226,8 @@ class UpdateQualityFollowerRequest(TeaModel):
             self.follower = m.get('Follower')
         if m.get('FollowerId') is not None:
             self.follower_id = m.get('FollowerId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -62227,17 +62243,11 @@ class UpdateQualityFollowerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the subscription relationship is updated.
         self.data = data
-        # The error code returned.
         self.error_code = error_code
-        # The error message returned.
         self.error_message = error_message
-        # The HTTP status code returned.
         self.http_status_code = http_status_code
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -62338,6 +62348,7 @@ class UpdateQualityRuleRequest(TeaModel):
         open_switch: bool = None,
         operator: str = None,
         predict_type: int = None,
+        project_id: int = None,
         project_name: str = None,
         property: str = None,
         property_type: str = None,
@@ -62382,6 +62393,7 @@ class UpdateQualityRuleRequest(TeaModel):
         # *   0: indicates that the threshold is not a dynamic threshold.
         # *   2: indicates that the threshold is a dynamic threshold.
         self.predict_type = predict_type
+        self.project_id = project_id
         # The name of the compute engine instance or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the name.
         self.project_name = project_name
         # The name of the field to be monitored.
@@ -62440,6 +62452,8 @@ class UpdateQualityRuleRequest(TeaModel):
             result['Operator'] = self.operator
         if self.predict_type is not None:
             result['PredictType'] = self.predict_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.property is not None:
@@ -62484,6 +62498,8 @@ class UpdateQualityRuleRequest(TeaModel):
             self.operator = m.get('Operator')
         if m.get('PredictType') is not None:
             self.predict_type = m.get('PredictType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Property') is not None:

@@ -3174,6 +3174,8 @@ class Client(OpenApiClient):
             body['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.match_expression):
             body['MatchExpression'] = request.match_expression
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.table_name):
@@ -3210,6 +3212,8 @@ class Client(OpenApiClient):
             body['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.match_expression):
             body['MatchExpression'] = request.match_expression
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.table_name):
@@ -3260,6 +3264,8 @@ class Client(OpenApiClient):
             body['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.follower):
             body['Follower'] = request.follower
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -3294,6 +3300,8 @@ class Client(OpenApiClient):
             body['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.follower):
             body['Follower'] = request.follower
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -3452,6 +3460,8 @@ class Client(OpenApiClient):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.predict_type):
             body['PredictType'] = request.predict_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.property):
@@ -3514,6 +3524,8 @@ class Client(OpenApiClient):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.predict_type):
             body['PredictType'] = request.predict_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.property):
@@ -5208,6 +5220,8 @@ class Client(OpenApiClient):
             body['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.env_type):
             body['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -5240,6 +5254,8 @@ class Client(OpenApiClient):
             body['EntityId'] = request.entity_id
         if not UtilClient.is_unset(request.env_type):
             body['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -5291,6 +5307,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.follower_id):
             body['FollowerId'] = request.follower_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -5328,6 +5346,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.follower_id):
             body['FollowerId'] = request.follower_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -5480,6 +5500,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.rule_id):
@@ -5510,6 +5532,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.rule_id):
@@ -11556,6 +11580,8 @@ class Client(OpenApiClient):
             body['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.match_expression):
             body['MatchExpression'] = request.match_expression
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.table_name):
@@ -11590,6 +11616,8 @@ class Client(OpenApiClient):
             body['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.match_expression):
             body['MatchExpression'] = request.match_expression
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.table_name):
@@ -11636,6 +11664,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.entity_id):
             body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -11666,6 +11696,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.entity_id):
             body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -11708,6 +11740,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.rule_id):
@@ -11738,6 +11772,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.rule_id):
@@ -16395,6 +16431,8 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.start_date):
@@ -16440,6 +16478,8 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.start_date):
@@ -16502,6 +16542,8 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.rule_id):
@@ -16540,6 +16582,8 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.rule_id):
@@ -16592,6 +16636,8 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -16626,6 +16672,8 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -20606,13 +20654,6 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
-        """
-        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
-        
-        @param request: UpdateDIProjectConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateDIProjectConfigResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_type):
@@ -20647,13 +20688,6 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
-        """
-        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
-        
-        @param request: UpdateDIProjectConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateDIProjectConfigResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_type):
@@ -20687,12 +20721,6 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
-        """
-        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
-        
-        @param request: UpdateDIProjectConfigRequest
-        @return: UpdateDIProjectConfigResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.update_diproject_config_with_options(request, runtime)
 
@@ -20700,12 +20728,6 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
-        """
-        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
-        
-        @param request: UpdateDIProjectConfigRequest
-        @return: UpdateDIProjectConfigResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.update_diproject_config_with_options_async(request, runtime)
 
@@ -21918,6 +21940,8 @@ class Client(OpenApiClient):
             body['Follower'] = request.follower
         if not UtilClient.is_unset(request.follower_id):
             body['FollowerId'] = request.follower_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -21952,6 +21976,8 @@ class Client(OpenApiClient):
             body['Follower'] = request.follower
         if not UtilClient.is_unset(request.follower_id):
             body['FollowerId'] = request.follower_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -22016,6 +22042,8 @@ class Client(OpenApiClient):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.predict_type):
             body['PredictType'] = request.predict_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.property):
@@ -22082,6 +22110,8 @@ class Client(OpenApiClient):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.predict_type):
             body['PredictType'] = request.predict_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.project_name):
             body['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.property):
