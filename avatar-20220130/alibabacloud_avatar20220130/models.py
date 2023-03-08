@@ -899,11 +899,13 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
         fail_reason: str = None,
         subtitles_url: str = None,
         video_url: str = None,
+        word_subtitles_url: str = None,
     ):
         self.fail_code = fail_code
         self.fail_reason = fail_reason
         self.subtitles_url = subtitles_url
         self.video_url = video_url
+        self.word_subtitles_url = word_subtitles_url
 
     def validate(self):
         pass
@@ -922,6 +924,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
             result['SubtitlesUrl'] = self.subtitles_url
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
+        if self.word_subtitles_url is not None:
+            result['WordSubtitlesUrl'] = self.word_subtitles_url
         return result
 
     def from_map(self, m: dict = None):
@@ -934,6 +938,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
             self.subtitles_url = m.get('SubtitlesUrl')
         if m.get('VideoUrl') is not None:
             self.video_url = m.get('VideoUrl')
+        if m.get('WordSubtitlesUrl') is not None:
+            self.word_subtitles_url = m.get('WordSubtitlesUrl')
         return self
 
 
