@@ -1,3 +1,7 @@
+2023-03-08 Version: 0.0.3
+- Add api ListAccountFactoryBaselines.
+- Add api GetAccountFactoryBaseline.
+
 2023-02-20 Version: 0.0.2
 - Supported multiple baselines for account factory.
 
