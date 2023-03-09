@@ -1,3 +1,8 @@
+2023-03-09 Version: 1.0.7
+-  GrantUserPermissions Add new api.
+- DescribeUserPermissions Add new api.
+
+
 2023-02-07 Version: 1.0.6
 - UpdateHubClusterFeature VSwitches can be configured.
 

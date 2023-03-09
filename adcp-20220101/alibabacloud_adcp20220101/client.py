@@ -765,6 +765,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
+    def describe_user_permissions_with_options(
+        self,
+        request: adcp_20220101_models.DescribeUserPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribeUserPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserPermissions',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribeUserPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_permissions_with_options_async(
+        self,
+        request: adcp_20220101_models.DescribeUserPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.DescribeUserPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserPermissions',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.DescribeUserPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_permissions(
+        self,
+        request: adcp_20220101_models.DescribeUserPermissionsRequest,
+    ) -> adcp_20220101_models.DescribeUserPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_permissions_with_options(request, runtime)
+
+    async def describe_user_permissions_async(
+        self,
+        request: adcp_20220101_models.DescribeUserPermissionsRequest,
+    ) -> adcp_20220101_models.DescribeUserPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_permissions_with_options_async(request, runtime)
+
     def detach_cluster_from_hub_with_options(
         self,
         request: adcp_20220101_models.DetachClusterFromHubRequest,
@@ -846,6 +916,80 @@ class Client(OpenApiClient):
     ) -> adcp_20220101_models.DetachClusterFromHubResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detach_cluster_from_hub_with_options_async(request, runtime)
+
+    def grant_user_permissions_with_options(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.GrantUserPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permissions):
+            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantUserPermissions',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.GrantUserPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_user_permissions_with_options_async(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adcp_20220101_models.GrantUserPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permissions):
+            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantUserPermissions',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adcp_20220101_models.GrantUserPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_user_permissions(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionsRequest,
+    ) -> adcp_20220101_models.GrantUserPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.grant_user_permissions_with_options(request, runtime)
+
+    async def grant_user_permissions_async(
+        self,
+        request: adcp_20220101_models.GrantUserPermissionsRequest,
+    ) -> adcp_20220101_models.GrantUserPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.grant_user_permissions_with_options_async(request, runtime)
 
     def update_hub_cluster_feature_with_options(
         self,
