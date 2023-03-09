@@ -3566,12 +3566,12 @@ class CreateImageRequest(TeaModel):
         delete_after_image_upload: str = None,
         image_name: str = None,
         instance_id: str = None,
-        product: str = None,
+        snapshot_id: str = None,
     ):
         self.delete_after_image_upload = delete_after_image_upload
         self.image_name = image_name
         self.instance_id = instance_id
-        self.product = product
+        self.snapshot_id = snapshot_id
 
     def validate(self):
         pass
@@ -3588,8 +3588,8 @@ class CreateImageRequest(TeaModel):
             result['ImageName'] = self.image_name
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.product is not None:
-            result['product'] = self.product
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3600,8 +3600,8 @@ class CreateImageRequest(TeaModel):
             self.image_name = m.get('ImageName')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('product') is not None:
-            self.product = m.get('product')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
         return self
 
 
@@ -6459,6 +6459,110 @@ class DeleteDeviceInternetPortResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDeviceInternetPortResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDiskRequest(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+    ):
+        self.disk_id = disk_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        return self
+
+
+class DeleteDiskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDiskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDiskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDiskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30315,6 +30419,200 @@ class GetOssStorageAndAccByBucketsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOssStorageAndAccByBucketsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOssUsageDataRequest(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        end_time: str = None,
+        period: str = None,
+        start_time: str = None,
+    ):
+        self.bucket = bucket
+        self.end_time = end_time
+        self.period = period
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetOssUsageDataResponseBodyUsageList(TeaModel):
+    def __init__(
+        self,
+        lan_rx_bw: int = None,
+        lan_tx_bw: int = None,
+        point: int = None,
+        point_ts: str = None,
+        storage_usage_byte: int = None,
+        wan_rx_bw: int = None,
+        wan_tx_bw: int = None,
+    ):
+        self.lan_rx_bw = lan_rx_bw
+        self.lan_tx_bw = lan_tx_bw
+        self.point = point
+        self.point_ts = point_ts
+        self.storage_usage_byte = storage_usage_byte
+        self.wan_rx_bw = wan_rx_bw
+        self.wan_tx_bw = wan_tx_bw
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lan_rx_bw is not None:
+            result['LanRxBw'] = self.lan_rx_bw
+        if self.lan_tx_bw is not None:
+            result['LanTxBw'] = self.lan_tx_bw
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.point_ts is not None:
+            result['PointTs'] = self.point_ts
+        if self.storage_usage_byte is not None:
+            result['StorageUsageByte'] = self.storage_usage_byte
+        if self.wan_rx_bw is not None:
+            result['WanRxBw'] = self.wan_rx_bw
+        if self.wan_tx_bw is not None:
+            result['WanTxBw'] = self.wan_tx_bw
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LanRxBw') is not None:
+            self.lan_rx_bw = m.get('LanRxBw')
+        if m.get('LanTxBw') is not None:
+            self.lan_tx_bw = m.get('LanTxBw')
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('PointTs') is not None:
+            self.point_ts = m.get('PointTs')
+        if m.get('StorageUsageByte') is not None:
+            self.storage_usage_byte = m.get('StorageUsageByte')
+        if m.get('WanRxBw') is not None:
+            self.wan_rx_bw = m.get('WanRxBw')
+        if m.get('WanTxBw') is not None:
+            self.wan_tx_bw = m.get('WanTxBw')
+        return self
+
+
+class GetOssUsageDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        usage_list: List[GetOssUsageDataResponseBodyUsageList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.usage_list = usage_list
+
+    def validate(self):
+        if self.usage_list:
+            for k in self.usage_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['UsageList'] = []
+        if self.usage_list is not None:
+            for k in self.usage_list:
+                result['UsageList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.usage_list = []
+        if m.get('UsageList') is not None:
+            for k in m.get('UsageList'):
+                temp_model = GetOssUsageDataResponseBodyUsageList()
+                self.usage_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetOssUsageDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOssUsageDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOssUsageDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
