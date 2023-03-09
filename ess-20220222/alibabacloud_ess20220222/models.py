@@ -698,9 +698,18 @@ class AttachServerGroupsRequestServerGroups(TeaModel):
         type: str = None,
         weight: int = None,
     ):
+        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the backend vServer group. Valid values: 1 to 65535.
         self.port = port
+        # The ID of the server group.
         self.server_group_id = server_group_id
+        # The type of the vServer group. Valid values:
+        # 
+        # *   ALB
+        # *   NLB
         self.type = type
+        # The weight of an ECS instance in the scaling group as a backend server after Auto Scaling adds the ECS instance to the backend vServer group.
+        # 
+        # If you increase the weight of an ECS instance in the backend vServer group, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -746,12 +755,24 @@ class AttachServerGroupsRequest(TeaModel):
         scaling_group_id: str = None,
         server_groups: List[AttachServerGroupsRequestServerGroups] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25965~~).
         self.client_token = client_token
+        # Specifies whether to add the Elastic Compute Service (ECS) instances in the scaling group to the vServer groups of the newly attached SLB instance.
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.force_attach = force_attach
         self.owner_id = owner_id
+        # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # Details of the vServer groups.
         self.server_groups = server_groups
 
     def validate(self):
@@ -812,7 +833,11 @@ class AttachServerGroupsResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the scaling activity in which an ALB instance is attached to the scaling group and the ECS instances in the scaling group are added to the backend vServer group of the ALB instance.
+        # 
+        # > This parameter is returned only after you set the ForceAttach parameter to true.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -2073,13 +2098,10 @@ class CreateEciScalingConfigurationRequestContainersLivenessProbe(TeaModel):
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
-        self.validate_required(self.exec, 'exec')
         if self.exec:
             self.exec.validate()
-        self.validate_required(self.http_get, 'http_get')
         if self.http_get:
             self.http_get.validate()
-        self.validate_required(self.tcp_socket, 'tcp_socket')
         if self.tcp_socket:
             self.tcp_socket.validate()
 
@@ -2246,13 +2268,10 @@ class CreateEciScalingConfigurationRequestContainersReadinessProbe(TeaModel):
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
-        self.validate_required(self.exec, 'exec')
         if self.exec:
             self.exec.validate()
-        self.validate_required(self.http_get, 'http_get')
         if self.http_get:
             self.http_get.validate()
-        self.validate_required(self.tcp_socket, 'tcp_socket')
         if self.tcp_socket:
             self.tcp_socket.validate()
 
@@ -2343,7 +2362,6 @@ class CreateEciScalingConfigurationRequestContainersSecurityContext(TeaModel):
         self.run_as_user = run_as_user
 
     def validate(self):
-        self.validate_required(self.capability, 'capability')
         if self.capability:
             self.capability.validate()
 
@@ -2594,13 +2612,10 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         self.working_dir = working_dir
 
     def validate(self):
-        self.validate_required(self.liveness_probe, 'liveness_probe')
         if self.liveness_probe:
             self.liveness_probe.validate()
-        self.validate_required(self.readiness_probe, 'readiness_probe')
         if self.readiness_probe:
             self.readiness_probe.validate()
-        self.validate_required(self.security_context, 'security_context')
         if self.security_context:
             self.security_context.validate()
         if self.environment_vars:
@@ -2870,7 +2885,6 @@ class CreateEciScalingConfigurationRequestInitContainersSecurityContext(TeaModel
         self.run_as_user = run_as_user
 
     def validate(self):
-        self.validate_required(self.capability, 'capability')
         if self.capability:
             self.capability.validate()
 
@@ -3086,7 +3100,6 @@ class CreateEciScalingConfigurationRequestInitContainers(TeaModel):
         self.working_dir = working_dir
 
     def validate(self):
-        self.validate_required(self.security_context, 'security_context')
         if self.security_context:
             self.security_context.validate()
         if self.init_container_environment_vars:
@@ -3504,19 +3517,14 @@ class CreateEciScalingConfigurationRequestVolumes(TeaModel):
         self.type = type
 
     def validate(self):
-        self.validate_required(self.disk_volume, 'disk_volume')
         if self.disk_volume:
             self.disk_volume.validate()
-        self.validate_required(self.empty_dir_volume, 'empty_dir_volume')
         if self.empty_dir_volume:
             self.empty_dir_volume.validate()
-        self.validate_required(self.flex_volume, 'flex_volume')
         if self.flex_volume:
             self.flex_volume.validate()
-        self.validate_required(self.host_path_volume, 'host_path_volume')
         if self.host_path_volume:
             self.host_path_volume.validate()
-        self.validate_required(self.nfsvolume, 'nfsvolume')
         if self.nfsvolume:
             self.nfsvolume.validate()
         if self.config_file_volume_config_file_to_paths:
@@ -12946,7 +12954,7 @@ class DescribeScalingActivitiesRequest(TeaModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 50.
+        # The number of entries to return on each page. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -13488,7 +13496,7 @@ class DescribeScalingConfigurationsRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the scaling group whose scaling configurations you want to query.
+        # The region ID of the scaling group to which the scaling configuration that you want to query belongs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13633,11 +13641,11 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks(Te
         # *   cloud: basic disk. The DeleteWithInstance parameter of a basic disk that is created together with the instance is set to true.
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
-        # *   ephemeral_ssd: local SSD.
+        # *   ephemeral_ssd: local standard SSD.
         # *   cloud_essd: ESSD.
         # *   cloud_auto: ESSD AutoPL disk.
         self.category = category
-        # Indicates whether the data disk is released when the instance to which the data disk is attached is released. Valid values:
+        # Indicates whether the data disk is released if the instance to which the data disk is attached is released. Valid values:
         # 
         # *   true
         # *   false
@@ -13653,13 +13661,13 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks(Te
         # *   true
         # *   false
         # 
-        # Default value: false
+        # Default value: false.
         self.encrypted = encrypted
         # The ID of the Key Management Service (KMS) key that is used to encrypt the data disk.
         self.kmskey_id = kmskey_id
         # The PL of the data disk of the ESSD category.
         self.performance_level = performance_level
-        # The input/output operations per second (IOPS) metric that is preconfigured for the data disk.
+        # The provisioned input/output operations per second (IOPS) for the data disk.
         # 
         # > IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
         self.provisioned_iops = provisioned_iops
@@ -13771,7 +13779,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
         # *   Include: Burstable instance types are included.
         # *   Required: Only burstable instance types are included.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that is allocated to the instance type.
+        # The number of vCPUs of the instance type.
         self.cores = cores
         # The instance types that are excluded. You can use wildcard characters such as an asterisk (\*) to exclude an instance type or an instance family. Examples:
         # 
@@ -13780,13 +13788,13 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
         self.excluded_instance_types = excluded_instance_types
         # The level of the instance family.
         # 
-        # *   EntryLevel: shared instance types. Instances of this level are cost-effective, but do not provide stable computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
+        # *   EntryLevel: shared instance type. Instances of this level are cost-effective, but do not provide stable computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](~~108489~~).
         # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for scenarios in which high stability is required. For more information, see [Overview of instance families](~~25378~~).
         # *   CreditEntryLevel: This value is available only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](~~59977~~) of burstable instances
         self.instance_family_level = instance_family_level
         # The maximum hourly price for pay-as-you-go instances or preemptible instances.
         self.max_price = max_price
-        # The memory size that is allocated to the instance type. Unit: GiB.
+        # The memory size of the instance type. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -13904,7 +13912,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsTags(TeaMode
     ):
         # The key of tag N. Valid values of N: 1 to 20.
         # 
-        # The tag key cannot be an empty string. The tag key must be 1 to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N. Valid values of N: 1 to 20.
         # 
@@ -14030,7 +14038,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.host_name = host_name
         # The ID of the Elastic High Performance Computing (E-HPC) cluster to which the ECS instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the image family. If this parameter is specified, the latest custom images that are available in the specified image family are returned. You can use the images to create instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
+        # The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. You can use the images to create instances. If the ImageId parameter is specified, you cannot specify the ImageFamily parameter.
         self.image_family = image_family
         # The ID of the image that is used by Auto Scaling to create instances.
         self.image_id = image_id
@@ -14099,7 +14107,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.scaling_configuration_id = scaling_configuration_id
         # The name of the scaling configuration.
         self.scaling_configuration_name = scaling_configuration_name
-        # The scaling group ID of the scaling configuration.
+        # The ID of the scaling group to which the scaling configuration belongs.
         self.scaling_group_id = scaling_group_id
         # > This parameter is in invitational preview and is unavailable.
         self.scheduler_options = scheduler_options
@@ -14114,15 +14122,15 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.security_group_ids = security_group_ids
         # The protection period of the preemptible instance. Unit: hours.
         self.spot_duration = spot_duration
-        # The interruption event of the preemptible instance.
+        # The interruption mode of the preemptible instance.
         self.spot_interruption_behavior = spot_interruption_behavior
         # Details of the preemptible instances.
         self.spot_price_limits = spot_price_limits
         # The preemption policy that is applied to pay-as-you-go instances and preemptible instances. Valid values:
         # 
         # *   NoSpot: The instance is created as a pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.
+        # *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
         # The ID of the automatic snapshot policy that is applied to the system disk.
         self.system_disk_auto_snapshot_policy_id = system_disk_auto_snapshot_policy_id
@@ -14145,7 +14153,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # *   cloud: basic disk
         # *   cloud_efficiency: ultra disk
         # *   cloud_ssd: standard SSD
-        # *   ephemeral_ssd: local SSD
+        # *   ephemeral_ssd: local standard SSD
         # *   cloud_essd: enhanced SSD (ESSD)
         # *   cloud_auto: ESSD AutoPL disk
         self.system_disk_category = system_disk_category
@@ -14167,7 +14175,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.system_disk_name = system_disk_name
         # The performance level (PL) of the system disk of the ESSD category.
         self.system_disk_performance_level = system_disk_performance_level
-        # The IOPS that is preconfigured for the system disk.
+        # The provisioned IOPS for the system disk.
         # 
         # > IOPS measures the number of read and write operations that an EBS device can process per second.
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
@@ -14190,7 +14198,6 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
-        self.validate_required(self.private_pool_options, 'private_pool_options')
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.data_disks:
@@ -14762,7 +14769,7 @@ class DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides(TeaM
     ):
         # The instance type. The instance type that is specified by this parameter overrides the instance type that is specified in the launch template.
         self.instance_type = instance_type
-        # The maximum bid price of instance type N that is specified by the `LaunchTemplateOverride.N.InstanceType` parameter. You can specify N instance types by using the Extended Configurations feature of the launch template. Valid values of N: 1 to 10.
+        # The maximum bid price of instance type N that is specified by the `LaunchTemplateOverride.N.InstanceType` parameter. You can specify N instance types by using the Extended Configurations feature of the launch template. Valid values of N: 1 to 10
         # 
         # > This parameter is available only if you specify the `LaunchTemplateId` parameter.
         self.spot_price_limit = spot_price_limit
@@ -14805,9 +14812,19 @@ class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(TeaModel):
         type: str = None,
         weight: int = None,
     ):
+        # 弹性伸缩将ECS实例添加到ALB服务器组后，ECS实例使用的端口号。
         self.port = port
+        # 服务器组ID。
         self.server_group_id = server_group_id
+        # 服务器组类型，可能值：
+        # 
+        # - ALB。
+        # - NLB。
+        # > 支持的服务器组类型包括：
+        # - 应用型负载均衡ALB（Application Load Balancer）
+        # - 网络型负载均衡NLB（Network Load Balancer）
         self.type = type
+        # 弹性伸缩将ECS实例添加到服务器组后，ECS实例作为后端服务器的权重。
         self.weight = weight
 
     def validate(self):
@@ -14986,9 +15003,9 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # The number of ECS instances that are added to the scaling group and are in the In Service state.
+        # The number of ECS instances that are added to the scaling group and in the In Service state.
         self.active_capacity = active_capacity
-        # The ID of the scaling configuration that is in the Enabled state in the scaling group.
+        # The ID of the active scaling configuration in the scaling group.
         self.active_scaling_configuration_id = active_scaling_configuration_id
         # Details of the Application Load Balancer (ALB) server groups.
         self.alb_server_groups = alb_server_groups
@@ -15077,7 +15094,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         # 
         # *   BALANCE: ECS instances are evenly distributed across multiple zones that are specified for the scaling group. If ECS instances are unevenly distributed across the specified zones due to insufficient resources, you can call the RebalanceInstance operation to evenly distribute the instances across the zones.
         self.multi_azpolicy = multi_azpolicy
-        # The minimum number of pay-as-you-go instances that must be included in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
+        # The minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
         self.on_demand_base_capacity = on_demand_base_capacity
         # The percentage of pay-as-you-go instances among the excess instances when the minimum number of pay-as-you-go instances reaches the requirement. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
@@ -15105,11 +15122,15 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.scaling_group_id = scaling_group_id
         # The name of the scaling group.
         self.scaling_group_name = scaling_group_name
-        # The instance reclaim mode of the scaling group. Valid values:
+        # The reclaim mode of the scaling group. Valid values:
         # 
         # *   recycle: economical mode
         # *   release: release mode
         self.scaling_policy = scaling_policy
+        # 负载均衡服务器组的相关信息集合。
+        # 
+        # > 您可以通过此参数获取伸缩组关联的ALB类型服务组和NLB类型服务器组的相关信息集合。
+        # >
         self.server_groups = server_groups
         # The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
@@ -20290,13 +20311,10 @@ class ModifyEciScalingConfigurationRequestContainersLivenessProbe(TeaModel):
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
-        self.validate_required(self.exec, 'exec')
         if self.exec:
             self.exec.validate()
-        self.validate_required(self.http_get, 'http_get')
         if self.http_get:
             self.http_get.validate()
-        self.validate_required(self.tcp_socket, 'tcp_socket')
         if self.tcp_socket:
             self.tcp_socket.validate()
 
@@ -20463,13 +20481,10 @@ class ModifyEciScalingConfigurationRequestContainersReadinessProbe(TeaModel):
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
-        self.validate_required(self.exec, 'exec')
         if self.exec:
             self.exec.validate()
-        self.validate_required(self.http_get, 'http_get')
         if self.http_get:
             self.http_get.validate()
-        self.validate_required(self.tcp_socket, 'tcp_socket')
         if self.tcp_socket:
             self.tcp_socket.validate()
 
@@ -20560,7 +20575,6 @@ class ModifyEciScalingConfigurationRequestContainersSecurityContext(TeaModel):
         self.run_as_user = run_as_user
 
     def validate(self):
-        self.validate_required(self.capability, 'capability')
         if self.capability:
             self.capability.validate()
 
@@ -20631,7 +20645,6 @@ class ModifyEciScalingConfigurationRequestContainersEnvironmentVars(TeaModel):
         self.value = value
 
     def validate(self):
-        self.validate_required(self.field_ref, 'field_ref')
         if self.field_ref:
             self.field_ref.validate()
 
@@ -20830,13 +20843,10 @@ class ModifyEciScalingConfigurationRequestContainers(TeaModel):
         self.working_dir = working_dir
 
     def validate(self):
-        self.validate_required(self.liveness_probe, 'liveness_probe')
         if self.liveness_probe:
             self.liveness_probe.validate()
-        self.validate_required(self.readiness_probe, 'readiness_probe')
         if self.readiness_probe:
             self.readiness_probe.validate()
-        self.validate_required(self.security_context, 'security_context')
         if self.security_context:
             self.security_context.validate()
         if self.environment_vars:
@@ -21106,7 +21116,6 @@ class ModifyEciScalingConfigurationRequestInitContainersSecurityContext(TeaModel
         self.run_as_user = run_as_user
 
     def validate(self):
-        self.validate_required(self.capability, 'capability')
         if self.capability:
             self.capability.validate()
 
@@ -21177,7 +21186,6 @@ class ModifyEciScalingConfigurationRequestInitContainersInitContainerEnvironment
         self.value = value
 
     def validate(self):
-        self.validate_required(self.field_ref, 'field_ref')
         if self.field_ref:
             self.field_ref.validate()
 
@@ -21359,7 +21367,6 @@ class ModifyEciScalingConfigurationRequestInitContainers(TeaModel):
         self.working_dir = working_dir
 
     def validate(self):
-        self.validate_required(self.security_context, 'security_context')
         if self.security_context:
             self.security_context.validate()
         if self.init_container_environment_vars:
@@ -21773,19 +21780,14 @@ class ModifyEciScalingConfigurationRequestVolumes(TeaModel):
         self.type = type
 
     def validate(self):
-        self.validate_required(self.disk_volume, 'disk_volume')
         if self.disk_volume:
             self.disk_volume.validate()
-        self.validate_required(self.empty_dir_volume, 'empty_dir_volume')
         if self.empty_dir_volume:
             self.empty_dir_volume.validate()
-        self.validate_required(self.flex_volume, 'flex_volume')
         if self.flex_volume:
             self.flex_volume.validate()
-        self.validate_required(self.host_path_volume, 'host_path_volume')
         if self.host_path_volume:
             self.host_path_volume.validate()
-        self.validate_required(self.nfsvolume, 'nfsvolume')
         if self.nfsvolume:
             self.nfsvolume.validate()
         if self.config_file_volume_config_file_to_path:

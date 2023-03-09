@@ -1,3 +1,6 @@
+2023-03-09 Version: 1.0.5
+- Fix the incompatibility of some parameters in the SDK .
+
 2023-02-12 Version: 1.0.4
 - CreateScalingGroup and DescribeScalingGroup support NLB server group and new open api AttachServerGroups and DetachServerGroups .
 
