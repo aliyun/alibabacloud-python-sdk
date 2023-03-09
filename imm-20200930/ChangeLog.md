@@ -1,3 +1,10 @@
+2023-03-09 Version: 2.1.7
+- Fix bug for MaxResults.
+- Add BatchGetFigureCluster API.
+- Add new structs.
+- Fix bug for pod.
+- Fix some bugs and support RocketMQ.
+
 2023-02-08 Version: 2.1.6
 - Support SimilarImageClustering.
 

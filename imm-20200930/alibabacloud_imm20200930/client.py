@@ -496,11 +496,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.files):
             request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.files_shrink):
             query['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -534,11 +538,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.files):
             request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.files_shrink):
             query['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -762,9 +770,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -806,9 +818,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -1054,6 +1070,8 @@ class Client(OpenApiClient):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.kdtree_option):
             request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kdtree_option, 'KdtreeOption', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.octree_option):
             request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.octree_option, 'OctreeOption', 'json')
         if not UtilClient.is_unset(tmp_req.point_cloud_fields):
@@ -1067,6 +1085,8 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.kdtree_option_shrink):
             query['KdtreeOption'] = request.kdtree_option_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.octree_option_shrink):
@@ -1116,6 +1136,8 @@ class Client(OpenApiClient):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.kdtree_option):
             request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kdtree_option, 'KdtreeOption', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.octree_option):
             request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.octree_option, 'OctreeOption', 'json')
         if not UtilClient.is_unset(tmp_req.point_cloud_fields):
@@ -1129,6 +1151,8 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.kdtree_option_shrink):
             query['KdtreeOption'] = request.kdtree_option_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.octree_option_shrink):
@@ -1404,6 +1428,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFacesSearchingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         query = {}
@@ -1411,6 +1437,8 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.max_result):
             query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1448,6 +1476,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFacesSearchingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         query = {}
@@ -1455,6 +1485,8 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.max_result):
             query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1506,11 +1538,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1546,11 +1582,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1600,6 +1640,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClustersMergingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.froms):
+            request.froms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.froms, 'Froms', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -1607,6 +1651,10 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.froms_shrink):
+            query['Froms'] = request.froms_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1644,6 +1692,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClustersMergingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.froms):
+            request.froms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.froms, 'Froms', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -1651,6 +1703,10 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.froms_shrink):
+            query['Froms'] = request.froms_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1704,6 +1760,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         query = {}
@@ -1711,6 +1769,8 @@ class Client(OpenApiClient):
             query['CompressedFormat'] = request.compressed_format
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -1754,6 +1814,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         query = {}
@@ -1761,6 +1823,8 @@ class Client(OpenApiClient):
             query['CompressedFormat'] = request.compressed_format
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -1818,6 +1882,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.selected_files):
             request.selected_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_files, 'SelectedFiles', 'json')
         if not UtilClient.is_unset(tmp_req.target):
@@ -1825,6 +1891,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -1868,6 +1936,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.selected_files):
             request.selected_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_files, 'SelectedFiles', 'json')
         if not UtilClient.is_unset(tmp_req.target):
@@ -1875,6 +1945,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -1932,6 +2004,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1943,6 +2017,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -1986,6 +2062,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1997,6 +2075,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -2054,6 +2134,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2071,6 +2153,8 @@ class Client(OpenApiClient):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.margin):
             query['Margin'] = request.margin
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.padding):
@@ -2118,6 +2202,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2135,6 +2221,8 @@ class Client(OpenApiClient):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.margin):
             query['Margin'] = request.margin
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.padding):
@@ -2196,6 +2284,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2203,6 +2293,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -2244,6 +2336,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2251,6 +2345,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -2308,6 +2404,8 @@ class Client(OpenApiClient):
             request.date_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.date_options, 'DateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.location_options):
             request.location_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_options, 'LocationOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -2317,6 +2415,8 @@ class Client(OpenApiClient):
             query['DateOptions'] = request.date_options_shrink
         if not UtilClient.is_unset(request.location_options_shrink):
             query['LocationOptions'] = request.location_options_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -2356,6 +2456,8 @@ class Client(OpenApiClient):
             request.date_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.date_options, 'DateOptions', 'json')
         if not UtilClient.is_unset(tmp_req.location_options):
             request.location_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_options, 'LocationOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -2365,6 +2467,8 @@ class Client(OpenApiClient):
             query['DateOptions'] = request.date_options_shrink
         if not UtilClient.is_unset(request.location_options_shrink):
             query['LocationOptions'] = request.location_options_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -2416,6 +2520,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2425,6 +2531,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -2466,6 +2574,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2475,6 +2585,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -2530,6 +2642,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         if not UtilClient.is_unset(tmp_req.trim_policy):
@@ -2557,6 +2671,8 @@ class Client(OpenApiClient):
             query['MaxSheetColumn'] = request.max_sheet_column
         if not UtilClient.is_unset(request.max_sheet_row):
             query['MaxSheetRow'] = request.max_sheet_row
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.pages):
@@ -2626,6 +2742,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         if not UtilClient.is_unset(tmp_req.trim_policy):
@@ -2653,6 +2771,8 @@ class Client(OpenApiClient):
             query['MaxSheetColumn'] = request.max_sheet_column
         if not UtilClient.is_unset(request.max_sheet_row):
             query['MaxSheetRow'] = request.max_sheet_row
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.pages):
@@ -2844,9 +2964,13 @@ class Client(OpenApiClient):
             request.address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address, 'Address', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_data):
@@ -2912,9 +3036,13 @@ class Client(OpenApiClient):
             request.address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address, 'Address', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.user_data):
@@ -3102,11 +3230,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -3146,11 +3278,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -3204,6 +3340,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -3215,6 +3353,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -3258,6 +3398,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -3269,6 +3411,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.max_frames):
             query['MaxFrames'] = request.max_frames
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -4790,6 +4934,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.permission):
             request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission, 'Permission', 'json')
         if not UtilClient.is_unset(tmp_req.user):
@@ -4807,6 +4953,8 @@ class Client(OpenApiClient):
             query['Filename'] = request.filename
         if not UtilClient.is_unset(request.hidecmb):
             query['Hidecmb'] = request.hidecmb
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -4856,6 +5004,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
             request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         if not UtilClient.is_unset(tmp_req.permission):
             request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission, 'Permission', 'json')
         if not UtilClient.is_unset(tmp_req.user):
@@ -4873,6 +5023,8 @@ class Client(OpenApiClient):
             query['Filename'] = request.filename
         if not UtilClient.is_unset(request.hidecmb):
             query['Hidecmb'] = request.hidecmb
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
@@ -5774,11 +5926,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.file):
             request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file, 'File', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.file_shrink):
             query['File'] = request.file_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
@@ -5812,11 +5968,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.file):
             request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file, 'File', 'json')
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.file_shrink):
             query['File'] = request.file_shrink
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
