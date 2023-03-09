@@ -4200,6 +4200,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_kill_instance_session_task_result_with_options_async(request, runtime)
 
+    def get_my_sqlall_session_async_with_options(
+        self,
+        request: das20200116_models.GetMySQLAllSessionAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.result_id):
+            query['ResultId'] = request.result_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMySQLAllSessionAsync',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetMySQLAllSessionAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_my_sqlall_session_async_with_options_async(
+        self,
+        request: das20200116_models.GetMySQLAllSessionAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.result_id):
+            query['ResultId'] = request.result_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMySQLAllSessionAsync',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetMySQLAllSessionAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_my_sqlall_session_async(
+        self,
+        request: das20200116_models.GetMySQLAllSessionAsyncRequest,
+    ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_my_sqlall_session_async_with_options(request, runtime)
+
+    async def get_my_sqlall_session_async_async(
+        self,
+        request: das20200116_models.GetMySQLAllSessionAsyncRequest,
+    ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_my_sqlall_session_async_with_options_async(request, runtime)
+
     def get_partitions_heatmap_with_options(
         self,
         request: das20200116_models.GetPartitionsHeatmapRequest,

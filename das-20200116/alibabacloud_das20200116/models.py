@@ -8853,7 +8853,6 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
     def __init__(
         self,
         commodity_instance_id: str = None,
-        custins_id: int = None,
         engine: str = None,
         expire_time: int = None,
         instance_alias: str = None,
@@ -8868,11 +8867,9 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
         storage_free_quota_in_mb: float = None,
         storage_used: int = None,
         user_id: str = None,
-        uuid: str = None,
         vpc_id: str = None,
     ):
         self.commodity_instance_id = commodity_instance_id
-        self.custins_id = custins_id
         self.engine = engine
         self.expire_time = expire_time
         self.instance_alias = instance_alias
@@ -8887,7 +8884,6 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
         self.storage_free_quota_in_mb = storage_free_quota_in_mb
         self.storage_used = storage_used
         self.user_id = user_id
-        self.uuid = uuid
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -8901,8 +8897,6 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
         result = dict()
         if self.commodity_instance_id is not None:
             result['commodityInstanceId'] = self.commodity_instance_id
-        if self.custins_id is not None:
-            result['custinsId'] = self.custins_id
         if self.engine is not None:
             result['engine'] = self.engine
         if self.expire_time is not None:
@@ -8931,8 +8925,6 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
             result['storageUsed'] = self.storage_used
         if self.user_id is not None:
             result['userId'] = self.user_id
-        if self.uuid is not None:
-            result['uuid'] = self.uuid
         if self.vpc_id is not None:
             result['vpcId'] = self.vpc_id
         return result
@@ -8941,8 +8933,6 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('commodityInstanceId') is not None:
             self.commodity_instance_id = m.get('commodityInstanceId')
-        if m.get('custinsId') is not None:
-            self.custins_id = m.get('custinsId')
         if m.get('engine') is not None:
             self.engine = m.get('engine')
         if m.get('expireTime') is not None:
@@ -8971,8 +8961,6 @@ class GetDasProServiceUsageResponseBodyData(TeaModel):
             self.storage_used = m.get('storageUsed')
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
-        if m.get('uuid') is not None:
-            self.uuid = m.get('uuid')
         if m.get('vpcId') is not None:
             self.vpc_id = m.get('vpcId')
         return self
@@ -12568,6 +12556,7 @@ class GetKillInstanceSessionTaskResultResponseBodyData(TeaModel):
         instance_id: str = None,
         kill_fail_count: int = None,
         kill_success_count: int = None,
+        node_id: str = None,
         result: List[GetKillInstanceSessionTaskResultResponseBodyDataResult] = None,
         sessions: List[int] = None,
         task_id: str = None,
@@ -12578,6 +12567,7 @@ class GetKillInstanceSessionTaskResultResponseBodyData(TeaModel):
         self.instance_id = instance_id
         self.kill_fail_count = kill_fail_count
         self.kill_success_count = kill_success_count
+        self.node_id = node_id
         self.result = result
         self.sessions = sessions
         self.task_id = task_id
@@ -12604,6 +12594,8 @@ class GetKillInstanceSessionTaskResultResponseBodyData(TeaModel):
             result['KillFailCount'] = self.kill_fail_count
         if self.kill_success_count is not None:
             result['KillSuccessCount'] = self.kill_success_count
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
@@ -12628,6 +12620,8 @@ class GetKillInstanceSessionTaskResultResponseBodyData(TeaModel):
             self.kill_fail_count = m.get('KillFailCount')
         if m.get('KillSuccessCount') is not None:
             self.kill_success_count = m.get('KillSuccessCount')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
@@ -12737,6 +12731,551 @@ class GetKillInstanceSessionTaskResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetKillInstanceSessionTaskResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMySQLAllSessionAsyncRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        node_id: str = None,
+        result_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.result_id = result_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        return self
+
+
+class GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats(TeaModel):
+    def __init__(
+        self,
+        active_count: int = None,
+        key: str = None,
+        thread_id_list: List[int] = None,
+        total_count: int = None,
+        user_list: List[str] = None,
+    ):
+        self.active_count = active_count
+        self.key = key
+        self.thread_id_list = thread_id_list
+        self.total_count = total_count
+        self.user_list = user_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_count is not None:
+            result['ActiveCount'] = self.active_count
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.thread_id_list is not None:
+            result['ThreadIdList'] = self.thread_id_list
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.user_list is not None:
+            result['UserList'] = self.user_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveCount') is not None:
+            self.active_count = m.get('ActiveCount')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('ThreadIdList') is not None:
+            self.thread_id_list = m.get('ThreadIdList')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UserList') is not None:
+            self.user_list = m.get('UserList')
+        return self
+
+
+class GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats(TeaModel):
+    def __init__(
+        self,
+        active_count: int = None,
+        key: str = None,
+        thread_id_list: List[int] = None,
+        total_count: int = None,
+        user_list: List[str] = None,
+    ):
+        self.active_count = active_count
+        self.key = key
+        self.thread_id_list = thread_id_list
+        self.total_count = total_count
+        self.user_list = user_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_count is not None:
+            result['ActiveCount'] = self.active_count
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.thread_id_list is not None:
+            result['ThreadIdList'] = self.thread_id_list
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.user_list is not None:
+            result['UserList'] = self.user_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveCount') is not None:
+            self.active_count = m.get('ActiveCount')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('ThreadIdList') is not None:
+            self.thread_id_list = m.get('ThreadIdList')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UserList') is not None:
+            self.user_list = m.get('UserList')
+        return self
+
+
+class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
+    def __init__(
+        self,
+        client: str = None,
+        command: str = None,
+        db_name: str = None,
+        session_id: int = None,
+        sql_text: str = None,
+        state: str = None,
+        time: int = None,
+        trx_duration: int = None,
+        trx_id: str = None,
+        user: str = None,
+        user_client_alias: str = None,
+    ):
+        self.client = client
+        self.command = command
+        self.db_name = db_name
+        self.session_id = session_id
+        self.sql_text = sql_text
+        self.state = state
+        self.time = time
+        self.trx_duration = trx_duration
+        self.trx_id = trx_id
+        self.user = user
+        self.user_client_alias = user_client_alias
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client is not None:
+            result['Client'] = self.client
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.state is not None:
+            result['State'] = self.state
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.trx_duration is not None:
+            result['TrxDuration'] = self.trx_duration
+        if self.trx_id is not None:
+            result['TrxId'] = self.trx_id
+        if self.user is not None:
+            result['User'] = self.user
+        if self.user_client_alias is not None:
+            result['UserClientAlias'] = self.user_client_alias
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Client') is not None:
+            self.client = m.get('Client')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('TrxDuration') is not None:
+            self.trx_duration = m.get('TrxDuration')
+        if m.get('TrxId') is not None:
+            self.trx_id = m.get('TrxId')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        if m.get('UserClientAlias') is not None:
+            self.user_client_alias = m.get('UserClientAlias')
+        return self
+
+
+class GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats(TeaModel):
+    def __init__(
+        self,
+        active_count: int = None,
+        key: str = None,
+        thread_id_list: List[int] = None,
+        total_count: int = None,
+        user_list: List[str] = None,
+    ):
+        self.active_count = active_count
+        self.key = key
+        self.thread_id_list = thread_id_list
+        self.total_count = total_count
+        self.user_list = user_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_count is not None:
+            result['ActiveCount'] = self.active_count
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.thread_id_list is not None:
+            result['ThreadIdList'] = self.thread_id_list
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.user_list is not None:
+            result['UserList'] = self.user_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveCount') is not None:
+            self.active_count = m.get('ActiveCount')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('ThreadIdList') is not None:
+            self.thread_id_list = m.get('ThreadIdList')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UserList') is not None:
+            self.user_list = m.get('UserList')
+        return self
+
+
+class GetMySQLAllSessionAsyncResponseBodyDataSessionData(TeaModel):
+    def __init__(
+        self,
+        active_session_count: int = None,
+        client_stats: List[GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats] = None,
+        db_stats: List[GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats] = None,
+        max_active_time: int = None,
+        session_list: List[GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList] = None,
+        time_stamp: int = None,
+        total_session_count: int = None,
+        user_stats: List[GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats] = None,
+    ):
+        self.active_session_count = active_session_count
+        self.client_stats = client_stats
+        self.db_stats = db_stats
+        self.max_active_time = max_active_time
+        self.session_list = session_list
+        self.time_stamp = time_stamp
+        self.total_session_count = total_session_count
+        self.user_stats = user_stats
+
+    def validate(self):
+        if self.client_stats:
+            for k in self.client_stats:
+                if k:
+                    k.validate()
+        if self.db_stats:
+            for k in self.db_stats:
+                if k:
+                    k.validate()
+        if self.session_list:
+            for k in self.session_list:
+                if k:
+                    k.validate()
+        if self.user_stats:
+            for k in self.user_stats:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_count is not None:
+            result['ActiveSessionCount'] = self.active_session_count
+        result['ClientStats'] = []
+        if self.client_stats is not None:
+            for k in self.client_stats:
+                result['ClientStats'].append(k.to_map() if k else None)
+        result['DbStats'] = []
+        if self.db_stats is not None:
+            for k in self.db_stats:
+                result['DbStats'].append(k.to_map() if k else None)
+        if self.max_active_time is not None:
+            result['MaxActiveTime'] = self.max_active_time
+        result['SessionList'] = []
+        if self.session_list is not None:
+            for k in self.session_list:
+                result['SessionList'].append(k.to_map() if k else None)
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.total_session_count is not None:
+            result['TotalSessionCount'] = self.total_session_count
+        result['UserStats'] = []
+        if self.user_stats is not None:
+            for k in self.user_stats:
+                result['UserStats'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionCount') is not None:
+            self.active_session_count = m.get('ActiveSessionCount')
+        self.client_stats = []
+        if m.get('ClientStats') is not None:
+            for k in m.get('ClientStats'):
+                temp_model = GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats()
+                self.client_stats.append(temp_model.from_map(k))
+        self.db_stats = []
+        if m.get('DbStats') is not None:
+            for k in m.get('DbStats'):
+                temp_model = GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats()
+                self.db_stats.append(temp_model.from_map(k))
+        if m.get('MaxActiveTime') is not None:
+            self.max_active_time = m.get('MaxActiveTime')
+        self.session_list = []
+        if m.get('SessionList') is not None:
+            for k in m.get('SessionList'):
+                temp_model = GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList()
+                self.session_list.append(temp_model.from_map(k))
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('TotalSessionCount') is not None:
+            self.total_session_count = m.get('TotalSessionCount')
+        self.user_stats = []
+        if m.get('UserStats') is not None:
+            for k in m.get('UserStats'):
+                temp_model = GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats()
+                self.user_stats.append(temp_model.from_map(k))
+        return self
+
+
+class GetMySQLAllSessionAsyncResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        complete: bool = None,
+        fail: bool = None,
+        is_finish: bool = None,
+        result_id: str = None,
+        session_data: GetMySQLAllSessionAsyncResponseBodyDataSessionData = None,
+        state: str = None,
+        timestamp: int = None,
+    ):
+        self.complete = complete
+        self.fail = fail
+        self.is_finish = is_finish
+        self.result_id = result_id
+        self.session_data = session_data
+        self.state = state
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.session_data:
+            self.session_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete is not None:
+            result['Complete'] = self.complete
+        if self.fail is not None:
+            result['Fail'] = self.fail
+        if self.is_finish is not None:
+            result['IsFinish'] = self.is_finish
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        if self.session_data is not None:
+            result['SessionData'] = self.session_data.to_map()
+        if self.state is not None:
+            result['State'] = self.state
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Complete') is not None:
+            self.complete = m.get('Complete')
+        if m.get('Fail') is not None:
+            self.fail = m.get('Fail')
+        if m.get('IsFinish') is not None:
+            self.is_finish = m.get('IsFinish')
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        if m.get('SessionData') is not None:
+            temp_model = GetMySQLAllSessionAsyncResponseBodyDataSessionData()
+            self.session_data = temp_model.from_map(m['SessionData'])
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class GetMySQLAllSessionAsyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetMySQLAllSessionAsyncResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetMySQLAllSessionAsyncResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetMySQLAllSessionAsyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMySQLAllSessionAsyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMySQLAllSessionAsyncResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
