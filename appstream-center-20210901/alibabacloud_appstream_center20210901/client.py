@@ -507,6 +507,260 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_instance_group_with_options_async(request, runtime)
 
+    def delete_app_instances_with_options(
+        self,
+        request: appstream_center_20210901_models.DeleteAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_ids):
+            body['AppInstanceIds'] = request.app_instance_ids
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppInstances',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DeleteAppInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_instances_with_options_async(
+        self,
+        request: appstream_center_20210901_models.DeleteAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_ids):
+            body['AppInstanceIds'] = request.app_instance_ids
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppInstances',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.DeleteAppInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_instances(
+        self,
+        request: appstream_center_20210901_models.DeleteAppInstancesRequest,
+    ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_instances_with_options(request, runtime)
+
+    async def delete_app_instances_async(
+        self,
+        request: appstream_center_20210901_models.DeleteAppInstancesRequest,
+    ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_instances_with_options_async(request, runtime)
+
+    def get_app_instance_group_with_options(
+        self,
+        request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppInstanceGroup',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.GetAppInstanceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_instance_group_with_options_async(
+        self,
+        request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppInstanceGroup',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.GetAppInstanceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_instance_group(
+        self,
+        request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
+    ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_instance_group_with_options(request, runtime)
+
+    async def get_app_instance_group_async(
+        self,
+        request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
+    ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_instance_group_with_options_async(request, runtime)
+
+    def get_connection_ticket_with_options(
+        self,
+        request: appstream_center_20210901_models.GetConnectionTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_instance_group_id_list):
+            body['AppInstanceGroupIdList'] = request.app_instance_group_id_list
+        if not UtilClient.is_unset(request.app_instance_id):
+            body['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.app_start_param):
+            body['AppStartParam'] = request.app_start_param
+        if not UtilClient.is_unset(request.app_version):
+            body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetConnectionTicket',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.GetConnectionTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_connection_ticket_with_options_async(
+        self,
+        request: appstream_center_20210901_models.GetConnectionTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_instance_group_id_list):
+            body['AppInstanceGroupIdList'] = request.app_instance_group_id_list
+        if not UtilClient.is_unset(request.app_instance_id):
+            body['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.app_start_param):
+            body['AppStartParam'] = request.app_start_param
+        if not UtilClient.is_unset(request.app_version):
+            body['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetConnectionTicket',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.GetConnectionTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_connection_ticket(
+        self,
+        request: appstream_center_20210901_models.GetConnectionTicketRequest,
+    ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_connection_ticket_with_options(request, runtime)
+
+    async def get_connection_ticket_async(
+        self,
+        request: appstream_center_20210901_models.GetConnectionTicketRequest,
+    ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_connection_ticket_with_options_async(request, runtime)
+
     def get_ota_task_by_task_id_with_options(
         self,
         request: appstream_center_20210901_models.GetOtaTaskByTaskIdRequest,
@@ -766,6 +1020,8 @@ class Client(OpenApiClient):
             query['AppInstanceGroupId'] = request.app_instance_group_id
         if not UtilClient.is_unset(request.app_instance_group_name):
             query['AppInstanceGroupName'] = request.app_instance_group_name
+        if not UtilClient.is_unset(request.node_instance_type):
+            query['NodeInstanceType'] = request.node_instance_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -810,6 +1066,8 @@ class Client(OpenApiClient):
             query['AppInstanceGroupId'] = request.app_instance_group_id
         if not UtilClient.is_unset(request.app_instance_group_name):
             query['AppInstanceGroupName'] = request.app_instance_group_name
+        if not UtilClient.is_unset(request.node_instance_type):
+            query['NodeInstanceType'] = request.node_instance_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1646,8 +1904,6 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.update_mode):
-            query['UpdateMode'] = request.update_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1682,8 +1938,6 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.update_mode):
-            query['UpdateMode'] = request.update_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
