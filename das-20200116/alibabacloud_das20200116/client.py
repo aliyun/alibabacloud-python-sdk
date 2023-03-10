@@ -700,6 +700,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_kill_instance_session_task_with_options_async(request, runtime)
 
+    def create_kill_instance_session_task_with_maintain_user_with_options(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignored_users):
+            query['IgnoredUsers'] = request.ignored_users
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.kill_all_sessions):
+            query['KillAllSessions'] = request.kill_all_sessions
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.session_ids):
+            query['SessionIds'] = request.session_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateKillInstanceSessionTaskWithMaintainUser',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_kill_instance_session_task_with_maintain_user_with_options_async(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignored_users):
+            query['IgnoredUsers'] = request.ignored_users
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.kill_all_sessions):
+            query['KillAllSessions'] = request.kill_all_sessions
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.session_ids):
+            query['SessionIds'] = request.session_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateKillInstanceSessionTaskWithMaintainUser',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_kill_instance_session_task_with_maintain_user(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserRequest,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_kill_instance_session_task_with_maintain_user_with_options(request, runtime)
+
+    async def create_kill_instance_session_task_with_maintain_user_async(
+        self,
+        request: das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserRequest,
+    ) -> das20200116_models.CreateKillInstanceSessionTaskWithMaintainUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_kill_instance_session_task_with_maintain_user_with_options_async(request, runtime)
+
     def create_request_diagnosis_with_options(
         self,
         request: das20200116_models.CreateRequestDiagnosisRequest,
@@ -5649,8 +5735,6 @@ class Client(OpenApiClient):
             query['ContactGroupName'] = request.contact_group_name
         if not UtilClient.is_unset(request.contact_name):
             query['ContactName'] = request.contact_name
-        if not UtilClient.is_unset(request.dispatch_rule):
-            query['DispatchRule'] = request.dispatch_rule
         if not UtilClient.is_unset(request.event_context):
             query['EventContext'] = request.event_context
         if not UtilClient.is_unset(request.instance_id):
@@ -5661,8 +5745,6 @@ class Client(OpenApiClient):
             query['Level'] = request.level
         if not UtilClient.is_unset(request.min_interval):
             query['MinInterval'] = request.min_interval
-        if not UtilClient.is_unset(request.severity):
-            query['Severity'] = request.severity
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5697,8 +5779,6 @@ class Client(OpenApiClient):
             query['ContactGroupName'] = request.contact_group_name
         if not UtilClient.is_unset(request.contact_name):
             query['ContactName'] = request.contact_name
-        if not UtilClient.is_unset(request.dispatch_rule):
-            query['DispatchRule'] = request.dispatch_rule
         if not UtilClient.is_unset(request.event_context):
             query['EventContext'] = request.event_context
         if not UtilClient.is_unset(request.instance_id):
@@ -5709,8 +5789,6 @@ class Client(OpenApiClient):
             query['Level'] = request.level
         if not UtilClient.is_unset(request.min_interval):
             query['MinInterval'] = request.min_interval
-        if not UtilClient.is_unset(request.severity):
-            query['Severity'] = request.severity
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

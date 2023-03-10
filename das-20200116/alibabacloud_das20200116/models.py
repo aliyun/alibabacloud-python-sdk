@@ -8,11 +8,12 @@ class DataResultValue(TeaModel):
     def __init__(
         self,
         sql_id: str = None,
-        error_code: str = None,
+        instance_id: str = None,
         count: int = None,
     ):
+        # SQL ID。
         self.sql_id = sql_id
-        self.error_code = error_code
+        self.instance_id = instance_id
         self.count = count
 
     def validate(self):
@@ -26,8 +27,8 @@ class DataResultValue(TeaModel):
         result = dict()
         if self.sql_id is not None:
             result['sqlId'] = self.sql_id
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
         if self.count is not None:
             result['count'] = self.count
         return result
@@ -36,8 +37,8 @@ class DataResultValue(TeaModel):
         m = m or dict()
         if m.get('sqlId') is not None:
             self.sql_id = m.get('sqlId')
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
         if m.get('count') is not None:
             self.count = m.get('count')
         return self
@@ -1422,6 +1423,152 @@ class CreateKillInstanceSessionTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateKillInstanceSessionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateKillInstanceSessionTaskWithMaintainUserRequest(TeaModel):
+    def __init__(
+        self,
+        ignored_users: str = None,
+        instance_id: str = None,
+        kill_all_sessions: bool = None,
+        node_id: str = None,
+        session_ids: str = None,
+    ):
+        self.ignored_users = ignored_users
+        self.instance_id = instance_id
+        self.kill_all_sessions = kill_all_sessions
+        self.node_id = node_id
+        self.session_ids = session_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ignored_users is not None:
+            result['IgnoredUsers'] = self.ignored_users
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.kill_all_sessions is not None:
+            result['KillAllSessions'] = self.kill_all_sessions
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.session_ids is not None:
+            result['SessionIds'] = self.session_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IgnoredUsers') is not None:
+            self.ignored_users = m.get('IgnoredUsers')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('KillAllSessions') is not None:
+            self.kill_all_sessions = m.get('KillAllSessions')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('SessionIds') is not None:
+            self.session_ids = m.get('SessionIds')
+        return self
+
+
+class CreateKillInstanceSessionTaskWithMaintainUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateKillInstanceSessionTaskWithMaintainUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateKillInstanceSessionTaskWithMaintainUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateKillInstanceSessionTaskWithMaintainUserResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7476,7 +7623,7 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
         complete: bool = None,
         fail: bool = None,
         is_finish: bool = None,
-        result: Dict[str, DataResultValue] = None,
+        result: List[Dict[str, DataResultValue]] = None,
         result_id: str = None,
         state: str = None,
         timestamp: int = None,
@@ -7490,10 +7637,7 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
         self.timestamp = timestamp
 
     def validate(self):
-        if self.result:
-            for v in self.result.values():
-                if v:
-                    v.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7507,10 +7651,13 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
             result['fail'] = self.fail
         if self.is_finish is not None:
             result['isFinish'] = self.is_finish
-        result['result'] = {}
+        result['result'] = []
         if self.result is not None:
-            for k, v in self.result.items():
-                result['result'][k] = v.to_map()
+            for k in self.result:
+                d1 = {}
+                for k1 ,v1 in k.items():
+                    d1[k1] = v1.to_map()
+                result['result'].append(d1)
         if self.result_id is not None:
             result['resultId'] = self.result_id
         if self.state is not None:
@@ -7527,11 +7674,14 @@ class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
             self.fail = m.get('fail')
         if m.get('isFinish') is not None:
             self.is_finish = m.get('isFinish')
-        self.result = {}
+        self.result = []
         if m.get('result') is not None:
-            for k, v in m.get('result').items():
-                temp_model = DataResultValue()
-                self.result[k] = temp_model.from_map(v)
+            for k in m.get('result'):
+                d1 = {}
+                for k1, v1 in k.items():
+                    temp_model = DataResultValue()
+                    d1[k1] = temp_model.from_map(v1)
+                self.result.append(d1)
         if m.get('resultId') is not None:
             self.result_id = m.get('resultId')
         if m.get('state') is not None:
@@ -18033,25 +18183,21 @@ class SetEventSubscriptionRequest(TeaModel):
         channel_type: str = None,
         contact_group_name: str = None,
         contact_name: str = None,
-        dispatch_rule: str = None,
         event_context: str = None,
         instance_id: str = None,
         lang: str = None,
         level: str = None,
         min_interval: str = None,
-        severity: str = None,
     ):
         self.active = active
         self.channel_type = channel_type
         self.contact_group_name = contact_group_name
         self.contact_name = contact_name
-        self.dispatch_rule = dispatch_rule
         self.event_context = event_context
         self.instance_id = instance_id
         self.lang = lang
         self.level = level
         self.min_interval = min_interval
-        self.severity = severity
 
     def validate(self):
         pass
@@ -18070,8 +18216,6 @@ class SetEventSubscriptionRequest(TeaModel):
             result['ContactGroupName'] = self.contact_group_name
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
-        if self.dispatch_rule is not None:
-            result['DispatchRule'] = self.dispatch_rule
         if self.event_context is not None:
             result['EventContext'] = self.event_context
         if self.instance_id is not None:
@@ -18082,8 +18226,6 @@ class SetEventSubscriptionRequest(TeaModel):
             result['Level'] = self.level
         if self.min_interval is not None:
             result['MinInterval'] = self.min_interval
-        if self.severity is not None:
-            result['Severity'] = self.severity
         return result
 
     def from_map(self, m: dict = None):
@@ -18096,8 +18238,6 @@ class SetEventSubscriptionRequest(TeaModel):
             self.contact_group_name = m.get('ContactGroupName')
         if m.get('ContactName') is not None:
             self.contact_name = m.get('ContactName')
-        if m.get('DispatchRule') is not None:
-            self.dispatch_rule = m.get('DispatchRule')
         if m.get('EventContext') is not None:
             self.event_context = m.get('EventContext')
         if m.get('InstanceId') is not None:
@@ -18108,8 +18248,6 @@ class SetEventSubscriptionRequest(TeaModel):
             self.level = m.get('Level')
         if m.get('MinInterval') is not None:
             self.min_interval = m.get('MinInterval')
-        if m.get('Severity') is not None:
-            self.severity = m.get('Severity')
         return self
 
 

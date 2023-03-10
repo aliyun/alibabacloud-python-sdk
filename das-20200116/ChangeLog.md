@@ -1,3 +1,6 @@
+2023-03-10 Version: 2.0.36
+- Public CreateKillInstanceSessionTaskWithMaintainUser.
+
 2023-03-09 Version: 2.0.35
 - Public GetMySQLAllSessionAsync.
 
