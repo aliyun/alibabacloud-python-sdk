@@ -4479,6 +4479,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_customer_gateway_with_options_async(request, runtime)
 
+    def create_default_vswitch_with_options(
+        self,
+        request: vpc_20160428_models.CreateDefaultVSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDefaultVSwitch',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateDefaultVSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_default_vswitch_with_options_async(
+        self,
+        request: vpc_20160428_models.CreateDefaultVSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDefaultVSwitch',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateDefaultVSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_default_vswitch(
+        self,
+        request: vpc_20160428_models.CreateDefaultVSwitchRequest,
+    ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_default_vswitch_with_options(request, runtime)
+
+    async def create_default_vswitch_async(
+        self,
+        request: vpc_20160428_models.CreateDefaultVSwitchRequest,
+    ) -> vpc_20160428_models.CreateDefaultVSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_default_vswitch_with_options_async(request, runtime)
+
+    def create_default_vpc_with_options(
+        self,
+        request: vpc_20160428_models.CreateDefaultVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
+        if not UtilClient.is_unset(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDefaultVpc',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateDefaultVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_default_vpc_with_options_async(
+        self,
+        request: vpc_20160428_models.CreateDefaultVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
+        if not UtilClient.is_unset(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDefaultVpc',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateDefaultVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_default_vpc(
+        self,
+        request: vpc_20160428_models.CreateDefaultVpcRequest,
+    ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_default_vpc_with_options(request, runtime)
+
+    async def create_default_vpc_async(
+        self,
+        request: vpc_20160428_models.CreateDefaultVpcRequest,
+    ) -> vpc_20160428_models.CreateDefaultVpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_default_vpc_with_options_async(request, runtime)
+
     def create_dhcp_options_set_with_options(
         self,
         request: vpc_20160428_models.CreateDhcpOptionsSetRequest,
