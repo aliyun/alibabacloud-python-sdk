@@ -1889,6 +1889,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.renew_app_instance_group_with_options_async(request, runtime)
 
+    def unbind_with_options(
+        self,
+        request: appstream_center_20210901_models.UnbindRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.UnbindResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_id):
+            body['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Unbind',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.UnbindResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_with_options_async(
+        self,
+        request: appstream_center_20210901_models.UnbindRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.UnbindResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_id):
+            body['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Unbind',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.UnbindResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind(
+        self,
+        request: appstream_center_20210901_models.UnbindRequest,
+    ) -> appstream_center_20210901_models.UnbindResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_with_options(request, runtime)
+
+    async def unbind_async(
+        self,
+        request: appstream_center_20210901_models.UnbindRequest,
+    ) -> appstream_center_20210901_models.UnbindResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_with_options_async(request, runtime)
+
     def update_app_instance_group_image_with_options(
         self,
         request: appstream_center_20210901_models.UpdateAppInstanceGroupImageRequest,
