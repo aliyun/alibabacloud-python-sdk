@@ -1,3 +1,7 @@
+2023-03-13 Version: 2.1.9
+- Update GenerateVideoPlaylist.
+- Add cross region compression.
+
 2023-03-09 Version: 2.1.7
 - Fix bug for MaxResults.
 - Add BatchGetFigureCluster API.
