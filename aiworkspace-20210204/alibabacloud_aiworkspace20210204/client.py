@@ -41,22 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_image(
-        self,
-        request: aiwork_space_20210204_models.AddImageRequest,
-    ) -> aiwork_space_20210204_models.AddImageResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.add_image_with_options(request, headers, runtime)
-
-    async def add_image_async(
-        self,
-        request: aiwork_space_20210204_models.AddImageRequest,
-    ) -> aiwork_space_20210204_models.AddImageResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.add_image_with_options_async(request, headers, runtime)
-
     def add_image_with_options(
         self,
         request: aiwork_space_20210204_models.AddImageRequest,
@@ -137,23 +121,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_image_labels(
+    def add_image(
         self,
-        image_id: str,
-        request: aiwork_space_20210204_models.AddImageLabelsRequest,
-    ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
+        request: aiwork_space_20210204_models.AddImageRequest,
+    ) -> aiwork_space_20210204_models.AddImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_image_labels_with_options(image_id, request, headers, runtime)
+        return self.add_image_with_options(request, headers, runtime)
 
-    async def add_image_labels_async(
+    async def add_image_async(
         self,
-        image_id: str,
-        request: aiwork_space_20210204_models.AddImageLabelsRequest,
-    ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
+        request: aiwork_space_20210204_models.AddImageRequest,
+    ) -> aiwork_space_20210204_models.AddImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_image_labels_with_options_async(image_id, request, headers, runtime)
+        return await self.add_image_with_options_async(request, headers, runtime)
 
     def add_image_labels_with_options(
         self,
@@ -217,25 +199,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_member_role(
+    def add_image_labels(
         self,
-        workspace_id: str,
-        member_id: str,
-        role_name: str,
-    ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
+        image_id: str,
+        request: aiwork_space_20210204_models.AddImageLabelsRequest,
+    ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_member_role_with_options(workspace_id, member_id, role_name, headers, runtime)
+        return self.add_image_labels_with_options(image_id, request, headers, runtime)
 
-    async def add_member_role_async(
+    async def add_image_labels_async(
         self,
-        workspace_id: str,
-        member_id: str,
-        role_name: str,
-    ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
+        image_id: str,
+        request: aiwork_space_20210204_models.AddImageLabelsRequest,
+    ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_member_role_with_options_async(workspace_id, member_id, role_name, headers, runtime)
+        return await self.add_image_labels_with_options_async(image_id, request, headers, runtime)
 
     def add_member_role_with_options(
         self,
@@ -291,21 +271,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_code_source(
+    def add_member_role(
         self,
-        request: aiwork_space_20210204_models.CreateCodeSourceRequest,
-    ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
+        workspace_id: str,
+        member_id: str,
+        role_name: str,
+    ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_code_source_with_options(request, headers, runtime)
+        return self.add_member_role_with_options(workspace_id, member_id, role_name, headers, runtime)
 
-    async def create_code_source_async(
+    async def add_member_role_async(
         self,
-        request: aiwork_space_20210204_models.CreateCodeSourceRequest,
-    ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
+        workspace_id: str,
+        member_id: str,
+        role_name: str,
+    ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_code_source_with_options_async(request, headers, runtime)
+        return await self.add_member_role_with_options_async(workspace_id, member_id, role_name, headers, runtime)
 
     def create_code_source_with_options(
         self,
@@ -399,21 +383,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_dataset(
+    def create_code_source(
         self,
-        request: aiwork_space_20210204_models.CreateDatasetRequest,
-    ) -> aiwork_space_20210204_models.CreateDatasetResponse:
+        request: aiwork_space_20210204_models.CreateCodeSourceRequest,
+    ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_dataset_with_options(request, headers, runtime)
+        return self.create_code_source_with_options(request, headers, runtime)
 
-    async def create_dataset_async(
+    async def create_code_source_async(
         self,
-        request: aiwork_space_20210204_models.CreateDatasetRequest,
-    ) -> aiwork_space_20210204_models.CreateDatasetResponse:
+        request: aiwork_space_20210204_models.CreateCodeSourceRequest,
+    ) -> aiwork_space_20210204_models.CreateCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_dataset_with_options_async(request, headers, runtime)
+        return await self.create_code_source_with_options_async(request, headers, runtime)
 
     def create_dataset_with_options(
         self,
@@ -519,23 +503,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_dataset_labels(
+    def create_dataset(
         self,
-        dataset_id: str,
-        request: aiwork_space_20210204_models.CreateDatasetLabelsRequest,
-    ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
+        request: aiwork_space_20210204_models.CreateDatasetRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_dataset_labels_with_options(dataset_id, request, headers, runtime)
+        return self.create_dataset_with_options(request, headers, runtime)
 
-    async def create_dataset_labels_async(
+    async def create_dataset_async(
         self,
-        dataset_id: str,
-        request: aiwork_space_20210204_models.CreateDatasetLabelsRequest,
-    ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
+        request: aiwork_space_20210204_models.CreateDatasetRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_dataset_labels_with_options_async(dataset_id, request, headers, runtime)
+        return await self.create_dataset_with_options_async(request, headers, runtime)
 
     def create_dataset_labels_with_options(
         self,
@@ -599,23 +581,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_member(
+    def create_dataset_labels(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.CreateMemberRequest,
-    ) -> aiwork_space_20210204_models.CreateMemberResponse:
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_member_with_options(workspace_id, request, headers, runtime)
+        return self.create_dataset_labels_with_options(dataset_id, request, headers, runtime)
 
-    async def create_member_async(
+    async def create_dataset_labels_async(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.CreateMemberRequest,
-    ) -> aiwork_space_20210204_models.CreateMemberResponse:
+        dataset_id: str,
+        request: aiwork_space_20210204_models.CreateDatasetLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_member_with_options_async(workspace_id, request, headers, runtime)
+        return await self.create_dataset_labels_with_options_async(dataset_id, request, headers, runtime)
 
     def create_member_with_options(
         self,
@@ -679,21 +661,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_model(
+    def create_member(
         self,
-        request: aiwork_space_20210204_models.CreateModelRequest,
-    ) -> aiwork_space_20210204_models.CreateModelResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.CreateMemberRequest,
+    ) -> aiwork_space_20210204_models.CreateMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_model_with_options(request, headers, runtime)
+        return self.create_member_with_options(workspace_id, request, headers, runtime)
 
-    async def create_model_async(
+    async def create_member_async(
         self,
-        request: aiwork_space_20210204_models.CreateModelRequest,
-    ) -> aiwork_space_20210204_models.CreateModelResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.CreateMemberRequest,
+    ) -> aiwork_space_20210204_models.CreateMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_model_with_options_async(request, headers, runtime)
+        return await self.create_member_with_options_async(workspace_id, request, headers, runtime)
 
     def create_model_with_options(
         self,
@@ -705,12 +689,20 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.model_description):
             body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_doc):
+            body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.task):
+            body['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -743,12 +735,20 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.model_description):
             body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_doc):
+            body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.task):
+            body['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -771,23 +771,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_model_labels(
+    def create_model(
         self,
-        model_id: str,
-        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
-    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
+        request: aiwork_space_20210204_models.CreateModelRequest,
+    ) -> aiwork_space_20210204_models.CreateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_model_labels_with_options(model_id, request, headers, runtime)
+        return self.create_model_with_options(request, headers, runtime)
 
-    async def create_model_labels_async(
+    async def create_model_async(
         self,
-        model_id: str,
-        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
-    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
+        request: aiwork_space_20210204_models.CreateModelRequest,
+    ) -> aiwork_space_20210204_models.CreateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_model_labels_with_options_async(model_id, request, headers, runtime)
+        return await self.create_model_with_options_async(request, headers, runtime)
 
     def create_model_labels_with_options(
         self,
@@ -851,23 +849,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_model_version(
+    def create_model_labels(
         self,
         model_id: str,
-        request: aiwork_space_20210204_models.CreateModelVersionRequest,
-    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
+        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_model_version_with_options(model_id, request, headers, runtime)
+        return self.create_model_labels_with_options(model_id, request, headers, runtime)
 
-    async def create_model_version_async(
+    async def create_model_labels_async(
         self,
         model_id: str,
-        request: aiwork_space_20210204_models.CreateModelVersionRequest,
-    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
+        request: aiwork_space_20210204_models.CreateModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_model_version_with_options_async(model_id, request, headers, runtime)
+        return await self.create_model_labels_with_options_async(model_id, request, headers, runtime)
 
     def create_model_version_with_options(
         self,
@@ -878,6 +876,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.approval_status):
+            body['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.format_type):
             body['FormatType'] = request.format_type
         if not UtilClient.is_unset(request.framework_type):
@@ -892,6 +892,8 @@ class Client(OpenApiClient):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.training_spec):
+            body['TrainingSpec'] = request.training_spec
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.version_description):
@@ -927,6 +929,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.approval_status):
+            body['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.format_type):
             body['FormatType'] = request.format_type
         if not UtilClient.is_unset(request.framework_type):
@@ -941,6 +945,8 @@ class Client(OpenApiClient):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.training_spec):
+            body['TrainingSpec'] = request.training_spec
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.version_description):
@@ -967,25 +973,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_model_version_labels(
+    def create_model_version(
         self,
         model_id: str,
-        version_name: str,
-        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
-    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
+        request: aiwork_space_20210204_models.CreateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_model_version_labels_with_options(model_id, version_name, request, headers, runtime)
+        return self.create_model_version_with_options(model_id, request, headers, runtime)
 
-    async def create_model_version_labels_async(
+    async def create_model_version_async(
         self,
         model_id: str,
-        version_name: str,
-        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
-    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
+        request: aiwork_space_20210204_models.CreateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_model_version_labels_with_options_async(model_id, version_name, request, headers, runtime)
+        return await self.create_model_version_with_options_async(model_id, request, headers, runtime)
 
     def create_model_version_labels_with_options(
         self,
@@ -1051,21 +1055,105 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_workspace(
+    def create_model_version_labels(
         self,
-        request: aiwork_space_20210204_models.CreateWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.CreateWorkspaceResponse:
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_workspace_with_options(request, headers, runtime)
+        return self.create_model_version_labels_with_options(model_id, version_name, request, headers, runtime)
 
-    async def create_workspace_async(
+    async def create_model_version_labels_async(
         self,
-        request: aiwork_space_20210204_models.CreateWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.CreateWorkspaceResponse:
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.CreateModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_workspace_with_options_async(request, headers, runtime)
+        return await self.create_model_version_labels_with_options_async(model_id, version_name, request, headers, runtime)
+
+    def create_product_orders_with_options(
+        self,
+        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.products):
+            body['Products'] = request.products
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProductOrders',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/productorders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateProductOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_product_orders_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.products):
+            body['Products'] = request.products
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProductOrders',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/productorders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.CreateProductOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_product_orders(
+        self,
+        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
+    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_product_orders_with_options(request, headers, runtime)
+
+    async def create_product_orders_async(
+        self,
+        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
+    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_product_orders_with_options_async(request, headers, runtime)
 
     def create_workspace_with_options(
         self,
@@ -1139,23 +1227,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_workspace_resource(
+    def create_workspace(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.CreateWorkspaceResourceRequest,
-    ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
+        request: aiwork_space_20210204_models.CreateWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.CreateWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_workspace_resource_with_options(workspace_id, request, headers, runtime)
+        return self.create_workspace_with_options(request, headers, runtime)
 
-    async def create_workspace_resource_async(
+    async def create_workspace_async(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.CreateWorkspaceResourceRequest,
-    ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
+        request: aiwork_space_20210204_models.CreateWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.CreateWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
+        return await self.create_workspace_with_options_async(request, headers, runtime)
 
     def create_workspace_resource_with_options(
         self,
@@ -1223,21 +1309,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_code_source(
+    def create_workspace_resource(
         self,
-        code_source_id: str,
-    ) -> aiwork_space_20210204_models.DeleteCodeSourceResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.CreateWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_code_source_with_options(code_source_id, headers, runtime)
+        return self.create_workspace_resource_with_options(workspace_id, request, headers, runtime)
 
-    async def delete_code_source_async(
+    async def create_workspace_resource_async(
         self,
-        code_source_id: str,
-    ) -> aiwork_space_20210204_models.DeleteCodeSourceResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.CreateWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_code_source_with_options_async(code_source_id, headers, runtime)
+        return await self.create_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
 
     def delete_code_source_with_options(
         self,
@@ -1289,21 +1377,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_dataset(
+    def delete_code_source(
         self,
-        dataset_id: str,
-    ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
+        code_source_id: str,
+    ) -> aiwork_space_20210204_models.DeleteCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_dataset_with_options(dataset_id, headers, runtime)
+        return self.delete_code_source_with_options(code_source_id, headers, runtime)
 
-    async def delete_dataset_async(
+    async def delete_code_source_async(
         self,
-        dataset_id: str,
-    ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
+        code_source_id: str,
+    ) -> aiwork_space_20210204_models.DeleteCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_dataset_with_options_async(dataset_id, headers, runtime)
+        return await self.delete_code_source_with_options_async(code_source_id, headers, runtime)
 
     def delete_dataset_with_options(
         self,
@@ -1355,23 +1443,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_dataset_labels(
+    def delete_dataset(
         self,
         dataset_id: str,
-        request: aiwork_space_20210204_models.DeleteDatasetLabelsRequest,
-    ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
+    ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_dataset_labels_with_options(dataset_id, request, headers, runtime)
+        return self.delete_dataset_with_options(dataset_id, headers, runtime)
 
-    async def delete_dataset_labels_async(
+    async def delete_dataset_async(
         self,
         dataset_id: str,
-        request: aiwork_space_20210204_models.DeleteDatasetLabelsRequest,
-    ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
+    ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_dataset_labels_with_options_async(dataset_id, request, headers, runtime)
+        return await self.delete_dataset_with_options_async(dataset_id, headers, runtime)
 
     def delete_dataset_labels_with_options(
         self,
@@ -1435,23 +1521,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_members(
+    def delete_dataset_labels(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.DeleteMembersRequest,
-    ) -> aiwork_space_20210204_models.DeleteMembersResponse:
+        dataset_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_members_with_options(workspace_id, request, headers, runtime)
+        return self.delete_dataset_labels_with_options(dataset_id, request, headers, runtime)
 
-    async def delete_members_async(
+    async def delete_dataset_labels_async(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.DeleteMembersRequest,
-    ) -> aiwork_space_20210204_models.DeleteMembersResponse:
+        dataset_id: str,
+        request: aiwork_space_20210204_models.DeleteDatasetLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_members_with_options_async(workspace_id, request, headers, runtime)
+        return await self.delete_dataset_labels_with_options_async(dataset_id, request, headers, runtime)
 
     def delete_members_with_options(
         self,
@@ -1515,21 +1601,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_model(
+    def delete_members(
         self,
-        model_id: str,
-    ) -> aiwork_space_20210204_models.DeleteModelResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteMembersRequest,
+    ) -> aiwork_space_20210204_models.DeleteMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_model_with_options(model_id, headers, runtime)
+        return self.delete_members_with_options(workspace_id, request, headers, runtime)
 
-    async def delete_model_async(
+    async def delete_members_async(
         self,
-        model_id: str,
-    ) -> aiwork_space_20210204_models.DeleteModelResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteMembersRequest,
+    ) -> aiwork_space_20210204_models.DeleteMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_model_with_options_async(model_id, headers, runtime)
+        return await self.delete_members_with_options_async(workspace_id, request, headers, runtime)
 
     def delete_model_with_options(
         self,
@@ -1581,23 +1669,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_model_labels(
+    def delete_model(
         self,
         model_id: str,
-        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
-    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
+    ) -> aiwork_space_20210204_models.DeleteModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_model_labels_with_options(model_id, request, headers, runtime)
+        return self.delete_model_with_options(model_id, headers, runtime)
 
-    async def delete_model_labels_async(
+    async def delete_model_async(
         self,
         model_id: str,
-        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
-    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
+    ) -> aiwork_space_20210204_models.DeleteModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_model_labels_with_options_async(model_id, request, headers, runtime)
+        return await self.delete_model_with_options_async(model_id, headers, runtime)
 
     def delete_model_labels_with_options(
         self,
@@ -1661,23 +1747,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_model_version(
+    def delete_model_labels(
         self,
         model_id: str,
-        version_name: str,
-    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
+        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_model_version_with_options(model_id, version_name, headers, runtime)
+        return self.delete_model_labels_with_options(model_id, request, headers, runtime)
 
-    async def delete_model_version_async(
+    async def delete_model_labels_async(
         self,
         model_id: str,
-        version_name: str,
-    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
+        request: aiwork_space_20210204_models.DeleteModelLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_model_version_with_options_async(model_id, version_name, headers, runtime)
+        return await self.delete_model_labels_with_options_async(model_id, request, headers, runtime)
 
     def delete_model_version_with_options(
         self,
@@ -1731,25 +1817,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_model_version_labels(
+    def delete_model_version(
         self,
         model_id: str,
         version_name: str,
-        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
-    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
+    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_model_version_labels_with_options(model_id, version_name, request, headers, runtime)
+        return self.delete_model_version_with_options(model_id, version_name, headers, runtime)
 
-    async def delete_model_version_labels_async(
+    async def delete_model_version_async(
         self,
         model_id: str,
         version_name: str,
-        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
-    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
+    ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_model_version_labels_with_options_async(model_id, version_name, request, headers, runtime)
+        return await self.delete_model_version_with_options_async(model_id, version_name, headers, runtime)
 
     def delete_model_version_labels_with_options(
         self,
@@ -1815,21 +1899,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_workspace(
+    def delete_model_version_labels(
         self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_workspace_with_options(workspace_id, headers, runtime)
+        return self.delete_model_version_labels_with_options(model_id, version_name, request, headers, runtime)
 
-    async def delete_workspace_async(
+    async def delete_model_version_labels_async(
         self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.DeleteModelVersionLabelsRequest,
+    ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_workspace_with_options_async(workspace_id, headers, runtime)
+        return await self.delete_model_version_labels_with_options_async(model_id, version_name, request, headers, runtime)
 
     def delete_workspace_with_options(
         self,
@@ -1881,23 +1969,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_workspace_resource(
+    def delete_workspace(
         self,
         workspace_id: str,
-        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
-    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_workspace_resource_with_options(workspace_id, request, headers, runtime)
+        return self.delete_workspace_with_options(workspace_id, headers, runtime)
 
-    async def delete_workspace_resource_async(
+    async def delete_workspace_async(
         self,
         workspace_id: str,
-        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
-    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
+        return await self.delete_workspace_with_options_async(workspace_id, headers, runtime)
 
     def delete_workspace_resource_with_options(
         self,
@@ -1969,21 +2055,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_code_source(
+    def delete_workspace_resource(
         self,
-        code_source_id: str,
-    ) -> aiwork_space_20210204_models.GetCodeSourceResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_code_source_with_options(code_source_id, headers, runtime)
+        return self.delete_workspace_resource_with_options(workspace_id, request, headers, runtime)
 
-    async def get_code_source_async(
+    async def delete_workspace_resource_async(
         self,
-        code_source_id: str,
-    ) -> aiwork_space_20210204_models.GetCodeSourceResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_code_source_with_options_async(code_source_id, headers, runtime)
+        return await self.delete_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
 
     def get_code_source_with_options(
         self,
@@ -2035,21 +2123,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_dataset(
+    def get_code_source(
         self,
-        dataset_id: str,
-    ) -> aiwork_space_20210204_models.GetDatasetResponse:
+        code_source_id: str,
+    ) -> aiwork_space_20210204_models.GetCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_dataset_with_options(dataset_id, headers, runtime)
+        return self.get_code_source_with_options(code_source_id, headers, runtime)
 
-    async def get_dataset_async(
+    async def get_code_source_async(
         self,
-        dataset_id: str,
-    ) -> aiwork_space_20210204_models.GetDatasetResponse:
+        code_source_id: str,
+    ) -> aiwork_space_20210204_models.GetCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_dataset_with_options_async(dataset_id, headers, runtime)
+        return await self.get_code_source_with_options_async(code_source_id, headers, runtime)
 
     def get_dataset_with_options(
         self,
@@ -2101,21 +2189,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_default_workspace(
+    def get_dataset(
         self,
-        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
+        dataset_id: str,
+    ) -> aiwork_space_20210204_models.GetDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_default_workspace_with_options(request, headers, runtime)
+        return self.get_dataset_with_options(dataset_id, headers, runtime)
 
-    async def get_default_workspace_async(
+    async def get_dataset_async(
         self,
-        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
+        dataset_id: str,
+    ) -> aiwork_space_20210204_models.GetDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_default_workspace_with_options_async(request, headers, runtime)
+        return await self.get_dataset_with_options_async(dataset_id, headers, runtime)
 
     def get_default_workspace_with_options(
         self,
@@ -2177,23 +2265,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_image(
+    def get_default_workspace(
         self,
-        image_id: str,
-        request: aiwork_space_20210204_models.GetImageRequest,
-    ) -> aiwork_space_20210204_models.GetImageResponse:
+        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_image_with_options(image_id, request, headers, runtime)
+        return self.get_default_workspace_with_options(request, headers, runtime)
 
-    async def get_image_async(
+    async def get_default_workspace_async(
         self,
-        image_id: str,
-        request: aiwork_space_20210204_models.GetImageRequest,
-    ) -> aiwork_space_20210204_models.GetImageResponse:
+        request: aiwork_space_20210204_models.GetDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.GetDefaultWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_image_with_options_async(image_id, request, headers, runtime)
+        return await self.get_default_workspace_with_options_async(request, headers, runtime)
 
     def get_image_with_options(
         self,
@@ -2257,23 +2343,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_member(
+    def get_image(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.GetMemberRequest,
-    ) -> aiwork_space_20210204_models.GetMemberResponse:
+        image_id: str,
+        request: aiwork_space_20210204_models.GetImageRequest,
+    ) -> aiwork_space_20210204_models.GetImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_member_with_options(workspace_id, request, headers, runtime)
+        return self.get_image_with_options(image_id, request, headers, runtime)
 
-    async def get_member_async(
+    async def get_image_async(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.GetMemberRequest,
-    ) -> aiwork_space_20210204_models.GetMemberResponse:
+        image_id: str,
+        request: aiwork_space_20210204_models.GetImageRequest,
+    ) -> aiwork_space_20210204_models.GetImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_member_with_options_async(workspace_id, request, headers, runtime)
+        return await self.get_image_with_options_async(image_id, request, headers, runtime)
 
     def get_member_with_options(
         self,
@@ -2337,21 +2423,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_model(
+    def get_member(
         self,
-        model_id: str,
-    ) -> aiwork_space_20210204_models.GetModelResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetMemberRequest,
+    ) -> aiwork_space_20210204_models.GetMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_model_with_options(model_id, headers, runtime)
+        return self.get_member_with_options(workspace_id, request, headers, runtime)
 
-    async def get_model_async(
+    async def get_member_async(
         self,
-        model_id: str,
-    ) -> aiwork_space_20210204_models.GetModelResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetMemberRequest,
+    ) -> aiwork_space_20210204_models.GetMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_model_with_options_async(model_id, headers, runtime)
+        return await self.get_member_with_options_async(workspace_id, request, headers, runtime)
 
     def get_model_with_options(
         self,
@@ -2403,23 +2491,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_model_version(
+    def get_model(
         self,
         model_id: str,
-        version_name: str,
-    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
+    ) -> aiwork_space_20210204_models.GetModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_model_version_with_options(model_id, version_name, headers, runtime)
+        return self.get_model_with_options(model_id, headers, runtime)
 
-    async def get_model_version_async(
+    async def get_model_async(
         self,
         model_id: str,
-        version_name: str,
-    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
+    ) -> aiwork_space_20210204_models.GetModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_model_version_with_options_async(model_id, version_name, headers, runtime)
+        return await self.get_model_with_options_async(model_id, headers, runtime)
 
     def get_model_version_with_options(
         self,
@@ -2473,25 +2559,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_permission(
+    def get_model_version(
         self,
-        workspace_id: str,
-        permission_code: str,
-        request: aiwork_space_20210204_models.GetPermissionRequest,
-    ) -> aiwork_space_20210204_models.GetPermissionResponse:
+        model_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_permission_with_options(workspace_id, permission_code, request, headers, runtime)
+        return self.get_model_version_with_options(model_id, version_name, headers, runtime)
 
-    async def get_permission_async(
+    async def get_model_version_async(
         self,
-        workspace_id: str,
-        permission_code: str,
-        request: aiwork_space_20210204_models.GetPermissionRequest,
-    ) -> aiwork_space_20210204_models.GetPermissionResponse:
+        model_id: str,
+        version_name: str,
+    ) -> aiwork_space_20210204_models.GetModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_permission_with_options_async(workspace_id, permission_code, request, headers, runtime)
+        return await self.get_model_version_with_options_async(model_id, version_name, headers, runtime)
 
     def get_permission_with_options(
         self,
@@ -2561,23 +2645,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_workspace(
+    def get_permission(
         self,
         workspace_id: str,
-        request: aiwork_space_20210204_models.GetWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
+        permission_code: str,
+        request: aiwork_space_20210204_models.GetPermissionRequest,
+    ) -> aiwork_space_20210204_models.GetPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_workspace_with_options(workspace_id, request, headers, runtime)
+        return self.get_permission_with_options(workspace_id, permission_code, request, headers, runtime)
 
-    async def get_workspace_async(
+    async def get_permission_async(
         self,
         workspace_id: str,
-        request: aiwork_space_20210204_models.GetWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
+        permission_code: str,
+        request: aiwork_space_20210204_models.GetPermissionRequest,
+    ) -> aiwork_space_20210204_models.GetPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_workspace_with_options_async(workspace_id, request, headers, runtime)
+        return await self.get_permission_with_options_async(workspace_id, permission_code, request, headers, runtime)
 
     def get_workspace_with_options(
         self,
@@ -2641,21 +2727,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_code_sources(
+    def get_workspace(
         self,
-        request: aiwork_space_20210204_models.ListCodeSourcesRequest,
-    ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_code_sources_with_options(request, headers, runtime)
+        return self.get_workspace_with_options(workspace_id, request, headers, runtime)
 
-    async def list_code_sources_async(
+    async def get_workspace_async(
         self,
-        request: aiwork_space_20210204_models.ListCodeSourcesRequest,
-    ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.GetWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_code_sources_with_options_async(request, headers, runtime)
+        return await self.get_workspace_with_options_async(workspace_id, request, headers, runtime)
 
     def list_code_sources_with_options(
         self,
@@ -2737,21 +2825,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_datasets(
+    def list_code_sources(
         self,
-        request: aiwork_space_20210204_models.ListDatasetsRequest,
-    ) -> aiwork_space_20210204_models.ListDatasetsResponse:
+        request: aiwork_space_20210204_models.ListCodeSourcesRequest,
+    ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_datasets_with_options(request, headers, runtime)
+        return self.list_code_sources_with_options(request, headers, runtime)
 
-    async def list_datasets_async(
+    async def list_code_sources_async(
         self,
-        request: aiwork_space_20210204_models.ListDatasetsRequest,
-    ) -> aiwork_space_20210204_models.ListDatasetsResponse:
+        request: aiwork_space_20210204_models.ListCodeSourcesRequest,
+    ) -> aiwork_space_20210204_models.ListCodeSourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_datasets_with_options_async(request, headers, runtime)
+        return await self.list_code_sources_with_options_async(request, headers, runtime)
 
     def list_datasets_with_options(
         self,
@@ -2777,6 +2865,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.properties):
             query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_types):
             query['SourceTypes'] = request.source_types
         if not UtilClient.is_unset(request.workspace_id):
@@ -2825,6 +2915,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.properties):
             query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_types):
             query['SourceTypes'] = request.source_types
         if not UtilClient.is_unset(request.workspace_id):
@@ -2849,21 +2941,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_image_labels(
+    def list_datasets(
         self,
-        request: aiwork_space_20210204_models.ListImageLabelsRequest,
-    ) -> aiwork_space_20210204_models.ListImageLabelsResponse:
+        request: aiwork_space_20210204_models.ListDatasetsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_image_labels_with_options(request, headers, runtime)
+        return self.list_datasets_with_options(request, headers, runtime)
 
-    async def list_image_labels_async(
+    async def list_datasets_async(
         self,
-        request: aiwork_space_20210204_models.ListImageLabelsRequest,
-    ) -> aiwork_space_20210204_models.ListImageLabelsResponse:
+        request: aiwork_space_20210204_models.ListDatasetsRequest,
+    ) -> aiwork_space_20210204_models.ListDatasetsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_image_labels_with_options_async(request, headers, runtime)
+        return await self.list_datasets_with_options_async(request, headers, runtime)
 
     def list_image_labels_with_options(
         self,
@@ -2941,21 +3033,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_images(
+    def list_image_labels(
         self,
-        request: aiwork_space_20210204_models.ListImagesRequest,
-    ) -> aiwork_space_20210204_models.ListImagesResponse:
+        request: aiwork_space_20210204_models.ListImageLabelsRequest,
+    ) -> aiwork_space_20210204_models.ListImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_images_with_options(request, headers, runtime)
+        return self.list_image_labels_with_options(request, headers, runtime)
 
-    async def list_images_async(
+    async def list_image_labels_async(
         self,
-        request: aiwork_space_20210204_models.ListImagesRequest,
-    ) -> aiwork_space_20210204_models.ListImagesResponse:
+        request: aiwork_space_20210204_models.ListImageLabelsRequest,
+    ) -> aiwork_space_20210204_models.ListImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_images_with_options_async(request, headers, runtime)
+        return await self.list_image_labels_with_options_async(request, headers, runtime)
 
     def list_images_with_options(
         self,
@@ -3053,23 +3145,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_members(
+    def list_images(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListMembersRequest,
-    ) -> aiwork_space_20210204_models.ListMembersResponse:
+        request: aiwork_space_20210204_models.ListImagesRequest,
+    ) -> aiwork_space_20210204_models.ListImagesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_members_with_options(workspace_id, request, headers, runtime)
+        return self.list_images_with_options(request, headers, runtime)
 
-    async def list_members_async(
+    async def list_images_async(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListMembersRequest,
-    ) -> aiwork_space_20210204_models.ListMembersResponse:
+        request: aiwork_space_20210204_models.ListImagesRequest,
+    ) -> aiwork_space_20210204_models.ListImagesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_members_with_options_async(workspace_id, request, headers, runtime)
+        return await self.list_images_with_options_async(request, headers, runtime)
 
     def list_members_with_options(
         self,
@@ -3145,23 +3235,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_model_versions(
+    def list_members(
         self,
-        model_id: str,
-        request: aiwork_space_20210204_models.ListModelVersionsRequest,
-    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.ListMembersRequest,
+    ) -> aiwork_space_20210204_models.ListMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_model_versions_with_options(model_id, request, headers, runtime)
+        return self.list_members_with_options(workspace_id, request, headers, runtime)
 
-    async def list_model_versions_async(
+    async def list_members_async(
         self,
-        model_id: str,
-        request: aiwork_space_20210204_models.ListModelVersionsRequest,
-    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
+        workspace_id: str,
+        request: aiwork_space_20210204_models.ListMembersRequest,
+    ) -> aiwork_space_20210204_models.ListMembersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_model_versions_with_options_async(model_id, request, headers, runtime)
+        return await self.list_members_with_options_async(workspace_id, request, headers, runtime)
 
     def list_model_versions_with_options(
         self,
@@ -3172,6 +3262,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.format_type):
             query['FormatType'] = request.format_type
         if not UtilClient.is_unset(request.framework_type):
@@ -3221,6 +3313,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.format_type):
             query['FormatType'] = request.format_type
         if not UtilClient.is_unset(request.framework_type):
@@ -3261,21 +3355,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_models(
+    def list_model_versions(
         self,
-        request: aiwork_space_20210204_models.ListModelsRequest,
-    ) -> aiwork_space_20210204_models.ListModelsResponse:
+        model_id: str,
+        request: aiwork_space_20210204_models.ListModelVersionsRequest,
+    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_models_with_options(request, headers, runtime)
+        return self.list_model_versions_with_options(model_id, request, headers, runtime)
 
-    async def list_models_async(
+    async def list_model_versions_async(
         self,
-        request: aiwork_space_20210204_models.ListModelsRequest,
-    ) -> aiwork_space_20210204_models.ListModelsResponse:
+        model_id: str,
+        request: aiwork_space_20210204_models.ListModelVersionsRequest,
+    ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_models_with_options_async(request, headers, runtime)
+        return await self.list_model_versions_with_options_async(model_id, request, headers, runtime)
 
     def list_models_with_options(
         self,
@@ -3285,18 +3381,28 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.label):
             query['Label'] = request.label
         if not UtilClient.is_unset(request.model_name):
             query['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.task):
+            query['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3327,18 +3433,28 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
         if not UtilClient.is_unset(request.label):
             query['Label'] = request.label
         if not UtilClient.is_unset(request.model_name):
             query['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.task):
+            query['Task'] = request.task
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3361,21 +3477,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_permissions(
+    def list_models(
         self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.ListPermissionsResponse:
+        request: aiwork_space_20210204_models.ListModelsRequest,
+    ) -> aiwork_space_20210204_models.ListModelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_permissions_with_options(workspace_id, headers, runtime)
+        return self.list_models_with_options(request, headers, runtime)
 
-    async def list_permissions_async(
+    async def list_models_async(
         self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.ListPermissionsResponse:
+        request: aiwork_space_20210204_models.ListModelsRequest,
+    ) -> aiwork_space_20210204_models.ListModelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_permissions_with_options_async(workspace_id, headers, runtime)
+        return await self.list_models_with_options_async(request, headers, runtime)
 
     def list_permissions_with_options(
         self,
@@ -3427,21 +3543,105 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_quotas(
+    def list_permissions(
         self,
-        request: aiwork_space_20210204_models.ListQuotasRequest,
-    ) -> aiwork_space_20210204_models.ListQuotasResponse:
+        workspace_id: str,
+    ) -> aiwork_space_20210204_models.ListPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_quotas_with_options(request, headers, runtime)
+        return self.list_permissions_with_options(workspace_id, headers, runtime)
 
-    async def list_quotas_async(
+    async def list_permissions_async(
         self,
-        request: aiwork_space_20210204_models.ListQuotasRequest,
-    ) -> aiwork_space_20210204_models.ListQuotasResponse:
+        workspace_id: str,
+    ) -> aiwork_space_20210204_models.ListPermissionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_quotas_with_options_async(request, headers, runtime)
+        return await self.list_permissions_with_options_async(workspace_id, headers, runtime)
+
+    def list_products_with_options(
+        self,
+        request: aiwork_space_20210204_models.ListProductsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListProductsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_codes):
+            query['ProductCodes'] = request.product_codes
+        if not UtilClient.is_unset(request.service_codes):
+            query['ServiceCodes'] = request.service_codes
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProducts',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/products',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_products_with_options_async(
+        self,
+        request: aiwork_space_20210204_models.ListProductsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> aiwork_space_20210204_models.ListProductsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_codes):
+            query['ProductCodes'] = request.product_codes
+        if not UtilClient.is_unset(request.service_codes):
+            query['ServiceCodes'] = request.service_codes
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProducts',
+            version='2021-02-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/products',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiwork_space_20210204_models.ListProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_products(
+        self,
+        request: aiwork_space_20210204_models.ListProductsRequest,
+    ) -> aiwork_space_20210204_models.ListProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_products_with_options(request, headers, runtime)
+
+    async def list_products_async(
+        self,
+        request: aiwork_space_20210204_models.ListProductsRequest,
+    ) -> aiwork_space_20210204_models.ListProductsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_products_with_options_async(request, headers, runtime)
 
     def list_quotas_with_options(
         self,
@@ -3503,21 +3703,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resources(
+    def list_quotas(
         self,
-        request: aiwork_space_20210204_models.ListResourcesRequest,
-    ) -> aiwork_space_20210204_models.ListResourcesResponse:
+        request: aiwork_space_20210204_models.ListQuotasRequest,
+    ) -> aiwork_space_20210204_models.ListQuotasResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resources_with_options(request, headers, runtime)
+        return self.list_quotas_with_options(request, headers, runtime)
 
-    async def list_resources_async(
+    async def list_quotas_async(
         self,
-        request: aiwork_space_20210204_models.ListResourcesRequest,
-    ) -> aiwork_space_20210204_models.ListResourcesResponse:
+        request: aiwork_space_20210204_models.ListQuotasRequest,
+    ) -> aiwork_space_20210204_models.ListQuotasResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resources_with_options_async(request, headers, runtime)
+        return await self.list_quotas_with_options_async(request, headers, runtime)
 
     def list_resources_with_options(
         self,
@@ -3607,21 +3807,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_workspace_users(
+    def list_resources(
         self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
+        request: aiwork_space_20210204_models.ListResourcesRequest,
+    ) -> aiwork_space_20210204_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_workspace_users_with_options(workspace_id, headers, runtime)
+        return self.list_resources_with_options(request, headers, runtime)
 
-    async def list_workspace_users_async(
+    async def list_resources_async(
         self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
+        request: aiwork_space_20210204_models.ListResourcesRequest,
+    ) -> aiwork_space_20210204_models.ListResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_workspace_users_with_options_async(workspace_id, headers, runtime)
+        return await self.list_resources_with_options_async(request, headers, runtime)
 
     def list_workspace_users_with_options(
         self,
@@ -3673,21 +3873,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_workspaces(
+    def list_workspace_users(
         self,
-        request: aiwork_space_20210204_models.ListWorkspacesRequest,
-    ) -> aiwork_space_20210204_models.ListWorkspacesResponse:
+        workspace_id: str,
+    ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_workspaces_with_options(request, headers, runtime)
+        return self.list_workspace_users_with_options(workspace_id, headers, runtime)
 
-    async def list_workspaces_async(
+    async def list_workspace_users_async(
         self,
-        request: aiwork_space_20210204_models.ListWorkspacesRequest,
-    ) -> aiwork_space_20210204_models.ListWorkspacesResponse:
+        workspace_id: str,
+    ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_workspaces_with_options_async(request, headers, runtime)
+        return await self.list_workspace_users_with_options_async(workspace_id, headers, runtime)
 
     def list_workspaces_with_options(
         self,
@@ -3789,21 +3989,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def publish_code_source(
+    def list_workspaces(
         self,
-        code_source_id: str,
-    ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
+        request: aiwork_space_20210204_models.ListWorkspacesRequest,
+    ) -> aiwork_space_20210204_models.ListWorkspacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.publish_code_source_with_options(code_source_id, headers, runtime)
+        return self.list_workspaces_with_options(request, headers, runtime)
 
-    async def publish_code_source_async(
+    async def list_workspaces_async(
         self,
-        code_source_id: str,
-    ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
+        request: aiwork_space_20210204_models.ListWorkspacesRequest,
+    ) -> aiwork_space_20210204_models.ListWorkspacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.publish_code_source_with_options_async(code_source_id, headers, runtime)
+        return await self.list_workspaces_with_options_async(request, headers, runtime)
 
     def publish_code_source_with_options(
         self,
@@ -3855,21 +4055,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def publish_dataset(
+    def publish_code_source(
         self,
-        dataset_id: str,
-    ) -> aiwork_space_20210204_models.PublishDatasetResponse:
+        code_source_id: str,
+    ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.publish_dataset_with_options(dataset_id, headers, runtime)
+        return self.publish_code_source_with_options(code_source_id, headers, runtime)
 
-    async def publish_dataset_async(
+    async def publish_code_source_async(
         self,
-        dataset_id: str,
-    ) -> aiwork_space_20210204_models.PublishDatasetResponse:
+        code_source_id: str,
+    ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.publish_dataset_with_options_async(dataset_id, headers, runtime)
+        return await self.publish_code_source_with_options_async(code_source_id, headers, runtime)
 
     def publish_dataset_with_options(
         self,
@@ -3921,21 +4121,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def publish_image(
+    def publish_dataset(
         self,
-        image_id: str,
-    ) -> aiwork_space_20210204_models.PublishImageResponse:
+        dataset_id: str,
+    ) -> aiwork_space_20210204_models.PublishDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.publish_image_with_options(image_id, headers, runtime)
+        return self.publish_dataset_with_options(dataset_id, headers, runtime)
 
-    async def publish_image_async(
+    async def publish_dataset_async(
         self,
-        image_id: str,
-    ) -> aiwork_space_20210204_models.PublishImageResponse:
+        dataset_id: str,
+    ) -> aiwork_space_20210204_models.PublishDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.publish_image_with_options_async(image_id, headers, runtime)
+        return await self.publish_dataset_with_options_async(dataset_id, headers, runtime)
 
     def publish_image_with_options(
         self,
@@ -3987,21 +4187,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_image(
+    def publish_image(
         self,
         image_id: str,
-    ) -> aiwork_space_20210204_models.RemoveImageResponse:
+    ) -> aiwork_space_20210204_models.PublishImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_image_with_options(image_id, headers, runtime)
+        return self.publish_image_with_options(image_id, headers, runtime)
 
-    async def remove_image_async(
+    async def publish_image_async(
         self,
         image_id: str,
-    ) -> aiwork_space_20210204_models.RemoveImageResponse:
+    ) -> aiwork_space_20210204_models.PublishImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_image_with_options_async(image_id, headers, runtime)
+        return await self.publish_image_with_options_async(image_id, headers, runtime)
 
     def remove_image_with_options(
         self,
@@ -4053,23 +4253,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_image_labels(
+    def remove_image(
         self,
         image_id: str,
-        label_keys: str,
-    ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
+    ) -> aiwork_space_20210204_models.RemoveImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_image_labels_with_options(image_id, label_keys, headers, runtime)
+        return self.remove_image_with_options(image_id, headers, runtime)
 
-    async def remove_image_labels_async(
+    async def remove_image_async(
         self,
         image_id: str,
-        label_keys: str,
-    ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
+    ) -> aiwork_space_20210204_models.RemoveImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_image_labels_with_options_async(image_id, label_keys, headers, runtime)
+        return await self.remove_image_with_options_async(image_id, headers, runtime)
 
     def remove_image_labels_with_options(
         self,
@@ -4123,25 +4321,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_member_role(
+    def remove_image_labels(
         self,
-        workspace_id: str,
-        member_id: str,
-        role_name: str,
-    ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
+        image_id: str,
+        label_keys: str,
+    ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_member_role_with_options(workspace_id, member_id, role_name, headers, runtime)
+        return self.remove_image_labels_with_options(image_id, label_keys, headers, runtime)
 
-    async def remove_member_role_async(
+    async def remove_image_labels_async(
         self,
-        workspace_id: str,
-        member_id: str,
-        role_name: str,
-    ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
+        image_id: str,
+        label_keys: str,
+    ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_member_role_with_options_async(workspace_id, member_id, role_name, headers, runtime)
+        return await self.remove_image_labels_with_options_async(image_id, label_keys, headers, runtime)
 
     def remove_member_role_with_options(
         self,
@@ -4197,23 +4393,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_dataset(
+    def remove_member_role(
         self,
-        dataset_id: str,
-        request: aiwork_space_20210204_models.UpdateDatasetRequest,
-    ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
+        workspace_id: str,
+        member_id: str,
+        role_name: str,
+    ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_dataset_with_options(dataset_id, request, headers, runtime)
+        return self.remove_member_role_with_options(workspace_id, member_id, role_name, headers, runtime)
 
-    async def update_dataset_async(
+    async def remove_member_role_async(
         self,
-        dataset_id: str,
-        request: aiwork_space_20210204_models.UpdateDatasetRequest,
-    ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
+        workspace_id: str,
+        member_id: str,
+        role_name: str,
+    ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_dataset_with_options_async(dataset_id, request, headers, runtime)
+        return await self.remove_member_role_with_options_async(workspace_id, member_id, role_name, headers, runtime)
 
     def update_dataset_with_options(
         self,
@@ -4285,21 +4483,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_default_workspace(
+    def update_dataset(
         self,
-        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
+        dataset_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_default_workspace_with_options(request, headers, runtime)
+        return self.update_dataset_with_options(dataset_id, request, headers, runtime)
 
-    async def update_default_workspace_async(
+    async def update_dataset_async(
         self,
-        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
+        dataset_id: str,
+        request: aiwork_space_20210204_models.UpdateDatasetRequest,
+    ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_default_workspace_with_options_async(request, headers, runtime)
+        return await self.update_dataset_with_options_async(dataset_id, request, headers, runtime)
 
     def update_default_workspace_with_options(
         self,
@@ -4361,23 +4561,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_model(
+    def update_default_workspace(
         self,
-        model_id: str,
-        request: aiwork_space_20210204_models.UpdateModelRequest,
-    ) -> aiwork_space_20210204_models.UpdateModelResponse:
+        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_model_with_options(model_id, request, headers, runtime)
+        return self.update_default_workspace_with_options(request, headers, runtime)
 
-    async def update_model_async(
+    async def update_default_workspace_async(
         self,
-        model_id: str,
-        request: aiwork_space_20210204_models.UpdateModelRequest,
-    ) -> aiwork_space_20210204_models.UpdateModelResponse:
+        request: aiwork_space_20210204_models.UpdateDefaultWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_model_with_options_async(model_id, request, headers, runtime)
+        return await self.update_default_workspace_with_options_async(request, headers, runtime)
 
     def update_model_with_options(
         self,
@@ -4390,10 +4588,18 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
         if not UtilClient.is_unset(request.model_description):
             body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_doc):
+            body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.task):
+            body['Task'] = request.task
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4425,10 +4631,18 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
         if not UtilClient.is_unset(request.model_description):
             body['ModelDescription'] = request.model_description
+        if not UtilClient.is_unset(request.model_doc):
+            body['ModelDoc'] = request.model_doc
         if not UtilClient.is_unset(request.model_name):
             body['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.origin):
+            body['Origin'] = request.origin
+        if not UtilClient.is_unset(request.task):
+            body['Task'] = request.task
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4449,25 +4663,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_model_version(
+    def update_model(
         self,
         model_id: str,
-        version_name: str,
-        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
-    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
+        request: aiwork_space_20210204_models.UpdateModelRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_model_version_with_options(model_id, version_name, request, headers, runtime)
+        return self.update_model_with_options(model_id, request, headers, runtime)
 
-    async def update_model_version_async(
+    async def update_model_async(
         self,
         model_id: str,
-        version_name: str,
-        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
-    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
+        request: aiwork_space_20210204_models.UpdateModelRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_model_version_with_options_async(model_id, version_name, request, headers, runtime)
+        return await self.update_model_with_options_async(model_id, request, headers, runtime)
 
     def update_model_version_with_options(
         self,
@@ -4479,6 +4691,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.approval_status):
+            body['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.inference_spec):
             body['InferenceSpec'] = request.inference_spec
         if not UtilClient.is_unset(request.options):
@@ -4487,6 +4701,8 @@ class Client(OpenApiClient):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.training_spec):
+            body['TrainingSpec'] = request.training_spec
         if not UtilClient.is_unset(request.version_description):
             body['VersionDescription'] = request.version_description
         req = open_api_models.OpenApiRequest(
@@ -4519,6 +4735,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.approval_status):
+            body['ApprovalStatus'] = request.approval_status
         if not UtilClient.is_unset(request.inference_spec):
             body['InferenceSpec'] = request.inference_spec
         if not UtilClient.is_unset(request.options):
@@ -4527,6 +4745,8 @@ class Client(OpenApiClient):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
             body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.training_spec):
+            body['TrainingSpec'] = request.training_spec
         if not UtilClient.is_unset(request.version_description):
             body['VersionDescription'] = request.version_description
         req = open_api_models.OpenApiRequest(
@@ -4549,23 +4769,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_workspace(
+    def update_model_version(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_workspace_with_options(workspace_id, request, headers, runtime)
+        return self.update_model_version_with_options(model_id, version_name, request, headers, runtime)
 
-    async def update_workspace_async(
+    async def update_model_version_async(
         self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
+        model_id: str,
+        version_name: str,
+        request: aiwork_space_20210204_models.UpdateModelVersionRequest,
+    ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_workspace_with_options_async(workspace_id, request, headers, runtime)
+        return await self.update_model_version_with_options_async(model_id, version_name, request, headers, runtime)
 
     def update_workspace_with_options(
         self,
@@ -4633,23 +4855,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_workspace_resource(
+    def update_workspace(
         self,
         workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
-    ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
+        request: aiwork_space_20210204_models.UpdateWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_workspace_resource_with_options(workspace_id, request, headers, runtime)
+        return self.update_workspace_with_options(workspace_id, request, headers, runtime)
 
-    async def update_workspace_resource_async(
+    async def update_workspace_async(
         self,
         workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
-    ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
+        request: aiwork_space_20210204_models.UpdateWorkspaceRequest,
+    ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
+        return await self.update_workspace_with_options_async(workspace_id, request, headers, runtime)
 
     def update_workspace_resource_with_options(
         self,
@@ -4724,3 +4946,21 @@ class Client(OpenApiClient):
             aiwork_space_20210204_models.UpdateWorkspaceResourceResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_workspace_resource(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_workspace_resource_with_options(workspace_id, request, headers, runtime)
+
+    async def update_workspace_resource_async(
+        self,
+        workspace_id: str,
+        request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
+    ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
