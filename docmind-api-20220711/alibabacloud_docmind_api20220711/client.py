@@ -740,6 +740,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.force_export_inner_image):
+            query['ForceExportInnerImage'] = request.force_export_inner_image
         if not UtilClient.is_unset(request.force_merge_excel):
             query['ForceMergeExcel'] = request.force_merge_excel
         req = open_api_models.OpenApiRequest(
@@ -772,6 +774,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.force_export_inner_image):
+            query['ForceExportInnerImage'] = request.force_export_inner_image
         if not UtilClient.is_unset(request.force_merge_excel):
             query['ForceMergeExcel'] = request.force_merge_excel
         req = open_api_models.OpenApiRequest(
@@ -1176,6 +1180,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.force_export_inner_image):
+            query['ForceExportInnerImage'] = request.force_export_inner_image
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1206,6 +1212,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.force_export_inner_image):
+            query['ForceExportInnerImage'] = request.force_export_inner_image
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
