@@ -231,7 +231,7 @@ class CreateClusterRequestNetworksNewVpdInfo(TeaModel):
         monitor_vpc_id: str = None,
         monitor_vswitch_id: str = None,
         vpd_cidr: str = None,
-        vpd_subnets: CreateClusterRequestNetworksNewVpdInfoVpdSubnets = None,
+        vpd_subnets: List[CreateClusterRequestNetworksNewVpdInfoVpdSubnets] = None,
     ):
         self.cen_id = cen_id
         self.cloud_link_cidr = cloud_link_cidr
@@ -243,7 +243,9 @@ class CreateClusterRequestNetworksNewVpdInfo(TeaModel):
 
     def validate(self):
         if self.vpd_subnets:
-            self.vpd_subnets.validate()
+            for k in self.vpd_subnets:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -263,8 +265,10 @@ class CreateClusterRequestNetworksNewVpdInfo(TeaModel):
             result['MonitorVswitchId'] = self.monitor_vswitch_id
         if self.vpd_cidr is not None:
             result['VpdCidr'] = self.vpd_cidr
+        result['VpdSubnets'] = []
         if self.vpd_subnets is not None:
-            result['VpdSubnets'] = self.vpd_subnets.to_map()
+            for k in self.vpd_subnets:
+                result['VpdSubnets'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -281,9 +285,44 @@ class CreateClusterRequestNetworksNewVpdInfo(TeaModel):
             self.monitor_vswitch_id = m.get('MonitorVswitchId')
         if m.get('VpdCidr') is not None:
             self.vpd_cidr = m.get('VpdCidr')
+        self.vpd_subnets = []
         if m.get('VpdSubnets') is not None:
-            temp_model = CreateClusterRequestNetworksNewVpdInfoVpdSubnets()
-            self.vpd_subnets = temp_model.from_map(m['VpdSubnets'])
+            for k in m.get('VpdSubnets'):
+                temp_model = CreateClusterRequestNetworksNewVpdInfoVpdSubnets()
+                self.vpd_subnets.append(temp_model.from_map(k))
+        return self
+
+
+class CreateClusterRequestNetworksVpdInfo(TeaModel):
+    def __init__(
+        self,
+        vpd_id: str = None,
+        vpd_subnets: List[str] = None,
+    ):
+        self.vpd_id = vpd_id
+        self.vpd_subnets = vpd_subnets
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vpd_id is not None:
+            result['VpdId'] = self.vpd_id
+        if self.vpd_subnets is not None:
+            result['VpdSubnets'] = self.vpd_subnets
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VpdId') is not None:
+            self.vpd_id = m.get('VpdId')
+        if m.get('VpdSubnets') is not None:
+            self.vpd_subnets = m.get('VpdSubnets')
         return self
 
 
@@ -291,12 +330,16 @@ class CreateClusterRequestNetworks(TeaModel):
     def __init__(
         self,
         new_vpd_info: CreateClusterRequestNetworksNewVpdInfo = None,
+        vpd_info: CreateClusterRequestNetworksVpdInfo = None,
     ):
         self.new_vpd_info = new_vpd_info
+        self.vpd_info = vpd_info
 
     def validate(self):
         if self.new_vpd_info:
             self.new_vpd_info.validate()
+        if self.vpd_info:
+            self.vpd_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -306,6 +349,8 @@ class CreateClusterRequestNetworks(TeaModel):
         result = dict()
         if self.new_vpd_info is not None:
             result['NewVpdInfo'] = self.new_vpd_info.to_map()
+        if self.vpd_info is not None:
+            result['VpdInfo'] = self.vpd_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -313,6 +358,9 @@ class CreateClusterRequestNetworks(TeaModel):
         if m.get('NewVpdInfo') is not None:
             temp_model = CreateClusterRequestNetworksNewVpdInfo()
             self.new_vpd_info = temp_model.from_map(m['NewVpdInfo'])
+        if m.get('VpdInfo') is not None:
+            temp_model = CreateClusterRequestNetworksVpdInfo()
+            self.vpd_info = temp_model.from_map(m['VpdInfo'])
         return self
 
 
@@ -2006,10 +2054,12 @@ class ExtendClusterRequest(TeaModel):
         cluster_id: str = None,
         ignore_failed_node_tasks: bool = None,
         node_groups: List[ExtendClusterRequestNodeGroups] = None,
+        vpd_subnets: List[str] = None,
     ):
         self.cluster_id = cluster_id
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         self.node_groups = node_groups
+        self.vpd_subnets = vpd_subnets
 
     def validate(self):
         if self.node_groups:
@@ -2031,6 +2081,8 @@ class ExtendClusterRequest(TeaModel):
         if self.node_groups is not None:
             for k in self.node_groups:
                 result['NodeGroups'].append(k.to_map() if k else None)
+        if self.vpd_subnets is not None:
+            result['VpdSubnets'] = self.vpd_subnets
         return result
 
     def from_map(self, m: dict = None):
@@ -2044,6 +2096,8 @@ class ExtendClusterRequest(TeaModel):
             for k in m.get('NodeGroups'):
                 temp_model = ExtendClusterRequestNodeGroups()
                 self.node_groups.append(temp_model.from_map(k))
+        if m.get('VpdSubnets') is not None:
+            self.vpd_subnets = m.get('VpdSubnets')
         return self
 
 
@@ -2053,10 +2107,12 @@ class ExtendClusterShrinkRequest(TeaModel):
         cluster_id: str = None,
         ignore_failed_node_tasks: bool = None,
         node_groups_shrink: str = None,
+        vpd_subnets_shrink: str = None,
     ):
         self.cluster_id = cluster_id
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         self.node_groups_shrink = node_groups_shrink
+        self.vpd_subnets_shrink = vpd_subnets_shrink
 
     def validate(self):
         pass
@@ -2073,6 +2129,8 @@ class ExtendClusterShrinkRequest(TeaModel):
             result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
         if self.node_groups_shrink is not None:
             result['NodeGroups'] = self.node_groups_shrink
+        if self.vpd_subnets_shrink is not None:
+            result['VpdSubnets'] = self.vpd_subnets_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -2083,6 +2141,8 @@ class ExtendClusterShrinkRequest(TeaModel):
             self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
         if m.get('NodeGroups') is not None:
             self.node_groups_shrink = m.get('NodeGroups')
+        if m.get('VpdSubnets') is not None:
+            self.vpd_subnets_shrink = m.get('VpdSubnets')
         return self
 
 
@@ -2169,10 +2229,12 @@ class ListClusterNodesRequest(TeaModel):
         cluster_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        node_group_id: str = None,
     ):
         self.cluster_id = cluster_id
         self.max_results = max_results
         self.next_token = next_token
+        self.node_group_id = node_group_id
 
     def validate(self):
         pass
@@ -2189,6 +2251,8 @@ class ListClusterNodesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2199,6 +2263,8 @@ class ListClusterNodesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
         return self
 
 
@@ -2255,7 +2321,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         hostname: str = None,
         image_id: str = None,
         machine_type: str = None,
-        networks: ListClusterNodesResponseBodyNodesNetworks = None,
+        networks: List[ListClusterNodesResponseBodyNodesNetworks] = None,
         node_group_id: str = None,
         node_group_name: str = None,
         node_id: str = None,
@@ -2278,7 +2344,9 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
 
     def validate(self):
         if self.networks:
-            self.networks.validate()
+            for k in self.networks:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2296,8 +2364,10 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['ImageId'] = self.image_id
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
+        result['Networks'] = []
         if self.networks is not None:
-            result['Networks'] = self.networks.to_map()
+            for k in self.networks:
+                result['Networks'].append(k.to_map() if k else None)
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
         if self.node_group_name is not None:
@@ -2324,9 +2394,11 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
+        self.networks = []
         if m.get('Networks') is not None:
-            temp_model = ListClusterNodesResponseBodyNodesNetworks()
-            self.networks = temp_model.from_map(m['Networks'])
+            for k in m.get('Networks'):
+                temp_model = ListClusterNodesResponseBodyNodesNetworks()
+                self.networks.append(temp_model.from_map(k))
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
         if m.get('NodeGroupName') is not None:

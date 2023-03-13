@@ -671,6 +671,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.node_groups):
             request.node_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_groups, 'NodeGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.vpd_subnets):
+            request.vpd_subnets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpd_subnets, 'VpdSubnets', 'json')
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
@@ -678,6 +680,8 @@ class Client(OpenApiClient):
             body['IgnoreFailedNodeTasks'] = request.ignore_failed_node_tasks
         if not UtilClient.is_unset(request.node_groups_shrink):
             body['NodeGroups'] = request.node_groups_shrink
+        if not UtilClient.is_unset(request.vpd_subnets_shrink):
+            body['VpdSubnets'] = request.vpd_subnets_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -707,6 +711,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.node_groups):
             request.node_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_groups, 'NodeGroups', 'json')
+        if not UtilClient.is_unset(tmp_req.vpd_subnets):
+            request.vpd_subnets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vpd_subnets, 'VpdSubnets', 'json')
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
@@ -714,6 +720,8 @@ class Client(OpenApiClient):
             body['IgnoreFailedNodeTasks'] = request.ignore_failed_node_tasks
         if not UtilClient.is_unset(request.node_groups_shrink):
             body['NodeGroups'] = request.node_groups_shrink
+        if not UtilClient.is_unset(request.vpd_subnets_shrink):
+            body['VpdSubnets'] = request.vpd_subnets_shrink
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -760,6 +768,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -792,6 +802,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
