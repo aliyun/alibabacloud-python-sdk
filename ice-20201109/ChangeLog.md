@@ -1,3 +1,6 @@
+2023-03-14 Version: 1.3.8
+- Add templateType params in CreateEditingProject API.
+
 2023-03-01 Version: 1.3.7
 - Add jobResults params in GetSmartHandleJob API.
 

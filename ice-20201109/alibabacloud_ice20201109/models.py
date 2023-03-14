@@ -2262,6 +2262,7 @@ class CreateEditingProjectRequest(TeaModel):
         material_maps: str = None,
         project_type: str = None,
         template_id: str = None,
+        template_type: str = None,
         timeline: str = None,
         title: str = None,
     ):
@@ -2272,6 +2273,7 @@ class CreateEditingProjectRequest(TeaModel):
         self.material_maps = material_maps
         self.project_type = project_type
         self.template_id = template_id
+        self.template_type = template_type
         self.timeline = timeline
         self.title = title
 
@@ -2298,6 +2300,8 @@ class CreateEditingProjectRequest(TeaModel):
             result['ProjectType'] = self.project_type
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.template_type is not None:
+            result['TemplateType'] = self.template_type
         if self.timeline is not None:
             result['Timeline'] = self.timeline
         if self.title is not None:
@@ -2320,6 +2324,8 @@ class CreateEditingProjectRequest(TeaModel):
             self.project_type = m.get('ProjectType')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('TemplateType') is not None:
+            self.template_type = m.get('TemplateType')
         if m.get('Timeline') is not None:
             self.timeline = m.get('Timeline')
         if m.get('Title') is not None:

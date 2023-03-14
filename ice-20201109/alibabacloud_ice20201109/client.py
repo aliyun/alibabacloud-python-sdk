@@ -995,6 +995,8 @@ class Client(OpenApiClient):
             query['ProjectType'] = request.project_type
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         if not UtilClient.is_unset(request.timeline):
             query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.title):
@@ -1039,6 +1041,8 @@ class Client(OpenApiClient):
             query['ProjectType'] = request.project_type
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         if not UtilClient.is_unset(request.timeline):
             query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.title):
