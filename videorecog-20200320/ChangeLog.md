@@ -1,3 +1,6 @@
+2023-03-14 Version: 3.0.7
+- Update SplitVideoParts.
+
 2023-03-03 Version: 3.0.6
 - Update EvaluateVideoQuality.
 

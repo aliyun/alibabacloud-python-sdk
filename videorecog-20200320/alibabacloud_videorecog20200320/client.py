@@ -992,6 +992,10 @@ class Client(OpenApiClient):
     ) -> videorecog_20200320_models.SplitVideoPartsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.max_time):
+            body['MaxTime'] = request.max_time
+        if not UtilClient.is_unset(request.min_time):
+            body['MinTime'] = request.min_time
         if not UtilClient.is_unset(request.template):
             body['Template'] = request.template
         if not UtilClient.is_unset(request.video_url):
@@ -1022,6 +1026,10 @@ class Client(OpenApiClient):
     ) -> videorecog_20200320_models.SplitVideoPartsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.max_time):
+            body['MaxTime'] = request.max_time
+        if not UtilClient.is_unset(request.min_time):
+            body['MinTime'] = request.min_time
         if not UtilClient.is_unset(request.template):
             body['Template'] = request.template
         if not UtilClient.is_unset(request.video_url):
