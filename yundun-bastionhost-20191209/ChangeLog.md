@@ -1,3 +1,6 @@
+2023-03-14 Version: 1.0.4
+- Upgrade API.
+
 2021-12-30 Version: 1.0.3
 - Support UserKey API.
 
