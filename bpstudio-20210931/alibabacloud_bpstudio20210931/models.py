@@ -11,8 +11,11 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # rg-aek2ajbjoloa23q
         self.new_resource_group_id = new_resource_group_id
+        # P7RMVSVM9LOVYQOM
         self.resource_id = resource_id
+        # APPLICATION
         self.resource_type = resource_type
 
     def validate(self):
@@ -54,6 +57,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1390,6 +1394,7 @@ class GetExecuteOperationResultResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
+        # Status
         self.data = data
         self.message = message
         self.request_id = request_id
@@ -1905,7 +1910,7 @@ class ListApplicationResponseBodyData(TeaModel):
         image_url: str = None,
         name: str = None,
         resource_group_id: str = None,
-        status: int = None,
+        status: str = None,
         topo_url: str = None,
     ):
         self.application_id = application_id
