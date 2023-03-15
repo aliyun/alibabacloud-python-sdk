@@ -1,3 +1,6 @@
+2023-03-15 Version: 0.0.4
+- Add api params.
+
 2023-03-08 Version: 0.0.3
 - Add api ListAccountFactoryBaselines.
 - Add api GetAccountFactoryBaseline.
