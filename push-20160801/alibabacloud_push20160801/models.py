@@ -1482,10 +1482,13 @@ class MassPushRequestPushTask(TeaModel):
         android_big_picture_url: str = None,
         android_big_title: str = None,
         android_ext_parameters: str = None,
+        android_huawei_receipt_id: str = None,
+        android_huawei_target_user_type: int = None,
         android_image_url: str = None,
         android_inbox_body: str = None,
         android_message_huawei_category: str = None,
         android_message_huawei_urgency: str = None,
+        android_message_vivo_category: str = None,
         android_music: str = None,
         android_notification_bar_priority: int = None,
         android_notification_bar_type: int = None,
@@ -1544,10 +1547,13 @@ class MassPushRequestPushTask(TeaModel):
         self.android_big_picture_url = android_big_picture_url
         self.android_big_title = android_big_title
         self.android_ext_parameters = android_ext_parameters
+        self.android_huawei_receipt_id = android_huawei_receipt_id
+        self.android_huawei_target_user_type = android_huawei_target_user_type
         self.android_image_url = android_image_url
         self.android_inbox_body = android_inbox_body
         self.android_message_huawei_category = android_message_huawei_category
         self.android_message_huawei_urgency = android_message_huawei_urgency
+        self.android_message_vivo_category = android_message_vivo_category
         self.android_music = android_music
         self.android_notification_bar_priority = android_notification_bar_priority
         self.android_notification_bar_type = android_notification_bar_type
@@ -1620,6 +1626,10 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidBigTitle'] = self.android_big_title
         if self.android_ext_parameters is not None:
             result['AndroidExtParameters'] = self.android_ext_parameters
+        if self.android_huawei_receipt_id is not None:
+            result['AndroidHuaweiReceiptId'] = self.android_huawei_receipt_id
+        if self.android_huawei_target_user_type is not None:
+            result['AndroidHuaweiTargetUserType'] = self.android_huawei_target_user_type
         if self.android_image_url is not None:
             result['AndroidImageUrl'] = self.android_image_url
         if self.android_inbox_body is not None:
@@ -1628,6 +1638,8 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
         if self.android_message_huawei_urgency is not None:
             result['AndroidMessageHuaweiUrgency'] = self.android_message_huawei_urgency
+        if self.android_message_vivo_category is not None:
+            result['AndroidMessageVivoCategory'] = self.android_message_vivo_category
         if self.android_music is not None:
             result['AndroidMusic'] = self.android_music
         if self.android_notification_bar_priority is not None:
@@ -1746,6 +1758,10 @@ class MassPushRequestPushTask(TeaModel):
             self.android_big_title = m.get('AndroidBigTitle')
         if m.get('AndroidExtParameters') is not None:
             self.android_ext_parameters = m.get('AndroidExtParameters')
+        if m.get('AndroidHuaweiReceiptId') is not None:
+            self.android_huawei_receipt_id = m.get('AndroidHuaweiReceiptId')
+        if m.get('AndroidHuaweiTargetUserType') is not None:
+            self.android_huawei_target_user_type = m.get('AndroidHuaweiTargetUserType')
         if m.get('AndroidImageUrl') is not None:
             self.android_image_url = m.get('AndroidImageUrl')
         if m.get('AndroidInboxBody') is not None:
@@ -1754,6 +1770,8 @@ class MassPushRequestPushTask(TeaModel):
             self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
         if m.get('AndroidMessageHuaweiUrgency') is not None:
             self.android_message_huawei_urgency = m.get('AndroidMessageHuaweiUrgency')
+        if m.get('AndroidMessageVivoCategory') is not None:
+            self.android_message_vivo_category = m.get('AndroidMessageVivoCategory')
         if m.get('AndroidMusic') is not None:
             self.android_music = m.get('AndroidMusic')
         if m.get('AndroidNotificationBarPriority') is not None:
@@ -2016,10 +2034,13 @@ class PushRequest(TeaModel):
         android_big_picture_url: str = None,
         android_big_title: str = None,
         android_ext_parameters: str = None,
+        android_huawei_receipt_id: str = None,
+        android_huawei_target_user_type: int = None,
         android_image_url: str = None,
         android_inbox_body: str = None,
         android_message_huawei_category: str = None,
         android_message_huawei_urgency: str = None,
+        android_message_vivo_category: str = None,
         android_music: str = None,
         android_notification_bar_priority: int = None,
         android_notification_bar_type: int = None,
@@ -2084,10 +2105,13 @@ class PushRequest(TeaModel):
         self.android_big_picture_url = android_big_picture_url
         self.android_big_title = android_big_title
         self.android_ext_parameters = android_ext_parameters
+        self.android_huawei_receipt_id = android_huawei_receipt_id
+        self.android_huawei_target_user_type = android_huawei_target_user_type
         self.android_image_url = android_image_url
         self.android_inbox_body = android_inbox_body
         self.android_message_huawei_category = android_message_huawei_category
         self.android_message_huawei_urgency = android_message_huawei_urgency
+        self.android_message_vivo_category = android_message_vivo_category
         self.android_music = android_music
         self.android_notification_bar_priority = android_notification_bar_priority
         self.android_notification_bar_type = android_notification_bar_type
@@ -2166,6 +2190,10 @@ class PushRequest(TeaModel):
             result['AndroidBigTitle'] = self.android_big_title
         if self.android_ext_parameters is not None:
             result['AndroidExtParameters'] = self.android_ext_parameters
+        if self.android_huawei_receipt_id is not None:
+            result['AndroidHuaweiReceiptId'] = self.android_huawei_receipt_id
+        if self.android_huawei_target_user_type is not None:
+            result['AndroidHuaweiTargetUserType'] = self.android_huawei_target_user_type
         if self.android_image_url is not None:
             result['AndroidImageUrl'] = self.android_image_url
         if self.android_inbox_body is not None:
@@ -2174,6 +2202,8 @@ class PushRequest(TeaModel):
             result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
         if self.android_message_huawei_urgency is not None:
             result['AndroidMessageHuaweiUrgency'] = self.android_message_huawei_urgency
+        if self.android_message_vivo_category is not None:
+            result['AndroidMessageVivoCategory'] = self.android_message_vivo_category
         if self.android_music is not None:
             result['AndroidMusic'] = self.android_music
         if self.android_notification_bar_priority is not None:
@@ -2304,6 +2334,10 @@ class PushRequest(TeaModel):
             self.android_big_title = m.get('AndroidBigTitle')
         if m.get('AndroidExtParameters') is not None:
             self.android_ext_parameters = m.get('AndroidExtParameters')
+        if m.get('AndroidHuaweiReceiptId') is not None:
+            self.android_huawei_receipt_id = m.get('AndroidHuaweiReceiptId')
+        if m.get('AndroidHuaweiTargetUserType') is not None:
+            self.android_huawei_target_user_type = m.get('AndroidHuaweiTargetUserType')
         if m.get('AndroidImageUrl') is not None:
             self.android_image_url = m.get('AndroidImageUrl')
         if m.get('AndroidInboxBody') is not None:
@@ -2312,6 +2346,8 @@ class PushRequest(TeaModel):
             self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
         if m.get('AndroidMessageHuaweiUrgency') is not None:
             self.android_message_huawei_urgency = m.get('AndroidMessageHuaweiUrgency')
+        if m.get('AndroidMessageVivoCategory') is not None:
+            self.android_message_vivo_category = m.get('AndroidMessageVivoCategory')
         if m.get('AndroidMusic') is not None:
             self.android_music = m.get('AndroidMusic')
         if m.get('AndroidNotificationBarPriority') is not None:

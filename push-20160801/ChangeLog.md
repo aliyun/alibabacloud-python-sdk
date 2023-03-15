@@ -1,3 +1,7 @@
+2023-03-15 Version: 1.0.7
+- Supported AndroidMessageVivoCategory for Push and MassPush.
+- Supported AndroidHuaweiTargetUserType, AndroidHuaweiReceiptId for Push and MassPush.
+
 2022-10-13 Version: 1.0.6
 - Supported AndroidNotificationGroup for Push and MassPush.
 - Add Honor channel support.
