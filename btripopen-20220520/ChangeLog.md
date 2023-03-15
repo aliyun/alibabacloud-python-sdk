@@ -1,3 +1,6 @@
+2023-03-15 Version: 1.0.52
+- Update.
+
 2023-03-06 Version: 1.0.51
 - Add a jump action type to the reimbursement list page.
 - Add subCorpId field optional.

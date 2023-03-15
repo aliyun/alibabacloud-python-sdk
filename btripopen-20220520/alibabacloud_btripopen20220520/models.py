@@ -13588,6 +13588,8 @@ class FlightCreateOrderRequestTravelerInfoList(TeaModel):
         cert_type: str = None,
         cert_valid_date: str = None,
         name: str = None,
+        nationality: str = None,
+        nationality_code: str = None,
         out_user_id: str = None,
         phone: str = None,
         sex: int = None,
@@ -13599,6 +13601,8 @@ class FlightCreateOrderRequestTravelerInfoList(TeaModel):
         self.cert_type = cert_type
         self.cert_valid_date = cert_valid_date
         self.name = name
+        self.nationality = nationality
+        self.nationality_code = nationality_code
         self.out_user_id = out_user_id
         self.phone = phone
         self.sex = sex
@@ -13625,6 +13629,10 @@ class FlightCreateOrderRequestTravelerInfoList(TeaModel):
             result['cert_valid_date'] = self.cert_valid_date
         if self.name is not None:
             result['name'] = self.name
+        if self.nationality is not None:
+            result['nationality'] = self.nationality
+        if self.nationality_code is not None:
+            result['nationality_code'] = self.nationality_code
         if self.out_user_id is not None:
             result['out_user_id'] = self.out_user_id
         if self.phone is not None:
@@ -13649,6 +13657,10 @@ class FlightCreateOrderRequestTravelerInfoList(TeaModel):
             self.cert_valid_date = m.get('cert_valid_date')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('nationality') is not None:
+            self.nationality = m.get('nationality')
+        if m.get('nationality_code') is not None:
+            self.nationality_code = m.get('nationality_code')
         if m.get('out_user_id') is not None:
             self.out_user_id = m.get('out_user_id')
         if m.get('phone') is not None:
@@ -15230,6 +15242,7 @@ class FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBa
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.title = title
 
@@ -15562,7 +15575,9 @@ class FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleIte
         refund_sub_contents: List[FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents] = None,
         title: str = None,
     ):
+        # isStruct : true
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -15866,6 +15881,7 @@ class FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleIte
         title: str = None,
     ):
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -16606,6 +16622,7 @@ class FlightListingSearchResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -19558,6 +19575,7 @@ class FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBagg
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.title = title
 
@@ -19891,6 +19909,7 @@ class FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChan
         title: str = None,
     ):
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -20194,6 +20213,7 @@ class FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefu
         title: str = None,
     ):
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -21003,6 +21023,7 @@ class FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggag
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.title = title
 
@@ -21335,7 +21356,9 @@ class FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRef
         refund_sub_contents: List[FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents] = None,
         title: str = None,
     ):
+        # isStruct : true
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -21639,6 +21662,7 @@ class FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRef
         title: str = None,
     ):
         self.is_struct = is_struct
+        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
