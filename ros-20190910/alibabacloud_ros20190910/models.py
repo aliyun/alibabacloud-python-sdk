@@ -14,8 +14,16 @@ class CancelStackOperationRequest(TeaModel):
     ):
         # test
         self.allowed_stack_operations = allowed_stack_operations
+        # The method that you want to use to cancel the operation. Default value: Safe. Valid values:
+        # 
+        # *   Quick: cancels the operation on the stack at the earliest opportunity. In this case, ROS stops scheduling new resources and stops running resources at the earliest opportunity. If you use this method, the resource status may become invalid and subsequent stack operations may be affected.
+        # *   Safe: cancels the operation on the stack in a secure manner. In this case, ROS stops scheduling new resources and waits for running resources to be stopped.
         self.cancel_type = cancel_type
+        # The region ID of the stack.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -55,6 +63,7 @@ class CancelStackOperationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -128,8 +137,14 @@ class CancelUpdateStackRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
+        # The method to cancel the update operation. Valid values:
+        # 
+        # *   Quick: cancels the update of a stack as soon as possible.
+        # *   Safe: cancels the update of a stack as safely as possible.
         self.cancel_type = cancel_type
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -165,6 +180,7 @@ class CancelUpdateStackResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -237,7 +253,18 @@ class ContinueCreateStackRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of template parameter N that you want to use to override another parameter. If you do not specify the name and value of a template parameter, ROS uses the name and value specified in the previous operation that was performed to create the stack. Maximum value of N: 200.
+        # 
+        # >  This parameter takes effect only when the Mode parameter is set to Recreate.
         self.parameter_key = parameter_key
+        # The value of template parameter N that you want to use to override another parameter. Maximum value of N: 200.
+        # 
+        # For ROS stacks, the following limits are imposed on the template parameters that you use to override other parameters:
+        # 
+        # *   You cannot change the condition values in the Conditions section of a template from true to false or from false to true.
+        # *   The template parameters can be referenced only by resources that ROS continues to create.
+        # 
+        # >  This parameter takes effect only when the Mode parameter is set to Recreate.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -281,19 +308,98 @@ class ContinueCreateStackRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # Specifies whether only to validate the stack in the request. Default value: false. Valid values:
+        # 
+        # *   true: only validates the stack.
+        # *   false: validates and continues to create the stack.
         self.dry_run = dry_run
+        # The mode in which ROS continues to create the stack. Default value: Recreate. Valid values:
+        # 
+        # *   Recreate
+        # 
+        #     If you set this parameter to Recreate, ROS continues to create only the following types of resources:
+        # 
+        #     *   Resources that fail to be created
+        # 
+        #     *   Resources that you specify for the RecreatingResources.N parameter
+        # 
+        #     *   Dependencies of the resources that you specify for the RecreatingResources.N parameter
+        # 
+        #     *   Resources that you have not created
+        # 
+        # >  The RecreatingResources.N, TemplateBody, and TemplateURL parameters, and the Parameters section take effect only when the Mode parameter is set to Recreate.
+        # 
+        # *   Ignore
+        # 
+        #     *   ROS ignores and discards resources that fail to be created and you have not created, and marks the stack as successfully created.
+        # 
+        #     *   The body of the template that you use to create the stack is changed.
+        # 
+        # >  This value is valid only for ROS stacks.
         self.mode = mode
+        # The maximum number of concurrent operations that can be performed on resources.
+        # 
+        # By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
+        # 
+        # > 
+        # *   If you set this parameter to an integer that is greater than 0, the integer is used.
+        # *   If you set this parameter to 0, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
         self.parallelism = parallelism
         # test
         self.parameters = parameters
+        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.
+        # 
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.
+        # 
+        # If you do not specify this parameter, ROS assumes the existing RAM role that is associated with the stack. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.
+        # 
+        # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
+        # test
         self.recreating_options = recreating_options
         self.recreating_resources = recreating_resources
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
+        # 
+        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # An ROS template is subject to the following limits:
+        # 
+        # *   You can modify only the following sections in the template: Description, Metadata, Resources, and Outputs.
+        # 
+        # *   You cannot add sections to or remove sections from the template.
+        # 
+        # *   The Resources section is subject to the following limits:
+        # 
+        #     *   You cannot delete the resources or change the template body for the resources that you do not want to continue to create.
+        # 
+        #     *   You can delete the resources or change the template body for the resources that you want to continue to create.
+        # 
+        #     *   You can add resources to this section.
+        # 
+        # > *   This parameter takes effect only when the Mode parameter is set to Recreate.
+        #    *   You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId. If you do not specify the parameters, the existing template is used.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared templates and private templates.
+        # 
+        # > 
+        # *   This parameter takes effect when the `Mode` parameter is set to `Recreate`. When you specify the TemplateId parameter in a template, the template is subject to the limits that are described for the `TemplateBody` parameter in this topic.
+        # *   You can specify only one of the following parameters: `TemplateBody`, `TemplateURL`, and `TemplateId`. If you do not specify the parameters, the existing template is used.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
+        # 
+        # If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # > 
+        # *   This parameter takes effect only when the Mode parameter is set to Recreate. When you specify the TemplateURL parameter in a template, the template is subject to the limits that are described for the TemplateBody parameter in this topic.
+        # *   You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId. If you do not specify the parameters, the existing template is used.
         self.template_url = template_url
+        # The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -379,8 +485,19 @@ class ContinueCreateStackResponseBodyDryRunResult(TeaModel):
         parameters_conditionally_allowed_to_be_modified: List[str] = None,
         parameters_not_allowed_to_be_modified: List[str] = None,
     ):
+        # The parameters that can be modified. The operation that is performed to modify the parameters does not cause a validation error.
+        # 
+        # >  This parameter is returned only if the DryRun parameter is set to `true`. The value of the ParametersAllowedToBeModified parameter varies based on the values of the Mode, Template\*, RecreatingResources.N, and RecreatingOptions.N parameters.
         self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
+        # The parameters that can be modified under specific conditions.
+        # 
+        # The new values of the parameters determine whether the operation that is performed to modify the parameters causes a validation error.
+        # 
+        # >  This parameter is returned only if the DryRun parameter is set to `true`. The value of the ParametersConditionallyAllowedToBeModified parameter varies based on the values of the Mode, Template\*, RecreatingResources.N, and RecreatingOptions.N parameters.
         self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
+        # The parameters that cannot be modified. The operation that is performed to modify the parameters causes a validation error.
+        # 
+        # >  This parameter is returned only if the DryRun parameter is set to `true`. The value of the ParametersNotAllowedToBeModified parameter varies based on the values of the Mode, Template\*, RecreatingResources.N, and RecreatingOptions.N parameters.
         self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
 
     def validate(self):
@@ -418,8 +535,11 @@ class ContinueCreateStackResponseBody(TeaModel):
         request_id: str = None,
         stack_id: str = None,
     ):
+        # The validation result.
         self.dry_run_result = dry_run_result
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -502,7 +622,13 @@ class CreateChangeSetRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N that is defined in the template. If you do not specify the name and value of a parameter, ROS uses the default name and value that are defined in the template. Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify Parameters, you must specify Parameters.N.ParameterKey.
         self.parameter_key = parameter_key
+        # The value of parameter N that is defined in the template. Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify Parameters, you must specify Parameters.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -536,8 +662,19 @@ class CreateChangeSetRequestResourcesToImport(TeaModel):
         resource_identifier: str = None,
         resource_type: str = None,
     ):
+        # The logical ID of resource N that you want to import. The logical ID specifies the name of a resource that is defined in the template.
+        # 
+        # >  This parameter takes effect only when the ChangeSetType parameter is set to IMPORT. The ResourcesToImport parameter is optional. If you specify ResourcesToImport, you must specify ResourcesToImport.N.LogicalResourceId.
         self.logical_resource_id = logical_resource_id
+        # The key-value mapping between strings. The value is a JSON string that identifies resource N to be imported.
+        # 
+        # A key is an identifier for a resource and a value is an assignment of data to the key. For example, VpcId is a key that specifies the ID of a virtual private cloud (VPC), and `vpc-2zevx9ios****` is a value that is assigned to VpcId. You can call the [GetTemplateSummary](~~172485~~) operation to obtain the key of a resource.
+        # 
+        # >  This parameter takes effect only when the ChangeSetType parameter is set to IMPORT. The ResourcesToImport parameter is optional. If you specify ResourcesToImport, you must specify ResourcesToImport.N.ResourceIdentifier.
         self.resource_identifier = resource_identifier
+        # The type of resource N that you want to import. The resource type must be the same as the resource type that is defined in the template.
+        # 
+        # >  This parameter takes effect only when the ChangeSetType parameter is set to IMPORT. The ResourcesToImport parameter is optional. If you specify ResourcesToImport, you must specify ResourcesToImport.N.ResourceType.
         self.resource_type = resource_type
 
     def validate(self):
@@ -597,30 +734,168 @@ class CreateChangeSetRequest(TeaModel):
         timeout_in_minutes: int = None,
         use_previous_parameters: bool = None,
     ):
+        # The name of the change set.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # 
+        # >  Make sure that the name is unique among names of all change sets that are associated with the specified stack.
         self.change_set_name = change_set_name
+        # The type of the change set. Default value: UPDATE. Valid values:
+        # 
+        # *   CREATE: creates a change set for a new stack.
+        # *   UPDATE: creates a change set for an existing stack.
+        # *   IMPORT: creates a change set for a new stack or an existing stack to import resources that are not managed by ROS.
+        # 
+        # If you create a change set for a new stack, ROS generates a unique stack ID for the stack. The stack remains in the REVIEW_IN_PROGRESS state until you execute the change set.
+        # 
+        # You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
         self.change_set_type = change_set_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The description of the change set. The description can be up to 1,024 bytes in length.
         self.description = description
+        # Specifies whether to disable rollback when the stack fails to be created.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter takes effect only when the ChangeSetType parameter is set to CREATE or IMPORT.
         self.disable_rollback = disable_rollback
         self.notification_urls = notification_urls
+        # The maximum number of concurrent operations that can be performed on resources. By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0. If you set this parameter to a specific value, ROS associates the value with the stack. The value can affect subsequent operations on the stack.
+        # 
+        # This parameter takes effect only when the ChangeSetType parameter is set to CREATE or UPDATE. Valid values:
+        # 
+        # *   Valid values for change sets of the CREATE type:
+        # 
+        #     *   If you set this parameter to an integer that is greater than 0, the integer is used.
+        #     *   If you set this parameter to 0 or leave this parameter empty, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # 
+        # *   Valid values for change set of the UPDATE type:
+        # 
+        #     *   If you set this parameter to an integer that is greater than 0, the integer is used.
+        #     *   If you set this parameter to 0, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        #     *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
         self.parallelism = parallelism
         self.parameters = parameters
+        # The name of the RAM role. ROS assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
+        # 
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.
+        # 
+        # If you do not specify this parameter, ROS assumes the existing RAM role that is associated with the stack. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.
+        # 
+        # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
+        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies whether to enable replacement update if a resource property is changed but you cannot change the resource property. For a change, the physical ID of the resource remains unchanged. For a replacement update, the existing resource is deleted, a new resource is created, and the physical ID of the resource is changed. Default value: Disabled. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
+        # 
+        # >  Changes have higher priorities than replacement updates. This parameter takes effect only when the ChangeSetType parameter is set to UPDATE.
         self.replacement_option = replacement_option
         self.resources_to_import = resources_to_import
+        # The ID of the stack for which you want to create the change set. ROS compares the stack information with the information that you specify, such as a modified template or a changed parameter value, to generate the change set.
+        # 
+        # >  This parameter takes effect only when the ChangeSetType parameter is set to UPDATE or IMPORT.
         self.stack_id = stack_id
+        # The name of the stack for which you want to create the change set.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # 
+        # >  This parameter takes effect only when the ChangeSetType parameter is set to CREATE or IMPORT.
         self.stack_name = stack_name
+        # The structure that contains the stack policy body. The policy body must be 1 to 16,384 bytes in length. If you set the ChangeSetType parameter to CREATE, you can specify the StackPolicyBody or StackPolicyURL parameter. If you set the ChangeSetType parameter to UPDATE, you can specify only one of the following parameters:
+        # 
+        # *   StackPolicyBody
+        # *   StackPolicyURL
+        # *   StackPolicyDuringUpdateBody
+        # *   StackPolicyDuringUpdateURL
         self.stack_policy_body = stack_policy_body
+        # The structure that contains the body of the temporary overriding stack policy. The policy body must be 1 to 16,384 bytes in length.
+        # 
+        # If you want to update protected resources, specify a temporary overriding stack policy for the resources during the update. If you do not specify the policy, the existing stack policy that is associated with the stack is used.
+        # 
+        # This parameter takes effect only when the ChangeSetType parameter is set to UPDATE. You can specify only one of the following parameters:
+        # 
+        # *   StackPolicyBody
+        # *   StackPolicyURL
+        # *   StackPolicyDuringUpdateBody
+        # *   StackPolicyDuringUpdateURL
         self.stack_policy_during_update_body = stack_policy_during_update_body
+        # The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length.
+        # 
+        # >  If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # The URL can be up to 1,350 bytes in length.
+        # 
+        # If you want to update protected resources, specify a temporary overriding stack policy for the resources during the update. If you do not specify the policy, the existing policy that is associated with the stack is used. This parameter takes effect only when the ChangeSetType parameter is set to UPDATE. You can specify only one of the following parameters:
+        # 
+        # *   StackPolicyBody
+        # *   StackPolicyURL
+        # *   StackPolicyDuringUpdateBody
+        # *   StackPolicyDuringUpdateURL
         self.stack_policy_during_update_url = stack_policy_during_update_url
+        # The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length.
+        # 
+        # >  If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # You can specify the StackPolicyBody or StackPolicyURL parameter.
+        # 
+        # The URL can be up to 1,350 bytes in length.
+        # 
+        # If you set the ChangeSetType parameter to CREATE, you can specify the StackPolicyBody or StackPolicyURL parameter. If you set the ChangeSetType parameter to UPDATE, you can specify only one of the following parameters:
+        # 
+        # *   StackPolicyBody
+        # *   StackPolicyURL
+        # *   StackPolicyDuringUpdateBody
+        # *   StackPolicyDuringUpdateURL
         self.stack_policy_url = stack_policy_url
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
+        # 
+        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared templates and private templates.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
+        # The ID of the scenario template.
         self.template_scratch_id = template_scratch_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
+        # 
+        # >  If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+        # 
+        # The URL can be up to 1,024 bytes in length.
         self.template_url = template_url
+        # The version of the template.
+        # 
+        # >  This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
+        # The amount of time that can elapse before the stack enters the CREATE_FAILED or UPDATE_FAILED state.
+        # 
+        # If you set the ChangeSetType parameter to CREATE, this parameter is required. If you set the ChangeSetType parameter to UPDATE, this parameter is optional.
+        # 
+        # *   Unit: minutes.
+        # *   Valid values: 10 to 1440.
+        # *   Default value: 60.
         self.timeout_in_minutes = timeout_in_minutes
+        # Specifies whether to use the values that specified in the previous request for the parameters that you do not specify in the current request. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter takes effect only when the ChangeSetType parameter is set to UPDATE or IMPORT.
         self.use_previous_parameters = use_previous_parameters
 
     def validate(self):
@@ -763,8 +1038,11 @@ class CreateChangeSetResponseBody(TeaModel):
         request_id: str = None,
         stack_id: str = None,
     ):
+        # The ID of the change set.
         self.change_set_id = change_set_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -845,7 +1123,21 @@ class CreateStackRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N that is defined in the template. If you do not specify the name and value of a parameter, ROS uses the default name and value in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # The name must be 1 to 128 characters in length, and cannot contain `http://` or `https://`. The name cannot start with `aliyun` or `acs:`.
+        # 
+        # >  The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_key = parameter_key
+        # The value of parameter N that is defined in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # The value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The value cannot start with `aliyun` or `acs:`.
+        # 
+        # >  The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -878,7 +1170,19 @@ class CreateStackRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the stack.
+        # 
+        # Valid values of N: 1 to 20.
+        # 
+        # > 
+        # *   The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
+        # *   The tag of a stack is propagated to each stack resource that supports the tag feature. For more information, see [Propagate tags](~~201421~~).
         self.key = key
+        # The value of tag N that you want to add to the stack.
+        # 
+        # Valid values of N: 1 to 20.
+        # 
+        # >  The tag of a stack is propagated to each stack resource that supports the tag feature. For more information, see [Propagate tags](~~201421~~).
         self.value = value
 
     def validate(self):
@@ -930,28 +1234,100 @@ class CreateStackRequest(TeaModel):
         template_version: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The option for the stack after you create the stack. Default value: KeepStackOnCreationComplete. Valid values:
+        # 
+        # *   KeepStackOnCreationComplete: retains the stack and its resources after the stack is created. In this case, your stack quota in ROS is consumed.
+        # *   AbandonStackOnCreationComplete: deletes the stack, but retains its resources after the stack is created. In this case, your stack quota in ROS is not consumed. If the stack fails to be created, the stack is retained.
+        # *   AbandonStackOnCreationRollbackComplete: deletes the stack when its resources are rolled back after the stack fails to be created. In this case, your stack quota in ROS is not consumed. In other rollback scenarios, the stack is retained.
         self.create_option = create_option
+        # Specifies whether to enable deletion protection for the stack. Default value: Disabled. Valid values:
+        # 
+        # *   Enabled: enables deletion protection.
+        # *   Disabled: disables deletion protection. You can delete the stack by using the ROS console or by calling the DeleteStack operation.
+        # 
+        # >  The DeletionProtection parameter that you specify for the root stack applies to its nested stacks.
         self.deletion_protection = deletion_protection
+        # Specifies whether to disable rollback for the resources when the stack fails to be created.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_rollback = disable_rollback
         self.notification_urls = notification_urls
+        # The maximum number of concurrent operations that can be performed on resources.
+        # 
+        # By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
+        # 
+        # > 
+        # *   If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave this parameter empty, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack, such as an update operation.
         self.parallelism = parallelism
         # test
         self.parameters = parameters
+        # The name of the RAM role. ROS assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
+        # 
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.
+        # 
+        # If you do not specify this parameter, ROS assumes the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.
+        # 
+        # The name can be up to 64 characters in length.
         self.ram_role_name = ram_role_name
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group. If you do not specify this parameter, the stack is added to the default resource group.
+        # 
+        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
         self.resource_group_id = resource_group_id
+        # The name of the stack.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a letter.
         self.stack_name = stack_name
+        # The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
+        # 
+        # >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
         self.stack_policy_body = stack_policy_body
+        # The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
+        # 
+        # The URL can be up to 1,350 bytes in length.
         self.stack_policy_url = stack_policy_url
         # test
         self.tags = tags
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared templates and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_id = template_id
+        # The ID of the scenario.
+        # 
+        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_scratch_id = template_scratch_id
+        # The region ID of the scenario. The default value is the same as the value of the RegionId parameter.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.template_scratch_region_id = template_scratch_region_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_url = template_url
+        # The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
+        # The timeout period that is allowed to create the stack.
+        # 
+        # *   Default value: 60.
+        # *   Unit: minutes.
+        # *   Valid values: 10 to 1440.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -1077,7 +1453,9 @@ class CreateStackResponseBody(TeaModel):
         request_id: str = None,
         stack_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -1154,7 +1532,21 @@ class CreateStackGroupRequestAutoDeployment(TeaModel):
         enabled: bool = None,
         retain_stacks_on_account_removal: bool = None,
     ):
+        # Specifies whether to enable automatic deployment.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables automatic deployment. If you add a member to the folder to which the stack group belongs after you enable automatic deployment, ROS automatically adds the stacks in the stack group to the member. If you remove a member from the folder, ROS automatically deletes the stacks from the member.
+        # *   false: disables automatic deployment. After you disable automatic deployment, the stacks remain unchanged when you change the members in the folder.
         self.enabled = enabled
+        # Specifies whether to retain stacks within a member when you remove the member from the folder.
+        # 
+        # Valid values:
+        # 
+        # *   true: retains the stacks.
+        # *   false: deletes the stacks.
+        # 
+        # >  This parameter is required if the Enabled parameter is set to true.
         self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
 
     def validate(self):
@@ -1187,7 +1579,17 @@ class CreateStackGroupRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N. If you do not specify the name and value of a parameter, ROS uses the default name and value that are defined in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
         self.parameter_key = parameter_key
+        # The value of parameter N.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -1220,7 +1622,11 @@ class CreateStackGroupRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the stack group.
+        # 
+        # >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
         self.key = key
+        # The value of tag N that you want to add to the stack group.
         self.value = value
 
     def validate(self):
@@ -1266,21 +1672,65 @@ class CreateStackGroupRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The name of the RAM role that you specify for the administrator account when you create a self-managed stack group. ROS assumes the administrator role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. ROS uses the administrator role to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.administration_role_name = administration_role_name
+        # The information about automatic deployment settings.
+        # 
+        # >  This parameter is required only if the PermissionModel parameter is set to SERVICE_MANAGED.
         self.auto_deployment = auto_deployment
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The description of the stack group.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.description = description
+        # The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. ROS assumes the execution role to perform operations on the stacks in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.execution_role_name = execution_role_name
         # test
         self.parameters = parameters
+        # The permission model.
+        # 
+        # Default value: SELF_MANAGED. Valid values:
+        # 
+        # *   SELF_MANAGED: the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
+        # *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
+        # 
+        # >  When you use the service-managed permission model to deploy stacks, make sure that your account is the management account or a delegated administrator account in the resource directory and the trusted access feature is enabled for your account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
         self.permission_model = permission_model
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.
+        # 
+        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
         self.resource_group_id = resource_group_id
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
         self.tags = tags
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_url = template_url
+        # The version of the template. If you do not specify this parameter, the latest version is used.
+        # 
+        # >  This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -1385,7 +1835,17 @@ class CreateStackGroupShrinkRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N. If you do not specify the name and value of a parameter, ROS uses the default name and value that are defined in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
         self.parameter_key = parameter_key
+        # The value of parameter N.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -1418,7 +1878,11 @@ class CreateStackGroupShrinkRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the stack group.
+        # 
+        # >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
         self.key = key
+        # The value of tag N that you want to add to the stack group.
         self.value = value
 
     def validate(self):
@@ -1464,21 +1928,65 @@ class CreateStackGroupShrinkRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The name of the RAM role that you specify for the administrator account when you create a self-managed stack group. ROS assumes the administrator role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. ROS uses the administrator role to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.administration_role_name = administration_role_name
+        # The information about automatic deployment settings.
+        # 
+        # >  This parameter is required only if the PermissionModel parameter is set to SERVICE_MANAGED.
         self.auto_deployment_shrink = auto_deployment_shrink
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The description of the stack group.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.description = description
+        # The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. ROS assumes the execution role to perform operations on the stacks in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.execution_role_name = execution_role_name
         # test
         self.parameters = parameters
+        # The permission model.
+        # 
+        # Default value: SELF_MANAGED. Valid values:
+        # 
+        # *   SELF_MANAGED: the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
+        # *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
+        # 
+        # >  When you use the service-managed permission model to deploy stacks, make sure that your account is the management account or a delegated administrator account in the resource directory and the trusted access feature is enabled for your account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
         self.permission_model = permission_model
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.
+        # 
+        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
         self.resource_group_id = resource_group_id
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
         self.tags = tags
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_url = template_url
+        # The version of the template. If you do not specify this parameter, the latest version is used.
+        # 
+        # >  This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -1580,7 +2088,9 @@ class CreateStackGroupResponseBody(TeaModel):
         request_id: str = None,
         stack_group_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the stack group.
         self.stack_group_id = stack_group_id
 
     def validate(self):
@@ -1656,6 +2166,11 @@ class CreateStackInstancesRequestDeploymentTargets(TeaModel):
         self,
         rd_folder_ids: List[str] = None,
     ):
+        # The IDs of the folders in the resource directory. You can add up to five folder IDs.
+        # 
+        # You can create stacks within all members in the specified folders. If you create stacks in the Root folder, the stacks are created within all members in the resource directory.
+        # 
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -1684,7 +2199,21 @@ class CreateStackInstancesRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_key = parameter_key
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -1726,17 +2255,94 @@ class CreateStackInstancesRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The IDs of the accounts within which you want to use the self-managed permission model to deploy stacks. You can specify up to 20 account IDs.
+        # 
+        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
         self.account_ids = account_ids
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which you want to use the service-managed permission model to deploy stacks.
+        # 
+        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
         self.deployment_targets = deployment_targets
+        # Specifies whether to disable rollback when the stacks fail to be created.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_rollback = disable_rollback
+        # The description of the stack creation operation.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
+        # The custom preferences on how Resource Orchestration Service (ROS) creates the stacks.
+        # 
+        # The following parameters are included:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        # 
+        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
+        #     *   PARALLEL: deploys stacks in parallel across all specified regions.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences = operation_preferences
         # test
         self.parameter_overrides = parameter_overrides
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the regions in which you want to create the stacks. You can specify up to 20 region IDs.
         self.region_ids = region_ids
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
         self.stack_group_name = stack_group_name
+        # The timeout period that is allowed to create the stack.
+        # 
+        # *   Default value: 60.
+        # *   Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -1816,7 +2422,21 @@ class CreateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_key = parameter_key
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -1858,17 +2478,94 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The IDs of the accounts within which you want to use the self-managed permission model to deploy stacks. You can specify up to 20 account IDs.
+        # 
+        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
         self.account_ids_shrink = account_ids_shrink
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which you want to use the service-managed permission model to deploy stacks.
+        # 
+        # >  You must specify only one of the `AccountIds` and `DeploymentTargets` parameters.
         self.deployment_targets_shrink = deployment_targets_shrink
+        # Specifies whether to disable rollback when the stacks fail to be created.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_rollback = disable_rollback
+        # The description of the stack creation operation.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
+        # The custom preferences on how Resource Orchestration Service (ROS) creates the stacks.
+        # 
+        # The following parameters are included:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        # 
+        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
+        #     *   PARALLEL: deploys stacks in parallel across all specified regions.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences_shrink = operation_preferences_shrink
         # test
         self.parameter_overrides = parameter_overrides
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the regions in which you want to create the stacks. You can specify up to 20 region IDs.
         self.region_ids_shrink = region_ids_shrink
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
         self.stack_group_name = stack_group_name
+        # The timeout period that is allowed to create the stack.
+        # 
+        # *   Default value: 60.
+        # *   Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -1945,7 +2642,9 @@ class CreateStackInstancesResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2022,7 +2721,11 @@ class CreateTemplateRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the template.
+        # 
+        # >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
         self.key = key
+        # The value of tag N that you want to add to the template.
         self.value = value
 
     def validate(self):
@@ -2059,11 +2762,44 @@ class CreateTemplateRequest(TeaModel):
         template_name: str = None,
         template_url: str = None,
     ):
+        # The description of the template. The description can be up to 256 characters in length.
         self.description = description
+        # The ID of the resource group.
+        # 
+        # For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](~~94475~~)
         self.resource_group_id = resource_group_id
         self.tags = tags
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify the TemplateBody or TemplateURL parameter.
+        # 
+        # You can create a Terraform template based on your business requirements. The following sample code provides an example on how to create a Terraform template:
+        # 
+        # ```
+        # 
+        # {
+        #   "ROSTemplateFormatVersion": "2015-09-01",
+        #   "Transform": "Aliyun::Terraform-v1.0",
+        #   "Workspace": {
+        #     "main.tf": "variable  \"name\" {  default = \"auto_provisioning_group\"}"
+        #   },
+        #   "Outputs": {}
+        # }
+        # ```
+        # 
+        # For more information about Terraform templates, see [Structure of Terraform templates](~~184397~~).
         self.template_body = template_body
+        # The name of the template.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.template_name = template_name
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou.
+        # 
+        # The template body must be 1 to 1,024 bytes in length.
+        # 
+        # If you do not specify the region of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify the TemplateBody or TemplateURL parameter.
         self.template_url = template_url
 
     def validate(self):
@@ -2120,7 +2856,9 @@ class CreateTemplateResponseBody(TeaModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):
@@ -2197,7 +2935,19 @@ class CreateTemplateScratchRequestPreferenceParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter.
+        # 
+        # For more information about the valid values of the ParameterKey parameter, see the "**Additional information about request parameters**" section of this topic.
+        # 
+        # > 
+        # *   The PreferenceParameters parameter is optional. If you want to specify the PreferenceParameters parameter, you must specify both the ParameterKey and ParameterValue parameters.
+        # *   If you set the TemplateScratchType parameter to ResourceImport, you must set the ParameterKey parameter to DeletionPolicy.
         self.parameter_key = parameter_key
+        # The value of the parameter. The value of the ParameterValue parameter varies based on the value of the ParameterKey parameter.
+        # 
+        # For more information about the valid values of the ParameterValue parameter, see the "**Additional information about request parameters**" section of this topic.
+        # 
+        # >  The PreferenceParameters parameter is optional. If you want to specify the PreferenceParameters parameter, you must specify both the ParameterKey and ParameterValue parameters.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -2230,7 +2980,11 @@ class CreateTemplateScratchRequestSourceResourceGroup(TeaModel):
         resource_group_id: str = None,
         resource_type_filter: List[str] = None,
     ):
+        # The ID of the source resource group.
         self.resource_group_id = resource_group_id
+        # The filter for resource types. If you specify this parameter, only the resources of the specified types and in the specified resource groups are scanned. If you do not specify this parameter, all resources in the specified resource groups are scanned.
+        # 
+        # You can specify up to 20 resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -2263,7 +3017,9 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -2296,7 +3052,15 @@ class CreateTemplateScratchRequestSourceTag(TeaModel):
         resource_tags: Dict[str, Any] = None,
         resource_type_filter: List[str] = None,
     ):
+        # The source tags that consist of key-value pairs.
+        # 
+        # If you want to specify only the tag key, you must leave the tag value empty. Example: `{"TagKey": ""}`.
+        # 
+        # You can add up to 10 source tags.
         self.resource_tags = resource_tags
+        # The filter for resource types. If you specify this parameter, only the resources of the specified types and have the specified tags are scanned. If you do not specify this parameter, all resources that have the specified tags are scanned.
+        # 
+        # You can specify up to 20 resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -2329,7 +3093,11 @@ class CreateTemplateScratchRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the scenario.
+        # 
+        # >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
         self.key = key
+        # The value of tag N that you want to add to the scenario.
         self.value = value
 
     def validate(self):
@@ -2371,16 +3139,43 @@ class CreateTemplateScratchRequest(TeaModel):
         tags: List[CreateTemplateScratchRequestTags] = None,
         template_scratch_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The description of the scenario.
         self.description = description
+        # The execution mode. Default value: Async. Valid values:
+        # 
+        # *   Async: asynchronous mode
+        # *   Sync: synchronous mode
+        # 
+        # >  If a wide scope of resources exist, the synchronous mode takes a longer period of time than the asynchronous mode. If you set the ExecutionMode parameter to Sync, we recommend that you configure the ClientToken parameter to prevent a timeout error.
         self.execution_mode = execution_mode
+        # The policy based on which the logical ID is generated. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+        # 
+        # *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+        # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
+        # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
+        # The parameters that you want to configure for the scenario.
         self.preference_parameters = preference_parameters
+        # The ID of the region in which you want to create the scenario.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The source resource group.
         self.source_resource_group = source_resource_group
+        # The source resources.
         self.source_resources = source_resources
+        # The source tag.
         self.source_tag = source_tag
         self.tags = tags
+        # The type of the scenario. Valid values:
+        # 
+        # *   ResourceImport: resource management
+        # *   ArchitectureReplication: resource replication
+        # *   ResourceMigration: resource migration
         self.template_scratch_type = template_scratch_type
 
     def validate(self):
@@ -2481,7 +3276,11 @@ class CreateTemplateScratchShrinkRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the scenario.
+        # 
+        # >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
         self.key = key
+        # The value of tag N that you want to add to the scenario.
         self.value = value
 
     def validate(self):
@@ -2523,16 +3322,43 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
         tags: List[CreateTemplateScratchShrinkRequestTags] = None,
         template_scratch_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The description of the scenario.
         self.description = description
+        # The execution mode. Default value: Async. Valid values:
+        # 
+        # *   Async: asynchronous mode
+        # *   Sync: synchronous mode
+        # 
+        # >  If a wide scope of resources exist, the synchronous mode takes a longer period of time than the asynchronous mode. If you set the ExecutionMode parameter to Sync, we recommend that you configure the ClientToken parameter to prevent a timeout error.
         self.execution_mode = execution_mode
+        # The policy based on which the logical ID is generated. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+        # 
+        # *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+        # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
+        # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
+        # The parameters that you want to configure for the scenario.
         self.preference_parameters_shrink = preference_parameters_shrink
+        # The ID of the region in which you want to create the scenario.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The source resource group.
         self.source_resource_group_shrink = source_resource_group_shrink
+        # The source resources.
         self.source_resources_shrink = source_resources_shrink
+        # The source tag.
         self.source_tag_shrink = source_tag_shrink
         self.tags = tags
+        # The type of the scenario. Valid values:
+        # 
+        # *   ResourceImport: resource management
+        # *   ArchitectureReplication: resource replication
+        # *   ResourceMigration: resource migration
         self.template_scratch_type = template_scratch_type
 
     def validate(self):
@@ -2609,7 +3435,9 @@ class CreateTemplateScratchResponseBody(TeaModel):
         request_id: str = None,
         template_scratch_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -2686,7 +3514,9 @@ class DeleteChangeSetRequest(TeaModel):
         change_set_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the change set.
         self.change_set_id = change_set_id
+        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2718,6 +3548,7 @@ class DeleteChangeSetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2793,10 +3624,25 @@ class DeleteStackRequest(TeaModel):
         retain_resources: List[str] = None,
         stack_id: str = None,
     ):
+        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
+        # 
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the role.
+        # 
+        # If you leave this parameter empty when you call the DeleteStack operation, ROS cannot assume the existing RAM role that is associated with the stack. If you want ROS to assume a RAM role, you must specify this parameter. If no role is available for ROS to assume, ROS uses a temporary credential that is generated from the credentials of your account.
+        # 
+        # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies whether to retain all resources in the stack.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.retain_all_resources = retain_all_resources
         self.retain_resources = retain_resources
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -2840,6 +3686,7 @@ class DeleteStackResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2912,7 +3759,11 @@ class DeleteStackGroupRequest(TeaModel):
         region_id: str = None,
         stack_group_name: str = None,
     ):
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -2944,6 +3795,7 @@ class DeleteStackGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3015,6 +3867,11 @@ class DeleteStackInstancesRequestDeploymentTargets(TeaModel):
         self,
         rd_folder_ids: List[str] = None,
     ):
+        # The IDs of the folders in the resource directory. You can specify up to five folder IDs.
+        # 
+        # You can create stacks within all members in the specified folders. If you create stacks in the Root folder, the stacks are created within all members in the resource directory.
+        # 
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -3050,14 +3907,83 @@ class DeleteStackInstancesRequest(TeaModel):
         retain_stacks: bool = None,
         stack_group_name: str = None,
     ):
+        # The IDs of the accounts within the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
         self.account_ids = account_ids
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which the service-managed permission model is used to deploy stacks.
         self.deployment_targets = deployment_targets
+        # The description of the operation that you want to perform to delete the stacks.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
+        # The settings that you configure to delete the stacks.
+        # 
+        # The following parameters are included:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, Resource Orchestration Service (ROS) stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        # 
+        #     Valid values of N: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
+        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences = operation_preferences
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the regions from which you want to delete the stacks. You can specify up to 20 region IDs.
         self.region_ids = region_ids
+        # Specifies whether to retain the stacks.
+        # 
+        # Valid values:
+        # 
+        # *   true: retains the stacks.
+        # *   false: deletes the stacks.
         self.retain_stacks = retain_stacks
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -3127,14 +4053,83 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
         retain_stacks: bool = None,
         stack_group_name: str = None,
     ):
+        # The IDs of the accounts within the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
         self.account_ids_shrink = account_ids_shrink
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which the service-managed permission model is used to deploy stacks.
         self.deployment_targets_shrink = deployment_targets_shrink
+        # The description of the operation that you want to perform to delete the stacks.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
+        # The settings that you configure to delete the stacks.
+        # 
+        # The following parameters are included:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, Resource Orchestration Service (ROS) stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        # 
+        #     Valid values of N: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
+        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences_shrink = operation_preferences_shrink
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the regions from which you want to delete the stacks. You can specify up to 20 region IDs.
         self.region_ids_shrink = region_ids_shrink
+        # Specifies whether to retain the stacks.
+        # 
+        # Valid values:
+        # 
+        # *   true: retains the stacks.
+        # *   false: deletes the stacks.
         self.retain_stacks = retain_stacks
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -3195,7 +4190,9 @@ class DeleteStackInstancesResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3271,6 +4268,7 @@ class DeleteTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # The ID of the template. This parameter applies to only private templates.
         self.template_id = template_id
 
     def validate(self):
@@ -3298,6 +4296,7 @@ class DeleteTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3370,7 +4369,11 @@ class DeleteTemplateScratchRequest(TeaModel):
         region_id: str = None,
         template_scratch_id: str = None,
     ):
+        # The ID of the region in which the scenario is created.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -3402,6 +4405,7 @@ class DeleteTemplateScratchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3473,6 +4477,13 @@ class DescribeRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language in which the returned results are displayed.
+        # 
+        # Default value: zh-CN. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
+        # *   ja: Japanese
         self.accept_language = accept_language
 
     def validate(self):
@@ -3502,8 +4513,11 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
+        # The name of the region.
         self.local_name = local_name
+        # The endpoint of the region.
         self.region_endpoint = region_endpoint
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -3540,7 +4554,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The list of regions.
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3627,9 +4643,16 @@ class DetectStackDriftRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
         self.logical_resource_id = logical_resource_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -3670,7 +4693,9 @@ class DetectStackDriftResponseBody(TeaModel):
         drift_detection_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the drift detection.
         self.drift_detection_id = drift_detection_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3749,9 +4774,51 @@ class DetectStackGroupDriftRequest(TeaModel):
         region_id: str = None,
         stack_group_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The operation settings, in JSON format. The following fields are supported:
+        # 
+        # *   FailureToleranceCount
+        # 
+        # The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails.
+        # 
+        # If FailureToleranceCount is not specified, the default value 0 is used. You can specify one of FailureToleranceCount or FailureTolerancePercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 0 to 20.
+        # 
+        # *   FailureTolerancePercentage
+        # 
+        # The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails.
+        # 
+        # You can specify one of FailureToleranceCount or FailureTolerancePercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 0 to 100.
+        # 
+        # *   MaxConcurrentCount
+        # 
+        # The maximum number of target accounts in which a drift detection operation can be performed at a time.
+        # 
+        # You can specify one of MaxConcurrentCount or MaxConcurrentPercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # *   MaxConcurrentPercentage
+        # 
+        # The maximum percentage of target accounts in which a drift detection operation can be performed at a time.
+        # 
+        # You can specify one of MaxConcurrentCount or MaxConcurrentPercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 1 to 100.
         self.operation_preferences = operation_preferences
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035#doc-api-ROS-DescribeRegions~~ "Queries the DescribeRegions list of a region.") operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -3794,9 +4861,51 @@ class DetectStackGroupDriftShrinkRequest(TeaModel):
         region_id: str = None,
         stack_group_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The operation settings, in JSON format. The following fields are supported:
+        # 
+        # *   FailureToleranceCount
+        # 
+        # The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails.
+        # 
+        # If FailureToleranceCount is not specified, the default value 0 is used. You can specify one of FailureToleranceCount or FailureTolerancePercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 0 to 20.
+        # 
+        # *   FailureTolerancePercentage
+        # 
+        # The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails.
+        # 
+        # You can specify one of FailureToleranceCount or FailureTolerancePercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 0 to 100.
+        # 
+        # *   MaxConcurrentCount
+        # 
+        # The maximum number of target accounts in which a drift detection operation can be performed at a time.
+        # 
+        # You can specify one of MaxConcurrentCount or MaxConcurrentPercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # *   MaxConcurrentPercentage
+        # 
+        # The maximum percentage of target accounts in which a drift detection operation can be performed at a time.
+        # 
+        # You can specify one of MaxConcurrentCount or MaxConcurrentPercentage parameters, but you cannot specify both of them.
+        # 
+        # Valid values: 1 to 100.
         self.operation_preferences_shrink = operation_preferences_shrink
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035#doc-api-ROS-DescribeRegions~~ "Queries the DescribeRegions list of a region.") operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -3837,7 +4946,9 @@ class DetectStackGroupDriftResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3916,9 +5027,17 @@ class DetectStackResourceDriftRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The name of the resource.
         self.logical_resource_id = logical_resource_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -3961,9 +5080,17 @@ class DetectStackResourceDriftResponseBodyPropertyDifferences(TeaModel):
         expected_value: str = None,
         property_path: str = None,
     ):
+        # The actual value of the resource property.
         self.actual_value = actual_value
+        # The drift type of the resource property. Valid values:
+        # 
+        # *   ADD: The value has been added to a resource property whose data type is Array or List.
+        # *   REMOVE: The property has been deleted from the current resource configuration.
+        # *   NOT_EQUAL: The current property value differs from the expected value defined in the stack template.
         self.difference_type = difference_type
+        # The expected value of the resource property as defined in the template.
         self.expected_value = expected_value
+        # The path of the resource property.
         self.property_path = property_path
 
     def validate(self):
@@ -4012,15 +5139,30 @@ class DetectStackResourceDriftResponseBody(TeaModel):
         resource_type: str = None,
         stack_id: str = None,
     ):
+        # The actual resource properties in JSON format.
         self.actual_properties = actual_properties
+        # The time at which the resource drift detection operation was initiated.
         self.drift_detection_time = drift_detection_time
+        # The resource properties as defined in the template, in JSON format.
         self.expected_properties = expected_properties
+        # The logical ID of the resource as defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The physical ID of the resource.
         self.physical_resource_id = physical_resource_id
+        # The property differences of the resource.
         self.property_differences = property_differences
+        # The ID of the request.
         self.request_id = request_id
+        # The resource drift status. Valid values:
+        # 
+        # *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource has been deleted.
+        # *   MODIFIED: The actual configuration of the resource differs from its expected template configuration.
+        # *   NOT_CHECKED: Resource Orchestration Service (ROS) has not checked whether the actual configuration of the resource differs from its expected template configuration.
+        # *   IN_SYNC: The actual configuration of the resource matches its expected template configuration.
         self.resource_drift_status = resource_drift_status
+        # The resource type.
         self.resource_type = resource_type
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -4138,8 +5280,15 @@ class ExecuteChangeSetRequest(TeaModel):
         client_token: str = None,
         region_id: str = None,
     ):
+        # The ID of the change set.
         self.change_set_id = change_set_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4175,6 +5324,7 @@ class ExecuteChangeSetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4248,8 +5398,15 @@ class GenerateTemplateByScratchRequest(TeaModel):
         region_id: str = None,
         template_scratch_id: str = None,
     ):
+        # The ID of the region to which the new node belongs.
         self.provision_region_id = provision_region_id
+        # The ID of the region in which the scenario is created.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the scenario.
+        # 
+        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -4287,8 +5444,13 @@ class GenerateTemplateByScratchResponseBodyResourcesToImport(TeaModel):
         resource_identifier: Dict[str, Any] = None,
         resource_type: str = None,
     ):
+        # The ID of the logical resource.
         self.logical_resource_id = logical_resource_id
+        # The key-value mappings from string to string. The parameter value is a JSON string that identifies the resource that is imported.
+        # 
+        # A key is an identifier for a resource, and a value is an assignment of data to the key. For example, VpcId is a key that indicates the ID of a virtual private cloud (VPC), and `vpc-bp1m6fww66xbntjyc****"` is a value that is assigned to VpcId.
         self.resource_identifier = resource_identifier
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -4326,8 +5488,13 @@ class GenerateTemplateByScratchResponseBody(TeaModel):
         resources_to_import: List[GenerateTemplateByScratchResponseBodyResourcesToImport] = None,
         template_body: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The resources that you want to import to a stack in the scenario of the Resource Management type.
+        # 
+        # >  This parameter is returned only for scenarios of the Resource Management type.
         self.resources_to_import = resources_to_import
+        # The content of the template that is created for the scenario.
         self.template_body = template_body
 
     def validate(self):
@@ -4420,9 +5587,25 @@ class GenerateTemplatePolicyRequest(TeaModel):
         template_version: str = None,
     ):
         self.operation_types = operation_types
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
+        # 
+        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared templates and private templates.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
+        # 
+        # >  If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+        # 
+        # The URL can be up to 1,024 bytes in length.
         self.template_url = template_url
+        # The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -4468,8 +5651,14 @@ class GenerateTemplatePolicyResponseBodyPolicyStatement(TeaModel):
         effect: str = None,
         resource: str = None,
     ):
+        # The operations that are performed on the specified resource.
         self.action = action
+        # The effect of the statement. Valid values:
+        # 
+        # *   Allow
+        # *   Deny
         self.effect = effect
+        # The object that the statement covers. An asterisk (\*) indicates all resources.
         self.resource = resource
 
     def validate(self):
@@ -4506,7 +5695,9 @@ class GenerateTemplatePolicyResponseBodyPolicy(TeaModel):
         statement: List[GenerateTemplatePolicyResponseBodyPolicyStatement] = None,
         version: str = None,
     ):
+        # The statements that are contained in the policy.
         self.statement = statement
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -4547,7 +5738,9 @@ class GenerateTemplatePolicyResponseBody(TeaModel):
         policy: GenerateTemplatePolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The information about the policy.
         self.policy = policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4627,8 +5820,14 @@ class GetChangeSetRequest(TeaModel):
         region_id: str = None,
         show_template: bool = None,
     ):
+        # The ID of the change set.
         self.change_set_id = change_set_id
+        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies whether to show the template. Default value: false. Valid values:
+        # 
+        # *   true: shows the template.
+        # *   false: does not show the template.
         self.show_template = show_template
 
     def validate(self):
@@ -4666,8 +5865,21 @@ class GetChangeSetResponseBodyLogTerraformLogs(TeaModel):
         content: str = None,
         stream: str = None,
     ):
+        # The name of the Terraform command. Valid values:
+        # 
+        # *   apply
+        # *   plan
+        # *   destroy
+        # *   version
+        # 
+        # For more information about the Terraform commands, see [Provisioning Infrastructure with Terraform](https://www.terraform.io/cli/commands).
         self.command = command
+        # The content of the output stream.
         self.content = content
+        # The output stream. Valid values:
+        # 
+        # *   stdout: the standard output stream.
+        # *   stderr: the standard error stream.
         self.stream = stream
 
     def validate(self):
@@ -4703,6 +5915,9 @@ class GetChangeSetResponseBodyLog(TeaModel):
         self,
         terraform_logs: List[GetChangeSetResponseBodyLogTerraformLogs] = None,
     ):
+        # The logs of the Terraform stack. This parameter is returned only for the change set of a Terraform stack.
+        # 
+        # >  This parameter is not returned for change sets that are in the creating state. This parameter indicates the change set creation logs of the Terraform stack.
         self.terraform_logs = terraform_logs
 
     def validate(self):
@@ -4739,7 +5954,9 @@ class GetChangeSetResponseBodyParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter.
         self.parameter_key = parameter_key
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -4788,23 +6005,45 @@ class GetChangeSetResponseBody(TeaModel):
         template_body: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The ID of the change set.
         self.change_set_id = change_set_id
+        # The name of the change set.
         self.change_set_name = change_set_name
+        # The type of the change set.
         self.change_set_type = change_set_type
+        # The changes of the change set.
+        # 
+        # For more information, see [Data structure](~~155988~~).
         self.changes = changes
+        # The time when the resource was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the change set.
         self.description = description
+        # Indicates whether rollback was performed.
         self.disable_rollback = disable_rollback
+        # The execution status of the change set.
         self.execution_status = execution_status
+        # The logs of the change set.
         self.log = log
+        # The parameters of the stack.
         self.parameters = parameters
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the stack with which the change set is associated.
         self.stack_id = stack_id
+        # The name of the stack with which the change set is associated.
         self.stack_name = stack_name
+        # The status of the change set.
         self.status = status
+        # The reason why the change set is in its current state.
         self.status_reason = status_reason
+        # The template body of the change set.
+        # 
+        # >  This parameter takes effect only when the ShowTemplate parameter is set to true.
         self.template_body = template_body
+        # The timeout period that is specified for the stack creation or update request.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -4956,7 +6195,14 @@ class GetFeatureDetailsRequest(TeaModel):
         feature: str = None,
         region_id: str = None,
     ):
+        # The one or more features that you want to query. Valid values:
+        # 
+        # *   Terraform: the Terraform hosting feature.
+        # *   ResourceCleaner: the resource cleaner feature. You can use ALIYUN::ROS::ResourceCleaner to create a resource cleaner.
+        # *   TemplateScratch: the scenario feature.
+        # *   All: all features that are supported by ROS.
         self.feature = feature
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4990,8 +6236,18 @@ class GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes(TeaMode
         side_effects: List[str] = None,
         supported_filters: List[str] = None,
     ):
+        # The resource type that can be cleaned up.
         self.resource_type = resource_type
+        # The names of the side effects. The StopInstance value indicates that an instance that is related to the specified resource is stopped.
         self.side_effects = side_effects
+        # The filters that are used to filter resources. Valid values:
+        # 
+        # *   RegionId: the ID of the region.
+        # *   ResourceId: the ID of the resource.
+        # *   ResourceName: the name of the resource.
+        # *   Tags: the tags of the resource.
+        # *   ResourceGroupId: the ID of the resource group.
+        # *   DeletionProtection: the deletion protection feature.
         self.supported_filters = supported_filters
 
     def validate(self):
@@ -5027,6 +6283,7 @@ class GetFeatureDetailsResponseBodyResourceCleaner(TeaModel):
         self,
         supported_resource_types: List[GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes] = None,
     ):
+        # The resource types that can be cleaned up.
         self.supported_resource_types = supported_resource_types
 
     def validate(self):
@@ -5063,7 +6320,9 @@ class GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResource
         properties: List[str] = None,
         resource_type: str = None,
     ):
+        # The names of properties that are supported by the resource type.
         self.properties = properties
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -5095,6 +6354,7 @@ class GetFeatureDetailsResponseBodyTemplateParameterConstraints(TeaModel):
         self,
         supported_resource_types: List[GetFeatureDetailsResponseBodyTemplateParameterConstraintsSupportedResourceTypes] = None,
     ):
+        # The resource types that support the template parameter constraint feature.
         self.supported_resource_types = supported_resource_types
 
     def validate(self):
@@ -5134,10 +6394,27 @@ class GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes(TeaMode
         source_supported: bool = None,
         source_tag_supported: bool = None,
     ):
+        # The resource type.
         self.resource_type = resource_type
+        # Indicates whether the resource scope can be specified by resource group. Valid values:
+        # 
+        # - true
+        # - false
         self.source_resource_group_supported = source_resource_group_supported
+        # Indicates whether the resource scope can be specified by tag, resource group, or resource. Valid values:
+        # 
+        # - true
+        # - false
         self.source_resources_supported = source_resources_supported
+        # Indicates whether the resource scope can be specified by resource. Valid values:
+        # 
+        # - true
+        # - false
         self.source_supported = source_supported
+        # Indicates whether the resource scope can be specified by tag. Valid values:
+        # 
+        # - true
+        # - false
         self.source_tag_supported = source_tag_supported
 
     def validate(self):
@@ -5181,6 +6458,7 @@ class GetFeatureDetailsResponseBodyTemplateScratch(TeaModel):
         self,
         supported_resource_types: List[GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes] = None,
     ):
+        # The resource types that support the scenario feature.
         self.supported_resource_types = supported_resource_types
 
     def validate(self):
@@ -5216,6 +6494,7 @@ class GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperation
         self,
         delete_stack: List[str] = None,
     ):
+        # The resource types that support the risk check performed to detect risks caused by a stack deletion operation.
         self.delete_stack = delete_stack
 
     def validate(self):
@@ -5247,10 +6526,15 @@ class GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes(TeaModel):
         stack_operation_risk: GetFeatureDetailsResponseBodyTerraformSupportedResourceTypesStackOperationRisk = None,
         system_tag: List[str] = None,
     ):
+        # The resource types that support the custom tag feature.
         self.custom_tag = custom_tag
+        # The resource types that support the price inquiry feature.
         self.estimate_cost = estimate_cost
+        # The resource types that support the resource group feature.
         self.resource_group = resource_group
+        # The resource type that support the risk check feature.
         self.stack_operation_risk = stack_operation_risk
+        # The resource types that support the system tag `acs:ros:stackId`.
         self.system_tag = system_tag
 
     def validate(self):
@@ -5297,7 +6581,9 @@ class GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions(Te
         provider_name: str = None,
         supported_versions: List[str] = None,
     ):
+        # The name of the provider.
         self.provider_name = provider_name
+        # The versions of the provider.
         self.supported_versions = supported_versions
 
     def validate(self):
@@ -5332,9 +6618,13 @@ class GetFeatureDetailsResponseBodyTerraformSupportedVersions(TeaModel):
         transform: str = None,
         update_allowed_transforms: List[str] = None,
     ):
+        # The names and versions of the providers that correspond to the Terraform versions.
         self.provider_versions = provider_versions
+        # The Terraform version.
         self.terraform_version = terraform_version
+        # The Terraform version that is supported by ROS. The parameter value is the same as the value of the Transform parameter in a Terraform template.
         self.transform = transform
+        # The versions to which Terraform can be updated in ROS.
         self.update_allowed_transforms = update_allowed_transforms
 
     def validate(self):
@@ -5383,7 +6673,9 @@ class GetFeatureDetailsResponseBodyTerraform(TeaModel):
         supported_resource_types: GetFeatureDetailsResponseBodyTerraformSupportedResourceTypes = None,
         supported_versions: List[GetFeatureDetailsResponseBodyTerraformSupportedVersions] = None,
     ):
+        # The resource types that support the scenario feature.
         self.supported_resource_types = supported_resource_types
+        # The Terraform versions.
         self.supported_versions = supported_versions
 
     def validate(self):
@@ -5430,10 +6722,15 @@ class GetFeatureDetailsResponseBody(TeaModel):
         template_scratch: GetFeatureDetailsResponseBodyTemplateScratch = None,
         terraform: GetFeatureDetailsResponseBodyTerraform = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Details of the resource cleaner feature.
         self.resource_cleaner = resource_cleaner
+        # Details of the template parameter constraint feature.
         self.template_parameter_constraints = template_parameter_constraints
+        # Details of the scenario feature.
         self.template_scratch = template_scratch
+        # Details of the Terraform hosting feature.
         self.terraform = terraform
 
     def validate(self):
@@ -5532,6 +6829,9 @@ class GetResourceTypeRequest(TeaModel):
         self,
         resource_type: str = None,
     ):
+        # The type of the resource.
+        # 
+        # For more information about resource types supported by Resource Orchestration Service (ROS), see [List of resource types by service](~~127039~~).
         self.resource_type = resource_type
 
     def validate(self):
@@ -5565,12 +6865,28 @@ class GetResourceTypeResponseBody(TeaModel):
         support_drift_detection: bool = None,
         support_scratch_detection: bool = None,
     ):
+        # The attributes of the resource.
         self.attributes = attributes
+        # The entity type. Valid values:
+        # 
+        # *   Resource: resources other than DataSource resources. For more information, see [Resources](~~28863~~).
+        # *   DataSource: DataSource resources.
         self.entity_type = entity_type
+        # The properties of the resource.
         self.properties = properties
+        # The ID of the request.
         self.request_id = request_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # Indicates whether the resource supports drift detection. Default value: false. Valid values:
+        # 
+        # *   true: Drift detection is supported.
+        # *   false: Drift detection is not supported.
         self.support_drift_detection = support_drift_detection
+        # Indicates whether the resource supports scratch detection. Default value: false. Valid values:
+        # 
+        # *   true: Scratch detection is supported.
+        # *   false: Scratch detection is not supported.
         self.support_scratch_detection = support_scratch_detection
 
     def validate(self):
@@ -5666,6 +6982,9 @@ class GetResourceTypeTemplateRequest(TeaModel):
         self,
         resource_type: str = None,
     ):
+        # The resource type.
+        # 
+        # You can call the [ListResourceTypes](~~133957~~) operation to query the resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -5694,7 +7013,13 @@ class GetResourceTypeTemplateResponseBody(TeaModel):
         request_id: str = None,
         template_body: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The structure that contains the template body.
+        # 
+        # The template body must be 1 to 51,200 bytes in length.
+        # 
+        # For more information, see [Template syntax](~~28857~~).
         self.template_body = template_body
 
     def validate(self):
@@ -5771,7 +7096,13 @@ class GetServiceProvisionsRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N. If you do not specify the name and the value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
         self.parameter_key = parameter_key
+        # The value of parameter N.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -5803,6 +7134,43 @@ class GetServiceProvisionsRequestServices(TeaModel):
         self,
         service_name: str = None,
     ):
+        # The name of service N or feature N. Valid values:
+        # 
+        # *   AHAS: Application High Availability Service
+        # *   ARMS: Application Real-Time Monitoring Service (ARMS)
+        # *   ApiGateway: API Gateway
+        # *   BatchCompute: Batch Compute
+        # *   BrainIndustrial: Industrial Brain
+        # *   CloudStorageGateway: Cloud Storage Gateway (CSG)
+        # *   CMS: CloudMonitor
+        # *   CR: Container Registry
+        # *   CS: Container Service for Kubernetes (ACK)
+        # *   DCDN: Dynamic Route for CDN (DCDN)
+        # *   DataHub: DataHub
+        # *   DataWorks: DataWorks
+        # *   EDAS: Enterprise Distributed Application Service (EDAS)
+        # *   E-HPC: Elastic High Performance Computing (E-HPC)
+        # *   EMAS: Enterprise Mobile Application Studio (EMAS)
+        # *   FC: Function Compute
+        # *   FNF: Serverless Workflow (SWF)
+        # *   MaxCompute: MaxCompute
+        # *   MNS: Message Service (MNS)
+        # *   HBR: Hybrid Backup Recovery (HBR)
+        # *   IMM: Intelligent Media Management
+        # *   IOT: IoT Platform
+        # *   KMS: Key Management Service (KMS)
+        # *   NAS: Apsara File Storage NAS (NAS)
+        # *   NLP: Natural Language Processing (NLP)
+        # *   OSS: OSS
+        # *   OTS: Tablestore
+        # *   PrivateLink: PrivateLink
+        # *   PrivateZone: Alibaba Cloud DNS PrivateZone
+        # *   RocketMQ: Message Queue for Apache RocketMQ
+        # *   SAE: Serverless App Engine (SAE)
+        # *   SLS: Log Service
+        # *   TrafficMirror: the traffic mirroring feature
+        # *   VS: Video Surveillance System
+        # *   Xtrace: Tracing Analysis
         self.service_name = service_name
 
     def validate(self):
@@ -5837,11 +7205,26 @@ class GetServiceProvisionsRequest(TeaModel):
         template_version: str = None,
     ):
         self.parameters = parameters
+        # The ID of the region.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.services = services
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.N.ServiceName.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.N.ServiceName.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and Services.N.ServiceName.
         self.template_url = template_url
+        # The version of the template. If you do not specify this parameter, the latest version is used.
+        # 
+        # This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -5913,9 +7296,18 @@ class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRolesApiForC
         api_type: str = None,
         parameters: Dict[str, Any] = None,
     ):
+        # The name of the API operation.
         self.api_name = api_name
+        # The ID of the Alibaba Cloud service to which the API operation belongs.
         self.api_product_id = api_product_id
+        # The type of the API operation.
+        # 
+        # Valid values:
+        # 
+        # *   Open: public API operation
+        # *   Inner: private API operation
         self.api_type = api_type
+        # The parameters of the API operation. If a parameter is a variable, use the ${Variable name} format. Only the following variable is supported: ${RegionId}.
         self.parameters = parameters
 
     def validate(self):
@@ -5958,9 +7350,18 @@ class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles(TeaMod
         function: str = None,
         role_name: str = None,
     ):
+        # The information about the API operation that is used to create the RAM role.
         self.api_for_creation = api_for_creation
+        # Indicates whether the RAM role is created. Valid values:
+        # 
+        # *   true
+        # *   false
         self.created = created
+        # The purpose for which the RAM role is used.
+        # 
+        # Default value: Default. This value indicates that the RAM role is the default role of the service.
         self.function = function
+        # The name of the RAM role.
         self.role_name = role_name
 
     def validate(self):
@@ -6003,7 +7404,11 @@ class GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision(TeaModel):
         authorization_url: str = None,
         roles: List[GetServiceProvisionsResponseBodyServiceProvisionsRoleProvisionRoles] = None,
     ):
+        # The authorization URL of the RAM role.
+        # 
+        # >  This parameter is returned if the Created parameter is set to false.
         self.authorization_url = authorization_url
+        # The RAM roles of the service.
         self.roles = roles
 
     def validate(self):
@@ -6049,12 +7454,30 @@ class GetServiceProvisionsResponseBodyServiceProvisions(TeaModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # Indicates whether automatic activation for the service is defined in the template. Valid values:
+        # 
+        # *   true: Automatic activation for the service is defined in the template.
+        # *   false: Manual activation for the service is defined in the template.
         self.auto_enable_service = auto_enable_service
+        # The names of Alibaba Cloud services on which the service depends.
         self.dependent_service_names = dependent_service_names
+        # The URL that points to the activation page of the service.
+        # 
+        # >  This parameter is returned if the Status parameter is set to Disabled.
         self.enable_url = enable_url
+        # The information about the RAM role of the service. If this parameter is empty, no RAM role is associated with the service.
         self.role_provision = role_provision
+        # The name of the service.
         self.service_name = service_name
+        # The activation status of the service. Valid values:
+        # 
+        # *   Enabled: The service is activated.
+        # *   Disabled: The service is not activated.
+        # *   Unknown: The activation status of the service is unknown.
         self.status = status
+        # The reason why the service is in the Disabled or Unknown state.
+        # 
+        # >  This parameter is returned if the Status parameter is set to Disabled or Unknown.
         self.status_reason = status_reason
 
     def validate(self):
@@ -6109,7 +7532,9 @@ class GetServiceProvisionsResponseBody(TeaModel):
         request_id: str = None,
         service_provisions: List[GetServiceProvisionsResponseBodyServiceProvisions] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Details of the service.
         self.service_provisions = service_provisions
 
     def validate(self):
@@ -6198,11 +7623,38 @@ class GetStackRequest(TeaModel):
         show_resource_progress: str = None,
         stack_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length,
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The option for returning logs. Valid values:
+        # 
+        # *   None: does not return logs.
+        # *   Stack: returns the logs of the stack. This is the default value.
+        # *   Resource: returns the logs of resources in the stack.
+        # *   All: returns the logs of all resources.
         self.log_option = log_option
+        # Specifies whether to return the output parameters of the stack. Valid values:
+        # 
+        # *   Enabled: returns the output parameters. This is the default value.
+        # 
+        # *   Disabled: does not return the output parameters.
+        # 
+        # > The system takes a long period of time to calculate output parameters. If you do not want to query the output parameters, we recommend that you set the OutputOption parameter to Disabled to improve the response speed of the GetStack operation.
         self.output_option = output_option
+        # The ID of the region in which the stack resides. You can call the [DescribeRegions](~~131035~~) operation to query the most recent list of Alibaba Cloud regions.
         self.region_id = region_id
+        # Specifies whether to return the ResourceProgress parameter. Valid values:
+        # 
+        # *   Disabled: does not return the ResourceProgress parameter. This is the default value.
+        # 
+        # *   EnabledIfCreateStack: returns the ResourceProgress parameter only if a stack is created.
+        # 
+        # > A stack is in one of the following states when it is created: CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, CREATE_ROLLBACK_IN_PROGRESS, CREATE_ROLLBACK_COMPLETE, or CREATE_ROLLBACK_FAILED.
         self.show_resource_progress = show_resource_progress
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -6251,7 +7703,9 @@ class GetStackResponseBodyLogResourceLogsLogs(TeaModel):
         content: str = None,
         keys: List[str] = None,
     ):
+        # The content of a resource log.
         self.content = content
+        # The keywords.
         self.keys = keys
 
     def validate(self):
@@ -6284,7 +7738,9 @@ class GetStackResponseBodyLogResourceLogs(TeaModel):
         logs: List[GetStackResponseBodyLogResourceLogsLogs] = None,
         resource_name: str = None,
     ):
+        # The logs of all resources.
         self.logs = logs
+        # The name of the resource that is defined in the template.
         self.resource_name = resource_name
 
     def validate(self):
@@ -6326,8 +7782,21 @@ class GetStackResponseBodyLogTerraformLogs(TeaModel):
         content: str = None,
         stream: str = None,
     ):
+        # The name of a Terraform command that is run. Valid values:
+        # 
+        # - apply
+        # - plan
+        # - destroy
+        # - version
+        # 
+        # For more information about Terraform commands, see [Basic CLI Features](https://www.terraform.io/cli/commands).
         self.command = command
+        # The content of the output stream that is returned after the command is run.
         self.content = content
+        # The output stream. Valid values:
+        # 
+        # - stdout: the standard output stream.
+        # - stderr: the standard error stream.
         self.stream = stream
 
     def validate(self):
@@ -6364,7 +7833,15 @@ class GetStackResponseBodyLog(TeaModel):
         resource_logs: List[GetStackResponseBodyLogResourceLogs] = None,
         terraform_logs: List[GetStackResponseBodyLogTerraformLogs] = None,
     ):
+        # The logs of resources in the stack. This parameter is returned if the LogOption parameter is set to Resource or All.  
+        # 
+        # >  The logs are returned for resources of specific types, such as `ALIYUN::ROS::ResourceCleaner`.
         self.resource_logs = resource_logs
+        # The logs of the Terraform stack. This parameter is returned only for a Terraform stack. 
+        # 
+        # This parameter is returned if the LogOption parameter is left empty or set to Stack or All.  
+        # 
+        # >  This parameter is not returned for a running stack. The logs are generated from the last creation, re-creation, update, or deletion operation on the stack.
         self.terraform_logs = terraform_logs
 
     def validate(self):
@@ -6418,11 +7895,17 @@ class GetStackResponseBodyOperationInfo(TeaModel):
         request_id: str = None,
         resource_type: str = None,
     ):
+        # The name of the API of another cloud service.
         self.action = action
+        # The error code returned.
         self.code = code
+        # The logical ID of the resource on which the operation error occurred.
         self.logical_resource_id = logical_resource_id
+        # The error message returned.
         self.message = message
+        # The ID of the request to call the API of another cloud service.
         self.request_id = request_id
+        # The type of the resource on which the operation error occurred.
         self.resource_type = resource_type
 
     def validate(self):
@@ -6471,7 +7954,9 @@ class GetStackResponseBodyParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter.
         self.parameter_key = parameter_key
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -6506,9 +7991,13 @@ class GetStackResponseBodyResourceProgressInProgressResourceDetails(TeaModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The desired progress value of the resource.
         self.progress_target_value = progress_target_value
+        # The current progress value of the resource.
         self.progress_value = progress_value
+        # The name of the resource.
         self.resource_name = resource_name
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -6553,11 +8042,17 @@ class GetStackResponseBodyResourceProgress(TeaModel):
         success_resource_count: int = None,
         total_resource_count: int = None,
     ):
+        # The number of resources that fail to be created.
         self.failed_resource_count = failed_resource_count
+        # The number of resources that are being created.
         self.in_progress_resource_count = in_progress_resource_count
+        # The progress details of resources that are being created.
         self.in_progress_resource_details = in_progress_resource_details
+        # The number of resources to be created.
         self.pending_resource_count = pending_resource_count
+        # The number of resources that are created.
         self.success_resource_count = success_resource_count
+        # The total number of resources.
         self.total_resource_count = total_resource_count
 
     def validate(self):
@@ -6614,7 +8109,9 @@ class GetStackResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the stack.
         self.key = key
+        # The tag value of the stack.
         self.value = value
 
     def validate(self):
@@ -6679,39 +8176,140 @@ class GetStackResponseBody(TeaModel):
         timeout_in_minutes: int = None,
         update_time: str = None,
     ):
+        # The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # Indicates whether deletion protection is enabled for the stack. Valid values:
+        # 
+        # *   Enabled: Deletion protection is enabled for the stack.
+        # *   Disabled: Deletion protection is disabled for the stack. You can delete the stack in the Resource Orchestration Service (ROS) console or by calling the DeleteStack operation.
+        # 
+        # >  Deletion protection of a nested stack works in the same way as that of the root stack.
         self.deletion_protection = deletion_protection
+        # The description of the stack.
         self.description = description
+        # Indicates whether rollback is disabled when the stack fails to be created. Valid values:
+        # 
+        # *   true: Rollback is disabled when the stack fails to be created.
+        # *   false: Rollback is enabled when the stack fails to be created. This is the default value.
         self.disable_rollback = disable_rollback
+        # The time when the last successful drift detection operation was performed.
         self.drift_detection_time = drift_detection_time
+        # The description of the web UI in the ROS console.
         self.interface = interface
+        # The logs of the stack.
         self.log = log
+        # The callback URLs that are used to receive stack events.
         self.notification_urls = notification_urls
+        # The additional information that is displayed when an error occurs on a stack operation. 
+        # 
+        # >  This property is returned in specific conditions. At least one sub-property is returned. For example, an error is reported when you call the API of another cloud service.
         self.operation_info = operation_info
+        # The output parameters of the stack.
+        # 
+        # >  This parameter is returned if the OutputOption parameter is set to Enabled.
         self.outputs = outputs
+        # The parameters of the stack.
         self.parameters = parameters
+        # The ID of the parent stack.
         self.parent_stack_id = parent_stack_id
+        # The name of the RAM role. ROS assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
+        # 
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the role.
+        # 
+        # If you do not specify this parameter, ROS assumes an existing role that is associated with the stack. If no roles are available for ROS to assume, ROS uses a temporary credential that is generated from the credentials of your account.
+        # 
+        # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
+        # The ID of the region in which the stack is deployed. You can call the [DescribeRegions](~~131035~~) operation to query the most recent list of Alibaba Cloud regions.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the resource group to which the instances belong.
         self.resource_group_id = resource_group_id
+        # The creation progress of resources.
         self.resource_progress = resource_progress
+        # The ID of the root stack. This parameter is returned if the specified stack is a nested stack.
         self.root_stack_id = root_stack_id
+        # Indicates whether the stack is a managed stack. Valid values: 
+        # 
+        # - true
+        # - false
         self.service_managed = service_managed
+        # The name of the service to which the managed stack belongs.
         self.service_name = service_name
+        # The status of the stack in the last successful drift detection. Valid values:
+        # 
+        # *   DRIFTED: The stack has drifted.
+        # *   NOT_CHECKED: No successful drift detection is performed on the stack.
+        # *   IN_SYNC: The stack is being synchronized.
         self.stack_drift_status = stack_drift_status
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The name of the stack.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
         self.stack_name = stack_name
+        # The type of the stack. Valid values:
+        # 
+        # *   ROS: The ROS stack, which is created by using an ROS template.
+        # *   Terraform: The Terraform stack, which is created by using a Terraform template.
         self.stack_type = stack_type
+        # The state of the stack. Valid values:
+        # 
+        # *   CREATE_IN_PROGRESS: The stack is being created.
+        # *   CREATE_FAILED: The stack fails to be created.
+        # *   CREATE_COMPLETE: The stack is created.
+        # *   UPDATE_IN_PROGRESS: The stack is being updated.
+        # *   UPDATE_FAILED: The stack fails to be updated.
+        # *   UPDATE_COMPLETE: The stack is updated.
+        # *   DELETE_IN_PROGRESS: The stack is being deleted.
+        # *   DELETE_FAILED: The stack fails to be deleted.
+        # *   CREATE_ROLLBACK_IN_PROGRESS: The stack is being rolled back after the stack fails to be created.
+        # *   CREATE_ROLLBACK_FAILED: The stack fails to be rolled back after the stack fails to be created.
+        # *   CREATE_ROLLBACK_COMPLETE: The stack is rolled back after the stack fails to be created.
+        # *   ROLLBACK_IN_PROGRESS: The resources in the stack are being rolled back.
+        # *   ROLLBACK_FAILED: The resources in the stack fail to be rolled back.
+        # *   ROLLBACK_COMPLETE: The resources in the stack are rolled back.
+        # *   CHECK_IN_PROGRESS: The stack is being validated.
+        # *   CHECK_FAILED: The stack fails to be validated.
+        # *   CHECK_COMPLETE: The stack is validated.
+        # *   REVIEW_IN_PROGRESS: The stack is being reviewed.
+        # *   IMPORT_CREATE_IN_PROGRESS: The stack is being created by using imported resources.
+        # *   IMPORT_CREATE_FAILED: The stack fails to be created by using imported resources.
+        # *   IMPORT_CREATE_COMPLETE: The stack is created by using imported resources.
+        # *   IMPORT_CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be created by using imported resources.
+        # *   IMPORT_CREATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be created by using imported resources.
+        # *   IMPORT_CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be created by using imported resources.
+        # *   IMPORT_UPDATE_IN_PROGRESS: The stack is being updated by using imported resources.
+        # *   IMPORT_UPDATE_FAILED: The stack fails to be updated by using imported resources.
+        # *   IMPORT_UPDATE_COMPLETE: The stack is updated by using imported resources.
+        # *   IMPORT_UPDATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be updated by using imported resources.
+        # *   IMPORT_UPDATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be updated by using imported resources.
+        # *   IMPORT_UPDATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be updated by using imported resources.
         self.status = status
+        # The reason why the stack is in its current state.
         self.status_reason = status_reason
+        # The tags of the stack.
         self.tags = tags
+        # The description of the template.
         self.template_description = template_description
+        # The ID of the template. This parameter is returned only if the current template of the stack is a custom template or a shared template.  
+        # 
+        # If the template is a shared template, the value of this parameter is the same as the value of the TemplateARN parameter.
         self.template_id = template_id
+        # The ID of the scenario. This parameter is returned only if the current template of the stack is generated from a scenario.
         self.template_scratch_id = template_scratch_id
+        # The URL of the file that contains the template body. This parameter is returned only if the current template of the stack is from a URL. The URL can point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket.
         self.template_url = template_url
+        # The version of the template. This parameter is returned only if the current template of the stack is a custom template or a shared template.  
+        # 
+        # If the template is a shared template, this parameter is returned only when the VersionOption parameter is set to AllVersions.  
+        # 
+        # Valid values: v1 to v100.
         self.template_version = template_version
+        # The timeout period within which the stack can be created. Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
+        # The time when the stack was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -6942,7 +8540,13 @@ class GetStackDriftDetectionStatusRequest(TeaModel):
         drift_detection_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the drift detection operation.
+        # 
+        # You can call the [ListStackResourceDrifts](~~155098~~) operation to obtain the ID of the drift detection operation.
         self.drift_detection_id = drift_detection_id
+        # The region ID of the stack to be detected for drift.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -6981,13 +8585,29 @@ class GetStackDriftDetectionStatusResponseBody(TeaModel):
         stack_drift_status: str = None,
         stack_id: str = None,
     ):
+        # The ID of the drift detection operation.
         self.drift_detection_id = drift_detection_id
+        # The drift detection status. Valid values:
+        # 
+        # *   DETECTION_COMPLETE: The drift detection operation has been completed for all resources that support drift detection in the stack.
+        # *   DETECTION_FAILED: The stack drift detection operation has failed for at least one resource in the stack.
+        # *   DETECTION_IN_PROGRESS: The stack drift detection operation is in progress.
         self.drift_detection_status = drift_detection_status
+        # The reason why the stack drift detection operation has its current status.
         self.drift_detection_status_reason = drift_detection_status_reason
+        # The time when the stack drift detection operation was initiated.
         self.drift_detection_time = drift_detection_time
+        # The total number of stack resources that have drifted.
         self.drifted_stack_resource_count = drifted_stack_resource_count
+        # The ID of the request.
         self.request_id = request_id
+        # The drift status of the stack. Valid values:
+        # 
+        # *   DRIFTED: The actual configuration of the stack differs, or has drifted, from its expected template configuration. A stack is considered to have drifted if one or more of its resources have drifted.
+        # *   NOT_CHECKED: Resource Orchestration Service (ROS) has not checked whether the actual configuration of the resource differs from its expected template configuration.
+        # *   IN_SYNC: The current configuration of each supported resource matches its expected template configuration. A stack with no resources that support drift detection also has a status of IN_SYNC.
         self.stack_drift_status = stack_drift_status
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -7089,8 +8709,17 @@ class GetStackGroupRequest(TeaModel):
         stack_group_id: str = None,
         stack_group_name: str = None,
     ):
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack group.
+        # 
+        # >  You must specify one of the StackGroupName and StackGroupId parameters.
         self.stack_group_id = stack_group_id
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # 
+        # >  You must specify one of the StackGroupName and StackGroupId parameters.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -7127,7 +8756,21 @@ class GetStackGroupResponseBodyStackGroupAutoDeployment(TeaModel):
         enabled: bool = None,
         retain_stacks_on_account_removal: bool = None,
     ):
+        # Indicates whether automatic deployment is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true: Automatic deployment is enabled. If a member account is added to the folder to which the stack group belongs after automatic deployment is enabled, the stack group deploys its stack instances in the specified region where the added account is deployed. If the account is deleted from the folder, the stack instances in the specified region are deleted from the stack group.
+        # *   false: Automatic deployment is disabled. After automatic deployment is disabled, the stack instances remain unchanged when the member account in the folder is changed.
         self.enabled = enabled
+        # Indicates whether stacks in the member account are retained when the member account is deleted from the folder.
+        # 
+        # Valid values:
+        # 
+        # *   true: The stacks are retained.
+        # *   false: The stacks are deleted.
+        # 
+        # >  This parameter is returned only when the Enabled parameter is set to true.
         self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
 
     def validate(self):
@@ -7160,7 +8803,9 @@ class GetStackGroupResponseBodyStackGroupParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The key of the parameter.
         self.parameter_key = parameter_key
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -7200,14 +8845,37 @@ class GetStackGroupResponseBodyStackGroupStackGroupDriftDetectionDetail(TeaModel
         stack_group_drift_status: str = None,
         total_stack_instances_count: int = None,
     ):
+        # The number of stack instances for which drift detection was canceled.
         self.cancelled_stack_instances_count = cancelled_stack_instances_count
+        # The status of drift detection on the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   COMPLETED: Drift detection is performed and completed on all stack instances.
+        # *   FAILED: Drift detection is performed. The number of stack instances that failed the drift detection exceeds the specified threshold.
+        # *   PARTIAL_SUCCESS: Drift detection is performed. The number of stack instances that failed the drift detection does not exceed the specified threshold.
+        # *   IN_PROGRESS: Drift detection is being performed on the stack group.
+        # *   STOPPED: Drift detection is canceled for the stack group.
         self.drift_detection_status = drift_detection_status
+        # The time when drift detection was performed on the stack group.
         self.drift_detection_time = drift_detection_time
+        # The number of stack instances that have drifted.
         self.drifted_stack_instances_count = drifted_stack_instances_count
+        # The number of stack instances that failed drift detection.
         self.failed_stack_instances_count = failed_stack_instances_count
+        # The number of stack instances on which drift detection was being performed.
         self.in_progress_stack_instances_count = in_progress_stack_instances_count
+        # The number of stack instances that were being synchronized.
         self.in_sync_stack_instances_count = in_sync_stack_instances_count
+        # The drift status of the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   DRIFTED: At least one stack instance in the stack group has drifted.
+        # *   NOT_CHECKED: No drift detection is completed on the stack group.
+        # *   IN_SYNC: All the stack instances in the stack group are being synchronized.
         self.stack_group_drift_status = stack_group_drift_status
+        # The number of stack instances.
         self.total_stack_instances_count = total_stack_instances_count
 
     def validate(self):
@@ -7279,18 +8947,47 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         status: str = None,
         template_body: str = None,
     ):
+        # The name of the RAM role that is specified for the administrator account in Resource Orchestration Service (ROS) when you create the self-managed stack group. If this parameter is not specified, the default value AliyunROSStackGroupAdministrationRole is returned.
         self.administration_role_name = administration_role_name
+        # The information about automatic deployment settings.
+        # 
+        # >  This parameter is returned only when the PermissionModel parameter is set to SERVICE_MANAGED.
         self.auto_deployment = auto_deployment
+        # The description of the stack group.
         self.description = description
+        # The name of the RAM role that is specified for the execution account when you create the self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role. If this parameter is not specified, the default value AliyunROSStackGroupExecutionRole is returned.
         self.execution_role_name = execution_role_name
+        # The parameters of the stack group.
         self.parameters = parameters
+        # The permission model.
+        # 
+        # Valid values:
+        # 
+        # *   SELF_MANAGED: the self-managed permission model
+        # *   SERVICE_MANAGED: the service-managed permission model
+        # 
+        # >  For more information about the permission models of stack groups, see [Overview](~~154578~~).
         self.permission_model = permission_model
+        # The folder IDs of the resource directory. This parameter is used to deploy stack instances within all the accounts in the folders.
+        # 
+        # >  This parameter is returned only when the PermissionModel parameter is set to SERVICE_MANAGED.
         self.rd_folder_ids = rd_folder_ids
+        # The ID of the resource group. This parameter is specified when you create the stack group.
         self.resource_group_id = resource_group_id
+        # The details of the last drift detection that was performed on the stack group.
         self.stack_group_drift_detection_detail = stack_group_drift_detection_detail
+        # The ID of the stack group.
         self.stack_group_id = stack_group_id
+        # The name of the stack group.
         self.stack_group_name = stack_group_name
+        # The status of the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   ACTIVE
+        # *   DELETED
         self.status = status
+        # The template body.
         self.template_body = template_body
 
     def validate(self):
@@ -7381,7 +9078,9 @@ class GetStackGroupResponseBody(TeaModel):
         request_id: str = None,
         stack_group: GetStackGroupResponseBodyStackGroup = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the stack group.
         self.stack_group = stack_group
 
     def validate(self):
@@ -7460,7 +9159,9 @@ class GetStackGroupOperationRequest(TeaModel):
         operation_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the operation that you want to query. You can call the [ListStackGroupOperations](~~151342~~) operation to query the operation.
         self.operation_id = operation_id
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -7493,8 +9194,11 @@ class GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets(Tea
         account_ids: List[str] = None,
         rd_folder_ids: List[str] = None,
     ):
+        # The IDs of the member accounts in the resource directory.
+        # 
+        # >  This parameter is returned only if the AccountIds request parameter is specified in the [UpdateStackInstances](~~151716~~) operation to update stack instances.
         self.account_ids = account_ids
-        # test
+        # The folder IDs of the resource directory.
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -7530,11 +9234,31 @@ class GetStackGroupOperationResponseBodyStackGroupOperationOperationPreferences(
         max_concurrent_percentage: int = None,
         region_ids_order: List[str] = None,
     ):
+        # The maximum number of stack operation failures that can occur within the accounts in each region. When the value is exceeded, the operation fails to be performed in the region. If the operation fails to be performed in one region, the operation fails to be performed in other regions.
+        # 
+        # Valid values: 0 to 20.
+        # 
+        # >  Only one of the FailureToleranceCount and FailureTolerancePercentage parameters is returned.
         self.failure_tolerance_count = failure_tolerance_count
+        # The percentage of the total number of accounts within which stack operation failures can occur to the total number of accounts in each region. When the value is exceeded, the operation fails to be performed in the region.
+        # 
+        # Valid values: 0 to 100.
+        # 
+        # >  Only one of the FailureToleranceCount and FailureTolerancePercentage parameters is returned.
         self.failure_tolerance_percentage = failure_tolerance_percentage
+        # The maximum number of accounts within which operations are performed on stacks concurrently in each region.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # >  Only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters is returned.
         self.max_concurrent_count = max_concurrent_count
+        # The percentage of the total number of accounts within which operations are performed on stacks concurrently to the total number of accounts in each region.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # >  Only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters is returned.
         self.max_concurrent_percentage = max_concurrent_percentage
-        # test
+        # The regions in the order of which the operation is performed.
         self.region_ids_order = region_ids_order
 
     def validate(self):
@@ -7586,14 +9310,37 @@ class GetStackGroupOperationResponseBodyStackGroupOperationStackGroupDriftDetect
         stack_group_drift_status: str = None,
         total_stack_instances_count: int = None,
     ):
+        # The number of stack instances for which the drift detection was canceled.
         self.cancelled_stack_instances_count = cancelled_stack_instances_count
+        # The status of the drift detection.
+        # 
+        # Valid values:
+        # 
+        # *   COMPLETED: The drift detection is performed and completed on all stack instances.
+        # *   FAILED: The drift detection is performed. The number of stack instances that failed the drift detection exceeds the specified threshold.
+        # *   PARTIAL_SUCCESS: The drift detection is performed. The number of stack instances that failed the drift detection does not exceed the specified threshold.
+        # *   IN_PROGRESS: The drift detection is being performed on the stack group.
+        # *   STOPPED: The drift detection is canceled for the stack group.
         self.drift_detection_status = drift_detection_status
+        # The time when the drift detection was initiated.
         self.drift_detection_time = drift_detection_time
+        # The number of stack instances that were drifted.
         self.drifted_stack_instances_count = drifted_stack_instances_count
+        # The number of stack instances that failed the drift detection.
         self.failed_stack_instances_count = failed_stack_instances_count
+        # The number of stack instances on which the drift detection was being performed.
         self.in_progress_stack_instances_count = in_progress_stack_instances_count
+        # The number of stack instances that were being synchronized.
         self.in_sync_stack_instances_count = in_sync_stack_instances_count
+        # The drift status of the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   DRIFTED: At least one stack instance in the stack group is drifted.
+        # *   NOT_CHECKED: No drift detection is completed in the stack group.
+        # *   IN_SYNC: All the stack instances in the stack group are being synchronized.
         self.stack_group_drift_status = stack_group_drift_status
+        # The number of stack instances.
         self.total_stack_instances_count = total_stack_instances_count
 
     def validate(self):
@@ -7666,19 +9413,59 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
         stack_group_name: str = None,
         status: str = None,
     ):
+        # The operation that was performed.
+        # 
+        # Valid values:
+        # 
+        # *   CREATE
+        # *   UPDATE
+        # *   DELETE
+        # *   DETECT_DRIFT
         self.action = action
+        # The name of the RAM role that is specified for the administrator account in Resource Orchestration Service (ROS) when you create the stack group that is granted self-managed permissions. If this parameter is not specified, the default value AliyunROSStackGroupAdministrationRole is returned.
         self.administration_role_name = administration_role_name
+        # The time when the operation was initiated.
         self.create_time = create_time
+        # The folders in which you want to deploy the stack instances that are granted service-managed permissions.
         self.deployment_targets = deployment_targets
+        # The time when the operation ended.
         self.end_time = end_time
+        # The name of the RAM role that is specified for the execution account when you create the stack group that is granted self-managed permissions. The administrator account whose RAM role is AliyunROSStackGroupAdministrationRole assumes this RAM role. If this parameter is not specified, the default value AliyunROSStackGroupExecutionRole is returned.
         self.execution_role_name = execution_role_name
+        # The description of the operation.
+        # 
+        # >  This parameter is returned only if the OperationDescription request parameter is specified in the [CreateStackInstances](~~151338~~) operation to create stack instances.
         self.operation_description = operation_description
+        # The ID of the operation that was performed on the stack group.
         self.operation_id = operation_id
+        # The operation preferences.
         self.operation_preferences = operation_preferences
+        # Indicates whether the relevant stacks are retained when stack instances are deleted in the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   true: The stacks are retained.
+        # *   false: The stacks are deleted. Proceed with caution.
+        # 
+        # >  This parameter is returned only when the stack instances are deleted.
         self.retain_stacks = retain_stacks
+        # The details of the drift detection.
+        # 
+        # >  This parameter is returned only when the drift detection is performed on the stack group.
         self.stack_group_drift_detection_detail = stack_group_drift_detection_detail
+        # The ID of the stack group.
         self.stack_group_id = stack_group_id
+        # The name of the stack group.
         self.stack_group_name = stack_group_name
+        # The status of the operation.
+        # 
+        # Valid values:
+        # 
+        # *   RUNNING: The operation is being performed.
+        # *   SUCCEEDED: The operation succeeded.
+        # *   FAILED: The operation failed.
+        # *   STOPPING: The operation is being stopped.
+        # *   STOPPED: The operation is stopped.
         self.status = status
 
     def validate(self):
@@ -7767,7 +9554,9 @@ class GetStackGroupOperationResponseBody(TeaModel):
         request_id: str = None,
         stack_group_operation: GetStackGroupOperationResponseBodyStackGroupOperation = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the operation on the stack group.
         self.stack_group_operation = stack_group_operation
 
     def validate(self):
@@ -7848,9 +9637,20 @@ class GetStackInstanceRequest(TeaModel):
         stack_instance_account_id: str = None,
         stack_instance_region_id: str = None,
     ):
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
+        # The ID of the account to which the stack belongs.
+        # 
+        # *   If the stack group is granted self-managed permissions, the stack belongs to an Alibaba Cloud account.
+        # *   If the stack group is granted service-managed permissions, the stack belongs to a member in a resource directory.
+        # 
+        # >  For more information about the account, see [Overview](~~154578~~).
         self.stack_instance_account_id = stack_instance_account_id
+        # The ID of the region to which the stack belongs.
         self.stack_instance_region_id = stack_instance_region_id
 
     def validate(self):
@@ -7891,7 +9691,9 @@ class GetStackInstanceResponseBodyStackInstanceParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter that is used to override a specific parameter.
         self.parameter_key = parameter_key
+        # The value of the parameter that is used to override a specific parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -7933,16 +9735,53 @@ class GetStackInstanceResponseBodyStackInstance(TeaModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # The ID of the account to which the stack belongs.
         self.account_id = account_id
+        # The time when the last drift detection was performed on the stack group.
+        # 
+        # >  This parameter is returned only if drift detection is performed on the stack group.
         self.drift_detection_time = drift_detection_time
+        # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
+        # The ID of the folder in the resource directory.
+        # 
+        # >  This parameter is returned only if the stack group is granted service-managed permissions.
         self.rd_folder_id = rd_folder_id
+        # The ID of the region to which the stack belongs.
         self.region_id = region_id
+        # The state of the stack when the last successful drift detection was performed on the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   DRIFTED: The stack has drifted.
+        # *   NOT_CHECKED: No successful drift detection is performed on the stack.
+        # *   IN_SYNC: The stack is being synchronized.
+        # 
+        # >  This parameter is returned only if drift detection is performed on the stack group.
         self.stack_drift_status = stack_drift_status
+        # The ID of the stack group.
         self.stack_group_id = stack_group_id
+        # The name of the stack group.
         self.stack_group_name = stack_group_name
+        # The ID of the stack.
+        # 
+        # >  This parameter is returned only if the stack is in the CURRENT state.
         self.stack_id = stack_id
+        # The state of the stack.
+        # 
+        # Valid values:
+        # 
+        # *   CURRENT: The stack is up to date with the stack group.
+        # 
+        # *   OUTDATED: The stack is not up to date with the stack group. Stacks may be in the OUTDATED state due to the following reasons:
+        # 
+        #     *   When you call the CreateStackInstances operation to create stacks, the stacks fail to be created.
+        #     *   When you call the UpdateStackInstances or UpdateStackGroup operation to update stacks, the stacks fail to be updated or only specific stacks are updated.
+        #     *   The creation or update operation is not complete.
         self.status = status
+        # The reason why the stack is in the OUTDATED state.
+        # 
+        # >  This parameter is returned only if the stack is in the OUTDATED state.
         self.status_reason = status_reason
 
     def validate(self):
@@ -8019,7 +9858,9 @@ class GetStackInstanceResponseBody(TeaModel):
         request_id: str = None,
         stack_instance: GetStackInstanceResponseBodyStackInstance = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Details of the stack.
         self.stack_instance = stack_instance
 
     def validate(self):
@@ -8098,7 +9939,9 @@ class GetStackPolicyRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -8131,7 +9974,9 @@ class GetStackPolicyResponseBody(TeaModel):
         request_id: str = None,
         stack_policy_body: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
         self.stack_policy_body = stack_policy_body
 
     def validate(self):
@@ -8212,11 +10057,23 @@ class GetStackResourceRequest(TeaModel):
         show_resource_attributes: bool = None,
         stack_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The logical ID of the resource defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The ID of the region to which the stack belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_attributes = resource_attributes
+        # Specifies whether to query the resource properties. Valid values:
+        # 
+        # *   true
+        # *   false
         self.show_resource_attributes = show_resource_attributes
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -8278,20 +10135,61 @@ class GetStackResourceResponseBody(TeaModel):
         status_reason: str = None,
         update_time: str = None,
     ):
+        # The time when the resource was created.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the resource.
         self.description = description
+        # The time when the last successful drift detection was performed on the stack.
         self.drift_detection_time = drift_detection_time
+        # The logical ID of the resource defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The metadata.
         self.metadata = metadata
+        # The physical ID of the resource.
         self.physical_resource_id = physical_resource_id
+        # The ID of the request.
         self.request_id = request_id
+        # The list of the resource properties.
         self.resource_attributes = resource_attributes
+        # The status of the resource in the last successful drift detection. Valid values:
+        # 
+        # *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource is deleted.
+        # *   MODIFIED: The actual configuration of the resource differs from its expected template configuration.
+        # *   NOT_CHECKED: ROS has not checked whether the actual configuration of the resource differs from its expected template configuration.
+        # *   IN_SYNC: The actual configuration of the resource matches its expected template configuration.
         self.resource_drift_status = resource_drift_status
+        # The resource type.
         self.resource_type = resource_type
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The name of the stack.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_name = stack_name
+        # The status of the resource. Valid values:
+        # 
+        # *   CREATE_COMPLETE
+        # *   CREATE_FAILED
+        # *   CREATE_IN_PROGRESS
+        # *   UPDATE_IN_PROGRESS
+        # *   UPDATE_FAILED
+        # *   UPDATE_COMPLETE
+        # *   DELETE_IN_PROGRESS
+        # *   DELETE_FAILED
+        # *   CHECK_IN_PROGRESS
+        # *   CHECK_FAILED
+        # *   CHECK_COMPLETE
+        # *   IMPORT_IN_PROGRESS
+        # *   IMPORT_FAILED
+        # *   IMPORT_COMPLETE
         self.status = status
+        # The reason why the resource is in its current state.
         self.status_reason = status_reason
+        # The time when the resource was updated.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -8427,14 +10325,52 @@ class GetTemplateRequest(TeaModel):
         template_stage: str = None,
         template_version: str = None,
     ):
+        # The ID of the change set.
+        # 
+        # >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
         self.change_set_id = change_set_id
+        # Specifies whether to query the template sharing information. Default value: Disabled. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
+        # 
+        # >  Only the template owner can query the template sharing information.
         self.include_permission = include_permission
+        # Specifies whether to query the information about tags. Default value: Disabled. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
+        # 
+        # >  This parameter only takes effect when you specify the TemplateId parameter.
         self.include_tags = include_tags
+        # The ID of the region to which the stack or stack group defined in the template belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the stack group.
+        # 
+        # >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
         self.stack_group_name = stack_group_name
+        # The ID of the stack.
+        # 
+        # >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
         self.stack_id = stack_id
+        # The ID of the template.
+        # 
+        # This parameter applies to shared and private templates. If the template is a shared template, the value of the TemplateId parameter is the same as the value of the TemplateARN parameter. You can use the template ID to query a shared template.
+        # 
+        # >  You must specify only one of the following parameters: StackId, ChangeSetId, StackGroupName, and TemplateId.
         self.template_id = template_id
+        # The stage of the template. This parameter only takes effect when you specify the StackId, ChangeSetId, or StackGroupName parameter.
+        # 
+        # Default value: Processed. Valid values:
+        # 
+        # *   Processed: returns the processed template that contains transforms.
+        # *   Original: returns the original template that you specify.
         self.template_stage = template_stage
+        # The version of the template. This parameter only takes effect when you specify the TemplateId parameter.
+        # 
+        # If the template is a shared template, you can specify this parameter only if you set the VersionOption parameter to AllVersions.
+        # 
+        # Valid values: v1 to v100.
         self.template_version = template_version
 
     def validate(self):
@@ -8498,10 +10434,36 @@ class GetTemplateResponseBodyPermissions(TeaModel):
         template_version: str = None,
         version_option: str = None,
     ):
+        # The ID of the Alibaba Cloud account with which the template is shared.
         self.account_id = account_id
+        # The sharing option.
+        # 
+        # The value is set to ShareToAccounts, which indicates that the template is shared with one or more Alibaba Cloud accounts.
         self.share_option = share_option
+        # The service that is used for resource sharing.
+        # 
+        # Valid values:
+        # 
+        # *   ROS: Resources are shared from ROS by using the ROS console or calling the ROS API.
+        # *   ResourceDirectory: Resources are shared with accounts in a resource directory from Resource Management by using the resource sharing feature.
+        # 
+        # > 
+        # *   The number of accounts with which resources are shared from ROS is independent of the number of accounts with which resources are shared from the resource directory.
+        # *   The shared resources from ROS cannot override or overwrite the shared resources from the resource directory.
+        # *   The shared resources from the resource directory can overwrite the shared resources from ROS.
         self.share_source = share_source
+        # The version of the shared template. This parameter is returned only if the ShareOption parameter is set to ShareToAccounts and the VersionOption parameter is set to Specified or Current.
+        # 
+        # Valid values: v1 to v100.
         self.template_version = template_version
+        # The version option for the shared template. This parameter is returned only if the ShareOption parameter is set to ShareToAccounts.
+        # 
+        # Valid values:
+        # 
+        # *   AllVersions: All template versions are shared.
+        # *   Latest: Only the latest template version is shared. When the version of the template is updated, ROS updates the shared version to the latest version.
+        # *   Current: Only the default template version when you configure template sharing is shared. When the version of the template is updated, ROS does not update the shared version.
+        # *   Specified: Only the specified template version is shared.
         self.version_option = version_option
 
     def validate(self):
@@ -8546,7 +10508,9 @@ class GetTemplateResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -8596,24 +10560,70 @@ class GetTemplateResponseBody(TeaModel):
         template_version: str = None,
         update_time: str = None,
     ):
+        # The ID of the change set. This parameter is returned only if the ChangeSetId parameter is specified.
         self.change_set_id = change_set_id
+        # The time when the template was created. This parameter is returned only if the TemplateId parameter is specified.
+        # 
+        # > 
+        # *   If the TemplateVersion parameter is specified, the creation time of the template whose version is specified by using the TemplateVersion parameter is returned.
+        # *   If the TemplateVersion parameter is not specified, the creation time of the template whose version is the default version is returned.
         self.create_time = create_time
+        # The description of the template. This parameter is returned only if the TemplateId parameter is specified.
         self.description = description
+        # The description of the web UI in the ROS console.
         self.interface = interface
+        # The ID of the Alibaba Cloud account to which the template belongs. This parameter is returned only if the TemplateId parameter is specified.
         self.owner_id = owner_id
+        # Details of the sharing status of the template. This parameter is returned only if the TemplateId parameter is specified and the IncludePermission parameter is set to Enabled.
+        # 
+        # > 
+        # *   If the TemplateVersion parameter is not specified or does not take effect, the details of the sharing status of the template whose version is the default version is returned.
+        # *   If the TemplateVersion parameter is specified and takes effect, the details of the sharing status of the template whose version is specified by using the TemplateVersion parameter is returned.
         self.permissions = permissions
+        # The ID of the region to which the stack or stack group defined in the template belongs. This parameter is returned only if the StackId, ChangeSetId, or StackGroupName parameter is specified.
         self.region_id = region_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The sharing type of the template. This parameter is returned only if the TemplateId parameter is specified.
+        # 
+        # Valid values:
+        # 
+        # *   Private: The template can be used only by the template owner.
+        # *   Shared: The template is shared with other users.
         self.share_type = share_type
+        # The name of the stack group. This parameter is returned only if the StackGroupName parameter is specified.
         self.stack_group_name = stack_group_name
+        # The ID of the stack. This parameter is returned only if the StackId parameter is specified.
         self.stack_id = stack_id
+        # The tags of the template.
         self.tags = tags
+        # The Alibaba Cloud Resource Name (ARN) of the template. This parameter is returned only if the TemplateId parameter is specified.
         self.template_arn = template_arn
+        # The body of the template.
         self.template_body = template_body
+        # The ID of the template. This parameter is returned only if the TemplateId parameter is specified.
+        # 
+        # If the template is a shared template, the value of this parameter is the same as the value of the TemplateARN parameter.
         self.template_id = template_id
+        # The name of the template. This parameter is returned only if the TemplateId parameter is specified.
+        # 
+        # > 
+        # *   If the TemplateVersion parameter is specified, the name of the template whose version is specified by using the TemplateVersion parameter is returned.
+        # *   If the TemplateVersion parameter is not specified, the name of the template whose version is the default version is returned.
         self.template_name = template_name
+        # The version of the template. This parameter is returned only if the TemplateId parameter is specified.
+        # 
+        # If the TemplateVersion parameter is not specified or does not take effect, the value of this parameter is the default version of the template.
+        # 
+        # If the template is a shared template, this parameter is returned only if the VersionOption parameter is set to AllVersions.
         self.template_version = template_version
+        # The time when the template was last updated. This parameter is returned only if the TemplateId parameter is specified.
+        # 
+        # > 
+        # *   If the TemplateVersion parameter is specified, the last update time of the template whose version is specified by using the TemplateVersion parameter is returned.
+        # *   If the TemplateVersion parameter is not specified, the last update time of the template whose version is the default version is returned.
         self.update_time = update_time
 
     def validate(self):
@@ -8775,7 +10785,27 @@ class GetTemplateEstimateCostRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N. If you do not specify the name and value of a parameter, ROS uses the default name and value that are specified in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # Examples:
+        # 
+        # *   Parameters.1.ParameterKey: `Name`
+        # *   Parameters.2.ParameterKey: `Netmode`
+        # 
+        # >  The Parameters parameter is optional. If you want to specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_key = parameter_key
+        # The value of parameter N.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # Examples:
+        # 
+        # *   Parameters.1.ParameterValue: `DemoEip`
+        # *   Parameters.2.ParameterValue: `public`
+        # 
+        # >  The Parameters parameter is optional. If you want to specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -8815,14 +10845,38 @@ class GetTemplateEstimateCostRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
         self.parameters = parameters
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_id = template_id
+        # The ID of the scenario.
+        # 
+        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_scratch_id = template_scratch_id
+        # The region ID of the scenario. The default value is the same as the value of the RegionId parameter.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.template_scratch_region_id = template_scratch_region_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_url = template_url
+        # The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -8891,7 +10945,9 @@ class GetTemplateEstimateCostResponseBody(TeaModel):
         request_id: str = None,
         resources: Dict[str, Any] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Details of the resource.
         self.resources = resources
 
     def validate(self):
@@ -8968,7 +11024,13 @@ class GetTemplateParameterConstraintsRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N in the template.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
         self.parameter_key = parameter_key
+        # The value of parameter N in the template.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -9009,15 +11071,41 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
         self.parameters = parameters
+        # The parameters whose values you want to query.
         self.parameters_key_filter = parameters_key_filter
+        # The order in which associated parameters are arranged.
+        # 
+        # >  By default, the order of the associated parameters specified in the `Metadata` section of the template is used.
         self.parameters_order = parameters_order
+        # The region ID of the template.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.stack_id = stack_id
+        # The structure that contains the template body.
+        # 
+        # The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_url = template_url
+        # The version of the template. If you do not specify this parameter, the latest version is used.
+        # 
+        # >  This parameter takes effect only if the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -9090,7 +11178,13 @@ class GetTemplateParameterConstraintsShrinkRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N in the template.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
         self.parameter_key = parameter_key
+        # The value of parameter N in the template.
+        # 
+        # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -9131,15 +11225,41 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
         self.parameters = parameters
+        # The parameters whose values you want to query.
         self.parameters_key_filter_shrink = parameters_key_filter_shrink
+        # The order in which associated parameters are arranged.
+        # 
+        # >  By default, the order of the associated parameters specified in the `Metadata` section of the template is used.
         self.parameters_order_shrink = parameters_order_shrink
+        # The region ID of the template.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.stack_id = stack_id
+        # The structure that contains the template body.
+        # 
+        # The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_url = template_url
+        # The version of the template. If you do not specify this parameter, the latest version is used.
+        # 
+        # >  This parameter takes effect only if the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -9292,15 +11412,33 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         query_errors: List[GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors] = None,
         type: str = None,
     ):
+        # The values of the parameter.
         self.allowed_values = allowed_values
+        # The names of the associated parameters.
         self.association_parameter_names = association_parameter_names
+        # The behavior of the parameter. Valid values:
+        # 
+        # *   NoLimit: No limit is imposed on the value of this parameter.
+        # *   NotSupport: The value of this parameter cannot be queried.
+        # *   QueryError: This parameter failed to be queried.
+        # 
+        # >  If the AllowedValues parameter is not returned, the Behavior and BehaviorReason parameters are returned.
         self.behavior = behavior
+        # The reason why the behavior of the parameter is returned.
         self.behavior_reason = behavior_reason
+        # The values that do not conform to the parameter constraints.
+        # 
+        # >  If the `AllowedValues` parameter is returned, the `IllegalValueByParameterConstraints` and `IllegalValueByRules` parameters are returned at the same time.
         self.illegal_value_by_parameter_constraints = illegal_value_by_parameter_constraints
+        # The values that do not match the rules in the template.
+        # 
+        # >  If the `AllowedValues` parameter is returned, the `IllegalValueByParameterConstraints` and `IllegalValueByRules` parameters are returned at the same time.
         self.illegal_value_by_rules = illegal_value_by_rules
         self.not_support_resources = not_support_resources
+        # The name of the parameter.
         self.parameter_key = parameter_key
         self.query_errors = query_errors
+        # The type of the parameter.
         self.type = type
 
     def validate(self):
@@ -9382,7 +11520,9 @@ class GetTemplateParameterConstraintsResponseBody(TeaModel):
         parameter_constraints: List[GetTemplateParameterConstraintsResponseBodyParameterConstraints] = None,
         request_id: str = None,
     ):
+        # The constraints of the parameters.
         self.parameter_constraints = parameter_constraints
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9461,6 +11601,234 @@ class GetTemplateParameterConstraintsResponse(TeaModel):
         return self
 
 
+class GetTemplateRecommendParametersRequestParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_candidate_values: List[str] = None,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_candidate_values = parameter_candidate_values
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_candidate_values is not None:
+            result['ParameterCandidateValues'] = self.parameter_candidate_values
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterCandidateValues') is not None:
+            self.parameter_candidate_values = m.get('ParameterCandidateValues')
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class GetTemplateRecommendParametersRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        parameters: List[GetTemplateRecommendParametersRequestParameters] = None,
+        region_id: str = None,
+        template_body: str = None,
+        template_id: str = None,
+        template_url: str = None,
+        template_version: str = None,
+    ):
+        self.client_token = client_token
+        self.parameters = parameters
+        self.region_id = region_id
+        self.template_body = template_body
+        self.template_id = template_id
+        self.template_url = template_url
+        self.template_version = template_version
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_body is not None:
+            result['TemplateBody'] = self.template_body
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_url is not None:
+            result['TemplateURL'] = self.template_url
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = GetTemplateRecommendParametersRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateBody') is not None:
+            self.template_body = m.get('TemplateBody')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateURL') is not None:
+            self.template_url = m.get('TemplateURL')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        return self
+
+
+class GetTemplateRecommendParametersResponseBodyRecommendParameterValues(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        recommend_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.recommend_value = recommend_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.recommend_value is not None:
+            result['RecommendValue'] = self.recommend_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('RecommendValue') is not None:
+            self.recommend_value = m.get('RecommendValue')
+        return self
+
+
+class GetTemplateRecommendParametersResponseBody(TeaModel):
+    def __init__(
+        self,
+        recommend_parameter_values: List[GetTemplateRecommendParametersResponseBodyRecommendParameterValues] = None,
+        request_id: str = None,
+    ):
+        self.recommend_parameter_values = recommend_parameter_values
+        self.request_id = request_id
+
+    def validate(self):
+        if self.recommend_parameter_values:
+            for k in self.recommend_parameter_values:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RecommendParameterValues'] = []
+        if self.recommend_parameter_values is not None:
+            for k in self.recommend_parameter_values:
+                result['RecommendParameterValues'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.recommend_parameter_values = []
+        if m.get('RecommendParameterValues') is not None:
+            for k in m.get('RecommendParameterValues'):
+                temp_model = GetTemplateRecommendParametersResponseBodyRecommendParameterValues()
+                self.recommend_parameter_values.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTemplateRecommendParametersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTemplateRecommendParametersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTemplateRecommendParametersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTemplateScratchRequest(TeaModel):
     def __init__(
         self,
@@ -9468,8 +11836,21 @@ class GetTemplateScratchRequest(TeaModel):
         show_data_option: str = None,
         template_scratch_id: str = None,
     ):
+        # The ID of the region where the scenario is created.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The data display option. Valid values:
+        # 
+        # *   Source: displays only the data of source nodes.
+        # *   Provisions: displays only the data of new nodes.
+        # *   All: displays all data.
+        # 
+        # For more information about source nodes and new nodes, see [Overview](~~352074~~).
+        # 
+        # >  If you do not set this parameter, the node data is not displayed.
         self.show_data_option = show_data_option
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -9506,7 +11887,9 @@ class GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters(TeaModel
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The parameter name.
         self.parameter_key = parameter_key
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -9539,7 +11922,9 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup(TeaModel)
         resource_group_id: str = None,
         resource_type_filter: List[str] = None,
     ):
+        # The ID of the source resource group.
         self.resource_group_id = resource_group_id
+        # The filter for resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -9572,7 +11957,9 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceResources(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -9605,7 +11992,9 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceTag(TeaModel):
         resource_tags: Dict[str, Any] = None,
         resource_type_filter: List[str] = None,
     ):
+        # The resource tags.
         self.resource_tags = resource_tags
+        # The filter for resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -9638,7 +12027,15 @@ class GetTemplateScratchResponseBodyTemplateScratchStackProvision(TeaModel):
         creatable: bool = None,
         importable: bool = None,
     ):
+        # Indicates whether the resource is replicated by calling the [CreateStack](~~132086~~) operation. Valid values:
+        # 
+        # *   true
+        # *   false
         self.creatable = creatable
+        # Indicates whether the resource is managed by calling the [CreateChangeSet](~~131051~~) operation. Valid values:
+        # 
+        # *   true
+        # *   false
         self.importable = importable
 
     def validate(self):
@@ -9672,8 +12069,14 @@ class GetTemplateScratchResponseBodyTemplateScratchStacks(TeaModel):
         stack_id: str = None,
         usage_type: str = None,
     ):
+        # The ID of the region to which the stack belongs.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The purpose of the stack. Valid values:
+        # 
+        # *   ResourceImport: resource management
+        # *   ArchitectureReplication: resource replication
         self.usage_type = usage_type
 
     def validate(self):
@@ -9724,21 +12127,56 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
         template_scratch_type: str = None,
         update_time: str = None,
     ):
+        # The time at which the scenario was created.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the scenario.
         self.description = description
+        # The status code of the scenario that fails to be created.
+        # 
+        # >  This parameter is returned only if you set the Status parameter to GENERATE_FAILED.
         self.failed_code = failed_code
+        # The policy based on which the logical ID is generated. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+        # 
+        # *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+        # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
+        # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
+        # The parameters that are configured for the scenario.
         self.preference_parameters = preference_parameters
+        # The source resource group.
         self.source_resource_group = source_resource_group
+        # The source resource.
         self.source_resources = source_resources
+        # The source tag.
         self.source_tag = source_tag
+        # The preset information about the stack.
         self.stack_provision = stack_provision
+        # The list of stacks that are associated with the scenario.
         self.stacks = stacks
+        # The status of the scenario. Valid values:
+        # 
+        # *   GENERATE_IN_PROGRESS: The scenario is being created.
+        # *   GENERATE_COMPLETE: The scenario is created.
+        # *   GENERATE_FAILED: The scenario fails to be created.
         self.status = status
+        # The reason why the scenario fails to be created.
+        # 
+        # >  This parameter is returned only if you set the Status parameter to GENERATE_FAILED.
         self.status_reason = status_reason
+        # The scenario data.
         self.template_scratch_data = template_scratch_data
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
+        # The type of the scenario. Valid values:
+        # 
+        # *   ResourceImport: resource management
+        # *   ArchitectureReplication: resource replication
         self.template_scratch_type = template_scratch_type
+        # The time at which the scenario was updated.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -9862,7 +12300,9 @@ class GetTemplateScratchResponseBody(TeaModel):
         request_id: str = None,
         template_scratch: GetTemplateScratchResponseBodyTemplateScratch = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The scenario.
         self.template_scratch = template_scratch
 
     def validate(self):
@@ -9941,7 +12381,17 @@ class GetTemplateSummaryRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N that is defined in the template. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you need to specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_key = parameter_key
+        # The value of parameter N that is defined in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you need to specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -9982,16 +12432,49 @@ class GetTemplateSummaryRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The ID of the change set.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.change_set_id = change_set_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
         # test
         self.parameters = parameters
+        # The ID of the region to which the stack or stack group in the template belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # 
+        # This parameter takes effect only when you specify the StackId, ChangeSetId, or StackGroupName parameter.
         self.region_id = region_id
+        # The name of the stack group.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.stack_group_name = stack_group_name
+        # The ID of the stack.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.stack_id = stack_id
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
+        # 
+        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
+        # 
+        # >  If you do not specify the region of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
+        # 
+        # The URL can be up to 1,024 bytes in length.
         self.template_url = template_url
+        # The version of the template. This parameter takes effect when you specify the TemplateId parameter.
         self.template_version = template_version
 
     def validate(self):
@@ -10065,8 +12548,13 @@ class GetTemplateSummaryResponseBodyResourceIdentifierSummaries(TeaModel):
         resource_identifiers: List[str] = None,
         resource_type: str = None,
     ):
+        # The logical IDs of all resources of the type that is specified by the ResouceType parameter in the template.
         self.logical_resource_ids = logical_resource_ids
+        # The resource properties. You can use a resource property to identify the resources that you want to manage. For example, VpcId is an identifier property for ALIYUN::ECS::VPC resources.
         self.resource_identifiers = resource_identifiers
+        # The resource type.
+        # 
+        # >  You can import resources of the type that is specified by the ResouceType parameter.
         self.resource_type = resource_type
 
     def validate(self):
@@ -10108,12 +12596,21 @@ class GetTemplateSummaryResponseBody(TeaModel):
         resource_types: List[str] = None,
         version: str = None,
     ):
+        # The description of the stack template.
         self.description = description
+        # The metadata that is defined in the template.
         self.metadata = metadata
+        # The declarations of the parameters in the template.
         self.parameters = parameters
+        # The ID of the request.
         self.request_id = request_id
+        # The resource identifier summaries that describe the resources that you want to import and the properties that are used to identify the resources during the import.
+        # 
+        # For example, VpcId is an identifier property for ALIYUN::ECS::VPC resources.
         self.resource_identifier_summaries = resource_identifier_summaries
+        # All resource types that are used in the template.
         self.resource_types = resource_types
+        # The version of the template.
         self.version = version
 
     def validate(self):
@@ -10224,12 +12721,25 @@ class ListChangeSetsRequest(TeaModel):
         stack_id: str = None,
         status: List[str] = None,
     ):
+        # The ID of the change set. If detailed information about the change set is not required, you can use this parameter to replace the GetChangeSet operation.
         self.change_set_id = change_set_id
         self.change_set_name = change_set_name
         self.execution_status = execution_status
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
         self.status = status
 
@@ -10296,16 +12806,27 @@ class ListChangeSetsResponseBodyChangeSets(TeaModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # The ID of the change set.
         self.change_set_id = change_set_id
+        # The name of the change set.
         self.change_set_name = change_set_name
+        # The type of the change set.
         self.change_set_type = change_set_type
+        # The time when the change set was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the change set.
         self.description = description
+        # The execution status of the change set.
         self.execution_status = execution_status
+        # The region ID.
         self.region_id = region_id
+        # The ID of the stack with which the change set is associated.
         self.stack_id = stack_id
+        # The name of the stack with which the change set is associated.
         self.stack_name = stack_name
+        # The status of the change set.
         self.status = status
+        # The reason why the change set is in its current status.
         self.status_reason = status_reason
 
     def validate(self):
@@ -10377,10 +12898,15 @@ class ListChangeSetsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of change sets.
         self.change_sets = change_sets
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of queried entries.
         self.total_count = total_count
 
     def validate(self):
@@ -10476,6 +13002,11 @@ class ListResourceTypesRequest(TeaModel):
         self,
         entity_type: str = None,
     ):
+        # The entity type. Valid values:
+        # 
+        # *   All: all resource types.
+        # *   Resource: resources other than DataSource resources. For more information, see [Resources](~~28863~~).
+        # *   DataSource: DataSource resources.
         self.entity_type = entity_type
 
     def validate(self):
@@ -10504,7 +13035,9 @@ class ListResourceTypesResponseBody(TeaModel):
         request_id: str = None,
         resource_types: List[str] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The array of resource types.
         self.resource_types = resource_types
 
     def validate(self):
@@ -10587,10 +13120,22 @@ class ListStackEventsRequest(TeaModel):
         status: List[str] = None,
     ):
         self.logical_resource_id = logical_resource_id
+        # The page number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return per page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the region in which the stack resides. You can call the [DescribeRegions](~~131035~~) operation to query the most recent list of Alibaba Cloud regions.
         self.region_id = region_id
         self.resource_type = resource_type
+        # The ID of the stack.
         self.stack_id = stack_id
         self.status = status
 
@@ -10651,14 +13196,23 @@ class ListStackEventsResponseBodyEvents(TeaModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # The time when the resource was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The ID of the event.
         self.event_id = event_id
+        # The logical ID of the resource that is defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The physical ID of the resource.
         self.physical_resource_id = physical_resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The name of the stack.
         self.stack_name = stack_name
+        # The state of the resource.
         self.status = status
+        # The reason why the resource is in its current state.
         self.status_reason = status_reason
 
     def validate(self):
@@ -10722,10 +13276,23 @@ class ListStackEventsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of events.
         self.events = events
+        # The page number of the returned page.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned events.
         self.total_count = total_count
 
     def validate(self):
@@ -10824,9 +13391,23 @@ class ListStackGroupOperationResultsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the operation.
+        # 
+        # You can call the [ListStackGroupOperations](~~151342~~) operation to query the operation ID.
         self.operation_id = operation_id
+        # The number of the page to return.
+        # 
+        # *   Pages start from page 1.
+        # *   Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # *   Valid values: 1 to 50.
+        # *   Default value: 10.
         self.page_size = page_size
+        # The region ID of the stack group.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -10870,10 +13451,32 @@ class ListStackGroupOperationResultsResponseBodyStackGroupOperationResults(TeaMo
         status: str = None,
         status_reason: str = None,
     ):
+        # The ID of the account to which the stack instance belongs.
+        # 
+        # *   If the stack group has self-managed permissions, the stack instance belongs to an Alibaba Cloud account.
+        # *   If the stack group has service-managed permissions, the stack instance belongs to a member account in the resource directory.
+        # 
+        # >  For more information about the account, see [Overview](~~154578~~).
         self.account_id = account_id
+        # The folder ID of the resource directory.
+        # 
+        # >  This parameter is returned only when the stack group is granted service-managed permissions.
         self.rd_folder_id = rd_folder_id
+        # The region ID of the stack instance.
         self.region_id = region_id
+        # The status of the operation.
+        # 
+        # Valid values:
+        # 
+        # *   RUNNING: The operation is being performed.
+        # *   SUCCEEDED: The operation succeeded.
+        # *   FAILED: The operation failed.
+        # *   STOPPING: The operation is being stopped.
+        # *   STOPPED: The operation is stopped.
         self.status = status
+        # The reason why the operation is in a specific state.
+        # 
+        # >  This parameter is returned only when stack instances are in the OUTDATED state.
         self.status_reason = status_reason
 
     def validate(self):
@@ -10921,10 +13524,15 @@ class ListStackGroupOperationResultsResponseBody(TeaModel):
         stack_group_operation_results: List[ListStackGroupOperationResultsResponseBodyStackGroupOperationResults] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the results of the operation.
         self.stack_group_operation_results = stack_group_operation_results
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -11023,9 +13631,23 @@ class ListStackGroupOperationsRequest(TeaModel):
         region_id: str = None,
         stack_group_name: str = None,
     ):
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -11072,13 +13694,36 @@ class ListStackGroupOperationsResponseBodyStackGroupOperations(TeaModel):
         stack_group_name: str = None,
         status: str = None,
     ):
+        # The operation that was performed.
+        # 
+        # Valid values:
+        # 
+        # *   CREATE
+        # *   UPDATE
+        # *   DELETE
+        # *   DETECT_DRIFT
         self.action = action
+        # The time when the operation was initiated.
         self.create_time = create_time
+        # The time when the operation ended.
         self.end_time = end_time
+        # The description of the operation.
         self.operation_description = operation_description
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The ID of the stack group.
         self.stack_group_id = stack_group_id
+        # The name of the stack group.
         self.stack_group_name = stack_group_name
+        # The status of the operation.
+        # 
+        # Valid values:
+        # 
+        # *   RUNNING
+        # *   SUCCEEDED
+        # *   FAILED
+        # *   STOPPING
+        # *   STOPPED
         self.status = status
 
     def validate(self):
@@ -11138,10 +13783,15 @@ class ListStackGroupOperationsResponseBody(TeaModel):
         stack_group_operations: List[ListStackGroupOperationsResponseBodyStackGroupOperations] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The list of stack group operations.
         self.stack_group_operations = stack_group_operations
+        # The total number of stack group operations.
         self.total_count = total_count
 
     def validate(self):
@@ -11238,7 +13888,11 @@ class ListStackGroupsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that is added to the stack group.
+        # 
+        # >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
         self.key = key
+        # The value of tag N that is added to the stack group.
         self.value = value
 
     def validate(self):
@@ -11275,10 +13929,28 @@ class ListStackGroupsRequest(TeaModel):
         status: str = None,
         tags: List[ListStackGroupsRequestTags] = None,
     ):
+        # The number of the page to return.
+        # 
+        # *   Pages start from page 1.
+        # *   Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # *   Valid values: 1 to 50.
+        # *   Default value: 10.
         self.page_size = page_size
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group. If you do not specify this parameter, the stack groups in all the resource groups are queried.
+        # 
+        # >  If you want to obtain the resource group ID, go to the **Resource Group** page in the **Resource Management** console. For more information, see [View basic information about a resource group](~~151181~~).
         self.resource_group_id = resource_group_id
+        # The state of the stack group. If you do not specify this parameter, the stack groups in all states in the specified region are queried.
+        # 
+        # Valid values:
+        # 
+        # *   ACTIVE
+        # *   DELETED
         self.status = status
         self.tags = tags
 
@@ -11336,7 +14008,21 @@ class ListStackGroupsResponseBodyStackGroupsAutoDeployment(TeaModel):
         enabled: bool = None,
         retain_stacks_on_account_removal: bool = None,
     ):
+        # Indicates whether automatic deployment is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true: Automatic deployment is enabled. If you add a member to the folder to which the stack group belongs after you enable automatic deployment, ROS automatically adds the stacks in the stack group to the specified region of the member. If you delete the member from the folder, ROS automatically deletes the stacks in the stack group from the specified region of the member.
+        # *   false: Automatic deployment is disabled. After you disable automatic deployment, the stacks remain unchanged when you change the member in the folder.
         self.enabled = enabled
+        # Indicates whether the stacks within a member are retained when you delete the member from the folder.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter is returned only if the Enabled parameter is set to true.
         self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
 
     def validate(self):
@@ -11369,7 +14055,9 @@ class ListStackGroupsResponseBodyStackGroupsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that is added to the stack group.
         self.key = key
+        # The value of the tag that is added to the stack group.
         self.value = value
 
     def validate(self):
@@ -11410,15 +14098,43 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         status: str = None,
         tags: List[ListStackGroupsResponseBodyStackGroupsTags] = None,
     ):
+        # The information about automatic deployment settings.
         self.auto_deployment = auto_deployment
+        # The description of the stack group.
         self.description = description
+        # The time when the last successful drift detection was performed on the stack group.
         self.drift_detection_time = drift_detection_time
+        # The permission model.
+        # 
+        # Valid values:
+        # 
+        # *   SELF_MANAGED: self-managed permission model
+        # *   SERVICE_MANAGED: service-managed permission model
+        # 
+        # >  For more information about the permission models of stack groups, see [Overview](~~154578~~).
         self.permission_model = permission_model
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The state of the stack group on which the last successful drift detection was performed.
+        # 
+        # Valid values:
+        # 
+        # *   DRIFTED: The stack group has drifted.
+        # *   NOT_CHECKED: No drift detection is performed on the stack group.
+        # *   IN_SYNC: No drifts are detected on the stack group.
         self.stack_group_drift_status = stack_group_drift_status
+        # The ID of the stack group.
         self.stack_group_id = stack_group_id
+        # The name of the stack group.
         self.stack_group_name = stack_group_name
+        # The state of the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   ACTIVE
+        # *   DELETED
         self.status = status
+        # The tags that are added to the stack group.
         self.tags = tags
 
     def validate(self):
@@ -11497,10 +14213,15 @@ class ListStackGroupsResponseBody(TeaModel):
         stack_groups: List[ListStackGroupsResponseBodyStackGroups] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The list of stack groups.
         self.stack_groups = stack_groups
+        # The total number of stack groups.
         self.total_count = total_count
 
     def validate(self):
@@ -11601,11 +14322,31 @@ class ListStackInstancesRequest(TeaModel):
         stack_instance_account_id: str = None,
         stack_instance_region_id: str = None,
     ):
+        # The number of the page to return.
+        # 
+        # *   Pages start from page 1.
+        # *   Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # *   Valid values: 1 to 50.
+        # *   Default value: 10.
         self.page_size = page_size
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
+        # The ID of the account to which the stack belongs.
+        # 
+        # *   If the stack group is granted self-managed permissions, the stack belongs to an Alibaba Cloud account.
+        # 
+        # *   If the stack group is granted service-managed permissions, the stack belongs to a member in a resource directory.
+        # 
+        # > For more information about the account, see [Overview](~~154578~~).
         self.stack_instance_account_id = stack_instance_account_id
+        # The ID of the region to which the stack belongs.
         self.stack_instance_region_id = stack_instance_region_id
 
     def validate(self):
@@ -11662,15 +14403,51 @@ class ListStackInstancesResponseBodyStackInstances(TeaModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # The ID of the account to which the stack belongs.
         self.account_id = account_id
+        # The time when the last successful drift detection was performed on the stack.
+        # 
+        # >  This parameter is returned only if drift detection is performed on the stack group.
         self.drift_detection_time = drift_detection_time
+        # The ID of the folder in the resource directory.
+        # 
+        # >  This parameter is returned only if the stack group is granted service-managed permissions.
         self.rd_folder_id = rd_folder_id
+        # The ID of the region to which the stack belongs.
         self.region_id = region_id
+        # The state of the stack when the last successful drift detection was performed on the stack group.
+        # 
+        # Valid values:
+        # 
+        # *   DRIFTED: The stack has drifted.
+        # *   NOT_CHECKED: No successful drift detection is performed on the stack.
+        # *   IN_SYNC: The stack is being synchronized.
+        # 
+        # >  This parameter is returned only if drift detection is performed on the stack group.
         self.stack_drift_status = stack_drift_status
+        # The ID of the stack group.
         self.stack_group_id = stack_group_id
+        # The name of the stack group.
         self.stack_group_name = stack_group_name
+        # The ID of the stack.
+        # 
+        # >  This parameter is returned only if the stack is in the CURRENT state.
         self.stack_id = stack_id
+        # The state of the stack.
+        # 
+        # Valid values:
+        # 
+        # *   CURRENT: The stack is up to date with the stack group.
+        # 
+        # *   OUTDATED: The stack is not up to date with the stack group. Stacks are in the OUTDATED state due to the following possible reasons:
+        # 
+        #     *   When the CreateStackInstances operation is called to create stacks, the stacks fail to be created.
+        #     *   When the UpdateStackInstances or UpdateStackGroup operation is called to update stacks, the stacks fail to be updated, or only specific stacks are updated.
+        #     *   The creation or update operation is not completed.
         self.status = status
+        # The reason why the stack is in the OUTDATED state.
+        # 
+        # >  This parameter is returned only if the stack is in the OUTDATED state.
         self.status_reason = status_reason
 
     def validate(self):
@@ -11738,10 +14515,15 @@ class ListStackInstancesResponseBody(TeaModel):
         stack_instances: List[ListStackInstancesResponseBodyStackInstances] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Details of the stacks.
         self.stack_instances = stack_instances
+        # The total number of stacks.
         self.total_count = total_count
 
     def validate(self):
@@ -11847,16 +14629,57 @@ class ListStackOperationRisksRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The type of the operation of which you want to detect risks.
+        # 
+        # Valid values:
+        # 
+        # *   DeleteStack: detects high risks that may arise in resources when you delete a stack.
+        # *   CreateStack: detect risks of creation failure that may arise when you create a stack. In this case, ROS allows you to detect only the required permissions that are not granted to the Alibaba Cloud account of the caller.
         self.operation_type = operation_type
+        # The name of the RAM role.
+        # 
+        # *   If you specify a RAM role, ROS creates stacks based on the permissions that are granted to the RAM role and uses the credentials of the RAM role to call the API operations of Alibaba Cloud services.
+        # *   If you do not specify a RAM role, ROS creates stacks based on the permissions of your Alibaba Cloud account.
+        # 
+        # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
+        # The region ID of the stack.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies whether to retain all resources in the stack.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter takes effect when the OperationType parameter is set to DeleteStack.
         self.retain_all_resources = retain_all_resources
         self.retain_resources = retain_resources
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_url = template_url
+        # The version of the template.
+        # 
+        # >  This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
 
     def validate(self):
@@ -11931,13 +14754,32 @@ class ListStackOperationRisksResponseBodyRiskResources(TeaModel):
         resource_type: str = None,
         risk_type: str = None,
     ):
+        # The error code that is returned when the risk detection fails.
+        # 
+        # >  This parameter is not returned if the risk detection is successful.
         self.code = code
+        # The logical ID of the resource. The logical ID is the resource name that is defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The error message that is returned when the risk detection fails.
+        # 
+        # >  This parameter is not returned if the risk detection is successful.
         self.message = message
+        # The physical ID of the resource. The physical ID is the actual ID of the resource.
         self.physical_resource_id = physical_resource_id
+        # The reason for the risk.
         self.reason = reason
+        # The ID of the request when the risk detection fails.
+        # 
+        # >  This parameter is not returned if the risk detection is successful.
         self.request_id = request_id
+        # The resource type.
         self.resource_type = resource_type
+        # The type of the risk. Valid values:
+        # 
+        # *   Referenced: The resource is referenced by other resources.
+        # *   MaybeReferenced: The resource may be referenced by other resources.
+        # *   AdditionalRiskCheckRequired: An additional risk detection is required for a nested stack.
+        # *   OperationIgnored: The operation does not take effect for the resource.
         self.risk_type = risk_type
 
     def validate(self):
@@ -11995,8 +14837,11 @@ class ListStackOperationRisksResponseBody(TeaModel):
         request_id: str = None,
         risk_resources: List[ListStackOperationRisksResponseBodyRiskResources] = None,
     ):
+        # The operations on which the permissions are not granted to the Alibaba Cloud account of the caller.
         self.missing_policy_actions = missing_policy_actions
+        # The ID of the request.
         self.request_id = request_id
+        # The resources that are at risk.
         self.risk_resources = risk_resources
 
     def validate(self):
@@ -12088,10 +14933,18 @@ class ListStackResourceDriftsRequest(TeaModel):
         resource_drift_status: List[str] = None,
         stack_id: str = None,
     ):
+        # The maximum number of results to be returned with a single call when the NextToken parameter is used for the query.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 50.
         self.max_results = max_results
+        # The query token. Set this parameter to the NextToken value returned in the last API call.
         self.next_token = next_token
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_drift_status = resource_drift_status
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -12138,9 +14991,17 @@ class ListStackResourceDriftsResponseBodyResourceDriftsPropertyDifferences(TeaMo
         expected_value: str = None,
         property_path: str = None,
     ):
+        # The actual value of the resource property.
         self.actual_value = actual_value
+        # The drift type of the resource property. Valid values:
+        # 
+        # *   ADD: The value has been added to a resource property whose data type was Array or List.
+        # *   REMOVE: The property has been deleted from the current resource configuration.
+        # *   NOT_EQUAL: The current property value differs from the expected value defined in the stack template.
         self.difference_type = difference_type
+        # The expected value of the resource property as defined in the template.
         self.expected_value = expected_value
+        # The path of the resource property.
         self.property_path = property_path
 
     def validate(self):
@@ -12188,14 +15049,28 @@ class ListStackResourceDriftsResponseBodyResourceDrifts(TeaModel):
         resource_type: str = None,
         stack_id: str = None,
     ):
+        # The actual resource properties in JSON format.
         self.actual_properties = actual_properties
+        # The time when the resource drift detection operation was initiated.
         self.drift_detection_time = drift_detection_time
+        # The resource properties as defined in the template, in JSON format.
         self.expected_properties = expected_properties
+        # The logical ID of the resource as defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The physical ID of the resource.
         self.physical_resource_id = physical_resource_id
+        # The property differences of the resource.
         self.property_differences = property_differences
+        # The drift status of the resource. Valid values:
+        # 
+        # *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource had been deleted.
+        # *   MODIFIED: The actual configuration of the resource differs from its expected template configuration.
+        # *   NOT_CHECKED: ROS has not checked whether the actual configuration of the resource differs from its expected template configuration.
+        # *   IN_SYNC: The actual configuration of the resource matches its expected template configuration.
         self.resource_drift_status = resource_drift_status
+        # The type of the resource.
         self.resource_type = resource_type
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -12265,8 +15140,11 @@ class ListStackResourceDriftsResponseBody(TeaModel):
         request_id: str = None,
         resource_drifts: List[ListStackResourceDriftsResponseBodyResourceDrifts] = None,
     ):
+        # The query token value returned in this call.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # An array of resource drifts.
         self.resource_drifts = resource_drifts
 
     def validate(self):
@@ -12355,7 +15233,9 @@ class ListStackResourcesRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
+        # The ID of the region to which the stack belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -12397,16 +15277,51 @@ class ListStackResourcesResponseBodyResources(TeaModel):
         status_reason: str = None,
         update_time: str = None,
     ):
+        # The time when the resource was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The most recent point in time when a successful drift detection operation was performed.
         self.drift_detection_time = drift_detection_time
+        # The logical ID of the resource. The logical ID is the resource name that is defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The physical ID of the resource.
         self.physical_resource_id = physical_resource_id
+        # The drift status of the resource in the most recent successful drift detection. Valid values:
+        # 
+        # *   DELETED: The actual configuration of the resource differs from its expected template configuration because the resource is deleted.
+        # *   MODIFIED: The actual configuration of the resource differs from its expected template configuration.
+        # *   NOT_CHECKED: ROS did not check whether the actual configuration of the resource differs from its expected template configuration.
+        # *   IN_SYNC: The actual configuration of the resource matches its expected template configuration.
         self.resource_drift_status = resource_drift_status
+        # The type of the resource.
         self.resource_type = resource_type
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The name of the stack.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_name = stack_name
+        # The status of the resource. Valid values:
+        # 
+        # *   INIT_COMPLETE: The resource is in the pending creation state.
+        # *   CREATE_COMPLETE: The resource is created.
+        # *   CREATE_FAILED: The resource fails to be created.
+        # *   CREATE_IN_PROGRESS: The resource is being created.
+        # *   UPDATE_IN_PROGRESS: The resource is being updated.
+        # *   UPDATE_FAILED: The resource fails to be updated.
+        # *   UPDATE_COMPLETE: The resource is updated.
+        # *   DELETE_IN_PROGRESS: The resource is being deleted.
+        # *   DELETE_FAILED: The resource fails to be deleted.
+        # *   DELETE_COMPLETE: The resource is deleted.
+        # *   CHECK_IN_PROGRESS: The resource is being validated.
+        # *   CHECK_FAILED: The resource fails to be validated.
+        # *   CHECK_COMPLETE: The resource is validated.
+        # *   IMPORT_IN_PROGRESS: The resource is being imported.
+        # *   IMPORT_FAILED: The resource fails to be imported.
+        # *   IMPORT_COMPLETE: The resource is imported.
         self.status = status
+        # The reason why the resource is in a specific state.
         self.status_reason = status_reason
+        # The time when the resource was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -12475,7 +15390,9 @@ class ListStackResourcesResponseBody(TeaModel):
         request_id: str = None,
         resources: List[ListStackResourcesResponseBodyResources] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Details about resources.
         self.resources = resources
 
     def validate(self):
@@ -12560,7 +15477,13 @@ class ListStacksRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N of the stack.
+        # 
+        # Valid values of N: 1 to 20.
         self.key = key
+        # The value of tag N of the stack.
+        # 
+        # Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -12602,12 +15525,35 @@ class ListStacksRequest(TeaModel):
         status: List[str] = None,
         tag: List[ListStacksRequestTag] = None,
     ):
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the parent stack.
         self.parent_stack_id = parent_stack_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
+        # 
+        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
         self.resource_group_id = resource_group_id
+        # Specifies whether to return nested stacks. Default value: false. Valid values:
+        # 
+        # *   true
+        # 
+        # *   false
+        # 
+        # > If the ParentStackId parameter is specified, you must set the ShowNestedStack parameter to true.
         self.show_nested_stack = show_nested_stack
+        # The ID of the stack. If you want to query the basic information about the stack, you can use this parameter and do not need to call the GetStack operation.
         self.stack_id = stack_id
         self.stack_ids = stack_ids
         self.stack_name = stack_name
@@ -12692,11 +15638,17 @@ class ListStacksResponseBodyStacksOperationInfo(TeaModel):
         request_id: str = None,
         resource_type: str = None,
     ):
+        # The name of the API operation that belongs to another Alibaba Cloud service.
         self.action = action
+        # The error code.
         self.code = code
+        # The logical ID of the resource on which an operation fails to be performed.
         self.logical_resource_id = logical_resource_id
+        # The error message.
         self.message = message
+        # The ID of the request that is initiated to call the API operation of another Alibaba Cloud service.
         self.request_id = request_id
+        # The type of the resource on which an operation fails to be performed.
         self.resource_type = resource_type
 
     def validate(self):
@@ -12745,7 +15697,9 @@ class ListStacksResponseBodyStacksTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the stack.
         self.key = key
+        # The tag value of the stack.
         self.value = value
 
     def validate(self):
@@ -12794,23 +15748,56 @@ class ListStacksResponseBodyStacks(TeaModel):
         timeout_in_minutes: int = None,
         update_time: str = None,
     ):
+        # The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # Indicates whether rollback is disabled when the stack fails to be created. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_rollback = disable_rollback
+        # The time when the last successful drift detection was performed on the stack.
         self.drift_detection_time = drift_detection_time
+        # The supplementary information that is returned when an operation fails to be performed on the stack.
+        # 
+        # >  This parameter is returned if an operation fails to be performed on the stack. The system returns at least one sub-property. Example: An error occurred when the API operation of another Alibaba Cloud service was called.
         self.operation_info = operation_info
+        # The ID of the parent stack.
         self.parent_stack_id = parent_stack_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Indicates whether the stack is a managed stack. Valid values:
+        # 
+        # *   true
+        # *   false
         self.service_managed = service_managed
+        # The name of the service to which the managed stack belongs.
         self.service_name = service_name
+        # The state of the stack on which the last successful drift detection was performed. Valid values:
+        # 
+        # *   DRIFTED: Drift detection is being performed on the stack.
+        # *   NOT_CHECKED: No successful drift detection is performed on the stack.
+        # *   IN_SYNC: The stack is being synchronized.
         self.stack_drift_status = stack_drift_status
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The name of the stack.
         self.stack_name = stack_name
+        # The type of the stack. Valid values:
+        # 
+        # *   ROS: ROS stack. The stack is created by using a Resource Orchestration Service (ROS) template.
+        # *   Terraform: Terraform stack. The stack is created by using a Terraform template.
         self.stack_type = stack_type
+        # The state of the stack.
         self.status = status
+        # The reason why the stack is in its current state.
         self.status_reason = status_reason
+        # The tags of the stack.
         self.tags = tags
+        # The timeout period that is allowed to create the stack. Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
+        # The time when the stack was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -12921,10 +15908,19 @@ class ListStacksResponseBody(TeaModel):
         stacks: List[ListStacksResponseBodyStacks] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The list of stacks.
         self.stacks = stacks
+        # The total number of stacks.
         self.total_count = total_count
 
     def validate(self):
@@ -13022,8 +16018,16 @@ class ListTagKeysRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The token that determines the start point of the next query.
         self.next_token = next_token
+        # The region ID of the tag key. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The type of the resource. Valid values:
+        # 
+        # *   stack: stack
+        # *   stackgroup: stack group
+        # *   template: template
+        # *   templatescratch: scenario
         self.resource_type = resource_type
 
     def validate(self):
@@ -13061,8 +16065,11 @@ class ListTagKeysResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The list of tag keys. Separate multiple tag keys with commas (,).
         self.keys = keys
+        # The token that is used to start the next query.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -13143,7 +16150,13 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
+        # The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -13179,9 +16192,17 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The token that determines the start point of the next query.
         self.next_token = next_token
+        # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   stack: stack
+        # *   stackgroup: stack group
+        # *   template: template
+        # *   templatescratch: scenario
         self.resource_type = resource_type
         self.tag = tag
 
@@ -13237,9 +16258,13 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The tag key of the resource.
         self.tag_key = tag_key
+        # The tag value of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -13281,8 +16306,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The token that is used to start the next query.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the tags that are added to the resource.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -13373,9 +16401,18 @@ class ListTagValuesRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The token that determines the start point of the next query.
         self.next_token = next_token
+        # The region ID of the tag value. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The type of the resource. Valid values:
+        # 
+        # *   stack: stack
+        # *   stackgroup: stack group
+        # *   template: template
+        # *   templatescratch: scenario
         self.resource_type = resource_type
 
     def validate(self):
@@ -13417,8 +16454,11 @@ class ListTagValuesResponseBody(TeaModel):
         request_id: str = None,
         values: List[str] = None,
     ):
+        # The token that is used to start the next query.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The tag values.
         self.values = values
 
     def validate(self):
@@ -13499,7 +16539,11 @@ class ListTemplateScratchesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that is added to the scenario.
+        # 
+        # >  The Tags parameter is optional. If you specify the Tags parameter, you must specify the Tags.N.Key parameter.
         self.key = key
+        # The value of tag N that is added to the scenario.
         self.value = value
 
     def validate(self):
@@ -13537,12 +16581,35 @@ class ListTemplateScratchesRequest(TeaModel):
         template_scratch_id: str = None,
         template_scratch_type: str = None,
     ):
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the region in which the scenario is created.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The state of the scenario. Valid values:
+        # 
+        # *   GENERATE_IN_PROGRESS: The scenario is being created.
+        # *   GENERATE_COMPLETE: The scenario is created.
+        # *   GENERATE_FAILED: The scenario fails to be created.
         self.status = status
         self.tags = tags
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
+        # The type of the scenario. Valid values:
+        # 
+        # *   ResourceImport: resource management
+        # *   ArchitectureReplication: resource replication
         self.template_scratch_type = template_scratch_type
 
     def validate(self):
@@ -13603,7 +16670,9 @@ class ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters(Tea
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter.
         self.parameter_key = parameter_key
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -13636,7 +16705,9 @@ class ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup(TeaM
         resource_group_id: str = None,
         resource_type_filter: List[str] = None,
     ):
+        # The ID of the source resource group.
         self.resource_group_id = resource_group_id
+        # The filter for resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -13669,7 +16740,9 @@ class ListTemplateScratchesResponseBodyTemplateScratchesSourceResources(TeaModel
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -13702,7 +16775,9 @@ class ListTemplateScratchesResponseBodyTemplateScratchesSourceTag(TeaModel):
         resource_tags: Dict[str, Any] = None,
         resource_type_filter: List[str] = None,
     ):
+        # The source tags.
         self.resource_tags = resource_tags
+        # The filter for resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -13735,7 +16810,9 @@ class ListTemplateScratchesResponseBodyTemplateScratchesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the scenario.
         self.key = key
+        # The tag value of the scenario.
         self.value = value
 
     def validate(self):
@@ -13780,19 +16857,48 @@ class ListTemplateScratchesResponseBodyTemplateScratches(TeaModel):
         template_scratch_type: str = None,
         update_time: str = None,
     ):
+        # The time at which the scenario was created.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The description of the scenario.
         self.description = description
+        # The status code of the scenario that fails to be created.
+        # 
+        # >  This parameter is returned only if the Status parameter is set to GENERATE_FAILED.
         self.failed_code = failed_code
+        # The policy based on which the logical ID is generated. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+        # 
+        # *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+        # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
+        # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
+        # The parameters that are configured for the scenario.
         self.preference_parameters = preference_parameters
+        # The source resource group.
         self.source_resource_group = source_resource_group
+        # The source resources.
         self.source_resources = source_resources
+        # The source tag.
         self.source_tag = source_tag
+        # The state of the scenario.
         self.status = status
+        # The reason why the scenario fails to be created.
+        # 
+        # >  This parameter is returned only if the Status parameter is set to GENERATE_FAILED.
         self.status_reason = status_reason
+        # The tags of the scenario.
         self.tags = tags
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
+        # The type of the scenario. Valid values:
+        # 
+        # *   ResourceImport: resource management
+        # *   ArchitectureReplication: resource replication
         self.template_scratch_type = template_scratch_type
+        # The time at which the scenario was updated.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -13908,10 +17014,15 @@ class ListTemplateScratchesResponseBody(TeaModel):
         template_scratches: List[ListTemplateScratchesResponseBodyTemplateScratches] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The list of scenarios.
         self.template_scratches = template_scratches
+        # The total number of scenarios.
         self.total_count = total_count
 
     def validate(self):
@@ -14009,8 +17120,15 @@ class ListTemplateVersionsRequest(TeaModel):
         next_token: str = None,
         template_id: str = None,
     ):
+        # The maximum number of results to be returned in a single call when the NextToken parameter is used for the query.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 50.
         self.max_results = max_results
+        # The query token. Set the value to the NextToken value that is returned from the last call.
         self.next_token = next_token
+        # The ID of the template. This parameter applies to shared and private templates.
         self.template_id = template_id
 
     def validate(self):
@@ -14051,11 +17169,21 @@ class ListTemplateVersionsResponseBodyVersions(TeaModel):
         template_version: str = None,
         update_time: str = None,
     ):
+        # The time when the version was created.
         self.create_time = create_time
+        # The description of the version.
         self.description = description
+        # The ID of the template. This parameter applies to shared and private templates. For a shared template, the template ID is the same as the Alibaba Cloud Resource Name (ARN) of the template.
         self.template_id = template_id
+        # The template name that corresponds to the specified version.
         self.template_name = template_name
+        # The version number.
+        # 
+        # For a shared template, this parameter is returned only if the VersionOption parameter is set to AllVersions.
+        # 
+        # Valid values: v1 to v100.
         self.template_version = template_version
+        # The time when the version was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -14105,8 +17233,11 @@ class ListTemplateVersionsResponseBody(TeaModel):
         request_id: str = None,
         versions: List[ListTemplateVersionsResponseBodyVersions] = None,
     ):
+        # The query token that is returned in this call.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The list of versions.
         self.versions = versions
 
     def validate(self):
@@ -14195,7 +17326,13 @@ class ListTemplatesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N. This parameter takes effect only when the ShareType parameter is set to Private.
+        # 
+        # You can specify up to 20 tag keys.
         self.key = key
+        # The value of the tag N. This parameter takes effect only when the ShareType parameter is set to Private.
+        # 
+        # You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):
@@ -14233,12 +17370,39 @@ class ListTemplatesRequest(TeaModel):
         tag: List[ListTemplatesRequestTag] = None,
         template_name: str = None,
     ):
+        # Specifies whether to query the information about tags. Default value: Disabled. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
         self.include_tags = include_tags
+        # The number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The ID of the resource group.
+        # 
+        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
         self.resource_group_id = resource_group_id
+        # The sharing type of the template.
+        # 
+        # Default value: Private. Valid values:
+        # 
+        # *   Private: The template belongs to the template owner.
+        # *   Shared: The template is shared with other users.
+        # *   Official: The template is the shared template of the official version.
         self.share_type = share_type
         self.tag = tag
+        # The name of the template. This parameter takes effect only when the ShareType parameter is set to Private.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.template_name = template_name
 
     def validate(self):
@@ -14299,7 +17463,9 @@ class ListTemplatesResponseBodyTemplatesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -14341,16 +17507,32 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         template_version: str = None,
         update_time: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The description of the template.
         self.description = description
+        # The ID of the Alibaba Cloud account to which the template belongs.
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The sharing type of the template.
+        # 
+        # Default value: Private. Valid values:
+        # 
+        # *   Private: The template belongs to the template owner.
+        # *   Shared: The template is shared with other users.
         self.share_type = share_type
+        # The tags of the template.
         self.tags = tags
+        # The Alibaba Cloud Resource Name (ARN) of the template.
         self.template_arn = template_arn
+        # The ID of the template.
         self.template_id = template_id
+        # The name of the template.
         self.template_name = template_name
+        # The latest version of the template.
         self.template_version = template_version
+        # The time when the template was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -14430,10 +17612,17 @@ class ListTemplatesResponseBody(TeaModel):
         templates: List[ListTemplatesResponseBodyTemplates] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
+        # 
+        # Pages start from page 1.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The list of templates.
         self.templates = templates
+        # The total number of templates.
         self.total_count = total_count
 
     def validate(self):
@@ -14532,9 +17721,21 @@ class MoveResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the destination resource group.
+        # 
+        # For more information about resource groups, see [What is a resource group?](~~94475~~)
         self.new_resource_group_id = new_resource_group_id
+        # The region ID of the resource.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query region IDs.
         self.region_id = region_id
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   stack
+        # *   stackgroup
+        # *   template
         self.resource_type = resource_type
 
     def validate(self):
@@ -14574,6 +17775,7 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -14646,7 +17848,13 @@ class PreviewStackRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template. Maximum value of N: 200.
+        # 
+        # >  If you specify Parameters, you must specify Parameters.N.ParameterKey.
         self.parameter_key = parameter_key
+        # The value of parameter N. Maximum value of N: 200.
+        # 
+        # >  If you specify Parameters, you must specify Parameters.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -14694,23 +17902,85 @@ class PreviewStackRequest(TeaModel):
         template_version: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # Specifies whether to disable rollback for the resources when the stack fails to be created. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_rollback = disable_rollback
+        # Specifies whether to query the parameters that want to use in compliance precheck.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_pre_config = enable_pre_config
+        # The maximum number of concurrent operations that can be performed on resources. This parameter takes effect only for Terraform stacks.
+        # 
+        # By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
+        # 
+        # >  If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave it empty, the default value of Terraform is used. In most cases, the default value of Terraform is 10.
         self.parallelism = parallelism
         # test
         self.parameters = parameters
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack. You can use this parameter to preview a stack that you want to update.
+        # 
+        # > 
+        # *   You must specify only one of the StackName and StackId parameters.
+        # *   In the scenario in which you preview a stack that you want to create or update, you cannot preview the resources in its nested stacks.
         self.stack_id = stack_id
+        # The name of the stack. You can use this parameter to preview the stack that you want to create.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # 
+        # >  You must specify only one of the StackName and StackId parameters.
         self.stack_name = stack_name
+        # The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
+        # 
+        # >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
         self.stack_policy_body = stack_policy_body
+        # The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
+        # 
+        # The URL can be up to 1,350 bytes in length.
         self.stack_policy_url = stack_policy_url
+        # The structure of the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared templates and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_id = template_id
+        # The ID of the scenario.
+        # 
+        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_scratch_id = template_scratch_id
+        # The region ID of the scenario. The default value is the same as the value of the RegionId parameter.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.template_scratch_region_id = template_scratch_region_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_url = template_url
+        # The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
+        # The timeout period that is allowed to create the stack.
+        # 
+        # Unit: minutes.
+        # 
+        # Default value: 60.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -14812,8 +18082,21 @@ class PreviewStackResponseBodyStackLogTerraformLogs(TeaModel):
         content: str = None,
         stream: str = None,
     ):
+        # The name of the Terraform command. Valid values:
+        # 
+        # *   apply
+        # *   plan
+        # *   destroy
+        # *   version
+        # 
+        # For more information about Terraform commands, see [Basic CLI Features](https://www.terraform.io/cli/commands).
         self.command = command
+        # The content of the output stream that is returned after the command is run.
         self.content = content
+        # The output stream. Valid values:
+        # 
+        # *   stdout: standard output stream
+        # *   stderr: standard error stream
         self.stream = stream
 
     def validate(self):
@@ -14849,6 +18132,9 @@ class PreviewStackResponseBodyStackLog(TeaModel):
         self,
         terraform_logs: List[PreviewStackResponseBodyStackLogTerraformLogs] = None,
     ):
+        # The log that is generated when a Terraform stack is run. This parameter is returned only if the stack is a Terraform stack.
+        # 
+        # >  You can use this parameter to preview the logs of a Terraform stack.
         self.terraform_logs = terraform_logs
 
     def validate(self):
@@ -14885,7 +18171,9 @@ class PreviewStackResponseBodyStackParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter.
         self.parameter_key = parameter_key
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -14926,15 +18214,38 @@ class PreviewStackResponseBodyStackResources(TeaModel):
         resource_type: str = None,
         stack: Dict[str, Any] = None,
     ):
+        # The type of the resource that belongs to an Alibaba Cloud service.
         self.acs_resource_type = acs_resource_type
+        # The action that is performed on resources. Valid values:
+        # 
+        # *   Add
+        # *   Modify
+        # *   Remove
+        # *   None
         self.action = action
+        # The description of the resource.
         self.description = description
+        # The logical ID of the resource.
         self.logical_resource_id = logical_resource_id
+        # The physical ID of the resource.
+        # 
+        # This parameter is returned only if the Action parameter is set to Modify or Remove.
         self.physical_resource_id = physical_resource_id
+        # The properties of the resource.
         self.properties = properties
+        # Indicates whether a replacement update is performed on the template. Valid values:
+        # 
+        # *   True: A replacement update is performed on the template.
+        # *   False: A change is made on the template.
+        # *   Conditional: A replacement update may be performed on the template. You can check whether a replacement update is performed when the template is in use.
+        # 
+        # >  This parameter is returned only if the Action parameter is set to Modify.
         self.replacement = replacement
+        # The resources on which the stack depends.
         self.required_by = required_by
+        # The type of the resource.
         self.resource_type = resource_type
+        # The information about the nested stack. The data structure of the value is the same as the data structure of the entire response.
         self.stack = stack
 
     def validate(self):
@@ -15007,15 +18318,27 @@ class PreviewStackResponseBodyStack(TeaModel):
         template_description: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The description of the stack.
         self.description = description
+        # Indicates whether rollback is disabled for the resources when the stack fails to be created.
         self.disable_rollback = disable_rollback
+        # The log that is generated when the stack is run.
         self.log = log
+        # The parameters of the stack.
         self.parameters = parameters
+        # The region ID of the stack.
         self.region_id = region_id
+        # The resources in the stack.
         self.resources = resources
+        # The name of the stack.
         self.stack_name = stack_name
+        # The structure that contains the stack policy body.
         self.stack_policy_body = stack_policy_body
+        # The description of the template.
         self.template_description = template_description
+        # The timeout period that is allowed to create the stack.
+        # 
+        # Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -15100,7 +18423,9 @@ class PreviewStackResponseBody(TeaModel):
         request_id: str = None,
         stack: PreviewStackResponseBodyStack = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the stack that is previewed.
         self.stack = stack
 
     def validate(self):
@@ -15180,8 +18505,18 @@ class SetDeletionProtectionRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
+        # Indicates whether stack deletion protection is enabled. Valid values:
+        # 
+        # *   Enabled: enables the stack deletion protection.
+        # *   Disabled (default): Resource stack deletion protection is Disabled. You can use the console or API(DeleteStack) to release the stack resources.
+        # 
+        # >  The deletion of nested stacks is the same as the root stack.
         self.deletion_protection = deletion_protection
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
+        # 
+        # The delete protection attribute of a nested stack is determined by the root stack and remains unchanged from the root stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -15217,6 +18552,7 @@ class SetDeletionProtectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15291,9 +18627,19 @@ class SetStackPolicyRequest(TeaModel):
         stack_policy_body: str = None,
         stack_policy_url: str = None,
     ):
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
+        # 
+        # You can specify one of the StackPolicyBody and StackPolicyURL parameters, but you cannot specify both of them.
         self.stack_policy_body = stack_policy_body
+        # The URL for the file that contains the stack policy. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template can be up to 16,384 bytes in length, and the URL can be up to 1,350 bytes in length.
+        # 
+        # >  If the region of the OSS bucket is not specified, the RegionId value is used.
+        # 
+        # You can specify one of the StackPolicyBody and StackPolicyURL parameters, but you cannot specify both of them.
         self.stack_policy_url = stack_policy_url
 
     def validate(self):
@@ -15333,6 +18679,7 @@ class SetStackPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15409,9 +18756,27 @@ class SetTemplatePermissionRequest(TeaModel):
         version_option: str = None,
     ):
         self.account_ids = account_ids
+        # The sharing option.
+        # 
+        # Valid values:
+        # 
+        # *   ShareToAccounts: shares the template with other Alibaba Cloud accounts.
+        # *   CancelSharing: unshares the template.
         self.share_option = share_option
+        # The ID of the template.
         self.template_id = template_id
+        # The version of the template that you want to share. This parameter takes effect when the ShareOption parameter is set to ShareToAccounts and the VersionOption parameter is set to Specified.
+        # 
+        # Valid values: v1 to v100.
         self.template_version = template_version
+        # The version option for template sharing. This parameter takes effect when the ShareOption parameter is set to ShareToAccounts.
+        # 
+        # Default value: AllVersions. Valid values:
+        # 
+        # *   AllVersions: shares all versions of the template.
+        # *   Latest: shares only the latest version of the template. If the shared template is updated, the latest version of the template is shared with the destination account.
+        # *   Current: shares only the current version of the template. The current version of the template is shared with the destination account even if the template is updated.
+        # *   Specified: shares only one specific version of the template.
         self.version_option = version_option
 
     def validate(self):
@@ -15455,6 +18820,7 @@ class SetTemplatePermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15531,11 +18897,25 @@ class SignalResourceRequest(TeaModel):
         status: str = None,
         unique_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-) and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The logical ID of the resource as defined in the template.
         self.logical_resource_id = logical_resource_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The status of the signal. Failure signals can cause stack creation or update to fail. If all signals are warnings, the stack cannot be created or updated. Valid values:
+        # 
+        # *   SUCCESS
+        # *   FAILURE
+        # *   WARNING
         self.status = status
+        # The unique ID of the signal. The ID must be 1 to 64 characters in length. If multiple signals are sent to a single resource, each signal must have a unique ID.
         self.unique_id = unique_id
 
     def validate(self):
@@ -15583,6 +18963,7 @@ class SignalResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15655,7 +19036,11 @@ class StopStackGroupOperationRequest(TeaModel):
         operation_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the operation.
+        # 
+        # You can call the [ListStackGroupOperations](~~151342~~) operation to obtain the operation ID.
         self.operation_id = operation_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -15687,6 +19072,7 @@ class StopStackGroupOperationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15759,7 +19145,13 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.key = key
+        # The value of tag N that you want to add to the resource. You can specify up to 20 tag values.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -15794,8 +19186,15 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_id = resource_id
+        # The type of the resource to which you want to add the tag. Valid values:
+        # 
+        # *   stack: stack
+        # *   stackgroup: stack group
+        # *   template: template
+        # *   TemplateScratch: scenario
         self.resource_type = resource_type
         self.tag = tag
 
@@ -15844,6 +19243,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15919,9 +19319,20 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resources. This parameter takes effect when the TagKey.N parameter is not specified in the request. Default value: false. Valid values:
+        # 
+        # *   true: removes all tags from the resources.
+        # *   false: removes the specified tags from the resources.
         self.all = all
+        # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   stack: stack
+        # *   stackgroup: stack group
+        # *   template: template
+        # *   templatescratch: scenario
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -15966,6 +19377,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16038,7 +19450,15 @@ class UpdateStackRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N. If you do not specify the name and value of a parameter, ROS uses the default name and value in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_key = parameter_key
+        # The value of parameter N. Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -16071,7 +19491,19 @@ class UpdateStackRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that you want to add to the stack.
+        # 
+        # Valid values of N: 1 to 20.
+        # 
+        # > 
+        # *   The Tags parameter is optional. If you specify Tags, you must specify Tags.N.Key.
+        # *   The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
         self.key = key
+        # The value of tag N that you want to add to the stack.
+        # 
+        # Valid values of N: 1 to 20.
+        # 
+        # >  The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
         self.value = value
 
     def validate(self):
@@ -16123,26 +19555,122 @@ class UpdateStackRequest(TeaModel):
         timeout_in_minutes: int = None,
         use_previous_parameters: bool = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # Specifies whether to roll back the resources in the stack when the stack fails to be updated.
+        # 
+        # Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_rollback = disable_rollback
+        # Specifies whether only to validate the stack in the request. Default value: false. Valid values:
+        # 
+        # *   true: only validates the stack.
+        # *   false: validates and updates the stack.
+        # 
+        # >  When no changes are made during the update, the following rules apply: If you set the DryRun parameter to false, the NotSupported error code is returned. If you set the DryRun parameter to true, no error is reported.
         self.dry_run = dry_run
+        # The maximum number of concurrent operations that can be performed on resources.
+        # 
+        # By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
+        # 
+        # > 
+        # *   If you set this parameter to an integer that is greater than 0, the integer is used.
+        # *   If you set this parameter to 0, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+        # *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
         self.parallelism = parallelism
         self.parameters = parameters
+        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.
+        # 
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.
+        # 
+        # If you do not specify this parameter, ROS assumes the existing RAM role that is associated with the stack. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.
+        # 
+        # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
+        # The ID of the region in which the stack is deployed. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies whether to enable the replacement update feature. If you cannot change resource properties, you can enable the replacement update feature to replace the resource properties. If the replacement update feature is used, the existing resource is deleted and a new resource is created. The physical ID of the new resource is different from the physical ID of the deleted resource.
+        # 
+        # Default value: Disabled. Valid values:
+        # 
+        # *   Enabled
+        # *   Disabled
+        # 
+        # >  Changes have higher priorities than replacement updates.
         self.replacement_option = replacement_option
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The structure that contains the stack policy body. The policy body must be 1 to 16,384 bytes in length.
+        # 
+        # >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
         self.stack_policy_body = stack_policy_body
+        # The structure that contains the body of the temporary overriding stack policy. The policy body must be 1 to 16,384 bytes in length.
+        # 
+        # If you want to update protected resources, you must specify a temporary overriding stack policy during the update. If you do not specify a temporary overriding stack policy, the existing policy that is associated with the stack is used.
+        # 
+        # This parameter takes effect only when the ChangeSetType parameter is set to UPDATE. You can specify only one of the following parameters:
+        # 
+        # *   StackPolicyBody
+        # *   StackPolicyURL
+        # *   StackPolicyDuringUpdateBody
+        # *   StackPolicyDuringUpdateURL
         self.stack_policy_during_update_body = stack_policy_during_update_body
+        # The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length.
+        # 
+        # >  If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # The URL can be up to 1,350 bytes in length.
+        # 
+        # If you want to update protected resources, you must specify a temporary overriding stack policy during the update. If you do not specify a temporary overriding stack policy, the existing policy that is associated with the stack is used. This parameter takes effect only when the ChangeSetType parameter is set to UPDATE. You can specify only one of the following parameters:
+        # 
+        # *   StackPolicyBody
+        # *   StackPolicyURL
+        # *   StackPolicyDuringUpdateBody
+        # *   StackPolicyDuringUpdateURL
         self.stack_policy_during_update_url = stack_policy_during_update_url
+        # The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You can specify only one of the StackPolicyBody and StackPolicyURL parameters.
+        # 
+        # The URL can be up to 1,350 bytes in length.
         self.stack_policy_url = stack_policy_url
         self.tags = tags
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
+        # 
+        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared templates and private templates.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body must be 1 to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_url = template_url
+        # The version of the template. This parameter takes effect only when the TemplateId parameter is specified.
         self.template_version = template_version
+        # The timeout period for the update operation on the stack.
+        # 
+        # *   Default value: 60.
+        # *   Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
+        # Specifies whether to use the values specified in the previous request for the parameters that you do not specify in the current request.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.use_previous_parameters = use_previous_parameters
 
     def validate(self):
@@ -16273,12 +19801,31 @@ class UpdateStackResponseBodyDryRunResult(TeaModel):
         parameters_uncertainly_allowed_to_be_modified: List[str] = None,
         parameters_uncertainly_cause_interruption_if_modified: List[str] = None,
     ):
+        # The parameters that can be modified. If you change only values of the parameters in a stack template and use the template to update the stack, no validation errors are caused.
         self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
+        # The parameters whose changes cause service interruptions. If you change only values of the parameters in a stack template and use the template to update the stack, service interruptions are caused.
+        # 
+        # > 
+        # *   This parameter is supported only for a small number of resource types.
+        # *   This parameter is valid only for changes that are made on ROS stacks.
         self.parameters_cause_interruption_if_modified = parameters_cause_interruption_if_modified
+        # The parameters that can be modified under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values of the parameters determine whether validation errors are caused.
         self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
+        # The parameters whose changes cause service interruptions under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values and the update type determine whether service interruptions are caused.
+        # 
+        # > 
+        # *   This parameter is supported only for a small number of resource types.
+        # *   This parameter is valid only for changes that are made on ROS stacks.
         self.parameters_conditionally_cause_interruption_if_modified = parameters_conditionally_cause_interruption_if_modified
+        # The parameters that cannot be modified. If you change only values of the parameters in a stack template and use the template to update the stack, validation errors are caused.
         self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
+        # The parameters that can be modified under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether validation errors are caused.
         self.parameters_uncertainly_allowed_to_be_modified = parameters_uncertainly_allowed_to_be_modified
+        # The parameters whose changes cause service interruptions under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether service interruptions are caused.
+        # 
+        # > 
+        # *   This parameter is supported only for a small number of resource types.
+        # *   This parameter is valid only for changes that are made on ROS stacks.
         self.parameters_uncertainly_cause_interruption_if_modified = parameters_uncertainly_cause_interruption_if_modified
 
     def validate(self):
@@ -16332,8 +19879,11 @@ class UpdateStackResponseBody(TeaModel):
         request_id: str = None,
         stack_id: str = None,
     ):
+        # The validation result. This parameter is returned only if the DryRun parameter is set to true.
         self.dry_run_result = dry_run_result
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the stack.
         self.stack_id = stack_id
 
     def validate(self):
@@ -16416,7 +19966,21 @@ class UpdateStackGroupRequestAutoDeployment(TeaModel):
         enabled: bool = None,
         retain_stacks_on_account_removal: bool = None,
     ):
+        # Specifies whether to enable automatic deployment.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables automatic deployment. If you add a member to the folder to which the stack group belongs after you enable automatic deployment, the stack group deploys its stack instances within the member. If you remove a member from the folder, the stack group deletes stack instances that are deployed within the member.
+        # *   false: disables automatic deployment. After you disable automatic deployment, the stack instances remain unchanged even if members in the folder change.
         self.enabled = enabled
+        # Specifies whether to retain stacks in a member when you remove the member from the folder.
+        # 
+        # Valid values:
+        # 
+        # *   true: retains the stacks.
+        # *   false: deletes the stacks.
+        # 
+        # >  This parameter is required if the Enabled parameter is set to true.
         self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
 
     def validate(self):
@@ -16449,8 +20013,19 @@ class UpdateStackGroupRequestDeploymentTargets(TeaModel):
         account_ids: List[str] = None,
         rd_folder_ids: List[str] = None,
     ):
+        # The IDs of the members in the resource directory. You can specify a maximum of 20 member IDs.
+        # 
+        # >  To view the member IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the detailed information of a member](~~111624~~).
         self.account_ids = account_ids
-        # test
+        # The folder IDs in the resource directory. You can specify a maximum of five folder IDs.
+        # 
+        # You must set at least one of the RdFolderIds and AccountIds parameters. The parameters are subject to the following items:
+        # 
+        # *   If you set only the RdFolderIds parameter, stacks are deployed within all the members in the specified folders. If you specify the Root folder, ROS deploys the stacks within all the members in the resource directory.
+        # *   If you set only the AccountIds parameter, stacks are deployed within the specified members.
+        # *   If you set both parameters, the accounts specified by AccountIds must be contained in the folders specified by RdFolderIds.
+        # 
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -16483,7 +20058,17 @@ class UpdateStackGroupRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you set the Parameters parameter, you must set the Parameters.N.ParameterKey parameter.
         self.parameter_key = parameter_key
+        # The value of parameter N.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you set the Parameters parameter, you must set the Parameters.N.ParameterValue parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -16532,24 +20117,119 @@ class UpdateStackGroupRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The IDs of the accounts within which you want to use self-managed permissions to deploy stacks. You can specify a maximum of 20 account IDs.
         self.account_ids = account_ids
+        # The name of the RAM role to be assumed by the administrator account in ROS. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.administration_role_name = administration_role_name
+        # The information about automatic deployment settings.
+        # 
+        # >  This parameter is required only if the PermissionModel parameter is set to SERVICE_MANAGED.
         self.auto_deployment = auto_deployment
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which you want to use service-managed permissions to update stacks.
         self.deployment_targets = deployment_targets
+        # The description of the stack group.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.description = description
+        # The name of the RAM role to be assumed by the administrator role AliyunROSStackGroupAdministrationRole. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.execution_role_name = execution_role_name
+        # The description of the operation to update the stack group.
         self.operation_description = operation_description
+        # The preferences of the operation to update the stack group.
+        # 
+        # The following parameters are available:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The maximum number of accounts within which stack operation failures are allowed in each region. If the value is exceeded in a region, ROS stops the operation in the region. If ROS stops the operation in one region, the operation is not performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify a value for the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of accounts within which stack operation failures are allowed in each region. If the value is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the number of accounts specified by the percentage is not a whole number, ROS rounds down the number.
+        # 
+        #     If you do not specify a value for the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks can be deployed at a time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify a value for the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of accounts within which stacks can be deployed at a time in each region.
+        # 
+        #     Valid values of N: 1 to 100. If the number of accounts specified by the percentage is not a whole number, ROS rounds down the number.
+        # 
+        #     If you do not specify a value for the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     Specifies whether stacks can be deployed in multiple regions in parallel. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in the specified regions one by one in sequence. This way, stacks are deployed in only one region at a time. This is the default value.
+        #     *   PARALLEL: deploys stacks in all the specified regions in parallel.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences = operation_preferences
         # test
         self.parameters = parameters
+        # The permission model.
+        # 
+        # Valid values:
+        # 
+        # *   SELF_MANAGED: the self-managed permission model. This is the default value. If you use the self-managed model for the stack group, you must create RAM roles for the administrator and execution accounts, and establish a trust relationship between the accounts to deploy stacks within the execution account.
+        # *   SERVICE_MANAGED: the service-managed permission model. If you use the service-managed model for the stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
+        # 
+        # > 
+        # *   If stack instances have been created in the stack group, you cannot switch the permission mode of the stack group.
+        # *   If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
         self.permission_model = permission_model
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the latest list of Alibaba Cloud regions.
         self.region_id = region_id
+        # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
         self.region_ids = region_ids
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
         self.stack_group_name = stack_group_name
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket. The template body must be 1 to 524,288 bytes in length. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.template_url = template_url
+        # The version of the template. If you do not specify a version, the latest version is used.
+        # 
+        # >  This parameter takes effect only if the TemplateId parameter is set.
         self.template_version = template_version
 
     def validate(self):
@@ -16660,7 +20340,17 @@ class UpdateStackGroupShrinkRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you set the Parameters parameter, you must set the Parameters.N.ParameterKey parameter.
         self.parameter_key = parameter_key
+        # The value of parameter N.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # >  The Parameters parameter is optional. If you set the Parameters parameter, you must set the Parameters.N.ParameterValue parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -16709,24 +20399,119 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The IDs of the accounts within which you want to use self-managed permissions to deploy stacks. You can specify a maximum of 20 account IDs.
         self.account_ids_shrink = account_ids_shrink
+        # The name of the RAM role to be assumed by the administrator account in ROS. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.administration_role_name = administration_role_name
+        # The information about automatic deployment settings.
+        # 
+        # >  This parameter is required only if the PermissionModel parameter is set to SERVICE_MANAGED.
         self.auto_deployment_shrink = auto_deployment_shrink
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which you want to use service-managed permissions to update stacks.
         self.deployment_targets_shrink = deployment_targets_shrink
+        # The description of the stack group.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.description = description
+        # The name of the RAM role to be assumed by the administrator role AliyunROSStackGroupAdministrationRole. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.execution_role_name = execution_role_name
+        # The description of the operation to update the stack group.
         self.operation_description = operation_description
+        # The preferences of the operation to update the stack group.
+        # 
+        # The following parameters are available:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The maximum number of accounts within which stack operation failures are allowed in each region. If the value is exceeded in a region, ROS stops the operation in the region. If ROS stops the operation in one region, the operation is not performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify a value for the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of accounts within which stack operation failures are allowed in each region. If the value is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the number of accounts specified by the percentage is not a whole number, ROS rounds down the number.
+        # 
+        #     If you do not specify a value for the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks can be deployed at a time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify a value for the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of accounts within which stacks can be deployed at a time in each region.
+        # 
+        #     Valid values of N: 1 to 100. If the number of accounts specified by the percentage is not a whole number, ROS rounds down the number.
+        # 
+        #     If you do not specify a value for the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     Specifies whether stacks can be deployed in multiple regions in parallel. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in the specified regions one by one in sequence. This way, stacks are deployed in only one region at a time. This is the default value.
+        #     *   PARALLEL: deploys stacks in all the specified regions in parallel.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences_shrink = operation_preferences_shrink
         # test
         self.parameters = parameters
+        # The permission model.
+        # 
+        # Valid values:
+        # 
+        # *   SELF_MANAGED: the self-managed permission model. This is the default value. If you use the self-managed model for the stack group, you must create RAM roles for the administrator and execution accounts, and establish a trust relationship between the accounts to deploy stacks within the execution account.
+        # *   SERVICE_MANAGED: the service-managed permission model. If you use the service-managed model for the stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
+        # 
+        # > 
+        # *   If stack instances have been created in the stack group, you cannot switch the permission mode of the stack group.
+        # *   If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
         self.permission_model = permission_model
+        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the latest list of Alibaba Cloud regions.
         self.region_id = region_id
+        # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
         self.region_ids_shrink = region_ids_shrink
+        # The name of the stack group. The name must be unique within a region.
+        # 
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
         self.stack_group_name = stack_group_name
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.template_id = template_id
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket. The template body must be 1 to 524,288 bytes in length. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.template_url = template_url
+        # The version of the template. If you do not specify a version, the latest version is used.
+        # 
+        # >  This parameter takes effect only if the TemplateId parameter is set.
         self.template_version = template_version
 
     def validate(self):
@@ -16831,7 +20616,9 @@ class UpdateStackGroupResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16908,8 +20695,19 @@ class UpdateStackInstancesRequestDeploymentTargets(TeaModel):
         account_ids: List[str] = None,
         rd_folder_ids: List[str] = None,
     ):
+        # The IDs of the members in the resource directory. You can specify up to 20 member IDs.
+        # 
+        # >  To view the member IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the detailed information of a member](~~111624~~).
         self.account_ids = account_ids
-        # test
+        # The IDs of the folders in the resource directory. You can specify up to five folder IDs.
+        # 
+        # You must specify at least one of the RdFolderIds and AccountIds parameters. The parameters are subject to the following rules:
+        # 
+        # *   If you specify only the RdFolderIds parameter, stacks are deployed within all members in the specified folders. If you select the Root folder, stacks are deployed within all members in the resource directory.
+        # *   If you specify only the AccountIds parameter, stacks are deployed within the specified members.
+        # *   If you specify both parameters, the accounts specified by using the AccountIds parameter must be contained in the folders specified by using the RdFolderIds parameter. In this case, stacks are deployed within the specified members that are contained in the specified folders.
+        # 
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -16942,7 +20740,21 @@ class UpdateStackInstancesRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_key = parameter_key
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -16983,16 +20795,87 @@ class UpdateStackInstancesRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The IDs of the accounts within which the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
+        # 
+        # >  This parameter is required if you use the self-managed permission model to update the stacks.
         self.account_ids = account_ids
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which the service-managed permission model is used to deploy stacks.
+        # 
+        # >  This parameter is required if you use the service-managed permission model to update the stacks.
         self.deployment_targets = deployment_targets
+        # The description of the operation that you want to perform to update the stacks.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
+        # The custom preferences on how Resource Orchestration Service (ROS) updates the stacks.
+        # 
+        # The following parameters are included:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify a value for the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        # 
+        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
+        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences = operation_preferences
         # test
         self.parameter_overrides = parameter_overrides
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the regions in which you want to update the stacks. You can specify up to 20 region IDs.
         self.region_ids = region_ids
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
+        # The timeout period for the update operation on the stack.
+        # 
+        # *   Default value: 60.
+        # *   Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -17068,7 +20951,21 @@ class UpdateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of parameter N that you want to use to override a specific parameter. If you do not specify the name of parameter N, ROS uses the name that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_key = parameter_key
+        # The value of parameter N that you want to use to override a specific parameter. If you do not specify the name and value of parameter N, ROS uses the name and value that you specify when you create the stack group.
+        # 
+        # Maximum value of N: 200.
+        # 
+        # > 
+        # *   The ParameterOverrides parameter is optional.
+        # *   If you specify the ParameterOverrides parameter, you must specify the ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue parameters.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -17109,16 +21006,87 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         stack_group_name: str = None,
         timeout_in_minutes: int = None,
     ):
+        # The IDs of the accounts within which the self-managed permission model is used to deploy stacks. You can specify up to 20 account IDs.
+        # 
+        # >  This parameter is required if you use the self-managed permission model to update the stacks.
         self.account_ids_shrink = account_ids_shrink
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The folders in which the service-managed permission model is used to deploy stacks.
+        # 
+        # >  This parameter is required if you use the service-managed permission model to update the stacks.
         self.deployment_targets_shrink = deployment_targets_shrink
+        # The description of the operation that you want to perform to update the stacks.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.operation_description = operation_description
+        # The custom preferences on how Resource Orchestration Service (ROS) updates the stacks.
+        # 
+        # The following parameters are included:
+        # 
+        # *   {"FailureToleranceCount": N}
+        # 
+        #     The number of accounts within which stack operation failures can occur in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region. If the operation is stopped in one region, the operation is no longer performed in other regions.
+        # 
+        #     Valid values of N: 0 to 20.
+        # 
+        #     If you do not specify the FailureToleranceCount parameter, the default value 0 is used.
+        # 
+        # *   {"FailureTolerancePercentage": N}
+        # 
+        #     The percentage of the number of accounts within which stack operation failures can occur to the total number of accounts in each region. If the value of this parameter is exceeded in a region, ROS stops the operation in the region.
+        # 
+        #     Valid values of N: 0 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify a value for the FailureTolerancePercentage parameter, the default value 0 is used.
+        # 
+        # *   {"MaxConcurrentCount": N}
+        # 
+        #     The maximum number of accounts within which stacks are deployed at the same time in each region.
+        # 
+        #     Valid values of N: 1 to 20.
+        # 
+        #     If you do not specify the MaxConcurrentCount parameter, the default value 1 is used.
+        # 
+        # *   {"MaxConcurrentPercentage": N}
+        # 
+        #     The percentage of the maximum number of accounts within which stacks are deployed at the same time to the total number of accounts in each region.
+        # 
+        #     Valid values: 1 to 100. If the numeric value in the percentage is not an integer, ROS rounds the value down to the nearest integer.
+        # 
+        #     If you do not specify the MaxConcurrentPercentage parameter, the default value 1 is used.
+        # 
+        # *   {"RegionConcurrencyType": N}
+        # 
+        #     The mode that you want to use to deploy stacks across regions. Default value: SEQUENTIAL. Valid values:
+        # 
+        #     *   SEQUENTIAL: deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time.
+        #     *   PARALLEL: deploys stacks in parallel in all specified regions.
+        # 
+        # Separate multiple parameters with commas (,).
+        # 
+        # > 
+        # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
+        # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences_shrink = operation_preferences_shrink
         # test
         self.parameter_overrides = parameter_overrides
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the regions in which you want to update the stacks. You can specify up to 20 region IDs.
         self.region_ids_shrink = region_ids_shrink
+        # The name of the stack group. The name must be unique in a region.
+        # 
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
+        # The timeout period for the update operation on the stack.
+        # 
+        # *   Default value: 60.
+        # *   Unit: minutes.
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
@@ -17191,7 +21159,9 @@ class UpdateStackInstancesResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17272,11 +21242,28 @@ class UpdateStackTemplateByResourcesRequest(TeaModel):
         stack_id: str = None,
         template_format: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # Specifies whether to only preview the corrected template in this request. Default value: false. Valid values:
+        # 
+        # *   true: returns the content of the corrected template and does not correct the template. After Resource Orchestration Service (ROS) compares the corrected template with the original template, ROS determines whether to execute the correction.
+        # *   false: corrects the template to eliminate drift.
+        # 
+        # >  We recommend that you set the DryRun parameter to true to preview the corrected template. If the template content meets expectations, set the DryRun parameter to false to execute the correction.
         self.dry_run = dry_run
         self.logical_resource_id = logical_resource_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
+        # The format of the returned template. Default value: JSON. Valid values:
+        # 
+        # *   JSON
+        # *   YAML
         self.template_format = template_format
 
     def validate(self):
@@ -17326,8 +21313,11 @@ class UpdateStackTemplateByResourcesResponseBody(TeaModel):
         old_template_body: str = None,
         request_id: str = None,
     ):
+        # The template content after correction.
         self.new_template_body = new_template_body
+        # The template content before correction.
         self.old_template_body = old_template_body
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17411,10 +21401,25 @@ class UpdateTemplateRequest(TeaModel):
         template_name: str = None,
         template_url: str = None,
     ):
+        # The description of the template. It can be up to 256 characters in length.
         self.description = description
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
+        # 
+        # If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        # 
+        # You can specify only one of the TemplateBody and TemplateURL parameters.
         self.template_body = template_body
+        # The ID of the template. This parameter applies to shared and private templates.
         self.template_id = template_id
+        # The name of the template.
+        # 
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
         self.template_name = template_name
+        # The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template can be up to 524,288 bytes in length, and the URL can be up to 1,024 bytes in length.
+        # 
+        # >  If the region of the OSS bucket is not specified, the RegionId value is used.
+        # 
+        # You can specify only one of the TemplateBody and TemplateURL parameters.
         self.template_url = template_url
 
     def validate(self):
@@ -17459,7 +21464,9 @@ class UpdateTemplateResponseBody(TeaModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):
@@ -17536,7 +21543,19 @@ class UpdateTemplateScratchRequestPreferenceParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of a request parameter.
+        # 
+        # For more information about ParameterKey, see **Additional description of request parameters**.
+        # 
+        # > 
+        # *   PreferenceParameters is optional. If you set PreferenceParameters, you must specify both ParameterKey and ParameterValue.
+        # *   If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
         self.parameter_key = parameter_key
+        # The value of a request parameter. The value of ParameterValue varies based on the value of ParameterKey.
+        # 
+        # For more information about ParameterValue, see **Additional description of request parameters**.
+        # 
+        # >  PreferenceParameters is optional. If you set PreferenceParameters, you must specify both ParameterKey and ParameterValue.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -17569,7 +21588,11 @@ class UpdateTemplateScratchRequestSourceResourceGroup(TeaModel):
         resource_group_id: str = None,
         resource_type_filter: List[str] = None,
     ):
+        # The ID of the source resource group.
         self.resource_group_id = resource_group_id
+        # The filter for resource types. If you specify this parameter, only the resources of the specified types and in the specified resource groups are scanned. If you do not specify this parameter, all the resources in the specified resource groups are scanned.
+        # 
+        # You can specify up to 20 resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -17602,7 +21625,9 @@ class UpdateTemplateScratchRequestSourceResources(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -17635,7 +21660,15 @@ class UpdateTemplateScratchRequestSourceTag(TeaModel):
         resource_tags: Dict[str, Any] = None,
         resource_type_filter: List[str] = None,
     ):
+        # The source tags that consist of key-value pairs.
+        # 
+        # If you want to specify only the tag key, you must set the tag value to an empty string. Example: {"TagKey": ""}.
+        # 
+        # You can configure up to 10 source tags.
         self.resource_tags = resource_tags
+        # The filter for resource types. If you specify this parameter, only the resources of the specified types and have the specified tags are scanned. If you do not specify this parameter, all resources that have the specified tags are scanned.
+        # 
+        # You can specify up to 20 resource types.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -17676,15 +21709,38 @@ class UpdateTemplateScratchRequest(TeaModel):
         source_tag: UpdateTemplateScratchRequestSourceTag = None,
         template_scratch_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among the different requests. The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The description of the scenario.
         self.description = description
+        # The execution mode. Default value: Async. Valid values:
+        # 
+        # *   Async: asynchronous mode
+        # *   Sync: synchronous mode
+        # 
+        # >  If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you set ClientToken to prevent the execution from timing out.
         self.execution_mode = execution_mode
+        # The generation policy of the logical ID. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+        # 
+        # *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+        # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
+        # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
+        # The parameters that are configured in the scenario.
         self.preference_parameters = preference_parameters
+        # The ID of the region in which the scenario is created.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The source resource group.
         self.source_resource_group = source_resource_group
+        # The source resource.
         self.source_resources = source_resources
+        # The source tag.
         self.source_tag = source_tag
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -17780,15 +21836,38 @@ class UpdateTemplateScratchShrinkRequest(TeaModel):
         source_tag_shrink: str = None,
         template_scratch_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among the different requests. The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The description of the scenario.
         self.description = description
+        # The execution mode. Default value: Async. Valid values:
+        # 
+        # *   Async: asynchronous mode
+        # *   Sync: synchronous mode
+        # 
+        # >  If you have a wide scope of resources, Sync takes longer. If you set ExecutionMode to Sync, we recommend that you set ClientToken to prevent the execution from timing out.
         self.execution_mode = execution_mode
+        # The generation policy of the logical ID. Default value: LongTypePrefixAndIndexSuffix. Valid values:
+        # 
+        # *   LongTypePrefixAndIndexSuffix: long-type prefix + index-type suffix
+        # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
+        # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
+        # The parameters that are configured in the scenario.
         self.preference_parameters_shrink = preference_parameters_shrink
+        # The ID of the region in which the scenario is created.
+        # 
+        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The source resource group.
         self.source_resource_group_shrink = source_resource_group_shrink
+        # The source resource.
         self.source_resources_shrink = source_resources_shrink
+        # The source tag.
         self.source_tag_shrink = source_tag_shrink
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -17853,7 +21932,9 @@ class UpdateTemplateScratchResponseBody(TeaModel):
         request_id: str = None,
         template_scratch_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -17933,10 +22014,39 @@ class ValidateTemplateRequest(TeaModel):
         template_url: str = None,
         validation_option: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+        # 
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # 
+        # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The ID of the region where the template resides. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
+        # 
+        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+        # 
+        # You can specify only one of the TemplateBody and TemplateURL parameters.
         self.template_body = template_body
+        # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
+        # 
+        # >  If you do not specify the region ID of the OSS bucket, the value of the RegionId parameter is used.
+        # 
+        # You can specify only one of the TemplateBody and TemplateURL parameters.
+        # 
+        # The URL can be up to 1,024 bytes in length.
         self.template_url = template_url
+        # Specifies whether to enable additional validation for the template. Default value: None. Valid values:
+        # 
+        # *   None: does not enable additional validation.
+        # 
+        # *   EnableTerraformValidation: runs the `terraform validate` command in the Terraform CLI to enable additional validation for a Terraform template.
+        # 
+        # *   EnableFastTerraformValidation: runs a command that is similar to the `terraform validate` command in the Terraform CLI to enable additional validation for a Terraform template.
+        # 
+        #     **\
+        # 
+        #     **Note** Compared with the EnableTerraformValidation method, the EnableFastTerraformValidation method validates a template at a faster speed, but lower integrity level.
         self.validation_option = validation_option
 
     def validate(self):
@@ -17982,8 +22092,11 @@ class ValidateTemplateResponseBodyOutputs(TeaModel):
         label: str = None,
         output_key: str = None,
     ):
+        # The description of the output item.
         self.description = description
+        # The alias of the output item.
         self.label = label
+        # The name of the output item.
         self.output_key = output_key
 
     def validate(self):
@@ -18020,7 +22133,9 @@ class ValidateTemplateResponseBodyResourceTypes(TeaModel):
         data_sources: List[str] = None,
         resources: List[str] = None,
     ):
+        # The DataSource resource types.
         self.data_sources = data_sources
+        # The regular resource types.
         self.resources = resources
 
     def validate(self):
@@ -18054,8 +22169,36 @@ class ValidateTemplateResponseBodyResources(TeaModel):
         resource_path: str = None,
         resource_type: str = None,
     ):
+        # The pattern in which the logical IDs of regular resources are formed.
+        # 
+        # If resources are defined in an ROS template, the following rules apply:
+        # 
+        # *   Resource whose definition does not contain the `Count` parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern and `ResourcePath` parameters is `server`.
+        # *   Resource whose definition contains the `Count` parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern parameter is `server[*]`, and the value of the `ResourcePath` parameter is `server`.
+        # 
+        # If resources and [modules](https://www.terraform.io/language/modules) are defined in a Terraform template, the following rules apply:
+        # 
+        # *   Resource and module whose definitions do not contain the [count](https://www.terraform.io/language/meta-arguments/count) or [for_each](https://www.terraform.io/language/meta-arguments/for_each) parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern and `ResourcePath` parameters is `server`.
+        # *   Resource and module whose definitions contain the [count](https://www.terraform.io/language/meta-arguments/count) or [for_each](https://www.terraform.io/language/meta-arguments/for_each) parameter: If the resource name defined in the template is `server`, the value of the LogicalResourceIdPattern parameter is `server[*]`, and the value of the `ResourcePath` parameter is `server`.
+        # 
+        # Examples of the LogicalResourceIdPattern parameter for resources in a Terraform template:
+        # 
+        # *   Valid values of the LogicalResourceIdPattern parameter if a resource belongs to the root module:
+        # 
+        #     *   `server`: In this case, the `count` or `for_each` parameter is not contained in the resource. The value of the `ResourcePath` parameter is `server`.
+        #     *   `server[*]`: In this case, the `count` or `for_each` parameter is contained in the resource. The value of the `ResourcePath` parameter is `server`.
+        # 
+        # *   Valid values of the LogicalResourceIdPattern parameter if a resource belongs to a child module:
+        # 
+        #     *   `app.server`: In this case, the `count` or `for_each` parameter is not contained in the `app` module and the `server` resource. The value of the `ResourcePath` parameter is `app.server`.
+        #     *   `app.server[*]`: In this case, the `count` or `for_each` parameter is contained in the `server` resource, but not in the `app` module. The value of the `ResourcePath` parameter is `app.server`.
+        #     *   `app[*].server`: In this case, the `count` or `for_each` parameter is contained in the `app` module, but not in the `server` resource. The value of the `ResourcePath` parameter is `app.server`.
+        #     *   `app[*].server[*]`: In this case, the `count` or `for_each` parameter is contained in the `app` module and the `server` resource. The value of the `ResourcePath` parameter is `app.server`.
+        #     *   `app.app_group[*].server`: In this case, the `count` or `for_each` parameter is contained in the `app_group` module, but not in the `app` module and the `server` resource. The value of the `ResourcePath` parameter is `app.app_group.server`. The `app_group` module is a child module of the `app` module.
         self.logical_resource_id_pattern = logical_resource_id_pattern
+        # The path of the regular resource. In most cases, the path of a regular resource is the same as the resource name.
         self.resource_path = resource_path
+        # The regular resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -18097,12 +22240,31 @@ class ValidateTemplateResponseBodyUpdateInfo(TeaModel):
         parameters_uncertainly_allowed_to_be_modified: List[str] = None,
         parameters_uncertainly_cause_interruption_if_modified: List[str] = None,
     ):
+        # The parameters that can be modified. If you change only values of the parameters in a stack template and use the template to update the stack, no validation errors are caused.
         self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
+        # The parameters whose changes cause service interruptions. If you change only values of the parameters in a stack template and use the template to update the stack, service interruptions are caused.
+        # 
+        # > 
+        # *   This parameter is supported only for a small number of resource types.
+        # *   This parameter is valid only for changes that are made on ROS stacks.
         self.parameters_cause_interruption_if_modified = parameters_cause_interruption_if_modified
+        # The parameters that can be modified under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values of the parameters determine whether validation errors are caused.
         self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
+        # The parameters whose changes cause service interruptions under specific conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the new values and the update type determine whether service interruptions are caused.
+        # 
+        # > 
+        # *   This parameter is supported only for a small number of resource types.
+        # *   This parameter is valid only for changes that are made on ROS stacks.
         self.parameters_conditionally_cause_interruption_if_modified = parameters_conditionally_cause_interruption_if_modified
+        # The parameters that cannot be modified. If you change only values of the parameters in a stack template and use the template to update the stack, validation errors are caused.
         self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
+        # The parameters that can be modified under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether validation errors are caused.
         self.parameters_uncertainly_allowed_to_be_modified = parameters_uncertainly_allowed_to_be_modified
+        # The parameters whose changes cause service interruptions under uncertain conditions. If you change only values of the parameters in a stack template and use the template to update the stack, the actual running environment determines whether service interruptions are caused.
+        # 
+        # > 
+        # *   This parameter is supported only for a small number of resource types.
+        # *   This parameter is valid only for changes that are made on ROS stacks.
         self.parameters_uncertainly_cause_interruption_if_modified = parameters_uncertainly_cause_interruption_if_modified
 
     def validate(self):
@@ -18160,12 +22322,25 @@ class ValidateTemplateResponseBody(TeaModel):
         resources: List[ValidateTemplateResponseBodyResources] = None,
         update_info: ValidateTemplateResponseBodyUpdateInfo = None,
     ):
+        # The description of the template.
         self.description = description
+        # The output items of the template.
         self.outputs = outputs
+        # The parameters in the Parameters section of the template.
+        # 
+        # The Parameters section contains the parameters that you must specify when you use the template to create a stack. You can use the parameters to specify the stack details, such as the username, the password, and the Elastic Compute Service (ECS) instance type in the specified region.
         self.parameters = parameters
+        # The ID of the request.
         self.request_id = request_id
+        # The resource types that are used in the template.
         self.resource_types = resource_types
+        # The regular resources that are defined in the template.
+        # 
+        # > 
+        # *   For a Resource Orchestration Service (ROS) template, the resource whose definition contains the `Count` parameter is not displayed as a list.
+        # *   For a Terraform template, the resource whose definition contains the `count` or `for_each` parameter is not displayed as a list.
         self.resources = resources
+        # The update information about the stack.
         self.update_info = update_info
 
     def validate(self):

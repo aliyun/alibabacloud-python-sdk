@@ -1,3 +1,6 @@
+2023-03-15 Version: 3.2.21
+- Add GetTemplateRecommendParameters  interface to SDK.
+
 2023-02-09 Version: 3.2.20
 - A new PhysicsResourceId field is added to the Resources returned by the PreviewStack interface.
 - Added StackId parameter to the GetTemplateParameterConstraints API.
