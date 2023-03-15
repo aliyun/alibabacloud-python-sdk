@@ -677,6 +677,7 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        end_timestamp: int = None,
         extend: str = None,
         labels: str = None,
         origin_algo_result: Dict[str, Any] = None,
@@ -684,10 +685,12 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
         risk_words: str = None,
         score: float = None,
         start_time: int = None,
+        start_timestamp: int = None,
         text: str = None,
         url: str = None,
     ):
         self.end_time = end_time
+        self.end_timestamp = end_timestamp
         self.extend = extend
         self.labels = labels
         self.origin_algo_result = origin_algo_result
@@ -695,6 +698,7 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
         self.risk_words = risk_words
         self.score = score
         self.start_time = start_time
+        self.start_timestamp = start_timestamp
         self.text = text
         self.url = url
 
@@ -709,6 +713,8 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.end_timestamp is not None:
+            result['EndTimestamp'] = self.end_timestamp
         if self.extend is not None:
             result['Extend'] = self.extend
         if self.labels is not None:
@@ -723,6 +729,8 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
             result['Score'] = self.score
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
         if self.text is not None:
             result['Text'] = self.text
         if self.url is not None:
@@ -733,6 +741,8 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('EndTimestamp') is not None:
+            self.end_timestamp = m.get('EndTimestamp')
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')
         if m.get('Labels') is not None:
@@ -747,6 +757,8 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
             self.score = m.get('Score')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Url') is not None:
