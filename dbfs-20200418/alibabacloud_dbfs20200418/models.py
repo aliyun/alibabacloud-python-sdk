@@ -4242,6 +4242,7 @@ class ListDbfsAttachableEcsInstancesRequest(TeaModel):
 class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
     def __init__(
         self,
+        image_id: str = None,
         instance_type_family: str = None,
         osname: str = None,
         status: str = None,
@@ -4249,6 +4250,7 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
         label: str = None,
         value: str = None,
     ):
+        self.image_id = image_id
         self.instance_type_family = instance_type_family
         self.osname = osname
         self.status = status
@@ -4265,6 +4267,8 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.instance_type_family is not None:
             result['InstanceTypeFamily'] = self.instance_type_family
         if self.osname is not None:
@@ -4281,6 +4285,8 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('InstanceTypeFamily') is not None:
             self.instance_type_family = m.get('InstanceTypeFamily')
         if m.get('OSName') is not None:
@@ -4868,12 +4874,16 @@ class ListSnapshotLinksRequest(TeaModel):
         self,
         filter_key: str = None,
         filter_value: str = None,
+        fs_ids: str = None,
+        link_ids: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
     ):
         self.filter_key = filter_key
         self.filter_value = filter_value
+        self.fs_ids = fs_ids
+        self.link_ids = link_ids
         self.page_number = page_number
         self.page_size = page_size
         self.region_id = region_id
@@ -4891,6 +4901,10 @@ class ListSnapshotLinksRequest(TeaModel):
             result['FilterKey'] = self.filter_key
         if self.filter_value is not None:
             result['FilterValue'] = self.filter_value
+        if self.fs_ids is not None:
+            result['FsIds'] = self.fs_ids
+        if self.link_ids is not None:
+            result['LinkIds'] = self.link_ids
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -4905,6 +4919,10 @@ class ListSnapshotLinksRequest(TeaModel):
             self.filter_key = m.get('FilterKey')
         if m.get('FilterValue') is not None:
             self.filter_value = m.get('FilterValue')
+        if m.get('FsIds') is not None:
+            self.fs_ids = m.get('FsIds')
+        if m.get('LinkIds') is not None:
+            self.link_ids = m.get('LinkIds')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:

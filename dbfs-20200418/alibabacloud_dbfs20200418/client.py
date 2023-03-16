@@ -2279,6 +2279,10 @@ class Client(OpenApiClient):
             query['FilterKey'] = request.filter_key
         if not UtilClient.is_unset(request.filter_value):
             query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.fs_ids):
+            query['FsIds'] = request.fs_ids
+        if not UtilClient.is_unset(request.link_ids):
+            query['LinkIds'] = request.link_ids
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2315,6 +2319,10 @@ class Client(OpenApiClient):
             query['FilterKey'] = request.filter_key
         if not UtilClient.is_unset(request.filter_value):
             query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.fs_ids):
+            query['FsIds'] = request.fs_ids
+        if not UtilClient.is_unset(request.link_ids):
+            query['LinkIds'] = request.link_ids
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

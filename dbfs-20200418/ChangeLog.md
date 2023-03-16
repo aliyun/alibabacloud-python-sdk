@@ -1,3 +1,9 @@
+2023-03-16 Version: 3.2.2
+- Increase flow control value for ListDbfs.
+- Fix errorcode.
+- Add ImageId for ListDbfsAttachableEcsInstances.
+- Support list snapshot links in batch.
+
 2023-01-29 Version: 3.2.1
 - Update autoSnapshotPolicy.
 
