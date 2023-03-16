@@ -5920,6 +5920,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         dst_ip: str = None,
         dst_network_instance_id: str = None,
         end_time: str = None,
+        event_name: str = None,
         firewall_type: str = None,
         lang: str = None,
         no_location: str = None,
@@ -5980,6 +5981,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         self.dst_network_instance_id = dst_network_instance_id
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        self.event_name = event_name
         # The type of the firewall. Valid values:
         # 
         # *   **VpcFirewall**: virtual private cloud (VPC) firewall
@@ -6068,6 +6070,8 @@ class DescribeRiskEventGroupRequest(TeaModel):
             result['DstNetworkInstanceId'] = self.dst_network_instance_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.event_name is not None:
+            result['EventName'] = self.event_name
         if self.firewall_type is not None:
             result['FirewallType'] = self.firewall_type
         if self.lang is not None:
@@ -6114,6 +6118,8 @@ class DescribeRiskEventGroupRequest(TeaModel):
             self.dst_network_instance_id = m.get('DstNetworkInstanceId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('EventName') is not None:
+            self.event_name = m.get('EventName')
         if m.get('FirewallType') is not None:
             self.firewall_type = m.get('FirewallType')
         if m.get('Lang') is not None:

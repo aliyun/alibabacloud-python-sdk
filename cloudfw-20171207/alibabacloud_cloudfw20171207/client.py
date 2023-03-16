@@ -2981,6 +2981,8 @@ class Client(OpenApiClient):
             query['DstNetworkInstanceId'] = request.dst_network_instance_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.firewall_type):
             query['FirewallType'] = request.firewall_type
         if not UtilClient.is_unset(request.lang):
@@ -3060,6 +3062,8 @@ class Client(OpenApiClient):
             query['DstNetworkInstanceId'] = request.dst_network_instance_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.firewall_type):
             query['FirewallType'] = request.firewall_type
         if not UtilClient.is_unset(request.lang):
