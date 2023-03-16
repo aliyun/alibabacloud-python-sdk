@@ -1,3 +1,7 @@
+2023-03-16 Version: 1.0.8
+- DescribeUserPermissions Remove uid info.
+
+
 2023-03-09 Version: 1.0.7
 -  GrantUserPermissions Add new api.
 - DescribeUserPermissions Add new api.

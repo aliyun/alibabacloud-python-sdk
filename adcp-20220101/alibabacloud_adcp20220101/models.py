@@ -2580,15 +2580,11 @@ class DescribeUserPermissionsRequest(TeaModel):
 class DescribeUserPermissionsResponseBodyPermissions(TeaModel):
     def __init__(
         self,
-        owner_id: str = None,
-        parent_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
         role_name: str = None,
         role_type: str = None,
     ):
-        self.owner_id = owner_id
-        self.parent_id = parent_id
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.role_name = role_name
@@ -2603,10 +2599,6 @@ class DescribeUserPermissionsResponseBodyPermissions(TeaModel):
             return _map
 
         result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.parent_id is not None:
-            result['ParentId'] = self.parent_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -2619,10 +2611,6 @@ class DescribeUserPermissionsResponseBodyPermissions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ParentId') is not None:
-            self.parent_id = m.get('ParentId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -2935,6 +2923,39 @@ class GrantUserPermissionsRequest(TeaModel):
             for k in m.get('Permissions'):
                 temp_model = GrantUserPermissionsRequestPermissions()
                 self.permissions.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GrantUserPermissionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        permissions_shrink: str = None,
+        user_id: str = None,
+    ):
+        self.permissions_shrink = permissions_shrink
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions_shrink is not None:
+            result['Permissions'] = self.permissions_shrink
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Permissions') is not None:
+            self.permissions_shrink = m.get('Permissions')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self

@@ -919,13 +919,17 @@ class Client(OpenApiClient):
 
     def grant_user_permissions_with_options(
         self,
-        request: adcp_20220101_models.GrantUserPermissionsRequest,
+        tmp_req: adcp_20220101_models.GrantUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adcp_20220101_models.GrantUserPermissionsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.GrantUserPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
         query = {}
-        if not UtilClient.is_unset(request.permissions):
-            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.permissions_shrink):
+            query['Permissions'] = request.permissions_shrink
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -949,13 +953,17 @@ class Client(OpenApiClient):
 
     async def grant_user_permissions_with_options_async(
         self,
-        request: adcp_20220101_models.GrantUserPermissionsRequest,
+        tmp_req: adcp_20220101_models.GrantUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adcp_20220101_models.GrantUserPermissionsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = adcp_20220101_models.GrantUserPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
         query = {}
-        if not UtilClient.is_unset(request.permissions):
-            query['Permissions'] = request.permissions
+        if not UtilClient.is_unset(request.permissions_shrink):
+            query['Permissions'] = request.permissions_shrink
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
