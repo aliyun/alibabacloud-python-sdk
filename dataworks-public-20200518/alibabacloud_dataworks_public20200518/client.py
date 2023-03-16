@@ -20654,6 +20654,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
+        """
+        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+        
+        @param request: UpdateDIProjectConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIProjectConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_type):
@@ -20688,6 +20695,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
+        """
+        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+        
+        @param request: UpdateDIProjectConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIProjectConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_type):
@@ -20721,6 +20735,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
+        """
+        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+        
+        @param request: UpdateDIProjectConfigRequest
+        @return: UpdateDIProjectConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_diproject_config_with_options(request, runtime)
 
@@ -20728,6 +20748,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
+        """
+        DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+        
+        @param request: UpdateDIProjectConfigRequest
+        @return: UpdateDIProjectConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_diproject_config_with_options_async(request, runtime)
 
