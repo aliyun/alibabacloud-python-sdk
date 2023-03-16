@@ -2204,13 +2204,10 @@ class CreateClusterRequestEcsOrder(TeaModel):
         self.manager = manager
 
     def validate(self):
-        self.validate_required(self.compute, 'compute')
         if self.compute:
             self.compute.validate()
-        self.validate_required(self.login, 'login')
         if self.login:
             self.login.validate()
-        self.validate_required(self.manager, 'manager')
         if self.manager:
             self.manager.validate()
 
@@ -3307,7 +3304,9 @@ class CreateGWSImageRequest(TeaModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The ID of the visualization instance.
         self.instance_id = instance_id
+        # The image name of the visualization instance.
         self.name = name
 
     def validate(self):
@@ -3340,7 +3339,9 @@ class CreateGWSImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # The image ID of the visualization instance.
         self.image_id = image_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3677,10 +3678,8 @@ class CreateHybridClusterRequestEcsOrder(TeaModel):
         self.manager = manager
 
     def validate(self):
-        self.validate_required(self.compute, 'compute')
         if self.compute:
             self.compute.validate()
-        self.validate_required(self.manager, 'manager')
         if self.manager:
             self.manager.validate()
 
@@ -5037,6 +5036,7 @@ class DeleteGWSClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The ID of the visualization service.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -5064,6 +5064,7 @@ class DeleteGWSClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5135,6 +5136,7 @@ class DeleteGWSInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the visualization instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5162,6 +5164,7 @@ class DeleteGWSInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7849,8 +7852,17 @@ class DescribeGWSClustersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The IDs of the visualization services.
         self.cluster_id = cluster_id
+        # The page number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -7890,11 +7902,20 @@ class DescribeGWSClustersResponseBodyClustersClusterInfo(TeaModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the visualization service.
         self.cluster_id = cluster_id
+        # The time when the visualization service was created.
         self.create_time = create_time
+        # The number of visualization instances.
         self.instance_count = instance_count
+        # The status of the visualization services. Valid values:
+        # 
+        # *   creating: The service is being created.
+        # *   starting: The service is being started.
+        # *   running: The service is running.
+        # *   deleted: The service is deleted.
         self.status = status
-        # VPC ID。
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7978,11 +7999,20 @@ class DescribeGWSClustersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The type of the account. Valid values:
+        # 
+        # *   sub: a RAM user.
+        # *   parent: an Alibaba Cloud account.
         self.caller_type = caller_type
+        # The information of the visualization services.
         self.clusters = clusters
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -8309,11 +8339,27 @@ class DescribeGWSInstancesRequest(TeaModel):
         user_name: str = None,
         user_uid: int = None,
     ):
+        # The ID of the visualization service.
         self.cluster_id = cluster_id
+        # The ID of the visualization instance.
         self.instance_id = instance_id
+        # The page number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The username of the entity whose instances you want to query.
+        # 
+        # >  If this parameter is not specified, instances of all users are queried.
         self.user_name = user_name
+        # The user ID of the entity whose instances you want to query.
+        # 
+        # >  If this parameter is not specified, instances of all users are queried.
         self.user_uid = user_uid
 
     def validate(self):
@@ -8364,7 +8410,9 @@ class DescribeGWSInstancesResponseBodyInstancesInstanceInfoAppListAppInfo(TeaMod
         app_path: str = None,
     ):
         self.app_args = app_args
+        # The name of the application.
         self.app_name = app_name
+        # The execution directory of the application.
         self.app_path = app_path
 
     def validate(self):
@@ -8444,15 +8492,43 @@ class DescribeGWSInstancesResponseBodyInstancesInstanceInfo(TeaModel):
         user_name: str = None,
         work_mode: str = None,
     ):
+        # The list of application information.
+        # 
+        # >  If the WorkMode parameter is set to Desktop, an empty value is returned in this parameter.
         self.app_list = app_list
+        # The ID of the visualizatio service.
         self.cluster_id = cluster_id
+        # The time when the visualization instance was created.
         self.create_time = create_time
+        # The time when the visualization instance expires.
         self.expire_time = expire_time
+        # The ID of the visualization instance.
         self.instance_id = instance_id
+        # The type of the visualization instance.
         self.instance_type = instance_type
+        # The name of the visualization instance.
         self.name = name
+        # The status of the visualization instance. Valid values:
+        # 
+        # *   Creating: The instance is being created.
+        # *   Starting: The instance is being started.
+        # *   Stopping: The instance is being stopped.
+        # *   Stopped: The instance is stopped.
+        # *   Initializing: The instance is being initialized.
+        # *   Unregistered: The instance is not registered.
+        # *   Registered: The instance is registered.
+        # *   InUse: The instance is in use.
+        # *   Missing: The instance cannot be found.
+        # *   Cloning: An image is being generated based on the instance.
         self.status = status
+        # The username of the entity to which the visualization instance is assigned.
+        # 
+        # >  If the instance is not assigned to a specified user, this parameter is empty.
         self.user_name = user_name
+        # The working mode of the visualization instance. Valid values:
+        # 
+        # *   Desktop
+        # *   Application
         self.work_mode = work_mode
 
     def validate(self):
@@ -8557,10 +8633,15 @@ class DescribeGWSInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of visualization instances.
         self.instances = instances
+        # The page number of the current page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -8853,6 +8934,7 @@ class DescribeImageGatewayConfigRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -8883,9 +8965,16 @@ class DescribeImageGatewayConfigResponseBodyImagegwLocationsLocationInfo(TeaMode
         remote_type: str = None,
         url: str = None,
     ):
+        # The authentication method of the image repository. Valid values:
+        # 
+        # *   http
+        # *   https
         self.authentication = authentication
+        # The source address of the image repository.
         self.location = location
+        # The type of the image repository.
         self.remote_type = remote_type
+        # The URL of the image repository.
         self.url = url
 
     def validate(self):
@@ -8965,11 +9054,17 @@ class DescribeImageGatewayConfigResponseBodyImagegw(TeaModel):
         pull_update_timeout: int = None,
         update_date_time: str = None,
     ):
+        # The default address of the image repository.
         self.default_image_location = default_image_location
+        # The time when the image expires.
         self.image_expiration_timeout = image_expiration_timeout
+        # An array of the image repository addresses.
         self.locations = locations
+        # The information about the image gateway database.
         self.mongo_dburi = mongo_dburi
+        # The timeout period for pulling images.
         self.pull_update_timeout = pull_update_timeout
+        # The time when the file was updated.
         self.update_date_time = update_date_time
 
     def validate(self):
@@ -9020,7 +9115,9 @@ class DescribeImageGatewayConfigResponseBody(TeaModel):
         imagegw: DescribeImageGatewayConfigResponseBodyImagegw = None,
         request_id: str = None,
     ):
+        # The information about the image gateway configuration file.
         self.imagegw = imagegw
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9436,6 +9533,7 @@ class DescribeNFSClientStatusRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the visualization instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -9465,8 +9563,11 @@ class DescribeNFSClientStatusResponseBodyResult(TeaModel):
         invoke_record_status: str = None,
         output: str = None,
     ):
+        # The Base64-decoded Output parameter value. A True in the last line indicates successful installation. Otherwise, the installation fails.
         self.exit_code = exit_code
+        # The status of the invocation record, which is the same as the value of the Status parameter.
         self.invoke_record_status = invoke_record_status
+        # The execution result of the command.
         self.output = output
 
     def validate(self):
@@ -9504,8 +9605,15 @@ class DescribeNFSClientStatusResponseBody(TeaModel):
         result: DescribeNFSClientStatusResponseBodyResult = None,
         status: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of results.
         self.result = result
+        # The deployment status of the NFS client. Valid values:
+        # 
+        # *   NotInstalled: The client is not installed.
+        # *   Running: The client is being installed.
+        # *   Finished: The client is installed on the instance.
         self.status = status
 
     def validate(self):
@@ -11096,6 +11204,7 @@ class GetAutoScaleConfigResponseBody(TeaModel):
         self,
         cluster_id: str = None,
         cluster_type: str = None,
+        compute_enable_ht: bool = None,
         enable_auto_grow: bool = None,
         enable_auto_shrink: bool = None,
         exclude_nodes: str = None,
@@ -11122,6 +11231,7 @@ class GetAutoScaleConfigResponseBody(TeaModel):
         # *   opengridscheduler
         # *   deadline
         self.cluster_type = cluster_type
+        self.compute_enable_ht = compute_enable_ht
         # Indicates whether the cluster enabled auto scale-out. Valid values:
         # 
         # *   true
@@ -11191,6 +11301,8 @@ class GetAutoScaleConfigResponseBody(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.compute_enable_ht is not None:
+            result['ComputeEnableHt'] = self.compute_enable_ht
         if self.enable_auto_grow is not None:
             result['EnableAutoGrow'] = self.enable_auto_grow
         if self.enable_auto_shrink is not None:
@@ -11231,6 +11343,8 @@ class GetAutoScaleConfigResponseBody(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('ComputeEnableHt') is not None:
+            self.compute_enable_ht = m.get('ComputeEnableHt')
         if m.get('EnableAutoGrow') is not None:
             self.enable_auto_grow = m.get('EnableAutoGrow')
         if m.get('EnableAutoShrink') is not None:
@@ -17105,8 +17219,19 @@ class ListCpfsFileSystemsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the file system.
+        # 
+        # By default, the information about all CPFSs and their mount targets within your account are queried.
         self.file_system_id = file_system_id
+        # The page number of the page to return.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -17146,10 +17271,20 @@ class ListCpfsFileSystemsResponseBodyFileSystemListFileSystemsMountTargetListMou
         vpc_id: str = None,
         vsw_id: str = None,
     ):
+        # The domain where the mount target resides.
         self.mount_target_domain = mount_target_domain
+        # The network type.
         self.network_type = network_type
+        # The status of the mount target. Valid values:
+        # 
+        # *   Active: The mount target is available.
+        # *   Inactive: The mount target is unavailable.
+        # *   Pending: The mount target is being mounted.
+        # *   Deleting: The mount target is being deleted.
         self.status = status
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The vSwitch ID of the instance.
         self.vsw_id = vsw_id
 
     def validate(self):
@@ -17235,13 +17370,24 @@ class ListCpfsFileSystemsResponseBodyFileSystemListFileSystems(TeaModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # The capacity of the file system. Unit: GiB.
         self.capacity = capacity
+        # The time when the file system was created.
         self.create_time = create_time
+        # The description of the file system.
         self.destription = destription
+        # The ID of the file system.
         self.file_system_id = file_system_id
+        # The mount targets.
         self.mount_target_list = mount_target_list
+        # The protocol type that is applied to the mounted file system. Valid values:
+        # 
+        # *   NFS
+        # *   SMB
         self.protocol_type = protocol_type
+        # The region ID.
         self.region_id = region_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -17338,10 +17484,15 @@ class ListCpfsFileSystemsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of file systems.
         self.file_system_list = file_system_list
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -25193,8 +25344,16 @@ class ModifyImageGatewayConfigRequestRepo(TeaModel):
         location: str = None,
         url: str = None,
     ):
+        # The authentication method of the repository. Valid values:
+        # 
+        # *   http
+        # *   https
+        # 
+        # Default value: http.
         self.auth = auth
+        # The address of the repository N.
         self.location = location
+        # The URL of the repository. The URL is required to add a repository address.
         self.url = url
 
     def validate(self):
@@ -25238,14 +25397,23 @@ class ModifyImageGatewayConfigRequest(TeaModel):
         pull_update_timeout: int = None,
         repo: List[ModifyImageGatewayConfigRequestRepo] = None,
     ):
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The password that is used to log on to the database instance.
         self.dbpassword = dbpassword
+        # The URI of the database.
         self.dbserver_info = dbserver_info
+        # The type of the database. Set the value to mongodb.
         self.dbtype = dbtype
+        # The username of the account that is used to log on to the database.
         self.dbusername = dbusername
+        # The default repository service. Set the value to registry-1.docker.io.
         self.default_repo_location = default_repo_location
+        # The timeout period for deleting images.
         self.image_expiration_timeout = image_expiration_timeout
+        # The timeout period for pulling images.
         self.pull_update_timeout = pull_update_timeout
+        # The information about the repository.
         self.repo = repo
 
     def validate(self):
@@ -25313,6 +25481,7 @@ class ModifyImageGatewayConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25853,10 +26022,18 @@ class MountNFSRequest(TeaModel):
         protocol_type: str = None,
         remote_dir: str = None,
     ):
+        # The ID of the visualization instance.
         self.instance_id = instance_id
+        # The local mount directory.
         self.mount_dir = mount_dir
+        # The address of the mount target.
         self.nfs_dir = nfs_dir
+        # The type of the protocol. Valid values:
+        # 
+        # *   nfs
+        # *   smb
         self.protocol_type = protocol_type
+        # The remote mount address.
         self.remote_dir = remote_dir
 
     def validate(self):
@@ -25901,7 +26078,9 @@ class MountNFSResponseBody(TeaModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the execution.
         self.invoke_id = invoke_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -27325,6 +27504,7 @@ class SetAutoScaleConfigRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        compute_enable_ht: bool = None,
         enable_auto_grow: bool = None,
         enable_auto_shrink: bool = None,
         exclude_nodes: str = None,
@@ -27342,6 +27522,7 @@ class SetAutoScaleConfigRequest(TeaModel):
     ):
         # The ID of the cluster.
         self.cluster_id = cluster_id
+        self.compute_enable_ht = compute_enable_ht
         # Specifies whether to enable auto scale-out. Valid values:
         # 
         # *   true: enables auto scale-out.
@@ -27439,6 +27620,8 @@ class SetAutoScaleConfigRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.compute_enable_ht is not None:
+            result['ComputeEnableHt'] = self.compute_enable_ht
         if self.enable_auto_grow is not None:
             result['EnableAutoGrow'] = self.enable_auto_grow
         if self.enable_auto_shrink is not None:
@@ -27475,6 +27658,8 @@ class SetAutoScaleConfigRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('ComputeEnableHt') is not None:
+            self.compute_enable_ht = m.get('ComputeEnableHt')
         if m.get('EnableAutoGrow') is not None:
             self.enable_auto_grow = m.get('EnableAutoGrow')
         if m.get('EnableAutoShrink') is not None:
@@ -27592,12 +27777,51 @@ class SetGWSClusterPolicyRequest(TeaModel):
         usb_redirect: str = None,
         watermark: str = None,
     ):
+        # Specifies whether to support the asynchronous calls.
+        # 
+        # *   false: not supported. The result is returned after the request is completed.
+        # *   true: supported. The result is immediately returned while the request is being processed.
+        # 
+        # Default value: false.
         self.async_mode = async_mode
+        # The permissions on the clipboard. Valid values:
+        # 
+        # *   read: read-only. You can copy data from your local computer to the cloud desktop, but cannot copy data from the cloud desktop to your local computer.
+        # *   readwrite: read and write. You can copy data between your local computer and the cloud desktop.
+        # *   off: disabled. You cannot copy data between your local computer and the cloud desktop.
+        # 
+        # Default value: off.
         self.clipboard = clipboard
+        # The ID of the visualization service.
         self.cluster_id = cluster_id
+        # The permissions on local disk mapping. Valid values:
+        # 
+        # *   read: read-only. The disks on your local computer are mapped to the cloud desktop. You can only read (copy) files on the local computer, but cannot modify the files.
+        # *   readwrite: read and write. The disks on your local computer are mapped to the cloud desktop. You can read (copy) and modify files on your local computer.
+        # *   off: disabled. The disks on your local computer are not mapped to the cloud desktop.
+        # 
+        # Default value: off.
         self.local_drive = local_drive
+        # The UDP port. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
+        # Default value: on.
         self.udp_port = udp_port
+        # The USB redirection feature. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
+        # Default value: off.
         self.usb_redirect = usb_redirect
+        # The watermarking feature. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
+        # Default value: off.
         self.watermark = watermark
 
     def validate(self):
@@ -27649,6 +27873,7 @@ class SetGWSClusterPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -27826,8 +28051,11 @@ class SetGWSInstanceUserRequest(TeaModel):
         user_name: str = None,
         user_uid: str = None,
     ):
+        # The ID of the visualization instance.
         self.instance_id = instance_id
+        # The name of the user.
         self.user_name = user_name
+        # The ID of the user.
         self.user_uid = user_uid
 
     def validate(self):
@@ -27863,6 +28091,7 @@ class SetGWSInstanceUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28793,6 +29022,7 @@ class StartGWSInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the visualization instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -28820,6 +29050,7 @@ class StartGWSInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29873,7 +30104,7 @@ class SubmitJobRequest(TeaModel):
         self.array_request = array_request
         # Specifies whether to use an asynchronous link to submit the job.
         # 
-        # Default value: false
+        # Default value: false.
         self.async_ = async_
         # The maximum running time of the job. Valid formats:
         # 
@@ -29883,7 +30114,7 @@ class SubmitJobRequest(TeaModel):
         # 
         # We recommend that you use the hh:mm:ss format. If the maximum running time is 12 hours, set the value to 12:00:00.
         self.clock_time = clock_time
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # You can call the [ListClusters](~~87116~~) operation to query the cluster ID.
         self.cluster_id = cluster_id
@@ -29899,7 +30130,7 @@ class SubmitJobRequest(TeaModel):
         # 
         # The parameter takes effect only when the cluster uses PBS and a compute node is a GPU-accelerated instance.
         self.gpu = gpu
-        # The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
+        # The URL of the job file that is uploaded to an Object Storage Service (OSS) bucket.
         self.input_file_url = input_file_url
         # The name of the queue in which the job is run.
         # 
@@ -29911,15 +30142,15 @@ class SubmitJobRequest(TeaModel):
         self.name = name
         # The number of compute nodes required to run the job.
         # 
-        # >  If the parameter is not specified, the Task, Thread, Mem, and Gpu parameters become invalid.
+        # > If the parameter is not specified, the Cpu, Task, Thread, Mem, and Gpu parameters become invalid.
         self.node = node
         # The path that is used to run the job.
         self.package_path = package_path
         # The command to perform on the job after the job is submitted.
         self.post_cmd_line = post_cmd_line
-        # The priority of the job. Valid values: 0 to 9. A large value indicates a high priority.
+        # The priority of the job. Valid values: 0 to 9. A larger value indicates a higher priority.
         # 
-        # Default value: 0
+        # Default value: 0.
         self.priority = priority
         # Specifies whether the job can be rerun. Valid values:
         # 
@@ -29930,7 +30161,7 @@ class SubmitJobRequest(TeaModel):
         # 
         # You can call the [ListUsers](~~188572~~) operation to query the users of the cluster.
         self.runas_user = runas_user
-        # The user password.
+        # The password that corresponds to the username.
         self.runas_user_password = runas_user_password
         # The output file path of stderr.
         self.stderr_redirect_path = stderr_redirect_path
@@ -30945,6 +31176,7 @@ class UpdateClusterVolumesRequestAdditionalVolumes(TeaModel):
         remote_directory: str = None,
         roles: List[UpdateClusterVolumesRequestAdditionalVolumesRoles] = None,
         volume_id: str = None,
+        volume_mount_option: str = None,
         volume_mountpoint: str = None,
         volume_protocol: str = None,
         volume_type: str = None,
@@ -30963,6 +31195,7 @@ class UpdateClusterVolumesRequestAdditionalVolumes(TeaModel):
         self.roles = roles
         # The ID of the nth additional mounted file system.
         self.volume_id = volume_id
+        self.volume_mount_option = volume_mount_option
         # The domain name of the mount target for the nth additional mounted file system.
         self.volume_mountpoint = volume_mountpoint
         # The protocol type of the nth additional mounted file system. Valid values:
@@ -31001,6 +31234,8 @@ class UpdateClusterVolumesRequestAdditionalVolumes(TeaModel):
                 result['Roles'].append(k.to_map() if k else None)
         if self.volume_id is not None:
             result['VolumeId'] = self.volume_id
+        if self.volume_mount_option is not None:
+            result['VolumeMountOption'] = self.volume_mount_option
         if self.volume_mountpoint is not None:
             result['VolumeMountpoint'] = self.volume_mountpoint
         if self.volume_protocol is not None:
@@ -31026,6 +31261,8 @@ class UpdateClusterVolumesRequestAdditionalVolumes(TeaModel):
                 self.roles.append(temp_model.from_map(k))
         if m.get('VolumeId') is not None:
             self.volume_id = m.get('VolumeId')
+        if m.get('VolumeMountOption') is not None:
+            self.volume_mount_option = m.get('VolumeMountOption')
         if m.get('VolumeMountpoint') is not None:
             self.volume_mountpoint = m.get('VolumeMountpoint')
         if m.get('VolumeProtocol') is not None:

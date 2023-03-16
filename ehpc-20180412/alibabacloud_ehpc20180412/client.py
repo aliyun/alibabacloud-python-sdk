@@ -8565,6 +8565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
+        ## Description
         Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
         
         @param request: SubmitJobRequest
@@ -8598,6 +8599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
+        ## Description
         Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
         
         @param request: SubmitJobRequest
@@ -8630,6 +8632,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SubmitJobRequest,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
+        ## Description
         Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
         
         @param request: SubmitJobRequest
@@ -8643,6 +8646,7 @@ class Client(OpenApiClient):
         request: ehpc20180412_models.SubmitJobRequest,
     ) -> ehpc20180412_models.SubmitJobResponse:
         """
+        ## Description
         Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
         
         @param request: SubmitJobRequest
