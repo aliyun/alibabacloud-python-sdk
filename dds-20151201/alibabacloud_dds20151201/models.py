@@ -847,7 +847,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # *   These special characters include ! # $ % ^ & \* ( ) \_ + - =\
-        # *   The password must be 8 to 32 characters in length.
+        # *   The password is 8 to 32 characters in length.
         self.account_password = account_password
         # Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
         # 
@@ -864,10 +864,10 @@ class CreateDBInstanceRequest(TeaModel):
         self.business_info = business_info
         # The billing method of the instance. Valid values:
         # 
-        # *   **PostPaid:** pay-as-you-go
-        # *   **PrePaid:** subscription
+        # *   **PostPaid**: pay-as-you-go
+        # *   **PrePaid**: subscription
         # 
-        # > If you set this parameter to **PrePaid**, you must also specify the **Period** parameter.
+        # > If you specify this parameter to **PrePaid**, you must also specify the **Period** parameter.
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -881,11 +881,11 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   The name must start with a letter.
         # *   The name can contain digits, letters, underscores (\_), and hyphens (-).
-        # *   It must be 2 to 256 characters in length.
+        # *   The name must be 2 to 256 characters in length.
         self.dbinstance_description = dbinstance_description
         # The storage capacity of the instance. Unit: GB.
         # 
-        # The values that can be specified for this parameter vary based on the instance types. For more information, see [Replica set instance types](~~311410~~).
+        # The values that can be specified for this parameter are subject to the instance types. For more information, see [Replica set instance types](~~311410~~).
         self.dbinstance_storage = dbinstance_storage
         # The name of the database.
         # 
@@ -893,7 +893,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.database_names = database_names
         # The database engine of the instance. Set the value to **MongoDB**.
         self.engine = engine
-        # The version of the database engine. Valid values:
+        # The database engine version of the instance.
         # 
         # *   **6.0**\
         # *   **5.0**\
@@ -926,7 +926,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter is available and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
+        # *   This parameter is valid and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
         # 
         # *   The value of this parameter cannot be the same as the value of the **ZoneId** or **SecondaryZoneId** parameter.
         self.hidden_zone_id = hidden_zone_id
@@ -985,7 +985,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter is available and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
+        # *   This parameter is valid and required when the **EngineVersion** parameter is set to **4.4** or **5.0**.
         # 
         # *   The value of this parameter cannot be the same as the value of the **ZoneId** or **HiddenZoneId** parameter.
         self.secondary_zone_id = secondary_zone_id
@@ -1004,7 +1004,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.security_token = security_token
         # The ID of the source instance.
         # 
-        # > This parameter can only be specified when this operation is called to clone instances. You must also specify the **BackupId** parameter or **RestoreTime** parameter. If you call this operation to restore an instance from the recycle bin, this parameter is required. The **BackupId** and **RestoreTime** parameters are not required.
+        # > This parameter can only be specified when this operation is called to clone instances. You must also specify the **BackupId** parameter or **RestoreTime** parameter. If you call this operation to restore an instance from the recycle bin, only this parameter is required. The **BackupId** and **RestoreTime** parameters are not required.
         self.src_dbinstance_id = src_dbinstance_id
         # The storage engine used by the instance. Set the value to **WiredTiger**.
         # 
@@ -1016,14 +1016,14 @@ class CreateDBInstanceRequest(TeaModel):
         self.storage_engine = storage_engine
         # The storage type of the instance. Valid values:
         # 
-        # *   **cloud_essd1** :ESSD PL1
-        # *   **cloud_essd2**: ESSD PL2
-        # *   **cloud_essd3**: ESSD PL3
+        # *   **cloud_essd1** :ESSD PL1.
+        # *   **cloud_essd2**: ESSD PL2.
+        # *   **cloud_essd3**: ESSD PL3.
         # *   **local_ssd**: local SSD
         self.storage_type = storage_type
         # The vSwitch ID of the instance.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC ID of the instance.
         self.vpc_id = vpc_id
         # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
         self.zone_id = zone_id
@@ -5570,8 +5570,11 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The engine of the instance. The value is set to **MongoDB**.
+        # The database engine of the instance. Set the value to **MongoDB**.
         self.engine = engine
+        # 实例是否已删除，取值说明： 
+        # - **false**：实例正常运行，查询运行中实例信息。
+        # - **true**：实例已删除，查询被删除实例的信息。
         self.is_delete = is_delete
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5775,7 +5778,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         self.max_connections = max_connections
         # The maximum IOPS of the mongos node.
         self.max_iops = max_iops
-        # The instance type of the Mongos node.
+        # The instance type of the mongos node.
         self.node_class = node_class
         # The name of the mongos node.
         self.node_description = node_description
@@ -5785,11 +5788,11 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         self.port = port
         # The state of the mongos node. For more information, see [Instance states](~~63870~~).
         self.status = status
-        # The VPC ID of the instance.
+        # The VPC ID of the node.
         # 
         # > This parameter is returned if the network type of the instance is VPC.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance.
+        # The vSwitch ID of the node.
         # 
         # > This parameter is returned if the network type of the instance is VPC.
         self.v_switch_id = v_switch_id
@@ -6140,9 +6143,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag(TeaMod
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -6268,16 +6271,26 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.creation_time = creation_time
         # The minor version of the current database in the instance.
         self.current_kernel_version = current_kernel_version
-        # The edition of the instance.
+        # The instance type.
         self.dbinstance_class = dbinstance_class
         # The name of the instance.
         self.dbinstance_description = dbinstance_description
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The status of the orders generated for the instance. Valid values:
+        # 
+        # *   **all_completed**: All orders are being produced or complete.
+        # *   **order_unpaid**: The instance has unpaid orders.
+        # *   **order_wait_for_produce**: The order is being delivered for production.
+        # 
+        # >  The order production process includes placing an order, paying for an order, delivering an order for production, producing an order, and complete.
+        # 
+        # *   If an order is in the **order_wait_for_produce** state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
+        # *   The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
         self.dbinstance_order_status = dbinstance_order_status
         # Indicates whether release protection is enabled for the instance. Valid values:
         # 
-        # *   **true**: Release protection is enabled.
+        # *   **true**: enabled
         # *   **false**: disabled
         self.dbinstance_release_protection = dbinstance_release_protection
         # The state of the instance. For more information, see [Instance states](~~63870~~).
@@ -6288,13 +6301,12 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # 
         # *   **replicate**: replica set instance
         # *   **sharding**: sharded cluster instance
-        # *   **serverless**: serverless instance
         self.dbinstance_type = dbinstance_type
-        # 实例数据销毁时间，格式为yyyy-MM-ddTHH:mm:ssZ（UTC时间）。
+        # The time when the instance data was destroyed. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.destroy_time = destroy_time
-        # The engine of the instance.
+        # The database engine of the instance.
         self.engine = engine
-        # The engine version of the instance.
+        # The database engine version of the instance.
         # 
         # *   **6.0**\
         # *   **5.0**\
@@ -6434,7 +6446,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.storage_engine = storage_engine
         # The storage type of the instance. Valid values:
         # 
-        # **cloud_essd1** :ESSD PL1. **cloud_essd2**: ESSD of PL2. **cloud_essd3**: ESSD of PL3. **local_ssd**: local SSD.
+        # **cloud_essd1** :ESSD PL1 **cloud_essd2**: ESSD of PL2. **cloud_essd3**: ESSD of PL3. **local_ssd**: local SSD.
         self.storage_type = storage_type
         # Details about instance tags.
         self.tags = tags
@@ -11017,6 +11029,7 @@ class DescribeParametersRequest(TeaModel):
         self,
         character_type: str = None,
         dbinstance_id: str = None,
+        extra_param: str = None,
         node_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -11033,6 +11046,7 @@ class DescribeParametersRequest(TeaModel):
         # 
         # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         self.dbinstance_id = dbinstance_id
+        self.extra_param = extra_param
         # The ID of the mongos or shard in the specified sharded cluster instance.
         # 
         # >  This parameter is valid only if you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
@@ -11056,6 +11070,8 @@ class DescribeParametersRequest(TeaModel):
             result['CharacterType'] = self.character_type
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.extra_param is not None:
+            result['ExtraParam'] = self.extra_param
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.owner_account is not None:
@@ -11076,6 +11092,8 @@ class DescribeParametersRequest(TeaModel):
             self.character_type = m.get('CharacterType')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('ExtraParam') is not None:
+            self.extra_param = m.get('ExtraParam')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('OwnerAccount') is not None:
@@ -18175,27 +18193,31 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.coupon_no = coupon_no
         # The instance type. For more information, see [Instance types](~~57141~~). You can also call the [DescribeAvailableResource](~~149719~~) operation to view instance types.
         # 
-        # >  You must specify at least one of the DBInstanceClass and **DBInstanceStorage** parameters.
+        # > You must specify at least one of the DBInstanceClass and **DBInstanceStorage** parameters.
         self.dbinstance_class = dbinstance_class
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
         # The storage capacity of the instance. Valid values: 10 to 3000. The value must be a multiple of 10. Unit: GB. The values that can be specified for this parameter are subject to the instance types. For more information, see [Instance types](~~57141~~).
         # 
-        # > * You must specify at least one of the DBInstanceStorage and **DBInstanceClass** parameters.
-        # > * Storage capacity can be scaled down only for pay-as-you-go replica set instances. The new storage capacity you specify must be greater than the used storage capacity.
+        # > 
+        # 
+        # *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass** parameters.
+        # 
+        # *   Storage capacity can be scaled down only for pay-as-you-go replica set instances. The new storage capacity you specify must be greater than the used storage capacity.
         self.dbinstance_storage = dbinstance_storage
         # The time when the changed configurations take effect. Default value: Immediately. Valid values:
         # 
         # *   **Immediately**: The configurations immediately take effect.
         # *   **MaintainTime**: The configurations take effect during the maintenance window of the instance.
         self.effective_time = effective_time
+        # Additional parameter
         self.extra_param = extra_param
-        # The type of the modification. Valid values:
+        # The type of the configuration change. Default value: DOWNGRADE. Valid values:
         # 
         # *   **UPGRADE**\
         # *   **DOWNGRADE**\
         # 
-        # >  This parameter can be configured only when the billing method of the instance is subscription.
+        # > This parameter can be configured only when the billing method of the instance is subscription.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18203,14 +18225,14 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # If your instance has only **Classic Network** and **VPC** endpoints, you must apply for a public endpoint or release the classic network endpoint for the instance before you can change the **Read-only Nodes** value.
         # 
-        # >  You can go to the **Database Connections** page to view the types of networks that are enabled.
+        # > You can go to the **Database Connections** page to view the types of networks that are enabled.
         self.readonly_replicas = readonly_replicas
         # The number of nodes in the instance.
         # 
         # *   Valid values of replica set instances: **3**, **5**, and **7**\
         # *   Valid values of standalone instances: **1**\
         # 
-        # >  This parameter is not required for a serverless instance which is only available on the China site (aliyun.com).
+        # > This parameter is not required for a serverless instance which is only available on the China site (aliyun.com).
         self.replication_factor = replication_factor
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18872,11 +18894,11 @@ class ModifyNodeSpecRequest(TeaModel):
         # Specifies whether to enable automatic payment. Default value: true. Valid values:
         # 
         # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-        # *   **false**: disables automatic payment. In this case, you must manually pay for the instance.
+        # *   **false**: disables automatic payment.
         self.auto_pay = auto_pay
         # The business information. This is an additional parameter.
         self.business_info = business_info
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
@@ -18884,7 +18906,7 @@ class ModifyNodeSpecRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The time when the changed configurations take effect. Default value: Immediately. Valid values:
         # 
-        # *   **Immediately**: The new configurations immediately take effect
+        # *   **Immediately**: The new configurations immediately take effect.
         # *   **MaintainTime**: The new configurations take effect during the maintenance window of the instance.
         self.effective_time = effective_time
         # The source of the request. Valid values:
@@ -18892,18 +18914,18 @@ class ModifyNodeSpecRequest(TeaModel):
         # *   **OpenApi**: the ApsaraDB for MongoDB API
         # *   **mongo_buy**: the ApsaraDB for MongoDB console
         self.from_app = from_app
-        # The instance type of the shard or mongos node. For more information, see [Instance types](~~57141~~).
+        # The specifications of the shard or mongos node. For more information, see [Instance types](~~57141~~).
         self.node_class = node_class
         # The ID of the shard or mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the node ID.
         # 
-        # >  If you set this parameter to the ID of a shard node, you must also specify the **NodeStorage** parameter.
+        # > If you set this parameter to the ID of the shard node, you must also specify the **NodeStorage** parameter.
         self.node_id = node_id
         # The storage capacity of the shard node. Unit: GB.
         # 
         # *   Valid values are **10** to **2000** if the instance uses local SSDs.
         # *   Valid values are **20** to **16000** if the instance uses enhanced SSDs (ESSDs) at PL1.
         # 
-        # >  The value must be a multiple of 10.
+        # > The value must be a multiple of 10.
         self.node_storage = node_storage
         # The order type. Valid values:
         # 
@@ -20986,15 +21008,17 @@ class TagResourcesRequestTag(TeaModel):
     ):
         # The key of tag.
         # 
-        # * The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # * It can be up to 64 characters in length.
-        # * The key cannot be an empty string.
+        # N specifies the serial number of the tag. The following example shows how to calculate consumption intervals:
+        # 
+        # - **Tag.1.Key** specifies the key of the first tag.
+        # - **Tag.2.Key** specifies the key of the second tag.
         self.key = key
         # The value of tag.
         # 
-        # - The value cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # - It can be up to 128 characters in length.
-        # - The value can be an empty string.
+        # N specifies the serial number of the tag. The following example shows how to calculate consumption intervals: 
+        # 
+        # - **Tag.1.Value** specifies the value of the first tag.
+        # - **Tag.2.Value** specifies the value of the second tag.
         self.value = value
 
     def validate(self):
@@ -21040,13 +21064,13 @@ class TagResourcesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource IDs.
+        # The list of resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
         self.resource_type = resource_type
-        # The list of tags that you want to associate with the resources. You can specify up to 20 tags.
+        # The tags that are attached to the resources.
         self.tag = tag
 
     def validate(self):
@@ -21224,7 +21248,7 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
+        # The subscription duration of the instance. Unit: months. Valid values: **1**\~ **9**, **12**, **24**, and **36**.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
