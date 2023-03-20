@@ -117,6 +117,7 @@ class AccessTokenResponseBody(TeaModel):
         message: str = None,
         module: AccessTokenResponseBodyModule = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
         self.code = code
@@ -124,6 +125,7 @@ class AccessTokenResponseBody(TeaModel):
         self.message = message
         self.module = module
         self.request_id = request_id
+        self.success = success
         # traceId
         self.trace_id = trace_id
 
@@ -149,6 +151,8 @@ class AccessTokenResponseBody(TeaModel):
             result['module'] = self.module.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
         if self.trace_id is not None:
             result['traceId'] = self.trace_id
         return result
@@ -167,6 +171,8 @@ class AccessTokenResponseBody(TeaModel):
             self.module = temp_model.from_map(m['module'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
         if m.get('traceId') is not None:
             self.trace_id = m.get('traceId')
         return self
@@ -212,6 +218,289 @@ class AccessTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AccessTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddInvoiceEntityHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class AddInvoiceEntityRequestEntities(TeaModel):
+    def __init__(
+        self,
+        entity_id: str = None,
+        entity_name: str = None,
+        entity_type: str = None,
+    ):
+        self.entity_id = entity_id
+        self.entity_name = entity_name
+        self.entity_type = entity_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_id is not None:
+            result['entity_id'] = self.entity_id
+        if self.entity_name is not None:
+            result['entity_name'] = self.entity_name
+        if self.entity_type is not None:
+            result['entity_type'] = self.entity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entity_id') is not None:
+            self.entity_id = m.get('entity_id')
+        if m.get('entity_name') is not None:
+            self.entity_name = m.get('entity_name')
+        if m.get('entity_type') is not None:
+            self.entity_type = m.get('entity_type')
+        return self
+
+
+class AddInvoiceEntityRequest(TeaModel):
+    def __init__(
+        self,
+        entities: List[AddInvoiceEntityRequestEntities] = None,
+        third_part_id: str = None,
+    ):
+        self.entities = entities
+        self.third_part_id = third_part_id
+
+    def validate(self):
+        if self.entities:
+            for k in self.entities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['entities'] = []
+        if self.entities is not None:
+            for k in self.entities:
+                result['entities'].append(k.to_map() if k else None)
+        if self.third_part_id is not None:
+            result['third_part_id'] = self.third_part_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.entities = []
+        if m.get('entities') is not None:
+            for k in m.get('entities'):
+                temp_model = AddInvoiceEntityRequestEntities()
+                self.entities.append(temp_model.from_map(k))
+        if m.get('third_part_id') is not None:
+            self.third_part_id = m.get('third_part_id')
+        return self
+
+
+class AddInvoiceEntityShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        entities_shrink: str = None,
+        third_part_id: str = None,
+    ):
+        self.entities_shrink = entities_shrink
+        self.third_part_id = third_part_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entities_shrink is not None:
+            result['entities'] = self.entities_shrink
+        if self.third_part_id is not None:
+            result['third_part_id'] = self.third_part_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entities') is not None:
+            self.entities_shrink = m.get('entities')
+        if m.get('third_part_id') is not None:
+            self.third_part_id = m.get('third_part_id')
+        return self
+
+
+class AddInvoiceEntityResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        add_num: int = None,
+        selected_user_num: int = None,
+    ):
+        self.add_num = add_num
+        self.selected_user_num = selected_user_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_num is not None:
+            result['add_num'] = self.add_num
+        if self.selected_user_num is not None:
+            result['selected_user_num'] = self.selected_user_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('add_num') is not None:
+            self.add_num = m.get('add_num')
+        if m.get('selected_user_num') is not None:
+            self.selected_user_num = m.get('selected_user_num')
+        return self
+
+
+class AddInvoiceEntityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: AddInvoiceEntityResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = AddInvoiceEntityResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class AddInvoiceEntityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddInvoiceEntityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddInvoiceEntityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9766,6 +10055,7 @@ class CorpTokenResponseBody(TeaModel):
         message: str = None,
         module: CorpTokenResponseBodyModule = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
         self.code = code
@@ -9773,6 +10063,7 @@ class CorpTokenResponseBody(TeaModel):
         self.message = message
         self.module = module
         self.request_id = request_id
+        self.success = success
         # traceId
         self.trace_id = trace_id
 
@@ -9798,6 +10089,8 @@ class CorpTokenResponseBody(TeaModel):
             result['module'] = self.module.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
         if self.trace_id is not None:
             result['traceId'] = self.trace_id
         return result
@@ -9816,6 +10109,8 @@ class CorpTokenResponseBody(TeaModel):
             self.module = temp_model.from_map(m['module'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
         if m.get('traceId') is not None:
             self.trace_id = m.get('traceId')
         return self
@@ -10740,6 +11035,295 @@ class CostCenterSaveResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CostCenterSaveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteInvoiceEntityHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class DeleteInvoiceEntityRequestEntities(TeaModel):
+    def __init__(
+        self,
+        entity_id: str = None,
+        entity_type: str = None,
+    ):
+        self.entity_id = entity_id
+        self.entity_type = entity_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_id is not None:
+            result['entity_id'] = self.entity_id
+        if self.entity_type is not None:
+            result['entity_type'] = self.entity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entity_id') is not None:
+            self.entity_id = m.get('entity_id')
+        if m.get('entity_type') is not None:
+            self.entity_type = m.get('entity_type')
+        return self
+
+
+class DeleteInvoiceEntityRequest(TeaModel):
+    def __init__(
+        self,
+        del_all: bool = None,
+        entities: List[DeleteInvoiceEntityRequestEntities] = None,
+        third_part_id: str = None,
+    ):
+        self.del_all = del_all
+        self.entities = entities
+        self.third_part_id = third_part_id
+
+    def validate(self):
+        if self.entities:
+            for k in self.entities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.del_all is not None:
+            result['del_all'] = self.del_all
+        result['entities'] = []
+        if self.entities is not None:
+            for k in self.entities:
+                result['entities'].append(k.to_map() if k else None)
+        if self.third_part_id is not None:
+            result['third_part_id'] = self.third_part_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('del_all') is not None:
+            self.del_all = m.get('del_all')
+        self.entities = []
+        if m.get('entities') is not None:
+            for k in m.get('entities'):
+                temp_model = DeleteInvoiceEntityRequestEntities()
+                self.entities.append(temp_model.from_map(k))
+        if m.get('third_part_id') is not None:
+            self.third_part_id = m.get('third_part_id')
+        return self
+
+
+class DeleteInvoiceEntityShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        del_all: bool = None,
+        entities_shrink: str = None,
+        third_part_id: str = None,
+    ):
+        self.del_all = del_all
+        self.entities_shrink = entities_shrink
+        self.third_part_id = third_part_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.del_all is not None:
+            result['del_all'] = self.del_all
+        if self.entities_shrink is not None:
+            result['entities'] = self.entities_shrink
+        if self.third_part_id is not None:
+            result['third_part_id'] = self.third_part_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('del_all') is not None:
+            self.del_all = m.get('del_all')
+        if m.get('entities') is not None:
+            self.entities_shrink = m.get('entities')
+        if m.get('third_part_id') is not None:
+            self.third_part_id = m.get('third_part_id')
+        return self
+
+
+class DeleteInvoiceEntityResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        remove_num: int = None,
+        selected_user_num: int = None,
+    ):
+        self.remove_num = remove_num
+        self.selected_user_num = selected_user_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remove_num is not None:
+            result['remove_num'] = self.remove_num
+        if self.selected_user_num is not None:
+            result['selected_user_num'] = self.selected_user_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('remove_num') is not None:
+            self.remove_num = m.get('remove_num')
+        if m.get('selected_user_num') is not None:
+            self.selected_user_num = m.get('selected_user_num')
+        return self
+
+
+class DeleteInvoiceEntityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: DeleteInvoiceEntityResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = DeleteInvoiceEntityResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class DeleteInvoiceEntityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteInvoiceEntityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteInvoiceEntityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31739,6 +32323,407 @@ class IeFlightBillSettlementQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IeFlightBillSettlementQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InsInvoiceScanQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class InsInvoiceScanQueryRequest(TeaModel):
+    def __init__(
+        self,
+        bill_date: str = None,
+        bill_id: int = None,
+        invoice_sub_task_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        self.bill_date = bill_date
+        self.bill_id = bill_id
+        self.invoice_sub_task_id = invoice_sub_task_id
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bill_date is not None:
+            result['bill_date'] = self.bill_date
+        if self.bill_id is not None:
+            result['bill_id'] = self.bill_id
+        if self.invoice_sub_task_id is not None:
+            result['invoice_sub_task_id'] = self.invoice_sub_task_id
+        if self.page_no is not None:
+            result['page_no'] = self.page_no
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bill_date') is not None:
+            self.bill_date = m.get('bill_date')
+        if m.get('bill_id') is not None:
+            self.bill_id = m.get('bill_id')
+        if m.get('invoice_sub_task_id') is not None:
+            self.invoice_sub_task_id = m.get('invoice_sub_task_id')
+        if m.get('page_no') is not None:
+            self.page_no = m.get('page_no')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        return self
+
+
+class InsInvoiceScanQueryResponseBodyModuleItems(TeaModel):
+    def __init__(
+        self,
+        amount_with_tax: str = None,
+        amount_without_tax: str = None,
+        bill_date: str = None,
+        cost_center: str = None,
+        department: str = None,
+        insurance_company: str = None,
+        insurance_order_id: str = None,
+        insurance_type: str = None,
+        invoice_code: str = None,
+        invoice_day: str = None,
+        invoice_no: str = None,
+        order_id: int = None,
+        oss_url: str = None,
+        passenger: str = None,
+        project: str = None,
+        purchaser_name: str = None,
+        purchaser_tax_no: str = None,
+        real_invoice_title: str = None,
+        seller_name: str = None,
+        seller_tax_no: str = None,
+        tax_amount: str = None,
+        tax_rate: str = None,
+    ):
+        self.amount_with_tax = amount_with_tax
+        self.amount_without_tax = amount_without_tax
+        self.bill_date = bill_date
+        self.cost_center = cost_center
+        self.department = department
+        self.insurance_company = insurance_company
+        self.insurance_order_id = insurance_order_id
+        self.insurance_type = insurance_type
+        self.invoice_code = invoice_code
+        self.invoice_day = invoice_day
+        self.invoice_no = invoice_no
+        self.order_id = order_id
+        self.oss_url = oss_url
+        self.passenger = passenger
+        self.project = project
+        self.purchaser_name = purchaser_name
+        self.purchaser_tax_no = purchaser_tax_no
+        self.real_invoice_title = real_invoice_title
+        self.seller_name = seller_name
+        self.seller_tax_no = seller_tax_no
+        self.tax_amount = tax_amount
+        self.tax_rate = tax_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount_with_tax is not None:
+            result['amount_with_tax'] = self.amount_with_tax
+        if self.amount_without_tax is not None:
+            result['amount_without_tax'] = self.amount_without_tax
+        if self.bill_date is not None:
+            result['bill_date'] = self.bill_date
+        if self.cost_center is not None:
+            result['cost_center'] = self.cost_center
+        if self.department is not None:
+            result['department'] = self.department
+        if self.insurance_company is not None:
+            result['insurance_company'] = self.insurance_company
+        if self.insurance_order_id is not None:
+            result['insurance_order_id'] = self.insurance_order_id
+        if self.insurance_type is not None:
+            result['insurance_type'] = self.insurance_type
+        if self.invoice_code is not None:
+            result['invoice_code'] = self.invoice_code
+        if self.invoice_day is not None:
+            result['invoice_day'] = self.invoice_day
+        if self.invoice_no is not None:
+            result['invoice_no'] = self.invoice_no
+        if self.order_id is not None:
+            result['order_id'] = self.order_id
+        if self.oss_url is not None:
+            result['oss_url'] = self.oss_url
+        if self.passenger is not None:
+            result['passenger'] = self.passenger
+        if self.project is not None:
+            result['project'] = self.project
+        if self.purchaser_name is not None:
+            result['purchaser_name'] = self.purchaser_name
+        if self.purchaser_tax_no is not None:
+            result['purchaser_tax_no'] = self.purchaser_tax_no
+        if self.real_invoice_title is not None:
+            result['real_invoice_title'] = self.real_invoice_title
+        if self.seller_name is not None:
+            result['seller_name'] = self.seller_name
+        if self.seller_tax_no is not None:
+            result['seller_tax_no'] = self.seller_tax_no
+        if self.tax_amount is not None:
+            result['tax_amount'] = self.tax_amount
+        if self.tax_rate is not None:
+            result['tax_rate'] = self.tax_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount_with_tax') is not None:
+            self.amount_with_tax = m.get('amount_with_tax')
+        if m.get('amount_without_tax') is not None:
+            self.amount_without_tax = m.get('amount_without_tax')
+        if m.get('bill_date') is not None:
+            self.bill_date = m.get('bill_date')
+        if m.get('cost_center') is not None:
+            self.cost_center = m.get('cost_center')
+        if m.get('department') is not None:
+            self.department = m.get('department')
+        if m.get('insurance_company') is not None:
+            self.insurance_company = m.get('insurance_company')
+        if m.get('insurance_order_id') is not None:
+            self.insurance_order_id = m.get('insurance_order_id')
+        if m.get('insurance_type') is not None:
+            self.insurance_type = m.get('insurance_type')
+        if m.get('invoice_code') is not None:
+            self.invoice_code = m.get('invoice_code')
+        if m.get('invoice_day') is not None:
+            self.invoice_day = m.get('invoice_day')
+        if m.get('invoice_no') is not None:
+            self.invoice_no = m.get('invoice_no')
+        if m.get('order_id') is not None:
+            self.order_id = m.get('order_id')
+        if m.get('oss_url') is not None:
+            self.oss_url = m.get('oss_url')
+        if m.get('passenger') is not None:
+            self.passenger = m.get('passenger')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('purchaser_name') is not None:
+            self.purchaser_name = m.get('purchaser_name')
+        if m.get('purchaser_tax_no') is not None:
+            self.purchaser_tax_no = m.get('purchaser_tax_no')
+        if m.get('real_invoice_title') is not None:
+            self.real_invoice_title = m.get('real_invoice_title')
+        if m.get('seller_name') is not None:
+            self.seller_name = m.get('seller_name')
+        if m.get('seller_tax_no') is not None:
+            self.seller_tax_no = m.get('seller_tax_no')
+        if m.get('tax_amount') is not None:
+            self.tax_amount = m.get('tax_amount')
+        if m.get('tax_rate') is not None:
+            self.tax_rate = m.get('tax_rate')
+        return self
+
+
+class InsInvoiceScanQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        items: List[InsInvoiceScanQueryResponseBodyModuleItems] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total_page: int = None,
+        total_size: int = None,
+    ):
+        self.items = items
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total_page = total_page
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['page_no'] = self.page_no
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.total_page is not None:
+            result['total_page'] = self.total_page
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = InsInvoiceScanQueryResponseBodyModuleItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('page_no') is not None:
+            self.page_no = m.get('page_no')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_page') is not None:
+            self.total_page = m.get('total_page')
+        if m.get('total_size') is not None:
+            self.total_size = m.get('total_size')
+        return self
+
+
+class InsInvoiceScanQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: InsInvoiceScanQueryResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        # requestId
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = InsInvoiceScanQueryResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class InsInvoiceScanQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InsInvoiceScanQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InsInvoiceScanQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

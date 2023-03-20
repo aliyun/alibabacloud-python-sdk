@@ -121,6 +121,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.access_token_with_options_async(request, headers, runtime)
 
+    def add_invoice_entity_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.AddInvoiceEntityRequest,
+        headers: btrip_open_20220520_models.AddInvoiceEntityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddInvoiceEntityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entities):
+            request.entities_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entities, 'entities', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.entities_shrink):
+            body['entities'] = request.entities_shrink
+        if not UtilClient.is_unset(request.third_part_id):
+            body['third_part_id'] = request.third_part_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddInvoiceEntity',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/entities',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddInvoiceEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_invoice_entity_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.AddInvoiceEntityRequest,
+        headers: btrip_open_20220520_models.AddInvoiceEntityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddInvoiceEntityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entities):
+            request.entities_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entities, 'entities', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.entities_shrink):
+            body['entities'] = request.entities_shrink
+        if not UtilClient.is_unset(request.third_part_id):
+            body['third_part_id'] = request.third_part_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddInvoiceEntity',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/entities',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddInvoiceEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_invoice_entity(
+        self,
+        request: btrip_open_20220520_models.AddInvoiceEntityRequest,
+    ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddInvoiceEntityHeaders()
+        return self.add_invoice_entity_with_options(request, headers, runtime)
+
+    async def add_invoice_entity_async(
+        self,
+        request: btrip_open_20220520_models.AddInvoiceEntityRequest,
+    ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddInvoiceEntityHeaders()
+        return await self.add_invoice_entity_with_options_async(request, headers, runtime)
+
     def address_get_with_options(
         self,
         request: btrip_open_20220520_models.AddressGetRequest,
@@ -2889,6 +2987,108 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.CostCenterSaveHeaders()
         return await self.cost_center_save_with_options_async(request, headers, runtime)
 
+    def delete_invoice_entity_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.DeleteInvoiceEntityRequest,
+        headers: btrip_open_20220520_models.DeleteInvoiceEntityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.DeleteInvoiceEntityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entities):
+            request.entities_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entities, 'entities', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.del_all):
+            query['del_all'] = request.del_all
+        if not UtilClient.is_unset(request.entities_shrink):
+            query['entities'] = request.entities_shrink
+        if not UtilClient.is_unset(request.third_part_id):
+            query['third_part_id'] = request.third_part_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInvoiceEntity',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/entities',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteInvoiceEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_invoice_entity_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.DeleteInvoiceEntityRequest,
+        headers: btrip_open_20220520_models.DeleteInvoiceEntityHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.DeleteInvoiceEntityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entities):
+            request.entities_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entities, 'entities', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.del_all):
+            query['del_all'] = request.del_all
+        if not UtilClient.is_unset(request.entities_shrink):
+            query['entities'] = request.entities_shrink
+        if not UtilClient.is_unset(request.third_part_id):
+            query['third_part_id'] = request.third_part_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInvoiceEntity',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/invoice/v1/entities',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteInvoiceEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_invoice_entity(
+        self,
+        request: btrip_open_20220520_models.DeleteInvoiceEntityRequest,
+    ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteInvoiceEntityHeaders()
+        return self.delete_invoice_entity_with_options(request, headers, runtime)
+
+    async def delete_invoice_entity_async(
+        self,
+        request: btrip_open_20220520_models.DeleteInvoiceEntityRequest,
+    ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteInvoiceEntityHeaders()
+        return await self.delete_invoice_entity_with_options_async(request, headers, runtime)
+
     def department_save_with_options(
         self,
         tmp_req: btrip_open_20220520_models.DepartmentSaveRequest,
@@ -5652,6 +5852,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IeFlightBillSettlementQueryHeaders()
         return await self.ie_flight_bill_settlement_query_with_options_async(request, headers, runtime)
+
+    def ins_invoice_scan_query_with_options(
+        self,
+        request: btrip_open_20220520_models.InsInvoiceScanQueryRequest,
+        headers: btrip_open_20220520_models.InsInvoiceScanQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bill_date):
+            query['bill_date'] = request.bill_date
+        if not UtilClient.is_unset(request.bill_id):
+            query['bill_id'] = request.bill_id
+        if not UtilClient.is_unset(request.invoice_sub_task_id):
+            query['invoice_sub_task_id'] = request.invoice_sub_task_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InsInvoiceScanQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/scan/v1/ins-invoice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.InsInvoiceScanQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ins_invoice_scan_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.InsInvoiceScanQueryRequest,
+        headers: btrip_open_20220520_models.InsInvoiceScanQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bill_date):
+            query['bill_date'] = request.bill_date
+        if not UtilClient.is_unset(request.bill_id):
+            query['bill_id'] = request.bill_id
+        if not UtilClient.is_unset(request.invoice_sub_task_id):
+            query['invoice_sub_task_id'] = request.invoice_sub_task_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InsInvoiceScanQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/scan/v1/ins-invoice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.InsInvoiceScanQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ins_invoice_scan_query(
+        self,
+        request: btrip_open_20220520_models.InsInvoiceScanQueryRequest,
+    ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.InsInvoiceScanQueryHeaders()
+        return self.ins_invoice_scan_query_with_options(request, headers, runtime)
+
+    async def ins_invoice_scan_query_async(
+        self,
+        request: btrip_open_20220520_models.InsInvoiceScanQueryRequest,
+    ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.InsInvoiceScanQueryHeaders()
+        return await self.ins_invoice_scan_query_with_options_async(request, headers, runtime)
 
     def invoice_add_with_options(
         self,
