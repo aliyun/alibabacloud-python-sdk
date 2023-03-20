@@ -1,3 +1,6 @@
+2023-03-20 Version: 1.1.3
+- Support create approval constraint and approver check and approve provisioned product plan.
+
 2022-07-12 Version: 1.1.2
 - Support delete provisioned product plan.
 
