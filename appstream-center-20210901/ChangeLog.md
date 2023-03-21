@@ -1,3 +1,6 @@
+2023-03-21 Version: 1.0.4
+- Add Unbind Open API.
+
 2023-03-10 Version: 1.0.3
 - Add Unbind Open API.
 

@@ -295,6 +295,8 @@ class Client(OpenApiClient):
             request.network_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
         if not UtilClient.is_unset(tmp_req.node_pool):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_policy):
+            request.runtime_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_policy, 'RuntimePolicy', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
             request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
@@ -326,6 +328,8 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.promotion_id):
             body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.runtime_policy_shrink):
+            body['RuntimePolicy'] = request.runtime_policy_shrink
         if not UtilClient.is_unset(request.session_timeout):
             body['SessionTimeout'] = request.session_timeout
         if not UtilClient.is_unset(request.user_info_shrink):
@@ -363,6 +367,8 @@ class Client(OpenApiClient):
             request.network_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
         if not UtilClient.is_unset(tmp_req.node_pool):
             request.node_pool_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_policy):
+            request.runtime_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_policy, 'RuntimePolicy', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
             request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
         body = {}
@@ -394,6 +400,8 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.promotion_id):
             body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.runtime_policy_shrink):
+            body['RuntimePolicy'] = request.runtime_policy_shrink
         if not UtilClient.is_unset(request.session_timeout):
             body['SessionTimeout'] = request.session_timeout
         if not UtilClient.is_unset(request.user_info_shrink):
