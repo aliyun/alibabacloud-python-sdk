@@ -1,3 +1,6 @@
+2023-03-21 Version: 1.0.6
+- Update ListAgent.
+
 2022-12-26 Version: 1.0.5
 - ListDsAnswer api-add DialogName for return Object.
 - Update RequestId mapping.
