@@ -583,6 +583,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.AddTagWithUuidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.AddTagWithUuidResponse:
+        """
+        Security Center provides asset importance tags and custom tags. You can call the AddTagWithUuid operation to add only a custom tag to assets.
+        
+        @param request: AddTagWithUuidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTagWithUuidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_name):
@@ -613,6 +620,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.AddTagWithUuidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.AddTagWithUuidResponse:
+        """
+        Security Center provides asset importance tags and custom tags. You can call the AddTagWithUuid operation to add only a custom tag to assets.
+        
+        @param request: AddTagWithUuidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTagWithUuidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_name):
@@ -642,6 +656,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.AddTagWithUuidRequest,
     ) -> sas_20181203_models.AddTagWithUuidResponse:
+        """
+        Security Center provides asset importance tags and custom tags. You can call the AddTagWithUuid operation to add only a custom tag to assets.
+        
+        @param request: AddTagWithUuidRequest
+        @return: AddTagWithUuidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_tag_with_uuid_with_options(request, runtime)
 
@@ -649,6 +669,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.AddTagWithUuidRequest,
     ) -> sas_20181203_models.AddTagWithUuidResponse:
+        """
+        Security Center provides asset importance tags and custom tags. You can call the AddTagWithUuid operation to add only a custom tag to assets.
+        
+        @param request: AddTagWithUuidRequest
+        @return: AddTagWithUuidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_tag_with_uuid_with_options_async(request, runtime)
 
@@ -1209,6 +1235,84 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ChangeCheckConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.change_check_config_with_options_async(request, runtime)
+
+    def change_check_custom_config_with_options(
+        self,
+        request: sas_20181203_models.ChangeCheckCustomConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ChangeCheckCustomConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.custom_configs):
+            query['CustomConfigs'] = request.custom_configs
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeCheckCustomConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ChangeCheckCustomConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_check_custom_config_with_options_async(
+        self,
+        request: sas_20181203_models.ChangeCheckCustomConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ChangeCheckCustomConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.custom_configs):
+            query['CustomConfigs'] = request.custom_configs
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeCheckCustomConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ChangeCheckCustomConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_check_custom_config(
+        self,
+        request: sas_20181203_models.ChangeCheckCustomConfigRequest,
+    ) -> sas_20181203_models.ChangeCheckCustomConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_check_custom_config_with_options(request, runtime)
+
+    async def change_check_custom_config_async(
+        self,
+        request: sas_20181203_models.ChangeCheckCustomConfigRequest,
+    ) -> sas_20181203_models.ChangeCheckCustomConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_check_custom_config_with_options_async(request, runtime)
 
     def check_quara_file_id_with_options(
         self,
@@ -2086,8 +2190,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.CreateFileDetectUploadUrlResponse:
         """
-        You can call the this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
-        The form upload method is provided by OSS. For more information, see [Form upload](https://www.alibabacloud.com/help/en/object-storage-service/latest/upload-objects-form-upload).
+        You can call this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
+        The form upload method is provided by OSS. For more information, see [Form upload](~~84788~~).
         The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
         
         @param request: CreateFileDetectUploadUrlRequest
@@ -2127,8 +2231,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.CreateFileDetectUploadUrlResponse:
         """
-        You can call the this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
-        The form upload method is provided by OSS. For more information, see [Form upload](https://www.alibabacloud.com/help/en/object-storage-service/latest/upload-objects-form-upload).
+        You can call this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
+        The form upload method is provided by OSS. For more information, see [Form upload](~~84788~~).
         The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
         
         @param request: CreateFileDetectUploadUrlRequest
@@ -2167,8 +2271,8 @@ class Client(OpenApiClient):
         request: sas_20181203_models.CreateFileDetectUploadUrlRequest,
     ) -> sas_20181203_models.CreateFileDetectUploadUrlResponse:
         """
-        You can call the this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
-        The form upload method is provided by OSS. For more information, see [Form upload](https://www.alibabacloud.com/help/en/object-storage-service/latest/upload-objects-form-upload).
+        You can call this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
+        The form upload method is provided by OSS. For more information, see [Form upload](~~84788~~).
         The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
         
         @param request: CreateFileDetectUploadUrlRequest
@@ -2182,8 +2286,8 @@ class Client(OpenApiClient):
         request: sas_20181203_models.CreateFileDetectUploadUrlRequest,
     ) -> sas_20181203_models.CreateFileDetectUploadUrlResponse:
         """
-        You can call the this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
-        The form upload method is provided by OSS. For more information, see [Form upload](https://www.alibabacloud.com/help/en/object-storage-service/latest/upload-objects-form-upload).
+        You can call this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
+        The form upload method is provided by OSS. For more information, see [Form upload](~~84788~~).
         The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
         
         @param request: CreateFileDetectUploadUrlRequest
@@ -2369,6 +2473,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.honeypot_image_name):
             query['HoneypotImageName'] = request.honeypot_image_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.meta):
             query['Meta'] = request.meta
         if not UtilClient.is_unset(request.node_id):
@@ -2403,6 +2509,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.honeypot_image_name):
             query['HoneypotImageName'] = request.honeypot_image_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.meta):
             query['Meta'] = request.meta
         if not UtilClient.is_unset(request.node_id):
@@ -4069,6 +4177,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteGroupResponse:
+        """
+        The *Default** server group that is provided by Security Center cannot be deleted. After you delete a group, the assets in this group are moved to the **Default** group.
+        
+        @param request: DeleteGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4099,6 +4214,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteGroupResponse:
+        """
+        The *Default** server group that is provided by Security Center cannot be deleted. After you delete a group, the assets in this group are moved to the **Default** group.
+        
+        @param request: DeleteGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4128,6 +4250,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.DeleteGroupRequest,
     ) -> sas_20181203_models.DeleteGroupResponse:
+        """
+        The *Default** server group that is provided by Security Center cannot be deleted. After you delete a group, the assets in this group are moved to the **Default** group.
+        
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_group_with_options(request, runtime)
 
@@ -4135,6 +4263,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.DeleteGroupRequest,
     ) -> sas_20181203_models.DeleteGroupResponse:
+        """
+        The *Default** server group that is provided by Security Center cannot be deleted. After you delete a group, the assets in this group are moved to the **Default** group.
+        
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_group_with_options_async(request, runtime)
 
@@ -4147,6 +4281,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.honeypot_id):
             query['HoneypotId'] = request.honeypot_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4175,6 +4311,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.honeypot_id):
             query['HoneypotId'] = request.honeypot_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4215,6 +4353,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteHoneypotNodeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
@@ -4243,6 +4383,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteHoneypotNodeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
@@ -4287,6 +4429,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.honeypot_preset_id):
             query['HoneypotPresetId'] = request.honeypot_preset_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4315,6 +4459,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.honeypot_preset_id):
             query['HoneypotPresetId'] = request.honeypot_preset_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4355,6 +4501,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteHoneypotProbeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.probe_id):
             query['ProbeId'] = request.probe_id
         req = open_api_models.OpenApiRequest(
@@ -4383,6 +4531,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteHoneypotProbeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.probe_id):
             query['ProbeId'] = request.probe_id
         req = open_api_models.OpenApiRequest(
@@ -5834,160 +5984,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alarm_event_detail_with_options_async(request, runtime)
 
-    def describe_alarm_event_list_with_options(
-        self,
-        request: sas_20181203_models.DescribeAlarmEventListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeAlarmEventListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.alarm_event_name):
-            query['AlarmEventName'] = request.alarm_event_name
-        if not UtilClient.is_unset(request.alarm_event_type):
-            query['AlarmEventType'] = request.alarm_event_type
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.dealed):
-            query['Dealed'] = request.dealed
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.group_id):
-            query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.levels):
-            query['Levels'] = request.levels
-        if not UtilClient.is_unset(request.operate_error_code_list):
-            query['OperateErrorCodeList'] = request.operate_error_code_list
-        if not UtilClient.is_unset(request.operate_time_end):
-            query['OperateTimeEnd'] = request.operate_time_end
-        if not UtilClient.is_unset(request.operate_time_start):
-            query['OperateTimeStart'] = request.operate_time_start
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.remark):
-            query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.sort_column):
-            query['SortColumn'] = request.sort_column
-        if not UtilClient.is_unset(request.sort_type):
-            query['SortType'] = request.sort_type
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.tactic_id):
-            query['TacticId'] = request.tactic_id
-        if not UtilClient.is_unset(request.time_end):
-            query['TimeEnd'] = request.time_end
-        if not UtilClient.is_unset(request.time_start):
-            query['TimeStart'] = request.time_start
-        if not UtilClient.is_unset(request.unique_info):
-            query['UniqueInfo'] = request.unique_info
-        if not UtilClient.is_unset(request.uuids):
-            query['Uuids'] = request.uuids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAlarmEventList',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeAlarmEventListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_alarm_event_list_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeAlarmEventListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeAlarmEventListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.alarm_event_name):
-            query['AlarmEventName'] = request.alarm_event_name
-        if not UtilClient.is_unset(request.alarm_event_type):
-            query['AlarmEventType'] = request.alarm_event_type
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.dealed):
-            query['Dealed'] = request.dealed
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.group_id):
-            query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.levels):
-            query['Levels'] = request.levels
-        if not UtilClient.is_unset(request.operate_error_code_list):
-            query['OperateErrorCodeList'] = request.operate_error_code_list
-        if not UtilClient.is_unset(request.operate_time_end):
-            query['OperateTimeEnd'] = request.operate_time_end
-        if not UtilClient.is_unset(request.operate_time_start):
-            query['OperateTimeStart'] = request.operate_time_start
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.remark):
-            query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.sort_column):
-            query['SortColumn'] = request.sort_column
-        if not UtilClient.is_unset(request.sort_type):
-            query['SortType'] = request.sort_type
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.tactic_id):
-            query['TacticId'] = request.tactic_id
-        if not UtilClient.is_unset(request.time_end):
-            query['TimeEnd'] = request.time_end
-        if not UtilClient.is_unset(request.time_start):
-            query['TimeStart'] = request.time_start
-        if not UtilClient.is_unset(request.unique_info):
-            query['UniqueInfo'] = request.unique_info
-        if not UtilClient.is_unset(request.uuids):
-            query['Uuids'] = request.uuids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAlarmEventList',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeAlarmEventListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_alarm_event_list(
-        self,
-        request: sas_20181203_models.DescribeAlarmEventListRequest,
-    ) -> sas_20181203_models.DescribeAlarmEventListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_alarm_event_list_with_options(request, runtime)
-
-    async def describe_alarm_event_list_async(
-        self,
-        request: sas_20181203_models.DescribeAlarmEventListRequest,
-    ) -> sas_20181203_models.DescribeAlarmEventListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_alarm_event_list_with_options_async(request, runtime)
-
     def describe_alarm_event_stack_info_with_options(
         self,
         request: sas_20181203_models.DescribeAlarmEventStackInfoRequest,
@@ -6923,6 +6919,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeBackupClientsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        """
+        You can call the DescribeBackupClients operation to query the servers on which the anti-ransomware agent is installed in a specified region.
+        
+        @param request: DescribeBackupClientsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupClientsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.support_region_id):
@@ -6951,6 +6954,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeBackupClientsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        """
+        You can call the DescribeBackupClients operation to query the servers on which the anti-ransomware agent is installed in a specified region.
+        
+        @param request: DescribeBackupClientsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupClientsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.support_region_id):
@@ -6978,6 +6988,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.DescribeBackupClientsRequest,
     ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        """
+        You can call the DescribeBackupClients operation to query the servers on which the anti-ransomware agent is installed in a specified region.
+        
+        @param request: DescribeBackupClientsRequest
+        @return: DescribeBackupClientsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_clients_with_options(request, runtime)
 
@@ -6985,6 +7001,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.DescribeBackupClientsRequest,
     ) -> sas_20181203_models.DescribeBackupClientsResponse:
+        """
+        You can call the DescribeBackupClients operation to query the servers on which the anti-ransomware agent is installed in a specified region.
+        
+        @param request: DescribeBackupClientsRequest
+        @return: DescribeBackupClientsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_clients_with_options_async(request, runtime)
 
@@ -9181,6 +9203,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeContainerStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeContainerStatisticsResponse:
+        """
+        Only users who created a Container Registry Enterprise Edition instance can call this operation.
+        
+        @param request: DescribeContainerStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -9209,6 +9238,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeContainerStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeContainerStatisticsResponse:
+        """
+        Only users who created a Container Registry Enterprise Edition instance can call this operation.
+        
+        @param request: DescribeContainerStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -9236,6 +9272,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.DescribeContainerStatisticsRequest,
     ) -> sas_20181203_models.DescribeContainerStatisticsResponse:
+        """
+        Only users who created a Container Registry Enterprise Edition instance can call this operation.
+        
+        @param request: DescribeContainerStatisticsRequest
+        @return: DescribeContainerStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_container_statistics_with_options(request, runtime)
 
@@ -9243,6 +9285,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.DescribeContainerStatisticsRequest,
     ) -> sas_20181203_models.DescribeContainerStatisticsResponse:
+        """
+        Only users who created a Container Registry Enterprise Edition instance can call this operation.
+        
+        @param request: DescribeContainerStatisticsRequest
+        @return: DescribeContainerStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_container_statistics_with_options_async(request, runtime)
 
@@ -11714,9 +11762,16 @@ class Client(OpenApiClient):
 
     def describe_honey_pot_auth_with_options(
         self,
+        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeHoneyPotAuth',
             version='2018-12-03',
@@ -11735,9 +11790,16 @@ class Client(OpenApiClient):
 
     async def describe_honey_pot_auth_with_options_async(
         self,
+        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeHoneyPotAuth',
             version='2018-12-03',
@@ -11754,13 +11816,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_honey_pot_auth(self) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
+    def describe_honey_pot_auth(
+        self,
+        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
+    ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_honey_pot_auth_with_options(runtime)
+        return self.describe_honey_pot_auth_with_options(request, runtime)
 
-    async def describe_honey_pot_auth_async(self) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
+    async def describe_honey_pot_auth_async(
+        self,
+        request: sas_20181203_models.DescribeHoneyPotAuthRequest,
+    ) -> sas_20181203_models.DescribeHoneyPotAuthResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_honey_pot_auth_with_options_async(runtime)
+        return await self.describe_honey_pot_auth_with_options_async(request, runtime)
 
     def describe_honey_pot_susp_statistics_with_options(
         self,
@@ -11771,6 +11839,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.statistics_days):
             query['StatisticsDays'] = request.statistics_days
         if not UtilClient.is_unset(request.statistics_key_type):
@@ -11803,6 +11873,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.statistics_days):
             query['StatisticsDays'] = request.statistics_days
         if not UtilClient.is_unset(request.statistics_key_type):
@@ -21276,9 +21348,16 @@ class Client(OpenApiClient):
 
     def describe_vpc_honey_pot_criteria_with_options(
         self,
+        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeVpcHoneyPotCriteria',
             version='2018-12-03',
@@ -21297,9 +21376,16 @@ class Client(OpenApiClient):
 
     async def describe_vpc_honey_pot_criteria_with_options_async(
         self,
+        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeVpcHoneyPotCriteria',
             version='2018-12-03',
@@ -21316,13 +21402,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_vpc_honey_pot_criteria(self) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
+    def describe_vpc_honey_pot_criteria(
+        self,
+        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
+    ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_vpc_honey_pot_criteria_with_options(runtime)
+        return self.describe_vpc_honey_pot_criteria_with_options(request, runtime)
 
-    async def describe_vpc_honey_pot_criteria_async(self) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
+    async def describe_vpc_honey_pot_criteria_async(
+        self,
+        request: sas_20181203_models.DescribeVpcHoneyPotCriteriaRequest,
+    ) -> sas_20181203_models.DescribeVpcHoneyPotCriteriaResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_vpc_honey_pot_criteria_with_options_async(runtime)
+        return await self.describe_vpc_honey_pot_criteria_with_options_async(request, runtime)
 
     def describe_vpc_honey_pot_list_with_options(
         self,
@@ -24917,6 +25009,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -24947,6 +25041,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25827,6 +25923,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetHoneypotNodeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
@@ -25855,6 +25953,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetHoneypotNodeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
@@ -25971,6 +26071,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetHoneypotProbeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.probe_id):
             query['ProbeId'] = request.probe_id
         req = open_api_models.OpenApiRequest(
@@ -25999,6 +26101,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetHoneypotProbeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.probe_id):
             query['ProbeId'] = request.probe_id
         req = open_api_models.OpenApiRequest(
@@ -26180,9 +26284,16 @@ class Client(OpenApiClient):
 
     def get_interception_summary_with_options(
         self,
+        request: sas_20181203_models.GetInterceptionSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetInterceptionSummaryResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetInterceptionSummary',
             version='2018-12-03',
@@ -26201,9 +26312,16 @@ class Client(OpenApiClient):
 
     async def get_interception_summary_with_options_async(
         self,
+        request: sas_20181203_models.GetInterceptionSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetInterceptionSummaryResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetInterceptionSummary',
             version='2018-12-03',
@@ -26220,13 +26338,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_interception_summary(self) -> sas_20181203_models.GetInterceptionSummaryResponse:
+    def get_interception_summary(
+        self,
+        request: sas_20181203_models.GetInterceptionSummaryRequest,
+    ) -> sas_20181203_models.GetInterceptionSummaryResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_interception_summary_with_options(runtime)
+        return self.get_interception_summary_with_options(request, runtime)
 
-    async def get_interception_summary_async(self) -> sas_20181203_models.GetInterceptionSummaryResponse:
+    async def get_interception_summary_async(
+        self,
+        request: sas_20181203_models.GetInterceptionSummaryRequest,
+    ) -> sas_20181203_models.GetInterceptionSummaryResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_interception_summary_with_options_async(runtime)
+        return await self.get_interception_summary_with_options_async(request, runtime)
 
     def get_interception_target_detail_with_options(
         self,
@@ -28031,6 +28155,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.requirement_ids):
             query['RequirementIds'] = request.requirement_ids
         if not UtilClient.is_unset(request.risk_levels):
@@ -28041,6 +28167,8 @@ class Client(OpenApiClient):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.statuses):
             query['Statuses'] = request.statuses
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
         if not UtilClient.is_unset(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
@@ -28081,6 +28209,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.requirement_ids):
             query['RequirementIds'] = request.requirement_ids
         if not UtilClient.is_unset(request.risk_levels):
@@ -28091,6 +28221,8 @@ class Client(OpenApiClient):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.statuses):
             query['Statuses'] = request.statuses
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
         if not UtilClient.is_unset(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
@@ -29161,6 +29293,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.requirement_ids):
+            query['RequirementIds'] = request.requirement_ids
+        if not UtilClient.is_unset(request.standard_ids):
+            query['StandardIds'] = request.standard_ids
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29189,6 +29329,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.requirement_ids):
+            query['RequirementIds'] = request.requirement_ids
+        if not UtilClient.is_unset(request.standard_ids):
+            query['StandardIds'] = request.standard_ids
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29239,6 +29387,8 @@ class Client(OpenApiClient):
             query['HistoryName'] = request.history_name
         if not UtilClient.is_unset(request.interception_types):
             query['InterceptionTypes'] = request.interception_types
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.start_time):
@@ -29279,6 +29429,8 @@ class Client(OpenApiClient):
             query['HistoryName'] = request.history_name
         if not UtilClient.is_unset(request.interception_types):
             query['InterceptionTypes'] = request.interception_types
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.start_time):
@@ -29315,56 +29467,6 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListInterceptionHistoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_interception_history_with_options_async(request, runtime)
-
-    def list_interception_image_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ListInterceptionImageResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListInterceptionImage',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ListInterceptionImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_interception_image_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ListInterceptionImageResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListInterceptionImage',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ListInterceptionImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_interception_image(self) -> sas_20181203_models.ListInterceptionImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_interception_image_with_options(runtime)
-
-    async def list_interception_image_async(self) -> sas_20181203_models.ListInterceptionImageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_interception_image_with_options_async(runtime)
 
     def list_interception_rule_page_with_options(
         self,
@@ -29794,9 +29896,16 @@ class Client(OpenApiClient):
 
     def list_private_registry_type_with_options(
         self,
+        request: sas_20181203_models.ListPrivateRegistryTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListPrivateRegistryTypeResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListPrivateRegistryType',
             version='2018-12-03',
@@ -29815,9 +29924,16 @@ class Client(OpenApiClient):
 
     async def list_private_registry_type_with_options_async(
         self,
+        request: sas_20181203_models.ListPrivateRegistryTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListPrivateRegistryTypeResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListPrivateRegistryType',
             version='2018-12-03',
@@ -29834,13 +29950,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_private_registry_type(self) -> sas_20181203_models.ListPrivateRegistryTypeResponse:
+    def list_private_registry_type(
+        self,
+        request: sas_20181203_models.ListPrivateRegistryTypeRequest,
+    ) -> sas_20181203_models.ListPrivateRegistryTypeResponse:
         runtime = util_models.RuntimeOptions()
-        return self.list_private_registry_type_with_options(runtime)
+        return self.list_private_registry_type_with_options(request, runtime)
 
-    async def list_private_registry_type_async(self) -> sas_20181203_models.ListPrivateRegistryTypeResponse:
+    async def list_private_registry_type_async(
+        self,
+        request: sas_20181203_models.ListPrivateRegistryTypeRequest,
+    ) -> sas_20181203_models.ListPrivateRegistryTypeResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.list_private_registry_type_with_options_async(runtime)
+        return await self.list_private_registry_type_with_options_async(request, runtime)
 
     def list_rule_target_all_with_options(
         self,
@@ -38367,6 +38489,8 @@ class Client(OpenApiClient):
             query['HoneypotId'] = request.honeypot_id
         if not UtilClient.is_unset(request.honeypot_name):
             query['HoneypotName'] = request.honeypot_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.meta):
             query['Meta'] = request.meta
         req = open_api_models.OpenApiRequest(
@@ -38399,6 +38523,8 @@ class Client(OpenApiClient):
             query['HoneypotId'] = request.honeypot_id
         if not UtilClient.is_unset(request.honeypot_name):
             query['HoneypotName'] = request.honeypot_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.meta):
             query['Meta'] = request.meta
         req = open_api_models.OpenApiRequest(
@@ -38527,6 +38653,8 @@ class Client(OpenApiClient):
             query['HoneypotImageName'] = request.honeypot_image_name
         if not UtilClient.is_unset(request.honeypot_preset_id):
             query['HoneypotPresetId'] = request.honeypot_preset_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.meta):
             query['Meta'] = request.meta
         if not UtilClient.is_unset(request.preset_name):
@@ -38561,6 +38689,8 @@ class Client(OpenApiClient):
             query['HoneypotImageName'] = request.honeypot_image_name
         if not UtilClient.is_unset(request.honeypot_preset_id):
             query['HoneypotPresetId'] = request.honeypot_preset_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.meta):
             query['Meta'] = request.meta
         if not UtilClient.is_unset(request.preset_name):
@@ -38609,6 +38739,8 @@ class Client(OpenApiClient):
             query['Arp'] = request.arp
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.ping):
             query['Ping'] = request.ping
         if not UtilClient.is_unset(request.probe_id):
@@ -38645,6 +38777,8 @@ class Client(OpenApiClient):
             query['Arp'] = request.arp
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.ping):
             query['Ping'] = request.ping
         if not UtilClient.is_unset(request.probe_id):
