@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict
+from typing import Dict, Any
 
 
 class PredictClassifierModelRequest(TeaModel):
@@ -182,7 +182,7 @@ class PredictModelResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
-        data: str = None,
+        data: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
     ):
