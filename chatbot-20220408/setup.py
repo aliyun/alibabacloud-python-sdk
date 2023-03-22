@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_chatbot20220408.
 
-Created on 21/03/2023
+Created on 22/03/2023
 
 @author: Alibaba Cloud SDK
 """

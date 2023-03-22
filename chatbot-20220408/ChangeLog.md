@@ -1,3 +1,6 @@
+2023-03-22 Version: 1.0.7
+- Update ListAgent.
+
 2023-03-21 Version: 1.0.6
 - Update ListAgent.
 
