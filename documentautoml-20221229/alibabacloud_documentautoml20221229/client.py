@@ -208,6 +208,8 @@ class Client(OpenApiClient):
     ) -> document_automl_20221229_models.PredictTemplateModelResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.task_id):
@@ -238,6 +240,8 @@ class Client(OpenApiClient):
     ) -> document_automl_20221229_models.PredictTemplateModelResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.task_id):
