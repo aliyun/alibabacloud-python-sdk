@@ -1,3 +1,6 @@
+2023-03-22 Version: 1.1.13
+- RecognizeTableOcr.
+
 2022-11-24 Version: 1.1.12
 - RecognizeIdcard, VerifyBusinessLicense, VerifyVATInvoice.
 

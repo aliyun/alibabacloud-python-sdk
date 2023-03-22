@@ -7494,12 +7494,14 @@ class RecognizeSocialSecurityCardVersionIIResponse(TeaModel):
 class RecognizeTableOcrRequest(TeaModel):
     def __init__(
         self,
+        is_hand_writing: str = None,
         line_less: bool = None,
         need_rotate: bool = None,
         skip_detection: bool = None,
         url: str = None,
         body: BinaryIO = None,
     ):
+        self.is_hand_writing = is_hand_writing
         self.line_less = line_less
         self.need_rotate = need_rotate
         self.skip_detection = skip_detection
@@ -7515,6 +7517,8 @@ class RecognizeTableOcrRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.is_hand_writing is not None:
+            result['IsHandWriting'] = self.is_hand_writing
         if self.line_less is not None:
             result['LineLess'] = self.line_less
         if self.need_rotate is not None:
@@ -7529,6 +7533,8 @@ class RecognizeTableOcrRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IsHandWriting') is not None:
+            self.is_hand_writing = m.get('IsHandWriting')
         if m.get('LineLess') is not None:
             self.line_less = m.get('LineLess')
         if m.get('NeedRotate') is not None:
@@ -8377,128 +8383,6 @@ class RecognizeTrainInvoiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RecognizeTrainInvoiceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RecognizeTravelCardRequest(TeaModel):
-    def __init__(
-        self,
-        url: str = None,
-        body: BinaryIO = None,
-    ):
-        self.url = url
-        self.body = body
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.url is not None:
-            result['Url'] = self.url
-        if self.body is not None:
-            result['body'] = self.body
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
-        if m.get('body') is not None:
-            self.body = m.get('body')
-        return self
-
-
-class RecognizeTravelCardResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RecognizeTravelCardResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RecognizeTravelCardResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RecognizeTravelCardResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
