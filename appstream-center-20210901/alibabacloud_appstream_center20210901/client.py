@@ -1121,6 +1121,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_app_instance_group_with_options_async(request, runtime)
 
+    def list_app_instances_with_options(
+        self,
+        request: appstream_center_20210901_models.ListAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_id):
+            query['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAppInstances',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListAppInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_instances_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ListAppInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not UtilClient.is_unset(request.app_instance_id):
+            query['AppInstanceId'] = request.app_instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListAppInstances',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListAppInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_instances(
+        self,
+        request: appstream_center_20210901_models.ListAppInstancesRequest,
+    ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_app_instances_with_options(request, runtime)
+
+    async def list_app_instances_async(
+        self,
+        request: appstream_center_20210901_models.ListAppInstancesRequest,
+    ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_app_instances_with_options_async(request, runtime)
+
     def list_node_instance_type_with_options(
         self,
         request: appstream_center_20210901_models.ListNodeInstanceTypeRequest,
