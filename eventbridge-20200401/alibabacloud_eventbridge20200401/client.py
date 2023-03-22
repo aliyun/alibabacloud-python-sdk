@@ -2377,6 +2377,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pause_event_streaming_with_options_async(request, runtime)
 
+    def put_targets_with_options(
+        self,
+        tmp_req: eventbridge_20200401_models.PutTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.PutTargetsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.PutTargetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutTargets',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.PutTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_targets_with_options_async(
+        self,
+        tmp_req: eventbridge_20200401_models.PutTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.PutTargetsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.PutTargetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.event_bus_name):
+            query['EventBusName'] = request.event_bus_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutTargets',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.PutTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_targets(
+        self,
+        request: eventbridge_20200401_models.PutTargetsRequest,
+    ) -> eventbridge_20200401_models.PutTargetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.put_targets_with_options(request, runtime)
+
+    async def put_targets_async(
+        self,
+        request: eventbridge_20200401_models.PutTargetsRequest,
+    ) -> eventbridge_20200401_models.PutTargetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.put_targets_with_options_async(request, runtime)
+
     def query_event_with_options(
         self,
         request: eventbridge_20200401_models.QueryEventRequest,
