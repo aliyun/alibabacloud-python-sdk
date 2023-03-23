@@ -9,9 +9,13 @@ class CreateAIJobRequestInputsDes(TeaModel):
         self,
         band_no: str = None,
         data_id: str = None,
+        type: str = None,
+        zoom_level: int = None,
     ):
         self.band_no = band_no
         self.data_id = data_id
+        self.type = type
+        self.zoom_level = zoom_level
 
     def validate(self):
         pass
@@ -26,6 +30,10 @@ class CreateAIJobRequestInputsDes(TeaModel):
             result['BandNo'] = self.band_no
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.zoom_level is not None:
+            result['ZoomLevel'] = self.zoom_level
         return result
 
     def from_map(self, m: dict = None):
@@ -34,6 +42,10 @@ class CreateAIJobRequestInputsDes(TeaModel):
             self.band_no = m.get('BandNo')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('ZoomLevel') is not None:
+            self.zoom_level = m.get('ZoomLevel')
         return self
 
 
@@ -42,9 +54,13 @@ class CreateAIJobRequestInputsSrc(TeaModel):
         self,
         band_no: str = None,
         data_id: str = None,
+        type: str = None,
+        zoom_level: int = None,
     ):
         self.band_no = band_no
         self.data_id = data_id
+        self.type = type
+        self.zoom_level = zoom_level
 
     def validate(self):
         pass
@@ -59,6 +75,10 @@ class CreateAIJobRequestInputsSrc(TeaModel):
             result['BandNo'] = self.band_no
         if self.data_id is not None:
             result['DataId'] = self.data_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.zoom_level is not None:
+            result['ZoomLevel'] = self.zoom_level
         return result
 
     def from_map(self, m: dict = None):
@@ -67,6 +87,10 @@ class CreateAIJobRequestInputsSrc(TeaModel):
             self.band_no = m.get('BandNo')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('ZoomLevel') is not None:
+            self.zoom_level = m.get('ZoomLevel')
         return self
 
 
@@ -739,6 +763,7 @@ class GetJobsResponseBodyList(TeaModel):
         app: str = None,
         job_id: int = None,
         job_name: str = None,
+        job_out_data_id: str = None,
         job_type: int = None,
         out_data_id: int = None,
         out_data_type: int = None,
@@ -751,6 +776,7 @@ class GetJobsResponseBodyList(TeaModel):
         self.app = app
         self.job_id = job_id
         self.job_name = job_name
+        self.job_out_data_id = job_out_data_id
         self.job_type = job_type
         self.out_data_id = out_data_id
         self.out_data_type = out_data_type
@@ -775,6 +801,8 @@ class GetJobsResponseBodyList(TeaModel):
             result['JobId'] = self.job_id
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.job_out_data_id is not None:
+            result['JobOutDataId'] = self.job_out_data_id
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.out_data_id is not None:
@@ -801,6 +829,8 @@ class GetJobsResponseBodyList(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('JobOutDataId') is not None:
+            self.job_out_data_id = m.get('JobOutDataId')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('OutDataId') is not None:
@@ -1097,6 +1127,8 @@ class ListDatasResponseBodyListRaster(TeaModel):
         bbox: List[float] = None,
         cloud_coverage: int = None,
         name: str = None,
+        publish_msg: str = None,
+        publish_status: str = None,
         source_type: str = None,
         stac_id: str = None,
     ):
@@ -1106,6 +1138,8 @@ class ListDatasResponseBodyListRaster(TeaModel):
         self.bbox = bbox
         self.cloud_coverage = cloud_coverage
         self.name = name
+        self.publish_msg = publish_msg
+        self.publish_status = publish_status
         self.source_type = source_type
         self.stac_id = stac_id
 
@@ -1135,6 +1169,10 @@ class ListDatasResponseBodyListRaster(TeaModel):
             result['CloudCoverage'] = self.cloud_coverage
         if self.name is not None:
             result['Name'] = self.name
+        if self.publish_msg is not None:
+            result['PublishMsg'] = self.publish_msg
+        if self.publish_status is not None:
+            result['PublishStatus'] = self.publish_status
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         if self.stac_id is not None:
@@ -1158,6 +1196,10 @@ class ListDatasResponseBodyListRaster(TeaModel):
             self.cloud_coverage = m.get('CloudCoverage')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PublishMsg') is not None:
+            self.publish_msg = m.get('PublishMsg')
+        if m.get('PublishStatus') is not None:
+            self.publish_status = m.get('PublishStatus')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         if m.get('StacId') is not None:
@@ -1303,10 +1345,240 @@ class ListDatasResponse(TeaModel):
         return self
 
 
+class ListUserMapServiceDatasRequest(TeaModel):
+    def __init__(
+        self,
+        create_day: str = None,
+        data_id: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.create_day = create_day
+        self.data_id = data_id
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_day is not None:
+            result['CreateDay'] = self.create_day
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateDay') is not None:
+            self.create_day = m.get('CreateDay')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListUserMapServiceDatasResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        data_id: str = None,
+        map_type: str = None,
+        name: str = None,
+        projection_type: str = None,
+        publish_msg: str = None,
+        publish_status: str = None,
+        zoom_level_max: int = None,
+        zoom_level_min: int = None,
+    ):
+        self.address = address
+        self.data_id = data_id
+        self.map_type = map_type
+        self.name = name
+        self.projection_type = projection_type
+        self.publish_msg = publish_msg
+        self.publish_status = publish_status
+        self.zoom_level_max = zoom_level_max
+        self.zoom_level_min = zoom_level_min
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.map_type is not None:
+            result['MapType'] = self.map_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.projection_type is not None:
+            result['ProjectionType'] = self.projection_type
+        if self.publish_msg is not None:
+            result['PublishMsg'] = self.publish_msg
+        if self.publish_status is not None:
+            result['PublishStatus'] = self.publish_status
+        if self.zoom_level_max is not None:
+            result['ZoomLevelMax'] = self.zoom_level_max
+        if self.zoom_level_min is not None:
+            result['ZoomLevelMin'] = self.zoom_level_min
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('MapType') is not None:
+            self.map_type = m.get('MapType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectionType') is not None:
+            self.projection_type = m.get('ProjectionType')
+        if m.get('PublishMsg') is not None:
+            self.publish_msg = m.get('PublishMsg')
+        if m.get('PublishStatus') is not None:
+            self.publish_status = m.get('PublishStatus')
+        if m.get('ZoomLevelMax') is not None:
+            self.zoom_level_max = m.get('ZoomLevelMax')
+        if m.get('ZoomLevelMin') is not None:
+            self.zoom_level_min = m.get('ZoomLevelMin')
+        return self
+
+
+class ListUserMapServiceDatasResponseBody(TeaModel):
+    def __init__(
+        self,
+        list: List[ListUserMapServiceDatasResponseBodyList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.list = list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListUserMapServiceDatasResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListUserMapServiceDatasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserMapServiceDatasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserMapServiceDatasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserRasterDatasRequest(TeaModel):
     def __init__(
         self,
         acquisition_date: str = None,
+        data_id: str = None,
         from_type: str = None,
         name: str = None,
         page_number: int = None,
@@ -1315,6 +1587,7 @@ class ListUserRasterDatasRequest(TeaModel):
         upload_date: str = None,
     ):
         self.acquisition_date = acquisition_date
+        self.data_id = data_id
         self.from_type = from_type
         self.name = name
         self.page_number = page_number
@@ -1333,6 +1606,8 @@ class ListUserRasterDatasRequest(TeaModel):
         result = dict()
         if self.acquisition_date is not None:
             result['AcquisitionDate'] = self.acquisition_date
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.from_type is not None:
             result['FromType'] = self.from_type
         if self.name is not None:
@@ -1351,6 +1626,8 @@ class ListUserRasterDatasRequest(TeaModel):
         m = m or dict()
         if m.get('AcquisitionDate') is not None:
             self.acquisition_date = m.get('AcquisitionDate')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('FromType') is not None:
             self.from_type = m.get('FromType')
         if m.get('Name') is not None:
@@ -1420,6 +1697,8 @@ class ListUserRasterDatasResponseBodyListRaster(TeaModel):
         bbox: List[float] = None,
         cloud_coverage: int = None,
         name: str = None,
+        publish_msg: str = None,
+        publish_status: str = None,
         source_type: str = None,
         stac_id: str = None,
     ):
@@ -1429,6 +1708,8 @@ class ListUserRasterDatasResponseBodyListRaster(TeaModel):
         self.bbox = bbox
         self.cloud_coverage = cloud_coverage
         self.name = name
+        self.publish_msg = publish_msg
+        self.publish_status = publish_status
         self.source_type = source_type
         self.stac_id = stac_id
 
@@ -1458,6 +1739,10 @@ class ListUserRasterDatasResponseBodyListRaster(TeaModel):
             result['CloudCoverage'] = self.cloud_coverage
         if self.name is not None:
             result['Name'] = self.name
+        if self.publish_msg is not None:
+            result['PublishMsg'] = self.publish_msg
+        if self.publish_status is not None:
+            result['PublishStatus'] = self.publish_status
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         if self.stac_id is not None:
@@ -1481,6 +1766,10 @@ class ListUserRasterDatasResponseBodyListRaster(TeaModel):
             self.cloud_coverage = m.get('CloudCoverage')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PublishMsg') is not None:
+            self.publish_msg = m.get('PublishMsg')
+        if m.get('PublishStatus') is not None:
+            self.publish_status = m.get('PublishStatus')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         if m.get('StacId') is not None:
@@ -1629,12 +1918,14 @@ class ListUserRasterDatasResponse(TeaModel):
 class ListUserVectorDatasRequest(TeaModel):
     def __init__(
         self,
+        data_id: str = None,
         from_type: str = None,
         name: str = None,
         page_number: int = None,
         page_size: int = None,
         upload_date: str = None,
     ):
+        self.data_id = data_id
         self.from_type = from_type
         self.name = name
         self.page_number = page_number
@@ -1650,6 +1941,8 @@ class ListUserVectorDatasRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.from_type is not None:
             result['FromType'] = self.from_type
         if self.name is not None:
@@ -1664,6 +1957,8 @@ class ListUserVectorDatasRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('FromType') is not None:
             self.from_type = m.get('FromType')
         if m.get('Name') is not None:
@@ -1682,10 +1977,14 @@ class ListUserVectorDatasResponseBodyListVector(TeaModel):
         self,
         bbox: List[float] = None,
         name: str = None,
+        publish_msg: str = None,
+        publish_status: str = None,
         stac_id: str = None,
     ):
         self.bbox = bbox
         self.name = name
+        self.publish_msg = publish_msg
+        self.publish_status = publish_status
         self.stac_id = stac_id
 
     def validate(self):
@@ -1701,6 +2000,10 @@ class ListUserVectorDatasResponseBodyListVector(TeaModel):
             result['Bbox'] = self.bbox
         if self.name is not None:
             result['Name'] = self.name
+        if self.publish_msg is not None:
+            result['PublishMsg'] = self.publish_msg
+        if self.publish_status is not None:
+            result['PublishStatus'] = self.publish_status
         if self.stac_id is not None:
             result['StacId'] = self.stac_id
         return result
@@ -1711,6 +2014,10 @@ class ListUserVectorDatasResponseBodyListVector(TeaModel):
             self.bbox = m.get('Bbox')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PublishMsg') is not None:
+            self.publish_msg = m.get('PublishMsg')
+        if m.get('PublishStatus') is not None:
+            self.publish_status = m.get('PublishStatus')
         if m.get('StacId') is not None:
             self.stac_id = m.get('StacId')
         return self
@@ -1850,6 +2157,378 @@ class ListUserVectorDatasResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUserVectorDatasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PublishMapserviceRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        name: str = None,
+        projection_type: str = None,
+        zoom_level_max: int = None,
+        zoom_level_min: int = None,
+    ):
+        self.address = address
+        self.name = name
+        self.projection_type = projection_type
+        self.zoom_level_max = zoom_level_max
+        self.zoom_level_min = zoom_level_min
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.projection_type is not None:
+            result['ProjectionType'] = self.projection_type
+        if self.zoom_level_max is not None:
+            result['ZoomLevelMax'] = self.zoom_level_max
+        if self.zoom_level_min is not None:
+            result['ZoomLevelMin'] = self.zoom_level_min
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectionType') is not None:
+            self.projection_type = m.get('ProjectionType')
+        if m.get('ZoomLevelMax') is not None:
+            self.zoom_level_max = m.get('ZoomLevelMax')
+        if m.get('ZoomLevelMin') is not None:
+            self.zoom_level_min = m.get('ZoomLevelMin')
+        return self
+
+
+class PublishMapserviceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        request_id: str = None,
+    ):
+        self.data_id = data_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishMapserviceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PublishMapserviceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PublishMapserviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PublishRasterRequest(TeaModel):
+    def __init__(
+        self,
+        acquisition_date: str = None,
+        attach_download_url: str = None,
+        attach_file_type: str = None,
+        download_url: str = None,
+        file_type: str = None,
+        name: str = None,
+    ):
+        self.acquisition_date = acquisition_date
+        self.attach_download_url = attach_download_url
+        self.attach_file_type = attach_file_type
+        self.download_url = download_url
+        self.file_type = file_type
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acquisition_date is not None:
+            result['AcquisitionDate'] = self.acquisition_date
+        if self.attach_download_url is not None:
+            result['AttachDownloadUrl'] = self.attach_download_url
+        if self.attach_file_type is not None:
+            result['AttachFileType'] = self.attach_file_type
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcquisitionDate') is not None:
+            self.acquisition_date = m.get('AcquisitionDate')
+        if m.get('AttachDownloadUrl') is not None:
+            self.attach_download_url = m.get('AttachDownloadUrl')
+        if m.get('AttachFileType') is not None:
+            self.attach_file_type = m.get('AttachFileType')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class PublishRasterResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        request_id: str = None,
+    ):
+        self.data_id = data_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishRasterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PublishRasterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PublishRasterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PublishVectorRequest(TeaModel):
+    def __init__(
+        self,
+        download_url: str = None,
+        name: str = None,
+    ):
+        self.download_url = download_url
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class PublishVectorResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        request_id: str = None,
+    ):
+        self.data_id = data_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishVectorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PublishVectorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PublishVectorResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

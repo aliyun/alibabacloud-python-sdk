@@ -491,6 +491,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_datas_with_options_async(request, runtime)
 
+    def list_user_map_service_datas_with_options(
+        self,
+        request: aiearth__engine_20220609_models.ListUserMapServiceDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.ListUserMapServiceDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.create_day):
+            body['CreateDay'] = request.create_day
+        if not UtilClient.is_unset(request.data_id):
+            body['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListUserMapServiceDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.ListUserMapServiceDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_map_service_datas_with_options_async(
+        self,
+        request: aiearth__engine_20220609_models.ListUserMapServiceDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.ListUserMapServiceDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.create_day):
+            body['CreateDay'] = request.create_day
+        if not UtilClient.is_unset(request.data_id):
+            body['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListUserMapServiceDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.ListUserMapServiceDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_map_service_datas(
+        self,
+        request: aiearth__engine_20220609_models.ListUserMapServiceDatasRequest,
+    ) -> aiearth__engine_20220609_models.ListUserMapServiceDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_user_map_service_datas_with_options(request, runtime)
+
+    async def list_user_map_service_datas_async(
+        self,
+        request: aiearth__engine_20220609_models.ListUserMapServiceDatasRequest,
+    ) -> aiearth__engine_20220609_models.ListUserMapServiceDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_user_map_service_datas_with_options_async(request, runtime)
+
     def list_user_raster_datas_with_options(
         self,
         request: aiearth__engine_20220609_models.ListUserRasterDatasRequest,
@@ -500,6 +586,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.acquisition_date):
             body['AcquisitionDate'] = request.acquisition_date
+        if not UtilClient.is_unset(request.data_id):
+            body['DataId'] = request.data_id
         if not UtilClient.is_unset(request.from_type):
             body['FromType'] = request.from_type
         if not UtilClient.is_unset(request.name):
@@ -540,6 +628,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.acquisition_date):
             body['AcquisitionDate'] = request.acquisition_date
+        if not UtilClient.is_unset(request.data_id):
+            body['DataId'] = request.data_id
         if not UtilClient.is_unset(request.from_type):
             body['FromType'] = request.from_type
         if not UtilClient.is_unset(request.name):
@@ -592,6 +682,8 @@ class Client(OpenApiClient):
     ) -> aiearth__engine_20220609_models.ListUserVectorDatasResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.data_id):
+            body['DataId'] = request.data_id
         if not UtilClient.is_unset(request.from_type):
             body['FromType'] = request.from_type
         if not UtilClient.is_unset(request.name):
@@ -628,6 +720,8 @@ class Client(OpenApiClient):
     ) -> aiearth__engine_20220609_models.ListUserVectorDatasResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.data_id):
+            body['DataId'] = request.data_id
         if not UtilClient.is_unset(request.from_type):
             body['FromType'] = request.from_type
         if not UtilClient.is_unset(request.name):
@@ -670,3 +764,253 @@ class Client(OpenApiClient):
     ) -> aiearth__engine_20220609_models.ListUserVectorDatasResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_user_vector_datas_with_options_async(request, runtime)
+
+    def publish_mapservice_with_options(
+        self,
+        request: aiearth__engine_20220609_models.PublishMapserviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.PublishMapserviceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.address):
+            body['Address'] = request.address
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.projection_type):
+            body['ProjectionType'] = request.projection_type
+        if not UtilClient.is_unset(request.zoom_level_max):
+            body['ZoomLevelMax'] = request.zoom_level_max
+        if not UtilClient.is_unset(request.zoom_level_min):
+            body['ZoomLevelMin'] = request.zoom_level_min
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishMapservice',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.PublishMapserviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_mapservice_with_options_async(
+        self,
+        request: aiearth__engine_20220609_models.PublishMapserviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.PublishMapserviceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.address):
+            body['Address'] = request.address
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.projection_type):
+            body['ProjectionType'] = request.projection_type
+        if not UtilClient.is_unset(request.zoom_level_max):
+            body['ZoomLevelMax'] = request.zoom_level_max
+        if not UtilClient.is_unset(request.zoom_level_min):
+            body['ZoomLevelMin'] = request.zoom_level_min
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishMapservice',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.PublishMapserviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_mapservice(
+        self,
+        request: aiearth__engine_20220609_models.PublishMapserviceRequest,
+    ) -> aiearth__engine_20220609_models.PublishMapserviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_mapservice_with_options(request, runtime)
+
+    async def publish_mapservice_async(
+        self,
+        request: aiearth__engine_20220609_models.PublishMapserviceRequest,
+    ) -> aiearth__engine_20220609_models.PublishMapserviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_mapservice_with_options_async(request, runtime)
+
+    def publish_raster_with_options(
+        self,
+        request: aiearth__engine_20220609_models.PublishRasterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.PublishRasterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.acquisition_date):
+            body['AcquisitionDate'] = request.acquisition_date
+        if not UtilClient.is_unset(request.attach_download_url):
+            body['AttachDownloadUrl'] = request.attach_download_url
+        if not UtilClient.is_unset(request.attach_file_type):
+            body['AttachFileType'] = request.attach_file_type
+        if not UtilClient.is_unset(request.download_url):
+            body['DownloadUrl'] = request.download_url
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishRaster',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.PublishRasterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_raster_with_options_async(
+        self,
+        request: aiearth__engine_20220609_models.PublishRasterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.PublishRasterResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.acquisition_date):
+            body['AcquisitionDate'] = request.acquisition_date
+        if not UtilClient.is_unset(request.attach_download_url):
+            body['AttachDownloadUrl'] = request.attach_download_url
+        if not UtilClient.is_unset(request.attach_file_type):
+            body['AttachFileType'] = request.attach_file_type
+        if not UtilClient.is_unset(request.download_url):
+            body['DownloadUrl'] = request.download_url
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishRaster',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.PublishRasterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_raster(
+        self,
+        request: aiearth__engine_20220609_models.PublishRasterRequest,
+    ) -> aiearth__engine_20220609_models.PublishRasterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_raster_with_options(request, runtime)
+
+    async def publish_raster_async(
+        self,
+        request: aiearth__engine_20220609_models.PublishRasterRequest,
+    ) -> aiearth__engine_20220609_models.PublishRasterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_raster_with_options_async(request, runtime)
+
+    def publish_vector_with_options(
+        self,
+        request: aiearth__engine_20220609_models.PublishVectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.PublishVectorResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.download_url):
+            body['DownloadUrl'] = request.download_url
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishVector',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.PublishVectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_vector_with_options_async(
+        self,
+        request: aiearth__engine_20220609_models.PublishVectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.PublishVectorResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.download_url):
+            body['DownloadUrl'] = request.download_url
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishVector',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.PublishVectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_vector(
+        self,
+        request: aiearth__engine_20220609_models.PublishVectorRequest,
+    ) -> aiearth__engine_20220609_models.PublishVectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_vector_with_options(request, runtime)
+
+    async def publish_vector_async(
+        self,
+        request: aiearth__engine_20220609_models.PublishVectorRequest,
+    ) -> aiearth__engine_20220609_models.PublishVectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_vector_with_options_async(request, runtime)

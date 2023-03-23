@@ -1,3 +1,9 @@
+2023-03-23 Version: 1.0.4
+- Added raster, vector and map_service publish.
+- Added AI Job submit to support MAP_SERVICE.
+- Added publish_status and msg for all data.
+- Added jobOutid to getJob.
+
 2022-11-15 Version: 1.0.3
 - Added customized_model support.
 
