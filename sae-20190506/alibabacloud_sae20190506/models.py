@@ -9,6 +9,7 @@ class AbortAndRollbackChangeOrderRequest(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # ba386059-69b1-4e65-b1e5-0682d9fa\*\*\*\*\
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -36,6 +37,7 @@ class AbortAndRollbackChangeOrderResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -69,12 +71,30 @@ class AbortAndRollbackChangeOrderResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of the change order.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the change order was terminated or the application was rolled back. Valid values:
+        # 
+        # *   **true**: The change order was terminated or the application was rolled back.
+        # *   **false**: The change order could not be terminated or the application could not be rolled back.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -172,6 +192,7 @@ class AbortChangeOrderRequest(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # be2e1c76-682b-4897-98d3-1d8d6478\*\*\*\*\
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -199,6 +220,7 @@ class AbortChangeOrderResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -232,12 +254,30 @@ class AbortChangeOrderResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the change order was terminated. Valid values:
+        # 
+        # *   **true**: The change order was terminated.
+        # *   **false**: The change order could not be terminated.
         self.success = success
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -336,7 +376,9 @@ class BatchStartApplicationsRequest(TeaModel):
         app_ids: str = None,
         namespace_id: str = None,
     ):
+        # ebf491f0-c1a5-45e2-b2c4-710dbe2a\*\*\*\*\
         self.app_ids = app_ids
+        # cn-shanghai
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -368,6 +410,7 @@ class BatchStartApplicationsResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -401,12 +444,33 @@ class BatchStartApplicationsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the specified applications are successfully started. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -505,7 +569,9 @@ class BatchStopApplicationsRequest(TeaModel):
         app_ids: str = None,
         namespace_id: str = None,
     ):
+        # ebf491f0-c1a5-45e2-b2c4-710dbe2a\*\*\*\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\*\*\*\*\
         self.app_ids = app_ids
+        # cn-shanghai
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -537,6 +603,7 @@ class BatchStopApplicationsResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -570,12 +637,33 @@ class BatchStopApplicationsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the specified applications are stopped. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -677,10 +765,15 @@ class BindSlbRequest(TeaModel):
         intranet: str = None,
         intranet_slb_id: str = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
+        # \[{"port":80,"targetPort":8080,"protocol":"TCP"}]
         self.internet = internet
+        # lb-bp1tg0k6d9nqaw7l1\*\*\*\*\
         self.internet_slb_id = internet_slb_id
+        # \[{"port":80,"targetPort":8080,"protocol":"TCP"}]
         self.intranet = intranet
+        # lb-bp1tg0k6d9nqaw7l1\*\*\*\*\
         self.intranet_slb_id = intranet_slb_id
 
     def validate(self):
@@ -724,6 +817,7 @@ class BindSlbResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order. It can be used to query the task status.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -757,12 +851,30 @@ class BindSlbResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the SLB instance was successfully associated with the application. Valid values:
+        # 
+        # *   **true**: The SLB instance was successfully associated with the application.
+        # *   **false**: The SLB instance could not be associated with the application.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -861,7 +973,9 @@ class ConfirmPipelineBatchRequest(TeaModel):
         confirm: bool = None,
         pipeline_id: str = None,
     ):
+        # true
         self.confirm = confirm
+        # e2e-vds-feh-\*\*\*\
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -893,6 +1007,7 @@ class ConfirmPipelineBatchResponseBodyData(TeaModel):
         self,
         pipeline_id: str = None,
     ):
+        # The ID of the batch.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -926,12 +1041,30 @@ class ConfirmPipelineBatchResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The batch information.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the processing of the next batch started as required. Valid values:
+        # 
+        # *   **true**: The processing started.
+        # *   **false**: The processing could not start.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -1082,59 +1215,105 @@ class CreateApplicationRequest(TeaModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
+        # acs:ram::123456789012\*\*\*\*:role/adminrole
         self.acr_assume_role_arn = acr_assume_role_arn
+        # cri-xxxxxx
         self.acr_instance_id = acr_instance_id
+        # This is a test description.
         self.app_description = app_description
+        # test
         self.app_name = app_name
+        # true
         self.associate_eip = associate_eip
+        # true
         self.auto_config = auto_config
+        # sleep
         self.command = command
+        # 1d
         self.command_args = command_args
+        # \[{"configMapId":16,"key":"test","mountPath":"/tmp"}]
         self.config_map_mount_desc = config_map_mount_desc
+        # 1000
         self.cpu = cpu
+        # \[{"hostName":"samplehost","ip":"127.0.0.1"}]
         self.custom_host_alias = custom_host_alias
+        # true
         self.deploy = deploy
+        # 3.5.3
         self.edas_container_version = edas_container_version
+        # \[{"name":"envtmp","value":"0"}]
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
+        # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
+        # custom-args
         self.jar_start_args = jar_start_args
+        # \-Xms4G -Xmx4G
         self.jar_start_options = jar_start_options
+        # Open JDK 8
         self.jdk = jdk
         self.kafka_configs = kafka_configs
+        # {"exec":{"command":\["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
         self.liveness = liveness
+        # 1024
         self.memory = memory
         self.micro_registration = micro_registration
+        # \[{mountPath: "/tmp", nasPath: "/"}]
         self.mount_desc = mount_desc
+        # example.com
         self.mount_host = mount_host
+        # cn-beijing:test
         self.namespace_id = namespace_id
         self.nas_configs = nas_configs
+        # KSAK\*\*\*\*\
         self.nas_id = nas_id
+        # xxxxxx
         self.oss_ak_id = oss_ak_id
+        # xxxxxx
         self.oss_ak_secret = oss_ak_secret
+        # \[{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
         self.oss_mount_descs = oss_mount_descs
+        # FatJar
         self.package_type = package_type
+        # http://myoss.oss-cn-\*\*\*\*.aliyuncs.com/my-buc/2019-06-30/\*\*\*\*.jar
         self.package_url = package_url
+        # 1.0.0
         self.package_version = package_version
+        # /usr/local/etc/php/conf.d/arms.ini
         self.php_arms_config_location = php_arms_config_location
+        # k1=v1
         self.php_config = php_config
+        # /usr/local/etc/php/php.ini
         self.php_config_location = php_config_location
+        # {"exec":{"command":\["cat","/etc/group"]}}
         self.post_start = post_start
+        # {"exec":{"command":\["cat","/etc/group"]}}
         self.pre_stop = pre_stop
         self.programming_language = programming_language
         self.pvtz_discovery_svc = pvtz_discovery_svc
         self.python = python
         self.python_modules = python_modules
+        # {"exec":{"command":\["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
         self.readiness = readiness
+        # 1
         self.replicas = replicas
+        # sg-wz969ngg2e49q5i4\*\*\*\*\
         self.security_group_id = security_group_id
+        # \[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
         self.sls_configs = sls_configs
+        # 30
         self.termination_grace_period_seconds = termination_grace_period_seconds
+        # Asia/Shanghai
         self.timezone = timezone
+        # {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
         self.tomcat_config = tomcat_config
+        # vsw-bp12mw1f8k3jgygk9\*\*\*\*\
         self.v_switch_id = v_switch_id
+        # vpc-bp1aevy8sofi8mh1q\*\*\*\*\
         self.vpc_id = vpc_id
+        # CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
         self.war_start_options = war_start_options
+        # apache-tomcat-7.0.91
         self.web_container = web_container
 
     def validate(self):
@@ -1375,7 +1554,9 @@ class CreateApplicationResponseBodyData(TeaModel):
         app_id: str = None,
         change_order_id: str = None,
     ):
+        # The ID of the application that is created.
         self.app_id = app_id
+        # The ID of the change order. It can be used to query the task status.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -1413,12 +1594,30 @@ class CreateApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code. Valid values:
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application is created. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -1523,13 +1722,21 @@ class CreateApplicationScalingRuleRequest(TeaModel):
         scaling_rule_timer: str = None,
         scaling_rule_type: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
+        # \-1
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # 3
         self.min_ready_instances = min_ready_instances
+        # true
         self.scaling_rule_enable = scaling_rule_enable
+        # {"maxReplicas":3,"minReplicas":1,"metrics":\[{"metricType":"CPU","metricTargetAverageUtilization":20},{"metricType":"MEMORY","metricTargetAverageUtilization":30},{"metricType":"tcpActiveConn","metricTargetAverageUtilization":20},{"metricType":"SLB_QPS","MetricTargetAverageUtilization":25,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"},{"metricType":"SLB_RT","MetricTargetAverageUtilization":35,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"}],"scaleUpRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":0},"scaleDownRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":300}}
         self.scaling_rule_metric = scaling_rule_metric
+        # timer-0800-2100
         self.scaling_rule_name = scaling_rule_name
+        # {"beginDate":null,"endDate":null,"period":"\* \* \*","schedules":\[{"atTime":"08:00","targetReplicas":10},{"atTime":"20:00","targetReplicas":3}]}
         self.scaling_rule_timer = scaling_rule_timer
+        # timing
         self.scaling_rule_type = scaling_rule_type
 
     def validate(self):
@@ -1586,7 +1793,21 @@ class CreateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         metric_target_average_utilization: int = None,
         metric_type: str = None,
     ):
+        # The limit on the metric.
+        # 
+        # *   The limit on the CPU utilization. Unit: percentage.
+        # *   The limit on the memory usage. Unit: percentage.
+        # *   The limit on the average number of active TCP connections per second.
+        # *   The limit on the QPS of the Internet-facing SLB instance.
+        # *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
         self.metric_target_average_utilization = metric_target_average_utilization
+        # The metric that is used to trigger the auto scaling policy. Valid values:
+        # 
+        # *   **CPU**: the CPU utilization.
+        # *   **MEMORY**: the memory usage.
+        # *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
+        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
+        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
         self.metric_type = metric_type
 
     def validate(self):
@@ -1620,8 +1841,11 @@ class CreateApplicationScalingRuleResponseBodyDataMetric(TeaModel):
         metrics: List[CreateApplicationScalingRuleResponseBodyDataMetricMetrics] = None,
         min_replicas: int = None,
     ):
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The list of metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
+        # The minimum number of instances.
         self.min_replicas = min_replicas
 
     def validate(self):
@@ -1666,7 +1890,9 @@ class CreateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         at_time: str = None,
         target_replicas: int = None,
     ):
+        # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
+        # The expected number of instances.
         self.target_replicas = target_replicas
 
     def validate(self):
@@ -1701,9 +1927,33 @@ class CreateApplicationScalingRuleResponseBodyDataTimer(TeaModel):
         period: str = None,
         schedules: List[CreateApplicationScalingRuleResponseBodyDataTimerSchedules] = None,
     ):
+        # The start date of the validity period of the scheduled auto scaling policy.
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.begin_date = begin_date
+        # The end date of the validity period of the scheduled auto scaling policy.
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.end_date = end_date
+        # The days on which the scheduled auto scaling policy takes effect. Valid values:
+        # 
+        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+        # 
+        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+        # 
+        #     *   **Sun**: Sunday
+        #     *   **Mon**: Monday
+        #     *   **Tue**: Tuesday
+        #     *   **Wed**: Wednesday
+        #     *   **Thu**: Thursday
+        #     *   **Fri**: Friday
+        #     *   **Sat**: Saturday
+        # 
+        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
         self.period = period
+        # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
 
     def validate(self):
@@ -1759,14 +2009,30 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
         timer: CreateApplicationScalingRuleResponseBodyDataTimer = None,
         update_time: int = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
+        # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
+        # The details of the metric-based auto scaling policy.
         self.metric = metric
+        # Indicates whether the auto scaling policy is enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.scale_rule_enabled = scale_rule_enabled
+        # The name of the auto scaling policy.
         self.scale_rule_name = scale_rule_name
+        # The type of the auto scaling policy. Valid values:
+        # 
+        # *   **timing**: the scheduled auto scaling policy.
+        # *   **metric**: the metric-based auto scaling policy.
+        # *   **mix**: the hybrid auto scaling policy.
         self.scale_rule_type = scale_rule_type
+        # The details of the scheduled auto scaling policy.
         self.timer = timer
+        # The time when the auto scaling policy was updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -1838,11 +2104,14 @@ class CreateApplicationScalingRuleResponseBody(TeaModel):
         trace_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.error_code = error_code
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -1945,7 +2214,9 @@ class CreateConfigMapRequest(TeaModel):
     ):
         self.data = data
         self.description = description
+        # name
         self.name = name
+        # cn-hangzhou
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -1985,6 +2256,7 @@ class CreateConfigMapResponseBodyData(TeaModel):
         self,
         config_map_id: int = None,
     ):
+        # The ID of the ConfigMap instance that was created.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -2018,12 +2290,30 @@ class CreateConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the ConfigMap instance was created. Valid values:
+        # 
+        # *   **true**: The instance was created.
+        # *   **false**: The call failed to be created.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -2127,10 +2417,15 @@ class CreateGreyTagRouteRequest(TeaModel):
         sc_rules: str = None,
     ):
         self.alb_rules = alb_rules
+        # 7802c49a-67bc-4167-8369-9a9c003c\*\*\*\*\
         self.app_id = app_id
+        # Canary Release - Regions
         self.description = description
+        # \[{"condition":"OR","group":"DUBBO","items":\[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
         self.dubbo_rules = dubbo_rules
+        # dubbo-echo
         self.name = name
+        # \[{"condition":"OR","items":\[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
         self.sc_rules = sc_rules
 
     def validate(self):
@@ -2178,6 +2473,7 @@ class CreateGreyTagRouteResponseBodyData(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
+        # The ID of the canary release rule. The ID is globally unique.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -2211,12 +2507,30 @@ class CreateGreyTagRouteResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The information about the canary release rule.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of the change order was queried. Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: The information failed to be queried.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -2323,15 +2637,24 @@ class CreateIngressRequest(TeaModel):
         rules: str = None,
         slb_id: str = None,
     ):
+        # 188077086902\*\*\*\*\_176993d\*\*\*\*\_181437\*\*\*\*\_108724\*\*\*\*\
         self.cert_id = cert_id
         self.cert_ids = cert_ids
+        # {"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080}
         self.default_rule = default_rule
+        # ingress-for-sae-test
         self.description = description
+        # 80
         self.listener_port = listener_port
+        # HTTP
         self.listener_protocol = listener_protocol
+        # clb
         self.load_balance_type = load_balance_type
+        # cn-beijing:sae-test
         self.namespace_id = namespace_id
+        # \[{"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2\*\*\*\*","containerPort":8080,"domain":"sae.site","path":"/path2"}]
         self.rules = rules
+        # lb-uf6hucc7inlqrtcq5\*\*\*\*\
         self.slb_id = slb_id
 
     def validate(self):
@@ -2395,6 +2718,7 @@ class CreateIngressResponseBodyData(TeaModel):
         self,
         ingress_id: int = None,
     ):
+        # The ID of the routing rule.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -2428,12 +2752,30 @@ class CreateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the routing rule was created. Valid values:
+        # 
+        # *   **true**: indicates that the rule was created.
+        # *   **false**: indicates that the rule could not be created.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -3016,14 +3358,19 @@ class CreateJobResponse(TeaModel):
 class CreateNamespaceRequest(TeaModel):
     def __init__(
         self,
+        enable_micro_registration: bool = None,
         name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        self.enable_micro_registration = enable_micro_registration
         self.name_space_short_id = name_space_short_id
+        # desc
         self.namespace_description = namespace_description
+        # cn-beijing:test
         self.namespace_id = namespace_id
+        # name
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -3035,6 +3382,8 @@ class CreateNamespaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_micro_registration is not None:
+            result['EnableMicroRegistration'] = self.enable_micro_registration
         if self.name_space_short_id is not None:
             result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
@@ -3047,6 +3396,8 @@ class CreateNamespaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableMicroRegistration') is not None:
+            self.enable_micro_registration = m.get('EnableMicroRegistration')
         if m.get('NameSpaceShortId') is not None:
             self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
@@ -3061,16 +3412,22 @@ class CreateNamespaceRequest(TeaModel):
 class CreateNamespaceResponseBodyData(TeaModel):
     def __init__(
         self,
+        enable_micro_registration: bool = None,
         name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         region_id: str = None,
     ):
+        self.enable_micro_registration = enable_micro_registration
         self.name_space_short_id = name_space_short_id
+        # The description of the namespace.
         self.namespace_description = namespace_description
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The region where the namespace resides.
         self.region_id = region_id
 
     def validate(self):
@@ -3082,6 +3439,8 @@ class CreateNamespaceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_micro_registration is not None:
+            result['EnableMicroRegistration'] = self.enable_micro_registration
         if self.name_space_short_id is not None:
             result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
@@ -3096,6 +3455,8 @@ class CreateNamespaceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableMicroRegistration') is not None:
+            self.enable_micro_registration = m.get('EnableMicroRegistration')
         if m.get('NameSpaceShortId') is not None:
             self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
@@ -3120,12 +3481,30 @@ class CreateNamespaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information of the namespace.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the namespace was created. Valid values:
+        # 
+        # *   **true**: indicates that the namespace was created.
+        # *   **false**: indicates that the namespace could not be created.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -3404,6 +3783,7 @@ class DeleteApplicationRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -3431,6 +3811,7 @@ class DeleteApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order that is used to query the task execution status.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -3464,12 +3845,33 @@ class DeleteApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request is successful.
+        # *   **3xx**: A redirection message is returned.
+        # *   **4xx**: The request is invalid.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned results.
         self.data = data
+        # The error code that is returned if the request fails.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information about the values of this parameter, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   If the request is successful, **success** is returned.
+        # *   If an error occurred, the error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application is deleted. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID that is used to query details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -3568,7 +3970,9 @@ class DeleteApplicationScalingRuleRequest(TeaModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
+        # timer-0800-2100
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -3608,8 +4012,10 @@ class DeleteApplicationScalingRuleResponseBody(TeaModel):
         self.code = code
         self.error_code = error_code
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -3701,6 +4107,7 @@ class DeleteConfigMapRequest(TeaModel):
         self,
         config_map_id: int = None,
     ):
+        # 1
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -3728,6 +4135,7 @@ class DeleteConfigMapResponseBodyData(TeaModel):
         self,
         config_map_id: int = None,
     ):
+        # The ID of the deleted ConfigMap instance.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -3761,12 +4169,33 @@ class DeleteConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the ConfigMap instance was deleted. Valid values:
+        # 
+        # *   **true**: The instance was deleted.
+        # *   **false**: The instance failed to be deleted.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -3864,6 +4293,7 @@ class DeleteGreyTagRouteRequest(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
+        # 1
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -3891,6 +4321,7 @@ class DeleteGreyTagRouteResponseBodyData(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
+        # The ID of the canary release rule. The ID is globally unique.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -3924,12 +4355,33 @@ class DeleteGreyTagRouteResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The information about the canary release rule.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of the change order was queried. Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: The information failed to be queried.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -4167,6 +4619,7 @@ class DeleteIngressRequest(TeaModel):
         self,
         ingress_id: int = None,
     ):
+        # 87
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -4194,6 +4647,7 @@ class DeleteIngressResponseBodyData(TeaModel):
         self,
         ingress_id: int = None,
     ):
+        # The ID of the routing rule that you want to delete.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -4227,12 +4681,30 @@ class DeleteIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the routing rule was deleted. Valid values:
+        # 
+        # *   **true**: indicates that the routing rule was deleted.
+        # *   **false**: indicates that the routing rule could not be deleted.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -4466,6 +4938,7 @@ class DeleteNamespaceRequest(TeaModel):
         namespace_id: str = None,
     ):
         self.name_space_short_id = name_space_short_id
+        # cn-beijing:test
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -4502,11 +4975,28 @@ class DeleteNamespaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the namespace was deleted. Valid values:
+        # 
+        # *   **true**: indicates that the namespace was deleted.
+        # *   **false**: indicates that the namespace could not be deleted.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -4818,57 +5308,100 @@ class DeployApplicationRequest(TeaModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
+        # acs:ram::123456789012\*\*\*\*:role/adminrole
         self.acr_assume_role_arn = acr_assume_role_arn
+        # cri-xxxxxx
         self.acr_instance_id = acr_instance_id
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
+        # true
         self.associate_eip = associate_eip
+        # true
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        # 10
         self.batch_wait_time = batch_wait_time
+        # Start Applications
         self.change_order_desc = change_order_desc
+        # sleep
         self.command = command
+        # 1d
         self.command_args = command_args
+        # \[{"configMapId":16,"key":"test","mountPath":"/tmp"}]
         self.config_map_mount_desc = config_map_mount_desc
+        # \[{"hostName":"samplehost","ip":"127.0.0.1"}]
         self.custom_host_alias = custom_host_alias
         self.deploy = deploy
+        # 3.5.3
         self.edas_container_version = edas_container_version
+        # false
         self.enable_ahas = enable_ahas
+        # false
         self.enable_grey_tag_route = enable_grey_tag_route
+        # \[{"name":"envtmp","value":"0"}]
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
+        # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
+        # \-Xms4G -Xmx4G
         self.jar_start_args = jar_start_args
+        # custom-option
         self.jar_start_options = jar_start_options
+        # Open JDK 8
         self.jdk = jdk
         self.kafka_configs = kafka_configs
+        # {"exec":{"command":\["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
         self.liveness = liveness
         self.micro_registration = micro_registration
+        # \-1
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # 1
         self.min_ready_instances = min_ready_instances
+        # \[{mountPath: "/tmp", nasPath: "/"}]
         self.mount_desc = mount_desc
+        # 10d3b4bc9\*\*\*\*.com
         self.mount_host = mount_host
         self.nas_configs = nas_configs
+        # 10d3b4\*\*\*\*\
         self.nas_id = nas_id
+        # xxxxxx
         self.oss_ak_id = oss_ak_id
+        # xxxxxx
         self.oss_ak_secret = oss_ak_secret
+        # \[{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
         self.oss_mount_descs = oss_mount_descs
         self.package_type = package_type
+        # http://myoss.oss-cn-hangzhou.aliyuncs.com/my-buc/2019-06-30/\*\*\*\*.jar
         self.package_url = package_url
+        # 1.0.1
         self.package_version = package_version
+        # /usr/local/etc/php/conf.d/arms.ini
         self.php_arms_config_location = php_arms_config_location
+        # k1=v1
         self.php_config = php_config
+        # /usr/local/etc/php/php.ini
         self.php_config_location = php_config_location
+        # {"exec":{"command":\["sh","-c","echo hello"]}}
         self.post_start = post_start
+        # {"exec":{"command":\["sh","-c","echo hello"]}}
         self.pre_stop = pre_stop
         self.pvtz_discovery_svc = pvtz_discovery_svc
         self.python = python
         self.python_modules = python_modules
+        # {"exec":{"command":\["sleep","6s"]},"initialDelaySeconds":15,"timeoutSeconds":12}
         self.readiness = readiness
+        # \[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
         self.sls_configs = sls_configs
+        # 10
         self.termination_grace_period_seconds = termination_grace_period_seconds
+        # Asia/Shanghai
         self.timezone = timezone
+        # {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
         self.tomcat_config = tomcat_config
+        # {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
         self.update_strategy = update_strategy
+        # CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
         self.war_start_options = war_start_options
+        # apache-tomcat-7.0.91
         self.web_container = web_container
 
     def validate(self):
@@ -5102,8 +5635,14 @@ class DeployApplicationResponseBodyData(TeaModel):
         change_order_id: str = None,
         is_need_approval: bool = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The ID of the change order. It can be used to query the task status.
         self.change_order_id = change_order_id
+        # Specifies whether approval is required when a RAM user performs release. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_need_approval = is_need_approval
 
     def validate(self):
@@ -5145,12 +5684,30 @@ class DeployApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code returned when the method fails to be called.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application deployment is successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -5252,10 +5809,15 @@ class DescribeAppServiceDetailRequest(TeaModel):
         service_type: str = None,
         service_version: str = None,
     ):
+        # 6dcc8c9e-d3da-478a-a066-86dcf820\*\*\*\*\
         self.app_id = app_id
+        # springCloud
         self.service_group = service_group
+        # edas.service.provider
         self.service_name = service_name
+        # springCloud
         self.service_type = service_type
+        # 1.0.0
         self.service_version = service_version
 
     def validate(self):
@@ -5301,8 +5863,11 @@ class DescribeAppServiceDetailResponseBodyDataMethodsParameterDefinitions(TeaMod
         name: str = None,
         type: str = None,
     ):
+        # The description of the parameter.
         self.description = description
+        # The name of the parameter.
         self.name = name
+        # The type of the parameter.
         self.type = type
 
     def validate(self):
@@ -5347,15 +5912,30 @@ class DescribeAppServiceDetailResponseBodyDataMethods(TeaModel):
         return_details: str = None,
         return_type: str = None,
     ):
+        # The class to which the method belongs.
         self.method_controller = method_controller
+        # The name of the method.
         self.name = name
+        # The details of the method.
         self.name_detail = name_detail
+        # The definition of the parameter.
         self.parameter_definitions = parameter_definitions
+        # The details of the parameters.
         self.parameter_details = parameter_details
+        # The types of the parameters.
         self.parameter_types = parameter_types
+        # The request paths. Format:
+        # 
+        # `/path`
         self.paths = paths
+        # The request methods. Valid values:
+        # 
+        # *   **GET**\
+        # *   **ALL**\
         self.request_methods = request_methods
+        # The details of the response.
         self.return_details = return_details
+        # The data format of the response.
         self.return_type = return_type
 
     def validate(self):
@@ -5435,14 +6015,26 @@ class DescribeAppServiceDetailResponseBodyData(TeaModel):
         spring_application_name: str = None,
         version: str = None,
     ):
+        # The name of the Dubbo application.
         self.dubbo_application_name = dubbo_application_name
+        # The name of the application.
         self.edas_app_name = edas_app_name
+        # The group to which the service belongs. You can create a custom group.
         self.group = group
+        # The metadata. Example: `{side: "provider", port: "18081", preserved: {register: {source: "SPRING_CLOUD"}},…}`.
         self.metadata = metadata
+        # The methods.
         self.methods = methods
+        # The name of the service.
         self.service_name = service_name
+        # The type of the service. Valid values:
+        # 
+        # *   **dubbo**\
+        # *   **springCloud**\
         self.service_type = service_type
+        # The name of the Spring Cloud application.
         self.spring_application_name = spring_application_name
+        # The version of the service. You can create a custom version.
         self.version = version
 
     def validate(self):
@@ -5516,12 +6108,30 @@ class DescribeAppServiceDetailResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # - **2xx**: indicates that the call was successful.
+        # - **3xx**: indicates that the call was redirected.
+        # - **4xx**: indicates that the call failed.
+        # - **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # - If the call is successful, the **ErrorCode** parameter is not returned.
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the meta data was obtained. Valid values:
+        # 
+        # *   **true**: The metadata was obtained.
+        # *   **false**: The metadata failed to be obtained.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -5620,7 +6230,9 @@ class DescribeApplicationConfigRequest(TeaModel):
         app_id: str = None,
         version_id: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
+        # 0026ff7f-2b57-4127-bdd0-9bf202bb\*\*\*\*\
         self.version_id = version_id
 
     def validate(self):
@@ -5655,10 +6267,13 @@ class DescribeApplicationConfigResponseBodyDataConfigMapMountDesc(TeaModel):
         key: str = None,
         mount_path: str = None,
     ):
-        # ConfigMap ID。
+        # The ID of the ConfigMap.
         self.config_map_id = config_map_id
+        # The name of the ConfigMap.
         self.config_map_name = config_map_name
+        # The key-value pair that is stored in the ConfigMap.
         self.key = key
+        # The path on which the ConfigMap is mounted.
         self.mount_path = mount_path
 
     def validate(self):
@@ -5699,7 +6314,9 @@ class DescribeApplicationConfigResponseBodyDataMountDesc(TeaModel):
         mount_path: str = None,
         nas_path: str = None,
     ):
+        # The path on which the NAS file system is mounted.
         self.mount_path = mount_path
+        # The directory in the NAS file system.
         self.nas_path = nas_path
 
     def validate(self):
@@ -5734,9 +6351,16 @@ class DescribeApplicationConfigResponseBodyDataOssMountDescs(TeaModel):
         mount_path: str = None,
         read_only: bool = None,
     ):
+        # The name of the bucket.
         self.bucket_name = bucket_name
+        # The directory or object that you created in the OSS bucket. If the specified object or directory is invalid, an exception occurs.
         self.bucket_path = bucket_path
+        # The directory of your container in SAE. The parameter value that you specified overwrites the original value. If the specified directory does not exist, SAE automatically creates the directory.
         self.mount_path = mount_path
+        # Indicates whether the application can use the container directory to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+        # 
+        # *   **true**: The application has read-only permissions.
+        # *   **false**: The application has read and write permissions.
         self.read_only = read_only
 
     def validate(self):
@@ -5777,7 +6401,9 @@ class DescribeApplicationConfigResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -5870,70 +6496,296 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](~~190675~~) and [Grant permissions across Alibaba Cloud accounts by using a RAM role](~~223585~~).
         self.acr_assume_role_arn = acr_assume_role_arn
+        # The ID of the Container Registry Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        # The description of the application.
         self.app_description = app_description
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # Indicates whether an elastic IP address (EIP) is associated with the application instance. Valid values:
+        # 
+        # *   **true**: The EIP is associated with the application instance.
+        # *   **false**: The EIP is not associated with the application instance.
         self.associate_eip = associate_eip
+        # The interval between batches in a phased release. Unit: seconds.
         self.batch_wait_time = batch_wait_time
+        # The command that is used to start the image. The command must be an existing executable object in the container. Example:
+        # 
+        # ```
+        # 
+        # command:
+        #       - echo
+        #       - abc
+        #       - >
+        #       - file0
+        # ```
+        # 
+        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
         self.command = command
+        # The parameters of the image startup command. The CommandArgs parameter contains the parameters that are required for the **Command** parameter. Format:
+        # 
+        # `["a","b"]`
+        # 
+        # In the preceding **Command** example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. You do not need to configure this parameter if it does not exist in the Command parameter.
         self.command_args = command_args
+        # The details of the ConfigMap.
         self.config_map_mount_desc = config_map_mount_desc
+        # The CPU specifications that are required for each instance. Unit: millicores. You cannot set this parameter to 0. Valid values:
+        # 
+        # *   **500**\
+        # *   **1000**\
+        # *   **2000**\
+        # *   **4000**\
+        # *   **8000**\
+        # *   **16000**\
+        # *   **32000**\
         self.cpu = cpu
+        # The custom mappings between hostnames and IP addresses in the container. Valid values:
+        # 
+        # *   **hostName**: the domain name or hostname.
+        # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
+        # Indicates whether access to Application High Availability Service (AHAS) is enabled. Valid values:
+        # 
+        # *   **true**: Access to AHAS is enabled.
+        # *   **false**: Access to AHAS is disabled.
         self.enable_ahas = enable_ahas
+        # Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Valid values:
+        # 
+        # *   **true**: The canary release rules are enabled.
+        # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        # The environment variables. Variable description:
+        # 
+        # *   **name**: the name of the environment variable.
+        # *   **value**: the value or reference of the environment variable.
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
+        # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
+        # The option settings in the JAR package. The settings are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_options = jar_start_options
+        # The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+        # 
+        # *   **Open JDK 8**\
+        # *   **Open JDK 7**\
+        # *   **Dragonwell 11**\
+        # *   **Dragonwell 8**\
+        # *   **openjdk-8u191-jdk-alpine3.9**\
+        # *   **openjdk-7u201-jdk-alpine3.9**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.jdk = jdk
+        # The logging configurations of Message Queue for Apache Kafka. The following parameters are involved:
+        # 
+        # *   **KafkaConfigs**: the configurations of Message Queue for Apache Kafka.
+        # 
+        # *   **createTime**: the time when the Message Queue for Apache Kafka instance was created.
+        # 
+        # *   **kafkaTopic**: the message topic that is used to classify messages.
+        # 
+        # *   **logDir**: the path in which logs are stored.
+        # 
+        # *   **logType**: the type of collected logs. Valid values:
+        # 
+        #     *   **file_log**: the file log that is stored in the container. The path of the file logs in the container is returned.
+        #     *   **stdout**: the standard output log of the container. You can specify only one stdout value.
+        # 
+        # *   **kafkaEndpoint**: the endpoint of the Message Queue for Apache Kafka service.
+        # 
+        # *   **kafkaInstanceId**: the ID of the Message Queue for Apache Kafka instance.
+        # 
+        # *   **region**: the region where the Message Queue for Apache Kafka instance resides.
         self.kafka_configs = kafka_configs
+        # The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
+        # 
+        # *   Sample code of the **exec** method: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
+        # *   Sample code of the **httpGet** method: `{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+        # *   Sample code of the **tcpSocket** method: `{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+        # 
+        # >  You can use only one method to perform the health check.
+        # 
+        # The following parameters are involved:
+        # 
+        # *   **exec.command**: the health check command.
+        # *   **httpGet.path**: the request path.
+        # *   **httpGet.scheme**: the protocol that is used to perform the health check. Valid values: **HTTP** and **HTTPS**.
+        # *   **httpGet.isContainKeyWord**: indicates whether the response contains keywords. Valid values: **true** and **false**. If this field is not returned, the advanced settings are not used.
+        # *   **httpGet.keyWord**: the custom keyword. This parameter is available only if the **isContainKeyWord** field is returned.
+        # *   **tcpSocket.port**: the port that is used to check the status of TCP connections.
+        # *   **initialDelaySeconds**: the delay of the health check. Default value: 10. Unit: seconds.
+        # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
+        # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        # The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
+        # 
+        # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
+        # *   This parameter is set to **2048** if the Cpu parameter is set to 500, 1000, or 1000.
+        # *   This parameter is set to **4096** if the Cpu parameter is set to 1000, 2000, or 4000.
+        # *   This parameter is set to **8192** if the Cpu parameter is set to 2000, 4000, or 8000.
+        # *   This parameter is set to **12288** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **16384** if the Cpu parameter is set to 4000, 8000, or 16000.
+        # *   This parameter is set to **24567** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **32768** if the Cpu parameter is set to 16000.
+        # *   This parameter is set to **65536** if the Cpu parameter is set to 8000, 16000, or 32000.
+        # *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
         self.memory = memory
         self.micro_registration = micro_registration
+        # The percentage of the minimum number of available instances. Valid values:
+        # 
+        # *   **-1**: the default value. This value indicates that the minimum number of available instances is not measured by percentage. If you do not configure this parameter, the default value **-1** is used.
+        # *   **0 to 100**: indicates that the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). If the calculated result is not an integer, the result is rounded up to the nearest integer. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+        # 
+        # >  If the **MinReadyInstance** and **MinReadyInstanceRatio** parameters are returned and the value of the **MinReadyInstanceRatio** parameter is not **-1**, the value of the **MinReadyInstanceRatio** parameter takes effect. If the **MinReadyInstances** parameter is set to **5** and the **MinReadyInstanceRatio** parameter is set to **50**, the value of the **MinReadyInstanceRatio** parameter determines the minimum number of available instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # The minimum number of available instances. Valid values:
+        # 
+        # *   If you set the value to **0**, business interruptions occur when the application is updated.
+        # *   If you set the value to **-1**, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # >  Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
         self.min_ready_instances = min_ready_instances
+        # The details of the mounted NAS file system.
         self.mount_desc = mount_desc
+        # The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
         self.mount_host = mount_host
+        # The ID of the microservice application.
         self.mse_application_id = mse_application_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
         self.nas_configs = nas_configs
-        # NAS ID。
+        # The ID of the NAS file system.
         self.nas_id = nas_id
+        # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
+        # The AccessKey secret that is used to read data from and write data to OSS buckets.
         self.oss_ak_secret = oss_ak_secret
+        # The description of the mounted OSS bucket.
         self.oss_mount_descs = oss_mount_descs
+        # The type of the deployment package. Valid values:
+        # 
+        # *   If you deploy the application by using a Java Archive (JAR) package, you can set this parameter to **FatJar**, **War**, or **Image**.
+        # 
+        # *   If you deploy the application by using a PHP package, you can set this parameter to one of the following values:
+        # 
+        #     *   **PhpZip**\
+        #     *   **IMAGE_PHP\_5\_4**\
+        #     *   **IMAGE_PHP\_5\_4\_ALPINE**\
+        #     *   **IMAGE_PHP\_5\_5**\
+        #     *   **IMAGE_PHP\_5\_5\_ALPINE**\
+        #     *   **IMAGE_PHP\_5\_6**\
+        #     *   **IMAGE_PHP\_5\_6\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_0**\
+        #     *   **IMAGE_PHP\_7\_0\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_1**\
+        #     *   **IMAGE_PHP\_7\_1\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_2**\
+        #     *   **IMAGE_PHP\_7\_2\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_3**\
+        #     *   **IMAGE_PHP\_7\_3\_ALPINE**\
         self.package_type = package_type
+        # The URL of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar** or **War**.
         self.package_url = package_url
+        # The version of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar** or **War**.
         self.package_version = package_version
+        # The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file.
+        # 
+        # SAE automatically generates the corresponding configuration file. No manual operations are required.
         self.php_arms_config_location = php_arms_config_location
+        # The details of the PHP configuration file.
         self.php_config = php_config
+        # The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
         self.php_config_location = php_config_location
+        # The script that is run immediately after the container is started. Example: `{"exec":{"command":["cat","/etc/group"]}}`
         self.post_start = post_start
+        # The script that is run before the container is stopped. Example: `{"exec":{"command":["cat","/etc/group"]}}`
         self.pre_stop = pre_stop
+        # The programming language that is used to create the application. Valid values:
+        # 
+        # *   **java**: Java
+        # *   **php**: PHP
+        # *   **other**: Other programming languages, such as Python, C++, Go, .NET, and Node.js.
         self.programming_language = programming_language
         self.pvtz_discovery = pvtz_discovery
         self.python = python
         self.python_modules = python_modules
+        # The details of the health check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. Containers that fail health checks cannot receive traffic from Server Load Balancer (SLB) instances. You can use the **exec**, **httpGet**, or **tcpSocket** method to perform health checks. For more information, see the description of the **Liveness** parameter.
+        # 
+        # >  You can use only one method to perform the health check.
         self.readiness = readiness
+        # The ID of the region.
         self.region_id = region_id
+        # The number of application instances.
         self.replicas = replicas
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The logging configurations of Log Service.
+        # 
+        # *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # 
+        # The following parameters are involved:
+        # 
+        # *   **projectName**: the name of the Log Service project.
+        # *   **logDir**: the path in which logs are stored.
+        # *   **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+        # *   **logstoreName**: the name of the Logstore in Log Service.
+        # *   **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+        # 
+        # If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
         self.sls_configs = sls_configs
+        # The details of the tags.
         self.tags = tags
+        # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
+        # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
+        # The Tomcat configuration. If you want to delete the configuration, set this parameter to {} or leave this parameter empty. The following parameters are involved:
+        # 
+        # *   **port**: the port number. Valid values: 1024 to 65535. The root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not configure this parameter, the default port number 8080 is used.
+        # *   **contextPath**: the path. Default value: /. This value indicates the root directory.
+        # *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+        # *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If you do not configure this parameter, the default value **ISO-8859-1** is used.
+        # *   **useBodyEncoding**: indicates whether to use the encoding scheme that is specified by **BodyEncoding for URL**. Default value: **true**.
         self.tomcat_config = tomcat_config
+        # The deployment policy. If the minimum number of available instances is 1, the value of the **UpdateStrategy** parameter is an empty string (""). If the minimum number of available instances is greater than 1, the following strategies can be configured:
+        # 
+        # *   The application is deployed on an instance. The remaining instances are automatically classified into two release batches whose interval is set to 1. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`.
+        # *   The application is deployed on an instance. The remaining instances are manually classified into two release batches. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`.
+        # *   All instances are automatically classified into two release batches. The application is deployed on the instances of the two batches in parallel. In this case, the parameter is set to `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+        # 
+        # The following parameters are involved:
+        # 
+        # *   **type**: the type of the release policy. Valid values: **GrayBatchUpdate** and **BatchUpdate**.
+        # 
+        # *   **batchUpdate**: the phased release policy.
+        # 
+        #     *   **batch**: the number of release batches.
+        #     *   **releaseType**: the processing method for the batches. Valid values: **auto** and **manual**.
+        #     *   **batchWaitTime**: the interval between release batches. Unit: seconds.
+        # 
+        # *   **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type** parameter is set to **GrayBatchUpdate**.
         self.update_strategy = update_strategy
-        # vSwitch ID。
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The option settings in the WAR package. The settings are used to start the application container. The default startup command is `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
         self.war_start_options = war_start_options
+        # The version of the Tomcat container on which the deployment package depends. Valid values:
+        # 
+        # *   **apache-tomcat-7.0.91**\
+        # *   **apache-tomcat-8.5.42**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -6246,12 +7098,30 @@ class DescribeApplicationConfigResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The details of the application.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the configurations of an application were obtained. Valid values:
+        # 
+        # *   **true**: The configurations were obtained.
+        # *   **false**: The configurations failed to be obtained.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -6351,8 +7221,11 @@ class DescribeApplicationGroupsRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
         self.app_id = app_id
+        # 1
         self.current_page = current_page
+        # 10
         self.page_size = page_size
 
     def validate(self):
@@ -6399,17 +7272,49 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
         running_instances: int = None,
         web_container: str = None,
     ):
+        # The version of the container, such as Ali-Tomcat, in which a High-speed Service Framework (HSF) application runs.
         self.edas_container_version = edas_container_version
+        # The ID of the group.
         self.group_id = group_id
+        # The name of the group.
         self.group_name = group_name
+        # The type of the group.
         self.group_type = group_type
+        # The address of the image. This parameter is required when the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        # The version of the Java development kit (JDK) on which the deployment package of the application depends. This parameter is invalid when the **PackageType** parameter is set to **Image**.
         self.jdk = jdk
+        # The type of the application deployment package. Valid values:
+        # 
+        # *   When you use a Java package, set this value to **FatJar**, **War**, or **Image**.
+        # 
+        # *   When you use a PHP package, the following values are valid:
+        # 
+        #     *   **PhpZip**\
+        #     *   **IMAGE_PHP\_5\_4**\
+        #     *   **IMAGE_PHP\_5\_4\_ALPINE**\
+        #     *   **IMAGE_PHP\_5\_5**\
+        #     *   **IMAGE_PHP\_5\_5\_ALPINE**\
+        #     *   **IMAGE_PHP\_5\_6**\
+        #     *   **IMAGE_PHP\_5\_6\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_0**\
+        #     *   **IMAGE_PHP\_7\_0\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_1**\
+        #     *   **IMAGE_PHP\_7\_1\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_2**\
+        #     *   **IMAGE_PHP\_7\_2\_ALPINE**\
+        #     *   **IMAGE_PHP\_7\_3**\
+        #     *   **IMAGE_PHP\_7\_3\_ALPINE**\
         self.package_type = package_type
+        # The address of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**.
         self.package_url = package_url
+        # The version of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**. The parameter value will be automatically generated when you use an image to deploy the application and specify the **ImageUrl** parameter.
         self.package_version = package_version
+        # The total number of instances.
         self.replicas = replicas
+        # The number of running instances.
         self.running_instances = running_instances
+        # The version of the Apache Tomcat container on which the deployment package of the application depends. This parameter is invalid when the **PackageType** parameter is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -6487,12 +7392,30 @@ class DescribeApplicationGroupsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information about the instance groups of the application.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information about instance groups of an application was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the information was obtained.
+        # *   **false**: indicates that the information could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -6597,7 +7520,9 @@ class DescribeApplicationImageRequest(TeaModel):
         app_id: str = None,
         image_url: str = None,
     ):
+        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
         self.app_id = app_id
+        # registry-vpc.cn-hangzhou.aliyuncs.com/demo/demo:latest
         self.image_url = image_url
 
     def validate(self):
@@ -6636,13 +7561,21 @@ class DescribeApplicationImageResponseBodyData(TeaModel):
         repo_tag: str = None,
         repo_type: str = None,
     ):
+        # This parameter is reserved.
         self.cr_url = cr_url
+        # This parameter is reserved.
         self.logo = logo
+        # The ID of the region.
         self.region_id = region_id
+        # The name of the repository.
         self.repo_name = repo_name
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace = repo_namespace
+        # The type of the repository. Only Container Registry is supported.
         self.repo_origin_type = repo_origin_type
+        # The tag of the image.
         self.repo_tag = repo_tag
+        # This parameter is reserved.
         self.repo_type = repo_type
 
     def validate(self):
@@ -6704,12 +7637,33 @@ class DescribeApplicationImageResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information about the image of an application.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the image information was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the information was obtained.
+        # *   **false**: indicates that the information could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -6811,10 +7765,15 @@ class DescribeApplicationInstancesRequest(TeaModel):
         page_size: int = None,
         reverse: bool = None,
     ):
+        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
         self.app_id = app_id
+        # 1
         self.current_page = current_page
+        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
         self.group_id = group_id
+        # 10
         self.page_size = page_size
+        # true
         self.reverse = reverse
 
     def validate(self):
@@ -6870,18 +7829,53 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         package_version: str = None,
         v_switch_id: str = None,
     ):
+        # The start time of the instance creation process. Unit: milliseconds.
         self.create_time_stamp = create_time_stamp
         self.debug_status = debug_status
+        # The elastic IP address (EIP).
         self.eip = eip
+        # The end time of the instance creation process. Unit: milliseconds.
         self.finish_time_stamp = finish_time_stamp
+        # The ID of the group to which the instance belongs.
         self.group_id = group_id
+        # The address of the repository.
+        # 
+        # >  If you deploy the application by using a JAR or WAR package, the image generated by SAE is not available for download.
         self.image_url = image_url
+        # The internal IP address of the instance.
         self.instance_container_ip = instance_container_ip
+        # The number of times that the instance restarted.
         self.instance_container_restarts = instance_container_restarts
+        # The state of the instance. Valid values:
+        # 
+        # *   **Error**: An error occurred during the instance startup.
+        # *   **CrashLoopBackOff**: The container failed to start. An error occurred during the startup process and persisted after the restart.
+        # *   **ErrImagePull**: An error occurred while the container image was being pulled from the instance.
+        # *   **ImagePullBackOff**: The container image could not be obtained.
+        # *   **Pending**: The instance is waiting to be scheduled.
+        # *   **Unknown**: An unknown exception occurred.
+        # *   **Terminating**: The instance creation process is being terminated.
+        # *   **NotFound**: The instance cannot be found.
+        # *   **PodInitializing**: The instance is being initialized.
+        # *   **Init:0/1**: The instance is initialized.
+        # *   **Running**: The instance is running.
         self.instance_container_status = instance_container_status
+        # The configurations of health checks. Valid values:
+        # 
+        # *   **WithoutHealthCheckConfig**: Liveness and readiness checks are not configured.
+        # *   **WithoutLivenessConfig**: The liveness check is not configured.
+        # *   **WithoutReadinessConfig**: The readiness check is not configured.
+        # *   **NotCheckedYet**: The health checks are not performed or are in progress.
+        # *   **LivenessUnhealthy**: The instance failed the liveness check.
+        # *   **ReadinessUnhealthy**: The instance failed the readiness check.
+        # *   **Unhealthy**: The instance failed both liveness and readiness checks.
+        # *   **Healthy**: The instance passed both liveness and readiness checks.
         self.instance_health_status = instance_health_status
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The version of the package.
         self.package_version = package_version
+        # The ID of the zone where the instance is deployed.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -6960,9 +7954,13 @@ class DescribeApplicationInstancesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The number of the returned page.
         self.current_page = current_page
+        # The list of application instances.
         self.instances = instances
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of returned instances.
         self.total_size = total_size
 
     def validate(self):
@@ -7016,12 +8014,30 @@ class DescribeApplicationInstancesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of the application instances.
         self.data = data
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of application instances was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -7120,7 +8136,9 @@ class DescribeApplicationScalingRuleRequest(TeaModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
+        # a0d2e04c-159d-40a8-b240-d2f2c263\*\*\*\*\
         self.app_id = app_id
+        # test
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -7153,7 +8171,21 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         metric_target_average_utilization: int = None,
         metric_type: str = None,
     ):
+        # The limit on the metric.
+        # 
+        # *   The limit on the CPU utilization. Unit: percentage.
+        # *   The limit on the memory usage. Unit: percentage.
+        # *   The limit on the average number of active TCP connections per second.
+        # *   The limit on the QPS of the Internet-facing SLB instance.
+        # *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
         self.metric_target_average_utilization = metric_target_average_utilization
+        # The metric that is used to trigger the auto scaling policy. Valid values:
+        # 
+        # *   **CPU**: the CPU utilization.
+        # *   **MEMORY**: the memory usage.
+        # *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
+        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
+        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
         self.metric_type = metric_type
 
     def validate(self):
@@ -7187,8 +8219,21 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMe
         name: str = None,
         type: str = None,
     ):
+        # The current value of the metric.
         self.current_value = current_value
+        # The name of the metric.
+        # 
+        # *   **cpu**: the CPU utilization.
+        # *   **memory**: the memory usage.
+        # *   **tcpActiveConn**: the number of active TCP connections.
+        # *   **slb_incall_qps**: the QPS of the Internet-facing SLB instance.
+        # *   **slb_incall_rt**: the response time of the Internet-facing SLB instance.
         self.name = name
+        # The type of the data. This parameter corresponds to the metric.
+        # 
+        # *   **Resource**: used when the metric is the **CPU utilization** or **memory usage**.
+        # *   **Pods**: used when the metric is the **number of active TCP connections**.
+        # *   **External**: used when the metric is about the **SLB** instance or from **Application Real-Time Monitoring Service (ARMS)**.
         self.type = type
 
     def validate(self):
@@ -7226,8 +8271,17 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScale
         next_scale_in_average_utilization: int = None,
         next_scale_out_average_utilization: int = None,
     ):
+        # The name of the metric.
+        # 
+        # *   **cpu**: the CPU utilization.
+        # *   **memory**: the memory usage.
+        # *   **tcpActiveConn**: the number of active TCP connections.
+        # *   **slb_incall_qps**: the QPS of the Internet-facing SLB instance.
+        # *   **slb_incall_rt**: the response time of the Internet-facing SLB instance.
         self.name = name
+        # The metric value as a percentage that triggers the application scale-in next time.
         self.next_scale_in_average_utilization = next_scale_in_average_utilization
+        # The metric value as a percentage that triggers the application scale-out next time.
         self.next_scale_out_average_utilization = next_scale_out_average_utilization
 
     def validate(self):
@@ -7268,11 +8322,17 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus(TeaModel
         next_scale_metrics: List[DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics] = None,
         next_scale_time_period: int = None,
     ):
+        # The metrics that is used to trigger the current auto scaling policy.
         self.current_metrics = current_metrics
+        # The current number of instances.
         self.current_replicas = current_replicas
+        # The expected number of instances.
         self.desired_replicas = desired_replicas
+        # The time when the auto scaling policy was last triggered.
         self.last_scale_time = last_scale_time
+        # The metrics that are used to trigger the auto scaling policy next time.
         self.next_scale_metrics = next_scale_metrics
+        # The duration for which the metric-based auto scaling policy takes effect next time.
         self.next_scale_time_period = next_scale_time_period
 
     def validate(self):
@@ -7339,8 +8399,16 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules(TeaMode
         stabilization_window_seconds: int = None,
         step: int = None,
     ):
+        # Indicates whether the application scale-in is disabled. Valid values:
+        # 
+        # *   **true**: disabled.
+        # *   **false**: enabled.
+        # 
+        # >  When this parameter is set to true, the application instances are never reduced. This prevents risks to your business in peak hours. By default, this parameter is set to false.
         self.disabled = disabled
+        # The cooldown time of the scale-in. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
         self.stabilization_window_seconds = stabilization_window_seconds
+        # The step size for the scale-in. The maximum number of instances that can be reduced within a specific period of time.
         self.step = step
 
     def validate(self):
@@ -7378,8 +8446,16 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules(TeaModel)
         stabilization_window_seconds: int = None,
         step: int = None,
     ):
+        # Indicates whether the application scale-in is disabled. Valid values:
+        # 
+        # *   **true**: The application scale-in is disabled.
+        # *   **false**: The application scale-in is enabled.
+        # 
+        # >  When this parameter is set to true, the application instances are never reduced. This prevents risks to your business in peak hours. By default, this parameter is set to false.
         self.disabled = disabled
+        # The cooldown time of the scale-out. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
         self.stabilization_window_seconds = stabilization_window_seconds
+        # The step size for the scale-out. The maximum number of instances that can be added within a specific period of time.
         self.step = step
 
     def validate(self):
@@ -7420,11 +8496,17 @@ class DescribeApplicationScalingRuleResponseBodyDataMetric(TeaModel):
         scale_down_rules: DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules = None,
         scale_up_rules: DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules = None,
     ):
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The list of metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
+        # The execution status of the metric-based auto scaling policy.
         self.metrics_status = metrics_status
+        # The minimum number of instances.
         self.min_replicas = min_replicas
+        # Rules that determine the application scale-in.
         self.scale_down_rules = scale_down_rules
+        # Rules that determine the application scale-out.
         self.scale_up_rules = scale_up_rules
 
     def validate(self):
@@ -7490,7 +8572,9 @@ class DescribeApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         at_time: str = None,
         target_replicas: int = None,
     ):
+        # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
+        # The expected number of instances.
         self.target_replicas = target_replicas
 
     def validate(self):
@@ -7525,9 +8609,33 @@ class DescribeApplicationScalingRuleResponseBodyDataTimer(TeaModel):
         period: str = None,
         schedules: List[DescribeApplicationScalingRuleResponseBodyDataTimerSchedules] = None,
     ):
+        # The start date of the validity period of the scheduled auto scaling policy. Valid values:
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is **2021-03-25** and **EndDate** is **2021-04-25**, the auto scaling policy is valid for one month.
         self.begin_date = begin_date
+        # The end date of the validity period of the scheduled auto scaling policy. Valid values:
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is **2021-03-25** and **EndDate** is **2021-04-25**, the auto scaling policy is valid for one month.
         self.end_date = end_date
+        # The days on which the scheduled auto scaling policy takes effect. Valid values:
+        # 
+        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+        # 
+        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+        # 
+        #     *   **Sun**: Sunday
+        #     *   **Mon**: Monday
+        #     *   **Tue**: Tuesday
+        #     *   **Wed**: Wednesday
+        #     *   **Thu**: Thursday
+        #     *   **Fri**: Friday
+        #     *   **Sat**: Saturday
+        # 
+        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
         self.period = period
+        # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
 
     def validate(self):
@@ -7583,14 +8691,30 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
         timer: DescribeApplicationScalingRuleResponseBodyDataTimer = None,
         update_time: int = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
+        # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
+        # The details of the metric-based auto scaling policy.
         self.metric = metric
+        # Indicates whether the auto scaling policy is enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.scale_rule_enabled = scale_rule_enabled
+        # The name of the auto scaling policy.
         self.scale_rule_name = scale_rule_name
+        # The type of the auto scaling policy. Valid values:
+        # 
+        # *   **timing**: the scheduled auto scaling policy.
+        # *   **metric**: the metric-based auto scaling policy.
+        # *   **mix**: the hybrid auto scaling policy.
         self.scale_rule_type = scale_rule_type
+        # The details of the scheduled auto scaling policy.
         self.timer = timer
+        # The time when the auto scaling policy was updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -7662,11 +8786,14 @@ class DescribeApplicationScalingRuleResponseBody(TeaModel):
         trace_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.error_code = error_code
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -7764,6 +8891,7 @@ class DescribeApplicationScalingRulesRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -7792,7 +8920,21 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         metric_target_average_utilization: int = None,
         metric_type: str = None,
     ):
+        # The limit on the metric.
+        # 
+        # *   The limit on the CPU utilization. Unit: percentage.
+        # *   The limit on the memory usage. Unit: percentage.
+        # *   The limit on the average number of active TCP connections per second.
+        # *   The limit on the queries per second (QPS) of the Internet-facing Server Load Balancer (SLB) instance.
+        # *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
         self.metric_target_average_utilization = metric_target_average_utilization
+        # The metric that is used to trigger the auto scaling policy. Valid values:
+        # 
+        # *   **CPU**: the CPU utilization.
+        # *   **MEMORY**: the memory usage.
+        # *   **tcpActiveConn**: the average number of active TCP connections per second of an application instance in 30 seconds.
+        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
+        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
         self.metric_type = metric_type
 
     def validate(self):
@@ -7826,8 +8968,21 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         name: str = None,
         type: str = None,
     ):
+        # The current value of the metric.
         self.current_value = current_value
+        # The name of the metric.
+        # 
+        # *   **cpu**: the CPU utilization.
+        # *   **memory**: the memory usage.
+        # *   **tcpActiveConn**: the number of active TCP connections.
+        # *   **slb_incall_qps**: the QPS of the Internet-facing SLB instance.
+        # *   **slb_incall_rt**: the response time of the Internet-facing SLB instance.
         self.name = name
+        # The type of the data. This parameter corresponds to the metric.
+        # 
+        # *   **Resource**: used when the metric is the **CPU utilization** or **memory usage**.
+        # *   **Pods**: used when the metric is the **number of active TCP connections**.
+        # *   **External**: used when the metric is about the **SLB** instance or from **Application Real-Time Monitoring Service (ARMS)**.
         self.type = type
 
     def validate(self):
@@ -7865,8 +9020,17 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         next_scale_in_average_utilization: int = None,
         next_scale_out_average_utilization: int = None,
     ):
+        # The name of the metric.
+        # 
+        # *   **cpu**: the CPU utilization.
+        # *   **memory**: the memory usage.
+        # *   **tcpActiveConn**: the number of active TCP connections.
+        # *   **slb_incall_qps**: the QPS of the Internet-facing SLB instance.
+        # *   **slb_incall_rt**: the response time of the Internet-facing SLB instance.
         self.name = name
+        # The metric value as a percentage that triggers the application scale-in next time.
         self.next_scale_in_average_utilization = next_scale_in_average_utilization
+        # The metric value as a percentage that triggers the application scale-out next time.
         self.next_scale_out_average_utilization = next_scale_out_average_utilization
 
     def validate(self):
@@ -7909,13 +9073,21 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         next_scale_metrics: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics] = None,
         next_scale_time_period: int = None,
     ):
+        # The metrics that are used to trigger the auto scaling policy this time.
         self.current_metrics = current_metrics
+        # The current number of instances.
         self.current_replicas = current_replicas
+        # The expected number of instances.
         self.desired_replicas = desired_replicas
+        # The time when the auto scaling policy was last triggered.
         self.last_scale_time = last_scale_time
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The minimum number of instances.
         self.min_replicas = min_replicas
+        # The metrics that are used to trigger the auto scaling policy next time.
         self.next_scale_metrics = next_scale_metrics
+        # The duration for which the metric-based auto scaling policy takes effect next time.
         self.next_scale_time_period = next_scale_time_period
 
     def validate(self):
@@ -7990,8 +9162,16 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         stabilization_window_seconds: int = None,
         step: int = None,
     ):
+        # Indicates whether the application scale-in was disabled. Valid values:
+        # 
+        # *   **true**: The application scale-in was disabled.
+        # *   **false**: The application scale-in was enabled.
+        # 
+        # >  When this parameter is set to true, the application instances will never be reduced. This prevents risks to your business in peak hours. By default, this parameter is set to false.
         self.disabled = disabled
+        # The cooldown time of the scale-in. Valid values: 0 to 3600. Unit: seconds. The default value is 0.
         self.stabilization_window_seconds = stabilization_window_seconds
+        # The step size for the scale-in. The maximum number of instances that can be reduced in a unit of time.
         self.step = step
 
     def validate(self):
@@ -8029,8 +9209,16 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         stabilization_window_seconds: int = None,
         step: int = None,
     ):
+        # Indicates whether the application scale-in was disabled. Valid values:
+        # 
+        # *   **true**: The application scale-in was disabled.
+        # *   **false**: The application scale-in was enabled.
+        # 
+        # >  When this parameter is set to true, the application instances will never be reduced. This prevents risks to your business in peak hours. By default, this parameter is set to false.
         self.disabled = disabled
+        # The cooldown time of the scale-out. Valid values: 0 to 3600. Unit: seconds. The default value is 0.
         self.stabilization_window_seconds = stabilization_window_seconds
+        # The step size for the scale-out. The maximum number of instances that can be added in a unit of time.
         self.step = step
 
     def validate(self):
@@ -8071,11 +9259,17 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         scale_down_rules: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules = None,
         scale_up_rules: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules = None,
     ):
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The list of metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
+        # The execution status of the metric-based auto scaling policy.
         self.metrics_status = metrics_status
+        # The minimum number of instances.
         self.min_replicas = min_replicas
+        # Rules that determine the application scale-in.
         self.scale_down_rules = scale_down_rules
+        # Rules that determine the application scale-out.
         self.scale_up_rules = scale_up_rules
 
     def validate(self):
@@ -8143,9 +9337,13 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
         min_replicas: int = None,
         target_replicas: int = None,
     ):
+        # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The minimum number of instances.
         self.min_replicas = min_replicas
+        # The expected number of instances.
         self.target_replicas = target_replicas
 
     def validate(self):
@@ -8188,9 +9386,33 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
         period: str = None,
         schedules: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimerSchedules] = None,
     ):
+        # The start date of the validity period of the scheduled auto scaling policy. Valid values:
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.begin_date = begin_date
+        # The end date of the validity period of the scheduled auto scaling policy. Valid values:
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.end_date = end_date
+        # The days on which the scheduled auto scaling policy takes effect. Valid values:
+        # 
+        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+        # 
+        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+        # 
+        #     *   **Sun**: Sunday
+        #     *   **Mon**: Monday
+        #     *   **Tue**: Tuesday
+        #     *   **Wed**: Wednesday
+        #     *   **Thu**: Thursday
+        #     *   **Fri**: Friday
+        #     *   **Sat**: Saturday
+        # 
+        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
         self.period = period
+        # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
 
     def validate(self):
@@ -8246,14 +9468,30 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         timer: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer = None,
         update_time: int = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
+        # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
+        # The details of the metric-based auto scaling policy.
         self.metric = metric
+        # Indicates whether the auto scaling policy is enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.scale_rule_enabled = scale_rule_enabled
+        # The name of the auto scaling policy.
         self.scale_rule_name = scale_rule_name
+        # The type of the auto scaling policy. Valid values:
+        # 
+        # *   **timing**: the scheduled auto scaling policy.
+        # *   **metric**: the metric-based auto scaling policy.
+        # *   **mix**: the hybrid auto scaling policy.
         self.scale_rule_type = scale_rule_type
+        # The details of the scheduled auto scaling policy.
         self.timer = timer
+        # The time when the auto scaling policy was updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -8321,9 +9559,13 @@ class DescribeApplicationScalingRulesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The auto scaling policies of the application.
         self.application_scaling_rules = application_scaling_rules
+        # The number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of auto scaling policies.
         self.total_size = total_size
 
     def validate(self):
@@ -8378,11 +9620,14 @@ class DescribeApplicationScalingRulesResponseBody(TeaModel):
         trace_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.error_code = error_code
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -8480,6 +9725,7 @@ class DescribeApplicationSlbsRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -8510,9 +9756,13 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
         protocol: str = None,
         target_port: int = None,
     ):
+        # The ID of the SSL certificate issued by Alibaba Cloud.
         self.https_cert_id = https_cert_id
+        # The port specified for the SLB listener.
         self.port = port
+        # The supported protocol.
         self.protocol = protocol
+        # The container port.
         self.target_port = target_port
 
     def validate(self):
@@ -8555,9 +9805,13 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
         protocol: str = None,
         target_port: int = None,
     ):
+        # The ID of the SSL certificate issued by Alibaba Cloud.
         self.https_cert_id = https_cert_id
+        # The port specified for the SLB listener.
         self.port = port
+        # The supported protocol.
         self.protocol = protocol
+        # The container port.
         self.target_port = target_port
 
     def validate(self):
@@ -8604,13 +9858,19 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
         intranet_slb_expired: bool = None,
         intranet_slb_id: str = None,
     ):
+        # Configurations of Internet-facing SLB instances.
         self.internet = internet
+        # The IP address of the Internet-facing SLB instance.
         self.internet_ip = internet_ip
         self.internet_slb_expired = internet_slb_expired
+        # The ID of the Internet-facing SLB instance.
         self.internet_slb_id = internet_slb_id
+        # Configurations of internal-facing SLB instances.
         self.intranet = intranet
+        # The IP address of the internal-facing SLB instance.
         self.intranet_ip = intranet_ip
         self.intranet_slb_expired = intranet_slb_expired
+        # The ID of the internal-facing SLB instance.
         self.intranet_slb_id = intranet_slb_id
 
     def validate(self):
@@ -8689,12 +9949,33 @@ class DescribeApplicationSlbsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information about the SLB instances that are associated with an application was obtained successfully. Valid values:
+        # 
+        # *   **true**: indicates that the information was obtained successfully.
+        # *   **false**: indicates that the information failed to be obtained.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -8792,6 +10073,7 @@ class DescribeApplicationStatusRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -8830,17 +10112,56 @@ class DescribeApplicationStatusResponseBodyData(TeaModel):
         running_instances: int = None,
         sub_status: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # Indicates whether Application Real-Time Monitoring Service (ARMS) advanced monitoring is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.arms_advanced_enabled = arms_advanced_enabled
+        # The metadata of the application in ARMS.
         self.arms_apm_info = arms_apm_info
+        # The time when the application was created.
         self.create_time = create_time
+        # The current state of the application. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **STOPPED**\
+        # *   **UNKNOWN**\
         self.current_status = current_status
+        # Indicates whether SAE agent is enabled.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable_agent = enable_agent
+        # The file size limit. Unit: KB. Valid values: 0 to 10240.
         self.file_size_limit = file_size_limit
+        # The ID of the latest change order that is executed. If no change orders have been executed or if change orders have expired, an empty parameter is returned.
         self.last_change_order_id = last_change_order_id
+        # Indicates whether the latest change order is being executed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.last_change_order_running = last_change_order_running
+        # The state of the latest change order. Valid values:
+        # 
+        # *   **READY**: The change order is ready.
+        # *   **RUNNING**: The change order is being executed.
+        # *   **SUCCESS**: The change order was executed successfully.
+        # *   **FAIL**: The change order failed to be executed.
+        # *   **ABORT**: The change order is stopped.
+        # *   **WAIT_BATCH_CONFIRM**: The change order is pending execution. You must manually confirm the release batch.
+        # *   **AUTO_BATCH_WAIT**: The change order is pending execution. SAE will automatically confirm the release batch.
+        # *   **SYSTEM_FAIL**: A system exception occurred.
+        # *   **WAIT_APPROVAL**: The change order is pending approval.
+        # *   **APPROVED**: The change order is approved and is pending execution.
         self.last_change_order_status = last_change_order_status
+        # The number of running instances of the application.
         self.running_instances = running_instances
+        # Indicates whether an error occurred while the change order was being executed. Valid values:
+        # 
+        # *   **NORMAL**\
+        # *   **RUNNING_BUT_HAS_ERROR** If an error occurs during a batch release, you must manually perform a rollback. In this case, the change order is still running because the task is not completed, but the state of the change order is RUNNING_BUT_HAS_ERROR.
         self.sub_status = sub_status
 
     def validate(self):
@@ -8918,12 +10239,33 @@ class DescribeApplicationStatusResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message. Valid values:
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether information of the application is successfully obtained. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -9021,6 +10363,7 @@ class DescribeChangeOrderRequest(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # 76fa5c0-9ebb-4bb4-b383-1f885447\*\*\*\*\
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -9054,12 +10397,30 @@ class DescribeChangeOrderResponseBodyDataPipelines(TeaModel):
         status: int = None,
         update_time: int = None,
     ):
+        # The batch type.
         self.batch_type = batch_type
+        # The number of parallel tasks in a batch.
         self.parallel_count = parallel_count
+        # The ID of the batch.
         self.pipeline_id = pipeline_id
+        # The name of the batch.
         self.pipeline_name = pipeline_name
+        # The time when the batch processing starts.
         self.start_time = start_time
+        # The status of the batch. Valid values:
+        # 
+        # *   **0**: The batch is being prepared.
+        # *   **1**: The batch is being processed.
+        # *   **2**: The batch was processed.
+        # *   **3**: The batch could not be processed.
+        # *   **6**: The batch processing was terminated.
+        # *   **8**: The execution process is pending. You must manually determine the release batch.
+        # *   **9**: The execution process is pending. SAE will automatically determine the release batch.
+        # *   **10**: The batch could not be processed due to a system exception.
+        # *   **11**: The change order is pending approval.
+        # *   **12**: The change order is approved and is pending execution.
         self.status = status
+        # The time when the batch information is last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -9128,23 +10489,85 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
         sub_status: int = None,
         support_rollback: bool = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The approval ID of the change order.
         self.approval_id = approval_id
+        # Indicates whether SAE automatically determines the release batches. Valid values:
+        # 
+        # *   **true**: SAE automatically determines the release batches.
+        # *   **false**: SAE does not automatically determine the release batches.
         self.auto = auto
+        # The number of release batches.
         self.batch_count = batch_count
+        # The mode in which the release batches are determined. Valid values:
+        # 
+        # *   **auto**: SAE automatically determines the release batches.
+        # *   **Manual**: You must manually determine the release batches.
         self.batch_type = batch_type
+        # The interval between batches when SAE automatically determines the release batches in a phased release. Unit: minutes.
         self.batch_wait_time = batch_wait_time
+        # The ID of the change order.
         self.change_order_id = change_order_id
+        # The description about the change type, which corresponds to the **CoTypeCode** parameter.
         self.co_type = co_type
+        # The code of the change type. Valid values:
+        # 
+        # *   **CoBindSlb**: associates the Server Load Balancer (SLB) instance with the application.
+        # *   **CoUnbindSlb**: disassociates the SLB instance from the application.
+        # *   **CoCreateApp**: creates the application.
+        # *   **CoDeleteApp**: deletes the application.
+        # *   **CoDeploy**: deploys the application.
+        # *   **CoRestartApplication**: restarts the application.
+        # *   **CoRollback**: rolls back the application.
+        # *   **CoScaleIn**: scales in the application.
+        # *   **CoScaleOut**: scales out the application.
+        # *   **CoStart**: starts the application.
+        # *   **CoStop**: stops the application.
+        # *   **CoRescaleApplicationVertically**: modifies the instance specifications.
+        # *   **CoDeployHistroy**: rolls back the application to a historical version.
+        # *   **CoBindNas**: associates a network-attached storage (NAS) file system with the application.
+        # *   **CoUnbindNas**: disassociates the NAS file system from the application.
+        # *   **CoBatchStartApplication**: starts multiple applications concurrently.
+        # *   **CoBatchStopApplication**: stops multiple applications concurrently.
+        # *   **CoRestartInstances**: restarts the instances.
+        # *   **CoDeleteInstances**: deletes the instances.
+        # *   **CoScaleInAppWithInstances**: reduces the number of specified application instances.
         self.co_type_code = co_type_code
+        # The time when the change order was created.
         self.create_time = create_time
+        # The ID of the current batch.
         self.current_pipeline_id = current_pipeline_id
+        # The description of the change order.
         self.description = description
+        # The error message.
         self.error_message = error_message
+        # The batch information.
         self.pipelines = pipelines
+        # The status of the change order. Valid values:
+        # 
+        # *   **0**: The change order is being prepared.
+        # *   **1**: The change order is being executed.
+        # *   **2**: The change order was executed.
+        # *   **3**: The change order could not be executed.
+        # *   **6**: The change order was terminated.
+        # *   **8**: The execution process is pending. You must manually determine the release batch.
+        # *   **9**: The execution process is pending. SAE will automatically determine the release batches.
+        # *   **10**: The execution failed due to a system exception.
+        # *   **11**: The change order is pending approval.
+        # *   **12**: The change order is approved and is pending execution.
         self.status = status
+        # The substatus of the change order. This parameter indicates whether an exception occurred while the change order was being executed. Valid values:
+        # 
+        # *   **0**: No exception occurred.
+        # *   **1**: An exception occurred. For example, when an error occurred during a phased release, you must manually roll back the application. In this case, the change order cannot be completed, so the Status parameter is still displayed as "1", which indicates that the change order is being executed. You can check the value of this parameter to determine whether an exception occurs.
         self.sub_status = sub_status
+        # Indicates whether the application can be rolled back. Valid values:
+        # 
+        # *   **true**: The application can be rolled back.
+        # *   **false**: The application cannot be rolled back.
         self.support_rollback = support_rollback
 
     def validate(self):
@@ -9254,12 +10677,30 @@ class DescribeChangeOrderResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of the change order.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of a change order was obtained. Valid values:
+        # 
+        # *   **true**: The information was obtained.
+        # *   **false**: The information could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -9358,7 +10799,9 @@ class DescribeComponentsRequest(TeaModel):
         app_id: str = None,
         type: str = None,
     ):
+        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
         self.app_id = app_id
+        # TOMCAT
         self.type = type
 
     def validate(self):
@@ -9393,9 +10836,16 @@ class DescribeComponentsResponseBodyData(TeaModel):
         expired: bool = None,
         type: str = None,
     ):
+        # The description of the component.
         self.component_description = component_description
+        # The ID of the component.
         self.component_key = component_key
+        # Indicates whether the component is expired. Valid values:
+        # 
+        # *   **true**: The component is expired.
+        # *   **false**: The component is not expired.
         self.expired = expired
+        # The component type.
         self.type = type
 
     def validate(self):
@@ -9441,12 +10891,30 @@ class DescribeComponentsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of the component.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the component version was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the component version was obtained.
+        # *   **false**: indicates that the component version could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -9550,6 +11018,7 @@ class DescribeConfigMapRequest(TeaModel):
         self,
         config_map_id: int = None,
     ):
+        # 1
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -9578,7 +11047,9 @@ class DescribeConfigMapResponseBodyDataRelateApps(TeaModel):
         app_id: str = None,
         app_name: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
 
     def validate(self):
@@ -9617,13 +11088,25 @@ class DescribeConfigMapResponseBodyData(TeaModel):
         relate_apps: List[DescribeConfigMapResponseBodyDataRelateApps] = None,
         update_time: int = None,
     ):
+        # The ID of the ConfigMap instance.
         self.config_map_id = config_map_id
+        # The time when the instance was created.
         self.create_time = create_time
+        # The data of ConfigMap key-value pairs. Format:
+        # 
+        # {"k1":"v1", "k2":"v2"}
+        # 
+        # k specifies a key and v specifies a value. For more information, see [Manage and use configurations](~~171326~~).
         self.data = data
+        # The description of the instance.
         self.description = description
+        # The name of the ConfigMap instance.
         self.name = name
+        # The ID of the namespace to which the instance belongs.
         self.namespace_id = namespace_id
+        # The application that is associated with the instance.
         self.relate_apps = relate_apps
+        # The time when the instance was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -9693,12 +11176,33 @@ class DescribeConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the details of the ConfigMap instance were obtained. Valid values:
+        # 
+        # *   **true**: The details were obtained.
+        # *   **false**: The details failed to be obtained.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -10109,7 +11613,12 @@ class DescribeEdasContainersResponseBodyData(TeaModel):
         disabled: bool = None,
         edas_container_version: str = None,
     ):
+        # Indicates whether the component is disabled. Valid values:
+        # 
+        # *   **true**: indicates that the component is disabled.
+        # *   **false**: indicates that the component is not disabled.
         self.disabled = disabled
+        # The version of the container, such as Ali-Tomcat, in which a High-speed Service Framework (HSF) application runs.
         self.edas_container_version = edas_container_version
 
     def validate(self):
@@ -10147,12 +11656,30 @@ class DescribeEdasContainersResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The list of components.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of container components of a microservice application was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -10256,6 +11783,7 @@ class DescribeGreyTagRouteRequest(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
+        # 1
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -10405,12 +11933,31 @@ class DescribeGreyTagRouteResponseBodyDataDubboRulesItems(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
         self.cond = cond
+        # The expression that is used to obtain the value of the parameter. Valid values:
+        # 
+        # - **Empty**: obtains the value of the parameter.
+        # - **.name**: obtains the name property of the parameter. This expression works the same way as args0.getName().
+        # - **.isEnabled()**: obtains the enabled property of the parameter. This expression works the same way as args0.isEnabled().
+        # - **[0]**: indicates that the value of the parameter is an array and obtains the first value of the array. This expression works the same way as args0[0]. This expression does not start with a period (.).
+        # - **.get(0)**: indicates that the value of the parameter is a list and obtains the first value of the list. This expression works the same way as args0.get(0).
+        # - **.get("key")**: indicates that the value of the parameter is a map and obtains the value of the key in the map. This expression works the same way as args0.get("key").
         self.expr = expr
+        # The index of the parameter. The value 0 indicates the first parameter.
         self.index = index
+        # This parameter is not returned for Dubbo services.
         self.name = name
+        # The operator. Valid values:
+        # 
+        # - **rawvalue**: direct comparison.
+        # - **list**: whitelist.
+        # - **mod**: mods 100.
+        # - **deterministic_proportional_steaming_division**: percentage.
         self.operator = operator
+        # This parameter is not returned for Dubbo services.
         self.type = type
+        # The value of the parameter. This value is compared with the value that is obtained based on the **expr** and **index** parameters.
         self.value = value
 
     def validate(self):
@@ -10467,11 +12014,20 @@ class DescribeGreyTagRouteResponseBodyDataDubboRules(TeaModel):
         service_name: str = None,
         version: str = None,
     ):
+        # The relationship between the conditions in the canary release rule. Valid values:
+        # 
+        # - **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
+        # - **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
         self.condition = condition
+        # The group of the Dubbo service that corresponds to the canary release rule.
         self.group = group
+        # The conditions.
         self.items = items
+        # The method name of the Dubbo service.
         self.method_name = method_name
+        # The name of the Dubbo service.
         self.service_name = service_name
+        # The version of the Dubbo service.
         self.version = version
 
     def validate(self):
@@ -10533,12 +12089,28 @@ class DescribeGreyTagRouteResponseBodyDataScRulesItems(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
         self.cond = cond
+        # This parameter is not returned for Spring Cloud applications.
         self.expr = expr
+        # This parameter is not returned for Spring Cloud applications.
         self.index = index
+        # The name of the parameter.
         self.name = name
+        # The operator. Valid values:
+        # 
+        # *   **rawvalue**: direct comparison.
+        # *   **list**: whitelist.
+        # *   **mod**: mods 100.
+        # *   **deterministic_proportional_steaming_division**: percentage.
         self.operator = operator
+        # The type of the comparison. Valid values:
+        # 
+        # *   **param**: parameter
+        # *   **cookie**: cookie
+        # *   **header**: header
         self.type = type
+        # The value of the parameter. This value is compared with the value that is obtained based on the **type** and **name** parameters.
         self.value = value
 
     def validate(self):
@@ -10592,8 +12164,14 @@ class DescribeGreyTagRouteResponseBodyDataScRules(TeaModel):
         items: List[DescribeGreyTagRouteResponseBodyDataScRulesItems] = None,
         path: str = None,
     ):
+        # The relationship between the conditions in the canary release rule. Valid values:
+        # 
+        # *   **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
+        # *   **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
         self.condition = condition
+        # The conditions.
         self.items = items
+        # The path of the canary release rule of the Spring Cloud application.
         self.path = path
 
     def validate(self):
@@ -10646,13 +12224,21 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         update_time: int = None,
     ):
         self.alb_rules = alb_rules
+        # The ID of the application.
         self.app_id = app_id
+        # The timestamp when the canary release rule was created. Unit: milliseconds.
         self.create_time = create_time
+        # The description of the canary release rule.
         self.description = description
+        # The canary release rule of the Dubbo service.
         self.dubbo_rules = dubbo_rules
+        # The ID of the canary release rule. The ID is globally unique.
         self.grey_tag_route_id = grey_tag_route_id
+        # The name of the canary release rule.
         self.name = name
+        # The canary release rule of the Spring Cloud application.
         self.sc_rules = sc_rules
+        # The timestamp when the canary release rule was updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -10744,12 +12330,30 @@ class DescribeGreyTagRouteResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # - **2xx**: The call was successful.
+        # - **3xx**: The call was redirected.
+        # - **4xx**: The call failed.
+        # - **5xx**: A server error occurred.
         self.code = code
+        # The information about the canary release rule.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # - If the call is successful, the **ErrorCode** parameter is not returned.
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of the change order was queried. Valid values:
+        # 
+        # - **true**: The information was queried.
+        # - **false**: The information failed to be queried.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -10847,6 +12451,7 @@ class DescribeIngressRequest(TeaModel):
         self,
         ingress_id: int = None,
     ):
+        # 87
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -10877,9 +12482,12 @@ class DescribeIngressResponseBodyDataDefaultRule(TeaModel):
         backend_protocol: str = None,
         container_port: int = None,
     ):
+        # The ID of the application specified in the default rule.
         self.app_id = app_id
+        # The name of the application specified in the default rule.
         self.app_name = app_name
         self.backend_protocol = backend_protocol
+        # The container port of the application specified in the default rule.
         self.container_port = container_port
 
     def validate(self):
@@ -10924,11 +12532,16 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
         domain: str = None,
         path: str = None,
     ):
+        # The ID of the application specified in the forwarding rule.
         self.app_id = app_id
+        # The name of the application specified in the forwarding rule.
         self.app_name = app_name
         self.backend_protocol = backend_protocol
+        # The container port of the application specified in the forwarding rule.
         self.container_port = container_port
+        # The domain name of the application.
         self.domain = domain
+        # The path of the URL.
         self.path = path
 
     def validate(self):
@@ -10988,19 +12601,39 @@ class DescribeIngressResponseBodyData(TeaModel):
         slb_id: str = None,
         slb_type: str = None,
     ):
+        # The ID of the certificate.
         self.cert_id = cert_id
         self.cert_ids = cert_ids
+        # The default rule.
         self.default_rule = default_rule
+        # The name of the routing rule.
         self.description = description
+        # The ID of the routing rule.
         self.id = id
+        # The port specified for the SLB listener.
         self.listener_port = listener_port
+        # The protocol used to forward requests. Valid values:
+        # 
+        # *   **HTTP**: used when the application needs to identify the transmitted data.
+        # *   **HTTPS**: used when the application requires encrypted data transmission.
         self.listener_protocol = listener_protocol
+        # The type of the SLB instance based on the processing capabilities. Valid values:
+        # 
+        # *   **clb**: the Classic Load Balancer (CLB) instance.
+        # *   **alb**: the Application Load Balancer (ALB) instance.
         self.load_balance_type = load_balance_type
+        # The name of the routing rule.
         self.name = name
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The forwarding rules.
         self.rules = rules
-        # SLB ID。
+        # The ID of the SLB instance.
         self.slb_id = slb_id
+        # The type of the SLB instance based on the IP address. Valid values:
+        # 
+        # *   **internet**: the Internet-facing SLB instance.
+        # *   **intranet**: the internal-facing SLB instance.
         self.slb_type = slb_type
 
     def validate(self):
@@ -11093,12 +12726,30 @@ class DescribeIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the configurations of the routing rule were queried successfully. Valid values:
+        # 
+        # *   **true**: indicates that the query was successful.
+        # *   **false**: indicates that the query failed.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -11196,6 +12847,7 @@ class DescribeInstanceLogRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # \*\*\*\*\*\*-d700e680-aa4d-4ec1-afc2-6566b5ff4d7a-85d44d4bfc-\*\*\*\*\*\
         self.instance_id = instance_id
 
     def validate(self):
@@ -11229,12 +12881,33 @@ class DescribeInstanceLogResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The log of the instance.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the log of the instance was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the log was obtained.
+        # *   **false**: indicates that the log could not be obtained.
         self.success = success
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -11335,11 +13008,20 @@ class DescribeInstanceSpecificationsResponseBodyData(TeaModel):
         spec_info: str = None,
         version: int = None,
     ):
+        # The CPU specification of the instance type. Unit: millicore.
         self.cpu = cpu
+        # Indicates whether the instance type is available. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The ID of the instance type.
         self.id = id
+        # The memory size of the instance type. Unit: MB.
         self.memory = memory
+        # The name of the instance type.
         self.spec_info = spec_info
+        # The version number of the instance type.
         self.version = version
 
     def validate(self):
@@ -11393,12 +13075,33 @@ class DescribeInstanceSpecificationsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # Information of instance types.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message. Valid values:
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether information of the instance types is successfully obtained. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -12703,6 +14406,7 @@ class DescribeNamespaceRequest(TeaModel):
         namespace_id: str = None,
     ):
         self.name_space_short_id = name_space_short_id
+        # cn-beijing:test
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -12732,16 +14436,22 @@ class DescribeNamespaceRequest(TeaModel):
 class DescribeNamespaceResponseBodyData(TeaModel):
     def __init__(
         self,
+        enable_micro_registration: bool = None,
         name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         region_id: str = None,
     ):
+        self.enable_micro_registration = enable_micro_registration
         self.name_space_short_id = name_space_short_id
+        # The description of the namespace.
         self.namespace_description = namespace_description
+        # The ID of the namespace. The information of the default namespace cannot be queried or modified. The default namespace cannot be deleted.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -12753,6 +14463,8 @@ class DescribeNamespaceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_micro_registration is not None:
+            result['EnableMicroRegistration'] = self.enable_micro_registration
         if self.name_space_short_id is not None:
             result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
@@ -12767,6 +14479,8 @@ class DescribeNamespaceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableMicroRegistration') is not None:
+            self.enable_micro_registration = m.get('EnableMicroRegistration')
         if m.get('NameSpaceShortId') is not None:
             self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
@@ -12791,12 +14505,33 @@ class DescribeNamespaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information of the namespace.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of the namespace was queried successfully. Valid values:
+        # 
+        # *   **true**: indicates that the query was successful.
+        # *   **false**: indicates that the query failed.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -12895,7 +14630,9 @@ class DescribeNamespaceListRequest(TeaModel):
         contain_custom: bool = None,
         hybrid_cloud_exclude: bool = None,
     ):
+        # true
         self.contain_custom = contain_custom
+        # true
         self.hybrid_cloud_exclude = hybrid_cloud_exclude
 
     def validate(self):
@@ -12937,18 +14674,32 @@ class DescribeNamespaceListResponseBodyData(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The command that was run to install the agent.
         self.agent_install = agent_install
+        # This parameter is no longer valid.
         self.current = current
+        # Indicates whether custom namespaces are returned. Valid values:
+        # 
+        # *   **true**: Custom namespaces are returned.
+        # *   **false**: Custom namespaces are not returned.
         self.custom = custom
+        # Specifies whether hybrid cloud namespaces are excluded. Valid values:
+        # 
+        # *   **true**: Hybrid cloud namespaces are excluded.
+        # *   **false**: Hybrid cloud namespaces are included.
         self.hybrid_cloud_enable = hybrid_cloud_enable
         self.name_space_short_id = name_space_short_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The region to which the namespace belongs.
         self.region_id = region_id
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # vSwitch ID。
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13022,12 +14773,33 @@ class DescribeNamespaceListResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The list of namespaces.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the namespaces were obtained. Valid values:
+        # 
+        # *   **true**: The namespaces were obtained.
+        # *   **false**: The namespaces failed to be obtained.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -13133,6 +14905,7 @@ class DescribeNamespaceResourcesRequest(TeaModel):
         namespace_id: str = None,
     ):
         self.name_space_short_id = name_space_short_id
+        # cn-shanghai:test
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -13182,26 +14955,59 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The number of applications.
         self.app_count = app_count
+        # The region to which the namespace belongs.
         self.belong_region = belong_region
+        # The description of the namespace.
         self.description = description
+        # The ID of the jump server application.
         self.jump_server_app_id = jump_server_app_id
+        # The IP address of the jump server.
         self.jump_server_ip = jump_server_ip
+        # The ID of the change order.
         self.last_change_order_id = last_change_order_id
+        # Indicates whether a change order is being executed in the namespace. Valid values:
+        # 
+        # *   **true**: indicates that a change order is being executed in the namespace.
+        # *   **false**: indicates that no change orders are being executed in the namespace.
         self.last_change_order_running = last_change_order_running
+        # The status of the latest change order. Valid values:
+        # 
+        # *   **READY**: The change order is ready.
+        # *   **RUNNING**: The change order is being executed.
+        # *   **SUCCESS**: The change order was executed.
+        # *   **FAIL**: The change order could not be executed.
+        # *   **ABORT**: The change order was terminated.
+        # *   **WAIT_BATCH_CONFIRM**: The change order is pending execution. You must manually confirm the release batch.
+        # *   **AUTO_BATCH_WAIT**: The change order is pending execution. SAE will automatically confirm the release batch.
+        # *   **SYSTEM_FAIL**: A system exception occurred.
+        # *   **WAIT_APPROVAL**: The change order is pending approval.
+        # *   **APPROVED**: The change order is approved and is pending execution.
         self.last_change_order_status = last_change_order_status
         self.name_space_short_id = name_space_short_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # Indicates whether the notification of a change order is expired. Valid values:
+        # 
+        # *   **true**: indicates that the notification is expired.
+        # *   **false**: indicates that the notification is not expired.
         self.notification_expired = notification_expired
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The ID of the tenant in the SAE namespace.
         self.tenant_id = tenant_id
+        # The ID of the user.
         self.user_id = user_id
-        # vSwitch ID。
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
-        # VPC ID。
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -13307,12 +15113,33 @@ class DescribeNamespaceResourcesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information about resources in the namespace was queried successfully. Valid values:
+        # 
+        # *   **true**: indicates that the query was successful.
+        # *   **false**: indicates that the query failed.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -13411,7 +15238,9 @@ class DescribeNamespacesRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # 1
         self.current_page = current_page
+        # 10
         self.page_size = page_size
 
     def validate(self):
@@ -13451,14 +15280,21 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
         secret_key: str = None,
         tenant_id: str = None,
     ):
+        # The ACM-specific AccessKey ID. It can be used to manage data in an Application Configuration Management (ACM) namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](~~~~).
         self.access_key = access_key
         self.address_server_host = address_server_host
         self.name_space_short_id = name_space_short_id
+        # The description of the namespace.
         self.namespace_description = namespace_description
+        # The ID of the namespace. The information of the default namespace cannot be queried or modified. The default namespace cannot be deleted.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The ID of the region.
         self.region_id = region_id
+        # The ACM-specific AccessKey secret. It can be used to manage data in an ACM namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](~~~~).
         self.secret_key = secret_key
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -13521,9 +15357,13 @@ class DescribeNamespacesResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The list of namespaces.
         self.namespaces = namespaces
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of namespaces.
         self.total_size = total_size
 
     def validate(self):
@@ -13577,12 +15417,33 @@ class DescribeNamespacesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information of namespaces.
         self.data = data
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error message is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the details of namespaces were queried successfully. Valid values:
+        # 
+        # *   **true**: indicates that the query was successful.
+        # *   **false**: indicates that the query failed.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -13680,6 +15541,7 @@ class DescribePipelineRequest(TeaModel):
         self,
         pipeline_id: str = None,
     ):
+        # 917660ba-5092-44ca-b8e0-80012c96\*\*\*\*\
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -13715,14 +15577,36 @@ class DescribePipelineResponseBodyDataStageListTaskList(TeaModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # The error code returned when the task could not be executed. If the task is successfully executed, this parameter is not returned.
         self.error_code = error_code
+        # Indicates whether to execute the subsequent tasks when the task failed. Valid values:
+        # 
+        # *   **0**: The subsequent tasks cannot be executed.
+        # *   **1**: The subsequent tasks can be executed.
         self.error_ignore = error_ignore
+        # The error message returned when the task could not be executed. If the task is successfully executed, this parameter is not returned.
         self.error_message = error_message
+        # The returned message indicating the task execution result.
         self.message = message
+        # Indicates whether a running task can be manually skipped. Valid values:
+        # 
+        # *   **true**: The running task can be skipped.
+        # *   **false**: The running task cannot be skipped.
         self.show_manual_ignore = show_manual_ignore
+        # The ID of the stage.
         self.stage_id = stage_id
+        # The task status. Valid values:
+        # 
+        # *   **0**: The task is prepared for execution.
+        # *   **1**: The task is being executed.
+        # *   **2**: The task was executed.
+        # *   **3**: The task could not be executed.
+        # *   **5**: The task is pending retry.
+        # *   **6**: The task was terminated.
         self.status = status
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -13786,10 +15670,24 @@ class DescribePipelineResponseBodyDataStageList(TeaModel):
         status: int = None,
         task_list: List[DescribePipelineResponseBodyDataStageListTaskList] = None,
     ):
+        # The execution type of the stage. Valid values:
+        # 
+        # *   **0**: in sequence.
+        # *   **1**: in parallel.
         self.executor_type = executor_type
+        # The ID of the stage.
         self.stage_id = stage_id
+        # The name of the stage.
         self.stage_name = stage_name
+        # The status of the batch processing stage. Valid values:
+        # 
+        # *   **0**: The batch is prepared for this processing stage.
+        # *   **1**: The processing stage is in progress.
+        # *   **2**: The processing stage was complete.
+        # *   **3**: The processing failed in this stage.
+        # *   **6**: The processing stage was terminated.
         self.status = status
+        # The list of task statuses.
         self.task_list = task_list
 
     def validate(self):
@@ -13848,13 +15746,31 @@ class DescribePipelineResponseBodyData(TeaModel):
         show_batch: bool = None,
         stage_list: List[DescribePipelineResponseBodyDataStageList] = None,
     ):
+        # The status of the change order for the batch.
         self.co_status = co_status
+        # The ID of the batch processing stage.
         self.current_stage_id = current_stage_id
+        # The ID of the next batch.
         self.next_pipeline_id = next_pipeline_id
+        # The ID of the batch.
         self.pipeline_id = pipeline_id
+        # The name of the batch.
         self.pipeline_name = pipeline_name
+        # The batch status. Valid values:
+        # 
+        # *   **0**: The batch is prepared for processing.
+        # *   **1**: The batch is being processed.
+        # *   **2**: The batch was processed.
+        # *   **3**: The batch could not be processed.
+        # *   **6**: The batch processing was terminated.
+        # *   **10**: The batch could not be processed due to a system exception.
         self.pipeline_status = pipeline_status
+        # Indicates whether to start processing the next batch. Valid values:
+        # 
+        # *   **false**: indicates that the next batch cannot be processed yet.
+        # *   **true**: indicates that the next batch can be processed now.
         self.show_batch = show_batch
+        # The list of batch processing stages.
         self.stage_list = stage_list
 
     def validate(self):
@@ -13924,12 +15840,30 @@ class DescribePipelineResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The batch information.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the batch information was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the information was obtained.
+        # *   **false**: indicates that the information could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -14057,9 +15991,43 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
+        # The list of regions.
         self.local_name = local_name
+        # The ID of the region. Valid values:
+        # 
+        # *   **cn-hangzhou**: the ID of the China (Hangzhou) region
+        # *   **cn-shanghai**: the ID of the China (Shanghai) region
+        # *   **cn-beijing**: the ID of the China (Beijing) region
+        # *   **cn-zhangjiakou**: the ID of the China (Zhangjiakou) region
+        # *   **cn-shenzhen**: the ID of the China (Shenzhen) region
+        # *   **cn-guangzhou**: the ID of the China (Guangzhou) region
+        # *   **cn-hongkong**: the ID of the China (Hong Kong) region
+        # *   **ap-southeast-1**: the ID of the Singapore region
+        # *   **us-west-1**: the ID of the US (Silicon Valley) region
         self.recommend_zones = recommend_zones
+        # The name of the region. Valid values:
+        # 
+        # *   **China (Hangzhou)**\
+        # *   **China (Shanghai)**\
+        # *   **China (Beijing)**\
+        # *   **China (Zhangjiakou)**\
+        # *   **China (Shenzhen)**\
+        # *   **China (Guangzhou)**\
+        # *   **China (Hong Kong)**\
+        # *   **Singapore (Singapore)**\
+        # *   **US (Silicon Valley)**\
         self.region_endpoint = region_endpoint
+        # The endpoint of the region. Valid values:
+        # 
+        # *   **sae.cn-hangzhou.aliyuncs.com**\
+        # *   **sae.cn-shanghai.aliyuncs.com**\
+        # *   **sae.cn-beijing.aliyuncs.com**\
+        # *   **sae.cn-zhangjiakou.aliyuncs.com**\
+        # *   **sae.cn-shenzhen.aliyuncs.com**\
+        # *   **sae.cn-guangzhou.aliyuncs.com**\
+        # *   **sae.cn-hongkong.aliyuncs.com**\
+        # *   **sae.ap-southeast-1.aliyuncs.com**\
+        # *   **sae.us-west-1.aliyuncs.com**\
         self.region_id = region_id
 
     def validate(self):
@@ -14139,9 +16107,18 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # - **2xx**: The call was successful.
+        # - **3xx**: The call was redirected.
+        # - **4xx**: The call failed.
+        # - **5xx**: A server error occurred.
         self.code = code
+        # No request parameters are required.
         self.message = message
+        # The ID of the request.
         self.regions = regions
+        # The returned information.
         self.request_id = request_id
 
     def validate(self):
@@ -14480,7 +16457,9 @@ class DisableApplicationScalingRuleRequest(TeaModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
+        # timer-0800-2100
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -14520,8 +16499,10 @@ class DisableApplicationScalingRuleResponseBody(TeaModel):
         self.code = code
         self.error_code = error_code
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -14614,7 +16595,9 @@ class EnableApplicationScalingRuleRequest(TeaModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
+        # timer-0800-2100
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -14654,8 +16637,10 @@ class EnableApplicationScalingRuleResponseBody(TeaModel):
         self.code = code
         self.error_code = error_code
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -14977,6 +16962,57 @@ class ExecJobResponse(TeaModel):
         return self
 
 
+class GetArmsTopNMetricRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        limit: int = None,
+        order_by: str = None,
+        region_id: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.limit = limit
+        self.order_by = order_by
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
 class GetArmsTopNMetricResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -15134,6 +17170,39 @@ class GetArmsTopNMetricResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = GetArmsTopNMetricResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAvailabilityMetricRequest(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        region_id: str = None,
+    ):
+        self.limit = limit
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -15303,6 +17372,51 @@ class GetAvailabilityMetricResponse(TeaModel):
         return self
 
 
+class GetChangeOrderMetricRequest(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        limit: int = None,
+        order_by: str = None,
+        region_id: str = None,
+    ):
+        self.create_time = create_time
+        self.limit = limit
+        self.order_by = order_by
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class GetChangeOrderMetricResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -15463,6 +17577,39 @@ class GetChangeOrderMetricResponse(TeaModel):
         return self
 
 
+class GetScaleAppMetricRequest(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        region_id: str = None,
+    ):
+        self.limit = limit
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class GetScaleAppMetricResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -15614,6 +17761,51 @@ class GetScaleAppMetricResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = GetScaleAppMetricResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWarningEventMetricRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        limit: int = None,
+        region_id: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.limit = limit
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -15777,13 +17969,21 @@ class ListAppEventsRequest(TeaModel):
         page_size: int = None,
         reason: str = None,
     ):
+        # f7730764-d88f-4b9a-8d8e-cd8efbfe\*\*\*\*\
         self.app_id = app_id
+        # 1
         self.current_page = current_page
+        # Warning
         self.event_type = event_type
+        # cn-beijing
         self.namespace = namespace
+        # Pod
         self.object_kind = object_kind
+        # errew-b86bf540-b4dc-47d8-a42f-b4997c14bd8f-5595cbddd6-x\*\*\*\*\
         self.object_name = object_name
+        # 10
         self.page_size = page_size
+        # Started
         self.reason = reason
 
     def validate(self):
@@ -15845,12 +18045,19 @@ class ListAppEventsResponseBodyDataAppEventEntity(TeaModel):
         object_name: str = None,
         reason: str = None,
     ):
+        # The type of the event.
         self.event_type = event_type
+        # The timestamp of the first occurrence of an event.
         self.first_timestamp = first_timestamp
+        # The timestamp of the last occurrence of an event.
         self.last_timestamp = last_timestamp
+        # The description of the event.
         self.message = message
+        # The type of the object.
         self.object_kind = object_kind
+        # The name of the object.
         self.object_name = object_name
+        # The reason why the event occurred.
         self.reason = reason
 
     def validate(self):
@@ -15905,9 +18112,13 @@ class ListAppEventsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of events.
         self.app_event_entity = app_event_entity
+        # The number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of events that occurred in the application.
         self.total_size = total_size
 
     def validate(self):
@@ -15960,11 +18171,28 @@ class ListAppEventsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of events.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the events that occurred in an application were obtained. Valid values:
+        # 
+        # *   **true**: indicates that the events were obtained.
+        # *   **false**: indicates that the events could not be obtained.
         self.success = success
 
     def validate(self):
@@ -16061,9 +18289,13 @@ class ListAppServicesPageRequest(TeaModel):
         page_size: int = None,
         service_type: str = None,
     ):
+        # 6dcc8c9e-d3da-478a-a066-86dcf820\*\*\*\*\
         self.app_id = app_id
+        # 1
         self.page_number = page_number
+        # 9999
         self.page_size = page_size
+        # springCloud
         self.service_type = service_type
 
     def validate(self):
@@ -16108,11 +18340,17 @@ class ListAppServicesPageResponseBodyDataResult(TeaModel):
         service_name: str = None,
         version: str = None,
     ):
+        # The ID of the application.
         self.edas_app_id = edas_app_id
+        # The name of the application.
         self.edas_app_name = edas_app_name
+        # The group to which the service belongs. You can create a custom group.
         self.group = group
+        # The total number of instances.
         self.instance_num = instance_num
+        # The name of the service.
         self.service_name = service_name
+        # The version of the service. You can create a custom version.
         self.version = version
 
     def validate(self):
@@ -16164,10 +18402,15 @@ class ListAppServicesPageResponseBodyData(TeaModel):
         result: List[ListAppServicesPageResponseBodyDataResult] = None,
         total_size: str = None,
     ):
+        # The page number of the current page.
         self.current_page = current_page
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page. Valid values: 0 to 9999.
         self.page_size = page_size
+        # The returned result.
         self.result = result
+        # The total number of pages returned.
         self.total_size = total_size
 
     def validate(self):
@@ -16225,12 +18468,30 @@ class ListAppServicesPageResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of microservices.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # - If the call is successful, the **ErrorCode** parameter is not returned.
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the microservice list was obtained. Valid values:
+        # 
+        # *   **true**: The list was obtained.
+        # *   **false**: The list failed to be obtained.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -16334,6 +18595,7 @@ class ListAppVersionsRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -16365,10 +18627,20 @@ class ListAppVersionsResponseBodyData(TeaModel):
         type: str = None,
         war_url: str = None,
     ):
+        # The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **url**.
         self.build_package_url = build_package_url
+        # The time when the application was created.
         self.create_time = create_time
+        # The ID of the version.
         self.id = id
+        # The deployment method of the application. Valid values:
+        # 
+        # *   **image**: indicates that the application was deployed by using an image.
+        # *   **upload**: indicates that the application was deployed by uploading a WAR or JAR package.
+        # *   **url**: indicates that the application was deployed by specifying the URL of a WAR or JAR package.
         self.type = type
+        # *   The address of the image. This parameter is returned when the **Type** parameter is set to **image**.
+        # *   The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **upload**.
         self.war_url = war_url
 
     def validate(self):
@@ -16417,11 +18689,28 @@ class ListAppVersionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information about the versions.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the historical versions of the application were obtained. Valid values:
+        # 
+        # *   **true**: indicates that the historical versions of the application were obtained.
+        # *   **false**: indicates that the historical versions of the application could not be obtained.
         self.success = success
 
     def validate(self):
@@ -16529,14 +18818,23 @@ class ListApplicationsRequest(TeaModel):
         reverse: bool = None,
         tags: str = None,
     ):
+        # demo-app
         self.app_name = app_name
+        # 1
         self.current_page = current_page
+        # appName
         self.field_type = field_type
+        # demo-app
         self.field_value = field_value
+        # cn-beijing:demo
         self.namespace_id = namespace_id
+        # runnings
         self.order_by = order_by
+        # 20
         self.page_size = page_size
+        # true
         self.reverse = reverse
+        # \[{"key":"key","value":"value"}]
         self.tags = tags
 
     def validate(self):
@@ -16597,7 +18895,9 @@ class ListApplicationsResponseBodyDataApplicationsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -16637,14 +18937,26 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         running_instances: int = None,
         tags: List[ListApplicationsResponseBodyDataApplicationsTags] = None,
     ):
+        # Indicates whether the application is being deleted. Valid values:
+        # 
+        # *   **true**: The application is being deleted.
+        # *   **false**: The application is not being deleted.
         self.app_deleting_status = app_deleting_status
+        # The description of the application.
         self.app_description = app_description
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
+        # The number of application instances.
         self.instances = instances
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The ID of the region.
         self.region_id = region_id
+        # The number of running instances.
         self.running_instances = running_instances
+        # The tags of the application.
         self.tags = tags
 
     def validate(self):
@@ -16715,9 +19027,13 @@ class ListApplicationsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of applications.
         self.applications = applications
+        # The number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of applications.
         self.total_size = total_size
 
     def validate(self):
@@ -16773,14 +19089,34 @@ class ListApplicationsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The number of the returned page.
         self.current_page = current_page
+        # The information about applications.
         self.data = data
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of applications was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
         self.success = success
+        # The total number of applications.
         self.total_size = total_size
 
     def validate(self):
@@ -16891,11 +19227,17 @@ class ListChangeOrdersRequest(TeaModel):
         key: str = None,
         page_size: int = None,
     ):
+        # 145341c-9708-4967-b3ec-24933767\*\*\*\*\
         self.app_id = app_id
+        # 2
         self.co_status = co_status
+        # CoCreateApp
         self.co_type = co_type
+        # 1
         self.current_page = current_page
+        # test
         self.key = key
+        # 20
         self.page_size = page_size
 
     def validate(self):
@@ -16956,19 +19298,68 @@ class ListChangeOrdersResponseBodyDataChangeOrderList(TeaModel):
         status: int = None,
         user_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The number of release batches.
         self.batch_count = batch_count
+        # The mode in which the release batches are determined. Valid values:
+        # 
+        # *   **auto**: SAE automatically determines the release batches.
+        # *   **manual**: You must manually determine the release batches.
         self.batch_type = batch_type
+        # The ID of the change order.
         self.change_order_id = change_order_id
+        # The change type, which corresponds to the **CoTypeCode** parameter.
         self.co_type = co_type
+        # The code of the change type. Valid values:
+        # 
+        # *   **CoBindSlb**: associates an SLB instance with the application.
+        # *   **CoUnbindSlb**: disassociates the SLB instance from the application.
+        # *   **CoCreateApp**: creates the application.
+        # *   **CoDeleteApp**: deletes the application.
+        # *   **CoDeploy**: deploys the application.
+        # *   **CoRestartApplication**: restarts the application.
+        # *   **CoRollback**: rolls back the application.
+        # *   **CoScaleIn**: scales in the application.
+        # *   **CoScaleOut**: scales out the application.
+        # *   **CoStart**: starts the application.
+        # *   **CoStop**: stops the application.
+        # *   **CoRescaleApplicationVertically**: modifies the instance specifications.
+        # *   **CoDeployHistroy**: rolls back the application to a historical version.
+        # *   **CoBindNas**: associates a NAS file system with the application.
+        # *   **CoUnbindNas**: disassociates the NAS file system from the application.
+        # *   **CoBatchStartApplication**: starts multiple applications concurrently.
+        # *   **CoBatchStopApplication**: stops multiple applications concurrently.
+        # *   **CoRestartInstances**: restarts the instances.
+        # *   **CoDeleteInstances**: deletes the instances.
+        # *   **CoScaleInAppWithInstances**: reduces the number of the specified application instances.
         self.co_type_code = co_type_code
+        # The time when the change order was created.
         self.create_time = create_time
+        # The ID of the user who created the change order.
         self.create_user_id = create_user_id
+        # The description about the application.
         self.description = description
+        # The time when the change order was completed.
         self.finish_time = finish_time
+        # The ID of the group.
         self.group_id = group_id
+        # The source of the change order.
         self.source = source
+        # The status of the change order. Valid values:
+        # 
+        # *   **0**: The change order is being prepared.
+        # *   **1**: The change order is being executed.
+        # *   **2**: The change order was executed.
+        # *   **3**: The change order could not be executed.
+        # *   **6**: The change order was terminated.
+        # *   **8**: The execution process is pending. You must manually determine the release batch.
+        # *   **9**: The execution process is pending. SAE will automatically determine the release batch.
+        # *   **10**: The change order could not be executed due to a system exception.
+        # *   **11**: The change order is pending approval.
+        # *   **12**: The change order is approved and is pending execution.
         self.status = status
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -17051,9 +19442,13 @@ class ListChangeOrdersResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of change orders.
         self.change_order_list = change_order_list
+        # The number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of change orders.
         self.total_size = total_size
 
     def validate(self):
@@ -17107,12 +19502,30 @@ class ListChangeOrdersResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information about change orders.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of change orders was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -17210,6 +19623,7 @@ class ListConsumedServicesRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -17243,12 +19657,19 @@ class ListConsumedServicesResponseBodyData(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # A reserved parameter.
         self.group_2ip = group_2ip
+        # The service group that corresponds to the published service.
         self.groups = groups
+        # The subscription address of the service.
         self.ips = ips
+        # The name of the published service.
         self.name = name
+        # The type of the published service.
         self.type = type
+        # The version of the published service
         self.version = version
 
     def validate(self):
@@ -17306,12 +19727,33 @@ class ListConsumedServicesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of the microservices.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the microservice list was obtained. Valid values:
+        # 
+        # *   **true**: The list was obtained.
+        # *   **false**: The list failed to be obtained.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -17415,6 +19857,7 @@ class ListGreyTagRouteRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -17564,12 +20007,31 @@ class ListGreyTagRouteResponseBodyDataResultDubboRulesItems(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
         self.cond = cond
+        # The expression that is used to obtain the value of the parameter. The syntax of the expression must follow the standard of the SpEL. Valid values:
+        # 
+        # - **Empty**: obtains the value of the parameter.
+        # - **.name**: obtains the name property of the parameter. This expression works the same way as args0.getName().
+        # - **.isEnabled()**: obtains the enabled property of the parameter. This expression works the same way as args0.isEnabled().
+        # - **[0]**: indicates that the value of the parameter is an array and obtains the first value of the array. This expression works the same way as args0[0]. This expression does not start with a period (.).
+        # - **.get(0)**: indicates that the value of the parameter is a list and obtains the first value of the list. This expression works the same way as args0.get(0).
+        # - **.get("key")**: indicates that the value of the parameter is a map and obtains the value of the key in the map. This expression works the same way as args0.get("key").  >  For more information about the expressions that are used to obtain parameter values, see  [Spring Expression Language (SpEL)](https://docs.spring.io/spring-integration/docs/current/reference/html/spel.html).
         self.expr = expr
+        # The index of the parameter. The value 0 indicates the first parameter.
         self.index = index
+        # This parameter is not returned for Dubbo services.
         self.name = name
+        # The operator. Valid values:
+        # 
+        # - **rawvalue**: direct comparison.
+        # - **list**: whitelist.
+        # - **mod**: mods 100.
+        # - **deterministic_proportional_steaming_division**: percentage.
         self.operator = operator
+        # This parameter is not returned for Dubbo services.
         self.type = type
+        # The value of the parameter. This value is compared with the value that is obtained based on the **expr** and **index** parameters.
         self.value = value
 
     def validate(self):
@@ -17626,11 +20088,20 @@ class ListGreyTagRouteResponseBodyDataResultDubboRules(TeaModel):
         service_name: str = None,
         version: str = None,
     ):
+        # The relationship between the conditions in the canary release rule. Valid values:
+        # 
+        # - **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
+        # - **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
         self.condition = condition
+        # The group of the Dubbo service that corresponds to the canary release rule.
         self.group = group
+        # The conditions.
         self.items = items
+        # The method name of the Dubbo service.
         self.method_name = method_name
+        # The name of the Dubbo service.
         self.service_name = service_name
+        # The version of the Dubbo service.
         self.version = version
 
     def validate(self):
@@ -17692,12 +20163,28 @@ class ListGreyTagRouteResponseBodyDataResultScRulesItems(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
         self.cond = cond
+        # This parameter is not returned for Spring Cloud applications.
         self.expr = expr
+        # This parameter is not returned for Spring Cloud applications.
         self.index = index
+        # The name of the parameter.
         self.name = name
+        # The operator. Valid values:
+        # 
+        # *   **rawvalue**: direct comparison.
+        # *   **list**: whitelist.
+        # *   **mod**: mods 100.
+        # *   **deterministic_proportional_steaming_division**: percentage.
         self.operator = operator
+        # The type of the comparison. Valid values:
+        # 
+        # *   **param**: parameter
+        # *   **cookie**: cookie
+        # *   **header**: header
         self.type = type
+        # The value of the parameter. This value is compared with the value that is obtained based on the **type** and **name** parameters.
         self.value = value
 
     def validate(self):
@@ -17751,8 +20238,14 @@ class ListGreyTagRouteResponseBodyDataResultScRules(TeaModel):
         items: List[ListGreyTagRouteResponseBodyDataResultScRulesItems] = None,
         path: str = None,
     ):
+        # The relationship between the conditions in the canary release rule. Valid values:
+        # 
+        # *   **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
+        # *   **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
         self.condition = condition
+        # The conditions.
         self.items = items
+        # The path of the canary release rule of the Spring Cloud application.
         self.path = path
 
     def validate(self):
@@ -17804,12 +20297,19 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
         update_time: int = None,
     ):
         self.alb_rules = alb_rules
+        # The timestamp when the canary release rule was created. Unit: milliseconds.
         self.create_time = create_time
+        # The description of the canary release rule.
         self.description = description
+        # The canary release rule of the Dubbo service.
         self.dubbo_rules = dubbo_rules
+        # The ID of the canary release rule.
         self.grey_tag_route_id = grey_tag_route_id
+        # The name of the canary release rule.
         self.name = name
+        # The canary release rule of the Spring Cloud application.
         self.sc_rules = sc_rules
+        # The timestamp when the canary release rule was updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -17894,9 +20394,13 @@ class ListGreyTagRouteResponseBodyData(TeaModel):
         result: List[ListGreyTagRouteResponseBodyDataResult] = None,
         total_size: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on each page. Valid value: **1**.
         self.page_size = page_size
+        # The returned result.
         self.result = result
+        # The total number of canary release rules. Valid value: **1**.
         self.total_size = total_size
 
     def validate(self):
@@ -17950,12 +20454,33 @@ class ListGreyTagRouteResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # - **2xx**: The call was successful.
+        # - **3xx**: The call was redirected.
+        # - **4xx**: The call failed.
+        # - **5xx**: A server error occurred.
         self.code = code
+        # The information about the canary release rule.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # - If the call is successful, the **ErrorCode** parameter is not returned.
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of the change order was queried. Valid values:
+        # 
+        # - **true**: The information was queried.
+        # - **false**: The information failed to be queried.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -18054,7 +20579,9 @@ class ListIngressesRequest(TeaModel):
         app_id: str = None,
         namespace_id: str = None,
     ):
+        # bbf3a590-6d13-46fe-8ca9-c947a20b\*\*\*\*\
         self.app_id = app_id
+        # cn-beijing
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -18096,17 +20623,35 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         slb_id: str = None,
         slb_type: str = None,
     ):
+        # The ID of the certificate.
         self.cert_id = cert_id
         self.cert_ids = cert_ids
+        # The name of the routing rule.
         self.description = description
+        # The ID of the routing rule.
         self.id = id
+        # The port specified for the SLB listener.
         self.listener_port = listener_port
+        # The protocol used to forward requests. Valid values:
+        # 
+        # *   **HTTP**: used when the application needs to identify the transmitted data.
+        # *   **HTTPS**: used when the application requires encrypted data transmission.
         self.listener_protocol = listener_protocol
+        # The type of the SLB instance based on the processing capabilities. Valid values:
+        # 
+        # *   **clb**: the Classic Load Balancer (CLB) instance.
+        # *   **alb**: the Application Load Balancer (ALB) instance.
         self.load_balance_type = load_balance_type
+        # The name of the routing rule.
         self.name = name
+        # The ID of the namespace.
         self.namespace_id = namespace_id
-        # SLB ID。
+        # The ID of the SLB instance.
         self.slb_id = slb_id
+        # The type of the SLB instance based on the IP address. Valid values:
+        # 
+        # *   **internet**: the Internet-facing SLB instance.
+        # *   **intranet**: the internal-facing SLB instance.
         self.slb_type = slb_type
 
     def validate(self):
@@ -18174,6 +20719,7 @@ class ListIngressesResponseBodyData(TeaModel):
         self,
         ingress_list: List[ListIngressesResponseBodyDataIngressList] = None,
     ):
+        # The list of routing rules.
         self.ingress_list = ingress_list
 
     def validate(self):
@@ -18215,12 +20761,33 @@ class ListIngressesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of routing rules was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -18435,10 +21002,12 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         app_id: str = None,
         app_name: str = None,
         completion_time: int = None,
+        cpu: int = None,
         failed: int = None,
         last_changeorder_state: str = None,
         last_job_state: str = None,
         last_start_time: int = None,
+        mem: int = None,
         namespace_id: str = None,
         region_id: str = None,
         succeeded: int = None,
@@ -18451,10 +21020,12 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         self.app_id = app_id
         self.app_name = app_name
         self.completion_time = completion_time
+        self.cpu = cpu
         self.failed = failed
         self.last_changeorder_state = last_changeorder_state
         self.last_job_state = last_job_state
         self.last_start_time = last_start_time
+        self.mem = mem
         self.namespace_id = namespace_id
         self.region_id = region_id
         self.succeeded = succeeded
@@ -18484,6 +21055,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             result['AppName'] = self.app_name
         if self.completion_time is not None:
             result['CompletionTime'] = self.completion_time
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
         if self.failed is not None:
             result['Failed'] = self.failed
         if self.last_changeorder_state is not None:
@@ -18492,6 +21065,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             result['LastJobState'] = self.last_job_state
         if self.last_start_time is not None:
             result['LastStartTime'] = self.last_start_time
+        if self.mem is not None:
+            result['Mem'] = self.mem
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.region_id is not None:
@@ -18520,6 +21095,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('CompletionTime') is not None:
             self.completion_time = m.get('CompletionTime')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
         if m.get('Failed') is not None:
             self.failed = m.get('Failed')
         if m.get('LastChangeorderState') is not None:
@@ -18528,6 +21105,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             self.last_job_state = m.get('LastJobState')
         if m.get('LastStartTime') is not None:
             self.last_start_time = m.get('LastStartTime')
+        if m.get('Mem') is not None:
+            self.mem = m.get('Mem')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('RegionId') is not None:
@@ -18727,8 +21306,11 @@ class ListLogConfigsRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # 56f77b65-788d-442a-9885-7f20d91f\*\*\*\*\
         self.app_id = app_id
+        # 1
         self.current_page = current_page
+        # 10
         self.page_size = page_size
 
     def validate(self):
@@ -18771,13 +21353,21 @@ class ListLogConfigsResponseBodyDataLogConfigs(TeaModel):
         sls_project: str = None,
         store_type: str = None,
     ):
+        # The name of the Log Service configuration.
         self.config_name = config_name
+        # The time when the configuration was created.
         self.create_time = create_time
+        # The path of logs.
         self.log_dir = log_dir
+        # The type of the log. Set this value to **file_log**.
         self.log_type = log_type
+        # The ID of the region.
         self.region_id = region_id
+        # The name of the Logstore in Log Service.
         self.sls_log_store = sls_log_store
+        # The ID of the Log Service project.
         self.sls_project = sls_project
+        # The storage type of logs.
         self.store_type = store_type
 
     def validate(self):
@@ -18836,9 +21426,13 @@ class ListLogConfigsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The number of the returned page.
         self.current_page = current_page
+        # The details of logging configurations.
         self.log_configs = log_configs
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of returned entries.
         self.total_size = total_size
 
     def validate(self):
@@ -18892,12 +21486,33 @@ class ListLogConfigsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The logging configurations.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the logging configurations of an application were obtained. Valid values:
+        # 
+        # *   **true**: indicates that the configurations were obtained.
+        # *   **false**: indicates that the configurations could not be obtained.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -19000,11 +21615,17 @@ class ListNamespaceChangeOrdersRequest(TeaModel):
         namespace_id: str = None,
         page_size: int = None,
     ):
+        # 2
         self.co_status = co_status
+        # CoBatchStartApplication
         self.co_type = co_type
+        # 1
         self.current_page = current_page
+        # test
         self.key = key
+        # cn-shanghai:test
         self.namespace_id = namespace_id
+        # 20
         self.page_size = page_size
 
     def validate(self):
@@ -19066,20 +21687,48 @@ class ListNamespaceChangeOrdersResponseBodyDataChangeOrderList(TeaModel):
         status: int = None,
         user_id: str = None,
     ):
+        # The number of release batches.
         self.batch_count = batch_count
+        # The mode in which the release batches are determined. Valid values:
+        # 
+        # *   **auto**: SAE automatically determines the release batches.
+        # *   **manual**: You must manually determine the release batches.
         self.batch_type = batch_type
+        # The ID of the change order.
         self.change_order_id = change_order_id
+        # The type of the change order, which corresponds the **CoTypeCode** parameter.
         self.co_type = co_type
+        # The code of the change order type. Valid values:
+        # 
+        # *   **CoBatchStartApplication**: starts multiple applications concurrently.
+        # *   **CoBatchStopApplication**: stops multiple applications concurrently.
         self.co_type_code = co_type_code
+        # The time when the change order was created.
         self.create_time = create_time
+        # The ID of the user who created the change order.
         self.create_user_id = create_user_id
+        # The description of the change order.
         self.description = description
+        # The time when the change order was completed.
         self.finish_time = finish_time
+        # The ID of the group.
         self.group_id = group_id
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The information about release batches.
         self.pipelines = pipelines
+        # The source of the change order.
         self.source = source
+        # The status of the change order. Valid values:
+        # 
+        # *   **0**: The change order is being prepared.
+        # *   **1**: The change order is being executed.
+        # *   **2**: The change order was executed.
+        # *   **3**: The change order could not be executed.
+        # *   **6**: The change order was terminated.
+        # *   **10**: The change order could not be executed due to a system exception.
         self.status = status
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -19166,9 +21815,13 @@ class ListNamespaceChangeOrdersResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of change orders.
         self.change_order_list = change_order_list
+        # The number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of change orders.
         self.total_size = total_size
 
     def validate(self):
@@ -19222,12 +21875,30 @@ class ListNamespaceChangeOrdersResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of change orders was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -19325,6 +21996,7 @@ class ListNamespacedConfigMapsRequest(TeaModel):
         self,
         namespace_id: str = None,
     ):
+        # cn-hangzhou
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -19353,7 +22025,9 @@ class ListNamespacedConfigMapsResponseBodyDataConfigMapsRelateApps(TeaModel):
         app_id: str = None,
         app_name: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
 
     def validate(self):
@@ -19392,13 +22066,25 @@ class ListNamespacedConfigMapsResponseBodyDataConfigMaps(TeaModel):
         relate_apps: List[ListNamespacedConfigMapsResponseBodyDataConfigMapsRelateApps] = None,
         update_time: int = None,
     ):
+        # The ID of the ConfigMap instance.
         self.config_map_id = config_map_id
+        # The time when the instance was created.
         self.create_time = create_time
+        # The data of ConfigMap key-value pairs. Format:
+        # 
+        # {"k1":"v1", "k2":"v2"}
+        # 
+        # k specifies a key and v specifies a value. For more information, see [Manage and use configurations](~~171326~~).
         self.data = data
+        # The description of the instance.
         self.description = description
+        # The name of the ConfigMap instance.
         self.name = name
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The application that is associated with the instance.
         self.relate_apps = relate_apps
+        # The time when the instance was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -19462,6 +22148,7 @@ class ListNamespacedConfigMapsResponseBodyData(TeaModel):
         self,
         config_maps: List[ListNamespacedConfigMapsResponseBodyDataConfigMaps] = None,
     ):
+        # The ConfigMap instances.
         self.config_maps = config_maps
 
     def validate(self):
@@ -19503,12 +22190,33 @@ class ListNamespacedConfigMapsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # - If the call is successful, the **ErrorCode** parameter is not returned.
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the ConfigMap instances were obtained. Valid values:
+        # 
+        # *   **true**: The instances were obtained.
+        # *   **false**: The instances failed to be obtained.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -19606,6 +22314,7 @@ class ListPublishedServicesRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -19639,12 +22348,19 @@ class ListPublishedServicesResponseBodyData(TeaModel):
         type: str = None,
         version: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The reserved parameter. This parameter does not take effect.
         self.group_2ip = group_2ip
+        # The service group that corresponds to the consumed service.
         self.groups = groups
+        # The subscription address of the service.
         self.ips = ips
+        # The name of the published service.
         self.name = name
+        # The type of the published service.
         self.type = type
+        # The version of the published services.
         self.version = version
 
     def validate(self):
@@ -19702,12 +22418,33 @@ class ListPublishedServicesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of the microservices.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the microservice list was obtained. Valid values:
+        # 
+        # *   **true**: The list was obtained.
+        # *   **false**: The list failed to be obtained.
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -20090,10 +22827,15 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: str = None,
     ):
+        # A2RN
         self.next_token = next_token
+        # cn-beijing
         self.region_id = region_id
+        # \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
         self.resource_ids = resource_ids
+        # application
         self.resource_type = resource_type
+        # \[{"key":"k1","value":"v1"}]
         self.tags = tags
 
     def validate(self):
@@ -20140,9 +22882,13 @@ class ListTagResourcesResponseBodyDataTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the application.
         self.resource_id = resource_id
+        # The type of the resource. Set the value to `application`.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -20183,7 +22929,9 @@ class ListTagResourcesResponseBodyData(TeaModel):
         next_token: str = None,
         tag_resources: List[ListTagResourcesResponseBodyDataTagResources] = None,
     ):
+        # A maximum of 50 entries can be returned for a query. If a query generates more than 50 entries, the NextToken parameter is returned with the first 50 entries. You can use the NextToken parameter value to retrieve the subsequent entries that are not returned in the current query result.
         self.next_token = next_token
+        # The mapping relationships between applications and tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -20229,12 +22977,30 @@ class ListTagResourcesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether mapping relationships between applications and tags were queried successfully. Valid values:
+        # 
+        # *   **true**: The query was successful.
+        # *   **false**: The query failed.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -20333,7 +23099,9 @@ class OpenSaeServiceResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20409,6 +23177,7 @@ class QueryResourceStaticsRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -20437,7 +23206,9 @@ class QueryResourceStaticsResponseBodyDataRealTimeRes(TeaModel):
         cpu: float = None,
         memory: float = None,
     ):
+        # The CPU usage. Unit: core per minute.
         self.cpu = cpu
+        # The memory usage. Unit: GiB per minute.
         self.memory = memory
 
     def validate(self):
@@ -20470,7 +23241,9 @@ class QueryResourceStaticsResponseBodyDataSummary(TeaModel):
         cpu: float = None,
         memory: float = None,
     ):
+        # The CPU usage. Unit: core per minute.
         self.cpu = cpu
+        # The memory usage. Unit: GiB per minute.
         self.memory = memory
 
     def validate(self):
@@ -20503,7 +23276,9 @@ class QueryResourceStaticsResponseBodyData(TeaModel):
         real_time_res: QueryResourceStaticsResponseBodyDataRealTimeRes = None,
         summary: QueryResourceStaticsResponseBodyDataSummary = None,
     ):
+        # The real-time resource usage.
         self.real_time_res = real_time_res
+        # The resource usage of the current month.
         self.summary = summary
 
     def validate(self):
@@ -20546,12 +23321,33 @@ class QueryResourceStaticsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The resource usage.
         self.data = data
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the resource usage of an application was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the resource usage was obtained.
+        # *   **false**: indicates that the resource usage could not be obtained.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -20650,7 +23446,9 @@ class ReduceApplicationCapacityByInstanceIdsRequest(TeaModel):
         app_id: str = None,
         instance_ids: str = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
+        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -20682,6 +23480,7 @@ class ReduceApplicationCapacityByInstanceIdsResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -20715,12 +23514,33 @@ class ReduceApplicationCapacityByInstanceIdsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code.
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information of the change order.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether information of the change order is successfully queried. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It can be used to query details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -20822,10 +23642,15 @@ class RescaleApplicationRequest(TeaModel):
         min_ready_instances: int = None,
         replicas: int = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
+        # true
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        # \-1
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # 1
         self.min_ready_instances = min_ready_instances
+        # 5
         self.replicas = replicas
 
     def validate(self):
@@ -20869,6 +23694,7 @@ class RescaleApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -20901,11 +23727,28 @@ class RescaleApplicationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application is successfully scaled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -21001,8 +23844,11 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         cpu: str = None,
         memory: str = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
+        # 1000
         self.cpu = cpu
+        # 2048
         self.memory = memory
 
     def validate(self):
@@ -21038,6 +23884,7 @@ class RescaleApplicationVerticallyResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -21071,12 +23918,30 @@ class RescaleApplicationVerticallyResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the instance specifications are changed. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It can be used to query details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -21176,8 +24041,11 @@ class RestartApplicationRequest(TeaModel):
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
+        # \-1
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # 1
         self.min_ready_instances = min_ready_instances
 
     def validate(self):
@@ -21213,6 +24081,7 @@ class RestartApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -21246,12 +24115,33 @@ class RestartApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   If the request is successful, **success** is returned.
+        # *   An error message is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the instance is successfully restarted. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -21350,7 +24240,9 @@ class RestartInstancesRequest(TeaModel):
         app_id: str = None,
         instance_ids: str = None,
     ):
+        # 1daa7236-3844-4f36-b39a-605b0cc0\*\*\*\*\
         self.app_id = app_id
+        # mysae-1daa7236-3844-4f36-b39a-605b0cc0caa6-\*\*\*\*\*\
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -21382,6 +24274,7 @@ class RestartInstancesResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -21415,12 +24308,33 @@ class RestartInstancesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The details of the application.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   If the request is successful, **success** is returned.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Specifies whether the instances are successfully restarted. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -21524,12 +24438,19 @@ class RollbackApplicationRequest(TeaModel):
         update_strategy: str = None,
         version_id: str = None,
     ):
+        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
         self.app_id = app_id
+        # true
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        # 10
         self.batch_wait_time = batch_wait_time
+        # \-1
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # 1
         self.min_ready_instances = min_ready_instances
+        # {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
         self.update_strategy = update_strategy
+        # 0026ff7f-2b57-4127-bdd0-9bf202bb9\*\*\*\*\
         self.version_id = version_id
 
     def validate(self):
@@ -21582,7 +24503,12 @@ class RollbackApplicationResponseBodyData(TeaModel):
         change_order_id: str = None,
         is_need_approval: bool = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
+        # Specifies whether approval is required when a RAM user performs release. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_need_approval = is_need_approval
 
     def validate(self):
@@ -21620,12 +24546,30 @@ class RollbackApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code. Valid values:
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application is successfully rolled back. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -21723,6 +24667,7 @@ class StartApplicationRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -21750,6 +24695,7 @@ class StartApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -21783,12 +24729,33 @@ class StartApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application is started. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -21886,6 +24853,7 @@ class StopApplicationRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
 
     def validate(self):
@@ -21913,6 +24881,7 @@ class StopApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -21946,12 +24915,33 @@ class StopApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the specified application is stopped. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22192,9 +25182,13 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: str = None,
     ):
+        # cn-beijing
         self.region_id = region_id
+        # \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
         self.resource_ids = resource_ids
+        # application
         self.resource_type = resource_type
+        # \[{"key":"k1","value":"v1"}]
         self.tags = tags
 
     def validate(self):
@@ -22240,12 +25234,30 @@ class TagResourcesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # Indicates that the operation was successful.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether tags were added to the specified resources successfully. Valid values:
+        # 
+        # *   **true**: indicates that tags were added to the specified resources successfully.
+        # *   **false**: indicates that tags could not be added to the specified resources.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22343,8 +25355,11 @@ class UnbindSlbRequest(TeaModel):
         internet: bool = None,
         intranet: bool = None,
     ):
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
         self.app_id = app_id
+        # true
         self.internet = internet
+        # true
         self.intranet = intranet
 
     def validate(self):
@@ -22380,6 +25395,7 @@ class UnbindSlbResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
+        # The ID of the change order. It can be used to query the task status.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -22413,12 +25429,33 @@ class UnbindSlbResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the internal-facing or Internet-facing SLB instance was disassociated successfully. Valid values:
+        # 
+        # *   **true**: The SLB instance was disassociated successfully.
+        # *   **false**: The SLB instance could not be disassociated.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22520,10 +25557,15 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_keys: str = None,
     ):
+        # false
         self.delete_all = delete_all
+        # cn-beijing
         self.region_id = region_id
+        # \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
         self.resource_ids = resource_ids
+        # application
         self.resource_type = resource_type
+        # \["k1","k2"]
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -22573,12 +25615,30 @@ class UntagResourcesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the tags were removed. Valid values:
+        # 
+        # *   **true**: The tags were removed.
+        # *   **false**: The tags could not be removed.
         self.success = success
+        # The ID of the trace. It can be used to query details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22675,7 +25735,9 @@ class UpdateAppSecurityGroupRequest(TeaModel):
         app_id: str = None,
         security_group_id: str = None,
     ):
+        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
         self.app_id = app_id
+        # sg-wz969ngg2e49q5i4\*\*\*\*\
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -22712,11 +25774,31 @@ class UpdateAppSecurityGroupResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   If the request is successful, **success** is returned.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the security group of the application is successfully updated. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The ID of the trace. It can be used to query details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22947,11 +26029,17 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
         scaling_rule_name: str = None,
         scaling_rule_timer: str = None,
     ):
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
         self.app_id = app_id
+        # \-1
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # 3
         self.min_ready_instances = min_ready_instances
+        # {"maxReplicas":3,"minReplicas":1,"metrics":\[{"metricType":"CPU","metricTargetAverageUtilization":20},{"metricType":"MEMORY","metricTargetAverageUtilization":30},{"metricType":"tcpActiveConn","metricTargetAverageUtilization":20},{"metricType":"SLB_QPS","MetricTargetAverageUtilization":25,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"},{"metricType":"SLB_RT","MetricTargetAverageUtilization":35,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"}],"scaleUpRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":0},"scaleDownRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":300}}
         self.scaling_rule_metric = scaling_rule_metric
+        # timer-0800-2100
         self.scaling_rule_name = scaling_rule_name
+        # {"beginDate":null,"endDate":null,"period":"\* \* \*","schedules":\[{"atTime":"08:00","targetReplicas":10},{"atTime":"20:00","targetReplicas":3}]}
         self.scaling_rule_timer = scaling_rule_timer
 
     def validate(self):
@@ -23000,7 +26088,21 @@ class UpdateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         metric_target_average_utilization: int = None,
         metric_type: str = None,
     ):
+        # The limit on the metric.
+        # 
+        # *   The limit on the CPU utilization. Unit: percentage.
+        # *   The limit on the memory usage. Unit: percentage.
+        # *   The limit on the average number of active TCP connections per second.
+        # *   The limit on the QPS of the Internet-facing SLB instance.
+        # *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
         self.metric_target_average_utilization = metric_target_average_utilization
+        # The metric that is used to trigger the auto scaling policy. Valid values:
+        # 
+        # *   **CPU**: the CPU utilization.
+        # *   **MEMORY**: the memory usage.
+        # *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
+        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
+        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
         self.metric_type = metric_type
 
     def validate(self):
@@ -23034,8 +26136,11 @@ class UpdateApplicationScalingRuleResponseBodyDataMetric(TeaModel):
         metrics: List[UpdateApplicationScalingRuleResponseBodyDataMetricMetrics] = None,
         min_replicas: int = None,
     ):
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The list of metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
+        # The minimum number of instances.
         self.min_replicas = min_replicas
 
     def validate(self):
@@ -23080,7 +26185,9 @@ class UpdateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         at_time: str = None,
         target_replicas: int = None,
     ):
+        # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
+        # The expected number of instances.
         self.target_replicas = target_replicas
 
     def validate(self):
@@ -23115,9 +26222,33 @@ class UpdateApplicationScalingRuleResponseBodyDataTimer(TeaModel):
         period: str = None,
         schedules: List[UpdateApplicationScalingRuleResponseBodyDataTimerSchedules] = None,
     ):
+        # The start date of the validity period of the scheduled auto scaling policy. Parameter description:
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.begin_date = begin_date
+        # The end date of the validity period of the scheduled auto scaling policy. Parameter description:
+        # 
+        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.end_date = end_date
+        # The days on which the scheduled auto scaling policy takes effect. Valid values:
+        # 
+        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+        # 
+        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+        # 
+        #     *   **Sun**: Sunday
+        #     *   **Mon**: Monday
+        #     *   **Tue**: Tuesday
+        #     *   **Wed**: Wednesday
+        #     *   **Thu**: Thursday
+        #     *   **Fri**: Friday
+        #     *   **Sat**: Saturday
+        # 
+        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
         self.period = period
+        # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
 
     def validate(self):
@@ -23173,14 +26304,30 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
         timer: UpdateApplicationScalingRuleResponseBodyDataTimer = None,
         update_time: int = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
+        # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
+        # The details of the metric-based auto scaling policy.
         self.metric = metric
+        # Indicates whether the auto scaling policy is enabled. Valid values:
+        # 
+        # *   **true**: enabled
+        # *   **false**: disabled
         self.scale_rule_enabled = scale_rule_enabled
+        # The name of the auto scaling policy.
         self.scale_rule_name = scale_rule_name
+        # The type of the auto scaling policy. Valid values:
+        # 
+        # *   **timing**: the scheduled auto scaling policy.
+        # *   **metric**: the metric-based auto scaling policy.
+        # *   **mix**: the hybrid auto scaling policy.
         self.scale_rule_type = scale_rule_type
+        # The details of the scheduled auto scaling policy.
         self.timer = timer
+        # The time when the auto scaling policy was updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -23252,11 +26399,14 @@ class UpdateApplicationScalingRuleResponseBody(TeaModel):
         trace_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.error_code = error_code
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -23490,6 +26640,7 @@ class UpdateConfigMapRequest(TeaModel):
         data: str = None,
         description: str = None,
     ):
+        # 1
         self.config_map_id = config_map_id
         self.data = data
         self.description = description
@@ -23527,6 +26678,7 @@ class UpdateConfigMapResponseBodyData(TeaModel):
         self,
         config_map_id: str = None,
     ):
+        # The ID of the ConfigMap instance.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -23560,12 +26712,30 @@ class UpdateConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx:**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the ConfigMap instance was updated. Valid values:
+        # 
+        # *   **true**: The instance was updated.
+        # *   **false**: The instance failed to be updated.
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -23668,9 +26838,13 @@ class UpdateGreyTagRouteRequest(TeaModel):
         sc_rules: str = None,
     ):
         self.alb_rules = alb_rules
+        # Canary Release - Regions
         self.description = description
+        # \[{"condition":"OR","group":"DUBBO","items":\[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
         self.dubbo_rules = dubbo_rules
+        # 1
         self.grey_tag_route_id = grey_tag_route_id
+        # \[{"condition":"OR","items":\[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
         self.sc_rules = sc_rules
 
     def validate(self):
@@ -23714,6 +26888,7 @@ class UpdateGreyTagRouteResponseBodyData(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
+        # The ID of the canary release rule. The ID is globally unique.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -23747,12 +26922,30 @@ class UpdateGreyTagRouteResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The information about the canary release rule.
         self.data = data
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The returned information.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of the change order was queried. Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: The information failed to be queried.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -23858,14 +27051,22 @@ class UpdateIngressRequest(TeaModel):
         load_balance_type: str = None,
         rules: str = None,
     ):
+        # 188077086902\*\*\*\*\_176993d\*\*\*\*\_181437\*\*\*\*\_108724\*\*\*\*\
         self.cert_id = cert_id
         self.cert_ids = cert_ids
+        # {"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080}
         self.default_rule = default_rule
+        # ingress-sae-test
         self.description = description
+        # 87
         self.ingress_id = ingress_id
+        # 443
         self.listener_port = listener_port
+        # HTTP
         self.listener_protocol = listener_protocol
+        # clb
         self.load_balance_type = load_balance_type
+        # \[{"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2\*\*\*\*","containerPort":8080,"domain":"sae.site","path":"/path2"}]
         self.rules = rules
 
     def validate(self):
@@ -23925,6 +27126,7 @@ class UpdateIngressResponseBodyData(TeaModel):
         self,
         ingress_id: int = None,
     ):
+        # The ID of the routing rule.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -23958,12 +27160,30 @@ class UpdateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the configurations of the routing rule were updated. Valid values:
+        # 
+        # *   **true**: The configurations were updated.
+        # *   **false**: The configurations could not be updated.
         self.success = success
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24492,14 +27712,19 @@ class UpdateJobResponse(TeaModel):
 class UpdateNamespaceRequest(TeaModel):
     def __init__(
         self,
+        enable_micro_registration: bool = None,
         name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        self.enable_micro_registration = enable_micro_registration
         self.name_space_short_id = name_space_short_id
+        # desc
         self.namespace_description = namespace_description
+        # cn-beijing:test
         self.namespace_id = namespace_id
+        # name
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -24511,6 +27736,8 @@ class UpdateNamespaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_micro_registration is not None:
+            result['EnableMicroRegistration'] = self.enable_micro_registration
         if self.name_space_short_id is not None:
             result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
@@ -24523,6 +27750,8 @@ class UpdateNamespaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableMicroRegistration') is not None:
+            self.enable_micro_registration = m.get('EnableMicroRegistration')
         if m.get('NameSpaceShortId') is not None:
             self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
@@ -24537,16 +27766,22 @@ class UpdateNamespaceRequest(TeaModel):
 class UpdateNamespaceResponseBodyData(TeaModel):
     def __init__(
         self,
+        enable_micro_registration: bool = None,
         name_space_short_id: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
         region_id: str = None,
     ):
+        self.enable_micro_registration = enable_micro_registration
         self.name_space_short_id = name_space_short_id
+        # The description of the namespace.
         self.namespace_description = namespace_description
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The name of the namespace.
         self.namespace_name = namespace_name
+        # The region where the namespace resides.
         self.region_id = region_id
 
     def validate(self):
@@ -24558,6 +27793,8 @@ class UpdateNamespaceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_micro_registration is not None:
+            result['EnableMicroRegistration'] = self.enable_micro_registration
         if self.name_space_short_id is not None:
             result['NameSpaceShortId'] = self.name_space_short_id
         if self.namespace_description is not None:
@@ -24572,6 +27809,8 @@ class UpdateNamespaceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableMicroRegistration') is not None:
+            self.enable_micro_registration = m.get('EnableMicroRegistration')
         if m.get('NameSpaceShortId') is not None:
             self.name_space_short_id = m.get('NameSpaceShortId')
         if m.get('NamespaceDescription') is not None:
@@ -24596,12 +27835,30 @@ class UpdateNamespaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The information of the namespace.
         self.data = data
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the information of the namespace was updated. Valid values:
+        # 
+        # *   **true**: indicates that the information was updated.
+        # *   **false**: indicates that the information could not be updated.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24702,7 +27959,9 @@ class UpdateNamespaceVpcRequest(TeaModel):
         vpc_id: str = None,
     ):
         self.name_space_short_id = name_space_short_id
+        # cn-beijing:test
         self.namespace_id = namespace_id
+        # vpc-2ze0i263cnn311nvj\*\*\*\*\
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -24743,11 +28002,31 @@ class UpdateNamespaceVpcResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.code = code
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the VPC information was updated. Valid values:
+        # 
+        # *   **true**: indicates that the information was updated.
+        # *   **false**: indicates that the information could not be updated.
         self.success = success
+        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):

@@ -1,3 +1,6 @@
+2023-03-23 Version: 1.22.11
+- Support Create Namespace Without Micro Service Registration.
+
 2023-02-15 Version: 1.22.10
 - Add execjob api.
 

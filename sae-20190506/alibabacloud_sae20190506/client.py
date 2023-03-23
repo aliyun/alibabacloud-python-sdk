@@ -823,6 +823,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
+        """
+        You can create up to five auto scaling policies for one application.
+        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
+        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
+        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
+        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: CreateApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -867,6 +879,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
+        """
+        You can create up to five auto scaling policies for one application.
+        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
+        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
+        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
+        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: CreateApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -909,6 +933,16 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
+        """
+        You can create up to five auto scaling policies for one application.
+        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
+        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
+        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
+        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: CreateApplicationScalingRuleRequest
+        @return: CreateApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_application_scaling_rule_with_options(request, headers, runtime)
@@ -917,6 +951,16 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
+        """
+        You can create up to five auto scaling policies for one application.
+        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
+        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
+        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
+        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: CreateApplicationScalingRuleRequest
+        @return: CreateApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_application_scaling_rule_with_options_async(request, headers, runtime)
@@ -1019,6 +1063,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: CreateGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alb_rules):
@@ -1059,6 +1111,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: CreateGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alb_rules):
@@ -1097,6 +1157,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateGreyTagRouteRequest,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: CreateGreyTagRouteRequest
+        @return: CreateGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_grey_tag_route_with_options(request, headers, runtime)
@@ -1105,6 +1171,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateGreyTagRouteRequest,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: CreateGreyTagRouteRequest
+        @return: CreateGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_grey_tag_route_with_options_async(request, headers, runtime)
@@ -1525,6 +1597,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_micro_registration):
+            query['EnableMicroRegistration'] = request.enable_micro_registration
         if not UtilClient.is_unset(request.name_space_short_id):
             query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
@@ -1561,6 +1635,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_micro_registration):
+            query['EnableMicroRegistration'] = request.enable_micro_registration
         if not UtilClient.is_unset(request.name_space_short_id):
             query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
@@ -5133,16 +5209,25 @@ class Client(OpenApiClient):
 
     def get_arms_top_nmetric_with_options(
         self,
-        region_id: str,
-        order_by: str,
-        limit: str,
-        start_time: str,
-        end_time: str,
+        request: sae_20190506_models.GetArmsTopNMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetArmsTopNMetric',
@@ -5162,16 +5247,25 @@ class Client(OpenApiClient):
 
     async def get_arms_top_nmetric_with_options_async(
         self,
-        region_id: str,
-        order_by: str,
-        limit: str,
-        start_time: str,
-        end_time: str,
+        request: sae_20190506_models.GetArmsTopNMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetArmsTopNMetric',
@@ -5191,37 +5285,35 @@ class Client(OpenApiClient):
 
     def get_arms_top_nmetric(
         self,
-        region_id: str,
-        order_by: str,
-        limit: str,
-        start_time: str,
-        end_time: str,
+        request: sae_20190506_models.GetArmsTopNMetricRequest,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_arms_top_nmetric_with_options(region_id, order_by, limit, start_time, end_time, headers, runtime)
+        return self.get_arms_top_nmetric_with_options(request, headers, runtime)
 
     async def get_arms_top_nmetric_async(
         self,
-        region_id: str,
-        order_by: str,
-        limit: str,
-        start_time: str,
-        end_time: str,
+        request: sae_20190506_models.GetArmsTopNMetricRequest,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_arms_top_nmetric_with_options_async(region_id, order_by, limit, start_time, end_time, headers, runtime)
+        return await self.get_arms_top_nmetric_with_options_async(request, headers, runtime)
 
     def get_availability_metric_with_options(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetAvailabilityMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAvailabilityMetric',
@@ -5241,13 +5333,19 @@ class Client(OpenApiClient):
 
     async def get_availability_metric_with_options_async(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetAvailabilityMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAvailabilityMetric',
@@ -5267,33 +5365,39 @@ class Client(OpenApiClient):
 
     def get_availability_metric(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetAvailabilityMetricRequest,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_availability_metric_with_options(region_id, limit, headers, runtime)
+        return self.get_availability_metric_with_options(request, headers, runtime)
 
     async def get_availability_metric_async(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetAvailabilityMetricRequest,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_availability_metric_with_options_async(region_id, limit, headers, runtime)
+        return await self.get_availability_metric_with_options_async(request, headers, runtime)
 
     def get_change_order_metric_with_options(
         self,
-        region_id: str,
-        create_time: str,
-        order_by: str,
-        limit: str,
+        request: sae_20190506_models.GetChangeOrderMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time):
+            query['CreateTime'] = request.create_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetChangeOrderMetric',
@@ -5313,15 +5417,23 @@ class Client(OpenApiClient):
 
     async def get_change_order_metric_with_options_async(
         self,
-        region_id: str,
-        create_time: str,
-        order_by: str,
-        limit: str,
+        request: sae_20190506_models.GetChangeOrderMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time):
+            query['CreateTime'] = request.create_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetChangeOrderMetric',
@@ -5341,35 +5453,35 @@ class Client(OpenApiClient):
 
     def get_change_order_metric(
         self,
-        region_id: str,
-        create_time: str,
-        order_by: str,
-        limit: str,
+        request: sae_20190506_models.GetChangeOrderMetricRequest,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_change_order_metric_with_options(region_id, create_time, order_by, limit, headers, runtime)
+        return self.get_change_order_metric_with_options(request, headers, runtime)
 
     async def get_change_order_metric_async(
         self,
-        region_id: str,
-        create_time: str,
-        order_by: str,
-        limit: str,
+        request: sae_20190506_models.GetChangeOrderMetricRequest,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_change_order_metric_with_options_async(region_id, create_time, order_by, limit, headers, runtime)
+        return await self.get_change_order_metric_with_options_async(request, headers, runtime)
 
     def get_scale_app_metric_with_options(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetScaleAppMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetScaleAppMetric',
@@ -5389,13 +5501,19 @@ class Client(OpenApiClient):
 
     async def get_scale_app_metric_with_options_async(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetScaleAppMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetScaleAppMetric',
@@ -5415,33 +5533,39 @@ class Client(OpenApiClient):
 
     def get_scale_app_metric(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetScaleAppMetricRequest,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_scale_app_metric_with_options(region_id, limit, headers, runtime)
+        return self.get_scale_app_metric_with_options(request, headers, runtime)
 
     async def get_scale_app_metric_async(
         self,
-        region_id: str,
-        limit: str,
+        request: sae_20190506_models.GetScaleAppMetricRequest,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_scale_app_metric_with_options_async(region_id, limit, headers, runtime)
+        return await self.get_scale_app_metric_with_options_async(request, headers, runtime)
 
     def get_warning_event_metric_with_options(
         self,
-        region_id: str,
-        start_time: str,
-        end_time: str,
-        limit: str,
+        request: sae_20190506_models.GetWarningEventMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWarningEventMetric',
@@ -5461,15 +5585,23 @@ class Client(OpenApiClient):
 
     async def get_warning_event_metric_with_options_async(
         self,
-        region_id: str,
-        start_time: str,
-        end_time: str,
-        limit: str,
+        request: sae_20190506_models.GetWarningEventMetricRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWarningEventMetric',
@@ -5489,25 +5621,19 @@ class Client(OpenApiClient):
 
     def get_warning_event_metric(
         self,
-        region_id: str,
-        start_time: str,
-        end_time: str,
-        limit: str,
+        request: sae_20190506_models.GetWarningEventMetricRequest,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_warning_event_metric_with_options(region_id, start_time, end_time, limit, headers, runtime)
+        return self.get_warning_event_metric_with_options(request, headers, runtime)
 
     async def get_warning_event_metric_async(
         self,
-        region_id: str,
-        start_time: str,
-        end_time: str,
-        limit: str,
+        request: sae_20190506_models.GetWarningEventMetricRequest,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_warning_event_metric_with_options_async(region_id, start_time, end_time, limit, headers, runtime)
+        return await self.get_warning_event_metric_with_options_async(request, headers, runtime)
 
     def list_app_events_with_options(
         self,
@@ -6063,6 +6189,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: ListGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6093,6 +6227,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: ListGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6121,6 +6263,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListGreyTagRouteRequest,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: ListGreyTagRouteRequest
+        @return: ListGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_grey_tag_route_with_options(request, headers, runtime)
@@ -6129,6 +6277,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListGreyTagRouteRequest,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
+        """
+        >  You can configure only one canary release rule for each application.
+        
+        @param request: ListGreyTagRouteRequest
+        @return: ListGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_grey_tag_route_with_options_async(request, headers, runtime)
@@ -6830,6 +6984,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.OpenSaeServiceResponse:
+        """
+        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenSaeServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6854,6 +7015,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.OpenSaeServiceResponse:
+        """
+        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenSaeServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6874,11 +7042,21 @@ class Client(OpenApiClient):
         )
 
     def open_sae_service(self) -> sae_20190506_models.OpenSaeServiceResponse:
+        """
+        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        
+        @return: OpenSaeServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.open_sae_service_with_options(headers, runtime)
 
     async def open_sae_service_async(self) -> sae_20190506_models.OpenSaeServiceResponse:
+        """
+        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        
+        @return: OpenSaeServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.open_sae_service_with_options_async(headers, runtime)
@@ -8141,6 +8319,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
+        """
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: UpdateApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8181,6 +8367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
+        """
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: UpdateApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8219,6 +8413,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
+        """
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: UpdateApplicationScalingRuleRequest
+        @return: UpdateApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_application_scaling_rule_with_options(request, headers, runtime)
@@ -8227,6 +8427,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
+        """
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        
+        @param request: UpdateApplicationScalingRuleRequest
+        @return: UpdateApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_application_scaling_rule_with_options_async(request, headers, runtime)
@@ -8867,6 +9073,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_micro_registration):
+            query['EnableMicroRegistration'] = request.enable_micro_registration
         if not UtilClient.is_unset(request.name_space_short_id):
             query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
@@ -8903,6 +9111,8 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_micro_registration):
+            query['EnableMicroRegistration'] = request.enable_micro_registration
         if not UtilClient.is_unset(request.name_space_short_id):
             query['NameSpaceShortId'] = request.name_space_short_id
         if not UtilClient.is_unset(request.namespace_description):
