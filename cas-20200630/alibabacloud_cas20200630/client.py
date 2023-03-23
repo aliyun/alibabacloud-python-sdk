@@ -432,6 +432,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_client_certificate_with_csr_with_options_async(request, runtime)
 
+    def create_custom_certificate_with_options(
+        self,
+        request: cas_20200630_models.CreateCustomCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.CreateCustomCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_passthrough):
+            query['ApiPassthrough'] = request.api_passthrough
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.validity):
+            query['Validity'] = request.validity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomCertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.CreateCustomCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_certificate_with_options_async(
+        self,
+        request: cas_20200630_models.CreateCustomCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.CreateCustomCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_passthrough):
+            query['ApiPassthrough'] = request.api_passthrough
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.validity):
+            query['Validity'] = request.validity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomCertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.CreateCustomCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_certificate(
+        self,
+        request: cas_20200630_models.CreateCustomCertificateRequest,
+    ) -> cas_20200630_models.CreateCustomCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_custom_certificate_with_options(request, runtime)
+
+    async def create_custom_certificate_async(
+        self,
+        request: cas_20200630_models.CreateCustomCertificateRequest,
+    ) -> cas_20200630_models.CreateCustomCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_custom_certificate_with_options_async(request, runtime)
+
     def create_revoke_client_certificate_with_options(
         self,
         request: cas_20200630_models.CreateRevokeClientCertificateRequest,
@@ -1031,6 +1117,8 @@ class Client(OpenApiClient):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country_code):
             query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.extended_key_usages):
+            query['ExtendedKeyUsages'] = request.extended_key_usages
         if not UtilClient.is_unset(request.locality):
             query['Locality'] = request.locality
         if not UtilClient.is_unset(request.organization):
@@ -1039,6 +1127,8 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.path_len_constraint):
+            query['PathLenConstraint'] = request.path_len_constraint
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
         if not UtilClient.is_unset(request.years):
@@ -1085,6 +1175,8 @@ class Client(OpenApiClient):
             query['CommonName'] = request.common_name
         if not UtilClient.is_unset(request.country_code):
             query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.extended_key_usages):
+            query['ExtendedKeyUsages'] = request.extended_key_usages
         if not UtilClient.is_unset(request.locality):
             query['Locality'] = request.locality
         if not UtilClient.is_unset(request.organization):
@@ -1093,6 +1185,8 @@ class Client(OpenApiClient):
             query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.path_len_constraint):
+            query['PathLenConstraint'] = request.path_len_constraint
         if not UtilClient.is_unset(request.state):
             query['State'] = request.state
         if not UtilClient.is_unset(request.years):
