@@ -1,3 +1,6 @@
+2023-03-23 Version: 1.2.5
+- Change the type of RequestId to string in GetJobEvents API.
+
 2023-01-04 Version: 1.2.4
 - Support images from private docker registry.
 
