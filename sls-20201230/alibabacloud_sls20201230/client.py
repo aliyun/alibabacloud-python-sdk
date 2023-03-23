@@ -1912,17 +1912,15 @@ class Client(OpenApiClient):
 
     def delete_project_with_options(
         self,
-        request: sls_20201230_models.DeleteProjectRequest,
+        project: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            host_map=host_map,
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -1942,17 +1940,15 @@ class Client(OpenApiClient):
 
     async def delete_project_with_options_async(
         self,
-        request: sls_20201230_models.DeleteProjectRequest,
+        project: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            host_map=host_map,
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -1972,19 +1968,19 @@ class Client(OpenApiClient):
 
     def delete_project(
         self,
-        request: sls_20201230_models.DeleteProjectRequest,
+        project: str,
     ) -> sls_20201230_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(request, headers, runtime)
+        return self.delete_project_with_options(project, headers, runtime)
 
     async def delete_project_async(
         self,
-        request: sls_20201230_models.DeleteProjectRequest,
+        project: str,
     ) -> sls_20201230_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(request, headers, runtime)
+        return await self.delete_project_with_options_async(project, headers, runtime)
 
     def delete_project_policy_with_options(
         self,
@@ -3352,15 +3348,17 @@ class Client(OpenApiClient):
 
     def get_project_with_options(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
-        host_map = {}
-        host_map['project'] = project
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -3380,15 +3378,17 @@ class Client(OpenApiClient):
 
     async def get_project_with_options_async(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
-        host_map = {}
-        host_map['project'] = project
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -3408,19 +3408,19 @@ class Client(OpenApiClient):
 
     def get_project(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
     ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(project, headers, runtime)
+        return self.get_project_with_options(request, headers, runtime)
 
     async def get_project_async(
         self,
-        project: str,
+        request: sls_20201230_models.GetProjectRequest,
     ) -> sls_20201230_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(project, headers, runtime)
+        return await self.get_project_with_options_async(request, headers, runtime)
 
     def get_project_logs_with_options(
         self,
@@ -6314,20 +6314,20 @@ class Client(OpenApiClient):
 
     def update_project_with_options(
         self,
+        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6348,20 +6348,20 @@ class Client(OpenApiClient):
 
     async def update_project_with_options_async(
         self,
+        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project):
-            query['project'] = request.project
+        host_map = {}
+        host_map['project'] = project
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
+            host_map=host_map,
             headers=headers,
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6382,19 +6382,21 @@ class Client(OpenApiClient):
 
     def update_project(
         self,
+        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
     ) -> sls_20201230_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_project_with_options(request, headers, runtime)
+        return self.update_project_with_options(project, request, headers, runtime)
 
     async def update_project_async(
         self,
+        project: str,
         request: sls_20201230_models.UpdateProjectRequest,
     ) -> sls_20201230_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_project_with_options_async(request, headers, runtime)
+        return await self.update_project_with_options_async(project, request, headers, runtime)
 
     def update_rds_external_store_with_options(
         self,
