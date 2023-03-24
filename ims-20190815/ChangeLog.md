@@ -1,3 +1,6 @@
+2023-03-24 Version: 3.0.0
+- ListUserBasicInfos api, tags field in response go offline.
+
 2023-02-21 Version: 2.0.8
 - Add recyclebin api for user and accesskey.
 
