@@ -1,3 +1,6 @@
+2023-03-24 Version: 1.1.5
+- Add GetDcdnKv.
+
 2023-03-04 Version: 1.1.4
 - Update DescribeDcdnUserTags.
 

@@ -19660,6 +19660,8 @@ class DescribeDcdnRefreshQuotaResponseBody(TeaModel):
         block_remain: str = None,
         dir_quota: str = None,
         dir_remain: str = None,
+        ignore_params_quota: str = None,
+        ignore_params_remain: str = None,
         preload_quota: str = None,
         preload_remain: str = None,
         regex_quota: str = None,
@@ -19676,6 +19678,8 @@ class DescribeDcdnRefreshQuotaResponseBody(TeaModel):
         self.dir_quota = dir_quota
         # The remaining number of directories that can be refreshed each day.
         self.dir_remain = dir_remain
+        self.ignore_params_quota = ignore_params_quota
+        self.ignore_params_remain = ignore_params_remain
         # The maximum number of URLs that can be prefetched each day.
         self.preload_quota = preload_quota
         # The remaining number of URLs that can be prefetched each day.
@@ -19708,6 +19712,10 @@ class DescribeDcdnRefreshQuotaResponseBody(TeaModel):
             result['DirQuota'] = self.dir_quota
         if self.dir_remain is not None:
             result['DirRemain'] = self.dir_remain
+        if self.ignore_params_quota is not None:
+            result['IgnoreParamsQuota'] = self.ignore_params_quota
+        if self.ignore_params_remain is not None:
+            result['IgnoreParamsRemain'] = self.ignore_params_remain
         if self.preload_quota is not None:
             result['PreloadQuota'] = self.preload_quota
         if self.preload_remain is not None:
@@ -19734,6 +19742,10 @@ class DescribeDcdnRefreshQuotaResponseBody(TeaModel):
             self.dir_quota = m.get('DirQuota')
         if m.get('DirRemain') is not None:
             self.dir_remain = m.get('DirRemain')
+        if m.get('IgnoreParamsQuota') is not None:
+            self.ignore_params_quota = m.get('IgnoreParamsQuota')
+        if m.get('IgnoreParamsRemain') is not None:
+            self.ignore_params_remain = m.get('IgnoreParamsRemain')
         if m.get('PreloadQuota') is not None:
             self.preload_quota = m.get('PreloadQuota')
         if m.get('PreloadRemain') is not None:
@@ -31252,6 +31264,120 @@ class EditRoutineConfResponse(TeaModel):
         return self
 
 
+class GetDcdnKvRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        namespace: str = None,
+    ):
+        # The name of the key that you want to query.
+        self.key = key
+        # The name of the namespace.
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class GetDcdnKvResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        value: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The value of the key.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDcdnKvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDcdnKvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDcdnKvResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDcdnRealTimeDeliveryProjectRequest(TeaModel):
     def __init__(
         self,
@@ -32551,6 +32677,134 @@ class PublishRoutineCodeRevisionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PublishRoutineCodeRevisionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PutDcdnKvRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        namespace: str = None,
+        value: str = None,
+    ):
+        # The name of the key. The name can be up to 512 characters in length, and cannot contain spaces.
+        self.key = key
+        # The name of the namespace.
+        self.namespace = namespace
+        # The content of the key. The maximum size is 2 MB (2 x 1000 x 1000 bytes).
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class PutDcdnKvResponseBody(TeaModel):
+    def __init__(
+        self,
+        length: int = None,
+        request_id: str = None,
+        value: str = None,
+    ):
+        # The length of the key.
+        self.length = length
+        # The ID of the request.
+        self.request_id = request_id
+        # The content of the key. If the value exceeds 256 characters in length, the first 100 characters and the last 100 characters are retained and other characters are discarded.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class PutDcdnKvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PutDcdnKvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PutDcdnKvResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
