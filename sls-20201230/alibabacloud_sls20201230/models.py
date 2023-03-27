@@ -1287,22 +1287,22 @@ class Project(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        description: str = None,
         last_modify_time: str = None,
-        project_desc: str = None,
+        owner: str = None,
         project_name: str = None,
-        project_owner: str = None,
-        project_status: str = None,
         region: str = None,
         resource_group_id: str = None,
+        status: str = None,
     ):
         self.create_time = create_time
+        self.description = description
         self.last_modify_time = last_modify_time
-        self.project_desc = project_desc
+        self.owner = owner
         self.project_name = project_name
-        self.project_owner = project_owner
-        self.project_status = project_status
         self.region = region
         self.resource_group_id = resource_group_id
+        self.status = status
 
     def validate(self):
         pass
@@ -1315,40 +1315,40 @@ class Project(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
         if self.last_modify_time is not None:
             result['lastModifyTime'] = self.last_modify_time
-        if self.project_desc is not None:
-            result['projectDesc'] = self.project_desc
+        if self.owner is not None:
+            result['owner'] = self.owner
         if self.project_name is not None:
             result['projectName'] = self.project_name
-        if self.project_owner is not None:
-            result['projectOwner'] = self.project_owner
-        if self.project_status is not None:
-            result['projectStatus'] = self.project_status
         if self.region is not None:
             result['region'] = self.region
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('lastModifyTime') is not None:
             self.last_modify_time = m.get('lastModifyTime')
-        if m.get('projectDesc') is not None:
-            self.project_desc = m.get('projectDesc')
+        if m.get('owner') is not None:
+            self.owner = m.get('owner')
         if m.get('projectName') is not None:
             self.project_name = m.get('projectName')
-        if m.get('projectOwner') is not None:
-            self.project_owner = m.get('projectOwner')
-        if m.get('projectStatus') is not None:
-            self.project_status = m.get('projectStatus')
         if m.get('region') is not None:
             self.region = m.get('region')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 
