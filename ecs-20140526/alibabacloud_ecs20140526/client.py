@@ -18933,14 +18933,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDisksFullStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
-        """
-        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
-        *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
-        
-        @param request: DescribeDisksFullStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDisksFullStatusResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -18999,14 +18991,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDisksFullStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
-        """
-        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
-        *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
-        
-        @param request: DescribeDisksFullStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDisksFullStatusResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -19064,13 +19048,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeDisksFullStatusRequest,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
-        """
-        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
-        *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
-        
-        @param request: DescribeDisksFullStatusRequest
-        @return: DescribeDisksFullStatusResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_disks_full_status_with_options(request, runtime)
 
@@ -19078,13 +19055,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeDisksFullStatusRequest,
     ) -> ecs_20140526_models.DescribeDisksFullStatusResponse:
-        """
-        The full status information of an EBS device includes the lifecycle status provided by the `Status` parameter, health status provided by the `HealthStatus` parameter, and event type provided by the `EventType` parameter of the EBS device. You can filter the results based on these parameters.
-        *   The release time, scheduled execution time, and actual execution time of each EBS device event are identical. If you specify a period of time by using the `EventTime.Start` and `EventTime.End` parameters, all events that occurred within this period are queried. You can query events that occurred within the last seven days.
-        
-        @param request: DescribeDisksFullStatusRequest
-        @return: DescribeDisksFullStatusResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_disks_full_status_with_options_async(request, runtime)
 
@@ -20565,13 +20535,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagePipelinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
-        """
-        You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        
-        @param request: DescribeImagePipelinesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeImagePipelinesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_pipeline_id):
@@ -20624,13 +20587,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagePipelinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
-        """
-        You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        
-        @param request: DescribeImagePipelinesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeImagePipelinesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_pipeline_id):
@@ -20682,12 +20638,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeImagePipelinesRequest,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
-        """
-        You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        
-        @param request: DescribeImagePipelinesRequest
-        @return: DescribeImagePipelinesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_image_pipelines_with_options(request, runtime)
 
@@ -20695,12 +20645,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeImagePipelinesRequest,
     ) -> ecs_20140526_models.DescribeImagePipelinesResponse:
-        """
-        You can use `NextToken` to configure the query token. Set the value to the `NextToken` value that is returned in the last call to the `DescribeImagePipelines` operation. Then, use `MaxResults` to specify the maximum number of entries to return on each page.
-        
-        @param request: DescribeImagePipelinesRequest
-        @return: DescribeImagePipelinesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_pipelines_with_options_async(request, runtime)
 
@@ -20809,6 +20753,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.image_id):
@@ -20847,6 +20793,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeImageSupportInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.image_id):
@@ -22171,14 +22119,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
-        """
-        For information about the lifecycle states of an ECS instance, see [Instance states](~~25687~~).
-        * You can also call this operation to query the list of ECS instances.
-        
-        @param request: DescribeInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInstanceStatusResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -22225,14 +22165,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
-        """
-        For information about the lifecycle states of an ECS instance, see [Instance states](~~25687~~).
-        * You can also call this operation to query the list of ECS instances.
-        
-        @param request: DescribeInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInstanceStatusResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -22278,13 +22210,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeInstanceStatusRequest,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
-        """
-        For information about the lifecycle states of an ECS instance, see [Instance states](~~25687~~).
-        * You can also call this operation to query the list of ECS instances.
-        
-        @param request: DescribeInstanceStatusRequest
-        @return: DescribeInstanceStatusResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_status_with_options(request, runtime)
 
@@ -22292,13 +22217,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeInstanceStatusRequest,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
-        """
-        For information about the lifecycle states of an ECS instance, see [Instance states](~~25687~~).
-        * You can also call this operation to query the list of ECS instances.
-        
-        @param request: DescribeInstanceStatusRequest
-        @return: DescribeInstanceStatusResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_status_with_options_async(request, runtime)
 
@@ -22509,18 +22427,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
-        """
-        ## Description
-        Before you call this operation, take note of the following items:
-        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
-        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
-        
-        @param request: DescribeInstanceTypesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInstanceTypesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_architecture):
@@ -22629,18 +22535,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
-        """
-        ## Description
-        Before you call this operation, take note of the following items:
-        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
-        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
-        
-        @param request: DescribeInstanceTypesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInstanceTypesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_architecture):
@@ -22748,17 +22642,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
-        """
-        ## Description
-        Before you call this operation, take note of the following items:
-        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
-        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
-        
-        @param request: DescribeInstanceTypesRequest
-        @return: DescribeInstanceTypesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_types_with_options(request, runtime)
 
@@ -22766,17 +22649,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeInstanceTypesRequest,
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
-        """
-        ## Description
-        Before you call this operation, take note of the following items:
-        *   The MaxResults parameter specifies the maximum number of entries to return on each page. The maximum value of this parameter is changed from 1600 to 100. If you called this operation in 2022, you can continue to use 1600 as the maximum value of MaxResults until November 15, 2023. As of November 15, 2023, only 100 can be used as the maximum value of MaxResults. If you do not specify the NextToken parameter when you call the DescribeInstanceTypes operation, only the first page of results that contains up to 100 entries is returned. If you want to retrieve more results, specify the NextToken parameter to perform paged queries, or specify filter conditions to filter results. For information about the best practices for using DescribeInstanceTypes, see [Compare the specifications of instance types](https://help.aliyun.com/practice_detail/461278) .
-        *   We recommend that you specify the MaxResults and NextToken parameters to perform paged queries. The first time you call the DescribeInstanceTypes operation, specify MaxResults to limit the maximum number of entries to return in the call. If the number of entries to return exceeds the specified value of MaxResults, the response includes a NextToken value. You can set NextToken to the return value and specify MaxResults in your next request to DescribeInstanceTypes to retrieve the next page of results.
-        *   The DescribeInstanceTypes operation is used to query only the specifications and performance information of instance types. To query instance types that are available in a specific region, call the [DescribeAvailableResource](~~66186~~) operation.
-        *   To use special instance types such as instance types that are unavailable for purchase, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm).
-        
-        @param request: DescribeInstanceTypesRequest
-        @return: DescribeInstanceTypesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_types_with_options_async(request, runtime)
 
@@ -23525,14 +23397,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
-        """
-        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
-        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
-        
-        @param request: DescribeInvocationResultsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInvocationResultsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command_id):
@@ -23591,14 +23455,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInvocationResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
-        """
-        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
-        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
-        
-        @param request: DescribeInvocationResultsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInvocationResultsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command_id):
@@ -23656,13 +23512,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeInvocationResultsRequest,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
-        """
-        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
-        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
-        
-        @param request: DescribeInvocationResultsRequest
-        @return: DescribeInvocationResultsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_invocation_results_with_options(request, runtime)
 
@@ -23670,13 +23519,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeInvocationResultsRequest,
     ) -> ecs_20140526_models.DescribeInvocationResultsResponse:
-        """
-        After you run a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
-        *   You can query information about command executions within the last four weeks. A maximum of 100,000 pieces of execution information can be retained.
-        
-        @param request: DescribeInvocationResultsRequest
-        @return: DescribeInvocationResultsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_invocation_results_with_options_async(request, runtime)
 
@@ -24777,14 +24619,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
-        """
-        The `DescribeNetworkInterfaces` operation supports multiple pagination mechanisms. We recommend that you set `MaxResults` to specify the maximum number of entries to return in each request. The returned value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        > If you specify `MaxResults` or `NextToken`, the system returns results based on the preceding pagination mechanism. Otherwise, the system paginates the results based on the `PageNumber` and `PageSize` parameters.
-        
-        @param request: DescribeNetworkInterfacesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeNetworkInterfacesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -24861,14 +24695,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
-        """
-        The `DescribeNetworkInterfaces` operation supports multiple pagination mechanisms. We recommend that you set `MaxResults` to specify the maximum number of entries to return in each request. The returned value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        > If you specify `MaxResults` or `NextToken`, the system returns results based on the preceding pagination mechanism. Otherwise, the system paginates the results based on the `PageNumber` and `PageSize` parameters.
-        
-        @param request: DescribeNetworkInterfacesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeNetworkInterfacesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -24944,13 +24770,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
-        """
-        The `DescribeNetworkInterfaces` operation supports multiple pagination mechanisms. We recommend that you set `MaxResults` to specify the maximum number of entries to return in each request. The returned value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        > If you specify `MaxResults` or `NextToken`, the system returns results based on the preceding pagination mechanism. Otherwise, the system paginates the results based on the `PageNumber` and `PageSize` parameters.
-        
-        @param request: DescribeNetworkInterfacesRequest
-        @return: DescribeNetworkInterfacesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_network_interfaces_with_options(request, runtime)
 
@@ -24958,13 +24777,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeNetworkInterfacesRequest,
     ) -> ecs_20140526_models.DescribeNetworkInterfacesResponse:
-        """
-        The `DescribeNetworkInterfaces` operation supports multiple pagination mechanisms. We recommend that you set `MaxResults` to specify the maximum number of entries to return in each request. The returned value of `NextToken` is a pagination token, which can be used in the next request to retrieve a new page of results. When you perform the next request, set `NextToken` to the `NextToken` value returned in the previous call and set `MaxResults` to specify the maximum number of entries to return in this call.
-        > If you specify `MaxResults` or `NextToken`, the system returns results based on the preceding pagination mechanism. Otherwise, the system paginates the results based on the `PageNumber` and `PageSize` parameters.
-        
-        @param request: DescribeNetworkInterfacesRequest
-        @return: DescribeNetworkInterfacesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_network_interfaces_with_options_async(request, runtime)
 
@@ -25437,14 +25249,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePrefixListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePrefixListsResponse:
-        """
-        ## Description
-        You can specify the `AddressFamily`, `PrefixListId.N`, and `PrefixListName` request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        
-        @param request: DescribePrefixListsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePrefixListsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_family):
@@ -25493,14 +25297,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePrefixListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePrefixListsResponse:
-        """
-        ## Description
-        You can specify the `AddressFamily`, `PrefixListId.N`, and `PrefixListName` request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        
-        @param request: DescribePrefixListsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePrefixListsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_family):
@@ -25548,13 +25344,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribePrefixListsRequest,
     ) -> ecs_20140526_models.DescribePrefixListsResponse:
-        """
-        ## Description
-        You can specify the `AddressFamily`, `PrefixListId.N`, and `PrefixListName` request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        
-        @param request: DescribePrefixListsRequest
-        @return: DescribePrefixListsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_prefix_lists_with_options(request, runtime)
 
@@ -25562,13 +25351,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribePrefixListsRequest,
     ) -> ecs_20140526_models.DescribePrefixListsResponse:
-        """
-        ## Description
-        You can specify the `AddressFamily`, `PrefixListId.N`, and `PrefixListName` request parameters to be queried. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-        
-        @param request: DescribePrefixListsRequest
-        @return: DescribePrefixListsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_prefix_lists_with_options_async(request, runtime)
 
@@ -25577,22 +25359,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePriceResponse:
-        """
-        ## Description
-        *   The required parameters vary based on the types of resources whose prices you want to query.
-        *   When the `ResourceType` parameter is set to instance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to disk, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the `ResourceType` parameter is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, the `PriceUnit` parameter must be set to `Hour`.
-        *   When the `ResourceType` parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
-        *   When the `ResourceType` parameter is set to ElasticityAssurance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to CapacityReservation, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        *   When the `ResourceType` parameter is set to instance, the prices of up to four data disks can be queried.
-        *   By default, the `ChargeType` parameter is set to `PostPaid`. You can specify the `PriceUnit` parameter to query the prices of ECS resources that have different billing cycles.
-        
-        @param request: DescribePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePriceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -25681,22 +25447,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePriceResponse:
-        """
-        ## Description
-        *   The required parameters vary based on the types of resources whose prices you want to query.
-        *   When the `ResourceType` parameter is set to instance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to disk, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the `ResourceType` parameter is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, the `PriceUnit` parameter must be set to `Hour`.
-        *   When the `ResourceType` parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
-        *   When the `ResourceType` parameter is set to ElasticityAssurance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to CapacityReservation, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        *   When the `ResourceType` parameter is set to instance, the prices of up to four data disks can be queried.
-        *   By default, the `ChargeType` parameter is set to `PostPaid`. You can specify the `PriceUnit` parameter to query the prices of ECS resources that have different billing cycles.
-        
-        @param request: DescribePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePriceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -25784,21 +25534,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribePriceRequest,
     ) -> ecs_20140526_models.DescribePriceResponse:
-        """
-        ## Description
-        *   The required parameters vary based on the types of resources whose prices you want to query.
-        *   When the `ResourceType` parameter is set to instance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to disk, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the `ResourceType` parameter is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, the `PriceUnit` parameter must be set to `Hour`.
-        *   When the `ResourceType` parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
-        *   When the `ResourceType` parameter is set to ElasticityAssurance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to CapacityReservation, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        *   When the `ResourceType` parameter is set to instance, the prices of up to four data disks can be queried.
-        *   By default, the `ChargeType` parameter is set to `PostPaid`. You can specify the `PriceUnit` parameter to query the prices of ECS resources that have different billing cycles.
-        
-        @param request: DescribePriceRequest
-        @return: DescribePriceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_with_options(request, runtime)
 
@@ -25806,21 +25541,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribePriceRequest,
     ) -> ecs_20140526_models.DescribePriceResponse:
-        """
-        ## Description
-        *   The required parameters vary based on the types of resources whose prices you want to query.
-        *   When the `ResourceType` parameter is set to instance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to disk, you must specify both the `DataDisk.1.Category` and `DataDisk.1.Size` parameters. When the `ResourceType` parameter is set to disk, only pay-as-you-go prices of cloud disks are returned. In this scenario, the `PriceUnit` parameter must be set to `Hour`.
-        *   When the `ResourceType` parameter is set to ddh, you must specify the `DedicatedHostType` parameter.
-        *   When the `ResourceType` parameter is set to ElasticityAssurance, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to CapacityReservation, you must specify the `InstanceType` parameter.
-        *   When the `ResourceType` parameter is set to bandwidth, only the pay-by-traffic (`PayByTraffic`) price for network usage is returned.
-        *   When the `ResourceType` parameter is set to instance, the prices of up to four data disks can be queried.
-        *   By default, the `ChargeType` parameter is set to `PostPaid`. You can specify the `PriceUnit` parameter to query the prices of ECS resources that have different billing cycles.
-        
-        @param request: DescribePriceRequest
-        @return: DescribePriceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
 
@@ -26095,17 +25815,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRenewalPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
-        """
-        ## Description
-        *   You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
-        *   Take note of the following items:
-        *   If you set only the required parameters, the price for renewing a specified instance for one month is queried by default.
-        *   The renewal period-related parameter pair (`Period` and `PeriodUnit`) and the synchronized expiration date-related parameter (`ExpectedRenewDay`) are mutually exclusive. You cannot set these parameters together to query the prices for renewing a specified instance for a period of time and to a synchronized expiration date at the same time.
-        
-        @param request: DescribeRenewalPriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRenewalPriceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expected_renew_day):
@@ -26152,17 +25861,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRenewalPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
-        """
-        ## Description
-        *   You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
-        *   Take note of the following items:
-        *   If you set only the required parameters, the price for renewing a specified instance for one month is queried by default.
-        *   The renewal period-related parameter pair (`Period` and `PeriodUnit`) and the synchronized expiration date-related parameter (`ExpectedRenewDay`) are mutually exclusive. You cannot set these parameters together to query the prices for renewing a specified instance for a period of time and to a synchronized expiration date at the same time.
-        
-        @param request: DescribeRenewalPriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRenewalPriceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expected_renew_day):
@@ -26208,16 +25906,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeRenewalPriceRequest,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
-        """
-        ## Description
-        *   You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
-        *   Take note of the following items:
-        *   If you set only the required parameters, the price for renewing a specified instance for one month is queried by default.
-        *   The renewal period-related parameter pair (`Period` and `PeriodUnit`) and the synchronized expiration date-related parameter (`ExpectedRenewDay`) are mutually exclusive. You cannot set these parameters together to query the prices for renewing a specified instance for a period of time and to a synchronized expiration date at the same time.
-        
-        @param request: DescribeRenewalPriceRequest
-        @return: DescribeRenewalPriceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_renewal_price_with_options(request, runtime)
 
@@ -26225,16 +25913,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeRenewalPriceRequest,
     ) -> ecs_20140526_models.DescribeRenewalPriceResponse:
-        """
-        ## Description
-        *   You can call this operation to query the price for renewing a subscription instance for a specific period of time or to a synchronized expiration date.
-        *   Take note of the following items:
-        *   If you set only the required parameters, the price for renewing a specified instance for one month is queried by default.
-        *   The renewal period-related parameter pair (`Period` and `PeriodUnit`) and the synchronized expiration date-related parameter (`ExpectedRenewDay`) are mutually exclusive. You cannot set these parameters together to query the prices for renewing a specified instance for a period of time and to a synchronized expiration date at the same time.
-        
-        @param request: DescribeRenewalPriceRequest
-        @return: DescribeRenewalPriceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_renewal_price_with_options_async(request, runtime)
 
@@ -27669,15 +27347,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
-        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
-        
-        @param request: DescribeSnapshotLinksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSnapshotLinksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_ids):
@@ -27724,15 +27393,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
-        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
-        
-        @param request: DescribeSnapshotLinksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSnapshotLinksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_ids):
@@ -27778,14 +27438,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
-        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
-        
-        @param request: DescribeSnapshotLinksRequest
-        @return: DescribeSnapshotLinksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_snapshot_links_with_options(request, runtime)
 
@@ -27793,14 +27445,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeSnapshotLinksRequest,
     ) -> ecs_20140526_models.DescribeSnapshotLinksResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   You can specify multiple request parameters such as `RegionId`, `DiskIds`, and `InstanceId` to be queried. Specified parameters have logical AND relations.
-        *   Only the specified parameters are used as filter conditions. If the `DiskIds` and `SnapshotLinkIds` parameters are set to empty JSON arrays, they are regarded as valid filter conditions and an empty result is returned.
-        
-        @param request: DescribeSnapshotLinksRequest
-        @return: DescribeSnapshotLinksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshot_links_with_options_async(request, runtime)
 
@@ -29003,13 +28647,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTagsResponse:
-        """
-        If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
-        
-        @param request: DescribeTagsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTagsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -29056,13 +28693,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeTagsResponse:
-        """
-        If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
-        
-        @param request: DescribeTagsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTagsResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -29108,12 +28738,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeTagsRequest,
     ) -> ecs_20140526_models.DescribeTagsResponse:
-        """
-        If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
-        
-        @param request: DescribeTagsRequest
-        @return: DescribeTagsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tags_with_options(request, runtime)
 
@@ -29121,12 +28745,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DescribeTagsRequest,
     ) -> ecs_20140526_models.DescribeTagsResponse:
-        """
-        If a tag key is specified and no tag values are specified, all tags that contain the tag key are returned. If a tag key-value pair is specified, only tags that exactly match the key-value pair are returned.
-        
-        @param request: DescribeTagsRequest
-        @return: DescribeTagsResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
 
@@ -30679,15 +30297,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
-        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
-        
-        @param request: DetachKeyPairRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachKeyPairResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -30726,15 +30335,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
-        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
-        
-        @param request: DetachKeyPairRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachKeyPairResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -30772,14 +30372,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DetachKeyPairRequest,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
-        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
-        
-        @param request: DetachKeyPairRequest
-        @return: DetachKeyPairResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.detach_key_pair_with_options(request, runtime)
 
@@ -30787,14 +30379,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DetachKeyPairRequest,
     ) -> ecs_20140526_models.DetachKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   After you detach an SSH key pair from an instance, you must call the [RebootInstance](~~25502~~) operation to restart the instance for the detach operation to take effect.
-        *   The username and password authentication method is automatically selected for an instance after you unbind an SSH key pair from the instance.
-        
-        @param request: DetachKeyPairRequest
-        @return: DetachKeyPairResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_key_pair_with_options_async(request, runtime)
 
@@ -30803,23 +30387,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachNetworkInterfaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
-        """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   Primary ENIs cannot be detached from ECS instances.
-        *   The ENI must be in the Detaching (Detaching) or InUse (InUse) state.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state.
-        *   This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
-        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from its associated instance.
-        *   If the ENI is in the Available state, the ENI is detached from its associated instance.
-        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system did not respond to the ENI detachment request. If this occurs, you can re-initiate the request to detach the ENI. If the problem persists, restart the instance.
-        **For information about examples on how to call this operation, see **[Detach an ENI](~~471551~~).
-        
-        @param request: DetachNetworkInterfaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachNetworkInterfaceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -30864,23 +30431,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DetachNetworkInterfaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
-        """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   Primary ENIs cannot be detached from ECS instances.
-        *   The ENI must be in the Detaching (Detaching) or InUse (InUse) state.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state.
-        *   This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
-        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from its associated instance.
-        *   If the ENI is in the Available state, the ENI is detached from its associated instance.
-        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system did not respond to the ENI detachment request. If this occurs, you can re-initiate the request to detach the ENI. If the problem persists, restart the instance.
-        **For information about examples on how to call this operation, see **[Detach an ENI](~~471551~~).
-        
-        @param request: DetachNetworkInterfaceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachNetworkInterfaceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -30924,22 +30474,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DetachNetworkInterfaceRequest,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
-        """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   Primary ENIs cannot be detached from ECS instances.
-        *   The ENI must be in the Detaching (Detaching) or InUse (InUse) state.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state.
-        *   This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
-        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from its associated instance.
-        *   If the ENI is in the Available state, the ENI is detached from its associated instance.
-        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system did not respond to the ENI detachment request. If this occurs, you can re-initiate the request to detach the ENI. If the problem persists, restart the instance.
-        **For information about examples on how to call this operation, see **[Detach an ENI](~~471551~~).
-        
-        @param request: DetachNetworkInterfaceRequest
-        @return: DetachNetworkInterfaceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.detach_network_interface_with_options(request, runtime)
 
@@ -30947,22 +30481,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DetachNetworkInterfaceRequest,
     ) -> ecs_20140526_models.DetachNetworkInterfaceResponse:
-        """
-        ## Description
-        When you call this operation, take note of the following items:
-        *   Primary ENIs cannot be detached from ECS instances.
-        *   The ENI must be in the Detaching (Detaching) or InUse (InUse) state.
-        *   The instance must be in the Running (Running) or Stopped (Stopped) state.
-        *   This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state or events of the ENI to determine whether the ENI is detached. The following figure shows the transitions between the states of the ENI.
-        ![](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/en-US/20230223/uemr/DetachNetworkInterface.png)
-        *   If the ENI is in the Detaching state, the ENI detachment request is sent and the ENI is being detached from its associated instance.
-        *   If the ENI is in the Available state, the ENI is detached from its associated instance.
-        *   If the ENI is stuck in the Detaching state, the ENI may fail to be detached from the associated instance due to specific reasons. For example, the ENI may fail to be detached because the operating system did not respond to the ENI detachment request. If this occurs, you can re-initiate the request to detach the ENI. If the problem persists, restart the instance.
-        **For information about examples on how to call this operation, see **[Detach an ENI](~~471551~~).
-        
-        @param request: DetachNetworkInterfaceRequest
-        @return: DetachNetworkInterfaceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_network_interface_with_options_async(request, runtime)
 
@@ -30971,14 +30489,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DisableActivationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DisableActivationResponse:
-        """
-        ## Description
-        To prevent an activation code from being leaked, you can call the DisableActivation operation to disable the activation code. Disabled activation codes cannot be used to register new managed instances. However, managed instances that are already registered are not affected.
-        
-        @param request: DisableActivationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableActivationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.activation_id):
@@ -31019,14 +30529,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DisableActivationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DisableActivationResponse:
-        """
-        ## Description
-        To prevent an activation code from being leaked, you can call the DisableActivation operation to disable the activation code. Disabled activation codes cannot be used to register new managed instances. However, managed instances that are already registered are not affected.
-        
-        @param request: DisableActivationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableActivationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.activation_id):
@@ -31066,13 +30568,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DisableActivationRequest,
     ) -> ecs_20140526_models.DisableActivationResponse:
-        """
-        ## Description
-        To prevent an activation code from being leaked, you can call the DisableActivation operation to disable the activation code. Disabled activation codes cannot be used to register new managed instances. However, managed instances that are already registered are not affected.
-        
-        @param request: DisableActivationRequest
-        @return: DisableActivationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.disable_activation_with_options(request, runtime)
 
@@ -31080,13 +30575,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.DisableActivationRequest,
     ) -> ecs_20140526_models.DisableActivationResponse:
-        """
-        ## Description
-        To prevent an activation code from being leaked, you can call the DisableActivation operation to disable the activation code. Disabled activation codes cannot be used to register new managed instances. However, managed instances that are already registered are not affected.
-        
-        @param request: DisableActivationRequest
-        @return: DisableActivationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_activation_with_options_async(request, runtime)
 
@@ -32003,15 +31491,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
-        """
-        ECS is a virtualized cloud-based service and cannot be connected to display devices. However, Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to obtain the command outputs.
-        *   The command outputs of instances that use the retired instance types cannot be obtained. For more information, see [Retired instance types](~~55263~~).
-        *   The command outputs of Windows instances cannot be obtained.
-        
-        @param request: GetInstanceConsoleOutputRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstanceConsoleOutputResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -32054,15 +31533,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
-        """
-        ECS is a virtualized cloud-based service and cannot be connected to display devices. However, Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to obtain the command outputs.
-        *   The command outputs of instances that use the retired instance types cannot be obtained. For more information, see [Retired instance types](~~55263~~).
-        *   The command outputs of Windows instances cannot be obtained.
-        
-        @param request: GetInstanceConsoleOutputRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstanceConsoleOutputResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -32104,14 +31574,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
-        """
-        ECS is a virtualized cloud-based service and cannot be connected to display devices. However, Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to obtain the command outputs.
-        *   The command outputs of instances that use the retired instance types cannot be obtained. For more information, see [Retired instance types](~~55263~~).
-        *   The command outputs of Windows instances cannot be obtained.
-        
-        @param request: GetInstanceConsoleOutputRequest
-        @return: GetInstanceConsoleOutputResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_console_output_with_options(request, runtime)
 
@@ -32119,14 +31581,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.GetInstanceConsoleOutputRequest,
     ) -> ecs_20140526_models.GetInstanceConsoleOutputResponse:
-        """
-        ECS is a virtualized cloud-based service and cannot be connected to display devices. However, Alibaba Cloud caches system command outputs for the last start, restart, or shutdown of ECS instances. You can call the GetInstanceConsoleOutput operation to obtain the command outputs.
-        *   The command outputs of instances that use the retired instance types cannot be obtained. For more information, see [Retired instance types](~~55263~~).
-        *   The command outputs of Windows instances cannot be obtained.
-        
-        @param request: GetInstanceConsoleOutputRequest
-        @return: GetInstanceConsoleOutputResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_console_output_with_options_async(request, runtime)
 
@@ -32135,16 +31589,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceScreenshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
-        """
-        ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
-        *   The instance must be in the Running state.
-        *   You cannot obtain screenshots of instances whose instance types have been retired. For more information, see [Retired instance types](~~55263~~).
-        *   If you want to call this operation on the same instance multiple times, you must wait at least 10 seconds between each call. Otherwise, the `Throttling` error code is returned.
-        
-        @param request: GetInstanceScreenshotRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstanceScreenshotResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -32187,16 +31631,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.GetInstanceScreenshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
-        """
-        ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
-        *   The instance must be in the Running state.
-        *   You cannot obtain screenshots of instances whose instance types have been retired. For more information, see [Retired instance types](~~55263~~).
-        *   If you want to call this operation on the same instance multiple times, you must wait at least 10 seconds between each call. Otherwise, the `Throttling` error code is returned.
-        
-        @param request: GetInstanceScreenshotRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstanceScreenshotResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -32238,15 +31672,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.GetInstanceScreenshotRequest,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
-        """
-        ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
-        *   The instance must be in the Running state.
-        *   You cannot obtain screenshots of instances whose instance types have been retired. For more information, see [Retired instance types](~~55263~~).
-        *   If you want to call this operation on the same instance multiple times, you must wait at least 10 seconds between each call. Otherwise, the `Throttling` error code is returned.
-        
-        @param request: GetInstanceScreenshotRequest
-        @return: GetInstanceScreenshotResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_screenshot_with_options(request, runtime)
 
@@ -32254,15 +31679,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.GetInstanceScreenshotRequest,
     ) -> ecs_20140526_models.GetInstanceScreenshotResponse:
-        """
-        ECS returns an instance screenshot that is in the JPG format and encoded in Base64. You must manually decode the screenshot. We recommend that you call this operation for troubleshooting and diagnosis. When you call this operation, take note of the following items:
-        *   The instance must be in the Running state.
-        *   You cannot obtain screenshots of instances whose instance types have been retired. For more information, see [Retired instance types](~~55263~~).
-        *   If you want to call this operation on the same instance multiple times, you must wait at least 10 seconds between each call. Otherwise, the `Throttling` error code is returned.
-        
-        @param request: GetInstanceScreenshotRequest
-        @return: GetInstanceScreenshotResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_screenshot_with_options_async(request, runtime)
 
@@ -32623,27 +32039,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        * A maximum of 500 key pairs can be created in each region.
-        * The key pair that you wan to import must support one of the following encryption methods:
-        * rsa
-        * dsa
-        * ssh-rsa
-        * ssh-dss
-        * ecdsa
-        * ssh-rsa-cert-v00@openssh.com
-        * ssh-dss-cert-v00@openssh.com
-        * ssh-rsa-cert-v01@openssh.com
-        * ssh-dss-cert-v01@openssh.com
-        * ecdsa-sha2-nistp256-cert-v01@openssh.com
-        * ecdsa-sha2-nistp384-cert-v01@openssh.com
-        * ecdsa-sha2-nistp521-cert-v01@openssh.com
-        
-        @param request: ImportKeyPairRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImportKeyPairResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -32686,27 +32081,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ImportKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        * A maximum of 500 key pairs can be created in each region.
-        * The key pair that you wan to import must support one of the following encryption methods:
-        * rsa
-        * dsa
-        * ssh-rsa
-        * ssh-dss
-        * ecdsa
-        * ssh-rsa-cert-v00@openssh.com
-        * ssh-dss-cert-v00@openssh.com
-        * ssh-rsa-cert-v01@openssh.com
-        * ssh-dss-cert-v01@openssh.com
-        * ecdsa-sha2-nistp256-cert-v01@openssh.com
-        * ecdsa-sha2-nistp384-cert-v01@openssh.com
-        * ecdsa-sha2-nistp521-cert-v01@openssh.com
-        
-        @param request: ImportKeyPairRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImportKeyPairResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -32748,26 +32122,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ImportKeyPairRequest,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        * A maximum of 500 key pairs can be created in each region.
-        * The key pair that you wan to import must support one of the following encryption methods:
-        * rsa
-        * dsa
-        * ssh-rsa
-        * ssh-dss
-        * ecdsa
-        * ssh-rsa-cert-v00@openssh.com
-        * ssh-dss-cert-v00@openssh.com
-        * ssh-rsa-cert-v01@openssh.com
-        * ssh-dss-cert-v01@openssh.com
-        * ecdsa-sha2-nistp256-cert-v01@openssh.com
-        * ecdsa-sha2-nistp384-cert-v01@openssh.com
-        * ecdsa-sha2-nistp521-cert-v01@openssh.com
-        
-        @param request: ImportKeyPairRequest
-        @return: ImportKeyPairResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.import_key_pair_with_options(request, runtime)
 
@@ -32775,26 +32129,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ImportKeyPairRequest,
     ) -> ecs_20140526_models.ImportKeyPairResponse:
-        """
-        When you call this operation, take note of the following items:
-        * A maximum of 500 key pairs can be created in each region.
-        * The key pair that you wan to import must support one of the following encryption methods:
-        * rsa
-        * dsa
-        * ssh-rsa
-        * ssh-dss
-        * ecdsa
-        * ssh-rsa-cert-v00@openssh.com
-        * ssh-dss-cert-v00@openssh.com
-        * ssh-rsa-cert-v01@openssh.com
-        * ssh-dss-cert-v01@openssh.com
-        * ecdsa-sha2-nistp256-cert-v01@openssh.com
-        * ecdsa-sha2-nistp384-cert-v01@openssh.com
-        * ecdsa-sha2-nistp521-cert-v01@openssh.com
-        
-        @param request: ImportKeyPairRequest
-        @return: ImportKeyPairResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.import_key_pair_with_options_async(request, runtime)
 
@@ -32931,6 +32265,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.InstallCloudAssistantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
+        """
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
+        
+        @param request: InstallCloudAssistantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallCloudAssistantResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -32971,6 +32312,13 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.InstallCloudAssistantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
+        """
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
+        
+        @param request: InstallCloudAssistantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallCloudAssistantResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -33010,6 +32358,12 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.InstallCloudAssistantRequest,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
+        """
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
+        
+        @param request: InstallCloudAssistantRequest
+        @return: InstallCloudAssistantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.install_cloud_assistant_with_options(request, runtime)
 
@@ -33017,6 +32371,12 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.InstallCloudAssistantRequest,
     ) -> ecs_20140526_models.InstallCloudAssistantResponse:
+        """
+        After you call the InstallCloudAssistant operation and then the [RebootInstance](~~25502~~) operation, the Cloud Assistant client is installed and takes effect.
+        
+        @param request: InstallCloudAssistantRequest
+        @return: InstallCloudAssistantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.install_cloud_assistant_with_options_async(request, runtime)
 
@@ -33025,26 +32385,6 @@ class Client(OpenApiClient):
         tmp_req: ecs_20140526_models.InvokeCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InvokeCommandResponse:
-        """
-        The ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If you specify multiple ECS instances and one of the instances does not meet the requirements to run the command, the call fails. Specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The network type is virtual private cloud (VPC). For more information, see [What is a VPC?](~~34217~~)
-        *   The instances are in the Running (`Running`) state.
-        *   The Cloud Assistant client is installed on the instances. For more information, see [Install the Cloud Assistant client](~~64921~~).
-        *   Before you run PowerShell commands, make sure that the PowerShell module is configured for the instances.
-        *   If you set the `Timed` parameter to false, the command is run only once.
-        *   If you set the `Timed` parameter to true, the command is run on a schedule.
-        *   The schedule is specified by the `Frequency` parameter. The execution results of a command do not affect the next command execution.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service and time zone for Linux instances](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specified interval, only once at a specified time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
-        - Linux: 2.2.3.282
-        - Windows: 2.1.3.282
-        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
-        *   If you enable the custom parameter feature by setting the EnableParameter parameter to true when you create a command, you must specify custom parameters (`Parameters`) when you run the command.
-        
-        @param tmp_req: InvokeCommandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InvokeCommandResponse
-        """
         UtilClient.validate_model(tmp_req)
         request = ecs_20140526_models.InvokeCommandShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -33113,26 +32453,6 @@ class Client(OpenApiClient):
         tmp_req: ecs_20140526_models.InvokeCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.InvokeCommandResponse:
-        """
-        The ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If you specify multiple ECS instances and one of the instances does not meet the requirements to run the command, the call fails. Specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The network type is virtual private cloud (VPC). For more information, see [What is a VPC?](~~34217~~)
-        *   The instances are in the Running (`Running`) state.
-        *   The Cloud Assistant client is installed on the instances. For more information, see [Install the Cloud Assistant client](~~64921~~).
-        *   Before you run PowerShell commands, make sure that the PowerShell module is configured for the instances.
-        *   If you set the `Timed` parameter to false, the command is run only once.
-        *   If you set the `Timed` parameter to true, the command is run on a schedule.
-        *   The schedule is specified by the `Frequency` parameter. The execution results of a command do not affect the next command execution.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service and time zone for Linux instances](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specified interval, only once at a specified time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
-        - Linux: 2.2.3.282
-        - Windows: 2.1.3.282
-        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
-        *   If you enable the custom parameter feature by setting the EnableParameter parameter to true when you create a command, you must specify custom parameters (`Parameters`) when you run the command.
-        
-        @param tmp_req: InvokeCommandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InvokeCommandResponse
-        """
         UtilClient.validate_model(tmp_req)
         request = ecs_20140526_models.InvokeCommandShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -33200,25 +32520,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.InvokeCommandRequest,
     ) -> ecs_20140526_models.InvokeCommandResponse:
-        """
-        The ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If you specify multiple ECS instances and one of the instances does not meet the requirements to run the command, the call fails. Specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The network type is virtual private cloud (VPC). For more information, see [What is a VPC?](~~34217~~)
-        *   The instances are in the Running (`Running`) state.
-        *   The Cloud Assistant client is installed on the instances. For more information, see [Install the Cloud Assistant client](~~64921~~).
-        *   Before you run PowerShell commands, make sure that the PowerShell module is configured for the instances.
-        *   If you set the `Timed` parameter to false, the command is run only once.
-        *   If you set the `Timed` parameter to true, the command is run on a schedule.
-        *   The schedule is specified by the `Frequency` parameter. The execution results of a command do not affect the next command execution.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service and time zone for Linux instances](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specified interval, only once at a specified time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
-        - Linux: 2.2.3.282
-        - Windows: 2.1.3.282
-        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
-        *   If you enable the custom parameter feature by setting the EnableParameter parameter to true when you create a command, you must specify custom parameters (`Parameters`) when you run the command.
-        
-        @param request: InvokeCommandRequest
-        @return: InvokeCommandResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.invoke_command_with_options(request, runtime)
 
@@ -33226,25 +32527,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.InvokeCommandRequest,
     ) -> ecs_20140526_models.InvokeCommandResponse:
-        """
-        The ECS instances on which you want to run the Cloud Assistant command must meet the following requirements. If you specify multiple ECS instances and one of the instances does not meet the requirements to run the command, the call fails. Specify instances that meet the requirements and call the InvokeCommand operation again.
-        *   The network type is virtual private cloud (VPC). For more information, see [What is a VPC?](~~34217~~)
-        *   The instances are in the Running (`Running`) state.
-        *   The Cloud Assistant client is installed on the instances. For more information, see [Install the Cloud Assistant client](~~64921~~).
-        *   Before you run PowerShell commands, make sure that the PowerShell module is configured for the instances.
-        *   If you set the `Timed` parameter to false, the command is run only once.
-        *   If you set the `Timed` parameter to true, the command is run on a schedule.
-        *   The schedule is specified by the `Frequency` parameter. The execution results of a command do not affect the next command execution.
-        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For more information, see [Configure the NTP service and time zone for Linux instances](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
-        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specified interval, only once at a specified time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
-        - Linux: 2.2.3.282
-        - Windows: 2.1.3.282
-        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
-        *   If you enable the custom parameter feature by setting the EnableParameter parameter to true when you create a command, you must specify custom parameters (`Parameters`) when you run the command.
-        
-        @param request: InvokeCommandRequest
-        @return: InvokeCommandResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.invoke_command_with_options_async(request, runtime)
 
@@ -33253,13 +32535,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinResourceGroupResponse:
-        """
-        A resource is a cloud service entity that you create in Alibaba Cloud, such as an ECS instance, elastic network interface (ENI), or image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without switching between Alibaba Cloud services.
-        
-        @param request: JoinResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JoinResourceGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -33302,13 +32577,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinResourceGroupResponse:
-        """
-        A resource is a cloud service entity that you create in Alibaba Cloud, such as an ECS instance, elastic network interface (ENI), or image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without switching between Alibaba Cloud services.
-        
-        @param request: JoinResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JoinResourceGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -33350,12 +32618,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.JoinResourceGroupRequest,
     ) -> ecs_20140526_models.JoinResourceGroupResponse:
-        """
-        A resource is a cloud service entity that you create in Alibaba Cloud, such as an ECS instance, elastic network interface (ENI), or image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without switching between Alibaba Cloud services.
-        
-        @param request: JoinResourceGroupRequest
-        @return: JoinResourceGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.join_resource_group_with_options(request, runtime)
 
@@ -33363,12 +32625,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.JoinResourceGroupRequest,
     ) -> ecs_20140526_models.JoinResourceGroupResponse:
-        """
-        A resource is a cloud service entity that you create in Alibaba Cloud, such as an ECS instance, elastic network interface (ENI), or image. A resource group is a collection of infrastructure for projects, environments, or stacks. In a resource group, you can manage resources and monitor and run tasks in a centralized manner without switching between Alibaba Cloud services.
-        
-        @param request: JoinResourceGroupRequest
-        @return: JoinResourceGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.join_resource_group_with_options_async(request, runtime)
 
@@ -33377,22 +32633,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
-        """
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
-        When you call this operation, take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        *   An instance can be added to up to five security groups.
-        *   To add an instance to more security groups, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm). An instance can be added to up to 16 security groups.
-        *\
-        *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        *   The security group and the instance must belong to the same region.
-        *   The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
-        
-        @param request: JoinSecurityGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JoinSecurityGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -33435,22 +32675,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
-        """
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
-        When you call this operation, take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        *   An instance can be added to up to five security groups.
-        *   To add an instance to more security groups, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm). An instance can be added to up to 16 security groups.
-        *\
-        *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        *   The security group and the instance must belong to the same region.
-        *   The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
-        
-        @param request: JoinSecurityGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: JoinSecurityGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -33492,21 +32716,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
-        """
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
-        When you call this operation, take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        *   An instance can be added to up to five security groups.
-        *   To add an instance to more security groups, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm). An instance can be added to up to 16 security groups.
-        *\
-        *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        *   The security group and the instance must belong to the same region.
-        *   The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
-        
-        @param request: JoinSecurityGroupRequest
-        @return: JoinSecurityGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.join_security_group_with_options(request, runtime)
 
@@ -33514,21 +32723,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
-        """
-        > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](~~25503~~) operation to add instances to or remove instances from a security group, and call the [ModifyNetworkInterfaceAttribute](~~58513~~) operation to add ENIs to or remove ENIs from a security group.
-        When you call this operation, take note of the following items:
-        *   Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
-        *   An instance can be added to up to five security groups.
-        *   To add an instance to more security groups, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex.htm). An instance can be added to up to 16 security groups.
-        *\
-        *   A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
-        *   The security group and the instance must belong to the same region.
-        *   The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must be in the same VPC.
-        *   An instance and an ENI cannot be added to a security group at the same time. You cannot specify the `InstanceId` and `NetworkInterfaceId` parameters at the same time.
-        
-        @param request: JoinSecurityGroupRequest
-        @return: JoinSecurityGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.join_security_group_with_options_async(request, runtime)
 
@@ -33677,15 +32871,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ListPluginStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ListPluginStatusResponse:
-        """
-        Before you call this operation to query the states of Cloud Assistant plug-ins on ECS instances, make sure that the versions of the Cloud Assistant client installed on the instances are not earlier than the following ones:
-        - 2.2.3.344 for Linux instances
-        - 2.1.3.344 for Windows instances
-        
-        @param request: ListPluginStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPluginStatusResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -33732,15 +32917,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ListPluginStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ListPluginStatusResponse:
-        """
-        Before you call this operation to query the states of Cloud Assistant plug-ins on ECS instances, make sure that the versions of the Cloud Assistant client installed on the instances are not earlier than the following ones:
-        - 2.2.3.344 for Linux instances
-        - 2.1.3.344 for Windows instances
-        
-        @param request: ListPluginStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPluginStatusResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -33786,14 +32962,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ListPluginStatusRequest,
     ) -> ecs_20140526_models.ListPluginStatusResponse:
-        """
-        Before you call this operation to query the states of Cloud Assistant plug-ins on ECS instances, make sure that the versions of the Cloud Assistant client installed on the instances are not earlier than the following ones:
-        - 2.2.3.344 for Linux instances
-        - 2.1.3.344 for Windows instances
-        
-        @param request: ListPluginStatusRequest
-        @return: ListPluginStatusResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.list_plugin_status_with_options(request, runtime)
 
@@ -33801,14 +32969,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ListPluginStatusRequest,
     ) -> ecs_20140526_models.ListPluginStatusResponse:
-        """
-        Before you call this operation to query the states of Cloud Assistant plug-ins on ECS instances, make sure that the versions of the Cloud Assistant client installed on the instances are not earlier than the following ones:
-        - 2.2.3.344 for Linux instances
-        - 2.1.3.344 for Windows instances
-        
-        @param request: ListPluginStatusRequest
-        @return: ListPluginStatusResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.list_plugin_status_with_options_async(request, runtime)
 
@@ -33817,19 +32977,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ListTagResourcesResponse:
-        """
-        Specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N` parameter pair (`Tag.N.Key` and `Tag.N.Value`)
-        *   `TagFilter.N`
-        If one of the following sets of request parameters is specified as filter conditions, only ECS resources that meet all of the specified filter conditions are returned:
-        *   Set 1: `Tag.N.Key, Tag.N.Value`, and `ResourceId.N`
-        *   Set 2: `TagFilter.N.TagKey, TagFilter.N.TagValues.N`, and `ResourceId.N`
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -33878,19 +33025,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ListTagResourcesResponse:
-        """
-        Specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N` parameter pair (`Tag.N.Key` and `Tag.N.Value`)
-        *   `TagFilter.N`
-        If one of the following sets of request parameters is specified as filter conditions, only ECS resources that meet all of the specified filter conditions are returned:
-        *   Set 1: `Tag.N.Key, Tag.N.Value`, and `ResourceId.N`
-        *   Set 2: `TagFilter.N.TagKey, TagFilter.N.TagValues.N`, and `ResourceId.N`
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -33938,18 +33072,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ListTagResourcesRequest,
     ) -> ecs_20140526_models.ListTagResourcesResponse:
-        """
-        Specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N` parameter pair (`Tag.N.Key` and `Tag.N.Value`)
-        *   `TagFilter.N`
-        If one of the following sets of request parameters is specified as filter conditions, only ECS resources that meet all of the specified filter conditions are returned:
-        *   Set 1: `Tag.N.Key, Tag.N.Value`, and `ResourceId.N`
-        *   Set 2: `TagFilter.N.TagKey, TagFilter.N.TagValues.N`, and `ResourceId.N`
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -33957,18 +33079,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ListTagResourcesRequest,
     ) -> ecs_20140526_models.ListTagResourcesResponse:
-        """
-        Specify at least one of the following parameters or parameter pairs in a request to determine a query object:
-        *   `ResourceId.N`
-        *   `Tag.N` parameter pair (`Tag.N.Key` and `Tag.N.Value`)
-        *   `TagFilter.N`
-        If one of the following sets of request parameters is specified as filter conditions, only ECS resources that meet all of the specified filter conditions are returned:
-        *   Set 1: `Tag.N.Key, Tag.N.Value`, and `ResourceId.N`
-        *   Set 2: `TagFilter.N.TagKey, TagFilter.N.TagValues.N`, and `ResourceId.N`
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -33977,15 +33087,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the modification.
-        *   You cannot modify an auto provisioning group when the group is being deleted.
-        
-        @param request: ModifyAutoProvisioningGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyAutoProvisioningGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_provisioning_group_id):
@@ -34042,15 +33143,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the modification.
-        *   You cannot modify an auto provisioning group when the group is being deleted.
-        
-        @param request: ModifyAutoProvisioningGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyAutoProvisioningGroupResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_provisioning_group_id):
@@ -34106,14 +33198,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the modification.
-        *   You cannot modify an auto provisioning group when the group is being deleted.
-        
-        @param request: ModifyAutoProvisioningGroupRequest
-        @return: ModifyAutoProvisioningGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_auto_provisioning_group_with_options(request, runtime)
 
@@ -34121,14 +33205,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.ModifyAutoProvisioningGroupResponse:
-        """
-        Before you call this operation, take note of the following items:
-        *   If you modify the capacity or capacity-related settings of an auto provisioning group, the group executes the scheduling task once after the modification.
-        *   You cannot modify an auto provisioning group when the group is being deleted.
-        
-        @param request: ModifyAutoProvisioningGroupRequest
-        @return: ModifyAutoProvisioningGroupResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_auto_provisioning_group_with_options_async(request, runtime)
 
@@ -34633,14 +33709,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyCommandResponse:
-        """
-        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
-        You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
-        
-        @param request: ModifyCommandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyCommandResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command_content):
@@ -34691,14 +33759,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyCommandResponse:
-        """
-        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
-        You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
-        
-        @param request: ModifyCommandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyCommandResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command_content):
@@ -34748,13 +33808,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyCommandRequest,
     ) -> ecs_20140526_models.ModifyCommandResponse:
-        """
-        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
-        You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
-        
-        @param request: ModifyCommandRequest
-        @return: ModifyCommandResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_command_with_options(request, runtime)
 
@@ -34762,13 +33815,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyCommandRequest,
     ) -> ecs_20140526_models.ModifyCommandResponse:
-        """
-        You can modify a command when it is being executed. After the command is modified, the new command content applies to subsequent executions.
-        You cannot modify the command type. For example, you cannot change a shell command (RunShellScript) to a batch command (RunBatScript).
-        
-        @param request: ModifyCommandRequest
-        @return: ModifyCommandResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_command_with_options_async(request, runtime)
 
@@ -34777,15 +33823,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAttributeResponse:
-        """
-        ## Description
-        *   All the Elastic Compute Service (ECS) instances that are hosted on a dedicated host must be in the Stopped (`Stopped`) state before you can modify the CPU overcommit ratio of the dedicated host.
-        *   Modifications to the CPU overcommit ratio of a dedicated host do not affect the operation of the dedicated host. After the CPU overcommit ratio is modified, the number of allocated vCPUs on the dedicated host cannot exceed the new total number of vCPUs. Otherwise, ECS instances that use the excess vCPUs cannot start.
-        
-        @param request: ModifyDedicatedHostAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDedicatedHostAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_on_maintenance):
@@ -34838,15 +33875,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAttributeResponse:
-        """
-        ## Description
-        *   All the Elastic Compute Service (ECS) instances that are hosted on a dedicated host must be in the Stopped (`Stopped`) state before you can modify the CPU overcommit ratio of the dedicated host.
-        *   Modifications to the CPU overcommit ratio of a dedicated host do not affect the operation of the dedicated host. After the CPU overcommit ratio is modified, the number of allocated vCPUs on the dedicated host cannot exceed the new total number of vCPUs. Otherwise, ECS instances that use the excess vCPUs cannot start.
-        
-        @param request: ModifyDedicatedHostAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDedicatedHostAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_on_maintenance):
@@ -34898,14 +33926,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDedicatedHostAttributeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAttributeResponse:
-        """
-        ## Description
-        *   All the Elastic Compute Service (ECS) instances that are hosted on a dedicated host must be in the Stopped (`Stopped`) state before you can modify the CPU overcommit ratio of the dedicated host.
-        *   Modifications to the CPU overcommit ratio of a dedicated host do not affect the operation of the dedicated host. After the CPU overcommit ratio is modified, the number of allocated vCPUs on the dedicated host cannot exceed the new total number of vCPUs. Otherwise, ECS instances that use the excess vCPUs cannot start.
-        
-        @param request: ModifyDedicatedHostAttributeRequest
-        @return: ModifyDedicatedHostAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dedicated_host_attribute_with_options(request, runtime)
 
@@ -34913,14 +33933,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDedicatedHostAttributeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAttributeResponse:
-        """
-        ## Description
-        *   All the Elastic Compute Service (ECS) instances that are hosted on a dedicated host must be in the Stopped (`Stopped`) state before you can modify the CPU overcommit ratio of the dedicated host.
-        *   Modifications to the CPU overcommit ratio of a dedicated host do not affect the operation of the dedicated host. After the CPU overcommit ratio is modified, the number of allocated vCPUs on the dedicated host cannot exceed the new total number of vCPUs. Otherwise, ECS instances that use the excess vCPUs cannot start.
-        
-        @param request: ModifyDedicatedHostAttributeRequest
-        @return: ModifyDedicatedHostAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_host_attribute_with_options_async(request, runtime)
 
@@ -34929,13 +33941,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
-        """
-        The pay-as-you-go dedicated host is automatically released at the specified time. Make sure that the dedicated host is no longer needed and that its data is backed up.
-        
-        @param request: ModifyDedicatedHostAutoReleaseTimeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDedicatedHostAutoReleaseTimeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_release_time):
@@ -34976,13 +33981,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
-        """
-        The pay-as-you-go dedicated host is automatically released at the specified time. Make sure that the dedicated host is no longer needed and that its data is backed up.
-        
-        @param request: ModifyDedicatedHostAutoReleaseTimeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDedicatedHostAutoReleaseTimeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_release_time):
@@ -35022,12 +34020,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
-        """
-        The pay-as-you-go dedicated host is automatically released at the specified time. Make sure that the dedicated host is no longer needed and that its data is backed up.
-        
-        @param request: ModifyDedicatedHostAutoReleaseTimeRequest
-        @return: ModifyDedicatedHostAutoReleaseTimeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dedicated_host_auto_release_time_with_options(request, runtime)
 
@@ -35035,12 +34027,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoReleaseTimeResponse:
-        """
-        The pay-as-you-go dedicated host is automatically released at the specified time. Make sure that the dedicated host is no longer needed and that its data is backed up.
-        
-        @param request: ModifyDedicatedHostAutoReleaseTimeRequest
-        @return: ModifyDedicatedHostAutoReleaseTimeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_host_auto_release_time_with_options_async(request, runtime)
 
@@ -35049,15 +34035,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse:
-        """
-        ## Description
-        *   If you enable auto-renewal for your subscription dedicated host, the dedicated host is automatically renewed nine days before expiration. The renewal fees are automatically paid at 08:00:00 (UTC+8). If the fees are not paid, they are paid at the same point in time the next day. Automatic payment stops after the fees are paid or after the dedicated host expires and is locked. Make sure that you have sufficient balance within your account.
-        *   Subscription dedicated hosts can be automatically renewed along with the subscription Elastic Compute Service (ECS) instances hosted on the dedicated hosts. For more information, see the description of the AutoRenewWithEcs parameter.
-        
-        @param request: ModifyDedicatedHostAutoRenewAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDedicatedHostAutoRenewAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -35106,15 +34083,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse:
-        """
-        ## Description
-        *   If you enable auto-renewal for your subscription dedicated host, the dedicated host is automatically renewed nine days before expiration. The renewal fees are automatically paid at 08:00:00 (UTC+8). If the fees are not paid, they are paid at the same point in time the next day. Automatic payment stops after the fees are paid or after the dedicated host expires and is locked. Make sure that you have sufficient balance within your account.
-        *   Subscription dedicated hosts can be automatically renewed along with the subscription Elastic Compute Service (ECS) instances hosted on the dedicated hosts. For more information, see the description of the AutoRenewWithEcs parameter.
-        
-        @param request: ModifyDedicatedHostAutoRenewAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDedicatedHostAutoRenewAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -35162,14 +34130,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse:
-        """
-        ## Description
-        *   If you enable auto-renewal for your subscription dedicated host, the dedicated host is automatically renewed nine days before expiration. The renewal fees are automatically paid at 08:00:00 (UTC+8). If the fees are not paid, they are paid at the same point in time the next day. Automatic payment stops after the fees are paid or after the dedicated host expires and is locked. Make sure that you have sufficient balance within your account.
-        *   Subscription dedicated hosts can be automatically renewed along with the subscription Elastic Compute Service (ECS) instances hosted on the dedicated hosts. For more information, see the description of the AutoRenewWithEcs parameter.
-        
-        @param request: ModifyDedicatedHostAutoRenewAttributeRequest
-        @return: ModifyDedicatedHostAutoRenewAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dedicated_host_auto_renew_attribute_with_options(request, runtime)
 
@@ -35177,14 +34137,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeRequest,
     ) -> ecs_20140526_models.ModifyDedicatedHostAutoRenewAttributeResponse:
-        """
-        ## Description
-        *   If you enable auto-renewal for your subscription dedicated host, the dedicated host is automatically renewed nine days before expiration. The renewal fees are automatically paid at 08:00:00 (UTC+8). If the fees are not paid, they are paid at the same point in time the next day. Automatic payment stops after the fees are paid or after the dedicated host expires and is locked. Make sure that you have sufficient balance within your account.
-        *   Subscription dedicated hosts can be automatically renewed along with the subscription Elastic Compute Service (ECS) instances hosted on the dedicated hosts. For more information, see the description of the AutoRenewWithEcs parameter.
-        
-        @param request: ModifyDedicatedHostAutoRenewAttributeRequest
-        @return: ModifyDedicatedHostAutoRenewAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_host_auto_renew_attribute_with_options_async(request, runtime)
 
@@ -35409,6 +34361,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDemandResponse:
+        """
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
+        
+        @param request: ModifyDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -35469,6 +34429,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDemandResponse:
+        """
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
+        
+        @param request: ModifyDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -35528,6 +34496,13 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDemandRequest,
     ) -> ecs_20140526_models.ModifyDemandResponse:
+        """
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
+        
+        @param request: ModifyDemandRequest
+        @return: ModifyDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_demand_with_options(request, runtime)
 
@@ -35535,6 +34510,13 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDemandRequest,
     ) -> ecs_20140526_models.ModifyDemandResponse:
+        """
+        You can call this operation to modify the demand information about instance types. Alibaba Cloud provides the requested resources based on your demand. You can file demands only for I/O optimized instance types and instances of the virtual private cloud (VPC) type. Parameters except `DemandName` and `DemandDescription` can be modified only for demands that are in the Rejected state.
+        > This operation is in internal preview and has not been officially released. We recommend that you do not use this operation.
+        
+        @param request: ModifyDemandRequest
+        @return: ModifyDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_demand_with_options_async(request, runtime)
 
@@ -35879,21 +34861,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
-        """
-        After you change the billing method, the payment (if any) is automatically completed. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        When you call this operation, take note of the following items:
-        *   You can change the billing method from subscription to pay-as-you-go for disks that are attached to a subscription instance.
-        *   You can change the billing method from pay-as-you-go to subscription for data disks that are attached to a subscription or pay-as-you-go instance.
-        *   The instance cannot be in the Stopped state due to overdue payments.
-        *   You can change the billing method of each disk up to three times. Up to three refunds can be made for the price differences for each disk.
-        *   The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        *   You cannot change the billing method again within 5 minutes of a successful change.
-        *   The billing method of disks with the multi-attach feature enabled must be pay-as-you-go and cannot be changed to subscription.
-        
-        @param request: ModifyDiskChargeTypeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDiskChargeTypeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -35940,21 +34907,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
-        """
-        After you change the billing method, the payment (if any) is automatically completed. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        When you call this operation, take note of the following items:
-        *   You can change the billing method from subscription to pay-as-you-go for disks that are attached to a subscription instance.
-        *   You can change the billing method from pay-as-you-go to subscription for data disks that are attached to a subscription or pay-as-you-go instance.
-        *   The instance cannot be in the Stopped state due to overdue payments.
-        *   You can change the billing method of each disk up to three times. Up to three refunds can be made for the price differences for each disk.
-        *   The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        *   You cannot change the billing method again within 5 minutes of a successful change.
-        *   The billing method of disks with the multi-attach feature enabled must be pay-as-you-go and cannot be changed to subscription.
-        
-        @param request: ModifyDiskChargeTypeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDiskChargeTypeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -36000,20 +34952,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDiskChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
-        """
-        After you change the billing method, the payment (if any) is automatically completed. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        When you call this operation, take note of the following items:
-        *   You can change the billing method from subscription to pay-as-you-go for disks that are attached to a subscription instance.
-        *   You can change the billing method from pay-as-you-go to subscription for data disks that are attached to a subscription or pay-as-you-go instance.
-        *   The instance cannot be in the Stopped state due to overdue payments.
-        *   You can change the billing method of each disk up to three times. Up to three refunds can be made for the price differences for each disk.
-        *   The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        *   You cannot change the billing method again within 5 minutes of a successful change.
-        *   The billing method of disks with the multi-attach feature enabled must be pay-as-you-go and cannot be changed to subscription.
-        
-        @param request: ModifyDiskChargeTypeRequest
-        @return: ModifyDiskChargeTypeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_disk_charge_type_with_options(request, runtime)
 
@@ -36021,20 +34959,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDiskChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyDiskChargeTypeResponse:
-        """
-        After you change the billing method, the payment (if any) is automatically completed. Maintain a sufficient account balance. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        When you call this operation, take note of the following items:
-        *   You can change the billing method from subscription to pay-as-you-go for disks that are attached to a subscription instance.
-        *   You can change the billing method from pay-as-you-go to subscription for data disks that are attached to a subscription or pay-as-you-go instance.
-        *   The instance cannot be in the Stopped state due to overdue payments.
-        *   You can change the billing method of each disk up to three times. Up to three refunds can be made for the price differences for each disk.
-        *   The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        *   You cannot change the billing method again within 5 minutes of a successful change.
-        *   The billing method of disks with the multi-attach feature enabled must be pay-as-you-go and cannot be changed to subscription.
-        
-        @param request: ModifyDiskChargeTypeRequest
-        @return: ModifyDiskChargeTypeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_disk_charge_type_with_options_async(request, runtime)
 
@@ -36043,6 +34967,22 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
+        """
+        ## Description
+        When you call this operation, take note of the following items:
+        *   To modify the performance level of an ESSD, take note of the following items:
+        *   For a subscription ESSD, you can only upgrade its performance level.
+        *   For a pay-as-you-go ESSD, You can upgrade or downgrade its performance level. However, you cannot downgrade the performance level to PL0.
+        *   The ESSD must be in the **In Use** (In_Use) or **Unattached** (Available) state.
+        *   If the ESSD is attached to an ECS instance, the instance must be in the **Running** (Running) or **Stopped** (Stopped) state. The instance cannot be in the Expired state or stopped due to an overdue payment.
+        *   If you cannot upgrade the performance level of the ESSD due to its capacity, resize the ESSD by calling the [ResizeDisk](~~25522~~) operation and then try again. For more information, see [Enhanced SSDs](~~122389~~).
+        *   For more information about the limits on changing the category of a disk, see the "Limits" section of the [Change the category of a disk](~~161980~~) topic.
+        The new disk category or performance level takes effect immediately after this operation is executed. Alibaba Cloud calculates the bill based on the new disk category and performance level.
+        
+        @param request: ModifyDiskSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDiskSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_category):
@@ -36087,6 +35027,22 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDiskSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
+        """
+        ## Description
+        When you call this operation, take note of the following items:
+        *   To modify the performance level of an ESSD, take note of the following items:
+        *   For a subscription ESSD, you can only upgrade its performance level.
+        *   For a pay-as-you-go ESSD, You can upgrade or downgrade its performance level. However, you cannot downgrade the performance level to PL0.
+        *   The ESSD must be in the **In Use** (In_Use) or **Unattached** (Available) state.
+        *   If the ESSD is attached to an ECS instance, the instance must be in the **Running** (Running) or **Stopped** (Stopped) state. The instance cannot be in the Expired state or stopped due to an overdue payment.
+        *   If you cannot upgrade the performance level of the ESSD due to its capacity, resize the ESSD by calling the [ResizeDisk](~~25522~~) operation and then try again. For more information, see [Enhanced SSDs](~~122389~~).
+        *   For more information about the limits on changing the category of a disk, see the "Limits" section of the [Change the category of a disk](~~161980~~) topic.
+        The new disk category or performance level takes effect immediately after this operation is executed. Alibaba Cloud calculates the bill based on the new disk category and performance level.
+        
+        @param request: ModifyDiskSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDiskSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_category):
@@ -36130,6 +35086,21 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDiskSpecRequest,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
+        """
+        ## Description
+        When you call this operation, take note of the following items:
+        *   To modify the performance level of an ESSD, take note of the following items:
+        *   For a subscription ESSD, you can only upgrade its performance level.
+        *   For a pay-as-you-go ESSD, You can upgrade or downgrade its performance level. However, you cannot downgrade the performance level to PL0.
+        *   The ESSD must be in the **In Use** (In_Use) or **Unattached** (Available) state.
+        *   If the ESSD is attached to an ECS instance, the instance must be in the **Running** (Running) or **Stopped** (Stopped) state. The instance cannot be in the Expired state or stopped due to an overdue payment.
+        *   If you cannot upgrade the performance level of the ESSD due to its capacity, resize the ESSD by calling the [ResizeDisk](~~25522~~) operation and then try again. For more information, see [Enhanced SSDs](~~122389~~).
+        *   For more information about the limits on changing the category of a disk, see the "Limits" section of the [Change the category of a disk](~~161980~~) topic.
+        The new disk category or performance level takes effect immediately after this operation is executed. Alibaba Cloud calculates the bill based on the new disk category and performance level.
+        
+        @param request: ModifyDiskSpecRequest
+        @return: ModifyDiskSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_disk_spec_with_options(request, runtime)
 
@@ -36137,6 +35108,21 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyDiskSpecRequest,
     ) -> ecs_20140526_models.ModifyDiskSpecResponse:
+        """
+        ## Description
+        When you call this operation, take note of the following items:
+        *   To modify the performance level of an ESSD, take note of the following items:
+        *   For a subscription ESSD, you can only upgrade its performance level.
+        *   For a pay-as-you-go ESSD, You can upgrade or downgrade its performance level. However, you cannot downgrade the performance level to PL0.
+        *   The ESSD must be in the **In Use** (In_Use) or **Unattached** (Available) state.
+        *   If the ESSD is attached to an ECS instance, the instance must be in the **Running** (Running) or **Stopped** (Stopped) state. The instance cannot be in the Expired state or stopped due to an overdue payment.
+        *   If you cannot upgrade the performance level of the ESSD due to its capacity, resize the ESSD by calling the [ResizeDisk](~~25522~~) operation and then try again. For more information, see [Enhanced SSDs](~~122389~~).
+        *   For more information about the limits on changing the category of a disk, see the "Limits" section of the [Change the category of a disk](~~161980~~) topic.
+        The new disk category or performance level takes effect immediately after this operation is executed. Alibaba Cloud calculates the bill based on the new disk category and performance level.
+        
+        @param request: ModifyDiskSpecRequest
+        @return: ModifyDiskSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_disk_spec_with_options_async(request, runtime)
 
@@ -37253,29 +36239,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
-        """
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons and all operations are prohibited on it.
-        When you call this operation, take note of the following items:
-        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        *   Reset the password (`Password`):
-        *   The instance must not be in the **Starting** (`Starting`) state.
-        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        *   Modify user data (`UserData`):
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   The instance must meet the conditions on user data. For more information, see [Overview of ECS instance user data](~~49121~~).
-        *   Change the security group (`SecurityGroupIds.N`):
-        *   You can move an instance to a security group of a different type. Before you move an instance to a security group of a different type, we recommend that you evaluate the differences in rule configurations of the two security group types. This helps prevent business continuity issues when you switch security groups.
-        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
-        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        *   The instance must be in the Stopped (`Stopped`) state.
-        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        *   If you set the NetworkInterfaceQueueNumber parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
-        
-        @param request: ModifyInstanceAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.credit_specification):
@@ -37336,29 +36299,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
-        """
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons and all operations are prohibited on it.
-        When you call this operation, take note of the following items:
-        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        *   Reset the password (`Password`):
-        *   The instance must not be in the **Starting** (`Starting`) state.
-        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        *   Modify user data (`UserData`):
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   The instance must meet the conditions on user data. For more information, see [Overview of ECS instance user data](~~49121~~).
-        *   Change the security group (`SecurityGroupIds.N`):
-        *   You can move an instance to a security group of a different type. Before you move an instance to a security group of a different type, we recommend that you evaluate the differences in rule configurations of the two security group types. This helps prevent business continuity issues when you switch security groups.
-        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
-        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        *   The instance must be in the Stopped (`Stopped`) state.
-        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        *   If you set the NetworkInterfaceQueueNumber parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
-        
-        @param request: ModifyInstanceAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceAttributeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.credit_specification):
@@ -37418,28 +36358,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
-        """
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons and all operations are prohibited on it.
-        When you call this operation, take note of the following items:
-        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        *   Reset the password (`Password`):
-        *   The instance must not be in the **Starting** (`Starting`) state.
-        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        *   Modify user data (`UserData`):
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   The instance must meet the conditions on user data. For more information, see [Overview of ECS instance user data](~~49121~~).
-        *   Change the security group (`SecurityGroupIds.N`):
-        *   You can move an instance to a security group of a different type. Before you move an instance to a security group of a different type, we recommend that you evaluate the differences in rule configurations of the two security group types. This helps prevent business continuity issues when you switch security groups.
-        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
-        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        *   The instance must be in the Stopped (`Stopped`) state.
-        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        *   If you set the NetworkInterfaceQueueNumber parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
-        
-        @param request: ModifyInstanceAttributeRequest
-        @return: ModifyInstanceAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_attribute_with_options(request, runtime)
 
@@ -37447,28 +36365,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceAttributeRequest,
     ) -> ecs_20140526_models.ModifyInstanceAttributeResponse:
-        """
-        If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of an instance, the instance is locked for security reasons and all operations are prohibited on it.
-        When you call this operation, take note of the following items:
-        *   Modify the hostname (`HostName`): After the hostname is modified, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new hostname to take effect. The new hostname does not take effect if you restart the instance from within the operating system.
-        *   Reset the password (`Password`):
-        *   The instance must not be in the **Starting** (`Starting`) state.
-        *   After the password is reset, you must restart the instance by performing the operations described in [Restart an instance](~~25440~~) in the ECS console or by calling the [RebootInstance](~~25502~~) operation for the new password to take effect. The new password does not take effect if you restart the instance from within the operating system.
-        *   Modify user data (`UserData`):
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   The instance must meet the conditions on user data. For more information, see [Overview of ECS instance user data](~~49121~~).
-        *   Change the security group (`SecurityGroupIds.N`):
-        *   You can move an instance to a security group of a different type. Before you move an instance to a security group of a different type, we recommend that you evaluate the differences in rule configurations of the two security group types. This helps prevent business continuity issues when you switch security groups.
-        *   Security groups of instances in the classic network cannot be changed. For more information, see the description of the `SecurityGroupIds.N` parameter.
-        *   Modify the number of queues supported by the primary elastic network interface (ENI) (`NetworkInterfaceQueueNumber`):
-        *   The instance must be in the Stopped (`Stopped`) state.
-        *   The value of this parameter cannot exceed the maximum number of queues per ENI allowed for the instance type.
-        *   The total number of queues for all ENIs on the instance cannot exceed the queue quota for the instance type. To obtain the maximum number of queues per ENI and the queue quota for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters.
-        *   If you set the NetworkInterfaceQueueNumber parameter to -1, the value is reset to the default value for the instance type. To obtain the default number of queues supported by the primary ENI for an instance type, you can call the [DescribeInstanceTypes](~~25620~~) operation to query the `PrimaryEniQueueNumber` parameter.
-        
-        @param request: ModifyInstanceAttributeRequest
-        @return: ModifyInstanceAttributeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_attribute_with_options_async(request, runtime)
 
@@ -37715,23 +36611,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        When you call this operation, take note of the following items:
-        * The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for them.
-        * After you change the billing method, automatic payment is enabled by default. Make sure that you have sufficient balance in your account. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the `AutoPay` parameter to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        * **Change the billing method from subscription to pay-as-you-go**:
-        * Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
-        * After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        * **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only when the next month arrives. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
-        * **Change the billing method from pay-as-you-go to subscription**:
-        * You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
-        * This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
-        
-        @param request: ModifyInstanceChargeTypeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceChargeTypeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -37786,23 +36665,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        When you call this operation, take note of the following items:
-        * The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for them.
-        * After you change the billing method, automatic payment is enabled by default. Make sure that you have sufficient balance in your account. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the `AutoPay` parameter to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        * **Change the billing method from subscription to pay-as-you-go**:
-        * Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
-        * After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        * **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only when the next month arrives. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
-        * **Change the billing method from pay-as-you-go to subscription**:
-        * You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
-        * This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
-        
-        @param request: ModifyInstanceChargeTypeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceChargeTypeResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -37856,22 +36718,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        When you call this operation, take note of the following items:
-        * The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for them.
-        * After you change the billing method, automatic payment is enabled by default. Make sure that you have sufficient balance in your account. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the `AutoPay` parameter to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        * **Change the billing method from subscription to pay-as-you-go**:
-        * Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
-        * After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        * **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only when the next month arrives. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
-        * **Change the billing method from pay-as-you-go to subscription**:
-        * You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
-        * This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
-        
-        @param request: ModifyInstanceChargeTypeRequest
-        @return: ModifyInstanceChargeTypeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_charge_type_with_options(request, runtime)
 
@@ -37879,22 +36725,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceChargeTypeRequest,
     ) -> ecs_20140526_models.ModifyInstanceChargeTypeResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
-        When you call this operation, take note of the following items:
-        * The instances must be in the **Running** (`Running`) or **Stopped** (`Stopped`) state, and you have no overdue payments for them.
-        * After you change the billing method, automatic payment is enabled by default. Make sure that you have sufficient balance in your account. Otherwise, your order becomes invalid and is canceled. If your account balance is insufficient, you can set the `AutoPay` parameter to `false` to generate an unpaid order. Then, you can log on to the [ECS console](https://ecs.console.aliyun.com/) to pay for the order.
-        * **Change the billing method from subscription to pay-as-you-go**:
-        * Your ECS usage determines whether the billing method of an instance can be changed from subscription to pay-as-you-go.
-        * After you change the billing method of an instance from subscription to pay-as-you-go, the new billing method remains in effect for the remaining lifecycle of the instance. The price difference is refunded to the payment account that you used. Vouchers that have been redeemed are not refundable.
-        * **Refund rule**: You have a quota for the total refund amount each month, and unused balance of this quota is not carried forward into the next month. After you use up the refund quota of the current month, you can change the billing method only when the next month arrives. The refund amount incurred when you change the billing method is calculated based on the following formula: **Number of vCPUs × (Number of remaining days × 24 ± Number of remaining or elapsed hours)**.
-        * **Change the billing method from pay-as-you-go to subscription**:
-        * You can change the billing method of all data disks attached to an instance from pay-as-you-go to subscription.
-        * This operation cannot be called for a pay-as-you-go instance that has an automatic release time set.
-        
-        @param request: ModifyInstanceChargeTypeRequest
-        @return: ModifyInstanceChargeTypeResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_charge_type_with_options_async(request, runtime)
 
@@ -38083,15 +36913,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceMaintenanceAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse:
-        """
-        This operation is used to modify the maintenance policy of an instance. The maintenance policy consists of the following maintenance attributes:
-        *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the action that you specify in response to instance shutdown.
-        
-        @param request: ModifyInstanceMaintenanceAttributesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceMaintenanceAttributesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_on_maintenance):
@@ -38136,15 +36957,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceMaintenanceAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse:
-        """
-        This operation is used to modify the maintenance policy of an instance. The maintenance policy consists of the following maintenance attributes:
-        *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the action that you specify in response to instance shutdown.
-        
-        @param request: ModifyInstanceMaintenanceAttributesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceMaintenanceAttributesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_on_maintenance):
@@ -38188,14 +37000,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceMaintenanceAttributesRequest,
     ) -> ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse:
-        """
-        This operation is used to modify the maintenance policy of an instance. The maintenance policy consists of the following maintenance attributes:
-        *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the action that you specify in response to instance shutdown.
-        
-        @param request: ModifyInstanceMaintenanceAttributesRequest
-        @return: ModifyInstanceMaintenanceAttributesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_maintenance_attributes_with_options(request, runtime)
 
@@ -38203,14 +37007,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceMaintenanceAttributesRequest,
     ) -> ecs_20140526_models.ModifyInstanceMaintenanceAttributesResponse:
-        """
-        This operation is used to modify the maintenance policy of an instance. The maintenance policy consists of the following maintenance attributes:
-        *   Maintenance window: the time period that you specify for maintenance.
-        *   Maintenance action: the action that you specify in response to instance shutdown.
-        
-        @param request: ModifyInstanceMaintenanceAttributesRequest
-        @return: ModifyInstanceMaintenanceAttributesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_maintenance_attributes_with_options_async(request, runtime)
 
@@ -38501,24 +37297,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
-        """
-        ## Description
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
-        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You must have no overdue payments in your account.
-        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
-        *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        
-        @param request: ModifyInstanceSpecRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceSpecResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_migrate_across_zone):
@@ -38571,24 +37349,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
-        """
-        ## Description
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
-        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You must have no overdue payments in your account.
-        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
-        *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        
-        @param request: ModifyInstanceSpecRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyInstanceSpecResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_migrate_across_zone):
@@ -38640,23 +37400,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
-        """
-        ## Description
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
-        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You must have no overdue payments in your account.
-        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
-        *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        
-        @param request: ModifyInstanceSpecRequest
-        @return: ModifyInstanceSpecResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_spec_with_options(request, runtime)
 
@@ -38664,23 +37407,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyInstanceSpecResponse:
-        """
-        ## Description
-        Before you call this operation, make sure that you understand the billing methods and pricing schedule of ECS. For more information, visit the [Elastic Compute Service](https://www.aliyun.com/price/product#/ecs/detail) product page.
-        For information about ECS SDK for Python used to change resource configurations, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following items:
-        *   You must have no overdue payments in your account.
-        *   You can adjust the public bandwidth of an instance only when the instance is in the **Running** (`Running`) or **Stopped** (`Stopped`) state.
-        *   Before you change the instance type of a pay-as-you-go instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the instance types to which you can change.
-        *   You can change the instance type of an instance only when the instance is in the **Stopped** (`Stopped`) state.
-        *   The instance type and the public bandwidth of an instance cannot be changed together.
-        *   As of November 27, 2020, the maximum bandwidth value available for you to create ECS instances or to change ECS instance configurations is subject to throttling policies for your account. To increase the maximum bandwidth value, submit a ticket. The following throttling policies apply:
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-traffic billing method for network usage cannot exceed 5 Gbit/s.
-        *   Within a single region, the sum of actual maximum bandwidths of all ECS instances that use the pay-by-bandwidth billing method for network usage cannot exceed 50 Gbit/s.
-        
-        @param request: ModifyInstanceSpecRequest
-        @return: ModifyInstanceSpecResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_spec_with_options_async(request, runtime)
 
@@ -39523,19 +38249,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrefixListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
-        """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
-        *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
-        
-        @param request: ModifyPrefixListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPrefixListResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_entry):
@@ -39584,19 +38297,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrefixListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
-        """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
-        *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
-        
-        @param request: ModifyPrefixListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPrefixListResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_entry):
@@ -39644,18 +38344,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyPrefixListRequest,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
-        """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
-        *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
-        
-        @param request: ModifyPrefixListRequest
-        @return: ModifyPrefixListResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_prefix_list_with_options(request, runtime)
 
@@ -39663,18 +38351,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyPrefixListRequest,
     ) -> ecs_20140526_models.ModifyPrefixListResponse:
-        """
-        ## Description
-        *   The specified CIDR block must be valid. For example, 10.0.0.0/8 is a valid CIDR block while 10.0.0.1/8 is not. For more information, see the [What is CIDR?](https://www.alibabacloud.com/help/doc-detail/40637.htm#section-jua-0tj-q5m) section in Network FAQ.
-        *   When you add or delete an entry, you cannot specify duplicate CIDR blocks. Examples:
-        *   For IPv4 CIDR blocks, you cannot specify the 10.0.0.0/8 CIDR block in two entries. You cannot specify the 10.0.0.1/32 CIDR block in one entry and the 10.0.0.1 CIDR block in another entry. These two CIDR blocks are the same.
-        *   For IPv6 CIDR blocks, you cannot specify the 2001:fd01:0:0:0:0:0:0/32 CIDR block in one entry and the 2001:fd01::/32 CIDR block in another entry. These two CIDR blocks are the same.
-        *   The CIDR block in an entry to be added cannot the same as that in an entry to be deleted. For example, when you add an entry in which the 10.0.0.0/8 CIDR block is specified, the entry to be deleted cannot have the 10.0.0.0/8 CIDR block specified.
-        *   If you want to modify the description of an entry, you must specify the CIDR block (`AddEntry.N.Cidr`) and new description (`AddEntry.N.Description`) in the entry.
-        
-        @param request: ModifyPrefixListRequest
-        @return: ModifyPrefixListResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_prefix_list_with_options_async(request, runtime)
 
@@ -39683,24 +38359,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods, pricing schedule, and refund policies of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Request a refund for the downgrade of resource specifications](~~201955~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the supported instance types. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following item:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
-        *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   You must specify the operation type by setting the `OperatorType` parameter to downgrade.
-        *   You can downgrade the configurations of an instance for up to three times. In this case, you can apply for up to three refunds for price differences for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account that you used to purchase the instance. You cannot apply for a refund for vouchers that you already redeemed.
-        *   This operation is asynchronous. The system requires 5 to 10 seconds to change the instance type of an instance. For the instance type change to take effect, you must restart the instance in the ECS console or by calling the RebootInstance operation. If you restart only the operating system of the instance, the instance type change does not take effect.
-        *   If the instance is in the **Stopped** state, you need to only start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If you set the `RebootWhenFinished` parameter to true for the instance, you do not need to restart the instance.
-        
-        @param request: ModifyPrepayInstanceSpecRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPrepayInstanceSpecResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -39757,24 +38415,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods, pricing schedule, and refund policies of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Request a refund for the downgrade of resource specifications](~~201955~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the supported instance types. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following item:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
-        *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   You must specify the operation type by setting the `OperatorType` parameter to downgrade.
-        *   You can downgrade the configurations of an instance for up to three times. In this case, you can apply for up to three refunds for price differences for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account that you used to purchase the instance. You cannot apply for a refund for vouchers that you already redeemed.
-        *   This operation is asynchronous. The system requires 5 to 10 seconds to change the instance type of an instance. For the instance type change to take effect, you must restart the instance in the ECS console or by calling the RebootInstance operation. If you restart only the operating system of the instance, the instance type change does not take effect.
-        *   If the instance is in the **Stopped** state, you need to only start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If you set the `RebootWhenFinished` parameter to true for the instance, you do not need to restart the instance.
-        
-        @param request: ModifyPrepayInstanceSpecRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPrepayInstanceSpecResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -39830,23 +38470,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods, pricing schedule, and refund policies of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Request a refund for the downgrade of resource specifications](~~201955~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the supported instance types. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following item:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
-        *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   You must specify the operation type by setting the `OperatorType` parameter to downgrade.
-        *   You can downgrade the configurations of an instance for up to three times. In this case, you can apply for up to three refunds for price differences for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account that you used to purchase the instance. You cannot apply for a refund for vouchers that you already redeemed.
-        *   This operation is asynchronous. The system requires 5 to 10 seconds to change the instance type of an instance. For the instance type change to take effect, you must restart the instance in the ECS console or by calling the RebootInstance operation. If you restart only the operating system of the instance, the instance type change does not take effect.
-        *   If the instance is in the **Stopped** state, you need to only start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If you set the `RebootWhenFinished` parameter to true for the instance, you do not need to restart the instance.
-        
-        @param request: ModifyPrepayInstanceSpecRequest
-        @return: ModifyPrepayInstanceSpecResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_prepay_instance_spec_with_options(request, runtime)
 
@@ -39854,23 +38477,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifyPrepayInstanceSpecRequest,
     ) -> ecs_20140526_models.ModifyPrepayInstanceSpecResponse:
-        """
-        Before you call this operation, make sure that you understand the billing methods, pricing schedule, and refund policies of [ECS](https://www.alibabacloud.com/product/ecs#pricing). For more information, see [Request a refund for the downgrade of resource specifications](~~201955~~).
-        Before you change the instance type of a subscription instance, you can call the [DescribeResourcesModification](~~66187~~) operation to query the supported instance types. You can use ECS SDK for Python to query the instance types to which you can change. For more information, see [Query available resources for configuration changes](~~109517~~).
-        When you call this operation, take note of the following item:
-        *   You cannot change the instance type of an expired instance. Renew the instance and try again.
-        *   When you downgrade the instance type of an instance, take note of the following items:
-        *   The instance must be in the **Stopped** (`Stopped`) state.
-        *   You must specify the operation type by setting the `OperatorType` parameter to downgrade.
-        *   You can downgrade the configurations of an instance for up to three times. In this case, you can apply for up to three refunds for price differences for an instance. Downgrade operations include instance type downgrades, bandwidth configuration downgrades, and the change of the disk billing method from subscription to pay-as-you-go.
-        *   The price difference is refunded to the payment account that you used to purchase the instance. You cannot apply for a refund for vouchers that you already redeemed.
-        *   This operation is asynchronous. The system requires 5 to 10 seconds to change the instance type of an instance. For the instance type change to take effect, you must restart the instance in the ECS console or by calling the RebootInstance operation. If you restart only the operating system of the instance, the instance type change does not take effect.
-        *   If the instance is in the **Stopped** state, you need to only start the instance. You do not need to restart the instance after it enters the Running state.
-        *   If you set the `RebootWhenFinished` parameter to true for the instance, you do not need to restart the instance.
-        
-        @param request: ModifyPrepayInstanceSpecRequest
-        @return: ModifyPrepayInstanceSpecResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_prepay_instance_spec_with_options_async(request, runtime)
 
@@ -40713,16 +39319,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifySecurityGroupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
-        *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
-        
-        @param request: ModifySecurityGroupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifySecurityGroupPolicyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -40765,16 +39361,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifySecurityGroupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
-        *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
-        
-        @param request: ModifySecurityGroupPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifySecurityGroupPolicyResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -40816,15 +39402,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifySecurityGroupPolicyRequest,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
-        *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
-        
-        @param request: ModifySecurityGroupPolicyRequest
-        @return: ModifySecurityGroupPolicyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.modify_security_group_policy_with_options(request, runtime)
 
@@ -40832,15 +39409,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ModifySecurityGroupPolicyRequest,
     ) -> ecs_20140526_models.ModifySecurityGroupPolicyResponse:
-        """
-        When you call this operation, take note of the following items:
-        *   When InnerAccessPolicy is set to Accept for a security group, the instances in the security group can communicate with each other. In this case, the Accept internal access control policy takes precedence over user-created security group rules to keep instances in the security group accessible to each other.
-        *   When InnerAccessPolicy is set to Drop for a security group, the instances in the security group are isolated from each other. In this case, user-created security group rules take precedence over the Drop internal access control policy and can be used to allow access between the instances. For example, you can call the [AuthorizeSecurityGroup](~~25554~~) operation to create an inbound security group rule that allows the instances in the security group to communicate with each other.
-        *   You can call the [DescribeSecurityGroupAttribute](~~25555~~) operation to query the internal access policy of a security group.
-        
-        @param request: ModifySecurityGroupPolicyRequest
-        @return: ModifySecurityGroupPolicyResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_group_policy_with_options_async(request, runtime)
 
@@ -42079,14 +40647,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
-        """
-        Before you call this operation, make sure that you are familiar with the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
-        *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
-        
-        @param request: PurchaseReservedInstancesOfferingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PurchaseReservedInstancesOfferingResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -42153,14 +40713,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
-        """
-        Before you call this operation, make sure that you are familiar with the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
-        *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
-        
-        @param request: PurchaseReservedInstancesOfferingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PurchaseReservedInstancesOfferingResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -42226,13 +40778,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
-        """
-        Before you call this operation, make sure that you are familiar with the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
-        *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
-        
-        @param request: PurchaseReservedInstancesOfferingRequest
-        @return: PurchaseReservedInstancesOfferingResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.purchase_reserved_instances_offering_with_options(request, runtime)
 
@@ -42240,13 +40785,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
-        """
-        Before you call this operation, make sure that you are familiar with the billing method of reserved instances. For more information, see [Reserved instances](~~100371~~).
-        *   Before you purchase a reserved instance, you can call the [DescribeAvailableResource](~~66186~~) operation to query available instance resources.
-        
-        @param request: PurchaseReservedInstancesOfferingRequest
-        @return: PurchaseReservedInstancesOfferingResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.purchase_reserved_instances_offering_with_options_async(request, runtime)
 
@@ -42751,6 +41289,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RebootInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RebootInstancesResponse:
+        """
+        The ECS instances to which you want to restart are in the **Running** (`Running`) state.
+        *   You can restart multiple instances at a time and use the `BatchOptimization` parameter to specify the batch operation mode.
+        *   Instances can be forcefully restarted. A force restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation may lead to data loss if data in the instance operating system is not written to block storage devices.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        
+        @param request: RebootInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.batch_optimization):
@@ -42795,6 +41343,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RebootInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RebootInstancesResponse:
+        """
+        The ECS instances to which you want to restart are in the **Running** (`Running`) state.
+        *   You can restart multiple instances at a time and use the `BatchOptimization` parameter to specify the batch operation mode.
+        *   Instances can be forcefully restarted. A force restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation may lead to data loss if data in the instance operating system is not written to block storage devices.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        
+        @param request: RebootInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.batch_optimization):
@@ -42838,6 +41396,15 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RebootInstancesRequest,
     ) -> ecs_20140526_models.RebootInstancesResponse:
+        """
+        The ECS instances to which you want to restart are in the **Running** (`Running`) state.
+        *   You can restart multiple instances at a time and use the `BatchOptimization` parameter to specify the batch operation mode.
+        *   Instances can be forcefully restarted. A force restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation may lead to data loss if data in the instance operating system is not written to block storage devices.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        
+        @param request: RebootInstancesRequest
+        @return: RebootInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reboot_instances_with_options(request, runtime)
 
@@ -42845,6 +41412,15 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RebootInstancesRequest,
     ) -> ecs_20140526_models.RebootInstancesResponse:
+        """
+        The ECS instances to which you want to restart are in the **Running** (`Running`) state.
+        *   You can restart multiple instances at a time and use the `BatchOptimization` parameter to specify the batch operation mode.
+        *   Instances can be forcefully restarted. A force restart (`ForceStop`) is equivalent to powering off traditional servers to restart them. This operation may lead to data loss if data in the instance operating system is not written to block storage devices.
+        *   If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query the information of the instance, the instance is locked for security reasons and all operations are prohibited on it.
+        
+        @param request: RebootInstancesRequest
+        @return: RebootInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_instances_with_options_async(request, runtime)
 
@@ -43071,33 +41647,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
-        """
-        RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before the redeployment.
-        When you call this operation, take note of the following items:
-        * The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
-        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        * If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        * If the `OperationLocks` parameter in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        * If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](~~107693~~).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides the possible event status.
-        |System event|Event status|
-        |---|---|
-        |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
-        |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
-        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
-        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
-        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
-        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
-        
-        @param request: RedeployInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RedeployInstanceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_stop):
@@ -43136,33 +41685,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RedeployInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
-        """
-        RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before the redeployment.
-        When you call this operation, take note of the following items:
-        * The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
-        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        * If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        * If the `OperationLocks` parameter in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        * If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](~~107693~~).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides the possible event status.
-        |System event|Event status|
-        |---|---|
-        |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
-        |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
-        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
-        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
-        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
-        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
-        
-        @param request: RedeployInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RedeployInstanceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_stop):
@@ -43200,32 +41722,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RedeployInstanceRequest,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
-        """
-        RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before the redeployment.
-        When you call this operation, take note of the following items:
-        * The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
-        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        * If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        * If the `OperationLocks` parameter in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        * If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](~~107693~~).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides the possible event status.
-        |System event|Event status|
-        |---|---|
-        |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
-        |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
-        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
-        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
-        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
-        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
-        
-        @param request: RedeployInstanceRequest
-        @return: RedeployInstanceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.redeploy_instance_with_options(request, runtime)
 
@@ -43233,32 +41729,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RedeployInstanceRequest,
     ) -> ecs_20140526_models.RedeployInstanceResponse:
-        """
-        RedeployInstance is an asynchronous operation. This operation migrates data before it restarts the instance. After the instance is redeployed, the instance enters the Running (`Running`) state. If the instance fails to be redeployed, the instance returns to the original physical server and the state before the redeployment.
-        When you call this operation, take note of the following items:
-        * The instance must be in the Running or Stopped state. After the instance is redeployed, the following changes occur to the status of the instance:
-        * If the instance is in the Running (`Running`) state, the instance enters the Stopping (`Stopping`) state.
-        * If the instance is in the Stopped (`Stopped`) state, the instance enters the Starting (`Starting`) state.
-        * If an instance is deployed on a dedicated host, you cannot redeploy the instance.
-        * If the `OperationLocks` parameter in the DescribeInstances response contains `"LockReason" : "security"` for an instance, the instance is locked for security reasons and cannot be redeployed.
-        * If you receive notifications about simulated events that are created by calling the CreateSimulatedSystemEvent operation for an instance, you cannot redeploy the instance.
-        * When you handle a local disk-related system event for an instance, if the damaged local disk is isolated but the **SystemMaintenance.RebootAndReInitErrorDisk** event is not sent, you can still call the RedeployInstance operation to redeploy the instance. The SystemMaintenance.RebootAndReInitErrorDisk event indicates that the instance is restarted and the damaged disks are reinitialized due to system maintenance. For more information, see [System events for ECS instances equipped with local disks](~~107693~~).
-        The following table describes the system events that you can handle by calling the RedeployInstance operation. The table also provides the possible event status.
-        |System event|Event status|
-        |---|---|
-        |Instance restart due to system maintenance (SystemMaintenance.Reboot)|Inquiring and Scheduled|
-        |Instance redeployment due to system maintenance (SystemMaintenance.Redeploy)|Inquiring and Scheduled|
-        |Instance restart and replacement of damaged disks due to system maintenance (SystemMaintenance.RebootAndIsolateErrorDisk)|Inquiring|
-        |Instance restart and re-initialization of damaged disks due to system maintenance (SystemMaintenance.RebootAndReInitErrorDisk)|Inquiring|
-        |Instance redeployment due to system errors (SystemFailure.Redeploy)|Inquiring and Scheduled|
-        |For ECS instances that use only local disks: instance restart due to a system error (SystemFailure.Reboot)|Executing|
-        |Isolation of damaged disks due to system maintenance (SystemMaintenance.IsolateErrorDisk)|Inquiring|
-        |Re-initialization of damaged disks due to system maintenance (SystemMaintenance.ReInitErrorDisk)|Inquiring|
-        **Note**When instances that use local disks are redeployed, the local disks are re-initialized and data in the local disks is cleared.
-        
-        @param request: RedeployInstanceRequest
-        @return: RedeployInstanceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.redeploy_instance_with_options_async(request, runtime)
 
@@ -43267,13 +41737,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseCapacityReservationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseCapacityReservationResponse:
-        """
-        When the release mode of an immediate capacity reservation is set to manual release, you can call this operation to release the capacity reservation.
-        
-        @param request: ReleaseCapacityReservationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReleaseCapacityReservationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -43314,13 +41777,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseCapacityReservationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseCapacityReservationResponse:
-        """
-        When the release mode of an immediate capacity reservation is set to manual release, you can call this operation to release the capacity reservation.
-        
-        @param request: ReleaseCapacityReservationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReleaseCapacityReservationResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -43360,12 +41816,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ReleaseCapacityReservationRequest,
     ) -> ecs_20140526_models.ReleaseCapacityReservationResponse:
-        """
-        When the release mode of an immediate capacity reservation is set to manual release, you can call this operation to release the capacity reservation.
-        
-        @param request: ReleaseCapacityReservationRequest
-        @return: ReleaseCapacityReservationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.release_capacity_reservation_with_options(request, runtime)
 
@@ -43373,12 +41823,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ReleaseCapacityReservationRequest,
     ) -> ecs_20140526_models.ReleaseCapacityReservationResponse:
-        """
-        When the release mode of an immediate capacity reservation is set to manual release, you can call this operation to release the capacity reservation.
-        
-        @param request: ReleaseCapacityReservationRequest
-        @return: ReleaseCapacityReservationResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.release_capacity_reservation_with_options_async(request, runtime)
 
@@ -44003,6 +42447,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewInstanceResponse:
+        """
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        *   You can call this operation to renew a subscription ECS instance for a period of time or to a synchronized expiration date.
+        *   You cannot renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time by calling this operation. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and the `ExpectedRenewDay` parameter are mutually exclusive.
+        *   Your account must have sufficient credits.
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -44047,6 +42501,16 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewInstanceResponse:
+        """
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        *   You can call this operation to renew a subscription ECS instance for a period of time or to a synchronized expiration date.
+        *   You cannot renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time by calling this operation. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and the `ExpectedRenewDay` parameter are mutually exclusive.
+        *   Your account must have sufficient credits.
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -44090,6 +42554,15 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RenewInstanceRequest,
     ) -> ecs_20140526_models.RenewInstanceResponse:
+        """
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        *   You can call this operation to renew a subscription ECS instance for a period of time or to a synchronized expiration date.
+        *   You cannot renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time by calling this operation. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and the `ExpectedRenewDay` parameter are mutually exclusive.
+        *   Your account must have sufficient credits.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_instance_with_options(request, runtime)
 
@@ -44097,6 +42570,15 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RenewInstanceRequest,
     ) -> ecs_20140526_models.RenewInstanceResponse:
+        """
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing schedule of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
+        *   You can call this operation to renew a subscription ECS instance for a period of time or to a synchronized expiration date.
+        *   You cannot renew a subscription instance for a specific period of time and to a synchronized expiration date at the same time by calling this operation. The parameter pair (`Period` and `PeriodUnit`) that is related to the renewal period and the `ExpectedRenewDay` parameter are mutually exclusive.
+        *   Your account must have sufficient credits.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_instance_with_options_async(request, runtime)
 
@@ -44577,13 +43059,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ResetDisksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ResetDisksResponse:
-        """
-        This operation will be removed in the future. We recommend that you call the [ResetDisk](~~25520~~) operation to roll back a disk.
-        
-        @param request: ResetDisksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResetDisksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk):
@@ -44624,13 +43099,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ResetDisksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ResetDisksResponse:
-        """
-        This operation will be removed in the future. We recommend that you call the [ResetDisk](~~25520~~) operation to roll back a disk.
-        
-        @param request: ResetDisksRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResetDisksResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk):
@@ -44670,12 +43138,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ResetDisksRequest,
     ) -> ecs_20140526_models.ResetDisksResponse:
-        """
-        This operation will be removed in the future. We recommend that you call the [ResetDisk](~~25520~~) operation to roll back a disk.
-        
-        @param request: ResetDisksRequest
-        @return: ResetDisksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.reset_disks_with_options(request, runtime)
 
@@ -44683,12 +43145,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.ResetDisksRequest,
     ) -> ecs_20140526_models.ResetDisksResponse:
-        """
-        This operation will be removed in the future. We recommend that you call the [ResetDisk](~~25520~~) operation to roll back a disk.
-        
-        @param request: ResetDisksRequest
-        @return: ResetDisksResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_disks_with_options_async(request, runtime)
 
@@ -45337,6 +43793,28 @@ class Client(OpenApiClient):
         tmp_req: ecs_20140526_models.RunCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunCommandResponse:
+        """
+        Compared with the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, you can call the RunCommand operation once to create and run a command.
+        When you call this operation, take note of the following items:
+        *   The instances on which you want to run a command must reside in a virtual private cloud (VPC).
+        *   The instances must be in the `Running` state.
+        *   The Cloud Assistant client must be installed on the instances. For more information, see [InstallCloudAssistant](~~85916~~).
+        *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   You can specify the `TimeOut` parameter to specify a timeout period for executions of the command on instances. If an execution times out, the Cloud Assistant client forcibly terminates the command process.
+        *   If the one-time execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. If a scheduled execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
+        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. If you specify the `CommandContent` parameter, you can specify custom parameters in the `{{parameter}}` format. After the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can call the [DescribeAccountAttribute](~~73772~~) operation to query quotas.
+        
+        @param tmp_req: RunCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommandResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecs_20140526_models.RunCommandShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -45419,6 +43897,28 @@ class Client(OpenApiClient):
         tmp_req: ecs_20140526_models.RunCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RunCommandResponse:
+        """
+        Compared with the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, you can call the RunCommand operation once to create and run a command.
+        When you call this operation, take note of the following items:
+        *   The instances on which you want to run a command must reside in a virtual private cloud (VPC).
+        *   The instances must be in the `Running` state.
+        *   The Cloud Assistant client must be installed on the instances. For more information, see [InstallCloudAssistant](~~85916~~).
+        *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   You can specify the `TimeOut` parameter to specify a timeout period for executions of the command on instances. If an execution times out, the Cloud Assistant client forcibly terminates the command process.
+        *   If the one-time execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. If a scheduled execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
+        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. If you specify the `CommandContent` parameter, you can specify custom parameters in the `{{parameter}}` format. After the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can call the [DescribeAccountAttribute](~~73772~~) operation to query quotas.
+        
+        @param tmp_req: RunCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommandResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecs_20140526_models.RunCommandShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -45500,6 +44000,27 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RunCommandRequest,
     ) -> ecs_20140526_models.RunCommandResponse:
+        """
+        Compared with the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, you can call the RunCommand operation once to create and run a command.
+        When you call this operation, take note of the following items:
+        *   The instances on which you want to run a command must reside in a virtual private cloud (VPC).
+        *   The instances must be in the `Running` state.
+        *   The Cloud Assistant client must be installed on the instances. For more information, see [InstallCloudAssistant](~~85916~~).
+        *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   You can specify the `TimeOut` parameter to specify a timeout period for executions of the command on instances. If an execution times out, the Cloud Assistant client forcibly terminates the command process.
+        *   If the one-time execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. If a scheduled execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
+        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. If you specify the `CommandContent` parameter, you can specify custom parameters in the `{{parameter}}` format. After the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can call the [DescribeAccountAttribute](~~73772~~) operation to query quotas.
+        
+        @param request: RunCommandRequest
+        @return: RunCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_command_with_options(request, runtime)
 
@@ -45507,6 +44028,27 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.RunCommandRequest,
     ) -> ecs_20140526_models.RunCommandResponse:
+        """
+        Compared with the [CreateCommand](~~64844~~) and [InvokeCommand](~~64841~~) operations, you can call the RunCommand operation once to create and run a command.
+        When you call this operation, take note of the following items:
+        *   The instances on which you want to run a command must reside in a virtual private cloud (VPC).
+        *   The instances must be in the `Running` state.
+        *   The Cloud Assistant client must be installed on the instances. For more information, see [InstallCloudAssistant](~~85916~~).
+        *   Before you run a PowerShell command on a Windows instance, make sure that the PowerShell module is installed on the instance.
+        *   If you want to specify a schedule by using a cron expression, you can specify a time zone based on your business requirements. If you do not specify a time zone, the schedule is determined by the system time of the instance. Make sure that the time or time zone of the instance meets your business requirements. For information about time zones, see [Configure the NTP service for ECS instances that run CentOS 6](~~92803~~) or [Configure the NTP service for Windows instances](~~51890~~).
+        *   You can specify the `TimeOut` parameter to specify a timeout period for executions of the command on instances. If an execution times out, the Cloud Assistant client forcibly terminates the command process.
+        *   If the one-time execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        *   For a scheduled task, the timeout period takes effect on each execution of the command. When a command execution times out, the subsequent executions of the command are not affected. If a scheduled execution of a command times out, the execution state of the command changes to Failed. You can call the [InvokeRecordStatus](~~64845~~) operation to query the command execution state.
+        To ensure that scheduled tasks can run as expected, make sure that the version of the Cloud Assistant client is not earlier than the following versions. A scheduled task can run a command at a specific interval, only once at a specific time, or at specific times based on a cron expression that includes a specific year or time zone. If the `ClientNeedUpgrade` error code is returned, you must update the Cloud Assistant client to the latest version. For more information, see [Upgrade or disable upgrades for the Cloud Assistant client](~~134383~~).
+        - Linux: 2.2.3.282
+        - Windows: 2.1.3.282
+        *   Command executions may fail due to instance status exceptions, network exceptions, or exceptions on the Cloud Assistant client. If an execution fails, no execution information is generated.
+        *   If you set the `EnableParameter` parameter to true, the custom parameter feature is enabled. If you specify the `CommandContent` parameter, you can specify custom parameters in the `{{parameter}}` format. After the command is run, the key-value pairs of the custom parameters are passed in.
+        *   You can retain up to 500 to 10,000 Cloud Assistant commands in each region based on your ECS usage. You can call the [DescribeAccountAttribute](~~73772~~) operation to query quotas.
+        
+        @param request: RunCommandRequest
+        @return: RunCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_command_with_options_async(request, runtime)
 
@@ -45563,6 +44105,8 @@ class Client(OpenApiClient):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.instance_name):
@@ -45739,6 +44283,8 @@ class Client(OpenApiClient):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_options):
+            query['ImageOptions'] = request.image_options
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.instance_name):
@@ -46641,15 +45187,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StopInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInstancesResponse:
-        """
-        If you call the DescribeInstances operation and the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instances are locked for security reasons and cannot be stopped.
-        *   If the economical mode is enabled for pay-as-you-go instances, you can set `StoppedMode` to KeepCharging to enable the standard mode for the instances. Then, after the instances are stopped in standard mode, you continue to be charged for them, and their instance type resources and public IP addresses are retained.
-        *   Batch operations are supported. You can use the `BatchOptimization` parameter to specify the batch operation mode.
-        
-        @param request: StopInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.batch_optimization):
@@ -46696,15 +45233,6 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.StopInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StopInstancesResponse:
-        """
-        If you call the DescribeInstances operation and the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instances are locked for security reasons and cannot be stopped.
-        *   If the economical mode is enabled for pay-as-you-go instances, you can set `StoppedMode` to KeepCharging to enable the standard mode for the instances. Then, after the instances are stopped in standard mode, you continue to be charged for them, and their instance type resources and public IP addresses are retained.
-        *   Batch operations are supported. You can use the `BatchOptimization` parameter to specify the batch operation mode.
-        
-        @param request: StopInstancesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StopInstancesResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.batch_optimization):
@@ -46750,14 +45278,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.StopInstancesRequest,
     ) -> ecs_20140526_models.StopInstancesResponse:
-        """
-        If you call the DescribeInstances operation and the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instances are locked for security reasons and cannot be stopped.
-        *   If the economical mode is enabled for pay-as-you-go instances, you can set `StoppedMode` to KeepCharging to enable the standard mode for the instances. Then, after the instances are stopped in standard mode, you continue to be charged for them, and their instance type resources and public IP addresses are retained.
-        *   Batch operations are supported. You can use the `BatchOptimization` parameter to specify the batch operation mode.
-        
-        @param request: StopInstancesRequest
-        @return: StopInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.stop_instances_with_options(request, runtime)
 
@@ -46765,14 +45285,6 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.StopInstancesRequest,
     ) -> ecs_20140526_models.StopInstancesResponse:
-        """
-        If you call the DescribeInstances operation and the response contains `{"OperationLocks": {"LockReason" : "security"}}`, the instances are locked for security reasons and cannot be stopped.
-        *   If the economical mode is enabled for pay-as-you-go instances, you can set `StoppedMode` to KeepCharging to enable the standard mode for the instances. Then, after the instances are stopped in standard mode, you continue to be charged for them, and their instance type resources and public IP addresses are retained.
-        *   Batch operations are supported. You can use the `BatchOptimization` parameter to specify the batch operation mode.
-        
-        @param request: StopInstancesRequest
-        @return: StopInstancesResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_instances_with_options_async(request, runtime)
 
@@ -47233,6 +45745,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignIpv6AddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassignIpv6AddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ipv_6address):
@@ -47277,6 +45798,15 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignIpv6AddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassignIpv6AddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ipv_6address):
@@ -47320,6 +45850,14 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignIpv6AddressesRequest
+        @return: UnassignIpv6AddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unassign_ipv_6addresses_with_options(request, runtime)
 
@@ -47327,6 +45865,14 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.UnassignIpv6AddressesRequest,
     ) -> ecs_20140526_models.UnassignIpv6AddressesResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The ENI must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignIpv6AddressesRequest
+        @return: UnassignIpv6AddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unassign_ipv_6addresses_with_options_async(request, runtime)
 
@@ -47335,6 +45881,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignPrivateIpAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
+        """
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassignPrivateIpAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ipv_4prefix):
@@ -47379,6 +45933,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassignPrivateIpAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
+        """
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassignPrivateIpAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ipv_4prefix):
@@ -47422,6 +45984,13 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.UnassignPrivateIpAddressesRequest,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
+        """
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @return: UnassignPrivateIpAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unassign_private_ip_addresses_with_options(request, runtime)
 
@@ -47429,6 +45998,13 @@ class Client(OpenApiClient):
         self,
         request: ecs_20140526_models.UnassignPrivateIpAddressesRequest,
     ) -> ecs_20140526_models.UnassignPrivateIpAddressesResponse:
+        """
+        The ENI from which to unassign secondary private IP addresses must be in the **Available** (Available) or **InUse** (InUse) state.
+        *   If the ENI is a primary ENI, the Elastic Compute Service (ECS) instance to which the ENI is attached must be in the **Running** (Running) or **Stopped** (Stopped) state.
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @return: UnassignPrivateIpAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unassign_private_ip_addresses_with_options_async(request, runtime)
 
