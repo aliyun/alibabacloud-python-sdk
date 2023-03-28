@@ -944,6 +944,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.name_space):
+            query['NameSpace'] = request.name_space
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -994,6 +996,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.name_space):
+            query['NameSpace'] = request.name_space
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):

@@ -2146,6 +2146,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         image_id: str = None,
         instance_type: str = None,
         key_pair_name: str = None,
+        name_space: str = None,
         pay_type: str = None,
         period: int = None,
         period_unit: str = None,
@@ -2159,6 +2160,7 @@ class CreateARMServerInstancesRequest(TeaModel):
         self.image_id = image_id
         self.instance_type = instance_type
         self.key_pair_name = key_pair_name
+        self.name_space = name_space
         self.pay_type = pay_type
         self.period = period
         self.period_unit = period_unit
@@ -2188,6 +2190,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+        if self.name_space is not None:
+            result['NameSpace'] = self.name_space
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.period is not None:
@@ -2216,6 +2220,8 @@ class CreateARMServerInstancesRequest(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+        if m.get('NameSpace') is not None:
+            self.name_space = m.get('NameSpace')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
@@ -8480,6 +8486,7 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
         creation_time: str = None,
         ens_region_id: str = None,
         expired_time: str = None,
+        namespace: str = None,
         server_id: str = None,
         spec_name: str = None,
         state: str = None,
@@ -8489,6 +8496,7 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
         self.creation_time = creation_time
         self.ens_region_id = ens_region_id
         self.expired_time = expired_time
+        self.namespace = namespace
         self.server_id = server_id
         self.spec_name = spec_name
         self.state = state
@@ -8516,6 +8524,8 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
             result['EnsRegionId'] = self.ens_region_id
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.server_id is not None:
             result['ServerId'] = self.server_id
         if self.spec_name is not None:
@@ -8539,6 +8549,8 @@ class DescribeARMServerInstancesResponseBodyServers(TeaModel):
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('ServerId') is not None:
             self.server_id = m.get('ServerId')
         if m.get('SpecName') is not None:
