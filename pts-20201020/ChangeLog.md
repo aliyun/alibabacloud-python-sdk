@@ -1,3 +1,7 @@
+2023-03-28 Version: 1.8.18
+- Add new API for querying the sample logs of PTS debug plan.
+- Add new return field for global header to PTS scene.
+
 2023-01-09 Version: 1.8.17
 - Supported adjust PTS scene speed.
 - Supported open PTS product.
