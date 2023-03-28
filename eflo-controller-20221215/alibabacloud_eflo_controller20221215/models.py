@@ -183,6 +183,287 @@ class CreateClusterRequestComponents(TeaModel):
         return self
 
 
+class CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        subnet: str = None,
+    ):
+        self.name = name
+        self.subnet = subnet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.subnet is not None:
+            result['Subnet'] = self.subnet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Subnet') is not None:
+            self.subnet = m.get('Subnet')
+        return self
+
+
+class CreateClusterRequestNetworksIpAllocationPolicyBondPolicy(TeaModel):
+    def __init__(
+        self,
+        bond_default_subnet: str = None,
+        bonds: List[CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds] = None,
+    ):
+        self.bond_default_subnet = bond_default_subnet
+        self.bonds = bonds
+
+    def validate(self):
+        if self.bonds:
+            for k in self.bonds:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond_default_subnet is not None:
+            result['BondDefaultSubnet'] = self.bond_default_subnet
+        result['Bonds'] = []
+        if self.bonds is not None:
+            for k in self.bonds:
+                result['Bonds'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BondDefaultSubnet') is not None:
+            self.bond_default_subnet = m.get('BondDefaultSubnet')
+        self.bonds = []
+        if m.get('Bonds') is not None:
+            for k in m.get('Bonds'):
+                temp_model = CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds()
+                self.bonds.append(temp_model.from_map(k))
+        return self
+
+
+class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        subnet: str = None,
+    ):
+        self.name = name
+        self.subnet = subnet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.subnet is not None:
+            result['Subnet'] = self.subnet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Subnet') is not None:
+            self.subnet = m.get('Subnet')
+        return self
+
+
+class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy(TeaModel):
+    def __init__(
+        self,
+        bonds: List[CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds] = None,
+        machine_type: str = None,
+    ):
+        self.bonds = bonds
+        self.machine_type = machine_type
+
+    def validate(self):
+        if self.bonds:
+            for k in self.bonds:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Bonds'] = []
+        if self.bonds is not None:
+            for k in self.bonds:
+                result['Bonds'].append(k.to_map() if k else None)
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bonds = []
+        if m.get('Bonds') is not None:
+            for k in m.get('Bonds'):
+                temp_model = CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds()
+                self.bonds.append(temp_model.from_map(k))
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        return self
+
+
+class CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        subnet: str = None,
+    ):
+        self.name = name
+        self.subnet = subnet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.subnet is not None:
+            result['Subnet'] = self.subnet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Subnet') is not None:
+            self.subnet = m.get('Subnet')
+        return self
+
+
+class CreateClusterRequestNetworksIpAllocationPolicyNodePolicy(TeaModel):
+    def __init__(
+        self,
+        bonds: List[CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds] = None,
+        node_id: str = None,
+    ):
+        self.bonds = bonds
+        self.node_id = node_id
+
+    def validate(self):
+        if self.bonds:
+            for k in self.bonds:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Bonds'] = []
+        if self.bonds is not None:
+            for k in self.bonds:
+                result['Bonds'].append(k.to_map() if k else None)
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bonds = []
+        if m.get('Bonds') is not None:
+            for k in m.get('Bonds'):
+                temp_model = CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds()
+                self.bonds.append(temp_model.from_map(k))
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class CreateClusterRequestNetworksIpAllocationPolicy(TeaModel):
+    def __init__(
+        self,
+        bond_policy: CreateClusterRequestNetworksIpAllocationPolicyBondPolicy = None,
+        machine_type_policy: List[CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy] = None,
+        node_policy: List[CreateClusterRequestNetworksIpAllocationPolicyNodePolicy] = None,
+    ):
+        self.bond_policy = bond_policy
+        self.machine_type_policy = machine_type_policy
+        self.node_policy = node_policy
+
+    def validate(self):
+        if self.bond_policy:
+            self.bond_policy.validate()
+        if self.machine_type_policy:
+            for k in self.machine_type_policy:
+                if k:
+                    k.validate()
+        if self.node_policy:
+            for k in self.node_policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond_policy is not None:
+            result['BondPolicy'] = self.bond_policy.to_map()
+        result['MachineTypePolicy'] = []
+        if self.machine_type_policy is not None:
+            for k in self.machine_type_policy:
+                result['MachineTypePolicy'].append(k.to_map() if k else None)
+        result['NodePolicy'] = []
+        if self.node_policy is not None:
+            for k in self.node_policy:
+                result['NodePolicy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BondPolicy') is not None:
+            temp_model = CreateClusterRequestNetworksIpAllocationPolicyBondPolicy()
+            self.bond_policy = temp_model.from_map(m['BondPolicy'])
+        self.machine_type_policy = []
+        if m.get('MachineTypePolicy') is not None:
+            for k in m.get('MachineTypePolicy'):
+                temp_model = CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy()
+                self.machine_type_policy.append(temp_model.from_map(k))
+        self.node_policy = []
+        if m.get('NodePolicy') is not None:
+            for k in m.get('NodePolicy'):
+                temp_model = CreateClusterRequestNetworksIpAllocationPolicyNodePolicy()
+                self.node_policy.append(temp_model.from_map(k))
+        return self
+
+
 class CreateClusterRequestNetworksNewVpdInfoVpdSubnets(TeaModel):
     def __init__(
         self,
@@ -329,13 +610,19 @@ class CreateClusterRequestNetworksVpdInfo(TeaModel):
 class CreateClusterRequestNetworks(TeaModel):
     def __init__(
         self,
+        ip_allocation_policy: List[CreateClusterRequestNetworksIpAllocationPolicy] = None,
         new_vpd_info: CreateClusterRequestNetworksNewVpdInfo = None,
         vpd_info: CreateClusterRequestNetworksVpdInfo = None,
     ):
+        self.ip_allocation_policy = ip_allocation_policy
         self.new_vpd_info = new_vpd_info
         self.vpd_info = vpd_info
 
     def validate(self):
+        if self.ip_allocation_policy:
+            for k in self.ip_allocation_policy:
+                if k:
+                    k.validate()
         if self.new_vpd_info:
             self.new_vpd_info.validate()
         if self.vpd_info:
@@ -347,6 +634,10 @@ class CreateClusterRequestNetworks(TeaModel):
             return _map
 
         result = dict()
+        result['IpAllocationPolicy'] = []
+        if self.ip_allocation_policy is not None:
+            for k in self.ip_allocation_policy:
+                result['IpAllocationPolicy'].append(k.to_map() if k else None)
         if self.new_vpd_info is not None:
             result['NewVpdInfo'] = self.new_vpd_info.to_map()
         if self.vpd_info is not None:
@@ -355,6 +646,11 @@ class CreateClusterRequestNetworks(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.ip_allocation_policy = []
+        if m.get('IpAllocationPolicy') is not None:
+            for k in m.get('IpAllocationPolicy'):
+                temp_model = CreateClusterRequestNetworksIpAllocationPolicy()
+                self.ip_allocation_policy.append(temp_model.from_map(k))
         if m.get('NewVpdInfo') is not None:
             temp_model = CreateClusterRequestNetworksNewVpdInfo()
             self.new_vpd_info = temp_model.from_map(m['NewVpdInfo'])
@@ -1968,6 +2264,287 @@ class DescribeZonesResponse(TeaModel):
         return self
 
 
+class ExtendClusterRequestIpAllocationPolicyBondPolicyBonds(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        subnet: str = None,
+    ):
+        self.name = name
+        self.subnet = subnet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.subnet is not None:
+            result['Subnet'] = self.subnet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Subnet') is not None:
+            self.subnet = m.get('Subnet')
+        return self
+
+
+class ExtendClusterRequestIpAllocationPolicyBondPolicy(TeaModel):
+    def __init__(
+        self,
+        bond_default_subnet: str = None,
+        bonds: List[ExtendClusterRequestIpAllocationPolicyBondPolicyBonds] = None,
+    ):
+        self.bond_default_subnet = bond_default_subnet
+        self.bonds = bonds
+
+    def validate(self):
+        if self.bonds:
+            for k in self.bonds:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond_default_subnet is not None:
+            result['BondDefaultSubnet'] = self.bond_default_subnet
+        result['Bonds'] = []
+        if self.bonds is not None:
+            for k in self.bonds:
+                result['Bonds'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BondDefaultSubnet') is not None:
+            self.bond_default_subnet = m.get('BondDefaultSubnet')
+        self.bonds = []
+        if m.get('Bonds') is not None:
+            for k in m.get('Bonds'):
+                temp_model = ExtendClusterRequestIpAllocationPolicyBondPolicyBonds()
+                self.bonds.append(temp_model.from_map(k))
+        return self
+
+
+class ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        subnet: str = None,
+    ):
+        self.name = name
+        self.subnet = subnet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.subnet is not None:
+            result['Subnet'] = self.subnet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Subnet') is not None:
+            self.subnet = m.get('Subnet')
+        return self
+
+
+class ExtendClusterRequestIpAllocationPolicyMachineTypePolicy(TeaModel):
+    def __init__(
+        self,
+        bonds: List[ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds] = None,
+        machine_type: str = None,
+    ):
+        self.bonds = bonds
+        self.machine_type = machine_type
+
+    def validate(self):
+        if self.bonds:
+            for k in self.bonds:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Bonds'] = []
+        if self.bonds is not None:
+            for k in self.bonds:
+                result['Bonds'].append(k.to_map() if k else None)
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bonds = []
+        if m.get('Bonds') is not None:
+            for k in m.get('Bonds'):
+                temp_model = ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds()
+                self.bonds.append(temp_model.from_map(k))
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        return self
+
+
+class ExtendClusterRequestIpAllocationPolicyNodePolicyBonds(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        subnet: str = None,
+    ):
+        self.name = name
+        self.subnet = subnet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.subnet is not None:
+            result['Subnet'] = self.subnet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Subnet') is not None:
+            self.subnet = m.get('Subnet')
+        return self
+
+
+class ExtendClusterRequestIpAllocationPolicyNodePolicy(TeaModel):
+    def __init__(
+        self,
+        bonds: List[ExtendClusterRequestIpAllocationPolicyNodePolicyBonds] = None,
+        node_id: str = None,
+    ):
+        self.bonds = bonds
+        self.node_id = node_id
+
+    def validate(self):
+        if self.bonds:
+            for k in self.bonds:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Bonds'] = []
+        if self.bonds is not None:
+            for k in self.bonds:
+                result['Bonds'].append(k.to_map() if k else None)
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bonds = []
+        if m.get('Bonds') is not None:
+            for k in m.get('Bonds'):
+                temp_model = ExtendClusterRequestIpAllocationPolicyNodePolicyBonds()
+                self.bonds.append(temp_model.from_map(k))
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class ExtendClusterRequestIpAllocationPolicy(TeaModel):
+    def __init__(
+        self,
+        bond_policy: ExtendClusterRequestIpAllocationPolicyBondPolicy = None,
+        machine_type_policy: List[ExtendClusterRequestIpAllocationPolicyMachineTypePolicy] = None,
+        node_policy: List[ExtendClusterRequestIpAllocationPolicyNodePolicy] = None,
+    ):
+        self.bond_policy = bond_policy
+        self.machine_type_policy = machine_type_policy
+        self.node_policy = node_policy
+
+    def validate(self):
+        if self.bond_policy:
+            self.bond_policy.validate()
+        if self.machine_type_policy:
+            for k in self.machine_type_policy:
+                if k:
+                    k.validate()
+        if self.node_policy:
+            for k in self.node_policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond_policy is not None:
+            result['BondPolicy'] = self.bond_policy.to_map()
+        result['MachineTypePolicy'] = []
+        if self.machine_type_policy is not None:
+            for k in self.machine_type_policy:
+                result['MachineTypePolicy'].append(k.to_map() if k else None)
+        result['NodePolicy'] = []
+        if self.node_policy is not None:
+            for k in self.node_policy:
+                result['NodePolicy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BondPolicy') is not None:
+            temp_model = ExtendClusterRequestIpAllocationPolicyBondPolicy()
+            self.bond_policy = temp_model.from_map(m['BondPolicy'])
+        self.machine_type_policy = []
+        if m.get('MachineTypePolicy') is not None:
+            for k in m.get('MachineTypePolicy'):
+                temp_model = ExtendClusterRequestIpAllocationPolicyMachineTypePolicy()
+                self.machine_type_policy.append(temp_model.from_map(k))
+        self.node_policy = []
+        if m.get('NodePolicy') is not None:
+            for k in m.get('NodePolicy'):
+                temp_model = ExtendClusterRequestIpAllocationPolicyNodePolicy()
+                self.node_policy.append(temp_model.from_map(k))
+        return self
+
+
 class ExtendClusterRequestNodeGroupsNodes(TeaModel):
     def __init__(
         self,
@@ -2053,15 +2630,21 @@ class ExtendClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
         ignore_failed_node_tasks: bool = None,
+        ip_allocation_policy: List[ExtendClusterRequestIpAllocationPolicy] = None,
         node_groups: List[ExtendClusterRequestNodeGroups] = None,
         vpd_subnets: List[str] = None,
     ):
         self.cluster_id = cluster_id
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        self.ip_allocation_policy = ip_allocation_policy
         self.node_groups = node_groups
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
+        if self.ip_allocation_policy:
+            for k in self.ip_allocation_policy:
+                if k:
+                    k.validate()
         if self.node_groups:
             for k in self.node_groups:
                 if k:
@@ -2077,6 +2660,10 @@ class ExtendClusterRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.ignore_failed_node_tasks is not None:
             result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
+        result['IpAllocationPolicy'] = []
+        if self.ip_allocation_policy is not None:
+            for k in self.ip_allocation_policy:
+                result['IpAllocationPolicy'].append(k.to_map() if k else None)
         result['NodeGroups'] = []
         if self.node_groups is not None:
             for k in self.node_groups:
@@ -2091,6 +2678,11 @@ class ExtendClusterRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('IgnoreFailedNodeTasks') is not None:
             self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
+        self.ip_allocation_policy = []
+        if m.get('IpAllocationPolicy') is not None:
+            for k in m.get('IpAllocationPolicy'):
+                temp_model = ExtendClusterRequestIpAllocationPolicy()
+                self.ip_allocation_policy.append(temp_model.from_map(k))
         self.node_groups = []
         if m.get('NodeGroups') is not None:
             for k in m.get('NodeGroups'):
@@ -2106,11 +2698,13 @@ class ExtendClusterShrinkRequest(TeaModel):
         self,
         cluster_id: str = None,
         ignore_failed_node_tasks: bool = None,
+        ip_allocation_policy_shrink: str = None,
         node_groups_shrink: str = None,
         vpd_subnets_shrink: str = None,
     ):
         self.cluster_id = cluster_id
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        self.ip_allocation_policy_shrink = ip_allocation_policy_shrink
         self.node_groups_shrink = node_groups_shrink
         self.vpd_subnets_shrink = vpd_subnets_shrink
 
@@ -2127,6 +2721,8 @@ class ExtendClusterShrinkRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.ignore_failed_node_tasks is not None:
             result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
+        if self.ip_allocation_policy_shrink is not None:
+            result['IpAllocationPolicy'] = self.ip_allocation_policy_shrink
         if self.node_groups_shrink is not None:
             result['NodeGroups'] = self.node_groups_shrink
         if self.vpd_subnets_shrink is not None:
@@ -2139,6 +2735,8 @@ class ExtendClusterShrinkRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('IgnoreFailedNodeTasks') is not None:
             self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
+        if m.get('IpAllocationPolicy') is not None:
+            self.ip_allocation_policy_shrink = m.get('IpAllocationPolicy')
         if m.get('NodeGroups') is not None:
             self.node_groups_shrink = m.get('NodeGroups')
         if m.get('VpdSubnets') is not None:
