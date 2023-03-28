@@ -12,7 +12,7 @@ class CancelStackOperationRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
-        # test
+        # The operation N that you want to cancel on the stack.
         self.allowed_stack_operations = allowed_stack_operations
         # The method that you want to use to cancel the operation. Default value: Safe. Valid values:
         # 
@@ -347,7 +347,7 @@ class ContinueCreateStackRequest(TeaModel):
         # *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
         # *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
         self.parallelism = parallelism
-        # test
+        # The parameters of the template.
         self.parameters = parameters
         # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.
         # 
@@ -357,8 +357,9 @@ class ContinueCreateStackRequest(TeaModel):
         # 
         # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
-        # test
+        # Option N that ROS adopts when ROS continues to create the stack.
         self.recreating_options = recreating_options
+        # Resource N that ROS continues to create after the resource failed to be created.
         self.recreating_resources = recreating_resources
         # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -767,6 +768,7 @@ class CreateChangeSetRequest(TeaModel):
         # 
         # >  This parameter takes effect only when the ChangeSetType parameter is set to CREATE or IMPORT.
         self.disable_rollback = disable_rollback
+        # The callback URL that is used to receive stack event N.
         self.notification_urls = notification_urls
         # The maximum number of concurrent operations that can be performed on resources. By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0. If you set this parameter to a specific value, ROS associates the value with the stack. The value can affect subsequent operations on the stack.
         # 
@@ -783,6 +785,7 @@ class CreateChangeSetRequest(TeaModel):
         #     *   If you set this parameter to 0, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
         #     *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
         self.parallelism = parallelism
+        # The list of parameters.
         self.parameters = parameters
         # The name of the RAM role. ROS assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
         # 
@@ -801,6 +804,7 @@ class CreateChangeSetRequest(TeaModel):
         # 
         # >  Changes have higher priorities than replacement updates. This parameter takes effect only when the ChangeSetType parameter is set to UPDATE.
         self.replacement_option = replacement_option
+        # The key-value mapping between strings.
         self.resources_to_import = resources_to_import
         # The ID of the stack for which you want to create the change set. ROS compares the stack information with the information that you specify, such as a modified template or a changed parameter value, to generate the change set.
         # 
@@ -1258,6 +1262,7 @@ class CreateStackRequest(TeaModel):
         # *   true
         # *   false
         self.disable_rollback = disable_rollback
+        # The callback URL that is used to receive stack event N.
         self.notification_urls = notification_urls
         # The maximum number of concurrent operations that can be performed on resources.
         # 
@@ -1267,7 +1272,7 @@ class CreateStackRequest(TeaModel):
         # *   If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave this parameter empty, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
         # *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack, such as an update operation.
         self.parallelism = parallelism
-        # test
+        # The parameters.
         self.parameters = parameters
         # The name of the RAM role. ROS assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
         # 
@@ -1297,7 +1302,7 @@ class CreateStackRequest(TeaModel):
         # 
         # The URL can be up to 1,350 bytes in length.
         self.stack_policy_url = stack_policy_url
-        # test
+        # The tags.
         self.tags = tags
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
@@ -1694,7 +1699,7 @@ class CreateStackGroupRequest(TeaModel):
         # 
         # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.execution_role_name = execution_role_name
-        # test
+        # The parameters.
         self.parameters = parameters
         # The permission model.
         # 
@@ -1715,6 +1720,7 @@ class CreateStackGroupRequest(TeaModel):
         # 
         # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
+        # The tags.
         self.tags = tags
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
@@ -1950,7 +1956,7 @@ class CreateStackGroupShrinkRequest(TeaModel):
         # 
         # The name must be 1 to 64 characters in length, and can contain letters, digits, and hyphens (-).
         self.execution_role_name = execution_role_name
-        # test
+        # The parameters.
         self.parameters = parameters
         # The permission model.
         # 
@@ -1971,6 +1977,7 @@ class CreateStackGroupShrinkRequest(TeaModel):
         # 
         # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
         self.stack_group_name = stack_group_name
+        # The tags.
         self.tags = tags
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
@@ -2329,7 +2336,7 @@ class CreateStackInstancesRequest(TeaModel):
         # *   You can specify one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
         # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences = operation_preferences
-        # test
+        # The parameters.
         self.parameter_overrides = parameter_overrides
         # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -2552,7 +2559,7 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         # *   You can specify one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
         # *   You can specify one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences_shrink = operation_preferences_shrink
-        # test
+        # The parameters.
         self.parameter_overrides = parameter_overrides
         # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -2768,6 +2775,7 @@ class CreateTemplateRequest(TeaModel):
         # 
         # For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](~~94475~~)
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
@@ -3170,6 +3178,7 @@ class CreateTemplateScratchRequest(TeaModel):
         self.source_resources = source_resources
         # The source tag.
         self.source_tag = source_tag
+        # The tags.
         self.tags = tags
         # The type of the scenario. Valid values:
         # 
@@ -3353,6 +3362,7 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
         self.source_resources_shrink = source_resources_shrink
         # The source tag.
         self.source_tag_shrink = source_tag_shrink
+        # The tags.
         self.tags = tags
         # The type of the scenario. Valid values:
         # 
@@ -3641,6 +3651,7 @@ class DeleteStackRequest(TeaModel):
         # *   true
         # *   false
         self.retain_all_resources = retain_all_resources
+        # The name of resource N that you want to retain.
         self.retain_resources = retain_resources
         # The ID of the stack.
         self.stack_id = stack_id
@@ -4649,6 +4660,7 @@ class DetectStackDriftRequest(TeaModel):
         # 
         # For more information, see [How to ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The logical ID of resource.
         self.logical_resource_id = logical_resource_id
         # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -5586,6 +5598,21 @@ class GenerateTemplatePolicyRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The type of operation N for which you want to generate the policy information.
+        # 
+        # Valid values:
+        # 
+        # *   CreateStack: creates a stack by calling the CreateStack operation.
+        # *   UpdateStack: updates a stack by calling the UpdateStack operation.
+        # *   DeleteStack: deletes a stack by calling the DeleteStack operation.
+        # *   DetectStackDrift: detects drifts on a stack by calling the DelectStackDrift operation.
+        # *   ListStackOperationRisks: lists the risks of a deletion operation on a stack by setting the OperationType parameter to DeleteStack in the ListStackOperationRisks operation.
+        # *   GetTemplateEstimateCost: queries the estimated prices of resources that you want to use in the template by calling the GetTemplateEstimateCost operation.
+        # *   GetTemplateParameterConstraints: queries the values of parameters in the template by calling the GetTemplateParameterConstraints operation.
+        # *   ImportResourcesToStack: imports resources to a stack by setting the ChangeSetType parameter to IMPORT in the CreateChangeSet operation.
+        # *   SignalResource: sends a signal to a stack.
+        # 
+        # >  The default value is the combination of all valid values.
         self.operation_types = operation_types
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
         # 
@@ -7204,11 +7231,13 @@ class GetServiceProvisionsRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
+        # The list of parameters.
         self.parameters = parameters
         # The ID of the region.
         # 
         # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The services.
         self.services = services
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
@@ -10067,6 +10096,7 @@ class GetStackResourceRequest(TeaModel):
         self.logical_resource_id = logical_resource_id
         # The ID of the region to which the stack belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The name of resource property N that you want to query.
         self.resource_attributes = resource_attributes
         # Specifies whether to query the resource properties. Valid values:
         # 
@@ -10851,6 +10881,7 @@ class GetTemplateEstimateCostRequest(TeaModel):
         # 
         # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The parameters.
         self.parameters = parameters
         # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -11077,6 +11108,7 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         # 
         # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The name of parameter N in the template.
         self.parameters = parameters
         # The parameters whose values you want to query.
         self.parameters_key_filter = parameters_key_filter
@@ -11088,6 +11120,7 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
         # The structure that contains the template body.
         # 
@@ -11231,6 +11264,7 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         # 
         # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
+        # The name of parameter N in the template.
         self.parameters = parameters
         # The parameters whose values you want to query.
         self.parameters_key_filter_shrink = parameters_key_filter_shrink
@@ -11242,6 +11276,7 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the stack.
         self.stack_id = stack_id
         # The structure that contains the template body.
         # 
@@ -11332,7 +11367,11 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSupportR
         property_name: str = None,
         resource_type: str = None,
     ):
+        # The name of the resource property.
         self.property_name = property_name
+        # The resource type.
+        # 
+        # You can call the [ListResourceTypes](~~133957~~) operation to query the resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -11366,8 +11405,11 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The name of the resource.
         self.resource_name = resource_name
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -11434,9 +11476,11 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         # 
         # >  If the `AllowedValues` parameter is returned, the `IllegalValueByParameterConstraints` and `IllegalValueByRules` parameters are returned at the same time.
         self.illegal_value_by_rules = illegal_value_by_rules
+        # The unsupported resources in the template.
         self.not_support_resources = not_support_resources
         # The name of the parameter.
         self.parameter_key = parameter_key
+        # The error details that are returned if the request fails.
         self.query_errors = query_errors
         # The type of the parameter.
         self.type = type
@@ -12442,7 +12486,7 @@ class GetTemplateSummaryRequest(TeaModel):
         # 
         # For more information, see [Ensure idempotence](~~134212~~).
         self.client_token = client_token
-        # test
+        # The parameters.
         self.parameters = parameters
         # The ID of the region to which the stack or stack group in the template belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         # 
@@ -12723,7 +12767,9 @@ class ListChangeSetsRequest(TeaModel):
     ):
         # The ID of the change set. If detailed information about the change set is not required, you can use this parameter to replace the GetChangeSet operation.
         self.change_set_id = change_set_id
+        # The name of change set.
         self.change_set_name = change_set_name
+        # The execution status of change set.
         self.execution_status = execution_status
         # The number of the page to return.
         # 
@@ -12741,6 +12787,7 @@ class ListChangeSetsRequest(TeaModel):
         self.region_id = region_id
         # The ID of the stack.
         self.stack_id = stack_id
+        # The status of change set.
         self.status = status
 
     def validate(self):
@@ -13119,6 +13166,7 @@ class ListStackEventsRequest(TeaModel):
         stack_id: str = None,
         status: List[str] = None,
     ):
+        # The logical ID of the resource that is defined in the template.
         self.logical_resource_id = logical_resource_id
         # The page number of the page to return.
         # 
@@ -13134,9 +13182,11 @@ class ListStackEventsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region in which the stack resides. You can call the [DescribeRegions](~~131035~~) operation to query the most recent list of Alibaba Cloud regions.
         self.region_id = region_id
+        # The list of resource types.
         self.resource_type = resource_type
         # The ID of the stack.
         self.stack_id = stack_id
+        # The state of the resource.
         self.status = status
 
     def validate(self):
@@ -13952,6 +14002,7 @@ class ListStackGroupsRequest(TeaModel):
         # *   ACTIVE
         # *   DELETED
         self.status = status
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -14662,6 +14713,7 @@ class ListStackOperationRisksRequest(TeaModel):
         # 
         # >  This parameter takes effect when the OperationType parameter is set to DeleteStack.
         self.retain_all_resources = retain_all_resources
+        # The resource N that you want to retain in the stack.
         self.retain_resources = retain_resources
         # The ID of the stack.
         self.stack_id = stack_id
@@ -14943,6 +14995,7 @@ class ListStackResourceDriftsRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The drift status of the resource.
         self.resource_drift_status = resource_drift_status
         # The ID of the stack.
         self.stack_id = stack_id
@@ -15555,9 +15608,13 @@ class ListStacksRequest(TeaModel):
         self.show_nested_stack = show_nested_stack
         # The ID of the stack. If you want to query the basic information about the stack, you can use this parameter and do not need to call the GetStack operation.
         self.stack_id = stack_id
+        # The ID of stack N.
         self.stack_ids = stack_ids
+        # The name of stack N.
         self.stack_name = stack_name
+        # The state N of the stack.
         self.status = status
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -16196,6 +16253,7 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The list of resource IDs.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
@@ -16204,6 +16262,7 @@ class ListTagResourcesRequest(TeaModel):
         # *   template: template
         # *   templatescratch: scenario
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -16603,6 +16662,7 @@ class ListTemplateScratchesRequest(TeaModel):
         # *   GENERATE_COMPLETE: The scenario is created.
         # *   GENERATE_FAILED: The scenario fails to be created.
         self.status = status
+        # The tags.
         self.tags = tags
         # The ID of the scenario.
         self.template_scratch_id = template_scratch_id
@@ -17399,6 +17459,7 @@ class ListTemplatesRequest(TeaModel):
         # *   Shared: The template is shared with other users.
         # *   Official: The template is the shared template of the official version.
         self.share_type = share_type
+        # The tags.
         self.tag = tag
         # The name of the template. This parameter takes effect only when the ShareType parameter is set to Private.
         # 
@@ -17926,7 +17987,7 @@ class PreviewStackRequest(TeaModel):
         # 
         # >  If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave it empty, the default value of Terraform is used. In most cases, the default value of Terraform is 10.
         self.parallelism = parallelism
-        # test
+        # The parameters.
         self.parameters = parameters
         # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -18755,6 +18816,7 @@ class SetTemplatePermissionRequest(TeaModel):
         template_version: str = None,
         version_option: str = None,
     ):
+        # The list of one or more Alibaba Cloud accounts with which you want to share or unshare the template.
         self.account_ids = account_ids
         # The sharing option.
         # 
@@ -19188,6 +19250,7 @@ class TagResourcesRequest(TeaModel):
     ):
         # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource.
         self.resource_id = resource_id
         # The type of the resource to which you want to add the tag. Valid values:
         # 
@@ -19196,6 +19259,7 @@ class TagResourcesRequest(TeaModel):
         # *   template: template
         # *   TemplateScratch: scenario
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -19326,6 +19390,7 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
+        # A list of resource IDs.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
@@ -19334,6 +19399,7 @@ class UntagResourcesRequest(TeaModel):
         # *   template: template
         # *   templatescratch: scenario
         self.resource_type = resource_type
+        # The tag keys of the resource.
         self.tag_key = tag_key
 
     def validate(self):
@@ -19585,6 +19651,7 @@ class UpdateStackRequest(TeaModel):
         # *   If you leave this parameter empty, the value that you specified for this parameter in the previous request is used. If you left this parameter empty in the previous request, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
         # *   If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack.
         self.parallelism = parallelism
+        # The parameters.
         self.parameters = parameters
         # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.
         # 
@@ -19643,6 +19710,7 @@ class UpdateStackRequest(TeaModel):
         # 
         # The URL can be up to 1,350 bytes in length.
         self.stack_policy_url = stack_policy_url
+        # The value of tag N that you want to add to the template.
         self.tags = tags
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
         # 
@@ -20194,7 +20262,7 @@ class UpdateStackGroupRequest(TeaModel):
         # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
         # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences = operation_preferences
-        # test
+        # The list of parameters.
         self.parameters = parameters
         # The permission model.
         # 
@@ -20476,7 +20544,7 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         # *   You can specify only one of the MaxConcurrentCount and MaxConcurrentPercentage parameters.
         # *   You can specify only one of the FailureToleranceCount and FailureTolerancePercentage parameters.
         self.operation_preferences_shrink = operation_preferences_shrink
-        # test
+        # The list of parameters.
         self.parameters = parameters
         # The permission model.
         # 
@@ -21255,6 +21323,7 @@ class UpdateStackTemplateByResourcesRequest(TeaModel):
         # 
         # >  We recommend that you set the DryRun parameter to true to preview the corrected template. If the template content meets expectations, set the DryRun parameter to false to execute the correction.
         self.dry_run = dry_run
+        # The logical ID of resource.
         self.logical_resource_id = logical_resource_id
         # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -22022,11 +22091,6 @@ class ValidateTemplateRequest(TeaModel):
         self.client_token = client_token
         # The ID of the region where the template resides. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.
-        # 
-        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
-        # 
-        # You can specify only one of the TemplateBody and TemplateURL parameters.
         self.template_body = template_body
         # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
         # 

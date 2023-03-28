@@ -8359,14 +8359,16 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.validation_option):
             query['ValidationOption'] = request.validation_option
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ValidateTemplate',
@@ -8402,14 +8404,16 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.template_body):
-            query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.validation_option):
             query['ValidationOption'] = request.validation_option
+        body = {}
+        if not UtilClient.is_unset(request.template_body):
+            body['TemplateBody'] = request.template_body
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ValidateTemplate',
