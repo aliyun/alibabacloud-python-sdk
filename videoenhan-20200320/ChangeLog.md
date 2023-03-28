@@ -1,3 +1,6 @@
+2023-03-28 Version: 3.0.14
+- Release ReduceVideoNoise and EnhancePortraitVideo. 
+
 2023-03-03 Version: 3.0.13
 - Release GenerateHumanAnimeStyleVideo.
 
