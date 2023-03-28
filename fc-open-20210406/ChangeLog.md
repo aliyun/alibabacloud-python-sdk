@@ -1,3 +1,6 @@
+2023-03-28 Version: 2.0.6
+- Change policyItem type.
+
 2023-03-01 Version: 2.0.5
 - Support NAS with TLS.
 

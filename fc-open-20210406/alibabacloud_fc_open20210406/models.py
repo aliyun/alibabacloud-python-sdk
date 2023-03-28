@@ -922,10 +922,12 @@ class EventBridgeTriggerConfig(TeaModel):
 class HTTPTriggerConfig(TeaModel):
     def __init__(
         self,
+        auth_config: str = None,
         auth_type: str = None,
         disable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
+        self.auth_config = auth_config
         self.auth_type = auth_type
         # 禁用默认公网域名访问的开关，设置为true 时，访问函数默认提供的公网URL地址会返回403错误。设置为 false 则不会有任何影响。
         self.disable_urlinternet = disable_urlinternet
@@ -940,6 +942,8 @@ class HTTPTriggerConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config
         if self.auth_type is not None:
             result['authType'] = self.auth_type
         if self.disable_urlinternet is not None:
@@ -950,6 +954,8 @@ class HTTPTriggerConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authConfig') is not None:
+            self.auth_config = m.get('authConfig')
         if m.get('authType') is not None:
             self.auth_type = m.get('authType')
         if m.get('disableURLInternet') is not None:
@@ -1027,6 +1033,57 @@ class InstanceLifecycleConfig(TeaModel):
         if m.get('preStop') is not None:
             temp_model = LifecycleHook()
             self.pre_stop = temp_model.from_map(m['preStop'])
+        return self
+
+
+class JWTAuthConfig(TeaModel):
+    def __init__(
+        self,
+        black_list: str = None,
+        claim_pass_by: List[str] = None,
+        jwks: str = None,
+        token_lookup: List[str] = None,
+        white_list: List[str] = None,
+    ):
+        self.black_list = black_list
+        self.claim_pass_by = claim_pass_by
+        self.jwks = jwks
+        self.token_lookup = token_lookup
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.black_list is not None:
+            result['blackList'] = self.black_list
+        if self.claim_pass_by is not None:
+            result['claimPassBy'] = self.claim_pass_by
+        if self.jwks is not None:
+            result['jwks'] = self.jwks
+        if self.token_lookup is not None:
+            result['tokenLookup'] = self.token_lookup
+        if self.white_list is not None:
+            result['whiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('blackList') is not None:
+            self.black_list = m.get('blackList')
+        if m.get('claimPassBy') is not None:
+            self.claim_pass_by = m.get('claimPassBy')
+        if m.get('jwks') is not None:
+            self.jwks = m.get('jwks')
+        if m.get('tokenLookup') is not None:
+            self.token_lookup = m.get('tokenLookup')
+        if m.get('whiteList') is not None:
+            self.white_list = m.get('whiteList')
         return self
 
 
@@ -2311,14 +2368,16 @@ class RoutePolicy(TeaModel):
     def __init__(
         self,
         condition: bytes = None,
-        policy_items: PolicyItem = None,
+        policy_items: List[PolicyItem] = None,
     ):
         self.condition = condition
         self.policy_items = policy_items
 
     def validate(self):
         if self.policy_items:
-            self.policy_items.validate()
+            for k in self.policy_items:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2328,17 +2387,21 @@ class RoutePolicy(TeaModel):
         result = dict()
         if self.condition is not None:
             result['condition'] = self.condition
+        result['policyItems'] = []
         if self.policy_items is not None:
-            result['policyItems'] = self.policy_items.to_map()
+            for k in self.policy_items:
+                result['policyItems'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('condition') is not None:
             self.condition = m.get('condition')
+        self.policy_items = []
         if m.get('policyItems') is not None:
-            temp_model = PolicyItem()
-            self.policy_items = temp_model.from_map(m['policyItems'])
+            for k in m.get('policyItems'):
+                temp_model = PolicyItem()
+                self.policy_items.append(temp_model.from_map(k))
         return self
 
 
@@ -3466,8 +3529,7 @@ class CreateCustomDomainRequest(TeaModel):
     ):
         # The configurations of the HTTPS certificate.
         self.cert_config = cert_config
-        # The domain name.
-        # Enter a custom domain name that has obtained an ICP filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
+        # The domain name. Enter a custom domain name that has obtained an ICP filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
         self.domain_name = domain_name
         # The protocol types supported by the domain name. Valid values:
         # 
@@ -3775,7 +3837,7 @@ class CreateFunctionRequest(TeaModel):
         self.custom_container_config = custom_container_config
         # The custom Domain Name System (DNS) configurations of the function.
         self.custom_dns = custom_dns
-        # The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
+        # The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
         self.custom_health_check_config = custom_health_check_config
         # The configurations of the custom runtime.
         self.custom_runtime_config = custom_runtime_config
@@ -3787,36 +3849,39 @@ class CreateFunctionRequest(TeaModel):
         self.environment_variables = environment_variables
         # The name of the function. The name can contain letters, digits, underscores (\_), and hyphens (-) only. The name cannot start with a digit or a hyphen (-). The name must be 1 to 64 characters in length.
         self.function_name = function_name
-        # GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
+        # The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
         self.handler = handler
-        # The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the initializer function is terminated.
+        # The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the Initializer hook is terminated.
         self.initialization_timeout = initialization_timeout
-        # The handler of the initializer function. For more information, see [Initializer functions](~~157704~~).
+        # The handler of the Initializer hook. For more information, see [Initializer hook](~~157704~~).
         self.initializer = initializer
         # The number of requests that can be concurrently processed by a single instance.
         self.instance_concurrency = instance_concurrency
         # The lifecycle configurations of the instance.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
         # 
-        # The value must be less than or equal to that of **instanceConcurrency**.
+        # The value must be less than or equal to that of the **instanceConcurrency** parameter.
         self.instance_soft_concurrency = instance_soft_concurrency
         # The instance type of the function. Valid values:
         # 
         # *   **e1**: elastic instance
         # *   **c1**: performance instance
+        # *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+        # *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+        # *   **g1**: same as **fc.gpu.tesla.1**\
         self.instance_type = instance_type
-        # An array that consists of the information of layers.
+        # The information about layers.
         # 
-        # >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
         self.layers = layers
         # The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
         self.memory_size = memory_size
-        # The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+        # The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
         self.runtime = runtime
-        # The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the function is terminated.
+        # The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the function is terminated.
         self.timeout = timeout
 
     def validate(self):
@@ -3979,9 +4044,9 @@ class CreateFunctionResponseBody(TeaModel):
         self.ca_port = ca_port
         # The CRC-64 value of the function code package.
         self.code_checksum = code_checksum
-        # The size of the function code package that is returned by the system. Unit: byte.
+        # The size of the function code package that is returned by the system. Unit: bytes.
         self.code_size = code_size
-        # The number of vCPUs of the function. The value must be a multiple of 0.05.
+        # The number of vCPUs of the function. The value is a multiple of 0.05.
         self.cpu = cpu
         # The time when the function was created.
         self.created_time = created_time
@@ -3997,42 +4062,45 @@ class CreateFunctionResponseBody(TeaModel):
         self.description = description
         # The disk size of the function. Unit: MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
-        # The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+        # The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
         self.environment_variables = environment_variables
-        # The unique ID generated by the system for the function.
+        # The unique ID that is generated by the system for the function.
         self.function_id = function_id
         # The name of the function.
         self.function_name = function_name
-        # GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
+        # The GPU memory capacity for the function. Unit: MB. The value is a multiple of 1,024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function.
         self.handler = handler
-        # The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the initializer function is terminated.
+        # The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
         self.initialization_timeout = initialization_timeout
-        # The handler of the initializer function. The format is determined by the programming language.
+        # The handler of the Initializer hook. The format is determined by the programming language.
         self.initializer = initializer
         # The number of requests that can be concurrently processed by a single instance.
         self.instance_concurrency = instance_concurrency
         # The lifecycle configurations of the instance.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
         # 
-        # The value must be less than or equal to that of **instanceConcurrency**.
+        # The value must be less than or equal to that of the **instanceConcurrency** parameter.
         self.instance_soft_concurrency = instance_soft_concurrency
         # The instance type of the function. Valid values:
         # 
         # *   **e1**: elastic instance
         # *   **c1**: performance instance
+        # *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+        # *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+        # *   **g1**: same as **fc.gpu.tesla.1**\
         self.instance_type = instance_type
         # The time when the function was last modified.
         self.last_modified_time = last_modified_time
         # An array that consists of the information of layers.
         # 
-        # >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
         self.layers = layers
-        # The memory size for the function. Unit: MB.
+        # The memory size that is configured for the function. Unit: MB.
         self.memory_size = memory_size
-        # The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+        # The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
         self.runtime = runtime
         # The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
         self.timeout = timeout
@@ -4459,7 +4527,7 @@ class CreateServiceHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
+        # The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
         # The custom request ID.
         self.x_fc_trace_id = x_fc_trace_id
@@ -4513,8 +4581,8 @@ class CreateServiceRequest(TeaModel):
         self.description = description
         # Specifies whether to allow functions to access the Internet. Valid values:
         # 
-        # - **true**: allows functions in the specified service to access the Internet. Default value: true.
-        # - **false**: does not allow functions in the specified service to access the Internet.
+        # *   **true**: allows functions to access the Internet. This is the default value.
+        # *   **false**: does not allow functions to access the Internet.
         self.internet_access = internet_access
         # The log configuration. Function Compute writes function execution logs to the specified Logstore.
         self.log_config = log_config
@@ -4527,9 +4595,9 @@ class CreateServiceRequest(TeaModel):
         # *   Sends function execution logs to your Logstore.
         # *   Generates a token for a function to access other cloud resources during function execution.
         self.role = role
-        # The name of the service. The name contains only letters, digits, hyphens (-), and underscores (_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
+        # The name of the service. The name can contain only letters, digits, hyphens (-), and underscores (\_). It cannot start with a digit or hyphen (-). It must be 1 to 128 characters in length.
         self.service_name = service_name
-        # The configurations of Tracing Analysis. After Function Compute is integrated with Tracing Analysis, you can record the duration of a request in Function Compute, view the cold start time of a function, and record the execution duration of a function. For more information, see [Tracing Analysis](~~189804~~).
+        # The configuration of Tracing Analysis. After Function Compute is integrated with Tracing Analysis, you can record the duration of a request in Function Compute, view the cold start time of a function, and record the execution duration of a function. For more information, see [Tracing Analysis](~~189804~~).
         self.tracing_config = tracing_config
         # The VPC configurations. The configurations allow functions in the specified service to access the specified VPC.
         self.vpc_config = vpc_config
@@ -4838,13 +4906,13 @@ class CreateTriggerRequest(TeaModel):
         self.source_arn = source_arn
         # The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
         # 
-        # *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-        # *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-        # *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-        # *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
-        # *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-        # *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+        # * OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+        # * Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+        # * Time trigger: [TimeTriggerConfig](~~struct:LogTriggerConfig~~).
+        # * HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
+        # * Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
+        # * Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+        # * MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
         self.trigger_config = trigger_config
         # The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
         self.trigger_name = trigger_name
@@ -6814,7 +6882,7 @@ class GetFunctionResponseBody(TeaModel):
         self.created_time = created_time
         # The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
         self.custom_container_config = custom_container_config
-        # The custom Domain Name System (DNS) configurations of the function.
+        # The custom DNS configurations of the function.
         self.custom_dns = custom_dns
         # The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
         self.custom_health_check_config = custom_health_check_config
@@ -6824,12 +6892,13 @@ class GetFunctionResponseBody(TeaModel):
         self.description = description
         # The disk size of the function. Unit: MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
-        # The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+        # The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
         self.environment_variables = environment_variables
         # The ID that is generated by the system for the function. Each function ID is unique in Function Compute.
         self.function_id = function_id
         # The name of the function.
         self.function_name = function_name
+        # The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function. For more information, see [Function handler](~~157704~~).
         self.handler = handler
@@ -6841,25 +6910,35 @@ class GetFunctionResponseBody(TeaModel):
         self.instance_concurrency = instance_concurrency
         # The lifecycle configurations of the instance.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
         # 
-        # The value must be less than or equal to that of **instanceConcurrency**.
+        # The value must be less than or equal to that of the **instanceConcurrency** parameter.
         self.instance_soft_concurrency = instance_soft_concurrency
         # The instance type of the function. Valid values:
         # 
         # *   **e1**: elastic instance
         # *   **c1**: performance instance
+        # *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
+        # *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
+        # *   **g1**: same fc.gpu.tesla.1
         self.instance_type = instance_type
         # The time when the function was last modified.
         self.last_modified_time = last_modified_time
-        # An array that consists of the information of layers.
+        # The list of layers (ARN V1 version).
         # 
-        # >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+        # > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript. >
+        # 
+        # **\
+        # 
+        # **Warning:** This parameter is to be deprecated. Use layersArnV2.
         self.layers = layers
+        # The list of layers (ARN V2 version).
+        # 
+        # > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
         self.layers_arn_v2 = layers_arn_v2
         # The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
         self.memory_size = memory_size
-        # The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+        # The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom**, and **custom-container**.
         self.runtime = runtime
         # The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
         self.timeout = timeout
@@ -7425,9 +7504,9 @@ class GetFunctionOnDemandConfigHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time when Function Compute API is called. Specify the time in the yyyy-mm-ddhh:mm:ss format.
+        # The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
-        # The trace ID of the request for Function Compute API, which is also the unique ID of the request.
+        # The unique ID of the trace.
         self.x_fc_trace_id = x_fc_trace_id
 
     def validate(self):
@@ -7467,7 +7546,7 @@ class GetFunctionOnDemandConfigRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # The alias of the service or LATEST.
+        # Service alias or LATEST. Other versions are not supported.
         self.qualifier = qualifier
 
     def validate(self):
@@ -8500,13 +8579,13 @@ class GetTriggerResponseBody(TeaModel):
         self.source_arn = source_arn
         # The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
         # 
-        # *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-        # *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-        # *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-        # *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
+        # *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+        # *   Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+        # *   Time trigger: [TimeTriggerConfig](~~struct:TimeTriggerConfig~~).
+        # *   HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
         # *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-        # *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+        # *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
         self.trigger_config = trigger_config
         # The unique ID of the trigger.
         self.trigger_id = trigger_id
@@ -9825,7 +9904,7 @@ class ListFunctionsHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time when the function is invoked. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
+        # The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
         # The custom request ID.
         self.x_fc_trace_id = x_fc_trace_id
@@ -9873,7 +9952,7 @@ class ListFunctionsRequest(TeaModel):
     ):
         # The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
         self.limit = limit
-        # The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+        # The token required to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
         self.next_token = next_token
         # The prefix that the names of returned resources must contain.
         self.prefix = prefix
@@ -9955,7 +10034,7 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.code_size = code_size
         # The number of vCPUs of the function. The value must be a multiple of 0.05.
         self.cpu = cpu
-        # The time when the function was created.
+        # The time when the function is created.
         self.created_time = created_time
         # The configurations of the custom container runtime.
         self.custom_container_config = custom_container_config
@@ -9965,13 +10044,13 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.description = description
         # The disk size of the function. Unit: MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
-        # The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+        # The environment variables that you configured for the function. You can obtain the values of the environment variables from the function.
         self.environment_variables = environment_variables
         # The unique ID that is generated by the system for the function.
         self.function_id = function_id
         # The name of the function.
         self.function_name = function_name
-        # GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
+        # The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function.
         self.handler = handler
@@ -9983,21 +10062,23 @@ class ListFunctionsResponseBodyFunctions(TeaModel):
         self.instance_concurrency = instance_concurrency
         # The lifecycle configurations of the instance.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
         # 
-        # The value must be less than or equal to that of **instanceConcurrency**.
+        # The value must be less than or equal to that of the **instanceConcurrency** parameter.
         self.instance_soft_concurrency = instance_soft_concurrency
         # The instance type of the function. Valid values:
         # 
         # *   **e1**: elastic instance
         # *   **c1**: performance instance
+        # *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
+        # *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
+        # *   **g1**: same fc.gpu.tesla.1
         self.instance_type = instance_type
         # The time when the function was last modified.
         self.last_modified_time = last_modified_time
         # An array that consists of the information of layers.
         # 
-        # 
-        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+        # > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
         self.layers = layers
         # The memory size that is configured for the function. Unit: MB.
         self.memory_size = memory_size
@@ -11658,7 +11739,7 @@ class ListServicesHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
+        # The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
         # The custom request ID.
         self.x_fc_trace_id = x_fc_trace_id
@@ -11703,7 +11784,7 @@ class ListServicesRequest(TeaModel):
         prefix: str = None,
         start_key: str = None,
     ):
-        # The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned configurations is less than or equal to the specified number.
+        # The maximum number of resources to return. Default value: 20. The value cannot exceed 100. The number of returned configurations is less than or equal to the specified number.
         self.limit = limit
         # The starting position of the query. If this parameter is left empty, the query starts from the beginning. You do not need to specify this parameter in the first query. If the number of asynchronous tasks exceeds the limit, the nextToken parameter is returned, the value of which can be used in subsequent calls to obtain more results.
         self.next_token = next_token
@@ -11767,7 +11848,7 @@ class ListServicesResponseBodyServices(TeaModel):
         # Specifies whether to allow functions to access the Internet. Valid values:
         # 
         # *   **true**: allows functions in the specified service to access the Internet.
-        # *   **false**: does not allow functions in the specified service to access the Internet.
+        # *   **false**: does not allow functions to access the Internet.
         self.internet_access = internet_access
         # The time when the service was last modified.
         self.last_modified_time = last_modified_time
@@ -11786,7 +11867,7 @@ class ListServicesResponseBodyServices(TeaModel):
         self.service_id = service_id
         # The name of the service.
         self.service_name = service_name
-        # The configurations of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
+        # The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
         self.tracing_config = tracing_config
         # The VPC configuration. The configuration allows a function to access the specified VPC.
         self.vpc_config = vpc_config
@@ -12688,19 +12769,19 @@ class ListTriggersResponseBodyTriggers(TeaModel):
         self.source_arn = source_arn
         # The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
         # 
-        # *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-        # *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-        # *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-        # *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
+        # *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+        # *   Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+        # *   Time trigger: [TimeTriggerConfig](~~struct:TimeTriggerConfig~~).
+        # *   HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
         # *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-        # *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+        # *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
         self.trigger_config = trigger_config
         # The unique ID of the trigger.
         self.trigger_id = trigger_id
         # The name of the trigger.
         self.trigger_name = trigger_name
-        # The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
+        # The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn\_events**, and **mns\_topic**.
         self.trigger_type = trigger_type
         # The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
         self.url_internet = url_internet
@@ -15039,7 +15120,7 @@ class UpdateFunctionHeaders(TeaModel):
         x_fc_trace_id: str = None,
     ):
         self.common_headers = common_headers
-        # The ETag value of the resource. The value is used to ensure that the modified resource is consistent with the resource to be modified. The ETag value is returned in the responses of the [CreateFunction](~~415747~~), [GetFunction](~~415750~~), and [UpdateFunction](~~415749~~) operations.
+        # The parameter that is used to ensure that the modified resource is consistent with the resource to be modified. The value of this parameter is returned in the responses of the [CreateFunction](~~415747~~), [GetFunction](~~415750~~), and [UpdateFunction](~~415749~~) operations.
         self.if_match = if_match
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
@@ -15120,14 +15201,14 @@ class UpdateFunctionRequest(TeaModel):
         self.instance_concurrency = instance_concurrency
         # The port on which the HTTP server listens for the custom runtime or custom container runtime.
         self.ca_port = ca_port
-        # **Function code packages** can be provided with the following two methods. You must use only one of the methods in a request.
+        # The packaged code of the function. **Function code packages** can be provided with the following two methods. You must use only one of the methods in a request.
         # 
-        # *   Specify the name of the **Object Storage Service (OSS) bucket** and **object** where the code package is stored.
-        # *   Specify that the **zipFile** parameter is used as the Base64-encoded content of the ZIP file.
+        # *   Specify the name of the Object Storage Service (OSS) bucket and object where the code package is stored. The names are specified in the **ossBucketName** and **ossObjectName** parameters.
+        # *   Specify the Base64-encoded content of the ZIP file by using the **zipFile** parameter.
         self.code = code
         # The number of vCPUs of the function. The value must be a multiple of 0.05.
         self.cpu = cpu
-        # The configuration of the custom container. After you configure the custom container, Function Compute can execute functions in a container created from a custom image.
+        # The configuration of the custom container. After you configure the custom container, Function Compute can execute the function in a container created from a custom image.
         self.custom_container_config = custom_container_config
         # The custom DNS configurations of the function.
         self.custom_dns = custom_dns
@@ -15141,16 +15222,17 @@ class UpdateFunctionRequest(TeaModel):
         self.disk_size = disk_size
         # The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
         self.environment_variables = environment_variables
+        # The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
         self.handler = handler
-        # The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the initializer function is terminated.
+        # The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
         self.initialization_timeout = initialization_timeout
-        # The handler of the initializer function. The format is determined by the programming language. For more information, see [Function handlers](~~157704~~).
+        # The handler of the Initializer hook. The format is determined by the programming language. For more information, see [Function handlers](~~157704~~).
         self.initializer = initializer
         # The lifecycle configurations of the instance.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
+        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
         # 
         # The value must be less than or equal to that of the **instanceConcurrency** parameter.
         self.instance_soft_concurrency = instance_soft_concurrency
@@ -15158,12 +15240,15 @@ class UpdateFunctionRequest(TeaModel):
         # 
         # *   **e1**: elastic instance
         # *   **c1**: performance instance
+        # *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+        # *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+        # *   **g1**: same as **fc.gpu.tesla.1**\
         self.instance_type = instance_type
         # The information about layers.
         # 
-        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
         self.layers = layers
-        # The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
+        # The memory size for the function. Unit: MB. The memory size must be a multiple of 64. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
         self.memory_size = memory_size
         # The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
         self.runtime = runtime
@@ -15326,17 +15411,17 @@ class UpdateFunctionResponseBody(TeaModel):
         self.ca_port = ca_port
         # The CRC-64 value of the function code package.
         self.code_checksum = code_checksum
-        # The size of the function code package that is returned by the system. Unit: byte.
+        # The size of the function code package that is returned by the system. Unit: bytes.
         self.code_size = code_size
         # The number of vCPUs of the function. The value must be a multiple of 0.05.
         self.cpu = cpu
-        # The time when the function is created.
+        # The time when the function was created.
         self.created_time = created_time
         # The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
         self.custom_container_config = custom_container_config
         # The custom DNS configurations of the function.
         self.custom_dns = custom_dns
-        # The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
+        # The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
         self.custom_health_check_config = custom_health_check_config
         # The configurations of the custom runtime.
         self.custom_runtime_config = custom_runtime_config
@@ -15350,18 +15435,19 @@ class UpdateFunctionResponseBody(TeaModel):
         self.function_id = function_id
         # The name of the function.
         self.function_name = function_name
+        # The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
         self.gpu_memory_size = gpu_memory_size
         # The handler of the function.
         self.handler = handler
-        # The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the initializer function is terminated.
+        # The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
         self.initialization_timeout = initialization_timeout
-        # The handler of the initializer function. The format is determined by the programming language.
+        # The handler of the Initializer hook. The format is determined by the programming language.
         self.initializer = initializer
         # The number of requests that can be concurrently processed by a single instance.
         self.instance_concurrency = instance_concurrency
         # The lifecycle configurations of the instance.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
+        # The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
         # 
         # The value must be less than or equal to that of the **instanceConcurrency** parameter.
         self.instance_soft_concurrency = instance_soft_concurrency
@@ -15369,12 +15455,15 @@ class UpdateFunctionResponseBody(TeaModel):
         # 
         # *   **e1**: elastic instance
         # *   **c1**: performance instance
+        # *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+        # *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+        # *   **g1**: same as **fc.gpu.tesla.1**\
         self.instance_type = instance_type
         # The time when the function was last modified.
         self.last_modified_time = last_modified_time
-        # The information about layers.
+        # An array that consists of the information of layers.
         # 
-        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
+        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
         self.layers = layers
         # The memory size that is configured for the function. Unit: MB.
         self.memory_size = memory_size
@@ -15957,13 +16046,13 @@ class UpdateTriggerRequest(TeaModel):
         self.qualifier = qualifier
         # The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
         # 
-        # *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-        # *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-        # *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-        # *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
+        # *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+        # *   Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+        # *   Time trigger: [TimeTriggerConfig](~~struct:TimeTriggerConfig~~).
+        # *   HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
         # *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-        # *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+        # *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
         self.trigger_config = trigger_config
 
     def validate(self):
