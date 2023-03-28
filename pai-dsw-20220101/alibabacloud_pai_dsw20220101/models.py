@@ -311,10 +311,12 @@ class CreateInstanceRequestRequestedResource(TeaModel):
 class CreateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
+        extended_cidrs: List[str] = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
         # Vpc Id。
@@ -329,6 +331,8 @@ class CreateInstanceRequestUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.extended_cidrs is not None:
+            result['ExtendedCIDRs'] = self.extended_cidrs
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -339,6 +343,8 @@ class CreateInstanceRequestUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendedCIDRs') is not None:
+            self.extended_cidrs = m.get('ExtendedCIDRs')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -5427,10 +5433,12 @@ class UpdateInstanceRequestRequestedResource(TeaModel):
 class UpdateInstanceRequestUserVpc(TeaModel):
     def __init__(
         self,
+        extended_cidrs: List[str] = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
         # Vpc Id。
@@ -5445,6 +5453,8 @@ class UpdateInstanceRequestUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.extended_cidrs is not None:
+            result['ExtendedCIDRs'] = self.extended_cidrs
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -5455,6 +5465,8 @@ class UpdateInstanceRequestUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExtendedCIDRs') is not None:
+            self.extended_cidrs = m.get('ExtendedCIDRs')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:

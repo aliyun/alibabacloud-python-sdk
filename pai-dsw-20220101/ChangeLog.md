@@ -1,3 +1,6 @@
+2023-03-28 Version: 1.1.41
+- Support extended cidrs.
+
 2023-01-29 Version: 1.1.40
 - Support Resource Group Statistics.
 
