@@ -1,3 +1,6 @@
+2023-03-29 Version: 1.2.6
+- Delete DescribeConfigOfVersion.
+
 2023-03-29 Version: 1.2.5
 - Delete SetConfigOfVersion.
 

@@ -8909,6 +8909,8 @@ class DescribeCdnUserQuotaResponseBody(TeaModel):
         block_quota: int = None,
         block_remain: int = None,
         domain_quota: int = None,
+        ignore_params_quota: int = None,
+        ignore_params_remain: int = None,
         preload_quota: int = None,
         preload_remain: int = None,
         refresh_dir_quota: int = None,
@@ -8923,6 +8925,8 @@ class DescribeCdnUserQuotaResponseBody(TeaModel):
         self.block_remain = block_remain
         # The maximum number of accelerated domain names that can be added to Alibaba Cloud CDN.
         self.domain_quota = domain_quota
+        self.ignore_params_quota = ignore_params_quota
+        self.ignore_params_remain = ignore_params_remain
         # The maximum number of URLs that can be prefetched.
         self.preload_quota = preload_quota
         # The remaining number of URLs that can be prefetched.
@@ -8953,6 +8957,10 @@ class DescribeCdnUserQuotaResponseBody(TeaModel):
             result['BlockRemain'] = self.block_remain
         if self.domain_quota is not None:
             result['DomainQuota'] = self.domain_quota
+        if self.ignore_params_quota is not None:
+            result['IgnoreParamsQuota'] = self.ignore_params_quota
+        if self.ignore_params_remain is not None:
+            result['IgnoreParamsRemain'] = self.ignore_params_remain
         if self.preload_quota is not None:
             result['PreloadQuota'] = self.preload_quota
         if self.preload_remain is not None:
@@ -8977,6 +8985,10 @@ class DescribeCdnUserQuotaResponseBody(TeaModel):
             self.block_remain = m.get('BlockRemain')
         if m.get('DomainQuota') is not None:
             self.domain_quota = m.get('DomainQuota')
+        if m.get('IgnoreParamsQuota') is not None:
+            self.ignore_params_quota = m.get('IgnoreParamsQuota')
+        if m.get('IgnoreParamsRemain') is not None:
+            self.ignore_params_remain = m.get('IgnoreParamsRemain')
         if m.get('PreloadQuota') is not None:
             self.preload_quota = m.get('PreloadQuota')
         if m.get('PreloadRemain') is not None:
@@ -23884,6 +23896,8 @@ class DescribeRefreshQuotaResponseBody(TeaModel):
         block_remain: str = None,
         dir_quota: str = None,
         dir_remain: str = None,
+        ignore_params_quota: str = None,
+        ignore_params_remain: str = None,
         preload_edge_quota: str = None,
         preload_edge_remain: str = None,
         preload_quota: str = None,
@@ -23902,6 +23916,8 @@ class DescribeRefreshQuotaResponseBody(TeaModel):
         self.dir_quota = dir_quota
         # The remaining number of directories that can be refreshed on the current day.
         self.dir_remain = dir_remain
+        self.ignore_params_quota = ignore_params_quota
+        self.ignore_params_remain = ignore_params_remain
         # The maximum number of times that you can prefetch content to L1 nodes on the current day.
         self.preload_edge_quota = preload_edge_quota
         # The remaining number of times that you can prefetch content to L1 nodes on the current day.
@@ -23938,6 +23954,10 @@ class DescribeRefreshQuotaResponseBody(TeaModel):
             result['DirQuota'] = self.dir_quota
         if self.dir_remain is not None:
             result['DirRemain'] = self.dir_remain
+        if self.ignore_params_quota is not None:
+            result['IgnoreParamsQuota'] = self.ignore_params_quota
+        if self.ignore_params_remain is not None:
+            result['IgnoreParamsRemain'] = self.ignore_params_remain
         if self.preload_edge_quota is not None:
             result['PreloadEdgeQuota'] = self.preload_edge_quota
         if self.preload_edge_remain is not None:
@@ -23968,6 +23988,10 @@ class DescribeRefreshQuotaResponseBody(TeaModel):
             self.dir_quota = m.get('DirQuota')
         if m.get('DirRemain') is not None:
             self.dir_remain = m.get('DirRemain')
+        if m.get('IgnoreParamsQuota') is not None:
+            self.ignore_params_quota = m.get('IgnoreParamsQuota')
+        if m.get('IgnoreParamsRemain') is not None:
+            self.ignore_params_remain = m.get('IgnoreParamsRemain')
         if m.get('PreloadEdgeQuota') is not None:
             self.preload_edge_quota = m.get('PreloadEdgeQuota')
         if m.get('PreloadEdgeRemain') is not None:
