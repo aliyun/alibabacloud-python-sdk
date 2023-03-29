@@ -1,3 +1,6 @@
+2023-03-29 Version: 1.2.5
+- Delete SetConfigOfVersion.
+
 2023-02-25 Version: 1.2.4
 - Add SetCdnDomainSSLCertificate.
 

@@ -28810,9 +28810,6 @@ class RefreshObjectCachesRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The URLs from which content is refreshed. Format: **Accelerated domain name**/**Paths or directories of files that you want to refresh**.
-        # 
-        # Separate multiple URLs with line feed characters (\n) or a pair of carriage return and line feed characters (\r\n).
         self.object_path = object_path
         # The type of the object that you want to refresh. Valid values:
         # 
