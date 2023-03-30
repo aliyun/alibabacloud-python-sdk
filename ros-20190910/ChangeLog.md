@@ -1,3 +1,7 @@
+2023-03-30 Version: 3.2.23
+- GetFeatureDetails supports ResourceImport and DriftDetection.
+- DeleteStack supports DeleteOptions.
+
 2023-03-28 Version: 3.2.22
 - Move the TemplateBody parameter of ValidateTemplate to the request body to support larger template size.
 

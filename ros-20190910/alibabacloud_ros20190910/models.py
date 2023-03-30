@@ -3628,12 +3628,14 @@ class DeleteChangeSetResponse(TeaModel):
 class DeleteStackRequest(TeaModel):
     def __init__(
         self,
+        delete_options: List[str] = None,
         ram_role_name: str = None,
         region_id: str = None,
         retain_all_resources: bool = None,
         retain_resources: List[str] = None,
         stack_id: str = None,
     ):
+        self.delete_options = delete_options
         # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
         # 
         # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the role.
@@ -3665,6 +3667,8 @@ class DeleteStackRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.delete_options is not None:
+            result['DeleteOptions'] = self.delete_options
         if self.ram_role_name is not None:
             result['RamRoleName'] = self.ram_role_name
         if self.region_id is not None:
@@ -3679,6 +3683,8 @@ class DeleteStackRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeleteOptions') is not None:
+            self.delete_options = m.get('DeleteOptions')
         if m.get('RamRoleName') is not None:
             self.ram_role_name = m.get('RamRoleName')
         if m.get('RegionId') is not None:
@@ -6256,6 +6262,33 @@ class GetFeatureDetailsRequest(TeaModel):
         return self
 
 
+class GetFeatureDetailsResponseBodyDriftDetection(TeaModel):
+    def __init__(
+        self,
+        supported_resource_types: List[str] = None,
+    ):
+        self.supported_resource_types = supported_resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.supported_resource_types is not None:
+            result['SupportedResourceTypes'] = self.supported_resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SupportedResourceTypes') is not None:
+            self.supported_resource_types = m.get('SupportedResourceTypes')
+        return self
+
+
 class GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes(TeaModel):
     def __init__(
         self,
@@ -6337,6 +6370,74 @@ class GetFeatureDetailsResponseBodyResourceCleaner(TeaModel):
         if m.get('SupportedResourceTypes') is not None:
             for k in m.get('SupportedResourceTypes'):
                 temp_model = GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes()
+                self.supported_resource_types.append(temp_model.from_map(k))
+        return self
+
+
+class GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes(TeaModel):
+    def __init__(
+        self,
+        resource_identifiers: List[str] = None,
+        resource_type: str = None,
+    ):
+        self.resource_identifiers = resource_identifiers
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_identifiers is not None:
+            result['ResourceIdentifiers'] = self.resource_identifiers
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceIdentifiers') is not None:
+            self.resource_identifiers = m.get('ResourceIdentifiers')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetFeatureDetailsResponseBodyResourceImport(TeaModel):
+    def __init__(
+        self,
+        supported_resource_types: List[GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes] = None,
+    ):
+        self.supported_resource_types = supported_resource_types
+
+    def validate(self):
+        if self.supported_resource_types:
+            for k in self.supported_resource_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SupportedResourceTypes'] = []
+        if self.supported_resource_types is not None:
+            for k in self.supported_resource_types:
+                result['SupportedResourceTypes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.supported_resource_types = []
+        if m.get('SupportedResourceTypes') is not None:
+            for k in m.get('SupportedResourceTypes'):
+                temp_model = GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes()
                 self.supported_resource_types.append(temp_model.from_map(k))
         return self
 
@@ -6743,16 +6844,20 @@ class GetFeatureDetailsResponseBodyTerraform(TeaModel):
 class GetFeatureDetailsResponseBody(TeaModel):
     def __init__(
         self,
+        drift_detection: GetFeatureDetailsResponseBodyDriftDetection = None,
         request_id: str = None,
         resource_cleaner: GetFeatureDetailsResponseBodyResourceCleaner = None,
+        resource_import: GetFeatureDetailsResponseBodyResourceImport = None,
         template_parameter_constraints: GetFeatureDetailsResponseBodyTemplateParameterConstraints = None,
         template_scratch: GetFeatureDetailsResponseBodyTemplateScratch = None,
         terraform: GetFeatureDetailsResponseBodyTerraform = None,
     ):
+        self.drift_detection = drift_detection
         # The ID of the request.
         self.request_id = request_id
         # Details of the resource cleaner feature.
         self.resource_cleaner = resource_cleaner
+        self.resource_import = resource_import
         # Details of the template parameter constraint feature.
         self.template_parameter_constraints = template_parameter_constraints
         # Details of the scenario feature.
@@ -6761,8 +6866,12 @@ class GetFeatureDetailsResponseBody(TeaModel):
         self.terraform = terraform
 
     def validate(self):
+        if self.drift_detection:
+            self.drift_detection.validate()
         if self.resource_cleaner:
             self.resource_cleaner.validate()
+        if self.resource_import:
+            self.resource_import.validate()
         if self.template_parameter_constraints:
             self.template_parameter_constraints.validate()
         if self.template_scratch:
@@ -6776,10 +6885,14 @@ class GetFeatureDetailsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.drift_detection is not None:
+            result['DriftDetection'] = self.drift_detection.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resource_cleaner is not None:
             result['ResourceCleaner'] = self.resource_cleaner.to_map()
+        if self.resource_import is not None:
+            result['ResourceImport'] = self.resource_import.to_map()
         if self.template_parameter_constraints is not None:
             result['TemplateParameterConstraints'] = self.template_parameter_constraints.to_map()
         if self.template_scratch is not None:
@@ -6790,11 +6903,17 @@ class GetFeatureDetailsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DriftDetection') is not None:
+            temp_model = GetFeatureDetailsResponseBodyDriftDetection()
+            self.drift_detection = temp_model.from_map(m['DriftDetection'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResourceCleaner') is not None:
             temp_model = GetFeatureDetailsResponseBodyResourceCleaner()
             self.resource_cleaner = temp_model.from_map(m['ResourceCleaner'])
+        if m.get('ResourceImport') is not None:
+            temp_model = GetFeatureDetailsResponseBodyResourceImport()
+            self.resource_import = temp_model.from_map(m['ResourceImport'])
         if m.get('TemplateParameterConstraints') is not None:
             temp_model = GetFeatureDetailsResponseBodyTemplateParameterConstraints()
             self.template_parameter_constraints = temp_model.from_map(m['TemplateParameterConstraints'])
