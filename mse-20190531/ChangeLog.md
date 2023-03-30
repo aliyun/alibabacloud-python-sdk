@@ -1,3 +1,19 @@
+2023-03-30 Version: 3.0.64
+- Improve SwimmingLane API.
+- Improve error code.
+- Change action segment.
+- Improve QueryAllSwimmingLaneGroup API.
+- Supported for jwt.
+- Publish API QueryNamespace.
+- Update QueryNamespace.
+- Update API QueryNamespace.
+- Update API DeleteNamespace.
+- Fixed ErrorCode for UpdateAcl.
+- Update Tag Policy API.
+- Fixed bid for CreateCluster.
+- Support ram check in different namespace.
+- Support ram check in different namespaces.
+
 2023-03-07 Version: 3.0.63
 - Fixed ErrorCode for UpgradeCluster.
 - Update FC for ImportServices.
