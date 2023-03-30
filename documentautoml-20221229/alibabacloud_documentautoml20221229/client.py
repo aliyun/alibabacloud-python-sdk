@@ -41,6 +41,166 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_model_async_predict_with_options(
+        self,
+        request: document_automl_20221229_models.CreateModelAsyncPredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> document_automl_20221229_models.CreateModelAsyncPredictResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateModelAsyncPredict',
+            version='2022-12-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            document_automl_20221229_models.CreateModelAsyncPredictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_async_predict_with_options_async(
+        self,
+        request: document_automl_20221229_models.CreateModelAsyncPredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> document_automl_20221229_models.CreateModelAsyncPredictResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.binary_to_text):
+            query['BinaryToText'] = request.binary_to_text
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateModelAsyncPredict',
+            version='2022-12-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            document_automl_20221229_models.CreateModelAsyncPredictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_async_predict(
+        self,
+        request: document_automl_20221229_models.CreateModelAsyncPredictRequest,
+    ) -> document_automl_20221229_models.CreateModelAsyncPredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_model_async_predict_with_options(request, runtime)
+
+    async def create_model_async_predict_async(
+        self,
+        request: document_automl_20221229_models.CreateModelAsyncPredictRequest,
+    ) -> document_automl_20221229_models.CreateModelAsyncPredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_model_async_predict_with_options_async(request, runtime)
+
+    def get_model_async_predict_with_options(
+        self,
+        request: document_automl_20221229_models.GetModelAsyncPredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> document_automl_20221229_models.GetModelAsyncPredictResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.async_predict_id):
+            query['AsyncPredictId'] = request.async_predict_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModelAsyncPredict',
+            version='2022-12-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            document_automl_20221229_models.GetModelAsyncPredictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_async_predict_with_options_async(
+        self,
+        request: document_automl_20221229_models.GetModelAsyncPredictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> document_automl_20221229_models.GetModelAsyncPredictResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.async_predict_id):
+            query['AsyncPredictId'] = request.async_predict_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModelAsyncPredict',
+            version='2022-12-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            document_automl_20221229_models.GetModelAsyncPredictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_model_async_predict(
+        self,
+        request: document_automl_20221229_models.GetModelAsyncPredictRequest,
+    ) -> document_automl_20221229_models.GetModelAsyncPredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_model_async_predict_with_options(request, runtime)
+
+    async def get_model_async_predict_async(
+        self,
+        request: document_automl_20221229_models.GetModelAsyncPredictRequest,
+    ) -> document_automl_20221229_models.GetModelAsyncPredictResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_model_async_predict_with_options_async(request, runtime)
+
     def predict_classifier_model_with_options(
         self,
         request: document_automl_20221229_models.PredictClassifierModelRequest,
