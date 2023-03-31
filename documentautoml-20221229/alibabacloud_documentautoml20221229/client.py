@@ -61,7 +61,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='CreateModelAsyncPredict',
@@ -99,7 +100,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='CreateModelAsyncPredict',
@@ -215,7 +217,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='PredictClassifierModel',
@@ -247,7 +250,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='PredictClassifierModel',
@@ -295,7 +299,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.model_version):
             query['ModelVersion'] = request.model_version
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='PredictModel',
@@ -329,7 +334,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.model_version):
             query['ModelVersion'] = request.model_version
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='PredictModel',
@@ -375,7 +381,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='PredictTemplateModel',
@@ -407,7 +414,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=request.body
         )
         params = open_api_models.Params(
             action='PredictTemplateModel',

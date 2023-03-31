@@ -13,6 +13,7 @@ class CreateModelAsyncPredictRequest(TeaModel):
         model_version: str = None,
         service_name: str = None,
         service_version: str = None,
+        body: str = None,
     ):
         self.binary_to_text = binary_to_text
         self.content = content
@@ -20,6 +21,7 @@ class CreateModelAsyncPredictRequest(TeaModel):
         self.model_version = model_version
         self.service_name = service_name
         self.service_version = service_version
+        self.body = body
 
     def validate(self):
         pass
@@ -42,6 +44,8 @@ class CreateModelAsyncPredictRequest(TeaModel):
             result['ServiceName'] = self.service_name
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
+        if self.body is not None:
+            result['body'] = self.body
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +62,8 @@ class CreateModelAsyncPredictRequest(TeaModel):
             self.service_name = m.get('ServiceName')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
@@ -274,10 +280,12 @@ class PredictClassifierModelRequest(TeaModel):
         auto_prediction: bool = None,
         classifier_id: int = None,
         content: str = None,
+        body: str = None,
     ):
         self.auto_prediction = auto_prediction
         self.classifier_id = classifier_id
         self.content = content
+        self.body = body
 
     def validate(self):
         pass
@@ -294,6 +302,8 @@ class PredictClassifierModelRequest(TeaModel):
             result['ClassifierId'] = self.classifier_id
         if self.content is not None:
             result['Content'] = self.content
+        if self.body is not None:
+            result['body'] = self.body
         return result
 
     def from_map(self, m: dict = None):
@@ -304,6 +314,8 @@ class PredictClassifierModelRequest(TeaModel):
             self.classifier_id = m.get('ClassifierId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
@@ -404,11 +416,13 @@ class PredictModelRequest(TeaModel):
         content: str = None,
         model_id: int = None,
         model_version: str = None,
+        body: str = None,
     ):
         self.binary_to_text = binary_to_text
         self.content = content
         self.model_id = model_id
         self.model_version = model_version
+        self.body = body
 
     def validate(self):
         pass
@@ -427,6 +441,8 @@ class PredictModelRequest(TeaModel):
             result['ModelId'] = self.model_id
         if self.model_version is not None:
             result['ModelVersion'] = self.model_version
+        if self.body is not None:
+            result['body'] = self.body
         return result
 
     def from_map(self, m: dict = None):
@@ -439,6 +455,8 @@ class PredictModelRequest(TeaModel):
             self.model_id = m.get('ModelId')
         if m.get('ModelVersion') is not None:
             self.model_version = m.get('ModelVersion')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
@@ -538,10 +556,12 @@ class PredictTemplateModelRequest(TeaModel):
         binary_to_text: bool = None,
         content: str = None,
         task_id: int = None,
+        body: str = None,
     ):
         self.binary_to_text = binary_to_text
         self.content = content
         self.task_id = task_id
+        self.body = body
 
     def validate(self):
         pass
@@ -558,6 +578,8 @@ class PredictTemplateModelRequest(TeaModel):
             result['Content'] = self.content
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.body is not None:
+            result['body'] = self.body
         return result
 
     def from_map(self, m: dict = None):
@@ -568,6 +590,8 @@ class PredictTemplateModelRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
