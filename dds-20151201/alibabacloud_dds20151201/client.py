@@ -695,6 +695,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.global_security_group_ids):
+            query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not UtilClient.is_unset(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
@@ -800,6 +802,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.global_security_group_ids):
+            query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not UtilClient.is_unset(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
@@ -890,6 +894,104 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
+
+    def create_global_security_ipgroup_with_options(
+        self,
+        request: dds_20151201_models.CreateGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.CreateGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.CreateGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_global_security_ipgroup_with_options_async(
+        self,
+        request: dds_20151201_models.CreateGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.CreateGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.CreateGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_global_security_ipgroup(
+        self,
+        request: dds_20151201_models.CreateGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.CreateGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_global_security_ipgroup_with_options(request, runtime)
+
+    async def create_global_security_ipgroup_async(
+        self,
+        request: dds_20151201_models.CreateGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.CreateGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_global_security_ipgroup_with_options_async(request, runtime)
 
     def create_node_with_options(
         self,
@@ -1243,6 +1345,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.global_security_group_ids):
+            query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not UtilClient.is_unset(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.mongos):
@@ -1338,6 +1442,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.global_security_group_ids):
+            query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not UtilClient.is_unset(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.mongos):
@@ -1562,6 +1668,104 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
+
+    def delete_global_security_ipgroup_with_options(
+        self,
+        request: dds_20151201_models.DeleteGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DeleteGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DeleteGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_global_security_ipgroup_with_options_async(
+        self,
+        request: dds_20151201_models.DeleteGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DeleteGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DeleteGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_global_security_ipgroup(
+        self,
+        request: dds_20151201_models.DeleteGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.DeleteGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_global_security_ipgroup_with_options(request, runtime)
+
+    async def delete_global_security_ipgroup_async(
+        self,
+        request: dds_20151201_models.DeleteGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.DeleteGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
 
     def delete_node_with_options(
         self,
@@ -4193,6 +4397,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_error_log_records_with_options_async(request, runtime)
 
+    def describe_global_security_ipgroup_with_options(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_security_ipgroup_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_security_ipgroup(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_security_ipgroup_with_options(request, runtime)
+
+    async def describe_global_security_ipgroup_async(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_security_ipgroup_with_options_async(request, runtime)
+
+    def describe_global_security_ipgroup_relation_with_options(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroupRelation',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_security_ipgroup_relation_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroupRelation',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_security_ipgroup_relation(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRelationRequest,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_security_ipgroup_relation_with_options(request, runtime)
+
+    async def describe_global_security_ipgroup_relation_async(
+        self,
+        request: dds_20151201_models.DescribeGlobalSecurityIPGroupRelationRequest,
+    ) -> dds_20151201_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
+
     def describe_instance_auto_renewal_attribute_with_options(
         self,
         request: dds_20151201_models.DescribeInstanceAutoRenewalAttributeRequest,
@@ -5917,7 +6253,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
         """
-        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
         *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
         
         @param request: DescribeSlowLogRecordsRequest
@@ -5979,7 +6315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
         """
-        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
         *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
         
         @param request: DescribeSlowLogRecordsRequest
@@ -6040,7 +6376,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeSlowLogRecordsRequest,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
         """
-        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
         *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
         
         @param request: DescribeSlowLogRecordsRequest
@@ -6054,7 +6390,7 @@ class Client(OpenApiClient):
         request: dds_20151201_models.DescribeSlowLogRecordsRequest,
     ) -> dds_20151201_models.DescribeSlowLogRecordsResponse:
         """
-        This operation is applicable only to **general-purpose local-disk** or **dedicated local-disk** instances.
+        This operation is applicable only to **general-purpose local-disk** and **dedicated local-disk** instances.
         *   You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](~~48990~~).
         
         @param request: DescribeSlowLogRecordsRequest
@@ -7444,6 +7780,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.new_connection_string):
             query['NewConnectionString'] = request.new_connection_string
+        if not UtilClient.is_unset(request.new_port):
+            query['NewPort'] = request.new_port
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.owner_account):
@@ -7488,6 +7826,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.new_connection_string):
             query['NewConnectionString'] = request.new_connection_string
+        if not UtilClient.is_unset(request.new_port):
+            query['NewPort'] = request.new_port
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.owner_account):
@@ -8584,6 +8924,304 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_tdewith_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_with_options(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_async(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRequest,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_name_with_options(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupName',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_name_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupName',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup_name(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupNameRequest,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_name_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_name_async(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupNameRequest,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_name_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_relation_with_options(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupRelation',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_relation_with_options_async(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupRelation',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup_relation(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRelationRequest,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_relation_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_relation_async(
+        self,
+        request: dds_20151201_models.ModifyGlobalSecurityIPGroupRelationRequest,
+    ) -> dds_20151201_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_relation_with_options_async(request, runtime)
 
     def modify_instance_auto_renewal_attribute_with_options(
         self,
@@ -10047,6 +10685,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.account_password):
             query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -10096,6 +10736,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.account_password):
             query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_account):
