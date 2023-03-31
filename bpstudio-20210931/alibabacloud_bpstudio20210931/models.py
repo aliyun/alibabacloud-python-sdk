@@ -143,8 +143,11 @@ class CreateApplicationRequestInstances(TeaModel):
         node_name: str = None,
         node_type: str = None,
     ):
+        # The ID of the instance.
         self.id = id
+        # The name of the instance.
         self.node_name = node_name
+        # The type of the instance.
         self.node_type = node_type
 
     def validate(self):
@@ -187,13 +190,21 @@ class CreateApplicationRequest(TeaModel):
         template_id: str = None,
         variables: Dict[str, str] = None,
     ):
+        # The ID of the region.
         self.area_id = area_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
         self.configuration = configuration
+        # The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
         self.instances = instances
+        # The name of the application that you want to create.
         self.name = name
+        # The ID of the resource group to which the application you want to create belongs.
         self.resource_group_id = resource_group_id
+        # The ID of the template.
         self.template_id = template_id
+        # The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
         self.variables = variables
 
     def validate(self):
@@ -264,13 +275,21 @@ class CreateApplicationShrinkRequest(TeaModel):
         template_id: str = None,
         variables_shrink: str = None,
     ):
+        # The ID of the region.
         self.area_id = area_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
         self.configuration_shrink = configuration_shrink
+        # The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
         self.instances_shrink = instances_shrink
+        # The name of the application that you want to create.
         self.name = name
+        # The ID of the resource group to which the application you want to create belongs.
         self.resource_group_id = resource_group_id
+        # The ID of the template.
         self.template_id = template_id
+        # The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
         self.variables_shrink = variables_shrink
 
     def validate(self):
@@ -329,9 +348,13 @@ class CreateApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The ID of the application.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -416,7 +439,9 @@ class DeleteApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -450,8 +475,11 @@ class DeleteApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -532,7 +560,9 @@ class DeployApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -567,9 +597,13 @@ class DeployApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data of the application.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -656,9 +690,58 @@ class ExecuteOperationASyncRequest(TeaModel):
         resource_group_id: str = None,
         service_type: str = None,
     ):
+        # The parameters that you need to specify when you perform an operation. The parameters vary based on the operation and are specified in the map format. The following examples show how to specify the parameters if you perform an operation on an ECS instance:
+        # 
+        # *   The following common parameters need to be specified for operations on an ECS instance:
+        # 
+        # change_type, regionId, instanceId, and appId.
+        # 
+        # *   To change the instance type of an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # *   To stop an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # *   To start an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # *   To restart an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # Enumeration values
+        # 
+        # <!-- -->
+        # 
+        # :
+        # 
+        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
         self.attributes = attributes
+        # The type of the operation to be performed to modify the parameters of an instance of the specified service. Some operations are common to different services, and other operations are specific to each service. For example, set this parameter to one of the following values to perform the corresponding operation on an ECS instance:
+        # 
+        # *   rename: modifies the name of an ECS instance.
+        # *   modifyInstanceType: changes the instance type of an ECS instance.
+        # *   modifyInstanceType: starts an ECS instance.
+        # *   modifyInstanceType: stops an ECS instance.
+        # *   modifyInstanceType: restarts an ECS instance.
+        # *   addTags: adds tags to an ECS instance.
+        # *   ecsDelete: deletes an ECS instance.
+        # *   modifyPayType: changes the billing method of an ECS instance.
         self.operation = operation
+        # The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
         self.resource_group_id = resource_group_id
+        # The type of the service. If you want to modify the parameters of an Elastic Compute Service (ECS) instance, set this parameter to ecs.
         self.service_type = service_type
 
     def validate(self):
@@ -701,9 +784,58 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
         resource_group_id: str = None,
         service_type: str = None,
     ):
+        # The parameters that you need to specify when you perform an operation. The parameters vary based on the operation and are specified in the map format. The following examples show how to specify the parameters if you perform an operation on an ECS instance:
+        # 
+        # *   The following common parameters need to be specified for operations on an ECS instance:
+        # 
+        # change_type, regionId, instanceId, and appId.
+        # 
+        # *   To change the instance type of an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # *   To stop an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # *   To start an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # *   To restart an ECS instance, specify the following parameters:
+        # 
+        # { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+        # 
+        # Enumeration values
+        # 
+        # <!-- -->
+        # 
+        # :
+        # 
+        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
         self.attributes_shrink = attributes_shrink
+        # The type of the operation to be performed to modify the parameters of an instance of the specified service. Some operations are common to different services, and other operations are specific to each service. For example, set this parameter to one of the following values to perform the corresponding operation on an ECS instance:
+        # 
+        # *   rename: modifies the name of an ECS instance.
+        # *   modifyInstanceType: changes the instance type of an ECS instance.
+        # *   modifyInstanceType: starts an ECS instance.
+        # *   modifyInstanceType: stops an ECS instance.
+        # *   modifyInstanceType: restarts an ECS instance.
+        # *   addTags: adds tags to an ECS instance.
+        # *   ecsDelete: deletes an ECS instance.
+        # *   modifyPayType: changes the billing method of an ECS instance.
         self.operation = operation
+        # The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
         self.resource_group_id = resource_group_id
+        # The type of the service. If you want to modify the parameters of an Elastic Compute Service (ECS) instance, set this parameter to ecs.
         self.service_type = service_type
 
     def validate(self):
@@ -746,9 +878,13 @@ class ExecuteOperationASyncResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. A value of 200 indicates that the request is successful, and other values indicate that the request fails.
         self.code = code
+        # The ID of the operation.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -833,7 +969,9 @@ class GetApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -871,12 +1009,19 @@ class GetApplicationResponseBodyDataChecklist(TeaModel):
         result: str = None,
         specification: str = None,
     ):
+        # The resource tag.
         self.lifecycle = lifecycle
+        # The ID of the region.
         self.region = region
+        # The message returned for verification.
         self.remark = remark
+        # The service code.
         self.resource_code = resource_code
+        # The name of the instance.
         self.resource_name = resource_name
+        # The verification result.
         self.result = result
+        # The resource specification.
         self.specification = specification
 
     def validate(self):
@@ -940,18 +1085,31 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
         resource_code: str = None,
         specification: str = None,
     ):
+        # The billing method.
         self.charge_type = charge_type
+        # The quantity.
         self.count = count
+        # The name of the instance.
         self.instance_name = instance_name
+        # The resource tag.
         self.lifecycle = lifecycle
+        # The unit price.
         self.one_price = one_price
+        # The original price.
         self.original_price = original_price
+        # The service duration.
         self.period = period
+        # The total price.
         self.price = price
+        # The price unit.
         self.price_unit = price_unit
+        # The ID of the region.
         self.region = region
+        # The error message that is returned when a price query fails.
         self.remark = remark
+        # The service code.
         self.resource_code = resource_code
+        # The instance type.
         self.specification = specification
 
     def validate(self):
@@ -1034,13 +1192,21 @@ class GetApplicationResponseBodyDataResourceList(TeaModel):
         resource_type: str = None,
         status: str = None,
     ):
+        # The billing method.
         self.charge_type = charge_type
+        # The resource tag.
         self.lifecycle = lifecycle
+        # The deployment result.
         self.remark = remark
+        # The service code.
         self.resource_code = resource_code
+        # The ID of the instance.
         self.resource_id = resource_id
+        # The name of the instance.
         self.resource_name = resource_name
+        # The resource type.
         self.resource_type = resource_type
+        # The resource deployment result.
         self.status = status
 
     def validate(self):
@@ -1108,18 +1274,31 @@ class GetApplicationResponseBodyData(TeaModel):
         template_id: str = None,
         topo_url: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The verification results returned.
         self.checklist = checklist
+        # The time when the application was created.
         self.create_time = create_time
+        # The description of the application.
         self.description = description
+        # The message returned for deployment.
         self.error = error
+        # The URL of the image in the database.
         self.image_url = image_url
+        # The name of the application.
         self.name = name
+        # The billing results.
         self.price_list = price_list
+        # The ID of the resource group to which the application belongs.
         self.resource_group_id = resource_group_id
+        # The resources.
         self.resource_list = resource_list
+        # The status of the application.
         self.status = status
+        # The ID of the template associated with the application.
         self.template_id = template_id
+        # The URL of the application topology image.
         self.topo_url = topo_url
 
     def validate(self):
@@ -1224,9 +1403,13 @@ class GetApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The details of the application.
         self.data = data
+        # The message returned for the request.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1313,7 +1496,9 @@ class GetExecuteOperationResultRequest(TeaModel):
         operation_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1348,9 +1533,13 @@ class GetExecuteOperationResultResponseBodyData(TeaModel):
         operation_id: str = None,
         status: str = None,
     ):
+        # The output of the operation.
         self.arguments = arguments
+        # The returned message.
         self.message = message
+        # The ID of the operation.
         self.operation_id = operation_id
+        # The status of the operation.
         self.status = status
 
     def validate(self):
@@ -1393,10 +1582,13 @@ class GetExecuteOperationResultResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. A value of 200 indicates that the request is successful.
         self.code = code
-        # Status
+        # The details of the operation.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1484,8 +1676,11 @@ class GetTemplateRequest(TeaModel):
         resource_group_id: str = None,
         template_id: str = None,
     ):
+        # The region in which the template resides.
         self.region = region
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):
@@ -1516,6 +1711,51 @@ class GetTemplateRequest(TeaModel):
         return self
 
 
+class GetTemplateResponseBodyDataVariables(TeaModel):
+    def __init__(
+        self,
+        attribute: str = None,
+        data_type: str = None,
+        default_value: str = None,
+        variable: str = None,
+    ):
+        self.attribute = attribute
+        self.data_type = data_type
+        self.default_value = default_value
+        self.variable = variable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+        if self.variable is not None:
+            result['Variable'] = self.variable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+        if m.get('Variable') is not None:
+            self.variable = m.get('Variable')
+        return self
+
+
 class GetTemplateResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -1526,17 +1766,29 @@ class GetTemplateResponseBodyData(TeaModel):
         resource_group_id: str = None,
         template_id: str = None,
         topo_url: str = None,
+        variables: List[GetTemplateResponseBodyDataVariables] = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The description of the template.
         self.description = description
+        # The URL of the architecture image.
         self.image_url = image_url
+        # The name of the template.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the template.
         self.template_id = template_id
+        # The URL of the architecture image file.
         self.topo_url = topo_url
+        self.variables = variables
 
     def validate(self):
-        pass
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1558,6 +1810,10 @@ class GetTemplateResponseBodyData(TeaModel):
             result['TemplateId'] = self.template_id
         if self.topo_url is not None:
             result['TopoURL'] = self.topo_url
+        result['Variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['Variables'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1576,6 +1832,11 @@ class GetTemplateResponseBodyData(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('TopoURL') is not None:
             self.topo_url = m.get('TopoURL')
+        self.variables = []
+        if m.get('Variables') is not None:
+            for k in m.get('Variables'):
+                temp_model = GetTemplateResponseBodyDataVariables()
+                self.variables.append(temp_model.from_map(k))
         return self
 
 
@@ -1587,9 +1848,13 @@ class GetTemplateResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The details of the template.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1675,6 +1940,7 @@ class GetTokenRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1707,11 +1973,17 @@ class GetTokenResponseBodyData(TeaModel):
         security_token: str = None,
         snapshot_bucket: str = None,
     ):
+        # The AccessKey ID that is used to access OSS.
         self.access_key_id = access_key_id
+        # The AccessKey secret that is used to access OSS.
         self.access_key_secret = access_key_secret
+        # The OSS bucket that is used to store the architecture image.
         self.bucket = bucket
+        # The OSS endpoint.
         self.endpoint = endpoint
+        # The token that is used to access the Object Storage Service (OSS) bucket that stores the architecture image.
         self.security_token = security_token
+        # The OSS bucket that is used to save data snapshots.
         self.snapshot_bucket = snapshot_bucket
 
     def validate(self):
@@ -1762,9 +2034,13 @@ class GetTokenResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The information about the token.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1855,11 +2131,17 @@ class ListApplicationRequest(TeaModel):
         resource_group_id: str = None,
         status: str = None,
     ):
+        # The keyword in the application name.
         self.keyword = keyword
+        # The number of entries to return on each page.
         self.max_results = max_results
+        # The number of the page to return.
         self.next_token = next_token
+        # The field by which the list is sorted. Valid values: 1 and 2. The value 1 specifies that the list is sorted in descending order of application update time, and the value 2 specifies that the list is sorted in descending order of application creation time.
         self.order_type = order_type
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the application.
         self.status = status
 
     def validate(self):
@@ -1913,12 +2195,19 @@ class ListApplicationResponseBodyData(TeaModel):
         status: str = None,
         topo_url: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The time when the application was created.
         self.create_time = create_time
+        # The URL of the application architecture image.
         self.image_url = image_url
+        # The name of the application.
         self.name = name
+        # The ID of the resource group to which the application belongs.
         self.resource_group_id = resource_group_id
+        # The status of the application.
         self.status = status
+        # The URL of the application topology image.
         self.topo_url = topo_url
 
     def validate(self):
@@ -1975,11 +2264,17 @@ class ListApplicationResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The information about the applications.
         self.data = data
+        # The error message.
         self.message = message
+        # The page number of the next page.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned applications.
         self.total_count = total_count
 
     def validate(self):
@@ -2074,6 +2369,253 @@ class ListApplicationResponse(TeaModel):
         return self
 
 
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.client_token = client_token
+        self.next_token = next_token
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
+    ):
+        self.code = code
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        # TagResource
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListTagResourcesResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -2085,12 +2627,22 @@ class ListTemplateRequest(TeaModel):
         tag_list: int = None,
         type: str = None,
     ):
+        # The keyword that is used to search for templates.
         self.keyword = keyword
+        # The number of entries to return on each page.
         self.max_results = max_results
+        # The number of the page to return.
         self.next_token = next_token
+        # The criterion by which the templates are sorted. Valid values:
+        # 
+        # *   1: modification time
+        # *   2: creation time
         self.order_type = order_type
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tag of the template.
         self.tag_list = tag_list
+        # The type of the template.
         self.type = type
 
     def validate(self):
@@ -2149,13 +2701,21 @@ class ListTemplateResponseBodyData(TeaModel):
         template_id: str = None,
         topo_url: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The URL of the architecture image.
         self.image_url = image_url
+        # The name of the template.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the tag that is added to the template.
         self.tag_id = tag_id
+        # The name of the tag that is added to the template.
         self.tag_name = tag_name
+        # The ID of the template.
         self.template_id = template_id
+        # The URL of the template topology image.
         self.topo_url = topo_url
 
     def validate(self):
@@ -2216,11 +2776,17 @@ class ListTemplateResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The details about templates.
         self.data = data
+        # The returned message.
         self.message = message
+        # The page number of the returned page.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -2321,7 +2887,9 @@ class ReleaseApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The ID of the resource.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2356,9 +2924,13 @@ class ReleaseApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The return value.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2443,7 +3015,9 @@ class ValidateApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2478,9 +3052,13 @@ class ValidateApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data of the application.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2565,7 +3143,9 @@ class ValuateApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2600,9 +3180,13 @@ class ValuateApplicationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data of the application.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

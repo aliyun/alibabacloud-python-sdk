@@ -861,6 +861,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_application_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: bpstudio_20210931_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body_flat['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body_flat['Tag'] = request.tag
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: bpstudio_20210931_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body_flat['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body_flat['Tag'] = request.tag
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: bpstudio_20210931_models.ListTagResourcesRequest,
+    ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: bpstudio_20210931_models.ListTagResourcesRequest,
+    ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def list_template_with_options(
         self,
         request: bpstudio_20210931_models.ListTemplateRequest,
