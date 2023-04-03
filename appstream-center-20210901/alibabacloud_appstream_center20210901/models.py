@@ -1682,6 +1682,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         app_instance_group_id: str = None,
         app_instance_group_name: str = None,
         app_instance_type: str = None,
+        app_policy_id: str = None,
         apps: List[GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps] = None,
         charge_type: str = None,
         expired_time: str = None,
@@ -1702,6 +1703,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_group_name = app_instance_group_name
         self.app_instance_type = app_instance_type
+        self.app_policy_id = app_policy_id
         self.apps = apps
         self.charge_type = charge_type
         self.expired_time = expired_time
@@ -1746,6 +1748,8 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             result['AppInstanceGroupName'] = self.app_instance_group_name
         if self.app_instance_type is not None:
             result['AppInstanceType'] = self.app_instance_type
+        if self.app_policy_id is not None:
+            result['AppPolicyId'] = self.app_policy_id
         result['Apps'] = []
         if self.apps is not None:
             for k in self.apps:
@@ -1792,6 +1796,8 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModels(TeaModel):
             self.app_instance_group_name = m.get('AppInstanceGroupName')
         if m.get('AppInstanceType') is not None:
             self.app_instance_type = m.get('AppInstanceType')
+        if m.get('AppPolicyId') is not None:
+            self.app_policy_id = m.get('AppPolicyId')
         self.apps = []
         if m.get('Apps') is not None:
             for k in m.get('Apps'):
@@ -3750,6 +3756,7 @@ class ListNodeInstanceTypeRequest(TeaModel):
         self,
         biz_region_id: str = None,
         language: str = None,
+        node_instance_type: str = None,
         os_type: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -3757,6 +3764,7 @@ class ListNodeInstanceTypeRequest(TeaModel):
     ):
         self.biz_region_id = biz_region_id
         self.language = language
+        self.node_instance_type = node_instance_type
         self.os_type = os_type
         self.page_number = page_number
         self.page_size = page_size
@@ -3775,6 +3783,8 @@ class ListNodeInstanceTypeRequest(TeaModel):
             result['BizRegionId'] = self.biz_region_id
         if self.language is not None:
             result['Language'] = self.language
+        if self.node_instance_type is not None:
+            result['NodeInstanceType'] = self.node_instance_type
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.page_number is not None:
@@ -3791,6 +3801,8 @@ class ListNodeInstanceTypeRequest(TeaModel):
             self.biz_region_id = m.get('BizRegionId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('NodeInstanceType') is not None:
+            self.node_instance_type = m.get('NodeInstanceType')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('PageNumber') is not None:
@@ -4721,20 +4733,16 @@ class ModifyAppInstanceGroupAttributeResponse(TeaModel):
         return self
 
 
-class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
+class ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods(TeaModel):
     def __init__(
         self,
-        max_scaling_amount: int = None,
-        scaling_down_after_idle_minutes: int = None,
-        scaling_step: int = None,
-        scaling_usage_threshold: str = None,
-        strategy_type: str = None,
+        amount: int = None,
+        end_time: str = None,
+        start_time: str = None,
     ):
-        self.max_scaling_amount = max_scaling_amount
-        self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
-        self.scaling_step = scaling_step
-        self.scaling_usage_threshold = scaling_usage_threshold
-        self.strategy_type = strategy_type
+        self.amount = amount
+        self.end_time = end_time
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -4745,30 +4753,158 @@ class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
             return _map
 
         result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules(TeaModel):
+    def __init__(
+        self,
+        recurrence_type: str = None,
+        recurrence_values: List[int] = None,
+        timer_periods: List[ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods] = None,
+    ):
+        self.recurrence_type = recurrence_type
+        self.recurrence_values = recurrence_values
+        self.timer_periods = timer_periods
+
+    def validate(self):
+        if self.timer_periods:
+            for k in self.timer_periods:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.recurrence_type is not None:
+            result['RecurrenceType'] = self.recurrence_type
+        if self.recurrence_values is not None:
+            result['RecurrenceValues'] = self.recurrence_values
+        result['TimerPeriods'] = []
+        if self.timer_periods is not None:
+            for k in self.timer_periods:
+                result['TimerPeriods'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecurrenceType') is not None:
+            self.recurrence_type = m.get('RecurrenceType')
+        if m.get('RecurrenceValues') is not None:
+            self.recurrence_values = m.get('RecurrenceValues')
+        self.timer_periods = []
+        if m.get('TimerPeriods') is not None:
+            for k in m.get('TimerPeriods'):
+                temp_model = ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods()
+                self.timer_periods.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
+    def __init__(
+        self,
+        max_scaling_amount: int = None,
+        node_amount: int = None,
+        recurrence_schedules: List[ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules] = None,
+        scaling_down_after_idle_minutes: int = None,
+        scaling_step: int = None,
+        scaling_usage_threshold: str = None,
+        strategy_disable_date: str = None,
+        strategy_enable_date: str = None,
+        strategy_type: str = None,
+        warm_up: bool = None,
+    ):
+        self.max_scaling_amount = max_scaling_amount
+        self.node_amount = node_amount
+        self.recurrence_schedules = recurrence_schedules
+        self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
+        self.scaling_step = scaling_step
+        self.scaling_usage_threshold = scaling_usage_threshold
+        self.strategy_disable_date = strategy_disable_date
+        self.strategy_enable_date = strategy_enable_date
+        self.strategy_type = strategy_type
+        self.warm_up = warm_up
+
+    def validate(self):
+        if self.recurrence_schedules:
+            for k in self.recurrence_schedules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.max_scaling_amount is not None:
             result['MaxScalingAmount'] = self.max_scaling_amount
+        if self.node_amount is not None:
+            result['NodeAmount'] = self.node_amount
+        result['RecurrenceSchedules'] = []
+        if self.recurrence_schedules is not None:
+            for k in self.recurrence_schedules:
+                result['RecurrenceSchedules'].append(k.to_map() if k else None)
         if self.scaling_down_after_idle_minutes is not None:
             result['ScalingDownAfterIdleMinutes'] = self.scaling_down_after_idle_minutes
         if self.scaling_step is not None:
             result['ScalingStep'] = self.scaling_step
         if self.scaling_usage_threshold is not None:
             result['ScalingUsageThreshold'] = self.scaling_usage_threshold
+        if self.strategy_disable_date is not None:
+            result['StrategyDisableDate'] = self.strategy_disable_date
+        if self.strategy_enable_date is not None:
+            result['StrategyEnableDate'] = self.strategy_enable_date
         if self.strategy_type is not None:
             result['StrategyType'] = self.strategy_type
+        if self.warm_up is not None:
+            result['WarmUp'] = self.warm_up
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('MaxScalingAmount') is not None:
             self.max_scaling_amount = m.get('MaxScalingAmount')
+        if m.get('NodeAmount') is not None:
+            self.node_amount = m.get('NodeAmount')
+        self.recurrence_schedules = []
+        if m.get('RecurrenceSchedules') is not None:
+            for k in m.get('RecurrenceSchedules'):
+                temp_model = ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules()
+                self.recurrence_schedules.append(temp_model.from_map(k))
         if m.get('ScalingDownAfterIdleMinutes') is not None:
             self.scaling_down_after_idle_minutes = m.get('ScalingDownAfterIdleMinutes')
         if m.get('ScalingStep') is not None:
             self.scaling_step = m.get('ScalingStep')
         if m.get('ScalingUsageThreshold') is not None:
             self.scaling_usage_threshold = m.get('ScalingUsageThreshold')
+        if m.get('StrategyDisableDate') is not None:
+            self.strategy_disable_date = m.get('StrategyDisableDate')
+        if m.get('StrategyEnableDate') is not None:
+            self.strategy_enable_date = m.get('StrategyEnableDate')
         if m.get('StrategyType') is not None:
             self.strategy_type = m.get('StrategyType')
+        if m.get('WarmUp') is not None:
+            self.warm_up = m.get('WarmUp')
         return self
 
 

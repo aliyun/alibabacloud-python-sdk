@@ -1222,6 +1222,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.node_instance_type):
+            query['NodeInstanceType'] = request.node_instance_type
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.page_number):
@@ -1260,6 +1262,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.node_instance_type):
+            query['NodeInstanceType'] = request.node_instance_type
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.page_number):
