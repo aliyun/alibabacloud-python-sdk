@@ -429,6 +429,367 @@ class AnalyzeChestVesselResponse(TeaModel):
         return self
 
 
+class CalcBMDRequestURLList(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+    ):
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class CalcBMDRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        source_type: str = None,
+        urllist: List[CalcBMDRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.org_id = org_id
+        self.org_name = org_name
+        self.source_type = source_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = CalcBMDRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class CalcBMDAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class CalcBMDAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_format: str = None,
+        org_id: str = None,
+        org_name: str = None,
+        source_type: str = None,
+        urllist: List[CalcBMDAdvanceRequestURLList] = None,
+    ):
+        self.data_format = data_format
+        self.org_id = org_id
+        self.org_name = org_name
+        self.source_type = source_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_format is not None:
+            result['DataFormat'] = self.data_format
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataFormat') is not None:
+            self.data_format = m.get('DataFormat')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = CalcBMDAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
+class CalcBMDResponseBodyDataDetections(TeaModel):
+    def __init__(
+        self,
+        vert_bmd: float = None,
+        vert_category: float = None,
+        vert_id: str = None,
+        vert_tscore: float = None,
+        vert_zscore: float = None,
+    ):
+        self.vert_bmd = vert_bmd
+        self.vert_category = vert_category
+        self.vert_id = vert_id
+        self.vert_tscore = vert_tscore
+        self.vert_zscore = vert_zscore
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vert_bmd is not None:
+            result['VertBMD'] = self.vert_bmd
+        if self.vert_category is not None:
+            result['VertCategory'] = self.vert_category
+        if self.vert_id is not None:
+            result['VertId'] = self.vert_id
+        if self.vert_tscore is not None:
+            result['VertTScore'] = self.vert_tscore
+        if self.vert_zscore is not None:
+            result['VertZScore'] = self.vert_zscore
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VertBMD') is not None:
+            self.vert_bmd = m.get('VertBMD')
+        if m.get('VertCategory') is not None:
+            self.vert_category = m.get('VertCategory')
+        if m.get('VertId') is not None:
+            self.vert_id = m.get('VertId')
+        if m.get('VertTScore') is not None:
+            self.vert_tscore = m.get('VertTScore')
+        if m.get('VertZScore') is not None:
+            self.vert_zscore = m.get('VertZScore')
+        return self
+
+
+class CalcBMDResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detections: List[CalcBMDResponseBodyDataDetections] = None,
+        origin: List[float] = None,
+        result_url: str = None,
+        spacing: List[float] = None,
+    ):
+        self.detections = detections
+        self.origin = origin
+        self.result_url = result_url
+        self.spacing = spacing
+
+    def validate(self):
+        if self.detections:
+            for k in self.detections:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Detections'] = []
+        if self.detections is not None:
+            for k in self.detections:
+                result['Detections'].append(k.to_map() if k else None)
+        if self.origin is not None:
+            result['Origin'] = self.origin
+        if self.result_url is not None:
+            result['ResultURL'] = self.result_url
+        if self.spacing is not None:
+            result['Spacing'] = self.spacing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detections = []
+        if m.get('Detections') is not None:
+            for k in m.get('Detections'):
+                temp_model = CalcBMDResponseBodyDataDetections()
+                self.detections.append(temp_model.from_map(k))
+        if m.get('Origin') is not None:
+            self.origin = m.get('Origin')
+        if m.get('ResultURL') is not None:
+            self.result_url = m.get('ResultURL')
+        if m.get('Spacing') is not None:
+            self.spacing = m.get('Spacing')
+        return self
+
+
+class CalcBMDResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CalcBMDResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CalcBMDResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CalcBMDResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CalcBMDResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CalcBMDResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CalcCACSRequestURLList(TeaModel):
     def __init__(
         self,

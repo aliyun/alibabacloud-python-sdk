@@ -1,3 +1,6 @@
+2023-04-03 Version: 2.0.27
+- Release CalcBMD.
+
 2023-03-28 Version: 2.0.26
 - Release SegmentLymphNode.
 
