@@ -25094,10 +25094,12 @@ class DescribeRecordResolveStatisticsSummaryResponseBodyStatistics(TeaModel):
         count: str = None,
         domain_name: str = None,
         domain_type: str = None,
+        sub_domain: str = None,
     ):
         self.count = count
         self.domain_name = domain_name
         self.domain_type = domain_type
+        self.sub_domain = sub_domain
 
     def validate(self):
         pass
@@ -25114,6 +25116,8 @@ class DescribeRecordResolveStatisticsSummaryResponseBodyStatistics(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_type is not None:
             result['DomainType'] = self.domain_type
+        if self.sub_domain is not None:
+            result['SubDomain'] = self.sub_domain
         return result
 
     def from_map(self, m: dict = None):
@@ -25124,6 +25128,8 @@ class DescribeRecordResolveStatisticsSummaryResponseBodyStatistics(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainType') is not None:
             self.domain_type = m.get('DomainType')
+        if m.get('SubDomain') is not None:
+            self.sub_domain = m.get('SubDomain')
         return self
 
 
