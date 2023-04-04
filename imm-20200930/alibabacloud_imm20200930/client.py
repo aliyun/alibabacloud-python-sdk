@@ -400,6 +400,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_file_meta_with_options_async(request, runtime)
 
+    def batch_get_figure_cluster_with_options(
+        self,
+        tmp_req: imm_20200930_models.BatchGetFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.BatchGetFigureClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.object_ids):
+            request.object_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_ids_shrink):
+            query['ObjectIds'] = request.object_ids_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.BatchGetFigureClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_figure_cluster_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.BatchGetFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.BatchGetFigureClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.object_ids):
+            request.object_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_ids_shrink):
+            query['ObjectIds'] = request.object_ids_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.BatchGetFigureClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_figure_cluster(
+        self,
+        request: imm_20200930_models.BatchGetFigureClusterRequest,
+    ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_get_figure_cluster_with_options(request, runtime)
+
+    async def batch_get_figure_cluster_async(
+        self,
+        request: imm_20200930_models.BatchGetFigureClusterRequest,
+    ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_get_figure_cluster_with_options_async(request, runtime)
+
     def batch_get_file_meta_with_options(
         self,
         tmp_req: imm_20200930_models.BatchGetFileMetaRequest,
@@ -505,8 +591,6 @@ class Client(OpenApiClient):
             query['Files'] = request.files_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -547,8 +631,6 @@ class Client(OpenApiClient):
             query['Files'] = request.files_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -777,8 +859,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
@@ -825,8 +905,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
@@ -1087,8 +1165,6 @@ class Client(OpenApiClient):
             query['KdtreeOption'] = request.kdtree_option_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.octree_option_shrink):
             query['OctreeOption'] = request.octree_option_shrink
         if not UtilClient.is_unset(request.point_cloud_fields_shrink):
@@ -1153,8 +1229,6 @@ class Client(OpenApiClient):
             query['KdtreeOption'] = request.kdtree_option_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.octree_option_shrink):
             query['OctreeOption'] = request.octree_option_shrink
         if not UtilClient.is_unset(request.point_cloud_fields_shrink):
@@ -1420,138 +1494,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
 
-    def create_detect_video_labels_task_with_options(
-        self,
-        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        """
-        @deprecated : CreateDetectVideoLabelsTask is deprecated, please use imm::2020-09-30::CreateVideoLabelClassificationTask instead.
-        
-        @param tmp_req: CreateDetectVideoLabelsTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDetectVideoLabelsTaskResponse
-        Deprecated
-        """
-        UtilClient.validate_model(tmp_req)
-        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.credential_config_shrink):
-            query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
-        if not UtilClient.is_unset(request.project_name):
-            query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.source_uri):
-            query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.tags_shrink):
-            query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDetectVideoLabelsTask',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_detect_video_labels_task_with_options_async(
-        self,
-        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        """
-        @deprecated : CreateDetectVideoLabelsTask is deprecated, please use imm::2020-09-30::CreateVideoLabelClassificationTask instead.
-        
-        @param tmp_req: CreateDetectVideoLabelsTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateDetectVideoLabelsTaskResponse
-        Deprecated
-        """
-        UtilClient.validate_model(tmp_req)
-        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.credential_config_shrink):
-            query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
-        if not UtilClient.is_unset(request.project_name):
-            query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.source_uri):
-            query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.tags_shrink):
-            query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDetectVideoLabelsTask',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_detect_video_labels_task(
-        self,
-        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        """
-        @deprecated : CreateDetectVideoLabelsTask is deprecated, please use imm::2020-09-30::CreateVideoLabelClassificationTask instead.
-        
-        @param request: CreateDetectVideoLabelsTaskRequest
-        @return: CreateDetectVideoLabelsTaskResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_detect_video_labels_task_with_options(request, runtime)
-
-    async def create_detect_video_labels_task_async(
-        self,
-        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        """
-        @deprecated : CreateDetectVideoLabelsTask is deprecated, please use imm::2020-09-30::CreateVideoLabelClassificationTask instead.
-        
-        @param request: CreateDetectVideoLabelsTaskRequest
-        @return: CreateDetectVideoLabelsTaskResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_detect_video_labels_task_with_options_async(request, runtime)
-
     def create_faces_searching_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateFacesSearchingTaskRequest,
@@ -1571,8 +1513,6 @@ class Client(OpenApiClient):
             query['MaxResult'] = request.max_result
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sources_shrink):
@@ -1619,8 +1559,6 @@ class Client(OpenApiClient):
             query['MaxResult'] = request.max_result
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sources_shrink):
@@ -1679,8 +1617,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -1723,8 +1659,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -1787,8 +1721,6 @@ class Client(OpenApiClient):
             query['Froms'] = request.froms_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -1839,8 +1771,6 @@ class Client(OpenApiClient):
             query['Froms'] = request.froms_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -1903,8 +1833,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
@@ -1957,8 +1885,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
@@ -2025,8 +1951,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
@@ -2079,8 +2003,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
@@ -2151,8 +2073,6 @@ class Client(OpenApiClient):
             query['MaxFrames'] = request.max_frames
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.reviewer):
@@ -2209,8 +2129,6 @@ class Client(OpenApiClient):
             query['MaxFrames'] = request.max_frames
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.reviewer):
@@ -2287,8 +2205,6 @@ class Client(OpenApiClient):
             query['Margin'] = request.margin
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.padding):
             query['Padding'] = request.padding
         if not UtilClient.is_unset(request.project_name):
@@ -2355,8 +2271,6 @@ class Client(OpenApiClient):
             query['Margin'] = request.margin
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.padding):
             query['Padding'] = request.padding
         if not UtilClient.is_unset(request.project_name):
@@ -2427,8 +2341,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sources_shrink):
@@ -2479,8 +2391,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sources_shrink):
@@ -2549,8 +2459,6 @@ class Client(OpenApiClient):
             query['LocationOptions'] = request.location_options_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -2601,8 +2509,6 @@ class Client(OpenApiClient):
             query['LocationOptions'] = request.location_options_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -2665,8 +2571,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sources_shrink):
@@ -2719,8 +2623,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sources_shrink):
@@ -2805,8 +2707,6 @@ class Client(OpenApiClient):
             query['MaxSheetRow'] = request.max_sheet_row
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.pages):
             query['Pages'] = request.pages
         if not UtilClient.is_unset(request.paper_horizontal):
@@ -2905,8 +2805,6 @@ class Client(OpenApiClient):
             query['MaxSheetRow'] = request.max_sheet_row
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.pages):
             query['Pages'] = request.pages
         if not UtilClient.is_unset(request.paper_horizontal):
@@ -3101,8 +2999,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -3145,8 +3041,6 @@ class Client(OpenApiClient):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.tags_shrink):
@@ -3473,8 +3367,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -3521,8 +3413,6 @@ class Client(OpenApiClient):
             query['CredentialConfig'] = request.credential_config_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.source_uri):
@@ -3589,8 +3479,6 @@ class Client(OpenApiClient):
             query['MaxFrames'] = request.max_frames
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.reviewer):
@@ -3647,8 +3535,6 @@ class Client(OpenApiClient):
             query['MaxFrames'] = request.max_frames
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.reviewer):
@@ -4466,6 +4352,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_bodies_with_options_async(request, runtime)
 
+    def detect_image_cars_with_options(
+        self,
+        tmp_req: imm_20200930_models.DetectImageCarsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageCarsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageCarsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageCars',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageCarsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_image_cars_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.DetectImageCarsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageCarsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.DetectImageCarsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageCars',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageCarsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_image_cars(
+        self,
+        request: imm_20200930_models.DetectImageCarsRequest,
+    ) -> imm_20200930_models.DetectImageCarsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_image_cars_with_options(request, runtime)
+
+    async def detect_image_cars_async(
+        self,
+        request: imm_20200930_models.DetectImageCarsRequest,
+    ) -> imm_20200930_models.DetectImageCarsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_image_cars_with_options_async(request, runtime)
+
     def detect_image_codes_with_options(
         self,
         tmp_req: imm_20200930_models.DetectImageCodesRequest,
@@ -5063,6 +5035,92 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DetectTextAnomalyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detect_text_anomaly_with_options_async(request, runtime)
+
+    def extract_document_text_with_options(
+        self,
+        tmp_req: imm_20200930_models.ExtractDocumentTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.ExtractDocumentTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExtractDocumentText',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ExtractDocumentTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def extract_document_text_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.ExtractDocumentTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.ExtractDocumentTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExtractDocumentText',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ExtractDocumentTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def extract_document_text(
+        self,
+        request: imm_20200930_models.ExtractDocumentTextRequest,
+    ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.extract_document_text_with_options(request, runtime)
+
+    async def extract_document_text_async(
+        self,
+        request: imm_20200930_models.ExtractDocumentTextRequest,
+    ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.extract_document_text_with_options_async(request, runtime)
 
     def fuzzy_query_with_options(
         self,
@@ -6022,6 +6080,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_file_meta_with_options_async(request, runtime)
 
+    def get_image_moderation_result_with_options(
+        self,
+        request: imm_20200930_models.GetImageModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetImageModerationResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageModerationResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetImageModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_moderation_result_with_options_async(
+        self,
+        request: imm_20200930_models.GetImageModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetImageModerationResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageModerationResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetImageModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image_moderation_result(
+        self,
+        request: imm_20200930_models.GetImageModerationResultRequest,
+    ) -> imm_20200930_models.GetImageModerationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_image_moderation_result_with_options(request, runtime)
+
+    async def get_image_moderation_result_async(
+        self,
+        request: imm_20200930_models.GetImageModerationResultRequest,
+    ) -> imm_20200930_models.GetImageModerationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_image_moderation_result_with_options_async(request, runtime)
+
     def get_ossbucket_attachment_with_options(
         self,
         request: imm_20200930_models.GetOSSBucketAttachmentRequest,
@@ -6474,54 +6610,24 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_video_label_classification_result_with_options_async(request, runtime)
 
-    def get_video_playlist_with_options(
+    def get_video_moderation_result_with_options(
         self,
-        tmp_req: imm_20200930_models.GetVideoPlaylistRequest,
+        request: imm_20200930_models.GetVideoModerationResultRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.GetVideoPlaylistResponse:
-        """
-        @deprecated
-        
-        @param tmp_req: GetVideoPlaylistRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetVideoPlaylistResponse
-        Deprecated
-        """
-        UtilClient.validate_model(tmp_req)
-        request = imm_20200930_models.GetVideoPlaylistShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
-        if not UtilClient.is_unset(tmp_req.source_subtitles):
-            request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
-        if not UtilClient.is_unset(tmp_req.targets):
-            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+    ) -> imm_20200930_models.GetVideoModerationResultResponse:
+        UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.credential_config_shrink):
-            query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.master_uri):
-            query['MasterURI'] = request.master_uri
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.source_duration):
-            query['SourceDuration'] = request.source_duration
-        if not UtilClient.is_unset(request.source_start_time):
-            query['SourceStartTime'] = request.source_start_time
-        if not UtilClient.is_unset(request.source_subtitles_shrink):
-            query['SourceSubtitles'] = request.source_subtitles_shrink
-        if not UtilClient.is_unset(request.source_uri):
-            query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.tags_shrink):
-            query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.targets_shrink):
-            query['Targets'] = request.targets_shrink
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetVideoPlaylist',
+            action='GetVideoModerationResult',
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
@@ -6532,58 +6638,28 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            imm_20200930_models.GetVideoPlaylistResponse(),
+            imm_20200930_models.GetVideoModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_video_playlist_with_options_async(
+    async def get_video_moderation_result_with_options_async(
         self,
-        tmp_req: imm_20200930_models.GetVideoPlaylistRequest,
+        request: imm_20200930_models.GetVideoModerationResultRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.GetVideoPlaylistResponse:
-        """
-        @deprecated
-        
-        @param tmp_req: GetVideoPlaylistRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetVideoPlaylistResponse
-        Deprecated
-        """
-        UtilClient.validate_model(tmp_req)
-        request = imm_20200930_models.GetVideoPlaylistShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
-        if not UtilClient.is_unset(tmp_req.source_subtitles):
-            request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
-        if not UtilClient.is_unset(tmp_req.targets):
-            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+    ) -> imm_20200930_models.GetVideoModerationResultResponse:
+        UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.credential_config_shrink):
-            query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.master_uri):
-            query['MasterURI'] = request.master_uri
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.source_duration):
-            query['SourceDuration'] = request.source_duration
-        if not UtilClient.is_unset(request.source_start_time):
-            query['SourceStartTime'] = request.source_start_time
-        if not UtilClient.is_unset(request.source_subtitles_shrink):
-            query['SourceSubtitles'] = request.source_subtitles_shrink
-        if not UtilClient.is_unset(request.source_uri):
-            query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.tags_shrink):
-            query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.targets_shrink):
-            query['Targets'] = request.targets_shrink
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetVideoPlaylist',
+            action='GetVideoModerationResult',
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
@@ -6594,37 +6670,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            imm_20200930_models.GetVideoPlaylistResponse(),
+            imm_20200930_models.GetVideoModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_video_playlist(
+    def get_video_moderation_result(
         self,
-        request: imm_20200930_models.GetVideoPlaylistRequest,
-    ) -> imm_20200930_models.GetVideoPlaylistResponse:
-        """
-        @deprecated
-        
-        @param request: GetVideoPlaylistRequest
-        @return: GetVideoPlaylistResponse
-        Deprecated
-        """
+        request: imm_20200930_models.GetVideoModerationResultRequest,
+    ) -> imm_20200930_models.GetVideoModerationResultResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_video_playlist_with_options(request, runtime)
+        return self.get_video_moderation_result_with_options(request, runtime)
 
-    async def get_video_playlist_async(
+    async def get_video_moderation_result_async(
         self,
-        request: imm_20200930_models.GetVideoPlaylistRequest,
-    ) -> imm_20200930_models.GetVideoPlaylistResponse:
-        """
-        @deprecated
-        
-        @param request: GetVideoPlaylistRequest
-        @return: GetVideoPlaylistResponse
-        Deprecated
-        """
+        request: imm_20200930_models.GetVideoModerationResultRequest,
+    ) -> imm_20200930_models.GetVideoModerationResultResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_video_playlist_with_options_async(request, runtime)
+        return await self.get_video_moderation_result_with_options_async(request, runtime)
 
     def index_file_meta_with_options(
         self,
@@ -6645,8 +6707,6 @@ class Client(OpenApiClient):
             query['File'] = request.file_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
@@ -6687,8 +6747,6 @@ class Client(OpenApiClient):
             query['File'] = request.file_shrink
         if not UtilClient.is_unset(request.notification_shrink):
             query['Notification'] = request.notification_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(

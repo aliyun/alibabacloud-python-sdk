@@ -1,3 +1,7 @@
+2023-04-04 Version: 2.1.11
+- Update GenerateVideoPlaylist.
+- Support car detection, text extraction APIs.
+
 2023-03-13 Version: 2.1.10
 - Update GenerateVideoPlaylist.
 - Add cross region compression.
