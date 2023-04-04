@@ -393,6 +393,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_video_task_info_with_options_async(request, runtime)
 
+    def license_auth_with_options(
+        self,
+        request: avatar_20220130_models.LicenseAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.LicenseAuthResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.license):
+            query['License'] = request.license
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LicenseAuth',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.LicenseAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def license_auth_with_options_async(
+        self,
+        request: avatar_20220130_models.LicenseAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.LicenseAuthResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.license):
+            query['License'] = request.license
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LicenseAuth',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.LicenseAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def license_auth(
+        self,
+        request: avatar_20220130_models.LicenseAuthRequest,
+    ) -> avatar_20220130_models.LicenseAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.license_auth_with_options(request, runtime)
+
+    async def license_auth_async(
+        self,
+        request: avatar_20220130_models.LicenseAuthRequest,
+    ) -> avatar_20220130_models.LicenseAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.license_auth_with_options_async(request, runtime)
+
     def query_running_instance_with_options(
         self,
         tmp_req: avatar_20220130_models.QueryRunningInstanceRequest,
