@@ -3271,6 +3271,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_cc_5g_service_with_options_async(request, runtime)
 
+    def rebind_cards_with_options(
+        self,
+        request: cc5g20220314_models.RebindCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.RebindCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebindCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.RebindCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rebind_cards_with_options_async(
+        self,
+        request: cc5g20220314_models.RebindCardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.RebindCardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.iccids):
+            query['Iccids'] = request.iccids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebindCards',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.RebindCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rebind_cards(
+        self,
+        request: cc5g20220314_models.RebindCardsRequest,
+    ) -> cc5g20220314_models.RebindCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.rebind_cards_with_options(request, runtime)
+
+    async def rebind_cards_async(
+        self,
+        request: cc5g20220314_models.RebindCardsRequest,
+    ) -> cc5g20220314_models.RebindCardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.rebind_cards_with_options_async(request, runtime)
+
     def remove_wireless_cloud_connector_from_group_with_options(
         self,
         request: cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupRequest,
