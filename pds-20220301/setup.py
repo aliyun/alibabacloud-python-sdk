@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_pds20220301.
 
-Created on 18/11/2022
+Created on 06/04/2023
 
 @author: Alibaba Cloud SDK
 """
@@ -41,7 +41,7 @@ REQUIRES = [
     "alibabacloud_gateway_spi>=0.0.1, <1.0.0",
     "alibabacloud_gateway_pds>=0.0.5, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.6, <1.0.0",
-    "alibabacloud_openapi_util>=0.2.0, <1.0.0"
+    "alibabacloud_openapi_util>=0.2.1, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''

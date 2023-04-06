@@ -1,3 +1,6 @@
+2023-04-06 Version: 1.0.7
+- Add domain api
+
 2022-11-18 Version: 1.0.6
 - Add get media meta interface
 

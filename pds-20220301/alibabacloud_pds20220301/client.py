@@ -29,21 +29,99 @@ class Client(OpenApiClient):
         self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
 
-    def authorize(
+    def add_group_member_with_options(
         self,
-        request: pds_20220301_models.AuthorizeRequest,
-    ) -> pds_20220301_models.AuthorizeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.authorize_with_options(request, headers, runtime)
+        domain_id: str,
+        request: pds_20220301_models.AddGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AddGroupMemberResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.member_id):
+            body['member_id'] = request.member_id
+        if not UtilClient.is_unset(request.member_type):
+            body['member_type'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddGroupMember',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/add_member',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AddGroupMemberResponse(),
+            self.execute(params, req, runtime)
+        )
 
-    async def authorize_async(
+    async def add_group_member_with_options_async(
         self,
-        request: pds_20220301_models.AuthorizeRequest,
-    ) -> pds_20220301_models.AuthorizeResponse:
+        domain_id: str,
+        request: pds_20220301_models.AddGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.AddGroupMemberResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.member_id):
+            body['member_id'] = request.member_id
+        if not UtilClient.is_unset(request.member_type):
+            body['member_type'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddGroupMember',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/add_member',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.AddGroupMemberResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def add_group_member(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.AddGroupMemberRequest,
+    ) -> pds_20220301_models.AddGroupMemberResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.authorize_with_options_async(request, headers, runtime)
+        return self.add_group_member_with_options(domain_id, request, headers, runtime)
+
+    async def add_group_member_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.AddGroupMemberRequest,
+    ) -> pds_20220301_models.AddGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_group_member_with_options_async(domain_id, request, headers, runtime)
 
     def authorize_with_options(
         self,
@@ -137,21 +215,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def batch(
+    def authorize(
         self,
-        request: pds_20220301_models.BatchRequest,
-    ) -> pds_20220301_models.BatchResponse:
+        request: pds_20220301_models.AuthorizeRequest,
+    ) -> pds_20220301_models.AuthorizeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_with_options(request, headers, runtime)
+        return self.authorize_with_options(request, headers, runtime)
 
-    async def batch_async(
+    async def authorize_async(
         self,
-        request: pds_20220301_models.BatchRequest,
-    ) -> pds_20220301_models.BatchResponse:
+        request: pds_20220301_models.AuthorizeRequest,
+    ) -> pds_20220301_models.AuthorizeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_with_options_async(request, headers, runtime)
+        return await self.authorize_with_options_async(request, headers, runtime)
 
     def batch_with_options(
         self,
@@ -217,21 +295,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def cancel_share_link(
+    def batch(
         self,
-        request: pds_20220301_models.CancelShareLinkRequest,
-    ) -> pds_20220301_models.CancelShareLinkResponse:
+        request: pds_20220301_models.BatchRequest,
+    ) -> pds_20220301_models.BatchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_share_link_with_options(request, headers, runtime)
+        return self.batch_with_options(request, headers, runtime)
 
-    async def cancel_share_link_async(
+    async def batch_async(
         self,
-        request: pds_20220301_models.CancelShareLinkRequest,
-    ) -> pds_20220301_models.CancelShareLinkResponse:
+        request: pds_20220301_models.BatchRequest,
+    ) -> pds_20220301_models.BatchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_share_link_with_options_async(request, headers, runtime)
+        return await self.batch_with_options_async(request, headers, runtime)
 
     def cancel_share_link_with_options(
         self,
@@ -293,21 +371,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def clear_recyclebin(
+    def cancel_share_link(
         self,
-        request: pds_20220301_models.ClearRecyclebinRequest,
-    ) -> pds_20220301_models.ClearRecyclebinResponse:
+        request: pds_20220301_models.CancelShareLinkRequest,
+    ) -> pds_20220301_models.CancelShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.clear_recyclebin_with_options(request, headers, runtime)
+        return self.cancel_share_link_with_options(request, headers, runtime)
 
-    async def clear_recyclebin_async(
+    async def cancel_share_link_async(
         self,
-        request: pds_20220301_models.ClearRecyclebinRequest,
-    ) -> pds_20220301_models.ClearRecyclebinResponse:
+        request: pds_20220301_models.CancelShareLinkRequest,
+    ) -> pds_20220301_models.CancelShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.clear_recyclebin_with_options_async(request, headers, runtime)
+        return await self.cancel_share_link_with_options_async(request, headers, runtime)
 
     def clear_recyclebin_with_options(
         self,
@@ -369,21 +447,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def complete_file(
+    def clear_recyclebin(
         self,
-        request: pds_20220301_models.CompleteFileRequest,
-    ) -> pds_20220301_models.CompleteFileResponse:
+        request: pds_20220301_models.ClearRecyclebinRequest,
+    ) -> pds_20220301_models.ClearRecyclebinResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.complete_file_with_options(request, headers, runtime)
+        return self.clear_recyclebin_with_options(request, headers, runtime)
 
-    async def complete_file_async(
+    async def clear_recyclebin_async(
         self,
-        request: pds_20220301_models.CompleteFileRequest,
-    ) -> pds_20220301_models.CompleteFileResponse:
+        request: pds_20220301_models.ClearRecyclebinRequest,
+    ) -> pds_20220301_models.ClearRecyclebinResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.complete_file_with_options_async(request, headers, runtime)
+        return await self.clear_recyclebin_with_options_async(request, headers, runtime)
 
     def complete_file_with_options(
         self,
@@ -453,21 +531,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def copy_file(
+    def complete_file(
         self,
-        request: pds_20220301_models.CopyFileRequest,
-    ) -> pds_20220301_models.CopyFileResponse:
+        request: pds_20220301_models.CompleteFileRequest,
+    ) -> pds_20220301_models.CompleteFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.copy_file_with_options(request, headers, runtime)
+        return self.complete_file_with_options(request, headers, runtime)
 
-    async def copy_file_async(
+    async def complete_file_async(
         self,
-        request: pds_20220301_models.CopyFileRequest,
-    ) -> pds_20220301_models.CopyFileResponse:
+        request: pds_20220301_models.CompleteFileRequest,
+    ) -> pds_20220301_models.CompleteFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.copy_file_with_options_async(request, headers, runtime)
+        return await self.complete_file_with_options_async(request, headers, runtime)
 
     def copy_file_with_options(
         self,
@@ -541,21 +619,121 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_drive(
+    def copy_file(
         self,
-        request: pds_20220301_models.CreateDriveRequest,
-    ) -> pds_20220301_models.CreateDriveResponse:
+        request: pds_20220301_models.CopyFileRequest,
+    ) -> pds_20220301_models.CopyFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_drive_with_options(request, headers, runtime)
+        return self.copy_file_with_options(request, headers, runtime)
 
-    async def create_drive_async(
+    async def copy_file_async(
         self,
-        request: pds_20220301_models.CreateDriveRequest,
-    ) -> pds_20220301_models.CreateDriveResponse:
+        request: pds_20220301_models.CopyFileRequest,
+    ) -> pds_20220301_models.CopyFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_drive_with_options_async(request, headers, runtime)
+        return await self.copy_file_with_options_async(request, headers, runtime)
+
+    def create_domain_with_options(
+        self,
+        request: pds_20220301_models.CreateDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_name):
+            body['domain_name'] = request.domain_name
+        if not UtilClient.is_unset(request.init_drive_enable):
+            body['init_drive_enable'] = request.init_drive_enable
+        if not UtilClient.is_unset(request.init_drive_size):
+            body['init_drive_size'] = request.init_drive_size
+        if not UtilClient.is_unset(request.parent_domain_id):
+            body['parent_domain_id'] = request.parent_domain_id
+        if not UtilClient.is_unset(request.size_quota):
+            body['size_quota'] = request.size_quota
+        if not UtilClient.is_unset(request.user_count_quota):
+            body['user_count_quota'] = request.user_count_quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateDomainResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_domain_with_options_async(
+        self,
+        request: pds_20220301_models.CreateDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_name):
+            body['domain_name'] = request.domain_name
+        if not UtilClient.is_unset(request.init_drive_enable):
+            body['init_drive_enable'] = request.init_drive_enable
+        if not UtilClient.is_unset(request.init_drive_size):
+            body['init_drive_size'] = request.init_drive_size
+        if not UtilClient.is_unset(request.parent_domain_id):
+            body['parent_domain_id'] = request.parent_domain_id
+        if not UtilClient.is_unset(request.size_quota):
+            body['size_quota'] = request.size_quota
+        if not UtilClient.is_unset(request.user_count_quota):
+            body['user_count_quota'] = request.user_count_quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateDomainResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_domain(
+        self,
+        request: pds_20220301_models.CreateDomainRequest,
+    ) -> pds_20220301_models.CreateDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_domain_with_options(request, headers, runtime)
+
+    async def create_domain_async(
+        self,
+        request: pds_20220301_models.CreateDomainRequest,
+    ) -> pds_20220301_models.CreateDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_domain_with_options_async(request, headers, runtime)
 
     def create_drive_with_options(
         self,
@@ -645,21 +823,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_file(
+    def create_drive(
         self,
-        request: pds_20220301_models.CreateFileRequest,
-    ) -> pds_20220301_models.CreateFileResponse:
+        request: pds_20220301_models.CreateDriveRequest,
+    ) -> pds_20220301_models.CreateDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_file_with_options(request, headers, runtime)
+        return self.create_drive_with_options(request, headers, runtime)
 
-    async def create_file_async(
+    async def create_drive_async(
         self,
-        request: pds_20220301_models.CreateFileRequest,
-    ) -> pds_20220301_models.CreateFileResponse:
+        request: pds_20220301_models.CreateDriveRequest,
+    ) -> pds_20220301_models.CreateDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_file_with_options_async(request, headers, runtime)
+        return await self.create_drive_with_options_async(request, headers, runtime)
 
     def create_file_with_options(
         self,
@@ -801,21 +979,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_group(
+    def create_file(
         self,
-        request: pds_20220301_models.CreateGroupRequest,
-    ) -> pds_20220301_models.CreateGroupResponse:
+        request: pds_20220301_models.CreateFileRequest,
+    ) -> pds_20220301_models.CreateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_group_with_options(request, headers, runtime)
+        return self.create_file_with_options(request, headers, runtime)
 
-    async def create_group_async(
+    async def create_file_async(
         self,
-        request: pds_20220301_models.CreateGroupRequest,
-    ) -> pds_20220301_models.CreateGroupResponse:
+        request: pds_20220301_models.CreateFileRequest,
+    ) -> pds_20220301_models.CreateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_group_with_options_async(request, headers, runtime)
+        return await self.create_file_with_options_async(request, headers, runtime)
 
     def create_group_with_options(
         self,
@@ -889,21 +1067,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_share_link(
+    def create_group(
         self,
-        request: pds_20220301_models.CreateShareLinkRequest,
-    ) -> pds_20220301_models.CreateShareLinkResponse:
+        request: pds_20220301_models.CreateGroupRequest,
+    ) -> pds_20220301_models.CreateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_share_link_with_options(request, headers, runtime)
+        return self.create_group_with_options(request, headers, runtime)
 
-    async def create_share_link_async(
+    async def create_group_async(
         self,
-        request: pds_20220301_models.CreateShareLinkRequest,
-    ) -> pds_20220301_models.CreateShareLinkResponse:
+        request: pds_20220301_models.CreateGroupRequest,
+    ) -> pds_20220301_models.CreateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_share_link_with_options_async(request, headers, runtime)
+        return await self.create_group_with_options_async(request, headers, runtime)
 
     def create_share_link_with_options(
         self,
@@ -1013,21 +1191,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def create_user(
+    def create_share_link(
         self,
-        request: pds_20220301_models.CreateUserRequest,
-    ) -> pds_20220301_models.CreateUserResponse:
+        request: pds_20220301_models.CreateShareLinkRequest,
+    ) -> pds_20220301_models.CreateShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_user_with_options(request, headers, runtime)
+        return self.create_share_link_with_options(request, headers, runtime)
 
-    async def create_user_async(
+    async def create_share_link_async(
         self,
-        request: pds_20220301_models.CreateUserRequest,
-    ) -> pds_20220301_models.CreateUserResponse:
+        request: pds_20220301_models.CreateShareLinkRequest,
+    ) -> pds_20220301_models.CreateShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_user_with_options_async(request, headers, runtime)
+        return await self.create_share_link_with_options_async(request, headers, runtime)
 
     def create_user_with_options(
         self,
@@ -1129,21 +1307,97 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_drive(
+    def create_user(
         self,
-        request: pds_20220301_models.DeleteDriveRequest,
-    ) -> pds_20220301_models.DeleteDriveResponse:
+        request: pds_20220301_models.CreateUserRequest,
+    ) -> pds_20220301_models.CreateUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_drive_with_options(request, headers, runtime)
+        return self.create_user_with_options(request, headers, runtime)
 
-    async def delete_drive_async(
+    async def create_user_async(
         self,
-        request: pds_20220301_models.DeleteDriveRequest,
-    ) -> pds_20220301_models.DeleteDriveResponse:
+        request: pds_20220301_models.CreateUserRequest,
+    ) -> pds_20220301_models.CreateUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_drive_with_options_async(request, headers, runtime)
+        return await self.create_user_with_options_async(request, headers, runtime)
+
+    def delete_domain_with_options(
+        self,
+        request: pds_20220301_models.DeleteDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.DeleteDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_id):
+            body['domain_id'] = request.domain_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.DeleteDomainResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_domain_with_options_async(
+        self,
+        request: pds_20220301_models.DeleteDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.DeleteDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_id):
+            body['domain_id'] = request.domain_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.DeleteDomainResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_domain(
+        self,
+        request: pds_20220301_models.DeleteDomainRequest,
+    ) -> pds_20220301_models.DeleteDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_domain_with_options(request, headers, runtime)
+
+    async def delete_domain_async(
+        self,
+        request: pds_20220301_models.DeleteDomainRequest,
+    ) -> pds_20220301_models.DeleteDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_domain_with_options_async(request, headers, runtime)
 
     def delete_drive_with_options(
         self,
@@ -1205,21 +1459,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_file(
+    def delete_drive(
         self,
-        request: pds_20220301_models.DeleteFileRequest,
-    ) -> pds_20220301_models.DeleteFileResponse:
+        request: pds_20220301_models.DeleteDriveRequest,
+    ) -> pds_20220301_models.DeleteDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_file_with_options(request, headers, runtime)
+        return self.delete_drive_with_options(request, headers, runtime)
 
-    async def delete_file_async(
+    async def delete_drive_async(
         self,
-        request: pds_20220301_models.DeleteFileRequest,
-    ) -> pds_20220301_models.DeleteFileResponse:
+        request: pds_20220301_models.DeleteDriveRequest,
+    ) -> pds_20220301_models.DeleteDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_file_with_options_async(request, headers, runtime)
+        return await self.delete_drive_with_options_async(request, headers, runtime)
 
     def delete_file_with_options(
         self,
@@ -1285,21 +1539,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_group(
+    def delete_file(
         self,
-        request: pds_20220301_models.DeleteGroupRequest,
-    ) -> pds_20220301_models.DeleteGroupResponse:
+        request: pds_20220301_models.DeleteFileRequest,
+    ) -> pds_20220301_models.DeleteFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_group_with_options(request, headers, runtime)
+        return self.delete_file_with_options(request, headers, runtime)
 
-    async def delete_group_async(
+    async def delete_file_async(
         self,
-        request: pds_20220301_models.DeleteGroupRequest,
-    ) -> pds_20220301_models.DeleteGroupResponse:
+        request: pds_20220301_models.DeleteFileRequest,
+    ) -> pds_20220301_models.DeleteFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_group_with_options_async(request, headers, runtime)
+        return await self.delete_file_with_options_async(request, headers, runtime)
 
     def delete_group_with_options(
         self,
@@ -1361,21 +1615,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_revision(
+    def delete_group(
         self,
-        request: pds_20220301_models.DeleteRevisionRequest,
-    ) -> pds_20220301_models.DeleteRevisionResponse:
+        request: pds_20220301_models.DeleteGroupRequest,
+    ) -> pds_20220301_models.DeleteGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_revision_with_options(request, headers, runtime)
+        return self.delete_group_with_options(request, headers, runtime)
 
-    async def delete_revision_async(
+    async def delete_group_async(
         self,
-        request: pds_20220301_models.DeleteRevisionRequest,
-    ) -> pds_20220301_models.DeleteRevisionResponse:
+        request: pds_20220301_models.DeleteGroupRequest,
+    ) -> pds_20220301_models.DeleteGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_revision_with_options_async(request, headers, runtime)
+        return await self.delete_group_with_options_async(request, headers, runtime)
 
     def delete_revision_with_options(
         self,
@@ -1445,21 +1699,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delete_user(
+    def delete_revision(
         self,
-        request: pds_20220301_models.DeleteUserRequest,
-    ) -> pds_20220301_models.DeleteUserResponse:
+        request: pds_20220301_models.DeleteRevisionRequest,
+    ) -> pds_20220301_models.DeleteRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_user_with_options(request, headers, runtime)
+        return self.delete_revision_with_options(request, headers, runtime)
 
-    async def delete_user_async(
+    async def delete_revision_async(
         self,
-        request: pds_20220301_models.DeleteUserRequest,
-    ) -> pds_20220301_models.DeleteUserResponse:
+        request: pds_20220301_models.DeleteRevisionRequest,
+    ) -> pds_20220301_models.DeleteRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_user_with_options_async(request, headers, runtime)
+        return await self.delete_revision_with_options_async(request, headers, runtime)
 
     def delete_user_with_options(
         self,
@@ -1521,21 +1775,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def delta_get_last_cursor(
+    def delete_user(
         self,
-        request: pds_20220301_models.DeltaGetLastCursorRequest,
-    ) -> pds_20220301_models.DeltaGetLastCursorResponse:
+        request: pds_20220301_models.DeleteUserRequest,
+    ) -> pds_20220301_models.DeleteUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delta_get_last_cursor_with_options(request, headers, runtime)
+        return self.delete_user_with_options(request, headers, runtime)
 
-    async def delta_get_last_cursor_async(
+    async def delete_user_async(
         self,
-        request: pds_20220301_models.DeltaGetLastCursorRequest,
-    ) -> pds_20220301_models.DeltaGetLastCursorResponse:
+        request: pds_20220301_models.DeleteUserRequest,
+    ) -> pds_20220301_models.DeleteUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delta_get_last_cursor_with_options_async(request, headers, runtime)
+        return await self.delete_user_with_options_async(request, headers, runtime)
 
     def delta_get_last_cursor_with_options(
         self,
@@ -1601,21 +1855,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def download_file(
+    def delta_get_last_cursor(
         self,
-        request: pds_20220301_models.DownloadFileRequest,
-    ) -> pds_20220301_models.DownloadFileResponse:
+        request: pds_20220301_models.DeltaGetLastCursorRequest,
+    ) -> pds_20220301_models.DeltaGetLastCursorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.download_file_with_options(request, headers, runtime)
+        return self.delta_get_last_cursor_with_options(request, headers, runtime)
 
-    async def download_file_async(
+    async def delta_get_last_cursor_async(
         self,
-        request: pds_20220301_models.DownloadFileRequest,
-    ) -> pds_20220301_models.DownloadFileResponse:
+        request: pds_20220301_models.DeltaGetLastCursorRequest,
+    ) -> pds_20220301_models.DeltaGetLastCursorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.download_file_with_options_async(request, headers, runtime)
+        return await self.delta_get_last_cursor_with_options_async(request, headers, runtime)
 
     def download_file_with_options(
         self,
@@ -1693,21 +1947,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def file_add_permission(
+    def download_file(
         self,
-        request: pds_20220301_models.FileAddPermissionRequest,
-    ) -> pds_20220301_models.FileAddPermissionResponse:
+        request: pds_20220301_models.DownloadFileRequest,
+    ) -> pds_20220301_models.DownloadFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.file_add_permission_with_options(request, headers, runtime)
+        return self.download_file_with_options(request, headers, runtime)
 
-    async def file_add_permission_async(
+    async def download_file_async(
         self,
-        request: pds_20220301_models.FileAddPermissionRequest,
-    ) -> pds_20220301_models.FileAddPermissionResponse:
+        request: pds_20220301_models.DownloadFileRequest,
+    ) -> pds_20220301_models.DownloadFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.file_add_permission_with_options_async(request, headers, runtime)
+        return await self.download_file_with_options_async(request, headers, runtime)
 
     def file_add_permission_with_options(
         self,
@@ -1777,21 +2031,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def file_delete_user_tags(
+    def file_add_permission(
         self,
-        request: pds_20220301_models.FileDeleteUserTagsRequest,
-    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        request: pds_20220301_models.FileAddPermissionRequest,
+    ) -> pds_20220301_models.FileAddPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.file_delete_user_tags_with_options(request, headers, runtime)
+        return self.file_add_permission_with_options(request, headers, runtime)
 
-    async def file_delete_user_tags_async(
+    async def file_add_permission_async(
         self,
-        request: pds_20220301_models.FileDeleteUserTagsRequest,
-    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        request: pds_20220301_models.FileAddPermissionRequest,
+    ) -> pds_20220301_models.FileAddPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.file_delete_user_tags_with_options_async(request, headers, runtime)
+        return await self.file_add_permission_with_options_async(request, headers, runtime)
 
     def file_delete_user_tags_with_options(
         self,
@@ -1861,21 +2115,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def file_list_permission(
+    def file_delete_user_tags(
         self,
-        request: pds_20220301_models.FileListPermissionRequest,
-    ) -> pds_20220301_models.FileListPermissionResponse:
+        request: pds_20220301_models.FileDeleteUserTagsRequest,
+    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.file_list_permission_with_options(request, headers, runtime)
+        return self.file_delete_user_tags_with_options(request, headers, runtime)
 
-    async def file_list_permission_async(
+    async def file_delete_user_tags_async(
         self,
-        request: pds_20220301_models.FileListPermissionRequest,
-    ) -> pds_20220301_models.FileListPermissionResponse:
+        request: pds_20220301_models.FileDeleteUserTagsRequest,
+    ) -> pds_20220301_models.FileDeleteUserTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.file_list_permission_with_options_async(request, headers, runtime)
+        return await self.file_delete_user_tags_with_options_async(request, headers, runtime)
 
     def file_list_permission_with_options(
         self,
@@ -1941,21 +2195,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def file_put_user_tags(
+    def file_list_permission(
         self,
-        request: pds_20220301_models.FilePutUserTagsRequest,
-    ) -> pds_20220301_models.FilePutUserTagsResponse:
+        request: pds_20220301_models.FileListPermissionRequest,
+    ) -> pds_20220301_models.FileListPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.file_put_user_tags_with_options(request, headers, runtime)
+        return self.file_list_permission_with_options(request, headers, runtime)
 
-    async def file_put_user_tags_async(
+    async def file_list_permission_async(
         self,
-        request: pds_20220301_models.FilePutUserTagsRequest,
-    ) -> pds_20220301_models.FilePutUserTagsResponse:
+        request: pds_20220301_models.FileListPermissionRequest,
+    ) -> pds_20220301_models.FileListPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.file_put_user_tags_with_options_async(request, headers, runtime)
+        return await self.file_list_permission_with_options_async(request, headers, runtime)
 
     def file_put_user_tags_with_options(
         self,
@@ -2025,21 +2279,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def file_remove_permission(
+    def file_put_user_tags(
         self,
-        request: pds_20220301_models.FileRemovePermissionRequest,
-    ) -> pds_20220301_models.FileRemovePermissionResponse:
+        request: pds_20220301_models.FilePutUserTagsRequest,
+    ) -> pds_20220301_models.FilePutUserTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.file_remove_permission_with_options(request, headers, runtime)
+        return self.file_put_user_tags_with_options(request, headers, runtime)
 
-    async def file_remove_permission_async(
+    async def file_put_user_tags_async(
         self,
-        request: pds_20220301_models.FileRemovePermissionRequest,
-    ) -> pds_20220301_models.FileRemovePermissionResponse:
+        request: pds_20220301_models.FilePutUserTagsRequest,
+    ) -> pds_20220301_models.FilePutUserTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.file_remove_permission_with_options_async(request, headers, runtime)
+        return await self.file_put_user_tags_with_options_async(request, headers, runtime)
 
     def file_remove_permission_with_options(
         self,
@@ -2109,21 +2363,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_async_task(
+    def file_remove_permission(
         self,
-        request: pds_20220301_models.GetAsyncTaskRequest,
-    ) -> pds_20220301_models.GetAsyncTaskResponse:
+        request: pds_20220301_models.FileRemovePermissionRequest,
+    ) -> pds_20220301_models.FileRemovePermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_async_task_with_options(request, headers, runtime)
+        return self.file_remove_permission_with_options(request, headers, runtime)
 
-    async def get_async_task_async(
+    async def file_remove_permission_async(
         self,
-        request: pds_20220301_models.GetAsyncTaskRequest,
-    ) -> pds_20220301_models.GetAsyncTaskResponse:
+        request: pds_20220301_models.FileRemovePermissionRequest,
+    ) -> pds_20220301_models.FileRemovePermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_async_task_with_options_async(request, headers, runtime)
+        return await self.file_remove_permission_with_options_async(request, headers, runtime)
 
     def get_async_task_with_options(
         self,
@@ -2185,21 +2439,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_default_drive(
+    def get_async_task(
         self,
-        request: pds_20220301_models.GetDefaultDriveRequest,
-    ) -> pds_20220301_models.GetDefaultDriveResponse:
+        request: pds_20220301_models.GetAsyncTaskRequest,
+    ) -> pds_20220301_models.GetAsyncTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_default_drive_with_options(request, headers, runtime)
+        return self.get_async_task_with_options(request, headers, runtime)
 
-    async def get_default_drive_async(
+    async def get_async_task_async(
         self,
-        request: pds_20220301_models.GetDefaultDriveRequest,
-    ) -> pds_20220301_models.GetDefaultDriveResponse:
+        request: pds_20220301_models.GetAsyncTaskRequest,
+    ) -> pds_20220301_models.GetAsyncTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_default_drive_with_options_async(request, headers, runtime)
+        return await self.get_async_task_with_options_async(request, headers, runtime)
 
     def get_default_drive_with_options(
         self,
@@ -2261,21 +2515,101 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_download_url(
+    def get_default_drive(
         self,
-        request: pds_20220301_models.GetDownloadUrlRequest,
-    ) -> pds_20220301_models.GetDownloadUrlResponse:
+        request: pds_20220301_models.GetDefaultDriveRequest,
+    ) -> pds_20220301_models.GetDefaultDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_download_url_with_options(request, headers, runtime)
+        return self.get_default_drive_with_options(request, headers, runtime)
 
-    async def get_download_url_async(
+    async def get_default_drive_async(
         self,
-        request: pds_20220301_models.GetDownloadUrlRequest,
-    ) -> pds_20220301_models.GetDownloadUrlResponse:
+        request: pds_20220301_models.GetDefaultDriveRequest,
+    ) -> pds_20220301_models.GetDefaultDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_download_url_with_options_async(request, headers, runtime)
+        return await self.get_default_drive_with_options_async(request, headers, runtime)
+
+    def get_domain_with_options(
+        self,
+        request: pds_20220301_models.GetDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_id):
+            body['domain_id'] = request.domain_id
+        if not UtilClient.is_unset(request.get_quota_used):
+            body['get_quota_used'] = request.get_quota_used
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetDomainResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_domain_with_options_async(
+        self,
+        request: pds_20220301_models.GetDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_id):
+            body['domain_id'] = request.domain_id
+        if not UtilClient.is_unset(request.get_quota_used):
+            body['get_quota_used'] = request.get_quota_used
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetDomainResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_domain(
+        self,
+        request: pds_20220301_models.GetDomainRequest,
+    ) -> pds_20220301_models.GetDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_domain_with_options(request, headers, runtime)
+
+    async def get_domain_async(
+        self,
+        request: pds_20220301_models.GetDomainRequest,
+    ) -> pds_20220301_models.GetDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_domain_with_options_async(request, headers, runtime)
 
     def get_download_url_with_options(
         self,
@@ -2349,21 +2683,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_drive(
+    def get_download_url(
         self,
-        request: pds_20220301_models.GetDriveRequest,
-    ) -> pds_20220301_models.GetDriveResponse:
+        request: pds_20220301_models.GetDownloadUrlRequest,
+    ) -> pds_20220301_models.GetDownloadUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_drive_with_options(request, headers, runtime)
+        return self.get_download_url_with_options(request, headers, runtime)
 
-    async def get_drive_async(
+    async def get_download_url_async(
         self,
-        request: pds_20220301_models.GetDriveRequest,
-    ) -> pds_20220301_models.GetDriveResponse:
+        request: pds_20220301_models.GetDownloadUrlRequest,
+    ) -> pds_20220301_models.GetDownloadUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_drive_with_options_async(request, headers, runtime)
+        return await self.get_download_url_with_options_async(request, headers, runtime)
 
     def get_drive_with_options(
         self,
@@ -2425,21 +2759,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_file(
+    def get_drive(
         self,
-        request: pds_20220301_models.GetFileRequest,
-    ) -> pds_20220301_models.GetFileResponse:
+        request: pds_20220301_models.GetDriveRequest,
+    ) -> pds_20220301_models.GetDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_file_with_options(request, headers, runtime)
+        return self.get_drive_with_options(request, headers, runtime)
 
-    async def get_file_async(
+    async def get_drive_async(
         self,
-        request: pds_20220301_models.GetFileRequest,
-    ) -> pds_20220301_models.GetFileResponse:
+        request: pds_20220301_models.GetDriveRequest,
+    ) -> pds_20220301_models.GetDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_file_with_options_async(request, headers, runtime)
+        return await self.get_drive_with_options_async(request, headers, runtime)
 
     def get_file_with_options(
         self,
@@ -2513,21 +2847,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_group(
+    def get_file(
         self,
-        request: pds_20220301_models.GetGroupRequest,
-    ) -> pds_20220301_models.GetGroupResponse:
+        request: pds_20220301_models.GetFileRequest,
+    ) -> pds_20220301_models.GetFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_group_with_options(request, headers, runtime)
+        return self.get_file_with_options(request, headers, runtime)
 
-    async def get_group_async(
+    async def get_file_async(
         self,
-        request: pds_20220301_models.GetGroupRequest,
-    ) -> pds_20220301_models.GetGroupResponse:
+        request: pds_20220301_models.GetFileRequest,
+    ) -> pds_20220301_models.GetFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_group_with_options_async(request, headers, runtime)
+        return await self.get_file_with_options_async(request, headers, runtime)
 
     def get_group_with_options(
         self,
@@ -2589,21 +2923,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_link_info(
+    def get_group(
         self,
-        request: pds_20220301_models.GetLinkInfoRequest,
-    ) -> pds_20220301_models.GetLinkInfoResponse:
+        request: pds_20220301_models.GetGroupRequest,
+    ) -> pds_20220301_models.GetGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_link_info_with_options(request, headers, runtime)
+        return self.get_group_with_options(request, headers, runtime)
 
-    async def get_link_info_async(
+    async def get_group_async(
         self,
-        request: pds_20220301_models.GetLinkInfoRequest,
-    ) -> pds_20220301_models.GetLinkInfoResponse:
+        request: pds_20220301_models.GetGroupRequest,
+    ) -> pds_20220301_models.GetGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_link_info_with_options_async(request, headers, runtime)
+        return await self.get_group_with_options_async(request, headers, runtime)
 
     def get_link_info_with_options(
         self,
@@ -2673,21 +3007,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_link_info_by_user_id(
+    def get_link_info(
         self,
-        request: pds_20220301_models.GetLinkInfoByUserIdRequest,
-    ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
+        request: pds_20220301_models.GetLinkInfoRequest,
+    ) -> pds_20220301_models.GetLinkInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_link_info_by_user_id_with_options(request, headers, runtime)
+        return self.get_link_info_with_options(request, headers, runtime)
 
-    async def get_link_info_by_user_id_async(
+    async def get_link_info_async(
         self,
-        request: pds_20220301_models.GetLinkInfoByUserIdRequest,
-    ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
+        request: pds_20220301_models.GetLinkInfoRequest,
+    ) -> pds_20220301_models.GetLinkInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_link_info_by_user_id_with_options_async(request, headers, runtime)
+        return await self.get_link_info_with_options_async(request, headers, runtime)
 
     def get_link_info_by_user_id_with_options(
         self,
@@ -2749,21 +3083,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_revision(
+    def get_link_info_by_user_id(
         self,
-        request: pds_20220301_models.GetRevisionRequest,
-    ) -> pds_20220301_models.GetRevisionResponse:
+        request: pds_20220301_models.GetLinkInfoByUserIdRequest,
+    ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_revision_with_options(request, headers, runtime)
+        return self.get_link_info_by_user_id_with_options(request, headers, runtime)
 
-    async def get_revision_async(
+    async def get_link_info_by_user_id_async(
         self,
-        request: pds_20220301_models.GetRevisionRequest,
-    ) -> pds_20220301_models.GetRevisionResponse:
+        request: pds_20220301_models.GetLinkInfoByUserIdRequest,
+    ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_revision_with_options_async(request, headers, runtime)
+        return await self.get_link_info_by_user_id_with_options_async(request, headers, runtime)
 
     def get_revision_with_options(
         self,
@@ -2841,21 +3175,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_share_link(
+    def get_revision(
         self,
-        request: pds_20220301_models.GetShareLinkRequest,
-    ) -> pds_20220301_models.GetShareLinkResponse:
+        request: pds_20220301_models.GetRevisionRequest,
+    ) -> pds_20220301_models.GetRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_share_link_with_options(request, headers, runtime)
+        return self.get_revision_with_options(request, headers, runtime)
 
-    async def get_share_link_async(
+    async def get_revision_async(
         self,
-        request: pds_20220301_models.GetShareLinkRequest,
-    ) -> pds_20220301_models.GetShareLinkResponse:
+        request: pds_20220301_models.GetRevisionRequest,
+    ) -> pds_20220301_models.GetRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_share_link_with_options_async(request, headers, runtime)
+        return await self.get_revision_with_options_async(request, headers, runtime)
 
     def get_share_link_with_options(
         self,
@@ -2917,21 +3251,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_share_link_by_anonymous(
+    def get_share_link(
         self,
-        request: pds_20220301_models.GetShareLinkByAnonymousRequest,
-    ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
+        request: pds_20220301_models.GetShareLinkRequest,
+    ) -> pds_20220301_models.GetShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_share_link_by_anonymous_with_options(request, headers, runtime)
+        return self.get_share_link_with_options(request, headers, runtime)
 
-    async def get_share_link_by_anonymous_async(
+    async def get_share_link_async(
         self,
-        request: pds_20220301_models.GetShareLinkByAnonymousRequest,
-    ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
+        request: pds_20220301_models.GetShareLinkRequest,
+    ) -> pds_20220301_models.GetShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_share_link_by_anonymous_with_options_async(request, headers, runtime)
+        return await self.get_share_link_with_options_async(request, headers, runtime)
 
     def get_share_link_by_anonymous_with_options(
         self,
@@ -2993,21 +3327,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_share_link_token(
+    def get_share_link_by_anonymous(
         self,
-        request: pds_20220301_models.GetShareLinkTokenRequest,
-    ) -> pds_20220301_models.GetShareLinkTokenResponse:
+        request: pds_20220301_models.GetShareLinkByAnonymousRequest,
+    ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_share_link_token_with_options(request, headers, runtime)
+        return self.get_share_link_by_anonymous_with_options(request, headers, runtime)
 
-    async def get_share_link_token_async(
+    async def get_share_link_by_anonymous_async(
         self,
-        request: pds_20220301_models.GetShareLinkTokenRequest,
-    ) -> pds_20220301_models.GetShareLinkTokenResponse:
+        request: pds_20220301_models.GetShareLinkByAnonymousRequest,
+    ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_share_link_token_with_options_async(request, headers, runtime)
+        return await self.get_share_link_by_anonymous_with_options_async(request, headers, runtime)
 
     def get_share_link_token_with_options(
         self,
@@ -3077,21 +3411,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_upload_url(
+    def get_share_link_token(
         self,
-        request: pds_20220301_models.GetUploadUrlRequest,
-    ) -> pds_20220301_models.GetUploadUrlResponse:
+        request: pds_20220301_models.GetShareLinkTokenRequest,
+    ) -> pds_20220301_models.GetShareLinkTokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_upload_url_with_options(request, headers, runtime)
+        return self.get_share_link_token_with_options(request, headers, runtime)
 
-    async def get_upload_url_async(
+    async def get_share_link_token_async(
         self,
-        request: pds_20220301_models.GetUploadUrlRequest,
-    ) -> pds_20220301_models.GetUploadUrlResponse:
+        request: pds_20220301_models.GetShareLinkTokenRequest,
+    ) -> pds_20220301_models.GetShareLinkTokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_upload_url_with_options_async(request, headers, runtime)
+        return await self.get_share_link_token_with_options_async(request, headers, runtime)
 
     def get_upload_url_with_options(
         self,
@@ -3169,21 +3503,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_user(
+    def get_upload_url(
         self,
-        request: pds_20220301_models.GetUserRequest,
-    ) -> pds_20220301_models.GetUserResponse:
+        request: pds_20220301_models.GetUploadUrlRequest,
+    ) -> pds_20220301_models.GetUploadUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_user_with_options(request, headers, runtime)
+        return self.get_upload_url_with_options(request, headers, runtime)
 
-    async def get_user_async(
+    async def get_upload_url_async(
         self,
-        request: pds_20220301_models.GetUserRequest,
-    ) -> pds_20220301_models.GetUserResponse:
+        request: pds_20220301_models.GetUploadUrlRequest,
+    ) -> pds_20220301_models.GetUploadUrlResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_user_with_options_async(request, headers, runtime)
+        return await self.get_upload_url_with_options_async(request, headers, runtime)
 
     def get_user_with_options(
         self,
@@ -3245,21 +3579,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_video_preview_play_info(
+    def get_user(
         self,
-        request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
-    ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
+        request: pds_20220301_models.GetUserRequest,
+    ) -> pds_20220301_models.GetUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_video_preview_play_info_with_options(request, headers, runtime)
+        return self.get_user_with_options(request, headers, runtime)
 
-    async def get_video_preview_play_info_async(
+    async def get_user_async(
         self,
-        request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
-    ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
+        request: pds_20220301_models.GetUserRequest,
+    ) -> pds_20220301_models.GetUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_video_preview_play_info_with_options_async(request, headers, runtime)
+        return await self.get_user_with_options_async(request, headers, runtime)
 
     def get_video_preview_play_info_with_options(
         self,
@@ -3281,6 +3615,8 @@ class Client(OpenApiClient):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.template_id):
             body['template_id'] = request.template_id
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3321,6 +3657,8 @@ class Client(OpenApiClient):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.template_id):
             body['template_id'] = request.template_id
+        if not UtilClient.is_unset(request.url_expire_sec):
+            body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3341,21 +3679,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def get_video_preview_play_meta(
+    def get_video_preview_play_info(
         self,
-        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
-    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
+    ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_video_preview_play_meta_with_options(request, headers, runtime)
+        return self.get_video_preview_play_info_with_options(request, headers, runtime)
 
-    async def get_video_preview_play_meta_async(
+    async def get_video_preview_play_info_async(
         self,
-        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
-    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
+    ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_video_preview_play_meta_with_options_async(request, headers, runtime)
+        return await self.get_video_preview_play_info_with_options_async(request, headers, runtime)
 
     def get_video_preview_play_meta_with_options(
         self,
@@ -3429,21 +3767,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def import_user(
+    def get_video_preview_play_meta(
         self,
-        request: pds_20220301_models.ImportUserRequest,
-    ) -> pds_20220301_models.ImportUserResponse:
+        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
+    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.import_user_with_options(request, headers, runtime)
+        return self.get_video_preview_play_meta_with_options(request, headers, runtime)
 
-    async def import_user_async(
+    async def get_video_preview_play_meta_async(
         self,
-        request: pds_20220301_models.ImportUserRequest,
-    ) -> pds_20220301_models.ImportUserResponse:
+        request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
+    ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.import_user_with_options_async(request, headers, runtime)
+        return await self.get_video_preview_play_meta_with_options_async(request, headers, runtime)
 
     def import_user_with_options(
         self,
@@ -3533,21 +3871,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def link_account(
+    def import_user(
         self,
-        request: pds_20220301_models.LinkAccountRequest,
-    ) -> pds_20220301_models.LinkAccountResponse:
+        request: pds_20220301_models.ImportUserRequest,
+    ) -> pds_20220301_models.ImportUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.link_account_with_options(request, headers, runtime)
+        return self.import_user_with_options(request, headers, runtime)
 
-    async def link_account_async(
+    async def import_user_async(
         self,
-        request: pds_20220301_models.LinkAccountRequest,
-    ) -> pds_20220301_models.LinkAccountResponse:
+        request: pds_20220301_models.ImportUserRequest,
+    ) -> pds_20220301_models.ImportUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.link_account_with_options_async(request, headers, runtime)
+        return await self.import_user_with_options_async(request, headers, runtime)
 
     def link_account_with_options(
         self,
@@ -3621,21 +3959,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_address_groups(
+    def link_account(
         self,
-        request: pds_20220301_models.ListAddressGroupsRequest,
-    ) -> pds_20220301_models.ListAddressGroupsResponse:
+        request: pds_20220301_models.LinkAccountRequest,
+    ) -> pds_20220301_models.LinkAccountResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_address_groups_with_options(request, headers, runtime)
+        return self.link_account_with_options(request, headers, runtime)
 
-    async def list_address_groups_async(
+    async def link_account_async(
         self,
-        request: pds_20220301_models.ListAddressGroupsRequest,
-    ) -> pds_20220301_models.ListAddressGroupsResponse:
+        request: pds_20220301_models.LinkAccountRequest,
+    ) -> pds_20220301_models.LinkAccountResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_address_groups_with_options_async(request, headers, runtime)
+        return await self.link_account_with_options_async(request, headers, runtime)
 
     def list_address_groups_with_options(
         self,
@@ -3713,21 +4051,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_delta(
+    def list_address_groups(
         self,
-        request: pds_20220301_models.ListDeltaRequest,
-    ) -> pds_20220301_models.ListDeltaResponse:
+        request: pds_20220301_models.ListAddressGroupsRequest,
+    ) -> pds_20220301_models.ListAddressGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_delta_with_options(request, headers, runtime)
+        return self.list_address_groups_with_options(request, headers, runtime)
 
-    async def list_delta_async(
+    async def list_address_groups_async(
         self,
-        request: pds_20220301_models.ListDeltaRequest,
-    ) -> pds_20220301_models.ListDeltaResponse:
+        request: pds_20220301_models.ListAddressGroupsRequest,
+    ) -> pds_20220301_models.ListAddressGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_delta_with_options_async(request, headers, runtime)
+        return await self.list_address_groups_with_options_async(request, headers, runtime)
 
     def list_delta_with_options(
         self,
@@ -3801,21 +4139,105 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_drive(
+    def list_delta(
         self,
-        request: pds_20220301_models.ListDriveRequest,
-    ) -> pds_20220301_models.ListDriveResponse:
+        request: pds_20220301_models.ListDeltaRequest,
+    ) -> pds_20220301_models.ListDeltaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_drive_with_options(request, headers, runtime)
+        return self.list_delta_with_options(request, headers, runtime)
 
-    async def list_drive_async(
+    async def list_delta_async(
         self,
-        request: pds_20220301_models.ListDriveRequest,
-    ) -> pds_20220301_models.ListDriveResponse:
+        request: pds_20220301_models.ListDeltaRequest,
+    ) -> pds_20220301_models.ListDeltaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_drive_with_options_async(request, headers, runtime)
+        return await self.list_delta_with_options_async(request, headers, runtime)
+
+    def list_domains_with_options(
+        self,
+        request: pds_20220301_models.ListDomainsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListDomainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.parent_domain_id):
+            body['parent_domain_id'] = request.parent_domain_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDomains',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListDomainsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_domains_with_options_async(
+        self,
+        request: pds_20220301_models.ListDomainsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListDomainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.parent_domain_id):
+            body['parent_domain_id'] = request.parent_domain_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDomains',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListDomainsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_domains(
+        self,
+        request: pds_20220301_models.ListDomainsRequest,
+    ) -> pds_20220301_models.ListDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_domains_with_options(request, headers, runtime)
+
+    async def list_domains_async(
+        self,
+        request: pds_20220301_models.ListDomainsRequest,
+    ) -> pds_20220301_models.ListDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_domains_with_options_async(request, headers, runtime)
 
     def list_drive_with_options(
         self,
@@ -3889,21 +4311,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_facegroups(
+    def list_drive(
         self,
-        request: pds_20220301_models.ListFacegroupsRequest,
-    ) -> pds_20220301_models.ListFacegroupsResponse:
+        request: pds_20220301_models.ListDriveRequest,
+    ) -> pds_20220301_models.ListDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_facegroups_with_options(request, headers, runtime)
+        return self.list_drive_with_options(request, headers, runtime)
 
-    async def list_facegroups_async(
+    async def list_drive_async(
         self,
-        request: pds_20220301_models.ListFacegroupsRequest,
-    ) -> pds_20220301_models.ListFacegroupsResponse:
+        request: pds_20220301_models.ListDriveRequest,
+    ) -> pds_20220301_models.ListDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_facegroups_with_options_async(request, headers, runtime)
+        return await self.list_drive_with_options_async(request, headers, runtime)
 
     def list_facegroups_with_options(
         self,
@@ -3977,21 +4399,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_file(
+    def list_facegroups(
         self,
-        request: pds_20220301_models.ListFileRequest,
-    ) -> pds_20220301_models.ListFileResponse:
+        request: pds_20220301_models.ListFacegroupsRequest,
+    ) -> pds_20220301_models.ListFacegroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_file_with_options(request, headers, runtime)
+        return self.list_facegroups_with_options(request, headers, runtime)
 
-    async def list_file_async(
+    async def list_facegroups_async(
         self,
-        request: pds_20220301_models.ListFileRequest,
-    ) -> pds_20220301_models.ListFileResponse:
+        request: pds_20220301_models.ListFacegroupsRequest,
+    ) -> pds_20220301_models.ListFacegroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_file_with_options_async(request, headers, runtime)
+        return await self.list_facegroups_with_options_async(request, headers, runtime)
 
     def list_file_with_options(
         self,
@@ -4089,21 +4511,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_group(
+    def list_file(
         self,
-        request: pds_20220301_models.ListGroupRequest,
-    ) -> pds_20220301_models.ListGroupResponse:
+        request: pds_20220301_models.ListFileRequest,
+    ) -> pds_20220301_models.ListFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_group_with_options(request, headers, runtime)
+        return self.list_file_with_options(request, headers, runtime)
 
-    async def list_group_async(
+    async def list_file_async(
         self,
-        request: pds_20220301_models.ListGroupRequest,
-    ) -> pds_20220301_models.ListGroupResponse:
+        request: pds_20220301_models.ListFileRequest,
+    ) -> pds_20220301_models.ListFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_group_with_options_async(request, headers, runtime)
+        return await self.list_file_with_options_async(request, headers, runtime)
 
     def list_group_with_options(
         self,
@@ -4169,21 +4591,119 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_my_drives(
+    def list_group(
         self,
-        request: pds_20220301_models.ListMyDrivesRequest,
-    ) -> pds_20220301_models.ListMyDrivesResponse:
+        request: pds_20220301_models.ListGroupRequest,
+    ) -> pds_20220301_models.ListGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_my_drives_with_options(request, headers, runtime)
+        return self.list_group_with_options(request, headers, runtime)
 
-    async def list_my_drives_async(
+    async def list_group_async(
         self,
-        request: pds_20220301_models.ListMyDrivesRequest,
-    ) -> pds_20220301_models.ListMyDrivesResponse:
+        request: pds_20220301_models.ListGroupRequest,
+    ) -> pds_20220301_models.ListGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_my_drives_with_options_async(request, headers, runtime)
+        return await self.list_group_with_options_async(request, headers, runtime)
+
+    def list_group_member_with_options(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListGroupMemberResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.member_type):
+            body['member_type'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListGroupMember',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/list_member',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListGroupMemberResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_group_member_with_options_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListGroupMemberResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.member_type):
+            body['member_type'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListGroupMember',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/list_member',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListGroupMemberResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_group_member(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListGroupMemberRequest,
+    ) -> pds_20220301_models.ListGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_group_member_with_options(domain_id, request, headers, runtime)
+
+    async def list_group_member_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListGroupMemberRequest,
+    ) -> pds_20220301_models.ListGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_group_member_with_options_async(domain_id, request, headers, runtime)
 
     def list_my_drives_with_options(
         self,
@@ -4249,21 +4769,191 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_recyclebin(
+    def list_my_drives(
         self,
-        request: pds_20220301_models.ListRecyclebinRequest,
-    ) -> pds_20220301_models.ListRecyclebinResponse:
+        request: pds_20220301_models.ListMyDrivesRequest,
+    ) -> pds_20220301_models.ListMyDrivesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_recyclebin_with_options(request, headers, runtime)
+        return self.list_my_drives_with_options(request, headers, runtime)
 
-    async def list_recyclebin_async(
+    async def list_my_drives_async(
         self,
-        request: pds_20220301_models.ListRecyclebinRequest,
-    ) -> pds_20220301_models.ListRecyclebinResponse:
+        request: pds_20220301_models.ListMyDrivesRequest,
+    ) -> pds_20220301_models.ListMyDrivesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_recyclebin_with_options_async(request, headers, runtime)
+        return await self.list_my_drives_with_options_async(request, headers, runtime)
+
+    def list_my_group_drive_with_options(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListMyGroupDriveRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMyGroupDrive',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/drive/list_my_group_drive',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListMyGroupDriveResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_my_group_drive_with_options_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListMyGroupDriveRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMyGroupDrive',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/drive/list_my_group_drive',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListMyGroupDriveResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_my_group_drive(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListMyGroupDriveRequest,
+    ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_my_group_drive_with_options(domain_id, request, headers, runtime)
+
+    async def list_my_group_drive_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.ListMyGroupDriveRequest,
+    ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_my_group_drive_with_options_async(domain_id, request, headers, runtime)
+
+    def list_received_file_with_options(
+        self,
+        request: pds_20220301_models.ListReceivedFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListReceivedFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListReceivedFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/list_received_file',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListReceivedFileResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_received_file_with_options_async(
+        self,
+        request: pds_20220301_models.ListReceivedFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListReceivedFileResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListReceivedFile',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/file/list_received_file',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListReceivedFileResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_received_file(
+        self,
+        request: pds_20220301_models.ListReceivedFileRequest,
+    ) -> pds_20220301_models.ListReceivedFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_received_file_with_options(request, headers, runtime)
+
+    async def list_received_file_async(
+        self,
+        request: pds_20220301_models.ListReceivedFileRequest,
+    ) -> pds_20220301_models.ListReceivedFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_received_file_with_options_async(request, headers, runtime)
 
     def list_recyclebin_with_options(
         self,
@@ -4337,21 +5027,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_revision(
+    def list_recyclebin(
         self,
-        request: pds_20220301_models.ListRevisionRequest,
-    ) -> pds_20220301_models.ListRevisionResponse:
+        request: pds_20220301_models.ListRecyclebinRequest,
+    ) -> pds_20220301_models.ListRecyclebinResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_revision_with_options(request, headers, runtime)
+        return self.list_recyclebin_with_options(request, headers, runtime)
 
-    async def list_revision_async(
+    async def list_recyclebin_async(
         self,
-        request: pds_20220301_models.ListRevisionRequest,
-    ) -> pds_20220301_models.ListRevisionResponse:
+        request: pds_20220301_models.ListRecyclebinRequest,
+    ) -> pds_20220301_models.ListRecyclebinResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_revision_with_options_async(request, headers, runtime)
+        return await self.list_recyclebin_with_options_async(request, headers, runtime)
 
     def list_revision_with_options(
         self,
@@ -4429,21 +5119,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_share_link(
+    def list_revision(
         self,
-        request: pds_20220301_models.ListShareLinkRequest,
-    ) -> pds_20220301_models.ListShareLinkResponse:
+        request: pds_20220301_models.ListRevisionRequest,
+    ) -> pds_20220301_models.ListRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_share_link_with_options(request, headers, runtime)
+        return self.list_revision_with_options(request, headers, runtime)
 
-    async def list_share_link_async(
+    async def list_revision_async(
         self,
-        request: pds_20220301_models.ListShareLinkRequest,
-    ) -> pds_20220301_models.ListShareLinkResponse:
+        request: pds_20220301_models.ListRevisionRequest,
+    ) -> pds_20220301_models.ListRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_share_link_with_options_async(request, headers, runtime)
+        return await self.list_revision_with_options_async(request, headers, runtime)
 
     def list_share_link_with_options(
         self,
@@ -4525,21 +5215,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_tags(
+    def list_share_link(
         self,
-        request: pds_20220301_models.ListTagsRequest,
-    ) -> pds_20220301_models.ListTagsResponse:
+        request: pds_20220301_models.ListShareLinkRequest,
+    ) -> pds_20220301_models.ListShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tags_with_options(request, headers, runtime)
+        return self.list_share_link_with_options(request, headers, runtime)
 
-    async def list_tags_async(
+    async def list_share_link_async(
         self,
-        request: pds_20220301_models.ListTagsRequest,
-    ) -> pds_20220301_models.ListTagsResponse:
+        request: pds_20220301_models.ListShareLinkRequest,
+    ) -> pds_20220301_models.ListShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tags_with_options_async(request, headers, runtime)
+        return await self.list_share_link_with_options_async(request, headers, runtime)
 
     def list_tags_with_options(
         self,
@@ -4609,21 +5299,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_uploaded_parts(
+    def list_tags(
         self,
-        request: pds_20220301_models.ListUploadedPartsRequest,
-    ) -> pds_20220301_models.ListUploadedPartsResponse:
+        request: pds_20220301_models.ListTagsRequest,
+    ) -> pds_20220301_models.ListTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_uploaded_parts_with_options(request, headers, runtime)
+        return self.list_tags_with_options(request, headers, runtime)
 
-    async def list_uploaded_parts_async(
+    async def list_tags_async(
         self,
-        request: pds_20220301_models.ListUploadedPartsRequest,
-    ) -> pds_20220301_models.ListUploadedPartsResponse:
+        request: pds_20220301_models.ListTagsRequest,
+    ) -> pds_20220301_models.ListTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_uploaded_parts_with_options_async(request, headers, runtime)
+        return await self.list_tags_with_options_async(request, headers, runtime)
 
     def list_uploaded_parts_with_options(
         self,
@@ -4705,21 +5395,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def list_user(
+    def list_uploaded_parts(
         self,
-        request: pds_20220301_models.ListUserRequest,
-    ) -> pds_20220301_models.ListUserResponse:
+        request: pds_20220301_models.ListUploadedPartsRequest,
+    ) -> pds_20220301_models.ListUploadedPartsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_user_with_options(request, headers, runtime)
+        return self.list_uploaded_parts_with_options(request, headers, runtime)
 
-    async def list_user_async(
+    async def list_uploaded_parts_async(
         self,
-        request: pds_20220301_models.ListUserRequest,
-    ) -> pds_20220301_models.ListUserResponse:
+        request: pds_20220301_models.ListUploadedPartsRequest,
+    ) -> pds_20220301_models.ListUploadedPartsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_user_with_options_async(request, headers, runtime)
+        return await self.list_uploaded_parts_with_options_async(request, headers, runtime)
 
     def list_user_with_options(
         self,
@@ -4785,21 +5475,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def move_file(
+    def list_user(
         self,
-        request: pds_20220301_models.MoveFileRequest,
-    ) -> pds_20220301_models.MoveFileResponse:
+        request: pds_20220301_models.ListUserRequest,
+    ) -> pds_20220301_models.ListUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.move_file_with_options(request, headers, runtime)
+        return self.list_user_with_options(request, headers, runtime)
 
-    async def move_file_async(
+    async def list_user_async(
         self,
-        request: pds_20220301_models.MoveFileRequest,
-    ) -> pds_20220301_models.MoveFileResponse:
+        request: pds_20220301_models.ListUserRequest,
+    ) -> pds_20220301_models.ListUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.move_file_with_options_async(request, headers, runtime)
+        return await self.list_user_with_options_async(request, headers, runtime)
 
     def move_file_with_options(
         self,
@@ -4873,21 +5563,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def parse_keywords(
+    def move_file(
         self,
-        request: pds_20220301_models.ParseKeywordsRequest,
-    ) -> pds_20220301_models.ParseKeywordsResponse:
+        request: pds_20220301_models.MoveFileRequest,
+    ) -> pds_20220301_models.MoveFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.parse_keywords_with_options(request, headers, runtime)
+        return self.move_file_with_options(request, headers, runtime)
 
-    async def parse_keywords_async(
+    async def move_file_async(
         self,
-        request: pds_20220301_models.ParseKeywordsRequest,
-    ) -> pds_20220301_models.ParseKeywordsResponse:
+        request: pds_20220301_models.MoveFileRequest,
+    ) -> pds_20220301_models.MoveFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.parse_keywords_with_options_async(request, headers, runtime)
+        return await self.move_file_with_options_async(request, headers, runtime)
 
     def parse_keywords_with_options(
         self,
@@ -4949,21 +5639,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def remove_face_group_file(
+    def parse_keywords(
         self,
-        request: pds_20220301_models.RemoveFaceGroupFileRequest,
-    ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
+        request: pds_20220301_models.ParseKeywordsRequest,
+    ) -> pds_20220301_models.ParseKeywordsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_face_group_file_with_options(request, headers, runtime)
+        return self.parse_keywords_with_options(request, headers, runtime)
 
-    async def remove_face_group_file_async(
+    async def parse_keywords_async(
         self,
-        request: pds_20220301_models.RemoveFaceGroupFileRequest,
-    ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
+        request: pds_20220301_models.ParseKeywordsRequest,
+    ) -> pds_20220301_models.ParseKeywordsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_face_group_file_with_options_async(request, headers, runtime)
+        return await self.parse_keywords_with_options_async(request, headers, runtime)
 
     def remove_face_group_file_with_options(
         self,
@@ -5033,21 +5723,115 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def restore_file(
+    def remove_face_group_file(
         self,
-        request: pds_20220301_models.RestoreFileRequest,
-    ) -> pds_20220301_models.RestoreFileResponse:
+        request: pds_20220301_models.RemoveFaceGroupFileRequest,
+    ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restore_file_with_options(request, headers, runtime)
+        return self.remove_face_group_file_with_options(request, headers, runtime)
 
-    async def restore_file_async(
+    async def remove_face_group_file_async(
         self,
-        request: pds_20220301_models.RestoreFileRequest,
-    ) -> pds_20220301_models.RestoreFileResponse:
+        request: pds_20220301_models.RemoveFaceGroupFileRequest,
+    ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restore_file_with_options_async(request, headers, runtime)
+        return await self.remove_face_group_file_with_options_async(request, headers, runtime)
+
+    def remove_group_member_with_options(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.RemoveGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.member_id):
+            body['member_id'] = request.member_id
+        if not UtilClient.is_unset(request.member_type):
+            body['member_type'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveGroupMember',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/remove_member',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.RemoveGroupMemberResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def remove_group_member_with_options_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.RemoveGroupMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['domain_id'] = domain_id
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.member_id):
+            body['member_id'] = request.member_id
+        if not UtilClient.is_unset(request.member_type):
+            body['member_type'] = request.member_type
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveGroupMember',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/remove_member',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.RemoveGroupMemberResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def remove_group_member(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.RemoveGroupMemberRequest,
+    ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.remove_group_member_with_options(domain_id, request, headers, runtime)
+
+    async def remove_group_member_async(
+        self,
+        domain_id: str,
+        request: pds_20220301_models.RemoveGroupMemberRequest,
+    ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.remove_group_member_with_options_async(domain_id, request, headers, runtime)
 
     def restore_file_with_options(
         self,
@@ -5113,21 +5897,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def restore_revision(
+    def restore_file(
         self,
-        request: pds_20220301_models.RestoreRevisionRequest,
-    ) -> pds_20220301_models.RestoreRevisionResponse:
+        request: pds_20220301_models.RestoreFileRequest,
+    ) -> pds_20220301_models.RestoreFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restore_revision_with_options(request, headers, runtime)
+        return self.restore_file_with_options(request, headers, runtime)
 
-    async def restore_revision_async(
+    async def restore_file_async(
         self,
-        request: pds_20220301_models.RestoreRevisionRequest,
-    ) -> pds_20220301_models.RestoreRevisionResponse:
+        request: pds_20220301_models.RestoreFileRequest,
+    ) -> pds_20220301_models.RestoreFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restore_revision_with_options_async(request, headers, runtime)
+        return await self.restore_file_with_options_async(request, headers, runtime)
 
     def restore_revision_with_options(
         self,
@@ -5197,21 +5981,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def scan_file(
+    def restore_revision(
         self,
-        request: pds_20220301_models.ScanFileRequest,
-    ) -> pds_20220301_models.ScanFileResponse:
+        request: pds_20220301_models.RestoreRevisionRequest,
+    ) -> pds_20220301_models.RestoreRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.scan_file_with_options(request, headers, runtime)
+        return self.restore_revision_with_options(request, headers, runtime)
 
-    async def scan_file_async(
+    async def restore_revision_async(
         self,
-        request: pds_20220301_models.ScanFileRequest,
-    ) -> pds_20220301_models.ScanFileResponse:
+        request: pds_20220301_models.RestoreRevisionRequest,
+    ) -> pds_20220301_models.RestoreRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.scan_file_with_options_async(request, headers, runtime)
+        return await self.restore_revision_with_options_async(request, headers, runtime)
 
     def scan_file_with_options(
         self,
@@ -5285,21 +6069,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def search_address_groups(
+    def scan_file(
         self,
-        request: pds_20220301_models.SearchAddressGroupsRequest,
-    ) -> pds_20220301_models.SearchAddressGroupsResponse:
+        request: pds_20220301_models.ScanFileRequest,
+    ) -> pds_20220301_models.ScanFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_address_groups_with_options(request, headers, runtime)
+        return self.scan_file_with_options(request, headers, runtime)
 
-    async def search_address_groups_async(
+    async def scan_file_async(
         self,
-        request: pds_20220301_models.SearchAddressGroupsRequest,
-    ) -> pds_20220301_models.SearchAddressGroupsResponse:
+        request: pds_20220301_models.ScanFileRequest,
+    ) -> pds_20220301_models.ScanFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_address_groups_with_options_async(request, headers, runtime)
+        return await self.scan_file_with_options_async(request, headers, runtime)
 
     def search_address_groups_with_options(
         self,
@@ -5385,21 +6169,109 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def search_drive(
+    def search_address_groups(
         self,
-        request: pds_20220301_models.SearchDriveRequest,
-    ) -> pds_20220301_models.SearchDriveResponse:
+        request: pds_20220301_models.SearchAddressGroupsRequest,
+    ) -> pds_20220301_models.SearchAddressGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_drive_with_options(request, headers, runtime)
+        return self.search_address_groups_with_options(request, headers, runtime)
 
-    async def search_drive_async(
+    async def search_address_groups_async(
         self,
-        request: pds_20220301_models.SearchDriveRequest,
-    ) -> pds_20220301_models.SearchDriveResponse:
+        request: pds_20220301_models.SearchAddressGroupsRequest,
+    ) -> pds_20220301_models.SearchAddressGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_drive_with_options_async(request, headers, runtime)
+        return await self.search_address_groups_with_options_async(request, headers, runtime)
+
+    def search_domains_with_options(
+        self,
+        request: pds_20220301_models.SearchDomainsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.SearchDomainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.order_by):
+            body['order_by'] = request.order_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchDomains',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/search',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.SearchDomainsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def search_domains_with_options_async(
+        self,
+        request: pds_20220301_models.SearchDomainsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.SearchDomainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.marker):
+            body['marker'] = request.marker
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.order_by):
+            body['order_by'] = request.order_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchDomains',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/search',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.SearchDomainsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def search_domains(
+        self,
+        request: pds_20220301_models.SearchDomainsRequest,
+    ) -> pds_20220301_models.SearchDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.search_domains_with_options(request, headers, runtime)
+
+    async def search_domains_async(
+        self,
+        request: pds_20220301_models.SearchDomainsRequest,
+    ) -> pds_20220301_models.SearchDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.search_domains_with_options_async(request, headers, runtime)
 
     def search_drive_with_options(
         self,
@@ -5477,21 +6349,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def search_file(
+    def search_drive(
         self,
-        request: pds_20220301_models.SearchFileRequest,
-    ) -> pds_20220301_models.SearchFileResponse:
+        request: pds_20220301_models.SearchDriveRequest,
+    ) -> pds_20220301_models.SearchDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_file_with_options(request, headers, runtime)
+        return self.search_drive_with_options(request, headers, runtime)
 
-    async def search_file_async(
+    async def search_drive_async(
         self,
-        request: pds_20220301_models.SearchFileRequest,
-    ) -> pds_20220301_models.SearchFileResponse:
+        request: pds_20220301_models.SearchDriveRequest,
+    ) -> pds_20220301_models.SearchDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_file_with_options_async(request, headers, runtime)
+        return await self.search_drive_with_options_async(request, headers, runtime)
 
     def search_file_with_options(
         self,
@@ -5573,21 +6445,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def search_share_link(
+    def search_file(
         self,
-        request: pds_20220301_models.SearchShareLinkRequest,
-    ) -> pds_20220301_models.SearchShareLinkResponse:
+        request: pds_20220301_models.SearchFileRequest,
+    ) -> pds_20220301_models.SearchFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_share_link_with_options(request, headers, runtime)
+        return self.search_file_with_options(request, headers, runtime)
 
-    async def search_share_link_async(
+    async def search_file_async(
         self,
-        request: pds_20220301_models.SearchShareLinkRequest,
-    ) -> pds_20220301_models.SearchShareLinkResponse:
+        request: pds_20220301_models.SearchFileRequest,
+    ) -> pds_20220301_models.SearchFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_share_link_with_options_async(request, headers, runtime)
+        return await self.search_file_with_options_async(request, headers, runtime)
 
     def search_share_link_with_options(
         self,
@@ -5673,21 +6545,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def search_user(
+    def search_share_link(
         self,
-        request: pds_20220301_models.SearchUserRequest,
-    ) -> pds_20220301_models.SearchUserResponse:
+        request: pds_20220301_models.SearchShareLinkRequest,
+    ) -> pds_20220301_models.SearchShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.search_user_with_options(request, headers, runtime)
+        return self.search_share_link_with_options(request, headers, runtime)
 
-    async def search_user_async(
+    async def search_share_link_async(
         self,
-        request: pds_20220301_models.SearchUserRequest,
-    ) -> pds_20220301_models.SearchUserResponse:
+        request: pds_20220301_models.SearchShareLinkRequest,
+    ) -> pds_20220301_models.SearchShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.search_user_with_options_async(request, headers, runtime)
+        return await self.search_share_link_with_options_async(request, headers, runtime)
 
     def search_user_with_options(
         self,
@@ -5781,21 +6653,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def token(
+    def search_user(
         self,
-        request: pds_20220301_models.TokenRequest,
-    ) -> pds_20220301_models.TokenResponse:
+        request: pds_20220301_models.SearchUserRequest,
+    ) -> pds_20220301_models.SearchUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.token_with_options(request, headers, runtime)
+        return self.search_user_with_options(request, headers, runtime)
 
-    async def token_async(
+    async def search_user_async(
         self,
-        request: pds_20220301_models.TokenRequest,
-    ) -> pds_20220301_models.TokenResponse:
+        request: pds_20220301_models.SearchUserRequest,
+    ) -> pds_20220301_models.SearchUserResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.token_with_options_async(request, headers, runtime)
+        return await self.search_user_with_options_async(request, headers, runtime)
 
     def token_with_options(
         self,
@@ -5881,21 +6753,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def trash_file(
+    def token(
         self,
-        request: pds_20220301_models.TrashFileRequest,
-    ) -> pds_20220301_models.TrashFileResponse:
+        request: pds_20220301_models.TokenRequest,
+    ) -> pds_20220301_models.TokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.trash_file_with_options(request, headers, runtime)
+        return self.token_with_options(request, headers, runtime)
 
-    async def trash_file_async(
+    async def token_async(
         self,
-        request: pds_20220301_models.TrashFileRequest,
-    ) -> pds_20220301_models.TrashFileResponse:
+        request: pds_20220301_models.TokenRequest,
+    ) -> pds_20220301_models.TokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.trash_file_with_options_async(request, headers, runtime)
+        return await self.token_with_options_async(request, headers, runtime)
 
     def trash_file_with_options(
         self,
@@ -5961,21 +6833,121 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_drive(
+    def trash_file(
         self,
-        request: pds_20220301_models.UpdateDriveRequest,
-    ) -> pds_20220301_models.UpdateDriveResponse:
+        request: pds_20220301_models.TrashFileRequest,
+    ) -> pds_20220301_models.TrashFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_drive_with_options(request, headers, runtime)
+        return self.trash_file_with_options(request, headers, runtime)
 
-    async def update_drive_async(
+    async def trash_file_async(
         self,
-        request: pds_20220301_models.UpdateDriveRequest,
-    ) -> pds_20220301_models.UpdateDriveResponse:
+        request: pds_20220301_models.TrashFileRequest,
+    ) -> pds_20220301_models.TrashFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_drive_with_options_async(request, headers, runtime)
+        return await self.trash_file_with_options_async(request, headers, runtime)
+
+    def update_domain_with_options(
+        self,
+        request: pds_20220301_models.UpdateDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UpdateDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_id):
+            body['domain_id'] = request.domain_id
+        if not UtilClient.is_unset(request.domain_name):
+            body['domain_name'] = request.domain_name
+        if not UtilClient.is_unset(request.init_drive_enable):
+            body['init_drive_enable'] = request.init_drive_enable
+        if not UtilClient.is_unset(request.init_drive_size):
+            body['init_drive_size'] = request.init_drive_size
+        if not UtilClient.is_unset(request.size_quota):
+            body['size_quota'] = request.size_quota
+        if not UtilClient.is_unset(request.user_count_quota):
+            body['user_count_quota'] = request.user_count_quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UpdateDomainResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_domain_with_options_async(
+        self,
+        request: pds_20220301_models.UpdateDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.UpdateDomainResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain_id):
+            body['domain_id'] = request.domain_id
+        if not UtilClient.is_unset(request.domain_name):
+            body['domain_name'] = request.domain_name
+        if not UtilClient.is_unset(request.init_drive_enable):
+            body['init_drive_enable'] = request.init_drive_enable
+        if not UtilClient.is_unset(request.init_drive_size):
+            body['init_drive_size'] = request.init_drive_size
+        if not UtilClient.is_unset(request.size_quota):
+            body['size_quota'] = request.size_quota
+        if not UtilClient.is_unset(request.user_count_quota):
+            body['user_count_quota'] = request.user_count_quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDomain',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.UpdateDomainResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_domain(
+        self,
+        request: pds_20220301_models.UpdateDomainRequest,
+    ) -> pds_20220301_models.UpdateDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_domain_with_options(request, headers, runtime)
+
+    async def update_domain_async(
+        self,
+        request: pds_20220301_models.UpdateDomainRequest,
+    ) -> pds_20220301_models.UpdateDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_domain_with_options_async(request, headers, runtime)
 
     def update_drive_with_options(
         self,
@@ -6053,21 +7025,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_facegroup(
+    def update_drive(
         self,
-        request: pds_20220301_models.UpdateFacegroupRequest,
-    ) -> pds_20220301_models.UpdateFacegroupResponse:
+        request: pds_20220301_models.UpdateDriveRequest,
+    ) -> pds_20220301_models.UpdateDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_facegroup_with_options(request, headers, runtime)
+        return self.update_drive_with_options(request, headers, runtime)
 
-    async def update_facegroup_async(
+    async def update_drive_async(
         self,
-        request: pds_20220301_models.UpdateFacegroupRequest,
-    ) -> pds_20220301_models.UpdateFacegroupResponse:
+        request: pds_20220301_models.UpdateDriveRequest,
+    ) -> pds_20220301_models.UpdateDriveResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_facegroup_with_options_async(request, headers, runtime)
+        return await self.update_drive_with_options_async(request, headers, runtime)
 
     def update_facegroup_with_options(
         self,
@@ -6145,21 +7117,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_file(
+    def update_facegroup(
         self,
-        request: pds_20220301_models.UpdateFileRequest,
-    ) -> pds_20220301_models.UpdateFileResponse:
+        request: pds_20220301_models.UpdateFacegroupRequest,
+    ) -> pds_20220301_models.UpdateFacegroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_file_with_options(request, headers, runtime)
+        return self.update_facegroup_with_options(request, headers, runtime)
 
-    async def update_file_async(
+    async def update_facegroup_async(
         self,
-        request: pds_20220301_models.UpdateFileRequest,
-    ) -> pds_20220301_models.UpdateFileResponse:
+        request: pds_20220301_models.UpdateFacegroupRequest,
+    ) -> pds_20220301_models.UpdateFacegroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_file_with_options_async(request, headers, runtime)
+        return await self.update_facegroup_with_options_async(request, headers, runtime)
 
     def update_file_with_options(
         self,
@@ -6253,21 +7225,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_group(
+    def update_file(
         self,
-        request: pds_20220301_models.UpdateGroupRequest,
-    ) -> pds_20220301_models.UpdateGroupResponse:
+        request: pds_20220301_models.UpdateFileRequest,
+    ) -> pds_20220301_models.UpdateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_group_with_options(request, headers, runtime)
+        return self.update_file_with_options(request, headers, runtime)
 
-    async def update_group_async(
+    async def update_file_async(
         self,
-        request: pds_20220301_models.UpdateGroupRequest,
-    ) -> pds_20220301_models.UpdateGroupResponse:
+        request: pds_20220301_models.UpdateFileRequest,
+    ) -> pds_20220301_models.UpdateFileResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_group_with_options_async(request, headers, runtime)
+        return await self.update_file_with_options_async(request, headers, runtime)
 
     def update_group_with_options(
         self,
@@ -6337,21 +7309,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_revision(
+    def update_group(
         self,
-        request: pds_20220301_models.UpdateRevisionRequest,
-    ) -> pds_20220301_models.UpdateRevisionResponse:
+        request: pds_20220301_models.UpdateGroupRequest,
+    ) -> pds_20220301_models.UpdateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_revision_with_options(request, headers, runtime)
+        return self.update_group_with_options(request, headers, runtime)
 
-    async def update_revision_async(
+    async def update_group_async(
         self,
-        request: pds_20220301_models.UpdateRevisionRequest,
-    ) -> pds_20220301_models.UpdateRevisionResponse:
+        request: pds_20220301_models.UpdateGroupRequest,
+    ) -> pds_20220301_models.UpdateGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_revision_with_options_async(request, headers, runtime)
+        return await self.update_group_with_options_async(request, headers, runtime)
 
     def update_revision_with_options(
         self,
@@ -6429,21 +7401,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_share_link(
+    def update_revision(
         self,
-        request: pds_20220301_models.UpdateShareLinkRequest,
-    ) -> pds_20220301_models.UpdateShareLinkResponse:
+        request: pds_20220301_models.UpdateRevisionRequest,
+    ) -> pds_20220301_models.UpdateRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_share_link_with_options(request, headers, runtime)
+        return self.update_revision_with_options(request, headers, runtime)
 
-    async def update_share_link_async(
+    async def update_revision_async(
         self,
-        request: pds_20220301_models.UpdateShareLinkRequest,
-    ) -> pds_20220301_models.UpdateShareLinkResponse:
+        request: pds_20220301_models.UpdateRevisionRequest,
+    ) -> pds_20220301_models.UpdateRevisionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_share_link_with_options_async(request, headers, runtime)
+        return await self.update_revision_with_options_async(request, headers, runtime)
 
     def update_share_link_with_options(
         self,
@@ -6569,21 +7541,21 @@ class Client(OpenApiClient):
             await self.execute_async(params, req, runtime)
         )
 
-    def update_user(
+    def update_share_link(
         self,
-        request: pds_20220301_models.UpdateUserRequest,
-    ) -> pds_20220301_models.UpdateUserResponse:
+        request: pds_20220301_models.UpdateShareLinkRequest,
+    ) -> pds_20220301_models.UpdateShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_user_with_options(request, headers, runtime)
+        return self.update_share_link_with_options(request, headers, runtime)
 
-    async def update_user_async(
+    async def update_share_link_async(
         self,
-        request: pds_20220301_models.UpdateUserRequest,
-    ) -> pds_20220301_models.UpdateUserResponse:
+        request: pds_20220301_models.UpdateShareLinkRequest,
+    ) -> pds_20220301_models.UpdateShareLinkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_user_with_options_async(request, headers, runtime)
+        return await self.update_share_link_with_options_async(request, headers, runtime)
 
     def update_user_with_options(
         self,
@@ -6680,3 +7652,19 @@ class Client(OpenApiClient):
             pds_20220301_models.UpdateUserResponse(),
             await self.execute_async(params, req, runtime)
         )
+
+    def update_user(
+        self,
+        request: pds_20220301_models.UpdateUserRequest,
+    ) -> pds_20220301_models.UpdateUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_user_with_options(request, headers, runtime)
+
+    async def update_user_async(
+        self,
+        request: pds_20220301_models.UpdateUserRequest,
+    ) -> pds_20220301_models.UpdateUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_user_with_options_async(request, headers, runtime)
