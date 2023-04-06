@@ -1,3 +1,6 @@
+2023-04-06 Version: 1.0.20
+- Add cross border status for Ga.
+
 2023-01-12 Version: 1.0.19
 - Add PostPay Basic Ga.
 
