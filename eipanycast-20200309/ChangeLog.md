@@ -1,3 +1,6 @@
+2023-04-07 Version: 1.0.3
+- Support tag for anycast.
+
 2022-08-09 Version: 1.0.2
 - Publish.
 

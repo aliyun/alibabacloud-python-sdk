@@ -474,6 +474,39 @@ class DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList(TeaModel):
         return self
 
 
+class DescribeAnycastEipAddressResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAnycastEipAddressResponseBody(TeaModel):
     def __init__(
         self,
@@ -492,6 +525,7 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
         request_id: str = None,
         service_location: str = None,
         status: str = None,
+        tags: List[DescribeAnycastEipAddressResponseBodyTags] = None,
     ):
         self.ali_uid = ali_uid
         self.anycast_eip_bind_info_list = anycast_eip_bind_info_list
@@ -508,10 +542,15 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
         self.request_id = request_id
         self.service_location = service_location
         self.status = status
+        self.tags = tags
 
     def validate(self):
         if self.anycast_eip_bind_info_list:
             for k in self.anycast_eip_bind_info_list:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -553,6 +592,10 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
             result['ServiceLocation'] = self.service_location
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -590,6 +633,11 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
             self.service_location = m.get('ServiceLocation')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeAnycastEipAddressResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -939,6 +987,39 @@ class DescribeAnycastServerRegionsResponse(TeaModel):
         return self
 
 
+class ListAnycastEipAddressesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAnycastEipAddressesRequest(TeaModel):
     def __init__(
         self,
@@ -954,6 +1035,7 @@ class ListAnycastEipAddressesRequest(TeaModel):
         next_token: str = None,
         service_location: str = None,
         status: str = None,
+        tags: List[ListAnycastEipAddressesRequestTags] = None,
     ):
         self.anycast_eip_address = anycast_eip_address
         self.anycast_id = anycast_id
@@ -967,9 +1049,13 @@ class ListAnycastEipAddressesRequest(TeaModel):
         self.next_token = next_token
         self.service_location = service_location
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1001,6 +1087,10 @@ class ListAnycastEipAddressesRequest(TeaModel):
             result['ServiceLocation'] = self.service_location
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1029,6 +1119,11 @@ class ListAnycastEipAddressesRequest(TeaModel):
             self.service_location = m.get('ServiceLocation')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListAnycastEipAddressesRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -1077,6 +1172,39 @@ class ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList(TeaMo
         return self
 
 
+class ListAnycastEipAddressesResponseBodyAnycastListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAnycastEipAddressesResponseBodyAnycastList(TeaModel):
     def __init__(
         self,
@@ -1094,6 +1222,7 @@ class ListAnycastEipAddressesResponseBodyAnycastList(TeaModel):
         service_location: str = None,
         service_managed: int = None,
         status: str = None,
+        tags: List[ListAnycastEipAddressesResponseBodyAnycastListTags] = None,
     ):
         self.ali_uid = ali_uid
         self.anycast_eip_bind_info_list = anycast_eip_bind_info_list
@@ -1109,10 +1238,15 @@ class ListAnycastEipAddressesResponseBodyAnycastList(TeaModel):
         self.service_location = service_location
         self.service_managed = service_managed
         self.status = status
+        self.tags = tags
 
     def validate(self):
         if self.anycast_eip_bind_info_list:
             for k in self.anycast_eip_bind_info_list:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -1152,6 +1286,10 @@ class ListAnycastEipAddressesResponseBodyAnycastList(TeaModel):
             result['ServiceManaged'] = self.service_managed
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1187,6 +1325,11 @@ class ListAnycastEipAddressesResponseBodyAnycastList(TeaModel):
             self.service_managed = m.get('ServiceManaged')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListAnycastEipAddressesResponseBodyAnycastListTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
