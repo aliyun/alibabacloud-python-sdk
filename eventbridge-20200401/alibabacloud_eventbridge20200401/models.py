@@ -44,13 +44,11 @@ class CreateApiDestinationRequest(TeaModel):
         connection_name: str = None,
         description: str = None,
         http_api_parameters: CreateApiDestinationRequestHttpApiParameters = None,
-        invocation_rate_limit_per_second: int = None,
     ):
         self.api_destination_name = api_destination_name
         self.connection_name = connection_name
         self.description = description
         self.http_api_parameters = http_api_parameters
-        self.invocation_rate_limit_per_second = invocation_rate_limit_per_second
 
     def validate(self):
         if self.http_api_parameters:
@@ -70,8 +68,6 @@ class CreateApiDestinationRequest(TeaModel):
             result['Description'] = self.description
         if self.http_api_parameters is not None:
             result['HttpApiParameters'] = self.http_api_parameters.to_map()
-        if self.invocation_rate_limit_per_second is not None:
-            result['InvocationRateLimitPerSecond'] = self.invocation_rate_limit_per_second
         return result
 
     def from_map(self, m: dict = None):
@@ -85,8 +81,6 @@ class CreateApiDestinationRequest(TeaModel):
         if m.get('HttpApiParameters') is not None:
             temp_model = CreateApiDestinationRequestHttpApiParameters()
             self.http_api_parameters = temp_model.from_map(m['HttpApiParameters'])
-        if m.get('InvocationRateLimitPerSecond') is not None:
-            self.invocation_rate_limit_per_second = m.get('InvocationRateLimitPerSecond')
         return self
 
 
@@ -97,13 +91,11 @@ class CreateApiDestinationShrinkRequest(TeaModel):
         connection_name: str = None,
         description: str = None,
         http_api_parameters_shrink: str = None,
-        invocation_rate_limit_per_second: int = None,
     ):
         self.api_destination_name = api_destination_name
         self.connection_name = connection_name
         self.description = description
         self.http_api_parameters_shrink = http_api_parameters_shrink
-        self.invocation_rate_limit_per_second = invocation_rate_limit_per_second
 
     def validate(self):
         pass
@@ -122,8 +114,6 @@ class CreateApiDestinationShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.http_api_parameters_shrink is not None:
             result['HttpApiParameters'] = self.http_api_parameters_shrink
-        if self.invocation_rate_limit_per_second is not None:
-            result['InvocationRateLimitPerSecond'] = self.invocation_rate_limit_per_second
         return result
 
     def from_map(self, m: dict = None):
@@ -136,8 +126,6 @@ class CreateApiDestinationShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('HttpApiParameters') is not None:
             self.http_api_parameters_shrink = m.get('HttpApiParameters')
-        if m.get('InvocationRateLimitPerSecond') is not None:
-            self.invocation_rate_limit_per_second = m.get('InvocationRateLimitPerSecond')
         return self
 
 
@@ -322,170 +310,6 @@ class CreateConnectionRequestAuthParametersBasicAuthParameters(TeaModel):
             self.password = m.get('Password')
         if m.get('Username') is not None:
             self.username = m.get('Username')
-        return self
-
-
-class CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class CreateConnectionRequestAuthParametersInvocationHttpParameters(TeaModel):
-    def __init__(
-        self,
-        body_parameters: List[CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters] = None,
-        header_parameters: List[CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters] = None,
-        query_string_parameters: List[CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters] = None,
-    ):
-        self.body_parameters = body_parameters
-        self.header_parameters = header_parameters
-        self.query_string_parameters = query_string_parameters
-
-    def validate(self):
-        if self.body_parameters:
-            for k in self.body_parameters:
-                if k:
-                    k.validate()
-        if self.header_parameters:
-            for k in self.header_parameters:
-                if k:
-                    k.validate()
-        if self.query_string_parameters:
-            for k in self.query_string_parameters:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['BodyParameters'] = []
-        if self.body_parameters is not None:
-            for k in self.body_parameters:
-                result['BodyParameters'].append(k.to_map() if k else None)
-        result['HeaderParameters'] = []
-        if self.header_parameters is not None:
-            for k in self.header_parameters:
-                result['HeaderParameters'].append(k.to_map() if k else None)
-        result['QueryStringParameters'] = []
-        if self.query_string_parameters is not None:
-            for k in self.query_string_parameters:
-                result['QueryStringParameters'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.body_parameters = []
-        if m.get('BodyParameters') is not None:
-            for k in m.get('BodyParameters'):
-                temp_model = CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters()
-                self.body_parameters.append(temp_model.from_map(k))
-        self.header_parameters = []
-        if m.get('HeaderParameters') is not None:
-            for k in m.get('HeaderParameters'):
-                temp_model = CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters()
-                self.header_parameters.append(temp_model.from_map(k))
-        self.query_string_parameters = []
-        if m.get('QueryStringParameters') is not None:
-            for k in m.get('QueryStringParameters'):
-                temp_model = CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters()
-                self.query_string_parameters.append(temp_model.from_map(k))
         return self
 
 
@@ -760,13 +584,11 @@ class CreateConnectionRequestAuthParameters(TeaModel):
         api_key_auth_parameters: CreateConnectionRequestAuthParametersApiKeyAuthParameters = None,
         authorization_type: str = None,
         basic_auth_parameters: CreateConnectionRequestAuthParametersBasicAuthParameters = None,
-        invocation_http_parameters: CreateConnectionRequestAuthParametersInvocationHttpParameters = None,
         oauth_parameters: CreateConnectionRequestAuthParametersOAuthParameters = None,
     ):
         self.api_key_auth_parameters = api_key_auth_parameters
         self.authorization_type = authorization_type
         self.basic_auth_parameters = basic_auth_parameters
-        self.invocation_http_parameters = invocation_http_parameters
         self.oauth_parameters = oauth_parameters
 
     def validate(self):
@@ -774,8 +596,6 @@ class CreateConnectionRequestAuthParameters(TeaModel):
             self.api_key_auth_parameters.validate()
         if self.basic_auth_parameters:
             self.basic_auth_parameters.validate()
-        if self.invocation_http_parameters:
-            self.invocation_http_parameters.validate()
         if self.oauth_parameters:
             self.oauth_parameters.validate()
 
@@ -791,8 +611,6 @@ class CreateConnectionRequestAuthParameters(TeaModel):
             result['AuthorizationType'] = self.authorization_type
         if self.basic_auth_parameters is not None:
             result['BasicAuthParameters'] = self.basic_auth_parameters.to_map()
-        if self.invocation_http_parameters is not None:
-            result['InvocationHttpParameters'] = self.invocation_http_parameters.to_map()
         if self.oauth_parameters is not None:
             result['OAuthParameters'] = self.oauth_parameters.to_map()
         return result
@@ -807,9 +625,6 @@ class CreateConnectionRequestAuthParameters(TeaModel):
         if m.get('BasicAuthParameters') is not None:
             temp_model = CreateConnectionRequestAuthParametersBasicAuthParameters()
             self.basic_auth_parameters = temp_model.from_map(m['BasicAuthParameters'])
-        if m.get('InvocationHttpParameters') is not None:
-            temp_model = CreateConnectionRequestAuthParametersInvocationHttpParameters()
-            self.invocation_http_parameters = temp_model.from_map(m['InvocationHttpParameters'])
         if m.get('OAuthParameters') is not None:
             temp_model = CreateConnectionRequestAuthParametersOAuthParameters()
             self.oauth_parameters = temp_model.from_map(m['OAuthParameters'])
@@ -1371,6 +1186,11 @@ class CreateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self,
         group_id: str = None,
         instance_id: str = None,
+        instance_network: str = None,
+        instance_security_group_id: str = None,
+        instance_type: str = None,
+        instance_vswitch_ids: str = None,
+        instance_vpc_id: str = None,
         offset: str = None,
         region_id: str = None,
         tag: str = None,
@@ -1379,6 +1199,11 @@ class CreateEventSourceRequestSourceRocketMQParameters(TeaModel):
     ):
         self.group_id = group_id
         self.instance_id = instance_id
+        self.instance_network = instance_network
+        self.instance_security_group_id = instance_security_group_id
+        self.instance_type = instance_type
+        self.instance_vswitch_ids = instance_vswitch_ids
+        self.instance_vpc_id = instance_vpc_id
         self.offset = offset
         self.region_id = region_id
         self.tag = tag
@@ -1395,9 +1220,19 @@ class CreateEventSourceRequestSourceRocketMQParameters(TeaModel):
 
         result = dict()
         if self.group_id is not None:
-            result['GroupId'] = self.group_id
+            result['GroupID'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_network is not None:
+            result['InstanceNetwork'] = self.instance_network
+        if self.instance_security_group_id is not None:
+            result['InstanceSecurityGroupId'] = self.instance_security_group_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.instance_vswitch_ids is not None:
+            result['InstanceVSwitchIds'] = self.instance_vswitch_ids
+        if self.instance_vpc_id is not None:
+            result['InstanceVpcId'] = self.instance_vpc_id
         if self.offset is not None:
             result['Offset'] = self.offset
         if self.region_id is not None:
@@ -1412,10 +1247,20 @@ class CreateEventSourceRequestSourceRocketMQParameters(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
+        if m.get('GroupID') is not None:
+            self.group_id = m.get('GroupID')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceNetwork') is not None:
+            self.instance_network = m.get('InstanceNetwork')
+        if m.get('InstanceSecurityGroupId') is not None:
+            self.instance_security_group_id = m.get('InstanceSecurityGroupId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InstanceVSwitchIds') is not None:
+            self.instance_vswitch_ids = m.get('InstanceVSwitchIds')
+        if m.get('InstanceVpcId') is not None:
+            self.instance_vpc_id = m.get('InstanceVpcId')
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
         if m.get('RegionId') is not None:
@@ -6105,10 +5950,8 @@ class DeleteApiDestinationRequest(TeaModel):
     def __init__(
         self,
         api_destination_name: str = None,
-        client_token: str = None,
     ):
         self.api_destination_name = api_destination_name
-        self.client_token = client_token
 
     def validate(self):
         pass
@@ -6121,16 +5964,12 @@ class DeleteApiDestinationRequest(TeaModel):
         result = dict()
         if self.api_destination_name is not None:
             result['ApiDestinationName'] = self.api_destination_name
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ApiDestinationName') is not None:
             self.api_destination_name = m.get('ApiDestinationName')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
         return self
 
 
@@ -7301,10 +7140,8 @@ class GetApiDestinationRequest(TeaModel):
     def __init__(
         self,
         api_destination_name: str = None,
-        client_token: str = None,
     ):
         self.api_destination_name = api_destination_name
-        self.client_token = client_token
 
     def validate(self):
         pass
@@ -7317,16 +7154,12 @@ class GetApiDestinationRequest(TeaModel):
         result = dict()
         if self.api_destination_name is not None:
             result['ApiDestinationName'] = self.api_destination_name
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ApiDestinationName') is not None:
             self.api_destination_name = m.get('ApiDestinationName')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
         return self
 
 
@@ -8139,7 +7972,6 @@ class GetConnectionResponseBodyDataConnectionsNetworkParameters(TeaModel):
 class GetConnectionResponseBodyDataConnections(TeaModel):
     def __init__(
         self,
-        api_destination_name: str = None,
         auth_parameters: GetConnectionResponseBodyDataConnectionsAuthParameters = None,
         connection_name: str = None,
         description: str = None,
@@ -8147,7 +7979,6 @@ class GetConnectionResponseBodyDataConnections(TeaModel):
         id: int = None,
         network_parameters: GetConnectionResponseBodyDataConnectionsNetworkParameters = None,
     ):
-        self.api_destination_name = api_destination_name
         self.auth_parameters = auth_parameters
         self.connection_name = connection_name
         self.description = description
@@ -8167,8 +7998,6 @@ class GetConnectionResponseBodyDataConnections(TeaModel):
             return _map
 
         result = dict()
-        if self.api_destination_name is not None:
-            result['ApiDestinationName'] = self.api_destination_name
         if self.auth_parameters is not None:
             result['AuthParameters'] = self.auth_parameters.to_map()
         if self.connection_name is not None:
@@ -8185,8 +8014,6 @@ class GetConnectionResponseBodyDataConnections(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiDestinationName') is not None:
-            self.api_destination_name = m.get('ApiDestinationName')
         if m.get('AuthParameters') is not None:
             temp_model = GetConnectionResponseBodyDataConnectionsAuthParameters()
             self.auth_parameters = temp_model.from_map(m['AuthParameters'])
@@ -11508,6 +11335,7 @@ class ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList(TeaModel):
         description: str = None,
         event_bus_name: str = None,
         event_types: List[ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes] = None,
+        full_name: str = None,
         name: str = None,
         status: str = None,
         type: str = None,
@@ -11517,6 +11345,7 @@ class ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList(TeaModel):
         self.description = description
         self.event_bus_name = event_bus_name
         self.event_types = event_types
+        self.full_name = full_name
         self.name = name
         self.status = status
         self.type = type
@@ -11545,6 +11374,8 @@ class ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList(TeaModel):
         if self.event_types is not None:
             for k in self.event_types:
                 result['EventTypes'].append(k.to_map() if k else None)
+        if self.full_name is not None:
+            result['FullName'] = self.full_name
         if self.name is not None:
             result['Name'] = self.name
         if self.status is not None:
@@ -11568,6 +11399,8 @@ class ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList(TeaModel):
             for k in m.get('EventTypes'):
                 temp_model = ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes()
                 self.event_types.append(temp_model.from_map(k))
+        if m.get('FullName') is not None:
+            self.full_name = m.get('FullName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Status') is not None:
@@ -11713,14 +11546,12 @@ class ListApiDestinationsRequest(TeaModel):
     def __init__(
         self,
         api_destination_name_prefix: str = None,
-        client_token: str = None,
-        description: str = None,
+        connection_name: str = None,
         max_results: int = None,
         next_token: str = None,
     ):
         self.api_destination_name_prefix = api_destination_name_prefix
-        self.client_token = client_token
-        self.description = description
+        self.connection_name = connection_name
         self.max_results = max_results
         self.next_token = next_token
 
@@ -11735,10 +11566,8 @@ class ListApiDestinationsRequest(TeaModel):
         result = dict()
         if self.api_destination_name_prefix is not None:
             result['ApiDestinationNamePrefix'] = self.api_destination_name_prefix
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.description is not None:
-            result['Description'] = self.description
+        if self.connection_name is not None:
+            result['ConnectionName'] = self.connection_name
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -11749,10 +11578,8 @@ class ListApiDestinationsRequest(TeaModel):
         m = m or dict()
         if m.get('ApiDestinationNamePrefix') is not None:
             self.api_destination_name_prefix = m.get('ApiDestinationNamePrefix')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
+        if m.get('ConnectionName') is not None:
+            self.connection_name = m.get('ConnectionName')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -11850,8 +11677,14 @@ class ListApiDestinationsResponseBodyData(TeaModel):
     def __init__(
         self,
         api_destinations: List[ListApiDestinationsResponseBodyDataApiDestinations] = None,
+        max_results: float = None,
+        next_token: str = None,
+        total: float = None,
     ):
         self.api_destinations = api_destinations
+        self.max_results = max_results
+        self.next_token = next_token
+        self.total = total
 
     def validate(self):
         if self.api_destinations:
@@ -11869,6 +11702,12 @@ class ListApiDestinationsResponseBodyData(TeaModel):
         if self.api_destinations is not None:
             for k in self.api_destinations:
                 result['ApiDestinations'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.total is not None:
+            result['Total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
@@ -11878,6 +11717,12 @@ class ListApiDestinationsResponseBodyData(TeaModel):
             for k in m.get('ApiDestinations'):
                 temp_model = ListApiDestinationsResponseBodyDataApiDestinations()
                 self.api_destinations.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
         return self
 
 
@@ -12616,7 +12461,6 @@ class ListConnectionsResponseBodyDataConnectionsNetworkParameters(TeaModel):
 class ListConnectionsResponseBodyDataConnections(TeaModel):
     def __init__(
         self,
-        api_destination_name: str = None,
         auth_parameters: ListConnectionsResponseBodyDataConnectionsAuthParameters = None,
         connection_name: str = None,
         description: str = None,
@@ -12624,7 +12468,6 @@ class ListConnectionsResponseBodyDataConnections(TeaModel):
         id: int = None,
         network_parameters: ListConnectionsResponseBodyDataConnectionsNetworkParameters = None,
     ):
-        self.api_destination_name = api_destination_name
         self.auth_parameters = auth_parameters
         self.connection_name = connection_name
         self.description = description
@@ -12644,8 +12487,6 @@ class ListConnectionsResponseBodyDataConnections(TeaModel):
             return _map
 
         result = dict()
-        if self.api_destination_name is not None:
-            result['ApiDestinationName'] = self.api_destination_name
         if self.auth_parameters is not None:
             result['AuthParameters'] = self.auth_parameters.to_map()
         if self.connection_name is not None:
@@ -12662,8 +12503,6 @@ class ListConnectionsResponseBodyDataConnections(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiDestinationName') is not None:
-            self.api_destination_name = m.get('ApiDestinationName')
         if m.get('AuthParameters') is not None:
             temp_model = ListConnectionsResponseBodyDataConnectionsAuthParameters()
             self.auth_parameters = temp_model.from_map(m['AuthParameters'])
@@ -18046,13 +17885,11 @@ class UpdateApiDestinationRequest(TeaModel):
     def __init__(
         self,
         api_destination_name: str = None,
-        client_token: str = None,
         connection_name: str = None,
         description: str = None,
         http_api_parameters: UpdateApiDestinationRequestHttpApiParameters = None,
     ):
         self.api_destination_name = api_destination_name
-        self.client_token = client_token
         self.connection_name = connection_name
         self.description = description
         self.http_api_parameters = http_api_parameters
@@ -18069,8 +17906,6 @@ class UpdateApiDestinationRequest(TeaModel):
         result = dict()
         if self.api_destination_name is not None:
             result['ApiDestinationName'] = self.api_destination_name
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
         if self.connection_name is not None:
             result['ConnectionName'] = self.connection_name
         if self.description is not None:
@@ -18083,8 +17918,6 @@ class UpdateApiDestinationRequest(TeaModel):
         m = m or dict()
         if m.get('ApiDestinationName') is not None:
             self.api_destination_name = m.get('ApiDestinationName')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
         if m.get('ConnectionName') is not None:
             self.connection_name = m.get('ConnectionName')
         if m.get('Description') is not None:
@@ -18099,13 +17932,11 @@ class UpdateApiDestinationShrinkRequest(TeaModel):
     def __init__(
         self,
         api_destination_name: str = None,
-        client_token: str = None,
         connection_name: str = None,
         description: str = None,
         http_api_parameters_shrink: str = None,
     ):
         self.api_destination_name = api_destination_name
-        self.client_token = client_token
         self.connection_name = connection_name
         self.description = description
         self.http_api_parameters_shrink = http_api_parameters_shrink
@@ -18121,8 +17952,6 @@ class UpdateApiDestinationShrinkRequest(TeaModel):
         result = dict()
         if self.api_destination_name is not None:
             result['ApiDestinationName'] = self.api_destination_name
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
         if self.connection_name is not None:
             result['ConnectionName'] = self.connection_name
         if self.description is not None:
@@ -18135,8 +17964,6 @@ class UpdateApiDestinationShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('ApiDestinationName') is not None:
             self.api_destination_name = m.get('ApiDestinationName')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
         if m.get('ConnectionName') is not None:
             self.connection_name = m.get('ConnectionName')
         if m.get('Description') is not None:
@@ -18299,170 +18126,6 @@ class UpdateConnectionRequestAuthParametersBasicAuthParameters(TeaModel):
             self.password = m.get('Password')
         if m.get('Username') is not None:
             self.username = m.get('Username')
-        return self
-
-
-class UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class UpdateConnectionRequestAuthParametersInvocationHttpParameters(TeaModel):
-    def __init__(
-        self,
-        body_parameters: List[UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters] = None,
-        header_parameters: List[UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters] = None,
-        query_string_parameters: List[UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters] = None,
-    ):
-        self.body_parameters = body_parameters
-        self.header_parameters = header_parameters
-        self.query_string_parameters = query_string_parameters
-
-    def validate(self):
-        if self.body_parameters:
-            for k in self.body_parameters:
-                if k:
-                    k.validate()
-        if self.header_parameters:
-            for k in self.header_parameters:
-                if k:
-                    k.validate()
-        if self.query_string_parameters:
-            for k in self.query_string_parameters:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['BodyParameters'] = []
-        if self.body_parameters is not None:
-            for k in self.body_parameters:
-                result['BodyParameters'].append(k.to_map() if k else None)
-        result['HeaderParameters'] = []
-        if self.header_parameters is not None:
-            for k in self.header_parameters:
-                result['HeaderParameters'].append(k.to_map() if k else None)
-        result['QueryStringParameters'] = []
-        if self.query_string_parameters is not None:
-            for k in self.query_string_parameters:
-                result['QueryStringParameters'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.body_parameters = []
-        if m.get('BodyParameters') is not None:
-            for k in m.get('BodyParameters'):
-                temp_model = UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters()
-                self.body_parameters.append(temp_model.from_map(k))
-        self.header_parameters = []
-        if m.get('HeaderParameters') is not None:
-            for k in m.get('HeaderParameters'):
-                temp_model = UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters()
-                self.header_parameters.append(temp_model.from_map(k))
-        self.query_string_parameters = []
-        if m.get('QueryStringParameters') is not None:
-            for k in m.get('QueryStringParameters'):
-                temp_model = UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters()
-                self.query_string_parameters.append(temp_model.from_map(k))
         return self
 
 
@@ -18737,13 +18400,11 @@ class UpdateConnectionRequestAuthParameters(TeaModel):
         api_key_auth_parameters: UpdateConnectionRequestAuthParametersApiKeyAuthParameters = None,
         authorization_type: str = None,
         basic_auth_parameters: UpdateConnectionRequestAuthParametersBasicAuthParameters = None,
-        invocation_http_parameters: UpdateConnectionRequestAuthParametersInvocationHttpParameters = None,
         oauth_parameters: UpdateConnectionRequestAuthParametersOAuthParameters = None,
     ):
         self.api_key_auth_parameters = api_key_auth_parameters
         self.authorization_type = authorization_type
         self.basic_auth_parameters = basic_auth_parameters
-        self.invocation_http_parameters = invocation_http_parameters
         self.oauth_parameters = oauth_parameters
 
     def validate(self):
@@ -18751,8 +18412,6 @@ class UpdateConnectionRequestAuthParameters(TeaModel):
             self.api_key_auth_parameters.validate()
         if self.basic_auth_parameters:
             self.basic_auth_parameters.validate()
-        if self.invocation_http_parameters:
-            self.invocation_http_parameters.validate()
         if self.oauth_parameters:
             self.oauth_parameters.validate()
 
@@ -18768,8 +18427,6 @@ class UpdateConnectionRequestAuthParameters(TeaModel):
             result['AuthorizationType'] = self.authorization_type
         if self.basic_auth_parameters is not None:
             result['BasicAuthParameters'] = self.basic_auth_parameters.to_map()
-        if self.invocation_http_parameters is not None:
-            result['InvocationHttpParameters'] = self.invocation_http_parameters.to_map()
         if self.oauth_parameters is not None:
             result['OAuthParameters'] = self.oauth_parameters.to_map()
         return result
@@ -18784,9 +18441,6 @@ class UpdateConnectionRequestAuthParameters(TeaModel):
         if m.get('BasicAuthParameters') is not None:
             temp_model = UpdateConnectionRequestAuthParametersBasicAuthParameters()
             self.basic_auth_parameters = temp_model.from_map(m['BasicAuthParameters'])
-        if m.get('InvocationHttpParameters') is not None:
-            temp_model = UpdateConnectionRequestAuthParametersInvocationHttpParameters()
-            self.invocation_http_parameters = temp_model.from_map(m['InvocationHttpParameters'])
         if m.get('OAuthParameters') is not None:
             temp_model = UpdateConnectionRequestAuthParametersOAuthParameters()
             self.oauth_parameters = temp_model.from_map(m['OAuthParameters'])
@@ -19278,6 +18932,11 @@ class UpdateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self,
         group_id: str = None,
         instance_id: str = None,
+        instance_network: str = None,
+        instance_security_group_id: str = None,
+        instance_type: str = None,
+        instance_vswitch_ids: str = None,
+        instance_vpc_id: str = None,
         offset: str = None,
         region_id: str = None,
         tag: str = None,
@@ -19286,6 +18945,11 @@ class UpdateEventSourceRequestSourceRocketMQParameters(TeaModel):
     ):
         self.group_id = group_id
         self.instance_id = instance_id
+        self.instance_network = instance_network
+        self.instance_security_group_id = instance_security_group_id
+        self.instance_type = instance_type
+        self.instance_vswitch_ids = instance_vswitch_ids
+        self.instance_vpc_id = instance_vpc_id
         self.offset = offset
         self.region_id = region_id
         self.tag = tag
@@ -19302,9 +18966,19 @@ class UpdateEventSourceRequestSourceRocketMQParameters(TeaModel):
 
         result = dict()
         if self.group_id is not None:
-            result['GroupId'] = self.group_id
+            result['GroupID'] = self.group_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_network is not None:
+            result['InstanceNetwork'] = self.instance_network
+        if self.instance_security_group_id is not None:
+            result['InstanceSecurityGroupId'] = self.instance_security_group_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.instance_vswitch_ids is not None:
+            result['InstanceVSwitchIds'] = self.instance_vswitch_ids
+        if self.instance_vpc_id is not None:
+            result['InstanceVpcId'] = self.instance_vpc_id
         if self.offset is not None:
             result['Offset'] = self.offset
         if self.region_id is not None:
@@ -19319,10 +18993,20 @@ class UpdateEventSourceRequestSourceRocketMQParameters(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
+        if m.get('GroupID') is not None:
+            self.group_id = m.get('GroupID')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceNetwork') is not None:
+            self.instance_network = m.get('InstanceNetwork')
+        if m.get('InstanceSecurityGroupId') is not None:
+            self.instance_security_group_id = m.get('InstanceSecurityGroupId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InstanceVSwitchIds') is not None:
+            self.instance_vswitch_ids = m.get('InstanceVSwitchIds')
+        if m.get('InstanceVpcId') is not None:
+            self.instance_vpc_id = m.get('InstanceVpcId')
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
         if m.get('RegionId') is not None:

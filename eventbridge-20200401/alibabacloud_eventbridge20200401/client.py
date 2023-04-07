@@ -60,8 +60,6 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.http_api_parameters_shrink):
             query['HttpApiParameters'] = request.http_api_parameters_shrink
-        if not UtilClient.is_unset(request.invocation_rate_limit_per_second):
-            query['InvocationRateLimitPerSecond'] = request.invocation_rate_limit_per_second
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -100,8 +98,6 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.http_api_parameters_shrink):
             query['HttpApiParameters'] = request.http_api_parameters_shrink
-        if not UtilClient.is_unset(request.invocation_rate_limit_per_second):
-            query['InvocationRateLimitPerSecond'] = request.invocation_rate_limit_per_second
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -794,8 +790,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name):
             query['ApiDestinationName'] = request.api_destination_name
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -824,8 +818,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name):
             query['ApiDestinationName'] = request.api_destination_name
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1456,8 +1448,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name):
             query['ApiDestinationName'] = request.api_destination_name
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1486,8 +1476,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name):
             query['ApiDestinationName'] = request.api_destination_name
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1864,10 +1852,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name_prefix):
             query['ApiDestinationNamePrefix'] = request.api_destination_name_prefix
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
+        if not UtilClient.is_unset(request.connection_name):
+            query['ConnectionName'] = request.connection_name
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1900,10 +1886,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name_prefix):
             query['ApiDestinationNamePrefix'] = request.api_destination_name_prefix
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
+        if not UtilClient.is_unset(request.connection_name):
+            query['ConnectionName'] = request.connection_name
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -2870,8 +2854,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name):
             query['ApiDestinationName'] = request.api_destination_name
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_name):
             query['ConnectionName'] = request.connection_name
         if not UtilClient.is_unset(request.description):
@@ -2910,8 +2892,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.api_destination_name):
             query['ApiDestinationName'] = request.api_destination_name
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_name):
             query['ConnectionName'] = request.connection_name
         if not UtilClient.is_unset(request.description):
