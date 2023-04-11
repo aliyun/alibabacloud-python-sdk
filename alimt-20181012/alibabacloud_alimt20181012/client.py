@@ -1140,6 +1140,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_title_intelligence_with_options_async(request, runtime)
 
+    def get_translate_image_batch_result_with_options(
+        self,
+        request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTranslateImageBatchResult',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTranslateImageBatchResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_translate_image_batch_result_with_options_async(
+        self,
+        request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTranslateImageBatchResult',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetTranslateImageBatchResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_translate_image_batch_result(
+        self,
+        request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
+    ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_translate_image_batch_result_with_options(request, runtime)
+
+    async def get_translate_image_batch_result_async(
+        self,
+        request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
+    ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_translate_image_batch_result_with_options_async(request, runtime)
+
     def get_translate_report_with_options(
         self,
         request: alimt_20181012_models.GetTranslateReportRequest,
@@ -1895,3 +1965,93 @@ class Client(OpenApiClient):
     ) -> alimt_20181012_models.TranslateImageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.translate_image_with_options_async(request, runtime)
+
+    def translate_image_batch_with_options(
+        self,
+        request: alimt_20181012_models.TranslateImageBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_task_id):
+            body['CustomTaskId'] = request.custom_task_id
+        if not UtilClient.is_unset(request.ext):
+            body['Ext'] = request.ext
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.image_urls):
+            body['ImageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateImageBatch',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateImageBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def translate_image_batch_with_options_async(
+        self,
+        request: alimt_20181012_models.TranslateImageBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_task_id):
+            body['CustomTaskId'] = request.custom_task_id
+        if not UtilClient.is_unset(request.ext):
+            body['Ext'] = request.ext
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.image_urls):
+            body['ImageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateImageBatch',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateImageBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def translate_image_batch(
+        self,
+        request: alimt_20181012_models.TranslateImageBatchRequest,
+    ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.translate_image_batch_with_options(request, runtime)
+
+    async def translate_image_batch_async(
+        self,
+        request: alimt_20181012_models.TranslateImageBatchRequest,
+    ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.translate_image_batch_with_options_async(request, runtime)
